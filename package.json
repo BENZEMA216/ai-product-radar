@@ -1,0 +1,12 @@
+{
+  "name": "ai-product-radar",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "daily": "node daily-runner.mjs",
+    "publish-report": "node publish-report.mjs",
+    "radar": "node radar.mjs",
+    "smoke": "node smoke-test.mjs"
+  }
+}
