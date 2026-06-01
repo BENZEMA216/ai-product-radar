@@ -95,18 +95,20 @@ export function buildSiteData(reports) {
     .map((report) => ({ ...report, items: parseReportMarkdown(report.markdown, report.path) }))
     .sort((a, b) => a.path.localeCompare(b.path));
   const items = normalizedReports.flatMap((report) => report.items);
+  const reportSummaries = normalizedReports.map((report) => ({
+    path: report.path,
+    ...reportMeta(report.path),
+    count: report.items.length
+  }));
+  const latestReport = reportSummaries.at(-1);
   return {
-    generatedAt: new Date().toISOString(),
-    reports: normalizedReports.map((report) => ({
-      path: report.path,
-      ...reportMeta(report.path),
-      count: report.items.length
-    })),
+    generatedAt: latestReport ? `${latestReport.reportDate} ${latestReport.reportTime}` : "",
+    reports: reportSummaries,
     items,
     stats: {
       totalReports: normalizedReports.length,
       totalItems: items.length,
-      latestReport: normalizedReports.at(-1)?.path || "",
+      latestReport: latestReport?.path || "",
       bySource: countBy(items, "source"),
       byType: countBy(items, "type")
     }
@@ -130,10 +132,10 @@ function renderItems(items) {
           <span>${escapeHtml(item.source)}</span>
           <span>${escapeHtml(item.type)}</span>
         </div>
-        <h2><a href="${escapeHtml(item.link)}" target="_blank" rel="noreferrer">${escapeHtml(item.product)}</a></h2>
+        <h2><a href="${escapeHtml(item.link)}" target="_blank" rel="noreferrer noopener">${escapeHtml(item.product)}</a></h2>
         <p class="did">${escapeHtml(item.did)}</p>
         <p class="why">${escapeHtml(item.why)}</p>
-        <a class="evidence" href="${escapeHtml(item.evidenceUrl)}" target="_blank" rel="noreferrer">证据来源</a>
+        <a class="evidence" href="${escapeHtml(item.evidenceUrl)}" target="_blank" rel="noreferrer noopener">证据来源</a>
       </article>`
     )
     .join("\n");
@@ -152,7 +154,12 @@ function renderSourceBars(sourceCounts) {
 
 function renderTypePills(typeCounts) {
   return topEntries(typeCounts, 6)
-    .map(([type, count]) => `<button class="pill" data-filter-type="${escapeHtml(type)}">${escapeHtml(type)} <b>${count}</b></button>`)
+    .map(
+      ([type, count]) =>
+        `<button type="button" class="pill" data-filter-type="${escapeHtml(type)}" aria-pressed="false">${escapeHtml(
+          type
+        )} <b>${count}</b></button>`
+    )
     .join("\n");
 }
 
@@ -367,7 +374,15 @@ export function renderSiteHtml(data) {
       text-decoration-thickness: 1px;
       text-underline-offset: 4px;
     }
-    .empty { display: none; padding: 64px 0; color: var(--muted); border-top: 1px solid var(--line); }
+    .empty {
+      display: none;
+      margin: 18px 0 0;
+      padding: 24px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: rgba(255,255,255,0.28);
+    }
     @media (max-width: 980px) {
       header, .toolbar { grid-template-columns: 1fr; }
       h1 { font-size: 48px; }
@@ -401,19 +416,19 @@ export function renderSiteHtml(data) {
       </aside>
     </header>
     <section class="toolbar">
-      <input id="q" type="search" placeholder="Search products, changes, reasons">
-      <select id="source">
+      <input id="q" type="search" aria-label="Search products, changes, reasons" placeholder="Search products, changes, reasons">
+      <select id="source" aria-label="Filter by source">
         <option value="">All sources</option>
         ${sources.map((source) => `<option value="${escapeHtml(source)}">${escapeHtml(source)}</option>`).join("")}
       </select>
-      <select id="type">
+      <select id="type" aria-label="Filter by update type">
         <option value="">All types</option>
         ${types.map((type) => `<option value="${escapeHtml(type)}">${escapeHtml(type)}</option>`).join("")}
       </select>
     </section>
     <section class="type-pills">${renderTypePills(data.stats.byType)}</section>
+    <section class="empty" id="empty" role="status" aria-live="polite">No matching signals.</section>
     <section class="list" id="items">${renderItems(items)}</section>
-    <section class="empty" id="empty">No matching signals.</section>
   </main>
   <script>window.__RADAR_DATA__ = ${json};</script>
   <script>
@@ -438,7 +453,11 @@ export function renderSiteHtml(data) {
         if (ok) visible += 1;
       }
       empty.style.display = visible ? "none" : "block";
-      pills.forEach((pill) => pill.classList.toggle("is-active", pill.dataset.filterType === selectedType));
+      pills.forEach((pill) => {
+        const active = pill.dataset.filterType === selectedType;
+        pill.classList.toggle("is-active", active);
+        pill.setAttribute("aria-pressed", String(active));
+      });
     }
     q.addEventListener("input", applyFilters);
     source.addEventListener("change", applyFilters);

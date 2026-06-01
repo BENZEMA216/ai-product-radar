@@ -4,3 +4,4 @@ node_modules/
 reports-stability-check/
 reports-test-success/
 *.log
+.gstack/
