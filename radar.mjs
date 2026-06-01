@@ -132,6 +132,16 @@ const AIHOT_DROP_KEYWORDS = [
   "融资",
   "估值",
   "投资",
+  "ipo",
+  "首发过会",
+  "募资",
+  "财报",
+  "财季",
+  "营收",
+  "亏损",
+  "毛利率",
+  "交付",
+  "销量",
   "报道称",
   "据报道",
   "风险",
@@ -450,7 +460,7 @@ async function fetchHackerNews(start, end) {
 
 function ghApi(path) {
   let lastError;
-  for (let attempt = 0; attempt < 3; attempt += 1) {
+  for (let attempt = 0; attempt < 5; attempt += 1) {
     try {
       const stdout = execFileSync("gh", ["api", path], {
         encoding: "utf8",
@@ -462,6 +472,33 @@ function ghApi(path) {
     } catch (error) {
       lastError = error;
       sleepSync(500 * (attempt + 1));
+    }
+  }
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    try {
+      const stdout = execFileSync(
+        "curl",
+        [
+          "-fsSL",
+          "--connect-timeout",
+          "10",
+          "--max-time",
+          "20",
+          "-H",
+          `user-agent: ${USER_AGENT}`,
+          `https://api.github.com/${path}`
+        ],
+        {
+          encoding: "utf8",
+          maxBuffer: 10 * 1024 * 1024,
+          timeout: 25000,
+          env: process.env
+        }
+      );
+      return JSON.parse(stdout);
+    } catch (error) {
+      lastError = error;
+      sleepSync(700 * (attempt + 1));
     }
   }
   if (process.env.RADAR_DEBUG) {

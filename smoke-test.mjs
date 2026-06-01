@@ -31,6 +31,20 @@ async function fetchText(url) {
       await new Promise((resolve) => setTimeout(resolve, 600 * (attempt + 1)));
     }
   }
+  try {
+    return execFileSync(
+      "curl",
+      ["-fsSL", "--connect-timeout", "10", "--max-time", "30", "-A", "AIProductRadarSmoke/0.1", url],
+      {
+        encoding: "utf8",
+        maxBuffer: 10 * 1024 * 1024,
+        timeout: 35000,
+        env: sanitizeLocalProxyEnv(process.env)
+      }
+    );
+  } catch {
+    // Preserve the original fetch error. It usually carries the source URL and timeout reason.
+  }
   throw lastError;
 }
 
@@ -96,15 +110,21 @@ function testSiteBuilderHelpers() {
   assert.equal(rows[2].type, "疑似新产品");
 
   const siteData = buildSiteData([{ path: "reports/2026-06-01-0800-cst.md", markdown: report }]);
+  const siteDataAgain = buildSiteData([{ path: "reports/2026-06-01-0800-cst.md", markdown: report }]);
   assert.equal(siteData.items.length, 3);
   assert.equal(siteData.reports[0].count, 3);
   assert.equal(siteData.stats.bySource["HN Algolia"], 2);
+  assert.equal(siteData.generatedAt, "2026-06-01 08:00 CST");
+  assert.equal(siteData.generatedAt, siteDataAgain.generatedAt);
 
   const html = renderSiteHtml(siteData);
   assert.match(html, /Agent Deck/);
   assert.match(html, /window.__RADAR_DATA__/);
   assert.match(html, /data-source="HN Algolia"/);
   assert.match(html, /\.item\[hidden\] \{ display: none; \}/);
+  assert.match(html, /aria-label="Filter by source"/);
+  assert.match(html, /aria-live="polite"/);
+  assert.match(html, /aria-pressed="false"/);
 }
 
 async function testProductHuntFixture() {
@@ -124,16 +144,16 @@ async function testHnAlgolia() {
   assert.ok(json.hits[0].created_at, "HN hit should include created_at");
 }
 
-function testGhApi() {
+async function testGhApi() {
   let stdout = "";
   let lastError;
-  for (let attempt = 0; attempt < 3; attempt += 1) {
+  for (let attempt = 0; attempt < 5; attempt += 1) {
     try {
       stdout = execFileSync("gh", ["api", "repos/openai/codex/releases?per_page=1"], {
         encoding: "utf8",
         maxBuffer: 10 * 1024 * 1024,
         timeout: 20000,
-        env: process.env
+        env: sanitizeLocalProxyEnv(process.env)
       });
       break;
     } catch (error) {
@@ -141,7 +161,13 @@ function testGhApi() {
       sleepSync(500 * (attempt + 1));
     }
   }
-  if (!stdout) throw lastError;
+  if (!stdout) {
+    try {
+      stdout = await fetchText("https://api.github.com/repos/openai/codex/releases?per_page=1");
+    } catch {
+      throw lastError;
+    }
+  }
   const json = JSON.parse(stdout);
   assert.ok(Array.isArray(json), "gh api should return release array");
   assert.ok(json[0]?.published_at, "GitHub release should include published_at");
@@ -171,6 +197,13 @@ function testAihotParserFixture() {
     <pubDate>Sat, 30 May 2026 15:40:48 GMT</pubDate>
     <author>noreply@aihot.virxact.com (Hacker News 热门（buzzing.cc 中文翻译）)</author>
   </item>
+  <item>
+    <title><![CDATA[某公司财报：AI助手完成迭代但公司由盈转亏]]></title>
+    <link>https://example.com/earnings</link>
+    <description><![CDATA[财报、营收和亏损新闻，不是产品发布或功能更新。]]></description>
+    <pubDate>Sat, 30 May 2026 17:40:48 GMT</pubDate>
+    <author>noreply@aihot.virxact.com (综合资讯)</author>
+  </item>
 </channel></rss>`;
   const start = new Date("2026-05-30T00:00:00Z");
   const end = new Date("2026-05-31T00:00:00Z");
@@ -194,7 +227,13 @@ ICYMI：Nano Banana Pro [gemini-3-pro-image] 和 Nano Banana 2 [gemini-3.1-flash
 
 综合资讯 Bloomberg：Technology（RSS）
 
-在新加坡举行的防务论坛上，专家警告AI风险已超越核武器。`;
+在新加坡举行的防务论坛上，专家警告AI风险已超越核武器。
+
+### [某机器人公司IPO首发过会：拟募资用于智能机器人模型研发](https://example.com/ipo)
+
+综合资讯
+
+公司IPO首发过会，拟募资用于模型研发、机器人本体研发和新产品开发。`;
   const start = new Date("2026-05-30T00:00:00Z");
   const end = new Date("2026-05-31T00:00:00Z");
   const items = parseAihotDailyMarkdown(markdown, "2026-05-31", start, end);
