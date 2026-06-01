@@ -36,6 +36,15 @@ function git(args, options = {}) {
   });
 }
 
+function buildSite() {
+  execFileSync("npm", ["run", "build-site"], {
+    encoding: "utf8",
+    stdio: "inherit",
+    timeout: 120000,
+    maxBuffer: 10 * 1024 * 1024
+  });
+}
+
 function resolveReport(args) {
   if (args.report) return args.report;
   const reports = readdirSync(args.reportDir).map((name) => join(args.reportDir, name));
@@ -70,7 +79,8 @@ async function main() {
   if (!existsSync(report)) throw new Error(`Report does not exist: ${report}`);
 
   git(["rev-parse", "--is-inside-work-tree"]);
-  git(["add", "--", report]);
+  buildSite();
+  git(["add", "--", report, "docs/index.html"]);
 
   if (!hasStagedChanges()) {
     console.log(`No report changes to publish: ${report}`);

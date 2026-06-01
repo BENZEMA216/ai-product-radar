@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build-site": "node build-site.mjs",
     "daily": "node daily-runner.mjs",
     "publish-report": "node publish-report.mjs",
     "radar": "node radar.mjs",

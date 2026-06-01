@@ -9,6 +9,7 @@ import {
   runRadar,
   sanitizeLocalProxyEnv
 } from "./radar.mjs";
+import { buildSiteData, parseReportMarkdown, renderSiteHtml } from "./build-site.mjs";
 import { commitMessageForReport, newestReportPath } from "./publish-report.mjs";
 
 async function fetchText(url) {
@@ -78,6 +79,32 @@ function testPublishHelpers() {
     ]),
     "reports/2026-06-01-0800-cst.md"
   );
+}
+
+function testSiteBuilderHelpers() {
+  const report = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| Agent Deck | [链接](https://agentdeck.site/) | 新产品 | HN 发布帖在 2026-05-31T10:23:44Z 出现：Show HN: Agent Deck | 开发者工具值得看。 | [HN Algolia 2026-05-31T10:23:44Z](https://news.ycombinator.com/item?id=1) |
+| Agent Deck: Native Mac app for managing AI coding agents\\\\| powered by PI | [链接](https://agentdeck.site/) | 新产品 | escaped pipe title | 开发者工具值得看。 | [HN Algolia 2026-05-31T10:23:44Z](https://news.ycombinator.com/item?id=2) |
+| MiniMax M3 | [链接](https://x.com/testingcatalog/status/1) | 疑似新产品 | MiniMax发布了新开源权重模型M3。 | 模型发布值得跟踪。 | [AIHOT 2026-06-01T05:16:48.000Z](https://x.com/testingcatalog/status/1) |`;
+  const rows = parseReportMarkdown(report, "reports/2026-06-01-0800-cst.md");
+  assert.equal(rows.length, 3);
+  assert.equal(rows[0].product, "Agent Deck");
+  assert.equal(rows[0].source, "HN Algolia");
+  assert.equal(rows[0].reportDate, "2026-06-01");
+  assert.equal(rows[1].product, "Agent Deck: Native Mac app for managing AI coding agents| powered by PI");
+  assert.equal(rows[2].type, "疑似新产品");
+
+  const siteData = buildSiteData([{ path: "reports/2026-06-01-0800-cst.md", markdown: report }]);
+  assert.equal(siteData.items.length, 3);
+  assert.equal(siteData.reports[0].count, 3);
+  assert.equal(siteData.stats.bySource["HN Algolia"], 2);
+
+  const html = renderSiteHtml(siteData);
+  assert.match(html, /Agent Deck/);
+  assert.match(html, /window.__RADAR_DATA__/);
+  assert.match(html, /data-source="HN Algolia"/);
+  assert.match(html, /\.item\[hidden\] \{ display: none; \}/);
 }
 
 async function testProductHuntFixture() {
@@ -206,6 +233,7 @@ function testCliOutput() {
 const tests = [
   ["Automation safety helpers", testAutomationSafetyHelpers],
   ["Publish helpers", testPublishHelpers],
+  ["Site builder helpers", testSiteBuilderHelpers],
   ["Product Hunt fixture", testProductHuntFixture],
   ["HN Algolia", testHnAlgolia],
   ["GitHub gh api", testGhApi],

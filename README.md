@@ -6,10 +6,13 @@ The goal is to make the automation testable instead of relying only on a long na
 
 GitHub archive: https://github.com/BENZEMA216/ai-product-radar
 
+GitHub Pages site: https://benzema216.github.io/ai-product-radar/
+
 ## Commands
 
 ```bash
 npm run smoke
+npm run build-site
 npm run daily -- --hours 24
 npm run publish-report
 npm run radar -- --hours 24
@@ -20,8 +23,11 @@ npm run radar -- --now 2026-05-31T08:02:13+08:00 --hours 24
 daily Markdown table to `reports/YYYY-MM-DD-HHMM-cst.md`. If smoke fails, it still writes
 the same table header plus a one-line blocker reason so the run is never invisible.
 
-`npm run publish-report` commits the newest report under `reports/` and pushes the current
-branch to `origin`, so daily outputs are reviewable in GitHub history.
+`npm run build-site` rebuilds `docs/index.html` from all Markdown reports under `reports/`.
+
+`npm run publish-report` rebuilds the site, commits the newest report under `reports/`, and
+pushes the current branch to `origin`, so daily outputs are reviewable in GitHub history and
+on the GitHub Pages dashboard.
 
 ## Stability Contract
 
@@ -32,6 +38,7 @@ branch to `origin`, so daily outputs are reviewable in GitHub history.
 - X/Twitter is treated as best-effort discovery unless a visible official/creator timestamp can be verified.
 - Daily automation output is persisted under `reports/`, even when the run is blocked.
 - Daily reports are intended to be committed and pushed to the GitHub repository after generation.
+- The GitHub Pages dashboard is generated from committed reports only; it does not depend on a backend.
 
 ## Current Status
 
