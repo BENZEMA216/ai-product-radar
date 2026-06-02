@@ -204,6 +204,48 @@ function testAihotParserFixture() {
     <pubDate>Sat, 30 May 2026 17:40:48 GMT</pubDate>
     <author>noreply@aihot.virxact.com (综合资讯)</author>
   </item>
+  <item>
+    <title><![CDATA[OpenAI语音黑客松人民选择奖揭晓]]></title>
+    <link>https://x.com/OpenAIDevs/status/2061558243911155722</link>
+    <description><![CDATA[投票结果已出，某手机智能体操作系统获得语音黑客松人民选择奖，并赢得 API 额度。]]></description>
+    <pubDate>Sat, 30 May 2026 18:40:48 GMT</pubDate>
+    <author>noreply@aihot.virxact.com (OpenAI Developers on X)</author>
+  </item>
+  <item>
+    <title><![CDATA[Codex、Cursor等AI智能体开放API与网页深度交互]]></title>
+    <link>https://x.com/dotey/status/2061565621360337132</link>
+    <description><![CDATA[推文建议，Codex、Cursor等AI智能体应提供API接口，允许网页视图向智能体发送提示词。]]></description>
+    <pubDate>Sat, 30 May 2026 19:40:48 GMT</pubDate>
+    <author>noreply@aihot.virxact.com (dotey on X)</author>
+  </item>
+  <item>
+    <title><![CDATA[Nvidia H200芯片被至少七所军方关联中国高校求购]]></title>
+    <link>https://www.bloomberg.com/news/articles/2026-06-01/nvidia-s-ai-chips-sought-by-chinese-labs-with-ties-to-military</link>
+    <description><![CDATA[采购记录显示，多所高校正在寻求获取 AI 芯片，不是产品发布或功能更新。]]></description>
+    <pubDate>Sat, 30 May 2026 20:40:48 GMT</pubDate>
+    <author>noreply@aihot.virxact.com (Bloomberg Technology)</author>
+  </item>
+  <item>
+    <title><![CDATA[OpenAI Codex与平台明日直播更新预告]]></title>
+    <link>https://x.com/dotey/status/2061539606592360781</link>
+    <description><![CDATA[明天 Codex 和 OpenAI platform 会有什么重要更新呢？]]></description>
+    <pubDate>Sat, 30 May 2026 21:40:48 GMT</pubDate>
+    <author>noreply@aihot.virxact.com (dotey on X)</author>
+  </item>
+  <item>
+    <title><![CDATA[Nemotron 3 Ultra 本周即将发布]]></title>
+    <link>https://x.com/NVIDIAAI/status/2061305524700758050</link>
+    <description><![CDATA[Nemotron 3 Ultra 本周即将发布。]]></description>
+    <pubDate>Sat, 30 May 2026 22:10:48 GMT</pubDate>
+    <author>noreply@aihot.virxact.com (NVIDIA AI on X)</author>
+  </item>
+  <item>
+    <title><![CDATA[Alphabet计划筹资800亿美元用于AI建设]]></title>
+    <link>https://techcrunch.com/2026/06/01/alphabet-plans-to-raise-80-billion-to-pay-for-ai-buildout</link>
+    <description><![CDATA[Alphabet计划通过出售股票筹资支持 AI 建设，不是新产品或功能更新。]]></description>
+    <pubDate>Sat, 30 May 2026 22:40:48 GMT</pubDate>
+    <author>noreply@aihot.virxact.com (TechCrunch)</author>
+  </item>
 </channel></rss>`;
   const start = new Date("2026-05-30T00:00:00Z");
   const end = new Date("2026-05-31T00:00:00Z");

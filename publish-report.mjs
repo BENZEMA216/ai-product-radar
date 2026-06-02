@@ -4,7 +4,10 @@ import { existsSync, readdirSync } from "node:fs";
 import { basename, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { sanitizeLocalProxyEnv } from "./radar.mjs";
+
 const REPORT_PATTERN = /^\d{4}-\d{2}-\d{2}-\d{4}-cst\.md$/;
+const CLEAN_ENV = sanitizeLocalProxyEnv(process.env);
 
 export function commitMessageForReport(reportPath) {
   const name = basename(reportPath);
@@ -31,6 +34,7 @@ function git(args, options = {}) {
   return execFileSync("git", args, {
     encoding: "utf8",
     stdio: options.stdio || "pipe",
+    env: options.env || CLEAN_ENV,
     timeout: options.timeout || 120000,
     maxBuffer: 10 * 1024 * 1024
   });
@@ -40,6 +44,7 @@ function buildSite() {
   execFileSync("npm", ["run", "build-site"], {
     encoding: "utf8",
     stdio: "inherit",
+    env: CLEAN_ENV,
     timeout: 120000,
     maxBuffer: 10 * 1024 * 1024
   });
@@ -72,6 +77,18 @@ function hasOrigin() {
   }
 }
 
+function needsPush(branch) {
+  try {
+    const upstream = `origin/${branch}`;
+    git(["rev-parse", "--verify", upstream]);
+    const counts = git(["rev-list", "--left-right", "--count", `${upstream}...HEAD`]).trim();
+    const parts = counts.split(/\s+/).map((value) => Number(value));
+    return Number.isFinite(parts[1]) && parts[1] > 0;
+  } catch {
+    return true;
+  }
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   const report = resolveReport(args);
@@ -83,7 +100,16 @@ async function main() {
   git(["add", "--", report, "docs/index.html"]);
 
   if (!hasStagedChanges()) {
-    console.log(`No report changes to publish: ${report}`);
+    if (!hasOrigin()) {
+      console.log(`No report changes to publish: ${report}`);
+      return;
+    }
+    const branch = currentBranch();
+    if (!needsPush(branch)) {
+      console.log(`No report changes to publish: ${report}`);
+      return;
+    }
+    git(["push", "-u", "origin", branch], { stdio: "inherit", timeout: 180000 });
     return;
   }
 
