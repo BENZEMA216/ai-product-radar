@@ -174,6 +174,16 @@ function renderTypePills(typeCounts) {
     .join("\n");
 }
 
+function reportOptionLabel(report, prefix = "") {
+  const date = report.reportDate ? report.reportDate.slice(5) : "";
+  const time = report.reportTime ? report.reportTime.replace(/\s*CST$/, "") : "";
+  return `${prefix}${date} ${time} · ${report.count} 条`.trim();
+}
+
+function fullReportOptionLabel(report, prefix = "") {
+  return `${prefix}${report.reportDate} ${report.reportTime} · ${report.count} 条`.trim();
+}
+
 function renderReportOptions(reports, latestPath) {
   const latest = reports.at(-1);
   const olderReports = reports
@@ -182,16 +192,16 @@ function renderReportOptions(reports, latestPath) {
     .reverse();
   return [
     latest
-      ? `<option value="${escapeHtml(latest.path)}" selected>最新日报 · ${escapeHtml(latest.reportDate)} ${escapeHtml(
-          latest.reportTime
-        )} · ${latest.count} 条</option>`
+      ? `<option value="${escapeHtml(latest.path)}" data-full-label="${escapeHtml(
+          fullReportOptionLabel(latest, "最新日报 · ")
+        )}" selected>${escapeHtml(reportOptionLabel(latest, "最新 · "))}</option>`
       : "",
-    `<option value="">全部归档</option>`,
+    `<option value="" data-full-label="全部归档">全部归档</option>`,
     ...olderReports.map(
       (report) =>
-        `<option value="${escapeHtml(report.path)}">${escapeHtml(report.reportDate)} ${escapeHtml(report.reportTime)} · ${
-          report.count
-        } 条</option>`
+        `<option value="${escapeHtml(report.path)}" data-full-label="${escapeHtml(fullReportOptionLabel(report))}">${escapeHtml(
+          reportOptionLabel(report)
+        )}</option>`
     )
   ].join("");
 }
@@ -364,7 +374,7 @@ export function renderSiteHtml(data) {
       top: 0;
       z-index: 3;
       display: grid;
-      grid-template-columns: minmax(220px, 1fr) 260px 190px 190px;
+      grid-template-columns: minmax(260px, 1fr) minmax(300px, 0.44fr) minmax(160px, 0.28fr) minmax(160px, 0.28fr);
       gap: 12px;
       padding: 14px 0;
       background: color-mix(in srgb, var(--paper) 90%, transparent);
@@ -380,6 +390,12 @@ export function renderSiteHtml(data) {
       background: rgba(255,255,255,0.72);
       color: var(--ink);
       font: inherit;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    select {
+      padding-right: 34px;
     }
     .filter-meta {
       display: flex;
@@ -580,7 +596,12 @@ export function renderSiteHtml(data) {
     const resultCount = document.querySelector("#result-count");
     const pills = [...document.querySelectorAll("[data-filter-type]")];
     const items = [...document.querySelectorAll(".item")];
+    function updateReportTitle() {
+      const option = report.selectedOptions[0];
+      report.title = option?.dataset.fullLabel || option?.textContent || "";
+    }
     function applyFilters() {
+      updateReportTitle();
       const text = q.value.trim().toLowerCase();
       const selectedReport = report.value;
       const selectedSource = source.value;

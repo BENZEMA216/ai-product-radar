@@ -141,7 +141,7 @@
       top: 0;
       z-index: 3;
       display: grid;
-      grid-template-columns: minmax(220px, 1fr) 260px 190px 190px;
+      grid-template-columns: minmax(260px, 1fr) minmax(300px, 0.44fr) minmax(160px, 0.28fr) minmax(160px, 0.28fr);
       gap: 12px;
       padding: 14px 0;
       background: color-mix(in srgb, var(--paper) 90%, transparent);
@@ -157,6 +157,12 @@
       background: rgba(255,255,255,0.72);
       color: var(--ink);
       font: inherit;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    select {
+      padding-right: 34px;
     }
     .filter-meta {
       display: flex;
@@ -348,7 +354,7 @@
     <section class="toolbar">
       <input id="q" type="search" aria-label="Search products, changes, reasons" placeholder="Search products, changes, reasons">
       <select id="report" aria-label="Filter by report">
-        <option value="reports/2026-06-02-0847-cst.md" selected>最新日报 · 2026-06-02 08:47 CST · 85 条</option><option value="">全部归档</option><option value="reports/2026-06-02-0806-cst.md">2026-06-02 08:06 CST · 0 条</option><option value="reports/2026-06-02-0801-cst.md">2026-06-02 08:01 CST · 0 条</option><option value="reports/2026-06-01-0800-cst.md">2026-06-01 08:00 CST · 26 条</option>
+        <option value="reports/2026-06-02-0847-cst.md" data-full-label="最新日报 · 2026-06-02 08:47 CST · 85 条" selected>最新 · 06-02 08:47 · 85 条</option><option value="" data-full-label="全部归档">全部归档</option><option value="reports/2026-06-02-0806-cst.md" data-full-label="2026-06-02 08:06 CST · 0 条">06-02 08:06 · 0 条</option><option value="reports/2026-06-02-0801-cst.md" data-full-label="2026-06-02 08:01 CST · 0 条">06-02 08:01 · 0 条</option><option value="reports/2026-06-01-0800-cst.md" data-full-label="2026-06-01 08:00 CST · 26 条">06-01 08:00 · 26 条</option>
       </select>
       <select id="source" aria-label="Filter by source">
         <option value="">All sources</option>
@@ -2487,7 +2493,12 @@
     const resultCount = document.querySelector("#result-count");
     const pills = [...document.querySelectorAll("[data-filter-type]")];
     const items = [...document.querySelectorAll(".item")];
+    function updateReportTitle() {
+      const option = report.selectedOptions[0];
+      report.title = option?.dataset.fullLabel || option?.textContent || "";
+    }
     function applyFilters() {
+      updateReportTitle();
       const text = q.value.trim().toLowerCase();
       const selectedReport = report.value;
       const selectedSource = source.value;
