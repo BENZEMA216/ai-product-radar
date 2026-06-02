@@ -121,23 +121,34 @@ function topEntries(map, limit = 8) {
     .slice(0, limit);
 }
 
-function renderItems(items) {
+function renderItems(items, latestPath = "") {
   return items
-    .map(
-      (item) => `<article class="item" data-source="${escapeHtml(item.source)}" data-type="${escapeHtml(
+    .map((item, index) => {
+      const isLatest = latestPath && item.reportPath === latestPath;
+      return `<article class="item" data-source="${escapeHtml(item.source)}" data-type="${escapeHtml(
         item.type
-      )}" data-date="${escapeHtml(item.reportDate)}">
+      )}" data-date="${escapeHtml(item.reportDate)}" data-report="${escapeHtml(item.reportPath)}" data-latest="${String(
+        isLatest
+      )}">
         <div class="item-topline">
+          <span class="rank">#${String(index + 1).padStart(2, "0")}</span>
           <span>${escapeHtml(item.reportDate)} ${escapeHtml(item.reportTime)}</span>
-          <span>${escapeHtml(item.source)}</span>
+          <span class="source-badge">${escapeHtml(item.source)}</span>
           <span>${escapeHtml(item.type)}</span>
         </div>
-        <h2><a href="${escapeHtml(item.link)}" target="_blank" rel="noreferrer noopener">${escapeHtml(item.product)}</a></h2>
-        <p class="did">${escapeHtml(item.did)}</p>
-        <p class="why">${escapeHtml(item.why)}</p>
-        <a class="evidence" href="${escapeHtml(item.evidenceUrl)}" target="_blank" rel="noreferrer noopener">证据来源</a>
-      </article>`
-    )
+        <div class="item-main">
+          <h2><a href="${escapeHtml(item.link)}" target="_blank" rel="noreferrer noopener">${escapeHtml(item.product)}</a></h2>
+          <div class="signal-copy">
+            <p class="did"><b>做了什么</b>${escapeHtml(item.did)}</p>
+            <p class="why"><b>为什么值得看</b>${escapeHtml(item.why)}</p>
+          </div>
+        </div>
+        <div class="item-actions">
+          <a href="${escapeHtml(item.link)}" target="_blank" rel="noreferrer noopener">产品链接</a>
+          <a class="evidence" href="${escapeHtml(item.evidenceUrl)}" target="_blank" rel="noreferrer noopener">证据来源</a>
+        </div>
+      </article>`;
+    })
     .join("\n");
 }
 
@@ -163,41 +174,52 @@ function renderTypePills(typeCounts) {
     .join("\n");
 }
 
-function renderRadarVisual(sourceCounts) {
-  const entries = topEntries(sourceCounts, 6);
-  const max = Math.max(...entries.map(([, count]) => count), 1);
-  const points = entries
-    .map(([, count], index) => {
-      const angle = (Math.PI * 2 * index) / Math.max(entries.length, 1) - Math.PI / 2;
-      const radius = 36 + (count / max) * 92;
-      const x = 150 + Math.cos(angle) * radius;
-      const y = 150 + Math.sin(angle) * radius;
-      return `${x.toFixed(1)},${y.toFixed(1)}`;
-    })
-    .join(" ");
-  return `<svg class="radar-map" viewBox="0 0 300 300" role="img" aria-label="Source radar map">
-    <circle cx="150" cy="150" r="42"></circle>
-    <circle cx="150" cy="150" r="88"></circle>
-    <circle cx="150" cy="150" r="132"></circle>
-    <path d="M150 18 L150 282 M18 150 L282 150 M56 56 L244 244 M244 56 L56 244"></path>
-    <polygon points="${points}"></polygon>
-    ${points
-      .split(" ")
-      .filter(Boolean)
-      .map((point) => {
-        const [x, y] = point.split(",");
-        return `<circle class="dot" cx="${x}" cy="${y}" r="5"></circle>`;
-      })
-      .join("")}
-  </svg>`;
+function renderReportOptions(reports, latestPath) {
+  const latest = reports.at(-1);
+  const olderReports = reports
+    .filter((report) => report.path !== latestPath)
+    .slice()
+    .reverse();
+  return [
+    latest
+      ? `<option value="${escapeHtml(latest.path)}" selected>最新日报 · ${escapeHtml(latest.reportDate)} ${escapeHtml(
+          latest.reportTime
+        )} · ${latest.count} 条</option>`
+      : "",
+    `<option value="">全部归档</option>`,
+    ...olderReports.map(
+      (report) =>
+        `<option value="${escapeHtml(report.path)}">${escapeHtml(report.reportDate)} ${escapeHtml(report.reportTime)} · ${
+          report.count
+        } 条</option>`
+    )
+  ].join("");
+}
+
+function renderReportTimeline(reports) {
+  return reports
+    .slice()
+    .reverse()
+    .map(
+      (report) => `<div class="report-row">
+        <span>${escapeHtml(report.reportDate)} ${escapeHtml(report.reportTime)}</span>
+        <b>${report.count}</b>
+      </div>`
+    )
+    .join("\n");
 }
 
 export function renderSiteHtml(data) {
   const items = [...data.items].sort((a, b) => `${b.reportDate} ${b.reportTime}`.localeCompare(`${a.reportDate} ${a.reportTime}`));
   const latest = data.reports.at(-1);
+  const latestItems = latest ? data.items.filter((item) => item.reportPath === latest.path) : [];
+  const latestSourceCounts = countBy(latestItems, "source");
+  const latestTypeCounts = countBy(latestItems, "type");
+  const latestSourceTotal = Object.keys(latestSourceCounts).length;
   const sources = topEntries(data.stats.bySource, 20).map(([source]) => source);
   const types = Object.keys(data.stats.byType).sort();
   const json = JSON.stringify(data).replace(/</g, "\\u003c");
+  const latestStatus = latest?.count ? "正常" : "阻塞";
 
   return `<!doctype html>
 <html lang="zh-CN">
@@ -207,97 +229,142 @@ export function renderSiteHtml(data) {
   <title>AI Product Radar</title>
   <style>
     :root {
-      --paper: #f6f0e4;
-      --paper-2: #efe5d2;
-      --ink: #17140f;
-      --muted: #746a5c;
-      --line: #d6c6aa;
-      --teal: #006d67;
-      --red: #bd321f;
-      --gold: #b98213;
-      --green: #4f6f2a;
-      --shadow: rgba(42, 31, 18, 0.12);
+      --paper: #fbfaf7;
+      --paper-2: #f0eee8;
+      --ink: #171613;
+      --muted: #69655d;
+      --line: #d8d4ca;
+      --teal: #08736c;
+      --red: #b23a2b;
+      --gold: #a97816;
+      --blue: #2d5d88;
+      --green: #4d6b32;
+      --shadow: rgba(32, 28, 22, 0.08);
     }
     * { box-sizing: border-box; }
+    html { overflow-x: hidden; }
     body {
       margin: 0;
       background:
-        linear-gradient(90deg, rgba(23,20,15,0.035) 1px, transparent 1px) 0 0 / 34px 34px,
-        radial-gradient(circle at 12% 8%, rgba(189,50,31,0.14), transparent 28rem),
-        radial-gradient(circle at 86% 12%, rgba(0,109,103,0.14), transparent 24rem),
+        linear-gradient(90deg, rgba(23,22,19,0.035) 1px, transparent 1px) 0 0 / 36px 36px,
+        linear-gradient(rgba(255,255,255,0.72), rgba(255,255,255,0.72)),
         var(--paper);
       color: var(--ink);
       font-family: "Avenir Next", "Gill Sans", "Trebuchet MS", sans-serif;
       letter-spacing: 0;
+      overflow-x: hidden;
     }
     a { color: inherit; }
-    .shell { max-width: 1440px; margin: 0 auto; padding: 24px; }
-    header {
+    .shell { max-width: 1260px; margin: 0 auto; padding: 24px; }
+    .shell > *, .top > *, .overview > *, .toolbar > *, .item > *, .latest-line > *, .source-row > * { min-width: 0; }
+    .top {
       display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+      grid-template-columns: minmax(0, 1fr) minmax(380px, 0.72fr);
       gap: 24px;
-      align-items: stretch;
-      min-height: 360px;
+      align-items: end;
       border-bottom: 2px solid var(--ink);
       padding-bottom: 24px;
     }
-    .masthead {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 336px;
-      padding: 28px 0;
-    }
-    .kicker { color: var(--red); font-weight: 800; text-transform: uppercase; font-size: 13px; }
+    .kicker { color: var(--red); font-weight: 800; font-size: 13px; }
     h1 {
-      margin: 18px 0;
+      margin: 10px 0 12px;
       font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-      font-size: 70px;
-      line-height: 0.96;
+      font-size: 48px;
+      line-height: 1;
       font-weight: 800;
-      max-width: 820px;
     }
-    .summary {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(120px, 1fr));
-      gap: 12px;
+    .subtitle {
       max-width: 720px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
     }
     .metric {
-      border-top: 2px solid var(--ink);
-      padding-top: 10px;
-      min-height: 86px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.58);
+      min-height: 82px;
+      padding: 12px;
     }
-    .metric strong { display: block; font-size: 30px; line-height: 1; }
-    .metric span { display: block; margin-top: 8px; color: var(--muted); font-size: 13px; }
-    .visual-panel {
-      border: 2px solid var(--ink);
-      background: rgba(255,255,255,0.24);
-      padding: 20px;
+    .metric strong { display: block; font-size: 26px; line-height: 1.05; }
+    .metric span { display: block; margin-top: 8px; color: var(--muted); font-size: 12px; }
+    .status-ok strong { color: var(--green); }
+    .status-blocked strong { color: var(--red); }
+    .overview {
       display: grid;
-      grid-template-rows: 1fr auto;
-      min-height: 336px;
+      grid-template-columns: minmax(0, 0.58fr) minmax(0, 0.42fr);
+      gap: 24px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
     }
-    .radar-map { width: 100%; height: 260px; }
-    .radar-map circle, .radar-map path { fill: none; stroke: rgba(23,20,15,0.24); stroke-width: 1.2; }
-    .radar-map polygon { fill: rgba(0,109,103,0.2); stroke: var(--teal); stroke-width: 3; }
-    .radar-map .dot { fill: var(--red); stroke: var(--paper); stroke-width: 2; }
+    .section-label {
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .latest-line {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: baseline;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 14px;
+      margin-bottom: 14px;
+    }
+    .latest-line strong { font-size: 32px; line-height: 1; }
+    .latest-line span {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 5px 9px;
+      background: rgba(255,255,255,0.58);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+      text-align: right;
+    }
+    .report-timeline {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .report-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 42px;
+      gap: 8px;
+      align-items: center;
+      min-height: 34px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .report-row b { color: var(--ink); text-align: right; }
     .source-row {
       display: grid;
-      grid-template-columns: 130px 1fr 34px;
+      grid-template-columns: minmax(110px, 130px) minmax(0, 1fr) 34px;
       gap: 10px;
       align-items: center;
       font-size: 13px;
       min-height: 28px;
     }
-    .source-row div { height: 9px; background: rgba(23,20,15,0.12); overflow: hidden; }
+    .source-row span { overflow-wrap: anywhere; }
+    .source-row div { height: 9px; background: rgba(23,20,15,0.1); overflow: hidden; border-radius: 999px; }
     .source-row i { display: block; height: 100%; background: linear-gradient(90deg, var(--teal), var(--gold)); }
     .toolbar {
       position: sticky;
       top: 0;
       z-index: 3;
       display: grid;
-      grid-template-columns: minmax(220px, 1fr) 220px 220px;
+      grid-template-columns: minmax(220px, 1fr) 260px 190px 190px;
       gap: 12px;
       padding: 14px 0;
       background: color-mix(in srgb, var(--paper) 90%, transparent);
@@ -310,15 +377,24 @@ export function renderSiteHtml(data) {
       border: 1px solid var(--ink);
       border-radius: 6px;
       padding: 0 12px;
-      background: rgba(255,255,255,0.42);
+      background: rgba(255,255,255,0.72);
       color: var(--ink);
       font: inherit;
     }
-    .type-pills { display: flex; flex-wrap: wrap; gap: 8px; padding: 18px 0 4px; }
+    .filter-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      padding: 16px 0 2px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .type-pills { display: flex; flex-wrap: wrap; gap: 8px; }
     .pill {
       border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.25);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.52);
       color: var(--ink);
       min-height: 34px;
       padding: 0 12px;
@@ -326,53 +402,91 @@ export function renderSiteHtml(data) {
       cursor: pointer;
     }
     .pill.is-active { border-color: var(--red); background: rgba(189,50,31,0.12); }
-    .list {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      padding: 22px 0 48px;
-    }
+    .list { display: grid; gap: 10px; padding: 16px 0 48px; }
     .item {
       border: 1px solid var(--line);
+      border-left: 5px solid var(--source, var(--line));
       border-radius: 6px;
-      background: rgba(255,255,255,0.32);
-      box-shadow: 0 12px 28px var(--shadow);
-      min-height: 310px;
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      transition: transform 160ms ease, border-color 160ms ease;
+      background: rgba(255,255,255,0.68);
+      box-shadow: 0 8px 18px var(--shadow);
+      min-height: 0;
+      padding: 14px;
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr) 126px;
+      gap: 16px;
+      align-items: start;
+      transition: border-color 160ms ease, background 160ms ease;
     }
-    .item:hover { transform: translateY(-3px); border-color: var(--ink); }
+    .item:hover { border-color: var(--ink); background: rgba(255,255,255,0.92); }
     .item[hidden] { display: none; }
+    .item[data-source="Product Hunt"] { --source: var(--red); }
+    .item[data-source="HN Algolia"] { --source: var(--blue); }
+    .item[data-source="GitHub Release"] { --source: var(--green); }
+    .item[data-source="Hugging Face API"] { --source: var(--gold); }
+    .item[data-source="AIHOT"] { --source: var(--teal); }
     .item-topline {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       color: var(--muted);
       font-size: 12px;
+      align-content: start;
     }
     .item-topline span {
       border: 1px solid var(--line);
-      border-radius: 999px;
+      border-radius: 6px;
       padding: 3px 7px;
       background: rgba(246,240,228,0.7);
     }
+    .item-topline .rank {
+      border-color: var(--ink);
+      color: var(--ink);
+      font-weight: 800;
+      background: transparent;
+    }
+    .source-badge { color: var(--source, var(--ink)); font-weight: 800; }
+    .item-main { min-width: 0; }
     .item h2 {
-      margin: 16px 0 10px;
+      margin: 0 0 12px;
       font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-      font-size: 24px;
-      line-height: 1.08;
+      font-size: 22px;
+      line-height: 1.16;
     }
     .item h2 a { text-decoration-thickness: 1px; text-underline-offset: 4px; }
-    .did { color: var(--ink); line-height: 1.55; margin: 0 0 12px; }
-    .why { color: var(--muted); line-height: 1.55; margin: 0 0 18px; }
-    .evidence {
-      margin-top: auto;
-      color: var(--teal);
+    .signal-copy {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+      gap: 14px;
+    }
+    .did, .why { line-height: 1.55; margin: 0; }
+    .did { color: var(--ink); }
+    .why { color: var(--muted); }
+    .did b, .why b {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    .item-actions {
+      display: grid;
+      gap: 8px;
+      align-self: stretch;
+      align-content: start;
+    }
+    .item-actions a {
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 8px 10px;
+      background: rgba(251,250,247,0.8);
       font-weight: 800;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 4px;
+      font-size: 13px;
+      text-align: center;
+      text-decoration: none;
+    }
+    .evidence {
+      color: var(--teal);
     }
     .empty {
       display: none;
@@ -384,39 +498,62 @@ export function renderSiteHtml(data) {
       background: rgba(255,255,255,0.28);
     }
     @media (max-width: 980px) {
-      header, .toolbar { grid-template-columns: 1fr; }
-      h1 { font-size: 48px; }
-      .list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .top, .overview, .toolbar, .item { grid-template-columns: 1fr; }
+      h1 { font-size: 40px; }
+      .latest-line {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+      .latest-line span {
+        justify-self: start;
+        text-align: left;
+      }
+      .signal-copy { grid-template-columns: 1fr; }
+      .item-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 640px) {
       .shell { padding: 16px; }
-      .summary, .list { grid-template-columns: 1fr; }
-      h1 { font-size: 38px; }
-      .source-row { grid-template-columns: 104px 1fr 30px; }
+      .status-grid, .report-timeline, .item-actions { grid-template-columns: 1fr; }
+      h1 { font-size: 34px; }
+      .latest-line strong { font-size: 30px; }
+      .source-row { grid-template-columns: minmax(82px, 112px) minmax(0, 1fr) 28px; gap: 8px; }
     }
   </style>
 </head>
 <body>
   <main class="shell">
-    <header>
-      <section class="masthead">
-        <div>
-          <div class="kicker">AI Product Radar</div>
-          <h1>Daily product signals, archived as evidence.</h1>
-        </div>
-        <div class="summary">
-          <div class="metric"><strong>${data.stats.totalItems}</strong><span>signals captured</span></div>
-          <div class="metric"><strong>${data.stats.totalReports}</strong><span>daily reports</span></div>
-          <div class="metric"><strong>${escapeHtml(latest?.reportDate || "—")}</strong><span>latest report</span></div>
-        </div>
+    <header class="top">
+      <section>
+        <div class="kicker">每日 AI 产品雷达</div>
+        <h1>AI 产品更新工作台</h1>
+        <p class="subtitle">按证据来源整理过去 24 小时的新产品和老产品更新；默认展示最新日报，也可以切换到历史归档。</p>
       </section>
-      <aside class="visual-panel">
-        ${renderRadarVisual(data.stats.bySource)}
-        <div>${renderSourceBars(data.stats.bySource)}</div>
+      <aside class="status-grid" aria-label="日报状态">
+        <div class="metric"><strong>${latest?.count ?? 0}</strong><span>最新日报条目</span></div>
+        <div class="metric"><strong>${latestSourceTotal}</strong><span>最新日报来源</span></div>
+        <div class="metric"><strong>${data.stats.totalItems}</strong><span>历史归档条目</span></div>
+        <div class="metric ${latest?.count ? "status-ok" : "status-blocked"}"><strong>${escapeHtml(latestStatus)}</strong><span>最新运行状态</span></div>
       </aside>
     </header>
+    <section class="overview">
+      <div>
+        <div class="section-label">最新日报</div>
+        <div class="latest-line">
+          <strong>${escapeHtml(latest ? `${latest.reportDate} ${latest.reportTime}` : "暂无报告")}</strong>
+          <span>${escapeHtml(latest?.path || "reports/")}</span>
+        </div>
+        <div class="report-timeline">${renderReportTimeline(data.reports)}</div>
+      </div>
+      <div>
+        <div class="section-label">来源覆盖（最新日报）</div>
+        ${renderSourceBars(latestSourceCounts)}
+      </div>
+    </section>
     <section class="toolbar">
       <input id="q" type="search" aria-label="Search products, changes, reasons" placeholder="Search products, changes, reasons">
+      <select id="report" aria-label="Filter by report">
+        ${renderReportOptions(data.reports, latest?.path || "")}
+      </select>
       <select id="source" aria-label="Filter by source">
         <option value="">All sources</option>
         ${sources.map((source) => `<option value="${escapeHtml(source)}">${escapeHtml(source)}</option>`).join("")}
@@ -426,20 +563,26 @@ export function renderSiteHtml(data) {
         ${types.map((type) => `<option value="${escapeHtml(type)}">${escapeHtml(type)}</option>`).join("")}
       </select>
     </section>
-    <section class="type-pills">${renderTypePills(data.stats.byType)}</section>
+    <section class="filter-meta">
+      <div id="result-count" aria-live="polite">${latest?.count ?? items.length} 条</div>
+      <div class="type-pills">${renderTypePills(latestTypeCounts)}</div>
+    </section>
     <section class="empty" id="empty" role="status" aria-live="polite">No matching signals.</section>
-    <section class="list" id="items">${renderItems(items)}</section>
+    <section class="list" id="items">${renderItems(items, latest?.path || "")}</section>
   </main>
   <script>window.__RADAR_DATA__ = ${json};</script>
   <script>
     const q = document.querySelector("#q");
+    const report = document.querySelector("#report");
     const source = document.querySelector("#source");
     const type = document.querySelector("#type");
     const empty = document.querySelector("#empty");
+    const resultCount = document.querySelector("#result-count");
     const pills = [...document.querySelectorAll("[data-filter-type]")];
     const items = [...document.querySelectorAll(".item")];
     function applyFilters() {
       const text = q.value.trim().toLowerCase();
+      const selectedReport = report.value;
       const selectedSource = source.value;
       const selectedType = type.value;
       let visible = 0;
@@ -447,12 +590,14 @@ export function renderSiteHtml(data) {
         const haystack = item.textContent.toLowerCase();
         const ok =
           (!text || haystack.includes(text)) &&
+          (!selectedReport || item.dataset.report === selectedReport) &&
           (!selectedSource || item.dataset.source === selectedSource) &&
           (!selectedType || item.dataset.type === selectedType);
         item.hidden = !ok;
         if (ok) visible += 1;
       }
       empty.style.display = visible ? "none" : "block";
+      resultCount.textContent = visible + " 条";
       pills.forEach((pill) => {
         const active = pill.dataset.filterType === selectedType;
         pill.classList.toggle("is-active", active);
@@ -460,12 +605,14 @@ export function renderSiteHtml(data) {
       });
     }
     q.addEventListener("input", applyFilters);
+    report.addEventListener("change", applyFilters);
     source.addEventListener("change", applyFilters);
     type.addEventListener("change", applyFilters);
     pills.forEach((pill) => pill.addEventListener("click", () => {
       type.value = type.value === pill.dataset.filterType ? "" : pill.dataset.filterType;
       applyFilters();
     }));
+    applyFilters();
   </script>
 </body>
 </html>
