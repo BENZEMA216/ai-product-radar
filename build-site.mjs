@@ -560,6 +560,7 @@ export function renderSiteHtml(data) {
     .item:hover { border-color: var(--action-primary); background: var(--bg-surface); }
     .item[hidden] { display: none; }
     .item[data-source="Product Hunt"] { --source: var(--action-primary); }
+    .item[data-source="YC Launch"] { --source: var(--category-rose); }
     .item[data-source="HN Algolia"] { --source: var(--category-sea); }
     .item[data-source="GitHub Release"] { --source: var(--category-moss); }
     .item[data-source="Hugging Face API"] { --source: var(--category-gold); }

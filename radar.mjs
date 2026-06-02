@@ -98,6 +98,8 @@ const GITHUB_RELEASE_REPOS = [
 ];
 
 const AIHOT_FEED_URL = "https://aihot.virxact.com/feed/all.xml";
+const ORANGEBOT_PRODUCT_HUNT_URL = "https://orangebot.ai/sources/product-hunt";
+const YC_LAUNCHES_URL = "https://www.ycombinator.com/launches";
 
 const AIHOT_KEEP_KEYWORDS = [
   "发布",
@@ -259,7 +261,9 @@ function decodeXml(text) {
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">")
     .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'");
+    .replace(/&#39;/g, "'")
+    .replace(/&#x([0-9a-f]+);/gi, (_, hex) => String.fromCodePoint(Number.parseInt(hex, 16)))
+    .replace(/&#(\d+);/g, (_, dec) => String.fromCodePoint(Number.parseInt(dec, 10)));
 }
 
 function stripHtml(text) {
@@ -293,7 +297,7 @@ async function fetchText(url, options = {}) {
     const timeout = setTimeout(() => controller.abort(), options.timeoutMs ?? 20000);
     try {
       const res = await fetch(url, {
-        headers: { "user-agent": USER_AGENT, accept: "text/plain,text/html,application/json" },
+        headers: { "user-agent": USER_AGENT, accept: options.accept || "text/plain,text/html,application/json" },
         signal: controller.signal
       });
       const text = await res.text();
@@ -310,7 +314,7 @@ async function fetchText(url, options = {}) {
 }
 
 async function fetchJson(url, options = {}) {
-  const text = await fetchText(url, options);
+  const text = await fetchText(url, { ...options, accept: "application/json" });
   return JSON.parse(text);
 }
 
@@ -406,15 +410,24 @@ async function fetchAihot(start, end, endDateKey) {
   return uniqueBy(all, (item) => item.link).slice(0, 30);
 }
 
-async function fetchProductHuntDate(dateKey) {
-  const sourceUrl = `https://www.producthunt.com/leaderboard/daily/${phDatePath(dateKey)}/all`;
-  let markdown = "";
-  try {
-    markdown = await fetchText(readerUrl(sourceUrl), { attempts: 4, timeoutMs: 25000 });
-  } catch {
-    markdown = await fetchText(sourceUrl, { attempts: 2, timeoutMs: 20000 });
-  }
+function productHuntCandidate({ rawName, link, rawDescription, dateKey, evidenceUrl, raw }) {
+  const text = `${rawName} ${rawDescription}`;
+  if (!isRelevant(text)) return null;
+  const description = clean(rawDescription) || "在 Product Hunt 当日榜发布，页面描述与 AI 相关。";
+  return {
+    product: clean(rawName),
+    link,
+    type: "新产品",
+    did: description,
+    why: productManagerWhy(`${rawName} ${description}`),
+    evidence: `[Product Hunt ${dateKey}](${evidenceUrl})`,
+    source: "producthunt",
+    observedAt: dateKey,
+    raw
+  };
+}
 
+export function parseProductHuntMarkdown(markdown, dateKey, sourceUrl) {
   const candidates = [];
   const productPattern = /\[(?:\d+\.\s*)?([^\]\n]+?)\]\((https:\/\/www\.producthunt\.com\/products\/[^)]+)\)([^\n]*)/g;
   let match;
@@ -422,22 +435,106 @@ async function fetchProductHuntDate(dateKey) {
     const [full, rawName, link, rawDescription] = match;
     if (rawName.includes("Product Hunt") || rawName.length > 80) continue;
     if (link.includes("ref=footer") || link.includes("/reviews")) continue;
-    const text = `${rawName} ${rawDescription}`;
-    if (!isRelevant(text)) continue;
-    const description = clean(rawDescription) || "在 Product Hunt 当日榜发布，页面描述与 AI 相关。";
+    const candidate = productHuntCandidate({
+      rawName,
+      link,
+      rawDescription,
+      dateKey,
+      evidenceUrl: sourceUrl,
+      raw: full
+    });
+    if (candidate) candidates.push(candidate);
+  }
+  return uniqueBy(candidates, (item) => item.link);
+}
+
+async function fetchProductHuntDate(dateKey) {
+  const sourceUrl = `https://www.producthunt.com/leaderboard/daily/${phDatePath(dateKey)}/all`;
+  try {
+    const markdown = await fetchText(readerUrl(sourceUrl), { attempts: 4, timeoutMs: 25000 });
+    return parseProductHuntMarkdown(markdown, dateKey, sourceUrl);
+  } catch {
+    return [];
+  }
+}
+
+export function parseOrangeBotProductHuntHtml(html, start, end) {
+  const allowedDates = new Set(datesCovered(start, end));
+  const candidates = [];
+  const itemPattern =
+    /<li[^>]*>\s*<a href="(https:\/\/www\.producthunt\.com\/products\/[^"]+)"[\s\S]*?<div class="[^"]*text-base[^"]*">([\s\S]*?)<\/div>[\s\S]*?<p class="[^"]*">([\s\S]*?)<\/p>[\s\S]*?<div class="[^"]*font-mono[^"]*">(\d{4}-\d{2}-\d{2})<\/div>[\s\S]*?<\/li>/g;
+  let match;
+  while ((match = itemPattern.exec(html)) !== null) {
+    const [, link, rawNameHtml, rawDescriptionHtml, dateKey] = match;
+    if (!allowedDates.has(dateKey)) continue;
+    const rawName = stripHtml(rawNameHtml);
+    const rawDescription = stripHtml(rawDescriptionHtml);
+    const candidate = productHuntCandidate({
+      rawName,
+      link,
+      rawDescription,
+      dateKey,
+      evidenceUrl: link,
+      raw: match[0]
+    });
+    if (candidate) candidates.push(candidate);
+  }
+  return uniqueBy(candidates, (item) => item.link);
+}
+
+async function fetchProductHuntFallback(start, end) {
+  try {
+    const html = await fetchText(ORANGEBOT_PRODUCT_HUNT_URL, { attempts: 3, timeoutMs: 20000 });
+    return parseOrangeBotProductHuntHtml(html, start, end);
+  } catch {
+    return [];
+  }
+}
+
+export function parseYcLaunchesPayload(payload, start, end) {
+  const launches = Array.isArray(payload?.hits) ? payload.hits : [];
+  const candidates = [];
+  for (const hit of launches) {
+    const title = hit.title || "";
+    const tagline = hit.tagline || "";
+    const company = hit.company?.name || hit.company?.slug || clean(title.split(/\s+[–|-]\s+/)[0]);
+    const createdAt = hit.created_at || "";
+    const slug = hit.slug || "";
+    if (!slug || !withinWindow(createdAt, start, end)) continue;
+    if (!isRelevant(`${title} ${tagline} ${company}`)) continue;
+    const link = `https://www.ycombinator.com/launches/${slug}`;
     candidates.push({
-      product: clean(rawName),
+      product: clean(company || title),
       link,
       type: "新产品",
-      did: description,
-      why: productManagerWhy(`${rawName} ${description}`),
-      evidence: `[Product Hunt ${dateKey}](${sourceUrl})`,
-      source: "producthunt",
-      observedAt: dateKey,
-      raw: full
+      did: `YC Launch 在 ${createdAt} 发布：${clean(title)}${tagline ? ` — ${clean(tagline)}` : ""}`,
+      why: productManagerWhy(`${title} ${tagline}`),
+      evidence: `[YC Launch ${createdAt}](${link})`,
+      source: "yc_launch",
+      observedAt: createdAt,
+      raw: hit
     });
   }
   return uniqueBy(candidates, (item) => item.link);
+}
+
+async function fetchYcLaunches(start, end) {
+  const all = [];
+  for (let page = 0; page < 5; page += 1) {
+    const url = page === 0 ? YC_LAUNCHES_URL : `${YC_LAUNCHES_URL}?page=${page}`;
+    let payload;
+    try {
+      payload = await fetchJson(url, { attempts: 3, timeoutMs: 15000 });
+    } catch {
+      break;
+    }
+    const hits = Array.isArray(payload?.hits) ? payload.hits : [];
+    all.push(...parseYcLaunchesPayload(payload, start, end));
+    if (hits.length === 0) break;
+    const newestOnPage = Math.max(...hits.map((hit) => new Date(hit.created_at || 0).getTime()).filter(Number.isFinite));
+    if (Number.isFinite(newestOnPage) && newestOnPage < start.getTime()) break;
+  }
+  return uniqueBy(all, (item) => item.link).slice(0, 30);
 }
 
 async function fetchHackerNews(start, end) {
@@ -563,7 +660,8 @@ async function fetchHuggingFace(start, end) {
       for (const item of Array.isArray(items) ? items : []) {
         const ts = item.createdAt || item.lastModified;
         const modified = item.lastModified || item.createdAt;
-        if (!withinWindow(modified, start, end) && !withinWindow(ts, start, end)) continue;
+        const observedAt = withinWindow(modified, start, end) ? modified : ts;
+        if (!withinWindow(observedAt, start, end)) continue;
         const id = item.id || item.modelId;
         if (!id) continue;
         const tags = Array.isArray(item.tags) ? item.tags.join(" ") : "";
@@ -578,9 +676,9 @@ async function fetchHuggingFace(start, end) {
           type: withinWindow(item.createdAt, start, end) ? "新产品" : "疑似老产品更新",
           did: `${kind} 在 Hugging Face 最近创建或更新。`,
           why: kind === "Space" ? "可体验的模型/应用 demo 是早期产品形态和交互原型的重要信号。" : productManagerWhy(text),
-          evidence: `[Hugging Face API ${modified}](${itemUrl})`,
+          evidence: `[Hugging Face API ${observedAt}](${itemUrl})`,
           source: "huggingface",
-          observedAt: modified
+          observedAt
         });
       }
     } catch {
@@ -612,15 +710,17 @@ export async function runRadar(options = {}) {
   const dates = datesCovered(start, now);
   const endDateKey = localDateKey(now);
 
-  const [phNested, hn, gh, hf, aihot] = await Promise.all([
+  const [phNested, phFallback, ycLaunches, hn, gh, hf, aihot] = await Promise.all([
     Promise.all(dates.map((date) => fetchProductHuntDate(date).catch(() => []))),
+    fetchProductHuntFallback(start, now),
+    fetchYcLaunches(start, now).catch(() => []),
     fetchHackerNews(start, now),
     process.env.RADAR_SKIP_GITHUB ? Promise.resolve([]) : fetchGitHubReleases(start, now),
     fetchHuggingFace(start, now),
     fetchAihot(start, now, endDateKey)
   ]);
 
-  const candidates = uniqueBy([...phNested.flat(), ...hn, ...gh, ...hf, ...aihot], (item) => item.link);
+  const candidates = uniqueBy([...phNested.flat(), ...phFallback, ...ycLaunches, ...hn, ...gh, ...hf, ...aihot], (item) => item.link);
   candidates.sort((a, b) => score(b) - score(a));
   return {
     now,
@@ -634,7 +734,7 @@ export async function runRadar(options = {}) {
 }
 
 function score(item) {
-  const sourceScore = { producthunt: 40, hackernews: 35, github: 30, aihot: 28, huggingface: 20 };
+  const sourceScore = { producthunt: 40, yc_launch: 38, hackernews: 35, github: 30, aihot: 28, huggingface: 20 };
   const text = `${item.product} ${item.did} ${item.why}`.toLowerCase();
   let value = sourceScore[item.source] || 0;
   for (const keyword of ["agent", "mcp", "coding", "workflow", "sales", "marketing", "voice", "video"]) {

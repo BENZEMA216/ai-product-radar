@@ -2,8 +2,10 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import {
+  parseOrangeBotProductHuntHtml,
   parseAihotDailyMarkdown,
   parseAihotRssItems,
+  parseYcLaunchesPayload,
   renderBlockedReport,
   reportPathForNow,
   runRadar,
@@ -133,6 +135,23 @@ async function testProductHuntFixture() {
   );
   assert.match(text, /Wandesk/, "Product Hunt fixture should include Wandesk");
   assert.match(text, /Openstatus MCP Health Checker/, "Product Hunt fixture should include MCP product");
+}
+
+function testProductHuntFallbackParserFixture() {
+  const html = `<ol class="space-y-4">
+    <li class="border-l-2 border-ob-rule"><a href="https://www.producthunt.com/products/brief-10" target="_blank" rel="noopener noreferrer" class="block"><div class="text-base font-semibold text-ob-fg hover:text-ob-accent">Brief</div><p class="text-sm text-ob-fg-dim mt-1 line-clamp-3">Navigate your agents to product-market fit</p><div class="font-mono text-[10px] uppercase tracking-[0.12em] text-ob-fg-mute mt-2">2026-06-02</div></a></li>
+    <li class="border-l-2 border-ob-rule"><a href="https://www.producthunt.com/products/glowpulse" target="_blank" rel="noopener noreferrer" class="block"><div class="text-base font-semibold text-ob-fg hover:text-ob-accent">GlowPulse AI</div><p class="text-sm text-ob-fg-dim mt-1 line-clamp-3">AI camera assistant for health signals</p><div class="font-mono text-[10px] uppercase tracking-[0.12em] text-ob-fg-mute mt-2">2026-06-02</div></a></li>
+    <li class="border-l-2 border-ob-rule"><a href="https://www.producthunt.com/products/old-product" target="_blank" rel="noopener noreferrer" class="block"><div class="text-base font-semibold text-ob-fg hover:text-ob-accent">Old AI</div><p class="text-sm text-ob-fg-dim mt-1 line-clamp-3">Old AI launch</p><div class="font-mono text-[10px] uppercase tracking-[0.12em] text-ob-fg-mute mt-2">2026-05-01</div></a></li>
+  </ol>`;
+  const items = parseOrangeBotProductHuntHtml(
+    html,
+    new Date("2026-06-01T08:00:00+08:00"),
+    new Date("2026-06-02T08:00:00+08:00")
+  );
+  assert.equal(items.length, 2, "Product Hunt fallback parser should keep relevant items from covered local dates");
+  assert.equal(items[0].product, "Brief");
+  assert.equal(items[1].did, "AI camera assistant for health signals");
+  assert.equal(items[0].source, "producthunt");
 }
 
 async function testHnAlgolia() {
@@ -284,6 +303,43 @@ ICYMI：Nano Banana Pro [gemini-3-pro-image] 和 Nano Banana 2 [gemini-3.1-flash
   assert.equal(items[0].source, "aihot");
 }
 
+function testYcLaunchParserFixture() {
+  const payload = {
+    hits: [
+      {
+        title: "Parrot - AI-native OS for auto repair shops",
+        tagline: "Agents call insurers, suppliers, and customers to run the shop on autopilot.",
+        slug: "QdR-parrot-ai-native-os-for-auto-repair-shops",
+        created_at: "2026-06-01T21:18:27.384Z",
+        company: { name: "Parrot" }
+      },
+      {
+        title: "Old AI launch",
+        tagline: "AI outside the window",
+        slug: "old-ai-launch",
+        created_at: "2026-05-01T21:18:27.384Z",
+        company: { name: "Old AI" }
+      },
+      {
+        title: "Non technical launch",
+        tagline: "A marketplace for local services",
+        slug: "non-technical-launch",
+        created_at: "2026-06-01T22:18:27.384Z",
+        company: { name: "ServicesCo" }
+      }
+    ]
+  };
+  const items = parseYcLaunchesPayload(
+    payload,
+    new Date("2026-06-01T08:00:00+08:00"),
+    new Date("2026-06-02T08:00:00+08:00")
+  );
+  assert.equal(items.length, 1, "YC parser should keep AI-relevant launches inside the window");
+  assert.equal(items[0].product, "Parrot");
+  assert.equal(items[0].source, "yc_launch");
+  assert.match(items[0].evidence, /YC Launch/);
+}
+
 async function testEndToEndFixture() {
   const result = await runRadar({ now: "2026-05-31T08:02:13+08:00", hours: 24 });
   const sources = new Set(result.candidates.map((item) => item.source));
@@ -316,11 +372,13 @@ const tests = [
   ["Publish helpers", testPublishHelpers],
   ["Site builder helpers", testSiteBuilderHelpers],
   ["Product Hunt fixture", testProductHuntFixture],
+  ["Product Hunt fallback parser fixture", testProductHuntFallbackParserFixture],
   ["HN Algolia", testHnAlgolia],
   ["GitHub gh api", testGhApi],
   ["Hugging Face API", testHuggingFaceApi],
   ["AIHOT parser fixture", testAihotParserFixture],
   ["AIHOT daily parser fixture", testAihotDailyParserFixture],
+  ["YC Launch parser fixture", testYcLaunchParserFixture],
   ["End-to-end fixture", testEndToEndFixture],
   ["CLI output", testCliOutput]
 ];
