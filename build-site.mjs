@@ -239,160 +239,284 @@ export function renderSiteHtml(data) {
   <title>AI Product Radar</title>
   <style>
     :root {
-      --paper: #fbfaf7;
-      --paper-2: #f0eee8;
-      --ink: #171613;
-      --muted: #69655d;
-      --line: #d8d4ca;
-      --teal: #08736c;
-      --red: #b23a2b;
-      --gold: #a97816;
-      --blue: #2d5d88;
-      --green: #4d6b32;
-      --shadow: rgba(32, 28, 22, 0.08);
+      --text-primary: #14141a;
+      --text-secondary: #6f6860;
+      --text-inverse: #ffffff;
+      --action-primary: #a73718;
+      --action-hover: #932f15;
+      --action-soft: rgba(167, 55, 24, 0.10);
+      --bg-page: #f7f3ec;
+      --bg-surface: #fbf9f4;
+      --bg-muted: #f4f0e7;
+      --bg-raised: #fffdf9;
+      --bg-hover: #f2ecdf;
+      --bg-row-hover: rgba(20, 20, 26, 0.03);
+      --border-default: #e1d8ca;
+      --border-focus: rgba(167, 55, 24, 0.40);
+      --feedback-success: #0e6d52;
+      --feedback-warning: #7a5317;
+      --feedback-error: #b3261e;
+      --category-iris: #7c5cff;
+      --category-sea: #1f5673;
+      --category-gold: #b8893a;
+      --category-rose: #c13d5f;
+      --category-moss: #4a6741;
+      --radius-control: 6px;
+      --radius-card: 8px;
+      --radius-hero: 22px;
+      --radius-pill: 999px;
+      --shadow-raised: 0 2px 8px rgba(20, 20, 26, 0.06);
     }
     * { box-sizing: border-box; }
     html { overflow-x: hidden; }
     body {
       margin: 0;
-      background:
-        linear-gradient(90deg, rgba(23,22,19,0.035) 1px, transparent 1px) 0 0 / 36px 36px,
-        linear-gradient(rgba(255,255,255,0.72), rgba(255,255,255,0.72)),
-        var(--paper);
-      color: var(--ink);
-      font-family: "Avenir Next", "Gill Sans", "Trebuchet MS", sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
       letter-spacing: 0;
       overflow-x: hidden;
     }
     a { color: inherit; }
-    .shell { max-width: 1260px; margin: 0 auto; padding: 24px; }
-    .shell > *, .top > *, .overview > *, .toolbar > *, .item > *, .latest-line > *, .source-row > * { min-width: 0; }
-    .top {
+    .app {
+      min-height: 100vh;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(380px, 0.72fr);
-      gap: 24px;
-      align-items: end;
-      border-bottom: 2px solid var(--ink);
-      padding-bottom: 24px;
+      grid-template-rows: 40px minmax(0, 1fr);
     }
-    .kicker { color: var(--red); font-weight: 800; font-size: 13px; }
+    .titlebar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      padding: 0 16px;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-default);
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+    .traffic {
+      display: flex;
+      gap: 6px;
+    }
+    .traffic i {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border-default);
+      display: block;
+    }
+    .traffic i:nth-child(1) { background: var(--action-primary); }
+    .traffic i:nth-child(2) { background: var(--category-gold); }
+    .traffic i:nth-child(3) { background: var(--feedback-success); }
+    .titlebar strong {
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+    .titlebar span:last-child {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .workspace {
+      display: grid;
+      grid-template-columns: 288px minmax(0, 1fr);
+      min-height: calc(100vh - 40px);
+    }
+    .sidebar {
+      position: sticky;
+      top: 40px;
+      align-self: start;
+      height: calc(100vh - 40px);
+      overflow: auto;
+      display: grid;
+      align-content: start;
+      gap: 24px;
+      padding: 24px 16px;
+      background: var(--bg-muted);
+      border-right: 1px solid var(--border-default);
+    }
+    .content {
+      width: 100%;
+      max-width: 1180px;
+      min-width: 0;
+      padding: 48px;
+    }
+    .content > *, .sidebar > *, .toolbar > *, .item > *, .latest-line > *, .source-row > * { min-width: 0; }
+    .brand {
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-default);
+    }
+    .kicker, .section-label {
+      color: var(--action-primary);
+      font-family: "Geist Mono", "SFMono-Regular", Consolas, monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+    h1, .content-title, .item h2 {
+      font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+      letter-spacing: 0;
+    }
     h1 {
-      margin: 10px 0 12px;
-      font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-      font-size: 48px;
-      line-height: 1;
-      font-weight: 800;
+      margin: 10px 0 8px;
+      font-size: 34px;
+      line-height: 1.18;
+      font-weight: 600;
     }
     .subtitle {
-      max-width: 720px;
       margin: 0;
-      color: var(--muted);
-      font-size: 17px;
+      color: var(--text-secondary);
+      font-size: 13px;
       line-height: 1.55;
     }
     .status-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
+      gap: 8px;
     }
     .metric {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(255,255,255,0.58);
-      min-height: 82px;
+      min-height: 78px;
       padding: 12px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-card);
+      background: var(--bg-raised);
     }
-    .metric strong { display: block; font-size: 26px; line-height: 1.05; }
-    .metric span { display: block; margin-top: 8px; color: var(--muted); font-size: 12px; }
-    .status-ok strong { color: var(--green); }
-    .status-blocked strong { color: var(--red); }
-    .overview {
-      display: grid;
-      grid-template-columns: minmax(0, 0.58fr) minmax(0, 0.42fr);
-      gap: 24px;
-      padding: 20px 0;
-      border-bottom: 1px solid var(--line);
+    .metric strong {
+      display: block;
+      font-family: "Noto Serif SC", "Songti SC", serif;
+      font-size: 32px;
+      line-height: 1.04;
+      font-weight: 500;
     }
-    .section-label {
-      margin-bottom: 10px;
-      color: var(--muted);
+    .metric span {
+      display: block;
+      margin-top: 6px;
+      color: var(--text-secondary);
       font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
+      line-height: 1.35;
+    }
+    .status-ok strong { color: var(--feedback-success); }
+    .status-blocked strong { color: var(--feedback-error); }
+    .side-panel {
+      display: grid;
+      gap: 12px;
+    }
+    .content-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: end;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border-default);
+    }
+    .content-title {
+      margin: 8px 0 8px;
+      font-size: 46px;
+      line-height: 1.08;
+      font-weight: 500;
+    }
+    .run-badge {
+      display: grid;
+      gap: 4px;
+      min-width: 176px;
+      padding: 14px 16px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-card);
+      background: var(--bg-raised);
+      box-shadow: var(--shadow-raised);
+    }
+    .run-badge b {
+      color: var(--feedback-success);
+      font-size: 22px;
+      line-height: 1;
+    }
+    .run-badge span {
+      color: var(--text-secondary);
+      font-size: 12px;
     }
     .latest-line {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 14px;
-      align-items: baseline;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 14px;
-      margin-bottom: 14px;
+      gap: 8px;
     }
-    .latest-line strong { font-size: 32px; line-height: 1; }
+    .latest-line strong {
+      font-family: "Noto Serif SC", "Songti SC", serif;
+      font-size: 24px;
+      line-height: 1.16;
+      font-weight: 600;
+    }
     .latest-line span {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 5px 9px;
-      background: rgba(255,255,255,0.58);
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 800;
+      width: fit-content;
       max-width: 100%;
+      padding: 5px 9px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-pill);
+      background: var(--bg-raised);
+      color: var(--text-secondary);
+      font-size: 12px;
+      font-weight: 700;
       overflow-wrap: anywhere;
-      text-align: right;
     }
     .report-timeline {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px;
+      gap: 0;
     }
     .report-row {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 42px;
+      grid-template-columns: minmax(0, 1fr) 34px;
       gap: 8px;
       align-items: center;
       min-height: 34px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
+      border-top: 1px solid var(--border-default);
+      color: var(--text-secondary);
       font-size: 13px;
     }
-    .report-row b { color: var(--ink); text-align: right; }
+    .report-row b { color: var(--text-primary); text-align: right; }
     .source-row {
       display: grid;
-      grid-template-columns: minmax(110px, 130px) minmax(0, 1fr) 34px;
-      gap: 10px;
+      grid-template-columns: minmax(92px, 1fr) minmax(0, 1fr) 28px;
+      gap: 8px;
       align-items: center;
       font-size: 13px;
       min-height: 28px;
     }
     .source-row span { overflow-wrap: anywhere; }
-    .source-row div { height: 9px; background: rgba(23,20,15,0.1); overflow: hidden; border-radius: 999px; }
-    .source-row i { display: block; height: 100%; background: linear-gradient(90deg, var(--teal), var(--gold)); }
+    .source-row div {
+      height: 8px;
+      background: rgba(20,20,26,0.08);
+      overflow: hidden;
+      border-radius: var(--radius-pill);
+    }
+    .source-row i { display: block; height: 100%; background: linear-gradient(90deg, var(--feedback-success), var(--category-gold)); }
     .toolbar {
       position: sticky;
-      top: 0;
+      top: 40px;
       z-index: 3;
       display: grid;
       grid-template-columns: minmax(260px, 1fr) minmax(300px, 0.44fr) minmax(160px, 0.28fr) minmax(160px, 0.28fr);
       gap: 12px;
-      padding: 14px 0;
-      background: color-mix(in srgb, var(--paper) 90%, transparent);
+      padding: 16px 0;
+      background: color-mix(in srgb, var(--bg-page) 92%, transparent);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid var(--border-default);
     }
     input, select {
       width: 100%;
       min-height: 42px;
-      border: 1px solid var(--ink);
-      border-radius: 6px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-control);
       padding: 0 12px;
-      background: rgba(255,255,255,0.72);
-      color: var(--ink);
+      background: var(--bg-raised);
+      color: var(--text-primary);
       font: inherit;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+    }
+    input:focus, select:focus, .pill:focus-visible, .item-actions a:focus-visible {
+      outline: 2px solid var(--border-focus);
+      outline-offset: 2px;
     }
     select {
       padding-right: 34px;
@@ -402,71 +526,72 @@ export function renderSiteHtml(data) {
       justify-content: space-between;
       gap: 16px;
       align-items: center;
-      padding: 16px 0 2px;
-      color: var(--muted);
+      padding: 16px 0 4px;
+      color: var(--text-secondary);
       font-size: 13px;
     }
     .type-pills { display: flex; flex-wrap: wrap; gap: 8px; }
     .pill {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(255,255,255,0.52);
-      color: var(--ink);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-control);
+      background: var(--bg-surface);
+      color: var(--text-primary);
       min-height: 34px;
       padding: 0 12px;
       font: inherit;
       cursor: pointer;
     }
-    .pill.is-active { border-color: var(--red); background: rgba(189,50,31,0.12); }
+    .pill.is-active { border-color: var(--action-primary); background: var(--action-soft); }
     .list { display: grid; gap: 10px; padding: 16px 0 48px; }
     .item {
-      border: 1px solid var(--line);
-      border-left: 5px solid var(--source, var(--line));
-      border-radius: 6px;
-      background: rgba(255,255,255,0.68);
-      box-shadow: 0 8px 18px var(--shadow);
+      border: 1px solid var(--border-default);
+      border-left: 5px solid var(--source, var(--border-default));
+      border-radius: var(--radius-card);
+      background: var(--bg-raised);
+      box-shadow: var(--shadow-raised);
       min-height: 0;
       padding: 14px;
       display: grid;
-      grid-template-columns: 250px minmax(0, 1fr) 126px;
+      grid-template-columns: 220px minmax(0, 1fr) 126px;
       gap: 16px;
       align-items: start;
       transition: border-color 160ms ease, background 160ms ease;
     }
-    .item:hover { border-color: var(--ink); background: rgba(255,255,255,0.92); }
+    .item:hover { border-color: var(--action-primary); background: var(--bg-surface); }
     .item[hidden] { display: none; }
-    .item[data-source="Product Hunt"] { --source: var(--red); }
-    .item[data-source="HN Algolia"] { --source: var(--blue); }
-    .item[data-source="GitHub Release"] { --source: var(--green); }
-    .item[data-source="Hugging Face API"] { --source: var(--gold); }
-    .item[data-source="AIHOT"] { --source: var(--teal); }
+    .item[data-source="Product Hunt"] { --source: var(--action-primary); }
+    .item[data-source="HN Algolia"] { --source: var(--category-sea); }
+    .item[data-source="GitHub Release"] { --source: var(--category-moss); }
+    .item[data-source="Hugging Face API"] { --source: var(--category-gold); }
+    .item[data-source="AIHOT"] { --source: var(--category-iris); }
     .item-topline {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      color: var(--muted);
+      color: var(--text-secondary);
       font-size: 12px;
       align-content: start;
     }
     .item-topline span {
-      border: 1px solid var(--line);
-      border-radius: 6px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-control);
       padding: 3px 7px;
-      background: rgba(246,240,228,0.7);
+      background: var(--bg-muted);
     }
     .item-topline .rank {
-      border-color: var(--ink);
-      color: var(--ink);
-      font-weight: 800;
-      background: transparent;
+      border-color: var(--text-primary);
+      color: var(--text-primary);
+      font-family: "Geist Mono", "SFMono-Regular", Consolas, monospace;
+      font-weight: 700;
+      background: var(--bg-raised);
     }
-    .source-badge { color: var(--source, var(--ink)); font-weight: 800; }
+    .source-badge { color: var(--source, var(--text-primary)); font-weight: 700; }
     .item-main { min-width: 0; }
     .item h2 {
       margin: 0 0 12px;
-      font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-      font-size: 22px;
+      font-size: 24px;
       line-height: 1.16;
+      font-weight: 600;
     }
     .item h2 a { text-decoration-thickness: 1px; text-underline-offset: 4px; }
     .signal-copy {
@@ -475,13 +600,15 @@ export function renderSiteHtml(data) {
       gap: 14px;
     }
     .did, .why { line-height: 1.55; margin: 0; }
-    .did { color: var(--ink); }
-    .why { color: var(--muted); }
+    .did { color: var(--text-primary); }
+    .why { color: var(--text-secondary); }
     .did b, .why b {
       display: block;
       margin-bottom: 4px;
-      color: var(--muted);
-      font-size: 12px;
+      color: var(--text-secondary);
+      font-family: "Geist Mono", "SFMono-Regular", Consolas, monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
     .item-actions {
@@ -492,100 +619,136 @@ export function renderSiteHtml(data) {
     }
     .item-actions a {
       display: block;
-      border: 1px solid var(--line);
-      border-radius: 6px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-control);
       padding: 8px 10px;
-      background: rgba(251,250,247,0.8);
-      font-weight: 800;
+      background: var(--bg-surface);
+      font-weight: 700;
       font-size: 13px;
       text-align: center;
       text-decoration: none;
     }
+    .item-actions a:first-child {
+      background: var(--action-primary);
+      border-color: var(--action-primary);
+      color: var(--text-inverse);
+    }
+    .item-actions a:first-child:hover { background: var(--action-hover); }
     .evidence {
-      color: var(--teal);
+      color: var(--feedback-success);
     }
     .empty {
       display: none;
       margin: 18px 0 0;
       padding: 24px;
-      color: var(--muted);
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: rgba(255,255,255,0.28);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-card);
+      background: var(--bg-surface);
     }
-    @media (max-width: 980px) {
-      .top, .overview, .toolbar, .item { grid-template-columns: 1fr; }
-      h1 { font-size: 40px; }
-      .latest-line {
-        grid-template-columns: 1fr;
-        align-items: start;
+    @media (max-width: 1120px) {
+      .workspace { grid-template-columns: 1fr; }
+      .sidebar {
+        position: static;
+        height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--border-default);
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 0.9fr);
       }
-      .latest-line span {
-        justify-self: start;
-        text-align: left;
-      }
+      .brand { grid-column: 1 / -1; }
+      .content { max-width: none; padding: 32px 24px; }
+      .toolbar { top: 40px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .item { grid-template-columns: 1fr; }
       .signal-copy { grid-template-columns: 1fr; }
       .item-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
-    @media (max-width: 640px) {
-      .shell { padding: 16px; }
-      .status-grid, .report-timeline, .item-actions { grid-template-columns: 1fr; }
-      h1 { font-size: 34px; }
-      .latest-line strong { font-size: 30px; }
+    @media (max-width: 720px) {
+      .titlebar span:last-child { display: none; }
+      .sidebar {
+        padding: 16px;
+        grid-template-columns: 1fr;
+      }
+      .content {
+        padding: 24px 16px;
+      }
+      .content-head {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+      .content-title { font-size: 34px; }
+      .status-grid, .toolbar, .item-actions { grid-template-columns: 1fr; }
       .source-row { grid-template-columns: minmax(82px, 112px) minmax(0, 1fr) 28px; gap: 8px; }
     }
   </style>
 </head>
 <body>
-  <main class="shell">
-    <header class="top">
-      <section>
-        <div class="kicker">每日 AI 产品雷达</div>
-        <h1>AI 产品更新工作台</h1>
-        <p class="subtitle">按证据来源整理过去 24 小时的新产品和老产品更新；默认展示最新日报，也可以切换到历史归档。</p>
-      </section>
-      <aside class="status-grid" aria-label="日报状态">
-        <div class="metric"><strong>${latest?.count ?? 0}</strong><span>最新日报条目</span></div>
-        <div class="metric"><strong>${latestSourceTotal}</strong><span>最新日报来源</span></div>
-        <div class="metric"><strong>${data.stats.totalItems}</strong><span>历史归档条目</span></div>
-        <div class="metric ${latest?.count ? "status-ok" : "status-blocked"}"><strong>${escapeHtml(latestStatus)}</strong><span>最新运行状态</span></div>
-      </aside>
+  <div class="app">
+    <header class="titlebar">
+      <span class="traffic" aria-hidden="true"><i></i><i></i><i></i></span>
+      <strong>AI Product Radar</strong>
+      <span>${escapeHtml(latest ? `${latest.reportDate} ${latest.reportTime}` : "暂无报告")} · ${data.stats.totalItems} archived signals</span>
     </header>
-    <section class="overview">
-      <div>
-        <div class="section-label">最新日报</div>
-        <div class="latest-line">
-          <strong>${escapeHtml(latest ? `${latest.reportDate} ${latest.reportTime}` : "暂无报告")}</strong>
-          <span>${escapeHtml(latest?.path || "reports/")}</span>
-        </div>
-        <div class="report-timeline">${renderReportTimeline(data.reports)}</div>
-      </div>
-      <div>
-        <div class="section-label">来源覆盖（最新日报）</div>
-        ${renderSourceBars(latestSourceCounts)}
-      </div>
-    </section>
-    <section class="toolbar">
-      <input id="q" type="search" aria-label="Search products, changes, reasons" placeholder="Search products, changes, reasons">
-      <select id="report" aria-label="Filter by report">
-        ${renderReportOptions(data.reports, latest?.path || "")}
-      </select>
-      <select id="source" aria-label="Filter by source">
-        <option value="">All sources</option>
-        ${sources.map((source) => `<option value="${escapeHtml(source)}">${escapeHtml(source)}</option>`).join("")}
-      </select>
-      <select id="type" aria-label="Filter by update type">
-        <option value="">All types</option>
-        ${types.map((type) => `<option value="${escapeHtml(type)}">${escapeHtml(type)}</option>`).join("")}
-      </select>
-    </section>
-    <section class="filter-meta">
-      <div id="result-count" aria-live="polite">${latest?.count ?? items.length} 条</div>
-      <div class="type-pills">${renderTypePills(latestTypeCounts)}</div>
-    </section>
-    <section class="empty" id="empty" role="status" aria-live="polite">No matching signals.</section>
-    <section class="list" id="items">${renderItems(items, latest?.path || "")}</section>
-  </main>
+    <div class="workspace">
+      <aside class="sidebar" aria-label="日报概览">
+        <section class="brand">
+          <div class="kicker">每日 AI 产品雷达</div>
+          <h1>AI 产品更新</h1>
+          <p class="subtitle">按证据来源整理过去 24 小时的新产品和老产品更新。默认展示最新日报，也可以切换历史归档。</p>
+        </section>
+        <section class="status-grid" aria-label="日报状态">
+          <div class="metric"><strong>${latest?.count ?? 0}</strong><span>最新日报条目</span></div>
+          <div class="metric"><strong>${latestSourceTotal}</strong><span>最新日报来源</span></div>
+          <div class="metric"><strong>${data.stats.totalItems}</strong><span>历史归档条目</span></div>
+          <div class="metric ${latest?.count ? "status-ok" : "status-blocked"}"><strong>${escapeHtml(latestStatus)}</strong><span>最新运行状态</span></div>
+        </section>
+        <section class="side-panel">
+          <div class="section-label">最新日报</div>
+          <div class="latest-line">
+            <strong>${escapeHtml(latest ? `${latest.reportDate} ${latest.reportTime}` : "暂无报告")}</strong>
+            <span>${escapeHtml(latest?.path || "reports/")}</span>
+          </div>
+          <div class="report-timeline">${renderReportTimeline(data.reports)}</div>
+        </section>
+        <section class="side-panel">
+          <div class="section-label">来源覆盖</div>
+          ${renderSourceBars(latestSourceCounts)}
+        </section>
+      </aside>
+      <main class="content">
+        <header class="content-head">
+          <section>
+            <div class="section-label">Signals · Products · Updates</div>
+            <div class="content-title">AI 产品更新工作台</div>
+            <p class="subtitle">面向产品经理的日更情报视图：先看证据来源，再判断产品动作、竞品价值和可复用灵感。</p>
+          </section>
+          <aside class="run-badge" aria-label="最新运行状态">
+            <b>${escapeHtml(latestStatus)}</b>
+            <span>${escapeHtml(latest ? `${latest.count} 条 · ${latestSourceTotal} 个来源` : "暂无报告")}</span>
+          </aside>
+        </header>
+        <section class="toolbar">
+          <input id="q" type="search" aria-label="Search products, changes, reasons" placeholder="Search products, changes, reasons">
+          <select id="report" aria-label="Filter by report">
+            ${renderReportOptions(data.reports, latest?.path || "")}
+          </select>
+          <select id="source" aria-label="Filter by source">
+            <option value="">All sources</option>
+            ${sources.map((source) => `<option value="${escapeHtml(source)}">${escapeHtml(source)}</option>`).join("")}
+          </select>
+          <select id="type" aria-label="Filter by update type">
+            <option value="">All types</option>
+            ${types.map((type) => `<option value="${escapeHtml(type)}">${escapeHtml(type)}</option>`).join("")}
+          </select>
+        </section>
+        <section class="filter-meta">
+          <div id="result-count" aria-live="polite">${latest?.count ?? items.length} 条</div>
+          <div class="type-pills">${renderTypePills(latestTypeCounts)}</div>
+        </section>
+        <section class="empty" id="empty" role="status" aria-live="polite">No matching signals.</section>
+        <section class="list" id="items">${renderItems(items, latest?.path || "")}</section>
+      </main>
+    </div>
+  </div>
   <script>window.__RADAR_DATA__ = ${json};</script>
   <script>
     const q = document.querySelector("#q");
