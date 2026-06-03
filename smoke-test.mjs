@@ -7,10 +7,12 @@ import { basename, join } from "node:path";
 import {
   filterPreviouslyReportedProductHunt,
   parseOrangeBotProductHuntHtml,
+  parseProductHuntMarkdown,
   parseAihotDailyMarkdown,
   parseAihotRssItems,
   parseYcLaunchesPayload,
   renderBlockedReport,
+  renderMarkdownTable,
   reportPathForNow,
   runRadar,
   sanitizeLocalProxyEnv
@@ -161,6 +163,42 @@ function testSiteBuilderHelpers() {
   assert.match(html, /aria-pressed="false"/);
 }
 
+function testReportWhyCopyAddsContextForRepeatedTemplates() {
+  const candidates = Array.from({ length: 5 }, (_, index) => ({
+    product: `Generic AI Product ${index + 1}`,
+    link: `https://example.com/product-${index + 1}`,
+    type: "新产品",
+    did: `Generic AI Product ${index + 1} launched a new workflow feature.`,
+    why: "可作为 AI 产品定位、交互或分发方式的竞品/灵感样本。",
+    evidence: `[HN Algolia 2026-06-02T00:00:0${index}Z](https://news.ycombinator.com/item?id=${index + 1})`,
+    source: "hackernews"
+  }));
+  const rows = parseReportMarkdown(renderMarkdownTable(candidates), "reports/2026-06-03-0837-cst.md");
+  assert.equal(rows.length, 5);
+  assert.equal(new Set(rows.map((row) => row.why)).size, 5);
+}
+
+function testReportWhyCopyKeepsLongProductContextDistinct() {
+  const products = [
+    "langchain-ai/langgraphjs @langchain/langgraph@1.3.4",
+    "langchain-ai/langgraphjs @langchain/langgraph-sdk@1.9.13",
+    "langchain-ai/langgraphjs @langchain/langgraph-sdk@1.9.12",
+    "langchain-ai/langgraphjs @langchain/langgraph-checkpoint-mongodb@1.3.3"
+  ];
+  const candidates = products.map((product, index) => ({
+    product,
+    link: `https://github.com/langchain-ai/langgraphjs/releases/tag/${index}`,
+    type: "老产品更新",
+    did: `发布 ${product}。`,
+    why: "开发者工具是 AI agent 落地最快的战场，适合观察工作流重构。",
+    evidence: `[GitHub Release 2026-06-02T00:00:0${index}Z](https://github.com/langchain-ai/langgraphjs/releases/tag/${index})`,
+    source: "github"
+  }));
+  const rows = parseReportMarkdown(renderMarkdownTable(candidates), "reports/2026-06-03-0837-cst.md");
+  assert.equal(rows.length, 4);
+  assert.equal(new Set(rows.map((row) => row.why)).size, 4);
+}
+
 async function testProductHuntFixture() {
   const text = await fetchText(
     readerUrl("https://www.producthunt.com/leaderboard/daily/2026/5/30/all")
@@ -184,6 +222,26 @@ function testProductHuntFallbackParserFixture() {
   assert.equal(items[0].product, "Brief");
   assert.equal(items[1].did, "AI camera assistant for health signals");
   assert.equal(items[0].source, "producthunt");
+}
+
+function testProductHuntWhyCopyUsesProductContext() {
+  const markdown = [
+    "[Fundraisly](https://www.producthunt.com/products/fundraisly) AI fundraising agent that finds investors and books meetings",
+    "[Vokal](https://www.producthunt.com/products/vokal-2) A collaboration space for 10x teammates with their AI agents",
+    "[Brief](https://www.producthunt.com/products/brief-10) Navigate your agents to product-market fit",
+    "[Knock agent for Slack](https://www.producthunt.com/products/knock-6) Build, manage, and ship customer messaging from Slack",
+    "[SocialEcho 2.0](https://www.producthunt.com/products/socialecho) AI social media copilot for teams and agents"
+  ].join("\n");
+  const items = parseProductHuntMarkdown(
+    markdown,
+    "2026-06-03",
+    "https://www.producthunt.com/leaderboard/daily/2026/6/3/all"
+  );
+  assert.equal(items.length, 5);
+  assert.ok(
+    new Set(items.map((item) => item.why)).size >= 4,
+    "Product Hunt why copy should reflect product context instead of repeating one agent template"
+  );
 }
 
 async function testHnAlgolia() {
@@ -404,8 +462,11 @@ const tests = [
   ["Publish helpers", testPublishHelpers],
   ["Product Hunt history filter", testProductHuntHistoryFilter],
   ["Site builder helpers", testSiteBuilderHelpers],
+  ["Report why copy adds context for repeated templates", testReportWhyCopyAddsContextForRepeatedTemplates],
+  ["Report why copy keeps long product context distinct", testReportWhyCopyKeepsLongProductContextDistinct],
   ["Product Hunt fixture", testProductHuntFixture],
   ["Product Hunt fallback parser fixture", testProductHuntFallbackParserFixture],
+  ["Product Hunt why copy uses product context", testProductHuntWhyCopyUsesProductContext],
   ["HN Algolia", testHnAlgolia],
   ["GitHub gh api", testGhApi],
   ["Hugging Face API", testHuggingFaceApi],

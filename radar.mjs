@@ -692,14 +692,94 @@ async function fetchHuggingFace(start, end) {
   return uniqueBy(out.slice(0, 20), (item) => item.link);
 }
 
+function includesAny(text, terms) {
+  return terms.some((term) => text.includes(term));
+}
+
 function productManagerWhy(text) {
   const lower = text.toLowerCase();
+  if (includesAny(lower, ["fundrais", "investor", "book meetings"])) {
+    return "把投资人匹配和会议预约交给 AI，是融资外联从线索工具走向可执行销售流程的信号。";
+  }
+  if (includesAny(lower, ["product-market fit", "pmf"])) {
+    return "把 PMF 探索包装成可导航的 agent，适合观察产品策略工具如何进入日常决策。";
+  }
+  if (includesAny(lower, ["slack", "customer messaging", "customer message"])) {
+    return "从 Slack 内编排客户消息，值得看 AI 如何嵌入团队既有沟通入口。";
+  }
+  if (includesAny(lower, ["social media", "socialecho", "social copilot"])) {
+    return "社媒运营是高频内容工作流，适合观察 AI copilot 如何承担发布和协作。";
+  }
+  if (includesAny(lower, ["collaboration", "teammate", "teammates", "team workspace"])) {
+    return "多人协作场景开始把 agent 当作队友嵌入，值得观察权限、交接和团队采用方式。";
+  }
+  if (includesAny(lower, ["onboarding", "user onboarding"])) {
+    return "用户引导加入 AI copilot 后，能观察 SaaS 从静态教程转向个性化激活路径。";
+  }
+  if (includesAny(lower, ["local ai workspace", "work with your computer", "computer use", "desktop"])) {
+    return "本地工作区和电脑控制是 agent 落地到个人生产环境的关键入口，值得跟踪体验边界。";
+  }
+  if (includesAny(lower, ["citable", "chatgpt", "perplexity"]) && includesAny(lower, ["business", "seo", "search"])) {
+    return "AI 搜索可见性正在变成新的增长入口，适合观察品牌如何为大模型检索优化。";
+  }
+  if (lower.includes("appium") && lower.includes("mcp")) {
+    return "移动自动化 MCP 更新会扩大 agent 可操作的软件范围，值得看测试和运维场景。";
+  }
+  if (lower.includes("n8n")) {
+    return "工作流平台的版本迭代会影响 AI 自动化编排能力，适合观察低代码 agent 化。";
+  }
+  if (includesAny(lower, ["cofounder", "cowork"])) {
+    return "把创业协作角色产品化，适合观察 AI 从助手向长期工作伙伴的定位变化。";
+  }
   if (lower.includes("mcp")) return "MCP 相关产品会影响 agent 与外部工具连接方式，值得跟踪生态标准化。";
   if (lower.includes("sales") || lower.includes("marketing") || lower.includes("seo")) return "销售/营销场景能快速验证 AI 的 ROI 叙事和付费转化。";
   if (lower.includes("coding") || lower.includes("developer") || lower.includes("github")) return "开发者工具是 AI agent 落地最快的战场，适合观察工作流重构。";
   if (lower.includes("voice") || lower.includes("video")) return "多模态产品会带来新的交互入口和内容生产链路。";
   if (lower.includes("agent")) return "agent 化包装体现产品从工具到可执行工作流的迁移。";
   return "可作为 AI 产品定位、交互或分发方式的竞品/灵感样本。";
+}
+
+const REUSABLE_WHY_COPY = new Set([
+  "MCP 相关产品会影响 agent 与外部工具连接方式，值得跟踪生态标准化。",
+  "销售/营销场景能快速验证 AI 的 ROI 叙事和付费转化。",
+  "开发者工具是 AI agent 落地最快的战场，适合观察工作流重构。",
+  "多模态产品会带来新的交互入口和内容生产链路。",
+  "agent 化包装体现产品从工具到可执行工作流的迁移。",
+  "可作为 AI 产品定位、交互或分发方式的竞品/灵感样本。",
+  "可体验的模型/应用 demo 是早期产品形态和交互原型的重要信号。",
+  "移动自动化 MCP 更新会扩大 agent 可操作的软件范围，值得看测试和运维场景。",
+  "工作流平台的版本迭代会影响 AI 自动化编排能力，适合观察低代码 agent 化。"
+]);
+
+function compactProductName(product) {
+  const value = clean(product).replace(/^Hugging Face (Space|Model):\s*/i, "");
+  if (!value) return "这个信号";
+  return value.length > 64 ? `${value.slice(0, 36)}...${value.slice(-24)}` : value;
+}
+
+function reportWhy(item) {
+  const why = clean(item.why);
+  if (!REUSABLE_WHY_COPY.has(why)) return why;
+  const product = compactProductName(item.product);
+  if (item.source === "producthunt") {
+    return `${product} 在 PH 上把 AI 能力包装成可试用产品，适合观察定位、入口和首日传播。`;
+  }
+  if (item.source === "hackernews") {
+    return `${product} 已在 HN 获得早期开发者曝光，适合观察真实反馈和采用门槛。`;
+  }
+  if (item.source === "yc_launch") {
+    return `${product} 通过 YC Launch 呈现明确垂直场景，适合观察商业 wedge 和定价叙事。`;
+  }
+  if (item.source === "github") {
+    return `${product} 的版本变化会影响相关 AI 工具链，适合跟踪开发者生态迭代。`;
+  }
+  if (item.source === "huggingface") {
+    return `${product} 是可直接试用的模型/应用信号，适合快速观察能力边界和交互形态。`;
+  }
+  if (item.source === "aihot") {
+    return `${product} 来自官网、社媒或媒体信号，适合补充观察产品叙事和市场动作。`;
+  }
+  return `${product} 提供了一个新的 AI 产品样本，适合比较定位、交互和分发方式。`;
 }
 
 function sourceError(source, message) {
@@ -750,7 +830,7 @@ function score(item) {
 export function renderMarkdownTable(candidates) {
   const header = "| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |\n|---|---|---|---|---|---|";
   const rows = candidates.map((item) => {
-    return `| ${clean(item.product)} | [链接](${item.link}) | ${clean(item.type)} | ${clean(item.did)} | ${clean(item.why)} | ${clean(item.evidence)} |`;
+    return `| ${clean(item.product)} | [链接](${item.link}) | ${clean(item.type)} | ${clean(item.did)} | ${reportWhy(item)} | ${clean(item.evidence)} |`;
   });
   return [header, ...rows].join("\n");
 }
