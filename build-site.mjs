@@ -386,9 +386,11 @@ export function renderSiteHtml(data) {
       border-right: 1px solid var(--border-default);
     }
     .content {
-      width: 100%;
+      justify-self: center;
+      width: min(100%, 1180px);
       max-width: 1180px;
       min-width: 0;
+      margin-inline: auto;
       padding: 48px;
     }
     .content > *, .sidebar > *, .toolbar > *, .item > *, .latest-line > *, .source-row > * { min-width: 0; }

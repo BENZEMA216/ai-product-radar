@@ -161,6 +161,8 @@ function testSiteBuilderHelpers() {
   assert.match(html, /aria-label="Filter by source"/);
   assert.match(html, /aria-live="polite"/);
   assert.match(html, /aria-pressed="false"/);
+  assert.match(html, /\.content\s*\{[^}]*justify-self:\s*center;/s);
+  assert.match(html, /\.content\s*\{[^}]*margin-inline:\s*auto;/s);
 }
 
 function testSiteBuilderAggregatesReportTimelineByNaturalDay() {
