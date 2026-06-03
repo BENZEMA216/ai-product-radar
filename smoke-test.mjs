@@ -157,7 +157,7 @@ function testSiteBuilderHelpers() {
   assert.match(html, /Agent Deck/);
   assert.match(html, /window.__RADAR_DATA__/);
   assert.match(html, /data-source="HN Algolia"/);
-  assert.match(html, /class="brand-mark">benzema&#39;<\/div>/);
+  assert.match(html, /class="brand-mark" aria-label="benzema"><span class="brand-word">benzema<\/span><span class="brand-accent" aria-hidden="true"><\/span><\/div>/);
   assert.match(html, /\.item\[hidden\] \{ display: none; \}/);
   assert.match(html, /aria-label="Filter by source"/);
   assert.match(html, /aria-live="polite"/);
