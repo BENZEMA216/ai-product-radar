@@ -163,6 +163,35 @@ function testSiteBuilderHelpers() {
   assert.match(html, /aria-pressed="false"/);
 }
 
+function testSiteBuilderAggregatesReportTimelineByNaturalDay() {
+  const morningReport = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| Morning Agent | [链接](https://example.com/morning) | 新产品 | morning launch | morning reason | [Product Hunt 2026-06-03](https://producthunt.com/posts/morning-agent) |`;
+  const noonReport = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| Noon Agent | [链接](https://example.com/noon) | 新产品 | noon launch | noon reason | [HN Algolia 2026-06-03T03:00:00Z](https://news.ycombinator.com/item?id=2) |
+| Noon Release | [链接](https://example.com/release) | 老产品更新 | noon release | release reason | [GitHub Release 2026-06-03T03:00:00Z](https://github.com/example/release) |`;
+  const yesterdayReport = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| Yesterday Agent | [链接](https://example.com/yesterday) | 新产品 | yesterday launch | yesterday reason | [AIHOT 2026-06-02T03:00:00Z](https://example.com/yesterday) |`;
+
+  const siteData = buildSiteData([
+    { path: "reports/2026-06-03-0800-cst.md", markdown: morningReport },
+    { path: "reports/2026-06-03-1122-cst.md", markdown: noonReport },
+    { path: "reports/2026-06-02-0800-cst.md", markdown: yesterdayReport }
+  ]);
+  const html = renderSiteHtml(siteData);
+
+  assert.equal(siteData.reportDays.length, 2);
+  assert.equal(siteData.reportDays.at(-1).reportDate, "2026-06-03");
+  assert.equal(siteData.reportDays.at(-1).count, 3);
+  assert.equal(siteData.reportDays.at(-1).runCount, 2);
+  assert.match(html, /value="date:2026-06-03"[^>]*selected>最新自然日 · 06-03 · 3 条/);
+  assert.match(html, /2026-06-03<small>2 次运行 · 最新 11:22 CST<\/small><\/span>\s*<b>3<\/b>/);
+  assert.doesNotMatch(html, /2026-06-03 08:00 CST\s*<\/span>\s*<b>1<\/b>/);
+  assert.doesNotMatch(html, /2026-06-03 11:22 CST\s*<\/span>\s*<b>2<\/b>/);
+}
+
 function testReportWhyCopyAddsContextForRepeatedTemplates() {
   const candidates = Array.from({ length: 5 }, (_, index) => ({
     product: `Generic AI Product ${index + 1}`,
@@ -462,6 +491,7 @@ const tests = [
   ["Publish helpers", testPublishHelpers],
   ["Product Hunt history filter", testProductHuntHistoryFilter],
   ["Site builder helpers", testSiteBuilderHelpers],
+  ["Site builder natural-day timeline", testSiteBuilderAggregatesReportTimelineByNaturalDay],
   ["Report why copy adds context for repeated templates", testReportWhyCopyAddsContextForRepeatedTemplates],
   ["Report why copy keeps long product context distinct", testReportWhyCopyKeepsLongProductContextDistinct],
   ["Product Hunt fixture", testProductHuntFixture],

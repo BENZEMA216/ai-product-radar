@@ -90,6 +90,27 @@ function countBy(items, key) {
   }, {});
 }
 
+function buildReportDays(reports) {
+  const byDate = new Map();
+  for (const report of reports) {
+    const meta = reportMeta(report.path);
+    if (!meta.reportDate) continue;
+    const day = byDate.get(meta.reportDate) || {
+      reportDate: meta.reportDate,
+      count: 0,
+      runCount: 0,
+      latestReportTime: "",
+      latestReportPath: ""
+    };
+    day.count += report.items.length;
+    day.runCount += 1;
+    day.latestReportTime = meta.reportTime;
+    day.latestReportPath = report.path;
+    byDate.set(meta.reportDate, day);
+  }
+  return [...byDate.values()].sort((a, b) => a.reportDate.localeCompare(b.reportDate));
+}
+
 export function buildSiteData(reports) {
   const normalizedReports = reports
     .map((report) => ({ ...report, items: parseReportMarkdown(report.markdown, report.path) }))
@@ -101,12 +122,15 @@ export function buildSiteData(reports) {
     count: report.items.length
   }));
   const latestReport = reportSummaries.at(-1);
+  const reportDays = buildReportDays(normalizedReports);
   return {
     generatedAt: latestReport ? `${latestReport.reportDate} ${latestReport.reportTime}` : "",
     reports: reportSummaries,
+    reportDays,
     items,
     stats: {
       totalReports: normalizedReports.length,
+      totalReportDays: reportDays.length,
       totalItems: items.length,
       latestReport: latestReport?.path || "",
       bySource: countBy(items, "source"),
@@ -121,10 +145,10 @@ function topEntries(map, limit = 8) {
     .slice(0, limit);
 }
 
-function renderItems(items, latestPath = "") {
+function renderItems(items, latestDate = "") {
   return items
     .map((item, index) => {
-      const isLatest = latestPath && item.reportPath === latestPath;
+      const isLatest = latestDate && item.reportDate === latestDate;
       return `<article class="item" data-source="${escapeHtml(item.source)}" data-type="${escapeHtml(
         item.type
       )}" data-date="${escapeHtml(item.reportDate)}" data-report="${escapeHtml(item.reportPath)}" data-latest="${String(
@@ -184,36 +208,61 @@ function fullReportOptionLabel(report, prefix = "") {
   return `${prefix}${report.reportDate} ${report.reportTime} · ${report.count} 条`.trim();
 }
 
-function renderReportOptions(reports, latestPath) {
-  const latest = reports.at(-1);
+function dayOptionLabel(day, prefix = "") {
+  const date = day.reportDate ? day.reportDate.slice(5) : "";
+  return `${prefix}${date} · ${day.count} 条`.trim();
+}
+
+function fullDayOptionLabel(day, prefix = "") {
+  const runText = day.runCount === 1 ? "1 次运行" : `${day.runCount} 次运行`;
+  return `${prefix}${day.reportDate} · ${day.count} 条 · ${runText}`.trim();
+}
+
+function renderReportOptions(reports, reportDays, latestDate) {
+  const latestDay = reportDays.at(-1);
+  const olderDays = reportDays
+    .filter((day) => day.reportDate !== latestDate)
+    .slice()
+    .reverse();
   const olderReports = reports
-    .filter((report) => report.path !== latestPath)
     .slice()
     .reverse();
   return [
-    latest
-      ? `<option value="${escapeHtml(latest.path)}" data-full-label="${escapeHtml(
-          fullReportOptionLabel(latest, "最新日报 · ")
-        )}" selected>${escapeHtml(reportOptionLabel(latest, "最新 · "))}</option>`
+    `<optgroup label="按自然日">`,
+    latestDay
+      ? `<option value="date:${escapeHtml(latestDay.reportDate)}" data-full-label="${escapeHtml(
+          fullDayOptionLabel(latestDay, "最新自然日 · ")
+        )}" selected>${escapeHtml(dayOptionLabel(latestDay, "最新自然日 · "))}</option>`
       : "",
     `<option value="" data-full-label="全部归档">全部归档</option>`,
+    ...olderDays.map(
+      (day) =>
+        `<option value="date:${escapeHtml(day.reportDate)}" data-full-label="${escapeHtml(fullDayOptionLabel(day))}">${escapeHtml(
+          dayOptionLabel(day)
+        )}</option>`
+    ),
+    `</optgroup>`,
+    `<optgroup label="按单次运行">`,
     ...olderReports.map(
       (report) =>
         `<option value="${escapeHtml(report.path)}" data-full-label="${escapeHtml(fullReportOptionLabel(report))}">${escapeHtml(
           reportOptionLabel(report)
         )}</option>`
-    )
+    ),
+    `</optgroup>`
   ].join("");
 }
 
-function renderReportTimeline(reports) {
-  return reports
+function renderReportTimeline(reportDays) {
+  return reportDays
     .slice()
     .reverse()
     .map(
-      (report) => `<div class="report-row">
-        <span>${escapeHtml(report.reportDate)} ${escapeHtml(report.reportTime)}</span>
-        <b>${report.count}</b>
+      (day) => `<div class="report-row">
+        <span>${escapeHtml(day.reportDate)}<small>${escapeHtml(day.runCount)} 次运行 · 最新 ${escapeHtml(
+          day.latestReportTime
+        )}</small></span>
+        <b>${day.count}</b>
       </div>`
     )
     .join("\n");
@@ -222,7 +271,8 @@ function renderReportTimeline(reports) {
 export function renderSiteHtml(data) {
   const items = [...data.items].sort((a, b) => `${b.reportDate} ${b.reportTime}`.localeCompare(`${a.reportDate} ${a.reportTime}`));
   const latest = data.reports.at(-1);
-  const latestItems = latest ? data.items.filter((item) => item.reportPath === latest.path) : [];
+  const latestDay = data.reportDays.at(-1);
+  const latestItems = latestDay ? data.items.filter((item) => item.reportDate === latestDay.reportDate) : [];
   const latestSourceCounts = countBy(latestItems, "source");
   const latestTypeCounts = countBy(latestItems, "type");
   const latestSourceTotal = Object.keys(latestSourceCounts).length;
@@ -473,6 +523,15 @@ export function renderSiteHtml(data) {
       font-size: 13px;
     }
     .report-row b { color: var(--text-primary); text-align: right; }
+    .report-row span {
+      display: grid;
+      gap: 2px;
+    }
+    .report-row small {
+      color: var(--text-secondary);
+      font-size: 11px;
+      line-height: 1.2;
+    }
     .source-row {
       display: grid;
       grid-template-columns: minmax(92px, 1fr) minmax(0, 1fr) 28px;
@@ -697,18 +756,20 @@ export function renderSiteHtml(data) {
           <p class="subtitle">按证据来源整理过去 24 小时的新产品和老产品更新。默认展示最新日报，也可以切换历史归档。</p>
         </section>
         <section class="status-grid" aria-label="日报状态">
-          <div class="metric"><strong>${latest?.count ?? 0}</strong><span>最新日报条目</span></div>
-          <div class="metric"><strong>${latestSourceTotal}</strong><span>最新日报来源</span></div>
+          <div class="metric"><strong>${latestDay?.count ?? 0}</strong><span>最新自然日条目</span></div>
+          <div class="metric"><strong>${latestSourceTotal}</strong><span>最新自然日来源</span></div>
           <div class="metric"><strong>${data.stats.totalItems}</strong><span>历史归档条目</span></div>
           <div class="metric ${latest?.count ? "status-ok" : "status-blocked"}"><strong>${escapeHtml(latestStatus)}</strong><span>最新运行状态</span></div>
         </section>
         <section class="side-panel">
-          <div class="section-label">最新日报</div>
+          <div class="section-label">日期归档</div>
           <div class="latest-line">
-            <strong>${escapeHtml(latest ? `${latest.reportDate} ${latest.reportTime}` : "暂无报告")}</strong>
-            <span>${escapeHtml(latest?.path || "reports/")}</span>
+            <strong>${escapeHtml(latestDay?.reportDate || "暂无归档")}</strong>
+            <span>${escapeHtml(
+              latestDay ? `${latestDay.count} 条 · ${latestDay.runCount} 次运行 · 最新 ${latestDay.latestReportTime}` : "reports/"
+            )}</span>
           </div>
-          <div class="report-timeline">${renderReportTimeline(data.reports)}</div>
+          <div class="report-timeline">${renderReportTimeline(data.reportDays)}</div>
         </section>
         <section class="side-panel">
           <div class="section-label">来源覆盖</div>
@@ -724,13 +785,13 @@ export function renderSiteHtml(data) {
           </section>
           <aside class="run-badge" aria-label="最新运行状态">
             <b>${escapeHtml(latestStatus)}</b>
-            <span>${escapeHtml(latest ? `${latest.count} 条 · ${latestSourceTotal} 个来源` : "暂无报告")}</span>
+            <span>${escapeHtml(latestDay ? `${latestDay.count} 条 · ${latestSourceTotal} 个来源` : "暂无归档")}</span>
           </aside>
         </header>
         <section class="toolbar">
           <input id="q" type="search" aria-label="Search products, changes, reasons" placeholder="Search products, changes, reasons">
-          <select id="report" aria-label="Filter by report">
-            ${renderReportOptions(data.reports, latest?.path || "")}
+          <select id="report" aria-label="Filter by report or date">
+            ${renderReportOptions(data.reports, data.reportDays, latestDay?.reportDate || "")}
           </select>
           <select id="source" aria-label="Filter by source">
             <option value="">All sources</option>
@@ -742,11 +803,11 @@ export function renderSiteHtml(data) {
           </select>
         </section>
         <section class="filter-meta">
-          <div id="result-count" aria-live="polite">${latest?.count ?? items.length} 条</div>
+          <div id="result-count" aria-live="polite">${latestDay?.count ?? items.length} 条</div>
           <div class="type-pills">${renderTypePills(latestTypeCounts)}</div>
         </section>
         <section class="empty" id="empty" role="status" aria-live="polite">No matching signals.</section>
-        <section class="list" id="items">${renderItems(items, latest?.path || "")}</section>
+        <section class="list" id="items">${renderItems(items, latestDay?.reportDate || "")}</section>
       </main>
     </div>
   </div>
@@ -767,15 +828,19 @@ export function renderSiteHtml(data) {
     function applyFilters() {
       updateReportTitle();
       const text = q.value.trim().toLowerCase();
-      const selectedReport = report.value;
+      const selectedScope = report.value;
       const selectedSource = source.value;
       const selectedType = type.value;
       let visible = 0;
       for (const item of items) {
         const haystack = item.textContent.toLowerCase();
+        const matchesScope =
+          !selectedScope ||
+          (selectedScope.startsWith("date:") && item.dataset.date === selectedScope.slice(5)) ||
+          item.dataset.report === selectedScope;
         const ok =
           (!text || haystack.includes(text)) &&
-          (!selectedReport || item.dataset.report === selectedReport) &&
+          matchesScope &&
           (!selectedSource || item.dataset.source === selectedSource) &&
           (!selectedType || item.dataset.type === selectedType);
         item.hidden = !ok;
