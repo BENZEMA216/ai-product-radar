@@ -29,6 +29,37 @@ the same table header plus a one-line blocker reason so the run is never invisib
 pushes the current branch to `origin`, so daily outputs are reviewable in GitHub history and
 on the GitHub Pages dashboard.
 
+## Product Reviews
+
+Product-level reviews live under `reviews/YYYY-MM-DD.json` and are rendered onto matching
+product cards in the GitHub Pages dashboard. A review attaches by normalized product URL,
+with optional source/date scoping.
+
+```json
+{
+  "date": "2026-06-03",
+  "reviews": [
+    {
+      "productKey": "https://github.com/getpaseo/paseo",
+      "reportDate": "2026-06-03",
+      "source": "HN Algolia",
+      "reviewer": "benzema",
+      "verdict": "值得重点看",
+      "review": "开源 coding agent interface 的重点不是 IDE，而是把 agent 工作过程产品化成可观察界面。",
+      "tags": ["coding-agent", "workflow-ui"],
+      "nextDayReview": {
+        "date": "2026-06-04",
+        "status": "继续观察",
+        "note": "次日仍应观察它是否能形成团队协作和审计场景。"
+      }
+    }
+  ]
+}
+```
+
+Use `nextDayReview` for the next-morning review pass. The automation should add or update
+that object without rewriting the original `review` text.
+
 ## Stability Contract
 
 - Product Hunt is read through daily leaderboard pages, with Jina Reader fallback.

@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import { sanitizeLocalProxyEnv } from "./radar.mjs";
 
 const REPORT_PATTERN = /^\d{4}-\d{2}-\d{2}-\d{4}-cst\.md$/;
+const REVIEW_PATTERN = /^\d{4}-\d{2}-\d{2}\.json$/;
 const CLEAN_ENV = sanitizeLocalProxyEnv(process.env);
 
 export function commitMessageForReport(reportPath) {
@@ -27,12 +28,25 @@ export function reportPathsForDir(reportDir) {
     .sort();
 }
 
+export function reviewPathsForDir(reviewDir) {
+  try {
+    return readdirSync(reviewDir)
+      .map((name) => join(reviewDir, name))
+      .filter((path) => REVIEW_PATTERN.test(basename(path)))
+      .sort();
+  } catch (error) {
+    if (error.code === "ENOENT") return [];
+    throw error;
+  }
+}
+
 function parseArgs(argv) {
-  const args = { reportDir: "reports" };
+  const args = { reportDir: "reports", reviewDir: "reviews" };
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
     if (arg === "--report") args.report = argv[++i];
     if (arg === "--report-dir") args.reportDir = argv[++i];
+    if (arg === "--review-dir") args.reviewDir = argv[++i];
   }
   return args;
 }
@@ -103,7 +117,7 @@ async function main() {
 
   git(["rev-parse", "--is-inside-work-tree"]);
   buildSite();
-  const pathsToStage = Array.from(new Set([...reportPathsForDir(args.reportDir), report, "docs/index.html"]));
+  const pathsToStage = Array.from(new Set([...reportPathsForDir(args.reportDir), report, ...reviewPathsForDir(args.reviewDir), "docs/index.html"]));
   git(["add", "--", ...pathsToStage]);
 
   if (!hasStagedChanges()) {

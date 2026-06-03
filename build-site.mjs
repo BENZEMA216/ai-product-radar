@@ -4,6 +4,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const REPORT_PATTERN = /^\d{4}-\d{2}-\d{2}-\d{4}-cst\.md$/;
+const REVIEW_PATTERN = /^\d{4}-\d{2}-\d{2}\.json$/;
 
 function cleanCell(value) {
   return String(value || "").replace(/\\+\|/g, "|").replace(/\s+/g, " ").trim();
@@ -39,6 +40,21 @@ function markdownLinkUrl(value) {
   return match ? match[1] : cleanCell(value);
 }
 
+function normalizeProductKey(value) {
+  const raw = cleanCell(value);
+  if (!raw) return "";
+  try {
+    const url = new URL(raw);
+    url.hash = "";
+    for (const key of [...url.searchParams.keys()]) {
+      if (/^(utm_|ref$|ref_src$)/i.test(key)) url.searchParams.delete(key);
+    }
+    return url.toString().replace(/\/$/, "").toLowerCase();
+  } catch {
+    return raw.replace(/\/$/, "").toLowerCase();
+  }
+}
+
 function evidenceSource(value) {
   const text = cleanCell(value).replace(/\[[^\]]+\]\(([^)]+)\)/g, "$1");
   const label = cleanCell(value).match(/\[([^\]]+)\]/)?.[1] || text;
@@ -58,6 +74,19 @@ function reportMeta(path) {
   };
 }
 
+function reviewMeta(path) {
+  const name = path.split("/").at(-1) || path;
+  const match = name.match(/^(\d{4}-\d{2}-\d{2})\.json$/);
+  return {
+    reviewDate: match?.[1] || "",
+    reviewPath: path
+  };
+}
+
+function signalKeyFor({ reportDate, source, productKey }) {
+  return [reportDate, source, productKey].map((part) => cleanCell(part)).join("|");
+}
+
 export function parseReportMarkdown(markdown, path) {
   const meta = reportMeta(path);
   const rows = [];
@@ -66,20 +95,71 @@ export function parseReportMarkdown(markdown, path) {
     const cells = splitMarkdownRow(line);
     if (cells.length < 6) continue;
     const [product, link, type, did, why, evidence] = cells;
+    const productLink = markdownLinkUrl(link);
+    const productKey = normalizeProductKey(productLink);
+    const source = evidenceSource(evidence) || "Unknown";
     rows.push({
       id: `${meta.reportDate}-${rows.length}-${cleanCell(product).toLowerCase().replace(/[^a-z0-9\u4e00-\u9fa5]+/gi, "-")}`,
       product: cleanCell(product),
-      link: markdownLinkUrl(link),
+      link: productLink,
+      productKey,
       type: cleanCell(type),
       did: cleanCell(did),
       why: cleanCell(why),
       evidence: cleanCell(evidence),
       evidenceUrl: markdownLinkUrl(evidence),
-      source: evidenceSource(evidence) || "Unknown",
+      source,
+      signalKey: signalKeyFor({ reportDate: meta.reportDate, source, productKey }),
       ...meta
     });
   }
   return rows;
+}
+
+export function parseReviewJson(json, path) {
+  const meta = reviewMeta(path);
+  const parsed = JSON.parse(String(json || "[]"));
+  const defaultDate = cleanCell(parsed.date || meta.reviewDate);
+  const records = Array.isArray(parsed) ? parsed : Array.isArray(parsed.reviews) ? parsed.reviews : [];
+  return records
+    .map((record, index) => {
+      const productKey = normalizeProductKey(record.productKey || record.link);
+      const reportDate = cleanCell(record.reportDate || defaultDate);
+      const source = cleanCell(record.source || "");
+      const signalKey = cleanCell(record.signalKey || (source ? signalKeyFor({ reportDate, source, productKey }) : ""));
+      const tags = Array.isArray(record.tags) ? record.tags.map(cleanCell).filter(Boolean) : [];
+      const nextDayReview =
+        record.nextDayReview && typeof record.nextDayReview === "object"
+          ? {
+              date: cleanCell(record.nextDayReview.date),
+              status: cleanCell(record.nextDayReview.status),
+              note: cleanCell(record.nextDayReview.note)
+            }
+          : null;
+      return {
+        id: cleanCell(record.id || `${reportDate}-${index}-${productKey}`),
+        productKey,
+        signalKey,
+        reportDate,
+        reviewer: cleanCell(record.reviewer || "benzema"),
+        verdict: cleanCell(record.verdict),
+        review: cleanCell(record.review),
+        tags,
+        nextDayReview,
+        reviewPath: meta.reviewPath
+      };
+    })
+    .filter((record) => record.productKey && record.review);
+}
+
+function attachReviewsToItems(items, reviews) {
+  return items.map((item) => ({
+    ...item,
+    reviews: reviews.filter((review) => {
+      if (review.signalKey && review.signalKey === item.signalKey) return true;
+      return review.productKey === item.productKey && (!review.reportDate || review.reportDate === item.reportDate);
+    })
+  }));
 }
 
 function countBy(items, key) {
@@ -111,11 +191,14 @@ function buildReportDays(reports) {
   return [...byDate.values()].sort((a, b) => a.reportDate.localeCompare(b.reportDate));
 }
 
-export function buildSiteData(reports) {
+export function buildSiteData(reports, reviews = []) {
   const normalizedReports = reports
     .map((report) => ({ ...report, items: parseReportMarkdown(report.markdown, report.path) }))
     .sort((a, b) => a.path.localeCompare(b.path));
-  const items = normalizedReports.flatMap((report) => report.items);
+  const normalizedReviews = reviews
+    .flatMap((reviewFile) => parseReviewJson(reviewFile.json, reviewFile.path))
+    .sort((a, b) => `${a.reportDate} ${a.productKey}`.localeCompare(`${b.reportDate} ${b.productKey}`));
+  const items = attachReviewsToItems(normalizedReports.flatMap((report) => report.items), normalizedReviews);
   const reportSummaries = normalizedReports.map((report) => ({
     path: report.path,
     ...reportMeta(report.path),
@@ -127,11 +210,13 @@ export function buildSiteData(reports) {
     generatedAt: latestReport ? `${latestReport.reportDate} ${latestReport.reportTime}` : "",
     reports: reportSummaries,
     reportDays,
+    reviews: normalizedReviews,
     items,
     stats: {
       totalReports: normalizedReports.length,
       totalReportDays: reportDays.length,
       totalItems: items.length,
+      totalReviews: normalizedReviews.length,
       latestReport: latestReport?.path || "",
       bySource: countBy(items, "source"),
       byType: countBy(items, "type")
@@ -145,6 +230,36 @@ function topEntries(map, limit = 8) {
     .slice(0, limit);
 }
 
+function renderReviewBlocks(reviews = []) {
+  if (!reviews.length) return "";
+  return `<section class="review-panel" aria-label="benzema 点评">
+    <div class="review-title">benzema 点评</div>
+    ${reviews
+      .map(
+        (review) => `<article class="review-entry">
+          <div class="review-meta">
+            ${review.verdict ? `<span>${escapeHtml(review.verdict)}</span>` : ""}
+            ${review.reportDate ? `<span>${escapeHtml(review.reportDate)}</span>` : ""}
+          </div>
+          <p>${escapeHtml(review.review)}</p>
+          ${
+            review.tags.length
+              ? `<div class="review-tags">${review.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}</div>`
+              : ""
+          }
+          ${
+            review.nextDayReview?.note
+              ? `<div class="review-followup"><b>次日复盘</b><span>${escapeHtml(
+                  [review.nextDayReview.status, review.nextDayReview.note].filter(Boolean).join("：")
+                )}</span></div>`
+              : ""
+          }
+        </article>`
+      )
+      .join("")}
+  </section>`;
+}
+
 function renderItems(items, latestDate = "") {
   return items
     .map((item, index) => {
@@ -153,7 +268,7 @@ function renderItems(items, latestDate = "") {
         item.type
       )}" data-date="${escapeHtml(item.reportDate)}" data-report="${escapeHtml(item.reportPath)}" data-latest="${String(
         isLatest
-      )}">
+      )}" data-reviewed="${String(Boolean(item.reviews?.length))}">
         <div class="item-topline">
           <span class="rank">#${String(index + 1).padStart(2, "0")}</span>
           <span>${escapeHtml(item.reportDate)} ${escapeHtml(item.reportTime)}</span>
@@ -166,6 +281,7 @@ function renderItems(items, latestDate = "") {
             <p class="did"><b>做了什么</b>${escapeHtml(item.did)}</p>
             <p class="why"><b>为什么值得看</b>${escapeHtml(item.why)}</p>
           </div>
+          ${renderReviewBlocks(item.reviews)}
         </div>
         <div class="item-actions">
           <a href="${escapeHtml(item.link)}" target="_blank" rel="noreferrer noopener">产品链接</a>
@@ -704,6 +820,61 @@ export function renderSiteHtml(data) {
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
+    .review-panel {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-default);
+    }
+    .review-title {
+      color: var(--action-primary);
+      font-family: "Geist Mono", "SFMono-Regular", Consolas, monospace;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: none;
+    }
+    .review-entry {
+      display: grid;
+      gap: 8px;
+    }
+    .review-meta, .review-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .review-meta span, .review-tags span {
+      width: fit-content;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-control);
+      padding: 3px 7px;
+      background: var(--bg-muted);
+      color: var(--text-secondary);
+      font-size: 12px;
+      line-height: 1.2;
+    }
+    .review-meta span:first-child {
+      border-color: var(--action-primary);
+      background: var(--action-soft);
+      color: var(--action-primary);
+      font-weight: 700;
+    }
+    .review-entry p {
+      margin: 0;
+      color: var(--text-primary);
+      line-height: 1.58;
+    }
+    .review-followup {
+      display: grid;
+      gap: 3px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .review-followup b {
+      color: var(--feedback-success);
+      font-size: 12px;
+    }
     .item-actions {
       display: grid;
       gap: 8px;
@@ -913,11 +1084,27 @@ function readReports(reportDir) {
     });
 }
 
+function readReviews(reviewDir) {
+  try {
+    return readdirSync(reviewDir)
+      .filter((name) => REVIEW_PATTERN.test(name))
+      .sort()
+      .map((name) => {
+        const path = join(reviewDir, name);
+        return { path, json: readFileSync(path, "utf8") };
+      });
+  } catch (error) {
+    if (error.code === "ENOENT") return [];
+    throw error;
+  }
+}
+
 function parseArgs(argv) {
-  const args = { reportDir: "reports", out: "docs/index.html" };
+  const args = { reportDir: "reports", reviewDir: "reviews", out: "docs/index.html" };
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
     if (arg === "--report-dir") args.reportDir = argv[++i];
+    if (arg === "--review-dir") args.reviewDir = argv[++i];
     if (arg === "--out") args.out = argv[++i];
   }
   return args;
@@ -925,11 +1112,11 @@ function parseArgs(argv) {
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
-  const data = buildSiteData(readReports(args.reportDir));
+  const data = buildSiteData(readReports(args.reportDir), readReviews(args.reviewDir));
   const html = renderSiteHtml(data);
   mkdirSync(dirname(args.out), { recursive: true });
   writeFileSync(args.out, html, "utf8");
-  console.log(`Built ${args.out} from ${data.reports.length} reports and ${data.items.length} items.`);
+  console.log(`Built ${args.out} from ${data.reports.length} reports, ${data.items.length} items, and ${data.reviews.length} reviews.`);
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {

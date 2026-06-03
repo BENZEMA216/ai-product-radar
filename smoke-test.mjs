@@ -18,7 +18,7 @@ import {
   sanitizeLocalProxyEnv
 } from "./radar.mjs";
 import { buildSiteData, parseReportMarkdown, renderSiteHtml } from "./build-site.mjs";
-import { commitMessageForReport, newestReportPath, reportPathsForDir } from "./publish-report.mjs";
+import { commitMessageForReport, newestReportPath, reportPathsForDir, reviewPathsForDir } from "./publish-report.mjs";
 
 async function fetchText(url) {
   let lastError;
@@ -106,11 +106,13 @@ function testPublishHelpers() {
   try {
     writeFileSync(join(tempDir, "2026-06-02-0801-cst.md"), "blocked report");
     writeFileSync(join(tempDir, "2026-06-03-0837-cst.md"), "successful report");
+    writeFileSync(join(tempDir, "2026-06-03.json"), "reviews");
     writeFileSync(join(tempDir, "notes.txt"), "not a report");
     assert.deepEqual(reportPathsForDir(tempDir).map((path) => basename(path)), [
       "2026-06-02-0801-cst.md",
       "2026-06-03-0837-cst.md"
     ]);
+    assert.deepEqual(reviewPathsForDir(tempDir).map((path) => basename(path)), ["2026-06-03.json"]);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -194,6 +196,48 @@ function testSiteBuilderAggregatesReportTimelineByNaturalDay() {
   assert.match(html, /2026-06-03<small>2 次运行 · 最新 11:22 CST<\/small><\/span>\s*<b>3<\/b>/);
   assert.doesNotMatch(html, /2026-06-03 08:00 CST\s*<\/span>\s*<b>1<\/b>/);
   assert.doesNotMatch(html, /2026-06-03 11:22 CST\s*<\/span>\s*<b>2<\/b>/);
+}
+
+function testProductReviewsAttachToCards() {
+  const report = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| Paseo | [链接](https://github.com/getpaseo/paseo) | 新产品 | HN 发布帖出现：Show HN: Paseo | 开源 coding agent interface 值得看。 | [HN Algolia 2026-06-03T22:34:42Z](https://news.ycombinator.com/item?id=2) |`;
+  const reviews = [
+    {
+      path: "reviews/2026-06-03.json",
+      json: JSON.stringify({
+        date: "2026-06-03",
+        reviews: [
+          {
+            productKey: "https://github.com/getpaseo/paseo",
+            reportDate: "2026-06-03",
+            verdict: "值得重点看",
+            review: "开源 coding agent interface 的重点不是 IDE，而是把 agent 工作过程产品化成可观察界面。",
+            tags: ["coding-agent", "workflow-ui"],
+            nextDayReview: {
+              date: "2026-06-04",
+              status: "继续观察",
+              note: "次日仍应观察它是否能形成团队协作和审计场景。"
+            }
+          }
+        ]
+      })
+    }
+  ];
+
+  const siteData = buildSiteData([{ path: "reports/2026-06-03-1122-cst.md", markdown: report }], reviews);
+  const html = renderSiteHtml(siteData);
+
+  assert.equal(siteData.stats.totalReviews, 1);
+  assert.equal(siteData.items[0].productKey, "https://github.com/getpaseo/paseo");
+  assert.equal(siteData.items[0].reviews.length, 1);
+  assert.equal(siteData.items[0].reviews[0].verdict, "值得重点看");
+  assert.match(html, /data-reviewed="true"/);
+  assert.match(html, /benzema 点评/);
+  assert.match(html, /开源 coding agent interface 的重点不是 IDE/);
+  assert.match(html, /coding-agent/);
+  assert.match(html, /次日复盘/);
+  assert.match(html, /次日仍应观察它是否能形成团队协作和审计场景。/);
 }
 
 function testReportWhyCopyAddsContextForRepeatedTemplates() {
@@ -496,6 +540,7 @@ const tests = [
   ["Product Hunt history filter", testProductHuntHistoryFilter],
   ["Site builder helpers", testSiteBuilderHelpers],
   ["Site builder natural-day timeline", testSiteBuilderAggregatesReportTimelineByNaturalDay],
+  ["Product reviews attach to cards", testProductReviewsAttachToCards],
   ["Report why copy adds context for repeated templates", testReportWhyCopyAddsContextForRepeatedTemplates],
   ["Report why copy keeps long product context distinct", testReportWhyCopyKeepsLongProductContextDistinct],
   ["Product Hunt fixture", testProductHuntFixture],
