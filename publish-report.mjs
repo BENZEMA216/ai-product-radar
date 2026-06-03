@@ -20,6 +20,13 @@ export function newestReportPath(paths) {
   return paths.filter((path) => REPORT_PATTERN.test(basename(path))).sort().at(-1) || "";
 }
 
+export function reportPathsForDir(reportDir) {
+  return readdirSync(reportDir)
+    .map((name) => join(reportDir, name))
+    .filter((path) => REPORT_PATTERN.test(basename(path)))
+    .sort();
+}
+
 function parseArgs(argv) {
   const args = { reportDir: "reports" };
   for (let i = 0; i < argv.length; i += 1) {
@@ -52,8 +59,7 @@ function buildSite() {
 
 function resolveReport(args) {
   if (args.report) return args.report;
-  const reports = readdirSync(args.reportDir).map((name) => join(args.reportDir, name));
-  return newestReportPath(reports);
+  return newestReportPath(reportPathsForDir(args.reportDir));
 }
 
 function hasStagedChanges() {
@@ -97,7 +103,8 @@ async function main() {
 
   git(["rev-parse", "--is-inside-work-tree"]);
   buildSite();
-  git(["add", "--", report, "docs/index.html"]);
+  const pathsToStage = Array.from(new Set([...reportPathsForDir(args.reportDir), report, "docs/index.html"]));
+  git(["add", "--", ...pathsToStage]);
 
   if (!hasStagedChanges()) {
     if (!hasOrigin()) {

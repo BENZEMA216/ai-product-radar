@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
+import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { basename, join } from "node:path";
 import {
   parseOrangeBotProductHuntHtml,
   parseAihotDailyMarkdown,
@@ -12,7 +15,7 @@ import {
   sanitizeLocalProxyEnv
 } from "./radar.mjs";
 import { buildSiteData, parseReportMarkdown, renderSiteHtml } from "./build-site.mjs";
-import { commitMessageForReport, newestReportPath } from "./publish-report.mjs";
+import { commitMessageForReport, newestReportPath, reportPathsForDir } from "./publish-report.mjs";
 
 async function fetchText(url) {
   let lastError;
@@ -95,6 +98,19 @@ function testPublishHelpers() {
     ]),
     "reports/2026-06-01-0800-cst.md"
   );
+
+  const tempDir = mkdtempSync(join(tmpdir(), "radar-publish-"));
+  try {
+    writeFileSync(join(tempDir, "2026-06-02-0801-cst.md"), "blocked report");
+    writeFileSync(join(tempDir, "2026-06-03-0837-cst.md"), "successful report");
+    writeFileSync(join(tempDir, "notes.txt"), "not a report");
+    assert.deepEqual(reportPathsForDir(tempDir).map((path) => basename(path)), [
+      "2026-06-02-0801-cst.md",
+      "2026-06-03-0837-cst.md"
+    ]);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
 }
 
 function testSiteBuilderHelpers() {
