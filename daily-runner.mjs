@@ -1,15 +1,19 @@
 #!/usr/bin/env node
 import { execFileSync } from "node:child_process";
-import { mkdirSync, writeFileSync } from "node:fs";
-import { dirname } from "node:path";
+import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
 
 import {
+  filterPreviouslyReportedProductHunt,
   renderBlockedReport,
   renderMarkdownTable,
   reportPathForNow,
   runRadar,
   sanitizeLocalProxyEnv
 } from "./radar.mjs";
+import { parseReportMarkdown } from "./build-site.mjs";
+
+const REPORT_PATTERN = /^\d{4}-\d{2}-\d{2}-\d{4}-cst\.md$/;
 
 function parseArgs(argv) {
   const args = { hours: 24, reportDir: "reports" };
@@ -40,6 +44,27 @@ function writeReport(path, markdown) {
   writeFileSync(path, `${markdown.trimEnd()}\n`, "utf8");
 }
 
+// Product Hunt exposes date-level launch evidence, so adjacent daily windows can overlap.
+function previousProductHuntLinks(reportDir, currentReportPath) {
+  const links = new Set();
+  let names = [];
+  try {
+    names = readdirSync(reportDir);
+  } catch {
+    return links;
+  }
+
+  for (const name of names.filter((item) => REPORT_PATTERN.test(item)).sort()) {
+    const path = join(reportDir, name);
+    if (path === currentReportPath) continue;
+    const rows = parseReportMarkdown(readFileSync(path, "utf8"), path);
+    for (const row of rows) {
+      if (row.source === "Product Hunt" && row.link) links.add(row.link);
+    }
+  }
+  return links;
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   const now = args.now ? new Date(args.now) : new Date();
@@ -63,8 +88,10 @@ async function main() {
   }
 
   const result = await runRadar({ now, hours: args.hours });
-  let markdown = renderMarkdownTable(result.candidates);
-  if (result.candidates.length === 0) {
+  const previousPhLinks = previousProductHuntLinks(args.reportDir, reportPath);
+  const candidates = filterPreviouslyReportedProductHunt(result.candidates, previousPhLinks);
+  let markdown = renderMarkdownTable(candidates);
+  if (candidates.length === 0) {
     markdown += "\n\n过去 24 小时未发现可验证的新 AI 产品或老产品更新。";
   }
   writeReport(reportPath, markdown);

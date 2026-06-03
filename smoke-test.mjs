@@ -5,6 +5,7 @@ import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { basename, join } from "node:path";
 import {
+  filterPreviouslyReportedProductHunt,
   parseOrangeBotProductHuntHtml,
   parseAihotDailyMarkdown,
   parseAihotRssItems,
@@ -111,6 +112,21 @@ function testPublishHelpers() {
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
+}
+
+function testProductHuntHistoryFilter() {
+  const filtered = filterPreviouslyReportedProductHunt(
+    [
+      { source: "producthunt", link: "https://www.producthunt.com/products/databox" },
+      { source: "hackernews", link: "https://news.ycombinator.com/item?id=1" },
+      { source: "producthunt", link: "https://www.producthunt.com/products/new-ai" }
+    ],
+    new Set(["https://www.producthunt.com/products/databox"])
+  );
+  assert.deepEqual(filtered.map((item) => item.link), [
+    "https://news.ycombinator.com/item?id=1",
+    "https://www.producthunt.com/products/new-ai"
+  ]);
 }
 
 function testSiteBuilderHelpers() {
@@ -386,6 +402,7 @@ function testCliOutput() {
 const tests = [
   ["Automation safety helpers", testAutomationSafetyHelpers],
   ["Publish helpers", testPublishHelpers],
+  ["Product Hunt history filter", testProductHuntHistoryFilter],
   ["Site builder helpers", testSiteBuilderHelpers],
   ["Product Hunt fixture", testProductHuntFixture],
   ["Product Hunt fallback parser fixture", testProductHuntFallbackParserFixture],

@@ -518,6 +518,10 @@ export function parseYcLaunchesPayload(payload, start, end) {
   return uniqueBy(candidates, (item) => item.link);
 }
 
+export function filterPreviouslyReportedProductHunt(candidates, previousLinks) {
+  return candidates.filter((item) => !(item.source === "producthunt" && previousLinks.has(item.link)));
+}
+
 async function fetchYcLaunches(start, end) {
   const all = [];
   for (let page = 0; page < 5; page += 1) {
