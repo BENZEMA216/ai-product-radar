@@ -606,7 +606,12 @@ export function renderSiteHtml(data) {
       outline-offset: 2px;
     }
     select {
-      padding-right: 34px;
+      appearance: none;
+      padding-inline: 14px 48px;
+      background-image: linear-gradient(45deg, transparent 50%, var(--text-secondary) 50%), linear-gradient(135deg, var(--text-secondary) 50%, transparent 50%);
+      background-position: right 21px center, right 16px center;
+      background-repeat: no-repeat;
+      background-size: 5px 5px, 5px 5px;
     }
     .filter-meta {
       display: flex;

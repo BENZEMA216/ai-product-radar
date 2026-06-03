@@ -162,6 +162,7 @@ function testSiteBuilderHelpers() {
   assert.match(html, /aria-label="Filter by source"/);
   assert.match(html, /aria-live="polite"/);
   assert.match(html, /aria-pressed="false"/);
+  assert.match(html, /select\s*\{[^}]*appearance:\s*none;[^}]*padding-inline:\s*14px 48px;[^}]*background-position:\s*right 21px center,\s*right 16px center;/s);
   assert.match(html, /\.content\s*\{[^}]*justify-self:\s*center;/s);
   assert.match(html, /\.content\s*\{[^}]*margin-inline:\s*auto;/s);
 }
