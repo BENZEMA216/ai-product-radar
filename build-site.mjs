@@ -398,6 +398,20 @@ export function renderSiteHtml(data) {
       padding-bottom: 24px;
       border-bottom: 1px solid var(--border-default);
     }
+    .brand-mark {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 18px;
+      padding: 4px 8px;
+      border: 1px solid var(--action-primary);
+      border-radius: var(--radius-control);
+      color: var(--action-primary);
+      font-family: "Geist Mono", "SFMono-Regular", Consolas, monospace;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0;
+    }
     .kicker, .section-label {
       color: var(--action-primary);
       font-family: "Geist Mono", "SFMono-Regular", Consolas, monospace;
@@ -753,6 +767,7 @@ export function renderSiteHtml(data) {
     <div class="workspace">
       <aside class="sidebar" aria-label="日报概览">
         <section class="brand">
+          <div class="brand-mark">benzema&#39;</div>
           <div class="kicker">每日 AI 产品雷达</div>
           <h1>AI 产品更新</h1>
           <p class="subtitle">按证据来源整理过去 24 小时的新产品和老产品更新。默认展示最新日报，也可以切换历史归档。</p>
