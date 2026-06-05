@@ -7,13 +7,8 @@
       "source": "Product Hunt",
       "reviewer": "benzema",
       "verdict": "继续观察",
-      "review": "录音点评整理：定位是清楚的，核心是给 agent 做云端语音/对话 API；但现场体验里 playground 和 live demo 没跑起来，稳定性会直接影响首日信任。",
-      "tags": ["voice-api", "agent-infra", "reliability"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看它是否还有 PH/HN/社媒后续反馈，以及 demo 稳定性是否被修复。"
-      }
+      "review": "这个定位是明白的，就是给 agent 做云端语音/对话能力。但 playground 和 live demo 没跑起来，这个有点伤。做 API 产品，第一下试不起来，信任感会掉得很快。",
+      "tags": ["voice-api", "agent-infra", "reliability"]
     },
     {
       "productKey": "https://www.producthunt.com/products/keen-code-a-cli-coding-agent",
@@ -21,13 +16,8 @@
       "source": "Product Hunt",
       "reviewer": "benzema",
       "verdict": "不看好",
-      "review": "录音点评整理：把 coding agent 的卖点放在省 token 上不够成立。这个赛道用户首先买效果、可靠性和完成任务的能力，成本优化更适合作为加分项而不是主定位。",
-      "tags": ["coding-agent", "positioning", "cost"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天复查是否有真实用户反馈证明省 token 是强痛点。"
-      }
+      "review": "这个不成立吧。coding agent 还是效果为主，你把省 token 放成主卖点，我觉得不是一个好的出发点。成本可以是 bonus，但不能是产品第一性。",
+      "tags": ["coding-agent", "positioning", "cost"]
     },
     {
       "productKey": "https://github.com/Friz-zy/ai-capability-registry",
@@ -35,13 +25,8 @@
       "source": "HN Algolia",
       "reviewer": "benzema",
       "verdict": "值得研究",
-      "review": "录音点评整理：这个产品偏技术，但 GitOps 风格的 workflows、skills、MCP server 注册表值得研究。关键问题是它能不能从工程目录变成 agent 能力治理和部署的真实工具。",
-      "tags": ["mcp", "agent-governance", "gitops"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看 HN 讨论里是否出现具体使用场景，而不只是技术概念。"
-      }
+      "review": "这个太技术了，但可以看一下。用 GitOps 的方式管 workflows、skills、MCP servers，方向是有意思的。关键是它最后是工程师目录，还是能变成 agent 能力治理工具。",
+      "tags": ["mcp", "agent-governance", "gitops"]
     },
     {
       "productKey": "https://www.producthunt.com/products/astra-security",
@@ -49,13 +34,8 @@
       "source": "Product Hunt",
       "reviewer": "benzema",
       "verdict": "继续观察",
-      "review": "录音点评整理：AI agent 做漏洞发现和自动验证这个方向成立，尤其适合小 SaaS 安全场景；但官网观感偏弱，产品信任感需要靠 demo、案例和报告质量补回来。",
-      "tags": ["security-agent", "smb-saas", "trust"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天复查是否有验证漏洞、修复建议或客户案例层面的新增证据。"
-      }
+      "review": "AI agent 做漏洞发现和自动验证，这个方向没问题，尤其小 SaaS 会有这种需求。但官网第一眼不够让人信，安全产品还是要把 demo、报告和案例做扎实。",
+      "tags": ["security-agent", "smb-saas", "trust"]
     },
     {
       "productKey": "https://www.producthunt.com/products/perplexity-personal-computer-for-windows",
@@ -63,13 +43,8 @@
       "source": "Product Hunt",
       "reviewer": "benzema",
       "verdict": "低优先级",
-      "review": "录音点评整理：更像是 Perplexity Personal Computer 的 Windows 扩展版本，产品形态本身没有明显新意。除非 Windows 本地文件/应用场景有差异化，否则优先级不高。",
-      "tags": ["platform-expansion", "desktop-agent", "perplexity"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看 Windows 用户反馈是否体现出平台特有的使用价值。"
-      }
+      "review": "这个感觉就是 Perplexity Personal Computer 上 Windows 了。不是没价值，但新意不强。除非 Windows 本地文件和应用联动有明显差异，不然先放低优先级。",
+      "tags": ["platform-expansion", "desktop-agent", "perplexity"]
     },
     {
       "productKey": "https://www.producthunt.com/products/bookva-ai",
@@ -77,13 +52,8 @@
       "source": "Product Hunt",
       "reviewer": "benzema",
       "verdict": "轻量灵感",
-      "review": "录音点评整理：本质还是预约/日程 SaaS，但把客户预约页做成更有视频背景和视觉表现力的体验，适合观察海外轻量 SaaS 如何用审美和情绪价值做差异化。",
-      "tags": ["scheduling", "visual-ux", "micro-saas"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看首日传播是否来自视觉差异化，而不是普通预约工具需求。"
-      }
+      "review": "本质还是预约 SaaS，但把预约页做得更酷，有视频背景，有情绪价值。这个挺海外的，也合理。小 SaaS 不一定要多复杂，有时候就是把一个普通动作做得更好看。",
+      "tags": ["scheduling", "visual-ux", "micro-saas"]
     },
     {
       "productKey": "https://www.producthunt.com/products/extella-ai",
@@ -91,13 +61,8 @@
       "source": "Product Hunt",
       "reviewer": "benzema",
       "verdict": "保留疑问",
-      "review": "录音点评整理：agentic platform 的方向听起来有吸引力，但这类深度产品如果首屏大量依赖拖拽式产品预览，容易显得像在展示交互而不是展示能力。需要看实际系统复用价值。",
-      "tags": ["agentic-platform", "product-demo", "ux-risk"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天复查是否有真实 reusable systems 的案例，而不是只停留在官网叙事。"
-      }
+      "review": "agentic platform 听起来挺酷，但这种深度产品首页还在强调一堆拖拽交互，我会有点出戏。你得先证明系统真的能复用、能演化，不然就像在展示一个壳。",
+      "tags": ["agentic-platform", "product-demo", "ux-risk"]
     },
     {
       "productKey": "https://github.com/cjmielke/NeuroAnswer",
@@ -105,13 +70,8 @@
       "source": "HN Algolia",
       "reviewer": "benzema",
       "verdict": "值得重点看",
-      "review": "录音点评整理：这个垂直场景很有记忆点。让 Claude 导航 petabyte-scale 脑图，把 MCP 放到神经科学这种强专业数据场景里，比泛化 agent 更容易形成差异化。",
-      "tags": ["mcp", "science-ai", "vertical-agent"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看 HN 是否有科研/数据可视化用户反馈，以及项目是否补充使用示例。"
-      }
+      "review": "这个酷。MCP 放到神经科学这种强专业数据场景里，让 Claude 去导航超大脑图，比泛泛做 agent 更有记忆点。垂直、专业、数据复杂，这种场景值得看。",
+      "tags": ["mcp", "science-ai", "vertical-agent"]
     },
     {
       "productKey": "https://recursi.dev/",
@@ -119,13 +79,8 @@
       "source": "HN Algolia",
       "reviewer": "benzema",
       "verdict": "体验劝退",
-      "review": "录音点评整理：self-improving LLM coding environment 的概念可以看，但现场网页卡顿明显，导致试用意愿下降。开发者工具的官网和 demo 体验本身就是产品可信度的一部分。",
-      "tags": ["coding-agent", "website-performance", "developer-experience"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天复查网站体验是否改善，以及是否有更清楚的产品演示。"
-      }
+      "review": "概念可以，但网页卡得我不想用。开发者工具不要低估官网和 demo 的体验，它就是产品可信度的一部分。你说 self-improving，结果第一步访问都不顺，这很伤。",
+      "tags": ["coding-agent", "website-performance", "developer-experience"]
     },
     {
       "productKey": "https://github.com/HYPD-AI/openai-ads-mcp",
@@ -133,13 +88,8 @@
       "source": "HN Algolia",
       "reviewer": "benzema",
       "verdict": "信息不足",
-      "review": "录音点评整理：MCP for ChatGPT Ads API 这个方向有一定新鲜度，但如果不了解 OpenAI/ChatGPT Ads 的具体工作流，就很难判断它的真实价值。需要更多使用场景证明。",
-      "tags": ["mcp", "ads", "workflow"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看是否出现广告投放、查询或自动化报表的具体案例。"
-      }
+      "review": "有点新鲜，但我现在判断不了。MCP 连 ChatGPT Ads API 可能有用，但得讲清楚具体拿来干嘛：查投放、做报表、还是自动优化。没有场景就比较飘。",
+      "tags": ["mcp", "ads", "workflow"]
     },
     {
       "productKey": "https://gi-dellav.github.io/zerostack/",
@@ -147,13 +97,8 @@
       "source": "HN Algolia",
       "reviewer": "benzema",
       "verdict": "不看好",
-      "review": "录音点评整理：又一个 open coding agent，差异化需要回答“比 Claude Code/Codex 多解决了什么”。如果只强调 Rust、低内存或轻量，没有明显任务效果优势，很难打动用户。",
-      "tags": ["coding-agent", "differentiation", "developer-tools"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看开发者讨论里是否有人提出明确替代现有 coding agent 的理由。"
-      }
+      "review": "又是 coding agent。这个赛道现在不能只说自己更轻、更省内存、Rust 写的。你得回答一个很直接的问题：我为什么不用 Claude Code 或 Codex？回答不了就很难成立。",
+      "tags": ["coding-agent", "differentiation", "developer-tools"]
     },
     {
       "productKey": "https://www.hydron.sh/",
@@ -161,13 +106,8 @@
       "source": "HN Algolia",
       "reviewer": "benzema",
       "verdict": "值得看",
-      "review": "录音点评整理：hardware-aware coding agent 听起来更成立，因为软硬件结合能形成更具体的任务边界。相比泛 coding agent，这个方向更容易讲清楚为什么需要一个专门产品。",
-      "tags": ["hardware", "coding-agent", "vertical-tool"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看它是否展示硬件约束、调试或仿真相关的真实能力。"
-      }
+      "review": "这个听起来更像回事。hardware-aware coding agent 至少有具体边界，软硬结合会让产品理由更成立一点。不是又来一个泛 coding agent，而是有自己的问题域。",
+      "tags": ["hardware", "coding-agent", "vertical-tool"]
     },
     {
       "productKey": "https://lanes.sh/blog/whats-new-v042",
@@ -175,13 +115,8 @@
       "source": "HN Algolia",
       "reviewer": "benzema",
       "verdict": "值得看",
-      "review": "录音点评整理：内置 SQLite viewer 是一个很好的小产品点，用很容易理解的方式解决 coding agent 数据库工作难验证的问题。这类“可验证 agent 输出”的功能值得跟踪。",
-      "tags": ["coding-agent", "verification", "database"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看是否有用户反馈表明数据库验证确实降低了 agent 工作成本。"
-      }
+      "review": "这个小点很好。内置 SQLite viewer 解决的是 coding agent 写数据库之后怎么验证的问题，用户一听就懂。用一个很朴素的手段解决真实问题，这种我会喜欢。",
+      "tags": ["coding-agent", "verification", "database"]
     },
     {
       "productKey": "https://www.ycombinator.com/launches/Qfi-standout-a-talent-agent-for-builders",
@@ -189,13 +124,8 @@
       "source": "YC Launch",
       "reviewer": "benzema",
       "verdict": "有争议",
-      "review": "录音点评整理：talent agent for builders 的双边撮合方向可能成立，但把候选人入口做成 CLI 有利有弊。对技术人群可能贴近工作流，对更广泛招聘场景则会显得过窄。",
-      "tags": ["talent", "cli", "marketplace"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看 YC 评论或外部反馈是否认可 CLI 作为人才入口。"
-      }
+      "review": "双边撮合可能还行，但做成 CLI 这个点我有点纠结。技术人群可能合适，因为大家确实在终端里工作；但招聘产品做这么窄，也可能把自己限制住。",
+      "tags": ["talent", "cli", "marketplace"]
     },
     {
       "productKey": "https://www.producthunt.com/products/mailwarm",
@@ -203,13 +133,8 @@
       "source": "Product Hunt",
       "reviewer": "benzema",
       "verdict": "需验证",
-      "review": "录音点评整理：email warmup 和 deliverability 是典型海外市场问题，但需要解释它相比用户自己做 warmup 的差异，比如数据回流、追踪、自动化策略和可证明的送达率提升。",
-      "tags": ["email", "deliverability", "saas"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看 PH 评论里是否有人讨论 deliverability 数据或真实效果。"
-      }
+      "review": "email warmup 这个事情很美国，很海外。我能理解 deliverability 是痛点，但它得解释为什么比自己 warmup 更好：有数据回流吗？有追踪吗？能证明送达率吗？",
+      "tags": ["email", "deliverability", "saas"]
     },
     {
       "productKey": "https://www.producthunt.com/products/gemma-4-12b",
@@ -217,13 +142,8 @@
       "source": "Product Hunt",
       "reviewer": "benzema",
       "verdict": "低优先级",
-      "review": "录音点评整理：本地多模态模型作为技术更新可以记，但作为产品灵感不是今天最关键的信号。除非它触发新的本地应用形态，否则暂时低优先级。",
-      "tags": ["local-model", "multimodal", "model-release"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看是否出现基于该模型的新应用或明显性能反馈。"
-      }
+      "review": "模型更新可以记一下，但对产品灵感来说不是今天最关键。除非它带出新的本地应用形态，不然就是一个技术信号，先不展开。",
+      "tags": ["local-model", "multimodal", "model-release"]
     },
     {
       "productKey": "https://www.producthunt.com/products/build-club",
@@ -231,13 +151,8 @@
       "source": "Product Hunt",
       "reviewer": "benzema",
       "verdict": "值得看",
-      "review": "录音点评整理：AI 教育、社区化、活动化结合是喜欢的方向。它不是单纯课程，而是把 AI 学习变成社区和活动场景，适合观察教育产品的社群型交付。",
-      "tags": ["ai-education", "community", "learning"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看它是否有真实 cohort、活动机制或学习成果展示。"
-      }
+      "review": "这个我会喜欢。AI 教育 + 社区 + 活动化，不只是卖课，而是把学习变成一个场域。小的教育产品这样做反而更成立，能看它怎么交付社群感。",
+      "tags": ["ai-education", "community", "learning"]
     },
     {
       "productKey": "https://www.producthunt.com/products/deliveryman-ai",
@@ -245,13 +160,8 @@
       "source": "Product Hunt",
       "reviewer": "benzema",
       "verdict": "个人暂不判断",
-      "review": "录音点评整理：冷邮件基础设施属于海外邮件生态，需求可能真实，但从中国产品视角不容易直觉判断。需要先理解海外销售邮件工作流，再评价产品价值。",
-      "tags": ["email", "sales-stack", "market-context"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看是否有海外销售场景的具体证据，避免用国内 IM 生态经验误判。"
-      }
+      "review": "又是邮件相关。我作为国内视角真的不太直觉，但这不代表需求不存在。海外销售和邮件生态可能确实很重，先标记一下，不要用 IM 生态经验直接误判。",
+      "tags": ["email", "sales-stack", "market-context"]
     },
     {
       "productKey": "https://www.producthunt.com/products/boxes-dev",
@@ -259,13 +169,8 @@
       "source": "Product Hunt",
       "reviewer": "benzema",
       "verdict": "继续观察",
-      "review": "录音点评整理：让 Claude Code/Codex 跑在云端环境是合理方向，但这类产品交互会快速收敛。长期差异化可能不在“云端跑 agent”，而在隔离、协作、恢复和成本控制。",
-      "tags": ["cloud-dev-env", "coding-agent", "workflow"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看它是否比同类云端 coding 环境提供更强协作或环境管理能力。"
-      }
+      "review": "云端跑 Claude Code/Codex 这个方向肯定是合理的，但这类产品会很快长得差不多。最后拼的不是“能跑”，而是环境隔离、恢复、协作和成本控制。",
+      "tags": ["cloud-dev-env", "coding-agent", "workflow"]
     },
     {
       "productKey": "https://www.producthunt.com/products/gather-14",
@@ -273,13 +178,8 @@
       "source": "Product Hunt",
       "reviewer": "benzema",
       "verdict": "轻量可看",
-      "review": "录音点评整理：design references second brain 这种需求成立，作为轻工具可以看。但它需要避免只靠花哨概念，要证明自己在收集、检索和复用灵感上比普通收藏夹更顺手。",
-      "tags": ["design-reference", "second-brain", "creative-tools"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看用户反馈是否强调检索和复用，而不是只评价界面。"
-      }
+      "review": "design references 的 second brain，需求没问题。不要想得太花哨，收集、找回、复用做顺就可以。轻工具能不能留下来，看的是日常摩擦有没有真的变少。",
+      "tags": ["design-reference", "second-brain", "creative-tools"]
     },
     {
       "productKey": "https://intencion.io",
@@ -287,13 +187,8 @@
       "source": "HN Algolia",
       "reviewer": "benzema",
       "verdict": "信息不足",
-      "review": "录音点评整理：AI agent analytics 的方向听起来重要，但当下信息不够清楚。需要明确它分析的是用户行为、agent 行为、失败原因，还是持续优化闭环。",
-      "tags": ["agent-analytics", "observability", "product-analytics"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看官网或讨论是否把 analytics 的对象和闭环讲清楚。"
-      }
+      "review": "agent analytics 听起来重要，但现在还不够清楚。它到底分析用户、分析 agent、分析失败原因，还是做持续优化？这个不讲清楚，我就很难判断。",
+      "tags": ["agent-analytics", "observability", "product-analytics"]
     },
     {
       "productKey": "https://www.g-spot.dev/",
@@ -301,13 +196,8 @@
       "source": "HN Algolia",
       "reviewer": "benzema",
       "verdict": "观察海外邮件生态",
-      "review": "录音点评整理：围绕 Gmail、GitHub、notes、memory 的 agent 很多，说明海外工作流里邮件仍然是重要数据流。对国内 IM 生态出身的人不直觉，但它可能更适合 agent 读写和结构化。",
-      "tags": ["gmail", "agent-workflow", "market-context"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看 HN 反馈是否印证 email-first agent 工作流有真实需求。"
-      }
+      "review": "怎么这么多围绕 Gmail 和邮箱做的 agent。说明海外工作流里邮件还是非常重。国内看会觉得奇怪，但 email 的数据流更结构化，也许反而更适合 agent。",
+      "tags": ["gmail", "agent-workflow", "market-context"]
     },
     {
       "productKey": "https://cost.dev/",
@@ -315,13 +205,8 @@
       "source": "HN Algolia",
       "reviewer": "benzema",
       "verdict": "继续观察",
-      "review": "录音点评整理：让 coding agent 或 IDE 感知成本的方向简单但可能重要。需要进一步问懂行的人：成本意识是否已经是开发者组织里的强需求，还是只有大规模调用时才显著。",
-      "tags": ["agent-cost", "developer-tools", "yc"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看是否有企业开发者或高频 agent 用户讨论成本痛点。"
-      }
+      "review": "让 agent 感知成本，这个想法挺简单，但可能有用。我现在还拿不准它是不是强需求，得问更高频用 agent 的人。小团队可能无感，大规模调用可能很痛。",
+      "tags": ["agent-cost", "developer-tools", "yc"]
     },
     {
       "productKey": "https://github.com/jpajak/ai-gauge",
@@ -329,13 +214,8 @@
       "source": "HN Algolia",
       "reviewer": "benzema",
       "verdict": "小而明确",
-      "review": "录音点评整理：监控 Claude/Codex/Copilot usage limits 是清楚的小工具需求。它不一定大，但对高频 AI 工具用户很容易理解，适合作为轻量效率工具观察。",
-      "tags": ["usage-monitoring", "developer-tools", "ai-limits"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看 star、评论或 issue 是否证明这个小痛点足够普遍。"
-      }
+      "review": "usage 监控这个 OK。它不一定大，但痛点很清楚：Claude、Codex、Copilot 到底还剩多少额度，高频用户会关心。小而明确，比很多泛 agent 产品强。",
+      "tags": ["usage-monitoring", "developer-tools", "ai-limits"]
     },
     {
       "productKey": "https://www.ycombinator.com/launches/QgY-raspire-app-security-at-ai-speed",
@@ -343,13 +223,8 @@
       "source": "YC Launch",
       "reviewer": "benzema",
       "verdict": "需验证市场",
-      "review": "录音点评整理：AI runtime security layer for mobile apps 这个需求可能存在，但开发者工具里的安全层价值和市场规模需要验证。先不否定，重点看买单场景。",
-      "tags": ["mobile-security", "runtime-security", "yc"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看是否有移动 app 团队、合规或安全负责人相关反馈。"
-      }
+      "review": "AI runtime security layer for mobile apps，需求可能存在，但我现在看不懂市场有多大。安全产品不能只听起来正确，得看谁买、为什么现在买。",
+      "tags": ["mobile-security", "runtime-security", "yc"]
     },
     {
       "productKey": "https://github.com/anthropics/claude-code/releases/tag/v2.1.163",
@@ -357,13 +232,8 @@
       "source": "AIHOT",
       "reviewer": "benzema",
       "verdict": "正常更新",
-      "review": "录音点评整理：Claude Code 这次是小功能和复制/版本管理等体验优化，方向没问题，但不是今天最值得展开的产品信号。",
-      "tags": ["claude-code", "release", "developer-tools"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看是否有开发者反馈这些版本约束和体验优化影响团队使用。"
-      }
+      "review": "Claude Code 这次就是小功能更新，版本控制、复制体验这些都 OK。方向没问题，但不是今天最值得展开的东西。",
+      "tags": ["claude-code", "release", "developer-tools"]
     },
     {
       "productKey": "https://pennyroyaltea.github.io/resume/",
@@ -371,13 +241,8 @@
       "source": "HN Algolia",
       "reviewer": "benzema",
       "verdict": "值得重点看",
-      "review": "录音点评整理：统一管理 Claude 和 Codex session 的 CLI 很有用，而且界面清爽。这个产品的亮点是有明确产品思维：抓住真实工作流断点，而不是泛泛再做一个 agent。",
-      "tags": ["codex", "claude", "session-management"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看它是否继续获得开发者关注，以及是否覆盖恢复、归档和多项目切换。"
-      }
+      "review": "这个好。统一管理 Claude 和 Codex session，而且界面清爽。能看出来是有产品思维的人做的：抓的是一个真实工作流断点，不是又包装一个空泛 agent。",
+      "tags": ["codex", "claude", "session-management"]
     },
     {
       "productKey": "https://boxes.dev",
@@ -385,13 +250,8 @@
       "source": "HN Algolia",
       "reviewer": "benzema",
       "verdict": "重复信号",
-      "review": "录音点评整理：这条与 Product Hunt 的 Boxes.dev 是同一个产品信号，雷达里需要后续做跨来源去重。产品本身可看，但不应该被当作两个独立产品判断。",
-      "tags": ["dedupe", "cloud-dev-env", "radar-quality"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天检查采集链路是否能合并 Product Hunt 与 HN 的同产品重复信号。"
-      }
+      "review": "这个和前面的 Boxes.dev 是同一个东西。产品可以看，但雷达这边要去重，不然会把一个产品当成两个信号，判断会被污染。",
+      "tags": ["dedupe", "cloud-dev-env", "radar-quality"]
     },
     {
       "productKey": "https://news.ycombinator.com/item?id=48397992",
@@ -399,13 +259,8 @@
       "source": "HN Algolia",
       "reviewer": "benzema",
       "verdict": "不看好",
-      "review": "录音点评整理：machine-readable protocol making internet legible for AI 的叙事不够有说服力，因为“让互联网对 AI 可读”本身太泛。需要一个更具体的场景，否则容易停留在协议口号。",
-      "tags": ["protocol", "agent-web", "positioning"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看 HN 是否有人提出具体应用场景或反驳这个定位问题。"
-      }
+      "review": "让互联网对 AI 可读，这个说法太泛了。现在网页本来就能被读，除非你拿出一个非常具体的场景，不然听起来像协议口号。",
+      "tags": ["protocol", "agent-web", "positioning"]
     },
     {
       "productKey": "https://x.com/shao__meng/status/2062690152569614572",
@@ -413,13 +268,8 @@
       "source": "AIHOT",
       "reviewer": "benzema",
       "verdict": "值得讨论",
-      "review": "录音点评整理：ChatGPT 记忆升级/Dreaming V3 是值得单独思考的话题。相比单点功能，它影响的是长期用户画像、上下文延续和 AI 产品的主动性。",
-      "tags": ["memory", "chatgpt", "product-strategy"],
-      "nextDayReview": {
-        "date": "2026-06-06",
-        "status": "待复盘",
-        "note": "明天看是否有更多关于记忆摘要、用户控制和主动回忆体验的公开反馈。"
-      }
+      "review": "ChatGPT 记忆升级这个值得单独聊。它不是一个小功能，而是长期用户画像、上下文延续和主动回忆的问题。这个方向会影响 AI 产品以后怎么“认识”用户。",
+      "tags": ["memory", "chatgpt", "product-strategy"]
     }
   ]
 }

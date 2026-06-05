@@ -235,27 +235,29 @@ function renderReviewBlocks(reviews = []) {
   return `<section class="review-panel" aria-label="benzema 点评">
     <div class="review-title">benzema 点评</div>
     ${reviews
-      .map(
-        (review) => `<article class="review-entry">
-          <div class="review-meta">
-            ${review.verdict ? `<span>${escapeHtml(review.verdict)}</span>` : ""}
-            ${review.reportDate ? `<span>${escapeHtml(review.reportDate)}</span>` : ""}
-          </div>
-          <p>${escapeHtml(review.review)}</p>
-          ${
-            review.tags.length
-              ? `<div class="review-tags">${review.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}</div>`
-              : ""
-          }
-          ${
-            review.nextDayReview?.note
-              ? `<div class="review-followup"><b>次日复盘</b><span>${escapeHtml(
-                  [review.nextDayReview.status, review.nextDayReview.note].filter(Boolean).join("：")
-                )}</span></div>`
-              : ""
-          }
-        </article>`
-      )
+      .map((review) => {
+        const tags = review.tags.length
+          ? `          <div class="review-tags">${review.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}</div>`
+          : "";
+        const followup = review.nextDayReview?.note
+          ? `          <div class="review-followup"><b>次日复盘</b><span>${escapeHtml(
+              [review.nextDayReview.status, review.nextDayReview.note].filter(Boolean).join("：")
+            )}</span></div>`
+          : "";
+        return [
+          `<article class="review-entry">`,
+          `          <div class="review-meta">`,
+          `            ${review.verdict ? `<span>${escapeHtml(review.verdict)}</span>` : ""}`,
+          `            ${review.reportDate ? `<span>${escapeHtml(review.reportDate)}</span>` : ""}`,
+          `          </div>`,
+          `          <p>${escapeHtml(review.review)}</p>`,
+          tags,
+          followup,
+          `        </article>`
+        ]
+          .filter(Boolean)
+          .join("\n");
+      })
       .join("")}
   </section>`;
 }
