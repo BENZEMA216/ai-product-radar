@@ -8,7 +8,11 @@
       "reviewer": "benzema",
       "verdict": "继续观察",
       "review": "这个定位是明白的，就是给 agent 做云端语音/对话能力。但 playground 和 live demo 没跑起来，这个有点伤。做 API 产品，第一下试不起来，信任感会掉得很快。",
-      "tags": ["voice-api", "agent-infra", "reliability"]
+      "tags": [
+        "voice-api",
+        "agent-infra",
+        "reliability"
+      ]
     },
     {
       "productKey": "https://www.producthunt.com/products/keen-code-a-cli-coding-agent",
@@ -17,7 +21,11 @@
       "reviewer": "benzema",
       "verdict": "不看好",
       "review": "这个不成立吧。coding agent 还是效果为主，你把省 token 放成主卖点，我觉得不是一个好的出发点。成本可以是 bonus，但不能是产品第一性。",
-      "tags": ["coding-agent", "positioning", "cost"]
+      "tags": [
+        "coding-agent",
+        "positioning",
+        "cost"
+      ]
     },
     {
       "productKey": "https://github.com/Friz-zy/ai-capability-registry",
@@ -26,7 +34,11 @@
       "reviewer": "benzema",
       "verdict": "值得研究",
       "review": "这个太技术了，但可以看一下。用 GitOps 的方式管 workflows、skills、MCP servers，方向是有意思的。关键是它最后是工程师目录，还是能变成 agent 能力治理工具。",
-      "tags": ["mcp", "agent-governance", "gitops"]
+      "tags": [
+        "mcp",
+        "agent-governance",
+        "gitops"
+      ]
     },
     {
       "productKey": "https://www.producthunt.com/products/astra-security",
@@ -35,7 +47,11 @@
       "reviewer": "benzema",
       "verdict": "继续观察",
       "review": "AI agent 做漏洞发现和自动验证，这个方向没问题，尤其小 SaaS 会有这种需求。但官网第一眼不够让人信，安全产品还是要把 demo、报告和案例做扎实。",
-      "tags": ["security-agent", "smb-saas", "trust"]
+      "tags": [
+        "security-agent",
+        "smb-saas",
+        "trust"
+      ]
     },
     {
       "productKey": "https://www.producthunt.com/products/perplexity-personal-computer-for-windows",
@@ -44,7 +60,11 @@
       "reviewer": "benzema",
       "verdict": "低优先级",
       "review": "这个感觉就是 Perplexity Personal Computer 上 Windows 了。不是没价值，但新意不强。除非 Windows 本地文件和应用联动有明显差异，不然先放低优先级。",
-      "tags": ["platform-expansion", "desktop-agent", "perplexity"]
+      "tags": [
+        "platform-expansion",
+        "desktop-agent",
+        "perplexity"
+      ]
     },
     {
       "productKey": "https://www.producthunt.com/products/bookva-ai",
@@ -53,7 +73,11 @@
       "reviewer": "benzema",
       "verdict": "轻量灵感",
       "review": "本质还是预约 SaaS，但把预约页做得更酷，有视频背景，有情绪价值。这个挺海外的，也合理。小 SaaS 不一定要多复杂，有时候就是把一个普通动作做得更好看。",
-      "tags": ["scheduling", "visual-ux", "micro-saas"]
+      "tags": [
+        "scheduling",
+        "visual-ux",
+        "micro-saas"
+      ]
     },
     {
       "productKey": "https://www.producthunt.com/products/extella-ai",
@@ -62,7 +86,11 @@
       "reviewer": "benzema",
       "verdict": "保留疑问",
       "review": "agentic platform 听起来挺酷，但这种深度产品首页还在强调一堆拖拽交互，我会有点出戏。你得先证明系统真的能复用、能演化，不然就像在展示一个壳。",
-      "tags": ["agentic-platform", "product-demo", "ux-risk"]
+      "tags": [
+        "agentic-platform",
+        "product-demo",
+        "ux-risk"
+      ]
     },
     {
       "productKey": "https://github.com/cjmielke/NeuroAnswer",
@@ -71,7 +99,11 @@
       "reviewer": "benzema",
       "verdict": "值得重点看",
       "review": "这个酷。MCP 放到神经科学这种强专业数据场景里，让 Claude 去导航超大脑图，比泛泛做 agent 更有记忆点。垂直、专业、数据复杂，这种场景值得看。",
-      "tags": ["mcp", "science-ai", "vertical-agent"]
+      "tags": [
+        "mcp",
+        "science-ai",
+        "vertical-agent"
+      ]
     },
     {
       "productKey": "https://recursi.dev/",
@@ -80,7 +112,11 @@
       "reviewer": "benzema",
       "verdict": "体验劝退",
       "review": "概念可以，但网页卡得我不想用。开发者工具不要低估官网和 demo 的体验，它就是产品可信度的一部分。你说 self-improving，结果第一步访问都不顺，这很伤。",
-      "tags": ["coding-agent", "website-performance", "developer-experience"]
+      "tags": [
+        "coding-agent",
+        "website-performance",
+        "developer-experience"
+      ]
     },
     {
       "productKey": "https://github.com/HYPD-AI/openai-ads-mcp",
@@ -89,7 +125,11 @@
       "reviewer": "benzema",
       "verdict": "信息不足",
       "review": "有点新鲜，但我现在判断不了。MCP 连 ChatGPT Ads API 可能有用，但得讲清楚具体拿来干嘛：查投放、做报表、还是自动优化。没有场景就比较飘。",
-      "tags": ["mcp", "ads", "workflow"]
+      "tags": [
+        "mcp",
+        "ads",
+        "workflow"
+      ]
     },
     {
       "productKey": "https://gi-dellav.github.io/zerostack/",
@@ -98,7 +138,11 @@
       "reviewer": "benzema",
       "verdict": "不看好",
       "review": "又是 coding agent。这个赛道现在不能只说自己更轻、更省内存、Rust 写的。你得回答一个很直接的问题：我为什么不用 Claude Code 或 Codex？回答不了就很难成立。",
-      "tags": ["coding-agent", "differentiation", "developer-tools"]
+      "tags": [
+        "coding-agent",
+        "differentiation",
+        "developer-tools"
+      ]
     },
     {
       "productKey": "https://www.hydron.sh/",
@@ -107,7 +151,11 @@
       "reviewer": "benzema",
       "verdict": "值得看",
       "review": "这个听起来更像回事。hardware-aware coding agent 至少有具体边界，软硬结合会让产品理由更成立一点。不是又来一个泛 coding agent，而是有自己的问题域。",
-      "tags": ["hardware", "coding-agent", "vertical-tool"]
+      "tags": [
+        "hardware",
+        "coding-agent",
+        "vertical-tool"
+      ]
     },
     {
       "productKey": "https://lanes.sh/blog/whats-new-v042",
@@ -116,7 +164,11 @@
       "reviewer": "benzema",
       "verdict": "值得看",
       "review": "这个小点很好。内置 SQLite viewer 解决的是 coding agent 写数据库之后怎么验证的问题，用户一听就懂。用一个很朴素的手段解决真实问题，这种我会喜欢。",
-      "tags": ["coding-agent", "verification", "database"]
+      "tags": [
+        "coding-agent",
+        "verification",
+        "database"
+      ]
     },
     {
       "productKey": "https://www.ycombinator.com/launches/Qfi-standout-a-talent-agent-for-builders",
@@ -125,7 +177,11 @@
       "reviewer": "benzema",
       "verdict": "有争议",
       "review": "双边撮合可能还行，但做成 CLI 这个点我有点纠结。技术人群可能合适，因为大家确实在终端里工作；但招聘产品做这么窄，也可能把自己限制住。",
-      "tags": ["talent", "cli", "marketplace"]
+      "tags": [
+        "talent",
+        "cli",
+        "marketplace"
+      ]
     },
     {
       "productKey": "https://www.producthunt.com/products/mailwarm",
@@ -134,7 +190,11 @@
       "reviewer": "benzema",
       "verdict": "需验证",
       "review": "email warmup 这个事情很美国，很海外。我能理解 deliverability 是痛点，但它得解释为什么比自己 warmup 更好：有数据回流吗？有追踪吗？能证明送达率吗？",
-      "tags": ["email", "deliverability", "saas"]
+      "tags": [
+        "email",
+        "deliverability",
+        "saas"
+      ]
     },
     {
       "productKey": "https://www.producthunt.com/products/gemma-4-12b",
@@ -143,7 +203,11 @@
       "reviewer": "benzema",
       "verdict": "低优先级",
       "review": "模型更新可以记一下，但对产品灵感来说不是今天最关键。除非它带出新的本地应用形态，不然就是一个技术信号，先不展开。",
-      "tags": ["local-model", "multimodal", "model-release"]
+      "tags": [
+        "local-model",
+        "multimodal",
+        "model-release"
+      ]
     },
     {
       "productKey": "https://www.producthunt.com/products/build-club",
@@ -152,7 +216,11 @@
       "reviewer": "benzema",
       "verdict": "值得看",
       "review": "这个我会喜欢。AI 教育 + 社区 + 活动化，不只是卖课，而是把学习变成一个场域。小的教育产品这样做反而更成立，能看它怎么交付社群感。",
-      "tags": ["ai-education", "community", "learning"]
+      "tags": [
+        "ai-education",
+        "community",
+        "learning"
+      ]
     },
     {
       "productKey": "https://www.producthunt.com/products/deliveryman-ai",
@@ -161,7 +229,11 @@
       "reviewer": "benzema",
       "verdict": "个人暂不判断",
       "review": "又是邮件相关。我作为国内视角真的不太直觉，但这不代表需求不存在。海外销售和邮件生态可能确实很重，先标记一下，不要用 IM 生态经验直接误判。",
-      "tags": ["email", "sales-stack", "market-context"]
+      "tags": [
+        "email",
+        "sales-stack",
+        "market-context"
+      ]
     },
     {
       "productKey": "https://www.producthunt.com/products/boxes-dev",
@@ -170,7 +242,11 @@
       "reviewer": "benzema",
       "verdict": "继续观察",
       "review": "云端跑 Claude Code/Codex 这个方向肯定是合理的，但这类产品会很快长得差不多。最后拼的不是“能跑”，而是环境隔离、恢复、协作和成本控制。",
-      "tags": ["cloud-dev-env", "coding-agent", "workflow"]
+      "tags": [
+        "cloud-dev-env",
+        "coding-agent",
+        "workflow"
+      ]
     },
     {
       "productKey": "https://www.producthunt.com/products/gather-14",
@@ -179,7 +255,11 @@
       "reviewer": "benzema",
       "verdict": "轻量可看",
       "review": "design references 的 second brain，需求没问题。不要想得太花哨，收集、找回、复用做顺就可以。轻工具能不能留下来，看的是日常摩擦有没有真的变少。",
-      "tags": ["design-reference", "second-brain", "creative-tools"]
+      "tags": [
+        "design-reference",
+        "second-brain",
+        "creative-tools"
+      ]
     },
     {
       "productKey": "https://intencion.io",
@@ -188,7 +268,11 @@
       "reviewer": "benzema",
       "verdict": "信息不足",
       "review": "agent analytics 听起来重要，但现在还不够清楚。它到底分析用户、分析 agent、分析失败原因，还是做持续优化？这个不讲清楚，我就很难判断。",
-      "tags": ["agent-analytics", "observability", "product-analytics"]
+      "tags": [
+        "agent-analytics",
+        "observability",
+        "product-analytics"
+      ]
     },
     {
       "productKey": "https://www.g-spot.dev/",
@@ -197,7 +281,11 @@
       "reviewer": "benzema",
       "verdict": "观察海外邮件生态",
       "review": "怎么这么多围绕 Gmail 和邮箱做的 agent。说明海外工作流里邮件还是非常重。国内看会觉得奇怪，但 email 的数据流更结构化，也许反而更适合 agent。",
-      "tags": ["gmail", "agent-workflow", "market-context"]
+      "tags": [
+        "gmail",
+        "agent-workflow",
+        "market-context"
+      ]
     },
     {
       "productKey": "https://cost.dev/",
@@ -206,7 +294,11 @@
       "reviewer": "benzema",
       "verdict": "继续观察",
       "review": "让 agent 感知成本，这个想法挺简单，但可能有用。我现在还拿不准它是不是强需求，得问更高频用 agent 的人。小团队可能无感，大规模调用可能很痛。",
-      "tags": ["agent-cost", "developer-tools", "yc"]
+      "tags": [
+        "agent-cost",
+        "developer-tools",
+        "yc"
+      ]
     },
     {
       "productKey": "https://github.com/jpajak/ai-gauge",
@@ -215,7 +307,11 @@
       "reviewer": "benzema",
       "verdict": "小而明确",
       "review": "usage 监控这个 OK。它不一定大，但痛点很清楚：Claude、Codex、Copilot 到底还剩多少额度，高频用户会关心。小而明确，比很多泛 agent 产品强。",
-      "tags": ["usage-monitoring", "developer-tools", "ai-limits"]
+      "tags": [
+        "usage-monitoring",
+        "developer-tools",
+        "ai-limits"
+      ]
     },
     {
       "productKey": "https://www.ycombinator.com/launches/QgY-raspire-app-security-at-ai-speed",
@@ -224,7 +320,11 @@
       "reviewer": "benzema",
       "verdict": "需验证市场",
       "review": "AI runtime security layer for mobile apps，需求可能存在，但我现在看不懂市场有多大。安全产品不能只听起来正确，得看谁买、为什么现在买。",
-      "tags": ["mobile-security", "runtime-security", "yc"]
+      "tags": [
+        "mobile-security",
+        "runtime-security",
+        "yc"
+      ]
     },
     {
       "productKey": "https://github.com/anthropics/claude-code/releases/tag/v2.1.163",
@@ -233,7 +333,11 @@
       "reviewer": "benzema",
       "verdict": "正常更新",
       "review": "Claude Code 这次就是小功能更新，版本控制、复制体验这些都 OK。方向没问题，但不是今天最值得展开的东西。",
-      "tags": ["claude-code", "release", "developer-tools"]
+      "tags": [
+        "claude-code",
+        "release",
+        "developer-tools"
+      ]
     },
     {
       "productKey": "https://pennyroyaltea.github.io/resume/",
@@ -242,7 +346,11 @@
       "reviewer": "benzema",
       "verdict": "值得重点看",
       "review": "这个好。统一管理 Claude 和 Codex session，而且界面清爽。能看出来是有产品思维的人做的：抓的是一个真实工作流断点，不是又包装一个空泛 agent。",
-      "tags": ["codex", "claude", "session-management"]
+      "tags": [
+        "codex",
+        "claude",
+        "session-management"
+      ]
     },
     {
       "productKey": "https://boxes.dev",
@@ -251,7 +359,11 @@
       "reviewer": "benzema",
       "verdict": "重复信号",
       "review": "这个和前面的 Boxes.dev 是同一个东西。产品可以看，但雷达这边要去重，不然会把一个产品当成两个信号，判断会被污染。",
-      "tags": ["dedupe", "cloud-dev-env", "radar-quality"]
+      "tags": [
+        "dedupe",
+        "cloud-dev-env",
+        "radar-quality"
+      ]
     },
     {
       "productKey": "https://news.ycombinator.com/item?id=48397992",
@@ -260,7 +372,11 @@
       "reviewer": "benzema",
       "verdict": "不看好",
       "review": "让互联网对 AI 可读，这个说法太泛了。现在网页本来就能被读，除非你拿出一个非常具体的场景，不然听起来像协议口号。",
-      "tags": ["protocol", "agent-web", "positioning"]
+      "tags": [
+        "protocol",
+        "agent-web",
+        "positioning"
+      ]
     },
     {
       "productKey": "https://x.com/shao__meng/status/2062690152569614572",
@@ -269,7 +385,11 @@
       "reviewer": "benzema",
       "verdict": "值得讨论",
       "review": "ChatGPT 记忆升级这个值得单独聊。它不是一个小功能，而是长期用户画像、上下文延续和主动回忆的问题。这个方向会影响 AI 产品以后怎么“认识”用户。",
-      "tags": ["memory", "chatgpt", "product-strategy"]
+      "tags": [
+        "memory",
+        "chatgpt",
+        "product-strategy"
+      ]
     }
   ]
 }
