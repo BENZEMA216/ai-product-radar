@@ -266,30 +266,32 @@ function renderItems(items, latestDate = "") {
   return items
     .map((item, index) => {
       const isLatest = latestDate && item.reportDate === latestDate;
-      return `<article class="item" data-source="${escapeHtml(item.source)}" data-type="${escapeHtml(
-        item.type
-      )}" data-date="${escapeHtml(item.reportDate)}" data-report="${escapeHtml(item.reportPath)}" data-latest="${String(
-        isLatest
-      )}" data-reviewed="${String(Boolean(item.reviews?.length))}">
-        <div class="item-topline">
+      const reviewBlocks = renderReviewBlocks(item.reviews);
+      return [
+        `<article class="item" data-source="${escapeHtml(item.source)}" data-type="${escapeHtml(
+          item.type
+        )}" data-date="${escapeHtml(item.reportDate)}" data-report="${escapeHtml(item.reportPath)}" data-latest="${String(
+          isLatest
+        )}" data-reviewed="${String(Boolean(item.reviews?.length))}">`,
+        `        <div class="item-topline">
           <span class="rank">#${String(index + 1).padStart(2, "0")}</span>
           <span>${escapeHtml(item.reportDate)} ${escapeHtml(item.reportTime)}</span>
           <span class="source-badge">${escapeHtml(item.source)}</span>
           <span>${escapeHtml(item.type)}</span>
-        </div>
-        <div class="item-main">
+        </div>`,
+        `        <div class="item-main">
           <h2><a href="${escapeHtml(item.link)}" target="_blank" rel="noreferrer noopener">${escapeHtml(item.product)}</a></h2>
           <div class="signal-copy">
             <p class="did"><b>做了什么</b>${escapeHtml(item.did)}</p>
             <p class="why"><b>为什么值得看</b>${escapeHtml(item.why)}</p>
-          </div>
-          ${renderReviewBlocks(item.reviews)}
-        </div>
-        <div class="item-actions">
+          </div>${reviewBlocks ? `\n          ${reviewBlocks}` : ""}
+        </div>`,
+        `        <div class="item-actions">
           <a href="${escapeHtml(item.link)}" target="_blank" rel="noreferrer noopener">产品链接</a>
           <a class="evidence" href="${escapeHtml(item.evidenceUrl)}" target="_blank" rel="noreferrer noopener">证据来源</a>
-        </div>
-      </article>`;
+        </div>`,
+        `      </article>`
+      ].join("\n");
     })
     .join("\n");
 }
