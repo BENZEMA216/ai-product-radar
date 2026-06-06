@@ -66,6 +66,10 @@ that object without rewriting the original `review` text.
 - Hacker News is read through Algolia API so each hit has `created_at`.
 - GitHub releases are read through authenticated `gh api` when available.
 - Hugging Face uses public API endpoints and only includes recent Spaces/Models with timestamps.
+- Dealflow XHS is attempted by default when a local dealflow checkout is found. It uses the
+  dealflow Chrome Bridge and logged-in Xiaohongshu account as a best-effort domestic source;
+  missing checkout, missing bridge, missing extension, or missing login degrade to zero XHS
+  rows instead of blocking the daily report. Set `RADAR_DISABLE_DEALFLOW=1` to skip it.
 - X/Twitter is treated as best-effort discovery unless a visible official/creator timestamp can be verified.
 - Daily automation output is persisted under `reports/`, even when the run is blocked.
 - Daily reports are intended to be committed and pushed to the GitHub repository after generation.
@@ -78,4 +82,7 @@ that object without rewriting the original `review` text.
 - Current-window dry run returned candidates from the same structured source families.
 - 2026-06-01: added `npm run daily` so scheduled runs always persist a report file before
   returning final output.
+- 2026-06-06: integrated Dealflow/XHS as a default best-effort source. The local checkout is
+  expected at `../dealflow` or `DEALFLOW_ROOT`; XHS rows appear only when the dealflow Bridge,
+  Chrome extension, and Xiaohongshu login are available.
 - Remaining known limitation: X/Twitter is not fully reliable without an authenticated/API-backed search path.

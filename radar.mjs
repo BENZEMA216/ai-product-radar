@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 import { execFileSync } from "node:child_process";
+import { existsSync } from "node:fs";
+import { homedir } from "node:os";
+import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const SHANGHAI = "Asia/Shanghai";
@@ -100,6 +103,8 @@ const GITHUB_RELEASE_REPOS = [
 const AIHOT_FEED_URL = "https://aihot.virxact.com/feed/all.xml";
 const ORANGEBOT_PRODUCT_HUNT_URL = "https://orangebot.ai/sources/product-hunt";
 const YC_LAUNCHES_URL = "https://www.ycombinator.com/launches";
+const DEALFLOW_KEYWORDS = ["AI产品", "AI Agent", "AI工具创业", "工作流自动化"];
+const DEALFLOW_MAX_PER_KEYWORD = 5;
 
 const AIHOT_KEEP_KEYWORDS = [
   "发布",
@@ -350,6 +355,189 @@ function buildAihotCandidate({ title, link, description, author, publishedAt }) 
     source: "aihot",
     observedAt: publishedAt
   };
+}
+
+function truthyEnv(value) {
+  return /^(1|true|yes|on)$/i.test(String(value || "").trim());
+}
+
+export function isDealflowEnabled(env = process.env) {
+  return !truthyEnv(env.RADAR_DISABLE_DEALFLOW) && !truthyEnv(env.RADAR_SKIP_DEALFLOW);
+}
+
+function looksLikeDealflowRoot(path) {
+  return Boolean(path) && existsSync(join(path, "scripts", "cli.py"));
+}
+
+export function resolveDealflowRoot(env = process.env, cwd = process.cwd()) {
+  const explicit = env.DEALFLOW_ROOT || env.XHS_DEALFLOW_ROOT;
+  if (explicit && looksLikeDealflowRoot(resolve(explicit))) return resolve(explicit);
+
+  const candidates = [
+    join(cwd, "dealflow"),
+    join(cwd, "..", "dealflow"),
+    join(dirname(cwd), "dealflow"),
+    join(homedir(), "Documents", "Skill 自动化评估", "dealflow"),
+    join(homedir(), "Documents", "dealflow"),
+    join(homedir(), "dealflow")
+  ];
+  return candidates.map((path) => resolve(path)).find(looksLikeDealflowRoot) || "";
+}
+
+function dealflowPython(root, env = process.env) {
+  const localPython = join(root, ".venv", "bin", "python");
+  if (existsSync(localPython)) return localPython;
+  return env.DEALFLOW_PYTHON || env.PYTHON || "python3";
+}
+
+function dealflowEnv(env = process.env) {
+  return {
+    ...sanitizeLocalProxyEnv(env),
+    NO_PROXY: "localhost,127.0.0.1",
+    no_proxy: "localhost,127.0.0.1"
+  };
+}
+
+function execDealflowJson(root, args, options = {}) {
+  const python = dealflowPython(root, options.env);
+  const cli = join(root, "scripts", "cli.py");
+  let stdout = "";
+  try {
+    stdout = execFileSync(python, [cli, ...args], {
+      cwd: root,
+      encoding: "utf8",
+      env: dealflowEnv(options.env),
+      timeout: options.timeoutMs || 45000,
+      maxBuffer: 10 * 1024 * 1024
+    });
+  } catch (error) {
+    stdout = String(error.stdout || "");
+    if (!stdout.trim()) return null;
+  }
+  try {
+    return JSON.parse(stdout);
+  } catch {
+    return null;
+  }
+}
+
+function dealflowBridgeReady(root, options = {}) {
+  const script = [
+    "import json, sys",
+    "sys.path.insert(0, 'scripts')",
+    "from xhs.bridge import BridgePage",
+    "page = BridgePage()",
+    "print(json.dumps({'server': page.is_server_running(), 'extension': page.is_extension_connected()}))"
+  ].join("\n");
+  try {
+    const stdout = execFileSync(dealflowPython(root, options.env), ["-c", script], {
+      cwd: root,
+      encoding: "utf8",
+      env: dealflowEnv(options.env),
+      timeout: options.timeoutMs || 6000,
+      maxBuffer: 1024 * 1024
+    });
+    const status = JSON.parse(stdout);
+    return Boolean(status.server && status.extension);
+  } catch {
+    return false;
+  }
+}
+
+function dealflowLoggedIn(root, options = {}) {
+  const data = execDealflowJson(root, ["check-login"], {
+    env: options.env,
+    timeoutMs: options.timeoutMs || 25000
+  });
+  return data?.logged_in === true;
+}
+
+function compactInteract(interact = {}) {
+  const liked = interact.likedCount || interact.liked_count || interact.likeCount || "";
+  const comments = interact.commentCount || interact.comment_count || "";
+  const collected = interact.collectedCount || interact.collected_count || "";
+  const parts = [];
+  if (liked) parts.push(`赞 ${liked}`);
+  if (comments) parts.push(`评 ${comments}`);
+  if (collected) parts.push(`藏 ${collected}`);
+  return parts.join(" / ");
+}
+
+function noteObservedAt(note = {}) {
+  const raw = note.time || note.timestamp || note.publish_time || "";
+  const value = Number(raw);
+  if (Number.isFinite(value) && value > 0) {
+    return new Date(value > 10_000_000_000 ? value : value * 1000).toISOString();
+  }
+  return "";
+}
+
+export function dealflowDetailToCandidate({ keyword, feedId, xsecToken, note }) {
+  const title = clean(note?.title || note?.note_card?.display_title || "");
+  if (!title) return null;
+  const description = clean(note?.desc || note?.description || "");
+  const nickname = clean(note?.user?.nickname || note?.note_card?.user?.nickname || "");
+  const observedAt = noteObservedAt(note);
+  const link = `https://www.xiaohongshu.com/explore/${encodeURIComponent(feedId)}${
+    xsecToken ? `?xsec_token=${encodeURIComponent(xsecToken)}&xsec_source=pc_feed` : ""
+  }`;
+  const interact = compactInteract(note?.interactInfo || note?.interact_info || note?.note_card?.interact_info || {});
+  const did = [
+    `小红书笔记由 ${nickname || "未知账号"} 发布`,
+    keyword ? `搜索词：${keyword}` : "",
+    description || title,
+    interact ? `互动：${interact}` : ""
+  ]
+    .filter(Boolean)
+    .join("；");
+  return {
+    product: title,
+    link,
+    type: "疑似新产品",
+    did: clean(did).slice(0, 220),
+    why: "小红书能补充国内产品和个人开发者的早期需求信号，适合观察 AI 产品在内容平台上的真实传播与用户语言。",
+    evidence: `[XHS Dealflow ${observedAt || keyword || "latest"}](${link})`,
+    source: "xhs_dealflow",
+    observedAt
+  };
+}
+
+export async function fetchDealflowXhs(start, end, options = {}) {
+  const env = options.env || process.env;
+  if (!isDealflowEnabled(env)) return [];
+
+  const root = options.root || resolveDealflowRoot(env, options.cwd || process.cwd());
+  if (!root) return [];
+  if (!dealflowBridgeReady(root, { env, timeoutMs: Math.min(options.timeoutMs || 6000, 6000) })) return [];
+  if (!dealflowLoggedIn(root, { env, timeoutMs: options.loginTimeoutMs || 25000 })) return [];
+
+  const keywords = options.keywords || DEALFLOW_KEYWORDS;
+  const maxPerKeyword = options.maxPerKeyword || DEALFLOW_MAX_PER_KEYWORD;
+  const out = [];
+  for (const keyword of keywords) {
+    const search = execDealflowJson(
+      root,
+      ["search-feeds", "--keyword", keyword, "--sort-by", "最新", "--publish-time", "一天内"],
+      { env, timeoutMs: options.searchTimeoutMs || 60000 }
+    );
+    for (const feed of (search?.feeds || []).slice(0, maxPerKeyword)) {
+      const feedId = feed.id || feed.feedId || "";
+      const xsecToken = feed.xsecToken || feed.xsec_token || "";
+      if (!feedId) continue;
+      const detail = execDealflowJson(
+        root,
+        ["get-feed-detail", "--feed-id", feedId, "--xsec-token", xsecToken, "--max-comment-items", "0"],
+        { env, timeoutMs: options.detailTimeoutMs || 45000 }
+      );
+      const note = detail?.note || detail;
+      const candidate = dealflowDetailToCandidate({ keyword, feedId, xsecToken, note });
+      if (!candidate) continue;
+      if (candidate.observedAt && !withinWindow(candidate.observedAt, start, end)) continue;
+      if (!isRelevant(`${candidate.product} ${candidate.did}`)) continue;
+      out.push(candidate);
+    }
+  }
+  return uniqueBy(out, (item) => item.link).slice(0, 30);
 }
 
 export function parseAihotRssItems(xml, start, end) {
@@ -779,6 +967,9 @@ function reportWhy(item) {
   if (item.source === "aihot") {
     return `${product} 来自官网、社媒或媒体信号，适合补充观察产品叙事和市场动作。`;
   }
+  if (item.source === "xhs_dealflow") {
+    return `${product} 来自小红书早期内容信号，适合观察国内用户语言、传播切口和真实需求表述。`;
+  }
   return `${product} 提供了一个新的 AI 产品样本，适合比较定位、交互和分发方式。`;
 }
 
@@ -794,17 +985,21 @@ export async function runRadar(options = {}) {
   const dates = datesCovered(start, now);
   const endDateKey = localDateKey(now);
 
-  const [phNested, phFallback, ycLaunches, hn, gh, hf, aihot] = await Promise.all([
+  const [phNested, phFallback, ycLaunches, hn, gh, hf, aihot, dealflowXhs] = await Promise.all([
     Promise.all(dates.map((date) => fetchProductHuntDate(date).catch(() => []))),
     fetchProductHuntFallback(start, now),
     fetchYcLaunches(start, now).catch(() => []),
     fetchHackerNews(start, now),
     process.env.RADAR_SKIP_GITHUB ? Promise.resolve([]) : fetchGitHubReleases(start, now),
     fetchHuggingFace(start, now),
-    fetchAihot(start, now, endDateKey)
+    fetchAihot(start, now, endDateKey),
+    fetchDealflowXhs(start, now, { cwd: process.cwd() }).catch(() => [])
   ]);
 
-  const candidates = uniqueBy([...phNested.flat(), ...phFallback, ...ycLaunches, ...hn, ...gh, ...hf, ...aihot], (item) => item.link);
+  const candidates = uniqueBy(
+    [...phNested.flat(), ...phFallback, ...ycLaunches, ...hn, ...gh, ...hf, ...aihot, ...dealflowXhs],
+    (item) => item.link
+  );
   candidates.sort((a, b) => score(b) - score(a));
   return {
     now,
@@ -818,7 +1013,7 @@ export async function runRadar(options = {}) {
 }
 
 function score(item) {
-  const sourceScore = { producthunt: 40, yc_launch: 38, hackernews: 35, github: 30, aihot: 28, huggingface: 20 };
+  const sourceScore = { producthunt: 40, yc_launch: 38, hackernews: 35, github: 30, aihot: 28, xhs_dealflow: 26, huggingface: 20 };
   const text = `${item.product} ${item.did} ${item.why}`.toLowerCase();
   let value = sourceScore[item.source] || 0;
   for (const keyword of ["agent", "mcp", "coding", "workflow", "sales", "marketing", "voice", "video"]) {

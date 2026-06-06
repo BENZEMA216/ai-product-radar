@@ -777,6 +777,7 @@ export function renderSiteHtml(data) {
     .item[data-source="GitHub Release"] { --source: var(--category-moss); }
     .item[data-source="Hugging Face API"] { --source: var(--category-gold); }
     .item[data-source="AIHOT"] { --source: var(--category-iris); }
+    .item[data-source="XHS Dealflow"] { --source: var(--category-rose); }
     .item-topline {
       display: flex;
       flex-wrap: wrap;

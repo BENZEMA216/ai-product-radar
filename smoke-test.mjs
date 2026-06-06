@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { basename, join } from "node:path";
 import {
@@ -11,8 +11,12 @@ import {
   parseAihotDailyMarkdown,
   parseAihotRssItems,
   parseYcLaunchesPayload,
+  dealflowDetailToCandidate,
+  fetchDealflowXhs,
+  isDealflowEnabled,
   renderBlockedReport,
   renderMarkdownTable,
+  resolveDealflowRoot,
   reportPathForNow,
   runRadar,
   sanitizeLocalProxyEnv
@@ -507,6 +511,55 @@ function testYcLaunchParserFixture() {
   assert.match(items[0].evidence, /YC Launch/);
 }
 
+function testDealflowDefaultEnabled() {
+  assert.equal(isDealflowEnabled({}), true, "Dealflow/XHS should be attempted by default");
+  assert.equal(isDealflowEnabled({ RADAR_DISABLE_DEALFLOW: "1" }), false, "disable flag should skip Dealflow/XHS");
+  assert.equal(isDealflowEnabled({ RADAR_SKIP_DEALFLOW: "1" }), false, "skip flag should skip Dealflow/XHS");
+
+  const tempDir = mkdtempSync(join(tmpdir(), "radar-dealflow-root-"));
+  try {
+    mkdirSync(join(tempDir, "scripts"), { recursive: true });
+    writeFileSync(join(tempDir, "scripts", "cli.py"), "# dealflow cli fixture\n");
+    assert.equal(resolveDealflowRoot({ DEALFLOW_ROOT: tempDir }, process.cwd()), tempDir);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+}
+
+function testDealflowDetailToCandidate() {
+  const candidate = dealflowDetailToCandidate({
+    keyword: "AI产品",
+    feedId: "abc123",
+    xsecToken: "xsec-token",
+    note: {
+      title: "AI 口播助手",
+      desc: "一个帮商家批量生成小红书口播脚本和视频的 AI 工具。",
+      time: Date.parse("2026-06-05T06:30:00+08:00"),
+      user: { nickname: "创业者小王" },
+      type: "normal",
+      interactInfo: { likedCount: "31", commentCount: "4", collectedCount: "9" }
+    }
+  });
+
+  assert.equal(candidate.product, "AI 口播助手");
+  assert.equal(candidate.source, "xhs_dealflow");
+  assert.equal(candidate.type, "疑似新产品");
+  assert.match(candidate.did, /小红书笔记/);
+  assert.match(candidate.did, /创业者小王/);
+  assert.match(candidate.why, /小红书/);
+  assert.match(candidate.evidence, /XHS Dealflow/);
+  assert.match(candidate.link, /xiaohongshu\.com\/explore\/abc123/);
+}
+
+async function testDealflowUnavailableDoesNotBlock() {
+  const items = await fetchDealflowXhs(
+    new Date("2026-06-05T00:00:00+08:00"),
+    new Date("2026-06-06T00:00:00+08:00"),
+    { env: { DEALFLOW_ROOT: "/tmp/does-not-exist-dealflow" }, cwd: process.cwd(), timeoutMs: 10 }
+  );
+  assert.deepEqual(items, [], "missing Dealflow checkout should degrade to an empty source");
+}
+
 async function testEndToEndFixture() {
   const result = await runRadar({ now: "2026-05-31T08:02:13+08:00", hours: 24 });
   const sources = new Set(result.candidates.map((item) => item.source));
@@ -552,6 +605,9 @@ const tests = [
   ["AIHOT parser fixture", testAihotParserFixture],
   ["AIHOT daily parser fixture", testAihotDailyParserFixture],
   ["YC Launch parser fixture", testYcLaunchParserFixture],
+  ["Dealflow XHS default enablement", testDealflowDefaultEnabled],
+  ["Dealflow XHS candidate mapping", testDealflowDetailToCandidate],
+  ["Dealflow XHS unavailable fallback", testDealflowUnavailableDoesNotBlock],
   ["End-to-end fixture", testEndToEndFixture],
   ["CLI output", testCliOutput]
 ];
