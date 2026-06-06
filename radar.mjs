@@ -601,13 +601,15 @@ async function fetchAihot(start, end, endDateKey) {
 function productHuntCandidate({ rawName, link, rawDescription, dateKey, evidenceUrl, raw }) {
   const text = `${rawName} ${rawDescription}`;
   if (!isRelevant(text)) return null;
+  const product = clean(rawName);
   const description = clean(rawDescription) || "在 Product Hunt 当日榜发布，页面描述与 AI 相关。";
+  const baseWhy = productManagerWhy(`${product} ${description}`);
   return {
-    product: clean(rawName),
+    product,
     link,
     type: "新产品",
     did: description,
-    why: productManagerWhy(`${rawName} ${description}`),
+    why: productHuntWhyFromContext({ product, did: description, why: baseWhy }),
     evidence: `[Product Hunt ${dateKey}](${evidenceUrl})`,
     source: "producthunt",
     observedAt: dateKey,
@@ -945,13 +947,66 @@ function compactProductName(product) {
   return value.length > 64 ? `${value.slice(0, 36)}...${value.slice(-24)}` : value;
 }
 
+function compactDescription(value, max = 44) {
+  const text = clean(value)
+    .replace(/\[[^\]]+\]\(([^)]+)\)/g, "$1")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (!text) return "";
+  return text.length > max ? `${text.slice(0, max - 1)}...` : text;
+}
+
+function productHuntWhyFromContext(item) {
+  const product = compactProductName(item.product);
+  const did = clean(item.did);
+  const text = `${item.product} ${item.did} ${item.why}`.toLowerCase();
+  if (includesAny(text, ["fundrais", "investor", "book meetings"])) {
+    return `${product} 把融资外联做成可执行 agent，适合看高价值 B2B 流程如何用 AI 承接线索、预约和转化。`;
+  }
+  if (includesAny(text, ["store", "stores", "seller", "commerce", "channels", "shop"])) {
+    return `${product} 把多渠道店铺运营交给 AI agents，适合看垂直运营场景如何从工具升级为托管执行。`;
+  }
+  if (includesAny(text, ["coding", "developer", "code", "vibe", "github"])) {
+    return `${product} 把开发者工作流包装成首日可试用产品，适合观察编码入口、费用门槛和环境粘性。`;
+  }
+  if (includesAny(text, ["real-world task", "real world task", "autonomous", "arena"])) {
+    return `${product} 强调真实任务和自主执行，适合观察 agent 产品怎样证明可控性、完成度和首日可信度。`;
+  }
+  if (includesAny(text, ["reasoning", "nemotron", "model", "llm", "long-running", "long running"])) {
+    return `${product} 把推理效率作为卖点，适合跟踪模型能力如何转化成长任务 agent 的产品叙事。`;
+  }
+  if (includesAny(text, ["voice", "mac", "local", "desktop", "computer"])) {
+    return `${product} 选择本地语音/桌面入口，适合观察低摩擦控制电脑的交互边界和隐私叙事。`;
+  }
+  if (includesAny(text, ["prompt inject", "token cost", "browser agent", "shield", "security"])) {
+    return `${product} 聚焦浏览器 agent 的安全和成本，适合看基础防护能力如何变成独立产品。`;
+  }
+  if (includesAny(text, ["product-market fit", "pmf"])) {
+    return `${product} 把 PMF 探索做成 agent 化导航，适合看产品策略工具如何进入日常决策。`;
+  }
+  if (includesAny(text, ["slack", "customer messaging", "customer message"])) {
+    return `${product} 从 Slack 内编排客户消息，值得看 AI 如何嵌入团队既有沟通入口。`;
+  }
+  if (includesAny(text, ["social media", "socialecho", "social copilot"])) {
+    return `${product} 切入社媒运营这种高频内容工作流，适合观察 AI copilot 如何承担发布和协作。`;
+  }
+  if (includesAny(text, ["collaboration", "teammate", "teammates", "team workspace"])) {
+    return `${product} 把协作场景里的 agent 当作队友呈现，值得观察权限、交接和团队采用方式。`;
+  }
+  const snippet = compactDescription(did);
+  if (snippet) {
+    return `${product} 的 PH 描述聚焦「${snippet}」，适合看它如何把 AI 能力翻译成首日用户能理解的场景。`;
+  }
+  return `${product} 是 PH 首日出现的 AI 产品样本，适合比较定位、入口和传播话术。`;
+}
+
 function reportWhy(item) {
   const why = clean(item.why);
   if (!REUSABLE_WHY_COPY.has(why)) return why;
-  const product = compactProductName(item.product);
   if (item.source === "producthunt") {
-    return `${product} 在 PH 上把 AI 能力包装成可试用产品，适合观察定位、入口和首日传播。`;
+    return productHuntWhyFromContext(item);
   }
+  const product = compactProductName(item.product);
   if (item.source === "hackernews") {
     return `${product} 已在 HN 获得早期开发者曝光，适合观察真实反馈和采用门槛。`;
   }

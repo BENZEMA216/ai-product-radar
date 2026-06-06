@@ -325,6 +325,70 @@ function testProductHuntWhyCopyUsesProductContext() {
   );
 }
 
+function testProductHuntCandidateWhyAvoidsGenericTemplates() {
+  const markdown = [
+    "[Recursi](https://www.producthunt.com/products/recursi-self-improving-vibe-coding-env)Self improving vibe coding env with no API fees",
+    "[SellerClaw](https://www.producthunt.com/products/sellerclaw)A team of AI agents that runs your stores across channels",
+    "[Agent Mode on Arena](https://www.producthunt.com/products/arena-5)Get real-world tasks done with autonomous AI agents",
+    "[Nemotron 3 Ultra by NVIDIA](https://www.producthunt.com/products/nvidia)Powers faster, efficient reasoning for long-running agents",
+    "[LocalClicky](https://www.producthunt.com/products/localclicky)Control your Mac with your voice locally",
+    "[Agent Browser Shield](https://www.producthunt.com/products/agent-browser-shield)Block prompt inject & cut token costs for AI browser agents"
+  ].join("\n");
+  const items = parseProductHuntMarkdown(
+    markdown,
+    "2026-06-06",
+    "https://www.producthunt.com/leaderboard/daily/2026/6/6/all"
+  );
+  const whys = items.map((item) => item.why);
+  assert.equal(items.length, 6);
+  assert.equal(new Set(whys).size, 6);
+  assert.ok(whys.every((why) => !why.includes("agent 化包装体现产品从工具到可执行工作流的迁移")));
+  assert.ok(whys.every((why) => !why.includes("可作为 AI 产品定位、交互或分发方式的竞品/灵感样本")));
+}
+
+function testRenderedProductHuntWhyCopyAvoidsRepeatedTemplate() {
+  const products = [
+    ["Recursi", "Self improving vibe coding env with no API fees"],
+    ["SellerClaw", "A team of AI agents that runs your stores across channels"],
+    ["Agent Mode on Arena", "Get real-world tasks done with autonomous AI agents"],
+    ["Nemotron 3 Ultra by NVIDIA", "Powers faster, efficient reasoning for long-running agents"],
+    ["LocalClicky", "Control your Mac with your voice locally"],
+    ["Agent Browser Shield", "Block prompt inject and cut token costs for AI browser agents"]
+  ];
+  const candidates = products.map(([product, did], index) => ({
+    product,
+    link: `https://www.producthunt.com/products/ph-${index}`,
+    type: "新产品",
+    did,
+    why: "agent 化包装体现产品从工具到可执行工作流的迁移。",
+    evidence: `[Product Hunt 2026-06-06](https://www.producthunt.com/leaderboard/daily/2026/6/6/all)`,
+    source: "producthunt"
+  }));
+  const rows = parseReportMarkdown(renderMarkdownTable(candidates), "reports/2026-06-06-0835-cst.md");
+  const whys = rows.map((row) => row.why);
+  assert.equal(rows.length, 6);
+  assert.equal(new Set(whys).size, 6);
+  assert.ok(
+    whys.every((why) => !why.includes("在 PH 上把 AI 能力包装成可试用产品")),
+    "Rendered Product Hunt reasons should not reuse the old source-level template"
+  );
+  assert.ok(
+    new Set(whys.map((why) => why.replace(/^[^，。]+/, "{product}"))).size >= 4,
+    "Rendered Product Hunt reasons should vary by product context, not only by product name"
+  );
+}
+
+function testSiteBuilderNormalizesArchivedProductHuntWhyCopy() {
+  const report = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| Recursi | [链接](https://www.producthunt.com/products/recursi) | 新产品 | Self improving vibe coding env with no API fees | Recursi 在 PH 上把 AI 能力包装成可试用产品，适合观察定位、入口和首日传播。 | [Product Hunt 2026-06-06](https://www.producthunt.com/leaderboard/daily/2026/6/6/all) |
+| SellerClaw | [链接](https://www.producthunt.com/products/sellerclaw) | 新产品 | A team of AI agents that runs your stores across channels | SellerClaw 在 PH 上把 AI 能力包装成可试用产品，适合观察定位、入口和首日传播。 | [Product Hunt 2026-06-06](https://www.producthunt.com/leaderboard/daily/2026/6/6/all) |`;
+  const rows = parseReportMarkdown(report, "reports/2026-06-06-0835-cst.md");
+  assert.equal(rows.length, 2);
+  assert.equal(new Set(rows.map((row) => row.why)).size, 2);
+  assert.ok(rows.every((row) => !row.why.includes("在 PH 上把 AI 能力包装成可试用产品")));
+}
+
 async function testHnAlgolia() {
   const url =
     "https://hn.algolia.com/api/v1/search_by_date?query=AI%20agent&tags=story&numericFilters=created_at_i%3E=1780156800,created_at_i%3C=1780243333&hitsPerPage=5";
@@ -599,6 +663,9 @@ const tests = [
   ["Product Hunt fixture", testProductHuntFixture],
   ["Product Hunt fallback parser fixture", testProductHuntFallbackParserFixture],
   ["Product Hunt why copy uses product context", testProductHuntWhyCopyUsesProductContext],
+  ["Product Hunt candidate why avoids generic templates", testProductHuntCandidateWhyAvoidsGenericTemplates],
+  ["Rendered Product Hunt why copy avoids repeated template", testRenderedProductHuntWhyCopyAvoidsRepeatedTemplate],
+  ["Site builder normalizes archived Product Hunt why copy", testSiteBuilderNormalizesArchivedProductHuntWhyCopy],
   ["HN Algolia", testHnAlgolia],
   ["GitHub gh api", testGhApi],
   ["Hugging Face API", testHuggingFaceApi],
