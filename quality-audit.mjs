@@ -50,8 +50,18 @@ function latestMatchingFile(dir, pattern) {
   }
 }
 
+function matchingJsonFile(dir, date) {
+  if (!date) return "";
+  const path = join(dir, `${date}.json`);
+  return existsSync(path) ? path : "";
+}
+
 function reportDateFromPath(path) {
   return String(path || "").match(/(\d{4}-\d{2}-\d{2})-\d{4}-cst\.md$/)?.[1] || "";
+}
+
+function jsonDateFromPath(path) {
+  return String(path || "").match(/(\d{4}-\d{2}-\d{2})\.json$/)?.[1] || "";
 }
 
 function readJson(path, fallback = null) {
@@ -350,11 +360,68 @@ function auditFeedbackSnapshot(feedbackSnapshot) {
   return failures;
 }
 
-export function auditReportQuality({ rows = [], sourceHealth = null, siteHtml = "", feedbackSnapshot = null } = {}) {
+function auditQualityFileAlignment({ reportDate = "", sourceHealthPath = "", feedbackPath = "", feedbackSnapshot = null } = {}) {
+  if (!reportDate) return [];
+  const failures = [];
+  const sourceHealthDate = jsonDateFromPath(sourceHealthPath);
+  if (!sourceHealthPath) {
+    failures.push(
+      failure("source_health_missing_for_report", "缺少与报告日期一致的 source health 文件，无法证明当天来源链路状态。", {
+        reportDate
+      })
+    );
+  } else if (sourceHealthDate !== reportDate) {
+    failures.push(
+      failure("source_health_date_mismatch", "source health 文件日期与报告日期不一致，可能使用了旧来源健康结果。", {
+        reportDate,
+        sourceHealthPath,
+        sourceHealthDate
+      })
+    );
+  }
+  const feedbackPathDate = jsonDateFromPath(feedbackPath);
+  const feedbackSnapshotDate = clean(feedbackSnapshot?.date);
+  const feedbackDate = feedbackSnapshotDate || feedbackPathDate;
+  if (!feedbackPath) {
+    failures.push(
+      failure("feedback_missing_for_report", "缺少与报告日期一致的 feedback 文件，无法证明当天用户反馈读取状态。", {
+        reportDate
+      })
+    );
+  } else if (feedbackPathDate !== reportDate) {
+    failures.push(
+      failure("feedback_date_mismatch", "feedback 文件日期与报告日期不一致，可能使用了旧用户反馈快照。", {
+        reportDate,
+        feedbackPath,
+        feedbackDate: feedbackPathDate
+      })
+    );
+  } else if (feedbackSnapshotDate && feedbackSnapshotDate !== reportDate) {
+    failures.push(
+      failure("feedback_date_mismatch", "feedback 快照日期与报告日期不一致，可能使用了旧用户反馈快照。", {
+        reportDate,
+        feedbackPath,
+        feedbackDate
+      })
+    );
+  }
+  return failures;
+}
+
+export function auditReportQuality({
+  rows = [],
+  sourceHealth = null,
+  siteHtml = "",
+  feedbackSnapshot = null,
+  reportDate = "",
+  sourceHealthPath = "",
+  feedbackPath = ""
+} = {}) {
   const failures = [];
   if (!Array.isArray(rows) || rows.length === 0) {
     failures.push(failure("empty_report", "报告没有可审计的产品行。"));
   }
+  failures.push(...auditQualityFileAlignment({ reportDate, sourceHealthPath, feedbackPath, feedbackSnapshot }));
   failures.push(...auditHardNegatives(rows));
   failures.push(...auditRepeatedWhy(rows));
   failures.push(...auditSourceDiversity(rows));
@@ -492,8 +559,10 @@ export function writeQualityArtifacts(artifacts, { auditPath, rankingPath }) {
 function parseArgs(argv) {
   const args = {
     report: latestMatchingFile("reports", REPORT_PATTERN),
-    sourceHealth: latestMatchingFile("quality/source-health", JSON_DATE_PATTERN),
-    feedback: latestMatchingFile("quality/feedback", JSON_DATE_PATTERN),
+    sourceHealth: "",
+    feedback: "",
+    sourceHealthProvided: false,
+    feedbackProvided: false,
     site: "docs/index.html",
     json: false,
     write: true,
@@ -503,14 +572,23 @@ function parseArgs(argv) {
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
     if (arg === "--report") args.report = argv[++i];
-    if (arg === "--source-health") args.sourceHealth = argv[++i];
-    if (arg === "--feedback") args.feedback = argv[++i];
+    if (arg === "--source-health") {
+      args.sourceHealth = argv[++i];
+      args.sourceHealthProvided = true;
+    }
+    if (arg === "--feedback") {
+      args.feedback = argv[++i];
+      args.feedbackProvided = true;
+    }
     if (arg === "--site") args.site = argv[++i];
     if (arg === "--json") args.json = true;
     if (arg === "--no-write") args.write = false;
     if (arg === "--audit-dir") args.auditDir = argv[++i];
     if (arg === "--ranking-dir") args.rankingDir = argv[++i];
   }
+  const reportDate = reportDateFromPath(args.report);
+  if (!args.sourceHealthProvided) args.sourceHealth = matchingJsonFile("quality/source-health", reportDate);
+  if (!args.feedbackProvided) args.feedback = matchingJsonFile("quality/feedback", reportDate);
   return args;
 }
 
@@ -521,7 +599,15 @@ function main() {
   const sourceHealth = args.sourceHealth && existsSync(args.sourceHealth) ? readJson(args.sourceHealth, null) : null;
   const feedbackSnapshot = args.feedback && existsSync(args.feedback) ? readJson(args.feedback, null) : null;
   const siteHtml = args.site && existsSync(args.site) ? readFileSync(args.site, "utf8") : "";
-  const audit = auditReportQuality({ rows, sourceHealth, feedbackSnapshot, siteHtml });
+  const audit = auditReportQuality({
+    rows,
+    sourceHealth,
+    feedbackSnapshot,
+    siteHtml,
+    reportDate: reportDateFromPath(args.report),
+    sourceHealthPath: args.sourceHealth || "",
+    feedbackPath: args.feedback || ""
+  });
   const paths = qualityArtifactPaths(args.report, { auditDir: args.auditDir, rankingDir: args.rankingDir });
   const artifacts = buildQualityArtifacts({
     audit,

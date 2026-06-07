@@ -44,6 +44,7 @@ node radar.mjs --hours 24 --json
 - dry-run 生成同表头报告；如果来源全失败，也必须生成 blocked report。
 - `npm run build-site` 能重建 `docs/index.html`，且页面包含 `window.__RADAR_DATA__`。
 - `npm run acceptance` 能审计最新正式报告、source health、feedback snapshot 和站点数据，写出 `quality/audits/YYYY-MM-DD.json` 与 `quality/ranking/YYYY-MM-DD.json`，且不出现硬负样本、模板化 why、来源健康缺失或模型分类缺失。
+- `npm run acceptance` 必须使用与最新正式报告同一自然日的 `quality/source-health/YYYY-MM-DD.json` 和 `quality/feedback/YYYY-MM-DD.json`；如果只能找到旧文件或新文件，必须失败，不能用错日期的质量文件掩盖当天链路状态。
 - JSON dry-run 有合理候选数量；如果数量异常少，source health 必须解释。
 - 正式报告和站点文件可提交并推送到 GitHub。
 

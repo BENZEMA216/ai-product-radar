@@ -1415,6 +1415,30 @@ function testQualityAuditFlagsMalformedFeedback() {
   assert.ok(audit.failures.some((item) => item.code === "feedback_invalid_records"));
 }
 
+function testQualityAuditFlagsStaleQualityFiles() {
+  const rows = [
+    {
+      product: "Agent Runtime",
+      link: "https://example.com/agent-runtime",
+      source: "HN Algolia",
+      why: "它把 agent 运行时的调试和审计边界讲清楚，适合判断企业工具是否需要控制层。",
+      did: "HN 发布帖出现：Launch HN: Agent Runtime",
+      category: "product",
+      qualityLabel: "keep"
+    }
+  ];
+  const audit = auditReportQuality({
+    rows,
+    reportDate: "2026-06-09",
+    sourceHealthPath: "quality/source-health/2026-06-08.json",
+    feedbackPath: "quality/feedback/2026-06-08.json",
+    feedbackSnapshot: { date: "2026-06-08", status: "ok", feedback: [] }
+  });
+  assert.equal(audit.ok, false);
+  assert.ok(audit.failures.some((item) => item.code === "source_health_date_mismatch"));
+  assert.ok(audit.failures.some((item) => item.code === "feedback_date_mismatch"));
+}
+
 function testQualityAuditUsesStableGeneratedAtFromSourceHealth() {
   const audit = auditReportQuality({
     rows: [
@@ -1793,6 +1817,7 @@ const tests = [
   ["Quality audit flags duplicate repo Top 10", testQualityAuditFlagsDuplicateRepoTop10],
   ["Quality audit writes persistent artifacts", testQualityAuditWritesPersistentArtifacts],
   ["Quality audit flags malformed feedback", testQualityAuditFlagsMalformedFeedback],
+  ["Quality audit flags stale quality files", testQualityAuditFlagsStaleQualityFiles],
   ["Quality audit uses stable generatedAt from source health", testQualityAuditUsesStableGeneratedAtFromSourceHealth],
   ["Rendered Product Hunt why copy avoids repeated template", testRenderedProductHuntWhyCopyAvoidsRepeatedTemplate],
   ["Site builder normalizes archived Product Hunt why copy", testSiteBuilderNormalizesArchivedProductHuntWhyCopy],
