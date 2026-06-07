@@ -185,6 +185,7 @@ HN 验收时必须分别看：
 | Source diversity@20 | >= 3 个来源家族，除非当天客观单一来源占优 |
 | Weak-before-strong violations | 0 个已确认弱强倒挂 |
 | Duplicate repo/owner@10 | 同一 GitHub repo 或 Hugging Face owner 默认最多 1 条 |
+| Resource list@20 | 资源列表、目录、curated/awesome list 不进入 Top 20 |
 | 重复模板 why | Top 20 内不能连续 3 条近似同义 |
 
 ### 9.2 单条排序解释

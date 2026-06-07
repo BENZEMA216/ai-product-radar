@@ -1310,6 +1310,32 @@ function testQualityAuditFlagsDuplicateRepoTop10() {
   assert.ok(audit.failures.some((failure) => failure.code === "duplicate_group_top10"));
 }
 
+function testQualityAuditFlagsResourceListsTop20() {
+  const rows = [
+    {
+      product: "A List of AI Neolabs",
+      link: "https://example.com/ai-neolabs",
+      source: "HN Algolia",
+      why: "这是一个 AI 资源列表，不是可体验产品发布。",
+      did: "HN 发布帖出现：Show HN: A List of AI Neolabs",
+      category: "product",
+      qualityLabel: "keep"
+    },
+    ...Array.from({ length: 19 }, (_, index) => ({
+      product: `Useful Agent Product ${index}`,
+      link: `https://example.com/useful-agent-${index}`,
+      source: index % 2 ? "HN Algolia" : "Product Hunt",
+      why: "它有明确的 agent 工作流场景，适合产品经理观察执行入口和采用门槛。",
+      did: "发布 AI agent workflow 产品。",
+      category: "product",
+      qualityLabel: "keep"
+    }))
+  ];
+  const audit = auditReportQuality({ rows });
+  assert.equal(audit.ok, false);
+  assert.ok(audit.failures.some((failure) => failure.code === "resource_list_top20"));
+}
+
 function testQualityAuditWritesPersistentArtifacts() {
   const rows = [
     {
@@ -1815,6 +1841,7 @@ const tests = [
   ["Quality audit flags weak before strong", testQualityAuditFlagsWeakBeforeStrong],
   ["Quality audit flags poor Top 10 PM scores", testQualityAuditFlagsPoorTop10PmScores],
   ["Quality audit flags duplicate repo Top 10", testQualityAuditFlagsDuplicateRepoTop10],
+  ["Quality audit flags resource lists Top 20", testQualityAuditFlagsResourceListsTop20],
   ["Quality audit writes persistent artifacts", testQualityAuditWritesPersistentArtifacts],
   ["Quality audit flags malformed feedback", testQualityAuditFlagsMalformedFeedback],
   ["Quality audit flags stale quality files", testQualityAuditFlagsStaleQualityFiles],

@@ -143,6 +143,19 @@ function auditHardNegatives(rows) {
   ];
 }
 
+function auditResourceLists(rows) {
+  const bad = rows.slice(0, 20).filter((row) => {
+    const text = `${row.product} ${row.did}`.toLowerCase();
+    return /\b(?:a\s+)?list\s+of\s+ai\b/.test(text) || /\b(?:awesome|curated)\s+(?:ai\s+)?(?:list|resources?)\b/.test(text);
+  });
+  if (!bad.length) return [];
+  return [
+    failure("resource_list_top20", "Top 20 中出现资源列表/目录类信号，不是明确产品发布或产品更新。", {
+      products: bad.map((item) => item.product)
+    })
+  ];
+}
+
 function auditSourceDiversity(rows) {
   const top20 = rows.slice(0, 20);
   if (top20.length < 10) return [];
@@ -423,6 +436,7 @@ export function auditReportQuality({
   }
   failures.push(...auditQualityFileAlignment({ reportDate, sourceHealthPath, feedbackPath, feedbackSnapshot }));
   failures.push(...auditHardNegatives(rows));
+  failures.push(...auditResourceLists(rows));
   failures.push(...auditRepeatedWhy(rows));
   failures.push(...auditSourceDiversity(rows));
   failures.push(...auditModelPlacement(rows));
