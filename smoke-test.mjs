@@ -26,7 +26,7 @@ import {
 } from "./radar.mjs";
 import { buildSiteData, parseReportMarkdown, renderSiteHtml } from "./build-site.mjs";
 import { buildFeedbackSnapshot, parseFeedbackIssue } from "./feedback-runner.mjs";
-import { commitMessageForReport, newestReportPath, reportPathsForDir, reviewPathsForDir } from "./publish-report.mjs";
+import { commitMessageForReport, newestReportPath, qualityPathsForDir, reportPathsForDir, reviewPathsForDir } from "./publish-report.mjs";
 
 async function fetchText(url) {
   let lastError;
@@ -116,11 +116,14 @@ function testPublishHelpers() {
     writeFileSync(join(tempDir, "2026-06-03-0837-cst.md"), "successful report");
     writeFileSync(join(tempDir, "2026-06-03.json"), "reviews");
     writeFileSync(join(tempDir, "notes.txt"), "not a report");
+    mkdirSync(join(tempDir, "quality", "source-health"), { recursive: true });
+    writeFileSync(join(tempDir, "quality", "source-health", "2026-06-03.json"), "{}");
     assert.deepEqual(reportPathsForDir(tempDir).map((path) => basename(path)), [
       "2026-06-02-0801-cst.md",
       "2026-06-03-0837-cst.md"
     ]);
     assert.deepEqual(reviewPathsForDir(tempDir).map((path) => basename(path)), ["2026-06-03.json"]);
+    assert.deepEqual(qualityPathsForDir(join(tempDir, "quality")).map((path) => basename(path)), ["2026-06-03.json"]);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }

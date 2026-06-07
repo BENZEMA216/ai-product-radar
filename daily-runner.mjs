@@ -54,11 +54,15 @@ function reportDateFromPath(path) {
   return String(path || "").match(/(\d{4}-\d{2}-\d{2})-\d{4}-cst\.md$/)?.[1] || "";
 }
 
-function snapshotFeedback(reportPath, env) {
+function qualityBaseDir(reportDir, name) {
+  return reportDir === "reports" ? `quality/${name}` : `${reportDir}/${name}`;
+}
+
+function snapshotFeedback(reportPath, env, outDir) {
   const date = reportDateFromPath(reportPath);
   if (!date) return;
   try {
-    execFileSync("node", ["feedback-runner.mjs", "--date", date], {
+    execFileSync("node", ["feedback-runner.mjs", "--date", date, "--out-dir", outDir], {
       cwd: process.cwd(),
       encoding: "utf8",
       env,
@@ -108,7 +112,7 @@ async function main() {
     });
   } catch (error) {
     const markdown = renderBlockedReport(`smoke 失败：${summarizeFailure(error)}`);
-    writeJson(sourceHealthPathForNow(now), {
+    writeJson(sourceHealthPathForNow(now, qualityBaseDir(args.reportDir, "source-health")), {
       generatedAt: now.toISOString(),
       window: null,
       productHuntDateKeys: [],
@@ -122,8 +126,8 @@ async function main() {
   }
 
   const result = await runRadar({ now, hours: args.hours });
-  snapshotFeedback(reportPath, cleanEnv);
-  writeJson(sourceHealthPathForNow(now), {
+  snapshotFeedback(reportPath, cleanEnv, qualityBaseDir(args.reportDir, "feedback"));
+  writeJson(sourceHealthPathForNow(now, qualityBaseDir(args.reportDir, "source-health")), {
     generatedAt: now.toISOString(),
     window: result.window,
     productHuntDateKeys: result.productHuntDateKeys,

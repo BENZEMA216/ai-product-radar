@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { execFileSync } from "node:child_process";
-import { existsSync, readdirSync } from "node:fs";
+import { existsSync, readdirSync, statSync } from "node:fs";
 import { basename, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -38,6 +38,27 @@ export function reviewPathsForDir(reviewDir) {
     if (error.code === "ENOENT") return [];
     throw error;
   }
+}
+
+export function qualityPathsForDir(qualityDir = "quality") {
+  const out = [];
+  function walk(dir) {
+    let entries = [];
+    try {
+      entries = readdirSync(dir);
+    } catch (error) {
+      if (error.code === "ENOENT") return;
+      throw error;
+    }
+    for (const name of entries) {
+      const path = join(dir, name);
+      const stat = statSync(path);
+      if (stat.isDirectory()) walk(path);
+      if (stat.isFile()) out.push(path);
+    }
+  }
+  walk(qualityDir);
+  return out.sort();
 }
 
 function parseArgs(argv) {
@@ -117,7 +138,9 @@ async function main() {
 
   git(["rev-parse", "--is-inside-work-tree"]);
   buildSite();
-  const pathsToStage = Array.from(new Set([...reportPathsForDir(args.reportDir), report, ...reviewPathsForDir(args.reviewDir), "docs/index.html"]));
+  const pathsToStage = Array.from(
+    new Set([...reportPathsForDir(args.reportDir), report, ...reviewPathsForDir(args.reviewDir), ...qualityPathsForDir(), "docs/index.html"])
+  );
   git(["add", "--", ...pathsToStage]);
 
   if (!hasStagedChanges()) {
