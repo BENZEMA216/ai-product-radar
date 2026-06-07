@@ -19,6 +19,7 @@ import {
   dealflowDetailToCandidate,
   applyQualityMemoryToCandidates,
   fetchDealflowXhs,
+  isRelevant,
   isDealflowEnabled,
   priorityScore,
   rankCandidatesForPriority,
@@ -951,6 +952,19 @@ function testProductHuntRejectsIncidentalAiSubstring() {
     ["OpenAI Workflow", "xAI Dashboard"],
     "Product Hunt parser should not treat incidental ai letters inside ordinary words as AI relevance"
   );
+}
+
+function testRelevanceRejectsIncidentalAcronymSubstrings() {
+  assert.equal(
+    isRelevant("Show HN: Code Island – teaches programming logic with drag-and-drop blocks https://zslava.itch.io/code-island"),
+    false,
+    "RAG should not match the substring inside drag-and-drop"
+  );
+  assert.equal(isRelevant("A professional typing trainer built around real codebases."), false);
+  assert.equal(isRelevant("Know which campaigns actually drive your installs"), false);
+  assert.equal(isRelevant("Use LLMs with RAG over your knowledge base"), true);
+  assert.equal(isRelevant("MCP runtime for AI agent tool traffic"), true);
+  assert.equal(isRelevant("GPT-powered workflow assistant"), true);
 }
 
 function testProductHuntRejectsLowSignalConsumerNovelty() {
@@ -2334,6 +2348,7 @@ const tests = [
   ["Product Hunt candidate why avoids generic templates", testProductHuntCandidateWhyAvoidsGenericTemplates],
   ["Product Hunt why copy handles current fallback contexts", testProductHuntWhyCopyHandlesCurrentFallbackContexts],
   ["Product Hunt rejects incidental ai substring", testProductHuntRejectsIncidentalAiSubstring],
+  ["Relevance rejects incidental acronym substrings", testRelevanceRejectsIncidentalAcronymSubstrings],
   ["Product Hunt rejects low-signal consumer novelty", testProductHuntRejectsLowSignalConsumerNovelty],
   ["Product Hunt rejects topic-only dating novelty", testProductHuntRejectsTopicOnlyDatingNovelty],
   ["Priority score downranks weak novelty", testPriorityScoreDownranksWeakNovelty],

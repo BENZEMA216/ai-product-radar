@@ -345,7 +345,7 @@ function withinWindow(iso, start, end) {
   return Number.isFinite(t) && t >= start.getTime() && t <= end.getTime();
 }
 
-function isRelevant(text) {
+export function isRelevant(text) {
   const lower = text.toLowerCase();
   return AI_KEYWORDS.some((keyword) => keywordMatches(lower, keyword));
 }
@@ -363,8 +363,8 @@ function isModelInfraText(text) {
 
 function keywordMatches(lowerText, keyword) {
   const lowerKeyword = keyword.toLowerCase();
-  if (lowerKeyword === "ai") {
-    return /(^|[^a-z0-9])ai([^a-z0-9]|$)/i.test(lowerText);
+  if (["ai", "rag", "llm", "mcp", "gpt", "xai"].includes(lowerKeyword)) {
+    return new RegExp(`(^|[^a-z0-9])${lowerKeyword}([^a-z0-9]|$)`, "i").test(lowerText);
   }
   return lowerText.includes(lowerKeyword);
 }
