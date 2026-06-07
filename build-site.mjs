@@ -351,7 +351,7 @@ function renderItems(items, latestDate = "") {
           isLatest
         )}" data-reviewed="${String(Boolean(item.reviews?.length))}">`,
         `        <div class="item-topline">
-          <span class="rank">#${String(index + 1).padStart(2, "0")}</span>
+          <span class="rank">信号 ${String(index + 1).padStart(2, "0")}</span>
           <span>${escapeHtml(item.reportDate)} ${escapeHtml(item.reportTime)}</span>
           <span class="source-badge">${escapeHtml(item.source)}</span>
           <span>${escapeHtml(item.type)}</span>
@@ -819,6 +819,15 @@ export function renderSiteHtml(data) {
       color: var(--text-secondary);
       font-size: 13px;
     }
+    .filter-summary {
+      display: grid;
+      gap: 4px;
+      min-width: 0;
+    }
+    .sort-note {
+      max-width: 560px;
+      line-height: 1.45;
+    }
     .type-pills { display: flex; flex-wrap: wrap; gap: 8px; }
     .pill {
       border: 1px solid var(--border-default);
@@ -875,6 +884,7 @@ export function renderSiteHtml(data) {
       font-family: "Geist Mono", "SFMono-Regular", Consolas, monospace;
       font-weight: 700;
       background: var(--bg-raised);
+      white-space: nowrap;
     }
     .source-badge { color: var(--source, var(--text-primary)); font-weight: 700; }
     .item-main { min-width: 0; }
@@ -884,7 +894,11 @@ export function renderSiteHtml(data) {
       line-height: 1.16;
       font-weight: 600;
     }
-    .item h2 a { text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    .item h2 a {
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+      overflow-wrap: anywhere;
+    }
     .signal-copy {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
@@ -1023,6 +1037,11 @@ export function renderSiteHtml(data) {
       }
       .content-title { font-size: 34px; }
       .status-grid, .toolbar, .item-actions { grid-template-columns: 1fr; }
+      .filter-meta {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .sort-note { max-width: 100%; }
       .source-row { grid-template-columns: minmax(82px, 112px) minmax(0, 1fr) 28px; gap: 8px; }
     }
   </style>
@@ -1090,7 +1109,10 @@ export function renderSiteHtml(data) {
           </select>
         </section>
         <section class="filter-meta">
-          <div id="result-count" aria-live="polite">${latestDay?.count ?? items.length} 条</div>
+          <div class="filter-summary">
+            <div id="result-count" aria-live="polite">${latestDay?.count ?? items.length} 条</div>
+            <div class="sort-note">信号序号按采集相关性和来源权重排列，不代表热度排名；真实热度请打开证据来源查看。</div>
+          </div>
           <div class="type-pills">${renderTypePills(latestTypeCounts)}</div>
         </section>
         <section class="empty" id="empty" role="status" aria-live="polite">No matching signals.</section>

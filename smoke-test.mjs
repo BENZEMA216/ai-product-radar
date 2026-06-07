@@ -168,6 +168,10 @@ function testSiteBuilderHelpers() {
   assert.match(html, /aria-label="Filter by source"/);
   assert.match(html, /aria-live="polite"/);
   assert.match(html, /aria-pressed="false"/);
+  assert.match(html, /<span class="rank">信号 01<\/span>/);
+  assert.match(html, /不代表热度排名/);
+  assert.doesNotMatch(html, /<span class="rank">#01<\/span>/);
+  assert.match(html, /\.item h2 a\s*\{[^}]*overflow-wrap:\s*anywhere;/s);
   assert.match(html, /select\s*\{[^}]*appearance:\s*none;[^}]*padding-inline:\s*14px 48px;[^}]*background-position:\s*right 21px center,\s*right 16px center;/s);
   assert.match(html, /\.content\s*\{[^}]*justify-self:\s*center;/s);
   assert.match(html, /\.content\s*\{[^}]*margin-inline:\s*auto;/s);
