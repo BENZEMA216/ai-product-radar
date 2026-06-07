@@ -1497,6 +1497,111 @@ function testQualityAuditFlagsProductHuntFallbackMissingRawAiSplit() {
   assert.ok(audit.failures.some((failure) => failure.code === "producthunt_fallback_missing_raw_ai_split"));
 }
 
+function testQualityAuditFlagsProductHuntReportCountMismatch() {
+  const rows = [
+    {
+      product: "Agent Runtime",
+      source: "HN Algolia",
+      why: "它把 agent 运行时隔离作为核心能力，适合观察企业执行权限边界。",
+      did: "Show HN: Agent Runtime for AI workflows",
+      category: "product",
+      qualityLabel: "keep"
+    },
+    {
+      product: "LangGraph Release",
+      source: "GitHub Release",
+      why: "版本更新说明 agent 图编排框架仍在维护前端适配面，适合跟踪生态入口。",
+      did: "发布 SDK 更新。",
+      category: "product",
+      qualityLabel: "keep"
+    },
+    {
+      product: "HF Agent Demo",
+      source: "Hugging Face API",
+      why: "HF demo 作为弱信号保留，重点看是否有明确任务闭环。",
+      did: "Space 在 Hugging Face 最近创建或更新。",
+      category: "product",
+      qualityLabel: "weak_keep"
+    }
+  ];
+  const audit = auditReportQuality({
+    rows,
+    sourceHealth: {
+      sources: {
+        producthunt: {
+          status: "fallback",
+          rawCount: 17,
+          keptCount: 6,
+          note: "Product Hunt 按 Pacific 完成日抓取 2026-06-06；原始覆盖 17 条，AI 相关候选 6 条"
+        },
+        yc_launch: { status: "empty", rawCount: 0, keptCount: 0, note: "本窗口无候选" },
+        hackernews: { status: "ok", rawCount: 2, keptCount: 1, note: "ok" },
+        github: { status: "ok", rawCount: 1, keptCount: 1, note: "ok" },
+        huggingface: { status: "ok", rawCount: 1, keptCount: 1, note: "HF Model 进入 Models & Infra" },
+        aihot: { status: "ok", rawCount: 0, keptCount: 0, note: "ok" },
+        xhs_dealflow: { status: "unavailable", rawCount: 0, keptCount: 0, note: "XHS 默认尝试" }
+      }
+    },
+    siteHtml:
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
+  });
+  assert.ok(!audit.ok);
+  assert.ok(audit.failures.some((failure) => failure.code === "producthunt_report_count_mismatch"));
+}
+
+function testQualityAuditAcceptsProductHuntReportFilterExplanation() {
+  const rows = [
+    {
+      product: "Agent Runtime",
+      source: "HN Algolia",
+      why: "它把 agent 运行时隔离作为核心能力，适合观察企业执行权限边界。",
+      did: "Show HN: Agent Runtime for AI workflows",
+      category: "product",
+      qualityLabel: "keep"
+    },
+    {
+      product: "LangGraph Release",
+      source: "GitHub Release",
+      why: "版本更新说明 agent 图编排框架仍在维护前端适配面，适合跟踪生态入口。",
+      did: "发布 SDK 更新。",
+      category: "product",
+      qualityLabel: "keep"
+    },
+    {
+      product: "HF Agent Demo",
+      source: "Hugging Face API",
+      why: "HF demo 作为弱信号保留，重点看是否有明确任务闭环。",
+      did: "Space 在 Hugging Face 最近创建或更新。",
+      category: "product",
+      qualityLabel: "weak_keep"
+    }
+  ];
+  const audit = auditReportQuality({
+    rows,
+    sourceHealth: {
+      sources: {
+        producthunt: {
+          status: "fallback",
+          rawCount: 17,
+          keptCount: 6,
+          reportKeptCount: 0,
+          previouslyReportedCount: 6,
+          note: "Product Hunt 按 Pacific 完成日抓取 2026-06-06；原始覆盖 17 条，AI 相关候选 6 条；历史去重移除 6 条已报道 Product Hunt 信号，最终发布 0 条。"
+        },
+        yc_launch: { status: "empty", rawCount: 0, keptCount: 0, note: "本窗口无候选" },
+        hackernews: { status: "ok", rawCount: 2, keptCount: 1, note: "ok" },
+        github: { status: "ok", rawCount: 1, keptCount: 1, note: "ok" },
+        huggingface: { status: "ok", rawCount: 1, keptCount: 1, note: "HF Model 进入 Models & Infra" },
+        aihot: { status: "ok", rawCount: 0, keptCount: 0, note: "ok" },
+        xhs_dealflow: { status: "unavailable", rawCount: 0, keptCount: 0, note: "XHS 默认尝试" }
+      }
+    },
+    siteHtml:
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
+  });
+  assert.equal(audit.ok, true, audit.failures.map((failure) => `${failure.code}:${failure.message}`).join("; "));
+}
+
 function testQualityAuditFlagsWeakBeforeStrong() {
   const audit = auditReportQuality({
     rows: [
@@ -2213,6 +2318,8 @@ const tests = [
   ["Quality audit accepts healthy report", testQualityAuditAcceptsHealthyReport],
   ["Quality audit flags low Product Hunt fallback coverage", testQualityAuditFlagsLowProductHuntFallbackCoverage],
   ["Quality audit flags Product Hunt fallback missing raw AI split", testQualityAuditFlagsProductHuntFallbackMissingRawAiSplit],
+  ["Quality audit flags Product Hunt report count mismatch", testQualityAuditFlagsProductHuntReportCountMismatch],
+  ["Quality audit accepts Product Hunt report filter explanation", testQualityAuditAcceptsProductHuntReportFilterExplanation],
   ["Quality audit flags weak before strong", testQualityAuditFlagsWeakBeforeStrong],
   ["Quality audit flags poor Top 10 PM scores", testQualityAuditFlagsPoorTop10PmScores],
   ["Quality audit flags duplicate repo Top 10", testQualityAuditFlagsDuplicateRepoTop10],

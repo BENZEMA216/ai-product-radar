@@ -340,6 +340,48 @@ function auditSourceHealth(sourceHealth) {
   return failures;
 }
 
+function auditProductHuntReportCount(rows, sourceHealth) {
+  const sources = sourceHealth?.sources || sourceHealth || {};
+  const producthunt = sources.producthunt;
+  if (!producthunt) return [];
+  const reportCount = rows.filter((row) => clean(row.source) === "Product Hunt").length;
+  const keptCount = Number(producthunt.keptCount || 0);
+  const hasReportKeptCount = producthunt.reportKeptCount !== undefined && producthunt.reportKeptCount !== null;
+  const reportKeptCount = hasReportKeptCount ? Number(producthunt.reportKeptCount || 0) : keptCount;
+  const note = clean(producthunt.note);
+  const explainsHistoryFilter = /历史去重|已报道|最终发布|previously reported|reportKeptCount/i.test(note);
+  const failures = [];
+  if (hasReportKeptCount && reportKeptCount !== reportCount) {
+    failures.push(
+      failure("producthunt_report_count_mismatch", "Product Hunt source health 的 reportKeptCount 与报告实际 PH 行数不一致。", {
+        reportCount,
+        reportKeptCount,
+        keptCount,
+        note
+      })
+    );
+  } else if (!hasReportKeptCount && keptCount !== reportCount) {
+    failures.push(
+      failure("producthunt_report_count_mismatch", "Product Hunt source health 只给出候选数，但未解释历史去重后的实际发布数。", {
+        reportCount,
+        keptCount,
+        note
+      })
+    );
+  }
+  if (keptCount > reportCount && !explainsHistoryFilter) {
+    failures.push(
+      failure("producthunt_report_filter_unexplained", "Product Hunt 候选数大于报告发布数时必须解释历史去重或过滤原因。", {
+        reportCount,
+        keptCount,
+        reportKeptCount: hasReportKeptCount ? reportKeptCount : null,
+        note
+      })
+    );
+  }
+  return failures;
+}
+
 function auditSiteHtml(siteHtml) {
   if (!siteHtml) return [];
   const failures = [];
@@ -477,7 +519,10 @@ export function auditReportQuality({
   failures.push(...auditDuplicateGroups(rows));
   failures.push(...auditDuplicateGroupsTop20(rows));
   failures.push(...auditRankingQuality(rows));
-  if (sourceHealth) failures.push(...auditSourceHealth(sourceHealth));
+  if (sourceHealth) {
+    failures.push(...auditSourceHealth(sourceHealth));
+    failures.push(...auditProductHuntReportCount(rows, sourceHealth));
+  }
   if (siteHtml) failures.push(...auditSiteHtml(siteHtml));
   if (feedbackSnapshot) failures.push(...auditFeedbackSnapshot(feedbackSnapshot));
   const rankingMetrics = rankingQualityMetrics(rows);
