@@ -276,6 +276,14 @@ function testSiteBuilderSeparatesHuggingFaceModels() {
   assert.match(html, /data-category="model_infra"/);
 }
 
+function testSiteBuilderMarksNonProductShowHnReportsWeak() {
+  const report = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| LLM for Dummies | [链接](https://example.com/llm-for-dummies) | 新产品 | HN 发布帖在 2026-06-07T02:42:58Z 出现：Show HN: LLM for Dummies | 更像教育内容入口。 | [HN Algolia 2026-06-07T02:42:58Z](https://news.ycombinator.com/item?id=48431261) |`;
+  const [item] = parseReportMarkdown(report, "reports/2026-06-07-1614-cst.md");
+  assert.equal(item.qualityLabel, "weak_keep");
+}
+
 function testProductReviewsAttachToCards() {
   const report = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
 |---|---|---|---|---|---|
@@ -488,6 +496,70 @@ function testPriorityScoreDownranksWeakNovelty() {
     sourceRank: 6
   };
   assert.ok(priorityScore(strong) > priorityScore(weak), "priority score should rank clear workflow products above novelty items");
+}
+
+function testPriorityScoreKeepsWeakHfSpacesBehindStrongProductLaunches() {
+  const weakHfSpace = {
+    product: "Hugging Face Space: shaik8143/Multi-Agent-AI_Research",
+    link: "https://huggingface.co/spaces/shaik8143/Multi-Agent-AI_Research",
+    type: "新产品",
+    did: "Space 在 Hugging Face 最近创建或更新。",
+    why: "仅有 Space 更新时间，没有用户、能力或采用证据。",
+    evidence: "[Hugging Face API 2026-06-07T18:03:30.000Z](https://huggingface.co/spaces/shaik8143/Multi-Agent-AI_Research)",
+    source: "huggingface",
+    category: "product",
+    qualityLabel: "weak_keep"
+  };
+  const strongProductLaunch = {
+    product: "Wellows",
+    link: "https://www.producthunt.com/products/wellows-3",
+    type: "新产品",
+    did: "AI visibility platform that gets your brand cited in 90 days",
+    why: "明确 AI 可见性产品发布，有首日榜单证据。",
+    evidence: "[Product Hunt 2026-06-06](https://www.producthunt.com/leaderboard/daily/2026/6/6/all)",
+    source: "producthunt",
+    category: "product",
+    qualityLabel: "keep",
+    sourceRank: 4
+  };
+  assert.ok(
+    priorityScore(strongProductLaunch) > priorityScore(weakHfSpace),
+    "clear Product Hunt keep launches should rank above weak Hugging Face Space update signals"
+  );
+}
+
+function testPriorityScoreDownranksHotNonProductShowHnDemos() {
+  const hotDemo = {
+    product: "A 178K Neural Net that beats Pokémon Roguelike",
+    link: "https://example.com/roguelike-neural-net",
+    type: "新产品",
+    did: "HN 发布帖出现：Show HN: A 178K Neural Net that beats Pokémon Roguelike",
+    why: "高热度 AI 实验，但不是明确产品发布。",
+    evidence: "[HN Algolia](https://news.ycombinator.com/item?id=48436583)",
+    source: "hackernews",
+    sourceSubtype: "show_hn",
+    category: "product",
+    metrics: {
+      hnPoints: 320,
+      hnComments: 88
+    }
+  };
+  const productLaunch = {
+    product: "Wellows",
+    link: "https://www.producthunt.com/products/wellows-3",
+    type: "新产品",
+    did: "AI visibility platform that gets your brand cited in 90 days",
+    why: "明确 AI 可见性产品发布，有首日榜单证据。",
+    evidence: "[Product Hunt 2026-06-06](https://www.producthunt.com/leaderboard/daily/2026/6/6/all)",
+    source: "producthunt",
+    category: "product",
+    qualityLabel: "keep",
+    sourceRank: 4
+  };
+  assert.ok(
+    priorityScore(productLaunch) > priorityScore(hotDemo),
+    "HN heat should not let non-product demos outrank clear AI product launches"
+  );
 }
 
 function testQualityMemoryDropsNegativeGoldens() {
@@ -711,6 +783,49 @@ function testQualityAuditAcceptsHealthyReport() {
       "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
   });
   assert.equal(audit.ok, true, audit.failures.map((failure) => failure.message).join("; "));
+}
+
+function testQualityAuditFlagsWeakBeforeStrong() {
+  const audit = auditReportQuality({
+    rows: [
+      {
+        product: "Weak HF Space",
+        source: "Hugging Face API",
+        why: "仅有 Space 更新时间，没有用户、能力或采用证据。",
+        did: "Space 在 Hugging Face 最近创建或更新。",
+        category: "product",
+        qualityLabel: "weak_keep"
+      },
+      {
+        product: "Strong Product Hunt Launch",
+        source: "Product Hunt",
+        why: "明确 AI 产品发布，有首日榜单证据。",
+        did: "AI workflow platform for teams.",
+        category: "product",
+        qualityLabel: "keep"
+      },
+      {
+        product: "Strong HN Tool",
+        source: "HN Algolia",
+        why: "明确开发者工具场景，有 HN 发布证据。",
+        did: "Show HN: AI agent CLI for teams",
+        category: "product",
+        qualityLabel: "keep"
+      },
+      {
+        product: "Strong GitHub Release",
+        source: "GitHub Release",
+        why: "固定 watchlist 中的 AI SDK 更新。",
+        did: "发布 AI SDK release。",
+        category: "product",
+        qualityLabel: "keep"
+      }
+    ],
+    siteHtml:
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
+  });
+  assert.ok(!audit.ok);
+  assert.ok(audit.failures.some((failure) => failure.code === "weak_before_strong"));
 }
 
 function testQualityAuditWritesPersistentArtifacts() {
@@ -1132,6 +1247,7 @@ const tests = [
   ["Product Hunt Pacific completed day", testProductHuntPacificCompletedDay],
   ["Site builder natural-day timeline", testSiteBuilderAggregatesReportTimelineByNaturalDay],
   ["Site builder separates Hugging Face models", testSiteBuilderSeparatesHuggingFaceModels],
+  ["Site builder marks non-product Show HN reports weak", testSiteBuilderMarksNonProductShowHnReportsWeak],
   ["Product reviews attach to cards", testProductReviewsAttachToCards],
   ["Report why copy adds context for repeated templates", testReportWhyCopyAddsContextForRepeatedTemplates],
   ["Report why copy keeps long product context distinct", testReportWhyCopyKeepsLongProductContextDistinct],
@@ -1142,6 +1258,8 @@ const tests = [
   ["Product Hunt rejects incidental ai substring", testProductHuntRejectsIncidentalAiSubstring],
   ["Product Hunt rejects low-signal consumer novelty", testProductHuntRejectsLowSignalConsumerNovelty],
   ["Priority score downranks weak novelty", testPriorityScoreDownranksWeakNovelty],
+  ["Priority score keeps weak HF spaces behind strong launches", testPriorityScoreKeepsWeakHfSpacesBehindStrongProductLaunches],
+  ["Priority score downranks hot non-product Show HN demos", testPriorityScoreDownranksHotNonProductShowHnDemos],
   ["Quality memory drops negative goldens", testQualityMemoryDropsNegativeGoldens],
   ["Quality memory drops user feedback", testQualityMemoryDropsUserFeedback],
   ["Quality memory downranks user feedback", testQualityMemoryDownranksUserFeedback],
@@ -1149,6 +1267,7 @@ const tests = [
   ["Quality memory boosts positive goldens", testQualityMemoryBoostsPositiveGoldens],
   ["Quality audit flags hard negatives and repeated why", testQualityAuditFlagsHardNegativesAndRepeatedWhy],
   ["Quality audit accepts healthy report", testQualityAuditAcceptsHealthyReport],
+  ["Quality audit flags weak before strong", testQualityAuditFlagsWeakBeforeStrong],
   ["Quality audit writes persistent artifacts", testQualityAuditWritesPersistentArtifacts],
   ["Quality audit uses stable generatedAt from source health", testQualityAuditUsesStableGeneratedAtFromSourceHealth],
   ["Rendered Product Hunt why copy avoids repeated template", testRenderedProductHuntWhyCopyAvoidsRepeatedTemplate],

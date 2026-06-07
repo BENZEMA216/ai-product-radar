@@ -155,21 +155,6 @@
     },
     {
       "rank": 11,
-      "product": "GitHub 开源 Spec Kit 工具包，用产品规范引导 AI 编码",
-      "productKey": "https://x.com/rohanpaul_ai/status/2063246343842501091",
-      "signalKey": "2026-06-07|AIHOT|https://x.com/rohanpaul_ai/status/2063246343842501091",
-      "link": "https://x.com/rohanpaul_ai/status/2063246343842501091",
-      "source": "AIHOT",
-      "type": "疑似新产品",
-      "category": "product",
-      "qualityLabel": "weak_keep",
-      "pmScore": 3,
-      "rankingIssue": null,
-      "did": "GitHub 发布开源工具包 Spec Kit，旨在解决 \"vibe coding\" 的最大弱点——AI 常在规则未明确时就开始编码。它把流程从 \"让 AI 直接构建\" 改为 \"先写产品规范，再让 AI 根据规范实现\"。当前 AI 编码模式常因松散提示直接跳入代码，导致需求薄弱、边界遗漏和反复返工。Spec Kit 推动反向流程：先定义产品功能，再澄清差距、",
-      "why": "Spec Kit 将 AI 编码前置到产品规范阶段，PM 视角应关注它是否减少需求澄清和返工成本。"
-    },
-    {
-      "rank": 12,
       "product": "AI pre-screening CIS counterparties before onboarding",
       "productKey": "https://agenstry.com/agents/cis-secondary-sanctions-a2a.vassiliy-lakhonin.workers.dev",
       "signalKey": "2026-06-07|HN Algolia|https://agenstry.com/agents/cis-secondary-sanctions-a2a.vassiliy-lakhonin.workers.dev",
@@ -184,22 +169,7 @@
       "why": "把 AI 用于 CIS 交易方预筛查，是高风险合规场景的窄切口，重点看责任边界和人工复核设计。"
     },
     {
-      "rank": 13,
-      "product": "LLM for Dummies",
-      "productKey": "https://ronreiter.github.io/llm-for-dummies",
-      "signalKey": "2026-06-07|HN Algolia|https://ronreiter.github.io/llm-for-dummies",
-      "link": "https://ronreiter.github.io/llm-for-dummies/",
-      "source": "HN Algolia",
-      "type": "新产品",
-      "category": "product",
-      "qualityLabel": "keep",
-      "pmScore": 5,
-      "rankingIssue": null,
-      "did": "HN 发布帖在 2026-06-07T02:42:58Z 出现：Show HN: LLM for Dummies",
-      "why": "LLM for Dummies 更像教育内容入口，弱点是 HN 证据只显示发布帖，无法证明课程留存或学习效果。"
-    },
-    {
-      "rank": 14,
+      "rank": 12,
       "product": "Ext-Infer – Native LLM Inference and Embeddings for PHP",
       "productKey": "https://infer.displace.tech",
       "signalKey": "2026-06-07|HN Algolia|https://infer.displace.tech",
@@ -214,7 +184,7 @@
       "why": "Ext-Infer 将 LLM 推理和 embeddings 带入 PHP 原生环境，值得看老 Web 技术栈是否因此降低 AI 集成门槛。"
     },
     {
-      "rank": 15,
+      "rank": 13,
       "product": "CCC: One place to manage all your Claude, Codex, Antigravity sessions",
       "productKey": "https://github.com/amirfish1/claude-command-center",
       "signalKey": "2026-06-07|HN Algolia|https://github.com/amirfish1/claude-command-center",
@@ -229,7 +199,7 @@
       "why": "CCC 把 Claude、Codex、Antigravity 会话集中管理，产品看点是多 agent 工作台会不会成为新的开发者入口。"
     },
     {
-      "rank": 16,
+      "rank": 14,
       "product": "Ccgs – Collaborative Claude Code sessions, stored in Git branches",
       "productKey": "https://github.com/ingram-technologies/claude-git-sessions",
       "signalKey": "2026-06-07|HN Algolia|https://github.com/ingram-technologies/claude-git-sessions",
@@ -244,7 +214,7 @@
       "why": "Ccgs 用 Git 分支存储协作式 Claude Code 会话，适合评估代码协作语境下的 agent 状态管理方式。"
     },
     {
-      "rank": 17,
+      "rank": 15,
       "product": "Oh my wrist – Garmin alerts for Claude Code and OpenCode",
       "productKey": "https://github.com/yazon/oh-my-wrist",
       "signalKey": "2026-06-07|HN Algolia|https://github.com/yazon/oh-my-wrist",
@@ -259,7 +229,7 @@
       "why": "Oh my wrist 把 Claude Code 与 OpenCode 通知送到 Garmin，信号较窄，因为它更像重度用户的边缘提醒工具。"
     },
     {
-      "rank": 18,
+      "rank": 16,
       "product": "Minimal native macOS sandbox for Claude and Codex",
       "productKey": "https://github.com/sheremetyev/sandfence",
       "signalKey": "2026-06-07|HN Algolia|https://github.com/sheremetyev/sandfence",
@@ -274,7 +244,7 @@
       "why": "原生 macOS 沙箱瞄准 Claude 和 Codex，本质是在为本地 agent 执行补齐权限边界和信任感。"
     },
     {
-      "rank": 19,
+      "rank": 17,
       "product": "langchain-ai/langgraphjs @langchain/vue@1.0.18",
       "productKey": "https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/vue%401.0.18",
       "signalKey": "2026-06-07|GitHub Release|https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/vue%401.0.18",
@@ -289,7 +259,7 @@
       "why": "这个 @langchain/vue 小版本说明 LangGraph 正在维护前端框架适配面，PM 应看 Vue 开发者入口是否被持续照顾。"
     },
     {
-      "rank": 20,
+      "rank": 18,
       "product": "langchain-ai/langgraphjs @langchain/svelte@1.0.18",
       "productKey": "https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/svelte%401.0.18",
       "signalKey": "2026-06-07|GitHub Release|https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/svelte%401.0.18",
@@ -302,6 +272,36 @@
       "rankingIssue": null,
       "did": "发布 @langchain/svelte@1.0.18。",
       "why": "从 @langchain/svelte 的同步发布看，LangGraph 试图覆盖小众前端生态，但版本号本身不足以说明新增能力。"
+    },
+    {
+      "rank": 19,
+      "product": "langchain-ai/langgraphjs @langchain/react@1.0.18",
+      "productKey": "https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/react%401.0.18",
+      "signalKey": "2026-06-07|GitHub Release|https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/react%401.0.18",
+      "link": "https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/react%401.0.18",
+      "source": "GitHub Release",
+      "type": "老产品更新",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "did": "发布 @langchain/react@1.0.18。",
+      "why": "@langchain/react 更新值得关注，因为 React 仍是 agent 应用控制台和可视化编排最常见的落地前端。"
+    },
+    {
+      "rank": 20,
+      "product": "langchain-ai/langgraphjs @langchain/langgraph-sdk@1.9.18",
+      "productKey": "https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/langgraph-sdk%401.9.18",
+      "signalKey": "2026-06-07|GitHub Release|https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/langgraph-sdk%401.9.18",
+      "link": "https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/langgraph-sdk%401.9.18",
+      "source": "GitHub Release",
+      "type": "老产品更新",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "did": "发布 @langchain/langgraph-sdk@1.9.18。",
+      "why": "langgraph-sdk 1.9.18 属于底层 SDK 迭代，关键是它是否降低 JS 侧接入 LangGraph 的维护成本。"
     }
   ]
 }

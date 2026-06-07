@@ -151,6 +151,20 @@ function auditModelPlacement(rows) {
   ];
 }
 
+function auditWeakBeforeStrong(rows) {
+  const top20 = rows.slice(0, 20);
+  const firstWeakIndex = top20.findIndex((row) => row.qualityLabel === "weak_keep");
+  if (firstWeakIndex === -1) return [];
+  const laterStrong = top20.slice(firstWeakIndex + 1).find((row) => row.qualityLabel === "keep");
+  if (!laterStrong) return [];
+  return [
+    failure("weak_before_strong", "Top 20 中弱信号排在后续明确 keep 信号之前。", {
+      weakProduct: top20[firstWeakIndex].product,
+      laterStrongProduct: laterStrong.product
+    })
+  ];
+}
+
 function auditSourceHealth(sourceHealth) {
   const failures = [];
   const sources = sourceHealth?.sources || sourceHealth || {};
@@ -202,6 +216,7 @@ export function auditReportQuality({ rows = [], sourceHealth = null, siteHtml = 
   failures.push(...auditRepeatedWhy(rows));
   failures.push(...auditSourceDiversity(rows));
   failures.push(...auditModelPlacement(rows));
+  failures.push(...auditWeakBeforeStrong(rows));
   if (sourceHealth) failures.push(...auditSourceHealth(sourceHealth));
   if (siteHtml) failures.push(...auditSiteHtml(siteHtml));
   if (feedbackSnapshot) failures.push(...auditFeedbackSnapshot(feedbackSnapshot));

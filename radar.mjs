@@ -1214,11 +1214,71 @@ function categoryForItem(item) {
   return "product";
 }
 
+function hasExplicitProductSurface(text) {
+  return includesAny(text, [
+    "agent",
+    "agents",
+    "mcp",
+    "workflow",
+    "automation",
+    "automations",
+    "api",
+    "sdk",
+    "cli",
+    "runtime",
+    "platform",
+    "dashboard",
+    "assistant",
+    "copilot",
+    "browser",
+    "extension",
+    "workspace",
+    "tool",
+    "tools",
+    "service",
+    "app",
+    "应用",
+    "助手",
+    "工作流",
+    "自动化",
+    "平台"
+  ]);
+}
+
+function isWeakShowHnDemo(item, text) {
+  const source = cleanKey(item.source).toLowerCase();
+  const isHn = source === "hackernews" || source === "hn algolia" || text.includes("news.ycombinator.com");
+  const isShowHn = item.sourceSubtype === "show_hn" || text.includes("show hn:");
+  if (!isHn || !isShowHn) return false;
+  if (hasExplicitProductSurface(text)) return false;
+  return includesAny(text, [
+    "for dummies",
+    "tutorial",
+    "course",
+    "lesson",
+    "learn ",
+    "research",
+    "paper",
+    "benchmark",
+    "beats",
+    "roguelike",
+    "pokemon",
+    "neural net",
+    "demo",
+    "experiment",
+    "实验",
+    "教程",
+    "课程",
+    "研究"
+  ]);
+}
+
 function qualityLabelForItem(item) {
   const text = `${item.product} ${item.did} ${item.why}`.toLowerCase();
   if (item.category === "model_infra") return "weak_keep";
   if (isLowSignalProductHuntConsumerNovelty(text)) return "deprioritize";
   if (includesAny(text, ["roulette", "baby generator", "girlfriend", "wallpaper generator"])) return "deprioritize";
+  if (isWeakShowHnDemo(item, text)) return "weak_keep";
   if (item.source === "aihot" || item.source === "xhs_dealflow") return "weak_keep";
   if (item.source === "huggingface") return item.category === "product" ? "weak_keep" : "deprioritize";
   return "keep";
@@ -1305,7 +1365,7 @@ function buildRankingSignals(item) {
   );
   let noisePenalty = 0;
   if (item.category === "model_infra") noisePenalty += 8;
-  if (item.qualityLabel === "weak_keep") noisePenalty += 6;
+  if (item.qualityLabel === "weak_keep") noisePenalty += 14;
   if (item.qualityLabel === "deprioritize") noisePenalty += 18;
   if (includesAny(text, ["roulette", "baby", "girlfriend", "wallpaper", "tattoo", "headshot"])) noisePenalty += 16;
   if (!isRelevant(text)) noisePenalty += 30;

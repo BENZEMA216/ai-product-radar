@@ -81,10 +81,27 @@ function inferCategory({ source, product, did, evidence }) {
   return "product";
 }
 
+function hasExplicitProductSurface(text) {
+  return /agent|agents|mcp|workflow|automation|automations|api|sdk|cli|runtime|platform|dashboard|assistant|copilot|browser|extension|workspace|tool|tools|service|app|应用|助手|工作流|自动化|平台/i.test(
+    text
+  );
+}
+
+function isWeakShowHnDemo({ source, product, did, why }) {
+  const text = `${source} ${product} ${did} ${why}`.toLowerCase();
+  const isHn = source === "HN Algolia" || source === "hackernews" || text.includes("news.ycombinator.com");
+  const isShowHn = text.includes("show hn:");
+  if (!isHn || !isShowHn || hasExplicitProductSurface(text)) return false;
+  return /for dummies|tutorial|course|lesson|learn |research|paper|benchmark|beats|roguelike|pokemon|neural net|demo|experiment|实验|教程|课程|研究/i.test(
+    text
+  );
+}
+
 function inferQualityLabel({ source, product, did, why, category }) {
   const text = `${source} ${product} ${did} ${why}`.toLowerCase();
   if (category === "model_infra") return "weak_keep";
   if (/baby|girlfriend|boyfriend|roulette|wallpaper|tattoo|headshot|photo booth/i.test(text)) return "deprioritize";
+  if (isWeakShowHnDemo({ source, product, did, why })) return "weak_keep";
   if (source === "AIHOT" || source === "XHS Dealflow" || source === "Hugging Face API") return "weak_keep";
   return "keep";
 }

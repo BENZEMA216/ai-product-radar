@@ -9,7 +9,6 @@
     "top20Sources": [
       "Product Hunt",
       "HN Algolia",
-      "AIHOT",
       "GitHub Release"
     ],
     "top10ModelInfra": 0
@@ -176,17 +175,6 @@
     },
     {
       "rank": 11,
-      "product": "GitHub 开源 Spec Kit 工具包，用产品规范引导 AI 编码",
-      "productKey": "https://x.com/rohanpaul_ai/status/2063246343842501091",
-      "source": "AIHOT",
-      "category": "product",
-      "qualityLabel": "weak_keep",
-      "pmScore": 3,
-      "rankingIssue": null,
-      "reason": "Spec Kit 将 AI 编码前置到产品规范阶段，PM 视角应关注它是否减少需求澄清和返工成本。"
-    },
-    {
-      "rank": 12,
       "product": "AI pre-screening CIS counterparties before onboarding",
       "productKey": "https://agenstry.com/agents/cis-secondary-sanctions-a2a.vassiliy-lakhonin.workers.dev",
       "source": "HN Algolia",
@@ -197,18 +185,7 @@
       "reason": "把 AI 用于 CIS 交易方预筛查，是高风险合规场景的窄切口，重点看责任边界和人工复核设计。"
     },
     {
-      "rank": 13,
-      "product": "LLM for Dummies",
-      "productKey": "https://ronreiter.github.io/llm-for-dummies",
-      "source": "HN Algolia",
-      "category": "product",
-      "qualityLabel": "keep",
-      "pmScore": 5,
-      "rankingIssue": null,
-      "reason": "LLM for Dummies 更像教育内容入口，弱点是 HN 证据只显示发布帖，无法证明课程留存或学习效果。"
-    },
-    {
-      "rank": 14,
+      "rank": 12,
       "product": "Ext-Infer – Native LLM Inference and Embeddings for PHP",
       "productKey": "https://infer.displace.tech",
       "source": "HN Algolia",
@@ -219,7 +196,7 @@
       "reason": "Ext-Infer 将 LLM 推理和 embeddings 带入 PHP 原生环境，值得看老 Web 技术栈是否因此降低 AI 集成门槛。"
     },
     {
-      "rank": 15,
+      "rank": 13,
       "product": "CCC: One place to manage all your Claude, Codex, Antigravity sessions",
       "productKey": "https://github.com/amirfish1/claude-command-center",
       "source": "HN Algolia",
@@ -230,7 +207,7 @@
       "reason": "CCC 把 Claude、Codex、Antigravity 会话集中管理，产品看点是多 agent 工作台会不会成为新的开发者入口。"
     },
     {
-      "rank": 16,
+      "rank": 14,
       "product": "Ccgs – Collaborative Claude Code sessions, stored in Git branches",
       "productKey": "https://github.com/ingram-technologies/claude-git-sessions",
       "source": "HN Algolia",
@@ -241,7 +218,7 @@
       "reason": "Ccgs 用 Git 分支存储协作式 Claude Code 会话，适合评估代码协作语境下的 agent 状态管理方式。"
     },
     {
-      "rank": 17,
+      "rank": 15,
       "product": "Oh my wrist – Garmin alerts for Claude Code and OpenCode",
       "productKey": "https://github.com/yazon/oh-my-wrist",
       "source": "HN Algolia",
@@ -252,7 +229,7 @@
       "reason": "Oh my wrist 把 Claude Code 与 OpenCode 通知送到 Garmin，信号较窄，因为它更像重度用户的边缘提醒工具。"
     },
     {
-      "rank": 18,
+      "rank": 16,
       "product": "Minimal native macOS sandbox for Claude and Codex",
       "productKey": "https://github.com/sheremetyev/sandfence",
       "source": "HN Algolia",
@@ -263,7 +240,7 @@
       "reason": "原生 macOS 沙箱瞄准 Claude 和 Codex，本质是在为本地 agent 执行补齐权限边界和信任感。"
     },
     {
-      "rank": 19,
+      "rank": 17,
       "product": "langchain-ai/langgraphjs @langchain/vue@1.0.18",
       "productKey": "https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/vue%401.0.18",
       "source": "GitHub Release",
@@ -274,7 +251,7 @@
       "reason": "这个 @langchain/vue 小版本说明 LangGraph 正在维护前端框架适配面，PM 应看 Vue 开发者入口是否被持续照顾。"
     },
     {
-      "rank": 20,
+      "rank": 18,
       "product": "langchain-ai/langgraphjs @langchain/svelte@1.0.18",
       "productKey": "https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/svelte%401.0.18",
       "source": "GitHub Release",
@@ -283,6 +260,28 @@
       "pmScore": 5,
       "rankingIssue": null,
       "reason": "从 @langchain/svelte 的同步发布看，LangGraph 试图覆盖小众前端生态，但版本号本身不足以说明新增能力。"
+    },
+    {
+      "rank": 19,
+      "product": "langchain-ai/langgraphjs @langchain/react@1.0.18",
+      "productKey": "https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/react%401.0.18",
+      "source": "GitHub Release",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "@langchain/react 更新值得关注，因为 React 仍是 agent 应用控制台和可视化编排最常见的落地前端。"
+    },
+    {
+      "rank": 20,
+      "product": "langchain-ai/langgraphjs @langchain/langgraph-sdk@1.9.18",
+      "productKey": "https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/langgraph-sdk%401.9.18",
+      "source": "GitHub Release",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "langgraph-sdk 1.9.18 属于底层 SDK 迭代，关键是它是否降低 JS 侧接入 LangGraph 的维护成本。"
     }
   ]
 }
