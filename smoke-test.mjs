@@ -1093,6 +1093,43 @@ function testPriorityScoreDownranksHotNonProductShowHnDemos() {
   );
 }
 
+function testPriorityScoreDownranksResourceLists() {
+  const resourceList = {
+    product: "A List of AI Neolabs",
+    link: "https://neolabs-7o2.pages.dev/",
+    type: "新产品",
+    did: "HN 发布帖出现：Show HN: A List of AI Neolabs",
+    why: "这是一个 AI 资源列表，不是可体验产品发布。",
+    evidence: "[HN Algolia](https://news.ycombinator.com/item?id=48438006)",
+    source: "hackernews",
+    sourceSubtype: "show_hn",
+    category: "product",
+    metrics: {
+      hnPoints: 22,
+      hnComments: 4
+    }
+  };
+  const productLaunch = {
+    product: "AgentCrew – a Markdown-first operating system for AI coding agents",
+    link: "https://github.com/mlguyYT/AgentCrew",
+    type: "新产品",
+    did: "HN 发布帖出现：Show HN: AgentCrew – a Markdown-first operating system for AI coding agents",
+    why: "多 agent 工作台是明确可体验产品，适合观察协作入口。",
+    evidence: "[HN Algolia](https://news.ycombinator.com/item?id=48436561)",
+    source: "hackernews",
+    sourceSubtype: "show_hn",
+    category: "product",
+    metrics: {
+      hnPoints: 5,
+      hnComments: 1
+    }
+  };
+  assert.ok(
+    priorityScore(productLaunch) > priorityScore(resourceList),
+    "resource lists should not outrank clear AI product launches"
+  );
+}
+
 function testPriorityScoreUsesProductHuntEngagement() {
   const lowEngagement = {
     product: "Agent Harness",
@@ -2354,6 +2391,7 @@ const tests = [
   ["Priority score downranks weak novelty", testPriorityScoreDownranksWeakNovelty],
   ["Priority score keeps weak HF spaces behind strong launches", testPriorityScoreKeepsWeakHfSpacesBehindStrongProductLaunches],
   ["Priority score downranks hot non-product Show HN demos", testPriorityScoreDownranksHotNonProductShowHnDemos],
+  ["Priority score downranks resource lists", testPriorityScoreDownranksResourceLists],
   ["Priority score uses Product Hunt engagement", testPriorityScoreUsesProductHuntEngagement],
   ["Priority score downranks low-signal patch releases", testPriorityScoreDownranksLowSignalPatchRelease],
   ["Priority sort keeps strong labels before weak signals", testPrioritySortKeepsStrongLabelsBeforeWeakSignals],

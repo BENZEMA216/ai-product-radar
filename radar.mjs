@@ -1608,6 +1608,7 @@ function isWeakShowHnDemo(item, text) {
   const isHn = source === "hackernews" || source === "hn algolia" || text.includes("news.ycombinator.com");
   const isShowHn = item.sourceSubtype === "show_hn" || text.includes("show hn:");
   if (!isHn || !isShowHn) return false;
+  if (isResourceListSignal(text)) return true;
   if (hasExplicitProductSurface(text)) return false;
   return includesAny(text, [
     "for dummies",
@@ -1636,6 +1637,15 @@ function isWeakShowHnDemo(item, text) {
   ]);
 }
 
+function isResourceListSignal(text) {
+  return (
+    /\b(?:a\s+)?list\s+of\s+ai\b/i.test(text) ||
+    /\b(?:awesome|curated)\s+(?:ai\s+)?(?:list|resources?)\b/i.test(text) ||
+    /\bai\s+(?:resources?|directory|catalog|collection)\b/i.test(text) ||
+    /\b(?:directory|catalog|collection)\s+of\s+ai\b/i.test(text)
+  );
+}
+
 function isLowSignalGitHubPackageRelease(item) {
   const source = cleanKey(item.source).toLowerCase();
   if (source !== "github" && source !== "github release") return false;
@@ -1651,6 +1661,7 @@ function qualityLabelForItem(item) {
   if (item.category === "model_infra") return "weak_keep";
   if (isLowSignalGitHubPackageRelease(item)) return "weak_keep";
   if (isLowSignalProductHuntConsumerNovelty(text)) return "deprioritize";
+  if (isResourceListSignal(text)) return "deprioritize";
   if (includesAny(text, ["roulette", "baby generator", "girlfriend", "wallpaper generator"])) return "deprioritize";
   if (isWeakShowHnDemo(item, text)) return "weak_keep";
   if (item.source === "aihot" || item.source === "xhs_dealflow") return "weak_keep";
