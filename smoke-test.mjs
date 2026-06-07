@@ -495,6 +495,48 @@ function testReportWhyCopyAvoidsHnAndHfTemplates() {
   assert.deepEqual(whyFailures, []);
 }
 
+function testReportWhyCopyAvoidsAggregatorTemplates() {
+  const candidates = [
+    {
+      product: "Raycast Glaze",
+      link: "https://x.com/example/status/1",
+      type: "疑似新产品",
+      did: "Raycast 新推出 AI 工具 Glaze，支持一句话生成 Mac 软件并发布到 Store。",
+      why: "可作为 AI 产品定位、交互或分发方式的竞品/灵感样本。",
+      evidence: "[AIHOT 2026-06-08T00:00:01.000Z](https://x.com/example/status/1)",
+      source: "aihot"
+    },
+    {
+      product: "Cursor Design",
+      link: "https://x.com/example/status/2",
+      type: "疑似新产品",
+      did: "Cursor 新浏览器和元素注释让用户描述屏幕、生成 HTML，并点击局部修改。",
+      why: "可作为 AI 产品定位、交互或分发方式的竞品/灵感样本。",
+      evidence: "[AIHOT 2026-06-08T00:00:02.000Z](https://x.com/example/status/2)",
+      source: "aihot"
+    },
+    {
+      product: "Kimi 产品体验讨论",
+      link: "https://www.xiaohongshu.com/explore/example",
+      type: "疑似老产品更新",
+      did: "小红书用户讨论 Kimi 在长文档写作和资料整理中的真实使用体验。",
+      why: "可作为 AI 产品定位、交互或分发方式的竞品/灵感样本。",
+      evidence: "[XHS Dealflow 2026-06-08T00:00:03.000Z](https://www.xiaohongshu.com/explore/example)",
+      source: "xhs_dealflow"
+    }
+  ];
+  const rows = parseReportMarkdown(renderMarkdownTable(candidates), "reports/2026-06-08-0800-cst.md");
+  for (const row of rows) {
+    assert.doesNotMatch(row.why, /来自官网、社媒或媒体信号，适合补充观察产品叙事和市场动作/);
+    assert.doesNotMatch(row.why, /来自小红书早期内容信号，适合观察国内用户语言、传播切口和真实需求表述/);
+  }
+  const audit = auditReportQuality({ rows });
+  const whyFailures = audit.failures.filter((failure) =>
+    ["known_why_template", "repeated_why_template"].includes(failure.code)
+  );
+  assert.deepEqual(whyFailures, []);
+}
+
 async function testProductHuntFixture() {
   const text = await fetchText(
     readerUrl("https://www.producthunt.com/leaderboard/daily/2026/5/30/all")
@@ -2006,6 +2048,7 @@ const tests = [
   ["Report why copy adds context for repeated templates", testReportWhyCopyAddsContextForRepeatedTemplates],
   ["Report why copy keeps long product context distinct", testReportWhyCopyKeepsLongProductContextDistinct],
   ["Report why copy avoids HN and HF templates", testReportWhyCopyAvoidsHnAndHfTemplates],
+  ["Report why copy avoids aggregator templates", testReportWhyCopyAvoidsAggregatorTemplates],
   ["Product Hunt fixture", testProductHuntFixture],
   ["Product Hunt fallback parser fixture", testProductHuntFallbackParserFixture],
   ["Product Hunt markdown diagnostics counts raw rows and topics", testProductHuntMarkdownDiagnosticsCountsRawRowsAndTopics],

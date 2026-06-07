@@ -1360,18 +1360,25 @@ function productHuntWhyFromContext(item) {
 }
 
 function sourceContextLabel(item) {
-  const text = `${item.product} ${item.did} ${item.why}`.toLowerCase();
+  const text = `${item.product} ${item.did}`.toLowerCase();
   if (includesAny(text, ["observability", "sre", "monitor", "trace", "debug"])) return "可观测性和运维控制";
+  if (includesAny(text, ["design", "figma", "html", "css", "react", "ui/ux", "元素注释", "设计"])) return "设计到代码工作流";
   if (includesAny(text, ["version control", "git", "branch", "session"])) return "版本控制和状态管理";
   if (includesAny(text, ["operating system", " os ", "workspace", "desktop"])) return "工作台入口和操作系统隐喻";
   if (includesAny(text, ["search", "18 sources", "retrieval", "rag", "pdf"])) return "检索、RAG 和信息入口";
-  if (includesAny(text, ["insurance", "claims", "counterparties", "onboarding", "compliance"])) return "高风险业务流程自动化";
+  if (includesAny(text, ["insurance", "claims", "counterparties", "onboarding", "compliance", "law", "legal"])) return "高风险业务流程自动化";
   if (includesAny(text, ["browser", "tab", "extension", "chrome"])) return "浏览器和标签页控制";
-  if (includesAny(text, ["finance", "trading", "sales", "marketing", "commerce"])) return "商业运营和转化流程";
+  if (includesAny(text, ["finance", "trading", "sales", "marketing", "commerce", "cart", "pay", "checkout"])) return "商业运营和转化流程";
+  if (includesAny(text, ["生成 mac 软件", "mac 软件", "store", "app store", "glaze", "一句话生成"])) return "生成式应用构建和分发";
+  if (includesAny(text, ["cursor", "codex", "claude", "openai", "chatgpt", "kimi", "doubao", "豆包"])) return "主流 AI 产品体验变化";
+  if (includesAny(text, ["价格", "成本", "pricing", "cache", "缓存", "roi"])) return "成本和商业化信号";
+  if (includesAny(text, ["用户讨论", "真实使用", "体验", "小红书", "反馈"])) return "真实用户使用反馈";
   if (includesAny(text, ["vision", "image", "video", "cv", "visual"])) return "视觉内容和多模态工作流";
   if (includesAny(text, ["speech", "audio", "voice"])) return "语音处理和低摩擦输入";
   if (includesAny(text, ["backend", "api", "sdk", "runtime"])) return "后端接口和开发者集成";
   if (includesAny(text, ["ui", "frontend", "dashboard"])) return "前端界面和可用性验证";
+  if (includesAny(text, ["chatbot", "chat-bot", "chat_bot", "ai_chatbot", "assistant"])) return "对话助手和入口实验";
+  if (includesAny(text, ["model", "models", "gguf", "llm", "gemma", "mistral", "qwen", "roberta"])) return "模型实验和推理资产";
   if (includesAny(text, ["course", "learn", "assignment", "tutorial"])) return "学习场景和能力验证";
   if (includesAny(text, ["coding", "code", "developer", "agent"])) return "开发者 agent 工作流";
   return "产品形态和采用门槛";
@@ -1422,7 +1429,40 @@ function huggingFaceWhyFromContext(item) {
   if (context === "前端界面和可用性验证") {
     return `${product} 的信号在界面原型层，适合快速判断交互入口是否清楚、任务是否闭环。`;
   }
+  if (context === "对话助手和入口实验") {
+    return `${product} 属于对话入口实验，重点看是否有明确任务、记忆能力或差异化交互。`;
+  }
+  if (context === "模型实验和推理资产") {
+    return `${product} 更偏模型或推理资产更新，适合放在 Models & Infra 中观察能力、许可和可复用性。`;
+  }
   return `${product} 是 HF 上的${context}弱信号，先看可运行性、样例质量和是否有明确用户场景。`;
+}
+
+function aggregatorWhyFromContext(item, sourceLabel) {
+  const product = compactProductName(item.product);
+  const context = sourceContextLabel(item);
+  if (context === "生成式应用构建和分发") {
+    return `${product} 把生成式开发和分发放到同一链路，值得看应用质量控制、上架门槛和模板复用。`;
+  }
+  if (context === "设计到代码工作流") {
+    return `${product} 指向设计生成到局部修改的闭环，适合观察产品经理和设计师是否能直接参与实现。`;
+  }
+  if (context === "主流 AI 产品体验变化") {
+    return `${product} 涉及主流 AI 产品体验变化，重点看入口、任务闭环和用户迁移成本是否真的改善。`;
+  }
+  if (context === "成本和商业化信号") {
+    return `${product} 把成本或价格信号显性化，适合判断 AI 产品是否开始从能力展示转向运营指标。`;
+  }
+  if (context === "真实用户使用反馈") {
+    return `${product} 来自真实用户语境，价值在于暴露具体使用阻力、替代场景和非官方需求表达。`;
+  }
+  if (context === "商业运营和转化流程") {
+    return `${product} 的聚合信号指向商业运营场景，适合看 AI 是否能进入可衡量的转化或留存环节。`;
+  }
+  if (context === "视觉内容和多模态工作流") {
+    return `${product} 的聚合信号落在多模态内容链路，重点看创作质量、一致性和真实分发效果。`;
+  }
+  return `${product} 是${sourceLabel}里的${context}信号，先看是否有一手证据、明确动作和可复用产品启发。`;
 }
 
 function reportWhy(item) {
@@ -1445,10 +1485,10 @@ function reportWhy(item) {
     return huggingFaceWhyFromContext(item);
   }
   if (item.source === "aihot") {
-    return `${product} 来自官网、社媒或媒体信号，适合补充观察产品叙事和市场动作。`;
+    return aggregatorWhyFromContext(item, "AIHOT");
   }
   if (item.source === "xhs_dealflow") {
-    return `${product} 来自小红书早期内容信号，适合观察国内用户语言、传播切口和真实需求表述。`;
+    return aggregatorWhyFromContext(item, "小红书");
   }
   return `${product} 提供了一个新的 AI 产品样本，适合比较定位、交互和分发方式。`;
 }
