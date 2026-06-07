@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { execFileSync } from "node:child_process";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -337,6 +337,35 @@ function clean(text) {
     .replace(/\s+/g, " ")
     .replace(/\|/g, "\\|")
     .trim();
+}
+
+function cleanKey(text) {
+  return String(text || "").replace(/\s+/g, " ").trim();
+}
+
+function normalizeProductKey(value) {
+  const raw = cleanKey(value);
+  if (!raw) return "";
+  try {
+    const url = new URL(raw);
+    url.hash = "";
+    for (const key of [...url.searchParams.keys()]) {
+      if (/^(utm_|ref$|ref_src$)/i.test(key)) url.searchParams.delete(key);
+    }
+    return url.toString().replace(/\/$/, "").toLowerCase();
+  } catch {
+    return raw.replace(/\/$/, "").toLowerCase();
+  }
+}
+
+function normalizeProductName(value) {
+  return cleanKey(value)
+    .replace(/^Hugging Face (Space|Model):\s*/i, "")
+    .replace(/\bproduct\s+hunt\s+row\b/gi, "")
+    .replace(/[^a-z0-9\u4e00-\u9fa5]+/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
 }
 
 function decodeXml(text) {
@@ -1325,6 +1354,163 @@ function enrichCandidate(item) {
   };
 }
 
+function safeReadJson(path, fallback) {
+  try {
+    return JSON.parse(readFileSync(path, "utf8"));
+  } catch {
+    return fallback;
+  }
+}
+
+function readFeedbackRecords(feedbackDir = "quality/feedback") {
+  let names = [];
+  try {
+    names = readdirSync(feedbackDir);
+  } catch {
+    return [];
+  }
+  return names
+    .filter((name) => /^\d{4}-\d{2}-\d{2}\.json$/.test(name))
+    .sort()
+    .flatMap((name) => {
+      const snapshot = safeReadJson(join(feedbackDir, name), {});
+      return Array.isArray(snapshot.feedback) ? snapshot.feedback : [];
+    })
+    .filter((record) => cleanKey(record.action) && (cleanKey(record.productKey) || cleanKey(record.link) || cleanKey(record.product)));
+}
+
+function readNegativeGoldens(path = "quality/goldens/negative-products.json") {
+  const records = safeReadJson(path, []);
+  return Array.isArray(records) ? records : [];
+}
+
+export function loadQualityMemory({
+  feedbackDir = "quality/feedback",
+  negativeGoldensPath = "quality/goldens/negative-products.json"
+} = {}) {
+  return {
+    feedback: readFeedbackRecords(feedbackDir),
+    negativeGoldens: readNegativeGoldens(negativeGoldensPath)
+  };
+}
+
+function sourceAliases(source) {
+  const value = cleanKey(source).toLowerCase();
+  if (!value) return new Set();
+  const aliases = new Set([value]);
+  const sourceMap = {
+    producthunt: "Product Hunt",
+    yc_launch: "YC Launch",
+    hackernews: "HN Algolia",
+    github: "GitHub Release",
+    aihot: "AIHOT",
+    huggingface: "Hugging Face API",
+    xhs_dealflow: "XHS Dealflow"
+  };
+  for (const [code, label] of Object.entries(sourceMap)) {
+    if (value === code || value === label.toLowerCase()) {
+      aliases.add(code);
+      aliases.add(label.toLowerCase());
+    }
+  }
+  return aliases;
+}
+
+function actionSeverity(action) {
+  return { drop: 3, downrank: 2, keep: 1 }[action] || 0;
+}
+
+function normalizedFeedbackAction(action) {
+  const value = cleanKey(action).toLowerCase();
+  if (["drop", "remove", "delete", "reject", "不该收录", "剔除"].includes(value)) return "drop";
+  if (["downrank", "deprioritize", "降权", "应该降权"].includes(value)) return "downrank";
+  if (["keep", "boost", "值得看", "保留"].includes(value)) return "keep";
+  return "";
+}
+
+function goldenAction(record) {
+  const expected = cleanKey(record.expected).toLowerCase();
+  if (expected === "drop" || expected.startsWith("drop_")) return "drop";
+  if (expected.includes("deprioritize")) return "downrank";
+  return "";
+}
+
+function memoryRecordMatchesItem(record, item) {
+  const itemKeys = new Set(
+    [item.productKey, item.link, item.evidenceUrl].map(normalizeProductKey).filter(Boolean)
+  );
+  const recordKeys = [record.productKey, record.link, record.url].map(normalizeProductKey).filter(Boolean);
+  if (recordKeys.some((key) => itemKeys.has(key))) return true;
+
+  const itemName = normalizeProductName(item.product);
+  const recordName = normalizeProductName(record.product || record.name || record.title);
+  if (!itemName || !recordName) return false;
+
+  const source = cleanKey(record.source);
+  if (source) {
+    const itemSources = sourceAliases(item.source);
+    const recordSources = sourceAliases(source);
+    if ([...recordSources].length && ![...recordSources].some((candidate) => itemSources.has(candidate))) return false;
+  }
+
+  return itemName === recordName || itemName.includes(recordName) || recordName.includes(itemName);
+}
+
+function strongestMemoryAction(item, memory = {}) {
+  let best = { action: "", record: null };
+  for (const record of memory.negativeGoldens || []) {
+    const action = goldenAction(record);
+    if (!action || !memoryRecordMatchesItem(record, item)) continue;
+    if (actionSeverity(action) > actionSeverity(best.action)) best = { action, record };
+  }
+  for (const record of memory.feedback || []) {
+    const action = normalizedFeedbackAction(record.action);
+    if (!action || !memoryRecordMatchesItem(record, item)) continue;
+    if (actionSeverity(action) >= actionSeverity(best.action)) best = { action, record };
+  }
+  return best;
+}
+
+export function applyQualityMemoryToCandidates(candidates, memory = {}) {
+  return candidates.flatMap((item) => {
+    const { action, record } = strongestMemoryAction(item, memory);
+    if (action === "drop") return [];
+    if (action === "downrank") {
+      const feedbackPenalty = 30;
+      return [
+        {
+          ...item,
+          qualityLabel: "deprioritize",
+          priorityScore: item.priorityScore - feedbackPenalty,
+          qualityMemoryAction: "downrank",
+          qualityMemoryReason: cleanKey(record?.reason || record?.title || record?.actionLabel),
+          rankingSignals: {
+            ...item.rankingSignals,
+            feedbackPenalty
+          }
+        }
+      ];
+    }
+    if (action === "keep") {
+      const feedbackBoost = 16;
+      return [
+        {
+          ...item,
+          qualityLabel: "keep",
+          priorityScore: item.priorityScore + feedbackBoost,
+          qualityMemoryAction: "keep",
+          qualityMemoryReason: cleanKey(record?.reason || record?.title || record?.actionLabel),
+          rankingSignals: {
+            ...item.rankingSignals,
+            feedbackBoost
+          }
+        }
+      ];
+    }
+    return [item];
+  });
+}
+
 function duplicateGroupKey(item) {
   if (item.source === "github") {
     const match = String(item.product || "").match(/^([^/\s]+\/[^/\s]+)/);
@@ -1452,6 +1638,11 @@ export async function runRadar(options = {}) {
     [...phNested.flat(), ...phFallback, ...ycLaunches, ...hn, ...gh, ...hf, ...aihot, ...dealflowXhs],
     (item) => item.link
   ).map(enrichCandidate);
+  const qualityMemory =
+    options.qualityMemory === false
+      ? { feedback: [], negativeGoldens: [] }
+      : options.qualityMemory || loadQualityMemory(options.qualityMemoryOptions || { feedbackDir: options.feedbackDir });
+  candidates = applyQualityMemoryToCandidates(candidates, qualityMemory);
   candidates = applyDuplicatePenalties(candidates);
   candidates.sort((a, b) => b.priorityScore - a.priorityScore || sourceLabel(a.source).localeCompare(sourceLabel(b.source)));
   return {

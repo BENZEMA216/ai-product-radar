@@ -125,8 +125,9 @@ async function main() {
     return;
   }
 
-  const result = await runRadar({ now, hours: args.hours });
-  snapshotFeedback(reportPath, cleanEnv, qualityBaseDir(args.reportDir, "feedback"));
+  const feedbackDir = qualityBaseDir(args.reportDir, "feedback");
+  snapshotFeedback(reportPath, cleanEnv, feedbackDir);
+  const result = await runRadar({ now, hours: args.hours, feedbackDir });
   writeJson(sourceHealthPathForNow(now, qualityBaseDir(args.reportDir, "source-health")), {
     generatedAt: now.toISOString(),
     window: result.window,

@@ -12,6 +12,7 @@ import {
   parseAihotRssItems,
   parseYcLaunchesPayload,
   dealflowDetailToCandidate,
+  applyQualityMemoryToCandidates,
   fetchDealflowXhs,
   isDealflowEnabled,
   priorityScore,
@@ -487,6 +488,105 @@ function testPriorityScoreDownranksWeakNovelty() {
   assert.ok(priorityScore(strong) > priorityScore(weak), "priority score should rank clear workflow products above novelty items");
 }
 
+function testQualityMemoryDropsNegativeGoldens() {
+  const candidates = [
+    {
+      product: "codetyper",
+      link: "https://www.producthunt.com/products/codetyper",
+      type: "新产品",
+      did: "A professional typing trainer built around real codebases.",
+      why: "误判样本。",
+      evidence: "[Product Hunt](https://www.producthunt.com/products/codetyper)",
+      source: "producthunt",
+      category: "product",
+      qualityLabel: "keep",
+      priorityScore: 50,
+      rankingSignals: {}
+    }
+  ];
+  const next = applyQualityMemoryToCandidates(candidates, {
+    feedback: [],
+    negativeGoldens: [{ product: "codetyper", expected: "drop", reason: "非 AI 产品。" }]
+  });
+  assert.equal(next.length, 0, "negative golden products marked drop should be removed before ranking");
+}
+
+function testQualityMemoryDropsUserFeedback() {
+  const candidates = [
+    {
+      product: "YouTube Roulette",
+      link: "https://www.producthunt.com/products/youtube-roulette",
+      type: "新产品",
+      did: "Random YouTube discovery.",
+      why: "误判样本。",
+      evidence: "[Product Hunt](https://www.producthunt.com/products/youtube-roulette)",
+      source: "producthunt",
+      category: "product",
+      qualityLabel: "keep",
+      priorityScore: 50,
+      rankingSignals: {}
+    }
+  ];
+  const next = applyQualityMemoryToCandidates(candidates, {
+    feedback: [
+      {
+        action: "drop",
+        productKey: "https://www.producthunt.com/products/youtube-roulette",
+        product: "YouTube Roulette",
+        source: "Product Hunt"
+      }
+    ],
+    negativeGoldens: []
+  });
+  assert.equal(next.length, 0, "user feedback action=drop should remove the matching product");
+}
+
+function testQualityMemoryDownranksUserFeedback() {
+  const candidate = {
+    product: "Babymorph.ai",
+    link: "https://www.producthunt.com/products/babymorph-ai",
+    type: "新产品",
+    did: "AI Baby Generator — see your future baby from 2 photos",
+    why: "低信号消费娱乐 novelty。",
+    evidence: "[Product Hunt](https://www.producthunt.com/products/babymorph-ai)",
+    source: "producthunt",
+    category: "product",
+    qualityLabel: "keep",
+    priorityScore: 70,
+    rankingSignals: {}
+  };
+  const [next] = applyQualityMemoryToCandidates([candidate], {
+    feedback: [{ action: "downrank", productKey: "https://www.producthunt.com/products/babymorph-ai" }],
+    negativeGoldens: []
+  });
+  assert.equal(next.qualityLabel, "deprioritize");
+  assert.ok(next.priorityScore < candidate.priorityScore, "downrank feedback should lower priority score");
+  assert.ok(next.rankingSignals.feedbackPenalty > 0, "downrank feedback should be visible in ranking signals");
+}
+
+function testQualityMemoryKeepsUserFeedback() {
+  const candidate = {
+    product: "Small AI Workflow",
+    link: "https://example.com/small-ai-workflow",
+    type: "疑似新产品",
+    did: "A small AI workflow tool.",
+    why: "弱保留样本。",
+    evidence: "[Example](https://example.com/small-ai-workflow)",
+    source: "aihot",
+    category: "product",
+    qualityLabel: "weak_keep",
+    priorityScore: 30,
+    rankingSignals: {}
+  };
+  const [next] = applyQualityMemoryToCandidates([candidate], {
+    feedback: [{ action: "keep", productKey: "https://example.com/small-ai-workflow" }],
+    negativeGoldens: []
+  });
+  assert.equal(next.qualityLabel, "keep");
+  assert.ok(next.priorityScore > candidate.priorityScore, "keep feedback should raise priority score");
+  assert.ok(next.rankingSignals.feedbackBoost > 0, "keep feedback should be visible in ranking signals");
+}
+
 function testRenderedProductHuntWhyCopyAvoidsRepeatedTemplate() {
   const products = [
     ["Recursi", "Self improving vibe coding env with no API fees"],
@@ -812,6 +912,10 @@ const tests = [
   ["Product Hunt rejects incidental ai substring", testProductHuntRejectsIncidentalAiSubstring],
   ["Product Hunt rejects low-signal consumer novelty", testProductHuntRejectsLowSignalConsumerNovelty],
   ["Priority score downranks weak novelty", testPriorityScoreDownranksWeakNovelty],
+  ["Quality memory drops negative goldens", testQualityMemoryDropsNegativeGoldens],
+  ["Quality memory drops user feedback", testQualityMemoryDropsUserFeedback],
+  ["Quality memory downranks user feedback", testQualityMemoryDownranksUserFeedback],
+  ["Quality memory keeps user feedback", testQualityMemoryKeepsUserFeedback],
   ["Rendered Product Hunt why copy avoids repeated template", testRenderedProductHuntWhyCopyAvoidsRepeatedTemplate],
   ["Site builder normalizes archived Product Hunt why copy", testSiteBuilderNormalizesArchivedProductHuntWhyCopy],
   ["HN Algolia", testHnAlgolia],
