@@ -62,7 +62,8 @@ that object without rewriting the original `review` text.
 
 ## Stability Contract
 
-- Product Hunt is read through daily leaderboard pages, with Jina Reader fallback.
+- Product Hunt prefers API v2 GraphQL when `PRODUCT_HUNT_TOKEN` is configured; otherwise it falls back to
+  daily leaderboard pages plus Jina/OrangeBot and marks low-coverage risk in source health.
 - Hacker News is read through Algolia API so each hit has `created_at`.
 - GitHub releases are read through authenticated `gh api` when available.
 - Hugging Face uses public API endpoints and only includes recent Spaces/Models with timestamps.

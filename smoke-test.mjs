@@ -5,8 +5,10 @@ import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync
 import { tmpdir } from "node:os";
 import { basename, join } from "node:path";
 import {
+  fetchProductHuntDate,
   filterPreviouslyReportedProductHunt,
   parseOrangeBotProductHuntHtml,
+  parseProductHuntApiPosts,
   parseProductHuntMarkdown,
   parseAihotDailyMarkdown,
   parseAihotRssItems,
@@ -388,6 +390,90 @@ function testProductHuntFallbackParserFixture() {
   assert.equal(items[0].source, "producthunt");
 }
 
+function testProductHuntApiParserFixture() {
+  const payload = {
+    data: {
+      posts: {
+        nodes: [
+          {
+            id: "post-1",
+            name: "Agent Browser Shield",
+            tagline: "Block prompt inject and cut token costs for AI browser agents",
+            description: "Security controls for browser agents",
+            url: "https://www.producthunt.com/posts/agent-browser-shield",
+            website: "https://agentbrowser.example.com",
+            featuredAt: "2026-06-06T15:00:00Z",
+            dailyRank: 6,
+            votesCount: 123,
+            commentsCount: 9
+          },
+          {
+            id: "post-2",
+            name: "codetyper",
+            tagline: "A professional typing trainer built around real codebases.",
+            url: "https://www.producthunt.com/posts/codetyper",
+            featuredAt: "2026-06-06T16:00:00Z",
+            dailyRank: 2,
+            votesCount: 200,
+            commentsCount: 20
+          }
+        ]
+      }
+    }
+  };
+  const items = parseProductHuntApiPosts(payload, "2026-06-06");
+  assert.equal(items.length, 1);
+  assert.equal(items[0].product, "Agent Browser Shield");
+  assert.equal(items[0].sourceRank, 6);
+  assert.equal(items[0].metrics.phVotes, 123);
+  assert.equal(items[0].metrics.phComments, 9);
+  assert.match(items[0].evidence, /Product Hunt API 2026-06-06/);
+}
+
+async function testProductHuntUsesApiWhenTokenConfigured() {
+  const originalFetch = globalThis.fetch;
+  const originalToken = process.env.PRODUCT_HUNT_TOKEN;
+  let request = null;
+  process.env.PRODUCT_HUNT_TOKEN = "test-token";
+  globalThis.fetch = async (url, init = {}) => {
+    request = { url, init };
+    return new Response(
+      JSON.stringify({
+        data: {
+          posts: {
+            nodes: [
+              {
+                id: "post-1",
+                name: "Agent Browser Shield",
+                tagline: "Block prompt inject and cut token costs for AI browser agents",
+                url: "https://www.producthunt.com/posts/agent-browser-shield",
+                featuredAt: "2026-06-06T15:00:00Z",
+                dailyRank: 6,
+                votesCount: 123,
+                commentsCount: 9
+              }
+            ]
+          }
+        }
+      }),
+      { status: 200, headers: { "content-type": "application/json" } }
+    );
+  };
+  try {
+    const items = await fetchProductHuntDate("2026-06-06");
+    assert.equal(request.url, "https://api.producthunt.com/v2/api/graphql");
+    assert.equal(request.init.method, "POST");
+    assert.equal(request.init.headers.Authorization, "Bearer test-token");
+    assert.match(String(request.init.body), /postedAfter/);
+    assert.equal(items.length, 1);
+    assert.equal(items[0].product, "Agent Browser Shield");
+  } finally {
+    globalThis.fetch = originalFetch;
+    if (originalToken === undefined) delete process.env.PRODUCT_HUNT_TOKEN;
+    else process.env.PRODUCT_HUNT_TOKEN = originalToken;
+  }
+}
+
 function testProductHuntWhyCopyUsesProductContext() {
   const markdown = [
     "[Fundraisly](https://www.producthunt.com/products/fundraisly) AI fundraising agent that finds investors and books meetings",
@@ -560,6 +646,38 @@ function testPriorityScoreDownranksHotNonProductShowHnDemos() {
   assert.ok(
     priorityScore(productLaunch) > priorityScore(hotDemo),
     "HN heat should not let non-product demos outrank clear AI product launches"
+  );
+}
+
+function testPriorityScoreUsesProductHuntEngagement() {
+  const lowEngagement = {
+    product: "Agent Harness",
+    link: "https://www.producthunt.com/posts/agent-harness",
+    type: "新产品",
+    did: "AI agent reasoning harness for enterprise workflows",
+    why: "明确 AI agent 产品发布，有首日榜单证据。",
+    evidence: "[Product Hunt API 2026-06-06](https://www.producthunt.com/posts/agent-harness)",
+    source: "producthunt",
+    category: "product",
+    qualityLabel: "keep",
+    sourceRank: 8,
+    metrics: {
+      phVotes: 8,
+      phComments: 0
+    }
+  };
+  const highEngagement = {
+    ...lowEngagement,
+    product: "Agent Control Plane",
+    link: "https://www.producthunt.com/posts/agent-control-plane",
+    metrics: {
+      phVotes: 320,
+      phComments: 42
+    }
+  };
+  assert.ok(
+    priorityScore(highEngagement) > priorityScore(lowEngagement),
+    "Product Hunt votes/comments should influence ordering inside the same quality tier"
   );
 }
 
@@ -1319,6 +1437,8 @@ const tests = [
   ["Report why copy keeps long product context distinct", testReportWhyCopyKeepsLongProductContextDistinct],
   ["Product Hunt fixture", testProductHuntFixture],
   ["Product Hunt fallback parser fixture", testProductHuntFallbackParserFixture],
+  ["Product Hunt API parser fixture", testProductHuntApiParserFixture],
+  ["Product Hunt uses API when token configured", testProductHuntUsesApiWhenTokenConfigured],
   ["Product Hunt why copy uses product context", testProductHuntWhyCopyUsesProductContext],
   ["Product Hunt candidate why avoids generic templates", testProductHuntCandidateWhyAvoidsGenericTemplates],
   ["Product Hunt rejects incidental ai substring", testProductHuntRejectsIncidentalAiSubstring],
@@ -1326,6 +1446,7 @@ const tests = [
   ["Priority score downranks weak novelty", testPriorityScoreDownranksWeakNovelty],
   ["Priority score keeps weak HF spaces behind strong launches", testPriorityScoreKeepsWeakHfSpacesBehindStrongProductLaunches],
   ["Priority score downranks hot non-product Show HN demos", testPriorityScoreDownranksHotNonProductShowHnDemos],
+  ["Priority score uses Product Hunt engagement", testPriorityScoreUsesProductHuntEngagement],
   ["Priority sort keeps strong labels before weak signals", testPrioritySortKeepsStrongLabelsBeforeWeakSignals],
   ["Quality memory drops negative goldens", testQualityMemoryDropsNegativeGoldens],
   ["Quality memory drops user feedback", testQualityMemoryDropsUserFeedback],
