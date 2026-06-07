@@ -191,6 +191,19 @@ function auditSourceHealth(sourceHealth) {
       })
     );
   }
+  if (
+    producthunt?.status === "fallback" &&
+    Number(producthunt.rawCount || 0) >= 10 &&
+    !/(原始覆盖|raw coverage|rawCount).*(AI\s*相关候选|AI candidate|keptCount|候选)/i.test(clean(producthunt.note))
+  ) {
+    failures.push(
+      failure("producthunt_fallback_missing_raw_ai_split", "Product Hunt fallback 必须区分原始榜单覆盖数和 AI 相关候选数。", {
+        rawCount: Number(producthunt.rawCount || 0),
+        keptCount: Number(producthunt.keptCount || 0),
+        note: clean(producthunt.note)
+      })
+    );
+  }
   const xhs = sources.xhs_dealflow;
   if (xhs && ["unavailable", "skipped", "empty"].includes(xhs.status) && !/XHS|Dealflow|bridge|登录|不可用|默认尝试/i.test(clean(xhs.note))) {
     failures.push(failure("xhs_unavailable_unexplained", "XHS/Dealflow 0 条或不可用时缺少可解释说明。"));

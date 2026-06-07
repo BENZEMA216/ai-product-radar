@@ -1091,6 +1091,52 @@ function testQualityAuditFlagsLowProductHuntFallbackCoverage() {
   assert.ok(audit.failures.some((failure) => failure.code === "producthunt_low_fallback_coverage_unmarked"));
 }
 
+function testQualityAuditFlagsProductHuntFallbackMissingRawAiSplit() {
+  const audit = auditReportQuality({
+    rows: [
+      {
+        product: "Agent Runtime",
+        source: "HN Algolia",
+        why: "它把 agent 运行时隔离作为核心能力，适合观察企业执行权限边界。",
+        did: "Show HN: Agent Runtime for AI workflows",
+        category: "product",
+        qualityLabel: "keep"
+      },
+      {
+        product: "Workflow Copilot",
+        source: "Product Hunt",
+        why: "它把跨工具自动化做成可试用产品，重点看入口是否足够贴近日常流程。",
+        did: "Build AI workflows across apps",
+        category: "product",
+        qualityLabel: "keep"
+      },
+      {
+        product: "LangGraph Release",
+        source: "GitHub Release",
+        why: "版本更新说明 agent 图编排框架仍在维护前端适配面，适合跟踪生态入口。",
+        did: "发布 SDK 更新。",
+        category: "product",
+        qualityLabel: "keep"
+      }
+    ],
+    sourceHealth: {
+      sources: {
+        producthunt: { status: "fallback", rawCount: 17, keptCount: 6, note: "Product Hunt fallback used." },
+        yc_launch: { status: "empty", rawCount: 0, keptCount: 0, note: "本窗口无候选" },
+        hackernews: { status: "ok", rawCount: 2, keptCount: 1, note: "ok" },
+        github: { status: "ok", rawCount: 1, keptCount: 1, note: "ok" },
+        huggingface: { status: "ok", rawCount: 0, keptCount: 0, note: "HF Model 进入 Models & Infra" },
+        aihot: { status: "ok", rawCount: 0, keptCount: 0, note: "ok" },
+        xhs_dealflow: { status: "unavailable", rawCount: 0, keptCount: 0, note: "XHS 默认尝试" }
+      }
+    },
+    siteHtml:
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
+  });
+  assert.ok(!audit.ok);
+  assert.ok(audit.failures.some((failure) => failure.code === "producthunt_fallback_missing_raw_ai_split"));
+}
+
 function testQualityAuditFlagsWeakBeforeStrong() {
   const audit = auditReportQuality({
     rows: [
@@ -1583,6 +1629,7 @@ const tests = [
   ["Quality audit flags CRUSHY dating novelty", testQualityAuditFlagsCrushyDatingNovelty],
   ["Quality audit accepts healthy report", testQualityAuditAcceptsHealthyReport],
   ["Quality audit flags low Product Hunt fallback coverage", testQualityAuditFlagsLowProductHuntFallbackCoverage],
+  ["Quality audit flags Product Hunt fallback missing raw AI split", testQualityAuditFlagsProductHuntFallbackMissingRawAiSplit],
   ["Quality audit flags weak before strong", testQualityAuditFlagsWeakBeforeStrong],
   ["Quality audit writes persistent artifacts", testQualityAuditWritesPersistentArtifacts],
   ["Quality audit uses stable generatedAt from source health", testQualityAuditUsesStableGeneratedAtFromSourceHealth],

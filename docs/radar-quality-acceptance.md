@@ -264,7 +264,7 @@ SellerClaw 值得看的是它把“店铺运营”拆成多 agent 工作流，�
       "status": "fallback",
       "rawCount": 74,
       "keptCount": 8,
-      "note": "Product Hunt API token missing; OrangeBot fallback used."
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-06；PH official API unavailable，使用 Jina/OrangeBot fallback；原始覆盖 74 条，AI 相关候选 8 条。"
     },
     "xhs_dealflow": {
       "status": "unavailable",
@@ -281,6 +281,7 @@ SellerClaw 值得看的是它把“店铺运营”拆成多 agent 工作流，�
 - 每个来源有 `status`、`rawCount`、`keptCount`、`note`。
 - 0 条来源必须有解释。
 - fallback 来源必须显式标记。
+- Product Hunt fallback 的 `rawCount` 指原始日榜覆盖数，`keptCount` 指 AI 相关候选数；当 `rawCount >= 10` 时，`note` 必须同时说明“原始覆盖”和“AI 相关候选”，当 `rawCount < 10` 时必须标记低覆盖风险。
 - source health 能在站点上查看，或至少写入 repo。
 
 ## 13. 抽样审计表
