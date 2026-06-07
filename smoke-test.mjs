@@ -586,6 +586,29 @@ function testReportWhyCopyAvoidsHnAndHfTemplates() {
   assert.deepEqual(whyFailures, []);
 }
 
+function testReportWhyCopyAvoidsHfModelTemplates() {
+  const candidates = [
+    "Hugging Face Model: MinhDucNguyen9705/vietnamese-correction-2.0-ocr",
+    "Hugging Face Model: AlekseyCalvin/Lyrical_Translator_ru2en_Gemma4_12b_SFT_Run1",
+    "Hugging Face Model: sundaycoil/path-resolver",
+    "Hugging Face Model: elgin-group/evolai-mamba2-0p47b-v1"
+  ].map((product, index) => ({
+    product,
+    link: `https://huggingface.co/model-${index}`,
+    type: "新产品",
+    did: "Model 在 Hugging Face 最近创建或更新。",
+    why: "可体验的模型/应用 demo 是早期产品形态和交互原型的重要信号。",
+    evidence: `[Hugging Face API 2026-06-08T00:00:0${index}Z](https://huggingface.co/model-${index})`,
+    source: "huggingface",
+    category: "model_infra"
+  }));
+  const rows = parseReportMarkdown(renderMarkdownTable(candidates), "reports/2026-06-08-0800-cst.md");
+  assert.equal(rows.length, 4);
+  assert.equal(new Set(rows.map((row) => row.why)).size, 4);
+  const audit = auditReportQuality({ rows });
+  assert.ok(!audit.failures.some((failure) => failure.code === "repeated_why_template"));
+}
+
 function testReportWhyCopyAvoidsAggregatorTemplates() {
   const candidates = [
     {
@@ -1882,6 +1905,33 @@ function testQualityAuditFlagsResourceListsTop20() {
   assert.ok(audit.failures.some((failure) => failure.code === "resource_list_top20"));
 }
 
+function testQualityAuditFlagsGenericHfSpaceFloodTop20() {
+  const genericSpaces = Array.from({ length: 4 }, (_, index) => ({
+    product: `Hugging Face Space: demo-owner/generic-space-${index}`,
+    link: `https://huggingface.co/spaces/demo-owner/generic-space-${index}`,
+    source: "Hugging Face API",
+    why: "HF Space 只有更新时间，缺少样例、用户和采用证据。",
+    did: "Space 在 Hugging Face 最近创建或更新。",
+    category: "product",
+    qualityLabel: "weak_keep"
+  }));
+  const rows = [
+    ...Array.from({ length: 16 }, (_, index) => ({
+      product: `Useful Agent Product ${index}`,
+      link: `https://example.com/useful-agent-${index}`,
+      source: index % 2 ? "HN Algolia" : "Product Hunt",
+      why: "它有明确的 agent 工作流场景，适合产品经理观察执行入口和采用门槛。",
+      did: "发布 AI agent workflow 产品。",
+      category: "product",
+      qualityLabel: "keep"
+    })),
+    ...genericSpaces
+  ];
+  const audit = auditReportQuality({ rows });
+  assert.equal(audit.ok, false);
+  assert.ok(audit.failures.some((failure) => failure.code === "generic_hf_space_flood_top20"));
+}
+
 function testQualityAuditFlagsAihotResearchTop20() {
   const rows = [
     {
@@ -2402,6 +2452,7 @@ const tests = [
   ["Report why copy adds context for repeated templates", testReportWhyCopyAddsContextForRepeatedTemplates],
   ["Report why copy keeps long product context distinct", testReportWhyCopyKeepsLongProductContextDistinct],
   ["Report why copy avoids HN and HF templates", testReportWhyCopyAvoidsHnAndHfTemplates],
+  ["Report why copy avoids HF model templates", testReportWhyCopyAvoidsHfModelTemplates],
   ["Report why copy avoids aggregator templates", testReportWhyCopyAvoidsAggregatorTemplates],
   ["Report why copy cleans HN specific contexts", testReportWhyCopyCleansHnSpecificContexts],
   ["Product Hunt fixture", testProductHuntFixture],
@@ -2444,6 +2495,7 @@ const tests = [
   ["Quality audit flags duplicate repo Top 10", testQualityAuditFlagsDuplicateRepoTop10],
   ["Quality audit flags duplicate repo Top 20", testQualityAuditFlagsDuplicateRepoTop20],
   ["Quality audit flags resource lists Top 20", testQualityAuditFlagsResourceListsTop20],
+  ["Quality audit flags generic HF Space flood Top 20", testQualityAuditFlagsGenericHfSpaceFloodTop20],
   ["Quality audit flags AIHOT research Top 20", testQualityAuditFlagsAihotResearchTop20],
   ["Quality audit writes persistent artifacts", testQualityAuditWritesPersistentArtifacts],
   ["Quality audit flags malformed feedback", testQualityAuditFlagsMalformedFeedback],

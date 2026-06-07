@@ -193,6 +193,25 @@ function auditModelPlacement(rows) {
   ];
 }
 
+function isGenericHuggingFaceSpaceRow(row) {
+  return (
+    clean(row.source) === "Hugging Face API" &&
+    /^Hugging Face Space:/i.test(clean(row.product)) &&
+    clean(row.did) === "Space 在 Hugging Face 最近创建或更新。"
+  );
+}
+
+function auditGenericHuggingFaceSpaceFlood(rows) {
+  const genericSpaces = rows.slice(0, 20).filter(isGenericHuggingFaceSpaceRow);
+  if (genericSpaces.length <= 3) return [];
+  return [
+    failure("generic_hf_space_flood_top20", "Top 20 中只有更新时间证据的 Hugging Face Space 过多，默认阅读会被弱 demo 信号占据。", {
+      count: genericSpaces.length,
+      products: genericSpaces.map((item) => item.product)
+    })
+  ];
+}
+
 function auditWeakBeforeStrong(rows) {
   const top20 = rows.slice(0, 20);
   const firstWeakIndex = top20.findIndex((row) => row.qualityLabel === "weak_keep");
@@ -516,6 +535,7 @@ export function auditReportQuality({
   failures.push(...auditRepeatedWhy(rows));
   failures.push(...auditSourceDiversity(rows));
   failures.push(...auditModelPlacement(rows));
+  failures.push(...auditGenericHuggingFaceSpaceFlood(rows));
   failures.push(...auditWeakBeforeStrong(rows));
   failures.push(...auditDuplicateGroups(rows));
   failures.push(...auditDuplicateGroupsTop20(rows));
@@ -534,6 +554,7 @@ export function auditReportQuality({
       rows: rows.length,
       top20Sources: [...new Set(rows.slice(0, 20).map((row) => clean(row.source)).filter(Boolean))],
       top10ModelInfra: rows.slice(0, 10).filter((row) => row.category === "model_infra").length,
+      genericHfSpaceTop20: rows.slice(0, 20).filter(isGenericHuggingFaceSpaceRow).length,
       precisionAt10: rankingMetrics.precisionAt10,
       badTop10Count: rankingMetrics.badTop10Count
     }

@@ -1462,6 +1462,7 @@ function hackerNewsWhyFromContext(item) {
 function huggingFaceWhyFromContext(item) {
   const product = compactProductName(item.product);
   const context = sourceContextLabel(item);
+  const text = `${item.product} ${item.did} ${item.why}`.toLowerCase();
   if (context === "浏览器和标签页控制") {
     return `${product} 透露出浏览器标签页 agent 的实验方向，值得先看交互是否真能减少手动切换成本。`;
   }
@@ -1487,6 +1488,24 @@ function huggingFaceWhyFromContext(item) {
     return `${product} 属于对话入口实验，重点看是否有明确任务、记忆能力或差异化交互。`;
   }
   if (context === "模型实验和推理资产") {
+    if (includesAny(text, ["ocr", "correction", "document"])) {
+      return `${product} 指向 OCR 或文档纠错模型，适合在 Models & Infra 里看它能否改善数据清洗和文档输入质量。`;
+    }
+    if (includesAny(text, ["translator", "translation", "ru2en", "mt5", "qa"])) {
+      return `${product} 更像语言转换或问答微调资产，重点看语种覆盖、评测样本和下游产品接入价值。`;
+    }
+    if (includesAny(text, ["router", "resolver", "path", "linting", "orchestrator"])) {
+      return `${product} 暗示工具路由或流程编排方向，适合观察模型资产是否能服务 agent 基础设施。`;
+    }
+    if (includesAny(text, ["mamba", "evolai"])) {
+      return `${product} 属于架构实验类模型，适合单独跟踪性能、上下文效率和开源生态信号。`;
+    }
+    if (includesAny(text, ["gguf", "qwen", "gemma", "nemotron"])) {
+      return `${product} 是本地推理/量化相关资产，关键看体积、硬件门槛、许可和真实基准。`;
+    }
+    if (includesAny(text, ["image", "gallery", "visual", "vla"])) {
+      return `${product} 偏视觉模型或样例资产，适合看输出质量、可控性和是否能支撑产品工作流。`;
+    }
     return `${product} 更偏模型或推理资产更新，适合放在 Models & Infra 中观察能力、许可和可复用性。`;
   }
   return `${product} 是 HF 上的${context}弱信号，先看可运行性、样例质量和是否有明确用户场景。`;
@@ -1765,7 +1784,7 @@ function buildRankingSignals(item) {
   if (item.category === "model_infra") noisePenalty += 8;
   if (item.qualityLabel === "weak_keep") noisePenalty += 14;
   if (item.qualityLabel === "deprioritize") noisePenalty += 18;
-  if (isGenericHuggingFaceSpaceSignal(item)) noisePenalty += Number(item.metrics?.hfLikes || 0) > 0 ? 8 : 12;
+  if (isGenericHuggingFaceSpaceSignal(item)) noisePenalty += Number(item.metrics?.hfLikes || 0) > 0 ? 12 : 20;
   if (isLowSignalGitHubPackageRelease(item)) noisePenalty += 10;
   if (includesAny(text, ["roulette", "baby", "girlfriend", "wallpaper", "tattoo", "headshot"])) noisePenalty += 16;
   if (!isRelevant(text)) noisePenalty += 30;
