@@ -8,7 +8,9 @@ import {
   fetchProductHuntDate,
   filterPreviouslyReportedProductHunt,
   parseOrangeBotProductHuntHtml,
+  parseProductHuntApiDiagnostics,
   parseProductHuntApiPosts,
+  parseProductHuntMarkdownDiagnostics,
   parseProductHuntMarkdown,
   parseAihotDailyMarkdown,
   parseAihotRssItems,
@@ -390,6 +392,49 @@ function testProductHuntFallbackParserFixture() {
   assert.equal(items[0].source, "producthunt");
 }
 
+function testProductHuntMarkdownDiagnosticsCountsRawRowsAndTopics() {
+  const markdown = [
+    "[1. Plain Billing](https://www.producthunt.com/products/plain-billing)Create invoices for small teams",
+    "[Productivity](https://www.producthunt.com/topics/productivity)",
+    "[2. Topic AI Workflow](https://www.producthunt.com/products/topic-ai-workflow)Build store operations from one chat",
+    "[E-Commerce](https://www.producthunt.com/topics/e-commerce)•[Artificial Intelligence](https://www.producthunt.com/topics/artificial-intelligence)",
+    "[3. Agent Browser Shield](https://www.producthunt.com/products/agent-browser-shield)Block prompt inject for browser agents",
+    "[Developer Tools](https://www.producthunt.com/topics/developer-tools)"
+  ].join("\n\n");
+  const diagnostics = parseProductHuntMarkdownDiagnostics(
+    markdown,
+    "2026-06-06",
+    "https://www.producthunt.com/leaderboard/daily/2026/6/6/all"
+  );
+  assert.equal(diagnostics.rawCount, 3);
+  assert.equal(diagnostics.items.length, 2);
+  assert.ok(
+    diagnostics.items.some((item) => item.product === "Topic AI Workflow"),
+    "Product Hunt topic evidence should count for semantic AI relevance"
+  );
+  assert.ok(!diagnostics.items.some((item) => item.product === "Plain Billing"));
+}
+
+function testProductHuntMarkdownDiagnosticsRejectsPromotedNoRankRows() {
+  const markdown = [
+    "[Framer](https://www.producthunt.com/products/framer)Launch websites with enterprise needs at startup speeds.",
+    "[Design Tools](https://www.producthunt.com/topics/design-tools)•[Website Builder](https://www.producthunt.com/topics/website-builder)•[Artificial Intelligence](https://www.producthunt.com/topics/artificial-intelligence)",
+    "[8. freddy.](https://www.producthunt.com/products/freddy)Plug your wearables into Claude, OpenClaw, and any AI",
+    "[Health & Fitness](https://www.producthunt.com/topics/health-fitness)•[Wearables](https://www.producthunt.com/topics/wearables)•[Artificial Intelligence](https://www.producthunt.com/topics/artificial-intelligence)"
+  ].join("\n\n");
+  const diagnostics = parseProductHuntMarkdownDiagnostics(
+    markdown,
+    "2026-06-06",
+    "https://www.producthunt.com/leaderboard/daily/2026/6/6/all"
+  );
+  assert.equal(diagnostics.rawCount, 1);
+  assert.deepEqual(
+    diagnostics.items.map((item) => item.product),
+    ["freddy."],
+    "Product Hunt promoted/no-rank rows should not be treated as daily leaderboard products"
+  );
+}
+
 function testProductHuntApiParserFixture() {
   const payload = {
     data: {
@@ -428,6 +473,40 @@ function testProductHuntApiParserFixture() {
   assert.equal(items[0].metrics.phVotes, 123);
   assert.equal(items[0].metrics.phComments, 9);
   assert.match(items[0].evidence, /Product Hunt API 2026-06-06/);
+}
+
+function testProductHuntApiDiagnosticsCountsRawPosts() {
+  const payload = {
+    data: {
+      posts: {
+        nodes: [
+          {
+            id: "post-1",
+            name: "Agent Browser Shield",
+            tagline: "Block prompt inject and cut token costs for AI browser agents",
+            url: "https://www.producthunt.com/posts/agent-browser-shield",
+            featuredAt: "2026-06-06T15:00:00Z",
+            dailyRank: 6,
+            votesCount: 123,
+            commentsCount: 9
+          },
+          {
+            id: "post-2",
+            name: "codetyper",
+            tagline: "A professional typing trainer built around real codebases.",
+            url: "https://www.producthunt.com/posts/codetyper",
+            featuredAt: "2026-06-06T16:00:00Z",
+            dailyRank: 2,
+            votesCount: 200,
+            commentsCount: 20
+          }
+        ]
+      }
+    }
+  };
+  const diagnostics = parseProductHuntApiDiagnostics(payload, "2026-06-06");
+  assert.equal(diagnostics.rawCount, 2);
+  assert.equal(diagnostics.items.length, 1);
 }
 
 async function testProductHuntUsesApiWhenTokenConfigured() {
@@ -476,11 +555,11 @@ async function testProductHuntUsesApiWhenTokenConfigured() {
 
 function testProductHuntWhyCopyUsesProductContext() {
   const markdown = [
-    "[Fundraisly](https://www.producthunt.com/products/fundraisly) AI fundraising agent that finds investors and books meetings",
-    "[Vokal](https://www.producthunt.com/products/vokal-2) A collaboration space for 10x teammates with their AI agents",
-    "[Brief](https://www.producthunt.com/products/brief-10) Navigate your agents to product-market fit",
-    "[Knock agent for Slack](https://www.producthunt.com/products/knock-6) Build, manage, and ship customer messaging from Slack",
-    "[SocialEcho 2.0](https://www.producthunt.com/products/socialecho) AI social media copilot for teams and agents"
+    "[1. Fundraisly](https://www.producthunt.com/products/fundraisly) AI fundraising agent that finds investors and books meetings",
+    "[2. Vokal](https://www.producthunt.com/products/vokal-2) A collaboration space for 10x teammates with their AI agents",
+    "[3. Brief](https://www.producthunt.com/products/brief-10) Navigate your agents to product-market fit",
+    "[4. Knock agent for Slack](https://www.producthunt.com/products/knock-6) Build, manage, and ship customer messaging from Slack",
+    "[5. SocialEcho 2.0](https://www.producthunt.com/products/socialecho) AI social media copilot for teams and agents"
   ].join("\n");
   const items = parseProductHuntMarkdown(
     markdown,
@@ -496,12 +575,12 @@ function testProductHuntWhyCopyUsesProductContext() {
 
 function testProductHuntCandidateWhyAvoidsGenericTemplates() {
   const markdown = [
-    "[Recursi](https://www.producthunt.com/products/recursi-self-improving-vibe-coding-env)Self improving vibe coding env with no API fees",
-    "[SellerClaw](https://www.producthunt.com/products/sellerclaw)A team of AI agents that runs your stores across channels",
-    "[Agent Mode on Arena](https://www.producthunt.com/products/arena-5)Get real-world tasks done with autonomous AI agents",
-    "[Nemotron 3 Ultra by NVIDIA](https://www.producthunt.com/products/nvidia)Powers faster, efficient reasoning for long-running agents",
-    "[LocalClicky](https://www.producthunt.com/products/localclicky)Control your Mac with your voice locally",
-    "[Agent Browser Shield](https://www.producthunt.com/products/agent-browser-shield)Block prompt inject & cut token costs for AI browser agents"
+    "[1. Recursi](https://www.producthunt.com/products/recursi-self-improving-vibe-coding-env)Self improving vibe coding env with no API fees",
+    "[2. SellerClaw](https://www.producthunt.com/products/sellerclaw)A team of AI agents that runs your stores across channels",
+    "[3. Agent Mode on Arena](https://www.producthunt.com/products/arena-5)Get real-world tasks done with autonomous AI agents",
+    "[4. Nemotron 3 Ultra by NVIDIA](https://www.producthunt.com/products/nvidia)Powers faster, efficient reasoning for long-running agents",
+    "[5. LocalClicky](https://www.producthunt.com/products/localclicky)Control your Mac with your voice locally",
+    "[6. Agent Browser Shield](https://www.producthunt.com/products/agent-browser-shield)Block prompt inject & cut token costs for AI browser agents"
   ].join("\n");
   const items = parseProductHuntMarkdown(
     markdown,
@@ -521,11 +600,11 @@ function testProductHuntCandidateWhyAvoidsGenericTemplates() {
 
 function testProductHuntRejectsIncidentalAiSubstring() {
   const markdown = [
-    "[codetyper](https://www.producthunt.com/products/codetyper-2)A professional typing trainer built around real codebases.",
-    "[Redirectly](https://www.producthunt.com/products/redirectly-2)Know which campaigns actually drive your installs",
-    "[MAI-Image-2.5](https://www.producthunt.com/products/mai-image-2-5)Generate and edit images with precise scene control",
-    "[OpenAI Workflow](https://www.producthunt.com/products/openai-workflow)Automate your workspace with OpenAI",
-    "[xAI Dashboard](https://www.producthunt.com/products/xai-dashboard)A dashboard for xAI users"
+    "[1. codetyper](https://www.producthunt.com/products/codetyper-2)A professional typing trainer built around real codebases.",
+    "[2. Redirectly](https://www.producthunt.com/products/redirectly-2)Know which campaigns actually drive your installs",
+    "[3. MAI-Image-2.5](https://www.producthunt.com/products/mai-image-2-5)Generate and edit images with precise scene control",
+    "[4. OpenAI Workflow](https://www.producthunt.com/products/openai-workflow)Automate your workspace with OpenAI",
+    "[5. xAI Dashboard](https://www.producthunt.com/products/xai-dashboard)A dashboard for xAI users"
   ].join("\n");
   const items = parseProductHuntMarkdown(
     markdown,
@@ -541,9 +620,9 @@ function testProductHuntRejectsIncidentalAiSubstring() {
 
 function testProductHuntRejectsLowSignalConsumerNovelty() {
   const markdown = [
-    "[Babymorph.ai](https://www.producthunt.com/products/babymorph-ai)AI Baby Generator — see your future baby from 2 photos",
-    "[Agent Browser Shield](https://www.producthunt.com/products/agent-browser-shield)Block prompt inject & cut token costs for AI browser agents",
-    "[Veltrix AI](https://www.producthunt.com/products/veltrix-ai)AI finance copilot for cash flow, margins, and growth"
+    "[1. Babymorph.ai](https://www.producthunt.com/products/babymorph-ai)AI Baby Generator — see your future baby from 2 photos",
+    "[2. Agent Browser Shield](https://www.producthunt.com/products/agent-browser-shield)Block prompt inject & cut token costs for AI browser agents",
+    "[3. Veltrix AI](https://www.producthunt.com/products/veltrix-ai)AI finance copilot for cash flow, margins, and growth"
   ].join("\n");
   const items = parseProductHuntMarkdown(
     markdown,
@@ -555,6 +634,22 @@ function testProductHuntRejectsLowSignalConsumerNovelty() {
     ["Agent Browser Shield", "Veltrix AI"],
     "Product Hunt parser should reject low-signal consumer novelty AI products"
   );
+}
+
+function testProductHuntRejectsTopicOnlyDatingNovelty() {
+  const markdown = [
+    "[108. CRUSHY](https://www.producthunt.com/products/crushy)Dating, reinvented.",
+    "[Android](https://www.producthunt.com/topics/android)•[Dating](https://www.producthunt.com/topics/dating)•[Artificial Intelligence](https://www.producthunt.com/topics/artificial-intelligence)",
+    "[8. freddy.](https://www.producthunt.com/products/freddy)Plug your wearables into Claude, OpenClaw, and any AI",
+    "[Health & Fitness](https://www.producthunt.com/topics/health-fitness)•[Wearables](https://www.producthunt.com/topics/wearables)•[Artificial Intelligence](https://www.producthunt.com/topics/artificial-intelligence)"
+  ].join("\n\n");
+  const items = parseProductHuntMarkdown(
+    markdown,
+    "2026-06-06",
+    "https://www.producthunt.com/leaderboard/daily/2026/6/6/all"
+  );
+  assert.ok(!items.some((item) => item.product === "CRUSHY"));
+  assert.ok(items.some((item) => item.product === "freddy."));
 }
 
 function testPriorityScoreDownranksWeakNovelty() {
@@ -1437,12 +1532,16 @@ const tests = [
   ["Report why copy keeps long product context distinct", testReportWhyCopyKeepsLongProductContextDistinct],
   ["Product Hunt fixture", testProductHuntFixture],
   ["Product Hunt fallback parser fixture", testProductHuntFallbackParserFixture],
+  ["Product Hunt markdown diagnostics counts raw rows and topics", testProductHuntMarkdownDiagnosticsCountsRawRowsAndTopics],
+  ["Product Hunt markdown diagnostics rejects promoted no-rank rows", testProductHuntMarkdownDiagnosticsRejectsPromotedNoRankRows],
   ["Product Hunt API parser fixture", testProductHuntApiParserFixture],
+  ["Product Hunt API diagnostics counts raw posts", testProductHuntApiDiagnosticsCountsRawPosts],
   ["Product Hunt uses API when token configured", testProductHuntUsesApiWhenTokenConfigured],
   ["Product Hunt why copy uses product context", testProductHuntWhyCopyUsesProductContext],
   ["Product Hunt candidate why avoids generic templates", testProductHuntCandidateWhyAvoidsGenericTemplates],
   ["Product Hunt rejects incidental ai substring", testProductHuntRejectsIncidentalAiSubstring],
   ["Product Hunt rejects low-signal consumer novelty", testProductHuntRejectsLowSignalConsumerNovelty],
+  ["Product Hunt rejects topic-only dating novelty", testProductHuntRejectsTopicOnlyDatingNovelty],
   ["Priority score downranks weak novelty", testPriorityScoreDownranksWeakNovelty],
   ["Priority score keeps weak HF spaces behind strong launches", testPriorityScoreKeepsWeakHfSpacesBehindStrongProductLaunches],
   ["Priority score downranks hot non-product Show HN demos", testPriorityScoreDownranksHotNonProductShowHnDemos],

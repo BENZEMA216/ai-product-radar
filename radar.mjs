@@ -42,6 +42,7 @@ disableLocalProxyEnv();
 
 const AI_KEYWORDS = [
   "ai",
+  "artificial intelligence",
   "openai",
   "xai",
   "agent",
@@ -72,6 +73,8 @@ const PRODUCT_HUNT_LOW_SIGNAL_CONSUMER_PATTERNS = [
   /\bbabymorph(?:\.ai)?\b/i,
   /\b(ai\s+)?girlfriend\b/i,
   /\b(ai\s+)?boyfriend\b/i,
+  /\bdating,\s*reinvented\b/i,
+  /\bcrushy\b/i,
   /\bface\s*swap\b/i,
   /\bheadshot\s+generator\b/i,
   /\btattoo\s+generator\b/i,
@@ -751,9 +754,11 @@ function productHuntCandidate({
   sourceRank,
   metrics,
   observedAt,
-  sourceApi
+  sourceApi,
+  rawTopics = [],
+  relevanceText
 }) {
-  const text = `${rawName} ${rawDescription}`;
+  const text = relevanceText || `${rawName} ${rawDescription} ${rawTopics.join(" ")}`;
   if (!isRelevant(text)) return null;
   if (isLowSignalProductHuntConsumerNovelty(text)) return null;
   const product = clean(rawName);
@@ -772,6 +777,7 @@ function productHuntCandidate({
     ...(metrics ? { metrics } : {}),
     observedAt: observedAt || dateKey,
     ...(sourceApi ? { sourceApi } : {}),
+    ...(rawTopics.length ? { topics: rawTopics } : {}),
     raw
   };
 }
@@ -781,25 +787,50 @@ function isLowSignalProductHuntConsumerNovelty(text) {
 }
 
 export function parseProductHuntMarkdown(markdown, dateKey, sourceUrl) {
-  const candidates = [];
-  const productPattern = /\[(?:\d+\.\s*)?([^\]\n]+?)\]\((https:\/\/www\.producthunt\.com\/products\/[^)]+)\)([^\n]*)/g;
+  return parseProductHuntMarkdownDiagnostics(markdown, dateKey, sourceUrl).items;
+}
+
+function productHuntMarkdownTopics(segment) {
+  const topics = [];
+  const topicPattern = /\[([^\]\n]+)\]\(https:\/\/www\.producthunt\.com\/topics\/[^)]+\)/g;
   let match;
-  while ((match = productPattern.exec(markdown)) !== null) {
-    const [full, rawName, link, rawDescription] = match;
+  while ((match = topicPattern.exec(segment)) !== null) {
+    topics.push(clean(match[1]));
+  }
+  return [...new Set(topics.filter(Boolean))];
+}
+
+export function parseProductHuntMarkdownDiagnostics(markdown, dateKey, sourceUrl) {
+  const candidates = [];
+  const productPattern = /\[(?:(\d+)\.\s*)?([^\]\n]+?)\]\((https:\/\/www\.producthunt\.com\/products\/[^)]+)\)([^\n]*)/g;
+  const matches = [...markdown.matchAll(productPattern)];
+  const rawRows = [];
+  for (const [index, match] of matches.entries()) {
+    const [full, rawRank, rawName, link, rawDescription] = match;
+    if (!rawRank) continue;
     if (rawName.includes("Product Hunt") || rawName.length > 80) continue;
     if (link.includes("ref=footer") || link.includes("/reviews")) continue;
+    const canonicalLink = link.split("?")[0];
+    rawRows.push(canonicalLink);
+    const nextMatchIndex = matches[index + 1]?.index ?? markdown.length;
+    const context = markdown.slice((match.index ?? 0) + full.length, nextMatchIndex);
+    const rawTopics = productHuntMarkdownTopics(context);
     const candidate = productHuntCandidate({
       rawName,
-      link,
+      link: canonicalLink,
       rawDescription,
       dateKey,
       evidenceUrl: sourceUrl,
       raw: full,
-      sourceRank: candidates.length + 1
+      sourceRank: Number(rawRank) || candidates.length + 1,
+      rawTopics
     });
     if (candidate) candidates.push(candidate);
   }
-  return uniqueBy(candidates, (item) => item.link);
+  return {
+    items: uniqueBy(candidates, (item) => item.link),
+    rawCount: new Set(rawRows).size
+  };
 }
 
 function productHuntPostNodes(payload) {
@@ -809,15 +840,22 @@ function productHuntPostNodes(payload) {
 }
 
 export function parseProductHuntApiPosts(payload, dateKey) {
+  return parseProductHuntApiDiagnostics(payload, dateKey).items;
+}
+
+export function parseProductHuntApiDiagnostics(payload, dateKey) {
   const candidates = [];
-  for (const [index, post] of productHuntPostNodes(payload).entries()) {
+  const nodes = productHuntPostNodes(payload);
+  const rawRows = [];
+  for (const [index, post] of nodes.entries()) {
     const rawName = post?.name || post?.product?.name || post?.title || "";
     const rawDescription = post?.tagline || post?.description || post?.product?.tagline || "";
     const link = post?.url || post?.product?.url || post?.website || post?.product?.website || "";
     if (!rawName || !link) continue;
+    rawRows.push(link.split("?")[0]);
     const candidate = productHuntCandidate({
       rawName,
-      link,
+      link: link.split("?")[0],
       rawDescription,
       dateKey,
       evidenceUrl: post?.url || link,
@@ -833,12 +871,15 @@ export function parseProductHuntApiPosts(payload, dateKey) {
     });
     if (candidate) candidates.push(candidate);
   }
-  return uniqueBy(candidates, (item) => item.link);
+  return {
+    items: uniqueBy(candidates, (item) => item.link),
+    rawCount: new Set(rawRows).size || nodes.length
+  };
 }
 
-async function fetchProductHuntApiDate(dateKey) {
+async function fetchProductHuntApiDateDiagnostics(dateKey) {
   const token = process.env.PRODUCT_HUNT_TOKEN?.trim();
-  if (!token) return [];
+  if (!token) return { items: [], rawCount: 0, sourceKind: "api_unconfigured" };
   const { start, end } = productHuntPacificDayRange(dateKey);
   const query = `query ProductHuntPosts($postedAfter: DateTime!, $postedBefore: DateTime!, $first: Int!) {
     posts(postedAfter: $postedAfter, postedBefore: $postedBefore, first: $first, featured: true) {
@@ -880,42 +921,52 @@ async function fetchProductHuntApiDate(dateKey) {
     if (Array.isArray(payload.errors) && payload.errors.length) {
       throw new Error(`Product Hunt API errors: ${JSON.stringify(payload.errors).slice(0, 300)}`);
     }
-    return parseProductHuntApiPosts(payload, dateKey);
+    return { ...parseProductHuntApiDiagnostics(payload, dateKey), sourceKind: "api" };
   } finally {
     clearTimeout(timeout);
   }
 }
 
-export async function fetchProductHuntDate(dateKey) {
+async function fetchProductHuntDateDiagnostics(dateKey) {
   try {
-    const apiItems = await fetchProductHuntApiDate(dateKey);
-    if (apiItems.length) return apiItems;
+    const apiDiagnostics = await fetchProductHuntApiDateDiagnostics(dateKey);
+    if (apiDiagnostics.rawCount || apiDiagnostics.items.length) return apiDiagnostics;
   } catch {
     // Fall back to the public page path below; source health records fallback coverage.
   }
   const sourceUrl = `https://www.producthunt.com/leaderboard/daily/${phDatePath(dateKey)}/all`;
   try {
     const markdown = await fetchText(readerUrl(sourceUrl), { attempts: 4, timeoutMs: 25000 });
-    return parseProductHuntMarkdown(markdown, dateKey, sourceUrl);
+    return { ...parseProductHuntMarkdownDiagnostics(markdown, dateKey, sourceUrl), sourceKind: "jina" };
   } catch {
-    return [];
+    return { items: [], rawCount: 0, sourceKind: "unavailable" };
   }
 }
 
+export async function fetchProductHuntDate(dateKey) {
+  return (await fetchProductHuntDateDiagnostics(dateKey)).items;
+}
+
 export function parseOrangeBotProductHuntHtml(html, start, end) {
+  return parseOrangeBotProductHuntHtmlDiagnostics(html, start, end).items;
+}
+
+function parseOrangeBotProductHuntHtmlDiagnostics(html, start, end) {
   const allowedDates = new Set(datesCovered(start, end));
   const candidates = [];
+  const rawRows = [];
   const itemPattern =
     /<li[^>]*>\s*<a href="(https:\/\/www\.producthunt\.com\/products\/[^"]+)"[\s\S]*?<div class="[^"]*text-base[^"]*">([\s\S]*?)<\/div>[\s\S]*?<p class="[^"]*">([\s\S]*?)<\/p>[\s\S]*?<div class="[^"]*font-mono[^"]*">(\d{4}-\d{2}-\d{2})<\/div>[\s\S]*?<\/li>/g;
   let match;
   while ((match = itemPattern.exec(html)) !== null) {
     const [, link, rawNameHtml, rawDescriptionHtml, dateKey] = match;
     if (!allowedDates.has(dateKey)) continue;
+    rawRows.push(link.split("?")[0]);
     const rawName = stripHtml(rawNameHtml);
     const rawDescription = stripHtml(rawDescriptionHtml);
     const candidate = productHuntCandidate({
       rawName,
-      link,
+      link: link.split("?")[0],
       rawDescription,
       dateKey,
       evidenceUrl: link,
@@ -924,7 +975,10 @@ export function parseOrangeBotProductHuntHtml(html, start, end) {
     });
     if (candidate) candidates.push(candidate);
   }
-  return uniqueBy(candidates, (item) => item.link);
+  return {
+    items: uniqueBy(candidates, (item) => item.link),
+    rawCount: new Set(rawRows).size
+  };
 }
 
 async function fetchProductHuntFallback(start, end) {
@@ -941,17 +995,19 @@ async function fetchProductHuntFallbackForDates(dateKeys) {
     const html = await fetchText(ORANGEBOT_PRODUCT_HUNT_URL, { attempts: 3, timeoutMs: 20000 });
     const allowed = new Set(dateKeys);
     const candidates = [];
+    const rawRows = [];
     const itemPattern =
       /<li[^>]*>\s*<a href="(https:\/\/www\.producthunt\.com\/products\/[^"]+)"[\s\S]*?<div class="[^"]*text-base[^"]*">([\s\S]*?)<\/div>[\s\S]*?<p class="[^"]*">([\s\S]*?)<\/p>[\s\S]*?<div class="[^"]*font-mono[^"]*">(\d{4}-\d{2}-\d{2})<\/div>[\s\S]*?<\/li>/g;
     let match;
     while ((match = itemPattern.exec(html)) !== null) {
       const [, link, rawNameHtml, rawDescriptionHtml, dateKey] = match;
       if (!allowed.has(dateKey)) continue;
+      rawRows.push(link.split("?")[0]);
       const rawName = stripHtml(rawNameHtml);
       const rawDescription = stripHtml(rawDescriptionHtml);
       const candidate = productHuntCandidate({
         rawName,
-        link,
+        link: link.split("?")[0],
         rawDescription,
         dateKey,
         evidenceUrl: link,
@@ -960,9 +1016,13 @@ async function fetchProductHuntFallbackForDates(dateKeys) {
       });
       if (candidate) candidates.push(candidate);
     }
-    return uniqueBy(candidates, (item) => item.link);
+    return {
+      items: uniqueBy(candidates, (item) => item.link),
+      rawCount: new Set(rawRows).size,
+      sourceKind: "orangebot"
+    };
   } catch {
-    return [];
+    return { items: [], rawCount: 0, sourceKind: "orangebot_unavailable" };
   }
 }
 
@@ -1772,13 +1832,17 @@ function sourceHealthEntry({ status = "ok", rawCount = 0, keptCount = 0, note = 
 
 function buildSourceHealth({ rawGroups, candidates, phDateKeys }) {
   const countKept = (source) => candidates.filter((item) => item.source === source).length;
-  const productHuntRawCount = rawGroups.producthuntOfficial.length + rawGroups.producthuntFallback.length;
-  const productHuntApiUsed = rawGroups.producthuntOfficial.some((item) => item.sourceApi === "producthunt_api");
+  const productHuntOfficialRawCount = Number(rawGroups.producthuntOfficialRawCount || rawGroups.producthuntOfficial.length);
+  const productHuntFallbackRawCount = Number(rawGroups.producthuntFallbackRawCount || rawGroups.producthuntFallback.length);
+  const productHuntRawCount = Math.max(productHuntOfficialRawCount, productHuntFallbackRawCount);
+  const productHuntSourceKinds = rawGroups.producthuntOfficialSourceKinds || [];
+  const productHuntApiUsed =
+    productHuntSourceKinds.includes("api") || rawGroups.producthuntOfficial.some((item) => item.sourceApi === "producthunt_api");
   const productHuntStatus = process.env.PRODUCT_HUNT_TOKEN
-    ? rawGroups.producthuntOfficial.length
+    ? productHuntOfficialRawCount
       ? "ok"
       : "empty"
-    : rawGroups.producthuntOfficial.length || rawGroups.producthuntFallback.length
+    : productHuntOfficialRawCount || productHuntFallbackRawCount
       ? "fallback"
       : "empty";
   const productHuntFallbackRisk =
@@ -1786,10 +1850,10 @@ function buildSourceHealth({ rawGroups, candidates, phDateKeys }) {
       ? `；低覆盖风险：fallback 只返回 ${productHuntRawCount} 条候选，不能视为完整 PH 日榜。`
       : "";
   const productHuntNote = productHuntApiUsed
-    ? `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；Product Hunt API v2 GraphQL 已启用，候选带 rank/votes/comments。`
+    ? `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；Product Hunt API v2 GraphQL 已启用，原始覆盖 ${productHuntRawCount} 条，候选带 rank/votes/comments。`
     : process.env.PRODUCT_HUNT_TOKEN
-      ? `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；PRODUCT_HUNT_TOKEN 已配置但 API 未返回可解析候选，已回退到 Jina/OrangeBot。`
-      : `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback${productHuntFallbackRisk}`;
+      ? `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；PRODUCT_HUNT_TOKEN 已配置但 API 未返回可解析候选，已回退到 Jina/OrangeBot；原始覆盖 ${productHuntRawCount} 条。`
+      : `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 ${productHuntRawCount} 条，AI 相关候选 ${rawGroups.producthuntOfficial.length + rawGroups.producthuntFallback.length} 条${productHuntFallbackRisk}`;
   return {
     producthunt: sourceHealthEntry({
       status: productHuntStatus,
@@ -1848,8 +1912,12 @@ export async function runRadar(options = {}) {
   const phDateKeys = options.productHuntDateKeys || productHuntDateKeysForRun(now);
   const endDateKey = localDateKey(now);
 
-  const [phNested, phFallback, ycLaunches, hn, gh, hf, aihot, dealflowXhs] = await Promise.all([
-    Promise.all(phDateKeys.map((date) => fetchProductHuntDate(date).catch(() => []))),
+  const [phDiagnosticsNested, phFallbackDiagnostics, ycLaunches, hn, gh, hf, aihot, dealflowXhs] = await Promise.all([
+    Promise.all(
+      phDateKeys.map((date) =>
+        fetchProductHuntDateDiagnostics(date).catch(() => ({ items: [], rawCount: 0, sourceKind: "unavailable" }))
+      )
+    ),
     fetchProductHuntFallbackForDates(phDateKeys),
     fetchYcLaunches(start, now).catch(() => []),
     fetchHackerNews(start, now),
@@ -1858,10 +1926,15 @@ export async function runRadar(options = {}) {
     fetchAihot(start, now, endDateKey),
     fetchDealflowXhs(start, now, { cwd: process.cwd() }).catch(() => [])
   ]);
+  const phNested = phDiagnosticsNested.map((diagnostics) => diagnostics.items);
+  const phFallback = phFallbackDiagnostics.items;
 
   const rawGroups = {
     producthuntOfficial: phNested.flat(),
+    producthuntOfficialRawCount: phDiagnosticsNested.reduce((sum, diagnostics) => sum + Number(diagnostics.rawCount || 0), 0),
+    producthuntOfficialSourceKinds: [...new Set(phDiagnosticsNested.map((diagnostics) => diagnostics.sourceKind).filter(Boolean))],
     producthuntFallback: phFallback,
+    producthuntFallbackRawCount: Number(phFallbackDiagnostics.rawCount || 0),
     ycLaunches,
     hn,
     gh,
