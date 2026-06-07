@@ -235,8 +235,26 @@ function auditDuplicateGroups(rows) {
   });
   const repeated = [...groups.entries()].filter(([, items]) => items.length > 1);
   if (!repeated.length) return [];
-  return [
+  const failures = [
     failure("duplicate_group_top10", "Top 10 中同一 GitHub repo 或 Hugging Face owner 出现多条，容易造成重复刷屏。", {
+      groups: repeated.map(([key, items]) => ({ key, items }))
+    })
+  ];
+  return failures;
+}
+
+function auditDuplicateGroupsTop20(rows) {
+  const groups = new Map();
+  rows.slice(0, 20).forEach((row, index) => {
+    const key = duplicateGroupKeyForAudit(row);
+    if (!key) return;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push({ rank: index + 1, product: row.product, source: row.source });
+  });
+  const repeated = [...groups.entries()].filter(([, items]) => items.length > 2);
+  if (!repeated.length) return [];
+  return [
+    failure("duplicate_group_top20", "Top 20 中同一 GitHub repo 或 Hugging Face owner 超过 2 条，默认阅读会被批量 release 刷屏。", {
       groups: repeated.map(([key, items]) => ({ key, items }))
     })
   ];
@@ -457,6 +475,7 @@ export function auditReportQuality({
   failures.push(...auditModelPlacement(rows));
   failures.push(...auditWeakBeforeStrong(rows));
   failures.push(...auditDuplicateGroups(rows));
+  failures.push(...auditDuplicateGroupsTop20(rows));
   failures.push(...auditRankingQuality(rows));
   if (sourceHealth) failures.push(...auditSourceHealth(sourceHealth));
   if (siteHtml) failures.push(...auditSiteHtml(siteHtml));

@@ -20,6 +20,7 @@ import {
   fetchDealflowXhs,
   isDealflowEnabled,
   priorityScore,
+  rankCandidatesForPriority,
   productHuntCompletedDateKey,
   productHuntDateKeysForRun,
   renderBlockedReport,
@@ -858,6 +859,34 @@ function testPriorityScoreUsesProductHuntEngagement() {
   );
 }
 
+function testPriorityScoreDownranksLowSignalPatchRelease() {
+  const patchRelease = {
+    product: "langchain-ai/langgraphjs @langchain/langgraph-sdk@1.9.18",
+    link: "https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/langgraph-sdk%401.9.18",
+    type: "老产品更新",
+    did: "发布 @langchain/langgraph-sdk@1.9.18。",
+    why: "开发者工具是 AI agent 落地最快的战场，适合观察工作流重构。",
+    evidence: "[GitHub Release 2026-06-06T22:37:14Z](https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/langgraph-sdk%401.9.18)",
+    source: "github",
+    category: "product"
+  };
+  const productLaunch = {
+    product: "Context Mode Insight",
+    link: "https://context-mode.com/",
+    type: "新产品",
+    did: "HN 发布帖在 2026-06-07T16:23:17Z 出现：Show HN: Context Mode Insight – observability layer for AI coding agents",
+    why: "Context Mode Insight – observability layer for AI coding agents 已在 HN 获得早期开发者曝光，适合观察真实反馈和采用门槛。",
+    evidence: "[HN Algolia 2026-06-07T16:23:17Z](https://news.ycombinator.com/item?id=48436313)",
+    source: "hackernews",
+    sourceSubtype: "show_hn",
+    category: "product"
+  };
+  assert.ok(
+    priorityScore(productLaunch) > priorityScore(patchRelease),
+    "a clear AI product launch should outrank a low-signal patch release with no changelog detail"
+  );
+}
+
 function testPrioritySortKeepsStrongLabelsBeforeWeakSignals() {
   const sorted = sortCandidatesForPriority([
     {
@@ -875,6 +904,37 @@ function testPrioritySortKeepsStrongLabelsBeforeWeakSignals() {
   ]);
   assert.equal(sorted[0].product, "Clear GitHub Release");
   assert.equal(sorted[1].product, "Weak but noisy HF Space");
+}
+
+function testPriorityRankLimitsStructuredDuplicateGroupsTop20() {
+  const duplicateReleases = Array.from({ length: 5 }, (_, index) => ({
+    product: `langchain-ai/langgraphjs package-${index}@1.0.${index}`,
+    link: `https://github.com/langchain-ai/langgraphjs/releases/tag/package-${index}`,
+    source: "github",
+    type: "老产品更新",
+    did: `发布 package-${index}@1.0.${index}。`,
+    why: "同一 repo 的多个包同步更新，应该保留代表项但不能批量占据默认前排。",
+    category: "product",
+    qualityLabel: "keep",
+    priorityScore: 95 - index
+  }));
+  const alternatives = Array.from({ length: 22 }, (_, index) => ({
+    product: `Independent Agent Product ${index}`,
+    link: `https://example.com/agent-product-${index}`,
+    source: index % 2 ? "producthunt" : "hackernews",
+    type: "新产品",
+    did: "发布 AI agent workflow 产品。",
+    why: "它有明确的 agent 工作流场景，适合产品经理观察执行入口和采用门槛。",
+    category: "product",
+    qualityLabel: index < 14 ? "keep" : "weak_keep",
+    priorityScore: 70 - index
+  }));
+
+  const ranked = rankCandidatesForPriority([...duplicateReleases, ...alternatives]);
+  const top20DuplicateCount = ranked
+    .slice(0, 20)
+    .filter((item) => String(item.link || "").includes("github.com/langchain-ai/langgraphjs/")).length;
+  assert.ok(top20DuplicateCount <= 2, "Top 20 should keep at most two representatives from the same structured repo");
 }
 
 function testQualityMemoryDropsNegativeGoldens() {
@@ -1330,6 +1390,32 @@ function testQualityAuditFlagsDuplicateRepoTop10() {
   const audit = auditReportQuality({ rows });
   assert.equal(audit.ok, false);
   assert.ok(audit.failures.some((failure) => failure.code === "duplicate_group_top10"));
+}
+
+function testQualityAuditFlagsDuplicateRepoTop20() {
+  const rows = [
+    ...Array.from({ length: 3 }, (_, index) => ({
+      product: `langchain-ai/langgraphjs @langchain/package-${index}@1.0.18`,
+      link: `https://github.com/langchain-ai/langgraphjs/releases/tag/package-${index}`,
+      source: "GitHub Release",
+      why: "同一 repo 的框架适配更新应该合并观察，不能占用多个默认前排位置。",
+      did: `发布 @langchain/package-${index}@1.0.18。`,
+      category: "product",
+      qualityLabel: index === 0 ? "keep" : "weak_keep"
+    })),
+    ...Array.from({ length: 17 }, (_, index) => ({
+      product: `Useful Agent Product ${index}`,
+      link: `https://example.com/useful-agent-${index}`,
+      source: index % 2 ? "HN Algolia" : "Product Hunt",
+      why: "它有明确的 agent 工作流场景，适合产品经理观察执行入口和采用门槛。",
+      did: "发布 AI agent workflow 产品。",
+      category: "product",
+      qualityLabel: "keep"
+    }))
+  ];
+  const audit = auditReportQuality({ rows });
+  assert.equal(audit.ok, false);
+  assert.ok(audit.failures.some((failure) => failure.code === "duplicate_group_top20"));
 }
 
 function testQualityAuditFlagsResourceListsTop20() {
@@ -1889,7 +1975,9 @@ const tests = [
   ["Priority score keeps weak HF spaces behind strong launches", testPriorityScoreKeepsWeakHfSpacesBehindStrongProductLaunches],
   ["Priority score downranks hot non-product Show HN demos", testPriorityScoreDownranksHotNonProductShowHnDemos],
   ["Priority score uses Product Hunt engagement", testPriorityScoreUsesProductHuntEngagement],
+  ["Priority score downranks low-signal patch releases", testPriorityScoreDownranksLowSignalPatchRelease],
   ["Priority sort keeps strong labels before weak signals", testPrioritySortKeepsStrongLabelsBeforeWeakSignals],
+  ["Priority rank limits structured duplicate groups Top 20", testPriorityRankLimitsStructuredDuplicateGroupsTop20],
   ["Quality memory drops negative goldens", testQualityMemoryDropsNegativeGoldens],
   ["Quality memory drops user feedback", testQualityMemoryDropsUserFeedback],
   ["Quality memory downranks user feedback", testQualityMemoryDownranksUserFeedback],
@@ -1903,6 +1991,7 @@ const tests = [
   ["Quality audit flags weak before strong", testQualityAuditFlagsWeakBeforeStrong],
   ["Quality audit flags poor Top 10 PM scores", testQualityAuditFlagsPoorTop10PmScores],
   ["Quality audit flags duplicate repo Top 10", testQualityAuditFlagsDuplicateRepoTop10],
+  ["Quality audit flags duplicate repo Top 20", testQualityAuditFlagsDuplicateRepoTop20],
   ["Quality audit flags resource lists Top 20", testQualityAuditFlagsResourceListsTop20],
   ["Quality audit flags AIHOT research Top 20", testQualityAuditFlagsAihotResearchTop20],
   ["Quality audit writes persistent artifacts", testQualityAuditWritesPersistentArtifacts],

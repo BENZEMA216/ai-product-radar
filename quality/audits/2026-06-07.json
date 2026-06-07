@@ -1,9 +1,51 @@
 {
   "date": "2026-06-07",
-  "generatedAt": "2026-06-07T17:06:02.773Z",
+  "generatedAt": "2026-06-07T20:51:10.334Z",
   "reportPath": "reports/2026-06-07-1614-cst.md",
-  "ok": true,
-  "failures": [],
+  "ok": false,
+  "failures": [
+    {
+      "code": "source_health_missing_for_report",
+      "message": "缺少与报告日期一致的 source health 文件，无法证明当天来源链路状态。",
+      "reportDate": "2026-06-07"
+    },
+    {
+      "code": "feedback_missing_for_report",
+      "message": "缺少与报告日期一致的 feedback 文件，无法证明当天用户反馈读取状态。",
+      "reportDate": "2026-06-07"
+    },
+    {
+      "code": "duplicate_group_top20",
+      "message": "Top 20 中同一 GitHub repo 或 Hugging Face owner 超过 2 条，默认阅读会被批量 release 刷屏。",
+      "groups": [
+        {
+          "key": "github:langchain-ai/langgraphjs",
+          "items": [
+            {
+              "rank": 17,
+              "product": "langchain-ai/langgraphjs @langchain/vue@1.0.18",
+              "source": "GitHub Release"
+            },
+            {
+              "rank": 18,
+              "product": "langchain-ai/langgraphjs @langchain/svelte@1.0.18",
+              "source": "GitHub Release"
+            },
+            {
+              "rank": 19,
+              "product": "langchain-ai/langgraphjs @langchain/react@1.0.18",
+              "source": "GitHub Release"
+            },
+            {
+              "rank": 20,
+              "product": "langchain-ai/langgraphjs @langchain/langgraph-sdk@1.9.18",
+              "source": "GitHub Release"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "metrics": {
     "rows": 72,
     "top20Sources": [
@@ -15,52 +57,9 @@
     "precisionAt10": 1,
     "badTop10Count": 0
   },
-  "sourceHealth": {
-    "producthunt": {
-      "status": "fallback",
-      "rawCount": 4,
-      "keptCount": 4,
-      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-06；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；低覆盖风险：fallback 只返回 4 条候选，不能视为完整 PH 日榜。"
-    },
-    "yc_launch": {
-      "status": "empty",
-      "rawCount": 0,
-      "keptCount": 0,
-      "note": "YC Launch 本窗口无候选或来源为空。"
-    },
-    "hackernews": {
-      "status": "ok",
-      "rawCount": 15,
-      "keptCount": 15,
-      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
-    },
-    "github": {
-      "status": "ok",
-      "rawCount": 5,
-      "keptCount": 5,
-      "note": "GitHub 默认只收固定 watchlist 的 Release。"
-    },
-    "huggingface": {
-      "status": "ok",
-      "rawCount": 20,
-      "keptCount": 20,
-      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
-    },
-    "aihot": {
-      "status": "ok",
-      "rawCount": 2,
-      "keptCount": 2,
-      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
-    },
-    "xhs_dealflow": {
-      "status": "unavailable",
-      "rawCount": 0,
-      "keptCount": 0,
-      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
-    }
-  },
+  "sourceHealth": {},
   "feedback": {
-    "status": "ok",
+    "status": "",
     "count": 0,
     "error": ""
   },

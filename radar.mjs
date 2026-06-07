@@ -1476,9 +1476,20 @@ function isWeakShowHnDemo(item, text) {
   ]);
 }
 
+function isLowSignalGitHubPackageRelease(item) {
+  const source = cleanKey(item.source).toLowerCase();
+  if (source !== "github" && source !== "github release") return false;
+  const did = clean(item.did);
+  const releaseText = `${item.product || ""} ${did} ${item.link || ""}`.toLowerCase();
+  const isScopedPackageVersion = /@[a-z0-9_.-]+\/[a-z0-9_.-]+@?\d+\.\d+\.\d+\b/i.test(releaseText);
+  const onlyVersionAnnouncement = /^发布\s+[^。]{1,140}。$/.test(did);
+  return isScopedPackageVersion && onlyVersionAnnouncement;
+}
+
 function qualityLabelForItem(item) {
   const text = `${item.product} ${item.did} ${item.why}`.toLowerCase();
   if (item.category === "model_infra") return "weak_keep";
+  if (isLowSignalGitHubPackageRelease(item)) return "weak_keep";
   if (isLowSignalProductHuntConsumerNovelty(text)) return "deprioritize";
   if (includesAny(text, ["roulette", "baby generator", "girlfriend", "wallpaper generator"])) return "deprioritize";
   if (isWeakShowHnDemo(item, text)) return "weak_keep";
@@ -1572,6 +1583,7 @@ function buildRankingSignals(item) {
   if (item.category === "model_infra") noisePenalty += 8;
   if (item.qualityLabel === "weak_keep") noisePenalty += 14;
   if (item.qualityLabel === "deprioritize") noisePenalty += 18;
+  if (isLowSignalGitHubPackageRelease(item)) noisePenalty += 10;
   if (includesAny(text, ["roulette", "baby", "girlfriend", "wallpaper", "tattoo", "headshot"])) noisePenalty += 16;
   if (!isRelevant(text)) noisePenalty += 30;
   return {
@@ -1810,14 +1822,21 @@ function applyDuplicatePenalties(items) {
     seen.set(key, index + 1);
     if (index === 0) return item;
     const isStructuredRepoGroup = ["github", "huggingface"].includes(item.source);
-    const duplicatePenalty = Math.min(64, 20 + index * 16);
+    const duplicatePenalty = index === 1 ? 36 : Math.min(120, 80 + index * 20);
+    const duplicateLabel =
+      isStructuredRepoGroup && index >= 2
+        ? "deprioritize"
+        : isStructuredRepoGroup && item.qualityLabel === "keep"
+          ? "weak_keep"
+          : item.qualityLabel;
     return {
       ...item,
-      qualityLabel: isStructuredRepoGroup && item.qualityLabel === "keep" ? "weak_keep" : item.qualityLabel,
+      qualityLabel: duplicateLabel,
       priorityScore: item.priorityScore - duplicatePenalty,
       rankingSignals: {
         ...item.rankingSignals,
-        duplicatePenalty
+        duplicatePenalty,
+        duplicateIndex: index + 1
       }
     };
   });
@@ -1834,6 +1853,11 @@ export function sortCandidatesForPriority(candidates) {
       b.priorityScore - a.priorityScore ||
       sourceLabel(a.source).localeCompare(sourceLabel(b.source))
   );
+}
+
+export function rankCandidatesForPriority(candidates) {
+  const representativeFirst = sortCandidatesForPriority(candidates);
+  return sortCandidatesForPriority(applyDuplicatePenalties(representativeFirst));
 }
 
 function sourceHealthEntry({ status = "ok", rawCount = 0, keptCount = 0, note = "" }) {
@@ -1961,8 +1985,7 @@ export async function runRadar(options = {}) {
       ? { feedback: [], negativeGoldens: [] }
       : options.qualityMemory || loadQualityMemory(options.qualityMemoryOptions || { feedbackDir: options.feedbackDir });
   candidates = applyQualityMemoryToCandidates(candidates, qualityMemory);
-  candidates = applyDuplicatePenalties(candidates);
-  candidates = sortCandidatesForPriority(candidates);
+  candidates = rankCandidatesForPriority(candidates);
   return {
     now,
     start,

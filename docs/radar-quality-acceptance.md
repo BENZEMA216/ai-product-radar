@@ -185,8 +185,10 @@ HN 验收时必须分别看：
 | Source diversity@20 | >= 3 个来源家族，除非当天客观单一来源占优 |
 | Weak-before-strong violations | 0 个已确认弱强倒挂 |
 | Duplicate repo/owner@10 | 同一 GitHub repo 或 Hugging Face owner 默认最多 1 条 |
+| Duplicate repo/owner@20 | 同一 GitHub repo 或 Hugging Face owner 默认最多 2 条 |
 | Resource list@20 | 资源列表、目录、curated/awesome list 不进入 Top 20 |
 | AIHOT news/research@20 | AIHOT 研究、基准、新闻、融资、财报、监管等非产品动作不进入 Top 20 |
+| Low-signal package release | 只有包名和 semver、没有变更摘要的 GitHub package release 只能作为弱信号保留，不能压过明确新产品 |
 | 重复模板 why | Top 20 内不能连续 3 条近似同义 |
 
 ### 9.2 单条排序解释
@@ -203,6 +205,8 @@ Top 10 每条必须能回答：
 ```
 
 如果回答不了，就不能排在默认前列。
+
+Top 20 还要额外检查“批量刷屏”问题：同一 GitHub repo 或 Hugging Face owner 的同步小版本、模板化 Space、模型镜像最多保留 2 条代表信号；剩余条目可以进入 All Signals，但不能连续占据默认阅读前排。
 
 ## 10. “为什么值得看”验收
 

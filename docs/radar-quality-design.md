@@ -241,6 +241,7 @@ XHS 一般情况下默认启用，但它依赖本地 Dealflow bridge、Chrome �
 - `evidenceTime` 是结构化时间证据；没有时只能用来源日期规则。
 - `category` 至少包含 `product`、`model_infra`、`news_opinion`、`noise`。
 - `quality` 可由规则先占位，再由 Codex/LLM 二次推理改写。
+- 默认排序会先按质量和分数确定同一 repo/owner 的最佳代表项，再对后续重复 GitHub repo / Hugging Face owner 做多样性降权；Top 10 默认最多 1 条，Top 20 默认最多 2 条，其余保留在 All Signals 后段。
 
 ## 6. 筛选设计
 
