@@ -361,6 +361,20 @@ function isModelInfraText(text) {
   return /(?:^|[^a-z])model(?:s)?(?:[^a-z]|$)/i.test(lower) && includesAny(lower, ["release", "released", "发布", "推出", "开源"]);
 }
 
+function isAihotNonProductSignal(item) {
+  const source = cleanKey(item.source).toLowerCase();
+  if (source !== "aihot") return false;
+  const text = `${item.product} ${item.did} ${item.why} ${item.evidence}`.toLowerCase();
+  const actionText = `${item.product} ${item.did} ${item.evidence}`.toLowerCase();
+  const hasProductAction = /发布|推出|上线|更新|开源|release|released|launch|launched|introducing|now available/i.test(actionText);
+  const hasProductSurface = /产品|工具|应用|app|api|sdk|agent|智能体|助手|工作流|平台|runtime|browser|插件|扩展/i.test(actionText);
+  const nonProductObservation =
+    /研究|论文|基准|评测|排行|榜单|首页|前瞻|预测|观点|访谈|圆桌|融资|估值|财报|监管|风险|采购|求购|高校|军方|报道称|据报道/.test(text) ||
+    /向量存储|压缩|faiss|terminalbench|benchmark|arxiv|report|survey|forecast|outlook/i.test(text) ||
+    /不敌|击败|超过|占\s*(?:huggingface|hf|首页)|前\s*\d+\s*个模型/i.test(text);
+  return nonProductObservation && !(hasProductAction && hasProductSurface);
+}
+
 function keywordMatches(lowerText, keyword) {
   const lowerKeyword = keyword.toLowerCase();
   if (["ai", "rag", "llm", "mcp", "gpt", "xai"].includes(lowerKeyword)) {
@@ -1497,6 +1511,18 @@ function huggingFaceWhyFromContext(item) {
     if (includesAny(text, ["router", "resolver", "path", "linting", "orchestrator"])) {
       return `${product} 暗示工具路由或流程编排方向，适合观察模型资产是否能服务 agent 基础设施。`;
     }
+    if (includesAny(text, ["regressor", "impact", "predictor", "forecast"])) {
+      return `${product} 更像预测或评估类模型资产，重点看标签定义、误差指标和能否接入真实决策流程。`;
+    }
+    if (includesAny(text, ["sft", "finetuned", "fine-tuned", "fine_tuned", "lora", "-ft", "ft-"])) {
+      return `${product} 是微调实验或指令适配资产，适合看训练目标、样本来源和是否有可复现评测。`;
+    }
+    if (includesAny(text, ["190m", "nano", "tiny", "small", "nettiny", "ann"])) {
+      return `${product} 指向轻量模型或小型架构实验，关键看它是否降低端侧部署和延迟成本。`;
+    }
+    if (includesAny(text, ["chars", "character", "tokenizer"])) {
+      return `${product} 偏字符级或文本表示实验，适合关注它是否解决输入粒度、语言覆盖或特殊文本处理问题。`;
+    }
     if (includesAny(text, ["mamba", "evolai"])) {
       return `${product} 属于架构实验类模型，适合单独跟踪性能、上下文效率和开源生态信号。`;
     }
@@ -1692,6 +1718,7 @@ function qualityLabelForItem(item) {
   if (isLowSignalGitHubPackageRelease(item)) return "weak_keep";
   if (isLowSignalProductHuntConsumerNovelty(text)) return "deprioritize";
   if (isResourceListSignal(text)) return "deprioritize";
+  if (isAihotNonProductSignal(item)) return "deprioritize";
   if (includesAny(text, ["roulette", "baby generator", "girlfriend", "wallpaper generator"])) return "deprioritize";
   if (isWeakShowHnDemo(item, text)) return "weak_keep";
   if (item.source === "aihot" || item.source === "xhs_dealflow") return "weak_keep";
@@ -1785,6 +1812,7 @@ function buildRankingSignals(item) {
   if (item.qualityLabel === "weak_keep") noisePenalty += 14;
   if (item.qualityLabel === "deprioritize") noisePenalty += 18;
   if (isGenericHuggingFaceSpaceSignal(item)) noisePenalty += Number(item.metrics?.hfLikes || 0) > 0 ? 12 : 20;
+  if (isAihotNonProductSignal(item)) noisePenalty += 18;
   if (isLowSignalGitHubPackageRelease(item)) noisePenalty += 10;
   if (includesAny(text, ["roulette", "baby", "girlfriend", "wallpaper", "tattoo", "headshot"])) noisePenalty += 16;
   if (!isRelevant(text)) noisePenalty += 30;

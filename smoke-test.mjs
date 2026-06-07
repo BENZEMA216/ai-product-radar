@@ -591,20 +591,23 @@ function testReportWhyCopyAvoidsHfModelTemplates() {
     "Hugging Face Model: MinhDucNguyen9705/vietnamese-correction-2.0-ocr",
     "Hugging Face Model: AlekseyCalvin/Lyrical_Translator_ru2en_Gemma4_12b_SFT_Run1",
     "Hugging Face Model: sundaycoil/path-resolver",
-    "Hugging Face Model: elgin-group/evolai-mamba2-0p47b-v1"
+    "Hugging Face Model: elgin-group/evolai-mamba2-0p47b-v1",
+    "Hugging Face Model: Yan-chuan/olmo3-190m-zh-full-sft",
+    "Hugging Face Model: saliacoel/chars",
+    "Hugging Face Model: turtle170/NetTinyANN"
   ].map((product, index) => ({
     product,
     link: `https://huggingface.co/model-${index}`,
     type: "新产品",
     did: "Model 在 Hugging Face 最近创建或更新。",
     why: "可体验的模型/应用 demo 是早期产品形态和交互原型的重要信号。",
-    evidence: `[Hugging Face API 2026-06-08T00:00:0${index}Z](https://huggingface.co/model-${index})`,
+    evidence: `[Hugging Face API 2026-06-08T00:00:${String(index).padStart(2, "0")}Z](https://huggingface.co/model-${index})`,
     source: "huggingface",
     category: "model_infra"
   }));
   const rows = parseReportMarkdown(renderMarkdownTable(candidates), "reports/2026-06-08-0800-cst.md");
-  assert.equal(rows.length, 4);
-  assert.equal(new Set(rows.map((row) => row.why)).size, 4);
+  assert.equal(rows.length, 7);
+  assert.equal(new Set(rows.map((row) => row.why)).size, 7);
   const audit = auditReportQuality({ rows });
   assert.ok(!audit.failures.some((failure) => failure.code === "repeated_why_template"));
 }
@@ -1958,6 +1961,65 @@ function testQualityAuditFlagsAihotResearchTop20() {
   assert.ok(audit.failures.some((failure) => failure.code === "aihot_news_or_research_top20"));
 }
 
+function testQualityAuditFlagsAihotInfraObservationTop20() {
+  const rows = [
+    {
+      product: "Google向量存储压缩：31GB→4GB，速度超FAISS",
+      link: "https://x.com/AYi_AInotes/status/example",
+      source: "AIHOT",
+      why: "这是 AIHOT 里的技术观察，不是明确产品发布。",
+      did: "Google提出一种AI记忆压缩技术，可将1000万个文档的向量存储从31GB内存压缩至仅4GB，且搜索速度超过FAISS。",
+      category: "model_infra",
+      qualityLabel: "weak_keep"
+    },
+    {
+      product: "Nvidia 占 HuggingFace 首页 9/30 模型",
+      link: "https://x.com/natolambert/status/example",
+      source: "AIHOT",
+      why: "这是模型生态观察，不是产品动作。",
+      did: "HuggingFace 首页前 30 个模型中，有 9 个由 Nvidia 发布。",
+      category: "model_infra",
+      qualityLabel: "weak_keep"
+    },
+    ...Array.from({ length: 18 }, (_, index) => ({
+      product: `Useful Agent Product ${index}`,
+      link: `https://example.com/useful-agent-${index}`,
+      source: index % 2 ? "HN Algolia" : "Product Hunt",
+      why: "它有明确的 agent 工作流场景，适合产品经理观察执行入口和采用门槛。",
+      did: "发布 AI agent workflow 产品。",
+      category: "product",
+      qualityLabel: "keep"
+    }))
+  ];
+  const audit = auditReportQuality({ rows });
+  assert.equal(audit.ok, false);
+  assert.ok(audit.failures.some((failure) => failure.code === "aihot_news_or_research_top20"));
+}
+
+function testPriorityScoreDownranksAihotNonProductSignals() {
+  const productSignal = priorityScore({
+    product: "baoyu-design：在本地复现 Claude Design 的开发工作流",
+    link: "https://x.com/dotey/status/example",
+    type: "疑似新产品",
+    did: "编写工具解析 HAR 文件、解密并在本地复现 Claude Design 的开发工作流。",
+    why: "设计生成到局部修改的闭环，适合观察产品经理和设计师是否能直接参与实现。",
+    evidence: "[AIHOT 2026-06-07T17:27:09.000Z](https://x.com/dotey/status/example)",
+    source: "aihot",
+    observedAt: "2026-06-07T17:27:09.000Z"
+  });
+  const observationSignal = priorityScore({
+    product: "Google向量存储压缩：31GB→4GB，速度超FAISS",
+    link: "https://x.com/AYi_AInotes/status/example",
+    type: "疑似新产品",
+    did: "Google提出一种AI记忆压缩技术，可将1000万个文档的向量存储从31GB内存压缩至仅4GB，且搜索速度超过FAISS。",
+    why: "这是技术观察，不是明确产品发布。",
+    evidence: "[AIHOT 2026-06-07T18:33:09.000Z](https://x.com/AYi_AInotes/status/example)",
+    source: "aihot",
+    observedAt: "2026-06-07T18:33:09.000Z"
+  });
+  assert.ok(observationSignal < productSignal - 10, `expected observation ${observationSignal} to trail product ${productSignal}`);
+}
+
 function testQualityAuditWritesPersistentArtifacts() {
   const rows = [
     {
@@ -2497,6 +2559,8 @@ const tests = [
   ["Quality audit flags resource lists Top 20", testQualityAuditFlagsResourceListsTop20],
   ["Quality audit flags generic HF Space flood Top 20", testQualityAuditFlagsGenericHfSpaceFloodTop20],
   ["Quality audit flags AIHOT research Top 20", testQualityAuditFlagsAihotResearchTop20],
+  ["Quality audit flags AIHOT infra observations Top 20", testQualityAuditFlagsAihotInfraObservationTop20],
+  ["Priority score downranks AIHOT non-product signals", testPriorityScoreDownranksAihotNonProductSignals],
   ["Quality audit writes persistent artifacts", testQualityAuditWritesPersistentArtifacts],
   ["Quality audit flags malformed feedback", testQualityAuditFlagsMalformedFeedback],
   ["Quality audit flags stale quality files", testQualityAuditFlagsStaleQualityFiles],

@@ -157,11 +157,19 @@ function auditResourceLists(rows) {
   ];
 }
 
+function isAihotNonProductObservation(row) {
+  if (clean(row.source) !== "AIHOT") return false;
+  const text = `${row.product} ${row.did} ${row.why}`.toLowerCase();
+  return (
+    /研究|论文|基准|评测|排行|榜单|首页|前瞻|预测|观点|访谈|圆桌|融资|估值|财报|监管|风险|采购|求购|高校|军方|报道称|据报道/.test(text) ||
+    /向量存储|压缩|faiss|terminalbench|benchmark|arxiv|report|survey|forecast|outlook/i.test(text) ||
+    /不敌|击败|超过|占\s*(?:huggingface|hf|首页)|前\s*\d+\s*个模型/i.test(text)
+  );
+}
+
 function auditAihotNewsOrResearch(rows) {
   const bad = rows.slice(0, 20).filter((row) => {
-    if (clean(row.source) !== "AIHOT") return false;
-    const text = `${row.product} ${row.did} ${row.why}`.toLowerCase();
-    return /研究|基准|论文|融资|财报|监管|风险|论坛|采购|募资|ipo|benchmark|arxiv|news|report/.test(text);
+    return isAihotNonProductObservation(row);
   });
   if (!bad.length) return [];
   return [
