@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import { existsSync, readFileSync, readdirSync } from "node:fs";
-import { join } from "node:path";
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { parseReportMarkdown } from "./build-site.mjs";
@@ -45,6 +45,10 @@ function latestMatchingFile(dir, pattern) {
   }
 }
 
+function reportDateFromPath(path) {
+  return String(path || "").match(/(\d{4}-\d{2}-\d{2})-\d{4}-cst\.md$/)?.[1] || "";
+}
+
 function readJson(path, fallback = null) {
   try {
     return JSON.parse(readFileSync(path, "utf8"));
@@ -55,6 +59,15 @@ function readJson(path, fallback = null) {
 
 function failure(code, message, detail = {}) {
   return { code, message, ...detail };
+}
+
+export function qualityArtifactPaths(reportPath, { auditDir = "quality/audits", rankingDir = "quality/ranking" } = {}) {
+  const date = reportDateFromPath(reportPath);
+  return {
+    date,
+    auditPath: date ? `${auditDir}/${date}.json` : "",
+    rankingPath: date ? `${rankingDir}/${date}.json` : ""
+  };
 }
 
 function whySignature(value) {
@@ -202,13 +215,126 @@ export function auditReportQuality({ rows = [], sourceHealth = null, siteHtml = 
   };
 }
 
+function pmScoreForRow(row, rank) {
+  let score = 3;
+  if (row.qualityLabel === "keep") score += 1;
+  if (row.qualityLabel === "weak_keep") score -= 1;
+  if (["deprioritize", "drop"].includes(row.qualityLabel)) score -= 2;
+  if (row.category === "model_infra") score -= 1;
+  if (["Product Hunt", "HN Algolia", "GitHub Release", "YC Launch"].includes(row.source)) score += 0.5;
+  const text = `${row.product} ${row.did} ${row.why}`.toLowerCase();
+  if (/agent|mcp|workflow|工作流|coding|developer|自动化|api|sdk|enterprise|b2b/.test(text)) score += 0.5;
+  if (/baby|girlfriend|boyfriend|roulette|wallpaper|tattoo|headshot|photo booth/.test(text)) score -= 2;
+  if (rank <= 10 && row.qualityLabel === "keep") score += 0.25;
+  return Math.max(1, Math.min(5, Math.round(score)));
+}
+
+function rankingIssueForRow(row, rank) {
+  if (row.category === "model_infra" && rank <= 10) return "model_infra_in_product_top10";
+  if (["deprioritize", "drop"].includes(row.qualityLabel) && rank <= 20) return "weak_signal_in_top20";
+  const text = `${row.product} ${row.did}`;
+  if (HARD_NEGATIVE_PATTERNS.some((pattern) => pattern.test(text))) return "hard_negative";
+  if (hasKnownTemplate(row.why)) return "template_why";
+  return null;
+}
+
+function sourceSummary(sourceHealth) {
+  const sources = sourceHealth?.sources || {};
+  return Object.fromEntries(
+    Object.entries(sources).map(([source, item]) => [
+      source,
+      {
+        status: item.status || "",
+        rawCount: Number(item.rawCount || 0),
+        keptCount: Number(item.keptCount || 0),
+        note: clean(item.note)
+      }
+    ])
+  );
+}
+
+export function buildQualityArtifacts({
+  audit,
+  rows = [],
+  reportPath = "",
+  sourceHealth = null,
+  feedbackSnapshot = null,
+  generatedAt = sourceHealth?.generatedAt || feedbackSnapshot?.generatedAt || new Date().toISOString()
+} = {}) {
+  const { date } = qualityArtifactPaths(reportPath);
+  const topK = rows.slice(0, 20).map((row, index) => {
+    const rank = index + 1;
+    return {
+      rank,
+      product: row.product,
+      productKey: row.productKey || row.link || "",
+      signalKey: row.signalKey || "",
+      link: row.link || "",
+      source: row.source,
+      type: row.type || "",
+      category: row.category || "",
+      qualityLabel: row.qualityLabel || "",
+      pmScore: pmScoreForRow(row, rank),
+      rankingIssue: rankingIssueForRow(row, rank),
+      did: row.did || "",
+      why: row.why || ""
+    };
+  });
+  const feedback = feedbackSnapshot || {};
+  return {
+    audit: {
+      date,
+      generatedAt,
+      reportPath,
+      ok: Boolean(audit?.ok),
+      failures: audit?.failures || [],
+      metrics: audit?.metrics || {},
+      sourceHealth: sourceSummary(sourceHealth),
+      feedback: {
+        status: feedback.status || "",
+        count: Number(feedback.count ?? feedback.feedback?.length ?? 0),
+        error: feedback.error || ""
+      },
+      top20Sample: topK.map(({ rank, product, productKey, source, category, qualityLabel, pmScore, rankingIssue, why }) => ({
+        rank,
+        product,
+        productKey,
+        source,
+        category,
+        qualityLabel,
+        pmScore,
+        rankingIssue,
+        reason: why
+      }))
+    },
+    ranking: {
+      date,
+      generatedAt,
+      reportPath,
+      topK
+    }
+  };
+}
+
+export function writeQualityArtifacts(artifacts, { auditPath, rankingPath }) {
+  if (!auditPath || !rankingPath) throw new Error("auditPath and rankingPath are required");
+  mkdirSync(dirname(auditPath), { recursive: true });
+  mkdirSync(dirname(rankingPath), { recursive: true });
+  writeFileSync(auditPath, `${JSON.stringify(artifacts.audit, null, 2)}\n`, "utf8");
+  writeFileSync(rankingPath, `${JSON.stringify(artifacts.ranking, null, 2)}\n`, "utf8");
+  return { auditPath, rankingPath };
+}
+
 function parseArgs(argv) {
   const args = {
     report: latestMatchingFile("reports", REPORT_PATTERN),
     sourceHealth: latestMatchingFile("quality/source-health", JSON_DATE_PATTERN),
     feedback: latestMatchingFile("quality/feedback", JSON_DATE_PATTERN),
     site: "docs/index.html",
-    json: false
+    json: false,
+    write: true,
+    auditDir: "quality/audits",
+    rankingDir: "quality/ranking"
   };
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
@@ -217,6 +343,9 @@ function parseArgs(argv) {
     if (arg === "--feedback") args.feedback = argv[++i];
     if (arg === "--site") args.site = argv[++i];
     if (arg === "--json") args.json = true;
+    if (arg === "--no-write") args.write = false;
+    if (arg === "--audit-dir") args.auditDir = argv[++i];
+    if (arg === "--ranking-dir") args.rankingDir = argv[++i];
   }
   return args;
 }
@@ -229,12 +358,22 @@ function main() {
   const feedbackSnapshot = args.feedback && existsSync(args.feedback) ? readJson(args.feedback, null) : null;
   const siteHtml = args.site && existsSync(args.site) ? readFileSync(args.site, "utf8") : "";
   const audit = auditReportQuality({ rows, sourceHealth, feedbackSnapshot, siteHtml });
+  const paths = qualityArtifactPaths(args.report, { auditDir: args.auditDir, rankingDir: args.rankingDir });
+  const artifacts = buildQualityArtifacts({
+    audit,
+    rows,
+    reportPath: args.report || "",
+    sourceHealth,
+    feedbackSnapshot
+  });
+  const written = args.write && paths.auditPath && paths.rankingPath ? writeQualityArtifacts(artifacts, paths) : null;
   const result = {
     ...audit,
     report: args.report || "",
     sourceHealth: args.sourceHealth || "",
     feedback: args.feedback || "",
-    site: args.site || ""
+    site: args.site || "",
+    artifacts: written || paths
   };
   if (args.json) {
     console.log(JSON.stringify(result, null, 2));
@@ -243,6 +382,10 @@ function main() {
     console.log(`Report: ${result.report || "(missing)"}`);
     console.log(`Rows: ${audit.metrics.rows}`);
     console.log(`Top20 sources: ${audit.metrics.top20Sources.join(", ") || "(none)"}`);
+    if (written) {
+      console.log(`Audit artifact: ${written.auditPath}`);
+      console.log(`Ranking artifact: ${written.rankingPath}`);
+    }
     for (const item of audit.failures) {
       console.log(`- [${item.code}] ${item.message}`);
     }

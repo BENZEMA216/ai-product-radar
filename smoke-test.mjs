@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { basename, join } from "node:path";
 import {
@@ -28,7 +28,7 @@ import {
 import { buildSiteData, parseReportMarkdown, renderSiteHtml } from "./build-site.mjs";
 import { buildFeedbackSnapshot, parseFeedbackIssue } from "./feedback-runner.mjs";
 import { commitMessageForReport, newestReportPath, qualityPathsForDir, reportPathsForDir, reviewPathsForDir } from "./publish-report.mjs";
-import { auditReportQuality } from "./quality-audit.mjs";
+import { auditReportQuality, buildQualityArtifacts, qualityArtifactPaths, writeQualityArtifacts } from "./quality-audit.mjs";
 
 async function fetchText(url) {
   let lastError;
@@ -682,6 +682,110 @@ function testQualityAuditAcceptsHealthyReport() {
   assert.equal(audit.ok, true, audit.failures.map((failure) => failure.message).join("; "));
 }
 
+function testQualityAuditWritesPersistentArtifacts() {
+  const rows = [
+    {
+      product: "Agent Runtime",
+      link: "https://example.com/agent-runtime",
+      source: "HN Algolia",
+      why: "它把 agent 运行时隔离作为核心能力，适合观察企业执行权限边界。",
+      did: "Show HN: Agent Runtime for AI workflows",
+      category: "product",
+      qualityLabel: "keep",
+      signalKey: "2026-06-09|HN Algolia|agent-runtime",
+      productKey: "https://example.com/agent-runtime"
+    },
+    {
+      product: "Workflow Copilot",
+      link: "https://example.com/workflow-copilot",
+      source: "Product Hunt",
+      why: "它把跨工具自动化做成可试用产品，重点看入口是否足够贴近日常流程。",
+      did: "Build AI workflows across apps",
+      category: "product",
+      qualityLabel: "keep",
+      signalKey: "2026-06-09|Product Hunt|workflow-copilot",
+      productKey: "https://example.com/workflow-copilot"
+    }
+  ];
+  const sourceHealth = {
+    sources: {
+      producthunt: { status: "fallback", rawCount: 4, keptCount: 1, note: "fallback" },
+      yc_launch: { status: "empty", rawCount: 0, keptCount: 0, note: "本窗口无候选" },
+      hackernews: { status: "ok", rawCount: 2, keptCount: 1, note: "ok" },
+      github: { status: "ok", rawCount: 0, keptCount: 0, note: "ok" },
+      huggingface: { status: "ok", rawCount: 0, keptCount: 0, note: "HF Model 进入 Models & Infra" },
+      aihot: { status: "ok", rawCount: 0, keptCount: 0, note: "ok" },
+      xhs_dealflow: { status: "unavailable", rawCount: 0, keptCount: 0, note: "XHS 默认尝试" }
+    }
+  };
+  const audit = auditReportQuality({
+    rows,
+    sourceHealth,
+    feedbackSnapshot: { status: "ok", feedback: [] },
+    siteHtml:
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link data-category=\"model_infra\""
+  });
+  const paths = qualityArtifactPaths("reports/2026-06-09-0800-cst.md");
+  assert.equal(paths.auditPath, "quality/audits/2026-06-09.json");
+  assert.equal(paths.rankingPath, "quality/ranking/2026-06-09.json");
+  const artifacts = buildQualityArtifacts({
+    audit,
+    rows,
+    reportPath: "reports/2026-06-09-0800-cst.md",
+    sourceHealth,
+    feedbackSnapshot: { status: "ok", feedback: [] },
+    generatedAt: "2026-06-09T00:00:00.000Z"
+  });
+  assert.equal(artifacts.audit.date, "2026-06-09");
+  assert.equal(artifacts.audit.ok, true);
+  assert.equal(artifacts.audit.top20Sample.length, 2);
+  assert.equal(artifacts.ranking.date, "2026-06-09");
+  assert.equal(artifacts.ranking.topK[0].rank, 1);
+  assert.equal(artifacts.ranking.topK[0].productKey, "https://example.com/agent-runtime");
+  assert.ok(artifacts.ranking.topK[0].pmScore >= 4);
+
+  const tempDir = mkdtempSync(join(tmpdir(), "radar-quality-audit-"));
+  try {
+    const written = writeQualityArtifacts(artifacts, {
+      auditPath: join(tempDir, "audits", "2026-06-09.json"),
+      rankingPath: join(tempDir, "ranking", "2026-06-09.json")
+    });
+    assert.ok(existsSync(written.auditPath));
+    assert.ok(existsSync(written.rankingPath));
+    const persistedAudit = JSON.parse(readFileSync(written.auditPath, "utf8"));
+    const persistedRanking = JSON.parse(readFileSync(written.rankingPath, "utf8"));
+    assert.equal(persistedAudit.reportPath, "reports/2026-06-09-0800-cst.md");
+    assert.equal(persistedRanking.topK.length, 2);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+}
+
+function testQualityAuditUsesStableGeneratedAtFromSourceHealth() {
+  const audit = auditReportQuality({
+    rows: [
+      {
+        product: "Agent Runtime",
+        link: "https://example.com/agent-runtime",
+        source: "HN Algolia",
+        why: "它把 agent 运行时隔离作为核心能力，适合观察企业执行权限边界。",
+        did: "Show HN: Agent Runtime for AI workflows",
+        category: "product",
+        qualityLabel: "keep"
+      }
+    ]
+  });
+  const artifacts = buildQualityArtifacts({
+    audit,
+    rows: [],
+    reportPath: "reports/2026-06-09-0800-cst.md",
+    sourceHealth: { generatedAt: "2026-06-09T00:00:00.000Z", sources: {} },
+    feedbackSnapshot: { generatedAt: "2026-06-09T00:30:00.000Z", status: "ok", feedback: [] }
+  });
+  assert.equal(artifacts.audit.generatedAt, "2026-06-09T00:00:00.000Z");
+  assert.equal(artifacts.ranking.generatedAt, "2026-06-09T00:00:00.000Z");
+}
+
 function testRenderedProductHuntWhyCopyAvoidsRepeatedTemplate() {
   const products = [
     ["Recursi", "Self improving vibe coding env with no API fees"],
@@ -1013,6 +1117,8 @@ const tests = [
   ["Quality memory keeps user feedback", testQualityMemoryKeepsUserFeedback],
   ["Quality audit flags hard negatives and repeated why", testQualityAuditFlagsHardNegativesAndRepeatedWhy],
   ["Quality audit accepts healthy report", testQualityAuditAcceptsHealthyReport],
+  ["Quality audit writes persistent artifacts", testQualityAuditWritesPersistentArtifacts],
+  ["Quality audit uses stable generatedAt from source health", testQualityAuditUsesStableGeneratedAtFromSourceHealth],
   ["Rendered Product Hunt why copy avoids repeated template", testRenderedProductHuntWhyCopyAvoidsRepeatedTemplate],
   ["Site builder normalizes archived Product Hunt why copy", testSiteBuilderNormalizesArchivedProductHuntWhyCopy],
   ["HN Algolia", testHnAlgolia],

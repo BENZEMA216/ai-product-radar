@@ -1,0 +1,288 @@
+{
+  "date": "2026-06-07",
+  "generatedAt": "2026-06-07T17:06:02.773Z",
+  "reportPath": "reports/2026-06-07-1614-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 72,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "AIHOT",
+      "GitHub Release"
+    ],
+    "top10ModelInfra": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 4,
+      "keptCount": 4,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-06；官方 API token 未配置，当前使用 Jina/OrangeBot fallback，覆盖率需审计。"
+    },
+    "yc_launch": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "YC Launch 本窗口无候选或来源为空。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 15,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 5,
+      "keptCount": 5,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 2,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 0,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Ejentum - Reasoning Harness",
+      "productKey": "https://www.producthunt.com/products/ejentum-reasoning-harness",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 agent 可靠性问题直接命名为漂移、迎合和编造，值得评估是否能成为企业采用 agent 前的控制层。"
+    },
+    {
+      "rank": 2,
+      "product": "Tines",
+      "productKey": "https://www.producthunt.com/products/tines",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "对产品经理来说，Tines 把 agent 与工作区自动化绑定，核心看点是能否从单点助手升级为跨系统执行入口。"
+    },
+    {
+      "rank": 3,
+      "product": "Wave",
+      "productKey": "https://www.producthunt.com/products/wave-16",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Wave 以本地或云端语音转写切入，重点在于它如何平衡隐私承诺、延迟体验和个人知识捕获频率。"
+    },
+    {
+      "rank": 4,
+      "product": "Aquifer – an MCP runtime for spiky agent tool traffic",
+      "productKey": "https://github.com/rjpruitt16/aquifer",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "HN Show帖只说明 Aquifer 把 MCP 运行时推向开发者社区，信号偏弱，因为没有工具流量指标或集成案例。"
+    },
+    {
+      "rank": 5,
+      "product": "SVAHNAR – Serverless infrastructure to run AI agents in isolated VMs",
+      "productKey": "https://www.svahnar.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "SVAHNAR 把 agent 隔离运行放到 serverless VM，值得看它是否解决企业对不可信工具执行的部署顾虑。"
+    },
+    {
+      "rank": 6,
+      "product": "agent-asearch – Go CLI, 18 sources, session-based search for AI agents",
+      "productKey": "https://github.com/izzzzzi/agent-asearch",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "agent-asearch 用 Go CLI 聚合 18 个搜索源，产品机会在于给 agent 提供可审计、会话化的信息入口。"
+    },
+    {
+      "rank": 7,
+      "product": "Persist – an AI agent that follows up accrued channels till they reply",
+      "productKey": "https://persist.chat",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Persist 将 AI agent 用于跨渠道持续跟进，需关注它如何避免被用户或收件人感知为自动化骚扰。"
+    },
+    {
+      "rank": 8,
+      "product": "Akmon, verify what an AI agent did offline using only OpenSSL",
+      "productKey": "https://github.com/radotsvetkov/akmon",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Akmon 用 OpenSSL 离线验证 agent 行为，面向的是审计信任问题，而不是常规生产力增益。"
+    },
+    {
+      "rank": 9,
+      "product": "Kodiqa Agent",
+      "productKey": "https://github.com/kodiqa-solutions/kodiqa-agent",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Kodiqa Agent 的 HN 信号偏弱，因为条目只给出名称和仓库来源，无法判断目标用户、场景或完成度。"
+    },
+    {
+      "rank": 10,
+      "product": "TabyAgent – A lighter and easier alternative to OpenClaw/Hermes",
+      "productKey": "https://github.com/gpdir16/tabyagent",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "TabyAgent 以更轻量替代 OpenClaw/Hermes 为定位，适合观察 agent 桌面控制工具的复杂度下探空间。"
+    },
+    {
+      "rank": 11,
+      "product": "GitHub 开源 Spec Kit 工具包，用产品规范引导 AI 编码",
+      "productKey": "https://x.com/rohanpaul_ai/status/2063246343842501091",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "Spec Kit 将 AI 编码前置到产品规范阶段，PM 视角应关注它是否减少需求澄清和返工成本。"
+    },
+    {
+      "rank": 12,
+      "product": "AI pre-screening CIS counterparties before onboarding",
+      "productKey": "https://agenstry.com/agents/cis-secondary-sanctions-a2a.vassiliy-lakhonin.workers.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 AI 用于 CIS 交易方预筛查，是高风险合规场景的窄切口，重点看责任边界和人工复核设计。"
+    },
+    {
+      "rank": 13,
+      "product": "LLM for Dummies",
+      "productKey": "https://ronreiter.github.io/llm-for-dummies",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "LLM for Dummies 更像教育内容入口，弱点是 HN 证据只显示发布帖，无法证明课程留存或学习效果。"
+    },
+    {
+      "rank": 14,
+      "product": "Ext-Infer – Native LLM Inference and Embeddings for PHP",
+      "productKey": "https://infer.displace.tech",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Ext-Infer 将 LLM 推理和 embeddings 带入 PHP 原生环境，值得看老 Web 技术栈是否因此降低 AI 集成门槛。"
+    },
+    {
+      "rank": 15,
+      "product": "CCC: One place to manage all your Claude, Codex, Antigravity sessions",
+      "productKey": "https://github.com/amirfish1/claude-command-center",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "CCC 把 Claude、Codex、Antigravity 会话集中管理，产品看点是多 agent 工作台会不会成为新的开发者入口。"
+    },
+    {
+      "rank": 16,
+      "product": "Ccgs – Collaborative Claude Code sessions, stored in Git branches",
+      "productKey": "https://github.com/ingram-technologies/claude-git-sessions",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Ccgs 用 Git 分支存储协作式 Claude Code 会话，适合评估代码协作语境下的 agent 状态管理方式。"
+    },
+    {
+      "rank": 17,
+      "product": "Oh my wrist – Garmin alerts for Claude Code and OpenCode",
+      "productKey": "https://github.com/yazon/oh-my-wrist",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Oh my wrist 把 Claude Code 与 OpenCode 通知送到 Garmin，信号较窄，因为它更像重度用户的边缘提醒工具。"
+    },
+    {
+      "rank": 18,
+      "product": "Minimal native macOS sandbox for Claude and Codex",
+      "productKey": "https://github.com/sheremetyev/sandfence",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "原生 macOS 沙箱瞄准 Claude 和 Codex，本质是在为本地 agent 执行补齐权限边界和信任感。"
+    },
+    {
+      "rank": 19,
+      "product": "langchain-ai/langgraphjs @langchain/vue@1.0.18",
+      "productKey": "https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/vue%401.0.18",
+      "source": "GitHub Release",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这个 @langchain/vue 小版本说明 LangGraph 正在维护前端框架适配面，PM 应看 Vue 开发者入口是否被持续照顾。"
+    },
+    {
+      "rank": 20,
+      "product": "langchain-ai/langgraphjs @langchain/svelte@1.0.18",
+      "productKey": "https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/svelte%401.0.18",
+      "source": "GitHub Release",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "从 @langchain/svelte 的同步发布看，LangGraph 试图覆盖小众前端生态，但版本号本身不足以说明新增能力。"
+    }
+  ]
+}
