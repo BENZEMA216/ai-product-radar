@@ -1646,6 +1646,17 @@ function isResourceListSignal(text) {
   );
 }
 
+function isGenericHuggingFaceSpaceSignal(item) {
+  const source = cleanKey(item.source).toLowerCase();
+  const product = cleanKey(item.product);
+  const did = cleanKey(item.did);
+  return (
+    (source === "huggingface" || source === "hugging face api") &&
+    /^Hugging Face Space:/i.test(product) &&
+    did === "Space 在 Hugging Face 最近创建或更新。"
+  );
+}
+
 function isLowSignalGitHubPackageRelease(item) {
   const source = cleanKey(item.source).toLowerCase();
   if (source !== "github" && source !== "github release") return false;
@@ -1754,6 +1765,7 @@ function buildRankingSignals(item) {
   if (item.category === "model_infra") noisePenalty += 8;
   if (item.qualityLabel === "weak_keep") noisePenalty += 14;
   if (item.qualityLabel === "deprioritize") noisePenalty += 18;
+  if (isGenericHuggingFaceSpaceSignal(item)) noisePenalty += Number(item.metrics?.hfLikes || 0) > 0 ? 8 : 12;
   if (isLowSignalGitHubPackageRelease(item)) noisePenalty += 10;
   if (includesAny(text, ["roulette", "baby", "girlfriend", "wallpaper", "tattoo", "headshot"])) noisePenalty += 16;
   if (!isRelevant(text)) noisePenalty += 30;

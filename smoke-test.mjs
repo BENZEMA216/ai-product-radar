@@ -1059,6 +1059,36 @@ function testPriorityScoreKeepsWeakHfSpacesBehindStrongProductLaunches() {
   );
 }
 
+function testPriorityScoreDownranksGenericHfSpaces() {
+  const genericHfSpace = {
+    product: "Hugging Face Space: hajinertym/My-ai-core",
+    link: "https://huggingface.co/spaces/hajinertym/My-ai-core",
+    type: "新产品",
+    did: "Space 在 Hugging Face 最近创建或更新。",
+    why: "HF Space 只有更新时间，缺少样例、用户和采用证据。",
+    evidence: "[Hugging Face API 2026-06-07T22:31:10.000Z](https://huggingface.co/spaces/hajinertym/My-ai-core)",
+    source: "huggingface",
+    category: "product",
+    qualityLabel: "weak_keep",
+    metrics: { hfLikes: 0 }
+  };
+  const concreteAihotSignal = {
+    product: "baoyu-design：在本地复现 Claude Design 的开发工作流",
+    link: "https://x.com/dotey/status/2063674134903603302",
+    type: "疑似新产品",
+    did: "宝玉分享开发模式：先用 Claude Design 设计 App UI/UX，再用 Claude Opus 实现 MVP，并写工具解析 HAR 文件复现本地工作流。",
+    why: "它指向设计生成到局部修改的闭环，适合观察产品经理和设计师是否能直接参与实现。",
+    evidence: "[AIHOT 2026-06-07T17:27:09.000Z](https://x.com/dotey/status/2063674134903603302)",
+    source: "aihot",
+    category: "product",
+    qualityLabel: "weak_keep"
+  };
+  assert.ok(
+    priorityScore(concreteAihotSignal) > priorityScore(genericHfSpace),
+    "generic Hugging Face Space update signals should not outrank concrete product workflow signals"
+  );
+}
+
 function testPriorityScoreDownranksHotNonProductShowHnDemos() {
   const hotDemo = {
     product: "A 178K Neural Net that beats Pokémon Roguelike",
@@ -2390,6 +2420,7 @@ const tests = [
   ["Product Hunt rejects topic-only dating novelty", testProductHuntRejectsTopicOnlyDatingNovelty],
   ["Priority score downranks weak novelty", testPriorityScoreDownranksWeakNovelty],
   ["Priority score keeps weak HF spaces behind strong launches", testPriorityScoreKeepsWeakHfSpacesBehindStrongProductLaunches],
+  ["Priority score downranks generic HF spaces", testPriorityScoreDownranksGenericHfSpaces],
   ["Priority score downranks hot non-product Show HN demos", testPriorityScoreDownranksHotNonProductShowHnDemos],
   ["Priority score downranks resource lists", testPriorityScoreDownranksResourceLists],
   ["Priority score uses Product Hunt engagement", testPriorityScoreUsesProductHuntEngagement],
