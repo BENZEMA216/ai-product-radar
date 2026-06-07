@@ -1180,6 +1180,41 @@ function testQualityAuditFlagsWeakBeforeStrong() {
   assert.ok(audit.failures.some((failure) => failure.code === "weak_before_strong"));
 }
 
+function testQualityAuditFlagsPoorTop10PmScores() {
+  const rows = Array.from({ length: 10 }, (_, index) => ({
+    product: `Thin Signal ${index}`,
+    source: ["AIHOT", "Hugging Face API", "XHS Dealflow"][index % 3],
+    why: "信息不足，先作为弱信号保留。",
+    did: "近期出现但缺少明确产品动作。",
+    category: "product",
+    qualityLabel: "weak_keep"
+  }));
+  const audit = auditReportQuality({
+    rows,
+    sourceHealth: {
+      sources: {
+        producthunt: {
+          status: "fallback",
+          rawCount: 17,
+          keptCount: 6,
+          note: "Product Hunt fallback；原始覆盖 17 条，AI 相关候选 6 条。"
+        },
+        yc_launch: { status: "empty", rawCount: 0, keptCount: 0, note: "本窗口无候选" },
+        hackernews: { status: "ok", rawCount: 2, keptCount: 1, note: "ok" },
+        github: { status: "ok", rawCount: 1, keptCount: 1, note: "ok" },
+        huggingface: { status: "ok", rawCount: 0, keptCount: 0, note: "HF Model 进入 Models & Infra" },
+        aihot: { status: "ok", rawCount: 1, keptCount: 1, note: "ok" },
+        xhs_dealflow: { status: "unavailable", rawCount: 0, keptCount: 0, note: "XHS 默认尝试" }
+      }
+    },
+    siteHtml:
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
+  });
+  assert.ok(!audit.ok);
+  assert.ok(audit.failures.some((failure) => failure.code === "precision_at_10_low"));
+  assert.ok(audit.failures.some((failure) => failure.code === "bad_top10_pm_score"));
+}
+
 function testQualityAuditWritesPersistentArtifacts() {
   const rows = [
     {
@@ -1631,6 +1666,7 @@ const tests = [
   ["Quality audit flags low Product Hunt fallback coverage", testQualityAuditFlagsLowProductHuntFallbackCoverage],
   ["Quality audit flags Product Hunt fallback missing raw AI split", testQualityAuditFlagsProductHuntFallbackMissingRawAiSplit],
   ["Quality audit flags weak before strong", testQualityAuditFlagsWeakBeforeStrong],
+  ["Quality audit flags poor Top 10 PM scores", testQualityAuditFlagsPoorTop10PmScores],
   ["Quality audit writes persistent artifacts", testQualityAuditWritesPersistentArtifacts],
   ["Quality audit uses stable generatedAt from source health", testQualityAuditUsesStableGeneratedAtFromSourceHealth],
   ["Rendered Product Hunt why copy avoids repeated template", testRenderedProductHuntWhyCopyAvoidsRepeatedTemplate],

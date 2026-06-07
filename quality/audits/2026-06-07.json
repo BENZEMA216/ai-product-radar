@@ -11,7 +11,9 @@
       "HN Algolia",
       "GitHub Release"
     ],
-    "top10ModelInfra": 0
+    "top10ModelInfra": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
   },
   "sourceHealth": {
     "producthunt": {

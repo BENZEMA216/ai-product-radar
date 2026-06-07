@@ -167,6 +167,42 @@ function auditWeakBeforeStrong(rows) {
   ];
 }
 
+function rankingQualityMetrics(rows) {
+  const top10 = rows.slice(0, 10);
+  const scores = top10.map((row, index) => pmScoreForRow(row, index + 1));
+  const goodCount = scores.filter((score) => score >= 4).length;
+  const badRows = top10
+    .map((row, index) => ({ row, rank: index + 1, pmScore: scores[index] }))
+    .filter((item) => item.pmScore <= 2);
+  return {
+    top10Count: top10.length,
+    precisionAt10: top10.length ? Number((goodCount / top10.length).toFixed(2)) : null,
+    badTop10Count: badRows.length,
+    badTop10Products: badRows.map((item) => ({ rank: item.rank, product: item.row.product, pmScore: item.pmScore }))
+  };
+}
+
+function auditRankingQuality(rows) {
+  const metrics = rankingQualityMetrics(rows);
+  if (metrics.top10Count < 10) return [];
+  const failures = [];
+  if (metrics.precisionAt10 < 0.7) {
+    failures.push(
+      failure("precision_at_10_low", "Top 10 中 PM score >= 4 的比例低于 70%。", {
+        precisionAt10: metrics.precisionAt10
+      })
+    );
+  }
+  if (metrics.badTop10Count > 0) {
+    failures.push(
+      failure("bad_top10_pm_score", "Top 10 中出现 PM score <= 2 的低质量条目。", {
+        products: metrics.badTop10Products
+      })
+    );
+  }
+  return failures;
+}
+
 function auditSourceHealth(sourceHealth) {
   const failures = [];
   const sources = sourceHealth?.sources || sourceHealth || {};
@@ -244,16 +280,20 @@ export function auditReportQuality({ rows = [], sourceHealth = null, siteHtml = 
   failures.push(...auditSourceDiversity(rows));
   failures.push(...auditModelPlacement(rows));
   failures.push(...auditWeakBeforeStrong(rows));
+  failures.push(...auditRankingQuality(rows));
   if (sourceHealth) failures.push(...auditSourceHealth(sourceHealth));
   if (siteHtml) failures.push(...auditSiteHtml(siteHtml));
   if (feedbackSnapshot) failures.push(...auditFeedbackSnapshot(feedbackSnapshot));
+  const rankingMetrics = rankingQualityMetrics(rows);
   return {
     ok: failures.length === 0,
     failures,
     metrics: {
       rows: rows.length,
       top20Sources: [...new Set(rows.slice(0, 20).map((row) => clean(row.source)).filter(Boolean))],
-      top10ModelInfra: rows.slice(0, 10).filter((row) => row.category === "model_infra").length
+      top10ModelInfra: rows.slice(0, 10).filter((row) => row.category === "model_infra").length,
+      precisionAt10: rankingMetrics.precisionAt10,
+      badTop10Count: rankingMetrics.badTop10Count
     }
   };
 }
