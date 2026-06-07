@@ -1329,14 +1329,29 @@ function productHuntWhyFromContext(item) {
   if (includesAny(text, ["store", "stores", "seller", "commerce", "channels", "shop"])) {
     return `${product} 把多渠道店铺运营交给 AI agents，适合看垂直运营场景如何从工具升级为托管执行。`;
   }
+  if (includesAny(text, ["ship the spec", "ai builds the app", "idea in", "production-ready app"])) {
+    return `${product} 把“想法/规格到可上线应用”压成一句话流程，关键看生成质量、部署责任和后续迭代是否闭环。`;
+  }
   if (includesAny(text, ["coding", "developer", "code", "vibe", "github"])) {
     return `${product} 把开发者工作流包装成首日可试用产品，适合观察编码入口、费用门槛和环境粘性。`;
   }
   if (includesAny(text, ["real-world task", "real world task", "autonomous", "arena"])) {
     return `${product} 强调真实任务和自主执行，适合观察 agent 产品怎样证明可控性、完成度和首日可信度。`;
   }
+  if (includesAny(text, ["drifting", "flattering", "fabricating", "reliability", "reasoning harness"])) {
+    return `${product} 直接瞄准 agent 漂移、迎合和编造问题，值得看它能否把可靠性包装成企业可理解的控制层。`;
+  }
   if (includesAny(text, ["reasoning", "nemotron", "model", "llm", "long-running", "long running"])) {
     return `${product} 把推理效率作为卖点，适合跟踪模型能力如何转化成长任务 agent 的产品叙事。`;
+  }
+  if (includesAny(text, ["wearable", "wearables", "health signal"])) {
+    return `${product} 把穿戴设备数据接到 Claude、OpenClaw 等 AI 入口，适合观察个人上下文如何变成可调用能力。`;
+  }
+  if (includesAny(text, ["web builder", "website builder", "webstorio"])) {
+    return `${product} 把 AI 建站做成一站式平台，适合看从生成页面到发布、内容和运营配置能否真正连起来。`;
+  }
+  if (includesAny(text, ["brand cited", "chatgpt", "perplexity", "google ai"])) {
+    return `${product} 把品牌在 ChatGPT、Perplexity 和 Google AI 里的可见性产品化，适合跟踪 AI 搜索优化的新入口。`;
   }
   if (includesAny(text, ["voice", "mac", "local", "desktop", "computer"])) {
     return `${product} 选择本地语音/桌面入口，适合观察低摩擦控制电脑的交互边界和隐私叙事。`;

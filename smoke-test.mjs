@@ -817,6 +817,32 @@ function testProductHuntCandidateWhyAvoidsGenericTemplates() {
   assert.ok(whys.every((why) => !why.includes("可作为 AI 产品定位、交互或分发方式的竞品/灵感样本")));
 }
 
+function testProductHuntWhyCopyHandlesCurrentFallbackContexts() {
+  const markdown = [
+    "[1. Ejentum - Reasoning Harness](https://www.producthunt.com/products/ejentum-reasoning-harness)Stop your AI agent drifting, flattering, and fabricating.",
+    "[2. Almanac Seed](https://www.producthunt.com/products/almanac-seed)Ship the spec, not the code. An AI builds the app.",
+    "[3. freddy.](https://www.producthunt.com/products/freddy)Plug your wearables into Claude, OpenClaw, and any AI",
+    "[4. Bleenk](https://www.producthunt.com/products/bleenk)Idea in. Live, production-ready app out.",
+    "[Artificial Intelligence](https://www.producthunt.com/topics/artificial-intelligence)•[Developer Tools](https://www.producthunt.com/topics/developer-tools)",
+    "[5. Webstorio](https://www.producthunt.com/products/webstorio)AI Web Builder Platform with Everything Built-in",
+    "[6. Snezzi](https://www.producthunt.com/products/snezzi)Get your brand cited in ChatGPT, Perplexity & Google AI"
+  ].join("\n");
+  const items = parseProductHuntMarkdown(
+    markdown,
+    "2026-06-06",
+    "https://www.producthunt.com/leaderboard/daily/2026/6/6/all"
+  );
+  assert.equal(items.length, 6);
+  const byProduct = Object.fromEntries(items.map((item) => [item.product, item.why]));
+  assert.match(byProduct["Ejentum - Reasoning Harness"], /可靠性|漂移|编造|控制层/);
+  assert.match(byProduct["Almanac Seed"], /规格|想法|应用|迭代|部署/);
+  assert.match(byProduct["freddy."], /穿戴|wearable|个人数据|Claude|OpenClaw/i);
+  assert.match(byProduct.Webstorio, /Web|网站|生成|发布/);
+  assert.match(byProduct.Snezzi, /AI 搜索|ChatGPT|Perplexity|品牌/);
+  assert.ok(items.every((item) => !item.why.includes("PH 描述聚焦")));
+  assert.ok(items.every((item) => !item.why.includes("...")));
+}
+
 function testProductHuntRejectsIncidentalAiSubstring() {
   const markdown = [
     "[1. codetyper](https://www.producthunt.com/products/codetyper-2)A professional typing trainer built around real codebases.",
@@ -2108,6 +2134,7 @@ const tests = [
   ["Product Hunt uses API when token configured", testProductHuntUsesApiWhenTokenConfigured],
   ["Product Hunt why copy uses product context", testProductHuntWhyCopyUsesProductContext],
   ["Product Hunt candidate why avoids generic templates", testProductHuntCandidateWhyAvoidsGenericTemplates],
+  ["Product Hunt why copy handles current fallback contexts", testProductHuntWhyCopyHandlesCurrentFallbackContexts],
   ["Product Hunt rejects incidental ai substring", testProductHuntRejectsIncidentalAiSubstring],
   ["Product Hunt rejects low-signal consumer novelty", testProductHuntRejectsLowSignalConsumerNovelty],
   ["Product Hunt rejects topic-only dating novelty", testProductHuntRejectsTopicOnlyDatingNovelty],
