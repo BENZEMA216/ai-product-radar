@@ -183,6 +183,7 @@ HN 验收时必须分别看：
 | Bad Top 10，Top 10 中 PM score <= 2 的数量 | 0 |
 | Source diversity@20 | >= 3 个来源家族，除非当天客观单一来源占优 |
 | Weak-before-strong violations | 0 个已确认弱强倒挂 |
+| Duplicate repo/owner@10 | 同一 GitHub repo 或 Hugging Face owner 默认最多 1 条 |
 | 重复模板 why | Top 20 内不能连续 3 条近似同义 |
 
 ### 9.2 单条排序解释
@@ -242,6 +243,8 @@ SellerClaw 值得看的是它把“店铺运营”拆成多 agent 工作流，�
 - 按钮生成的反馈包含 `reportDate`、`signalKey`、`productKey`、`source`、`action`。
 - 用户能补充自由文本。
 - 自动化能读取反馈，并生成 `quality/feedback/YYYY-MM-DD.json`。
+- `quality/feedback/YYYY-MM-DD.json` 必须保留用户自由文本；非法 action、缺 `reportDate` / `signalKey` / `productKey` / `source` 的反馈必须进入 `invalidFeedback`，并让 `npm run acceptance` 失败。
+- `action=review` 的反馈必须生成或合并进 `reviews/<reportDate>.json`，使网站可以按 `productKey` / `signalKey` attach 点评。
 
 ### 11.2 第二天复盘
 

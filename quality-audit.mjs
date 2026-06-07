@@ -8,6 +8,8 @@ import { parseReportMarkdown } from "./build-site.mjs";
 const REPORT_PATTERN = /^\d{4}-\d{2}-\d{2}-\d{4}-cst\.md$/;
 const JSON_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}\.json$/;
 const REQUIRED_SOURCE_HEALTH = ["producthunt", "yc_launch", "hackernews", "github", "huggingface", "aihot", "xhs_dealflow"];
+const REQUIRED_FEEDBACK_FIELDS = ["action", "reportDate", "signalKey", "productKey", "source"];
+const VALID_FEEDBACK_ACTIONS = new Set(["keep", "drop", "downrank", "review", "missing"]);
 const REQUIRED_SITE_MARKERS = [
   "window.__RADAR_DATA__",
   "Priority View",
@@ -167,6 +169,42 @@ function auditWeakBeforeStrong(rows) {
   ];
 }
 
+function duplicateGroupKeyForAudit(row) {
+  const source = clean(row.source).toLowerCase();
+  const product = clean(row.product);
+  const link = clean(row.link || row.productKey);
+  if (source.includes("github") || link.includes("github.com/")) {
+    const fromLink = link.match(/github\.com\/([^/\s]+\/[^/\s#?]+)/i)?.[1];
+    const fromProduct = product.match(/^([^/\s]+\/[^/\s]+)/)?.[1];
+    const repo = clean(fromLink || fromProduct).replace(/\/releases.*$/i, "");
+    return repo ? `github:${repo.toLowerCase()}` : "";
+  }
+  if (source.includes("hugging face") || link.includes("huggingface.co/")) {
+    const fromLink = link.match(/huggingface\.co\/(?:spaces\/)?([^/\s#?]+)/i)?.[1];
+    const compact = product.replace(/^Hugging Face (?:Space|Model):\s*/i, "");
+    const owner = clean(fromLink || compact.split("/")[0]);
+    return owner ? `huggingface:${owner.toLowerCase()}` : "";
+  }
+  return "";
+}
+
+function auditDuplicateGroups(rows) {
+  const groups = new Map();
+  rows.slice(0, 10).forEach((row, index) => {
+    const key = duplicateGroupKeyForAudit(row);
+    if (!key) return;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push({ rank: index + 1, product: row.product, source: row.source });
+  });
+  const repeated = [...groups.entries()].filter(([, items]) => items.length > 1);
+  if (!repeated.length) return [];
+  return [
+    failure("duplicate_group_top10", "Top 10 中同一 GitHub repo 或 Hugging Face owner 出现多条，容易造成重复刷屏。", {
+      groups: repeated.map(([key, items]) => ({ key, items }))
+    })
+  ];
+}
+
 function rankingQualityMetrics(rows) {
   const top10 = rows.slice(0, 10);
   const scores = top10.map((row, index) => pmScoreForRow(row, index + 1));
@@ -267,7 +305,49 @@ function auditFeedbackSnapshot(feedbackSnapshot) {
   if (!Array.isArray(feedbackSnapshot.feedback)) {
     return [failure("feedback_shape_invalid", "反馈快照缺少 feedback 数组。")];
   }
-  return [];
+  const failures = [];
+  const invalidFeedback = Array.isArray(feedbackSnapshot.invalidFeedback) ? feedbackSnapshot.invalidFeedback : [];
+  if (invalidFeedback.length) {
+    failures.push(
+      failure("feedback_invalid_records", "反馈快照中存在字段不完整的反馈，可能导致第二天无法学习用户判断。", {
+        records: invalidFeedback.map((item) => ({
+          number: item.number,
+          title: clean(item.title),
+          errors: Array.isArray(item.errors) ? item.errors : []
+        }))
+      })
+    );
+  }
+  feedbackSnapshot.feedback.forEach((record, index) => {
+    const missing = REQUIRED_FEEDBACK_FIELDS.filter((field) => !clean(record[field]));
+    if (missing.length) {
+      failures.push(
+        failure("feedback_missing_required_fields", "反馈记录缺少网页预填必备字段。", {
+          index,
+          product: clean(record.product || record.title),
+          missing
+        })
+      );
+    }
+    if (!VALID_FEEDBACK_ACTIONS.has(clean(record.action))) {
+      failures.push(
+        failure("feedback_action_invalid", "反馈记录 action 不在允许集合内。", {
+          index,
+          action: clean(record.action),
+          product: clean(record.product || record.title)
+        })
+      );
+    }
+    if (clean(record.action) === "review" && !clean(record.note || record.review)) {
+      failures.push(
+        failure("feedback_review_missing_text", "写点评反馈缺少用户原始点评文本。", {
+          index,
+          product: clean(record.product || record.title)
+        })
+      );
+    }
+  });
+  return failures;
 }
 
 export function auditReportQuality({ rows = [], sourceHealth = null, siteHtml = "", feedbackSnapshot = null } = {}) {
@@ -280,6 +360,7 @@ export function auditReportQuality({ rows = [], sourceHealth = null, siteHtml = 
   failures.push(...auditSourceDiversity(rows));
   failures.push(...auditModelPlacement(rows));
   failures.push(...auditWeakBeforeStrong(rows));
+  failures.push(...auditDuplicateGroups(rows));
   failures.push(...auditRankingQuality(rows));
   if (sourceHealth) failures.push(...auditSourceHealth(sourceHealth));
   if (siteHtml) failures.push(...auditSiteHtml(siteHtml));

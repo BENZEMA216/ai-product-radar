@@ -58,11 +58,15 @@ function qualityBaseDir(reportDir, name) {
   return reportDir === "reports" ? `quality/${name}` : `${reportDir}/${name}`;
 }
 
-function snapshotFeedback(reportPath, env, outDir) {
+function reviewBaseDir(reportDir) {
+  return reportDir === "reports" ? "reviews" : `${reportDir}/reviews`;
+}
+
+function snapshotFeedback(reportPath, env, outDir, reviewDir) {
   const date = reportDateFromPath(reportPath);
   if (!date) return;
   try {
-    execFileSync("node", ["feedback-runner.mjs", "--date", date, "--out-dir", outDir], {
+    execFileSync("node", ["feedback-runner.mjs", "--date", date, "--out-dir", outDir, "--review-dir", reviewDir], {
       cwd: process.cwd(),
       encoding: "utf8",
       env,
@@ -126,7 +130,7 @@ async function main() {
   }
 
   const feedbackDir = qualityBaseDir(args.reportDir, "feedback");
-  snapshotFeedback(reportPath, cleanEnv, feedbackDir);
+  snapshotFeedback(reportPath, cleanEnv, feedbackDir, reviewBaseDir(args.reportDir));
   const result = await runRadar({ now, hours: args.hours, feedbackDir });
   writeJson(sourceHealthPathForNow(now, qualityBaseDir(args.reportDir, "source-health")), {
     generatedAt: now.toISOString(),

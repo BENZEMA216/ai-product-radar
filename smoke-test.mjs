@@ -161,9 +161,11 @@ function testFeedbackIssueParser() {
   assert.equal(parsed.action, "drop");
   assert.equal(parsed.productKey, "https://example.com");
   assert.equal(parsed.source, "HN Algolia");
+  assert.equal(parsed.note, "不是 AI 产品");
   const snapshot = buildFeedbackSnapshot({ date: "2026-06-08", issues: [issue] });
   assert.equal(snapshot.status, "ok");
   assert.equal(snapshot.feedback.length, 1);
+  assert.equal(snapshot.invalidFeedback.length, 0);
 }
 
 function testFeedbackSnapshotUnavailable() {
@@ -171,6 +173,64 @@ function testFeedbackSnapshotUnavailable() {
   assert.equal(snapshot.status, "unavailable");
   assert.equal(snapshot.feedback.length, 0);
   assert.match(snapshot.error, /gh unavailable/);
+}
+
+function testFeedbackReviewIssueBecomesAttachableReview() {
+  const issue = {
+    number: 18,
+    title: "[Radar Feedback] 写点评: Ejentum - Reasoning Harness",
+    url: "https://github.com/BENZEMA216/ai-product-radar/issues/18",
+    createdAt: "2026-06-08T00:00:00Z",
+    body: [
+      "## Radar Feedback",
+      "",
+      "action: review",
+      "actionLabel: 写点评",
+      "reportDate: 2026-06-07",
+      "signalKey: 2026-06-07|Product Hunt|https://www.producthunt.com/products/ejentum-reasoning-harness",
+      "productKey: https://www.producthunt.com/products/ejentum-reasoning-harness",
+      "source: Product Hunt",
+      "product: Ejentum - Reasoning Harness",
+      "link: https://www.producthunt.com/products/ejentum-reasoning-harness",
+      "",
+      "## 你的补充",
+      "",
+      "我的点评：这个感觉没有热度，也不是特别吊，先别排第一。"
+    ].join("\n")
+  };
+  const snapshot = buildFeedbackSnapshot({ date: "2026-06-08", issues: [issue] });
+  assert.equal(snapshot.feedback.length, 1);
+  assert.equal(snapshot.feedback[0].note, "这个感觉没有热度，也不是特别吊，先别排第一。");
+  assert.equal(snapshot.reviews.length, 1);
+  assert.equal(snapshot.reviews[0].id, "feedback-18");
+  assert.equal(snapshot.reviews[0].productKey, "https://www.producthunt.com/products/ejentum-reasoning-harness");
+  assert.equal(snapshot.reviews[0].reportDate, "2026-06-07");
+  assert.equal(snapshot.reviews[0].review, "这个感觉没有热度，也不是特别吊，先别排第一。");
+}
+
+function testFeedbackSnapshotTracksMalformedRecords() {
+  const issue = {
+    number: 19,
+    title: "[Radar Feedback] 不该收录: Missing Product Key",
+    url: "https://github.com/BENZEMA216/ai-product-radar/issues/19",
+    createdAt: "2026-06-08T00:00:00Z",
+    body: [
+      "## Radar Feedback",
+      "",
+      "action: drop",
+      "actionLabel: 不该收录",
+      "reportDate: 2026-06-08",
+      "signalKey: 2026-06-08|Product Hunt|missing",
+      "source: Product Hunt",
+      "product: Missing Product Key",
+      "",
+      "原因：预填表单坏了"
+    ].join("\n")
+  };
+  const snapshot = buildFeedbackSnapshot({ date: "2026-06-08", issues: [issue] });
+  assert.equal(snapshot.feedback.length, 0);
+  assert.equal(snapshot.invalidFeedback.length, 1);
+  assert.deepEqual(snapshot.invalidFeedback[0].errors, ["productKey"]);
 }
 
 function testProductHuntHistoryFilter() {
@@ -1215,6 +1275,41 @@ function testQualityAuditFlagsPoorTop10PmScores() {
   assert.ok(audit.failures.some((failure) => failure.code === "bad_top10_pm_score"));
 }
 
+function testQualityAuditFlagsDuplicateRepoTop10() {
+  const rows = [
+    {
+      product: "langchain-ai/langgraphjs @langchain/vue@1.0.18",
+      link: "https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/vue%401.0.18",
+      source: "GitHub Release",
+      why: "LangGraph 前端包更新对 agent workflow 可视化有影响，但同 repo 多包 release 不应刷屏。",
+      did: "发布 @langchain/vue@1.0.18。",
+      category: "product",
+      qualityLabel: "keep"
+    },
+    {
+      product: "langchain-ai/langgraphjs @langchain/svelte@1.0.18",
+      link: "https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/svelte%401.0.18",
+      source: "GitHub Release",
+      why: "同一 repo 的框架适配更新应该合并观察，不能占用多个默认前排位置。",
+      did: "发布 @langchain/svelte@1.0.18。",
+      category: "product",
+      qualityLabel: "keep"
+    },
+    ...Array.from({ length: 8 }, (_, index) => ({
+      product: `Useful Agent Product ${index}`,
+      link: `https://example.com/useful-agent-${index}`,
+      source: index % 2 ? "HN Algolia" : "Product Hunt",
+      why: "它有明确的 agent 工作流场景，适合产品经理观察执行入口和采用门槛。",
+      did: "发布 AI agent workflow 产品。",
+      category: "product",
+      qualityLabel: "keep"
+    }))
+  ];
+  const audit = auditReportQuality({ rows });
+  assert.equal(audit.ok, false);
+  assert.ok(audit.failures.some((failure) => failure.code === "duplicate_group_top10"));
+}
+
 function testQualityAuditWritesPersistentArtifacts() {
   const rows = [
     {
@@ -1292,6 +1387,32 @@ function testQualityAuditWritesPersistentArtifacts() {
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
+}
+
+function testQualityAuditFlagsMalformedFeedback() {
+  const rows = [
+    {
+      product: "Agent Runtime",
+      link: "https://example.com/agent-runtime",
+      source: "HN Algolia",
+      why: "它把 agent 运行时的调试和审计边界讲清楚，适合判断企业工具是否需要控制层。",
+      did: "HN 发布帖出现：Launch HN: Agent Runtime",
+      category: "product",
+      qualityLabel: "keep"
+    }
+  ];
+  const audit = auditReportQuality({
+    rows,
+    feedbackSnapshot: {
+      status: "ok",
+      count: 2,
+      feedback: [{ action: "boosted", productKey: "https://example.com/agent-runtime" }],
+      invalidFeedback: [{ number: 22, errors: ["productKey"], title: "bad feedback" }]
+    }
+  });
+  assert.equal(audit.ok, false);
+  assert.ok(audit.failures.some((item) => item.code === "feedback_action_invalid"));
+  assert.ok(audit.failures.some((item) => item.code === "feedback_invalid_records"));
 }
 
 function testQualityAuditUsesStableGeneratedAtFromSourceHealth() {
@@ -1629,6 +1750,8 @@ const tests = [
   ["Publish helpers", testPublishHelpers],
   ["Feedback issue parser", testFeedbackIssueParser],
   ["Feedback snapshot unavailable", testFeedbackSnapshotUnavailable],
+  ["Feedback review issue becomes attachable review", testFeedbackReviewIssueBecomesAttachableReview],
+  ["Feedback snapshot tracks malformed records", testFeedbackSnapshotTracksMalformedRecords],
   ["Product Hunt history filter", testProductHuntHistoryFilter],
   ["Site builder helpers", testSiteBuilderHelpers],
   ["Product Hunt Pacific completed day", testProductHuntPacificCompletedDay],
@@ -1667,7 +1790,9 @@ const tests = [
   ["Quality audit flags Product Hunt fallback missing raw AI split", testQualityAuditFlagsProductHuntFallbackMissingRawAiSplit],
   ["Quality audit flags weak before strong", testQualityAuditFlagsWeakBeforeStrong],
   ["Quality audit flags poor Top 10 PM scores", testQualityAuditFlagsPoorTop10PmScores],
+  ["Quality audit flags duplicate repo Top 10", testQualityAuditFlagsDuplicateRepoTop10],
   ["Quality audit writes persistent artifacts", testQualityAuditWritesPersistentArtifacts],
+  ["Quality audit flags malformed feedback", testQualityAuditFlagsMalformedFeedback],
   ["Quality audit uses stable generatedAt from source health", testQualityAuditUsesStableGeneratedAtFromSourceHealth],
   ["Rendered Product Hunt why copy avoids repeated template", testRenderedProductHuntWhyCopyAvoidsRepeatedTemplate],
   ["Site builder normalizes archived Product Hunt why copy", testSiteBuilderNormalizesArchivedProductHuntWhyCopy],

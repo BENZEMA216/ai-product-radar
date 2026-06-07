@@ -321,6 +321,8 @@ XHS 一般情况下默认启用，但它依赖本地 Dealflow bridge、Chrome �
 4. `All Signals` 保留广覆盖，可按时间、来源、类型切换。
 5. `Models & Infra` 单独排序，不与产品混排。
 
+同一 GitHub repo 或 Hugging Face owner 的多条 release/model 信号只允许第一条进入默认前排；后续条目降为弱保留，留在 All Signals 或 Models & Infra 中查看，避免同一项目的多包 release 刷屏。
+
 ## 8. Codex/LLM 的职责
 
 脚本阶段可以生成占位文案，但正式日报发布前必须由 Codex/LLM 逐条推理：
@@ -364,7 +366,8 @@ XHS 一般情况下默认启用，但它依赖本地 Dealflow bridge、Chrome �
 - 点击按钮打开预填好的 GitHub Issue。
 - Issue body 自动带上 `reportDate`、`signalKey`、`productKey`、`source`、`action`。
 - 用户可以补一句理由或点评。
-- 每日 automation 读取 open issues，把反馈写入 repo 中的结构化文件，再关闭或标记已处理。
+- 每日 automation 读取 open issues，把反馈写入 repo 中的结构化文件；字段不完整或 action 非法的 issue 必须进入 `invalidFeedback`，不能静默丢失。
+- `action=review` 的反馈必须额外生成或合并到 `reviews/<reportDate>.json`，让点评 attach 到对应产品卡片，而不是只停留在 feedback 快照里。
 
 后续如果需要更顺滑，可以再上轻量后端或 GitHub App，但第一版应该先用 GitHub 原生能力闭环。
 
@@ -415,6 +418,7 @@ XHS 一般情况下默认启用，但它依赖本地 Dealflow bridge、Chrome �
 | `quality/source-health/YYYY-MM-DD.json` | 每日来源状态 |
 | `quality/feedback/YYYY-MM-DD.json` | 从 GitHub Issues 读取的反馈 |
 | `quality/ranking/YYYY-MM-DD.json` | Top-k 排序评分和指标 |
+| `reviews/YYYY-MM-DD.json` | 用户点评与次日复盘，按产品 attach 到站点 |
 
 ## 11. 发布视图设计
 
@@ -455,4 +459,3 @@ XHS 一般情况下默认启用，但它依赖本地 Dealflow bridge、Chrome �
 5. 增加用户反馈按钮和 GitHub Issue 读取链路。
 6. 增加每日验收脚本和质量报告。
 7. 再改站点默认视图和 Tabs。
-

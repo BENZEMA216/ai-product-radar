@@ -1801,9 +1801,11 @@ function applyDuplicatePenalties(items) {
     const index = seen.get(key) || 0;
     seen.set(key, index + 1);
     if (index === 0) return item;
-    const duplicatePenalty = Math.min(30, index * 8);
+    const isStructuredRepoGroup = ["github", "huggingface"].includes(item.source);
+    const duplicatePenalty = Math.min(64, 20 + index * 16);
     return {
       ...item,
+      qualityLabel: isStructuredRepoGroup && item.qualityLabel === "keep" ? "weak_keep" : item.qualityLabel,
       priorityScore: item.priorityScore - duplicatePenalty,
       rankingSignals: {
         ...item.rankingSignals,
