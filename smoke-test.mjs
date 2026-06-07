@@ -23,7 +23,8 @@ import {
   resolveDealflowRoot,
   reportPathForNow,
   runRadar,
-  sanitizeLocalProxyEnv
+  sanitizeLocalProxyEnv,
+  sortCandidatesForPriority
 } from "./radar.mjs";
 import { buildSiteData, parseReportMarkdown, renderSiteHtml } from "./build-site.mjs";
 import { buildFeedbackSnapshot, parseFeedbackIssue } from "./feedback-runner.mjs";
@@ -562,6 +563,25 @@ function testPriorityScoreDownranksHotNonProductShowHnDemos() {
   );
 }
 
+function testPrioritySortKeepsStrongLabelsBeforeWeakSignals() {
+  const sorted = sortCandidatesForPriority([
+    {
+      product: "Weak but noisy HF Space",
+      source: "huggingface",
+      qualityLabel: "weak_keep",
+      priorityScore: 80
+    },
+    {
+      product: "Clear GitHub Release",
+      source: "github",
+      qualityLabel: "keep",
+      priorityScore: 10
+    }
+  ]);
+  assert.equal(sorted[0].product, "Clear GitHub Release");
+  assert.equal(sorted[1].product, "Weak but noisy HF Space");
+}
+
 function testQualityMemoryDropsNegativeGoldens() {
   const candidates = [
     {
@@ -722,7 +742,7 @@ function testQualityAuditFlagsHardNegativesAndRepeatedWhy() {
     rows,
     sourceHealth: {
       sources: {
-        producthunt: { status: "fallback", rawCount: 4, keptCount: 1, note: "fallback" },
+        producthunt: { status: "fallback", rawCount: 4, keptCount: 1, note: "fallback 低覆盖风险：只返回 4 条候选" },
         yc_launch: { status: "empty", rawCount: 0, keptCount: 0, note: "本窗口无候选" },
         hackernews: { status: "ok", rawCount: 2, keptCount: 1, note: "ok" },
         github: { status: "ok", rawCount: 1, keptCount: 1, note: "ok" },
@@ -770,7 +790,7 @@ function testQualityAuditAcceptsHealthyReport() {
     rows,
     sourceHealth: {
       sources: {
-        producthunt: { status: "fallback", rawCount: 4, keptCount: 1, note: "fallback" },
+        producthunt: { status: "fallback", rawCount: 4, keptCount: 1, note: "fallback 低覆盖风险：只返回 4 条候选" },
         yc_launch: { status: "empty", rawCount: 0, keptCount: 0, note: "本窗口无候选" },
         hackernews: { status: "ok", rawCount: 2, keptCount: 1, note: "ok" },
         github: { status: "ok", rawCount: 1, keptCount: 1, note: "ok" },
@@ -783,6 +803,52 @@ function testQualityAuditAcceptsHealthyReport() {
       "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
   });
   assert.equal(audit.ok, true, audit.failures.map((failure) => failure.message).join("; "));
+}
+
+function testQualityAuditFlagsLowProductHuntFallbackCoverage() {
+  const audit = auditReportQuality({
+    rows: [
+      {
+        product: "Agent Runtime",
+        source: "HN Algolia",
+        why: "它把 agent 运行时隔离作为核心能力，适合观察企业执行权限边界。",
+        did: "Show HN: Agent Runtime for AI workflows",
+        category: "product",
+        qualityLabel: "keep"
+      },
+      {
+        product: "Workflow Copilot",
+        source: "Product Hunt",
+        why: "它把跨工具自动化做成可试用产品，重点看入口是否足够贴近日常流程。",
+        did: "Build AI workflows across apps",
+        category: "product",
+        qualityLabel: "keep"
+      },
+      {
+        product: "LangGraph Release",
+        source: "GitHub Release",
+        why: "版本更新说明 agent 图编排框架仍在维护前端适配面，适合跟踪生态入口。",
+        did: "发布 SDK 更新。",
+        category: "product",
+        qualityLabel: "keep"
+      }
+    ],
+    sourceHealth: {
+      sources: {
+        producthunt: { status: "fallback", rawCount: 4, keptCount: 1, note: "Product Hunt API missing; fallback used." },
+        yc_launch: { status: "empty", rawCount: 0, keptCount: 0, note: "本窗口无候选" },
+        hackernews: { status: "ok", rawCount: 2, keptCount: 1, note: "ok" },
+        github: { status: "ok", rawCount: 1, keptCount: 1, note: "ok" },
+        huggingface: { status: "ok", rawCount: 0, keptCount: 0, note: "HF Model 进入 Models & Infra" },
+        aihot: { status: "ok", rawCount: 0, keptCount: 0, note: "ok" },
+        xhs_dealflow: { status: "unavailable", rawCount: 0, keptCount: 0, note: "XHS 默认尝试" }
+      }
+    },
+    siteHtml:
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
+  });
+  assert.ok(!audit.ok);
+  assert.ok(audit.failures.some((failure) => failure.code === "producthunt_low_fallback_coverage_unmarked"));
 }
 
 function testQualityAuditFlagsWeakBeforeStrong() {
@@ -855,7 +921,7 @@ function testQualityAuditWritesPersistentArtifacts() {
   ];
   const sourceHealth = {
     sources: {
-      producthunt: { status: "fallback", rawCount: 4, keptCount: 1, note: "fallback" },
+      producthunt: { status: "fallback", rawCount: 4, keptCount: 1, note: "fallback 低覆盖风险：只返回 4 条候选" },
       yc_launch: { status: "empty", rawCount: 0, keptCount: 0, note: "本窗口无候选" },
       hackernews: { status: "ok", rawCount: 2, keptCount: 1, note: "ok" },
       github: { status: "ok", rawCount: 0, keptCount: 0, note: "ok" },
@@ -1260,6 +1326,7 @@ const tests = [
   ["Priority score downranks weak novelty", testPriorityScoreDownranksWeakNovelty],
   ["Priority score keeps weak HF spaces behind strong launches", testPriorityScoreKeepsWeakHfSpacesBehindStrongProductLaunches],
   ["Priority score downranks hot non-product Show HN demos", testPriorityScoreDownranksHotNonProductShowHnDemos],
+  ["Priority sort keeps strong labels before weak signals", testPrioritySortKeepsStrongLabelsBeforeWeakSignals],
   ["Quality memory drops negative goldens", testQualityMemoryDropsNegativeGoldens],
   ["Quality memory drops user feedback", testQualityMemoryDropsUserFeedback],
   ["Quality memory downranks user feedback", testQualityMemoryDownranksUserFeedback],
@@ -1267,6 +1334,7 @@ const tests = [
   ["Quality memory boosts positive goldens", testQualityMemoryBoostsPositiveGoldens],
   ["Quality audit flags hard negatives and repeated why", testQualityAuditFlagsHardNegativesAndRepeatedWhy],
   ["Quality audit accepts healthy report", testQualityAuditAcceptsHealthyReport],
+  ["Quality audit flags low Product Hunt fallback coverage", testQualityAuditFlagsLowProductHuntFallbackCoverage],
   ["Quality audit flags weak before strong", testQualityAuditFlagsWeakBeforeStrong],
   ["Quality audit writes persistent artifacts", testQualityAuditWritesPersistentArtifacts],
   ["Quality audit uses stable generatedAt from source health", testQualityAuditUsesStableGeneratedAtFromSourceHealth],

@@ -1616,24 +1616,43 @@ function applyDuplicatePenalties(items) {
   });
 }
 
+function qualitySortRank(item) {
+  return { keep: 0, weak_keep: 1, deprioritize: 2, drop: 3 }[item.qualityLabel] ?? 1;
+}
+
+export function sortCandidatesForPriority(candidates) {
+  return [...candidates].sort(
+    (a, b) =>
+      qualitySortRank(a) - qualitySortRank(b) ||
+      b.priorityScore - a.priorityScore ||
+      sourceLabel(a.source).localeCompare(sourceLabel(b.source))
+  );
+}
+
 function sourceHealthEntry({ status = "ok", rawCount = 0, keptCount = 0, note = "" }) {
   return { status, rawCount, keptCount, note };
 }
 
 function buildSourceHealth({ rawGroups, candidates, phDateKeys }) {
   const countKept = (source) => candidates.filter((item) => item.source === source).length;
+  const productHuntRawCount = rawGroups.producthuntOfficial.length + rawGroups.producthuntFallback.length;
+  const productHuntStatus = process.env.PRODUCT_HUNT_TOKEN
+    ? rawGroups.producthuntOfficial.length
+      ? "ok"
+      : "empty"
+    : rawGroups.producthuntOfficial.length || rawGroups.producthuntFallback.length
+      ? "fallback"
+      : "empty";
+  const productHuntFallbackRisk =
+    productHuntStatus === "fallback" && productHuntRawCount < 10
+      ? `；低覆盖风险：fallback 只返回 ${productHuntRawCount} 条候选，不能视为完整 PH 日榜。`
+      : "";
   return {
     producthunt: sourceHealthEntry({
-      status: process.env.PRODUCT_HUNT_TOKEN
-        ? rawGroups.producthuntOfficial.length
-          ? "ok"
-          : "empty"
-        : rawGroups.producthuntOfficial.length || rawGroups.producthuntFallback.length
-          ? "fallback"
-          : "empty",
-      rawCount: rawGroups.producthuntOfficial.length + rawGroups.producthuntFallback.length,
+      status: productHuntStatus,
+      rawCount: productHuntRawCount,
       keptCount: countKept("producthunt"),
-      note: `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；官方 API token 未配置，当前使用 Jina/OrangeBot fallback，覆盖率需审计。`
+      note: `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback${productHuntFallbackRisk}`
     }),
     yc_launch: sourceHealthEntry({
       status: rawGroups.ycLaunches.length ? "ok" : "empty",
@@ -1717,7 +1736,7 @@ export async function runRadar(options = {}) {
       : options.qualityMemory || loadQualityMemory(options.qualityMemoryOptions || { feedbackDir: options.feedbackDir });
   candidates = applyQualityMemoryToCandidates(candidates, qualityMemory);
   candidates = applyDuplicatePenalties(candidates);
-  candidates.sort((a, b) => b.priorityScore - a.priorityScore || sourceLabel(a.source).localeCompare(sourceLabel(b.source)));
+  candidates = sortCandidatesForPriority(candidates);
   return {
     now,
     start,

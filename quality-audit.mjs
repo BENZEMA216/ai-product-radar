@@ -177,6 +177,18 @@ function auditSourceHealth(sourceHealth) {
   if (producthunt?.status === "fallback" && !/fallback|api|Pacific|完成日|官方/i.test(clean(producthunt.note))) {
     failures.push(failure("producthunt_fallback_unexplained", "Product Hunt fallback 状态缺少覆盖风险或日期规则说明。"));
   }
+  if (
+    producthunt?.status === "fallback" &&
+    Number(producthunt.rawCount || 0) < 10 &&
+    !/低覆盖|覆盖风险|coverage risk|low coverage|个位数/i.test(clean(producthunt.note))
+  ) {
+    failures.push(
+      failure("producthunt_low_fallback_coverage_unmarked", "Product Hunt fallback 抓到个位数候选时必须标记低覆盖风险。", {
+        rawCount: Number(producthunt.rawCount || 0),
+        note: clean(producthunt.note)
+      })
+    );
+  }
   const xhs = sources.xhs_dealflow;
   if (xhs && ["unavailable", "skipped", "empty"].includes(xhs.status) && !/XHS|Dealflow|bridge|登录|不可用|默认尝试/i.test(clean(xhs.note))) {
     failures.push(failure("xhs_unavailable_unexplained", "XHS/Dealflow 0 条或不可用时缺少可解释说明。"));
