@@ -18,5 +18,10 @@
     "product": "MAI-Image-2.5 Product Hunt row",
     "expected": "drop_without_explicit_ai_evidence",
     "reason": "PH tagline 如果只有 image/edit scene control 而无 AI 证据，不应仅凭视觉类词汇入榜。"
+  },
+  {
+    "product": "CRUSHY",
+    "expected": "drop",
+    "reason": "即使 PH topic 带 Artificial Intelligence，只有 dating novelty 描述时也不能进入默认产品视图。"
   }
 ]

@@ -151,6 +151,8 @@ HN 验收时必须分别看：
 | `codetyper` | drop，非 AI |
 | `Redirectly` | drop，非 AI |
 | `Babymorph.ai` | deprioritize 或 drop，低信号消费娱乐 novelty |
+| `CRUSHY` / `Dating, reinvented.` | drop，不能只因 PH topic 带 `Artificial Intelligence` 入榜 |
+| PH no-rank / promoted 插入位 | drop，Product Hunt daily fallback 只接受有数字 rank 的日榜行 |
 | 无 AI 证据的 image/video 工具 | drop 或 weak_keep，不能只因 image/video 入榜 |
 | 只有 `campaigns` / `trainer` / `domain` 等子串命中 `ai` 的候选 | drop |
 

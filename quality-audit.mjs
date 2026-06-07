@@ -23,7 +23,9 @@ const HARD_NEGATIVE_PATTERNS = [
   /\byoutube\s+roulette\b/i,
   /\bbabymorph(?:\.ai)?\b/i,
   /\bai\s+baby\s+generator\b/i,
-  /\b(?:future|your)\s+baby\b/i
+  /\b(?:future|your)\s+baby\b/i,
+  /\bcrushy\b/i,
+  /\bdating,\s*reinvented\b/i
 ];
 const KNOWN_TEMPLATE_WHY = [
   "agent 化包装体现产品从工具到可执行工作流的迁移。",

@@ -972,6 +972,33 @@ function testQualityAuditFlagsHardNegativesAndRepeatedWhy() {
   assert.ok(audit.failures.some((failure) => failure.code === "repeated_why_template"));
 }
 
+function testQualityAuditFlagsCrushyDatingNovelty() {
+  const audit = auditReportQuality({
+    rows: [
+      {
+        product: "CRUSHY",
+        source: "Product Hunt",
+        why: "Dating app with AI topic.",
+        did: "Dating, reinvented.",
+        category: "product",
+        qualityLabel: "keep"
+      },
+      ...Array.from({ length: 10 }, (_, index) => ({
+        product: `Agent Tool ${index}`,
+        source: index % 2 ? "HN Algolia" : "GitHub Release",
+        why: `Agent workflow sample ${index}`,
+        did: "AI agent workflow",
+        category: "product",
+        qualityLabel: "keep"
+      }))
+    ],
+    siteHtml:
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
+  });
+  assert.ok(!audit.ok);
+  assert.ok(audit.failures.some((failure) => failure.code === "hard_negative_top20"));
+}
+
 function testQualityAuditAcceptsHealthyReport() {
   const rows = [
     {
@@ -1553,6 +1580,7 @@ const tests = [
   ["Quality memory keeps user feedback", testQualityMemoryKeepsUserFeedback],
   ["Quality memory boosts positive goldens", testQualityMemoryBoostsPositiveGoldens],
   ["Quality audit flags hard negatives and repeated why", testQualityAuditFlagsHardNegativesAndRepeatedWhy],
+  ["Quality audit flags CRUSHY dating novelty", testQualityAuditFlagsCrushyDatingNovelty],
   ["Quality audit accepts healthy report", testQualityAuditAcceptsHealthyReport],
   ["Quality audit flags low Product Hunt fallback coverage", testQualityAuditFlagsLowProductHuntFallbackCoverage],
   ["Quality audit flags weak before strong", testQualityAuditFlagsWeakBeforeStrong],
