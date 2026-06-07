@@ -4,6 +4,7 @@ import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 
 import {
+  annotateProductHuntReportFilterHealth,
   filterPreviouslyReportedProductHunt,
   renderBlockedReport,
   renderMarkdownTable,
@@ -132,14 +133,15 @@ async function main() {
   const feedbackDir = qualityBaseDir(args.reportDir, "feedback");
   snapshotFeedback(reportPath, cleanEnv, feedbackDir, reviewBaseDir(args.reportDir));
   const result = await runRadar({ now, hours: args.hours, feedbackDir });
+  const previousPhLinks = previousProductHuntLinks(args.reportDir, reportPath);
+  const candidates = filterPreviouslyReportedProductHunt(result.candidates, previousPhLinks);
+  const sourceHealth = annotateProductHuntReportFilterHealth(result.sourceHealth, result.candidates, candidates);
   writeJson(sourceHealthPathForNow(now, qualityBaseDir(args.reportDir, "source-health")), {
     generatedAt: now.toISOString(),
     window: result.window,
     productHuntDateKeys: result.productHuntDateKeys,
-    sources: result.sourceHealth
+    sources: sourceHealth
   });
-  const previousPhLinks = previousProductHuntLinks(args.reportDir, reportPath);
-  const candidates = filterPreviouslyReportedProductHunt(result.candidates, previousPhLinks);
   let markdown = renderMarkdownTable(candidates);
   if (candidates.length === 0) {
     markdown += "\n\n过去 24 小时未发现可验证的新 AI 产品或老产品更新。";

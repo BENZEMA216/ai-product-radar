@@ -7,6 +7,7 @@ import { basename, join } from "node:path";
 import {
   fetchProductHuntDate,
   filterPreviouslyReportedProductHunt,
+  annotateProductHuntReportFilterHealth,
   parseOrangeBotProductHuntHtml,
   parseProductHuntApiDiagnostics,
   parseProductHuntApiPosts,
@@ -269,6 +270,61 @@ function testProductHuntHistoryFilter() {
     "https://news.ycombinator.com/item?id=1",
     "https://www.producthunt.com/products/new-ai"
   ]);
+}
+
+function testProductHuntHistoryFilterAnnotatesSourceHealth() {
+  const before = [
+    { source: "producthunt", link: "https://www.producthunt.com/products/databox" },
+    { source: "producthunt", link: "https://www.producthunt.com/products/new-ai" },
+    { source: "hackernews", link: "https://news.ycombinator.com/item?id=1" }
+  ];
+  const after = filterPreviouslyReportedProductHunt(
+    before,
+    new Set(["https://www.producthunt.com/products/databox"])
+  );
+  const health = annotateProductHuntReportFilterHealth(
+    {
+      producthunt: {
+        status: "fallback",
+        rawCount: 17,
+        keptCount: 2,
+        note: "Product Hunt 按 Pacific 完成日抓取 2026-06-06；原始覆盖 17 条，AI 相关候选 2 条"
+      }
+    },
+    before,
+    after
+  );
+  assert.equal(health.producthunt.keptCount, 2);
+  assert.equal(health.producthunt.discoveredKeptCount, 2);
+  assert.equal(health.producthunt.reportKeptCount, 1);
+  assert.equal(health.producthunt.previouslyReportedCount, 1);
+  assert.match(health.producthunt.note, /历史去重/);
+  assert.match(health.producthunt.note, /最终发布 1 条/);
+}
+
+function testProductHuntHistoryFilterAnnotatesAllDuplicates() {
+  const before = [
+    { source: "producthunt", link: "https://www.producthunt.com/products/databox" },
+    { source: "producthunt", link: "https://www.producthunt.com/products/freddy" }
+  ];
+  const after = [];
+  const health = annotateProductHuntReportFilterHealth(
+    {
+      producthunt: {
+        status: "fallback",
+        rawCount: 17,
+        keptCount: 2,
+        note: "Product Hunt 按 Pacific 完成日抓取 2026-06-06；原始覆盖 17 条，AI 相关候选 2 条"
+      }
+    },
+    before,
+    after
+  );
+  assert.equal(health.producthunt.keptCount, 2);
+  assert.equal(health.producthunt.discoveredKeptCount, 2);
+  assert.equal(health.producthunt.reportKeptCount, 0);
+  assert.equal(health.producthunt.previouslyReportedCount, 2);
+  assert.match(health.producthunt.note, /最终发布 0 条/);
 }
 
 function testSiteBuilderHelpers() {
@@ -2113,6 +2169,8 @@ const tests = [
   ["Feedback review issue becomes attachable review", testFeedbackReviewIssueBecomesAttachableReview],
   ["Feedback snapshot tracks malformed records", testFeedbackSnapshotTracksMalformedRecords],
   ["Product Hunt history filter", testProductHuntHistoryFilter],
+  ["Product Hunt history filter annotates source health", testProductHuntHistoryFilterAnnotatesSourceHealth],
+  ["Product Hunt history filter annotates all duplicates", testProductHuntHistoryFilterAnnotatesAllDuplicates],
   ["Site builder helpers", testSiteBuilderHelpers],
   ["Product Hunt Pacific completed day", testProductHuntPacificCompletedDay],
   ["Site builder natural-day timeline", testSiteBuilderAggregatesReportTimelineByNaturalDay],

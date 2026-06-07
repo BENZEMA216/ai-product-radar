@@ -1061,6 +1061,33 @@ export function filterPreviouslyReportedProductHunt(candidates, previousLinks) {
   return candidates.filter((item) => !(item.source === "producthunt" && previousLinks.has(item.link)));
 }
 
+function isProductHuntCandidate(item) {
+  const source = clean(item?.source).toLowerCase();
+  return source === "producthunt" || source === "product hunt";
+}
+
+export function annotateProductHuntReportFilterHealth(sourceHealth, beforeCandidates = [], afterCandidates = []) {
+  const health = { ...(sourceHealth || {}) };
+  if (!health.producthunt) return health;
+  const discoveredKeptCount = beforeCandidates.filter(isProductHuntCandidate).length;
+  const reportKeptCount = afterCandidates.filter(isProductHuntCandidate).length;
+  const previouslyReportedCount = Math.max(0, discoveredKeptCount - reportKeptCount);
+  const keptCount = Number(health.producthunt.keptCount || discoveredKeptCount);
+  const note = clean(health.producthunt.note);
+  const suffix = previouslyReportedCount
+    ? `；历史去重移除 ${previouslyReportedCount} 条已报道 Product Hunt 信号，最终发布 ${reportKeptCount} 条。`
+    : `；历史去重后最终发布 ${reportKeptCount} 条 Product Hunt 信号。`;
+  health.producthunt = {
+    ...health.producthunt,
+    keptCount,
+    discoveredKeptCount,
+    reportKeptCount,
+    previouslyReportedCount,
+    note: note.includes("历史去重") ? note : `${note}${suffix}`
+  };
+  return health;
+}
+
 async function fetchYcLaunches(start, end) {
   const all = [];
   for (let page = 0; page < 5; page += 1) {

@@ -292,6 +292,7 @@ SellerClaw 值得看的是它把“店铺运营”拆成多 agent 工作流，�
 - 0 条来源必须有解释。
 - fallback 来源必须显式标记。
 - Product Hunt fallback 的 `rawCount` 指原始日榜覆盖数，`keptCount` 指 AI 相关候选数；当 `rawCount >= 10` 时，`note` 必须同时说明“原始覆盖”和“AI 相关候选”，当 `rawCount < 10` 时必须标记低覆盖风险。
+- 如果 Product Hunt AI 相关候选因为 date-only 重叠或历史报告去重没有进入本次正式报告，source health 必须保留 `keptCount` 作为 AI 相关候选数，并额外写出 `reportKeptCount`、`previouslyReportedCount`，`note` 要解释“最终发布 0 条/若干条”的原因。
 - source health 能在站点上查看，或至少写入 repo。
 
 ## 13. 抽样审计表
