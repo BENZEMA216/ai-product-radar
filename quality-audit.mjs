@@ -156,6 +156,20 @@ function auditResourceLists(rows) {
   ];
 }
 
+function auditAihotNewsOrResearch(rows) {
+  const bad = rows.slice(0, 20).filter((row) => {
+    if (clean(row.source) !== "AIHOT") return false;
+    const text = `${row.product} ${row.did} ${row.why}`.toLowerCase();
+    return /研究|基准|论文|融资|财报|监管|风险|论坛|采购|募资|ipo|benchmark|arxiv|news|report/.test(text);
+  });
+  if (!bad.length) return [];
+  return [
+    failure("aihot_news_or_research_top20", "Top 20 中出现 AIHOT 研究/新闻/观点类信号，不是明确产品发布或产品更新。", {
+      products: bad.map((item) => item.product)
+    })
+  ];
+}
+
 function auditSourceDiversity(rows) {
   const top20 = rows.slice(0, 20);
   if (top20.length < 10) return [];
@@ -437,6 +451,7 @@ export function auditReportQuality({
   failures.push(...auditQualityFileAlignment({ reportDate, sourceHealthPath, feedbackPath, feedbackSnapshot }));
   failures.push(...auditHardNegatives(rows));
   failures.push(...auditResourceLists(rows));
+  failures.push(...auditAihotNewsOrResearch(rows));
   failures.push(...auditRepeatedWhy(rows));
   failures.push(...auditSourceDiversity(rows));
   failures.push(...auditModelPlacement(rows));

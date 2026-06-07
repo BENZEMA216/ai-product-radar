@@ -1336,6 +1336,32 @@ function testQualityAuditFlagsResourceListsTop20() {
   assert.ok(audit.failures.some((failure) => failure.code === "resource_list_top20"));
 }
 
+function testQualityAuditFlagsAihotResearchTop20() {
+  const rows = [
+    {
+      product: "Meta-Agent Challenge：当前AI智能体能否自主构建更好的智能体？",
+      link: "https://x.com/rohanpaul_ai/status/2063698758517366884",
+      source: "AIHOT",
+      why: "这是一项研究基准，不是可体验产品发布。",
+      did: "一项新研究提出 Meta-Agent Challenge（MAC）基准，测试 AI 智能体能否自主构建更优智能体。",
+      category: "product",
+      qualityLabel: "weak_keep"
+    },
+    ...Array.from({ length: 19 }, (_, index) => ({
+      product: `Useful Agent Product ${index}`,
+      link: `https://example.com/useful-agent-${index}`,
+      source: index % 2 ? "HN Algolia" : "Product Hunt",
+      why: "它有明确的 agent 工作流场景，适合产品经理观察执行入口和采用门槛。",
+      did: "发布 AI agent workflow 产品。",
+      category: "product",
+      qualityLabel: "keep"
+    }))
+  ];
+  const audit = auditReportQuality({ rows });
+  assert.equal(audit.ok, false);
+  assert.ok(audit.failures.some((failure) => failure.code === "aihot_news_or_research_top20"));
+}
+
 function testQualityAuditWritesPersistentArtifacts() {
   const rows = [
     {
@@ -1644,6 +1670,13 @@ function testAihotParserFixture() {
     <pubDate>Sat, 30 May 2026 22:40:48 GMT</pubDate>
     <author>noreply@aihot.virxact.com (TechCrunch)</author>
   </item>
+  <item>
+    <title><![CDATA[Meta-Agent Challenge：当前AI智能体能否自主构建更好的智能体？]]></title>
+    <link>https://x.com/rohanpaul_ai/status/2063698758517366884</link>
+    <description><![CDATA[一项新研究提出 Meta-Agent Challenge（MAC）基准，测试 AI 智能体能否在没有人类设计帮助的情况下自主构建更优智能体。]]></description>
+    <pubDate>Sat, 30 May 2026 23:10:48 GMT</pubDate>
+    <author>noreply@aihot.virxact.com (X 热门)</author>
+  </item>
 </channel></rss>`;
   const start = new Date("2026-05-30T00:00:00Z");
   const end = new Date("2026-05-31T00:00:00Z");
@@ -1673,7 +1706,13 @@ ICYMI：Nano Banana Pro [gemini-3-pro-image] 和 Nano Banana 2 [gemini-3.1-flash
 
 综合资讯
 
-公司IPO首发过会，拟募资用于模型研发、机器人本体研发和新产品开发。`;
+公司IPO首发过会，拟募资用于模型研发、机器人本体研发和新产品开发。
+
+### [Meta-Agent Challenge：当前AI智能体能否自主构建更好的智能体？](https://x.com/rohanpaul_ai/status/2063698758517366884)
+
+X 热门
+
+一项新研究提出 Meta-Agent Challenge（MAC）基准，测试 AI 智能体能否在没有人类设计帮助的情况下自主构建更优智能体。`;
   const start = new Date("2026-05-30T00:00:00Z");
   const end = new Date("2026-05-31T00:00:00Z");
   const items = parseAihotDailyMarkdown(markdown, "2026-05-31", start, end);
@@ -1842,6 +1881,7 @@ const tests = [
   ["Quality audit flags poor Top 10 PM scores", testQualityAuditFlagsPoorTop10PmScores],
   ["Quality audit flags duplicate repo Top 10", testQualityAuditFlagsDuplicateRepoTop10],
   ["Quality audit flags resource lists Top 20", testQualityAuditFlagsResourceListsTop20],
+  ["Quality audit flags AIHOT research Top 20", testQualityAuditFlagsAihotResearchTop20],
   ["Quality audit writes persistent artifacts", testQualityAuditWritesPersistentArtifacts],
   ["Quality audit flags malformed feedback", testQualityAuditFlagsMalformedFeedback],
   ["Quality audit flags stale quality files", testQualityAuditFlagsStaleQualityFiles],
