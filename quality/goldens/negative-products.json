@@ -1,0 +1,22 @@
+[
+  {
+    "product": "codetyper",
+    "expected": "drop",
+    "reason": "非 AI 产品，不能因为 trainer 中包含连续字母 ai 被误收。"
+  },
+  {
+    "product": "Redirectly",
+    "expected": "drop",
+    "reason": "非 AI 产品，不能因为 campaigns 中包含连续字母 ai 被误收。"
+  },
+  {
+    "product": "Babymorph.ai",
+    "expected": "deprioritize_or_drop",
+    "reason": "AI 相关但属于低信号消费娱乐 novelty，不应该进入默认产品首屏。"
+  },
+  {
+    "product": "MAI-Image-2.5 Product Hunt row",
+    "expected": "drop_without_explicit_ai_evidence",
+    "reason": "PH tagline 如果只有 image/edit scene control 而无 AI 证据，不应仅凭视觉类词汇入榜。"
+  }
+]

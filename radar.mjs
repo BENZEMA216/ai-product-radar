@@ -6,6 +6,7 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const SHANGHAI = "Asia/Shanghai";
+const PACIFIC = "America/Los_Angeles";
 const USER_AGENT =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 AIProductRadar/0.1";
 const REPORT_DIR = "reports";
@@ -56,11 +57,6 @@ const AI_KEYWORDS = [
   "model",
   "prompt",
   "vibe",
-  "coding",
-  "voice",
-  "video",
-  "automation",
-  "workflow",
   "生成",
   "智能体",
   "大模型",
@@ -73,7 +69,15 @@ const PRODUCT_HUNT_LOW_SIGNAL_CONSUMER_PATTERNS = [
   /\b(ai\s+)?baby\s+generator\b/i,
   /\bfuture\s+bab(?:y|ies)\b/i,
   /\bbaby\s+from\s+\d+\s+photos?\b/i,
-  /\bbabymorph(?:\.ai)?\b/i
+  /\bbabymorph(?:\.ai)?\b/i,
+  /\b(ai\s+)?girlfriend\b/i,
+  /\b(ai\s+)?boyfriend\b/i,
+  /\bface\s*swap\b/i,
+  /\bheadshot\s+generator\b/i,
+  /\btattoo\s+generator\b/i,
+  /\bwallpaper\s+generator\b/i,
+  /\bphoto\s+booth\b/i,
+  /\byoutube\s+roulette\b/i
 ];
 
 const HN_QUERIES = [
@@ -178,13 +182,45 @@ const AIHOT_DROP_KEYWORDS = [
   "超过核武器",
   "预告",
   "预热",
+  "即将",
   "即将发布",
+  "未来几周",
+  "可能在未来",
+  "可能推出",
   "暗指",
   "明天",
   "黑客松",
   "投票结果",
   "人民选择奖",
   "获奖",
+  "盘点",
+  "最佳",
+  "对比",
+  "比较",
+  "指南",
+  "教程",
+  "列表",
+  "论文",
+  "arxiv",
+  "黑客马拉松",
+  "hackathon",
+  "voucher",
+  "额度",
+  "免费获取",
+  "隐藏入口",
+  "计划",
+  "预计",
+  "据传",
+  "用户发帖",
+  "呼吁",
+  "尚未回应",
+  "职业生涯",
+  "gpu",
+  "芯片",
+  "液冷",
+  "展示",
+  "原创剧",
+  "剧集",
   "推文建议",
   "应提供",
   "应该",
@@ -203,9 +239,9 @@ function parseArgs(argv) {
   return args;
 }
 
-function shanghaiParts(date) {
+function zoneParts(date, timeZone) {
   const parts = new Intl.DateTimeFormat("en-CA", {
-    timeZone: SHANGHAI,
+    timeZone,
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
@@ -217,19 +253,35 @@ function shanghaiParts(date) {
   return Object.fromEntries(parts.map((part) => [part.type, part.value]));
 }
 
+function shanghaiParts(date) {
+  return zoneParts(date, SHANGHAI);
+}
+
 function shanghaiStamp(date) {
   const p = shanghaiParts(date);
   return `${p.year}-${p.month}-${p.day} ${p.hour}:${p.minute}:${p.second} CST`;
 }
 
-function localDateKey(date) {
-  const p = shanghaiParts(date);
+function localDateKey(date, timeZone = SHANGHAI) {
+  const p = zoneParts(date, timeZone);
   return `${p.year}-${p.month}-${p.day}`;
+}
+
+export function productHuntCompletedDateKey(now = new Date()) {
+  return localDateKey(new Date(now.getTime() - 24 * 60 * 60 * 1000), PACIFIC);
+}
+
+export function productHuntDateKeysForRun(now = new Date()) {
+  return [productHuntCompletedDateKey(now)];
 }
 
 export function reportPathForNow(now = new Date(), reportDir = REPORT_DIR) {
   const p = shanghaiParts(now);
   return `${reportDir}/${p.year}-${p.month}-${p.day}-${p.hour}${p.minute}-cst.md`;
+}
+
+export function sourceHealthPathForNow(now = new Date(), baseDir = "quality/source-health") {
+  return `${baseDir}/${localDateKey(now)}.json`;
 }
 
 function datesCovered(start, end) {
@@ -259,6 +311,17 @@ function withinWindow(iso, start, end) {
 function isRelevant(text) {
   const lower = text.toLowerCase();
   return AI_KEYWORDS.some((keyword) => keywordMatches(lower, keyword));
+}
+
+function isModelInfraText(text) {
+  const lower = String(text || "").toLowerCase();
+  if (includesAny(lower, ["hugging face model:", "model card", "weights", "open weights", "benchmark", "inference"])) {
+    return true;
+  }
+  if (includesAny(lower, ["vllm", "transformers", "llama", "qwen", "mistral", "nemotron", "gemma", "deepseek"])) {
+    return true;
+  }
+  return /(?:^|[^a-z])model(?:s)?(?:[^a-z]|$)/i.test(lower) && includesAny(lower, ["release", "released", "发布", "推出", "开源"]);
 }
 
 function keywordMatches(lowerText, keyword) {
@@ -370,6 +433,7 @@ function buildAihotCandidate({ title, link, description, author, publishedAt }) 
     why: productManagerWhy(`${title} ${description} ${author}`),
     evidence: `[AIHOT ${publishedAt}](${link})`,
     source: "aihot",
+    category: isModelInfraText(`${title} ${description}`) ? "model_infra" : "product",
     observedAt: publishedAt
   };
 }
@@ -515,6 +579,7 @@ export function dealflowDetailToCandidate({ keyword, feedId, xsecToken, note }) 
     why: "小红书能补充国内产品和个人开发者的早期需求信号，适合观察 AI 产品在内容平台上的真实传播与用户语言。",
     evidence: `[XHS Dealflow ${observedAt || keyword || "latest"}](${link})`,
     source: "xhs_dealflow",
+    category: "product",
     observedAt
   };
 }
@@ -615,7 +680,7 @@ async function fetchAihot(start, end, endDateKey) {
   return uniqueBy(all, (item) => item.link).slice(0, 30);
 }
 
-function productHuntCandidate({ rawName, link, rawDescription, dateKey, evidenceUrl, raw }) {
+function productHuntCandidate({ rawName, link, rawDescription, dateKey, evidenceUrl, raw, sourceRank }) {
   const text = `${rawName} ${rawDescription}`;
   if (!isRelevant(text)) return null;
   if (isLowSignalProductHuntConsumerNovelty(text)) return null;
@@ -630,6 +695,8 @@ function productHuntCandidate({ rawName, link, rawDescription, dateKey, evidence
     why: productHuntWhyFromContext({ product, did: description, why: baseWhy }),
     evidence: `[Product Hunt ${dateKey}](${evidenceUrl})`,
     source: "producthunt",
+    category: "product",
+    sourceRank,
     observedAt: dateKey,
     raw
   };
@@ -653,7 +720,8 @@ export function parseProductHuntMarkdown(markdown, dateKey, sourceUrl) {
       rawDescription,
       dateKey,
       evidenceUrl: sourceUrl,
-      raw: full
+      raw: full,
+      sourceRank: candidates.length + 1
     });
     if (candidate) candidates.push(candidate);
   }
@@ -687,7 +755,8 @@ export function parseOrangeBotProductHuntHtml(html, start, end) {
       rawDescription,
       dateKey,
       evidenceUrl: link,
-      raw: match[0]
+      raw: match[0],
+      sourceRank: candidates.length + 1
     });
     if (candidate) candidates.push(candidate);
   }
@@ -698,6 +767,36 @@ async function fetchProductHuntFallback(start, end) {
   try {
     const html = await fetchText(ORANGEBOT_PRODUCT_HUNT_URL, { attempts: 3, timeoutMs: 20000 });
     return parseOrangeBotProductHuntHtml(html, start, end);
+  } catch {
+    return [];
+  }
+}
+
+async function fetchProductHuntFallbackForDates(dateKeys) {
+  try {
+    const html = await fetchText(ORANGEBOT_PRODUCT_HUNT_URL, { attempts: 3, timeoutMs: 20000 });
+    const allowed = new Set(dateKeys);
+    const candidates = [];
+    const itemPattern =
+      /<li[^>]*>\s*<a href="(https:\/\/www\.producthunt\.com\/products\/[^"]+)"[\s\S]*?<div class="[^"]*text-base[^"]*">([\s\S]*?)<\/div>[\s\S]*?<p class="[^"]*">([\s\S]*?)<\/p>[\s\S]*?<div class="[^"]*font-mono[^"]*">(\d{4}-\d{2}-\d{2})<\/div>[\s\S]*?<\/li>/g;
+    let match;
+    while ((match = itemPattern.exec(html)) !== null) {
+      const [, link, rawNameHtml, rawDescriptionHtml, dateKey] = match;
+      if (!allowed.has(dateKey)) continue;
+      const rawName = stripHtml(rawNameHtml);
+      const rawDescription = stripHtml(rawDescriptionHtml);
+      const candidate = productHuntCandidate({
+        rawName,
+        link,
+        rawDescription,
+        dateKey,
+        evidenceUrl: link,
+        raw: match[0],
+        sourceRank: candidates.length + 1
+      });
+      if (candidate) candidates.push(candidate);
+    }
+    return uniqueBy(candidates, (item) => item.link);
   } catch {
     return [];
   }
@@ -723,6 +822,7 @@ export function parseYcLaunchesPayload(payload, start, end) {
       why: productManagerWhy(`${title} ${tagline}`),
       evidence: `[YC Launch ${createdAt}](${link})`,
       source: "yc_launch",
+      category: "product",
       observedAt: createdAt,
       raw: hit
     });
@@ -781,6 +881,12 @@ async function fetchHackerNews(start, end) {
           why: productManagerWhy(title),
           evidence: `[HN Algolia ${hit.created_at}](https://news.ycombinator.com/item?id=${hit.objectID})`,
           source: "hackernews",
+          category: "product",
+          metrics: {
+            hnPoints: Number(hit.points || 0),
+            hnComments: Number(hit.num_comments || 0)
+          },
+          sourceSubtype: /^launch hn:/i.test(title) ? "launch_hn" : "show_hn",
           observedAt: hit.created_at
         });
       }
@@ -857,6 +963,7 @@ async function fetchGitHubReleases(start, end) {
         why: productManagerWhy(text),
         evidence: `[GitHub Release ${release.published_at}](${release.html_url})`,
         source: "github",
+        category: isModelInfraText(text) ? "model_infra" : "product",
         observedAt: release.published_at
       });
     }
@@ -886,6 +993,7 @@ async function fetchHuggingFace(start, end) {
         if (kind === "Space" && likes < 1 && !isRelevant(text)) continue;
         if (kind === "Model" && likes < 2 && !isRelevant(text)) continue;
         const itemUrl = kind === "Space" ? `https://huggingface.co/spaces/${id}` : `https://huggingface.co/${id}`;
+        const category = kind === "Model" ? "model_infra" : isModelInfraText(text) ? "model_infra" : "product";
         out.push({
           product: clean(`Hugging Face ${kind}: ${id}`),
           link: itemUrl,
@@ -894,6 +1002,8 @@ async function fetchHuggingFace(start, end) {
           why: kind === "Space" ? "可体验的模型/应用 demo 是早期产品形态和交互原型的重要信号。" : productManagerWhy(text),
           evidence: `[Hugging Face API ${observedAt}](${itemUrl})`,
           source: "huggingface",
+          category,
+          metrics: { hfLikes: likes },
           observedAt
         });
       }
@@ -1054,17 +1164,272 @@ function sourceError(source, message) {
   return { source, error: true, message };
 }
 
+function sourceLabel(source) {
+  return {
+    producthunt: "Product Hunt",
+    yc_launch: "YC Launch",
+    hackernews: "HN Algolia",
+    github: "GitHub Release",
+    aihot: "AIHOT",
+    huggingface: "Hugging Face API",
+    xhs_dealflow: "XHS Dealflow"
+  }[source] || source;
+}
+
+function categoryForItem(item) {
+  const text = `${item.product} ${item.did} ${item.evidence}`;
+  if (item.category === "model_infra") return "model_infra";
+  if (item.source === "huggingface" && /^Hugging Face Model:/i.test(item.product || "")) return "model_infra";
+  if (isModelInfraText(text)) return "model_infra";
+  if (item.category) return item.category;
+  return "product";
+}
+
+function qualityLabelForItem(item) {
+  const text = `${item.product} ${item.did} ${item.why}`.toLowerCase();
+  if (item.category === "model_infra") return "weak_keep";
+  if (isLowSignalProductHuntConsumerNovelty(text)) return "deprioritize";
+  if (includesAny(text, ["roulette", "baby generator", "girlfriend", "wallpaper generator"])) return "deprioritize";
+  if (item.source === "aihot" || item.source === "xhs_dealflow") return "weak_keep";
+  if (item.source === "huggingface") return item.category === "product" ? "weak_keep" : "deprioritize";
+  return "keep";
+}
+
+function positiveCount(text, terms) {
+  return terms.reduce((count, term) => count + (text.includes(term) ? 1 : 0), 0);
+}
+
+function buildRankingSignals(item) {
+  const text = `${item.product} ${item.did} ${item.why} ${item.evidence}`.toLowerCase();
+  const sourceConfidence = {
+    yc_launch: 5,
+    github: 5,
+    hackernews: item.sourceSubtype === "launch_hn" ? 5 : 4,
+    producthunt: 4,
+    huggingface: 4,
+    aihot: 3,
+    xhs_dealflow: 2
+  }[item.source] || 2;
+  const evidenceStrength =
+    sourceConfidence * 3 +
+    (item.observedAt ? 4 : 0) +
+    (String(item.evidence || "").includes("http") ? 2 : 0);
+  const productDepth = Math.min(
+    20,
+    positiveCount(text, [
+      "workflow",
+      "工作流",
+      "agent",
+      "agents",
+      "automation",
+      "自动化",
+      "mcp",
+      "api",
+      "sdk",
+      "team",
+      "团队",
+      "enterprise",
+      "browser",
+      "desktop",
+      "github",
+      "slack"
+    ]) * 4
+  );
+  const pmLearningValue = Math.min(
+    20,
+    positiveCount(text, [
+      "sales",
+      "marketing",
+      "customer",
+      "commerce",
+      "store",
+      "fundrais",
+      "investor",
+      "coding",
+      "developer",
+      "pmf",
+      "product-market",
+      "local",
+      "voice",
+      "security",
+      "cost",
+      "roi",
+      "search"
+    ]) * 4
+  );
+  const noveltyOrUpdateStrength = item.type?.includes("新产品") ? 12 : item.type?.includes("更新") ? 10 : 6;
+  const sourceRankBoost =
+    item.source === "producthunt" && Number.isFinite(Number(item.sourceRank))
+      ? Math.max(0, 10 - Math.min(10, Number(item.sourceRank)))
+      : 0;
+  const metrics = item.metrics || {};
+  const tractionOrCommunitySignal = Math.min(
+    10,
+    sourceRankBoost +
+      Math.floor(Math.log10(Number(metrics.hnPoints || 0) + 1) * 3) +
+      Math.floor(Math.log10(Number(metrics.hnComments || 0) + 1) * 2) +
+      Math.floor(Math.log10(Number(metrics.hfLikes || 0) + 1) * 2)
+  );
+  const strategicRelevance = Math.min(
+    10,
+    positiveCount(text, ["agent", "mcp", "workflow", "coding", "developer", "b2b", "sales", "automation", "local", "voice"]) * 2
+  );
+  let noisePenalty = 0;
+  if (item.category === "model_infra") noisePenalty += 8;
+  if (item.qualityLabel === "weak_keep") noisePenalty += 6;
+  if (item.qualityLabel === "deprioritize") noisePenalty += 18;
+  if (includesAny(text, ["roulette", "baby", "girlfriend", "wallpaper", "tattoo", "headshot"])) noisePenalty += 16;
+  if (!isRelevant(text)) noisePenalty += 30;
+  return {
+    evidenceStrength,
+    productDepth,
+    pmLearningValue,
+    noveltyOrUpdateStrength,
+    tractionOrCommunitySignal,
+    strategicRelevance,
+    sourceConfidence,
+    noisePenalty
+  };
+}
+
+export function priorityScore(item) {
+  const withCategory = {
+    ...item,
+    category: categoryForItem(item)
+  };
+  const qualityLabel = item.qualityLabel || qualityLabelForItem(withCategory);
+  const signals = buildRankingSignals({ ...withCategory, qualityLabel });
+  return (
+    signals.evidenceStrength +
+    signals.productDepth +
+    signals.pmLearningValue +
+    signals.noveltyOrUpdateStrength +
+    signals.tractionOrCommunitySignal +
+    signals.strategicRelevance +
+    signals.sourceConfidence -
+    signals.noisePenalty
+  );
+}
+
+function enrichCandidate(item) {
+  const category = categoryForItem(item);
+  const qualityLabel = qualityLabelForItem({ ...item, category });
+  const rankingSignals = buildRankingSignals({ ...item, category, qualityLabel });
+  const priority = priorityScore({ ...item, category, qualityLabel, rankingSignals });
+  return {
+    ...item,
+    category,
+    qualityLabel,
+    priorityScore: priority,
+    rankingSignals
+  };
+}
+
+function duplicateGroupKey(item) {
+  if (item.source === "github") {
+    const match = String(item.product || "").match(/^([^/\s]+\/[^/\s]+)/);
+    return match ? `github:${match[1].toLowerCase()}` : `github:${item.link}`;
+  }
+  if (item.source === "huggingface") {
+    const compact = String(item.product || "").replace(/^Hugging Face (Space|Model):\s*/i, "");
+    const owner = compact.split("/")[0] || compact;
+    return `huggingface:${owner.toLowerCase()}`;
+  }
+  return `${item.source}:${item.link || item.product}`;
+}
+
+function applyDuplicatePenalties(items) {
+  const seen = new Map();
+  return items.map((item) => {
+    const key = duplicateGroupKey(item);
+    const index = seen.get(key) || 0;
+    seen.set(key, index + 1);
+    if (index === 0) return item;
+    const duplicatePenalty = Math.min(30, index * 8);
+    return {
+      ...item,
+      priorityScore: item.priorityScore - duplicatePenalty,
+      rankingSignals: {
+        ...item.rankingSignals,
+        duplicatePenalty
+      }
+    };
+  });
+}
+
+function sourceHealthEntry({ status = "ok", rawCount = 0, keptCount = 0, note = "" }) {
+  return { status, rawCount, keptCount, note };
+}
+
+function buildSourceHealth({ rawGroups, candidates, phDateKeys }) {
+  const countKept = (source) => candidates.filter((item) => item.source === source).length;
+  return {
+    producthunt: sourceHealthEntry({
+      status: process.env.PRODUCT_HUNT_TOKEN
+        ? rawGroups.producthuntOfficial.length
+          ? "ok"
+          : "empty"
+        : rawGroups.producthuntOfficial.length || rawGroups.producthuntFallback.length
+          ? "fallback"
+          : "empty",
+      rawCount: rawGroups.producthuntOfficial.length + rawGroups.producthuntFallback.length,
+      keptCount: countKept("producthunt"),
+      note: `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；官方 API token 未配置，当前使用 Jina/OrangeBot fallback，覆盖率需审计。`
+    }),
+    yc_launch: sourceHealthEntry({
+      status: rawGroups.ycLaunches.length ? "ok" : "empty",
+      rawCount: rawGroups.ycLaunches.length,
+      keptCount: countKept("yc_launch"),
+      note: rawGroups.ycLaunches.length ? "YC Launch 正常返回窗口内候选。" : "YC Launch 本窗口无候选或来源为空。"
+    }),
+    hackernews: sourceHealthEntry({
+      status: rawGroups.hn.length ? "ok" : "empty",
+      rawCount: rawGroups.hn.length,
+      keptCount: countKept("hackernews"),
+      note: "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    }),
+    github: sourceHealthEntry({
+      status: process.env.RADAR_SKIP_GITHUB ? "skipped" : rawGroups.gh.length ? "ok" : "empty",
+      rawCount: rawGroups.gh.length,
+      keptCount: countKept("github"),
+      note: process.env.RADAR_SKIP_GITHUB ? "RADAR_SKIP_GITHUB 已设置，GitHub Release 本次跳过。" : "GitHub 默认只收固定 watchlist 的 Release。"
+    }),
+    huggingface: sourceHealthEntry({
+      status: rawGroups.hf.length ? "ok" : "empty",
+      rawCount: rawGroups.hf.length,
+      keptCount: countKept("huggingface"),
+      note: "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    }),
+    aihot: sourceHealthEntry({
+      status: rawGroups.aihot.length ? "ok" : "empty",
+      rawCount: rawGroups.aihot.length,
+      keptCount: countKept("aihot"),
+      note: "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    }),
+    xhs_dealflow: sourceHealthEntry({
+      status: rawGroups.dealflowXhs.length ? "ok" : isDealflowEnabled() ? "unavailable" : "skipped",
+      rawCount: rawGroups.dealflowXhs.length,
+      keptCount: countKept("xhs_dealflow"),
+      note: rawGroups.dealflowXhs.length
+        ? "XHS Dealflow 返回候选。"
+        : isDealflowEnabled()
+          ? "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+          : "Dealflow/XHS 被环境变量显式禁用。"
+    })
+  };
+}
+
 export async function runRadar(options = {}) {
   const now = options.now ? new Date(options.now) : new Date();
   if (!Number.isFinite(now.getTime())) throw new Error(`Invalid --now value: ${options.now}`);
   const hours = options.hours ?? 24;
   const start = new Date(now.getTime() - hours * 60 * 60 * 1000);
-  const dates = datesCovered(start, now);
+  const phDateKeys = options.productHuntDateKeys || productHuntDateKeysForRun(now);
   const endDateKey = localDateKey(now);
 
   const [phNested, phFallback, ycLaunches, hn, gh, hf, aihot, dealflowXhs] = await Promise.all([
-    Promise.all(dates.map((date) => fetchProductHuntDate(date).catch(() => []))),
-    fetchProductHuntFallback(start, now),
+    Promise.all(phDateKeys.map((date) => fetchProductHuntDate(date).catch(() => []))),
+    fetchProductHuntFallbackForDates(phDateKeys),
     fetchYcLaunches(start, now).catch(() => []),
     fetchHackerNews(start, now),
     process.env.RADAR_SKIP_GITHUB ? Promise.resolve([]) : fetchGitHubReleases(start, now),
@@ -1073,11 +1438,22 @@ export async function runRadar(options = {}) {
     fetchDealflowXhs(start, now, { cwd: process.cwd() }).catch(() => [])
   ]);
 
-  const candidates = uniqueBy(
+  const rawGroups = {
+    producthuntOfficial: phNested.flat(),
+    producthuntFallback: phFallback,
+    ycLaunches,
+    hn,
+    gh,
+    hf,
+    aihot,
+    dealflowXhs
+  };
+  let candidates = uniqueBy(
     [...phNested.flat(), ...phFallback, ...ycLaunches, ...hn, ...gh, ...hf, ...aihot, ...dealflowXhs],
     (item) => item.link
-  );
-  candidates.sort((a, b) => score(b) - score(a));
+  ).map(enrichCandidate);
+  candidates = applyDuplicatePenalties(candidates);
+  candidates.sort((a, b) => b.priorityScore - a.priorityScore || sourceLabel(a.source).localeCompare(sourceLabel(b.source)));
   return {
     now,
     start,
@@ -1085,18 +1461,14 @@ export async function runRadar(options = {}) {
       start: shanghaiStamp(start),
       end: shanghaiStamp(now)
     },
+    productHuntDateKeys: phDateKeys,
+    sourceHealth: buildSourceHealth({ rawGroups, candidates, phDateKeys }),
     candidates
   };
 }
 
 function score(item) {
-  const sourceScore = { producthunt: 40, yc_launch: 38, hackernews: 35, github: 30, aihot: 28, xhs_dealflow: 26, huggingface: 20 };
-  const text = `${item.product} ${item.did} ${item.why}`.toLowerCase();
-  let value = sourceScore[item.source] || 0;
-  for (const keyword of ["agent", "mcp", "coding", "workflow", "sales", "marketing", "voice", "video"]) {
-    if (text.includes(keyword)) value += 5;
-  }
-  return value;
+  return priorityScore(item);
 }
 
 export function renderMarkdownTable(candidates) {
@@ -1120,8 +1492,14 @@ async function main() {
         {
           window: result.window,
           count: result.candidates.length,
+          productHuntDateKeys: result.productHuntDateKeys,
+          sourceHealth: result.sourceHealth,
           bySource: result.candidates.reduce((acc, item) => {
             acc[item.source] = (acc[item.source] || 0) + 1;
+            return acc;
+          }, {}),
+          byCategory: result.candidates.reduce((acc, item) => {
+            acc[item.category] = (acc[item.category] || 0) + 1;
             return acc;
           }, {}),
           candidates: result.candidates

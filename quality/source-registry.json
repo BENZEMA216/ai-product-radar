@@ -1,0 +1,65 @@
+{
+  "producthunt": {
+    "label": "Product Hunt",
+    "kind": "structured_launch",
+    "defaultEnabled": true,
+    "dateRule": "America/Los_Angeles completed daily leaderboard",
+    "expectedCountBand": [3, 40],
+    "failureModes": ["api_token_missing", "official_page_blocked", "fallback_incomplete"],
+    "notes": "Prefer Product Hunt API v2 when PRODUCT_HUNT_TOKEN is available; otherwise Jina/OrangeBot fallback must be marked."
+  },
+  "hackernews": {
+    "label": "HN Algolia",
+    "kind": "structured_community",
+    "defaultEnabled": true,
+    "dateRule": "created_at_i inside radar window",
+    "expectedCountBand": [1, 40],
+    "failureModes": ["algolia_unavailable", "query_too_narrow"],
+    "notes": "Keep Launch HN and strict Show HN; ordinary stories are audit/all-signals only."
+  },
+  "github": {
+    "label": "GitHub Release",
+    "kind": "official_release_watchlist",
+    "defaultEnabled": true,
+    "dateRule": "published_at inside radar window",
+    "expectedCountBand": [0, 30],
+    "failureModes": ["gh_auth_missing", "api_rate_limit", "watchlist_too_narrow"],
+    "notes": "Default product report uses Releases only; Trending/Search are recall audit sources."
+  },
+  "huggingface": {
+    "label": "Hugging Face API",
+    "kind": "model_and_space",
+    "defaultEnabled": true,
+    "dateRule": "lastModified or createdAt inside radar window",
+    "expectedCountBand": [0, 40],
+    "failureModes": ["api_unavailable", "model_noise_high"],
+    "notes": "Models belong in Models & Infra; Spaces can be product signals."
+  },
+  "aihot": {
+    "label": "AIHOT",
+    "kind": "aggregator_discovery",
+    "defaultEnabled": true,
+    "dateRule": "RSS pubDate or daily page date",
+    "expectedCountBand": [0, 30],
+    "failureModes": ["rss_unavailable", "daily_page_unavailable", "aggregator_noise"],
+    "notes": "Use as discovery source; upgrade evidence to original official/social link when possible."
+  },
+  "yc_launch": {
+    "label": "YC Launch",
+    "kind": "structured_launch",
+    "defaultEnabled": true,
+    "dateRule": "created_at inside radar window",
+    "expectedCountBand": [0, 20],
+    "failureModes": ["source_empty", "parser_changed"],
+    "notes": "High confidence startup launch source."
+  },
+  "xhs_dealflow": {
+    "label": "XHS Dealflow",
+    "kind": "domestic_social_discovery",
+    "defaultEnabled": true,
+    "dateRule": "XHS search recent filter plus note timestamp when available",
+    "expectedCountBand": [0, 20],
+    "failureModes": ["dealflow_missing", "bridge_unavailable", "extension_disconnected", "xhs_not_logged_in"],
+    "notes": "Best-effort domestic signal; unavailable is not a main pipeline failure."
+  }
+}

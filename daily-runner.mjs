@@ -9,7 +9,8 @@ import {
   renderMarkdownTable,
   reportPathForNow,
   runRadar,
-  sanitizeLocalProxyEnv
+  sanitizeLocalProxyEnv,
+  sourceHealthPathForNow
 } from "./radar.mjs";
 import { parseReportMarkdown } from "./build-site.mjs";
 
@@ -42,6 +43,31 @@ function summarizeFailure(error) {
 function writeReport(path, markdown) {
   mkdirSync(dirname(path), { recursive: true });
   writeFileSync(path, `${markdown.trimEnd()}\n`, "utf8");
+}
+
+function writeJson(path, value) {
+  mkdirSync(dirname(path), { recursive: true });
+  writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`, "utf8");
+}
+
+function reportDateFromPath(path) {
+  return String(path || "").match(/(\d{4}-\d{2}-\d{2})-\d{4}-cst\.md$/)?.[1] || "";
+}
+
+function snapshotFeedback(reportPath, env) {
+  const date = reportDateFromPath(reportPath);
+  if (!date) return;
+  try {
+    execFileSync("node", ["feedback-runner.mjs", "--date", date], {
+      cwd: process.cwd(),
+      encoding: "utf8",
+      env,
+      timeout: 30000,
+      maxBuffer: 1024 * 1024
+    });
+  } catch {
+    // Feedback is a learning loop; never block the daily report on GitHub issue access.
+  }
 }
 
 // Product Hunt exposes date-level launch evidence, so adjacent daily windows can overlap.
@@ -82,12 +108,27 @@ async function main() {
     });
   } catch (error) {
     const markdown = renderBlockedReport(`smoke 失败：${summarizeFailure(error)}`);
+    writeJson(sourceHealthPathForNow(now), {
+      generatedAt: now.toISOString(),
+      window: null,
+      productHuntDateKeys: [],
+      blocked: true,
+      reason: `smoke 失败：${summarizeFailure(error)}`,
+      sources: {}
+    });
     writeReport(reportPath, markdown);
     console.log(markdown);
     return;
   }
 
   const result = await runRadar({ now, hours: args.hours });
+  snapshotFeedback(reportPath, cleanEnv);
+  writeJson(sourceHealthPathForNow(now), {
+    generatedAt: now.toISOString(),
+    window: result.window,
+    productHuntDateKeys: result.productHuntDateKeys,
+    sources: result.sourceHealth
+  });
   const previousPhLinks = previousProductHuntLinks(args.reportDir, reportPath);
   const candidates = filterPreviouslyReportedProductHunt(result.candidates, previousPhLinks);
   let markdown = renderMarkdownTable(candidates);
@@ -102,6 +143,14 @@ main().catch((error) => {
   const now = new Date();
   const reportPath = reportPathForNow(now);
   const markdown = renderBlockedReport(error.stack || error.message);
+  writeJson(sourceHealthPathForNow(now), {
+    generatedAt: now.toISOString(),
+    window: null,
+    productHuntDateKeys: [],
+    blocked: true,
+    reason: error.stack || error.message,
+    sources: {}
+  });
   writeReport(reportPath, markdown);
   console.log(markdown);
 });

@@ -14,6 +14,9 @@ import {
   dealflowDetailToCandidate,
   fetchDealflowXhs,
   isDealflowEnabled,
+  priorityScore,
+  productHuntCompletedDateKey,
+  productHuntDateKeysForRun,
   renderBlockedReport,
   renderMarkdownTable,
   resolveDealflowRoot,
@@ -22,6 +25,7 @@ import {
   sanitizeLocalProxyEnv
 } from "./radar.mjs";
 import { buildSiteData, parseReportMarkdown, renderSiteHtml } from "./build-site.mjs";
+import { buildFeedbackSnapshot, parseFeedbackIssue } from "./feedback-runner.mjs";
 import { commitMessageForReport, newestReportPath, reportPathsForDir, reviewPathsForDir } from "./publish-report.mjs";
 
 async function fetchText(url) {
@@ -122,6 +126,43 @@ function testPublishHelpers() {
   }
 }
 
+function testFeedbackIssueParser() {
+  const issue = {
+    number: 12,
+    title: "[Radar Feedback] 不该收录: YouTube Roulette",
+    url: "https://github.com/BENZEMA216/ai-product-radar/issues/12",
+    createdAt: "2026-06-08T00:00:00Z",
+    body: [
+      "## Radar Feedback",
+      "",
+      "action: drop",
+      "actionLabel: 不该收录",
+      "reportDate: 2026-06-08",
+      "signalKey: 2026-06-08|HN Algolia|https://example.com",
+      "productKey: https://example.com",
+      "source: HN Algolia",
+      "product: YouTube Roulette",
+      "link: https://example.com",
+      "",
+      "原因：不是 AI 产品"
+    ].join("\n")
+  };
+  const parsed = parseFeedbackIssue(issue);
+  assert.equal(parsed.action, "drop");
+  assert.equal(parsed.productKey, "https://example.com");
+  assert.equal(parsed.source, "HN Algolia");
+  const snapshot = buildFeedbackSnapshot({ date: "2026-06-08", issues: [issue] });
+  assert.equal(snapshot.status, "ok");
+  assert.equal(snapshot.feedback.length, 1);
+}
+
+function testFeedbackSnapshotUnavailable() {
+  const snapshot = buildFeedbackSnapshot({ date: "2026-06-08", issues: { error: "gh unavailable", issues: [] } });
+  assert.equal(snapshot.status, "unavailable");
+  assert.equal(snapshot.feedback.length, 0);
+  assert.match(snapshot.error, /gh unavailable/);
+}
+
 function testProductHuntHistoryFilter() {
   const filtered = filterPreviouslyReportedProductHunt(
     [
@@ -169,12 +210,22 @@ function testSiteBuilderHelpers() {
   assert.match(html, /aria-live="polite"/);
   assert.match(html, /aria-pressed="false"/);
   assert.match(html, /<span class="rank">信号 01<\/span>/);
-  assert.match(html, /不代表热度排名/);
+  assert.match(html, /Priority View 按证据强度、产品深度、PM 启发/);
+  assert.match(html, /data-view="priority"/);
+  assert.match(html, /data-category="product"/);
+  assert.match(html, /radar-feedback/);
+  assert.match(html, /不该收录/);
   assert.doesNotMatch(html, /<span class="rank">#01<\/span>/);
   assert.match(html, /\.item h2 a\s*\{[^}]*overflow-wrap:\s*anywhere;/s);
   assert.match(html, /select\s*\{[^}]*appearance:\s*none;[^}]*padding-inline:\s*14px 48px;[^}]*background-position:\s*right 21px center,\s*right 16px center;/s);
   assert.match(html, /\.content\s*\{[^}]*justify-self:\s*center;/s);
   assert.match(html, /\.content\s*\{[^}]*margin-inline:\s*auto;/s);
+}
+
+function testProductHuntPacificCompletedDay() {
+  assert.equal(productHuntCompletedDateKey(new Date("2026-06-08T08:00:00+08:00")), "2026-06-06");
+  assert.deepEqual(productHuntDateKeysForRun(new Date("2026-06-08T11:00:00+08:00")), ["2026-06-06"]);
+  assert.equal(productHuntCompletedDateKey(new Date("2026-06-08T16:30:00+08:00")), "2026-06-07");
 }
 
 function testSiteBuilderAggregatesReportTimelineByNaturalDay() {
@@ -204,6 +255,19 @@ function testSiteBuilderAggregatesReportTimelineByNaturalDay() {
   assert.match(html, /2026-06-03<small>2 次运行 · 最新 11:22 CST<\/small><\/span>\s*<b>3<\/b>/);
   assert.doesNotMatch(html, /2026-06-03 08:00 CST\s*<\/span>\s*<b>1<\/b>/);
   assert.doesNotMatch(html, /2026-06-03 11:22 CST\s*<\/span>\s*<b>2<\/b>/);
+}
+
+function testSiteBuilderSeparatesHuggingFaceModels() {
+  const report = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| Hugging Face Model: openai/gpt-oss | [链接](https://huggingface.co/openai/gpt-oss) | 疑似老产品更新 | Model 在 Hugging Face 最近创建或更新。 | 模型变化值得跟踪。 | [Hugging Face API 2026-06-03T03:00:00Z](https://huggingface.co/openai/gpt-oss) |
+| Agent UI | [链接](https://example.com/agent-ui) | 新产品 | AI agent UI workflow | 值得看。 | [HN Algolia 2026-06-03T03:00:00Z](https://news.ycombinator.com/item?id=2) |`;
+  const siteData = buildSiteData([{ path: "reports/2026-06-03-1122-cst.md", markdown: report }]);
+  assert.equal(siteData.items[0].category, "model_infra");
+  assert.equal(siteData.items[1].category, "product");
+  const html = renderSiteHtml(siteData);
+  assert.match(html, /Models & Infra <b>1<\/b>/);
+  assert.match(html, /data-category="model_infra"/);
 }
 
 function testProductReviewsAttachToCards() {
@@ -344,8 +408,12 @@ function testProductHuntCandidateWhyAvoidsGenericTemplates() {
     "https://www.producthunt.com/leaderboard/daily/2026/6/6/all"
   );
   const whys = items.map((item) => item.why);
-  assert.equal(items.length, 6);
-  assert.equal(new Set(whys).size, 6);
+  assert.equal(items.length, 5);
+  assert.deepEqual(
+    items.map((item) => item.product),
+    ["Recursi", "SellerClaw", "Agent Mode on Arena", "Nemotron 3 Ultra by NVIDIA", "Agent Browser Shield"]
+  );
+  assert.equal(new Set(whys).size, 5);
   assert.ok(whys.every((why) => !why.includes("agent 化包装体现产品从工具到可执行工作流的迁移")));
   assert.ok(whys.every((why) => !why.includes("可作为 AI 产品定位、交互或分发方式的竞品/灵感样本")));
 }
@@ -386,6 +454,34 @@ function testProductHuntRejectsLowSignalConsumerNovelty() {
     ["Agent Browser Shield", "Veltrix AI"],
     "Product Hunt parser should reject low-signal consumer novelty AI products"
   );
+}
+
+function testPriorityScoreDownranksWeakNovelty() {
+  const weak = {
+    product: "Babymorph.ai",
+    link: "https://www.producthunt.com/products/babymorph-ai",
+    type: "新产品",
+    did: "AI Baby Generator — see your future baby from 2 photos",
+    why: "低信号消费娱乐 novelty。",
+    evidence: "[Product Hunt 2026-06-07](https://www.producthunt.com/leaderboard/daily/2026/6/7/all)",
+    source: "producthunt",
+    category: "product",
+    qualityLabel: "deprioritize",
+    sourceRank: 1
+  };
+  const strong = {
+    product: "Agent Browser Shield",
+    link: "https://www.producthunt.com/products/agent-browser-shield",
+    type: "新产品",
+    did: "Block prompt inject and cut token costs for AI browser agents",
+    why: "浏览器 agent 安全和成本控制是明确工作流痛点。",
+    evidence: "[Product Hunt 2026-06-07](https://www.producthunt.com/leaderboard/daily/2026/6/7/all)",
+    source: "producthunt",
+    category: "product",
+    qualityLabel: "keep",
+    sourceRank: 6
+  };
+  assert.ok(priorityScore(strong) > priorityScore(weak), "priority score should rank clear workflow products above novelty items");
 }
 
 function testRenderedProductHuntWhyCopyAvoidsRepeatedTemplate() {
@@ -696,9 +792,13 @@ function testCliOutput() {
 const tests = [
   ["Automation safety helpers", testAutomationSafetyHelpers],
   ["Publish helpers", testPublishHelpers],
+  ["Feedback issue parser", testFeedbackIssueParser],
+  ["Feedback snapshot unavailable", testFeedbackSnapshotUnavailable],
   ["Product Hunt history filter", testProductHuntHistoryFilter],
   ["Site builder helpers", testSiteBuilderHelpers],
+  ["Product Hunt Pacific completed day", testProductHuntPacificCompletedDay],
   ["Site builder natural-day timeline", testSiteBuilderAggregatesReportTimelineByNaturalDay],
+  ["Site builder separates Hugging Face models", testSiteBuilderSeparatesHuggingFaceModels],
   ["Product reviews attach to cards", testProductReviewsAttachToCards],
   ["Report why copy adds context for repeated templates", testReportWhyCopyAddsContextForRepeatedTemplates],
   ["Report why copy keeps long product context distinct", testReportWhyCopyKeepsLongProductContextDistinct],
@@ -708,6 +808,7 @@ const tests = [
   ["Product Hunt candidate why avoids generic templates", testProductHuntCandidateWhyAvoidsGenericTemplates],
   ["Product Hunt rejects incidental ai substring", testProductHuntRejectsIncidentalAiSubstring],
   ["Product Hunt rejects low-signal consumer novelty", testProductHuntRejectsLowSignalConsumerNovelty],
+  ["Priority score downranks weak novelty", testPriorityScoreDownranksWeakNovelty],
   ["Rendered Product Hunt why copy avoids repeated template", testRenderedProductHuntWhyCopyAvoidsRepeatedTemplate],
   ["Site builder normalizes archived Product Hunt why copy", testSiteBuilderNormalizesArchivedProductHuntWhyCopy],
   ["HN Algolia", testHnAlgolia],

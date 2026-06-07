@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const REPORT_PATTERN = /^\d{4}-\d{2}-\d{2}-\d{4}-cst\.md$/;
 const REVIEW_PATTERN = /^\d{4}-\d{2}-\d{2}\.json$/;
+const FEEDBACK_REPO = "https://github.com/BENZEMA216/ai-product-radar";
 
 function cleanCell(value) {
   return String(value || "").replace(/\\+\|/g, "|").replace(/\s+/g, " ").trim();
@@ -62,6 +63,30 @@ function evidenceSource(value) {
     .replace(/\s+\d{4}-\d{2}-\d{2}.*$/, "")
     .replace(/\s+\d{4}$/, "")
     .trim();
+}
+
+function inferCategory({ source, product, did, evidence }) {
+  const text = `${source} ${product} ${did} ${evidence}`.toLowerCase();
+  if (/hugging face model:/i.test(product || "")) return "model_infra";
+  if (
+    text.includes("hugging face api") &&
+    (text.includes(" model:") || text.includes("模型") || text.includes("weights") || text.includes("inference"))
+  ) {
+    return "model_infra";
+  }
+  if (/vllm|transformers|llama|qwen|mistral|nemotron|gemma|deepseek/i.test(text)) return "model_infra";
+  if (/(^|[^a-z])model(s)?([^a-z]|$)/i.test(text) && /(release|released|发布|推出|开源|benchmark|inference)/i.test(text)) {
+    return "model_infra";
+  }
+  return "product";
+}
+
+function inferQualityLabel({ source, product, did, why, category }) {
+  const text = `${source} ${product} ${did} ${why}`.toLowerCase();
+  if (category === "model_infra") return "weak_keep";
+  if (/baby|girlfriend|boyfriend|roulette|wallpaper|tattoo|headshot|photo booth/i.test(text)) return "deprioritize";
+  if (source === "AIHOT" || source === "XHS Dealflow" || source === "Hugging Face API") return "weak_keep";
+  return "keep";
 }
 
 function reportMeta(path) {
@@ -175,14 +200,18 @@ export function parseReportMarkdown(markdown, path) {
     const source = evidenceSource(evidence) || "Unknown";
     const cleanProduct = cleanCell(product);
     const cleanDid = cleanCell(did);
+    const category = inferCategory({ source, product: cleanProduct, did: cleanDid, evidence });
+    const cleanWhy = normalizeArchivedWhy({ source, product: cleanProduct, did: cleanDid, why });
     rows.push({
       id: `${meta.reportDate}-${rows.length}-${cleanProduct.toLowerCase().replace(/[^a-z0-9\u4e00-\u9fa5]+/gi, "-")}`,
       product: cleanProduct,
       link: productLink,
       productKey,
+      category,
+      qualityLabel: inferQualityLabel({ source, product: cleanProduct, did: cleanDid, why: cleanWhy, category }),
       type: cleanCell(type),
       did: cleanDid,
-      why: normalizeArchivedWhy({ source, product: cleanProduct, did: cleanDid, why }),
+      why: cleanWhy,
       evidence: cleanCell(evidence),
       evidenceUrl: markdownLinkUrl(evidence),
       source,
@@ -296,7 +325,9 @@ export function buildSiteData(reports, reviews = []) {
       totalReviews: normalizedReviews.length,
       latestReport: latestReport?.path || "",
       bySource: countBy(items, "source"),
-      byType: countBy(items, "type")
+      byType: countBy(items, "type"),
+      byCategory: countBy(items, "category"),
+      byQualityLabel: countBy(items, "qualityLabel")
     }
   };
 }
@@ -339,6 +370,51 @@ function renderReviewBlocks(reviews = []) {
   </section>`;
 }
 
+function feedbackIssueUrl(item, action) {
+  const labels = "radar-feedback";
+  const actionLabel = {
+    keep: "值得看",
+    drop: "不该收录",
+    downrank: "应该降权",
+    review: "写点评"
+  }[action] || action;
+  const title = `[Radar Feedback] ${actionLabel}: ${item.product}`;
+  const body = [
+    "## Radar Feedback",
+    "",
+    `action: ${action}`,
+    `actionLabel: ${actionLabel}`,
+    `reportDate: ${item.reportDate}`,
+    `signalKey: ${item.signalKey}`,
+    `productKey: ${item.productKey}`,
+    `source: ${item.source}`,
+    `product: ${item.product}`,
+    `link: ${item.link}`,
+    "",
+    "## 你的补充",
+    "",
+    action === "review" ? "我的点评：" : "原因："
+  ].join("\n");
+  const params = new URLSearchParams({ title, body, labels });
+  return `${FEEDBACK_REPO}/issues/new?${params.toString()}`;
+}
+
+function renderFeedbackLinks(item) {
+  return [
+    ["keep", "值得看"],
+    ["drop", "不该收录"],
+    ["downrank", "应该降权"],
+    ["review", "写点评"]
+  ]
+    .map(
+      ([action, label]) =>
+        `<a class="feedback-link feedback-${escapeHtml(action)}" href="${escapeHtml(
+          feedbackIssueUrl(item, action)
+        )}" target="_blank" rel="noreferrer noopener">${escapeHtml(label)}</a>`
+    )
+    .join("\n");
+}
+
 function renderItems(items, latestDate = "") {
   return items
     .map((item, index) => {
@@ -347,6 +423,8 @@ function renderItems(items, latestDate = "") {
       return [
         `<article class="item" data-source="${escapeHtml(item.source)}" data-type="${escapeHtml(
           item.type
+        )}" data-category="${escapeHtml(item.category || "product")}" data-quality="${escapeHtml(
+          item.qualityLabel || "keep"
         )}" data-date="${escapeHtml(item.reportDate)}" data-report="${escapeHtml(item.reportPath)}" data-latest="${String(
           isLatest
         )}" data-reviewed="${String(Boolean(item.reviews?.length))}">`,
@@ -366,6 +444,7 @@ function renderItems(items, latestDate = "") {
         `        <div class="item-actions">
           <a href="${escapeHtml(item.link)}" target="_blank" rel="noreferrer noopener">产品链接</a>
           <a class="evidence" href="${escapeHtml(item.evidenceUrl)}" target="_blank" rel="noreferrer noopener">证据来源</a>
+          <div class="feedback-actions" aria-label="反馈">${renderFeedbackLinks(item)}</div>
         </div>`,
         `      </article>`
       ].join("\n");
@@ -472,6 +551,10 @@ export function renderSiteHtml(data) {
   const latestItems = latestDay ? data.items.filter((item) => item.reportDate === latestDay.reportDate) : [];
   const latestSourceCounts = countBy(latestItems, "source");
   const latestTypeCounts = countBy(latestItems, "type");
+  const latestPriorityCount = latestItems.filter(
+    (item) => item.category === "product" && !["deprioritize", "drop"].includes(item.qualityLabel)
+  ).length;
+  const latestModelCount = latestItems.filter((item) => item.category === "model_infra").length;
   const latestSourceTotal = Object.keys(latestSourceCounts).length;
   const sources = topEntries(data.stats.bySource, 20).map(([source]) => source);
   const types = Object.keys(data.stats.byType).sort();
@@ -810,6 +893,28 @@ export function renderSiteHtml(data) {
       background-repeat: no-repeat;
       background-size: 5px 5px, 5px 5px;
     }
+    .view-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 12px 0 0;
+    }
+    .view-tab {
+      min-height: 36px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-control);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      padding: 0 12px;
+      font: inherit;
+      cursor: pointer;
+    }
+    .view-tab.is-active {
+      border-color: var(--action-primary);
+      background: var(--action-soft);
+      color: var(--action-primary);
+      font-weight: 700;
+    }
     .filter-meta {
       display: flex;
       justify-content: space-between;
@@ -997,6 +1102,28 @@ export function renderSiteHtml(data) {
     .evidence {
       color: var(--feedback-success);
     }
+    .feedback-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+      margin-top: 2px;
+      grid-column: 1 / -1;
+    }
+    .item-actions .feedback-link {
+      padding: 6px 7px;
+      background: var(--bg-muted);
+      color: var(--text-secondary);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .item-actions .feedback-drop,
+    .item-actions .feedback-downrank {
+      color: var(--feedback-error);
+    }
+    .item-actions .feedback-keep,
+    .item-actions .feedback-review {
+      color: var(--feedback-success);
+    }
     .empty {
       display: none;
       margin: 18px 0 0;
@@ -1108,10 +1235,16 @@ export function renderSiteHtml(data) {
             ${types.map((type) => `<option value="${escapeHtml(type)}">${escapeHtml(type)}</option>`).join("")}
           </select>
         </section>
+        <section class="view-tabs" aria-label="Radar views">
+          <button type="button" class="view-tab is-active" data-view="priority" aria-pressed="true">Priority View <b>${latestPriorityCount}</b></button>
+          <button type="button" class="view-tab" data-view="all" aria-pressed="false">All Signals <b>${latestDay?.count ?? items.length}</b></button>
+          <button type="button" class="view-tab" data-view="model_infra" aria-pressed="false">Models & Infra <b>${latestModelCount}</b></button>
+          <button type="button" class="view-tab" data-view="reviewed" aria-pressed="false">My Comments <b>${data.stats.totalReviews}</b></button>
+        </section>
         <section class="filter-meta">
           <div class="filter-summary">
             <div id="result-count" aria-live="polite">${latestDay?.count ?? items.length} 条</div>
-            <div class="sort-note">信号序号按采集相关性和来源权重排列，不代表热度排名；真实热度请打开证据来源查看。</div>
+            <div class="sort-note">Priority View 按证据强度、产品深度、PM 启发、热度信号和噪音惩罚排序；All Signals 保留全量归档。</div>
           </div>
           <div class="type-pills">${renderTypePills(latestTypeCounts)}</div>
         </section>
@@ -1129,7 +1262,9 @@ export function renderSiteHtml(data) {
     const empty = document.querySelector("#empty");
     const resultCount = document.querySelector("#result-count");
     const pills = [...document.querySelectorAll("[data-filter-type]")];
+    const viewTabs = [...document.querySelectorAll("[data-view]")];
     const items = [...document.querySelectorAll(".item")];
+    let currentView = "priority";
     function updateReportTitle() {
       const option = report.selectedOptions[0];
       report.title = option?.dataset.fullLabel || option?.textContent || "";
@@ -1143,11 +1278,17 @@ export function renderSiteHtml(data) {
       let visible = 0;
       for (const item of items) {
         const haystack = item.textContent.toLowerCase();
+        const matchesView =
+          currentView === "all" ||
+          (currentView === "priority" && item.dataset.category === "product" && !["deprioritize", "drop"].includes(item.dataset.quality)) ||
+          (currentView === "model_infra" && item.dataset.category === "model_infra") ||
+          (currentView === "reviewed" && item.dataset.reviewed === "true");
         const matchesScope =
           !selectedScope ||
           (selectedScope.startsWith("date:") && item.dataset.date === selectedScope.slice(5)) ||
           item.dataset.report === selectedScope;
         const ok =
+          matchesView &&
           (!text || haystack.includes(text)) &&
           matchesScope &&
           (!selectedSource || item.dataset.source === selectedSource) &&
@@ -1162,6 +1303,11 @@ export function renderSiteHtml(data) {
         pill.classList.toggle("is-active", active);
         pill.setAttribute("aria-pressed", String(active));
       });
+      viewTabs.forEach((tab) => {
+        const active = tab.dataset.view === currentView;
+        tab.classList.toggle("is-active", active);
+        tab.setAttribute("aria-pressed", String(active));
+      });
     }
     q.addEventListener("input", applyFilters);
     report.addEventListener("change", applyFilters);
@@ -1169,6 +1315,10 @@ export function renderSiteHtml(data) {
     type.addEventListener("change", applyFilters);
     pills.forEach((pill) => pill.addEventListener("click", () => {
       type.value = type.value === pill.dataset.filterType ? "" : pill.dataset.filterType;
+      applyFilters();
+    }));
+    viewTabs.forEach((tab) => tab.addEventListener("click", () => {
+      currentView = tab.dataset.view || "priority";
       applyFilters();
     }));
     applyFilters();

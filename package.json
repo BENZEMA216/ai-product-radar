@@ -6,6 +6,7 @@
   "scripts": {
     "build-site": "node build-site.mjs",
     "daily": "node daily-runner.mjs",
+    "feedback": "node feedback-runner.mjs",
     "publish-report": "node publish-report.mjs",
     "radar": "node radar.mjs",
     "smoke": "node smoke-test.mjs"
