@@ -355,8 +355,8 @@ function testProductHuntRejectsIncidentalAiSubstring() {
     "[codetyper](https://www.producthunt.com/products/codetyper-2)A professional typing trainer built around real codebases.",
     "[Redirectly](https://www.producthunt.com/products/redirectly-2)Know which campaigns actually drive your installs",
     "[MAI-Image-2.5](https://www.producthunt.com/products/mai-image-2-5)Generate and edit images with precise scene control",
-    "[Baby AI Studio](https://www.producthunt.com/products/baby-ai-studio)AI image generator for family photos",
-    "[OpenAI Workflow](https://www.producthunt.com/products/openai-workflow)Automate your workspace with OpenAI"
+    "[OpenAI Workflow](https://www.producthunt.com/products/openai-workflow)Automate your workspace with OpenAI",
+    "[xAI Dashboard](https://www.producthunt.com/products/xai-dashboard)A dashboard for xAI users"
   ].join("\n");
   const items = parseProductHuntMarkdown(
     markdown,
@@ -365,8 +365,26 @@ function testProductHuntRejectsIncidentalAiSubstring() {
   );
   assert.deepEqual(
     items.map((item) => item.product),
-    ["Baby AI Studio", "OpenAI Workflow"],
+    ["OpenAI Workflow", "xAI Dashboard"],
     "Product Hunt parser should not treat incidental ai letters inside ordinary words as AI relevance"
+  );
+}
+
+function testProductHuntRejectsLowSignalConsumerNovelty() {
+  const markdown = [
+    "[Babymorph.ai](https://www.producthunt.com/products/babymorph-ai)AI Baby Generator — see your future baby from 2 photos",
+    "[Agent Browser Shield](https://www.producthunt.com/products/agent-browser-shield)Block prompt inject & cut token costs for AI browser agents",
+    "[Veltrix AI](https://www.producthunt.com/products/veltrix-ai)AI finance copilot for cash flow, margins, and growth"
+  ].join("\n");
+  const items = parseProductHuntMarkdown(
+    markdown,
+    "2026-06-07",
+    "https://www.producthunt.com/leaderboard/daily/2026/6/7/all"
+  );
+  assert.deepEqual(
+    items.map((item) => item.product),
+    ["Agent Browser Shield", "Veltrix AI"],
+    "Product Hunt parser should reject low-signal consumer novelty AI products"
   );
 }
 
@@ -689,6 +707,7 @@ const tests = [
   ["Product Hunt why copy uses product context", testProductHuntWhyCopyUsesProductContext],
   ["Product Hunt candidate why avoids generic templates", testProductHuntCandidateWhyAvoidsGenericTemplates],
   ["Product Hunt rejects incidental ai substring", testProductHuntRejectsIncidentalAiSubstring],
+  ["Product Hunt rejects low-signal consumer novelty", testProductHuntRejectsLowSignalConsumerNovelty],
   ["Rendered Product Hunt why copy avoids repeated template", testRenderedProductHuntWhyCopyAvoidsRepeatedTemplate],
   ["Site builder normalizes archived Product Hunt why copy", testSiteBuilderNormalizesArchivedProductHuntWhyCopy],
   ["HN Algolia", testHnAlgolia],

@@ -69,6 +69,13 @@ const AI_KEYWORDS = [
   "工作流"
 ];
 
+const PRODUCT_HUNT_LOW_SIGNAL_CONSUMER_PATTERNS = [
+  /\b(ai\s+)?baby\s+generator\b/i,
+  /\bfuture\s+bab(?:y|ies)\b/i,
+  /\bbaby\s+from\s+\d+\s+photos?\b/i,
+  /\bbabymorph(?:\.ai)?\b/i
+];
+
 const HN_QUERIES = [
   "AI agent",
   "LLM",
@@ -611,6 +618,7 @@ async function fetchAihot(start, end, endDateKey) {
 function productHuntCandidate({ rawName, link, rawDescription, dateKey, evidenceUrl, raw }) {
   const text = `${rawName} ${rawDescription}`;
   if (!isRelevant(text)) return null;
+  if (isLowSignalProductHuntConsumerNovelty(text)) return null;
   const product = clean(rawName);
   const description = clean(rawDescription) || "在 Product Hunt 当日榜发布，页面描述与 AI 相关。";
   const baseWhy = productManagerWhy(`${product} ${description}`);
@@ -625,6 +633,10 @@ function productHuntCandidate({ rawName, link, rawDescription, dateKey, evidence
     observedAt: dateKey,
     raw
   };
+}
+
+function isLowSignalProductHuntConsumerNovelty(text) {
+  return PRODUCT_HUNT_LOW_SIGNAL_CONSUMER_PATTERNS.some((pattern) => pattern.test(text));
 }
 
 export function parseProductHuntMarkdown(markdown, dateKey, sourceUrl) {
