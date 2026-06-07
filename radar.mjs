@@ -41,6 +41,8 @@ disableLocalProxyEnv();
 
 const AI_KEYWORDS = [
   "ai",
+  "openai",
+  "xai",
   "agent",
   "agents",
   "llm",
@@ -249,7 +251,15 @@ function withinWindow(iso, start, end) {
 
 function isRelevant(text) {
   const lower = text.toLowerCase();
-  return AI_KEYWORDS.some((keyword) => lower.includes(keyword.toLowerCase()));
+  return AI_KEYWORDS.some((keyword) => keywordMatches(lower, keyword));
+}
+
+function keywordMatches(lowerText, keyword) {
+  const lowerKeyword = keyword.toLowerCase();
+  if (lowerKeyword === "ai") {
+    return /(^|[^a-z0-9])ai([^a-z0-9]|$)/i.test(lowerText);
+  }
+  return lowerText.includes(lowerKeyword);
 }
 
 function clean(text) {

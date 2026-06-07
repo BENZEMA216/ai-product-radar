@@ -350,6 +350,26 @@ function testProductHuntCandidateWhyAvoidsGenericTemplates() {
   assert.ok(whys.every((why) => !why.includes("可作为 AI 产品定位、交互或分发方式的竞品/灵感样本")));
 }
 
+function testProductHuntRejectsIncidentalAiSubstring() {
+  const markdown = [
+    "[codetyper](https://www.producthunt.com/products/codetyper-2)A professional typing trainer built around real codebases.",
+    "[Redirectly](https://www.producthunt.com/products/redirectly-2)Know which campaigns actually drive your installs",
+    "[MAI-Image-2.5](https://www.producthunt.com/products/mai-image-2-5)Generate and edit images with precise scene control",
+    "[Baby AI Studio](https://www.producthunt.com/products/baby-ai-studio)AI image generator for family photos",
+    "[OpenAI Workflow](https://www.producthunt.com/products/openai-workflow)Automate your workspace with OpenAI"
+  ].join("\n");
+  const items = parseProductHuntMarkdown(
+    markdown,
+    "2026-06-07",
+    "https://www.producthunt.com/leaderboard/daily/2026/6/7/all"
+  );
+  assert.deepEqual(
+    items.map((item) => item.product),
+    ["Baby AI Studio", "OpenAI Workflow"],
+    "Product Hunt parser should not treat incidental ai letters inside ordinary words as AI relevance"
+  );
+}
+
 function testRenderedProductHuntWhyCopyAvoidsRepeatedTemplate() {
   const products = [
     ["Recursi", "Self improving vibe coding env with no API fees"],
@@ -668,6 +688,7 @@ const tests = [
   ["Product Hunt fallback parser fixture", testProductHuntFallbackParserFixture],
   ["Product Hunt why copy uses product context", testProductHuntWhyCopyUsesProductContext],
   ["Product Hunt candidate why avoids generic templates", testProductHuntCandidateWhyAvoidsGenericTemplates],
+  ["Product Hunt rejects incidental ai substring", testProductHuntRejectsIncidentalAiSubstring],
   ["Rendered Product Hunt why copy avoids repeated template", testRenderedProductHuntWhyCopyAvoidsRepeatedTemplate],
   ["Site builder normalizes archived Product Hunt why copy", testSiteBuilderNormalizesArchivedProductHuntWhyCopy],
   ["HN Algolia", testHnAlgolia],
