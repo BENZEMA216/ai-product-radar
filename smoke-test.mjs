@@ -372,6 +372,14 @@ function testSiteBuilderMarksNonProductShowHnReportsWeak() {
   assert.equal(item.qualityLabel, "weak_keep");
 }
 
+function testSiteBuilderMarksLowSignalPackageReleaseWeak() {
+  const report = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| langchain-ai/langgraphjs @langchain/langgraph-sdk@1.9.18 | [链接](https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/langgraph-sdk%401.9.18) | 老产品更新 | 发布 @langchain/langgraph-sdk@1.9.18。 | 它是低信息小版本发布，不能压过明确新产品。 | [GitHub Release 2026-06-06T22:37:14Z](https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/langgraph-sdk%401.9.18) |`;
+  const [item] = parseReportMarkdown(report, "reports/2026-06-08-0800-cst.md");
+  assert.equal(item.qualityLabel, "weak_keep");
+}
+
 function testProductReviewsAttachToCards() {
   const report = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
 |---|---|---|---|---|---|
@@ -448,6 +456,43 @@ function testReportWhyCopyKeepsLongProductContextDistinct() {
   const rows = parseReportMarkdown(renderMarkdownTable(candidates), "reports/2026-06-03-0837-cst.md");
   assert.equal(rows.length, 4);
   assert.equal(new Set(rows.map((row) => row.why)).size, 4);
+}
+
+function testReportWhyCopyAvoidsHnAndHfTemplates() {
+  const candidates = [
+    ...[
+      ["AgentCrew", "Markdown-first operating system for AI coding agents"],
+      ["Context Mode Insight", "observability layer for AI coding agents"],
+      ["Version Control for AI Agents", "version control workflow for AI agents"]
+    ].map(([product, did], index) => ({
+      product,
+      link: `https://example.com/hn-${index}`,
+      type: "新产品",
+      did: `HN 发布帖出现：Show HN: ${did}`,
+      why: "开发者工具是 AI agent 落地最快的战场，适合观察工作流重构。",
+      evidence: `[HN Algolia 2026-06-08T00:00:0${index}Z](https://news.ycombinator.com/item?id=${index})`,
+      source: "hackernews"
+    })),
+    ...[
+      ["Hugging Face Space: ScottyMills/tab-agent-pro", "Space 在 Hugging Face 最近创建或更新。"],
+      ["Hugging Face Space: alanvaa/insurance-claims-agent", "Space 在 Hugging Face 最近创建或更新。"],
+      ["Hugging Face Space: maaxxe/rag-cv-pdf", "Space 在 Hugging Face 最近创建或更新。"]
+    ].map(([product, did], index) => ({
+      product,
+      link: `https://huggingface.co/spaces/example/${index}`,
+      type: "新产品",
+      did,
+      why: "可体验的模型/应用 demo 是早期产品形态和交互原型的重要信号。",
+      evidence: `[Hugging Face API 2026-06-08T00:00:0${index}Z](https://huggingface.co/spaces/example/${index})`,
+      source: "huggingface"
+    }))
+  ];
+  const rows = parseReportMarkdown(renderMarkdownTable(candidates), "reports/2026-06-08-0800-cst.md");
+  const audit = auditReportQuality({ rows });
+  const whyFailures = audit.failures.filter((failure) =>
+    ["known_why_template", "repeated_why_template"].includes(failure.code)
+  );
+  assert.deepEqual(whyFailures, []);
 }
 
 async function testProductHuntFixture() {
@@ -1956,9 +2001,11 @@ const tests = [
   ["Site builder natural-day timeline", testSiteBuilderAggregatesReportTimelineByNaturalDay],
   ["Site builder separates Hugging Face models", testSiteBuilderSeparatesHuggingFaceModels],
   ["Site builder marks non-product Show HN reports weak", testSiteBuilderMarksNonProductShowHnReportsWeak],
+  ["Site builder marks low-signal package releases weak", testSiteBuilderMarksLowSignalPackageReleaseWeak],
   ["Product reviews attach to cards", testProductReviewsAttachToCards],
   ["Report why copy adds context for repeated templates", testReportWhyCopyAddsContextForRepeatedTemplates],
   ["Report why copy keeps long product context distinct", testReportWhyCopyKeepsLongProductContextDistinct],
+  ["Report why copy avoids HN and HF templates", testReportWhyCopyAvoidsHnAndHfTemplates],
   ["Product Hunt fixture", testProductHuntFixture],
   ["Product Hunt fallback parser fixture", testProductHuntFallbackParserFixture],
   ["Product Hunt markdown diagnostics counts raw rows and topics", testProductHuntMarkdownDiagnosticsCountsRawRowsAndTopics],

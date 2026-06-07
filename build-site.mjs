@@ -97,9 +97,19 @@ function isWeakShowHnDemo({ source, product, did, why }) {
   );
 }
 
-function inferQualityLabel({ source, product, did, why, category }) {
+function isLowSignalGitHubPackageRelease({ source, product, did, evidence }) {
+  if (source !== "GitHub Release" && source !== "github") return false;
+  const cleanDid = cleanCell(did);
+  const text = `${product || ""} ${cleanDid} ${evidence || ""}`.toLowerCase();
+  const isScopedPackageVersion = /@[a-z0-9_.-]+\/[a-z0-9_.-]+@?\d+\.\d+\.\d+\b/i.test(text);
+  const onlyVersionAnnouncement = /^发布\s+[^。]{1,140}。$/.test(cleanDid);
+  return isScopedPackageVersion && onlyVersionAnnouncement;
+}
+
+function inferQualityLabel({ source, product, did, why, evidence, category }) {
   const text = `${source} ${product} ${did} ${why}`.toLowerCase();
   if (category === "model_infra") return "weak_keep";
+  if (isLowSignalGitHubPackageRelease({ source, product, did, evidence })) return "weak_keep";
   if (/baby|girlfriend|boyfriend|roulette|wallpaper|tattoo|headshot|photo booth/i.test(text)) return "deprioritize";
   if (isWeakShowHnDemo({ source, product, did, why })) return "weak_keep";
   if (source === "AIHOT" || source === "XHS Dealflow" || source === "Hugging Face API") return "weak_keep";
@@ -225,7 +235,7 @@ export function parseReportMarkdown(markdown, path) {
       link: productLink,
       productKey,
       category,
-      qualityLabel: inferQualityLabel({ source, product: cleanProduct, did: cleanDid, why: cleanWhy, category }),
+      qualityLabel: inferQualityLabel({ source, product: cleanProduct, did: cleanDid, why: cleanWhy, evidence, category }),
       type: cleanCell(type),
       did: cleanDid,
       why: cleanWhy,

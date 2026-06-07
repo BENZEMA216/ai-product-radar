@@ -1359,6 +1359,72 @@ function productHuntWhyFromContext(item) {
   return `${product} 是 PH 首日出现的 AI 产品样本，适合比较定位、入口和传播话术。`;
 }
 
+function sourceContextLabel(item) {
+  const text = `${item.product} ${item.did} ${item.why}`.toLowerCase();
+  if (includesAny(text, ["observability", "sre", "monitor", "trace", "debug"])) return "可观测性和运维控制";
+  if (includesAny(text, ["version control", "git", "branch", "session"])) return "版本控制和状态管理";
+  if (includesAny(text, ["operating system", " os ", "workspace", "desktop"])) return "工作台入口和操作系统隐喻";
+  if (includesAny(text, ["search", "18 sources", "retrieval", "rag", "pdf"])) return "检索、RAG 和信息入口";
+  if (includesAny(text, ["insurance", "claims", "counterparties", "onboarding", "compliance"])) return "高风险业务流程自动化";
+  if (includesAny(text, ["browser", "tab", "extension", "chrome"])) return "浏览器和标签页控制";
+  if (includesAny(text, ["finance", "trading", "sales", "marketing", "commerce"])) return "商业运营和转化流程";
+  if (includesAny(text, ["vision", "image", "video", "cv", "visual"])) return "视觉内容和多模态工作流";
+  if (includesAny(text, ["speech", "audio", "voice"])) return "语音处理和低摩擦输入";
+  if (includesAny(text, ["backend", "api", "sdk", "runtime"])) return "后端接口和开发者集成";
+  if (includesAny(text, ["ui", "frontend", "dashboard"])) return "前端界面和可用性验证";
+  if (includesAny(text, ["course", "learn", "assignment", "tutorial"])) return "学习场景和能力验证";
+  if (includesAny(text, ["coding", "code", "developer", "agent"])) return "开发者 agent 工作流";
+  return "产品形态和采用门槛";
+}
+
+function hackerNewsWhyFromContext(item) {
+  const product = compactProductName(item.product);
+  const context = sourceContextLabel(item);
+  if (context === "可观测性和运维控制") {
+    return `${product} 把 agent 的运行状态和问题定位做成产品层，适合看可观测性如何进入 AI 开发流程。`;
+  }
+  if (context === "版本控制和状态管理") {
+    return `${product} 把 agent 会话、变更或执行记录纳入版本管理，值得看团队协作时如何追踪责任边界。`;
+  }
+  if (context === "工作台入口和操作系统隐喻") {
+    return `${product} 试图把 coding agents 组织成工作台入口，适合观察多 agent 使用从命令行走向系统化界面。`;
+  }
+  if (context === "检索、RAG 和信息入口") {
+    return `${product} 聚焦 agent 可用的信息入口，关键看它能否提升检索可信度和会话连续性。`;
+  }
+  if (context === "高风险业务流程自动化") {
+    return `${product} 把 AI 放进合规或准入前置流程，产品价值取决于证据链、误判处理和人工复核。`;
+  }
+  return `${product} 的 HN 信号指向${context}，更适合先看目标用户、完成度和开发者讨论质量。`;
+}
+
+function huggingFaceWhyFromContext(item) {
+  const product = compactProductName(item.product);
+  const context = sourceContextLabel(item);
+  if (context === "浏览器和标签页控制") {
+    return `${product} 透露出浏览器标签页 agent 的实验方向，值得先看交互是否真能减少手动切换成本。`;
+  }
+  if (context === "高风险业务流程自动化") {
+    return `${product} 把 HF Space 用在保险、合规或准入场景，重点要确认输入数据、责任边界和输出可解释性。`;
+  }
+  if (context === "检索、RAG 和信息入口") {
+    return `${product} 是文档检索/RAG 方向的可试样本，价值取决于数据接入、引用质量和场景明确度。`;
+  }
+  if (context === "商业运营和转化流程") {
+    return `${product} 指向商业运营类 demo，适合观察模型能力是否能落到可复用的业务流程。`;
+  }
+  if (context === "视觉内容和多模态工作流") {
+    return `${product} 属于视觉或多模态 demo，重点看样例质量、等待时长和是否有真实创作流程。`;
+  }
+  if (context === "后端接口和开发者集成") {
+    return `${product} 更像后端/API 实验，适合看它是否提供可复用接口而不是一次性 demo。`;
+  }
+  if (context === "前端界面和可用性验证") {
+    return `${product} 的信号在界面原型层，适合快速判断交互入口是否清楚、任务是否闭环。`;
+  }
+  return `${product} 是 HF 上的${context}弱信号，先看可运行性、样例质量和是否有明确用户场景。`;
+}
+
 function reportWhy(item) {
   const why = clean(item.why);
   if (!REUSABLE_WHY_COPY.has(why)) return why;
@@ -1367,7 +1433,7 @@ function reportWhy(item) {
   }
   const product = compactProductName(item.product);
   if (item.source === "hackernews") {
-    return `${product} 已在 HN 获得早期开发者曝光，适合观察真实反馈和采用门槛。`;
+    return hackerNewsWhyFromContext(item);
   }
   if (item.source === "yc_launch") {
     return `${product} 通过 YC Launch 呈现明确垂直场景，适合观察商业 wedge 和定价叙事。`;
@@ -1376,7 +1442,7 @@ function reportWhy(item) {
     return `${product} 的版本变化会影响相关 AI 工具链，适合跟踪开发者生态迭代。`;
   }
   if (item.source === "huggingface") {
-    return `${product} 是可直接试用的模型/应用信号，适合快速观察能力边界和交互形态。`;
+    return huggingFaceWhyFromContext(item);
   }
   if (item.source === "aihot") {
     return `${product} 来自官网、社媒或媒体信号，适合补充观察产品叙事和市场动作。`;
