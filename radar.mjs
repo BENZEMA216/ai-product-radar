@@ -1289,6 +1289,8 @@ function productManagerWhy(text) {
 }
 
 const REUSABLE_WHY_COPY = new Set([
+  "从 Slack 内编排客户消息，值得看 AI 如何嵌入团队既有沟通入口。",
+  "用户引导加入 AI copilot 后，能观察 SaaS 从静态教程转向个性化激活路径。",
   "MCP 相关产品会影响 agent 与外部工具连接方式，值得跟踪生态标准化。",
   "销售/营销场景能快速验证 AI 的 ROI 叙事和付费转化。",
   "开发者工具是 AI agent 落地最快的战场，适合观察工作流重构。",
@@ -1303,7 +1305,9 @@ const REUSABLE_WHY_COPY = new Set([
 function compactProductName(product) {
   const value = clean(product).replace(/^Hugging Face (Space|Model):\s*/i, "");
   if (!value) return "这个信号";
-  return value.length > 64 ? `${value.slice(0, 36)}...${value.slice(-24)}` : value;
+  const [beforeDash] = value.split(/\s+[–—]\s+/);
+  if (value.length > 96 && beforeDash && beforeDash.length >= 3 && beforeDash.length <= 48) return beforeDash;
+  return value.length > 96 ? `${value.slice(0, 54)}...${value.slice(-32)}` : value;
 }
 
 function compactDescription(value, max = 44) {
@@ -1362,6 +1366,8 @@ function productHuntWhyFromContext(item) {
 function sourceContextLabel(item) {
   const text = `${item.product} ${item.did}`.toLowerCase();
   if (includesAny(text, ["observability", "sre", "monitor", "trace", "debug"])) return "可观测性和运维控制";
+  if (includesAny(text, ["slack", "discord", "telegram", "chatops", "team chat", "团队沟通"])) return "团队沟通和 ChatOps 入口";
+  if (includesAny(text, ["copilot", "reads the problem", "on the page", "chromewebstore", "chrome extension"])) return "页面上下文 copilot";
   if (includesAny(text, ["design", "figma", "html", "css", "react", "ui/ux", "元素注释", "设计"])) return "设计到代码工作流";
   if (includesAny(text, ["version control", "git", "branch", "session"])) return "版本控制和状态管理";
   if (includesAny(text, ["operating system", " os ", "workspace", "desktop"])) return "工作台入口和操作系统隐喻";
@@ -1395,6 +1401,12 @@ function hackerNewsWhyFromContext(item) {
   }
   if (context === "工作台入口和操作系统隐喻") {
     return `${product} 试图把 coding agents 组织成工作台入口，适合观察多 agent 使用从命令行走向系统化界面。`;
+  }
+  if (context === "团队沟通和 ChatOps 入口") {
+    return `${product} 把 coding agent 放进 Slack/Discord/Telegram，重点看团队沟通入口能否真的承接异步开发任务。`;
+  }
+  if (context === "页面上下文 copilot") {
+    return `${product} 把 copilot 放到浏览器页面上下文里，值得看它能否减少复制题面、切换窗口和手动解释问题的成本。`;
   }
   if (context === "检索、RAG 和信息入口") {
     return `${product} 聚焦 agent 可用的信息入口，关键看它能否提升检索可信度和会话连续性。`;
@@ -2092,6 +2104,10 @@ export async function runRadar(options = {}) {
       : options.qualityMemory || loadQualityMemory(options.qualityMemoryOptions || { feedbackDir: options.feedbackDir });
   candidates = applyQualityMemoryToCandidates(candidates, qualityMemory);
   candidates = rankCandidatesForPriority(candidates);
+  candidates = candidates.map((item) => ({
+    ...item,
+    why: reportWhy(item)
+  }));
   return {
     now,
     start,

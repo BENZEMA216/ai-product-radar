@@ -537,6 +537,55 @@ function testReportWhyCopyAvoidsAggregatorTemplates() {
   assert.deepEqual(whyFailures, []);
 }
 
+function testReportWhyCopyCleansHnSpecificContexts() {
+  const candidates = [
+    {
+      product: "AgentCrew – a Markdown-first operating system for AI coding agents",
+      link: "https://example.com/agentcrew",
+      type: "新产品",
+      did: "HN 发布帖出现：Show HN: AgentCrew – a Markdown-first operating system for AI coding agents",
+      why: "开发者工具是 AI agent 落地最快的战场，适合观察工作流重构。",
+      evidence: "[HN Algolia 2026-06-08T00:00:01Z](https://news.ycombinator.com/item?id=1)",
+      source: "hackernews"
+    },
+    {
+      product: "Claude Code on Slack/Discord/Telegram for flat $20/mo – no API bills",
+      link: "https://lobsteady.com",
+      type: "新产品",
+      did: "HN 发布帖出现：Show HN: Claude Code on Slack/Discord/Telegram for flat $20/mo – no API bills",
+      why: "从 Slack 内编排客户消息，值得看 AI 如何嵌入团队既有沟通入口。",
+      evidence: "[HN Algolia 2026-06-08T00:00:02Z](https://news.ycombinator.com/item?id=2)",
+      source: "hackernews"
+    },
+    {
+      product: "AI pre-screening CIS counterparties before onboarding",
+      link: "https://example.com/counterparty-agent",
+      type: "新产品",
+      did: "HN 发布帖出现：Show HN: AI pre-screening CIS counterparties before onboarding",
+      why: "用户引导加入 AI copilot 后，能观察 SaaS 从静态教程转向个性化激活路径。",
+      evidence: "[HN Algolia 2026-06-08T00:00:03Z](https://news.ycombinator.com/item?id=3)",
+      source: "hackernews"
+    },
+    {
+      product: "CodeSage Pro – an AI copilot that reads the problem on the page",
+      link: "https://chromewebstore.google.com/detail/codesage-pro",
+      type: "新产品",
+      did: "HN 发布帖出现：Show HN: CodeSage Pro – an AI copilot that reads the problem on the page",
+      why: "可作为 AI 产品定位、交互或分发方式的竞品/灵感样本。",
+      evidence: "[HN Algolia 2026-06-08T00:00:04Z](https://news.ycombinator.com/item?id=4)",
+      source: "hackernews"
+    }
+  ];
+  const rows = parseReportMarkdown(renderMarkdownTable(candidates), "reports/2026-06-08-0800-cst.md");
+  assert.doesNotMatch(rows[0].why, /\.\.\./, "long HN titles should not leak ellipsis into why copy");
+  assert.match(rows[1].why, /团队沟通|ChatOps|Slack/);
+  assert.doesNotMatch(rows[1].why, /客户消息/);
+  assert.match(rows[2].why, /合规|准入|风控|复核/);
+  assert.doesNotMatch(rows[2].why, /用户引导/);
+  assert.match(rows[3].why, /页面|浏览器|copilot/i);
+  assert.doesNotMatch(rows[3].why, /可作为 AI 产品定位/);
+}
+
 async function testProductHuntFixture() {
   const text = await fetchText(
     readerUrl("https://www.producthunt.com/leaderboard/daily/2026/5/30/all")
@@ -2049,6 +2098,7 @@ const tests = [
   ["Report why copy keeps long product context distinct", testReportWhyCopyKeepsLongProductContextDistinct],
   ["Report why copy avoids HN and HF templates", testReportWhyCopyAvoidsHnAndHfTemplates],
   ["Report why copy avoids aggregator templates", testReportWhyCopyAvoidsAggregatorTemplates],
+  ["Report why copy cleans HN specific contexts", testReportWhyCopyCleansHnSpecificContexts],
   ["Product Hunt fixture", testProductHuntFixture],
   ["Product Hunt fallback parser fixture", testProductHuntFallbackParserFixture],
   ["Product Hunt markdown diagnostics counts raw rows and topics", testProductHuntMarkdownDiagnosticsCountsRawRowsAndTopics],
