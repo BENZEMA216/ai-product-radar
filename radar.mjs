@@ -1384,13 +1384,20 @@ function readNegativeGoldens(path = "quality/goldens/negative-products.json") {
   return Array.isArray(records) ? records : [];
 }
 
+function readPositiveGoldens(path = "quality/goldens/positive-products.json") {
+  const records = safeReadJson(path, []);
+  return Array.isArray(records) ? records : [];
+}
+
 export function loadQualityMemory({
   feedbackDir = "quality/feedback",
-  negativeGoldensPath = "quality/goldens/negative-products.json"
+  negativeGoldensPath = "quality/goldens/negative-products.json",
+  positiveGoldensPath = "quality/goldens/positive-products.json"
 } = {}) {
   return {
     feedback: readFeedbackRecords(feedbackDir),
-    negativeGoldens: readNegativeGoldens(negativeGoldensPath)
+    negativeGoldens: readNegativeGoldens(negativeGoldensPath),
+    positiveGoldens: readPositiveGoldens(positiveGoldensPath)
   };
 }
 
@@ -1432,6 +1439,7 @@ function goldenAction(record) {
   const expected = cleanKey(record.expected).toLowerCase();
   if (expected === "drop" || expected.startsWith("drop_")) return "drop";
   if (expected.includes("deprioritize")) return "downrank";
+  if (["keep", "boost", "positive"].includes(expected) || cleanKey(record.label).toLowerCase() === "keep") return "keep";
   return "";
 }
 
@@ -1460,6 +1468,11 @@ function strongestMemoryAction(item, memory = {}) {
   let best = { action: "", record: null };
   for (const record of memory.negativeGoldens || []) {
     const action = goldenAction(record);
+    if (!action || !memoryRecordMatchesItem(record, item)) continue;
+    if (actionSeverity(action) > actionSeverity(best.action)) best = { action, record };
+  }
+  for (const record of memory.positiveGoldens || []) {
+    const action = goldenAction({ expected: "keep", ...record });
     if (!action || !memoryRecordMatchesItem(record, item)) continue;
     if (actionSeverity(action) > actionSeverity(best.action)) best = { action, record };
   }

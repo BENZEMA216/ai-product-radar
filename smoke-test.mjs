@@ -220,6 +220,7 @@ function testSiteBuilderHelpers() {
   assert.match(html, /data-category="product"/);
   assert.match(html, /radar-feedback/);
   assert.match(html, /不该收录/);
+  assert.match(html, /漏掉产品/);
   assert.doesNotMatch(html, /<span class="rank">#01<\/span>/);
   assert.match(html, /\.item h2 a\s*\{[^}]*overflow-wrap:\s*anywhere;/s);
   assert.match(html, /select\s*\{[^}]*appearance:\s*none;[^}]*padding-inline:\s*14px 48px;[^}]*background-position:\s*right 21px center,\s*right 16px center;/s);
@@ -588,6 +589,36 @@ function testQualityMemoryKeepsUserFeedback() {
   assert.ok(next.rankingSignals.feedbackBoost > 0, "keep feedback should be visible in ranking signals");
 }
 
+function testQualityMemoryBoostsPositiveGoldens() {
+  const candidate = {
+    product: "Agent Runtime",
+    link: "https://example.com/agent-runtime",
+    type: "新产品",
+    did: "A runtime for AI agents with enterprise workflow controls.",
+    why: "明确的 agent 基础设施样本。",
+    evidence: "[Example](https://example.com/agent-runtime)",
+    source: "hackernews",
+    category: "product",
+    qualityLabel: "weak_keep",
+    priorityScore: 34,
+    rankingSignals: {}
+  };
+  const [next] = applyQualityMemoryToCandidates([candidate], {
+    feedback: [],
+    negativeGoldens: [],
+    positiveGoldens: [
+      {
+        product: "Agent Runtime",
+        expected: "keep",
+        reason: "用户认可的高价值 agent runtime 样本。"
+      }
+    ]
+  });
+  assert.equal(next.qualityLabel, "keep");
+  assert.ok(next.priorityScore > candidate.priorityScore, "positive golden samples should boost matched candidates");
+  assert.ok(next.rankingSignals.feedbackBoost > 0, "positive golden boost should be visible in ranking signals");
+}
+
 function testQualityAuditFlagsHardNegativesAndRepeatedWhy() {
   const rows = [
     {
@@ -629,7 +660,7 @@ function testQualityAuditFlagsHardNegativesAndRepeatedWhy() {
       }
     },
     siteHtml:
-      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link data-category=\"model_infra\""
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
   });
   assert.ok(!audit.ok);
   assert.ok(audit.failures.some((failure) => failure.code === "hard_negative_top20"));
@@ -677,7 +708,7 @@ function testQualityAuditAcceptsHealthyReport() {
       }
     },
     siteHtml:
-      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link data-category=\"model_infra\""
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
   });
   assert.equal(audit.ok, true, audit.failures.map((failure) => failure.message).join("; "));
 }
@@ -723,7 +754,7 @@ function testQualityAuditWritesPersistentArtifacts() {
     sourceHealth,
     feedbackSnapshot: { status: "ok", feedback: [] },
     siteHtml:
-      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link data-category=\"model_infra\""
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
   });
   const paths = qualityArtifactPaths("reports/2026-06-09-0800-cst.md");
   assert.equal(paths.auditPath, "quality/audits/2026-06-09.json");
@@ -1115,6 +1146,7 @@ const tests = [
   ["Quality memory drops user feedback", testQualityMemoryDropsUserFeedback],
   ["Quality memory downranks user feedback", testQualityMemoryDownranksUserFeedback],
   ["Quality memory keeps user feedback", testQualityMemoryKeepsUserFeedback],
+  ["Quality memory boosts positive goldens", testQualityMemoryBoostsPositiveGoldens],
   ["Quality audit flags hard negatives and repeated why", testQualityAuditFlagsHardNegativesAndRepeatedWhy],
   ["Quality audit accepts healthy report", testQualityAuditAcceptsHealthyReport],
   ["Quality audit writes persistent artifacts", testQualityAuditWritesPersistentArtifacts],
