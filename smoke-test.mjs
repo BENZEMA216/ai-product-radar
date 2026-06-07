@@ -28,6 +28,7 @@ import {
 import { buildSiteData, parseReportMarkdown, renderSiteHtml } from "./build-site.mjs";
 import { buildFeedbackSnapshot, parseFeedbackIssue } from "./feedback-runner.mjs";
 import { commitMessageForReport, newestReportPath, qualityPathsForDir, reportPathsForDir, reviewPathsForDir } from "./publish-report.mjs";
+import { auditReportQuality } from "./quality-audit.mjs";
 
 async function fetchText(url) {
   let lastError;
@@ -587,6 +588,100 @@ function testQualityMemoryKeepsUserFeedback() {
   assert.ok(next.rankingSignals.feedbackBoost > 0, "keep feedback should be visible in ranking signals");
 }
 
+function testQualityAuditFlagsHardNegativesAndRepeatedWhy() {
+  const rows = [
+    {
+      product: "codetyper",
+      source: "Product Hunt",
+      why: "这是一个重复模板。",
+      did: "A professional typing trainer built around real codebases.",
+      category: "product",
+      qualityLabel: "keep"
+    },
+    {
+      product: "Agent One",
+      source: "HN Algolia",
+      why: "这是一个重复模板。",
+      did: "AI agent workflow",
+      category: "product",
+      qualityLabel: "keep"
+    },
+    {
+      product: "Agent Two",
+      source: "GitHub Release",
+      why: "这是一个重复模板。",
+      did: "AI agent workflow",
+      category: "product",
+      qualityLabel: "keep"
+    }
+  ];
+  const audit = auditReportQuality({
+    rows,
+    sourceHealth: {
+      sources: {
+        producthunt: { status: "fallback", rawCount: 4, keptCount: 1, note: "fallback" },
+        yc_launch: { status: "empty", rawCount: 0, keptCount: 0, note: "本窗口无候选" },
+        hackernews: { status: "ok", rawCount: 2, keptCount: 1, note: "ok" },
+        github: { status: "ok", rawCount: 1, keptCount: 1, note: "ok" },
+        huggingface: { status: "ok", rawCount: 0, keptCount: 0, note: "ok" },
+        aihot: { status: "ok", rawCount: 0, keptCount: 0, note: "ok" },
+        xhs_dealflow: { status: "unavailable", rawCount: 0, keptCount: 0, note: "XHS 默认尝试" }
+      }
+    },
+    siteHtml:
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link data-category=\"model_infra\""
+  });
+  assert.ok(!audit.ok);
+  assert.ok(audit.failures.some((failure) => failure.code === "hard_negative_top20"));
+  assert.ok(audit.failures.some((failure) => failure.code === "repeated_why_template"));
+}
+
+function testQualityAuditAcceptsHealthyReport() {
+  const rows = [
+    {
+      product: "Agent Runtime",
+      source: "HN Algolia",
+      why: "它把 agent 运行时隔离作为核心能力，适合观察企业执行权限边界。",
+      did: "Show HN: Agent Runtime for AI workflows",
+      category: "product",
+      qualityLabel: "keep"
+    },
+    {
+      product: "Workflow Copilot",
+      source: "Product Hunt",
+      why: "它把跨工具自动化做成可试用产品，重点看入口是否足够贴近日常流程。",
+      did: "Build AI workflows across apps",
+      category: "product",
+      qualityLabel: "keep"
+    },
+    {
+      product: "langchain-ai/langgraphjs",
+      source: "GitHub Release",
+      why: "版本更新说明 agent 图编排框架仍在维护前端适配面，适合跟踪生态入口。",
+      did: "发布 @langchain/vue@1.0.18。",
+      category: "product",
+      qualityLabel: "keep"
+    }
+  ];
+  const audit = auditReportQuality({
+    rows,
+    sourceHealth: {
+      sources: {
+        producthunt: { status: "fallback", rawCount: 4, keptCount: 1, note: "fallback" },
+        yc_launch: { status: "empty", rawCount: 0, keptCount: 0, note: "本窗口无候选" },
+        hackernews: { status: "ok", rawCount: 2, keptCount: 1, note: "ok" },
+        github: { status: "ok", rawCount: 1, keptCount: 1, note: "ok" },
+        huggingface: { status: "ok", rawCount: 0, keptCount: 0, note: "HF Model 进入 Models & Infra" },
+        aihot: { status: "ok", rawCount: 0, keptCount: 0, note: "ok" },
+        xhs_dealflow: { status: "unavailable", rawCount: 0, keptCount: 0, note: "XHS 默认尝试" }
+      }
+    },
+    siteHtml:
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link data-category=\"model_infra\""
+  });
+  assert.equal(audit.ok, true, audit.failures.map((failure) => failure.message).join("; "));
+}
+
 function testRenderedProductHuntWhyCopyAvoidsRepeatedTemplate() {
   const products = [
     ["Recursi", "Self improving vibe coding env with no API fees"],
@@ -916,6 +1011,8 @@ const tests = [
   ["Quality memory drops user feedback", testQualityMemoryDropsUserFeedback],
   ["Quality memory downranks user feedback", testQualityMemoryDownranksUserFeedback],
   ["Quality memory keeps user feedback", testQualityMemoryKeepsUserFeedback],
+  ["Quality audit flags hard negatives and repeated why", testQualityAuditFlagsHardNegativesAndRepeatedWhy],
+  ["Quality audit accepts healthy report", testQualityAuditAcceptsHealthyReport],
   ["Rendered Product Hunt why copy avoids repeated template", testRenderedProductHuntWhyCopyAvoidsRepeatedTemplate],
   ["Site builder normalizes archived Product Hunt why copy", testSiteBuilderNormalizesArchivedProductHuntWhyCopy],
   ["HN Algolia", testHnAlgolia],

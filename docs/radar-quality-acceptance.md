@@ -34,6 +34,7 @@
 npm run smoke
 npm run daily -- --hours 24 --report-dir reports-stability-check
 npm run build-site
+npm run acceptance
 node radar.mjs --hours 24 --json
 ```
 
@@ -42,6 +43,7 @@ node radar.mjs --hours 24 --json
 - `npm run smoke` 退出码为 0。
 - dry-run 生成同表头报告；如果来源全失败，也必须生成 blocked report。
 - `npm run build-site` 能重建 `docs/index.html`，且页面包含 `window.__RADAR_DATA__`。
+- `npm run acceptance` 能审计最新正式报告、source health、feedback snapshot 和站点数据，不出现硬负样本、模板化 why、来源健康缺失或模型分类缺失。
 - JSON dry-run 有合理候选数量；如果数量异常少，source health 必须解释。
 - 正式报告和站点文件可提交并推送到 GitHub。
 
@@ -344,4 +346,3 @@ SellerClaw 值得看的是它把“店铺运营”拆成多 agent 工作流，�
 7. **feedback failure**：用户反馈没被读取或没影响第二天。
 
 每次修复必须补对应 smoke 或 audit 测试，避免同类问题重复出现。
-
