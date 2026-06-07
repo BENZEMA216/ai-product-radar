@@ -149,10 +149,11 @@ async function main() {
 }
 
 main().catch((error) => {
+  const args = parseArgs(process.argv.slice(2));
   const now = new Date();
-  const reportPath = reportPathForNow(now);
+  const reportPath = reportPathForNow(now, args.reportDir);
   const markdown = renderBlockedReport(error.stack || error.message);
-  writeJson(sourceHealthPathForNow(now), {
+  writeJson(sourceHealthPathForNow(now, qualityBaseDir(args.reportDir, "source-health")), {
     generatedAt: now.toISOString(),
     window: null,
     productHuntDateKeys: [],

@@ -136,6 +136,28 @@ function testPublishHelpers() {
   }
 }
 
+function testDailyRunnerFatalErrorHonorsReportDir() {
+  const tempDir = mkdtempSync(join(tmpdir(), "radar-daily-fatal-"));
+  const reportDir = join(tempDir, "custom-reports");
+  try {
+    execFileSync("node", [join(process.cwd(), "daily-runner.mjs"), "--now", "not-a-date", "--report-dir", reportDir], {
+      cwd: tempDir,
+      encoding: "utf8",
+      timeout: 30000,
+      maxBuffer: 1024 * 1024
+    });
+    const reports = reportPathsForDir(reportDir);
+    const qualityPaths = qualityPathsForDir(reportDir);
+    assert.equal(reports.length, 1, "fatal daily-runner errors should still write the blocked report into --report-dir");
+    assert.ok(
+      qualityPaths.some((path) => path.includes("source-health") && path.endsWith(".json")),
+      "fatal daily-runner errors should still write source health under --report-dir"
+    );
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+}
+
 function testFeedbackIssueParser() {
   const issue = {
     number: 12,
@@ -1837,6 +1859,7 @@ function testCliOutput() {
 const tests = [
   ["Automation safety helpers", testAutomationSafetyHelpers],
   ["Publish helpers", testPublishHelpers],
+  ["Daily runner fatal errors honor report dir", testDailyRunnerFatalErrorHonorsReportDir],
   ["Feedback issue parser", testFeedbackIssueParser],
   ["Feedback snapshot unavailable", testFeedbackSnapshotUnavailable],
   ["Feedback review issue becomes attachable review", testFeedbackReviewIssueBecomesAttachableReview],
