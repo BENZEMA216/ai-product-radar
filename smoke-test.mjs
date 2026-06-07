@@ -372,6 +372,40 @@ function testSiteBuilderHelpers() {
   assert.match(html, /\.content\s*\{[^}]*margin-inline:\s*auto;/s);
 }
 
+function testSiteBuilderIncludesSourceHealth() {
+  const report = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| Agent Deck | [链接](https://agentdeck.site/) | 新产品 | HN 发布帖在 2026-06-08T00:00:00Z 出现：Show HN: Agent Deck | 开发者工具值得看。 | [HN Algolia 2026-06-08T00:00:00Z](https://news.ycombinator.com/item?id=1) |`;
+  const sourceHealth = {
+    generatedAt: "2026-06-08T00:00:00.000Z",
+    productHuntDateKeys: ["2026-06-06"],
+    sources: {
+      producthunt: {
+        status: "fallback",
+        rawCount: 17,
+        keptCount: 6,
+        reportKeptCount: 0,
+        previouslyReportedCount: 6,
+        note: "Product Hunt 按 Pacific 完成日抓取 2026-06-06；原始覆盖 17 条，AI 相关候选 6 条；历史去重移除 6 条已报道 Product Hunt 信号，最终发布 0 条。"
+      },
+      hackernews: { status: "ok", rawCount: 1, keptCount: 1, note: "HN ok" }
+    }
+  };
+  const siteData = buildSiteData(
+    [{ path: "reports/2026-06-08-0800-cst.md", markdown: report }],
+    [],
+    [{ path: "quality/source-health/2026-06-08.json", json: JSON.stringify(sourceHealth) }]
+  );
+  const html = renderSiteHtml(siteData);
+  assert.equal(siteData.sourceHealth.length, 1);
+  assert.equal(siteData.latestSourceHealth.date, "2026-06-08");
+  assert.equal(siteData.latestSourceHealth.sources.producthunt.reportKeptCount, 0);
+  assert.match(html, /来源健康/);
+  assert.match(html, /Product Hunt/);
+  assert.match(html, /历史去重移除 6 条/);
+  assert.match(html, /最终发布 0 条/);
+}
+
 function testProductHuntPacificCompletedDay() {
   assert.equal(productHuntCompletedDateKey(new Date("2026-06-08T08:00:00+08:00")), "2026-06-06");
   assert.deepEqual(productHuntDateKeysForRun(new Date("2026-06-08T11:00:00+08:00")), ["2026-06-06"]);
@@ -1325,7 +1359,7 @@ function testQualityAuditFlagsHardNegativesAndRepeatedWhy() {
       }
     },
     siteHtml:
-      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra 来源健康 radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
   });
   assert.ok(!audit.ok);
   assert.ok(audit.failures.some((failure) => failure.code === "hard_negative_top20"));
@@ -1353,7 +1387,7 @@ function testQualityAuditFlagsCrushyDatingNovelty() {
       }))
     ],
     siteHtml:
-      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra 来源健康 radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
   });
   assert.ok(!audit.ok);
   assert.ok(audit.failures.some((failure) => failure.code === "hard_negative_top20"));
@@ -1400,7 +1434,7 @@ function testQualityAuditAcceptsHealthyReport() {
       }
     },
     siteHtml:
-      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra 来源健康 radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
   });
   assert.equal(audit.ok, true, audit.failures.map((failure) => failure.message).join("; "));
 }
@@ -1445,7 +1479,7 @@ function testQualityAuditFlagsLowProductHuntFallbackCoverage() {
       }
     },
     siteHtml:
-      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra 来源健康 radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
   });
   assert.ok(!audit.ok);
   assert.ok(audit.failures.some((failure) => failure.code === "producthunt_low_fallback_coverage_unmarked"));
@@ -1491,7 +1525,7 @@ function testQualityAuditFlagsProductHuntFallbackMissingRawAiSplit() {
       }
     },
     siteHtml:
-      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra 来源健康 radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
   });
   assert.ok(!audit.ok);
   assert.ok(audit.failures.some((failure) => failure.code === "producthunt_fallback_missing_raw_ai_split"));
@@ -1543,7 +1577,7 @@ function testQualityAuditFlagsProductHuntReportCountMismatch() {
       }
     },
     siteHtml:
-      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra 来源健康 radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
   });
   assert.ok(!audit.ok);
   assert.ok(audit.failures.some((failure) => failure.code === "producthunt_report_count_mismatch"));
@@ -1597,7 +1631,7 @@ function testQualityAuditAcceptsProductHuntReportFilterExplanation() {
       }
     },
     siteHtml:
-      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra 来源健康 radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
   });
   assert.equal(audit.ok, true, audit.failures.map((failure) => `${failure.code}:${failure.message}`).join("; "));
 }
@@ -1639,7 +1673,7 @@ function testQualityAuditFlagsWeakBeforeStrong() {
       }
     ],
     siteHtml:
-      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra 来源健康 radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
   });
   assert.ok(!audit.ok);
   assert.ok(audit.failures.some((failure) => failure.code === "weak_before_strong"));
@@ -1673,7 +1707,7 @@ function testQualityAuditFlagsPoorTop10PmScores() {
       }
     },
     siteHtml:
-      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra 来源健康 radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
   });
   assert.ok(!audit.ok);
   assert.ok(audit.failures.some((failure) => failure.code === "precision_at_10_low"));
@@ -1834,7 +1868,7 @@ function testQualityAuditWritesPersistentArtifacts() {
     sourceHealth,
     feedbackSnapshot: { status: "ok", feedback: [] },
     siteHtml:
-      "window.__RADAR_DATA__ Priority View All Signals Models & Infra radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra 来源健康 radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
   });
   const paths = qualityArtifactPaths("reports/2026-06-09-0800-cst.md");
   assert.equal(paths.auditPath, "quality/audits/2026-06-09.json");
@@ -2277,6 +2311,7 @@ const tests = [
   ["Product Hunt history filter annotates source health", testProductHuntHistoryFilterAnnotatesSourceHealth],
   ["Product Hunt history filter annotates all duplicates", testProductHuntHistoryFilterAnnotatesAllDuplicates],
   ["Site builder helpers", testSiteBuilderHelpers],
+  ["Site builder includes source health", testSiteBuilderIncludesSourceHealth],
   ["Product Hunt Pacific completed day", testProductHuntPacificCompletedDay],
   ["Site builder natural-day timeline", testSiteBuilderAggregatesReportTimelineByNaturalDay],
   ["Site builder separates Hugging Face models", testSiteBuilderSeparatesHuggingFaceModels],

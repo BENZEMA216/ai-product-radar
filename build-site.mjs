@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const REPORT_PATTERN = /^\d{4}-\d{2}-\d{2}-\d{4}-cst\.md$/;
 const REVIEW_PATTERN = /^\d{4}-\d{2}-\d{2}\.json$/;
+const SOURCE_HEALTH_PATTERN = /^\d{4}-\d{2}-\d{2}\.json$/;
 const FEEDBACK_REPO = "https://github.com/BENZEMA216/ai-product-radar";
 
 function cleanCell(value) {
@@ -124,6 +125,24 @@ function reportMeta(path) {
     reportTime: match ? `${match[2]}:${match[3]} CST` : "",
     reportPath: path
   };
+}
+
+function jsonDateFromPath(path) {
+  return String(path || "").match(/(\d{4}-\d{2}-\d{2})\.json$/)?.[1] || "";
+}
+
+function sourceHealthLabel(key) {
+  return (
+    {
+      producthunt: "Product Hunt",
+      yc_launch: "YC Launch",
+      hackernews: "HN Algolia",
+      github: "GitHub Release",
+      huggingface: "Hugging Face API",
+      aihot: "AIHOT",
+      xhs_dealflow: "XHS Dealflow"
+    }[key] || key
+  );
 }
 
 function reviewMeta(path) {
@@ -324,13 +343,55 @@ function buildReportDays(reports) {
   return [...byDate.values()].sort((a, b) => a.reportDate.localeCompare(b.reportDate));
 }
 
-export function buildSiteData(reports, reviews = []) {
+function parseSourceHealthJson(sourceHealthFile) {
+  const date = jsonDateFromPath(sourceHealthFile.path);
+  if (!date) return null;
+  try {
+    const parsed = JSON.parse(sourceHealthFile.json || "{}");
+    const sources = Object.fromEntries(
+      Object.entries(parsed.sources || {}).map(([key, value]) => [
+        key,
+        {
+          key,
+          label: sourceHealthLabel(key),
+          status: cleanCell(value?.status || ""),
+          rawCount: Number(value?.rawCount || 0),
+          keptCount: Number(value?.keptCount || 0),
+          reportKeptCount: value?.reportKeptCount === undefined ? null : Number(value.reportKeptCount || 0),
+          previouslyReportedCount: Number(value?.previouslyReportedCount || 0),
+          note: cleanCell(value?.note || "")
+        }
+      ])
+    );
+    return {
+      date,
+      path: sourceHealthFile.path,
+      generatedAt: parsed.generatedAt || "",
+      productHuntDateKeys: Array.isArray(parsed.productHuntDateKeys) ? parsed.productHuntDateKeys : [],
+      sources
+    };
+  } catch {
+    return {
+      date,
+      path: sourceHealthFile.path,
+      generatedAt: "",
+      productHuntDateKeys: [],
+      sources: {}
+    };
+  }
+}
+
+export function buildSiteData(reports, reviews = [], sourceHealthFiles = []) {
   const normalizedReports = reports
     .map((report) => ({ ...report, items: parseReportMarkdown(report.markdown, report.path) }))
     .sort((a, b) => a.path.localeCompare(b.path));
   const normalizedReviews = reviews
     .flatMap((reviewFile) => parseReviewJson(reviewFile.json, reviewFile.path))
     .sort((a, b) => `${a.reportDate} ${a.productKey}`.localeCompare(`${b.reportDate} ${b.productKey}`));
+  const sourceHealth = sourceHealthFiles
+    .map(parseSourceHealthJson)
+    .filter(Boolean)
+    .sort((a, b) => a.date.localeCompare(b.date));
   const items = attachReviewsToItems(normalizedReports.flatMap((report) => report.items), normalizedReviews);
   const reportSummaries = normalizedReports.map((report) => ({
     path: report.path,
@@ -339,11 +400,15 @@ export function buildSiteData(reports, reviews = []) {
   }));
   const latestReport = reportSummaries.at(-1);
   const reportDays = buildReportDays(normalizedReports);
+  const latestDay = reportDays.at(-1);
+  const latestSourceHealth = latestDay ? sourceHealth.find((item) => item.date === latestDay.reportDate) || null : null;
   return {
     generatedAt: latestReport ? `${latestReport.reportDate} ${latestReport.reportTime}` : "",
     reports: reportSummaries,
     reportDays,
     reviews: normalizedReviews,
+    sourceHealth,
+    latestSourceHealth,
     items,
     stats: {
       totalReports: normalizedReports.length,
@@ -488,6 +553,22 @@ function renderSourceBars(sourceCounts) {
     .map(([source, count]) => {
       const width = Math.max(8, Math.round((count / max) * 100));
       return `<div class="source-row"><span>${escapeHtml(source)}</span><div><i style="width:${width}%"></i></div><b>${count}</b></div>`;
+    })
+    .join("\n");
+}
+
+function renderSourceHealthPanel(sourceHealth) {
+  if (!sourceHealth) return `<div class="health-empty">暂无来源健康文件</div>`;
+  const entries = Object.values(sourceHealth.sources || {}).sort((a, b) => a.label.localeCompare(b.label));
+  if (!entries.length) return `<div class="health-empty">暂无来源健康记录</div>`;
+  return entries
+    .map((source) => {
+      const reportCount = source.reportKeptCount === null ? source.keptCount : source.reportKeptCount;
+      const countText = `raw ${source.rawCount} · AI ${source.keptCount} · report ${reportCount}`;
+      return `<div class="health-row health-${escapeHtml(source.status || "unknown")}" title="${escapeHtml(source.note)}">
+        <span><b>${escapeHtml(source.label)}</b><small>${escapeHtml(source.status || "unknown")}</small></span>
+        <em>${escapeHtml(countText)}</em>
+      </div>`;
     })
     .join("\n");
 }
@@ -885,6 +966,35 @@ export function renderSiteHtml(data) {
       border-radius: var(--radius-pill);
     }
     .source-row i { display: block; height: 100%; background: linear-gradient(90deg, var(--feedback-success), var(--category-gold)); }
+    .health-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 3px;
+      min-height: 42px;
+      padding: 8px 0;
+      border-top: 1px solid var(--border-default);
+      font-size: 12px;
+    }
+    .health-row span {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      min-width: 0;
+    }
+    .health-row b { overflow-wrap: anywhere; }
+    .health-row small { color: var(--text-secondary); }
+    .health-row em {
+      color: var(--text-secondary);
+      font-style: normal;
+      overflow-wrap: anywhere;
+    }
+    .health-ok small { color: var(--feedback-success); }
+    .health-fallback small, .health-unavailable small, .health-empty small { color: var(--feedback-warning); }
+    .health-empty {
+      color: var(--text-secondary);
+      font-size: 12px;
+      line-height: 1.4;
+    }
     .toolbar {
       position: sticky;
       top: 40px;
@@ -1237,6 +1347,10 @@ export function renderSiteHtml(data) {
           <div class="section-label">来源覆盖</div>
           ${renderSourceBars(latestSourceCounts)}
         </section>
+        <section class="side-panel">
+          <div class="section-label">来源健康</div>
+          ${renderSourceHealthPanel(data.latestSourceHealth)}
+        </section>
       </aside>
       <main class="content">
         <header class="content-head">
@@ -1382,12 +1496,28 @@ function readReviews(reviewDir) {
   }
 }
 
+function readSourceHealth(sourceHealthDir) {
+  try {
+    return readdirSync(sourceHealthDir)
+      .filter((name) => SOURCE_HEALTH_PATTERN.test(name))
+      .sort()
+      .map((name) => {
+        const path = join(sourceHealthDir, name);
+        return { path, json: readFileSync(path, "utf8") };
+      });
+  } catch (error) {
+    if (error.code === "ENOENT") return [];
+    throw error;
+  }
+}
+
 function parseArgs(argv) {
-  const args = { reportDir: "reports", reviewDir: "reviews", out: "docs/index.html" };
+  const args = { reportDir: "reports", reviewDir: "reviews", sourceHealthDir: "quality/source-health", out: "docs/index.html" };
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
     if (arg === "--report-dir") args.reportDir = argv[++i];
     if (arg === "--review-dir") args.reviewDir = argv[++i];
+    if (arg === "--source-health-dir") args.sourceHealthDir = argv[++i];
     if (arg === "--out") args.out = argv[++i];
   }
   return args;
@@ -1395,7 +1525,7 @@ function parseArgs(argv) {
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
-  const data = buildSiteData(readReports(args.reportDir), readReviews(args.reviewDir));
+  const data = buildSiteData(readReports(args.reportDir), readReviews(args.reviewDir), readSourceHealth(args.sourceHealthDir));
   const html = renderSiteHtml(data);
   mkdirSync(dirname(args.out), { recursive: true });
   writeFileSync(args.out, html, "utf8");

@@ -15,6 +15,7 @@ const REQUIRED_SITE_MARKERS = [
   "Priority View",
   "All Signals",
   "Models & Infra",
+  "来源健康",
   "radar-feedback",
   "feedback-link",
   "漏掉产品"
