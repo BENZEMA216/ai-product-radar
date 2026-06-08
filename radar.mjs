@@ -119,6 +119,7 @@ const GITHUB_RELEASE_REPOS = [
 const AIHOT_FEED_URL = "https://aihot.virxact.com/feed/all.xml";
 const PRODUCT_HUNT_GRAPHQL_URL = "https://api.producthunt.com/v2/api/graphql";
 const ORANGEBOT_PRODUCT_HUNT_URL = "https://orangebot.ai/sources/product-hunt";
+const PRODUCT_HUNT_FALLBACK_MIN_RAW_COUNT = 10;
 const YC_LAUNCHES_URL = "https://www.ycombinator.com/launches";
 const DEALFLOW_KEYWORDS = ["AI产品", "AI Agent", "AI工具创业", "工作流自动化"];
 const DEALFLOW_MAX_PER_KEYWORD = 5;
@@ -280,6 +281,20 @@ export function productHuntCompletedDateKey(now = new Date()) {
 
 export function productHuntDateKeysForRun(now = new Date()) {
   return [productHuntCompletedDateKey(now)];
+}
+
+function previousDateKey(dateKey) {
+  const date = new Date(`${dateKey}T00:00:00.000Z`);
+  date.setUTCDate(date.getUTCDate() - 1);
+  return date.toISOString().slice(0, 10);
+}
+
+export function productHuntFallbackDateKeysForRun(dateKeys = []) {
+  const out = dateKeys.filter(Boolean).filter((dateKey, index, all) => all.indexOf(dateKey) === index);
+  if (out.length !== 1) return out;
+  const previous = previousDateKey(out[0]);
+  if (previous && !out.includes(previous)) out.push(previous);
+  return out;
 }
 
 export function reportPathForNow(now = new Date(), reportDir = REPORT_DIR) {
@@ -467,7 +482,15 @@ async function fetchText(url, options = {}) {
       });
       const text = await res.text();
       clearTimeout(timeout);
-      if (!res.ok && !text) throw new Error(`${res.status} ${res.statusText}`);
+      if (!res.ok) throw new Error(`${res.status} ${res.statusText}: ${text.slice(0, 160)}`);
+      if (options.rejectEmpty && !text.trim()) throw new Error(`Empty response from ${url}`);
+      if (options.minLength && text.trim().length < options.minLength) {
+        throw new Error(`Short response from ${url}: ${text.trim().length} chars`);
+      }
+      if (Array.isArray(options.rejectPatterns)) {
+        const rejectedBy = options.rejectPatterns.find((pattern) => pattern.test(text));
+        if (rejectedBy) throw new Error(`Rejected response from ${url}: ${rejectedBy}`);
+      }
       return text;
     } catch (error) {
       clearTimeout(timeout);
@@ -485,6 +508,18 @@ async function fetchJson(url, options = {}) {
 
 function readerUrl(url) {
   return `https://r.jina.ai/http://r.jina.ai/http://${url}`;
+}
+
+function readerUrlVariants(url) {
+  const withoutProtocol = url.replace(/^https?:\/\//, "");
+  return uniqueBy(
+    [
+      readerUrl(url),
+      `https://r.jina.ai/http://${withoutProtocol}`,
+      `https://r.jina.ai/http://r.jina.ai/http://${withoutProtocol}`
+    ],
+    (item) => item
+  );
 }
 
 function rssField(itemXml, field) {
@@ -952,12 +987,55 @@ async function fetchProductHuntDateDiagnostics(dateKey) {
     // Fall back to the public page path below; source health records fallback coverage.
   }
   const sourceUrl = `https://www.producthunt.com/leaderboard/daily/${phDatePath(dateKey)}/all`;
-  try {
-    const markdown = await fetchText(readerUrl(sourceUrl), { attempts: 4, timeoutMs: 25000 });
-    return { ...parseProductHuntMarkdownDiagnostics(markdown, dateKey, sourceUrl), sourceKind: "jina" };
-  } catch {
-    return { items: [], rawCount: 0, sourceKind: "unavailable" };
+  const rejectPatterns = [/upstream connect error/i, /just a moment/i, /enable javascript/i, /captcha/i];
+  const results = [];
+  const errors = [];
+  for (const [index, url] of readerUrlVariants(sourceUrl).entries()) {
+    try {
+      const markdown = await fetchText(url, {
+        attempts: index === 0 ? 3 : 2,
+        timeoutMs: index === 0 ? 25000 : 18000,
+        rejectEmpty: true,
+        minLength: 80,
+        rejectPatterns
+      });
+      const diagnostics = {
+        ...parseProductHuntMarkdownDiagnostics(markdown, dateKey, sourceUrl),
+        sourceKind: index === 0 ? "jina" : `jina_alt_${index}`
+      };
+      results.push(diagnostics);
+      if (diagnostics.rawCount >= PRODUCT_HUNT_FALLBACK_MIN_RAW_COUNT) break;
+    } catch (error) {
+      errors.push(clean(error.message));
+    }
   }
+  const best = results.sort((a, b) => b.rawCount - a.rawCount || b.items.length - a.items.length)[0];
+  if (best?.rawCount || best?.items?.length) return best;
+  return { items: [], rawCount: 0, sourceKind: "unavailable", error: errors.join("; ") };
+}
+
+async function fetchProductHuntDiagnosticsForRun(dateKeys) {
+  const primaryDiagnostics = await Promise.all(
+    dateKeys.map((date) =>
+      fetchProductHuntDateDiagnostics(date).catch(() => ({ items: [], rawCount: 0, sourceKind: "unavailable" }))
+    )
+  );
+  const primaryRawCount = primaryDiagnostics.reduce((sum, diagnostics) => sum + Number(diagnostics.rawCount || 0), 0);
+  const shouldExpand =
+    !process.env.PRODUCT_HUNT_TOKEN && primaryRawCount < PRODUCT_HUNT_FALLBACK_MIN_RAW_COUNT && dateKeys.length > 0;
+  if (!shouldExpand) return { diagnostics: primaryDiagnostics, fetchDateKeys: dateKeys };
+
+  const expandedDateKeys = productHuntFallbackDateKeysForRun(dateKeys);
+  const extraDateKeys = expandedDateKeys.filter((dateKey) => !dateKeys.includes(dateKey));
+  const extraDiagnostics = await Promise.all(
+    extraDateKeys.map((date) =>
+      fetchProductHuntDateDiagnostics(date).catch(() => ({ items: [], rawCount: 0, sourceKind: "unavailable" }))
+    )
+  );
+  return {
+    diagnostics: [...primaryDiagnostics, ...extraDiagnostics],
+    fetchDateKeys: expandedDateKeys
+  };
 }
 
 export async function fetchProductHuntDate(dateKey) {
@@ -2100,12 +2178,19 @@ function buildSourceHealth({ rawGroups, candidates, phDateKeys }) {
   const productHuntFallbackRawCount = Number(rawGroups.producthuntFallbackRawCount || rawGroups.producthuntFallback.length);
   const productHuntRawCount = Math.max(productHuntOfficialRawCount, productHuntFallbackRawCount);
   const productHuntSourceKinds = rawGroups.producthuntOfficialSourceKinds || [];
+  const productHuntFetchDateKeys = rawGroups.producthuntFetchDateKeys || phDateKeys;
+  const productHuntExpandedDates = productHuntFetchDateKeys.filter((dateKey) => !phDateKeys.includes(dateKey));
+  const productHuntExpandedNote = productHuntExpandedDates.length
+    ? `；fallback 低覆盖时扩展检查 ${productHuntExpandedDates.join(", ")}，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。`
+    : "";
+  const productHuntReaderNote =
+    productHuntSourceKinds.filter((kind) => /^jina/.test(kind)).length > 1
+      ? `；已尝试备用 reader：${productHuntSourceKinds.filter((kind) => /^jina/.test(kind)).join(", ")}。`
+      : "";
   const productHuntApiUsed =
     productHuntSourceKinds.includes("api") || rawGroups.producthuntOfficial.some((item) => item.sourceApi === "producthunt_api");
-  const productHuntStatus = process.env.PRODUCT_HUNT_TOKEN
-    ? productHuntOfficialRawCount
-      ? "ok"
-      : "empty"
+  const productHuntStatus = productHuntApiUsed
+    ? "ok"
     : productHuntOfficialRawCount || productHuntFallbackRawCount
       ? "fallback"
       : "empty";
@@ -2116,8 +2201,8 @@ function buildSourceHealth({ rawGroups, candidates, phDateKeys }) {
   const productHuntNote = productHuntApiUsed
     ? `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；Product Hunt API v2 GraphQL 已启用，原始覆盖 ${productHuntRawCount} 条，候选带 rank/votes/comments。`
     : process.env.PRODUCT_HUNT_TOKEN
-      ? `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；PRODUCT_HUNT_TOKEN 已配置但 API 未返回可解析候选，已回退到 Jina/OrangeBot；原始覆盖 ${productHuntRawCount} 条。`
-      : `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 ${productHuntRawCount} 条，AI 相关候选 ${rawGroups.producthuntOfficial.length + rawGroups.producthuntFallback.length} 条${productHuntFallbackRisk}`;
+      ? `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；PRODUCT_HUNT_TOKEN 已配置但 API 未返回可解析候选，已回退到 Jina/OrangeBot；原始覆盖 ${productHuntRawCount} 条${productHuntReaderNote}${productHuntExpandedNote}。`
+      : `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 ${productHuntRawCount} 条，AI 相关候选 ${rawGroups.producthuntOfficial.length + rawGroups.producthuntFallback.length} 条${productHuntFallbackRisk}${productHuntReaderNote}${productHuntExpandedNote}`;
   return {
     producthunt: sourceHealthEntry({
       status: productHuntStatus,
@@ -2176,13 +2261,8 @@ export async function runRadar(options = {}) {
   const phDateKeys = options.productHuntDateKeys || productHuntDateKeysForRun(now);
   const endDateKey = localDateKey(now);
 
-  const [phDiagnosticsNested, phFallbackDiagnostics, ycLaunches, hn, gh, hf, aihot, dealflowXhs] = await Promise.all([
-    Promise.all(
-      phDateKeys.map((date) =>
-        fetchProductHuntDateDiagnostics(date).catch(() => ({ items: [], rawCount: 0, sourceKind: "unavailable" }))
-      )
-    ),
-    fetchProductHuntFallbackForDates(phDateKeys),
+  const [phRunDiagnostics, ycLaunches, hn, gh, hf, aihot, dealflowXhs] = await Promise.all([
+    fetchProductHuntDiagnosticsForRun(phDateKeys),
     fetchYcLaunches(start, now).catch(() => []),
     fetchHackerNews(start, now),
     process.env.RADAR_SKIP_GITHUB ? Promise.resolve([]) : fetchGitHubReleases(start, now),
@@ -2190,6 +2270,9 @@ export async function runRadar(options = {}) {
     fetchAihot(start, now, endDateKey),
     fetchDealflowXhs(start, now, { cwd: process.cwd() }).catch(() => [])
   ]);
+  const phDiagnosticsNested = phRunDiagnostics.diagnostics;
+  const phFetchDateKeys = phRunDiagnostics.fetchDateKeys;
+  const phFallbackDiagnostics = await fetchProductHuntFallbackForDates(phFetchDateKeys);
   const phNested = phDiagnosticsNested.map((diagnostics) => diagnostics.items);
   const phFallback = phFallbackDiagnostics.items;
 
@@ -2197,6 +2280,7 @@ export async function runRadar(options = {}) {
     producthuntOfficial: phNested.flat(),
     producthuntOfficialRawCount: phDiagnosticsNested.reduce((sum, diagnostics) => sum + Number(diagnostics.rawCount || 0), 0),
     producthuntOfficialSourceKinds: [...new Set(phDiagnosticsNested.map((diagnostics) => diagnostics.sourceKind).filter(Boolean))],
+    producthuntFetchDateKeys: phFetchDateKeys,
     producthuntFallback: phFallback,
     producthuntFallbackRawCount: Number(phFallbackDiagnostics.rawCount || 0),
     ycLaunches,

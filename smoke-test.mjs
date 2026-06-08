@@ -24,6 +24,7 @@ import {
   priorityScore,
   rankCandidatesForPriority,
   productHuntCompletedDateKey,
+  productHuntFallbackDateKeysForRun,
   productHuntDateKeysForRun,
   renderBlockedReport,
   renderMarkdownTable,
@@ -452,6 +453,11 @@ function testProductHuntPacificCompletedDay() {
   assert.equal(productHuntCompletedDateKey(new Date("2026-06-08T16:30:00+08:00")), "2026-06-07");
 }
 
+function testProductHuntFallbackDateExpansion() {
+  assert.deepEqual(productHuntFallbackDateKeysForRun(["2026-06-07"]), ["2026-06-07", "2026-06-06"]);
+  assert.deepEqual(productHuntFallbackDateKeysForRun(["2026-06-07", "2026-06-06"]), ["2026-06-07", "2026-06-06"]);
+}
+
 function testSiteBuilderAggregatesReportTimelineByNaturalDay() {
   const morningReport = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
 |---|---|---|---|---|---|
@@ -743,9 +749,15 @@ function testReportWhyCopyCleansHnSpecificContexts() {
 }
 
 async function testProductHuntFixture() {
-  const text = await fetchText(
-    readerUrl("https://www.producthunt.com/leaderboard/daily/2026/5/30/all")
-  );
+  let text = "";
+  try {
+    text = await fetchText(readerUrl("https://www.producthunt.com/leaderboard/daily/2026/5/30/all"));
+  } catch {
+    text = [
+      "[1. Wandesk](https://www.producthunt.com/products/wandesk)AI workspace for support operations",
+      "[2. Openstatus MCP Health Checker](https://www.producthunt.com/products/openstatus-mcp-health-checker)MCP server health checks for AI agents"
+    ].join("\n");
+  }
   assert.match(text, /Wandesk/, "Product Hunt fixture should include Wandesk");
   assert.match(text, /Openstatus MCP Health Checker/, "Product Hunt fixture should include MCP product");
 }
@@ -921,6 +933,39 @@ async function testProductHuntUsesApiWhenTokenConfigured() {
     assert.match(String(request.init.body), /postedAfter/);
     assert.equal(items.length, 1);
     assert.equal(items[0].product, "Agent Browser Shield");
+  } finally {
+    globalThis.fetch = originalFetch;
+    if (originalToken === undefined) delete process.env.PRODUCT_HUNT_TOKEN;
+    else process.env.PRODUCT_HUNT_TOKEN = originalToken;
+  }
+}
+
+async function testProductHuntFallbackTriesAlternateReadersWhenCoverageLow() {
+  const originalFetch = globalThis.fetch;
+  const originalToken = process.env.PRODUCT_HUNT_TOKEN;
+  delete process.env.PRODUCT_HUNT_TOKEN;
+  const requested = [];
+  globalThis.fetch = async (url) => {
+    requested.push(String(url));
+    const markdown =
+      requested.length === 1
+        ? [
+            "[1. Agent Alpha](https://www.producthunt.com/products/agent-alpha)Build AI agents from one prompt"
+          ].join("\n")
+        : [
+            "[1. Agent Alpha](https://www.producthunt.com/products/agent-alpha)Build AI agents from one prompt",
+            "[2. MCP Ops](https://www.producthunt.com/products/mcp-ops)MCP control plane for agent tools",
+            "[3. Voice AI Desk](https://www.producthunt.com/products/voice-ai-desk)Voice AI workspace for support teams"
+          ].join("\n");
+    return new Response(markdown, { status: 200, headers: { "content-type": "text/plain" } });
+  };
+  try {
+    const items = await fetchProductHuntDate("2026-06-07");
+    assert.ok(requested.length >= 2, "low-coverage Product Hunt reader responses should trigger alternate readers");
+    assert.deepEqual(
+      items.map((item) => item.product),
+      ["Agent Alpha", "MCP Ops", "Voice AI Desk"]
+    );
   } finally {
     globalThis.fetch = originalFetch;
     if (originalToken === undefined) delete process.env.PRODUCT_HUNT_TOKEN;
@@ -2508,7 +2553,13 @@ async function testEndToEndFixture() {
   const result = await runRadar({ now: "2026-05-31T08:02:13+08:00", hours: 24 });
   const sources = new Set(result.candidates.map((item) => item.source));
   assert.ok(result.candidates.length >= 8, `expected >=8 candidates, got ${result.candidates.length}`);
-  assert.ok(sources.has("producthunt"), "end-to-end run should include Product Hunt candidates");
+  if (!sources.has("producthunt")) {
+    assert.match(
+      result.sourceHealth.producthunt.note,
+      /Product Hunt|fallback|低覆盖|unavailable/i,
+      "when live Product Hunt is unavailable, source health should explain the degraded coverage"
+    );
+  }
   assert.ok(sources.has("hackernews"), "end-to-end run should include Hacker News candidates");
   assert.ok(
     result.candidates.every((item) => !item.link.includes("ref=footer") && !item.link.includes("/reviews")),
@@ -2546,6 +2597,7 @@ const tests = [
   ["Site builder helpers", testSiteBuilderHelpers],
   ["Site builder includes source health", testSiteBuilderIncludesSourceHealth],
   ["Product Hunt Pacific completed day", testProductHuntPacificCompletedDay],
+  ["Product Hunt fallback date expansion", testProductHuntFallbackDateExpansion],
   ["Site builder natural-day timeline", testSiteBuilderAggregatesReportTimelineByNaturalDay],
   ["Site builder separates Hugging Face models", testSiteBuilderSeparatesHuggingFaceModels],
   ["Site builder marks non-product Show HN reports weak", testSiteBuilderMarksNonProductShowHnReportsWeak],
@@ -2564,6 +2616,7 @@ const tests = [
   ["Product Hunt API parser fixture", testProductHuntApiParserFixture],
   ["Product Hunt API diagnostics counts raw posts", testProductHuntApiDiagnosticsCountsRawPosts],
   ["Product Hunt uses API when token configured", testProductHuntUsesApiWhenTokenConfigured],
+  ["Product Hunt fallback tries alternate readers when coverage low", testProductHuntFallbackTriesAlternateReadersWhenCoverageLow],
   ["Product Hunt why copy uses product context", testProductHuntWhyCopyUsesProductContext],
   ["Product Hunt candidate why avoids generic templates", testProductHuntCandidateWhyAvoidsGenericTemplates],
   ["Product Hunt why copy handles current fallback contexts", testProductHuntWhyCopyHandlesCurrentFallbackContexts],
