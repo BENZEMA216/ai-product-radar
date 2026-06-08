@@ -34,7 +34,7 @@ import {
   sortCandidatesForPriority
 } from "./radar.mjs";
 import { buildSiteData, parseReportMarkdown, renderSiteHtml } from "./build-site.mjs";
-import { buildFeedbackSnapshot, parseFeedbackIssue } from "./feedback-runner.mjs";
+import { buildFeedbackSnapshot, isRadarFeedbackIssue, parseFeedbackIssue } from "./feedback-runner.mjs";
 import { commitMessageForReport, newestReportPath, qualityPathsForDir, reportPathsForDir, reviewPathsForDir } from "./publish-report.mjs";
 import { auditReportQuality, buildQualityArtifacts, qualityArtifactPaths, writeQualityArtifacts } from "./quality-audit.mjs";
 
@@ -190,6 +190,45 @@ function testFeedbackIssueParser() {
   const snapshot = buildFeedbackSnapshot({ date: "2026-06-08", issues: [issue] });
   assert.equal(snapshot.status, "ok");
   assert.equal(snapshot.feedback.length, 1);
+  assert.equal(snapshot.invalidFeedback.length, 0);
+}
+
+function testFeedbackSnapshotAcceptsUnlabeledRadarIssues() {
+  const issue = {
+    number: 21,
+    title: "[Radar Feedback] 应该降权: Low-vote PH product",
+    url: "https://github.com/BENZEMA216/ai-product-radar/issues/21",
+    createdAt: "2026-06-08T00:00:00Z",
+    labels: [],
+    body: [
+      "## Radar Feedback",
+      "",
+      "action: downrank",
+      "actionLabel: 应该降权",
+      "reportDate: 2026-06-08",
+      "signalKey: 2026-06-08|Product Hunt|https://www.producthunt.com/products/low-vote",
+      "productKey: https://www.producthunt.com/products/low-vote",
+      "source: Product Hunt",
+      "product: Low-vote PH product",
+      "link: https://www.producthunt.com/products/low-vote",
+      "",
+      "原因：Product Hunt upvote 太少"
+    ].join("\n")
+  };
+  const unrelated = {
+    number: 22,
+    title: "Docs cleanup",
+    url: "https://github.com/BENZEMA216/ai-product-radar/issues/22",
+    createdAt: "2026-06-08T00:00:00Z",
+    labels: [],
+    body: "Unrelated issue body"
+  };
+  const snapshot = buildFeedbackSnapshot({ date: "2026-06-08", issues: [issue, unrelated] });
+  assert.equal(isRadarFeedbackIssue(issue), true);
+  assert.equal(isRadarFeedbackIssue(unrelated), false);
+  assert.equal(snapshot.count, 1);
+  assert.equal(snapshot.feedback.length, 1);
+  assert.equal(snapshot.feedback[0].action, "downrank");
   assert.equal(snapshot.invalidFeedback.length, 0);
 }
 
@@ -2497,6 +2536,7 @@ const tests = [
   ["Publish helpers", testPublishHelpers],
   ["Daily runner fatal errors honor report dir", testDailyRunnerFatalErrorHonorsReportDir],
   ["Feedback issue parser", testFeedbackIssueParser],
+  ["Feedback snapshot accepts unlabeled radar issues", testFeedbackSnapshotAcceptsUnlabeledRadarIssues],
   ["Feedback snapshot unavailable", testFeedbackSnapshotUnavailable],
   ["Feedback review issue becomes attachable review", testFeedbackReviewIssueBecomesAttachableReview],
   ["Feedback snapshot tracks malformed records", testFeedbackSnapshotTracksMalformedRecords],

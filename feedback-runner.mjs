@@ -32,6 +32,21 @@ function clean(value) {
   return String(value || "").trim();
 }
 
+function issueLabels(issue) {
+  if (!Array.isArray(issue?.labels)) return [];
+  return issue.labels.map((label) => clean(typeof label === "string" ? label : label?.name)).filter(Boolean);
+}
+
+export function isRadarFeedbackIssue(issue) {
+  const title = clean(issue?.title);
+  const body = String(issue?.body || "");
+  return (
+    issueLabels(issue).includes("radar-feedback") ||
+    title.startsWith("[Radar Feedback]") ||
+    /^##\s*Radar Feedback\s*$/m.test(body)
+  );
+}
+
 function extractNote(body) {
   const lines = String(body || "").split("\n");
   const markerIndex = lines.findIndex((line) => /^##\s*你的补充\s*$/.test(line.trim()));
@@ -76,41 +91,71 @@ function feedbackPath(date, outDir) {
   return `${outDir}/${date}.json`;
 }
 
-function readFeedbackIssues() {
-  try {
-    const stdout = execFileSync(
-      "gh",
-      [
-        "issue",
-        "list",
-        "--repo",
-        "BENZEMA216/ai-product-radar",
-        "--label",
-        "radar-feedback",
-        "--state",
-        "open",
-        "--limit",
-        "100",
-        "--json",
-        "number,title,body,url,createdAt"
-      ],
-      {
-        encoding: "utf8",
-        timeout: 20000,
-        maxBuffer: 10 * 1024 * 1024
-      }
-    );
-    return JSON.parse(stdout);
-  } catch (error) {
-    return {
-      error: clean(error.stderr || error.message || "gh issue list failed"),
-      issues: []
-    };
+function ghIssueList(args) {
+  const stdout = execFileSync(
+    "gh",
+    [
+      "issue",
+      "list",
+      "--repo",
+      "BENZEMA216/ai-product-radar",
+      "--state",
+      "open",
+      "--limit",
+      "100",
+      "--json",
+      "number,title,body,url,createdAt,labels",
+      ...args
+    ],
+    {
+      encoding: "utf8",
+      timeout: 20000,
+      maxBuffer: 10 * 1024 * 1024
+    }
+  );
+  return JSON.parse(stdout);
+}
+
+function mergeIssues(lists) {
+  const byKey = new Map();
+  for (const list of lists) {
+    for (const issue of Array.isArray(list) ? list : []) {
+      const key = clean(issue.url) || clean(issue.number);
+      if (key) byKey.set(key, issue);
+    }
   }
+  return [...byKey.values()];
+}
+
+function readFeedbackIssues() {
+  const errors = [];
+  let labeled = [];
+  let openIssues = [];
+  try {
+    labeled = ghIssueList(["--label", "radar-feedback"]);
+  } catch (error) {
+    errors.push(clean(error.stderr || error.message || "gh labeled issue list failed"));
+  }
+  try {
+    openIssues = ghIssueList([]);
+  } catch (error) {
+    errors.push(clean(error.stderr || error.message || "gh open issue list failed"));
+  }
+  const issues = mergeIssues([labeled, openIssues]).filter(isRadarFeedbackIssue);
+  if (labeled.length || openIssues.length || errors.length === 0) return issues;
+  return {
+    error: errors.filter(Boolean).join("; ") || "gh issue list failed",
+    issues: []
+  };
+}
+
+function radarIssuesFrom(input) {
+  const list = Array.isArray(input) ? input : input?.issues || [];
+  return list.filter(isRadarFeedbackIssue);
 }
 
 export function buildFeedbackSnapshot({ date, issues }) {
-  const list = Array.isArray(issues) ? issues : issues.issues || [];
+  const list = radarIssuesFrom(issues);
   const parsed = list.map(parseFeedbackIssue);
   const validated = parsed.map((item) => ({ item, errors: validateFeedbackRecord(item) }));
   const valid = validated.filter(({ errors }) => errors.length === 0).map(({ item }) => item);
