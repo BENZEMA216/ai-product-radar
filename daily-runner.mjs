@@ -43,6 +43,48 @@ function summarizeFailure(error) {
   return lines.slice(-10).join("；").slice(0, 500) || "未知错误";
 }
 
+function isRetryableSmokeFailure(error) {
+  const output = stripAnsi([error.stdout, error.stderr, error.message].filter(Boolean).join("\n")).toLowerCase();
+  return /enotfound|eai_again|etimedout|econnreset|could not resolve|temporary failure|fetch failed|network|dns|api\.github\.com|github\.com|r\.jina\.ai|hn\.algolia\.com|huggingface\.co/.test(
+    output
+  );
+}
+
+function smokeRetryDelaysMs(env = process.env) {
+  if (env.RADAR_SMOKE_RETRY_DELAYS_MS !== undefined) {
+    return String(env.RADAR_SMOKE_RETRY_DELAYS_MS)
+      .split(",")
+      .map((part) => Number(part.trim()))
+      .filter((value) => Number.isFinite(value) && value >= 0);
+  }
+  return [30000, 90000];
+}
+
+function sleep(ms) {
+  if (ms <= 0) return Promise.resolve();
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function runSmokeWithRetries(env) {
+  const delays = smokeRetryDelaysMs(env);
+  for (let attempt = 0; attempt <= delays.length; attempt += 1) {
+    try {
+      execFileSync("npm", ["run", "smoke"], {
+        cwd: SCRIPT_DIR,
+        encoding: "utf8",
+        env,
+        timeout: 180000
+      });
+      return;
+    } catch (error) {
+      const delay = delays[attempt];
+      if (delay === undefined || !isRetryableSmokeFailure(error)) throw error;
+      console.error(`smoke network failure, retrying in ${delay}ms: ${summarizeFailure(error)}`);
+      await sleep(delay);
+    }
+  }
+}
+
 function writeReport(path, markdown) {
   mkdirSync(dirname(path), { recursive: true });
   writeFileSync(path, `${markdown.trimEnd()}\n`, "utf8");
@@ -112,12 +154,7 @@ async function main() {
   const feedbackDir = qualityBaseDir(args.reportDir, "feedback");
 
   try {
-    execFileSync("npm", ["run", "smoke"], {
-      cwd: SCRIPT_DIR,
-      encoding: "utf8",
-      env: cleanEnv,
-      timeout: 180000
-    });
+    await runSmokeWithRetries(cleanEnv);
   } catch (error) {
     const markdown = renderBlockedReport(`smoke 失败：${summarizeFailure(error)}`);
     snapshotFeedback(reportPath, cleanEnv, feedbackDir, reviewBaseDir(args.reportDir));

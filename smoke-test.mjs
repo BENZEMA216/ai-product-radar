@@ -212,6 +212,58 @@ exit 1
   }
 }
 
+function testDailyRunnerRetriesTransientSmokeNetworkFailure() {
+  const tempDir = mkdtempSync(join(tmpdir(), "radar-daily-retry-"));
+  const reportDir = join(tempDir, "custom-reports");
+  const binDir = join(tempDir, "bin");
+  const countPath = join(tempDir, "npm-count");
+  mkdirSync(binDir, { recursive: true });
+  try {
+    const npmPath = join(binDir, "npm");
+    writeFileSync(
+      npmPath,
+      `#!/bin/sh
+count=$(cat "${countPath}" 2>/dev/null || echo 0)
+count=$((count + 1))
+echo "$count" > "${countPath}"
+echo "Could not resolve host: api.github.com" >&2
+exit 1
+`,
+      "utf8"
+    );
+    chmodSync(npmPath, 0o755);
+
+    const ghPath = join(binDir, "gh");
+    writeFileSync(
+      ghPath,
+      `#!/bin/sh
+echo "gh offline" >&2
+exit 1
+`,
+      "utf8"
+    );
+    chmodSync(ghPath, 0o755);
+
+    execFileSync("node", [join(process.cwd(), "daily-runner.mjs"), "--now", "2026-06-09T08:01:00+08:00", "--report-dir", reportDir], {
+      cwd: tempDir,
+      encoding: "utf8",
+      timeout: 30000,
+      maxBuffer: 1024 * 1024,
+      env: {
+        ...process.env,
+        PATH: `${binDir}:${process.env.PATH || ""}`,
+        RADAR_SMOKE_RETRY_DELAYS_MS: "1"
+      }
+    });
+
+    assert.equal(readFileSync(countPath, "utf8").trim(), "2", "retryable smoke network failures should get one retry");
+    const feedbackPath = join(reportDir, "quality", "feedback", "2026-06-09.json");
+    assert.equal(existsSync(feedbackPath), true, "retried smoke failures should still write feedback snapshot");
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+}
+
 function testFeedbackIssueParser() {
   const issue = {
     number: 12,
@@ -2661,6 +2713,7 @@ const tests = [
   ["Publish helpers", testPublishHelpers],
   ["Daily runner fatal errors honor report dir", testDailyRunnerFatalErrorHonorsReportDir],
   ["Daily runner smoke failure still writes feedback snapshot", testDailyRunnerSmokeFailureStillWritesFeedbackSnapshot],
+  ["Daily runner retries transient smoke network failure", testDailyRunnerRetriesTransientSmokeNetworkFailure],
   ["Feedback issue parser", testFeedbackIssueParser],
   ["Feedback snapshot accepts unlabeled radar issues", testFeedbackSnapshotAcceptsUnlabeledRadarIssues],
   ["Feedback snapshot unavailable", testFeedbackSnapshotUnavailable],
