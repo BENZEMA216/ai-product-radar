@@ -1,22 +1,291 @@
 {
   "date": "2026-06-09",
-  "generatedAt": "2026-06-09T00:01:21.294Z",
-  "reportPath": "reports/2026-06-09-0801-cst.md",
+  "generatedAt": "2026-06-09T02:50:05.916Z",
+  "reportPath": "reports/2026-06-09-1050-cst.md",
   "ok": true,
   "failures": [],
   "metrics": {
-    "rows": 0,
-    "top20Sources": [],
+    "rows": 87,
+    "top20Sources": [
+      "YC Launch",
+      "HN Algolia",
+      "GitHub Release",
+      "Product Hunt"
+    ],
     "top10ModelInfra": 0,
     "genericHfSpaceTop20": 0,
-    "precisionAt10": null,
+    "precisionAt10": 1,
     "badTop10Count": 0
   },
-  "sourceHealth": {},
-  "feedback": {
-    "status": "unavailable",
-    "count": 0,
-    "error": "Post \"https://api.github.com/graphql\": proxyconnect tcp: dial tcp 127.0.0.1:7897: connect: operation not permitted; Post \"https://api.github.com/graphql\": proxyconnect tcp: dial tcp 127.0.0.1:7897: connect: operation not permitted"
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 23,
+      "keptCount": 6,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-07；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 23 条，AI 相关候选 6 条；fallback 低覆盖时扩展检查 2026-06-06，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 3,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 22,
+      "keptCount": 22,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 17,
+      "keptCount": 17,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 24,
+      "keptCount": 24,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
   },
-  "top20Sample": []
+  "feedback": {
+    "status": "ok",
+    "count": 6,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Activeloop",
+      "productKey": "https://www.ycombinator.com/launches/qio-hivemind-continual-learning-for-coding-agents",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Activeloop 通过 YC Launch 呈现明确垂直场景，适合观察商业 wedge 和定价叙事。"
+    },
+    {
+      "rank": 2,
+      "product": "Metatron – give coding agents your team's conventions over MCP",
+      "productKey": "https://github.com/kerbelp/metatron",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它切的是“团队约定进 MCP”这个真实断点，价值在把隐性代码规范和项目知识变成 agent 可调用上下文。"
+    },
+    {
+      "rank": 3,
+      "product": "appium/appium-mcp v1.84.0",
+      "productKey": "https://github.com/appium/appium-mcp/releases/tag/v1.84.0",
+      "source": "GitHub Release",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "移动端测试自动化接入 MCP 后，会影响 agent 能否真实操作 App 测试链路；这是底层能力更新，值得跟踪但别过度解读。"
+    },
+    {
+      "rank": 4,
+      "product": "Command Center, the AI coding env for people who care about quality",
+      "productKey": "https://www.cc.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 coding agent 的卖点从“更快生成”转向质量控制，重点看能否解决 review、回滚和上下文污染问题。"
+    },
+    {
+      "rank": 5,
+      "product": "Akkari",
+      "productKey": "https://www.ycombinator.com/launches/qhc-akkari-autonomous-customer-ops",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Akkari 通过 YC Launch 呈现明确垂直场景，适合观察商业 wedge 和定价叙事。"
+    },
+    {
+      "rank": 6,
+      "product": "A Minecraft builder skill for coding agents",
+      "productKey": "https://github.com/mattzh72/minecraft-builder-skill",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Minecraft 不是大市场本身，价值在于把 agent 能力放进可观察沙盒，适合看复杂执行和反馈循环怎么被产品化。"
+    },
+    {
+      "rank": 7,
+      "product": "Multiplayer, session-based runtime data collection for coding agents",
+      "productKey": "https://www.multiplayer.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Multiplayer, session-based runtime data collection for coding agents 把 agent 会话、变更或执行记录纳入版本管理，值得看团队协作时如何追踪责任边界。"
+    },
+    {
+      "rank": 8,
+      "product": "Capacitor",
+      "productKey": "https://www.producthunt.com/products/capacitor-shared-mem-for-coding-agents",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Capacitor 把开发者工作流包装成首日可试用产品，适合观察编码入口、费用门槛和环境粘性。"
+    },
+    {
+      "rank": 9,
+      "product": "Web tools an AI agent pays for per call in USDC, no API key (x402+MCP)",
+      "productKey": "https://superhighway.walls.sh",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 agent 调工具改成按次 USDC 支付，核心看无 API key 的商业化与权限边界，可能是 agent 工具市场的早期形态。"
+    },
+    {
+      "rank": 10,
+      "product": "Pokayoke – deterministic guardrails for agentic coding",
+      "productKey": "https://pokayoke.codes",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它抓住 coding agent “写错但自信”的采用阻力，用确定性 guardrail 包装可靠性，适合看企业前置控制层需求。"
+    },
+    {
+      "rank": 11,
+      "product": "Deep Memory – Vocabulary-driven graph memory for AI agents",
+      "productKey": "https://github.com/tjwheeler/deep-memory",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agent memory 很容易空泛，它用 vocabulary 和 graph 约束记忆结构，重点看能否真的降低跨会话漂移。"
+    },
+    {
+      "rank": 12,
+      "product": "Z3r0 – Multi-agent red team collaboration platform",
+      "productKey": "https://github.com/yv1ing/z3r0",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "多人协作场景开始把 agent 当作队友嵌入，值得观察权限、交接和团队采用方式。"
+    },
+    {
+      "rank": 13,
+      "product": "Arol – Catch the deprecated code your Agents are writing",
+      "productKey": "https://github.com/benminor/arol",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Deprecated API 是 agent 写代码时很真实的低级错误，Arol 如果能接进 CI/review，会比泛泛代码助手更容易讲清 ROI。"
+    },
+    {
+      "rank": 14,
+      "product": "Stop returning raw JSON from MCP servers, build rich inline UIs",
+      "productKey": "https://medium.com/towards-artificial-intelligence/mcp-apps-build-interactive-apps-directly-inside-your-ai-agents-chat-c571678099e3",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这条不是单纯 UI 炫技，而是在讲 MCP 工具结果如何从 JSON 变成交互界面，关系到 agent 产品的可用性上限。"
+    },
+    {
+      "rank": 15,
+      "product": "AI Boost – an MCP for accessing your everyday patterns",
+      "productKey": "https://www.ai-boost.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把“日常模式”做成 MCP 上下文入口，值得看个人行为数据能否变成 agent 记忆，而不是又一个模糊助手。"
+    },
+    {
+      "rank": 16,
+      "product": "Ontora",
+      "productKey": "https://www.ycombinator.com/launches/qid-ontora-the-discovery-layer-for-ai-transformation",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Ontora 通过 YC Launch 呈现明确垂直场景，适合观察商业 wedge 和定价叙事。"
+    },
+    {
+      "rank": 17,
+      "product": "AI agent for all your support issues",
+      "productKey": "https://github.com/seaticket-ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Support issue 是清晰的任务队列，关键看它能不能完成分类、复现、回复和升级，而不只是给客服系统加聊天入口。"
+    },
+    {
+      "rank": 18,
+      "product": "Guarden – Authorization for AI agent actions powered by OPA",
+      "productKey": "https://github.com/las7/guarden",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agent 真要进企业系统，动作授权会比模型能力更早成为瓶颈；Guarden 借 OPA 切入这个治理层，方向值得看。"
+    },
+    {
+      "rank": 19,
+      "product": "openai/codex 0.139.0-alpha.1",
+      "productKey": "https://github.com/openai/codex/releases/tag/rust-v0.139.0-alpha.1",
+      "source": "GitHub Release",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "openai/codex 0.139.0-alpha.1 的版本变化会影响相关 AI 工具链，适合跟踪开发者生态迭代。"
+    },
+    {
+      "rank": 20,
+      "product": "Durable, asynchronous LLM workflow engine in Rust",
+      "productKey": "https://crates.io/crates/langcontinuation",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Durable workflow engine 解决的是长任务中断、恢复和状态一致性，适合看 agent 从 demo 走向生产任务时需要哪些运行时能力。"
+    }
+  ]
 }
