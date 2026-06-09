@@ -2,6 +2,7 @@
 import { execFileSync } from "node:child_process";
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
 import {
   annotateProductHuntReportFilterHealth,
@@ -16,6 +17,7 @@ import {
 import { parseReportMarkdown } from "./build-site.mjs";
 
 const REPORT_PATTERN = /^\d{4}-\d{2}-\d{2}-\d{4}-cst\.md$/;
+const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 
 function parseArgs(argv) {
   const args = { hours: 24, reportDir: "reports" };
@@ -56,7 +58,7 @@ function reportDateFromPath(path) {
 }
 
 function qualityBaseDir(reportDir, name) {
-  return reportDir === "reports" ? `quality/${name}` : `${reportDir}/${name}`;
+  return reportDir === "reports" ? `quality/${name}` : `${reportDir}/quality/${name}`;
 }
 
 function reviewBaseDir(reportDir) {
@@ -67,8 +69,8 @@ function snapshotFeedback(reportPath, env, outDir, reviewDir) {
   const date = reportDateFromPath(reportPath);
   if (!date) return;
   try {
-    execFileSync("node", ["feedback-runner.mjs", "--date", date, "--out-dir", outDir, "--review-dir", reviewDir], {
-      cwd: process.cwd(),
+    execFileSync("node", [join(SCRIPT_DIR, "feedback-runner.mjs"), "--date", date, "--out-dir", outDir, "--review-dir", reviewDir], {
+      cwd: SCRIPT_DIR,
       encoding: "utf8",
       env,
       timeout: 30000,
@@ -107,16 +109,18 @@ async function main() {
 
   const reportPath = reportPathForNow(now, args.reportDir);
   const cleanEnv = sanitizeLocalProxyEnv(process.env);
+  const feedbackDir = qualityBaseDir(args.reportDir, "feedback");
 
   try {
     execFileSync("npm", ["run", "smoke"], {
-      cwd: process.cwd(),
+      cwd: SCRIPT_DIR,
       encoding: "utf8",
       env: cleanEnv,
       timeout: 180000
     });
   } catch (error) {
     const markdown = renderBlockedReport(`smoke 失败：${summarizeFailure(error)}`);
+    snapshotFeedback(reportPath, cleanEnv, feedbackDir, reviewBaseDir(args.reportDir));
     writeJson(sourceHealthPathForNow(now, qualityBaseDir(args.reportDir, "source-health")), {
       generatedAt: now.toISOString(),
       window: null,
@@ -130,7 +134,6 @@ async function main() {
     return;
   }
 
-  const feedbackDir = qualityBaseDir(args.reportDir, "feedback");
   snapshotFeedback(reportPath, cleanEnv, feedbackDir, reviewBaseDir(args.reportDir));
   const result = await runRadar({ now, hours: args.hours, feedbackDir });
   const previousPhLinks = previousProductHuntLinks(args.reportDir, reportPath);

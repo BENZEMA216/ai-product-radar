@@ -41,6 +41,10 @@ function clean(value) {
   return String(value || "").replace(/\s+/g, " ").trim();
 }
 
+function isBlockedSourceHealth(sourceHealth) {
+  return sourceHealth?.blocked === true;
+}
+
 function latestMatchingFile(dir, pattern) {
   try {
     const names = readdirSync(dir).filter((name) => pattern.test(name)).sort();
@@ -326,6 +330,12 @@ function auditRankingQuality(rows) {
 
 function auditSourceHealth(sourceHealth) {
   const failures = [];
+  if (isBlockedSourceHealth(sourceHealth)) {
+    if (!clean(sourceHealth.reason)) {
+      failures.push(failure("blocked_reason_missing", "blocked source health 缺少阻塞原因。"));
+    }
+    return failures;
+  }
   const sources = sourceHealth?.sources || sourceHealth || {};
   for (const source of REQUIRED_SOURCE_HEALTH) {
     if (!sources[source]) {
@@ -422,9 +432,10 @@ function auditSiteHtml(siteHtml) {
   return failures;
 }
 
-function auditFeedbackSnapshot(feedbackSnapshot) {
+function auditFeedbackSnapshot(feedbackSnapshot, { allowUnavailable = false } = {}) {
   if (!feedbackSnapshot) return [];
   if (feedbackSnapshot.status === "unavailable") {
+    if (allowUnavailable) return [];
     return [failure("feedback_unavailable", "反馈快照不可用，无法证明第二天会读取用户反馈。", { error: feedbackSnapshot.error || "" })];
   }
   if (!Array.isArray(feedbackSnapshot.feedback)) {
@@ -533,7 +544,8 @@ export function auditReportQuality({
   feedbackPath = ""
 } = {}) {
   const failures = [];
-  if (!Array.isArray(rows) || rows.length === 0) {
+  const blocked = isBlockedSourceHealth(sourceHealth);
+  if (!blocked && (!Array.isArray(rows) || rows.length === 0)) {
     failures.push(failure("empty_report", "报告没有可审计的产品行。"));
   }
   failures.push(...auditQualityFileAlignment({ reportDate, sourceHealthPath, feedbackPath, feedbackSnapshot }));
@@ -553,7 +565,7 @@ export function auditReportQuality({
     failures.push(...auditProductHuntReportCount(rows, sourceHealth));
   }
   if (siteHtml) failures.push(...auditSiteHtml(siteHtml));
-  if (feedbackSnapshot) failures.push(...auditFeedbackSnapshot(feedbackSnapshot));
+  if (feedbackSnapshot) failures.push(...auditFeedbackSnapshot(feedbackSnapshot, { allowUnavailable: blocked }));
   const rankingMetrics = rankingQualityMetrics(rows);
   return {
     ok: failures.length === 0,

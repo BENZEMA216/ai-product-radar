@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { chmodSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { basename, join } from "node:path";
 import {
@@ -157,6 +157,56 @@ function testDailyRunnerFatalErrorHonorsReportDir() {
       qualityPaths.some((path) => path.includes("source-health") && path.endsWith(".json")),
       "fatal daily-runner errors should still write source health under --report-dir"
     );
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+}
+
+function testDailyRunnerSmokeFailureStillWritesFeedbackSnapshot() {
+  const tempDir = mkdtempSync(join(tmpdir(), "radar-daily-smoke-"));
+  const reportDir = join(tempDir, "custom-reports");
+  const binDir = join(tempDir, "bin");
+  mkdirSync(binDir, { recursive: true });
+  try {
+    const npmPath = join(binDir, "npm");
+    writeFileSync(
+      npmPath,
+      `#!/bin/sh
+echo "smoke offline" >&2
+exit 1
+`,
+      "utf8"
+    );
+    chmodSync(npmPath, 0o755);
+
+    const ghPath = join(binDir, "gh");
+    writeFileSync(
+      ghPath,
+      `#!/bin/sh
+echo "gh offline" >&2
+exit 1
+`,
+      "utf8"
+    );
+    chmodSync(ghPath, 0o755);
+
+    execFileSync("node", [join(process.cwd(), "daily-runner.mjs"), "--now", "2026-06-09T08:01:00+08:00", "--report-dir", reportDir], {
+      cwd: tempDir,
+      encoding: "utf8",
+      timeout: 30000,
+      maxBuffer: 1024 * 1024,
+      env: {
+        ...process.env,
+        PATH: `${binDir}:${process.env.PATH || ""}`
+      }
+    });
+
+    const feedbackPath = join(reportDir, "quality", "feedback", "2026-06-09.json");
+    assert.equal(existsSync(feedbackPath), true, "smoke-failed daily runs should still write a same-day feedback snapshot");
+    const snapshot = JSON.parse(readFileSync(feedbackPath, "utf8"));
+    assert.equal(snapshot.date, "2026-06-09");
+    assert.equal(snapshot.status, "unavailable");
+    assert.equal(Array.isArray(snapshot.invalidFeedback), true);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -1630,6 +1680,30 @@ function testQualityAuditAcceptsHealthyReport() {
   assert.equal(audit.ok, true, audit.failures.map((failure) => failure.message).join("; "));
 }
 
+function testQualityAuditAcceptsBlockedReportWithAlignedArtifacts() {
+  const audit = auditReportQuality({
+    rows: [],
+    reportDate: "2026-06-09",
+    sourceHealthPath: "quality/source-health/2026-06-09.json",
+    feedbackPath: "quality/feedback/2026-06-09.json",
+    sourceHealth: {
+      blocked: true,
+      reason: "smoke 失败：网络不可达",
+      sources: {}
+    },
+    feedbackSnapshot: {
+      date: "2026-06-09",
+      status: "unavailable",
+      error: "github unreachable",
+      feedback: [],
+      invalidFeedback: []
+    },
+    siteHtml:
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra 来源健康 radar-feedback feedback-link 漏掉产品 data-category=\"model_infra\""
+  });
+  assert.equal(audit.ok, true, audit.failures.map((failure) => failure.message).join("; "));
+}
+
 function testQualityAuditFlagsLowProductHuntFallbackCoverage() {
   const audit = auditReportQuality({
     rows: [
@@ -2586,6 +2660,7 @@ const tests = [
   ["Automation safety helpers", testAutomationSafetyHelpers],
   ["Publish helpers", testPublishHelpers],
   ["Daily runner fatal errors honor report dir", testDailyRunnerFatalErrorHonorsReportDir],
+  ["Daily runner smoke failure still writes feedback snapshot", testDailyRunnerSmokeFailureStillWritesFeedbackSnapshot],
   ["Feedback issue parser", testFeedbackIssueParser],
   ["Feedback snapshot accepts unlabeled radar issues", testFeedbackSnapshotAcceptsUnlabeledRadarIssues],
   ["Feedback snapshot unavailable", testFeedbackSnapshotUnavailable],
@@ -2657,6 +2732,7 @@ const tests = [
   ["Quality audit writes persistent artifacts", testQualityAuditWritesPersistentArtifacts],
   ["Quality audit flags malformed feedback", testQualityAuditFlagsMalformedFeedback],
   ["Quality audit flags stale quality files", testQualityAuditFlagsStaleQualityFiles],
+  ["Quality audit accepts blocked report with aligned artifacts", testQualityAuditAcceptsBlockedReportWithAlignedArtifacts],
   ["Quality audit uses stable generatedAt from source health", testQualityAuditUsesStableGeneratedAtFromSourceHealth],
   ["Rendered Product Hunt why copy avoids repeated template", testRenderedProductHuntWhyCopyAvoidsRepeatedTemplate],
   ["Site builder normalizes archived Product Hunt why copy", testSiteBuilderNormalizesArchivedProductHuntWhyCopy],
