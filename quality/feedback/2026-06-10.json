@@ -1,0 +1,10 @@
+{
+  "date": "2026-06-10",
+  "generatedAt": "2026-06-10T00:08:31.667Z",
+  "status": "unavailable",
+  "error": "Post \"https://api.github.com/graphql\": proxyconnect tcp: dial tcp 127.0.0.1:7897: connect: operation not permitted; Post \"https://api.github.com/graphql\": proxyconnect tcp: dial tcp 127.0.0.1:7897: connect: operation not permitted",
+  "count": 0,
+  "feedback": [],
+  "invalidFeedback": [],
+  "reviews": []
+}
