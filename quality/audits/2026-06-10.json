@@ -1,22 +1,291 @@
 {
   "date": "2026-06-10",
-  "generatedAt": "2026-06-10T00:08:31.678Z",
-  "reportPath": "reports/2026-06-10-0808-cst.md",
+  "generatedAt": "2026-06-10T08:24:43.477Z",
+  "reportPath": "reports/2026-06-10-1624-cst.md",
   "ok": true,
   "failures": [],
   "metrics": {
-    "rows": 0,
-    "top20Sources": [],
+    "rows": 91,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "GitHub Release",
+      "YC Launch"
+    ],
     "top10ModelInfra": 0,
     "genericHfSpaceTop20": 0,
-    "precisionAt10": null,
+    "precisionAt10": 1,
     "badTop10Count": 0
   },
-  "sourceHealth": {},
-  "feedback": {
-    "status": "unavailable",
-    "count": 0,
-    "error": "Post \"https://api.github.com/graphql\": proxyconnect tcp: dial tcp 127.0.0.1:7897: connect: operation not permitted; Post \"https://api.github.com/graphql\": proxyconnect tcp: dial tcp 127.0.0.1:7897: connect: operation not permitted"
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 25,
+      "keptCount": 16,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-09；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 25 条，AI 相关候选 16 条；fallback 低覆盖时扩展检查 2026-06-08，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 3,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 21,
+      "keptCount": 21,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 6,
+      "keptCount": 6,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 17,
+      "keptCount": 17,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 28,
+      "keptCount": 28,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
   },
-  "top20Sample": []
+  "feedback": {
+    "status": "ok",
+    "count": 9,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "agmsg",
+      "productKey": "https://www.producthunt.com/products/agmsg",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "agmsg 把开发者工作流包装成首日可试用产品，适合观察编码入口、费用门槛和环境粘性。"
+    },
+    {
+      "rank": 2,
+      "product": "Cate – open-source canvas IDE for agentic coding workflows",
+      "productKey": "https://cate.cero-ai.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Cate – open-source canvas IDE for agentic coding workflows 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 3,
+      "product": "Claw Patrol, a security firewall for agents",
+      "productKey": "https://github.com/denoland/clawpatrol",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Claw Patrol, a security firewall for agents 把 AI 放进合规或准入前置流程，产品价值取决于证据链、误判处理和人工复核。"
+    },
+    {
+      "rank": 4,
+      "product": "Loom, an open-source delivery harness for coding agents",
+      "productKey": "https://github.com/valkor-ai/loom",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Loom, an open-source delivery harness for coding agents 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 5,
+      "product": "Open-source plugin that builds single-file HTML decks for coding agents",
+      "productKey": "https://github.com/fluidform-ai/fluiddocs-deck-builder",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Open-source plugin that builds single-file HTML decks for coding agents 的 HN 信号指向设计到代码工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 6,
+      "product": "browserbase/stagehand stagehand/server-v3 v3.7.2",
+      "productKey": "https://github.com/browserbase/stagehand/releases/tag/stagehand-server-v3/v3.7.2",
+      "source": "GitHub Release",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "browserbase/stagehand stagehand/server-v3 v3.7.2 的版本变化会影响相关 AI 工具链，适合跟踪开发者生态迭代。"
+    },
+    {
+      "rank": 7,
+      "product": "agentcad",
+      "productKey": "https://www.producthunt.com/products/agentcad",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "agentcad 把开发者工作流包装成首日可试用产品，适合观察编码入口、费用门槛和环境粘性。"
+    },
+    {
+      "rank": 8,
+      "product": "openai/codex 0.139.0",
+      "productKey": "https://github.com/openai/codex/releases/tag/rust-v0.139.0",
+      "source": "GitHub Release",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "openai/codex 0.139.0 的版本变化会影响相关 AI 工具链，适合跟踪开发者生态迭代。"
+    },
+    {
+      "rank": 9,
+      "product": "microsoft/playwright-mcp v0.0.76",
+      "productKey": "https://github.com/microsoft/playwright-mcp/releases/tag/v0.0.76",
+      "source": "GitHub Release",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "microsoft/playwright-mcp v0.0.76 的版本变化会影响相关 AI 工具链，适合跟踪开发者生态迭代。"
+    },
+    {
+      "rank": 10,
+      "product": "Lore – LLM proxy for coding agent context and memory management",
+      "productKey": "https://withlore.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Lore – LLM proxy for coding agent context and memory management 的 HN 信号指向模型实验和推理资产，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 11,
+      "product": "The first agentic coding engine that hot-reloads the full stack",
+      "productKey": "https://serverpod.dev/blog/serverpod-4-preview",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "The first agentic coding engine that hot-reloads the full stack 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 12,
+      "product": "Browse.sh",
+      "productKey": "https://www.producthunt.com/products/browserbase",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Browse.sh 的 PH 描述聚焦「Give your agents muscle memory for automati...」，适合看它如何把 AI 能力翻译成首日用户能理解的场景。"
+    },
+    {
+      "rank": 13,
+      "product": "Artie",
+      "productKey": "https://www.ycombinator.com/launches/qkj-artie-real-time-data-replication-to-your-data-warehouse",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Artie 通过 YC Launch 呈现明确垂直场景，适合观察商业 wedge 和定价叙事。"
+    },
+    {
+      "rank": 14,
+      "product": "AI agents join meetings with memory, calendar, and tasks",
+      "productKey": "https://meet.upilote.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AI agents join meetings with memory, calendar, and tasks 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 15,
+      "product": "The agent that builds and operates its own SaaS tools",
+      "productKey": "https://craftbot.live",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "The agent that builds and operates its own SaaS tools 的 HN 信号指向前端界面和可用性验证，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 16,
+      "product": "KnowledgeMCP – Turn any docs into an MCP endpoint (0 LLM at query time)",
+      "productKey": "https://github.com/hashwnath/kmcp",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "KnowledgeMCP – Turn any docs into an MCP endpoint (0 LLM at query time) 的 HN 信号指向模型实验和推理资产，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 17,
+      "product": "MCP-gateway-scan read-only scanner for MCP production-readiness",
+      "productKey": "https://github.com/willianpinho/mcp-gateway-scan",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "MCP-gateway-scan read-only scanner for MCP production-readiness 的 HN 信号指向产品形态和采用门槛，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 18,
+      "product": "Joka.work – AI-native ticketmaxxing to replace Jira in the agentic era",
+      "productKey": "https://joka.work",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Joka.work – AI-native ticketmaxxing to replace Jira in the agentic era 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 19,
+      "product": "Local-first history, search, and analytics for Claude Code and Codex",
+      "productKey": "https://github.com/sudomichael/agentgraphed",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Local-first history, search, and analytics for Claude Code and Codex 聚焦 agent 可用的信息入口，关键看它能否提升检索可信度和会话连续性。"
+    },
+    {
+      "rank": 20,
+      "product": "AgentOS",
+      "productKey": "https://www.producthunt.com/products/agentos-run-agents-like-a-company",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AgentOS 的 PH 描述聚焦「Manage AI agents, tasks, workspaces from on...」，适合看它如何把 AI 能力翻译成首日用户能理解的场景。"
+    }
+  ]
 }
