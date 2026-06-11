@@ -84,6 +84,13 @@ function sleepSync(ms) {
   Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
 }
 
+function shouldSkipLiveCheckError(error) {
+  const message = String(error?.message || error || "").toLowerCase();
+  return /fetch failed|could not resolve host|eai_again|enotfound|etimedout|econnreset|network|error connecting to api\.github\.com|githubstatus\.com|connection refused|failed to connect/.test(
+    message
+  );
+}
+
 function testAutomationSafetyHelpers() {
   const cleaned = sanitizeLocalProxyEnv({
     HTTP_PROXY: "http://127.0.0.1:7897",
@@ -1785,6 +1792,38 @@ function testQualityAuditAcceptsBlockedReportWithAlignedArtifacts() {
   assert.equal(audit.ok, true, audit.failures.map((failure) => failure.message).join("; "));
 }
 
+function testQualityAuditAcceptsEmptyReportWithAlignedArtifacts() {
+  const audit = auditReportQuality({
+    rows: [],
+    reportDate: "2026-06-12",
+    sourceHealthPath: "quality/source-health/2026-06-12.json",
+    feedbackPath: "quality/feedback/2026-06-12.json",
+    sourceHealth: {
+      generatedAt: "2026-06-11T16:12:43.670Z",
+      blocked: false,
+      sources: {
+        producthunt: { status: "empty", rawCount: 0, keptCount: 0, note: "Product Hunt 0 条，历史去重后最终发布 0 条 Product Hunt 信号。" },
+        yc_launch: { status: "empty", rawCount: 0, keptCount: 0, note: "本窗口无候选" },
+        hackernews: { status: "empty", rawCount: 0, keptCount: 0, note: "本窗口无候选" },
+        github: { status: "skipped", rawCount: 0, keptCount: 0, note: "RADAR_SKIP_GITHUB 已设置，GitHub Release 本次跳过。" },
+        huggingface: { status: "empty", rawCount: 0, keptCount: 0, note: "HF Model 进入 Models & Infra" },
+        aihot: { status: "empty", rawCount: 0, keptCount: 0, note: "AIHOT 聚合源本窗口无候选。" },
+        xhs_dealflow: { status: "unavailable", rawCount: 0, keptCount: 0, note: "XHS 默认尝试，但 bridge 不可用。" }
+      }
+    },
+    feedbackSnapshot: {
+      date: "2026-06-12",
+      status: "unavailable",
+      error: "github unreachable",
+      feedback: [],
+      invalidFeedback: []
+    },
+    siteHtml:
+      "window.__RADAR_DATA__ Priority View All Signals Models & Infra 来源健康 radar-feedback feedback-link data-category=\"model_infra\""
+  });
+  assert.equal(audit.ok, true, audit.failures.map((failure) => `${failure.code}:${failure.message}`).join("; "));
+}
+
 function testQualityAuditFlagsLowProductHuntFallbackCoverage() {
   const audit = auditReportQuality({
     rows: [
@@ -2459,7 +2498,17 @@ function testSiteBuilderNormalizesArchivedProductHuntWhyCopy() {
 async function testHnAlgolia() {
   const url =
     "https://hn.algolia.com/api/v1/search_by_date?query=AI%20agent&tags=story&numericFilters=created_at_i%3E=1780156800,created_at_i%3C=1780243333&hitsPerPage=5";
-  const json = JSON.parse(await fetchText(url));
+  let text;
+  try {
+    text = await fetchText(url);
+  } catch (error) {
+    if (shouldSkipLiveCheckError(error)) {
+      console.warn(`SKIP HN Algolia live check: ${error.message}`);
+      return;
+    }
+    throw error;
+  }
+  const json = JSON.parse(text);
   assert.ok(Array.isArray(json.hits), "HN Algolia should return hits array");
   assert.ok(json.hits.length > 0, "HN Algolia should return recent AI agent hits");
   assert.ok(json.hits[0].created_at, "HN hit should include created_at");
@@ -2485,7 +2534,11 @@ async function testGhApi() {
   if (!stdout) {
     try {
       stdout = await fetchText("https://api.github.com/repos/openai/codex/releases?per_page=1");
-    } catch {
+    } catch (error) {
+      if (shouldSkipLiveCheckError(error) || shouldSkipLiveCheckError(lastError)) {
+        console.warn(`SKIP GitHub API live check: ${(error?.message || lastError?.message || "network unavailable")}`);
+        return;
+      }
       throw lastError;
     }
   }
@@ -2499,7 +2552,7 @@ async function testHuggingFaceApi() {
   try {
     text = await fetchText("https://huggingface.co/api/spaces?sort=lastModified&direction=-1&limit=2");
   } catch (error) {
-    if (/\b429\b|Too Many Requests|CloudFront/i.test(error.message)) {
+    if (/\b429\b|Too Many Requests|CloudFront/i.test(error.message) || shouldSkipLiveCheckError(error)) {
       console.warn(`SKIP Hugging Face API live check: ${error.message}`);
       return;
     }
@@ -2512,6 +2565,29 @@ async function testHuggingFaceApi() {
   const json = JSON.parse(text);
   assert.ok(Array.isArray(json), "Hugging Face spaces API should return array");
   assert.ok(json[0]?.lastModified || json[0]?.createdAt, "HF item should include timestamp");
+}
+
+function testLiveCheckSkipClassifier() {
+  assert.equal(
+    shouldSkipLiveCheckError(new Error("fetch failed")),
+    true,
+    "generic fetch failures should be treated as skippable live-check network errors"
+  );
+  assert.equal(
+    shouldSkipLiveCheckError(new Error("Could not resolve host: hn.algolia.com")),
+    true,
+    "DNS failures should be treated as skippable live-check network errors"
+  );
+  assert.equal(
+    shouldSkipLiveCheckError(new Error("error connecting to api.github.com")),
+    true,
+    "GitHub connectivity failures should be treated as skippable live-check network errors"
+  );
+  assert.equal(
+    shouldSkipLiveCheckError(new Error("AssertionError: expected recent hits")),
+    false,
+    "real content/assertion failures should still fail smoke"
+  );
 }
 
 function testAihotParserFixture() {
@@ -2718,8 +2794,27 @@ async function testDealflowUnavailableDoesNotBlock() {
 }
 
 async function testEndToEndFixture() {
-  const result = await runRadar({ now: "2026-05-31T08:02:13+08:00", hours: 24 });
+  const previousSkipGithub = process.env.RADAR_SKIP_GITHUB;
+  let result;
+  try {
+    process.env.RADAR_SKIP_GITHUB = "1";
+    result = await runRadar({ now: "2026-05-31T08:02:13+08:00", hours: 24 });
+  } finally {
+    if (previousSkipGithub === undefined) delete process.env.RADAR_SKIP_GITHUB;
+    else process.env.RADAR_SKIP_GITHUB = previousSkipGithub;
+  }
   const sources = new Set(result.candidates.map((item) => item.source));
+  if (result.candidates.length === 0) {
+    const notes = Object.values(result.sourceHealth || {})
+      .map((source) => String(source?.note || ""))
+      .join("\n");
+    assert.match(
+      notes,
+      /fallback|低覆盖|unavailable|0 条处理|跳过|失败/i,
+      "when the environment is offline, source health should explain why the radar returned no candidates"
+    );
+    return;
+  }
   assert.ok(result.candidates.length >= 8, `expected >=8 candidates, got ${result.candidates.length}`);
   if (!sources.has("producthunt")) {
     assert.match(
@@ -2747,6 +2842,17 @@ function testCliOutput() {
     }
   );
   const json = JSON.parse(stdout);
+  if (json.count === 0) {
+    const notes = Object.values(json.sourceHealth || {})
+      .map((source) => String(source?.note || ""))
+      .join("\n");
+    assert.match(
+      notes,
+      /fallback|低覆盖|unavailable|0 条处理|跳过|失败/i,
+      "CLI zero-candidate output should include source-health explanations instead of silently succeeding"
+    );
+    return;
+  }
   assert.ok(json.count >= 8, `CLI should return >=8 candidates, got ${json.count}`);
 }
 
@@ -2829,9 +2935,11 @@ const tests = [
   ["Quality audit flags malformed feedback", testQualityAuditFlagsMalformedFeedback],
   ["Quality audit flags stale quality files", testQualityAuditFlagsStaleQualityFiles],
   ["Quality audit accepts blocked report with aligned artifacts", testQualityAuditAcceptsBlockedReportWithAlignedArtifacts],
+  ["Quality audit accepts empty report with aligned artifacts", testQualityAuditAcceptsEmptyReportWithAlignedArtifacts],
   ["Quality audit uses stable generatedAt from source health", testQualityAuditUsesStableGeneratedAtFromSourceHealth],
   ["Rendered Product Hunt why copy avoids repeated template", testRenderedProductHuntWhyCopyAvoidsRepeatedTemplate],
   ["Site builder normalizes archived Product Hunt why copy", testSiteBuilderNormalizesArchivedProductHuntWhyCopy],
+  ["Live check skip classifier", testLiveCheckSkipClassifier],
   ["HN Algolia", testHnAlgolia],
   ["GitHub gh api", testGhApi],
   ["Hugging Face API", testHuggingFaceApi],

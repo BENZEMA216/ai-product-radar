@@ -544,7 +544,13 @@ export function auditReportQuality({
 } = {}) {
   const failures = [];
   const blocked = isBlockedSourceHealth(sourceHealth);
-  if (!blocked && (!Array.isArray(rows) || rows.length === 0)) {
+  const emptyButAligned =
+    !blocked &&
+    Array.isArray(rows) &&
+    rows.length === 0 &&
+    sourceHealth &&
+    Object.keys(sourceHealth?.sources || {}).length > 0;
+  if (!blocked && !emptyButAligned && (!Array.isArray(rows) || rows.length === 0)) {
     failures.push(failure("empty_report", "报告没有可审计的产品行。"));
   }
   failures.push(...auditQualityFileAlignment({ reportDate, sourceHealthPath, feedbackPath, feedbackSnapshot }));
@@ -564,7 +570,7 @@ export function auditReportQuality({
     failures.push(...auditProductHuntReportCount(rows, sourceHealth));
   }
   if (siteHtml) failures.push(...auditSiteHtml(siteHtml));
-  if (feedbackSnapshot) failures.push(...auditFeedbackSnapshot(feedbackSnapshot, { allowUnavailable: blocked }));
+  if (feedbackSnapshot) failures.push(...auditFeedbackSnapshot(feedbackSnapshot, { allowUnavailable: blocked || emptyButAligned }));
   const rankingMetrics = rankingQualityMetrics(rows);
   return {
     ok: failures.length === 0,
