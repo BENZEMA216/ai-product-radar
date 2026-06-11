@@ -1,0 +1,9 @@
+{
+  "date": "2026-06-11",
+  "generatedAt": "2026-06-11T00:12:00.000Z",
+  "status": "unavailable",
+  "error": "feedback-runner failed during local read while GitHub/network access was unavailable",
+  "feedback": [],
+  "invalidFeedback": [],
+  "reviews": []
+}

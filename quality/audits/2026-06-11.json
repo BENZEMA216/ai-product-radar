@@ -1,0 +1,22 @@
+{
+  "date": "2026-06-11",
+  "generatedAt": "2026-06-11T00:06:11.150Z",
+  "reportPath": "reports/2026-06-11-0806-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 0,
+    "top20Sources": [],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": null,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {},
+  "feedback": {
+    "status": "unavailable",
+    "count": 0,
+    "error": "feedback-runner failed during local read while GitHub/network access was unavailable"
+  },
+  "top20Sample": []
+}

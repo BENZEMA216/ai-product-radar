@@ -1,0 +1,8 @@
+{
+  "generatedAt": "2026-06-11T00:06:11.150Z",
+  "window": null,
+  "productHuntDateKeys": [],
+  "blocked": true,
+  "reason": "smoke 失败：spawnSync npm ETIMEDOUT",
+  "sources": {}
+}
