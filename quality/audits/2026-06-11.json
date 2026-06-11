@@ -1,22 +1,291 @@
 {
   "date": "2026-06-11",
-  "generatedAt": "2026-06-11T00:06:11.150Z",
-  "reportPath": "reports/2026-06-11-0806-cst.md",
+  "generatedAt": "2026-06-11T03:38:59.984Z",
+  "reportPath": "reports/2026-06-11-1138-cst.md",
   "ok": true,
   "failures": [],
   "metrics": {
-    "rows": 0,
-    "top20Sources": [],
+    "rows": 71,
+    "top20Sources": [
+      "HN Algolia",
+      "Product Hunt",
+      "YC Launch",
+      "GitHub Release"
+    ],
     "top10ModelInfra": 0,
     "genericHfSpaceTop20": 0,
-    "precisionAt10": null,
+    "precisionAt10": 1,
     "badTop10Count": 0
   },
-  "sourceHealth": {},
-  "feedback": {
-    "status": "unavailable",
-    "count": 0,
-    "error": "feedback-runner failed during local read while GitHub/network access was unavailable"
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 17,
+      "keptCount": 11,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-09；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 17 条，AI 相关候选 11 条；历史去重移除 5 条已报道 Product Hunt 信号，最终发布 6 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 2,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 21,
+      "keptCount": 21,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 13,
+      "keptCount": 13,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 5,
+      "keptCount": 5,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 24,
+      "keptCount": 24,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
   },
-  "top20Sample": []
+  "feedback": {
+    "status": "ok",
+    "count": 10,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "AgentMeter – Know what your AI coding agents cost",
+      "productKey": "https://github.com/aussiealex/agentmeter",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AgentMeter – Know what your AI coding agents cost 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 2,
+      "product": "Loom, an open-source delivery harness for coding agents",
+      "productKey": "https://github.com/valkor-ai/loom",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Loom, an open-source delivery harness for coding agents 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 3,
+      "product": "VC Boom",
+      "productKey": "https://www.producthunt.com/products/vcboom",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "VC Boom 把融资外联做成可执行 agent，适合看高价值 B2B 流程如何用 AI 承接线索、预约和转化。"
+    },
+    {
+      "rank": 4,
+      "product": "Tiny project memory for coding agents",
+      "productKey": "https://github.com/seven128/project-tiny-context-harness",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Tiny project memory for coding agents 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 5,
+      "product": "Layout QA – Visual QA for coding agents",
+      "productKey": "https://github.com/layout-app/layout-qa",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Layout QA – Visual QA for coding agents 的 HN 信号指向视觉内容和多模态工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 6,
+      "product": "Magenta Real-Time Music Generation Locally on iPhone, Without the GPU",
+      "productKey": "https://github.com/mattmireles/magenta-realtime-2-iphone",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Magenta Real-Time Music Generation Locally on iPhone, Without the GPU 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 7,
+      "product": "Kctx – A read-only Kubernetes context engine for SREs and AI Agents",
+      "productKey": "https://github.com/lucasepe/kctx",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Kctx – A read-only Kubernetes context engine for SREs and AI Agents 把 agent 的运行状态和问题定位做成产品层，适合看可观测性如何进入 AI 开发流程。"
+    },
+    {
+      "rank": 8,
+      "product": "Learn while you wait for your agents to code",
+      "productKey": "https://github.com/get-foyer/foyer",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Learn while you wait for your agents to code 的 HN 信号指向学习场景和能力验证，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 9,
+      "product": "Skillzmouse: Distributed skills and scripts for agentic coding",
+      "productKey": "https://bitbucket.org/workingsoftware/skillzmouse/src/main/readme.md",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Skillzmouse: Distributed skills and scripts for agentic coding 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 10,
+      "product": "Extend UI – open-source UI kit for modern document apps",
+      "productKey": "https://www.extend.ai/ui",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Extend UI – open-source UI kit for modern document apps 的 HN 信号指向前端界面和可用性验证，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 11,
+      "product": "Eatmydata.ai – Local-First Question-to-SQL-to-Dashboard AI",
+      "productKey": "https://eatmydata.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Eatmydata.ai – Local-First Question-to-SQL-to-Dashboard AI 的 HN 信号指向前端界面和可用性验证，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 12,
+      "product": "Kimi Work",
+      "productKey": "https://www.producthunt.com/products/kimi-ai-assistant",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Kimi Work 选择本地语音/桌面入口，适合观察低摩擦控制电脑的交互边界和隐私叙事。"
+    },
+    {
+      "rank": 13,
+      "product": "Almond",
+      "productKey": "https://www.ycombinator.com/launches/qlh-axol-a-dual-arm-robot-built-for-ai",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Almond 通过 YC Launch 呈现明确垂直场景，适合观察商业 wedge 和定价叙事。"
+    },
+    {
+      "rank": 14,
+      "product": "openai/codex 0.140.0-alpha.7",
+      "productKey": "https://github.com/openai/codex/releases/tag/rust-v0.140.0-alpha.7",
+      "source": "GitHub Release",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "openai/codex 0.140.0-alpha.7 的版本变化会影响相关 AI 工具链，适合跟踪开发者生态迭代。"
+    },
+    {
+      "rank": 15,
+      "product": "Uiverse Design",
+      "productKey": "https://www.producthunt.com/products/uiverse-io",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Uiverse Design 的 PH 描述聚焦「De-slop your AI generated websites」，适合看它如何把 AI 能力翻译成首日用户能理解的场景。"
+    },
+    {
+      "rank": 16,
+      "product": "Llmbuffer – Python library for cache-optimized LLM conversation history",
+      "productKey": "https://github.com/scottpurdy/llmbuffer",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Llmbuffer – Python library for cache-optimized LLM conversation history 的 HN 信号指向成本和商业化信号，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 17,
+      "product": "AI watched my screen for a year. Weather beat sleep",
+      "productKey": "https://donethat.ai/blog/dogfooding-donethat",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AI watched my screen for a year. Weather beat sleep 的 HN 信号指向产品形态和采用门槛，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 18,
+      "product": "Pacman AI – Generated with Claude Fable 5",
+      "productKey": "https://pacmanai.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Pacman AI – Generated with Claude Fable 5 的 HN 信号指向主流 AI 产品体验变化，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 19,
+      "product": "Athenic – Why you can't do data analysis with Claude",
+      "productKey": "https://www.athenic.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Athenic – Why you can't do data analysis with Claude 的 HN 信号指向主流 AI 产品体验变化，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 20,
+      "product": "BooBar",
+      "productKey": "https://www.producthunt.com/products/boobar",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "BooBar 选择本地语音/桌面入口，适合观察低摩擦控制电脑的交互边界和隐私叙事。"
+    }
+  ]
 }
