@@ -76,7 +76,7 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "AgentMeter – Know what your AI coding agents cost 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+      "reason": "它抓的是 agent 成本失控这个硬痛点，适合看用量、预算和异常消费能否变成开发者日常控制台。"
     },
     {
       "rank": 2,
@@ -87,7 +87,7 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Loom, an open-source delivery harness for coding agents 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+      "reason": "Loom 不是再造 coding agent，而是补交付、回放和验证层，值得看 agent 产出如何进入团队工程流程。"
     },
     {
       "rank": 3,
@@ -109,7 +109,7 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Tiny project memory for coding agents 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+      "reason": "小型项目记忆是 coding agent 的高频缺口，关键看它能否低成本解决跨会话上下文丢失。"
     },
     {
       "rank": 5,
@@ -120,7 +120,7 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Layout QA – Visual QA for coding agents 的 HN 信号指向视觉内容和多模态工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+      "reason": "Visual QA 正好补上前端 agent 最容易翻车的验收环节，值得看它是否能成为生成 UI 后的默认检查器。"
     },
     {
       "rank": 6,
@@ -131,7 +131,7 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Magenta Real-Time Music Generation Locally on iPhone, Without the GPU 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+      "reason": "本地 iPhone 实时音乐生成说明多模态能力在向端侧迁移，重点看延迟、续航和创作交互是否可用。"
     },
     {
       "rank": 7,
@@ -142,7 +142,7 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Kctx – A read-only Kubernetes context engine for SREs and AI Agents 把 agent 的运行状态和问题定位做成产品层，适合看可观测性如何进入 AI 开发流程。"
+      "reason": "只读 K8s context 给 agent 接入生产环境留了安全边界，适合观察 SRE 场景里的权限设计。"
     },
     {
       "rank": 8,
@@ -153,7 +153,7 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Learn while you wait for your agents to code 的 HN 信号指向学习场景和能力验证，更适合先看目标用户、完成度和开发者讨论质量。"
+      "reason": "它把 agent 等待时间变成学习场景，产品启发在于如何利用异步生成过程中的空档。"
     },
     {
       "rank": 9,
@@ -164,7 +164,7 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Skillzmouse: Distributed skills and scripts for agentic coding 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+      "reason": "分发 skills 和 scripts 指向 agent 能力包管理，值得看技能复用是否会成为开发者生态层。"
     },
     {
       "rank": 10,
@@ -175,7 +175,7 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Extend UI – open-source UI kit for modern document apps 的 HN 信号指向前端界面和可用性验证，更适合先看目标用户、完成度和开发者讨论质量。"
+      "reason": "文档应用 UI kit 对 AI 生成文档产品有复用价值，关键看组件是否覆盖编辑、批注和协作状态。"
     },
     {
       "rank": 11,
@@ -186,7 +186,7 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Eatmydata.ai – Local-First Question-to-SQL-to-Dashboard AI 的 HN 信号指向前端界面和可用性验证，更适合先看目标用户、完成度和开发者讨论质量。"
+      "reason": "本地优先的数据分析路线切中隐私和企业数据出域顾虑，值得看它能否把 SQL、图表和解释闭环。"
     },
     {
       "rank": 12,
@@ -197,7 +197,7 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Kimi Work 选择本地语音/桌面入口，适合观察低摩擦控制电脑的交互边界和隐私叙事。"
+      "reason": "Kimi Work 是国产 AI 桌面工作台信号，适合横向比较 ChatGPT/Copilot 桌面入口和知识工作闭环。"
     },
     {
       "rank": 13,
@@ -208,7 +208,7 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Almond 通过 YC Launch 呈现明确垂直场景，适合观察商业 wedge 和定价叙事。"
+      "reason": "双臂机器人服务 physical AI 团队，YC 信号强，重点看硬件平台是否能沉淀开发者工具链。"
     },
     {
       "rank": 14,
@@ -219,7 +219,7 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "openai/codex 0.140.0-alpha.7 的版本变化会影响相关 AI 工具链，适合跟踪开发者生态迭代。"
+      "reason": "Codex 高频迭代会直接影响本地 agent 工作流，值得跟踪权限、上下文和执行稳定性的细节变化。"
     },
     {
       "rank": 15,
@@ -230,7 +230,7 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Uiverse Design 的 PH 描述聚焦「De-slop your AI generated websites」，适合看它如何把 AI 能力翻译成首日用户能理解的场景。"
+      "reason": "它明确瞄准 AI 生成网页的质感问题，值得看设计资产社区如何介入代码生成后的修正环节。"
     },
     {
       "rank": 16,
@@ -241,7 +241,7 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Llmbuffer – Python library for cache-optimized LLM conversation history 的 HN 信号指向成本和商业化信号，更适合先看目标用户、完成度和开发者讨论质量。"
+      "reason": "对话历史缓存直接影响长任务成本和速度，适合看它能否成为 agent memory 的轻量基础件。"
     },
     {
       "rank": 17,
@@ -252,7 +252,7 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "AI watched my screen for a year. Weather beat sleep 的 HN 信号指向产品形态和采用门槛，更适合先看目标用户、完成度和开发者讨论质量。"
+      "reason": "一年屏幕观察的 dogfood 价值在于真实被动上下文数据，重点看隐私、噪音过滤和可行动洞察。"
     },
     {
       "rank": 18,
@@ -263,7 +263,7 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Pacman AI – Generated with Claude Fable 5 的 HN 信号指向主流 AI 产品体验变化，更适合先看目标用户、完成度和开发者讨论质量。"
+      "reason": "这更像模型能力展示而非强产品，但可作为观察 Fable 5 端到端生成小应用质量的样本。"
     },
     {
       "rank": 19,
@@ -274,7 +274,7 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Athenic – Why you can't do data analysis with Claude 的 HN 信号指向主流 AI 产品体验变化，更适合先看目标用户、完成度和开发者讨论质量。"
+      "reason": "它用 Claude 数据分析短板做定位，关键看是否真的提供更可靠的数据工作流而不是营销反差。"
     },
     {
       "rank": 20,
@@ -285,7 +285,7 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "BooBar 选择本地语音/桌面入口，适合观察低摩擦控制电脑的交互边界和隐私叙事。"
+      "reason": "Mac Dynamic Island 形态体现 ambient AI 入口探索，值得看轻量桌面助手是否比聊天窗口更高频。"
     }
   ]
 }
