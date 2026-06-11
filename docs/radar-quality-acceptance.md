@@ -80,6 +80,7 @@ Product Hunt 必须从“完整日榜”思路验收，不能只看当前 parser
 
 - 报告中 PH evidence 能显示 PH 日期。
 - 相邻两天正式报告不能因为 PH date-only 证据大量重复。
+- 如果某个 Pacific 完成日榜已经在前一份正式报告中处理过，后续正式日报不能继续补发该 PH 日榜剩余产品；source health 必须用 `reportKeptCount` 和 `previouslyReportedCount` 说明它们被已处理日榜过滤。
 - 如果同一 PH 产品跨日报重复，必须由 de-dupe 解释或合并证据。
 
 ## 5. Hacker News 验收

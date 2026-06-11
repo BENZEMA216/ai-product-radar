@@ -1149,8 +1149,22 @@ export function parseYcLaunchesPayload(payload, start, end) {
   return uniqueBy(candidates, (item) => item.link);
 }
 
-export function filterPreviouslyReportedProductHunt(candidates, previousLinks) {
-  return candidates.filter((item) => !(item.source === "producthunt" && previousLinks.has(item.link)));
+export function productHuntEvidenceDateKey(item) {
+  if (!isProductHuntCandidate(item)) return "";
+  const evidenceMatch = String(item?.evidence || "").match(/\bProduct Hunt(?: API)?\s+(\d{4}-\d{2}-\d{2})\b/i);
+  if (evidenceMatch) return evidenceMatch[1];
+  const observedMatch = String(item?.observedAt || "").match(/^(\d{4}-\d{2}-\d{2})\b/);
+  return observedMatch?.[1] || "";
+}
+
+export function filterPreviouslyReportedProductHunt(candidates, previousLinks, previousDateKeys = new Set()) {
+  return candidates.filter((item) => {
+    if (!isProductHuntCandidate(item)) return true;
+    if (previousLinks?.has(item.link)) return false;
+    const phDateKey = productHuntEvidenceDateKey(item);
+    if (phDateKey && previousDateKeys?.has(phDateKey)) return false;
+    return true;
+  });
 }
 
 function isProductHuntCandidate(item) {
@@ -1167,7 +1181,7 @@ export function annotateProductHuntReportFilterHealth(sourceHealth, beforeCandid
   const keptCount = Number(health.producthunt.keptCount || discoveredKeptCount);
   const note = clean(health.producthunt.note);
   const suffix = previouslyReportedCount
-    ? `；历史去重移除 ${previouslyReportedCount} 条已报道 Product Hunt 信号，最终发布 ${reportKeptCount} 条。`
+    ? `；历史去重移除 ${previouslyReportedCount} 条已报道或已处理日榜 Product Hunt 信号，最终发布 ${reportKeptCount} 条。`
     : `；历史去重后最终发布 ${reportKeptCount} 条 Product Hunt 信号。`;
   health.producthunt = {
     ...health.producthunt,
@@ -1175,7 +1189,7 @@ export function annotateProductHuntReportFilterHealth(sourceHealth, beforeCandid
     discoveredKeptCount,
     reportKeptCount,
     previouslyReportedCount,
-    note: note.includes("历史去重") ? note : `${note}${suffix}`
+    note: note.includes("最终发布") ? note : `${note}${suffix}`
   };
   return health;
 }

@@ -416,6 +416,34 @@ function testProductHuntHistoryFilter() {
   ]);
 }
 
+function testProductHuntHistoryFilterBlocksProcessedDailyDate() {
+  const filtered = filterPreviouslyReportedProductHunt(
+    [
+      {
+        source: "producthunt",
+        link: "https://www.producthunt.com/products/vcboom",
+        evidence: "[Product Hunt 2026-06-09](https://www.producthunt.com/leaderboard/daily/2026/6/9/all)"
+      },
+      {
+        source: "producthunt",
+        link: "https://www.producthunt.com/products/fresh-ai",
+        evidence: "[Product Hunt 2026-06-10](https://www.producthunt.com/leaderboard/daily/2026/6/10/all)"
+      },
+      {
+        source: "hackernews",
+        link: "https://news.ycombinator.com/item?id=1",
+        evidence: "[HN Algolia 2026-06-10T12:00:00Z](https://news.ycombinator.com/item?id=1)"
+      }
+    ],
+    new Set(),
+    new Set(["2026-06-09"])
+  );
+  assert.deepEqual(filtered.map((item) => item.link), [
+    "https://www.producthunt.com/products/fresh-ai",
+    "https://news.ycombinator.com/item?id=1"
+  ]);
+}
+
 function testProductHuntHistoryFilterAnnotatesSourceHealth() {
   const before = [
     { source: "producthunt", link: "https://www.producthunt.com/products/databox" },
@@ -2734,6 +2762,7 @@ const tests = [
   ["Feedback review issue becomes attachable review", testFeedbackReviewIssueBecomesAttachableReview],
   ["Feedback snapshot tracks malformed records", testFeedbackSnapshotTracksMalformedRecords],
   ["Product Hunt history filter", testProductHuntHistoryFilter],
+  ["Product Hunt history filter blocks processed daily date", testProductHuntHistoryFilterBlocksProcessedDailyDate],
   ["Product Hunt history filter annotates source health", testProductHuntHistoryFilterAnnotatesSourceHealth],
   ["Product Hunt history filter annotates all duplicates", testProductHuntHistoryFilterAnnotatesAllDuplicates],
   ["Site builder helpers", testSiteBuilderHelpers],

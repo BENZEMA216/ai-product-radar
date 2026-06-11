@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import {
   annotateProductHuntReportFilterHealth,
   filterPreviouslyReportedProductHunt,
+  productHuntEvidenceDateKey,
   renderBlockedReport,
   renderMarkdownTable,
   reportPathForNow,
@@ -124,13 +125,13 @@ function snapshotFeedback(reportPath, env, outDir, reviewDir) {
 }
 
 // Product Hunt exposes date-level launch evidence, so adjacent daily windows can overlap.
-function previousProductHuntLinks(reportDir, currentReportPath) {
-  const links = new Set();
+function previousProductHuntHistory(reportDir, currentReportPath) {
+  const history = { links: new Set(), dateKeys: new Set() };
   let names = [];
   try {
     names = readdirSync(reportDir);
   } catch {
-    return links;
+    return history;
   }
 
   for (const name of names.filter((item) => REPORT_PATTERN.test(item)).sort()) {
@@ -138,10 +139,13 @@ function previousProductHuntLinks(reportDir, currentReportPath) {
     if (path === currentReportPath) continue;
     const rows = parseReportMarkdown(readFileSync(path, "utf8"), path);
     for (const row of rows) {
-      if (row.source === "Product Hunt" && row.link) links.add(row.link);
+      if (row.source !== "Product Hunt") continue;
+      if (row.link) history.links.add(row.link);
+      const dateKey = productHuntEvidenceDateKey(row);
+      if (dateKey) history.dateKeys.add(dateKey);
     }
   }
-  return links;
+  return history;
 }
 
 async function main() {
@@ -173,8 +177,8 @@ async function main() {
 
   snapshotFeedback(reportPath, cleanEnv, feedbackDir, reviewBaseDir(args.reportDir));
   const result = await runRadar({ now, hours: args.hours, feedbackDir });
-  const previousPhLinks = previousProductHuntLinks(args.reportDir, reportPath);
-  const candidates = filterPreviouslyReportedProductHunt(result.candidates, previousPhLinks);
+  const previousPhHistory = previousProductHuntHistory(args.reportDir, reportPath);
+  const candidates = filterPreviouslyReportedProductHunt(result.candidates, previousPhHistory.links, previousPhHistory.dateKeys);
   const sourceHealth = annotateProductHuntReportFilterHealth(result.sourceHealth, result.candidates, candidates);
   writeJson(sourceHealthPathForNow(now, qualityBaseDir(args.reportDir, "source-health")), {
     generatedAt: now.toISOString(),

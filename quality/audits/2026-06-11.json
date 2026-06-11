@@ -5,10 +5,9 @@
   "ok": true,
   "failures": [],
   "metrics": {
-    "rows": 71,
+    "rows": 65,
     "top20Sources": [
       "HN Algolia",
-      "Product Hunt",
       "YC Launch",
       "GitHub Release"
     ],
@@ -22,7 +21,7 @@
       "status": "fallback",
       "rawCount": 17,
       "keptCount": 11,
-      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-09；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 17 条，AI 相关候选 11 条；历史去重移除 5 条已报道 Product Hunt 信号，最终发布 6 条。"
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-09；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 17 条，AI 相关候选 11 条；历史去重移除 11 条已报道或已处理日榜 Product Hunt 信号，最终发布 0 条。"
     },
     "yc_launch": {
       "status": "ok",
@@ -91,17 +90,6 @@
     },
     {
       "rank": 3,
-      "product": "VC Boom",
-      "productKey": "https://www.producthunt.com/products/vcboom",
-      "source": "Product Hunt",
-      "category": "product",
-      "qualityLabel": "keep",
-      "pmScore": 5,
-      "rankingIssue": null,
-      "reason": "VC Boom 把融资外联做成可执行 agent，适合看高价值 B2B 流程如何用 AI 承接线索、预约和转化。"
-    },
-    {
-      "rank": 4,
       "product": "Tiny project memory for coding agents",
       "productKey": "https://github.com/seven128/project-tiny-context-harness",
       "source": "HN Algolia",
@@ -112,7 +100,7 @@
       "reason": "小型项目记忆是 coding agent 的高频缺口，关键看它能否低成本解决跨会话上下文丢失。"
     },
     {
-      "rank": 5,
+      "rank": 4,
       "product": "Layout QA – Visual QA for coding agents",
       "productKey": "https://github.com/layout-app/layout-qa",
       "source": "HN Algolia",
@@ -123,7 +111,7 @@
       "reason": "Visual QA 正好补上前端 agent 最容易翻车的验收环节，值得看它是否能成为生成 UI 后的默认检查器。"
     },
     {
-      "rank": 6,
+      "rank": 5,
       "product": "Magenta Real-Time Music Generation Locally on iPhone, Without the GPU",
       "productKey": "https://github.com/mattmireles/magenta-realtime-2-iphone",
       "source": "HN Algolia",
@@ -134,7 +122,7 @@
       "reason": "本地 iPhone 实时音乐生成说明多模态能力在向端侧迁移，重点看延迟、续航和创作交互是否可用。"
     },
     {
-      "rank": 7,
+      "rank": 6,
       "product": "Kctx – A read-only Kubernetes context engine for SREs and AI Agents",
       "productKey": "https://github.com/lucasepe/kctx",
       "source": "HN Algolia",
@@ -145,7 +133,7 @@
       "reason": "只读 K8s context 给 agent 接入生产环境留了安全边界，适合观察 SRE 场景里的权限设计。"
     },
     {
-      "rank": 8,
+      "rank": 7,
       "product": "Learn while you wait for your agents to code",
       "productKey": "https://github.com/get-foyer/foyer",
       "source": "HN Algolia",
@@ -156,7 +144,7 @@
       "reason": "它把 agent 等待时间变成学习场景，产品启发在于如何利用异步生成过程中的空档。"
     },
     {
-      "rank": 9,
+      "rank": 8,
       "product": "Skillzmouse: Distributed skills and scripts for agentic coding",
       "productKey": "https://bitbucket.org/workingsoftware/skillzmouse/src/main/readme.md",
       "source": "HN Algolia",
@@ -167,7 +155,7 @@
       "reason": "分发 skills 和 scripts 指向 agent 能力包管理，值得看技能复用是否会成为开发者生态层。"
     },
     {
-      "rank": 10,
+      "rank": 9,
       "product": "Extend UI – open-source UI kit for modern document apps",
       "productKey": "https://www.extend.ai/ui",
       "source": "HN Algolia",
@@ -178,7 +166,7 @@
       "reason": "文档应用 UI kit 对 AI 生成文档产品有复用价值，关键看组件是否覆盖编辑、批注和协作状态。"
     },
     {
-      "rank": 11,
+      "rank": 10,
       "product": "Eatmydata.ai – Local-First Question-to-SQL-to-Dashboard AI",
       "productKey": "https://eatmydata.ai",
       "source": "HN Algolia",
@@ -189,18 +177,7 @@
       "reason": "本地优先的数据分析路线切中隐私和企业数据出域顾虑，值得看它能否把 SQL、图表和解释闭环。"
     },
     {
-      "rank": 12,
-      "product": "Kimi Work",
-      "productKey": "https://www.producthunt.com/products/kimi-ai-assistant",
-      "source": "Product Hunt",
-      "category": "product",
-      "qualityLabel": "keep",
-      "pmScore": 5,
-      "rankingIssue": null,
-      "reason": "Kimi Work 是国产 AI 桌面工作台信号，适合横向比较 ChatGPT/Copilot 桌面入口和知识工作闭环。"
-    },
-    {
-      "rank": 13,
+      "rank": 11,
       "product": "Almond",
       "productKey": "https://www.ycombinator.com/launches/qlh-axol-a-dual-arm-robot-built-for-ai",
       "source": "YC Launch",
@@ -211,7 +188,7 @@
       "reason": "双臂机器人服务 physical AI 团队，YC 信号强，重点看硬件平台是否能沉淀开发者工具链。"
     },
     {
-      "rank": 14,
+      "rank": 12,
       "product": "openai/codex 0.140.0-alpha.7",
       "productKey": "https://github.com/openai/codex/releases/tag/rust-v0.140.0-alpha.7",
       "source": "GitHub Release",
@@ -222,18 +199,7 @@
       "reason": "Codex 高频迭代会直接影响本地 agent 工作流，值得跟踪权限、上下文和执行稳定性的细节变化。"
     },
     {
-      "rank": 15,
-      "product": "Uiverse Design",
-      "productKey": "https://www.producthunt.com/products/uiverse-io",
-      "source": "Product Hunt",
-      "category": "product",
-      "qualityLabel": "keep",
-      "pmScore": 5,
-      "rankingIssue": null,
-      "reason": "它明确瞄准 AI 生成网页的质感问题，值得看设计资产社区如何介入代码生成后的修正环节。"
-    },
-    {
-      "rank": 16,
+      "rank": 13,
       "product": "Llmbuffer – Python library for cache-optimized LLM conversation history",
       "productKey": "https://github.com/scottpurdy/llmbuffer",
       "source": "HN Algolia",
@@ -244,7 +210,7 @@
       "reason": "对话历史缓存直接影响长任务成本和速度，适合看它能否成为 agent memory 的轻量基础件。"
     },
     {
-      "rank": 17,
+      "rank": 14,
       "product": "AI watched my screen for a year. Weather beat sleep",
       "productKey": "https://donethat.ai/blog/dogfooding-donethat",
       "source": "HN Algolia",
@@ -255,7 +221,7 @@
       "reason": "一年屏幕观察的 dogfood 价值在于真实被动上下文数据，重点看隐私、噪音过滤和可行动洞察。"
     },
     {
-      "rank": 18,
+      "rank": 15,
       "product": "Pacman AI – Generated with Claude Fable 5",
       "productKey": "https://pacmanai.com",
       "source": "HN Algolia",
@@ -266,7 +232,7 @@
       "reason": "这更像模型能力展示而非强产品，但可作为观察 Fable 5 端到端生成小应用质量的样本。"
     },
     {
-      "rank": 19,
+      "rank": 16,
       "product": "Athenic – Why you can't do data analysis with Claude",
       "productKey": "https://www.athenic.com",
       "source": "HN Algolia",
@@ -277,15 +243,48 @@
       "reason": "它用 Claude 数据分析短板做定位，关键看是否真的提供更可靠的数据工作流而不是营销反差。"
     },
     {
-      "rank": 20,
-      "product": "BooBar",
-      "productKey": "https://www.producthunt.com/products/boobar",
-      "source": "Product Hunt",
+      "rank": 17,
+      "product": "Headroom – Claude Code usage limits, live in the macOS menu bar",
+      "productKey": "https://headroom.walls.sh",
+      "source": "HN Algolia",
       "category": "product",
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Mac Dynamic Island 形态体现 ambient AI 入口探索，值得看轻量桌面助手是否比聊天窗口更高频。"
+      "reason": "Claude Code 额度监控是很具体的高频痛点，适合看菜单栏小工具如何服务重度 agent 用户。"
+    },
+    {
+      "rank": 18,
+      "product": "AuthAI, an open-source relay for user-authorized AI sessions",
+      "productKey": "https://github.com/authai-io/authai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用户授权会话 relay 指向 agent 代操作的权限层，价值在于能否把 OAuth、审计和撤销做清楚。"
+    },
+    {
+      "rank": 19,
+      "product": "Codacy Skills for Claude, Codex, Copilot, etc.",
+      "productKey": "https://github.com/codacy/codacy-cloud-cli",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Codacy 把代码质量能力包装成跨 agent skills，适合看企业工具如何从插件迁移到 agent 能力层。"
+    },
+    {
+      "rank": 20,
+      "product": "Inkfox – One workspace for AI image gen, editing, and photo-to-video",
+      "productKey": "https://inkfox.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "多模态创作工作台的价值在串起生成、编辑和视频化，重点看流程整合是否减少工具切换。"
     }
   ]
 }

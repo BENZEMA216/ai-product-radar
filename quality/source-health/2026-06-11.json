@@ -12,10 +12,10 @@
       "status": "fallback",
       "rawCount": 17,
       "keptCount": 11,
-      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-09；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 17 条，AI 相关候选 11 条；历史去重移除 5 条已报道 Product Hunt 信号，最终发布 6 条。",
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-09；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 17 条，AI 相关候选 11 条；历史去重移除 11 条已报道或已处理日榜 Product Hunt 信号，最终发布 0 条。",
       "discoveredKeptCount": 11,
-      "reportKeptCount": 6,
-      "previouslyReportedCount": 5
+      "reportKeptCount": 0,
+      "previouslyReportedCount": 11
     },
     "yc_launch": {
       "status": "ok",
