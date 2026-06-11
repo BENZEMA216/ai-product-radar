@@ -497,8 +497,7 @@ function renderFeedbackLinks(item) {
     ["keep", "值得看"],
     ["drop", "不该收录"],
     ["downrank", "应该降权"],
-    ["review", "写点评"],
-    ["missing", "漏掉产品"]
+    ["review", "写点评"]
   ]
     .map(
       ([action, label]) =>

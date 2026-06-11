@@ -17,8 +17,7 @@ const REQUIRED_SITE_MARKERS = [
   "Models & Infra",
   "来源健康",
   "radar-feedback",
-  "feedback-link",
-  "漏掉产品"
+  "feedback-link"
 ];
 const HARD_NEGATIVE_PATTERNS = [
   /\bcodetyper\b/i,
