@@ -468,8 +468,7 @@ function feedbackIssueUrl(item, action) {
     keep: "值得看",
     drop: "不该收录",
     downrank: "应该降权",
-    review: "写点评",
-    missing: "漏掉产品"
+    review: "写点评"
   }[action] || action;
   const title = `[Radar Feedback] ${actionLabel}: ${item.product}`;
   const body = [
@@ -486,7 +485,7 @@ function feedbackIssueUrl(item, action) {
     "",
     "## 你的补充",
     "",
-    action === "review" ? "我的点评：" : action === "missing" ? "漏掉的产品链接/名称：" : "原因："
+    action === "review" ? "我的点评：" : "原因："
   ].join("\n");
   const params = new URLSearchParams({ title, body, labels });
   return `${FEEDBACK_REPO}/issues/new?${params.toString()}`;

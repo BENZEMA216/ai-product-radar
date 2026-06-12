@@ -9,7 +9,7 @@ const REPORT_PATTERN = /^\d{4}-\d{2}-\d{2}-\d{4}-cst\.md$/;
 const JSON_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}\.json$/;
 const REQUIRED_SOURCE_HEALTH = ["producthunt", "yc_launch", "hackernews", "github", "huggingface", "aihot", "xhs_dealflow"];
 const REQUIRED_FEEDBACK_FIELDS = ["action", "reportDate", "signalKey", "productKey", "source"];
-const VALID_FEEDBACK_ACTIONS = new Set(["keep", "drop", "downrank", "review", "missing"]);
+const VALID_FEEDBACK_ACTIONS = new Set(["keep", "drop", "downrank", "review"]);
 const REQUIRED_SITE_MARKERS = [
   "window.__RADAR_DATA__",
   "Priority View",

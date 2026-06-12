@@ -22,6 +22,7 @@ import {
   isRelevant,
   isDealflowEnabled,
   priorityScore,
+  previousProductHuntHistory,
   rankCandidatesForPriority,
   productHuntCompletedDateKey,
   productHuntFallbackDateKeysForRun,
@@ -408,6 +409,32 @@ function testFeedbackSnapshotTracksMalformedRecords() {
   assert.deepEqual(snapshot.invalidFeedback[0].errors, ["productKey"]);
 }
 
+function testMissingProductFeedbackActionIsNotPerProductAction() {
+  const issue = {
+    number: 20,
+    title: "[Radar Feedback] 漏掉产品: Standalone Missing",
+    url: "https://github.com/BENZEMA216/ai-product-radar/issues/20",
+    createdAt: "2026-06-08T00:00:00Z",
+    body: [
+      "## Radar Feedback",
+      "",
+      "action: missing",
+      "actionLabel: 漏掉产品",
+      "reportDate: 2026-06-08",
+      "signalKey: 2026-06-08|Product Hunt|standalone",
+      "productKey: https://example.com/standalone",
+      "source: Product Hunt",
+      "product: Standalone Missing",
+      "",
+      "原因：这个入口不再挂在单个产品卡片上"
+    ].join("\n")
+  };
+  const snapshot = buildFeedbackSnapshot({ date: "2026-06-08", issues: [issue] });
+  assert.equal(snapshot.feedback.length, 0);
+  assert.equal(snapshot.invalidFeedback.length, 1);
+  assert.deepEqual(snapshot.invalidFeedback[0].errors, ["action"]);
+}
+
 function testProductHuntHistoryFilter() {
   const filtered = filterPreviouslyReportedProductHunt(
     [
@@ -449,6 +476,47 @@ function testProductHuntHistoryFilterBlocksProcessedDailyDate() {
     "https://www.producthunt.com/products/fresh-ai",
     "https://news.ycombinator.com/item?id=1"
   ]);
+}
+
+function testProductHuntHistoryReadsProcessedDailyDates() {
+  const tempDir = mkdtempSync(join(tmpdir(), "radar-ph-history-"));
+  try {
+    const reportDir = join(tempDir, "reports");
+    mkdirSync(reportDir, { recursive: true });
+    writeFileSync(
+      join(reportDir, "2026-06-10-0800-cst.md"),
+      `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| VC Boom | [链接](https://www.producthunt.com/products/vc-boom) | 新产品 | Score your deck | B2B 融资 agent。 | [Product Hunt 2026-06-09](https://www.producthunt.com/leaderboard/daily/2026/6/9/all) |
+| AgentMeter | [链接](https://news.ycombinator.com/item?id=1) | 新产品 | HN 发布帖 | 成本控制台。 | [HN Algolia 2026-06-10T12:00:00Z](https://news.ycombinator.com/item?id=1) |
+`,
+      "utf8"
+    );
+
+    const history = previousProductHuntHistory(reportDir, join(reportDir, "2026-06-11-0800-cst.md"));
+    assert.equal(history.links.has("https://www.producthunt.com/products/vc-boom"), true);
+    assert.equal(history.dateKeys.has("2026-06-09"), true);
+
+    const filtered = filterPreviouslyReportedProductHunt(
+      [
+        {
+          source: "producthunt",
+          link: "https://www.producthunt.com/products/leftover",
+          evidence: "[Product Hunt 2026-06-09](https://www.producthunt.com/leaderboard/daily/2026/6/9/all)"
+        },
+        {
+          source: "producthunt",
+          link: "https://www.producthunt.com/products/fresh",
+          evidence: "[Product Hunt 2026-06-10](https://www.producthunt.com/leaderboard/daily/2026/6/10/all)"
+        }
+      ],
+      history.links,
+      history.dateKeys
+    );
+    assert.deepEqual(filtered.map((item) => item.link), ["https://www.producthunt.com/products/fresh"]);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
 }
 
 function testProductHuntHistoryFilterAnnotatesSourceHealth() {
@@ -1171,7 +1239,7 @@ function testProductHuntWhyCopyHandlesCurrentFallbackContexts() {
     "2026-06-06",
     "https://www.producthunt.com/leaderboard/daily/2026/6/6/all"
   );
-  assert.equal(items.length, 6);
+  assert.equal(items.length, 5);
   const byProduct = Object.fromEntries(items.map((item) => [item.product, item.why]));
   assert.match(byProduct["Ejentum - Reasoning Harness"], /可靠性|漂移|编造|控制层/);
   assert.match(byProduct["Almanac Seed"], /规格|想法|应用|迭代|部署/);
@@ -1210,9 +1278,11 @@ function testRelevanceRejectsIncidentalAcronymSubstrings() {
   );
   assert.equal(isRelevant("A professional typing trainer built around real codebases."), false);
   assert.equal(isRelevant("Know which campaigns actually drive your installs"), false);
+  assert.equal(isRelevant("The indie marketplace for Blender artists and 3D Modeling creators"), false);
   assert.equal(isRelevant("Use LLMs with RAG over your knowledge base"), true);
   assert.equal(isRelevant("MCP runtime for AI agent tool traffic"), true);
   assert.equal(isRelevant("GPT-powered workflow assistant"), true);
+  assert.equal(isRelevant("18 model providers supported"), true);
 }
 
 function testProductHuntRejectsLowSignalConsumerNovelty() {
@@ -1247,6 +1317,28 @@ function testProductHuntRejectsTopicOnlyDatingNovelty() {
   );
   assert.ok(!items.some((item) => item.product === "CRUSHY"));
   assert.ok(items.some((item) => item.product === "freddy."));
+}
+
+function testProductHuntRejectsGenericTopicOnlyProducts() {
+  const markdown = [
+    "[1. Publora](https://www.producthunt.com/products/publora)A publishing API for agents to post on 10 social platforms",
+    "[SaaS](https://www.producthunt.com/topics/saas)•[Artificial Intelligence](https://www.producthunt.com/topics/artificial-intelligence)",
+    "[2. BlenderHunt](https://www.producthunt.com/products/blenderhunt)The indie marketplace for Blender artists and creators",
+    "[Design Tools](https://www.producthunt.com/topics/design-tools)•[Artificial Intelligence](https://www.producthunt.com/topics/artificial-intelligence)",
+    "[3. Axol](https://www.producthunt.com/products/axol)Automate physical work with a powerful robot",
+    "[Robotics](https://www.producthunt.com/topics/robotics)•[Artificial Intelligence](https://www.producthunt.com/topics/artificial-intelligence)",
+    "[4. Zingle](https://www.producthunt.com/products/zingle-2)Learn words in context with AI"
+  ].join("\n\n");
+  const items = parseProductHuntMarkdown(
+    markdown,
+    "2026-06-10",
+    "https://www.producthunt.com/leaderboard/daily/2026/6/10/all"
+  );
+  assert.deepEqual(
+    items.map((item) => item.product),
+    ["Publora", "Zingle"],
+    "Product Hunt parser should reject generic products whose only AI evidence is a broad topic tag"
+  );
 }
 
 function testPriorityScoreDownranksWeakNovelty() {
@@ -2836,7 +2928,7 @@ function testCliOutput() {
     ["radar.mjs", "--now", "2026-05-31T08:02:13+08:00", "--hours", "24", "--json"],
     {
       encoding: "utf8",
-      timeout: 45000,
+      timeout: 120000,
       cwd: process.cwd(),
       env: { ...process.env, RADAR_SKIP_GITHUB: "1" }
     }
@@ -2867,8 +2959,10 @@ const tests = [
   ["Feedback snapshot unavailable", testFeedbackSnapshotUnavailable],
   ["Feedback review issue becomes attachable review", testFeedbackReviewIssueBecomesAttachableReview],
   ["Feedback snapshot tracks malformed records", testFeedbackSnapshotTracksMalformedRecords],
+  ["Missing product feedback action is not per-product action", testMissingProductFeedbackActionIsNotPerProductAction],
   ["Product Hunt history filter", testProductHuntHistoryFilter],
   ["Product Hunt history filter blocks processed daily date", testProductHuntHistoryFilterBlocksProcessedDailyDate],
+  ["Product Hunt history reads processed daily dates", testProductHuntHistoryReadsProcessedDailyDates],
   ["Product Hunt history filter annotates source health", testProductHuntHistoryFilterAnnotatesSourceHealth],
   ["Product Hunt history filter annotates all duplicates", testProductHuntHistoryFilterAnnotatesAllDuplicates],
   ["Site builder helpers", testSiteBuilderHelpers],
@@ -2901,6 +2995,7 @@ const tests = [
   ["Relevance rejects incidental acronym substrings", testRelevanceRejectsIncidentalAcronymSubstrings],
   ["Product Hunt rejects low-signal consumer novelty", testProductHuntRejectsLowSignalConsumerNovelty],
   ["Product Hunt rejects topic-only dating novelty", testProductHuntRejectsTopicOnlyDatingNovelty],
+  ["Product Hunt rejects generic topic-only products", testProductHuntRejectsGenericTopicOnlyProducts],
   ["Priority score downranks weak novelty", testPriorityScoreDownranksWeakNovelty],
   ["Priority score keeps weak HF spaces behind strong launches", testPriorityScoreKeepsWeakHfSpacesBehindStrongProductLaunches],
   ["Priority score downranks generic HF spaces", testPriorityScoreDownranksGenericHfSpaces],

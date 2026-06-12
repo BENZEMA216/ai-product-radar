@@ -10,6 +10,7 @@ const PACIFIC = "America/Los_Angeles";
 const USER_AGENT =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 AIProductRadar/0.1";
 const REPORT_DIR = "reports";
+const REPORT_PATTERN = /^\d{4}-\d{2}-\d{2}-\d{4}-cst\.md$/;
 
 function looksLikeLocalProxy(value) {
   if (!value) return false;
@@ -237,12 +238,14 @@ const AIHOT_DROP_KEYWORDS = [
 ];
 
 function parseArgs(argv) {
-  const args = { hours: 24, json: false };
+  const args = { hours: 24, json: false, reportDir: REPORT_DIR, historyFilter: true };
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
     if (arg === "--json") args.json = true;
     if (arg === "--hours") args.hours = Number(argv[++i]);
     if (arg === "--now") args.now = argv[++i];
+    if (arg === "--report-dir") args.reportDir = argv[++i];
+    if (arg === "--no-history-filter") args.historyFilter = false;
   }
   return args;
 }
@@ -392,7 +395,7 @@ function isAihotNonProductSignal(item) {
 
 function keywordMatches(lowerText, keyword) {
   const lowerKeyword = keyword.toLowerCase();
-  if (["ai", "rag", "llm", "mcp", "gpt", "xai"].includes(lowerKeyword)) {
+  if (["ai", "rag", "llm", "mcp", "gpt", "xai", "model"].includes(lowerKeyword)) {
     return new RegExp(`(^|[^a-z0-9])${lowerKeyword}([^a-z0-9]|$)`, "i").test(lowerText);
   }
   return lowerText.includes(lowerKeyword);
@@ -810,7 +813,7 @@ function productHuntCandidate({
   rawTopics = [],
   relevanceText
 }) {
-  const text = relevanceText || `${rawName} ${rawDescription} ${rawTopics.join(" ")}`;
+  const text = relevanceText || `${rawName} ${rawDescription}`;
   if (!isRelevant(text)) return null;
   if (isLowSignalProductHuntConsumerNovelty(text)) return null;
   const product = clean(rawName);
@@ -1165,6 +1168,99 @@ export function filterPreviouslyReportedProductHunt(candidates, previousLinks, p
     if (phDateKey && previousDateKeys?.has(phDateKey)) return false;
     return true;
   });
+}
+
+function splitReportRow(line) {
+  const cells = [];
+  let current = "";
+  const text = String(line || "").trim();
+  for (let i = 0; i < text.length; i += 1) {
+    const char = text[i];
+    if (char === "|" && text[i - 1] !== "\\") {
+      cells.push(current.trim());
+      current = "";
+    } else {
+      current += char;
+    }
+  }
+  cells.push(current.trim());
+  return cells.filter((cell, index, all) => !(cell === "" && (index === 0 || index === all.length - 1)));
+}
+
+function markdownUrl(value) {
+  const match = String(value || "").match(/\[[^\]]+\]\((https?:\/\/[^)]+)\)/);
+  return match ? match[1] : cleanKey(value);
+}
+
+function sourceFromEvidence(value) {
+  const text = cleanKey(value);
+  const label = text.match(/\[([^\]]+)\]/)?.[1] || text;
+  return cleanKey(label)
+    .replace(/\s+\d{4}-\d{2}-\d{2}.*$/, "")
+    .replace(/\s+\d{4}$/, "");
+}
+
+function productHuntRowsFromReport(markdown) {
+  const rows = [];
+  for (const line of String(markdown || "").split("\n")) {
+    if (!line.trim().startsWith("|")) continue;
+    if (/^\|\s*-+\s*\|/.test(line) || /\|\s*产品名\s*\|/.test(line)) continue;
+    const cells = splitReportRow(line);
+    if (cells.length < 6) continue;
+    const evidence = cleanKey(cells[5]);
+    const source = sourceFromEvidence(evidence);
+    if (!isProductHuntCandidate({ source })) continue;
+    rows.push({
+      source: "producthunt",
+      link: markdownUrl(cells[1]),
+      evidence
+    });
+  }
+  return rows;
+}
+
+// Product Hunt launch evidence is date-level. If one Pacific daily board already
+// appeared in a report, do not republish leftovers from that board the next day.
+export function previousProductHuntHistory(reportDir = REPORT_DIR, currentReportPath = "") {
+  const history = { links: new Set(), dateKeys: new Set() };
+  let names = [];
+  try {
+    names = readdirSync(reportDir);
+  } catch {
+    return history;
+  }
+
+  for (const name of names.filter((item) => REPORT_PATTERN.test(item)).sort()) {
+    const path = join(reportDir, name);
+    if (path === currentReportPath) continue;
+    let markdown = "";
+    try {
+      markdown = readFileSync(path, "utf8");
+    } catch {
+      continue;
+    }
+    for (const row of productHuntRowsFromReport(markdown)) {
+      if (row.link) history.links.add(row.link);
+      const dateKey = productHuntEvidenceDateKey(row);
+      if (dateKey) history.dateKeys.add(dateKey);
+    }
+  }
+  return history;
+}
+
+function applyHistoryFilterToResult(result, reportDir = REPORT_DIR) {
+  const currentReportPath = reportPathForNow(result.now, reportDir);
+  const previousPhHistory = previousProductHuntHistory(reportDir, currentReportPath);
+  const candidates = filterPreviouslyReportedProductHunt(
+    result.candidates,
+    previousPhHistory.links,
+    previousPhHistory.dateKeys
+  );
+  return {
+    ...result,
+    sourceHealth: annotateProductHuntReportFilterHealth(result.sourceHealth, result.candidates, candidates),
+    candidates
+  };
 }
 
 function isProductHuntCandidate(item) {
@@ -2349,7 +2445,8 @@ export function renderBlockedReport(reason) {
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
-  const result = await runRadar(args);
+  let result = await runRadar(args);
+  if (args.historyFilter) result = applyHistoryFilterToResult(result, args.reportDir);
   if (args.json) {
     console.log(
       JSON.stringify(

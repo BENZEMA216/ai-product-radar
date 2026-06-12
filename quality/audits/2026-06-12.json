@@ -1,23 +1,27 @@
 {
   "date": "2026-06-12",
-  "generatedAt": "2026-06-11T16:12:43.670Z",
-  "reportPath": "reports/2026-06-12-0012-cst.md",
+  "generatedAt": "2026-06-12T04:06:19.837Z",
+  "reportPath": "reports/2026-06-12-1206-cst.md",
   "ok": true,
   "failures": [],
   "metrics": {
-    "rows": 0,
-    "top20Sources": [],
+    "rows": 68,
+    "top20Sources": [
+      "HN Algolia",
+      "Product Hunt",
+      "GitHub Release"
+    ],
     "top10ModelInfra": 0,
     "genericHfSpaceTop20": 0,
-    "precisionAt10": null,
+    "precisionAt10": 1,
     "badTop10Count": 0
   },
   "sourceHealth": {
     "producthunt": {
-      "status": "empty",
-      "rawCount": 0,
-      "keptCount": 0,
-      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-10；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 0 条，AI 相关候选 0 条；fallback 低覆盖时扩展检查 2026-06-09，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 0 条 Product Hunt 信号。"
+      "status": "fallback",
+      "rawCount": 17,
+      "keptCount": 10,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-10；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 17 条，AI 相关候选 10 条；历史去重后最终发布 10 条 Product Hunt 信号。"
     },
     "yc_launch": {
       "status": "empty",
@@ -26,16 +30,16 @@
       "note": "YC Launch 本窗口无候选或来源为空。"
     },
     "hackernews": {
-      "status": "empty",
-      "rawCount": 0,
-      "keptCount": 0,
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
       "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
     },
     "github": {
-      "status": "skipped",
-      "rawCount": 0,
-      "keptCount": 0,
-      "note": "RADAR_SKIP_GITHUB 已设置，GitHub Release 本次跳过。"
+      "status": "ok",
+      "rawCount": 12,
+      "keptCount": 12,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
     },
     "huggingface": {
       "status": "empty",
@@ -44,9 +48,9 @@
       "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
     },
     "aihot": {
-      "status": "empty",
-      "rawCount": 0,
-      "keptCount": 0,
+      "status": "ok",
+      "rawCount": 26,
+      "keptCount": 26,
       "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
     },
     "xhs_dealflow": {
@@ -57,9 +61,230 @@
     }
   },
   "feedback": {
-    "status": "unavailable",
-    "count": 0,
-    "error": "error connecting to api.github.com\ncheck your internet connection or https://githubstatus.com; error connecting to api.github.com\ncheck your internet connection or https://githubstatus.com"
+    "status": "ok",
+    "count": 10,
+    "error": ""
   },
-  "top20Sample": []
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Mimirs – persistent local memory for AI coding agents (MCP)",
+      "productKey": "https://github.com/thewinci/mimirs",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Mimirs – persistent local memory for AI coding agents (MCP) 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 2,
+      "product": "Publora",
+      "productKey": "https://www.producthunt.com/products/publora",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Publora 的 PH 描述聚焦「A publishing API for agents to post on 10 s...」，适合看它如何把 AI 能力翻译成首日用户能理解的场景。"
+    },
+    {
+      "rank": 3,
+      "product": "appium/appium-mcp v1.85.1",
+      "productKey": "https://github.com/appium/appium-mcp/releases/tag/v1.85.1",
+      "source": "GitHub Release",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "appium/appium-mcp v1.85.1 的版本变化会影响相关 AI 工具链，适合跟踪开发者生态迭代。"
+    },
+    {
+      "rank": 4,
+      "product": "openai/openai-agents-python v0.17.5",
+      "productKey": "https://github.com/openai/openai-agents-python/releases/tag/v0.17.5",
+      "source": "GitHub Release",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "openai/openai-agents-python v0.17.5 的版本变化会影响相关 AI 工具链，适合跟踪开发者生态迭代。"
+    },
+    {
+      "rank": 5,
+      "product": "Monako Glass",
+      "productKey": "https://www.producthunt.com/products/monako-glass",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Monako Glass 把开发者工作流包装成首日可试用产品，适合观察编码入口、费用门槛和环境粘性。"
+    },
+    {
+      "rank": 6,
+      "product": "n8n-io/n8n n8n@2.26.3",
+      "productKey": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.26.3",
+      "source": "GitHub Release",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "n8n-io/n8n n8n@2.26.3 的版本变化会影响相关 AI 工具链，适合跟踪开发者生态迭代。"
+    },
+    {
+      "rank": 7,
+      "product": "OpenDream – local-first memory with dreaming for AI agents",
+      "productKey": "https://github.com/pylit-ai/opendream",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "OpenDream – local-first memory with dreaming for AI agents 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 8,
+      "product": "Eidentic – TypeScript SDK for AI agents with self-improving memory",
+      "productKey": "https://github.com/eidentic/eidentic",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Eidentic – TypeScript SDK for AI agents with self-improving memory 的 HN 信号指向后端接口和开发者集成，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 9,
+      "product": "WebCLI – drive browser tasks from the command line using agents",
+      "productKey": "https://webcli.sh",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "WebCLI – drive browser tasks from the command line using agents 的 HN 信号指向浏览器和标签页控制，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 10,
+      "product": "Spanly - See what AI agents do inside your MCP server",
+      "productKey": "https://spanly.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Spanly - See what AI agents do inside your MCP server 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 11,
+      "product": "Fata – spaced repetition to fight skill rot from AI coding (Rust, CSS)",
+      "productKey": "https://fata.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Fata – spaced repetition to fight skill rot from AI coding (Rust, CSS) 的 HN 信号指向设计到代码工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 12,
+      "product": "Ciris – an open-source AI agent in 29 languages on iOS and Android",
+      "productKey": "https://ciris.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Ciris – an open-source AI agent in 29 languages on iOS and Android 的 HN 信号指向成本和商业化信号，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 13,
+      "product": "TypingMind",
+      "productKey": "https://www.producthunt.com/products/typing-mind",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "TypingMind 把推理效率作为卖点，适合跟踪模型能力如何转化成长任务 agent 的产品叙事。"
+    },
+    {
+      "rank": 14,
+      "product": "Deploy personal apps with your agent via Buildy",
+      "productKey": "https://buildy.so",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Deploy personal apps with your agent via Buildy 的 HN 信号指向前端界面和可用性验证，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 15,
+      "product": "Approve an AI agent's wire with Face ID,then watch a forged one fail",
+      "productKey": "https://www.emiliaprotocol.ai/try",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Approve an AI agent's wire with Face ID,then watch a forged one fail 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 16,
+      "product": "Plannotator – annotate agent plans, diffs, and HTML",
+      "productKey": "https://github.com/backnotprop/plannotator",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Plannotator – annotate agent plans, diffs, and HTML 的 HN 信号指向设计到代码工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 17,
+      "product": "AVP – an agent can't leak a secret it never had",
+      "productKey": "https://github.com/inflightsec/agent-vault-proxy",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AVP – an agent can't leak a secret it never had 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+    },
+    {
+      "rank": 18,
+      "product": "Spotlight by Backplanes",
+      "productKey": "https://www.producthunt.com/products/backplanes",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Spotlight by Backplanes 把开发者工作流包装成首日可试用产品，适合观察编码入口、费用门槛和环境粘性。"
+    },
+    {
+      "rank": 19,
+      "product": "Gemini 3.5 Live Translate",
+      "productKey": "https://www.producthunt.com/products/gemini-3-5-live-translate",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Gemini 3.5 Live Translate 把推理效率作为卖点，适合跟踪模型能力如何转化成长任务 agent 的产品叙事。"
+    },
+    {
+      "rank": 20,
+      "product": "SeaTicket",
+      "productKey": "https://www.producthunt.com/products/seaticket",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "SeaTicket 把多渠道店铺运营交给 AI agents，适合看垂直运营场景如何从工具升级为托管执行。"
+    }
+  ]
 }

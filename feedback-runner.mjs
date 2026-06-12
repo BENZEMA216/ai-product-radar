@@ -180,7 +180,7 @@ export function buildFeedbackSnapshot({ date, issues }) {
   };
 }
 
-const FEEDBACK_ACTIONS = new Set(["keep", "drop", "downrank", "review", "missing"]);
+const FEEDBACK_ACTIONS = new Set(["keep", "drop", "downrank", "review"]);
 
 function validateFeedbackRecord(item) {
   const errors = [];

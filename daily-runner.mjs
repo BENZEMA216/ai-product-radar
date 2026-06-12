@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 import { execFileSync } from "node:child_process";
-import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import {
   annotateProductHuntReportFilterHealth,
   filterPreviouslyReportedProductHunt,
-  productHuntEvidenceDateKey,
+  previousProductHuntHistory,
   renderBlockedReport,
   renderMarkdownTable,
   reportPathForNow,
@@ -15,9 +15,7 @@ import {
   sanitizeLocalProxyEnv,
   sourceHealthPathForNow
 } from "./radar.mjs";
-import { parseReportMarkdown } from "./build-site.mjs";
 
-const REPORT_PATTERN = /^\d{4}-\d{2}-\d{2}-\d{4}-cst\.md$/;
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 
 function parseArgs(argv) {
@@ -122,30 +120,6 @@ function snapshotFeedback(reportPath, env, outDir, reviewDir) {
   } catch {
     // Feedback is a learning loop; never block the daily report on GitHub issue access.
   }
-}
-
-// Product Hunt exposes date-level launch evidence, so adjacent daily windows can overlap.
-function previousProductHuntHistory(reportDir, currentReportPath) {
-  const history = { links: new Set(), dateKeys: new Set() };
-  let names = [];
-  try {
-    names = readdirSync(reportDir);
-  } catch {
-    return history;
-  }
-
-  for (const name of names.filter((item) => REPORT_PATTERN.test(item)).sort()) {
-    const path = join(reportDir, name);
-    if (path === currentReportPath) continue;
-    const rows = parseReportMarkdown(readFileSync(path, "utf8"), path);
-    for (const row of rows) {
-      if (row.source !== "Product Hunt") continue;
-      if (row.link) history.links.add(row.link);
-      const dateKey = productHuntEvidenceDateKey(row);
-      if (dateKey) history.dateKeys.add(dateKey);
-    }
-  }
-  return history;
 }
 
 async function main() {
