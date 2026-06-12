@@ -1,23 +1,22 @@
 {
   "date": "2026-06-13",
-  "generatedAt": "2026-06-12T18:00:32.970Z",
-  "reportPath": "reports/2026-06-13-0200-cst.md",
+  "generatedAt": "2026-06-12T18:02:59.487Z",
+  "reportPath": "reports/2026-06-13-0202-cst.md",
   "ok": false,
   "failures": [
     {
-      "code": "source_diversity_top20",
-      "message": "Top 20 来源家族少于 3 个，除非 source health 能解释当天客观单一来源占优。",
-      "sources": [
-        "GitHub Release",
-        "HN Algolia"
-      ]
+      "code": "weak_before_strong",
+      "message": "Top 20 中弱信号排在后续明确 keep 信号之前。",
+      "weakProduct": "MiniMax M3 开源权重上线Modular云平台",
+      "laterStrongProduct": "My open source agent built and launched its own business in 48 hours"
     }
   ],
   "metrics": {
-    "rows": 64,
+    "rows": 60,
     "top20Sources": [
       "GitHub Release",
-      "HN Algolia"
+      "HN Algolia",
+      "AIHOT"
     ],
     "top10ModelInfra": 0,
     "genericHfSpaceTop20": 0,
@@ -26,10 +25,10 @@
   },
   "sourceHealth": {
     "producthunt": {
-      "status": "fallback",
-      "rawCount": 17,
-      "keptCount": 15,
-      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-11；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 17 条，AI 相关候选 15 条；历史去重移除 15 条已报道或已处理日榜 Product Hunt 信号，最终发布 0 条。"
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-11；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 0 条，AI 相关候选 0 条；fallback 低覆盖时扩展检查 2026-06-10，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 0 条 Product Hunt 信号。"
     },
     "yc_launch": {
       "status": "empty",
@@ -51,8 +50,8 @@
     },
     "huggingface": {
       "status": "ok",
-      "rawCount": 20,
-      "keptCount": 20,
+      "rawCount": 16,
+      "keptCount": 16,
       "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
     },
     "aihot": {
@@ -208,6 +207,17 @@
     },
     {
       "rank": 13,
+      "product": "MiniMax M3 开源权重上线Modular云平台",
+      "productKey": "https://x.com/minimax_ai/status/2065474464536793161",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "MiniMax M3 开源权重上线Modular云平台 它释放的是“开源大模型能不能承接长上下文 agent 和编码任务”的基础设施信号，重点看托管平台是否真的敢把它推到生产侧。"
+    },
+    {
+      "rank": 14,
       "product": "My open source agent built and launched its own business in 48 hours",
       "productKey": "https://github.com/smithersbot/smithersbot",
       "source": "HN Algolia",
@@ -218,7 +228,18 @@
       "reason": "My open source agent built and launched its own business in 48 hours 押注的是“agent 能否自己把点子做成生意”这种强叙事，关键不在速度，而在它有没有真的穿过产品、支付和获客这几道坎。"
     },
     {
-      "rank": 14,
+      "rank": 15,
+      "product": "字节豆包上线\"任务模式\"：支持定时执行与文件生成，\"思考模式\"升级为\"专家模式\"",
+      "productKey": "https://www.ithome.com/0/963/725.htm",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "字节豆包上线\"任务模式\"：支持定时执行与文件生成，\"思考模式\"升级为\"专家模式\" 真正值得看的是豆包把“定时执行 + 文件产出”拉进主入口，这意味着国内大模型应用开始正面竞争通用 agent 的任务闭环。"
+    },
+    {
+      "rank": 16,
       "product": "openai/codex 0.140.0-alpha.15",
       "productKey": "https://github.com/openai/codex/releases/tag/rust-v0.140.0-alpha.15",
       "source": "GitHub Release",
@@ -229,7 +250,7 @@
       "reason": "openai/codex 0.140.0-alpha.15 只能说明 Codex 仍在高频推进 alpha 节奏，信息不足，先作为弱信号保留；仅凭 tag 还看不出模型、交互或稳定性改了什么。"
     },
     {
-      "rank": 15,
+      "rank": 17,
       "product": "Script to bulk delete Claude chats from the web UI",
       "productKey": "https://github.com/matteoleonesi/bulk-delete-claude-chat",
       "source": "HN Algolia",
@@ -240,7 +261,18 @@
       "reason": "Script to bulk delete Claude chats from the web UI 虽然只是清理脚本，但它暴露了重度 AI 用户对会话治理和数据卫生的真实需求，适合看谁会把这类边缘痛点产品化。"
     },
     {
-      "rank": 16,
+      "rank": 18,
+      "product": "Replit Agent 技能+自定义指令",
+      "productKey": "https://x.com/replit/status/2065464734267429038",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "Replit Agent 技能+自定义指令 这类“技能 + 自定义指令”更新会决定 agent 能否从单次帮手变成可复用员工，关键看配置是否能沉淀到团队工作流。"
+    },
+    {
+      "rank": 19,
       "product": "A Terrible Way to Consume Hacker News – AI Slop",
       "productKey": "https://deadinternet.tech/feed",
       "source": "HN Algolia",
@@ -251,7 +283,7 @@
       "reason": "A Terrible Way to Consume Hacker News – AI Slop 这类“AI 帮你再消费内容”的产品更值得看筛选机制本身，因为真正的价值不是摘要，而是它有没有提供新的判断框架。"
     },
     {
-      "rank": 17,
+      "rank": 20,
       "product": "LiveHere – AI Videos, Self-Hosted Nvidia Cosmos on H200 GPUs",
       "productKey": "https://twitter.com/manassharmahere/status/2065370878519468221",
       "source": "HN Algolia",
@@ -260,39 +292,6 @@
       "pmScore": 5,
       "rankingIssue": null,
       "reason": "LiveHere – AI Videos, Self-Hosted Nvidia Cosmos on H200 GPUs 自托管视频模型的信号不只在生成效果，更在于它是否把高算力多模态工作流从云 demo 推向可运营的私有部署。"
-    },
-    {
-      "rank": 18,
-      "product": "AI Chat App on Durable Streams and Tanstack DB",
-      "productKey": "https://oss.chat/tour",
-      "source": "HN Algolia",
-      "category": "product",
-      "qualityLabel": "keep",
-      "pmScore": 5,
-      "rankingIssue": null,
-      "reason": "AI Chat App on Durable Streams and Tanstack DB 这类聊天应用更值得看底层状态流和持久化设计，因为那决定了 AI 产品能不能撑住长会话和多人协作。"
-    },
-    {
-      "rank": 19,
-      "product": "TetherDust – Self-hosted AI Analytics Engineer (open source)",
-      "productKey": "https://github.com/mpospirit-apps/tetherdust",
-      "source": "HN Algolia",
-      "category": "product",
-      "qualityLabel": "keep",
-      "pmScore": 5,
-      "rankingIssue": null,
-      "reason": "TetherDust – Self-hosted AI Analytics Engineer (open source) 目标是把分析工程师工作流代理化，值得看它能否跨过“会回答”阶段，真正交付表、SQL 和可复核结论。"
-    },
-    {
-      "rank": 20,
-      "product": "Squishy & Friends – Claude Fabel 5 coded a game and it is good",
-      "productKey": "https://squishy.franzai.com",
-      "source": "HN Algolia",
-      "category": "product",
-      "qualityLabel": "keep",
-      "pmScore": 5,
-      "rankingIssue": null,
-      "reason": "Squishy & Friends – Claude Fabel 5 coded a game and it is good 如果 Claude Fable 5 已经能快速做出可玩游戏，真正值得看的是模型是否开始替代原型团队的第一版交互实现。"
     }
   ]
 }
