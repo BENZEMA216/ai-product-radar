@@ -656,7 +656,8 @@ export function renderSiteHtml(data) {
   const items = [...data.items].sort((a, b) => `${b.reportDate} ${b.reportTime}`.localeCompare(`${a.reportDate} ${a.reportTime}`));
   const latest = data.reports.at(-1);
   const latestDay = data.reportDays.at(-1);
-  const latestItems = latestDay ? data.items.filter((item) => item.reportDate === latestDay.reportDate) : [];
+  const latestItems = latestDay ? items.filter((item) => item.reportDate === latestDay.reportDate) : [];
+  const initialItems = latestItems.length ? latestItems : items;
   const latestSourceCounts = countBy(latestItems, "source");
   const latestTypeCounts = countBy(latestItems, "type");
   const latestPriorityCount = latestItems.filter(
@@ -1390,30 +1391,135 @@ export function renderSiteHtml(data) {
           <div class="type-pills">${renderTypePills(latestTypeCounts)}</div>
         </section>
         <section class="empty" id="empty" role="status" aria-live="polite">No matching signals.</section>
-        <section class="list" id="items">${renderItems(items, latestDay?.reportDate || "")}</section>
+        <section class="list" id="items">${renderItems(initialItems, latestDay?.reportDate || "")}</section>
       </main>
     </div>
   </div>
   <script>window.__RADAR_DATA__ = ${json};</script>
   <script>
+    const radarData = window.__RADAR_DATA__ || { items: [] };
+    const latestReportDate = ${JSON.stringify(latestDay?.reportDate || "")};
+    const feedbackRepo = ${JSON.stringify(FEEDBACK_REPO)};
     const q = document.querySelector("#q");
     const report = document.querySelector("#report");
     const source = document.querySelector("#source");
     const type = document.querySelector("#type");
     const empty = document.querySelector("#empty");
+    const itemList = document.querySelector("#items");
     const resultCount = document.querySelector("#result-count");
     const pills = [...document.querySelectorAll("[data-filter-type]")];
     const viewTabs = [...document.querySelectorAll("[data-view]")];
-    const items = [...document.querySelectorAll(".item")];
     let currentView = "priority";
+    function escapeClient(value) {
+      return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+    function feedbackIssueUrlClient(item, action) {
+      const actionLabels = {
+        keep: "值得看",
+        drop: "不该收录",
+        downrank: "应该降权",
+        review: "写点评"
+      };
+      const actionLabel = actionLabels[action] || action;
+      const title = "[Radar Feedback] " + actionLabel + ": " + (item.product || "");
+      const body = [
+        "## Radar Feedback",
+        "",
+        "action: " + action,
+        "actionLabel: " + actionLabel,
+        "reportDate: " + (item.reportDate || ""),
+        "signalKey: " + (item.signalKey || ""),
+        "productKey: " + (item.productKey || ""),
+        "source: " + (item.source || ""),
+        "product: " + (item.product || ""),
+        "link: " + (item.link || ""),
+        "",
+        "## 你的补充",
+        "",
+        action === "review" ? "我的点评：" : "原因："
+      ].join("\\n");
+      const params = new URLSearchParams({ title, body, labels: "radar-feedback" });
+      return feedbackRepo + "/issues/new?" + params.toString();
+    }
+    function renderFeedbackLinksClient(item) {
+      return [
+        ["keep", "值得看"],
+        ["drop", "不该收录"],
+        ["downrank", "应该降权"],
+        ["review", "写点评"]
+      ]
+        .map(([action, label]) => '<a class="feedback-link feedback-' + escapeClient(action) + '" href="' + escapeClient(feedbackIssueUrlClient(item, action)) + '" target="_blank" rel="noreferrer noopener">' + escapeClient(label) + "</a>")
+        .join("\\n");
+    }
+    function renderReviewBlocksClient(reviews) {
+      if (!Array.isArray(reviews) || !reviews.length) return "";
+      return '<section class="review-panel" aria-label="benzema 点评"><div class="review-title">benzema 点评</div>' + reviews
+        .map((review) => {
+          const tags = Array.isArray(review.tags) && review.tags.length
+            ? '<div class="review-tags">' + review.tags.map((tag) => "<span>" + escapeClient(tag) + "</span>").join("") + "</div>"
+            : "";
+          const followupNote = review.nextDayReview && review.nextDayReview.note
+            ? [review.nextDayReview.status, review.nextDayReview.note].filter(Boolean).join("：")
+            : "";
+          const followup = followupNote ? '<div class="review-followup"><b>次日复盘</b><span>' + escapeClient(followupNote) + "</span></div>" : "";
+          return [
+            '<article class="review-entry">',
+            '<div class="review-meta">',
+            review.verdict ? "<span>" + escapeClient(review.verdict) + "</span>" : "",
+            review.reportDate ? "<span>" + escapeClient(review.reportDate) + "</span>" : "",
+            "</div>",
+            "<p>" + escapeClient(review.review || "") + "</p>",
+            tags,
+            followup,
+            "</article>"
+          ].filter(Boolean).join("");
+        })
+        .join("") + "</section>";
+    }
+    function sortClientItems(list) {
+      return [...list].sort((a, b) =>
+        String((b.reportDate || "") + " " + (b.reportTime || "")).localeCompare(String((a.reportDate || "") + " " + (a.reportTime || ""))) ||
+        String(a.id || a.product || "").localeCompare(String(b.id || b.product || ""))
+      );
+    }
+    function scopedItems() {
+      const selectedScope = report.value;
+      const allItems = Array.isArray(radarData.items) ? radarData.items : [];
+      if (!selectedScope) return sortClientItems(allItems);
+      if (selectedScope.startsWith("date:")) {
+        const date = selectedScope.slice(5);
+        return sortClientItems(allItems.filter((item) => item.reportDate === date));
+      }
+      return sortClientItems(allItems.filter((item) => item.reportPath === selectedScope));
+    }
+    function renderClientItems(list, latestDate) {
+      return list
+        .map((item, index) => {
+          const isLatest = latestDate && item.reportDate === latestDate;
+          const reviewBlocks = renderReviewBlocksClient(item.reviews);
+          return [
+            '<article class="item" data-source="' + escapeClient(item.source) + '" data-type="' + escapeClient(item.type) + '" data-category="' + escapeClient(item.category || "product") + '" data-quality="' + escapeClient(item.qualityLabel || "keep") + '" data-date="' + escapeClient(item.reportDate) + '" data-report="' + escapeClient(item.reportPath) + '" data-latest="' + String(Boolean(isLatest)) + '" data-reviewed="' + String(Boolean(item.reviews && item.reviews.length)) + '">',
+            '<div class="item-topline"><span class="rank">信号 ' + String(index + 1).padStart(2, "0") + '</span><span>' + escapeClient(item.reportDate) + " " + escapeClient(item.reportTime) + '</span><span class="source-badge">' + escapeClient(item.source) + "</span><span>" + escapeClient(item.type) + "</span></div>",
+            '<div class="item-main"><h2><a href="' + escapeClient(item.link) + '" target="_blank" rel="noreferrer noopener">' + escapeClient(item.product) + '</a></h2><div class="signal-copy"><p class="did"><b>做了什么</b>' + escapeClient(item.did) + '</p><p class="why"><b>为什么值得看</b>' + escapeClient(item.why) + "</p></div>" + (reviewBlocks ? "\\n" + reviewBlocks : "") + "</div>",
+            '<div class="item-actions"><a href="' + escapeClient(item.link) + '" target="_blank" rel="noreferrer noopener">产品链接</a><a class="evidence" href="' + escapeClient(item.evidenceUrl) + '" target="_blank" rel="noreferrer noopener">证据来源</a><div class="feedback-actions" aria-label="反馈">' + renderFeedbackLinksClient(item) + "</div></div>",
+            "</article>"
+          ].join("\\n");
+        })
+        .join("\\n");
+    }
     function updateReportTitle() {
       const option = report.selectedOptions[0];
       report.title = option?.dataset.fullLabel || option?.textContent || "";
     }
     function applyFilters() {
       updateReportTitle();
+      itemList.innerHTML = renderClientItems(scopedItems(), latestReportDate);
+      const items = [...itemList.querySelectorAll(".item")];
       const text = q.value.trim().toLowerCase();
-      const selectedScope = report.value;
       const selectedSource = source.value;
       const selectedType = type.value;
       let visible = 0;
@@ -1424,14 +1530,9 @@ export function renderSiteHtml(data) {
           (currentView === "priority" && item.dataset.category === "product" && !["deprioritize", "drop"].includes(item.dataset.quality)) ||
           (currentView === "model_infra" && item.dataset.category === "model_infra") ||
           (currentView === "reviewed" && item.dataset.reviewed === "true");
-        const matchesScope =
-          !selectedScope ||
-          (selectedScope.startsWith("date:") && item.dataset.date === selectedScope.slice(5)) ||
-          item.dataset.report === selectedScope;
         const ok =
           matchesView &&
           (!text || haystack.includes(text)) &&
-          matchesScope &&
           (!selectedSource || item.dataset.source === selectedSource) &&
           (!selectedType || item.dataset.type === selectedType);
         item.hidden = !ok;

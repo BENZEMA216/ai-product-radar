@@ -617,6 +617,25 @@ function testSiteBuilderHelpers() {
   assert.match(html, /select\s*\{[^}]*appearance:\s*none;[^}]*padding-inline:\s*14px 48px;[^}]*background-position:\s*right 21px center,\s*right 16px center;/s);
   assert.match(html, /\.content\s*\{[^}]*justify-self:\s*center;/s);
   assert.match(html, /\.content\s*\{[^}]*margin-inline:\s*auto;/s);
+
+  const oldReport = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| Old Agent | [链接](https://old.example.com/) | 新产品 | old launch | old reason | [HN Algolia 2026-06-01T00:00:00Z](https://news.ycombinator.com/item?id=old) |
+| Old Model | [链接](https://old.example.com/model) | 老产品更新 | old model update | old model reason | [Hugging Face API 2026-06-01T00:00:00Z](https://huggingface.co/old/model) |`;
+  const newestReport = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| New Agent | [链接](https://new.example.com/) | 新产品 | new launch | new reason | [Product Hunt 2026-06-02](https://producthunt.com/posts/new-agent) |`;
+  const multiHtml = renderSiteHtml(
+    buildSiteData([
+      { path: "reports/2026-06-01-0800-cst.md", markdown: oldReport },
+      { path: "reports/2026-06-02-0800-cst.md", markdown: newestReport }
+    ])
+  );
+  const initialHtml = multiHtml.slice(0, multiHtml.indexOf("<script>window.__RADAR_DATA__"));
+  assert.equal((initialHtml.match(/<article class="item"/g) || []).length, 1);
+  assert.match(multiHtml, /New Agent/);
+  assert.match(multiHtml, /Old Agent/);
+  assert.match(multiHtml, /renderClientItems/);
 }
 
 function testSiteBuilderIncludesSourceHealth() {
