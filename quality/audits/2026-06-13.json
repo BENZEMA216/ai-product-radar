@@ -1,18 +1,11 @@
 {
   "date": "2026-06-13",
-  "generatedAt": "2026-06-12T18:02:59.487Z",
-  "reportPath": "reports/2026-06-13-0202-cst.md",
-  "ok": false,
-  "failures": [
-    {
-      "code": "weak_before_strong",
-      "message": "Top 20 中弱信号排在后续明确 keep 信号之前。",
-      "weakProduct": "MiniMax M3 开源权重上线Modular云平台",
-      "laterStrongProduct": "My open source agent built and launched its own business in 48 hours"
-    }
-  ],
+  "generatedAt": "2026-06-12T18:10:29.852Z",
+  "reportPath": "reports/2026-06-13-0210-cst.md",
+  "ok": true,
+  "failures": [],
   "metrics": {
-    "rows": 60,
+    "rows": 65,
     "top20Sources": [
       "GitHub Release",
       "HN Algolia",
@@ -25,10 +18,10 @@
   },
   "sourceHealth": {
     "producthunt": {
-      "status": "empty",
-      "rawCount": 0,
-      "keptCount": 0,
-      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-11；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 0 条，AI 相关候选 0 条；fallback 低覆盖时扩展检查 2026-06-10，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 0 条 Product Hunt 信号。"
+      "status": "fallback",
+      "rawCount": 17,
+      "keptCount": 15,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-11；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 17 条，AI 相关候选 15 条；历史去重移除 15 条已报道或已处理日榜 Product Hunt 信号，最终发布 0 条。"
     },
     "yc_launch": {
       "status": "empty",
@@ -50,14 +43,14 @@
     },
     "huggingface": {
       "status": "ok",
-      "rawCount": 16,
-      "keptCount": 16,
+      "rawCount": 20,
+      "keptCount": 20,
       "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
     },
     "aihot": {
       "status": "ok",
-      "rawCount": 13,
-      "keptCount": 13,
+      "rawCount": 14,
+      "keptCount": 14,
       "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
     },
     "xhs_dealflow": {
@@ -211,8 +204,8 @@
       "productKey": "https://x.com/minimax_ai/status/2065474464536793161",
       "source": "AIHOT",
       "category": "product",
-      "qualityLabel": "weak_keep",
-      "pmScore": 3,
+      "qualityLabel": "keep",
+      "pmScore": 5,
       "rankingIssue": null,
       "reason": "MiniMax M3 开源权重上线Modular云平台 它释放的是“开源大模型能不能承接长上下文 agent 和编码任务”的基础设施信号，重点看托管平台是否真的敢把它推到生产侧。"
     },
@@ -233,8 +226,8 @@
       "productKey": "https://www.ithome.com/0/963/725.htm",
       "source": "AIHOT",
       "category": "product",
-      "qualityLabel": "weak_keep",
-      "pmScore": 3,
+      "qualityLabel": "keep",
+      "pmScore": 5,
       "rankingIssue": null,
       "reason": "字节豆包上线\"任务模式\"：支持定时执行与文件生成，\"思考模式\"升级为\"专家模式\" 真正值得看的是豆包把“定时执行 + 文件产出”拉进主入口，这意味着国内大模型应用开始正面竞争通用 agent 的任务闭环。"
     },
@@ -266,8 +259,8 @@
       "productKey": "https://x.com/replit/status/2065464734267429038",
       "source": "AIHOT",
       "category": "product",
-      "qualityLabel": "weak_keep",
-      "pmScore": 3,
+      "qualityLabel": "keep",
+      "pmScore": 5,
       "rankingIssue": null,
       "reason": "Replit Agent 技能+自定义指令 这类“技能 + 自定义指令”更新会决定 agent 能否从单次帮手变成可复用员工，关键看配置是否能沉淀到团队工作流。"
     },

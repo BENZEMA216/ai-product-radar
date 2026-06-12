@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-06-12T18:02:59.487Z",
+  "generatedAt": "2026-06-12T18:10:29.852Z",
   "window": {
-    "start": "2026-06-12 02:02:59 CST",
-    "end": "2026-06-13 02:02:59 CST"
+    "start": "2026-06-12 02:10:29 CST",
+    "end": "2026-06-13 02:10:29 CST"
   },
   "productHuntDateKeys": [
     "2026-06-11"
   ],
   "sources": {
     "producthunt": {
-      "status": "empty",
-      "rawCount": 0,
-      "keptCount": 0,
-      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-11；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 0 条，AI 相关候选 0 条；fallback 低覆盖时扩展检查 2026-06-10，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 0 条 Product Hunt 信号。",
-      "discoveredKeptCount": 0,
+      "status": "fallback",
+      "rawCount": 17,
+      "keptCount": 15,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-11；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 17 条，AI 相关候选 15 条；历史去重移除 15 条已报道或已处理日榜 Product Hunt 信号，最终发布 0 条。",
+      "discoveredKeptCount": 15,
       "reportKeptCount": 0,
-      "previouslyReportedCount": 0
+      "previouslyReportedCount": 15
     },
     "yc_launch": {
       "status": "empty",
@@ -37,14 +37,14 @@
     },
     "huggingface": {
       "status": "ok",
-      "rawCount": 16,
-      "keptCount": 16,
+      "rawCount": 20,
+      "keptCount": 20,
       "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
     },
     "aihot": {
       "status": "ok",
-      "rawCount": 13,
-      "keptCount": 13,
+      "rawCount": 14,
+      "keptCount": 14,
       "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
     },
     "xhs_dealflow": {
