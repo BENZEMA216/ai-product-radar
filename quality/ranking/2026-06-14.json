@@ -61,7 +61,7 @@
       "pmScore": 5,
       "rankingIssue": null,
       "did": "HN 发布帖在 2026-06-12T23:13:59Z 出现：Show HN: Agent Joe – a Rust only coding agent with no shell access",
-      "why": "Agent Joe – a Rust only coding agent with no shell access 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+      "why": "Agent Joe 值得看的是它把“无 shell 权限”做成 coding agent 的默认约束，正好对应企业采纳时最敏感的安全边界。"
     },
     {
       "rank": 5,
@@ -76,7 +76,7 @@
       "pmScore": 5,
       "rankingIssue": null,
       "did": "HN 发布帖在 2026-06-13T12:25:15Z 出现：Show HN: AgentNexus – coordinate LLM agents by service boundary, not role",
-      "why": "AgentNexus – coordinate LLM agents by service boundary, not role 的 HN 信号指向模型实验和推理资产，更适合先看目标用户、完成度和开发者讨论质量。"
+      "why": "AgentNexus 把多 agent 协作从“角色分工”改成“服务边界”，这个抽象更接近真实工程系统，值得看能否降低落地复杂度。"
     },
     {
       "rank": 6,
@@ -91,7 +91,7 @@
       "pmScore": 5,
       "rankingIssue": null,
       "did": "HN 发布帖在 2026-06-13T13:46:19Z 出现：Show HN: Wmux – a native Windows terminal multiplexer for AI agents",
-      "why": "Wmux – a native Windows terminal multiplexer for AI agents 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+      "why": "Wmux 把 agent 运行环境明确切到 Windows 终端，适合观察 coding agent 是否会从 Mac/Linux 早期用户扩展到更大的企业桌面场景。"
     },
     {
       "rank": 7,
@@ -106,7 +106,7 @@
       "pmScore": 5,
       "rankingIssue": null,
       "did": "HN 发布帖在 2026-06-13T06:43:42Z 出现：Show HN: Skill for your agent to visualize your gbrain and Obsidian",
-      "why": "Skill for your agent to visualize your gbrain and Obsidian 的 HN 信号指向视觉内容和多模态工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+      "why": "这个 skill 把 Obsidian 个人知识库转成 agent 可视化上下文，值得看“技能包”是否会成为个人工作流的轻量插件市场。"
     },
     {
       "rank": 8,
@@ -121,7 +121,7 @@
       "pmScore": 5,
       "rankingIssue": null,
       "did": "HN 发布帖在 2026-06-13T15:34:53Z 出现：Show HN: Reality Kernel – A causal containment sandbox for autonomous AI agents",
-      "why": "Reality Kernel – A causal containment sandbox for autonomous AI agents 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+      "why": "Reality Kernel 把 autonomous agent 的风险落到“因果隔离沙箱”，比泛泛讲安全更具体，适合看 agent 执行动作如何被限制和审计。"
     },
     {
       "rank": 9,
@@ -136,7 +136,7 @@
       "pmScore": 5,
       "rankingIssue": null,
       "did": "HN 发布帖在 2026-06-13T15:01:46Z 出现：Show HN:I audited 162 agent-written PRs – 27% were the AI fixing itself",
-      "why": "I audited 162 agent-written PRs – 27% were the AI fixing itself 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。"
+      "why": "这个审计信号直指 agent PR 的真实质量问题，值得看它能否从一次分析变成代码审查、验收和回归检测的产品化工具。"
     },
     {
       "rank": 10,
@@ -211,7 +211,7 @@
       "pmScore": 5,
       "rankingIssue": null,
       "did": "HN 发布帖在 2026-06-13T10:37:34Z 出现：Show HN: Predictive load balancing for Claude accounts",
-      "why": "Predictive load balancing for Claude accounts 的 HN 信号指向主流 AI 产品体验变化，更适合先看目标用户、完成度和开发者讨论质量。"
+      "why": "cc-pool 说明 Claude 账户配额已经变成真实生产瓶颈，虽然合规边界要谨慎，但它暴露了 agent 工具链对容量调度的需求。"
     },
     {
       "rank": 15,
@@ -226,7 +226,7 @@
       "pmScore": 5,
       "rankingIssue": null,
       "did": "HN 发布帖在 2026-06-13T05:44:05Z 出现：Show HN: FinMind AI – Like Bloomberg Terminal Meets ChatGPT",
-      "why": "FinMind AI – Like Bloomberg Terminal Meets ChatGPT 的 HN 信号指向主流 AI 产品体验变化，更适合先看目标用户、完成度和开发者讨论质量。"
+      "why": "FinMind AI 走的是“Bloomberg + ChatGPT”垂直终端路线，关键看它能否把数据可信度、引用和交易前分析做到足够专业。"
     },
     {
       "rank": 16,
@@ -271,7 +271,7 @@
       "pmScore": 2,
       "rankingIssue": null,
       "did": "HN 发布帖在 2026-06-13T01:25:10Z 出现：Show HN: AccInt – a Work Model for AI coding agents",
-      "why": "AccInt – a Work Model for AI coding agents 的 HN 信号指向模型实验和推理资产，更适合先看目标用户、完成度和开发者讨论质量。"
+      "why": "AccInt 不直接卖一个 coding agent，而是定义 agent 工作模型；如果抽象成立，价值会在任务拆解、状态同步和人机交接上。"
     },
     {
       "rank": 19,
