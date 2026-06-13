@@ -182,14 +182,24 @@ function auditAihotNewsOrResearch(rows) {
   ];
 }
 
-function auditSourceDiversity(rows) {
+function auditSourceDiversity(rows, sourceHealth = null) {
   const top20 = rows.slice(0, 20);
   if (top20.length < 10) return [];
   const sources = new Set(top20.map((row) => clean(row.source)).filter(Boolean));
   if (sources.size >= 3) return [];
+  const offscreenStrongSource = rows
+    .slice(20)
+    .find((row) => row.qualityLabel === "keep" && !sources.has(clean(row.source)));
+  if (!offscreenStrongSource) return [];
   return [
     failure("source_diversity_top20", "Top 20 来源家族少于 3 个，除非 source health 能解释当天客观单一来源占优。", {
-      sources: [...sources]
+      sources: [...sources],
+      offscreenStrongSource: clean(offscreenStrongSource?.source),
+      sourceHealthSummary: sourceHealth
+        ? Object.fromEntries(
+            Object.entries(sourceHealth.sources || {}).map(([key, value]) => [key, clean(value?.status || "")])
+          )
+        : null
     })
   ];
 }
@@ -558,7 +568,7 @@ export function auditReportQuality({
   failures.push(...auditResourceLists(rows));
   failures.push(...auditAihotNewsOrResearch(rows));
   failures.push(...auditRepeatedWhy(rows));
-  failures.push(...auditSourceDiversity(rows));
+  failures.push(...auditSourceDiversity(rows, sourceHealth));
   failures.push(...auditModelPlacement(rows));
   failures.push(...auditGenericHuggingFaceSpaceFlood(rows));
   failures.push(...auditWeakBeforeStrong(rows));

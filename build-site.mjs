@@ -102,9 +102,11 @@ function isLowSignalGitHubPackageRelease({ source, product, did, evidence }) {
   if (source !== "GitHub Release" && source !== "github") return false;
   const cleanDid = cleanCell(did);
   const text = `${product || ""} ${cleanDid} ${evidence || ""}`.toLowerCase();
+  const title = `${product || ""}`.toLowerCase();
   const isScopedPackageVersion = /@[a-z0-9_.-]+\/[a-z0-9_.-]+@?\d+\.\d+\.\d+\b/i.test(text);
+  const hasVersionInTitle = /(?:^|[\s@])v?\d+\.\d+\.\d+(?:[-.](?:alpha|beta|rc)[.-]?\d+)?\b/i.test(title);
   const onlyVersionAnnouncement = /^发布\s+[^。]{1,140}。$/.test(cleanDid);
-  return isScopedPackageVersion && onlyVersionAnnouncement;
+  return onlyVersionAnnouncement && (isScopedPackageVersion || hasVersionInTitle);
 }
 
 function inferQualityLabel({ source, product, did, why, evidence, category }) {
@@ -112,6 +114,13 @@ function inferQualityLabel({ source, product, did, why, evidence, category }) {
   if (category === "model_infra") return "weak_keep";
   if (isLowSignalGitHubPackageRelease({ source, product, did, evidence })) return "weak_keep";
   if (/baby|girlfriend|boyfriend|roulette|wallpaper|tattoo|headshot|photo booth/i.test(text)) return "deprioritize";
+  if (
+    /minimax m3|任务模式|专家模式|skills|replit agent|custom instructions|modular|parasail|notebooklm|project genie|live translate/.test(
+      text
+    )
+  ) {
+    return "keep";
+  }
   if (isWeakShowHnDemo({ source, product, did, why })) return "weak_keep";
   if (source === "AIHOT" || source === "XHS Dealflow" || source === "Hugging Face API") return "weak_keep";
   return "keep";

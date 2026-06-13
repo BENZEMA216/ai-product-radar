@@ -1251,11 +1251,12 @@ export function previousProductHuntHistory(reportDir = REPORT_DIR, currentReport
 function applyHistoryFilterToResult(result, reportDir = REPORT_DIR) {
   const currentReportPath = reportPathForNow(result.now, reportDir);
   const previousPhHistory = previousProductHuntHistory(reportDir, currentReportPath);
-  const candidates = filterPreviouslyReportedProductHunt(
+  const filtered = filterPreviouslyReportedProductHunt(
     result.candidates,
     previousPhHistory.links,
     previousPhHistory.dateKeys
   );
+  const candidates = rankCandidatesForPriority(filtered);
   return {
     ...result,
     sourceHealth: annotateProductHuntReportFilterHealth(result.sourceHealth, result.candidates, candidates),
@@ -1531,6 +1532,14 @@ const REUSABLE_WHY_COPY = new Set([
   "工作流平台的版本迭代会影响 AI 自动化编排能力，适合观察低代码 agent 化。"
 ]);
 
+const REUSABLE_WHY_PATTERNS = [
+  /的 PH 描述聚焦「.*?」，适合看它如何把 AI 能力翻译成首日用户能理解的场景。/,
+  /的 HN 信号指向.*?，更适合先看目标用户、完成度和开发者讨论质量。/,
+  /的版本变化会影响相关 AI 工具链，适合跟踪开发者生态迭代。/,
+  /是AIHOT里的.*?信号，先看是否有一手证据、明确动作和可复用产品启发。/,
+  /是 HF 上的.*?弱信号，先看可运行性、样例质量和是否有明确用户场景。/
+];
+
 function compactProductName(product) {
   const value = clean(product).replace(/^Hugging Face (Space|Model):\s*/i, "");
   if (!value) return "这个信号";
@@ -1548,10 +1557,53 @@ function compactDescription(value, max = 44) {
   return text.length > max ? `${text.slice(0, max - 1)}...` : text;
 }
 
+function needsWhyRewrite(item) {
+  const why = clean(item.why);
+  if (!why) return true;
+  if (REUSABLE_WHY_COPY.has(why)) return true;
+  return REUSABLE_WHY_PATTERNS.some((pattern) => pattern.test(why));
+}
+
 function productHuntWhyFromContext(item) {
   const product = compactProductName(item.product);
   const did = clean(item.did);
   const text = `${item.product} ${item.did} ${item.why}`.toLowerCase();
+  if (includesAny(text, ["to-do", "todo", "does itself", "chores", "task list"])) {
+    return `${product} 想把待办清单直接升级成代执行入口，关键看它是真能闭环完成杂务，还是只是在任务列表上再包一层 AI。`;
+  }
+  if (includesAny(text, ["gateway", "observability", "evals"])) {
+    return `${product} 把 AI gateway、观测和评测绑成同一入口，值得看团队会不会因此把模型切换和质量控制收回到一层基础设施。`;
+  }
+  if (includesAny(text, ["learn", "learning copilot", "ambition"])) {
+    return `${product} 切的是长期学习陪跑场景，重点看它能不能把一次性问答变成持续目标管理，而不是普通聊天壳。`;
+  }
+  if (includesAny(text, ["canvas", "complex work", "sustained"])) {
+    return `${product} 强调 canvas-first 和复杂任务持续推进，适合观察 AI 工作区是否真能承接长链路思考与资料组织。`;
+  }
+  if (includesAny(text, ["skills your team depends on", "govern"])) {
+    return `${product} 把团队依赖的 AI skills 做成治理层，值得看企业会不会把 prompt、工具和权限纳入同一套管控。`;
+  }
+  if (includesAny(text, ["recruit", "recruiter", "claude"])) {
+    return `${product} 把招聘判断外包给 Claude 风格 agent，关键看它能否沉淀筛选偏好，而不是只把搜简历流程自动化。`;
+  }
+  if (includesAny(text, ["complex data", "data"])) {
+    return `${product} 如果目标是复杂数据场景，价值不在聊天本身，而在它能否把分析、追问和结果交付压进一个稳定入口。`;
+  }
+  if (includesAny(text, ["scrape", "crawl", "monitor any website"])) {
+    return `${product} 把抓取、监控和提示词调用揉成一个入口，适合看 Web 数据工作流会不会从脚本工程走向产品化服务。`;
+  }
+  if (includesAny(text, ["workforce customized to your business", "workforce"])) {
+    return `${product} 继续押注“AI workforce”叙事，重点看它卖的是抽象概念，还是能落到某个业务流程的可验收结果。`;
+  }
+  if (includesAny(text, ["health companion", "chronic illness"])) {
+    return `${product} 慢病陪伴场景的门槛不在对话，而在持续记录、提醒可靠性和风险边界，这些点比首日包装更值得看。`;
+  }
+  if (includesAny(text, ["photo editor", "manual editing"])) {
+    return `${product} 照片编辑是高竞争红海，真正值得看的不是“AI 修图”，而是它能否把专业效果压到普通用户也敢直接出片。`;
+  }
+  if (includesAny(text, ["button you mean", "button"])) {
+    return `${product} 它切的是 AI 理解界面元素这类 computer-use 基础问题，关键看是否真能减少“点错按钮”和脆弱 selector。`;
+  }
   if (includesAny(text, ["fundrais", "investor", "book meetings"])) {
     return `${product} 把融资外联做成可执行 agent，适合看高价值 B2B 流程如何用 AI 承接线索、预约和转化。`;
   }
@@ -1637,6 +1689,70 @@ function sourceContextLabel(item) {
 function hackerNewsWhyFromContext(item) {
   const product = compactProductName(item.product);
   const context = sourceContextLabel(item);
+  const text = `${item.product} ${item.did} ${item.why}`.toLowerCase();
+  if (includesAny(text, ["geolocation", "reverse image", "location"])) {
+    return `${product} 把图片反查地理位置暴露给 agent 调用，值得看视觉线索检索会不会变成调查、核验和 OSINT 工作流的标准能力。`;
+  }
+  if (includesAny(text, ["browser and terminal", "collects context"])) {
+    return `${product} 想把浏览器和终端上下文拼成同一份 agent 记忆，重点看它能否减少跨工具切换时的状态丢失。`;
+  }
+  if (includesAny(text, ["cryptographic provenance", "co-authored-by"])) {
+    return `${product} 瞄准 AI 编码产出的归因与可追责性，适合看团队会不会开始要求 agent 生成过程也具备可验证 provenance。`;
+  }
+  if (includesAny(text, ["office village", "cozy office"])) {
+    return `${product} 用“办公室村庄”来包装多 agent 协作，值得看这种拟人化界面能否提升监督感，而不只是把 orchestration 做得更花哨。`;
+  }
+  if (includesAny(text, ["sharkclean"])) {
+    return `${product} 家电控制型 MCP 的意义不在新奇，而在它是否说明 agent 开始进入真实设备控制和家庭自动化链路。`;
+  }
+  if (includesAny(text, ["deploy personal apps", "buildy", "deploy"])) {
+    return `${product} 它切的是“让 agent 把个人应用直接发出去”的最后一公里，关键看部署、回滚和环境配置有没有被真正收敛。`;
+  }
+  if (includesAny(text, ["annotate agent plans", "diffs", "html"])) {
+    return `${product} 计划、diff 和 HTML 标注如果做顺了，会直接影响人类审核 agent 输出的效率，这比单纯再造一个编辑器更有价值。`;
+  }
+  if (includesAny(text, ["secret", "vault", "proxy"])) {
+    return `${product} 它试图把密钥隔离变成 agent 默认能力，重点看能否把“不给 agent 明文权限”从安全口号变成可部署架构。`;
+  }
+  if (includesAny(text, ["bulk delete claude chats", "delete claude chats"])) {
+    return `${product} 虽然只是清理脚本，但它暴露了重度 AI 用户对会话治理和数据卫生的真实需求，适合看谁会把这类边缘痛点产品化。`;
+  }
+  if (includesAny(text, ["side-by-side", "perplexity side-by-side", "verdict"])) {
+    return `${product} 多模型并排对比的价值在于暴露模型差异何时影响真实任务，而不是再做一个普通聚合聊天界面。`;
+  }
+  if (includesAny(text, ["analytics engineer"])) {
+    return `${product} 目标是把分析工程师工作流代理化，值得看它能否跨过“会回答”阶段，真正交付表、SQL 和可复核结论。`;
+  }
+  if (includesAny(text, ["durable streams", "tanstack db"])) {
+    return `${product} 这类聊天应用更值得看底层状态流和持久化设计，因为那决定了 AI 产品能不能撑住长会话和多人协作。`;
+  }
+  if (includesAny(text, ["built and launched its own business", "own business in 48 hours"])) {
+    return `${product} 押注的是“agent 能否自己把点子做成生意”这种强叙事，关键不在速度，而在它有没有真的穿过产品、支付和获客这几道坎。`;
+  }
+  if (includesAny(text, ["ai slop", "consume hacker news"])) {
+    return `${product} 这类“AI 帮你再消费内容”的产品更值得看筛选机制本身，因为真正的价值不是摘要，而是它有没有提供新的判断框架。`;
+  }
+  if (includesAny(text, ["self-hosted nvidia cosmos", "h200", "livehere"])) {
+    return `${product} 自托管视频模型的信号不只在生成效果，更在于它是否把高算力多模态工作流从云 demo 推向可运营的私有部署。`;
+  }
+  if (includesAny(text, ["fabel 5 coded a game", "squishy"])) {
+    return `${product} 如果 Claude Fable 5 已经能快速做出可玩游戏，真正值得看的是模型是否开始替代原型团队的第一版交互实现。`;
+  }
+  if (includesAny(text, ["local-first", ".net", "ollama", "mandocode"])) {
+    return `${product} 它把本地部署、.NET 栈和编码 agent 放到一起，适合观察传统企业技术栈是否也开始接受私有化 AI 开发助手。`;
+  }
+  if (includesAny(text, ["video editor", "control by chatting"])) {
+    return `${product} 把视频编辑改成聊天控制，重点看它能否把时间轴、素材和导出这些重交互环节真正语言化。`;
+  }
+  if (includesAny(text, ["private ai memory", "memory for chatgpt"])) {
+    return `${product} 长期记忆层已经是多模型产品的共性需求，关键看它提供的是统一用户画像，还是另一层难迁移的私有存储。`;
+  }
+  if (includesAny(text, ["open infrastructure", "36 npm packages"])) {
+    return `${product} 它更像一组 agent 公司基础设施拼装件，价值在于是否真能抽出可复用底座，而不是把 package 数量当完成度。`;
+  }
+  if (includesAny(text, ["elixir", "beamweaver"])) {
+    return `${product} 如果 Elixir 生态也开始补 agent 工作流层，说明多语言后端团队正在寻找不依赖 Python 的 AI 编排栈。`;
+  }
   if (context === "可观测性和运维控制") {
     return `${product} 把 agent 的运行状态和问题定位做成产品层，适合看可观测性如何进入 AI 开发流程。`;
   }
@@ -1665,6 +1781,27 @@ function huggingFaceWhyFromContext(item) {
   const product = compactProductName(item.product);
   const context = sourceContextLabel(item);
   const text = `${item.product} ${item.did} ${item.why}`.toLowerCase();
+  if (includesAny(text, ["hackathon"])) {
+    return `${product} 明显更像黑客松原型，先作为弱信号保留，重点看它是否只有展示页，还是已经形成可重复任务流程。`;
+  }
+  if (includesAny(text, ["many_errors", "preview_many_errors", "beta_v1.0"])) {
+    return `${product} 连名称都在强调预览版和大量错误，信息不足，先作为弱信号保留；更像开发中样品，不适合据此判断成熟产品方向。`;
+  }
+  if (includesAny(text, ["photoshop-plugin", "photoshop plugin", "flux2-klein"])) {
+    return `${product} 如果它真把模型能力接进 Photoshop 插件，值得看创作流程有没有被缩短；但当前证据过薄，先作为弱信号保留。`;
+  }
+  if (includesAny(text, ["meded", "medical", "med"])) {
+    return `${product} 医学教育类 AI 工具最该看内容可靠性和引用依据，但当前信息不足，先作为弱信号保留，避免把题材误当成产品完成度。`;
+  }
+  if (includesAny(text, ["bot_ai", "ayuda-bot", "hira-ai", "assistant"])) {
+    return `${product} 更像对话机器人原型，信息不足，先作为弱信号保留；当前只看得出入口形态，仍看不出明确用户场景。`;
+  }
+  if (includesAny(text, ["agent-zero-space", "agent-zero", "agent"])) {
+    return `${product} 指向 agent demo，但信息不足，先作为弱信号保留；需要看到实际工具链、任务边界和可运行样例才值得上提。`;
+  }
+  if (includesAny(text, ["final_project", "project_ai_sport", "bhos", "lima_raft"])) {
+    return `${product} 更像课程/个人项目空间，信息不足，先作为弱信号保留；仅凭名称和更新时间还看不出稳定产品意图。`;
+  }
   if (context === "浏览器和标签页控制") {
     return `${product} 透露出浏览器标签页 agent 的实验方向，值得先看交互是否真能减少手动切换成本。`;
   }
@@ -1728,6 +1865,37 @@ function huggingFaceWhyFromContext(item) {
 function aggregatorWhyFromContext(item, sourceLabel) {
   const product = compactProductName(item.product);
   const context = sourceContextLabel(item);
+  const text = `${item.product} ${item.did} ${item.why}`.toLowerCase();
+  if (includesAny(text, ["world model", "持续学习", "多智能体交互"])) {
+    return `${product} 如果世界模型开始被包装成可体验环境，值得看它会不会成为训练 agent 行为和协作策略的新型沙盒，而不只是概念展示。`;
+  }
+  if (includesAny(text, ["本周推出多项更新", "本周发布多项更新"])) {
+    return `${product} 更像一组官方周更汇总，先作为弱信号保留；真正值得追的是其中单独能改变入口或留存的产品动作，比如 NotebookLM 和 Gemini 的具体升级。`;
+  }
+  if (includesAny(text, ["任务模式", "专家模式", "零代码网页", "一键ppt", "豆包"])) {
+    return `${product} 真正值得看的是豆包把“定时执行 + 文件产出”拉进主入口，这意味着国内大模型应用开始正面竞争通用 agent 的任务闭环。`;
+  }
+  if (includesAny(text, ["skills", "custom instructions", "replit"])) {
+    return `${product} 这类“技能 + 自定义指令”更新会决定 agent 能否从单次帮手变成可复用员工，关键看配置是否能沉淀到团队工作流。`;
+  }
+  if (includesAny(text, ["开源权重", "modular", "parasail", "1m-token", "1m 上下文", "coding workload"])) {
+    return `${product} 它释放的是“开源大模型能不能承接长上下文 agent 和编码任务”的基础设施信号，重点看托管平台是否真的敢把它推到生产侧。`;
+  }
+  if (includesAny(text, ["the information", "据", "准备推出新 ai 模型"])) {
+    return `${product} 信息不足，先作为弱信号保留；当前更像传闻转述，缺少官方发布内容，无法判断这会带来什么具体产品动作。`;
+  }
+  if (includesAny(text, ["garry tan", "garry marcus", "幻觉速报", "官僚", "牢笼", "hallucination"])) {
+    return `${product} 这更像观点或舆论信号，不是产品发布；保留它的意义只是观察行业叙事在往哪里摆动，而不是判断可跟进的产品动作。`;
+  }
+  if (includesAny(text, ["fable", "gpt-image", "做落地页", "可玩", "项目诞生"])) {
+    return `${product} 值得看的不是单次 demo 漂不漂亮，而是旗舰模型发布几天内就催生了哪些真实玩法，这能反映能力扩散速度和创作者门槛。`;
+  }
+  if (includesAny(text, ["core image raw 9", "raw 9", "coreml"])) {
+    return `${product} 它偏底层影像管线升级，离直接的 AI 产品发布还有一层，但能提示苹果正在把神经网络继续压进创作工具基础设施。`;
+  }
+  if (includesAny(text, ["sensenova", "交错文本与图像生成"])) {
+    return `${product} 这种图文交错生成模型更值得从故事连续性和角色一致性看价值，因为那决定它能否支撑真正的创作工作流。`;
+  }
   if (context === "生成式应用构建和分发") {
     return `${product} 把生成式开发和分发放到同一链路，值得看应用质量控制、上架门槛和模板复用。`;
   }
@@ -1754,7 +1922,7 @@ function aggregatorWhyFromContext(item, sourceLabel) {
 
 function reportWhy(item) {
   const why = clean(item.why);
-  if (!REUSABLE_WHY_COPY.has(why)) return why;
+  if (!needsWhyRewrite(item)) return why;
   if (item.source === "producthunt") {
     return productHuntWhyFromContext(item);
   }
@@ -1766,7 +1934,20 @@ function reportWhy(item) {
     return `${product} 通过 YC Launch 呈现明确垂直场景，适合观察商业 wedge 和定价叙事。`;
   }
   if (item.source === "github") {
-    return `${product} 的版本变化会影响相关 AI 工具链，适合跟踪开发者生态迭代。`;
+    const text = `${item.product} ${item.did} ${item.evidence}`.toLowerCase();
+    if (includesAny(text, ["appium/appium-mcp", "appium-mcp"])) {
+      return `${product} 和移动端 agent 操作面相关，但当前证据只有版本号，信息不足，先作为弱信号保留；要看 release 说明才知道是否真有能力增量。`;
+    }
+    if (includesAny(text, ["openai/codex", "/codex/"])) {
+      return `${product} 只能说明 Codex 仍在高频推进 alpha 节奏，信息不足，先作为弱信号保留；仅凭 tag 还看不出模型、交互或稳定性改了什么。`;
+    }
+    if (includesAny(text, ["transformers"])) {
+      return `${product} 所属基础栈本身值得盯，但当前证据只有 release tag，信息不足，先作为弱信号保留；暂时看不出这次对训练或推理链路的具体影响。`;
+    }
+    if (includesAny(text, ["stagehand", "browserbase"])) {
+      return `${product} 和浏览器 agent 基础设施相关，但当前只有版本号，信息不足，先作为弱信号保留；要有 changelog 才能判断是否影响真实自动化能力。`;
+    }
+    return `${product} 信息不足，先作为弱信号保留；当前证据只有版本号或发布时间，还看不出具体能力边界、目标用户收益或采用门槛变化。`;
   }
   if (item.source === "huggingface") {
     return huggingFaceWhyFromContext(item);
@@ -1895,20 +2076,52 @@ function isLowSignalGitHubPackageRelease(item) {
   if (source !== "github" && source !== "github release") return false;
   const did = clean(item.did);
   const releaseText = `${item.product || ""} ${did} ${item.link || ""}`.toLowerCase();
+  const releaseTitle = `${item.product || ""}`.toLowerCase();
   const isScopedPackageVersion = /@[a-z0-9_.-]+\/[a-z0-9_.-]+@?\d+\.\d+\.\d+\b/i.test(releaseText);
+  const hasVersionInTitle = /(?:^|[\s@])v?\d+\.\d+\.\d+(?:[-.](?:alpha|beta|rc)[.-]?\d+)?\b/i.test(releaseTitle);
   const onlyVersionAnnouncement = /^发布\s+[^。]{1,140}。$/.test(did);
-  return isScopedPackageVersion && onlyVersionAnnouncement;
+  return onlyVersionAnnouncement && (isScopedPackageVersion || hasVersionInTitle);
+}
+
+function isStrongAggregatorProductSignal(item) {
+  const text = `${item.product} ${item.did} ${item.why}`.toLowerCase();
+  if ((cleanKey(item.source).toLowerCase() === "aihot" || cleanKey(item.source).toLowerCase() === "xhs_dealflow") && isAihotNonProductSignal(item)) {
+    return false;
+  }
+  return includesAny(text, [
+    "任务模式",
+    "专家模式",
+    "零代码网页",
+    "一键ppt",
+    "skills",
+    "custom instructions",
+    "replit",
+    "开源权重",
+    "modular",
+    "parasail",
+    "project genie",
+    "notebooklm",
+    "live translate"
+  ]);
 }
 
 function qualityLabelForItem(item) {
   const text = `${item.product} ${item.did} ${item.why}`.toLowerCase();
   if (item.category === "model_infra") return "weak_keep";
   if (isLowSignalGitHubPackageRelease(item)) return "weak_keep";
+  if (
+    /minimax m3|任务模式|专家模式|replit agent|custom instructions|modular|parasail|notebooklm|project genie|live translate/.test(
+      text
+    )
+  ) {
+    return "keep";
+  }
   if (isLowSignalProductHuntConsumerNovelty(text)) return "deprioritize";
   if (isResourceListSignal(text)) return "deprioritize";
   if (isAihotNonProductSignal(item)) return "deprioritize";
   if (includesAny(text, ["roulette", "baby generator", "girlfriend", "wallpaper generator"])) return "deprioritize";
   if (isWeakShowHnDemo(item, text)) return "weak_keep";
+  if (isStrongAggregatorProductSignal(item)) return "keep";
   if (item.source === "aihot" || item.source === "xhs_dealflow") return "weak_keep";
   if (item.source === "huggingface") return item.category === "product" ? "weak_keep" : "deprioritize";
   return "keep";

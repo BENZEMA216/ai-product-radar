@@ -741,6 +741,30 @@ function testSiteBuilderMarksLowSignalPackageReleaseWeak() {
   assert.equal(item.qualityLabel, "weak_keep");
 }
 
+function testVersionOnlyGitHubReleaseStaysWeakAcrossProducerAndConsumer() {
+  const candidate = {
+    product: "openai/codex 0.140.0-alpha.17",
+    link: "https://github.com/openai/codex/releases/tag/rust-v0.140.0-alpha.17",
+    type: "老产品更新",
+    did: "发布 0.140.0-alpha.17。",
+    why: "openai/codex 0.140.0-alpha.17 只能说明 Codex 仍在高频推进 alpha 节奏，信息不足，先作为弱信号保留；仅凭 tag 还看不出模型、交互或稳定性改了什么。",
+    evidence: "[GitHub Release 2026-06-13T01:20:26Z](https://github.com/openai/codex/releases/tag/rust-v0.140.0-alpha.17)",
+    source: "github",
+    observedAt: "2026-06-13T01:20:26Z"
+  };
+  const inferredScore = priorityScore(candidate);
+  const weakScore = priorityScore({ ...candidate, qualityLabel: "weak_keep" });
+  const keepScore = priorityScore({ ...candidate, qualityLabel: "keep" });
+  assert.equal(inferredScore, weakScore, "只有版本号的 GitHub release 默认应保持 weak_keep");
+  assert.notEqual(inferredScore, keepScore, "只有版本号的 GitHub release 不应被抬成 keep");
+
+  const report = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| openai/codex 0.140.0-alpha.17 | [链接](https://github.com/openai/codex/releases/tag/rust-v0.140.0-alpha.17) | 老产品更新 | 发布 0.140.0-alpha.17。 | openai/codex 0.140.0-alpha.17 只能说明 Codex 仍在高频推进 alpha 节奏，信息不足，先作为弱信号保留；仅凭 tag 还看不出模型、交互或稳定性改了什么。 | [GitHub Release 2026-06-13T01:20:26Z](https://github.com/openai/codex/releases/tag/rust-v0.140.0-alpha.17) |`;
+  const [item] = parseReportMarkdown(report, "reports/2026-06-14-0008-cst.md");
+  assert.equal(item.qualityLabel, "weak_keep");
+}
+
 function testProductReviewsAttachToCards() {
   const report = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
 |---|---|---|---|---|---|
@@ -971,6 +995,67 @@ function testReportWhyCopyCleansHnSpecificContexts() {
   assert.doesNotMatch(rows[2].why, /用户引导/);
   assert.match(rows[3].why, /页面|浏览器|copilot/i);
   assert.doesNotMatch(rows[3].why, /可作为 AI 产品定位/);
+}
+
+function testReportWhyCopyRewritesLiveSourceTemplates() {
+  const candidates = [
+    {
+      product: "GeoSolver MCP – reverse image geolocation for AI agents",
+      link: "https://reverseimagelocation.com/settings/mcp",
+      type: "新产品",
+      did: "HN 发布帖在 2026-06-12T12:01:47Z 出现：Show HN: GeoSolver MCP – reverse image geolocation for AI agents",
+      why: "GeoSolver MCP – reverse image geolocation for AI agents 的 HN 信号指向视觉内容和多模态工作流，更适合先看目标用户、完成度和开发者讨论质量。",
+      evidence: "[HN Algolia 2026-06-12T12:01:47Z](https://news.ycombinator.com/item?id=48503030)",
+      source: "hackernews"
+    },
+    {
+      product: "Bond",
+      link: "https://www.producthunt.com/products/bond-12",
+      type: "新产品",
+      did: "The AI to-do list that does itself",
+      why: "Bond 的 PH 描述聚焦「The AI to-do list that does itself」，适合看它如何把 AI 能力翻译成首日用户能理解的场景。",
+      evidence: "[Product Hunt 2026-06-11](https://www.producthunt.com/leaderboard/daily/2026/6/11/all)",
+      source: "producthunt"
+    },
+    {
+      product: "openai/codex 0.140.0-alpha.15",
+      link: "https://github.com/openai/codex/releases/tag/rust-v0.140.0-alpha.15",
+      type: "老产品更新",
+      did: "发布 0.140.0-alpha.15。",
+      why: "openai/codex 0.140.0-alpha.15 的版本变化会影响相关 AI 工具链，适合跟踪开发者生态迭代。",
+      evidence: "[GitHub Release 2026-06-12T17:05:02Z](https://github.com/openai/codex/releases/tag/rust-v0.140.0-alpha.15)",
+      source: "github"
+    },
+    {
+      product: "Google AI 本周发布多项更新",
+      link: "https://x.com/GoogleAI/status/2065478191247130703",
+      type: "疑似老产品更新",
+      did: "Google AI 本周推出多项更新：Gemini 3.5 Live Translate、NotebookLM 升级、Project Genie 开放等。",
+      why: "Google AI 本周发布多项更新 是AIHOT里的产品形态和采用门槛信号，先看是否有一手证据、明确动作和可复用产品启发。",
+      evidence: "[AIHOT 2026-06-12T16:55:50.000Z](https://x.com/GoogleAI/status/2065478191247130703)",
+      source: "aihot"
+    },
+    {
+      product: "Hugging Face Space: salonighode/bot_ai",
+      link: "https://huggingface.co/spaces/salonighode/bot_ai",
+      type: "新产品",
+      did: "Space 在 Hugging Face 最近创建或更新。",
+      why: "salonighode/bot_ai 是 HF 上的产品形态和采用门槛弱信号，先看可运行性、样例质量和是否有明确用户场景。",
+      evidence: "[Hugging Face API 2026-06-12T17:31:30.000Z](https://huggingface.co/spaces/salonighode/bot_ai)",
+      source: "huggingface"
+    }
+  ];
+  const rows = parseReportMarkdown(renderMarkdownTable(candidates), "reports/2026-06-13-0149-cst.md");
+  assert.match(rows[0].why, /地理定位|图像|线索/);
+  assert.doesNotMatch(rows[0].why, /HN 信号指向/);
+  assert.match(rows[1].why, /待办|任务|自动执行/);
+  assert.doesNotMatch(rows[1].why, /翻译成首日用户能理解的场景/);
+  assert.match(rows[2].why, /信息不足|alpha|版本节奏|发布节奏/);
+  assert.doesNotMatch(rows[2].why, /影响相关 AI 工具链/);
+  assert.match(rows[3].why, /汇总|多项更新|拆开|弱信号|NotebookLM|Gemini/);
+  assert.doesNotMatch(rows[3].why, /AIHOT里的/);
+  assert.match(rows[4].why, /bot|对话|信息不足|场景/);
+  assert.doesNotMatch(rows[4].why, /HF 上的产品形态和采用门槛弱信号/);
 }
 
 async function testProductHuntFixture() {
@@ -2409,6 +2494,54 @@ function testPriorityScoreDownranksAihotNonProductSignals() {
   assert.ok(observationSignal < productSignal - 10, `expected observation ${observationSignal} to trail product ${productSignal}`);
 }
 
+function testAihotObservationStaysWeakAcrossProducerAndConsumer() {
+  const candidate = {
+    product: "Higgsfield 推出 Higgsfield Games：从提示词到多人游戏",
+    link: "https://x.com/rohanpaul_ai/status/2065790684188328077",
+    type: "疑似新产品",
+    did: "Higgsfield 近日宣布推出 Higgsfield Games，这是一款可从一条提示词直接构建并部署任意类型 2D 或 3D 多人游戏的产品，自动生成角色、道具和场景。",
+    why: "Higgsfield 推出 Higgsfield Games：从提示词到多人游戏 值得看的不是单次 demo 漂不漂亮，而是旗舰模型发布几天内就催生了哪些真实玩法，这能反映能力扩散速度和创作者门槛。",
+    evidence: "[AIHOT 2026-06-13T13:37:34.000Z](https://x.com/rohanpaul_ai/status/2065790684188328077)",
+    source: "aihot",
+    observedAt: "2026-06-13T13:37:34.000Z"
+  };
+  const inferredScore = priorityScore(candidate);
+  const weakScore = priorityScore({ ...candidate, qualityLabel: "weak_keep" });
+  const keepScore = priorityScore({ ...candidate, qualityLabel: "keep" });
+  assert.equal(inferredScore, weakScore, "AIHOT 汇总/观察类信号默认应保持 weak_keep");
+  assert.notEqual(inferredScore, keepScore, "AIHOT 汇总/观察类信号不应被整体抬成 keep");
+
+  const report = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| Higgsfield 推出 Higgsfield Games：从提示词到多人游戏 | [链接](https://x.com/rohanpaul_ai/status/2065790684188328077) | 疑似新产品 | Higgsfield 近日宣布推出 Higgsfield Games，这是一款可从一条提示词直接构建并部署任意类型 2D 或 3D 多人游戏的产品，自动生成角色、道具和场景。 | Higgsfield 推出 Higgsfield Games：从提示词到多人游戏 值得看的不是单次 demo 漂不漂亮，而是旗舰模型发布几天内就催生了哪些真实玩法，这能反映能力扩散速度和创作者门槛。 | [AIHOT 2026-06-13T13:37:34.000Z](https://x.com/rohanpaul_ai/status/2065790684188328077) |`;
+  const [item] = parseReportMarkdown(report, "reports/2026-06-13-1655-cst.md");
+  assert.equal(item.qualityLabel, "weak_keep");
+}
+
+function testAihotSkillsUpdateStaysStrongAcrossProducerAndConsumer() {
+  const candidate = {
+    product: "邵猛更新 infocard-skills，优化多比例布局",
+    link: "https://x.com/shao__meng/status/2065777377360384447",
+    type: "疑似新产品",
+    did: "邵猛更新开源项目 infocard-skills，支持多比例信息卡生成，用户输入内容和比例后可由 AI Agent 生成 HTML 并截图输出 PNG。",
+    why: "邵猛更新 infocard-skills，优化多比例布局 这类“技能 + 自定义指令”更新会决定 agent 能否从单次帮手变成可复用员工，关键看配置是否能沉淀到团队工作流。",
+    evidence: "[AIHOT 2026-06-13T12:44:41.000Z](https://x.com/shao__meng/status/2065777377360384447)",
+    source: "aihot",
+    observedAt: "2026-06-13T12:44:41.000Z"
+  };
+  const inferredScore = priorityScore(candidate);
+  const weakScore = priorityScore({ ...candidate, qualityLabel: "weak_keep" });
+  const keepScore = priorityScore({ ...candidate, qualityLabel: "keep" });
+  assert.equal(inferredScore, keepScore, "skills/custom instructions 类 AIHOT 更新应保持 keep");
+  assert.notEqual(inferredScore, weakScore, "skills/custom instructions 类 AIHOT 更新不应被降成 weak_keep");
+
+  const report = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| 邵猛更新 infocard-skills，优化多比例布局 | [链接](https://x.com/shao__meng/status/2065777377360384447) | 疑似新产品 | 邵猛更新开源项目 infocard-skills，支持多比例信息卡生成，用户输入内容和比例后可由 AI Agent 生成 HTML 并截图输出 PNG。 | 邵猛更新 infocard-skills，优化多比例布局 这类“技能 + 自定义指令”更新会决定 agent 能否从单次帮手变成可复用员工，关键看配置是否能沉淀到团队工作流。 | [AIHOT 2026-06-13T12:44:41.000Z](https://x.com/shao__meng/status/2065777377360384447) |`;
+  const [item] = parseReportMarkdown(report, "reports/2026-06-14-0016-cst.md");
+  assert.equal(item.qualityLabel, "keep");
+}
+
 function testQualityAuditWritesPersistentArtifacts() {
   const rows = [
     {
@@ -2486,6 +2619,61 @@ function testQualityAuditWritesPersistentArtifacts() {
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
+}
+
+function testQualityAuditAllowsTwoSourcesWhenRemainingSourcesAreOnlyWeak() {
+  const rows = [
+    ...Array.from({ length: 10 }, (_, index) => ({
+      product: `HN Keep ${index + 1}`,
+      link: `https://example.com/hn-${index + 1}`,
+      source: "HN Algolia",
+      why: "明确产品发布。",
+      did: `Show HN: HN Keep ${index + 1}`,
+      category: "product",
+      qualityLabel: "keep",
+      signalKey: `2026-06-14|HN Algolia|hn-${index + 1}`,
+      productKey: `https://example.com/hn-${index + 1}`
+    })),
+    ...Array.from({ length: 10 }, (_, index) => ({
+      product: `AIHOT Weak ${index + 1}`,
+      link: `https://example.com/aihot-${index + 1}`,
+      source: "AIHOT",
+      why: "信息不足，先作为弱信号保留。",
+      did: `AIHOT item ${index + 1}`,
+      category: "product",
+      qualityLabel: "weak_keep",
+      signalKey: `2026-06-14|AIHOT|aihot-${index + 1}`,
+      productKey: `https://example.com/aihot-${index + 1}`
+    })),
+    {
+      product: "GitHub Weak Release",
+      link: "https://github.com/example/project/releases/tag/v1.2.3",
+      source: "GitHub Release",
+      why: "信息不足，先作为弱信号保留。",
+      did: "发布 v1.2.3。",
+      category: "product",
+      qualityLabel: "weak_keep",
+      signalKey: "2026-06-14|GitHub Release|weak-release",
+      productKey: "https://github.com/example/project/releases/tag/v1.2.3"
+    }
+  ];
+  const audit = auditReportQuality({
+    rows,
+    reportDate: "2026-06-14",
+    sourceHealth: {
+      generatedAt: "2026-06-13T16:13:26.100Z",
+      sources: {
+        producthunt: { status: "fallback", rawCount: 26, keptCount: 17, reportKeptCount: 0, previouslyReportedCount: 17, note: "history filtered" },
+        yc_launch: { status: "empty", rawCount: 0, keptCount: 0, note: "none" },
+        hackernews: { status: "ok", rawCount: 16, keptCount: 16, note: "ok" },
+        github: { status: "ok", rawCount: 17, keptCount: 16, note: "only weak releases" },
+        huggingface: { status: "empty", rawCount: 0, keptCount: 0, note: "none" },
+        aihot: { status: "ok", rawCount: 21, keptCount: 21, note: "ok" },
+        xhs_dealflow: { status: "unavailable", rawCount: 0, keptCount: 0, note: "offline" }
+      }
+    }
+  });
+  assert.ok(!audit.failures.some((failure) => failure.code === "source_diversity_top20"));
 }
 
 function testQualityAuditFlagsMalformedFeedback() {
@@ -2992,6 +3180,7 @@ const tests = [
   ["Site builder separates Hugging Face models", testSiteBuilderSeparatesHuggingFaceModels],
   ["Site builder marks non-product Show HN reports weak", testSiteBuilderMarksNonProductShowHnReportsWeak],
   ["Site builder marks low-signal package releases weak", testSiteBuilderMarksLowSignalPackageReleaseWeak],
+  ["Version-only GitHub releases stay weak across producer and consumer", testVersionOnlyGitHubReleaseStaysWeakAcrossProducerAndConsumer],
   ["Product reviews attach to cards", testProductReviewsAttachToCards],
   ["Report why copy adds context for repeated templates", testReportWhyCopyAddsContextForRepeatedTemplates],
   ["Report why copy keeps long product context distinct", testReportWhyCopyKeepsLongProductContextDistinct],
@@ -2999,6 +3188,7 @@ const tests = [
   ["Report why copy avoids HF model templates", testReportWhyCopyAvoidsHfModelTemplates],
   ["Report why copy avoids aggregator templates", testReportWhyCopyAvoidsAggregatorTemplates],
   ["Report why copy cleans HN specific contexts", testReportWhyCopyCleansHnSpecificContexts],
+  ["Report why copy rewrites live source templates", testReportWhyCopyRewritesLiveSourceTemplates],
   ["Product Hunt fixture", testProductHuntFixture],
   ["Product Hunt fallback parser fixture", testProductHuntFallbackParserFixture],
   ["Product Hunt markdown diagnostics counts raw rows and topics", testProductHuntMarkdownDiagnosticsCountsRawRowsAndTopics],
@@ -3040,11 +3230,14 @@ const tests = [
   ["Quality audit flags poor Top 10 PM scores", testQualityAuditFlagsPoorTop10PmScores],
   ["Quality audit flags duplicate repo Top 10", testQualityAuditFlagsDuplicateRepoTop10],
   ["Quality audit flags duplicate repo Top 20", testQualityAuditFlagsDuplicateRepoTop20],
+  ["Quality audit allows two sources when remaining sources are only weak", testQualityAuditAllowsTwoSourcesWhenRemainingSourcesAreOnlyWeak],
   ["Quality audit flags resource lists Top 20", testQualityAuditFlagsResourceListsTop20],
   ["Quality audit flags generic HF Space flood Top 20", testQualityAuditFlagsGenericHfSpaceFloodTop20],
   ["Quality audit flags AIHOT research Top 20", testQualityAuditFlagsAihotResearchTop20],
   ["Quality audit flags AIHOT infra observations Top 20", testQualityAuditFlagsAihotInfraObservationTop20],
   ["Priority score downranks AIHOT non-product signals", testPriorityScoreDownranksAihotNonProductSignals],
+  ["AIHOT observations stay weak across producer and consumer", testAihotObservationStaysWeakAcrossProducerAndConsumer],
+  ["AIHOT skills updates stay strong across producer and consumer", testAihotSkillsUpdateStaysStrongAcrossProducerAndConsumer],
   ["Quality audit writes persistent artifacts", testQualityAuditWritesPersistentArtifacts],
   ["Quality audit flags malformed feedback", testQualityAuditFlagsMalformedFeedback],
   ["Quality audit flags stale quality files", testQualityAuditFlagsStaleQualityFiles],
