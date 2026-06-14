@@ -1,7 +1,7 @@
 {
   "date": "2026-06-15",
-  "generatedAt": "2026-06-14T16:23:16.062Z",
-  "reportPath": "reports/2026-06-15-0023-cst.md",
+  "generatedAt": "2026-06-14T16:52:08.920Z",
+  "reportPath": "reports/2026-06-15-0052-cst.md",
   "ok": true,
   "failures": [],
   "metrics": {
@@ -32,8 +32,8 @@
     },
     "hackernews": {
       "status": "ok",
-      "rawCount": 10,
-      "keptCount": 10,
+      "rawCount": 9,
+      "keptCount": 9,
       "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
     },
     "github": {
@@ -50,8 +50,8 @@
     },
     "aihot": {
       "status": "ok",
-      "rawCount": 11,
-      "keptCount": 11,
+      "rawCount": 12,
+      "keptCount": 12,
       "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
     },
     "xhs_dealflow": {
@@ -98,21 +98,10 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "I built a WebAudio editor that coding agents can drive 的 HN 信号指向语音处理和低摩擦输入，更适合先看目标用户、完成度和开发者讨论质量。"
+      "reason": "I built a WebAudio editor that coding agents can drive 把音频编辑器开放给 coding agent 驱动，值得看重交互创作工具能否被自动化，而不是只停留在文本生成。"
     },
     {
       "rank": 4,
-      "product": "Web Researcher MCP – Search with verify citations and sources",
-      "productKey": "https://github.com/zoharbabin/web-researcher-mcp",
-      "source": "HN Algolia",
-      "category": "product",
-      "qualityLabel": "keep",
-      "pmScore": 5,
-      "rankingIssue": null,
-      "reason": "Web Researcher MCP – Search with verify citations and sources 聚焦 agent 可用的信息入口，关键看它能否提升检索可信度和会话连续性。"
-    },
-    {
-      "rank": 5,
       "product": "Omegacode – an agent agnostic version of Claude Workflows",
       "productKey": "https://github.com/sawyerhood/omegacode",
       "source": "HN Algolia",
@@ -123,7 +112,7 @@
       "reason": "Omegacode – an agent agnostic version of Claude Workflows 如果 workflow 层开始和具体模型解绑，竞争点就会从“谁的模型强”转向“谁更容易迁移团队流程和资产”。"
     },
     {
-      "rank": 6,
+      "rank": 5,
       "product": "Velyr – an AI agent that finds and fixes conversion leaks on your site",
       "productKey": "https://velyr.io",
       "source": "HN Algolia",
@@ -134,7 +123,7 @@
       "reason": "Velyr – an AI agent that finds and fixes conversion leaks on your site 直接瞄准网站转化漏斗里的诊断和修复，如果它真能自动找问题并落改动，会比泛泛的营销 copilot 更接近预算场景。"
     },
     {
-      "rank": 7,
+      "rank": 6,
       "product": "Open-Sourced Approxima, Our Agentic QA Tool to Catch Breakages Faster",
       "productKey": "https://github.com/approxima-ai/approxima-oss",
       "source": "HN Algolia",
@@ -145,7 +134,7 @@
       "reason": "Open-Sourced Approxima, Our Agentic QA Tool to Catch Breakages Faster 把 agentic QA 开源出来的价值，在于它能否把回归检查从“会写测试”推进到“能稳定拦截真实 breakage”。"
     },
     {
-      "rank": 8,
+      "rank": 7,
       "product": "乔木小说创作 Skill 开源发布",
       "productKey": "https://x.com/vista8/status/2066165703443726749",
       "source": "AIHOT",
@@ -156,7 +145,7 @@
       "reason": "乔木小说创作 Skill 开源发布 这类“技能 + 自定义指令”更新会决定 agent 能否从单次帮手变成可复用员工，关键看配置是否能沉淀到团队工作流。"
     },
     {
-      "rank": 9,
+      "rank": 8,
       "product": "Agent Gate – a deterministic CI firewall for AI-generated PRs",
       "productKey": "https://github.com/sjh9714/agent-gate",
       "source": "HN Algolia",
@@ -167,18 +156,18 @@
       "reason": "Agent Gate – a deterministic CI firewall for AI-generated PRs 它把 AI 生成 PR 的风险前移到 CI 防火墙，值得看规则粒度是否足够严，同时又不会把团队接入成本拉得太高。"
     },
     {
-      "rank": 10,
+      "rank": 9,
       "product": "LLM Memory Solved?",
       "productKey": "https://github.com/gary23w/neuron-db",
       "source": "HN Algolia",
       "category": "product",
-      "qualityLabel": "weak_keep",
-      "pmScore": 3,
+      "qualityLabel": "keep",
+      "pmScore": 5,
       "rankingIssue": null,
-      "reason": "LLM Memory Solved? 的 HN 信号指向模型实验和推理资产，更适合先看目标用户、完成度和开发者讨论质量。"
+      "reason": "LLM Memory Solved? 继续押注长期记忆层，关键要看记忆写入、召回和冲突处理是否可解释，而不是只宣称“解决记忆”。"
     },
     {
-      "rank": 11,
+      "rank": 10,
       "product": "appium/appium-mcp v1.85.6",
       "productKey": "https://github.com/appium/appium-mcp/releases/tag/v1.85.6",
       "source": "GitHub Release",
@@ -189,51 +178,51 @@
       "reason": "appium/appium-mcp v1.85.6 和移动端 agent 操作面相关，但当前证据只有版本号，信息不足，先作为弱信号保留；要看 release 说明才知道是否真有能力增量。"
     },
     {
+      "rank": 11,
+      "product": "Hugging Face Model: MultimodalAgent/PlanPhys-Model-Pre-Training-Scaling",
+      "productKey": "https://huggingface.co/multimodalagent/planphys-model-pre-training-scaling",
+      "source": "Hugging Face API",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "MultimodalAgent/PlanPhys-Model-Pre-Training-Scaling 指向 agent demo，但信息不足，先作为弱信号保留；需要看到实际工具链、任务边界和可运行样例才值得上提。"
+    },
+    {
       "rank": 12,
+      "product": "Hugging Face Model: joowon-jang/Nex-N2-mini-MLX-VLM-4bit-MTP",
+      "productKey": "https://huggingface.co/joowon-jang/nex-n2-mini-mlx-vlm-4bit-mtp",
+      "source": "Hugging Face API",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "joowon-jang/Nex-N2-mini-MLX-VLM-4bit-MTP 指向 agent demo，但信息不足，先作为弱信号保留；需要看到实际工具链、任务边界和可运行样例才值得上提。"
+    },
+    {
+      "rank": 13,
       "product": "Google Cloud 推出 Open Knowledge Format （OKF）：将散乱文档转为 Markdown 文件供 AI 智能体使用",
       "productKey": "https://the-decoder.com/google-clouds-open-knowledge-format-turns-scattered-docs-into-markdown-files-for-ai-agents",
       "source": "AIHOT",
       "category": "product",
       "qualityLabel": "weak_keep",
-      "pmScore": 2,
+      "pmScore": 3,
       "rankingIssue": null,
-      "reason": "Google Cloud 推出 Open Knowledge Format （OKF）：将散乱文档转为 Markdown 文件供 AI 智能体使用 信息不足，先作为弱信号保留；当前更像传闻转述，缺少官方发布内容，无法判断这会带来什么具体产品动作。"
-    },
-    {
-      "rank": 13,
-      "product": "Have your agent consult other models",
-      "productKey": "https://github.com/raine/consult-llm",
-      "source": "HN Algolia",
-      "category": "model_infra",
-      "qualityLabel": "weak_keep",
-      "pmScore": 2,
-      "rankingIssue": null,
-      "reason": "Have your agent consult other models 的 HN 信号指向模型实验和推理资产，更适合先看目标用户、完成度和开发者讨论质量。"
+      "reason": "Google Cloud 推出 Open Knowledge Format （OKF）：将散乱文档转为 Markdown 文件供 AI 智能体使用 值得看的是它把组织知识整理成 agent 可读的 Markdown 规范，但当前证据偏媒体转述，仍要等一手发布确认产品化程度。"
     },
     {
       "rank": 14,
-      "product": "你的模型和思维都不属于你",
-      "productKey": "https://x.com/emostaque/status/2066129558990967146",
+      "product": "Siri AI并非Gemini：苹果自研而非直接复制",
+      "productKey": "https://x.com/berryxia/status/2066185847154921545",
       "source": "AIHOT",
       "category": "product",
-      "qualityLabel": "deprioritize",
-      "pmScore": 1,
-      "rankingIssue": "weak_signal_in_top20",
-      "reason": "你的模型和思维都不属于你 信息不足，先作为弱信号保留；当前更像传闻转述，缺少官方发布内容，无法判断这会带来什么具体产品动作。"
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "Siri AI并非Gemini：苹果自研而非直接复制 更像 Siri 底层模型路线的传闻解释，能提示苹果 AI 体验走向，但不是可直接验证的新产品发布。"
     },
     {
       "rank": 15,
-      "product": "不要相信大型上下文窗口",
-      "productKey": "https://garrit.xyz/posts/2026-05-06-dont-trust-large-context-windows",
-      "source": "AIHOT",
-      "category": "product",
-      "qualityLabel": "deprioritize",
-      "pmScore": 1,
-      "rankingIssue": "weak_signal_in_top20",
-      "reason": "不要相信大型上下文窗口 信息不足，先作为弱信号保留；当前更像传闻转述，缺少官方发布内容，无法判断这会带来什么具体产品动作。"
-    },
-    {
-      "rank": 16,
       "product": "openai/codex 0.140.0-alpha.19",
       "productKey": "https://github.com/openai/codex/releases/tag/rust-v0.140.0-alpha.19",
       "source": "GitHub Release",
@@ -244,26 +233,37 @@
       "reason": "openai/codex 0.140.0-alpha.19 只能说明 Codex 仍在高频推进 alpha 节奏，信息不足，先作为弱信号保留；仅凭 tag 还看不出模型、交互或稳定性改了什么。"
     },
     {
-      "rank": 17,
+      "rank": 16,
       "product": "Hugging Face Space: shimaa22/test_voice",
       "productKey": "https://huggingface.co/spaces/shimaa22/test_voice",
       "source": "Hugging Face API",
       "category": "product",
       "qualityLabel": "weak_keep",
       "pmScore": 2,
-      "rankingIssue": null,
+      "rankingIssue": "template_why",
       "reason": "shimaa22/test_voice 是 HF 上的语音处理和低摩擦输入弱信号，先看可运行性、样例质量和是否有明确用户场景。"
     },
     {
-      "rank": 18,
-      "product": "Hugging Face Model: Skll06/finetuning-sentiment-model-3000-samples",
-      "productKey": "https://huggingface.co/skll06/finetuning-sentiment-model-3000-samples",
+      "rank": 17,
+      "product": "Hugging Face Model: fpadovani/tur-latn-10mb-after-ppt-shuff-dyck-100mb-ckpt500_seed3407",
+      "productKey": "https://huggingface.co/fpadovani/tur-latn-10mb-after-ppt-shuff-dyck-100mb-ckpt500_seed3407",
       "source": "Hugging Face API",
       "category": "model_infra",
       "qualityLabel": "weak_keep",
       "pmScore": 1,
       "rankingIssue": null,
-      "reason": "Skll06/finetuning-sentiment-model-3000-samples 更偏模型或推理资产更新，适合放在 Models & Infra 中观察能力、许可和可复用性。"
+      "reason": "fpadovani/tur-latn-10mb-after-ppt-shuff-dyck-100mb-ckpt500_seed3407 更像语言或字符序列实验，适合看语种覆盖、训练任务和是否能复用到翻译或文本清洗。"
+    },
+    {
+      "rank": 18,
+      "product": "Hugging Face Model: Jur1cek/Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-PRISMAQUANT-AURA-6bit",
+      "productKey": "https://huggingface.co/jur1cek/qwen3.6-35b-a3b-uncensored-heretic-native-mtp-preserved-prismaquant-aura-6bit",
+      "source": "Hugging Face API",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 1,
+      "rankingIssue": null,
+      "reason": "Jur1cek/Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-PRISMAQUANT-AURA-6bit 是本地推理/量化相关资产，关键看体积、硬件门槛、许可和真实基准。"
     },
     {
       "rank": 19,
@@ -278,14 +278,14 @@
     },
     {
       "rank": 20,
-      "product": "Hugging Face Model: mradermacher/Kimi-K2.7-Code-GGUF",
-      "productKey": "https://huggingface.co/mradermacher/kimi-k2.7-code-gguf",
+      "product": "Hugging Face Model: OccultAI/Adversary-8B-v1.21",
+      "productKey": "https://huggingface.co/occultai/adversary-8b-v1.21",
       "source": "Hugging Face API",
       "category": "model_infra",
       "qualityLabel": "weak_keep",
       "pmScore": 1,
       "rankingIssue": null,
-      "reason": "mradermacher/Kimi-K2.7-Code-GGUF 是 HF 上的主流 AI 产品体验变化弱信号，先看可运行性、样例质量和是否有明确用户场景。"
+      "reason": "OccultAI/Adversary-8B-v1.21 更偏模型或推理资产更新，适合放在 Models & Infra 中观察能力、许可和可复用性。"
     }
   ]
 }

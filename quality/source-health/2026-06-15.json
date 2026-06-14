@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-14T16:23:16.062Z",
+  "generatedAt": "2026-06-14T16:52:08.920Z",
   "window": {
-    "start": "2026-06-14 00:23:16 CST",
-    "end": "2026-06-15 00:23:16 CST"
+    "start": "2026-06-14 00:52:08 CST",
+    "end": "2026-06-15 00:52:08 CST"
   },
   "productHuntDateKeys": [
     "2026-06-13"
@@ -25,8 +25,8 @@
     },
     "hackernews": {
       "status": "ok",
-      "rawCount": 10,
-      "keptCount": 10,
+      "rawCount": 9,
+      "keptCount": 9,
       "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
     },
     "github": {
@@ -43,8 +43,8 @@
     },
     "aihot": {
       "status": "ok",
-      "rawCount": 11,
-      "keptCount": 11,
+      "rawCount": 12,
+      "keptCount": 12,
       "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
     },
     "xhs_dealflow": {
