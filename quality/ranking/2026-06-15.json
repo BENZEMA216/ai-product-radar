@@ -1,7 +1,7 @@
 {
   "date": "2026-06-15",
-  "generatedAt": "2026-06-14T16:20:35.120Z",
-  "reportPath": "reports/2026-06-15-0020-cst.md",
+  "generatedAt": "2026-06-14T16:23:16.062Z",
+  "reportPath": "reports/2026-06-15-0023-cst.md",
   "topK": [
     {
       "rank": 1,
@@ -140,21 +140,6 @@
     },
     {
       "rank": 10,
-      "product": "I made a terminal tool to inspect LLM judge mistakes",
-      "productKey": "https://github.com/matteoleonesi/claim-memory-graph-sdk",
-      "signalKey": "2026-06-15|HN Algolia|https://github.com/matteoleonesi/claim-memory-graph-sdk",
-      "link": "https://github.com/MatteoLeonesi/claim-memory-graph-sdk",
-      "source": "HN Algolia",
-      "type": "新产品",
-      "category": "product",
-      "qualityLabel": "keep",
-      "pmScore": 5,
-      "rankingIssue": null,
-      "did": "HN 发布帖在 2026-06-14T16:19:47Z 出现：Show HN: I made a terminal tool to inspect LLM judge mistakes",
-      "why": "I made a terminal tool to inspect LLM judge mistakes 的 HN 信号指向模型实验和推理资产，更适合先看目标用户、完成度和开发者讨论质量。"
-    },
-    {
-      "rank": 11,
       "product": "LLM Memory Solved?",
       "productKey": "https://github.com/gary23w/neuron-db",
       "signalKey": "2026-06-15|HN Algolia|https://github.com/gary23w/neuron-db",
@@ -169,7 +154,7 @@
       "why": "LLM Memory Solved? 的 HN 信号指向模型实验和推理资产，更适合先看目标用户、完成度和开发者讨论质量。"
     },
     {
-      "rank": 12,
+      "rank": 11,
       "product": "appium/appium-mcp v1.85.6",
       "productKey": "https://github.com/appium/appium-mcp/releases/tag/v1.85.6",
       "signalKey": "2026-06-15|GitHub Release|https://github.com/appium/appium-mcp/releases/tag/v1.85.6",
@@ -184,7 +169,7 @@
       "why": "appium/appium-mcp v1.85.6 和移动端 agent 操作面相关，但当前证据只有版本号，信息不足，先作为弱信号保留；要看 release 说明才知道是否真有能力增量。"
     },
     {
-      "rank": 13,
+      "rank": 12,
       "product": "Google Cloud 推出 Open Knowledge Format （OKF）：将散乱文档转为 Markdown 文件供 AI 智能体使用",
       "productKey": "https://the-decoder.com/google-clouds-open-knowledge-format-turns-scattered-docs-into-markdown-files-for-ai-agents",
       "signalKey": "2026-06-15|AIHOT|https://the-decoder.com/google-clouds-open-knowledge-format-turns-scattered-docs-into-markdown-files-for-ai-agents",
@@ -199,22 +184,7 @@
       "why": "Google Cloud 推出 Open Knowledge Format （OKF）：将散乱文档转为 Markdown 文件供 AI 智能体使用 信息不足，先作为弱信号保留；当前更像传闻转述，缺少官方发布内容，无法判断这会带来什么具体产品动作。"
     },
     {
-      "rank": 14,
-      "product": "Hugging Face Model: LLM-OS-Models/LFM2.5-8B-A1B-SFT1-Online-ECHO-RLVR-GRPO-Adapters",
-      "productKey": "https://huggingface.co/llm-os-models/lfm2.5-8b-a1b-sft1-online-echo-rlvr-grpo-adapters",
-      "signalKey": "2026-06-15|Hugging Face API|https://huggingface.co/llm-os-models/lfm2.5-8b-a1b-sft1-online-echo-rlvr-grpo-adapters",
-      "link": "https://huggingface.co/LLM-OS-Models/LFM2.5-8B-A1B-SFT1-Online-ECHO-RLVR-GRPO-Adapters",
-      "source": "Hugging Face API",
-      "type": "疑似老产品更新",
-      "category": "model_infra",
-      "qualityLabel": "weak_keep",
-      "pmScore": 2,
-      "rankingIssue": null,
-      "did": "Model 在 Hugging Face 最近创建或更新。",
-      "why": "LLM-OS-Models/LFM2.5-8B-A1B-SFT1-Online-ECHO-RLVR-GRPO-Adapters 指向 agent demo，但信息不足，先作为弱信号保留；需要看到实际工具链、任务边界和可运行样例才值得上提。"
-    },
-    {
-      "rank": 15,
+      "rank": 13,
       "product": "Have your agent consult other models",
       "productKey": "https://github.com/raine/consult-llm",
       "signalKey": "2026-06-15|HN Algolia|https://github.com/raine/consult-llm",
@@ -229,7 +199,7 @@
       "why": "Have your agent consult other models 的 HN 信号指向模型实验和推理资产，更适合先看目标用户、完成度和开发者讨论质量。"
     },
     {
-      "rank": 16,
+      "rank": 14,
       "product": "你的模型和思维都不属于你",
       "productKey": "https://x.com/emostaque/status/2066129558990967146",
       "signalKey": "2026-06-15|AIHOT|https://x.com/emostaque/status/2066129558990967146",
@@ -237,14 +207,14 @@
       "source": "AIHOT",
       "type": "疑似新产品",
       "category": "product",
-      "qualityLabel": "weak_keep",
-      "pmScore": 2,
-      "rankingIssue": null,
+      "qualityLabel": "deprioritize",
+      "pmScore": 1,
+      "rankingIssue": "weak_signal_in_top20",
       "did": "不是你的模型 不是你的思维",
       "why": "你的模型和思维都不属于你 信息不足，先作为弱信号保留；当前更像传闻转述，缺少官方发布内容，无法判断这会带来什么具体产品动作。"
     },
     {
-      "rank": 17,
+      "rank": 15,
       "product": "不要相信大型上下文窗口",
       "productKey": "https://garrit.xyz/posts/2026-05-06-dont-trust-large-context-windows",
       "signalKey": "2026-06-15|AIHOT|https://garrit.xyz/posts/2026-05-06-dont-trust-large-context-windows",
@@ -252,14 +222,14 @@
       "source": "AIHOT",
       "type": "疑似新产品",
       "category": "product",
-      "qualityLabel": "weak_keep",
-      "pmScore": 2,
-      "rankingIssue": null,
+      "qualityLabel": "deprioritize",
+      "pmScore": 1,
+      "rankingIssue": "weak_signal_in_top20",
       "did": "Hacker News 热门文章以标题直指大型上下文窗口的可靠性问题，提醒用户不应盲目信任大语言模型宣称的上下文长度能力。文章未给出具体模型或数据，但这一警示在 AI 社区引发讨论。",
       "why": "不要相信大型上下文窗口 信息不足，先作为弱信号保留；当前更像传闻转述，缺少官方发布内容，无法判断这会带来什么具体产品动作。"
     },
     {
-      "rank": 18,
+      "rank": 16,
       "product": "openai/codex 0.140.0-alpha.19",
       "productKey": "https://github.com/openai/codex/releases/tag/rust-v0.140.0-alpha.19",
       "signalKey": "2026-06-15|GitHub Release|https://github.com/openai/codex/releases/tag/rust-v0.140.0-alpha.19",
@@ -274,7 +244,22 @@
       "why": "openai/codex 0.140.0-alpha.19 只能说明 Codex 仍在高频推进 alpha 节奏，信息不足，先作为弱信号保留；仅凭 tag 还看不出模型、交互或稳定性改了什么。"
     },
     {
-      "rank": 19,
+      "rank": 17,
+      "product": "Hugging Face Space: shimaa22/test_voice",
+      "productKey": "https://huggingface.co/spaces/shimaa22/test_voice",
+      "signalKey": "2026-06-15|Hugging Face API|https://huggingface.co/spaces/shimaa22/test_voice",
+      "link": "https://huggingface.co/spaces/shimaa22/test_voice",
+      "source": "Hugging Face API",
+      "type": "疑似老产品更新",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "did": "Space 在 Hugging Face 最近创建或更新。",
+      "why": "shimaa22/test_voice 是 HF 上的语音处理和低摩擦输入弱信号，先看可运行性、样例质量和是否有明确用户场景。"
+    },
+    {
+      "rank": 18,
       "product": "Hugging Face Model: Skll06/finetuning-sentiment-model-3000-samples",
       "productKey": "https://huggingface.co/skll06/finetuning-sentiment-model-3000-samples",
       "signalKey": "2026-06-15|Hugging Face API|https://huggingface.co/skll06/finetuning-sentiment-model-3000-samples",
@@ -289,11 +274,11 @@
       "why": "Skll06/finetuning-sentiment-model-3000-samples 更偏模型或推理资产更新，适合放在 Models & Infra 中观察能力、许可和可复用性。"
     },
     {
-      "rank": 20,
-      "product": "Hugging Face Model: fpadovani/tur-latn-10mb-after-ppt-shuff-dyck-100mb-ckpt500_seed3407",
-      "productKey": "https://huggingface.co/fpadovani/tur-latn-10mb-after-ppt-shuff-dyck-100mb-ckpt500_seed3407",
-      "signalKey": "2026-06-15|Hugging Face API|https://huggingface.co/fpadovani/tur-latn-10mb-after-ppt-shuff-dyck-100mb-ckpt500_seed3407",
-      "link": "https://huggingface.co/fpadovani/tur-latn-10mb-after-ppt-shuff-dyck-100mb-ckpt500_seed3407",
+      "rank": 19,
+      "product": "Hugging Face Model: aliya-ra/qwen2.5-1.5b-grpo-math",
+      "productKey": "https://huggingface.co/aliya-ra/qwen2.5-1.5b-grpo-math",
+      "signalKey": "2026-06-15|Hugging Face API|https://huggingface.co/aliya-ra/qwen2.5-1.5b-grpo-math",
+      "link": "https://huggingface.co/aliya-ra/qwen2.5-1.5b-grpo-math",
       "source": "Hugging Face API",
       "type": "新产品",
       "category": "model_infra",
@@ -301,7 +286,22 @@
       "pmScore": 1,
       "rankingIssue": null,
       "did": "Model 在 Hugging Face 最近创建或更新。",
-      "why": "fpadovani/tur-latn-10mb-after-ppt-shuff-dyck-100mb-ckpt500_seed3407 更偏模型或推理资产更新，适合放在 Models & Infra 中观察能力、许可和可复用性。"
+      "why": "aliya-ra/qwen2.5-1.5b-grpo-math 是本地推理/量化相关资产，关键看体积、硬件门槛、许可和真实基准。"
+    },
+    {
+      "rank": 20,
+      "product": "Hugging Face Model: mradermacher/Kimi-K2.7-Code-GGUF",
+      "productKey": "https://huggingface.co/mradermacher/kimi-k2.7-code-gguf",
+      "signalKey": "2026-06-15|Hugging Face API|https://huggingface.co/mradermacher/kimi-k2.7-code-gguf",
+      "link": "https://huggingface.co/mradermacher/Kimi-K2.7-Code-GGUF",
+      "source": "Hugging Face API",
+      "type": "新产品",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 1,
+      "rankingIssue": null,
+      "did": "Model 在 Hugging Face 最近创建或更新。",
+      "why": "mradermacher/Kimi-K2.7-Code-GGUF 是 HF 上的主流 AI 产品体验变化弱信号，先看可运行性、样例质量和是否有明确用户场景。"
     }
   ]
 }
