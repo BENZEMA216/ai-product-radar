@@ -35,6 +35,11 @@ const KNOWN_TEMPLATE_WHY = [
   "适合观察定位、入口和首日传播。",
   "获得早期开发者曝光，适合观察真实反馈和采用门槛。"
 ];
+const KNOWN_TEMPLATE_WHY_PATTERNS = [
+  /的 HN 信号指向.*?，更适合先看目标用户、完成度和开发者讨论质量。/,
+  /是AIHOT里的.*?信号，先看是否有一手证据、明确动作和可复用产品启发。/,
+  /是 HF 上的.*?弱信号，先看可运行性、样例质量和是否有明确用户场景。/
+];
 
 function clean(value) {
   return String(value || "").replace(/\s+/g, " ").trim();
@@ -98,7 +103,7 @@ function whySignature(value) {
 
 function hasKnownTemplate(value) {
   const text = clean(value);
-  return KNOWN_TEMPLATE_WHY.some((template) => text.includes(template));
+  return KNOWN_TEMPLATE_WHY.some((template) => text.includes(template)) || KNOWN_TEMPLATE_WHY_PATTERNS.some((pattern) => pattern.test(text));
 }
 
 function auditRepeatedWhy(rows) {

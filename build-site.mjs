@@ -109,10 +109,52 @@ function isLowSignalGitHubPackageRelease({ source, product, did, evidence }) {
   return onlyVersionAnnouncement && (isScopedPackageVersion || hasVersionInTitle);
 }
 
+function isAihotRoundupSignal({ source, product, did, why }) {
+  if (source !== "AIHOT" && source !== "XHS Dealflow") return false;
+  const text = `${source} ${product} ${did} ${why}`.toLowerCase();
+  return (
+    /推荐.{0,8}[一二三四五六七八九十0-9]+个/.test(text) ||
+    /合集|汇总|清单|盘点|roundup|collection/.test(text) ||
+    (includesAny(text, ["推荐", "工具", "项目"]) && includesAny(text, ["四个", "多个", "开源 ai 工具"]))
+  );
+}
+
+function isAihotNonProductSignal({ source, product, did, why, evidence }) {
+  if (source !== "AIHOT" && source !== "XHS Dealflow") return false;
+  const text = `${source} ${product} ${did} ${why} ${evidence}`.toLowerCase();
+  const actionText = `${product} ${did} ${evidence}`.toLowerCase();
+  const hasProductAction = /发布|推出|上线|更新|开源|release|released|launch|launched|introducing|now available/i.test(actionText);
+  const hasProductSurface = /产品|工具|应用|app|api|sdk|agent|智能体|助手|工作流|平台|runtime|browser|插件|扩展/i.test(actionText);
+  const explicitNonProduct = /不是产品发布|不是新的产品动作|政策|舆论|新闻/.test(text);
+  const nonProductObservation =
+    /研究|论文|基准|评测|排行|榜单|首页|前瞻|预测|观点|访谈|圆桌|融资|估值|财报|监管|风险|采购|求购|高校|军方|报道称|据报道|内幕|出口管制|白宫|播客|ceo|格式|规范|协议|不要相信|不是你的模型|不是你的思维|大型上下文窗口|抽象观点/.test(
+      text
+    ) ||
+    /向量存储|压缩|faiss|terminalbench|benchmark|arxiv|report|survey|forecast|outlook|format|protocol|standard/i.test(text) ||
+    /不敌|击败|超过|占\s*(?:huggingface|hf|首页)|前\s*\d+\s*个模型/i.test(text);
+  if (explicitNonProduct) return true;
+  return nonProductObservation && !(hasProductAction && hasProductSurface);
+}
+
+function isAihotWeakRelaySignal({ source, product, did, why }) {
+  if (source !== "AIHOT" && source !== "XHS Dealflow") return false;
+  const text = `${source} ${product} ${did} ${why}`.toLowerCase();
+  const actionText = `${product} ${did}`.toLowerCase();
+  const hasProductAction = /发布|推出|上线|更新|开源|release|released|launch|launched|introducing|now available/i.test(actionText);
+  const hasProductSurface = /产品|工具|应用|app|api|sdk|agent|智能体|助手|工作流|平台|runtime|browser|插件|扩展/i.test(actionText);
+  const explicitNonProduct = /没有明确产品发布|无产品动作|不是产品发布/.test(text);
+  if (explicitNonProduct) return true;
+  return includesAny(text, ["信息不足", "传闻转述", "缺少官方发布内容"]) && !(hasProductAction && hasProductSurface);
+}
+
 function inferQualityLabel({ source, product, did, why, evidence, category }) {
   const text = `${source} ${product} ${did} ${why}`.toLowerCase();
   if (category === "model_infra") return "weak_keep";
   if (isLowSignalGitHubPackageRelease({ source, product, did, evidence })) return "weak_keep";
+  if (isAihotNonProductSignal({ source, product, did, why, evidence })) return "deprioritize";
+  if (isAihotWeakRelaySignal({ source, product, did, why })) return "deprioritize";
+  if (includesAny(text, ["iptv", "影视", "电视剧", "电影", "纪录片"])) return "deprioritize";
+  if (isAihotRoundupSignal({ source, product, did, why })) return "deprioritize";
   if (/baby|girlfriend|boyfriend|roulette|wallpaper|tattoo|headshot|photo booth/i.test(text)) return "deprioritize";
   if (
     /minimax m3|任务模式|专家模式|skills|replit agent|custom instructions|modular|parasail|notebooklm|project genie|live translate/.test(

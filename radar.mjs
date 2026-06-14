@@ -386,10 +386,14 @@ function isAihotNonProductSignal(item) {
   const actionText = `${item.product} ${item.did} ${item.evidence}`.toLowerCase();
   const hasProductAction = /发布|推出|上线|更新|开源|release|released|launch|launched|introducing|now available/i.test(actionText);
   const hasProductSurface = /产品|工具|应用|app|api|sdk|agent|智能体|助手|工作流|平台|runtime|browser|插件|扩展/i.test(actionText);
+  const explicitNonProduct = /不是产品发布|不是新的产品动作|政策|舆论|新闻/.test(text);
   const nonProductObservation =
-    /研究|论文|基准|评测|排行|榜单|首页|前瞻|预测|观点|访谈|圆桌|融资|估值|财报|监管|风险|采购|求购|高校|军方|报道称|据报道/.test(text) ||
-    /向量存储|压缩|faiss|terminalbench|benchmark|arxiv|report|survey|forecast|outlook/i.test(text) ||
+    /研究|论文|基准|评测|排行|榜单|首页|前瞻|预测|观点|访谈|圆桌|融资|估值|财报|监管|风险|采购|求购|高校|军方|报道称|据报道|内幕|出口管制|白宫|播客|ceo|格式|规范|协议|不要相信|不是你的模型|不是你的思维|大型上下文窗口|抽象观点/.test(
+      text
+    ) ||
+    /向量存储|压缩|faiss|terminalbench|benchmark|arxiv|report|survey|forecast|outlook|format|protocol|standard/i.test(text) ||
     /不敌|击败|超过|占\s*(?:huggingface|hf|首页)|前\s*\d+\s*个模型/i.test(text);
+  if (explicitNonProduct) return true;
   return nonProductObservation && !(hasProductAction && hasProductSurface);
 }
 
@@ -1537,6 +1541,7 @@ const REUSABLE_WHY_PATTERNS = [
   /的 HN 信号指向.*?，更适合先看目标用户、完成度和开发者讨论质量。/,
   /的版本变化会影响相关 AI 工具链，适合跟踪开发者生态迭代。/,
   /是AIHOT里的.*?信号，先看是否有一手证据、明确动作和可复用产品启发。/,
+  /指向设计生成到局部修改的闭环，适合观察产品经理和设计师是否能直接参与实现。/,
   /是 HF 上的.*?弱信号，先看可运行性、样例质量和是否有明确用户场景。/
 ];
 
@@ -1672,6 +1677,7 @@ function sourceContextLabel(item) {
   if (includesAny(text, ["browser", "tab", "extension", "chrome"])) return "浏览器和标签页控制";
   if (includesAny(text, ["finance", "trading", "sales", "marketing", "commerce", "cart", "pay", "checkout"])) return "商业运营和转化流程";
   if (includesAny(text, ["生成 mac 软件", "mac 软件", "store", "app store", "glaze", "一句话生成"])) return "生成式应用构建和分发";
+  if (includesAny(text, ["gguf", "model", "models", "llm", "gemma", "mistral", "qwen", "roberta"])) return "模型实验和推理资产";
   if (includesAny(text, ["cursor", "codex", "claude", "openai", "chatgpt", "kimi", "doubao", "豆包"])) return "主流 AI 产品体验变化";
   if (includesAny(text, ["价格", "成本", "pricing", "cache", "缓存", "roi"])) return "成本和商业化信号";
   if (includesAny(text, ["用户讨论", "真实使用", "体验", "小红书", "反馈"])) return "真实用户使用反馈";
@@ -1680,7 +1686,6 @@ function sourceContextLabel(item) {
   if (includesAny(text, ["backend", "api", "sdk", "runtime"])) return "后端接口和开发者集成";
   if (includesAny(text, ["ui", "frontend", "dashboard"])) return "前端界面和可用性验证";
   if (includesAny(text, ["chatbot", "chat-bot", "chat_bot", "ai_chatbot", "assistant"])) return "对话助手和入口实验";
-  if (includesAny(text, ["model", "models", "gguf", "llm", "gemma", "mistral", "qwen", "roberta"])) return "模型实验和推理资产";
   if (includesAny(text, ["course", "learn", "assignment", "tutorial"])) return "学习场景和能力验证";
   if (includesAny(text, ["coding", "code", "developer", "agent"])) return "开发者 agent 工作流";
   return "产品形态和采用门槛";
@@ -1690,6 +1695,36 @@ function hackerNewsWhyFromContext(item) {
   const product = compactProductName(item.product);
   const context = sourceContextLabel(item);
   const text = `${item.product} ${item.did} ${item.why}`.toLowerCase();
+  if (includesAny(text, ["background coding agents", "isolated linux vms", "bastion"])) {
+    return `${product} 把后台 coding agent 放进隔离 Linux VM，真正该看的是权限边界、任务恢复和多任务并发时的沙箱成本。`;
+  }
+  if (includesAny(text, ["running 3 coding agents non-stop", "3 coding agents non-stop"])) {
+    return `${product} 展示的是多 agent 连续跑三天的运维方式，重点不在酷炫，而在监督面板、失败恢复和上下文交接是否足够稳。`;
+  }
+  if (includesAny(text, ["conversion leaks", "velyr"])) {
+    return `${product} 直接瞄准网站转化漏斗里的诊断和修复，如果它真能自动找问题并落改动，会比泛泛的营销 copilot 更接近预算场景。`;
+  }
+  if (includesAny(text, ["catch breakages faster", "approxima"])) {
+    return `${product} 把 agentic QA 开源出来的价值，在于它能否把回归检查从“会写测试”推进到“能稳定拦截真实 breakage”。`;
+  }
+  if (includesAny(text, ["deterministic ci firewall", "agent gate"])) {
+    return `${product} 它把 AI 生成 PR 的风险前移到 CI 防火墙，值得看规则粒度是否足够严，同时又不会把团队接入成本拉得太高。`;
+  }
+  if (includesAny(text, ["agent agnostic", "claude workflows", "omegacode"])) {
+    return `${product} 如果 workflow 层开始和具体模型解绑，竞争点就会从“谁的模型强”转向“谁更容易迁移团队流程和资产”。`;
+  }
+  if (includesAny(text, ["webaudio editor", "audio editor", "coding agents can drive"])) {
+    return `${product} 把音频编辑器开放给 coding agent 驱动，值得看重交互创作工具能否被自动化，而不是只停留在文本生成。`;
+  }
+  if (includesAny(text, ["llm memory solved", "neuron-db", "memory solved"])) {
+    return `${product} 继续押注长期记忆层，关键要看记忆写入、召回和冲突处理是否可解释，而不是只宣称“解决记忆”。`;
+  }
+  if (includesAny(text, ["consult other models", "consult-llm", "agent consult"])) {
+    return `${product} 让 agent 主动请其他模型会诊，价值在于多模型交叉验证和仲裁机制能否减少单模型盲点。`;
+  }
+  if (includesAny(text, ["model-graded answers", "checking model graded", "claim-memory-graph"])) {
+    return `${product} 把模型打分结果再校验一遍，适合观察 AI 评测产品如何处理“评委本身也会错”的可靠性问题。`;
+  }
   if (includesAny(text, ["geolocation", "reverse image", "location"])) {
     return `${product} 把图片反查地理位置暴露给 agent 调用，值得看视觉线索检索会不会变成调查、核验和 OSINT 工作流的标准能力。`;
   }
@@ -1771,6 +1806,15 @@ function hackerNewsWhyFromContext(item) {
   if (context === "检索、RAG 和信息入口") {
     return `${product} 聚焦 agent 可用的信息入口，关键看它能否提升检索可信度和会话连续性。`;
   }
+  if (context === "语音处理和低摩擦输入") {
+    return `${product} 切到语音或音频入口，重点看它是否减少真实工作流里的编辑成本，而不是只把输入方式换成声音。`;
+  }
+  if (context === "视觉内容和多模态工作流") {
+    return `${product} 指向多模态工作流，值得看它是否能完成可复用任务闭环，而不是只有一次性视觉 demo。`;
+  }
+  if (context === "模型实验和推理资产") {
+    return `${product} 更像模型或推理资产信号，适合看它能否服务评测、记忆、路由或 agent 基础设施。`;
+  }
   if (context === "高风险业务流程自动化") {
     return `${product} 把 AI 放进合规或准入前置流程，产品价值取决于证据链、误判处理和人工复核。`;
   }
@@ -1827,6 +1871,24 @@ function huggingFaceWhyFromContext(item) {
     return `${product} 属于对话入口实验，重点看是否有明确任务、记忆能力或差异化交互。`;
   }
   if (context === "模型实验和推理资产") {
+    if (includesAny(text, ["privacy-filter", "privacy filter"])) {
+      return `${product} 指向本地隐私过滤模型，重点看它能否在端侧或私有部署里先处理敏感文本，再交给上游模型。`;
+    }
+    if (includesAny(text, ["chroma", "zeta-chroma"])) {
+      return `${product} 更像色彩或视觉表征模型资产，适合看它能否服务图像生成、检索或风格控制流程。`;
+    }
+    if (includesAny(text, ["hypernet", "distill", "distillation"])) {
+      return `${product} 指向蒸馏或压缩实验，价值在于是否能把大模型能力迁移到更低成本的部署形态。`;
+    }
+    if (includesAny(text, ["timezone", "converter"])) {
+      return `${product} 更像时区转换类工具模型，信息不足，先作为弱信号保留；除非看到具体 agent 调度场景，否则产品价值有限。`;
+    }
+    if (includesAny(text, ["fluxer", "flux"])) {
+      return `${product} 偏视觉生成或图像工作流资产，适合观察它是否提供可复用管线，而不只是普通模型上传。`;
+    }
+    if (includesAny(text, ["eng-latn", "tur-latn", "latn"])) {
+      return `${product} 更像语言或字符序列实验，适合看语种覆盖、训练任务和是否能复用到翻译或文本清洗。`;
+    }
     if (includesAny(text, ["ocr", "correction", "document"])) {
       return `${product} 指向 OCR 或文档纠错模型，适合在 Models & Infra 里看它能否改善数据清洗和文档输入质量。`;
     }
@@ -1866,6 +1928,9 @@ function aggregatorWhyFromContext(item, sourceLabel) {
   const product = compactProductName(item.product);
   const context = sourceContextLabel(item);
   const text = `${item.product} ${item.did} ${item.why}`.toLowerCase();
+  if (includesAny(text, ["内幕", "出口管制", "白宫", "播客", "ceo", "双方说法矛盾"])) {
+    return `${product} 这更像政策或舆论新闻，不是新的产品动作；保留它最多是为了观察外部环境变化，不能据此判断产品优先级。`;
+  }
   if (includesAny(text, ["world model", "持续学习", "多智能体交互"])) {
     return `${product} 如果世界模型开始被包装成可体验环境，值得看它会不会成为训练 agent 行为和协作策略的新型沙盒，而不只是概念展示。`;
   }
@@ -1883,6 +1948,15 @@ function aggregatorWhyFromContext(item, sourceLabel) {
   }
   if (includesAny(text, ["the information", "据", "准备推出新 ai 模型"])) {
     return `${product} 信息不足，先作为弱信号保留；当前更像传闻转述，缺少官方发布内容，无法判断这会带来什么具体产品动作。`;
+  }
+  if (includesAny(text, ["open knowledge format", "okf", "yaml frontmatter", "llm wiki"])) {
+    return `${product} 值得看的是它把组织知识整理成 agent 可读的 Markdown 规范，但当前证据偏媒体转述，仍要等一手发布确认产品化程度。`;
+  }
+  if (includesAny(text, ["siri ai", "apple foundation models", "gemini", "教师模型", "afm"])) {
+    return `${product} 更像 Siri 底层模型路线的传闻解释，能提示苹果 AI 体验走向，但不是可直接验证的新产品发布。`;
+  }
+  if (includesAny(text, ["不是你的模型", "不是你的思维", "not your model", "not your mind"])) {
+    return `${product} 当前只是抽象观点，先作为弱信号保留；除非后续连到具体产品动作，否则不应影响默认产品优先级。`;
   }
   if (includesAny(text, ["garry tan", "garry marcus", "幻觉速报", "官僚", "牢笼", "hallucination"])) {
     return `${product} 这更像观点或舆论信号，不是产品发布；保留它的意义只是观察行业叙事在往哪里摆动，而不是判断可跟进的产品动作。`;
@@ -2060,6 +2134,29 @@ function isResourceListSignal(text) {
   );
 }
 
+function isAihotRoundupSignal(item) {
+  const source = cleanKey(item.source).toLowerCase();
+  if (source !== "aihot" && source !== "xhs_dealflow") return false;
+  const text = `${item.product} ${item.did} ${item.why}`.toLowerCase();
+  return (
+    /推荐.{0,8}[一二三四五六七八九十0-9]+个/.test(text) ||
+    /合集|汇总|清单|盘点|roundup|collection/.test(text) ||
+    (includesAny(text, ["推荐", "工具", "项目"]) && includesAny(text, ["四个", "多个", "开源 ai 工具"]))
+  );
+}
+
+function isAihotWeakRelaySignal(item) {
+  const source = cleanKey(item.source).toLowerCase();
+  if (source !== "aihot" && source !== "xhs_dealflow") return false;
+  const text = `${item.product} ${item.did} ${item.why}`.toLowerCase();
+  const actionText = `${item.product} ${item.did}`.toLowerCase();
+  const hasProductAction = /发布|推出|上线|更新|开源|release|released|launch|launched|introducing|now available/i.test(actionText);
+  const hasProductSurface = /产品|工具|应用|app|api|sdk|agent|智能体|助手|工作流|平台|runtime|browser|插件|扩展/i.test(actionText);
+  const explicitNonProduct = /没有明确产品发布|无产品动作|不是产品发布/.test(text);
+  if (explicitNonProduct) return true;
+  return includesAny(text, ["信息不足", "传闻转述", "缺少官方发布内容"]) && !(hasProductAction && hasProductSurface);
+}
+
 function isGenericHuggingFaceSpaceSignal(item) {
   const source = cleanKey(item.source).toLowerCase();
   const product = cleanKey(item.product);
@@ -2088,6 +2185,7 @@ function isStrongAggregatorProductSignal(item) {
   if ((cleanKey(item.source).toLowerCase() === "aihot" || cleanKey(item.source).toLowerCase() === "xhs_dealflow") && isAihotNonProductSignal(item)) {
     return false;
   }
+  if (isAihotRoundupSignal(item)) return false;
   return includesAny(text, [
     "任务模式",
     "专家模式",
@@ -2109,6 +2207,12 @@ function qualityLabelForItem(item) {
   const text = `${item.product} ${item.did} ${item.why}`.toLowerCase();
   if (item.category === "model_infra") return "weak_keep";
   if (isLowSignalGitHubPackageRelease(item)) return "weak_keep";
+  if (isLowSignalProductHuntConsumerNovelty(text)) return "deprioritize";
+  if (isResourceListSignal(text)) return "deprioritize";
+  if (isAihotNonProductSignal(item)) return "deprioritize";
+  if (isAihotWeakRelaySignal(item)) return "deprioritize";
+  if (includesAny(text, ["iptv", "影视", "电视剧", "电影", "纪录片"])) return "deprioritize";
+  if (isAihotRoundupSignal(item)) return "deprioritize";
   if (
     /minimax m3|任务模式|专家模式|replit agent|custom instructions|modular|parasail|notebooklm|project genie|live translate/.test(
       text
@@ -2116,9 +2220,6 @@ function qualityLabelForItem(item) {
   ) {
     return "keep";
   }
-  if (isLowSignalProductHuntConsumerNovelty(text)) return "deprioritize";
-  if (isResourceListSignal(text)) return "deprioritize";
-  if (isAihotNonProductSignal(item)) return "deprioritize";
   if (includesAny(text, ["roulette", "baby generator", "girlfriend", "wallpaper generator"])) return "deprioritize";
   if (isWeakShowHnDemo(item, text)) return "weak_keep";
   if (isStrongAggregatorProductSignal(item)) return "keep";
@@ -2214,6 +2315,10 @@ function buildRankingSignals(item) {
   if (item.qualityLabel === "deprioritize") noisePenalty += 18;
   if (isGenericHuggingFaceSpaceSignal(item)) noisePenalty += Number(item.metrics?.hfLikes || 0) > 0 ? 12 : 20;
   if (isAihotNonProductSignal(item)) noisePenalty += 18;
+  if (isAihotRoundupSignal(item)) noisePenalty += 12;
+  if ((item.source === "aihot" || item.source === "xhs_dealflow") && includesAny(text, ["信息不足", "传闻转述", "缺少官方发布内容"])) {
+    noisePenalty += 10;
+  }
   if (isLowSignalGitHubPackageRelease(item)) noisePenalty += 10;
   if (includesAny(text, ["roulette", "baby", "girlfriend", "wallpaper", "tattoo", "headshot"])) noisePenalty += 16;
   if (!isRelevant(text)) noisePenalty += 30;

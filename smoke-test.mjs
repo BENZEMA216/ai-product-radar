@@ -906,6 +906,36 @@ function testReportWhyCopyAvoidsHfModelTemplates() {
   assert.ok(!audit.failures.some((failure) => failure.code === "repeated_why_template"));
 }
 
+function testReportWhyCopyAvoidsCurrentHfModelTemplateRun() {
+  const products = [
+    "Hugging Face Model: LocalAI-io/privacy-filter-GGUF",
+    "Hugging Face Model: lodestones/Zeta-Chroma",
+    "Hugging Face Model: mradermacher/Kimi-K2.7-Code-GGUF",
+    "Hugging Face Model: juergengunz/fluxer",
+    "Hugging Face Model: baya1116/hypernet-sp-distill",
+    "Hugging Face Model: fpadovani/eng-latn-10mb-after-ppt-shuff-dyck-100mb-ckpt500_seed3407",
+    "Hugging Face Model: sundaycoil/timezone-converter"
+  ];
+  const candidates = products.map((product, index) => ({
+    product,
+    link: `https://huggingface.co/${product.replace("Hugging Face Model: ", "")}`,
+    type: "新产品",
+    did: "Model 在 Hugging Face 最近创建或更新。",
+    why: "可体验的模型/应用 demo 是早期产品形态和交互原型的重要信号。",
+    evidence: `[Hugging Face API 2026-06-15T00:00:${String(index).padStart(2, "0")}Z](https://huggingface.co/model-${index})`,
+    source: "huggingface",
+    category: "model_infra"
+  }));
+  const rows = parseReportMarkdown(renderMarkdownTable(candidates), "reports/2026-06-15-0049-cst.md");
+  const audit = auditReportQuality({ rows });
+  assert.ok(!audit.failures.some((failure) => failure.code === "repeated_why_template"));
+  assert.equal(new Set(rows.map((row) => row.why)).size, rows.length);
+  assert.match(rows[0].why, /隐私|过滤|本地/);
+  assert.match(rows[1].why, /色彩|视觉|Chroma/);
+  assert.match(rows[4].why, /蒸馏|压缩|训练/);
+  assert.match(rows[6].why, /时区|转换|工具/);
+}
+
 function testReportWhyCopyAvoidsAggregatorTemplates() {
   const candidates = [
     {
@@ -1891,6 +1921,40 @@ function testQualityAuditFlagsHardNegativesAndRepeatedWhy() {
   assert.ok(audit.failures.some((failure) => failure.code === "repeated_why_template"));
 }
 
+function testQualityAuditFlagsCurrentSourceLevelWhyTemplates() {
+  const rows = [
+    {
+      product: "I built a WebAudio editor that coding agents can drive",
+      source: "HN Algolia",
+      why: "I built a WebAudio editor that coding agents can drive 的 HN 信号指向语音处理和低摩擦输入，更适合先看目标用户、完成度和开发者讨论质量。",
+      did: "HN 发布帖在 2026-06-14T11:04:43Z 出现：Show HN: I built a WebAudio editor that coding agents can drive",
+      category: "product",
+      qualityLabel: "keep"
+    },
+    {
+      product: "LLM Memory Solved?",
+      source: "HN Algolia",
+      why: "LLM Memory Solved? 的 HN 信号指向模型实验和推理资产，更适合先看目标用户、完成度和开发者讨论质量。",
+      did: "HN 发布帖在 2026-06-14T14:07:28Z 出现：Show HN: LLM Memory Solved?",
+      category: "product",
+      qualityLabel: "keep"
+    },
+    {
+      product: "Have your agent consult other models",
+      source: "HN Algolia",
+      why: "Have your agent consult other models 的 HN 信号指向模型实验和推理资产，更适合先看目标用户、完成度和开发者讨论质量。",
+      did: "HN 发布帖在 2026-06-14T07:34:40Z 出现：Show HN: Have your agent consult other models",
+      category: "product",
+      qualityLabel: "keep"
+    }
+  ];
+  const audit = auditReportQuality({ rows });
+  assert.ok(
+    audit.failures.some((failure) => failure.code === "known_why_template"),
+    "current HN source-level why templates must fail acceptance before publication"
+  );
+}
+
 function testQualityAuditFlagsCrushyDatingNovelty() {
   const audit = auditReportQuality({
     rows: [
@@ -2542,6 +2606,243 @@ function testAihotSkillsUpdateStaysStrongAcrossProducerAndConsumer() {
   assert.equal(item.qualityLabel, "keep");
 }
 
+function testAihotToolRoundupStaysWeakAcrossProducerAndConsumer() {
+  const candidate = {
+    product: "Berry Xia 推荐四个开源 AI 工具：本地搜索、Agent 技能、离线知识库与降本利器",
+    link: "https://x.com/berryxia/status/2066143940894761424",
+    type: "疑似新产品",
+    did: "Berry Xia 推荐四个开源 AI 项目：/last30days、agent-skills、open-notebook、headroom，作为工具合集一次性介绍。",
+    why: "Berry Xia 推荐四个开源 AI 工具：本地搜索、Agent 技能、离线知识库与降本利器 这类“技能 + 自定义指令”更新会决定 agent 能否从单次帮手变成可复用员工，关键看配置是否能沉淀到团队工作流。",
+    evidence: "[AIHOT 2026-06-14T13:01:17.000Z](https://x.com/berryxia/status/2066143940894761424)",
+    source: "aihot",
+    observedAt: "2026-06-14T13:01:17.000Z"
+  };
+  const inferredScore = priorityScore(candidate);
+  const deprioritizedScore = priorityScore({ ...candidate, qualityLabel: "deprioritize" });
+  const keepScore = priorityScore({ ...candidate, qualityLabel: "keep" });
+  assert.equal(inferredScore, deprioritizedScore, "AIHOT 工具合集默认应保持 deprioritize");
+  assert.notEqual(inferredScore, keepScore, "AIHOT 工具合集不应因包含 skills 关键词被整体抬成 keep");
+
+  const report = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| Berry Xia 推荐四个开源 AI 工具：本地搜索、Agent 技能、离线知识库与降本利器 | [链接](https://x.com/berryxia/status/2066143940894761424) | 疑似新产品 | Berry Xia 推荐四个开源 AI 项目：/last30days、agent-skills、open-notebook、headroom，作为工具合集一次性介绍。 | Berry Xia 推荐四个开源 AI 工具：本地搜索、Agent 技能、离线知识库与降本利器 这类“技能 + 自定义指令”更新会决定 agent 能否从单次帮手变成可复用员工，关键看配置是否能沉淀到团队工作流。 | [AIHOT 2026-06-14T13:01:17.000Z](https://x.com/berryxia/status/2066143940894761424) |`;
+  const [item] = parseReportMarkdown(report, "reports/2026-06-15-0003-cst.md");
+  assert.equal(item.qualityLabel, "deprioritize");
+}
+
+function testAihotMediaSpecStaysWeakAcrossProducerAndConsumer() {
+  const candidate = {
+    product: "Google Cloud 推出 Open Knowledge Format （OKF）：将散乱文档转为 Markdown 文件供 AI 智能体使用",
+    link: "https://the-decoder.com/google-clouds-open-knowledge-format-turns-scattered-docs-into-markdown-files-for-ai-agents",
+    type: "疑似老产品更新",
+    did: "Google Cloud 发布 Open Knowledge Format （OKF），一种将分散知识标准化为 Markdown 文件的极简规范。",
+    why: "Google Cloud 推出 Open Knowledge Format （OKF）：将散乱文档转为 Markdown 文件供 AI 智能体使用 信息不足，先作为弱信号保留；当前更像传闻转述，缺少官方发布内容，无法判断这会带来什么具体产品动作。",
+    evidence: "[AIHOT 2026-06-14T13:29:52.000Z](https://the-decoder.com/google-clouds-open-knowledge-format-turns-scattered-docs-into-markdown-files-for-ai-agents)",
+    source: "aihot",
+    observedAt: "2026-06-14T13:29:52.000Z"
+  };
+  const inferredScore = priorityScore(candidate);
+  const weakScore = priorityScore({ ...candidate, qualityLabel: "weak_keep" });
+  const keepScore = priorityScore({ ...candidate, qualityLabel: "keep" });
+  assert.equal(inferredScore, weakScore, "媒体转述的规范/格式信号默认应保持 weak_keep");
+  assert.notEqual(inferredScore, keepScore, "媒体转述的规范/格式信号不应被抬成 keep");
+
+  const report = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| Google Cloud 推出 Open Knowledge Format （OKF）：将散乱文档转为 Markdown 文件供 AI 智能体使用 | [链接](https://the-decoder.com/google-clouds-open-knowledge-format-turns-scattered-docs-into-markdown-files-for-ai-agents) | 疑似老产品更新 | Google Cloud 发布 Open Knowledge Format （OKF），一种将分散知识标准化为 Markdown 文件的极简规范。 | Google Cloud 推出 Open Knowledge Format （OKF）：将散乱文档转为 Markdown 文件供 AI 智能体使用 信息不足，先作为弱信号保留；当前更像传闻转述，缺少官方发布内容，无法判断这会带来什么具体产品动作。 | [AIHOT 2026-06-14T13:29:52.000Z](https://the-decoder.com/google-clouds-open-knowledge-format-turns-scattered-docs-into-markdown-files-for-ai-agents) |`;
+  const [item] = parseReportMarkdown(report, "reports/2026-06-15-0003-cst.md");
+  assert.equal(item.qualityLabel, "weak_keep");
+}
+
+function testAihotPolicyNewsStaysDeprioritizedAcrossProducerAndConsumer() {
+  const candidate = {
+    product: "Anthropic Fable 5/Mythos 5关停内幕：亚马逊报警、白宫施压、双方说法矛盾",
+    link: "https://x.com/kimmonismus/status/2066085915525583085",
+    type: "疑似新产品",
+    did: "Politico 披露 Anthropic 模型因出口管制与白宫沟通而关停，属于政策与舆论新闻，不是产品发布。",
+    why: "Anthropic Fable 5/Mythos 5关停内幕：亚马逊报警、白宫施压、双方说法矛盾 值得看的不是单次 demo 漂不漂亮，而是旗舰模型发布几天内就催生了哪些真实玩法，这能反映能力扩散速度和创作者门槛。",
+    evidence: "[AIHOT 2026-06-14T09:10:42.000Z](https://x.com/kimmonismus/status/2066085915525583085)",
+    source: "aihot",
+    observedAt: "2026-06-14T09:10:42.000Z"
+  };
+  const inferredScore = priorityScore(candidate);
+  const deprioritizedScore = priorityScore({ ...candidate, qualityLabel: "deprioritize" });
+  const keepScore = priorityScore({ ...candidate, qualityLabel: "keep" });
+  assert.equal(inferredScore, deprioritizedScore, "AIHOT 政策/舆论新闻默认应保持 deprioritize");
+  assert.notEqual(inferredScore, keepScore, "AIHOT 政策/舆论新闻不应因模型名或 demo 语气被抬成 keep");
+
+  const report = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| Anthropic Fable 5/Mythos 5关停内幕：亚马逊报警、白宫施压、双方说法矛盾 | [链接](https://x.com/kimmonismus/status/2066085915525583085) | 疑似新产品 | Politico 披露 Anthropic 模型因出口管制与白宫沟通而关停，属于政策与舆论新闻，不是产品发布。 | Anthropic Fable 5/Mythos 5关停内幕：亚马逊报警、白宫施压、双方说法矛盾 值得看的不是单次 demo 漂不漂亮，而是旗舰模型发布几天内就催生了哪些真实玩法，这能反映能力扩散速度和创作者门槛。 | [AIHOT 2026-06-14T09:10:42.000Z](https://x.com/kimmonismus/status/2066085915525583085) |`;
+  const [item] = parseReportMarkdown(report, "reports/2026-06-15-0007-cst.md");
+  assert.equal(item.qualityLabel, "deprioritize");
+}
+
+function testEntertainmentNoveltySignalsStayDeprioritized() {
+  const candidate = {
+    product: "免费在线IPTV网站开源，支持国内外影视",
+    link: "https://x.com/vista8/status/2066153597839302899",
+    type: "疑似新产品",
+    did: "基于开源 IPTV 库构建的免费在线影视网站，提供电视剧、电影和纪录片换台观看。",
+    why: "免费在线IPTV网站开源，支持国内外影视 信息不足，先作为弱信号保留；当前更像传闻转述，缺少官方发布内容，无法判断这会带来什么具体产品动作。",
+    evidence: "[AIHOT 2026-06-14T13:39:39.000Z](https://x.com/vista8/status/2066153597839302899)",
+    source: "aihot",
+    observedAt: "2026-06-14T13:39:39.000Z"
+  };
+  const inferredScore = priorityScore(candidate);
+  const deprioritizedScore = priorityScore({ ...candidate, qualityLabel: "deprioritize" });
+  assert.equal(inferredScore, deprioritizedScore, "消费娱乐型聚合信号默认应保持 deprioritize");
+}
+
+function testAihotOpinionSignalsStayDeprioritized() {
+  const candidate = {
+    product: "不要相信大型上下文窗口",
+    link: "https://garrit.xyz/posts/2026-05-06-dont-trust-large-context-windows",
+    type: "疑似新产品",
+    did: "一篇文章提醒用户不要盲目信任大语言模型宣称的上下文长度能力，没有明确产品发布。",
+    why: "不要相信大型上下文窗口 信息不足，先作为弱信号保留；当前更像传闻转述，缺少官方发布内容，无法判断这会带来什么具体产品动作。",
+    evidence: "[AIHOT 2026-06-14T10:37:56.000Z](https://garrit.xyz/posts/2026-05-06-dont-trust-large-context-windows)",
+    source: "aihot",
+    observedAt: "2026-06-14T10:37:56.000Z"
+  };
+  const inferredScore = priorityScore(candidate);
+  const deprioritizedScore = priorityScore({ ...candidate, qualityLabel: "deprioritize" });
+  assert.equal(inferredScore, deprioritizedScore, "无产品动作且已判定证据不足的 AIHOT 观点帖应保持 deprioritize");
+
+  const terseOpinion = {
+    product: "你的模型和思维都不属于你",
+    link: "https://x.com/EMostaque/status/2066129558990967146",
+    type: "疑似新产品",
+    did: "不是你的模型 不是你的思维",
+    why: "可作为 AI 产品定位、交互或分发方式的竞品/灵感样本。",
+    evidence: "[AIHOT 2026-06-14T12:04:08.000Z](https://x.com/EMostaque/status/2066129558990967146)",
+    source: "aihot",
+    observedAt: "2026-06-14T12:04:08.000Z"
+  };
+  assert.equal(
+    priorityScore(terseOpinion),
+    priorityScore({ ...terseOpinion, qualityLabel: "deprioritize" }),
+    "短观点帖也应保持 deprioritize，不能因为有模型词而进 Top 20"
+  );
+}
+
+function testReportWhyCopySpecializesCurrentHnAgentSignals() {
+  const candidates = [
+    {
+      product: "Bastion – isolated Linux VMs for background coding agents",
+      link: "https://bastion.computer/",
+      type: "新产品",
+      did: "HN 发布帖在 2026-06-14T02:38:38Z 出现：Show HN: Bastion – isolated Linux VMs for background coding agents",
+      why: "Bastion – isolated Linux VMs for background coding agents 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。",
+      evidence: "[HN Algolia 2026-06-14T02:38:38Z](https://news.ycombinator.com/item?id=48523664)",
+      source: "hackernews"
+    },
+    {
+      product: "I am running 3 coding agents non-stop over the last 3 days. Here is how",
+      link: "https://news.ycombinator.com/item?id=48520757",
+      type: "新产品",
+      did: "HN 发布帖在 2026-06-13T19:48:31Z 出现：Show HN: I am running 3 coding agents non-stop over the last 3 days. Here is how",
+      why: "I am running 3 coding agents non-stop over the last 3 days. Here is how 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。",
+      evidence: "[HN Algolia 2026-06-13T19:48:31Z](https://news.ycombinator.com/item?id=48520757)",
+      source: "hackernews"
+    },
+    {
+      product: "Velyr – an AI agent that finds and fixes conversion leaks on your site",
+      link: "https://velyr.io/",
+      type: "新产品",
+      did: "HN 发布帖在 2026-06-14T10:00:55Z 出现：Show HN: Velyr – an AI agent that finds and fixes conversion leaks on your site",
+      why: "Velyr – an AI agent that finds and fixes conversion leaks on your site 的 HN 信号指向开发者 agent 工作流，更适合先看目标用户、完成度和开发者讨论质量。",
+      evidence: "[HN Algolia 2026-06-14T10:00:55Z](https://news.ycombinator.com/item?id=48525761)",
+      source: "hackernews"
+    }
+  ];
+  const rows = parseReportMarkdown(renderMarkdownTable(candidates), "reports/2026-06-15-0003-cst.md");
+  assert.match(rows[0].why, /隔离|沙箱|权限|执行环境/);
+  assert.doesNotMatch(rows[0].why, /HN 信号指向/);
+  assert.match(rows[1].why, /并行|多 agent|连续运行|监督/);
+  assert.doesNotMatch(rows[1].why, /HN 信号指向/);
+  assert.match(rows[2].why, /转化|漏斗|自动修复|网站/);
+  assert.doesNotMatch(rows[2].why, /HN 信号指向/);
+}
+
+function testReportWhyCopySpecializesCurrentHnModelAndMediaSignals() {
+  const candidates = [
+    {
+      product: "I built a WebAudio editor that coding agents can drive",
+      link: "https://audio.awsm.fun",
+      type: "新产品",
+      did: "HN 发布帖在 2026-06-14T11:04:43Z 出现：Show HN: I built a WebAudio editor that coding agents can drive",
+      why: "I built a WebAudio editor that coding agents can drive 的 HN 信号指向语音处理和低摩擦输入，更适合先看目标用户、完成度和开发者讨论质量。",
+      evidence: "[HN Algolia 2026-06-14T11:04:43Z](https://news.ycombinator.com/item?id=48526092)",
+      source: "hackernews"
+    },
+    {
+      product: "LLM Memory Solved?",
+      link: "https://github.com/gary23w/neuron-db",
+      type: "新产品",
+      did: "HN 发布帖在 2026-06-14T14:07:28Z 出现：Show HN: LLM Memory Solved?",
+      why: "LLM Memory Solved? 的 HN 信号指向模型实验和推理资产，更适合先看目标用户、完成度和开发者讨论质量。",
+      evidence: "[HN Algolia 2026-06-14T14:07:28Z](https://news.ycombinator.com/item?id=48527346)",
+      source: "hackernews"
+    },
+    {
+      product: "Have your agent consult other models",
+      link: "https://github.com/raine/consult-llm",
+      type: "新产品",
+      did: "HN 发布帖在 2026-06-14T07:34:40Z 出现：Show HN: Have your agent consult other models",
+      why: "Have your agent consult other models 的 HN 信号指向模型实验和推理资产，更适合先看目标用户、完成度和开发者讨论质量。",
+      evidence: "[HN Algolia 2026-06-14T07:34:40Z](https://news.ycombinator.com/item?id=48525017)",
+      source: "hackernews"
+    }
+  ];
+  const rows = parseReportMarkdown(renderMarkdownTable(candidates), "reports/2026-06-15-0003-cst.md");
+  assert.match(rows[0].why, /音频|声音|编辑器|agent 驱动/);
+  assert.doesNotMatch(rows[0].why, /HN 信号指向/);
+  assert.match(rows[1].why, /记忆|长期|状态|上下文/);
+  assert.doesNotMatch(rows[1].why, /HN 信号指向/);
+  assert.match(rows[2].why, /多模型|交叉验证|仲裁|consult/);
+  assert.doesNotMatch(rows[2].why, /HN 信号指向/);
+}
+
+function testReportWhyCopyAvoidsCurrentAihotFallbackTemplates() {
+  const candidates = [
+    {
+      product: "Google Cloud 推出 Open Knowledge Format （OKF）：将散乱文档转为 Markdown 文件供 AI 智能体使用",
+      link: "https://the-decoder.com/google-clouds-open-knowledge-format-turns-scattered-docs-into-markdown-files-for-ai-agents",
+      type: "疑似老产品更新",
+      did: "Google Cloud 发布 Open Knowledge Format （OKF），一种将分散的组织知识标准化为带 YAML frontmatter 的 Markdown 文件的极简规范。",
+      why: "Google Cloud 推出 Open Knowledge Format （OKF）：将散乱文档转为 Markdown 文件供 AI 智能体使用 是AIHOT里的模型实验和推理资产信号，先看是否有一手证据、明确动作和可复用产品启发。",
+      evidence: "[AIHOT 2026-06-14T13:29:52.000Z](https://the-decoder.com/google-clouds-open-knowledge-format-turns-scattered-docs-into-markdown-files-for-ai-agents)",
+      source: "aihot"
+    },
+    {
+      product: "Siri AI并非Gemini：苹果自研而非直接复制",
+      link: "https://x.com/berryxia/status/2066185847154921545",
+      type: "疑似新产品",
+      did: "推文澄清 Siri AI 并非在 Google Gemini 基础上简单封装，而是用 Gemini 作为教师模型训练 Apple Foundation Models。",
+      why: "Siri AI并非Gemini：苹果自研而非直接复制 指向设计生成到局部修改的闭环，适合观察产品经理和设计师是否能直接参与实现。",
+      evidence: "[AIHOT 2026-06-14T15:47:48.000Z](https://x.com/berryxia/status/2066185847154921545)",
+      source: "aihot"
+    },
+    {
+      product: "你的模型和思维都不属于你",
+      link: "https://x.com/EMostaque/status/2066129558990967146",
+      type: "疑似新产品",
+      did: "不是你的模型 不是你的思维",
+      why: "你的模型和思维都不属于你 是AIHOT里的产品形态和采用门槛信号，先看是否有一手证据、明确动作和可复用产品启发。",
+      evidence: "[AIHOT 2026-06-14T12:04:08.000Z](https://x.com/EMostaque/status/2066129558990967146)",
+      source: "aihot"
+    }
+  ];
+  const rows = parseReportMarkdown(renderMarkdownTable(candidates), "reports/2026-06-15-0003-cst.md");
+  assert.match(rows[0].why, /OKF|Markdown|知识|agent/);
+  assert.doesNotMatch(rows[0].why, /是AIHOT里的/);
+  assert.match(rows[1].why, /Siri|Apple Foundation Models|教师模型|传闻/);
+  assert.doesNotMatch(rows[1].why, /设计生成到局部修改/);
+  assert.match(rows[2].why, /观点|抽象|产品动作|弱信号/);
+  assert.doesNotMatch(rows[2].why, /是AIHOT里的/);
+}
+
 function testQualityAuditWritesPersistentArtifacts() {
   const rows = [
     {
@@ -3186,6 +3487,7 @@ const tests = [
   ["Report why copy keeps long product context distinct", testReportWhyCopyKeepsLongProductContextDistinct],
   ["Report why copy avoids HN and HF templates", testReportWhyCopyAvoidsHnAndHfTemplates],
   ["Report why copy avoids HF model templates", testReportWhyCopyAvoidsHfModelTemplates],
+  ["Report why copy avoids current HF model template run", testReportWhyCopyAvoidsCurrentHfModelTemplateRun],
   ["Report why copy avoids aggregator templates", testReportWhyCopyAvoidsAggregatorTemplates],
   ["Report why copy cleans HN specific contexts", testReportWhyCopyCleansHnSpecificContexts],
   ["Report why copy rewrites live source templates", testReportWhyCopyRewritesLiveSourceTemplates],
@@ -3220,6 +3522,7 @@ const tests = [
   ["Quality memory keeps user feedback", testQualityMemoryKeepsUserFeedback],
   ["Quality memory boosts positive goldens", testQualityMemoryBoostsPositiveGoldens],
   ["Quality audit flags hard negatives and repeated why", testQualityAuditFlagsHardNegativesAndRepeatedWhy],
+  ["Quality audit flags current source-level why templates", testQualityAuditFlagsCurrentSourceLevelWhyTemplates],
   ["Quality audit flags CRUSHY dating novelty", testQualityAuditFlagsCrushyDatingNovelty],
   ["Quality audit accepts healthy report", testQualityAuditAcceptsHealthyReport],
   ["Quality audit flags low Product Hunt fallback coverage", testQualityAuditFlagsLowProductHuntFallbackCoverage],
@@ -3238,6 +3541,14 @@ const tests = [
   ["Priority score downranks AIHOT non-product signals", testPriorityScoreDownranksAihotNonProductSignals],
   ["AIHOT observations stay weak across producer and consumer", testAihotObservationStaysWeakAcrossProducerAndConsumer],
   ["AIHOT skills updates stay strong across producer and consumer", testAihotSkillsUpdateStaysStrongAcrossProducerAndConsumer],
+  ["AIHOT tool roundups stay weak across producer and consumer", testAihotToolRoundupStaysWeakAcrossProducerAndConsumer],
+  ["AIHOT media spec updates stay weak across producer and consumer", testAihotMediaSpecStaysWeakAcrossProducerAndConsumer],
+  ["AIHOT policy news stays deprioritized across producer and consumer", testAihotPolicyNewsStaysDeprioritizedAcrossProducerAndConsumer],
+  ["Entertainment novelty signals stay deprioritized", testEntertainmentNoveltySignalsStayDeprioritized],
+  ["AIHOT opinion signals stay deprioritized", testAihotOpinionSignalsStayDeprioritized],
+  ["Report why copy specializes current HN agent signals", testReportWhyCopySpecializesCurrentHnAgentSignals],
+  ["Report why copy specializes current HN model and media signals", testReportWhyCopySpecializesCurrentHnModelAndMediaSignals],
+  ["Report why copy avoids current AIHOT fallback templates", testReportWhyCopyAvoidsCurrentAihotFallbackTemplates],
   ["Quality audit writes persistent artifacts", testQualityAuditWritesPersistentArtifacts],
   ["Quality audit flags malformed feedback", testQualityAuditFlagsMalformedFeedback],
   ["Quality audit flags stale quality files", testQualityAuditFlagsStaleQualityFiles],
