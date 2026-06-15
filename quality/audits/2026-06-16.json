@@ -1,0 +1,291 @@
+{
+  "date": "2026-06-16",
+  "generatedAt": "2026-06-15T16:00:51.587Z",
+  "reportPath": "reports/2026-06-16-0000-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 67,
+    "top20Sources": [
+      "HN Algolia",
+      "GitHub Release",
+      "Product Hunt",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 17,
+      "keptCount": 8,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-14；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 17 条，AI 相关候选 8 条；历史去重后最终发布 8 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 2,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 19,
+      "keptCount": 19,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 4,
+      "keptCount": 4,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 14,
+      "keptCount": 14,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 15,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "V-COS – Governance layer that keeps AI coding agents coherent",
+      "productKey": "https://github.com/vagnerfirminopro/v-cos",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "值得看它把“agent 失控治理”单拎成控制层，关键要看规则、记忆和协作约束能否真压住编码漂移。"
+    },
+    {
+      "rank": 2,
+      "product": "n8n-io/n8n beta",
+      "productKey": "https://github.com/n8n-io/n8n/releases/tag/beta",
+      "source": "GitHub Release",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "信息不足，先作为弱信号保留；当前只有 beta tag 和发布时间，缺少变更摘要，无法判断自动化能力是否实质升级。"
+    },
+    {
+      "rank": 3,
+      "product": "Kster.ai – Structured product context your coding agent reads over MCP",
+      "productKey": "https://kster.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它瞄准的是把产品上下文经由 MCP 直接喂给 coding agent，重点看能否减少需求丢失和跨会话重建成本。"
+    },
+    {
+      "rank": 4,
+      "product": "Coding agent with algebraic memory (VSA) instead of RAG",
+      "productKey": "https://github.com/vitaliyfedotovpro-art/raidho",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用 VSA 替代 RAG 是 agent memory 路线分叉，值得看长会话检索稳定性是否真优于 embedding 流程。"
+    },
+    {
+      "rank": 5,
+      "product": "DJ Mix realtime local AI music with a controller; Magenta, Stable Audio",
+      "productKey": "https://github.com/brxs/slipmate",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "信息不足，先作为弱信号保留；目前只有本地 AI 混音标题，缺少真实创作效率、音质和目标用户反馈。"
+    },
+    {
+      "rank": 6,
+      "product": "A no-back end webpage that lets users bring their own coding agent",
+      "productKey": "https://shukla.io/blog/2026-06/byoa.html",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 agent 能力前端化且不自带后端，值得看安全边界、身份接入和算力成本归属会怎么设计。"
+    },
+    {
+      "rank": 7,
+      "product": "Treenix. Typed runtime for humans and agents",
+      "productKey": "https://github.com/treenix-io/treenix",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "typed runtime 说明团队在抢 agent 执行层，关键看类型约束是否真能降低多工具编排时的脆弱性。"
+    },
+    {
+      "rank": 8,
+      "product": "AwsmAudio – a WebAudio editor with native MCP",
+      "productKey": "https://audio.awsm.fun",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 WebAudio 编辑器做成原生 MCP 入口，值得看创作软件是否会先从“可被 agent 调用”重构操作层。"
+    },
+    {
+      "rank": 9,
+      "product": "We put voice agent on our website, learned retrieval isn't bottleneck",
+      "productKey": "https://www.moss.dev/blog/founding-agent",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "如果这个复盘成立，说明语音 agent 的瓶颈已转向产品编排与执行闭环，而不只是检索命中率。"
+    },
+    {
+      "rank": 10,
+      "product": "Memoriq",
+      "productKey": "https://www.producthunt.com/products/memoriq",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它试图把多家通用助手的私人记忆统一沉淀，重点看能否形成跨模型可迁移的长期上下文。"
+    },
+    {
+      "rank": 11,
+      "product": "1ClickReport — Marketing AI in Claude",
+      "productKey": "https://www.producthunt.com/products/1click-report",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把广告投放与分析放进 Claude 批准流里，值得看营销 SaaS 是否会被“对话式操作台+人工签字”替代。"
+    },
+    {
+      "rank": 12,
+      "product": "Locus",
+      "productKey": "https://www.ycombinator.com/launches/qqk-locus-founder",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把“经营互联网生意”包装成 agent 服务，比单点工具更激进，关键看能否交付可验证的业务结果。"
+    },
+    {
+      "rank": 13,
+      "product": "Conan",
+      "productKey": "https://www.producthunt.com/products/conan",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 Claude Code 搬进原生 Mac cockpit，值得看它能否把终端型 agent 变成可监控、可切换的桌面工作台。"
+    },
+    {
+      "rank": 14,
+      "product": "Mcpwn – nobody's pentesting their MCP servers, so I built a tool for it",
+      "productKey": "https://github.com/d0rs4n/mcpwn",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "MCP 安全开始出现专门测试工具，说明协议生态进入治理阶段，重点看能否沉淀通用审计方法。"
+    },
+    {
+      "rank": 15,
+      "product": "AgentBridge – translate and govern calls between AI agent protocols",
+      "productKey": "https://github.com/shadowhunter-92/agentbridge",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "多 agent 协议互译是生态碎片化后的刚需，关键看它解决的是互通标准还是又加一层适配复杂度。"
+    },
+    {
+      "rank": 16,
+      "product": "AI Cell Enrichment Workflow API",
+      "productKey": "https://ampledata.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "信息不足，先作为弱信号保留；只知道它是细胞富集工作流 API，缺少应用场景、客户类型和结果指标。"
+    },
+    {
+      "rank": 17,
+      "product": "Web Researcher MCP",
+      "productKey": "https://www.producthunt.com/products/web-researcher-mcp",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把“真实引用”当卖点，值得看检索、归因和可核查输出能否被做成默认体验，而不是套壳搜索。"
+    },
+    {
+      "rank": 18,
+      "product": "Slashy",
+      "productKey": "https://www.producthunt.com/products/slashy-3",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "代做邮件的 AI 助手不稀缺，真正值得看的是它能否接入上下文、执行动作并减少人工往返。"
+    },
+    {
+      "rank": 19,
+      "product": "VibeKnow – content-to-video agent using Remotion",
+      "productKey": "https://vibeknow.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "内容到视频 agent 若能跑通，价值在把脚本、分镜和渲染串成流水线，而不是只做一次性转视频 demo。"
+    },
+    {
+      "rank": 20,
+      "product": "Hub.xyz",
+      "productKey": "https://www.ycombinator.com/launches/qoe-hub-real-world-training-data-for-frontier-ai-labs-and-robotics",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "如果它真能供给现实世界训练数据，切的是模型公司上游瓶颈，重点看采集质量控制和供给壁垒。"
+    }
+  ]
+}
