@@ -431,6 +431,18 @@ function normalizeProductKey(value) {
   }
 }
 
+function githubReleaseRepoKey(value) {
+  const key = normalizeProductKey(value);
+  const match = key.match(/^https:\/\/github\.com\/([^/\s]+\/[^/\s]+)\/releases\/tag\//i);
+  return match ? match[1].toLowerCase() : "";
+}
+
+function hasSharedGitHubReleaseRepo(recordKeys, itemKeys) {
+  const itemRepos = new Set(itemKeys.map(githubReleaseRepoKey).filter(Boolean));
+  if (!itemRepos.size) return false;
+  return recordKeys.some((key) => itemRepos.has(githubReleaseRepoKey(key)));
+}
+
 function normalizeProductName(value) {
   return cleanKey(value)
     .replace(/^Hugging Face (Space|Model):\s*/i, "")
@@ -2177,7 +2189,9 @@ function isLowSignalGitHubPackageRelease(item) {
   const isScopedPackageVersion = /@[a-z0-9_.-]+\/[a-z0-9_.-]+@?\d+\.\d+\.\d+\b/i.test(releaseText);
   const hasVersionInTitle = /(?:^|[\s@])v?\d+\.\d+\.\d+(?:[-.](?:alpha|beta|rc)[.-]?\d+)?\b/i.test(releaseTitle);
   const onlyVersionAnnouncement = /^发布\s+[^。]{1,140}。$/.test(did);
-  return onlyVersionAnnouncement && (isScopedPackageVersion || hasVersionInTitle);
+  const releaseTag = did.match(/^发布\s+([^。]{1,140})。$/)?.[1] || "";
+  const hasOnlyChannelTag = /^(stable|beta|alpha|latest|nightly|canary)$/i.test(releaseTag);
+  return onlyVersionAnnouncement && (isScopedPackageVersion || hasVersionInTitle || hasOnlyChannelTag);
 }
 
 function isStrongAggregatorProductSignal(item) {
@@ -2456,16 +2470,11 @@ function goldenAction(record) {
   return "";
 }
 
-function memoryRecordMatchesItem(record, item) {
-  const itemKeys = new Set(
-    [item.productKey, item.link, item.evidenceUrl].map(normalizeProductKey).filter(Boolean)
-  );
+function memoryRecordMatchesItem(record, item, { allowRepoReleaseSibling = false } = {}) {
+  const itemKeys = [item.productKey, item.link, item.evidenceUrl].map(normalizeProductKey).filter(Boolean);
   const recordKeys = [record.productKey, record.link, record.url].map(normalizeProductKey).filter(Boolean);
-  if (recordKeys.some((key) => itemKeys.has(key))) return true;
-
-  const itemName = normalizeProductName(item.product);
-  const recordName = normalizeProductName(record.product || record.name || record.title);
-  if (!itemName || !recordName) return false;
+  const itemKeySet = new Set(itemKeys);
+  if (recordKeys.some((key) => itemKeySet.has(key))) return true;
 
   const source = cleanKey(record.source);
   if (source) {
@@ -2474,6 +2483,14 @@ function memoryRecordMatchesItem(record, item) {
     if ([...recordSources].length && ![...recordSources].some((candidate) => itemSources.has(candidate))) return false;
   }
 
+  if (allowRepoReleaseSibling && isLowSignalGitHubPackageRelease(item) && hasSharedGitHubReleaseRepo(recordKeys, itemKeys)) {
+    return true;
+  }
+
+  const itemName = normalizeProductName(item.product);
+  const recordName = normalizeProductName(record.product || record.name || record.title);
+  if (!itemName || !recordName) return false;
+
   return itemName === recordName || itemName.includes(recordName) || recordName.includes(itemName);
 }
 
@@ -2481,17 +2498,17 @@ function strongestMemoryAction(item, memory = {}) {
   let best = { action: "", record: null };
   for (const record of memory.negativeGoldens || []) {
     const action = goldenAction(record);
-    if (!action || !memoryRecordMatchesItem(record, item)) continue;
+    if (!action || !memoryRecordMatchesItem(record, item, { allowRepoReleaseSibling: action !== "keep" })) continue;
     if (actionSeverity(action) > actionSeverity(best.action)) best = { action, record };
   }
   for (const record of memory.positiveGoldens || []) {
     const action = goldenAction({ expected: "keep", ...record });
-    if (!action || !memoryRecordMatchesItem(record, item)) continue;
+    if (!action || !memoryRecordMatchesItem(record, item, { allowRepoReleaseSibling: false })) continue;
     if (actionSeverity(action) > actionSeverity(best.action)) best = { action, record };
   }
   for (const record of memory.feedback || []) {
     const action = normalizedFeedbackAction(record.action);
-    if (!action || !memoryRecordMatchesItem(record, item)) continue;
+    if (!action || !memoryRecordMatchesItem(record, item, { allowRepoReleaseSibling: action !== "keep" })) continue;
     if (actionSeverity(action) >= actionSeverity(best.action)) best = { action, record };
   }
   return best;

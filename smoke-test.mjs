@@ -763,6 +763,28 @@ function testVersionOnlyGitHubReleaseStaysWeakAcrossProducerAndConsumer() {
 | openai/codex 0.140.0-alpha.17 | [链接](https://github.com/openai/codex/releases/tag/rust-v0.140.0-alpha.17) | 老产品更新 | 发布 0.140.0-alpha.17。 | openai/codex 0.140.0-alpha.17 只能说明 Codex 仍在高频推进 alpha 节奏，信息不足，先作为弱信号保留；仅凭 tag 还看不出模型、交互或稳定性改了什么。 | [GitHub Release 2026-06-13T01:20:26Z](https://github.com/openai/codex/releases/tag/rust-v0.140.0-alpha.17) |`;
   const [item] = parseReportMarkdown(report, "reports/2026-06-14-0008-cst.md");
   assert.equal(item.qualityLabel, "weak_keep");
+
+  const channelCandidate = {
+    product: "n8n-io/n8n stable",
+    link: "https://github.com/n8n-io/n8n/releases/tag/stable",
+    type: "老产品更新",
+    did: "发布 stable。",
+    why: "信息不足，先作为弱信号保留；当前只看到 stable tag，缺少变更摘要。",
+    evidence: "[GitHub Release 2026-06-16T11:09:20Z](https://github.com/n8n-io/n8n/releases/tag/stable)",
+    source: "github",
+    observedAt: "2026-06-16T11:09:20Z"
+  };
+  assert.equal(
+    priorityScore(channelCandidate),
+    priorityScore({ ...channelCandidate, qualityLabel: "weak_keep" }),
+    "stable/beta/latest 这类只有发布通道名的 GitHub release 也应保持 weak_keep"
+  );
+
+  const channelReport = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| n8n-io/n8n stable | [链接](https://github.com/n8n-io/n8n/releases/tag/stable) | 老产品更新 | 发布 stable。 | 信息不足，先作为弱信号保留；当前只看到 stable tag，缺少变更摘要。 | [GitHub Release 2026-06-16T11:09:20Z](https://github.com/n8n-io/n8n/releases/tag/stable) |`;
+  const [channelItem] = parseReportMarkdown(channelReport, "reports/2026-06-17-0001-cst.md");
+  assert.equal(channelItem.qualityLabel, "weak_keep");
 }
 
 function testProductReviewsAttachToCards() {
@@ -1795,6 +1817,37 @@ function testQualityMemoryDropsUserFeedback() {
     negativeGoldens: []
   });
   assert.equal(next.length, 0, "user feedback action=drop should remove the matching product");
+}
+
+function testQualityMemoryDropsSiblingGitHubReleaseFeedback() {
+  const candidates = [
+    {
+      product: "n8n-io/n8n stable",
+      link: "https://github.com/n8n-io/n8n/releases/tag/stable",
+      type: "老产品更新",
+      did: "发布 stable。",
+      why: "信息不足，先作为弱信号保留；当前只看到 stable tag，缺少变更摘要。",
+      evidence: "[GitHub Release 2026-06-16T11:09:20Z](https://github.com/n8n-io/n8n/releases/tag/stable)",
+      source: "github",
+      category: "product",
+      qualityLabel: "keep",
+      priorityScore: 70,
+      rankingSignals: {}
+    }
+  ];
+  const next = applyQualityMemoryToCandidates(candidates, {
+    feedback: [
+      {
+        action: "drop",
+        productKey: "https://github.com/n8n-io/n8n/releases/tag/beta",
+        product: "n8n-io/n8n beta",
+        source: "GitHub Release",
+        reason: "不是一个 AI 产品，也不是值得关注的版本更新"
+      }
+    ],
+    negativeGoldens: []
+  });
+  assert.equal(next.length, 0, "drop feedback on one low-signal GitHub release should remove sibling low-signal tags from the same repo");
 }
 
 function testQualityMemoryDownranksUserFeedback() {
@@ -3518,6 +3571,7 @@ const tests = [
   ["Priority rank limits structured duplicate groups Top 20", testPriorityRankLimitsStructuredDuplicateGroupsTop20],
   ["Quality memory drops negative goldens", testQualityMemoryDropsNegativeGoldens],
   ["Quality memory drops user feedback", testQualityMemoryDropsUserFeedback],
+  ["Quality memory drops sibling GitHub release feedback", testQualityMemoryDropsSiblingGitHubReleaseFeedback],
   ["Quality memory downranks user feedback", testQualityMemoryDownranksUserFeedback],
   ["Quality memory keeps user feedback", testQualityMemoryKeepsUserFeedback],
   ["Quality memory boosts positive goldens", testQualityMemoryBoostsPositiveGoldens],

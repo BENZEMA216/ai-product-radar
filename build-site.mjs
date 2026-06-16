@@ -106,7 +106,9 @@ function isLowSignalGitHubPackageRelease({ source, product, did, evidence }) {
   const isScopedPackageVersion = /@[a-z0-9_.-]+\/[a-z0-9_.-]+@?\d+\.\d+\.\d+\b/i.test(text);
   const hasVersionInTitle = /(?:^|[\s@])v?\d+\.\d+\.\d+(?:[-.](?:alpha|beta|rc)[.-]?\d+)?\b/i.test(title);
   const onlyVersionAnnouncement = /^发布\s+[^。]{1,140}。$/.test(cleanDid);
-  return onlyVersionAnnouncement && (isScopedPackageVersion || hasVersionInTitle);
+  const releaseTag = cleanDid.match(/^发布\s+([^。]{1,140})。$/)?.[1] || "";
+  const hasOnlyChannelTag = /^(stable|beta|alpha|latest|nightly|canary)$/i.test(releaseTag);
+  return onlyVersionAnnouncement && (isScopedPackageVersion || hasVersionInTitle || hasOnlyChannelTag);
 }
 
 function isAihotRoundupSignal({ source, product, did, why }) {

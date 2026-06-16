@@ -9,7 +9,6 @@
     "top20Sources": [
       "YC Launch",
       "HN Algolia",
-      "GitHub Release",
       "Product Hunt"
     ],
     "top10ModelInfra": 0,
@@ -102,17 +101,6 @@
     },
     {
       "rank": 4,
-      "product": "n8n-io/n8n stable",
-      "productKey": "https://github.com/n8n-io/n8n/releases/tag/stable",
-      "source": "GitHub Release",
-      "category": "product",
-      "qualityLabel": "keep",
-      "pmScore": 5,
-      "rankingIssue": null,
-      "reason": "信息不足，先作为弱信号保留；当前只看到 stable tag，缺少变更摘要，暂时无法判断 AI 自动化能力是否提升。"
-    },
-    {
-      "rank": 5,
       "product": "The Brain – self-hosted workflow runner that calls any MCP server",
       "productKey": "https://github.com/mihaibuilds/the-brain",
       "source": "HN Algolia",
@@ -123,7 +111,7 @@
       "reason": "自托管 runner 加任意 MCP server 组合很贴近企业私有化诉求，关键看配置复杂度能否低到非平台团队也能上手。"
     },
     {
-      "rank": 6,
+      "rank": 5,
       "product": "A prompt generator to help AI agents implement my new email API",
       "productKey": "https://emailsdone.dev",
       "source": "HN Algolia",
@@ -134,7 +122,7 @@
       "reason": "它不是邮箱产品本身，而是替 agent 生成接入提示词，值得看 API 厂商是否开始反向为 agent 开发者设计 SDK 入口。"
     },
     {
-      "rank": 7,
+      "rank": 6,
       "product": "Ledgerline – local-first finance MCP server",
       "productKey": "https://github.com/jeraldhu-yuan/ledgerline",
       "source": "HN Algolia",
@@ -145,7 +133,7 @@
       "reason": "本地优先金融 MCP server 切中敏感数据行业，重点看记账和报表权限能否在不出云的前提下保持可调用。"
     },
     {
-      "rank": 8,
+      "rank": 7,
       "product": "Quotain",
       "productKey": "https://www.ycombinator.com/launches/qrg-quotain-the-ai-sales-simulator-for-revenue-teams",
       "source": "YC Launch",
@@ -156,7 +144,7 @@
       "reason": "把销售训练做成模拟器比普通话术助手更接近 ROI 场景，值得看它是否真能缩短新销售的 ramp-up 周期。"
     },
     {
-      "rank": 9,
+      "rank": 8,
       "product": "I hated sales, so I built a self-driving sales agent",
       "productKey": "https://try.wayy.ai/i-built-a-self-driving-sales-agent-for-solopreneurs",
       "source": "HN Algolia",
@@ -167,7 +155,7 @@
       "reason": "它强调 solopreneur 也能跑自动获客，关键看线索筛选、跟进和成交闭环能否压到个人可维护的复杂度。"
     },
     {
-      "rank": 10,
+      "rank": 9,
       "product": "Tamper-evident audit trail for AI coding agent activity",
       "productKey": "https://github.com/constellation-labs/gate-oc-audit",
       "source": "HN Algolia",
@@ -178,7 +166,7 @@
       "reason": "agent 审计一旦可篡改就没意义，值得看它是否把行为取证做成安全与合规团队都能直接采用的底座。"
     },
     {
-      "rank": 11,
+      "rank": 10,
       "product": "AutoEdit",
       "productKey": "https://www.producthunt.com/products/autoedit",
       "source": "Product Hunt",
@@ -189,7 +177,7 @@
       "reason": "把 Claude 直接嵌进 Premiere Pro 才是真考题，重点看它能否减少粗剪和改稿往返，而不是只做演示级命令翻译。"
     },
     {
-      "rank": 12,
+      "rank": 11,
       "product": "OpenACA – security scanner for AI agent stacks (MCPs,skills,plugins)",
       "productKey": "https://github.com/open-agent-security/openaca",
       "source": "HN Algolia",
@@ -200,7 +188,7 @@
       "reason": "MCP、skills、plugins 的安全扫描切中新攻击面，值得看它能否像 SAST 一样进入 agent 发布前的必跑环节。"
     },
     {
-      "rank": 13,
+      "rank": 12,
       "product": "MiMo Code",
       "productKey": "https://www.producthunt.com/products/mimo-3",
       "source": "Product Hunt",
@@ -211,7 +199,7 @@
       "reason": "它把 long-term memory architecture 当卖点，关键看记忆是否真能改善跨会话编码连续性，而不是堆更多上下文成本。"
     },
     {
-      "rank": 14,
+      "rank": 13,
       "product": "BlitzGraph – Supabase for graphs, built for LLM agents",
       "productKey": "https://blitzgraph.com",
       "source": "HN Algolia",
@@ -222,7 +210,7 @@
       "reason": "图数据库若真为 LLM agents 优化，重点是能否比向量检索更稳定地支撑规划、实体关系和多步回溯。"
     },
     {
-      "rank": 15,
+      "rank": 14,
       "product": "Sulsaly",
       "productKey": "https://www.producthunt.com/products/sulsaly",
       "source": "Product Hunt",
@@ -233,7 +221,7 @@
       "reason": "MENA 销售线索与外呼是很具体的区域化场景，值得看本地数据和渠道整合是否会成为它真正的护城河。"
     },
     {
-      "rank": 16,
+      "rank": 15,
       "product": "qomplement",
       "productKey": "https://www.ycombinator.com/launches/qtf-qomplement-the-agentic-erp-replacing-sap-and-netsuite",
       "source": "YC Launch",
@@ -244,7 +232,7 @@
       "reason": "agentic ERP 野心很大，关键不是口号，而是能否在交易密集流程里把自动化做到账务与审批可追责。"
     },
     {
-      "rank": 17,
+      "rank": 16,
       "product": "Claireon – MCP Server for Unreal Editor",
       "productKey": "https://github.com/believer-oss/claireon",
       "source": "HN Algolia",
@@ -255,7 +243,7 @@
       "reason": "把 Unreal Editor 暴露成 MCP 能让内容工具被 agent 驱动，值得看团队会不会因此批量自动化关卡和资产操作。"
     },
     {
-      "rank": 18,
+      "rank": 17,
       "product": "Mcpwn – treating MCP servers as the attack surface they are",
       "productKey": "https://github.com/d0rs4n/mcpwn",
       "source": "HN Algolia",
@@ -266,7 +254,7 @@
       "reason": "把 MCP server 直接当攻击面审视很及时，重点看它能否把权限错配和危险工具暴露成可复现的安全清单。"
     },
     {
-      "rank": 19,
+      "rank": 18,
       "product": "CoreMCP – MCP Server for On-Prem DBs",
       "productKey": "https://github.com/corebasehq/coremcp",
       "source": "HN Algolia",
@@ -277,7 +265,7 @@
       "reason": "面向 on-prem 数据库的 MCP server 值得看，因为企业 agent 最难接入的往往不是模型，而是老数据库权限体系。"
     },
     {
-      "rank": 20,
+      "rank": 19,
       "product": "100Hires MCP, 130 tools to run an ATS through LLM. Is 130 too many?",
       "productKey": "https://100hires.com/mcp",
       "source": "HN Algolia",
@@ -286,6 +274,17 @@
       "pmScore": 5,
       "rankingIssue": null,
       "reason": "130 个 ATS 工具不是卖点本身，关键看它能否把招聘流程压成少数高价值动作，而不是制造更多调用噪音。"
+    },
+    {
+      "rank": 20,
+      "product": "AgentPace – Know when you’ll run out of Claude Code/Codex usage",
+      "productKey": "https://festudio.net/agentpace",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "usage meter 直指 Claude Code 和 Codex 用户痛点，值得看它是否能从个人提醒长成团队预算与任务规划工具。"
     }
   ]
 }
