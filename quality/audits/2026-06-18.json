@@ -1,0 +1,290 @@
+{
+  "date": "2026-06-18",
+  "generatedAt": "2026-06-17T16:02:46.638Z",
+  "reportPath": "reports/2026-06-18-0002-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 70,
+    "top20Sources": [
+      "HN Algolia",
+      "Product Hunt",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 15,
+      "keptCount": 10,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-16；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 15 条，AI 相关候选 10 条；fallback 低覆盖时扩展检查 2026-06-15，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重移除 6 条已报道或已处理日榜 Product Hunt 信号，最终发布 4 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 1,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 27,
+      "keptCount": 27,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 5,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 18,
+      "keptCount": 18,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 20,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "ctx, a hackable desktop workbench for coding agents",
+      "productKey": "https://github.com/ctxrs/ctx",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把本地文件、终端和 agent 统一到桌面工作台，是个人开发者真正把自动化拉进主流程的关键一步。"
+    },
+    {
+      "rank": 2,
+      "product": "Kintsugi – a local-first safety net for AI agents and humans",
+      "productKey": "https://github.com/arrowassassin/kintsugi",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把本地优先和安全兜底结合在一起，值得看它如何让人类在 agent 失控前接管关键操作。"
+    },
+    {
+      "rank": 3,
+      "product": "\"Grid\" – a spec-driven framework for coding agents",
+      "productKey": "https://github.com/js-ojus/grid-framework",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 spec-driven 做成 agent 框架，值得看需求、实现和验收能否在同一套规范里闭环。"
+    },
+    {
+      "rank": 4,
+      "product": "MakersClaw",
+      "productKey": "https://www.producthunt.com/products/makersclaw",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 AI 员工塞进 Slack、Teams、Telegram，核心看点是协作入口原生化后能否替代人工跟单与分派。"
+    },
+    {
+      "rank": 5,
+      "product": "A policy gate that runs before your AI coding agent's tool calls",
+      "productKey": "https://sigmashake.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "如果工具调用前真能跑策略闸门，它可能补上编码 agent 最缺的越权防护和审计层。"
+    },
+    {
+      "rank": 6,
+      "product": "OctoPunk – a full-featured, AI-integrated GitHub client",
+      "productKey": "https://www.octopunk.io/blog/introducing-octopunk",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 GitHub 客户端直接做成 AI 操作台，值得看代码浏览、变更提交和代理执行能否合成一个闭环。"
+    },
+    {
+      "rank": 7,
+      "product": "Stop your AI agents from approving their own work",
+      "productKey": "https://github.com/sammysltd/makerchecker",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它瞄准 agent 自审自过这一真实故障点，值得看 maker-checker 机制会不会成为编码代理默认配置。"
+    },
+    {
+      "rank": 8,
+      "product": "Tyto – find where audio breaks your voice-agent calls",
+      "productKey": "https://call-analysis.ai-coustics.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "语音 agent 最怕链路断点难排查，这类音频诊断工具若真有效，会直接改善呼叫型产品上线效率。"
+    },
+    {
+      "rank": 9,
+      "product": "Loomcycle – a sidecar runtime for AI agents (Go binary, Apache-2.0)",
+      "productKey": "https://github.com/denn-gubsky/loomcycle",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "sidecar runtime 的价值在于不改主应用就接入 agent 能力，值得看部署复杂度和运维隔离是否成立。"
+    },
+    {
+      "rank": 10,
+      "product": "Agentspace – long-running YOLO agent sessions in Docker",
+      "productKey": "https://github.com/imrec/agentspace",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把长时运行的 agent 会话塞进 Docker，关键要看任务持久性和资源隔离是否比脚本编排更省心。"
+    },
+    {
+      "rank": 11,
+      "product": "Palmier",
+      "productKey": "https://www.ycombinator.com/launches/qtt-palmier-pro-an-open-source-video-editor-your-agents-can-operate",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把视频编辑器开放给 agent 操作，若可把生成、修改和导出串起来，会是内容工作流的重要样板。"
+    },
+    {
+      "rank": 12,
+      "product": "Ferrix AI – Agentic Product Management Platform",
+      "productKey": "https://ferrix.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它想把产品管理平台 agent 化，值得看需求整理、优先级判断和协作记录是否真能替代 PM 手工流。"
+    },
+    {
+      "rank": 13,
+      "product": "Hextrap – Package Firewall with OPA Policies and MCP Support",
+      "productKey": "https://hextrap.com/products/firewall",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 OPA 策略和 MCP 支持绑到包防火墙上，核心看点是依赖治理能否前移到 agent 执行入口。"
+    },
+    {
+      "rank": 14,
+      "product": "Regentix – Block destructive MCP tool execution using Rego",
+      "productKey": "https://github.com/marvior/regentix",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "直接拦截破坏性 MCP 调用很实用，值得看 Rego 规则是否足够细，且不会把正常自动化一并卡死。"
+    },
+    {
+      "rank": 15,
+      "product": "Xpenser – self-hostable personal finance tracker with MCP access",
+      "productKey": "https://github.com/cleverbrush/xpenser",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把个人财务工具开放给 MCP 更像让 agent 接管敏感数据，重点要看权限边界和误操作成本怎么收住。"
+    },
+    {
+      "rank": 16,
+      "product": "Whissle Gateway – Multi-Modal Voice AI in a 500MB Local Docker",
+      "productKey": "https://whissle.ai/gateway",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "本地 Docker 里跑多模态语音 AI 很有吸引力，关键看延迟、部署门槛和呼叫质量能否兼顾。"
+    },
+    {
+      "rank": 17,
+      "product": "Artifacta – Durable storage for agent outputs",
+      "productKey": "https://artifacta.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "agent 输出一旦要追责和复用，就需要耐久存储；值得看它如何处理版本、检索和归档。"
+    },
+    {
+      "rank": 18,
+      "product": "Building a Stateful AI Agent",
+      "productKey": "https://github.com/surya17495/centri",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "stateful agent 不是新词，但真正难的是状态何时写入和恢复，值得看它如何避免上下文漂移。"
+    },
+    {
+      "rank": 19,
+      "product": "AutomatiQ – Reverse-Engineering Agent for the Web",
+      "productKey": "https://github.com/stonesteel27/automatiq",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Reverse-engineering the web 说明它不只做浏览，而想把页面结构转成可执行理解，适合观察泛化能力。"
+    },
+    {
+      "rank": 20,
+      "product": "AI Agent Skills to Grow Your Open Source Project",
+      "productKey": "https://github.com/marketingskills/open-source-growth",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把“增长开源项目”包装成 agent skills，更值得看它是否沉淀出可复用动作库，而不是营销清单。"
+    }
+  ]
+}

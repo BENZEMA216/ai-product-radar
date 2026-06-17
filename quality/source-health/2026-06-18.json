@@ -1,0 +1,57 @@
+{
+  "generatedAt": "2026-06-17T16:02:46.638Z",
+  "window": {
+    "start": "2026-06-17 00:02:46 CST",
+    "end": "2026-06-18 00:02:46 CST"
+  },
+  "productHuntDateKeys": [
+    "2026-06-16"
+  ],
+  "sources": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 15,
+      "keptCount": 10,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-16；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 15 条，AI 相关候选 10 条；fallback 低覆盖时扩展检查 2026-06-15，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重移除 6 条已报道或已处理日榜 Product Hunt 信号，最终发布 4 条。",
+      "discoveredKeptCount": 10,
+      "reportKeptCount": 4,
+      "previouslyReportedCount": 6
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 1,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 27,
+      "keptCount": 27,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 5,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 18,
+      "keptCount": 18,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  }
+}
