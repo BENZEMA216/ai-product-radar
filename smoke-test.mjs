@@ -273,6 +273,45 @@ exit 1
   }
 }
 
+function testDailyRunnerSmokeTimeoutIsConfigurable() {
+  const tempDir = mkdtempSync(join(tmpdir(), "radar-daily-timeout-"));
+  const reportDir = join(tempDir, "custom-reports");
+  const binDir = join(tempDir, "bin");
+  mkdirSync(binDir, { recursive: true });
+  try {
+    const npmPath = join(binDir, "npm");
+    writeFileSync(
+      npmPath,
+      `#!/bin/sh
+sleep 1
+exit 0
+`,
+      "utf8"
+    );
+    chmodSync(npmPath, 0o755);
+
+    execFileSync("node", [join(process.cwd(), "daily-runner.mjs"), "--now", "2026-06-09T08:01:00+08:00", "--report-dir", reportDir], {
+      cwd: tempDir,
+      encoding: "utf8",
+      timeout: 30000,
+      maxBuffer: 1024 * 1024,
+      env: {
+        ...process.env,
+        PATH: `${binDir}:${process.env.PATH || ""}`,
+        RADAR_SMOKE_RETRY_DELAYS_MS: "",
+        RADAR_SMOKE_TIMEOUT_MS: "1"
+      }
+    });
+
+    const sourceHealthPath = join(reportDir, "quality", "source-health", "2026-06-09.json");
+    const sourceHealth = JSON.parse(readFileSync(sourceHealthPath, "utf8"));
+    assert.equal(sourceHealth.blocked, true, "daily runner should write blocked source health when smoke times out");
+    assert.match(sourceHealth.reason, /ETIMEDOUT|timed out/i);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+}
+
 function testFeedbackIssueParser() {
   const issue = {
     number: 12,
@@ -3447,14 +3486,24 @@ async function testDealflowUnavailableDoesNotBlock() {
 }
 
 async function testEndToEndFixture() {
-  const previousSkipGithub = process.env.RADAR_SKIP_GITHUB;
+  const skipKeys = [
+    "RADAR_SKIP_PRODUCT_HUNT",
+    "RADAR_SKIP_YC",
+    "RADAR_SKIP_GITHUB",
+    "RADAR_SKIP_HF",
+    "RADAR_SKIP_AIHOT",
+    "RADAR_SKIP_DEALFLOW"
+  ];
+  const previousValues = Object.fromEntries(skipKeys.map((key) => [key, process.env[key]]));
   let result;
   try {
-    process.env.RADAR_SKIP_GITHUB = "1";
+    for (const key of skipKeys) process.env[key] = "1";
     result = await runRadar({ now: "2026-05-31T08:02:13+08:00", hours: 24 });
   } finally {
-    if (previousSkipGithub === undefined) delete process.env.RADAR_SKIP_GITHUB;
-    else process.env.RADAR_SKIP_GITHUB = previousSkipGithub;
+    for (const key of skipKeys) {
+      if (previousValues[key] === undefined) delete process.env[key];
+      else process.env[key] = previousValues[key];
+    }
   }
   const sources = new Set(result.candidates.map((item) => item.source));
   if (result.candidates.length === 0) {
@@ -3489,9 +3538,18 @@ function testCliOutput() {
     ["radar.mjs", "--now", "2026-05-31T08:02:13+08:00", "--hours", "24", "--json"],
     {
       encoding: "utf8",
-      timeout: 120000,
+      timeout: 30000,
       cwd: process.cwd(),
-      env: { ...process.env, RADAR_SKIP_GITHUB: "1" }
+      env: {
+        ...process.env,
+        RADAR_SKIP_PRODUCT_HUNT: "1",
+        RADAR_SKIP_YC: "1",
+        RADAR_SKIP_HN: "1",
+        RADAR_SKIP_GITHUB: "1",
+        RADAR_SKIP_HF: "1",
+        RADAR_SKIP_AIHOT: "1",
+        RADAR_SKIP_DEALFLOW: "1"
+      }
     }
   );
   const json = JSON.parse(stdout);
@@ -3515,6 +3573,7 @@ const tests = [
   ["Daily runner fatal errors honor report dir", testDailyRunnerFatalErrorHonorsReportDir],
   ["Daily runner smoke failure still writes feedback snapshot", testDailyRunnerSmokeFailureStillWritesFeedbackSnapshot],
   ["Daily runner retries transient smoke network failure", testDailyRunnerRetriesTransientSmokeNetworkFailure],
+  ["Daily runner smoke timeout is configurable", testDailyRunnerSmokeTimeoutIsConfigurable],
   ["Feedback issue parser", testFeedbackIssueParser],
   ["Feedback snapshot accepts unlabeled radar issues", testFeedbackSnapshotAcceptsUnlabeledRadarIssues],
   ["Feedback snapshot unavailable", testFeedbackSnapshotUnavailable],

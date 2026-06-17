@@ -53,10 +53,18 @@ function smokeRetryDelaysMs(env = process.env) {
   if (env.RADAR_SMOKE_RETRY_DELAYS_MS !== undefined) {
     return String(env.RADAR_SMOKE_RETRY_DELAYS_MS)
       .split(",")
-      .map((part) => Number(part.trim()))
+      .map((part) => part.trim())
+      .filter(Boolean)
+      .map((part) => Number(part))
       .filter((value) => Number.isFinite(value) && value >= 0);
   }
   return [30000, 90000];
+}
+
+function smokeTimeoutMs(env = process.env) {
+  const configured = Number(env.RADAR_SMOKE_TIMEOUT_MS);
+  if (Number.isFinite(configured) && configured > 0) return configured;
+  return 300000;
 }
 
 function sleep(ms) {
@@ -72,7 +80,7 @@ async function runSmokeWithRetries(env) {
         cwd: SCRIPT_DIR,
         encoding: "utf8",
         env,
-        timeout: 180000
+        timeout: smokeTimeoutMs(env)
       });
       return;
     } catch (error) {

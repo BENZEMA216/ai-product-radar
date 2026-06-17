@@ -576,6 +576,18 @@ function truthyEnv(value) {
   return /^(1|true|yes|on)$/i.test(String(value || "").trim());
 }
 
+function sourceSkipped(source, env = process.env) {
+  const keys = {
+    producthunt: ["RADAR_SKIP_PRODUCT_HUNT", "RADAR_SKIP_PH"],
+    yc_launch: ["RADAR_SKIP_YC", "RADAR_SKIP_YC_LAUNCH"],
+    hackernews: ["RADAR_SKIP_HN", "RADAR_SKIP_HACKERNEWS"],
+    github: ["RADAR_SKIP_GITHUB"],
+    huggingface: ["RADAR_SKIP_HF", "RADAR_SKIP_HUGGINGFACE"],
+    aihot: ["RADAR_SKIP_AIHOT"]
+  }[source] || [];
+  return keys.some((key) => truthyEnv(env[key]));
+}
+
 export function isDealflowEnabled(env = process.env) {
   return !truthyEnv(env.RADAR_DISABLE_DEALFLOW) && !truthyEnv(env.RADAR_SKIP_DEALFLOW);
 }
@@ -2634,7 +2646,10 @@ function buildSourceHealth({ rawGroups, candidates, phDateKeys }) {
       : "";
   const productHuntApiUsed =
     productHuntSourceKinds.includes("api") || rawGroups.producthuntOfficial.some((item) => item.sourceApi === "producthunt_api");
-  const productHuntStatus = productHuntApiUsed
+  const productHuntSkipped = sourceSkipped("producthunt");
+  const productHuntStatus = productHuntSkipped
+    ? "skipped"
+    : productHuntApiUsed
     ? "ok"
     : productHuntOfficialRawCount || productHuntFallbackRawCount
       ? "fallback"
@@ -2643,7 +2658,9 @@ function buildSourceHealth({ rawGroups, candidates, phDateKeys }) {
     productHuntStatus === "fallback" && productHuntRawCount < 10
       ? `；低覆盖风险：fallback 只返回 ${productHuntRawCount} 条候选，不能视为完整 PH 日榜。`
       : "";
-  const productHuntNote = productHuntApiUsed
+  const productHuntNote = productHuntSkipped
+    ? "RADAR_SKIP_PRODUCT_HUNT/RADAR_SKIP_PH 已设置，Product Hunt 本次跳过。"
+    : productHuntApiUsed
     ? `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；Product Hunt API v2 GraphQL 已启用，原始覆盖 ${productHuntRawCount} 条，候选带 rank/votes/comments。`
     : process.env.PRODUCT_HUNT_TOKEN
       ? `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；PRODUCT_HUNT_TOKEN 已配置但 API 未返回可解析候选，已回退到 Jina/OrangeBot；原始覆盖 ${productHuntRawCount} 条${productHuntReaderNote}${productHuntExpandedNote}。`
@@ -2656,34 +2673,44 @@ function buildSourceHealth({ rawGroups, candidates, phDateKeys }) {
       note: productHuntNote
     }),
     yc_launch: sourceHealthEntry({
-      status: rawGroups.ycLaunches.length ? "ok" : "empty",
+      status: sourceSkipped("yc_launch") ? "skipped" : rawGroups.ycLaunches.length ? "ok" : "empty",
       rawCount: rawGroups.ycLaunches.length,
       keptCount: countKept("yc_launch"),
-      note: rawGroups.ycLaunches.length ? "YC Launch 正常返回窗口内候选。" : "YC Launch 本窗口无候选或来源为空。"
+      note: sourceSkipped("yc_launch")
+        ? "RADAR_SKIP_YC/RADAR_SKIP_YC_LAUNCH 已设置，YC Launch 本次跳过。"
+        : rawGroups.ycLaunches.length
+          ? "YC Launch 正常返回窗口内候选。"
+          : "YC Launch 本窗口无候选或来源为空。"
     }),
     hackernews: sourceHealthEntry({
-      status: rawGroups.hn.length ? "ok" : "empty",
+      status: sourceSkipped("hackernews") ? "skipped" : rawGroups.hn.length ? "ok" : "empty",
       rawCount: rawGroups.hn.length,
       keptCount: countKept("hackernews"),
-      note: "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+      note: sourceSkipped("hackernews")
+        ? "RADAR_SKIP_HN/RADAR_SKIP_HACKERNEWS 已设置，HN 本次跳过。"
+        : "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
     }),
     github: sourceHealthEntry({
-      status: process.env.RADAR_SKIP_GITHUB ? "skipped" : rawGroups.gh.length ? "ok" : "empty",
+      status: sourceSkipped("github") ? "skipped" : rawGroups.gh.length ? "ok" : "empty",
       rawCount: rawGroups.gh.length,
       keptCount: countKept("github"),
-      note: process.env.RADAR_SKIP_GITHUB ? "RADAR_SKIP_GITHUB 已设置，GitHub Release 本次跳过。" : "GitHub 默认只收固定 watchlist 的 Release。"
+      note: sourceSkipped("github") ? "RADAR_SKIP_GITHUB 已设置，GitHub Release 本次跳过。" : "GitHub 默认只收固定 watchlist 的 Release。"
     }),
     huggingface: sourceHealthEntry({
-      status: rawGroups.hf.length ? "ok" : "empty",
+      status: sourceSkipped("huggingface") ? "skipped" : rawGroups.hf.length ? "ok" : "empty",
       rawCount: rawGroups.hf.length,
       keptCount: countKept("huggingface"),
-      note: "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+      note: sourceSkipped("huggingface")
+        ? "RADAR_SKIP_HF/RADAR_SKIP_HUGGINGFACE 已设置，Hugging Face 本次跳过。"
+        : "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
     }),
     aihot: sourceHealthEntry({
-      status: rawGroups.aihot.length ? "ok" : "empty",
+      status: sourceSkipped("aihot") ? "skipped" : rawGroups.aihot.length ? "ok" : "empty",
       rawCount: rawGroups.aihot.length,
       keptCount: countKept("aihot"),
-      note: "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+      note: sourceSkipped("aihot")
+        ? "RADAR_SKIP_AIHOT 已设置，AIHOT 本次跳过。"
+        : "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
     }),
     xhs_dealflow: sourceHealthEntry({
       status: rawGroups.dealflowXhs.length ? "ok" : isDealflowEnabled() ? "unavailable" : "skipped",
@@ -2705,19 +2732,22 @@ export async function runRadar(options = {}) {
   const start = new Date(now.getTime() - hours * 60 * 60 * 1000);
   const phDateKeys = options.productHuntDateKeys || productHuntDateKeysForRun(now);
   const endDateKey = localDateKey(now);
+  const skipProductHunt = sourceSkipped("producthunt");
 
   const [phRunDiagnostics, ycLaunches, hn, gh, hf, aihot, dealflowXhs] = await Promise.all([
-    fetchProductHuntDiagnosticsForRun(phDateKeys),
-    fetchYcLaunches(start, now).catch(() => []),
-    fetchHackerNews(start, now),
-    process.env.RADAR_SKIP_GITHUB ? Promise.resolve([]) : fetchGitHubReleases(start, now),
-    fetchHuggingFace(start, now),
-    fetchAihot(start, now, endDateKey),
+    skipProductHunt ? Promise.resolve({ diagnostics: [], fetchDateKeys: phDateKeys }) : fetchProductHuntDiagnosticsForRun(phDateKeys),
+    sourceSkipped("yc_launch") ? Promise.resolve([]) : fetchYcLaunches(start, now).catch(() => []),
+    sourceSkipped("hackernews") ? Promise.resolve([]) : fetchHackerNews(start, now),
+    sourceSkipped("github") ? Promise.resolve([]) : fetchGitHubReleases(start, now),
+    sourceSkipped("huggingface") ? Promise.resolve([]) : fetchHuggingFace(start, now),
+    sourceSkipped("aihot") ? Promise.resolve([]) : fetchAihot(start, now, endDateKey),
     fetchDealflowXhs(start, now, { cwd: process.cwd() }).catch(() => [])
   ]);
   const phDiagnosticsNested = phRunDiagnostics.diagnostics;
   const phFetchDateKeys = phRunDiagnostics.fetchDateKeys;
-  const phFallbackDiagnostics = await fetchProductHuntFallbackForDates(phFetchDateKeys);
+  const phFallbackDiagnostics = skipProductHunt
+    ? { items: [], rawCount: 0, sourceKinds: [] }
+    : await fetchProductHuntFallbackForDates(phFetchDateKeys);
   const phNested = phDiagnosticsNested.map((diagnostics) => diagnostics.items);
   const phFallback = phFallbackDiagnostics.items;
 
