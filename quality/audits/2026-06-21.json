@@ -1,0 +1,290 @@
+{
+  "date": "2026-06-21",
+  "generatedAt": "2026-06-20T16:01:38.801Z",
+  "reportPath": "reports/2026-06-21-0001-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 58,
+    "top20Sources": [
+      "HN Algolia",
+      "Product Hunt",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 17,
+      "keptCount": 9,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-19；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 17 条，AI 相关候选 9 条；历史去重移除 1 条已报道或已处理日榜 Product Hunt 信号，最终发布 8 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 1,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 4,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 9,
+      "keptCount": 9,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 20,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Gora – simple search across all your local coding agents",
+      "productKey": "https://github.com/mertdeveci5/gora",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把多 agent 本地历史做统一搜索，如果检索质量够稳，会直接影响多人协作时的上下文复用效率。"
+    },
+    {
+      "rank": 2,
+      "product": "Claude Code Artifacts",
+      "productKey": "https://www.producthunt.com/products/claude-redesigned",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把编码过程实时发布成可分享工件，值得看它能否把“演示结果”升级为团队协作和招聘评审的新分发层。"
+    },
+    {
+      "rank": 3,
+      "product": "API to MCP",
+      "productKey": "https://www.producthunt.com/products/api-to-mcp",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把任意 API 封成 MCP 的价值在于降低 agent 接工具的接入成本，重点看抽象是否够薄又不牺牲可观测性。"
+    },
+    {
+      "rank": 4,
+      "product": "Zernio WhatsApp API",
+      "productKey": "https://www.producthunt.com/products/zernio",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 WhatsApp 消息、通话和 agent 合成一层接口，值得看它是否真能拿下客服或销售等高频自动化场景。"
+    },
+    {
+      "rank": 5,
+      "product": "CWC scans your Claude Code history and auto-builds agent workflows",
+      "productKey": "https://github.com/fayzan123/claude-workflow-composer",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "直接扫描 Claude Code 历史再生成工作流，关键看它能否把个人习惯沉淀成团队可复用的 agent 资产。"
+    },
+    {
+      "rank": 6,
+      "product": "Lelu – authorization engine that catches manipulated AI agents",
+      "productKey": "https://github.com/lelu-auth/lelu",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "agent 安全层常被当成口号，Lelu 值得看的是它能否在真实授权链里识别被操纵行为，而不是只做规则包装。"
+    },
+    {
+      "rank": 7,
+      "product": "Surface skill for HTML pages a coding agent watches and reacts to",
+      "productKey": "https://github.com/aac/surface",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 HTML 页面变成 agent 可观察界面，关键看它能否降低人审 diff、批注和回放复杂任务的成本。"
+    },
+    {
+      "rank": 8,
+      "product": "FOSS sandbox platform that hides infra secrets from devs and AI agents",
+      "productKey": "https://github.com/octelium/cordium",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它试图把密钥隔离变成 agent 默认能力，重点看能否把“不给 agent 明文权限”从安全口号变成可部署架构。"
+    },
+    {
+      "rank": 9,
+      "product": "Zero-config session-taste packer for AI agents",
+      "productKey": "https://github.com/dvcoolarun/taste-ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把会话偏好零配置打包给 agent，值得看它是否能减少换模型、换终端后的人设和上下文漂移。"
+    },
+    {
+      "rank": 10,
+      "product": "StayUp – keep a Mac awake (lid closed) while AI agents are working",
+      "productKey": "https://getstayup.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "看似小工具，但它瞄准的是 agent 长任务的物理运行环境，关键是能否成为无人值守工作流的稳定基础件。"
+    },
+    {
+      "rank": 11,
+      "product": "Reachpad – document and knowledge sharing for your agents",
+      "productKey": "https://reachpad.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "文档共享不是新题，值得看它是否把 agent 可读权限、上下文版本和团队协作边界一起管起来。"
+    },
+    {
+      "rank": 12,
+      "product": "Local automation runner with built-in LLM steps – YAML pipelines",
+      "productKey": "https://rorlikowski.github.io/stepyard",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "如果 YAML 流水线能原生容纳 LLM 步骤，它可能成为轻量 agent 编排入口，重点看调试体验和失败恢复。"
+    },
+    {
+      "rank": 13,
+      "product": "Unreal Engine 5.8",
+      "productKey": "https://www.producthunt.com/products/unreal-engine",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 AI agents 明确写进游戏制作链路，值得跟踪它是停留在演示口径，还是会真正改变资产生产和关卡迭代。"
+    },
+    {
+      "rank": 14,
+      "product": "Autonomy – Self-Harness/Self-Directed AI Agent Core Under Development",
+      "productKey": "https://autonomy-landing-page.vercel.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "自指式 agent core 很容易空泛，真正值得看的是它是否给出可验证的自我约束机制，而不只是更大的愿景词。"
+    },
+    {
+      "rank": 15,
+      "product": "A Context Brain for You (and Your AI Agent)",
+      "productKey": "https://gcontext.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "上下文管理是 agent 体验瓶颈，这类产品要看它能否把个人笔记、任务状态和执行历史串成可调用记忆层。"
+    },
+    {
+      "rank": 16,
+      "product": "AgentArk – open-source self-hosted AI agent OS",
+      "productKey": "https://github.com/agentark-ai/agentark",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "self-hosted agent OS 的看点不是再做一个界面，而是能否把部署、权限和多 agent 协同做成可长期运行的工作台。"
+    },
+    {
+      "rank": 17,
+      "product": "Namecom-CLI – CLI and agent skill so Claude Code/Codex can do your DNS",
+      "productKey": "https://github.com/hypersocialinc/namecom-cli",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 DNS 操作暴露给 Codex/Claude Code 这类 agent，值得看它能否在高风险运维动作里做好确认、审计和回滚。"
+    },
+    {
+      "rank": 18,
+      "product": "Thomas",
+      "productKey": "https://www.ycombinator.com/launches/qwo-thomas-the-first-yc-backed-ai-founder",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "YC 背书的人形 AI 创始人叙事很强，重点不是噱头，而是它能否把找方向、试错和成交真正闭环成公司生成器。"
+    },
+    {
+      "rank": 19,
+      "product": "Foglamp",
+      "productKey": "https://www.producthunt.com/products/foglamp",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "主打“看得见”的 agent 交付界面，值得看它是否把可视化调试、轨迹回放和人工接管做成标准层，而非展示页。"
+    },
+    {
+      "rank": 20,
+      "product": "MeshPilot",
+      "productKey": "https://www.producthunt.com/products/meshpilot",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "终端、任务和 agent 合一的工作区很多，但 MeshPilot 值得看的是它是否真能减少上下文切换和 orchestration 成本。"
+    }
+  ]
+}
