@@ -1,0 +1,290 @@
+{
+  "date": "2026-06-24",
+  "generatedAt": "2026-06-23T16:03:33.782Z",
+  "reportPath": "reports/2026-06-24-0003-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 69,
+    "top20Sources": [
+      "HN Algolia",
+      "YC Launch",
+      "AIHOT"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-22；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 0 条，AI 相关候选 0 条；fallback 低覆盖时扩展检查 2026-06-21，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 0 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 2,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 28,
+      "keptCount": 28,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 31,
+      "keptCount": 20,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 19,
+      "keptCount": 19,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 21,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Aharness – Enforce coding-agent workflows as state machines on Codex",
+      "productKey": "https://github.com/alfredvc/aharness",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 coding agent 工作流收进状态机约束里，值得看的是能否把回滚、审批和多步执行从提示词约定变成可审计的工程边界。"
+    },
+    {
+      "rank": 2,
+      "product": "An open MCP that gives coding agents page-cited embedded datasheets",
+      "productKey": "https://github.com/byteask/byteask-embedded-mcp",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把带页码引用的数据手册接进 coding agent，很适合观察硬件或嵌入式问答能否从“会答”升级到“可核对、可追责”。"
+    },
+    {
+      "rank": 3,
+      "product": "Upsolve AI",
+      "productKey": "https://www.ycombinator.com/launches/qyr-upsolve-ai-agent-studio-for-data-team",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "面向数据团队的 agent studio 如果真能同时做治理和业务语义约束，会比通用 BI 助手更接近企业真实采购条件。"
+    },
+    {
+      "rank": 4,
+      "product": "Autostep",
+      "productKey": "https://www.ycombinator.com/launches/qyb-autostep-measure-the-roi-of-knowledge-work",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它直接瞄准“人和 agent 的 ROI 量化”这件难事，值得看是否能把管理层最关心的投入产出做成持续指标。"
+    },
+    {
+      "rank": 5,
+      "product": "Mimic: control Android from CLI or MCP with fine-grained permissions",
+      "productKey": "https://github.com/khimaros/mimic",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Android 控制加细粒度权限是移动 agent 落地的关键短板，重点看它能否把自动化能力和安全边界一起产品化。"
+    },
+    {
+      "rank": 6,
+      "product": "Code Stitcher – The anti-agentic workflow",
+      "productKey": "https://github.com/ue-patcher/code_stitcher/releases",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "反 agentic workflow 的提法值得看，因为它可能不是追求更自由，而是用更窄流程换来更稳定的补丁质量与交付可控性。"
+    },
+    {
+      "rank": 7,
+      "product": "Building real time interview with voice agents",
+      "productKey": "https://clariox.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "语音面试 agent 真正的看点不是“能说话”，而是能否把提问、追问、记录和筛选压进一条可复用招聘流程里。"
+    },
+    {
+      "rank": 8,
+      "product": "Token Receipt – turn your coding-agent history into a bill",
+      "productKey": "https://tokenreceipt.ameyalambat.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 coding-agent 历史直接换算成账单，有机会补上团队内部 chargeback 和成本治理这一层，而不只是做个人仪表盘。"
+    },
+    {
+      "rank": 9,
+      "product": "I built a tool that'll show how AI agents reads your startup's website",
+      "productKey": "https://agent-ready.co",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "如果它能把网站内容翻译成 agent 可读的结构化缺陷清单，AI 时代的 SEO 可能会从人类点击优化转向可调用性优化。"
+    },
+    {
+      "rank": 10,
+      "product": "Find and fix issues in your AI Agents (MIT, open source)",
+      "productKey": "https://github.com/latitude-dev/latitude-llm",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AI agent 的问题定位仍然缺少顺手工具，这类开源排障层值得看能否把失败案例、复现和修复建议串成闭环。"
+    },
+    {
+      "rank": 11,
+      "product": "Publish.my – Static hosting where the AI agent is the customer",
+      "productKey": "https://publish.my",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把静态托管的默认客户设成 AI agent，很适合观察未来文档、元数据和访问控制会不会为了机器消费而重做一遍。"
+    },
+    {
+      "rank": 12,
+      "product": "Videopython – local-first video processing, editing and AI workflows",
+      "productKey": "https://github.com/bartwojtowicz/videopython",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "本地优先的视频处理再叠加 AI 工作流，能测试创作者和企业是否愿意用更可控的私有化链路换取更稳定的视频自动化。"
+    },
+    {
+      "rank": 13,
+      "product": "AI Agents the Unix Way – built with bash, curl, and jq",
+      "productKey": "https://github.com/cloudkj/llayer",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用 bash、curl、jq 重组 agent，值得看的是它会不会证明很多团队需要的不是更重框架，而是更透明、可拆卸的编排方式。"
+    },
+    {
+      "rank": 14,
+      "product": "Legant gives AI agents bounded authority to act on your behalf",
+      "productKey": "https://github.com/legant-dev/legant",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "给 agent 有边界的行动授权，比单纯提高模型能力更接近企业采纳门槛，重点看批准链和权限回收是否足够细。"
+    },
+    {
+      "rank": 15,
+      "product": "Service-catalog-MCP – Index your codebase and make batch changes",
+      "productKey": "https://github.com/sorena-ai/service-catalog-mcp/tree/main",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "能索引代码库并批量改动的 MCP 工具，价值在于把“大范围一致性修改”从手工搜索替换变成结构化操作。"
+    },
+    {
+      "rank": 16,
+      "product": "Cachet – A drop-in semantic cache for LLM APIs, 100% local, in Rust",
+      "productKey": "https://github.com/abhix2112/cachet",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "本地语义缓存如果做得足够轻，会直接影响 agent 的延迟和单位任务成本，尤其适合高频重复上下文的开发场景。"
+    },
+    {
+      "rank": 17,
+      "product": "Seed 2.1 Pro 测评：胜任 Agent 工作流",
+      "productKey": "https://aihot.virxact.com/items/cmqqsbjg10cyaslp5jbnrorza",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这条值得保留是因为它给出了真实 Agent 任务测评，而不是单次跑分；重点看豆包是否开始补齐复杂任务稳定性。"
+    },
+    {
+      "rank": 18,
+      "product": "Agent skills that review user-facing agent UX from your codebase",
+      "productKey": "https://github.com/correl8ai/skills",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 user-facing agent UX 审查做成技能，值得观察的是体验评审能否像 lint 一样前置到代码库，而不是上线后再补救。"
+    },
+    {
+      "rank": 19,
+      "product": "skillhealth - find Claude Code skills you never use and what they cost",
+      "productKey": "https://github.com/mirko-pira/skillhealth",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "技能使用与花费审计切中了 Claude Code 生态的真实痛点，适合观察“技能资产管理”会不会成为新的团队治理层。"
+    },
+    {
+      "rank": 20,
+      "product": "Frontier AI for Motion Design",
+      "productKey": "https://motion.so",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Motion design 是被 AI 改写但仍难标准化的垂类，重点看它能否把复杂动效从专业流程压缩成可反复消费的产品模板。"
+    }
+  ]
+}
