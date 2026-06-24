@@ -1,0 +1,289 @@
+{
+  "date": "2026-06-25",
+  "generatedAt": "2026-06-24T16:01:33.271Z",
+  "reportPath": "reports/2026-06-25-0001-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 65,
+    "top20Sources": [
+      "YC Launch",
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-23；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 0 条，AI 相关候选 0 条；fallback 低覆盖时扩展检查 2026-06-22，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 0 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 5,
+      "keptCount": 5,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 39,
+      "keptCount": 39,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 19,
+      "keptCount": 11,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 10,
+      "keptCount": 10,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 21,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Linzumi",
+      "productKey": "https://www.ycombinator.com/launches/quj-linzumi-team-chat-for-directing-ai-coding-agents",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把团队聊天变成调度大量 coding agents 的控制台，值得看多人协作如何从提示词走向可管理队列。"
+    },
+    {
+      "rank": 2,
+      "product": "Y – A malleable coding-agent desktop app built with Electron",
+      "productKey": "https://github.com/y-times-y/y",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "本地工作区和电脑控制是 agent 落地到个人生产环境的关键入口，值得跟踪体验边界。"
+    },
+    {
+      "rank": 3,
+      "product": "Grove – fast source insights for coding agents – via Tree-sitter",
+      "productKey": "https://github.com/entelligentsia/grove",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用 Tree-sitter 给 agent 做快速代码语义索引，核心看它能否比通用向量检索更稳定地降低上下文成本。"
+    },
+    {
+      "rank": 4,
+      "product": "Demo of an MCP server that gives AI agents real coding tools [video]",
+      "productKey": "https://www.youtube.com/watch?v=n9lqaxt1eqq",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "MCP 服务器把真实编码工具暴露给 agent，值得看工具权限、可观测性和错误恢复是否能做成通用层。"
+    },
+    {
+      "rank": 5,
+      "product": "Tolmo",
+      "productKey": "https://www.ycombinator.com/launches/r1o-tolmo-secure-your-software-shipped-at-claude-code-pace",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把安全审查包装成常驻 agent fleet，切中了 AI 编码提速后的风险补偿需求，适合看采购理由是否足够硬。"
+    },
+    {
+      "rank": 6,
+      "product": "Issue-Orchestrator, a control plane for coding agents",
+      "productKey": "https://github.com/brucebgordon/issue-orchestrator",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "以 issue 为中心编排 coding agents，产品启发在于把任务状态、责任边界和自动执行接到现有研发流程。"
+    },
+    {
+      "rank": 7,
+      "product": "OpenUser: Self-hosted user-persona tester for AI coding agents",
+      "productKey": "https://news.ycombinator.com/item?id=48647957",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "自托管 persona 测试瞄准 coding agent 评估空白，值得看它能否把像用户一样验收变成可重复流程。"
+    },
+    {
+      "rank": 8,
+      "product": "Codemcp, One MCP tool that lets agents write Python to call many",
+      "productKey": "https://github.com/skymoore/codemcp",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 agent 用 Python 调多种能力，重点不是 MCP 数量，而是能否用代码接口减少工具 schema 膨胀。"
+    },
+    {
+      "rank": 9,
+      "product": "Orchid – Local-first record and replay for AI agent debugging",
+      "productKey": "https://github.com/mario-guerra/orchid-trace",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "本地优先的 record/replay 切中 agent 调试难题，适合看隐私、复现和团队协作是否能同时成立。"
+    },
+    {
+      "rank": 10,
+      "product": "Tecture – A navigable architecture map from your coding agent",
+      "productKey": "https://tecture.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "从 coding agent 输出架构地图，值得看它是否能把一次性代码理解沉淀成团队持续可浏览的工程资产。"
+    },
+    {
+      "rank": 11,
+      "product": "Cruit.dev – Get hired at a startup based on your coding agent skills",
+      "productKey": "https://cruit.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 coding agent 技能变成招聘筛选信号，适合观察 AI 原生工作流是否会改写开发者能力证明方式。"
+    },
+    {
+      "rank": 12,
+      "product": "AI-whisper – two real coding agent CLIs, one implements, one reviews",
+      "productKey": "https://github.com/ai-creed/ai-whisper",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用实现 agent 加 review agent 分工做 CLI，值得看双 agent 互审能否比单 agent 循环更容易控质量。"
+    },
+    {
+      "rank": 13,
+      "product": "Michii – AI agents that build and run your business",
+      "productKey": "https://michii.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "build and run your business 范围很大，先作为强叙事信号看待，关键是它是否能落到具体业务闭环。"
+    },
+    {
+      "rank": 14,
+      "product": "inplan – plan with your coding agent in a shared Markdown doc",
+      "productKey": "https://news.ycombinator.com/item?id=48659617",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "共享 Markdown 规划文档是低摩擦入口，值得看 agent planning 能否留在开发者已有文档习惯里。"
+    },
+    {
+      "rank": 15,
+      "product": "Graphenium, persistent repo memory for AI coding assistants",
+      "productKey": "https://github.com/lambda-alpha-labs/graphenium",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "持久 repo memory 是 coding assistant 的高频痛点，重点看它如何处理代码演进、冲突和过期记忆。"
+    },
+    {
+      "rank": 16,
+      "product": "Substack Skill API / Agent Reference",
+      "productKey": "https://github.com/anthonydavidadams/substack-api-reference",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Substack API 参考偏开发者资料，信息不足，先作为弱信号保留；尚看不出完整产品形态或可复用工作流。"
+    },
+    {
+      "rank": 17,
+      "product": "Drip — pay-per-use finance newsletters for AI agents",
+      "productKey": "https://dripstack.xyz/stock-picks",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "面向 agent 的按次付费金融内容很窄，值得观察内容产品是否会从人类订阅转向机器可消费 API。"
+    },
+    {
+      "rank": 18,
+      "product": "Stupify – anti-slop code review for AI agents",
+      "productKey": "https://github.com/octember/stupify",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "anti-slop 直接命中 AI 代码质量焦虑，值得看它是规则检查、模型评审还是能形成团队门禁。"
+    },
+    {
+      "rank": 19,
+      "product": "Build A Harness – open-source, modular harness layer for AI agents",
+      "productKey": "https://buildaharness.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "模块化 harness 层瞄准 agent 运行时标准化，适合看它能否成为跨模型、跨工具的测试与执行接口。"
+    },
+    {
+      "rank": 20,
+      "product": "My agents run on a mesh of old phones and argue over each other's work",
+      "productKey": "https://github.com/genaforvena/lte-workstation",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "旧手机 mesh 更像极客实验，信息不足，先作为弱信号保留；需要验证它是否超出有趣 demo。"
+    }
+  ]
+}
