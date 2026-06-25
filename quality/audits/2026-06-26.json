@@ -1,0 +1,289 @@
+{
+  "date": "2026-06-26",
+  "generatedAt": "2026-06-25T16:02:39.771Z",
+  "reportPath": "reports/2026-06-26-0002-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 57,
+    "top20Sources": [
+      "YC Launch",
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-24；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 0 条，AI 相关候选 0 条；fallback 低覆盖时扩展检查 2026-06-23，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 0 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 3,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 27,
+      "keptCount": 27,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 16,
+      "keptCount": 11,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 16,
+      "keptCount": 16,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 22,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Amika",
+      "productKey": "https://www.ycombinator.com/launches/r2h-amika-the-operating-system-for-ai-agents-to-write-and-verify-code",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把云端机器、人类审核和代码验证打包成 agent OS，值得看它能否把编码自动化卖成可治理平台。"
+    },
+    {
+      "rank": 2,
+      "product": "Pelica",
+      "productKey": "https://www.ycombinator.com/launches/r2o-pelica-the-ai-operating-system-for-value-based-care",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "面向价值医疗的风险捕捉和外呼 agent，启发点在于把 AI 从单点文书推进到人群运营闭环。"
+    },
+    {
+      "rank": 3,
+      "product": "Zedra – Remote control for AI coding agents",
+      "productKey": "https://zedra.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把远程控制作为 AI coding agent 的入口，重点看它能否解决多 agent 同时跑时的可见性和接管问题。"
+    },
+    {
+      "rank": 4,
+      "product": "Git-temp (local scratchpad for AI agents that won't clutter Git status)",
+      "productKey": "https://github.com/sebmellen/git-temp",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用临时 Git 空间隔离 agent 草稿，虽小但击中开发者日常痛点，适合作为 agent 工作区基础件观察。"
+    },
+    {
+      "rank": 5,
+      "product": "Hezo – Self-hosted teams of AI agents that never see your real secrets",
+      "productKey": "https://hezo.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把自托管和密钥隔离放在多 agent 团队前面，值得看安全边界能否成为企业采用的默认卖点。"
+    },
+    {
+      "rank": 6,
+      "product": "Forensic-deepdive: code knowledge graph and MCP server for AI agents",
+      "productKey": "https://github.com/dhevenddra/forensic-deepdive",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "代码知识图谱加 MCP server 指向 agent 理解大型仓库的底座，关键看它能否优于普通检索上下文。"
+    },
+    {
+      "rank": 7,
+      "product": "A durable filesystem layer for AI agents",
+      "productKey": "https://github.com/celestoai/smolfs",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "持久文件系统层解决 agent 运行中的状态保存问题，适合观察 agent runtime 是否会拆出独立基础设施市场。"
+    },
+    {
+      "rank": 8,
+      "product": "Pith – A local-first desktop LLM wiki without vector DBs or embeddings",
+      "productKey": "https://github.com/l-zhi/pith-wiki",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "本地优先 LLM wiki 反向避开向量库依赖，值得看轻量知识管理是否能用更低复杂度获得足够体验。"
+    },
+    {
+      "rank": 9,
+      "product": "Diplomat-agent scan Python MCP servers for unguarded tool calls",
+      "productKey": "https://github.com/diplomat-ai/diplomat-agent",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "专门扫描 MCP 未防护工具调用，说明 agent 安全正在从理念进入具体 lint 和审计工具。"
+    },
+    {
+      "rank": 10,
+      "product": "I made awesome lists available through CLI+Skills and MCP",
+      "productKey": "https://www.context-awesome.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 awesome list 变成 CLI、Skill 和 MCP 资源，弱点是更像目录入口，价值取决于能否转成可执行工作流。"
+    },
+    {
+      "rank": 11,
+      "product": "Brieform, build and read form responses inside your AI chat (MCP)",
+      "productKey": "https://brieform.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把表单创建和回收嵌进 AI chat，值得看传统 SaaS 组件如何被 MCP 改造成对话内工具。"
+    },
+    {
+      "rank": 12,
+      "product": "Multi Agent Protocol for AI Scientist by Hexo Labs",
+      "productKey": "https://github.com/hexo-ai/socrates",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "面向 AI Scientist 的多 agent 协议信号偏早期，值得看科研 agent 是否开始形成可互操作的任务分工标准。"
+    },
+    {
+      "rank": 13,
+      "product": "The Agent Pantry – a live, daily-scanned landscape of AI agent tools",
+      "productKey": "https://theagentpantry.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这是 agent 工具目录而非直接产品，保留为生态雷达信号，重点看分类和每日扫描是否真能降低发现成本。"
+    },
+    {
+      "rank": 14,
+      "product": "NakshGuard – on-prem proxy that stops AI agent loops",
+      "productKey": "https://github.com/pujanmirani/nakshguard",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用本地代理阻止 agent 循环，把可靠性问题放到执行层拦截，适合观察运维型 agent guardrail。"
+    },
+    {
+      "rank": 15,
+      "product": "Visual multi-agent orchestration for Claude Code",
+      "productKey": "https://github.com/rondoflow/rondoflow",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "为 Claude Code 做可视化多 agent 编排，值得看它能否把终端型 coding agent 推向团队协作界面。"
+    },
+    {
+      "rank": 16,
+      "product": "(Spotlight/Raycast for Web Search not local) && (compare AI responses)",
+      "productKey": "https://uberninja.co",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把网页搜索和多模型回答比较做成启动器式入口，价值在于降低横向验证成本而不是单纯再造搜索框。"
+    },
+    {
+      "rank": 17,
+      "product": "Find where multi-agent AI systems break before production",
+      "productKey": "https://github.com/surajkumar811/swarm-test",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "聚焦多 agent 上线前的破坏点测试，说明 agent QA 可能从 demo 评测走向发布前验收工具。"
+    },
+    {
+      "rank": 18,
+      "product": "Drive your already-logged-in Chrome from any AI agent",
+      "productKey": "https://github.com/leeguooooo/chrome-use",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "复用已登录 Chrome 给 agent 操作真实网页，启发点是绕开账号接入成本，但也要警惕权限和审计风险。"
+    },
+    {
+      "rank": 19,
+      "product": "An agent that fixes broken data pipelines from their logs (3min video))",
+      "productKey": "https://www.youtube.com/watch?v=p2i2br5y7na",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "从日志定位并修复数据管道有清晰 B2B 场景，当前证据是视频，后续要看是否有可复现产品形态。"
+    },
+    {
+      "rank": 20,
+      "product": "Use AI once to build the automation, then run it with $0 in AI",
+      "productKey": "https://www.visualbuild.me",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "强调生成一次、低成本重复执行的自动化定位，值得看它能否把 AI 成本焦虑转成产品卖点。"
+    }
+  ]
+}
