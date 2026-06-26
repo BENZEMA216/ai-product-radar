@@ -1,0 +1,291 @@
+{
+  "date": "2026-06-27",
+  "generatedAt": "2026-06-26T16:01:45.402Z",
+  "reportPath": "reports/2026-06-27-0001-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 32,
+    "top20Sources": [
+      "YC Launch",
+      "HN Algolia",
+      "GitHub Release",
+      "AIHOT"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-25；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 0 条，AI 相关候选 0 条；fallback 低覆盖时扩展检查 2026-06-24，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 0 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 3,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 10,
+      "keptCount": 10,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 4,
+      "keptCount": 2,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 17,
+      "keptCount": 17,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 22,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Agentcard",
+      "productKey": "https://www.ycombinator.com/launches/qx6-agentcard-debit-cards-for-ai-agents",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agentcard 把 AI agent 的线上支付单独产品化，值得看虚拟卡、授权和风控能否成为 agent 基础设施入口。"
+    },
+    {
+      "rank": 2,
+      "product": "BetterDB, MIT Valkey-native context layer for AI agents",
+      "productKey": "https://github.com/betterdb-inc/monitor/tree/master/packages",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "BetterDB 直接押注 agent 上下文层，Valkey-native 的定位可观察开发者是否愿意把记忆层从应用代码里拆出来。"
+    },
+    {
+      "rank": 3,
+      "product": "Orchestrate Claude Code agents on a canvas",
+      "productKey": "https://rondoflow.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "RondoFlow 把 Claude Code 多 agent 编排搬到画布上，值得看可视化协作是否比终端脚本更适合团队交付。"
+    },
+    {
+      "rank": 4,
+      "product": "Mutiny",
+      "productKey": "https://www.ycombinator.com/launches/r2q-mutiny-your-ai-agent-to-take-your-accounts-from-cold-to-closed",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Mutiny 试图把销售账号推进从获客到成交交给 agent，重点看它能否跨 CRM、邮件和跟进动作形成可衡量闭环。"
+    },
+    {
+      "rank": 5,
+      "product": "Yet another self-hosted web analytics with no UI but MCP",
+      "productKey": "https://yetanotherwebanalytics.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "无 UI 分析工具改走 MCP 查询入口，适合观察“给 agent 用的软件”是否能替代传统后台界面。"
+    },
+    {
+      "rank": 6,
+      "product": "MCP Server for a UK Meat Price Comparison Site",
+      "productKey": "https://meat.offer-spider.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这是把垂直比价站包装成 MCP 的小样本，信息价值在于检验普通网站是否会为 agent 暴露专用接口。"
+    },
+    {
+      "rank": 7,
+      "product": "Poth Labs",
+      "productKey": "https://www.ycombinator.com/launches/r2b-poth-labs-the-ai-native-customer-research-platform",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Poth Labs 把行为数据假设和访谈验证连起来，值得看 AI research 平台能否从总结工具升级为产品决策流程。"
+    },
+    {
+      "rank": 8,
+      "product": "I compared 15 AI agent frameworks across 4 production stacks",
+      "productKey": "https://compare-lab.xyz/ai-agent-frameworks",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这是框架对比内容而非产品发布，保留只适合看开发者选型痛点；若无自有工具，应降权。"
+    },
+    {
+      "rank": 9,
+      "product": "openai/codex codex-zsh-v0.1.0",
+      "productKey": "https://github.com/openai/codex/releases/tag/codex-zsh-v0.1.0",
+      "source": "GitHub Release",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "openai/codex codex-zsh-v0.1.0 只能说明 Codex 仍在高频推进 alpha 节奏，信息不足，先作为弱信号保留；仅凭 tag 还看不出模型、交互或稳定性改了什么。"
+    },
+    {
+      "rank": 10,
+      "product": "Appaca – AI Workspace for Operators",
+      "productKey": "https://www.appaca.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Appaca – AI Workspace for Operators 试图把 coding agents 组织成工作台入口，适合观察多 agent 使用从命令行走向系统化界面。"
+    },
+    {
+      "rank": 11,
+      "product": "Verity – self-healing review gate for Claude Code",
+      "productKey": "https://verity.md",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Verity 把 Claude Code 输出接到自修复 review gate，值得看 agent 质检是否能从人工审查变成可插拔流水线。"
+    },
+    {
+      "rank": 12,
+      "product": "I built a small audit layer for LLM-as-judge decisions",
+      "productKey": "https://github.com/matteoleonesi/claim-memory-graph-sdk",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "LLM-as-judge 审计层切中评测可信度问题，但当前像开发者库，需看是否能接入真实评审和合规流程。"
+    },
+    {
+      "rank": 13,
+      "product": "Novakit.tech – pre-built Claude Code skills, no prompting required",
+      "productKey": "https://novakit.tech",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Novakit 把 Claude Code skill 做成预置分发，值得看技能市场是否能降低提示词门槛并形成复用生态。"
+    },
+    {
+      "rank": 14,
+      "product": "微博发布开源CLI工具weibo-cli：面向开发者与AI Agent，封装70余API",
+      "productKey": "https://aihot.virxact.com/items/cmqutjfr907cxsl80thh7ikta",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "weibo-cli 若真支持 MCP，会把微博开放 API 变成 agent 可调用工具；需要核实官方文档和权限限制。"
+    },
+    {
+      "rank": 15,
+      "product": "终于让ZCode用上Computer Use了",
+      "productKey": "https://aihot.virxact.com/items/cmquzr85p08trsl806ljd4f7k",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "本地工作区和电脑控制是 agent 落地到个人生产环境的关键入口，值得跟踪体验边界。"
+    },
+    {
+      "rank": 16,
+      "product": "langchain-ai/langgraphjs @langchain/langgraph@1.4.7",
+      "productKey": "https://github.com/langchain-ai/langgraphjs/releases/tag/%40langchain/langgraph%401.4.7",
+      "source": "GitHub Release",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "langchain-ai/langgraphjs @langchain/langgraph@1.4.7 信息不足，先作为弱信号保留；当前证据只有版本号或发布时间，还看不出具体能力边界、目标用户收益或采用门槛变化。"
+    },
+    {
+      "rank": 17,
+      "product": "DeepSeek Flash inverted the economics of agent products",
+      "productKey": "https://www.rtrvr.ai/blog/code-as-plan-deepseek-flash-text-only-browser-agent",
+      "source": "HN Algolia",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "这条更像 agent 成本结构分析，产品启发在于低价文本浏览 agent 是否会改变可收费任务边界。"
+    },
+    {
+      "rank": 18,
+      "product": "阿里云HappyHorse 1.1成Creative Fabrica Studio默认视频模型",
+      "productKey": "https://aihot.virxact.com/items/cmquth8sp07casl808azm00k3",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "HappyHorse 成为创作者平台默认模型，值得看国产视频模型通过渠道默认位进入真实创作工作流的效果。"
+    },
+    {
+      "rank": 19,
+      "product": "xAI ZDR 上线 OpenRouter 覆盖 Grok 多模型",
+      "productKey": "https://aihot.virxact.com/items/cmqv2q36v09j9sl80t0p7xl45",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "Grok 模型上 OpenRouter ZDR 是分发和隐私承诺变化，适合关注企业调用模型时的合规卖点。"
+    },
+    {
+      "rank": 20,
+      "product": "Google Gemini for macOS 隐藏 MCP 集成配置",
+      "productKey": "https://aihot.virxact.com/items/cmqus151y06zlsl80c5rzyajx",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "deprioritize",
+      "pmScore": 2,
+      "rankingIssue": "weak_signal_in_top20",
+      "reason": "信息不足，先作为弱信号保留；隐藏配置不是正式发布，但可观察 Gemini 桌面端是否准备接入工具生态。"
+    }
+  ]
+}
