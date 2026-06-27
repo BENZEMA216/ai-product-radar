@@ -1,0 +1,290 @@
+{
+  "date": "2026-06-28",
+  "generatedAt": "2026-06-27T16:02:19.701Z",
+  "reportPath": "reports/2026-06-28-0002-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 35,
+    "top20Sources": [
+      "HN Algolia",
+      "AIHOT",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-26；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 0 条，AI 相关候选 0 条；fallback 低覆盖时扩展检查 2026-06-25，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 0 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 1,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 19,
+      "keptCount": 19,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 16,
+      "keptCount": 16,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 22,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "TBD, a Mac-native CLI-forward coding agent multiplexer",
+      "productKey": "https://github.com/cheapsteak/tbd",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "多 coding agent 同时工作的痛点是真实的，TBD 值得看它能否把多会话切换、上下文交接和本地 CLI 习惯做成稳定入口。"
+    },
+    {
+      "rank": 2,
+      "product": "AgentBrush – Your coding agent's missing tool: image generation",
+      "productKey": "https://agentbrush.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把图像生成放进 coding agent 工具链，重点看是否能解决产品原型、素材占位和代码交付之间的断点。"
+    },
+    {
+      "rank": 3,
+      "product": "Mcpify – Turn any REST API into an MCP server in one command",
+      "productKey": "https://github.com/amanbig/mcpify",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "REST API 一键转 MCP 是明确的集成楔子，价值取决于 schema 质量、鉴权处理和生成后能否直接被 agent 可靠调用。"
+    },
+    {
+      "rank": 4,
+      "product": "`uvx ptn` and expose any system to agents (dangerously)",
+      "productKey": "https://pypi.org/project/ptn",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它直接暴露系统能力给 agent，值得关注的是权限边界和风险提示是否能变成可接受的开发者体验。"
+    },
+    {
+      "rank": 5,
+      "product": "Nirnam – a browser-native message bus and AI agent framework for MFEs",
+      "productKey": "https://github.com/shaurcasm/nirnam",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "微前端里的 agent 通信是窄但具体的场景，值得看它能否把跨应用状态和权限协作做成前端团队可落地的模式。"
+    },
+    {
+      "rank": 6,
+      "product": "All-in-one memory for AI Agents",
+      "productKey": "https://parcle.ai/second-brain",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "agent 记忆产品很多，这条的判断点是它是否提供跨会话、可迁移和可审计的记忆层，而不是又一个笔记式包装。"
+    },
+    {
+      "rank": 7,
+      "product": "I scanned 87 MCP servers for agent-authority hygiene – leaderboard",
+      "productKey": "https://capframe.ai/leaderboard",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "MCP 安全排行榜能把抽象治理问题产品化，值得看它的评测维度是否会影响企业挑选 MCP 服务的默认标准。"
+    },
+    {
+      "rank": 8,
+      "product": "Statey – the database your AI shares across every chat, over MCP",
+      "productKey": "https://www.statey.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Statey 把“聊天之间共享状态”做成 MCP 数据库，关键看它能否比普通向量记忆更好地处理结构化事实和权限。"
+    },
+    {
+      "rank": 9,
+      "product": "Ocarina – Automate and test MCP servers from YAML, no LLM",
+      "productKey": "https://github.com/msradam/ocarina",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用 YAML 测 MCP server 把 agent 基建从演示带到验收环节，适合观察 MCP 工具链是否开始形成测试标准。"
+    },
+    {
+      "rank": 10,
+      "product": "Skillmaxxing – make every agent self-evolving",
+      "productKey": "https://github.com/bennyoooo/skillmaxxing",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "自进化 skill 是高风险高噪声方向，值得看的是它有没有评估、回滚和边界控制，而不是只展示 agent 会改自己。"
+    },
+    {
+      "rank": 11,
+      "product": "OpenClaw Launch – deploy a managed OpenClaw AI agent in 30s",
+      "productKey": "https://openclawlaunch.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "30 秒托管 agent 的卖点清晰，重点看它是否补齐部署、监控和更新闭环，而不仅是快速创建一个可访问实例。"
+    },
+    {
+      "rank": 12,
+      "product": "Vercel 发布开源框架 Eve（Apache 2.0，beta），用于构建持久化 AI 智能体",
+      "productKey": "https://aihot.virxact.com/items/cmqwimypf00v4sly0rqicb60g",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Eve 把 agent 组织成目录、工具和技能，值得看 Vercel 是否在定义前端团队构建持久化 agent 的工程范式。"
+    },
+    {
+      "rank": 13,
+      "product": "Morph",
+      "productKey": "https://www.ycombinator.com/launches/r4x-reflexes-api-catch-what-your-agent-logs-can-t-see",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "YC Launch 明确指向 agent 行为失败监控，Morph 值得看能否把不可见的 agent 失误转成企业可采购的观测 API。"
+    },
+    {
+      "rank": 14,
+      "product": "Discover content in any YouTube channel with RAG",
+      "productKey": "https://askchannel.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "YouTube 频道 RAG 是具体内容检索场景，重点看引用、片段定位和频道级知识库是否比普通搜索更可信。"
+    },
+    {
+      "rank": 15,
+      "product": "AI-whisper – Claude works better when Codex watches its back",
+      "productKey": "https://ai-creed.dev/projects/ai-whisper",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Claude 与 Codex 互相监督的设定有协作启发，但需要警惕它是否只是提示词玩法，缺少可复现的评测证据。"
+    },
+    {
+      "rank": 16,
+      "product": "Open Tag, the open source Claude Tag",
+      "productKey": "https://github.com/copilotkit/opentag",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Open Tag 试图复刻 Claude Tag 交互，价值在于能否把 AI 生成界面变成开源组件，而不是只追热点 UI。"
+    },
+    {
+      "rank": 17,
+      "product": "Tested – AI Tools Scored by a Panel of LLMs (Claude, GPT, Gemini, Grok)",
+      "productKey": "https://trytested.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用多模型给 AI 工具打分有目录化风险，值得观察它是否提供透明任务、样本和人类校准，而不是自动生成榜单。"
+    },
+    {
+      "rank": 18,
+      "product": "Hatchr – Share Claude Designs with a public link",
+      "productKey": "https://www.hatchr.link",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Claude Designs 分享链接解决协作分发小痛点，值得看它能否承接反馈、版本和可交付资产，而不是只做展示页。"
+    },
+    {
+      "rank": 19,
+      "product": "I replaced $500/mo in freelance tools with 20 ChatGPT prompts",
+      "productKey": "https://medium.com/@promptalex53/1c857c6f424a",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "信息不足，先作为弱信号保留；标题更像个人 prompt 案例，缺少独立产品、可复用交付和真实用户证据。"
+    },
+    {
+      "rank": 20,
+      "product": "Smart model routing directly in Claude, Codex and Cursor",
+      "productKey": "https://github.com/workweave/router",
+      "source": "HN Algolia",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "模型路由直接进 Claude、Codex、Cursor 是明确成本控制入口，重点看路由规则是否可解释且不破坏开发者工作流。"
+    }
+  ]
+}
