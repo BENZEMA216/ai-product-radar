@@ -1,0 +1,289 @@
+{
+  "date": "2026-06-30",
+  "generatedAt": "2026-06-29T16:00:49.848Z",
+  "reportPath": "reports/2026-06-30-0000-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 33,
+    "top20Sources": [
+      "HN Algolia",
+      "AIHOT"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-28；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 0 条，AI 相关候选 0 条；fallback 低覆盖时扩展检查 2026-06-27，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 0 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "YC Launch 本窗口无候选或来源为空。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 19,
+      "keptCount": 19,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 14,
+      "keptCount": 14,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 23,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "VibeRaven – Production workflows for AI coding agents",
+      "productKey": "https://github.com/ohad6k/viberaven",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 AI coding agent 从单次补全推向生产流程编排，值得看它是否能沉淀团队级交付、审查和回滚机制。"
+    },
+    {
+      "rank": 2,
+      "product": "PMB – local memory for coding agents that shows if it is used",
+      "productKey": "https://pmbai.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "亮点不是“有记忆”，而是显式显示记忆是否被使用，适合观察 agent 可解释性如何变成产品信任入口。"
+    },
+    {
+      "rank": 3,
+      "product": "Reference MCP – let your AI agents search each other's past sessions",
+      "productKey": "https://github.com/kuberwastaken/reference",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "跨 agent 检索历史会话切中上下文复用问题，值得看它能否减少重复试错，而不只是又一个记忆索引。"
+    },
+    {
+      "rank": 4,
+      "product": "Brain.md – A persistent memory layer for your coding agents",
+      "productKey": "https://github.com/mindmuxai/brain.md",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Markdown 记忆层降低了团队审阅和迁移成本，关键看它能否把项目约束变成 agent 稳定遵守的工作资产。"
+    },
+    {
+      "rank": 5,
+      "product": "Fognitix – AI browser with parallel autonomous agents on the browser",
+      "productKey": "https://www.fognitix.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "并行浏览器 agent 是高频但难落地的入口，值得验证它能否处理多标签任务编排、权限和失败恢复。"
+    },
+    {
+      "rank": 6,
+      "product": "Marmot, context layer for agents and humans",
+      "productKey": "https://marmotdata.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“人和 agent 共用上下文层”比单纯记忆更有组织协作意味，重点看权限、结构化沉淀和跨工具调用边界。"
+    },
+    {
+      "rank": 7,
+      "product": "Use-zerostack – delegate any task to a lightweight coding agent",
+      "productKey": "https://github.com/gi-dellav/use-zerostack",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "轻量任务委派如果足够低摩擦，可能成为 IDE 外的 agent 入口；要警惕它是否只是薄 CLI 包装。"
+    },
+    {
+      "rank": 8,
+      "product": "Hail.so – Send and receive emails, calls, SMS via a single MCP/API/CLI",
+      "productKey": "https://hail.so",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把邮件、电话、短信统一成 MCP/API/CLI，适合观察通信执行层如何成为 agent 工作流的通用外设。"
+    },
+    {
+      "rank": 9,
+      "product": "Shikhu – Understand the code your agents write",
+      "productKey": "https://github.com/arjunpatel7/shikhu",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "代码理解层针对 agent 产物审查痛点，价值取决于能否帮 reviewer 快速定位风险而非只生成解释。"
+    },
+    {
+      "rank": 10,
+      "product": "Add visualisations to your data MCP in a few lines of code",
+      "productKey": "https://github.com/bonnard-data/mcp-charts",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "给数据 MCP 补图表输出能把 agent 从查询推进到汇报场景，重点看图表语义和交互是否可控。"
+    },
+    {
+      "rank": 11,
+      "product": "I built Exfault, agentic mobile app pentesting tool",
+      "productKey": "https://www.exfault.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "移动应用渗透测试是高价值垂直 agent 场景，值得看它是否有可审计证据链和人审安全边界。"
+    },
+    {
+      "rank": 12,
+      "product": "I Made a WebGPU Based Agent/Worlflow Explainer",
+      "productKey": "https://tdu-naifen.github.io/agentvisualization",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用 WebGPU 解释 agent 流程偏教育和可视化，启发在于复杂 agent 调试能否被做成可理解界面。"
+    },
+    {
+      "rank": 13,
+      "product": "Run AI chat, image gen, vision, and voice offline on your Mac",
+      "productKey": "https://github.com/off-grid-ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "本地多模态套件押注隐私和离线可用性，值得看它能否把模型安装、性能和 UX 做到非极客可用。"
+    },
+    {
+      "rank": 14,
+      "product": "I'm building the missing production workflow for AI filmmakers",
+      "productKey": "https://seventeenlabs.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "deprioritize",
+      "pmScore": 2,
+      "rankingIssue": "weak_signal_in_top20",
+      "reason": "AI 影视生产的缺口在流程而非单次生成，值得看它是否覆盖脚本、镜头、素材和版本管理。"
+    },
+    {
+      "rank": 15,
+      "product": "The open-source alternative to Claude Tag",
+      "productKey": "https://www.agent-swarm.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "开源对标 Claude Tag 说明协作式 agent 编排有外溢需求，但要看它是否有差异化而非复刻概念。"
+    },
+    {
+      "rank": 16,
+      "product": "Timefeed – Auto sync public events to your calendar",
+      "productKey": "https://timefeed.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "自动同步公开活动到日历是窄场景自动化，若 AI 证据不足，应重点验证解析准确性和真实复用频次。"
+    },
+    {
+      "rank": 17,
+      "product": "Claude Code plugin to draw feedback and send it back into the session",
+      "productKey": "https://github.com/tomreinert/claude-annotate",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把手绘反馈回灌到 Claude Code 会话，切中设计/代码协作的表达成本，值得看是否能减少文字来回。"
+    },
+    {
+      "rank": 18,
+      "product": "开发者跑通AI视频讲解Skills，可自动生成内容",
+      "productKey": "https://aihot.virxact.com/items/cmqzb6q1j004ysltjctv0bma6",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 4,
+      "rankingIssue": null,
+      "reason": "从网站、内容和视频地址自动生成讲解视频有明确内容生产场景，但目前更像个人技能验证，需看能否产品化。"
+    },
+    {
+      "rank": 19,
+      "product": "EverOS：开源Markdown优先智能体记忆运行时，支持混合检索与自进化技能",
+      "productKey": "https://aihot.virxact.com/items/cmqz3upwc00axsldytm3kw949",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "Markdown、SQLite 和 LanceDB 的组合让 agent 记忆更可审计；但证据来自聚合摘要，需确认官方仓库与实际采用。"
+    },
+    {
+      "rank": 20,
+      "product": "fofrAI 写作技能改善 Agent 输出质量",
+      "productKey": "https://aihot.virxact.com/items/cmqz3ia40005dsldyxwgmnurd",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "deprioritize",
+      "pmScore": 2,
+      "rankingIssue": "weak_signal_in_top20",
+      "reason": "信息不足，先作为弱信号保留；只有个人使用反馈，缺少技能内容、分发方式和可复用产品形态。"
+    }
+  ]
+}
