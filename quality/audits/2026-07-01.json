@@ -1,0 +1,289 @@
+{
+  "date": "2026-07-01",
+  "generatedAt": "2026-06-30T16:00:38.983Z",
+  "reportPath": "reports/2026-07-01-0000-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 54,
+    "top20Sources": [
+      "HN Algolia",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-29；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 0 条，AI 相关候选 0 条；fallback 低覆盖时扩展检查 2026-06-28，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 0 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 1,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 30,
+      "keptCount": 30,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 6,
+      "keptCount": 1,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 22,
+      "keptCount": 22,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 23,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "TinySearch – token-efficient web research for local AI agents",
+      "productKey": "https://github.com/marcellm01/tinysearch",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "TinySearch把本地 agent 的网页研究成本压到 token 层面，值得看轻量检索能否成为端侧 agent 标配。"
+    },
+    {
+      "rank": 2,
+      "product": "Agentic Orchestrator, a TUI for long-running coding agents",
+      "productKey": "https://github.com/doordash-oss/agentic-orchestrator",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agentic Orchestrator把长时间编码 agent 做成 TUI 控制台，重点看它如何解决多任务等待、切换和中断恢复。"
+    },
+    {
+      "rank": 3,
+      "product": "Ouijit, command terminals running coding agents",
+      "productKey": "https://github.com/ouijit/ouijit",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Ouijit把命令终端改造成 coding agent 工作区，值得观察终端入口是否比 IDE 更适合持续代理任务。"
+    },
+    {
+      "rank": 4,
+      "product": "StarSling",
+      "productKey": "https://www.ycombinator.com/launches/r7b-starsling-runners-self-driving-ci",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "StarSling把 CI 加速和 AI 自优化绑定，适合看基础设施产品如何用成本节省包装成明确采购理由。"
+    },
+    {
+      "rank": 5,
+      "product": "Framein – a local work-state layer that keeps AI agents in context",
+      "productKey": "https://www.framein.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Framein主打本地工作状态层，关键价值在于减少 agent 反复读上下文和跨工具失忆。"
+    },
+    {
+      "rank": 6,
+      "product": "Bulwark – a kernel read gate so coding agents can't read .env or .ssh",
+      "productKey": "https://github.com/obstalabs/bulwark",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Bulwark从内核读权限切入 agent 安全，值得看它能否把 .env、.ssh 风险做成开发者默认防线。"
+    },
+    {
+      "rank": 7,
+      "product": "Capacitor – shared mem for Claude Code, Cursor and other coding agents",
+      "productKey": "https://capacitor.kurrent.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Capacitor想在 Claude Code、Cursor 等工具间共享记忆，核心看跨 IDE 上下文是否真能减少重复提示。"
+    },
+    {
+      "rank": 8,
+      "product": "Naja-scope – Let AI agents explore SystemVerilog netlists over MCP",
+      "productKey": "https://github.com/najaeda/naja-scope",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Naja-scope把 MCP 接到 SystemVerilog 网表探索，说明 agent 工具链正在进入很窄但高价值的工程场景。"
+    },
+    {
+      "rank": 9,
+      "product": "SlimSnap – mark a screenshot element, get JSON for your coding agent",
+      "productKey": "https://slimsnap.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "SlimSnap把截图元素转成 agent 可用 JSON，适合观察视觉标注如何降低前端修改的沟通成本。"
+    },
+    {
+      "rank": 10,
+      "product": "DriftGuard – response drift detection for LangGraph agents",
+      "productKey": "https://github.com/vinerya/driftguard",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "DriftGuard聚焦 LangGraph agent 响应漂移，价值在于把不可控输出变成可监测的工程质量问题。"
+    },
+    {
+      "rank": 11,
+      "product": "Busabase – an approval-first database and knowledge base for AI agents",
+      "productKey": "https://github.com/busabase/busabase",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Busabase强调 approval-first 数据库与知识库，值得看 human-in-the-loop 是否能成为 agent 存储层卖点。"
+    },
+    {
+      "rank": 12,
+      "product": "Scaffold a BigQuery and dbt and Cube project an AI agent can operate",
+      "productKey": "https://cli.revos.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Revos 这类脚手架把数据栈预设成 agent 可操作结构，启发在于先改工程形态再谈自动化能力。"
+    },
+    {
+      "rank": 13,
+      "product": "Kinetk – Watch agent build a launch and growth plan for your product",
+      "productKey": "https://growth-demo.kinetk.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Kinetk让 agent 生成 launch 与增长方案，重点不是计划文本，而是能否接入真实实验和反馈闭环。"
+    },
+    {
+      "rank": 14,
+      "product": "NodePad – AI agent on a canvas instead of a linear chat",
+      "productKey": "https://node-pad.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "NodePad把 agent 从线性聊天搬到画布，值得看空间化界面是否更适合拆解、并行和回看复杂任务。"
+    },
+    {
+      "rank": 15,
+      "product": "Let your AI agent manage your link in bio",
+      "productKey": "https://keepp.link/keepp-skill/skill.md",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Keepp Skill把 link-in-bio 管理交给 agent，场景偏窄，适合弱观察技能形态如何进入个人主页运营。"
+    },
+    {
+      "rank": 16,
+      "product": "Crosswalk mapping AI-agent design controls to NIST, ISO 42001, OWASP",
+      "productKey": "https://www.agent-kits.com/agentaz-crosswalk",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AgentAZ Crosswalk把设计控制映射到合规框架，价值在于把 agent 风险治理做成可交付清单。"
+    },
+    {
+      "rank": 17,
+      "product": "I Made an SDK to work with Vapi and Retell without vendor lock in",
+      "productKey": "https://voice-ai.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "voice-ai.dev针对 Vapi 和 Retell 做无锁定 SDK，值得看语音 agent 生态是否出现中立集成层。"
+    },
+    {
+      "rank": 18,
+      "product": "Myna – a local AI Chief of Staff that remembers your work",
+      "productKey": "https://github.com/agentflock/myna",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Myna把本地记忆包装成 AI Chief of Staff，关键看它是否能沉淀工作上下文而不是又一个聊天壳。"
+    },
+    {
+      "rank": 19,
+      "product": "ForthWrite – Email AI that learns your voice from every edit you send",
+      "productKey": "https://www.forthwrite.ai/blog/how-forthwrite-learns-your-email-voice",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ForthWrite从每次邮件编辑里学习语气，适合观察“用户修正”能否变成个人 AI 写作的长期数据资产。"
+    },
+    {
+      "rank": 20,
+      "product": "FastReact – FastAPI and React Starter Kit for AI SaaS",
+      "productKey": "https://fastreact.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "FastReact定位 AI SaaS starter kit，价值有限但可看开发者是否需要专门面向 AI 产品的默认模板。"
+    }
+  ]
+}
