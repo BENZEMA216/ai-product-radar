@@ -1,0 +1,289 @@
+{
+  "date": "2026-07-02",
+  "generatedAt": "2026-07-01T16:01:27.254Z",
+  "reportPath": "reports/2026-07-02-0001-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 40,
+    "top20Sources": [
+      "HN Algolia",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-06-30；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 0 条，AI 相关候选 0 条；fallback 低覆盖时扩展检查 2026-06-29，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 0 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 2,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 22,
+      "keptCount": 22,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 7,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 16,
+      "keptCount": 16,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 24,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Sibyl – self-hosted cross-agent memory for AI coding agents",
+      "productKey": "https://github.com/hyperb1iss/sibyl",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Sibyl 把跨 coding agent 的记忆做成本地自托管层，值得看它能否解决多工具协作里的上下文断裂和隐私顾虑。"
+    },
+    {
+      "rank": 2,
+      "product": "Coding agent that compiles intent into deterministic DAG before running",
+      "productKey": "https://github.com/arman-jalili/rigorix-oss",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Rigorix 的亮点是先把意图编译成确定性 DAG 再执行，适合观察 agent 从自由执行走向可审计计划的产品化路径。"
+    },
+    {
+      "rank": 3,
+      "product": "143.dev – we open-sourced our internal coding-agent infrastructure",
+      "productKey": "https://news.ycombinator.com/item?id=48736251",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "143.dev 暴露内部 coding-agent 基建，价值在于看团队如何沉淀 agent 运行、监控和协作，而不只是再做一个代码助手。"
+    },
+    {
+      "rank": 4,
+      "product": "Osmaura",
+      "productKey": "https://www.ycombinator.com/launches/r9m-osmaura-ai-agents-that-identify-legal-needs",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Osmaura 把 AI agent 放到法律需求发现这个高客单场景，值得观察它能否从线索识别延伸到律所获客闭环。"
+    },
+    {
+      "rank": 5,
+      "product": "Lymwave, Agentic Marketing Autopilot",
+      "productKey": "https://lymwave.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Lymwave 直接切营销自动驾驶，重点看它是否能把多渠道投放、内容和线索转化做成可验证的运营结果。"
+    },
+    {
+      "rank": 6,
+      "product": "Ox – an AI agent that catches tech debt before it's committed",
+      "productKey": "https://news.ycombinator.com/item?id=48746066",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Ox 把 AI 代码审查前移到提交前的技术债拦截，适合观察开发者工具是否能从生成代码转向持续质量控制。"
+    },
+    {
+      "rank": 7,
+      "product": "Google's OKF now has a framework to maintain and verify agent memory",
+      "productKey": "https://kage-core.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Kage Core 围绕 agent memory 的维护和验证做框架，关键看它能否把记忆可靠性变成可测试的工程约束。"
+    },
+    {
+      "rank": 8,
+      "product": "Multi-User Agent Workspace",
+      "productKey": "https://github.com/fred-terzi/totem-llm",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Multi-User Agent Workspace 把多用户和多 agent 放进共享工作台，值得看它如何处理权限、上下文归属和协作交接。"
+    },
+    {
+      "rank": 9,
+      "product": "Petabyte-scale storage for AI agent sandboxes",
+      "productKey": "https://twitter.com/aniketmaurya/status/2072249879573754225",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这个信号瞄准 agent sandbox 的大规模存储，适合关注长任务、隔离环境和数据持久化如何变成基础设施卖点。"
+    },
+    {
+      "rank": 10,
+      "product": "Voice-to-SQL – ask a database in plain English (LLM → SQL)",
+      "productKey": "https://huggingface.co/spaces/chupacharcos/voice-to-sql",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Voice-to-SQL 把语音、自然语言和数据库查询串起来，值得观察低门槛 BI 是否能在准确性与权限控制上成立。"
+    },
+    {
+      "rank": 11,
+      "product": "Bloomy",
+      "productKey": "https://www.ycombinator.com/launches/r9u-bloomy-ai-powered-mastery-learning-for-k-12",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Bloomy 用 AI 做 K-12 mastery learning，值得看它如何把个性化练习、学习进度和家校付费场景组合起来。"
+    },
+    {
+      "rank": 12,
+      "product": "The Sword of Ghix – a retro game made by a 13 yo with AI Assisted tools",
+      "productKey": "https://paulinatorrr.itch.io/sword-of-ghix-chapter-1",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "信息不足，先作为弱信号保留；当前只是 AI 辅助制作的个人游戏展示，缺少可复用产品机制或持续需求证据。"
+    },
+    {
+      "rank": 13,
+      "product": "Riley – Content That Sounds Like You, Not Like AI",
+      "productKey": "https://rileywrites.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Riley 把差异点放在保留个人语气而非泛化写作，适合观察内容工具是否能从生成效率转向身份一致性。"
+    },
+    {
+      "rank": 14,
+      "product": "Distributed LLM tracing and GH PR/issue linking [Apache 2.0]",
+      "productKey": "https://github.com/superlinked/synty",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Synty 把 LLM tracing 接到 GitHub PR/issue，值得看调试链路能否成为 agent 工程团队的协作记录层。"
+    },
+    {
+      "rank": 15,
+      "product": "fenic – LLMs as dataframe operators, query meaning and structure",
+      "productKey": "https://github.com/typedef-ai/fenic",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "fenic 把 LLM 当作 dataframe operator，适合观察语义查询如何嵌入数据工程，而不是停留在聊天式分析。"
+    },
+    {
+      "rank": 16,
+      "product": "Bytesalt – AI that finds bugs Playwright tests miss",
+      "productKey": "https://bytesalt.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Bytesalt 针对 Playwright 覆盖不到的缺陷，值得看 AI QA 是否能用真实页面状态补上脚本测试盲区。"
+    },
+    {
+      "rank": 17,
+      "product": "Clockjumper – An Intervibed Project",
+      "productKey": "https://clockjumper.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "信息不足，先作为弱信号保留；标题只有 Intervibed 项目线索，缺少明确 AI 能力、用户对象和产品动作说明。"
+    },
+    {
+      "rank": 18,
+      "product": "Loma – a self-hosted shared AI layer for your whole company",
+      "productKey": "https://github.com/plotlinelabs/loma",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Loma 把公司级 AI 层做成自托管共享入口，关键看它能否统一权限、模型接入和知识上下文。"
+    },
+    {
+      "rank": 19,
+      "product": "OpenLily – turn your device into an Alexa-like assistant powered by LLM",
+      "productKey": "https://github.com/getlark/openlily",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "OpenLily 走本地设备上的 LLM 助手路线，值得看开源语音入口能否绕开封闭生态但保持可用体验。"
+    },
+    {
+      "rank": 20,
+      "product": "AI use cases companies are implementing",
+      "productKey": "https://www.okanode.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "信息不足，先作为弱信号保留；当前更像企业 AI 用例集合，缺少单一产品发布、可体验入口或明确更新动作。"
+    }
+  ]
+}
