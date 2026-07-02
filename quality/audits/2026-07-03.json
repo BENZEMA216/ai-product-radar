@@ -1,0 +1,289 @@
+{
+  "date": "2026-07-03",
+  "generatedAt": "2026-07-02T16:00:37.858Z",
+  "reportPath": "reports/2026-07-03-0000-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 42,
+    "top20Sources": [
+      "YC Launch",
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-01；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 0 条，AI 相关候选 0 条；fallback 低覆盖时扩展检查 2026-06-30，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 0 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 2,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 27,
+      "keptCount": 27,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 5,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 13,
+      "keptCount": 13,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 25,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Kestrel AI",
+      "productKey": "https://www.ycombinator.com/launches/r4u-kestrel-ai-agents-for-platform-engineering",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "平台工程是 agent 落地的高频 B2B 场景，Kestrel 值得看它如何把事故响应和 CI/CD 包成可采购的自动化工作流。"
+    },
+    {
+      "rank": 2,
+      "product": "Manufact (YC S25) – MCP Cloud",
+      "productKey": "https://manufact.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "MCP Cloud 直接切 agent 工具调用的部署和治理层，值得观察它能否成为企业接入 MCP 的默认基础设施。"
+    },
+    {
+      "rank": 3,
+      "product": "Saldor",
+      "productKey": "https://www.ycombinator.com/launches/ram-saldor-helping-businesses-buy-goods-and-services-and-close-their-books-faster",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "采购和应付账款有明确预算、审批链和数据闭环，Saldor 值得看 AI-native back office 能否替代传统系统模块。"
+    },
+    {
+      "rank": 4,
+      "product": "Skill Federation –private search across 87k skills for AI coding agents",
+      "productKey": "https://github.com/skill-federation/skill-federation",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "87k skills 的私有检索把 agent 能力市场做成基础设施，重点看它如何解决技能发现、信任和本地隐私。"
+    },
+    {
+      "rank": 5,
+      "product": "Noter – AI agent dashboard for monitoring coding harnesses locally",
+      "productKey": "https://noterai.tech",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "本地 coding harness 监控是 agent 工程化的缺口，Noter 值得看能否把失败、成本和会话状态变成日常控制台。"
+    },
+    {
+      "rank": 6,
+      "product": "SEOAgent – Missing SEO system of record for AI coding workflows",
+      "productKey": "https://seoagent.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "SEOAgent 把 AI 编码和增长运营接到同一记录系统，值得看它是否能让 agent 产出的页面持续服务获客指标。"
+    },
+    {
+      "rank": 7,
+      "product": "My first SaaS to help human developers and AI agents share context",
+      "productKey": "https://news.ycombinator.com/item?id=48762112",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "人和 agent 共享上下文是开发协作的真实痛点；信息不足，先看它是否有可复用上下文结构而非普通笔记。"
+    },
+    {
+      "rank": 8,
+      "product": "Enola-A deterministic architecture graph for developers and AI agents",
+      "productKey": "https://github.com/enola-labs/enola/tree/main",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Enola 把架构图做成 deterministic graph，价值在于给 agent 一个可验证的软件地图，而不是只靠长上下文猜代码关系。"
+    },
+    {
+      "rank": 9,
+      "product": "ctx – Search the coding agent history already on your machine",
+      "productKey": "https://github.com/ctxrs/ctx",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ctx 抓的是本机已有 agent 历史，适合观察“会话资产再利用”能否降低重复解释需求和上下文迁移成本。"
+    },
+    {
+      "rank": 10,
+      "product": "Matrix, an open-source cloud computer for coding agents",
+      "productKey": "https://matrix-os.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Matrix 直接卖 coding agents 的云端运行环境，值得看开源 cloud computer 是否能成为 agent 执行层的标准形态。"
+    },
+    {
+      "rank": 11,
+      "product": "I built a way for coding agents to use secrets without seeing them",
+      "productKey": "https://github.com/pdumicz/secret-shuttle",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Secret Shuttle 聚焦 agent 权限最敏感的密钥问题，值得看它能否把“可执行但不可见”做成开发者默认安全模式。"
+    },
+    {
+      "rank": 12,
+      "product": "Ghbrk – Let AI agents run Git/gh without exposing SSH keys/API tokens",
+      "productKey": "https://github.com/marconae/ghbrk",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Ghbrk 把密钥隔离落到 Git/gh 这种高频命令，值得看它是否能成为 agent 写代码时的最小权限执行网关。"
+    },
+    {
+      "rank": 13,
+      "product": "Knotic – layered memory (project/session/docs) for AI coding agents",
+      "productKey": "https://medium.com/@riccardo.tartaglia/how-i-have-build-memory-that-actually-works-for-ai-coding-938ee4df4060",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Knotic 将项目、会话和文档分层记忆，值得看它是否比单一向量库更适合长期 coding agent 的上下文治理。"
+    },
+    {
+      "rank": 14,
+      "product": "LoopFlow – plain-English loops that run coding agents until tests pass",
+      "productKey": "https://loopflow.live",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "LoopFlow 把“跑到测试通过”为自然语言循环，值得看它如何把一次性 prompt 变成可监督的自动修复流程。"
+    },
+    {
+      "rank": 15,
+      "product": "Margarita - Programming language for Agents using Markdown-ish syntax",
+      "productKey": "https://www.margarita.run",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Margarita 用类 Markdown 语法定义 agent 程序，值得看低门槛 DSL 是否能降低非工程团队编排 agent 的成本。"
+    },
+    {
+      "rank": 16,
+      "product": "CLI that helps AI agents avoid vulnerable dependencies",
+      "productKey": "https://github.com/clidey/deptrust",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "deptrust 把依赖安全前置到 agent 生成代码阶段，值得看它能否减少“代码能跑但供应链有坑”的交付风险。"
+    },
+    {
+      "rank": 17,
+      "product": "OSS Tests to Fix AI Gen Code. 110 Test for Major API – Supabase, Auth0",
+      "productKey": "https://github.com/qualtyco/api-doctor",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "API Doctor 把常见第三方 API 测试做成 agent 修代码的约束集，值得看测试资产是否会成为 AI 代码质量入口。"
+    },
+    {
+      "rank": 18,
+      "product": "Dart_agent_core – Run AI agents in Flutter apps with lifecycle hooks",
+      "productKey": "https://github.com/memex-lab/dart_agent_core",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Dart_agent_core 把 agent 生命周期带进 Flutter，值得看移动端应用是否开始内嵌可管理的本地 agent 运行时。"
+    },
+    {
+      "rank": 19,
+      "product": "CLI tool that gives your agents repo context, conventions, and rules",
+      "productKey": "https://github.com/steph-dove/klaussy-agents",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这类 repo context CLI 命中 agent 落地刚需，关键看它是否能沉淀团队规则，而不是又生成一份静态说明文件。"
+    },
+    {
+      "rank": 20,
+      "product": "SophMate – AI Copilot for WordPress/WooCommerce",
+      "productKey": "https://sophmate.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "WordPress/WooCommerce 有大量长尾商家，SophMate 值得看垂直 copilot 能否用场景上下文打赢通用聊天助手。"
+    }
+  ]
+}
