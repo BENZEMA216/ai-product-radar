@@ -711,6 +711,14 @@ function testSiteBuilderIncludesSourceHealth() {
   assert.match(html, /最终发布 0 条/);
 }
 
+function testPagesStaticPublishBypassesJekyll() {
+  assert.equal(
+    existsSync(join(process.cwd(), "docs", ".nojekyll")),
+    true,
+    "GitHub Pages should publish docs/ as static files instead of running legacy Jekyll over generated HTML"
+  );
+}
+
 function testProductHuntPacificCompletedDay() {
   assert.equal(productHuntCompletedDateKey(new Date("2026-06-08T08:00:00+08:00")), "2026-06-06");
   assert.deepEqual(productHuntDateKeysForRun(new Date("2026-06-08T11:00:00+08:00")), ["2026-06-06"]);
@@ -3587,6 +3595,7 @@ const tests = [
   ["Product Hunt history filter annotates all duplicates", testProductHuntHistoryFilterAnnotatesAllDuplicates],
   ["Site builder helpers", testSiteBuilderHelpers],
   ["Site builder includes source health", testSiteBuilderIncludesSourceHealth],
+  ["Pages static publish bypasses Jekyll", testPagesStaticPublishBypassesJekyll],
   ["Product Hunt Pacific completed day", testProductHuntPacificCompletedDay],
   ["Product Hunt fallback date expansion", testProductHuntFallbackDateExpansion],
   ["Site builder natural-day timeline", testSiteBuilderAggregatesReportTimelineByNaturalDay],
