@@ -1,10 +1,18 @@
 # AI Product Radar / AI 产品雷达
 
+[![GitHub stars](https://img.shields.io/github/stars/BENZEMA216/ai-product-radar?style=social)](https://github.com/BENZEMA216/ai-product-radar/stargazers)
+[![Last commit](https://img.shields.io/github/last-commit/BENZEMA216/ai-product-radar)](https://github.com/BENZEMA216/ai-product-radar/commits/main)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-live-0b7a55)](https://benzema216.github.io/ai-product-radar/)
+
 [Live dashboard](https://benzema216.github.io/ai-product-radar/) · [Daily reports](./reports) · [Quality design](./docs/radar-quality-design.md) · [Acceptance contract](./docs/radar-quality-acceptance.md)
 
 > 中文：面向 AI 产品经理的每日产品雷达。它把过去 24 小时里值得看的 AI 新产品、老产品更新、模型与基础设施动态汇总到一个可反馈、可复盘、可持续优化的工作台里。
 >
 > English: A daily AI product radar for product managers who track launches, competitors, product patterns, and reusable inspiration.
+
+AI Product Radar is an open-source daily AI product discovery and competitive-intelligence dashboard. It watches Product Hunt, Hacker News, GitHub Releases, Hugging Face, YC Launch, AIHOT, and best-effort China-market signals, then turns noisy launch streams into a ranked, reviewable product radar for AI product managers.
+
+AI 产品雷达是一个开源的 AI 产品发现与竞品监控工作台。它每天追踪 Product Hunt、Hacker News、GitHub Release、Hugging Face、YC Launch、AIHOT 以及国内产品信号，把分散的新产品发布、老产品更新、模型与基础设施变化整理成可排序、可点评、可复盘的产品情报。
 
 ![AI Product Radar dashboard](docs/assets/radar-dashboard-desktop.png)
 
@@ -26,6 +34,21 @@
 | My Comments | Your product comments attached back to the product card. | 你的每日点评会挂回对应产品，后续可以复盘。 |
 
 ![Priority view and feedback loop](docs/assets/radar-priority-feedback.png)
+
+## Use Cases / 使用场景
+
+| Use case | English | 中文 |
+| --- | --- | --- |
+| AI product discovery | Find new AI tools, agent products, model launches, and workflow products every day. | 每天发现新的 AI 工具、Agent 产品、模型发布和工作流产品。 |
+| Competitive intelligence | Watch how AI startups package, position, launch, and update their products. | 观察 AI 创业公司如何包装、定位、发布和更新产品。 |
+| Product inspiration | Extract reusable product patterns from launch copy, feature updates, and community reactions. | 从发布文案、功能更新和社区反馈里提取可复用的产品灵感。 |
+| PM review workflow | Attach daily comments to product cards and let feedback improve tomorrow's ranking. | 把每日点评挂到产品卡片上，让反馈影响第二天排序。 |
+
+## Search Keywords / 搜索关键词
+
+English keywords: AI product radar, AI product discovery, AI competitive intelligence, AI tools, AI agents, MCP products, Product Hunt AI launches, Hacker News Show HN AI, Hugging Face model updates, startup discovery, product management workflow, daily AI report.
+
+中文关键词：AI 产品雷达、AI 产品发现、AI 竞品监控、AI 产品经理、AI 工具发现、Agent 产品、MCP 产品、Product Hunt AI 新品、Hacker News AI 产品、Hugging Face 模型更新、AI 创业公司、每日 AI 产品报告。
 
 ## Source Coverage / 信息来源
 

@@ -1,8 +1,31 @@
 {
   "name": "ai-product-radar",
   "version": "0.1.0",
+  "description": "Daily AI product discovery and competitive intelligence radar for product managers.",
   "private": true,
   "type": "module",
+  "homepage": "https://benzema216.github.io/ai-product-radar/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BENZEMA216/ai-product-radar.git"
+  },
+  "keywords": [
+    "ai-product-radar",
+    "ai-product-discovery",
+    "ai-competitive-intelligence",
+    "ai-tools",
+    "ai-agents",
+    "mcp-products",
+    "product-management",
+    "product-hunt",
+    "hacker-news",
+    "github-releases",
+    "hugging-face",
+    "startup-discovery",
+    "daily-ai-report",
+    "market-research",
+    "github-pages"
+  ],
   "scripts": {
     "build-site": "node build-site.mjs",
     "daily": "node daily-runner.mjs",
