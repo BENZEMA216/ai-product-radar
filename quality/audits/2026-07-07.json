@@ -1,0 +1,290 @@
+{
+  "date": "2026-07-07",
+  "generatedAt": "2026-07-06T17:15:24.462Z",
+  "reportPath": "reports/2026-07-07-0115-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 70,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 11,
+      "keptCount": 8,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-05；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 11 条，AI 相关候选 8 条；历史去重后最终发布 8 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 2,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 23,
+      "keptCount": 23,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 5,
+      "keptCount": 3,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 17,
+      "keptCount": 17,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 17,
+      "keptCount": 17,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 30,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "TryCase",
+      "productKey": "https://www.producthunt.com/products/trycase",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "TryCase 把 AI 编码从本地试错推到一次性测试环境，关键看它能否降低 agent 破坏仓库和清理环境的成本。"
+    },
+    {
+      "rank": 2,
+      "product": "Make No Mistakes – AI coding agents must prove their work",
+      "productKey": "https://github.com/momomuchu/make-no-mistakes",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Make No Mistakes 把“agent 必须证明自己改对了”做成工具入口，适合作为代码 agent 验证链路的负样本/正样本观察。"
+    },
+    {
+      "rank": 3,
+      "product": "CircleChat",
+      "productKey": "https://www.producthunt.com/products/circlechat",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "CircleChat 把多 agent 放进 Slack、任务板和老板角色，值得看团队协作入口是否比单人聊天更容易形成工作流粘性。"
+    },
+    {
+      "rank": 4,
+      "product": "Scan your AI agents for dangerous capabilities",
+      "productKey": "https://github.com/makerchecker/makerchecker",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "MakerChecker 直接扫描 agent 危险能力，价值在于把安全评估产品化，而不只是给开发者一组抽象风险清单。"
+    },
+    {
+      "rank": 5,
+      "product": "Excalibur. The open-source AI coding agent for product engineers",
+      "productKey": "https://getexcalibur.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Excalibur 瞄准产品工程师而非泛开发者，值得看它能否把需求理解、代码修改和产品判断合成一个可用编码工作台。"
+    },
+    {
+      "rank": 6,
+      "product": "An always-fresh memory that learns your repo, so agents stop re-reading",
+      "productKey": "https://github.com/shofer-dev/claude-code-live-memory",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这个 repo-memory 项目抓住 agent 反复读代码的高频痛点，关键看增量记忆是否足够新鲜且不会污染上下文。"
+    },
+    {
+      "rank": 7,
+      "product": "Keyhole – Share secrets with your AI agents",
+      "productKey": "https://keyhole.maferland.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Keyhole 把密钥分享变成 agent 可用但不直接暴露的权限层，重点看它能否融入真实部署而不是停留在安全演示。"
+    },
+    {
+      "rank": 8,
+      "product": "Orchestrate parallel Claude Code and Codex agents on a live map",
+      "productKey": "https://github.com/latand/live-log-viewer-next",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Live map 编排 Claude Code 和 Codex 的价值在多 agent 可视化调度，值得看它是否解决并行任务的状态感和接管问题。"
+    },
+    {
+      "rank": 9,
+      "product": "We track 1,397 AI agents. 43 famous ones (402k stars) have gone dark",
+      "productKey": "https://agentcrush.xyz/ghost-report",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AgentCrush 更像生态健康报告而非单一产品，但“失活 agent”数据能帮助判断 agent 市场哪些方向只是短期热度。"
+    },
+    {
+      "rank": 10,
+      "product": "I pre-registered the rules,then measured AI agents shipping wrong fixes",
+      "productKey": "https://github.com/kolesnikov-arch/patchward",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Patchward 用预注册规则衡量 agent 错误修复，适合观察代码 agent 评测是否从 demo 走向可复现实验设计。"
+    },
+    {
+      "rank": 11,
+      "product": "Cognitio Labs",
+      "productKey": "https://www.ycombinator.com/launches/rgd-cognitio-labs-the-ai-back-office-for-food-product-quality",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Cognitio Labs 切入食品与产品质量 back office，适合观察 AI 垂直 SaaS 如何把合规、检测和文档工作变成自动化流程。"
+    },
+    {
+      "rank": 12,
+      "product": "WorkBuddy",
+      "productKey": "https://www.producthunt.com/products/workbuddy-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "WorkBuddy 用“AI 专家团队”包装办公任务，重点看腾讯海外版能否把专家分工做成明确交付，而不是泛助手话术。"
+    },
+    {
+      "rank": 13,
+      "product": "Xalgorix – Autonomous AI Pentesting Agent",
+      "productKey": "https://github.com/xalgord/xalgorix",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Xalgorix 把自主 agent 用在渗透测试，值得看它如何处理权限、误报和审计记录这些安全场景的落地门槛。"
+    },
+    {
+      "rank": 14,
+      "product": "Explain this – agent skills to create HTML explainer for topics or code",
+      "productKey": "https://github.com/analyticalmonk/explain-this",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Explain this 把 agent skills 输出成 HTML 讲解页，启发点在于把代码/主题解释做成可审阅 artifact，而不是一次性聊天回答。"
+    },
+    {
+      "rank": 15,
+      "product": "Causari – Content-addressable ledger for AI agent code edits",
+      "productKey": "https://causari.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Causari 为 agent 代码编辑提供内容寻址账本，关键看它能否让回滚、溯源和责任归因成为 agent 开发默认能力。"
+    },
+    {
+      "rank": 16,
+      "product": "Loopers – Open-source fail-closed firewall for AI agent runtimes",
+      "productKey": "https://github.com/cursed-me/loopers-oss",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Loopers 用 fail-closed firewall 约束 agent runtime，适合观察安全边界是否能以开发者可安装组件形式进入 agent 栈。"
+    },
+    {
+      "rank": 17,
+      "product": "DocsAlot",
+      "productKey": "https://www.producthunt.com/products/docsalot-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "DocsAlot 把文档同时服务人和 AI 系统，值得看知识库产品是否会从“可读”转向“可被 agent 正确调用”。"
+    },
+    {
+      "rank": 18,
+      "product": "Peek-CLI: Let Claude Code See the Browser",
+      "productKey": "https://github.com/puffinsoft/peek-cli",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Peek-CLI 让 Claude Code 看浏览器，价值在补齐视觉和网页状态输入，可能影响前端调试与网页自动化 agent 体验。"
+    },
+    {
+      "rank": 19,
+      "product": "BurstyRouter: local LLM first then burst to end-to-end encrypted LLM",
+      "productKey": "https://github.com/lore-hex/burstyrouter",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "BurstyRouter 主打本地 LLM 优先、必要时加密外溢，适合看隐私、成本和延迟之间是否能形成可理解的路由策略。"
+    },
+    {
+      "rank": 20,
+      "product": "DonnyClaude – a verified workflow engine for Claude Code",
+      "productKey": "https://github.com/d0nmega/donnyclaude",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "DonnyClaude 把 Claude Code 工作流做成可验证引擎，重点看它是否能让团队复用固定流程而不是依赖个人提示词。"
+    }
+  ]
+}
