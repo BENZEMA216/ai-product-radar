@@ -1,0 +1,290 @@
+{
+  "date": "2026-07-08",
+  "generatedAt": "2026-07-08T09:14:20.489Z",
+  "reportPath": "reports/2026-07-08-1714-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 105,
+    "top20Sources": [
+      "Product Hunt",
+      "YC Launch",
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 24,
+      "keptCount": 19,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-07；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 24 条，AI 相关候选 19 条；fallback 低覆盖时扩展检查 2026-07-06，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重移除 1 条已报道或已处理日榜 Product Hunt 信号，最终发布 18 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 6,
+      "keptCount": 6,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 32,
+      "keptCount": 32,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 29,
+      "keptCount": 29,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 30,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "AnySearch",
+      "productKey": "https://www.producthunt.com/products/anysearch",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AnySearch 把实时结构化搜索定位成 agent 可信数据层，值得看它能否成为开发者给 agent 接入外部事实的默认 API。"
+    },
+    {
+      "rank": 2,
+      "product": "TrustAI",
+      "productKey": "https://www.ycombinator.com/launches/r98-trustai-we-suggest-cross-platform-automations-and-run-them-in-one-click-in-your-background",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "TrustAI 把浏览器 agent 从被动执行推进到主动推荐自动化，关键看本地一键运行是否真的降低跨平台流程配置成本。"
+    },
+    {
+      "rank": 3,
+      "product": "Rowboat – Open-source, local-first alternative to Claude Desktop",
+      "productKey": "https://github.com/rowboatlabs/rowboat",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Rowboat 用本地优先路线挑战 Claude Desktop，重点看文件、记忆和工具权限能否做出更可信的个人 agent 工作台。"
+    },
+    {
+      "rank": 4,
+      "product": "Reins – let coding agents drive your real, logged-in browser",
+      "productKey": "https://reins.karnstack.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Reins 让 coding agent 操作真实登录浏览器，价值在端到端网页任务，但最需要验证会话隔离、误操作回滚和审计能力。"
+    },
+    {
+      "rank": 5,
+      "product": "Backlog – tasks and contexts manager for AI coding agents",
+      "productKey": "https://github.com/mazen160/backlog",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Backlog 把任务和上下文从提示词里抽出来管理，适合观察 coding agent 是否需要独立的项目记忆与排队层。"
+    },
+    {
+      "rank": 6,
+      "product": "Convergo – plan/build review loops for coding agents",
+      "productKey": "https://github.com/gomilesf/convergo",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Convergo 把 plan、build、review 固化成 agent 循环，值得看它能否把代码生成从一次性输出变成可验收流程。"
+    },
+    {
+      "rank": 7,
+      "product": "The Banana Test: coding agents grow a 3D banana plant'",
+      "productKey": "https://francescomoramarco.com/banana-test",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Banana Test 更像 coding agent 视觉/3D 任务评测，启发在用具体作品检验 agent 是否真正理解多步前端实现。"
+    },
+    {
+      "rank": 8,
+      "product": "Dejavu, stop showing coding agents the same command output twice",
+      "productKey": "https://github.com/salnika/dejavu",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Dejavu 针对 agent 反复读取相同命令输出的浪费点，价值在压缩上下文噪音并提升长任务里的状态连续性。"
+    },
+    {
+      "rank": 9,
+      "product": "Fence – Jiminy Cricket for AI coding agents",
+      "productKey": "https://news.ycombinator.com/item?id=48821039",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Fence 用“良心检查”包装 coding agent 约束层，值得看它能否在提交前阻止错误修改，而不是只做事后 lint。"
+    },
+    {
+      "rank": 10,
+      "product": "Bastion – self-hosted VMs for background coding agents",
+      "productKey": "https://github.com/bastion-computer/bastion",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Bastion 把后台 coding agent 放进自托管 VM，关键看隔离、并发、环境恢复和成本是否足以支撑长期无人值守任务。"
+    },
+    {
+      "rank": 11,
+      "product": "Katalyst",
+      "productKey": "https://www.producthunt.com/products/katalyst",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Katalyst 把 Salesforce pipeline 交给 agent 处理，适合看企业销售系统里哪些重复动作能被代理化而不破坏 CRM 数据质量。"
+    },
+    {
+      "rank": 12,
+      "product": "Badge",
+      "productKey": "https://www.producthunt.com/products/badge-3",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Badge 用 agent 收集同行评价来生成 proof of work，值得看它是否能把主观声誉变成可验证、可流通的职业信号。"
+    },
+    {
+      "rank": 13,
+      "product": "Inkbox",
+      "productKey": "https://www.ycombinator.com/launches/riu-inkbox-give-your-ai-agents-email-phone-imessage-and-an-internet-address",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Inkbox 给 AI agent 配 email、phone、iMessage 和网络地址，核心价值在让 agent 拥有可被外部世界识别的通信身份。"
+    },
+    {
+      "rank": 14,
+      "product": "Open-source desktop agent that uses a local folder as its memory",
+      "productKey": "https://github.com/zqiren/orbital",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Orbital 用本地文件夹做桌面 agent 记忆，适合观察透明、可备份的记忆形态能否替代黑盒聊天历史。"
+    },
+    {
+      "rank": 15,
+      "product": "Sonn a reasoning layer that nudges coding agent before it makes mistake",
+      "productKey": "https://sonn.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Sonn 在 coding agent 犯错前做推理提醒，值得看它是否能成为轻量防错层，而不是又一个独立代码助手。"
+    },
+    {
+      "rank": 16,
+      "product": "Edgee Claude Code Compressor V2",
+      "productKey": "https://www.producthunt.com/products/edgee",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Edgee 用压缩上下文降低 Claude Code token 成本，关键看它是否能保留任务关键状态，而不只是牺牲细节换便宜。"
+    },
+    {
+      "rank": 17,
+      "product": "An AI Agent that automates workflows on your Mobile",
+      "productKey": "https://mobilerun.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "MobileRun 把 workflow agent 放到移动端，值得看手机权限、通知和后台执行是否能支撑真正的日常自动化。"
+    },
+    {
+      "rank": 18,
+      "product": "FactIQ – a realtime econ+finance database for AI agents",
+      "productKey": "https://github.com/defog-ai/factiq-plugin",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "FactIQ 给 agent 提供实时经济和金融数据库，重点看数据来源、引用粒度和时效性能否满足高风险决策场景。"
+    },
+    {
+      "rank": 19,
+      "product": "Agent Bus – IRC-style message bus for AI agents (MCP)",
+      "productKey": "https://github.com/roriau0422/agentbus",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agent Bus 用 IRC 式消息总线连接多个 agent，适合观察 MCP 生态是否需要更简单的 agent 间通信协议。"
+    },
+    {
+      "rank": 20,
+      "product": "Tarit – Self-host sandbox cloud and hypervisor for AI agents",
+      "productKey": "https://github.com/instavm/tarit",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Tarit 提供自托管 sandbox cloud 和 hypervisor，价值在让企业把 agent 执行环境掌握在自己边界内。"
+    }
+  ]
+}
