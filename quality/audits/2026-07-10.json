@@ -1,0 +1,290 @@
+{
+  "date": "2026-07-10",
+  "generatedAt": "2026-07-09T16:01:18.169Z",
+  "reportPath": "reports/2026-07-10-0001-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 106,
+    "top20Sources": [
+      "YC Launch",
+      "HN Algolia",
+      "Product Hunt"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 17,
+      "keptCount": 10,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-08；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 17 条，AI 相关候选 10 条；历史去重后最终发布 10 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 9,
+      "keptCount": 9,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 30,
+      "keptCount": 30,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 13,
+      "keptCount": 10,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 27,
+      "keptCount": 27,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 30,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Monumint",
+      "productKey": "https://www.ycombinator.com/launches/rjw-monumint-voice-ai-for-financial-services",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Monumint 把金融客户沟通拆给语音 agent，关键看它如何处理合规、转人工和长周期客户关系，而不是只做接线机器人。"
+    },
+    {
+      "rank": 2,
+      "product": "Unlayer",
+      "productKey": "https://www.ycombinator.com/launches/rjc-elements-by-unlayer-open-source-react-components-for-emails-pages-and-pdfs",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Unlayer 值得看的是把邮件、页面、PDF 统一成 React 组件，可能让 agent 从生成文案升级到生成可交付版式资产。"
+    },
+    {
+      "rank": 3,
+      "product": "FableCut – A browser video editor AI agents can drive (zero deps)",
+      "productKey": "https://github.com/ronak-create/fablecut",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "FableCut 把视频时间线开放给 AI agent 操控，重点看语言指令能否稳定覆盖剪辑、字幕和导出这些高摩擦动作。"
+    },
+    {
+      "rank": 4,
+      "product": "Rindler",
+      "productKey": "https://www.ycombinator.com/launches/rhn-rindler-turn-any-website-into-an-api-for-ai-agents",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Rindler 试图把任意网站变成 agent 可调用 API，价值在于绕过集成长尾，风险是网页动作可靠性和反自动化边界。"
+    },
+    {
+      "rank": 5,
+      "product": "agents-cli",
+      "productKey": "https://www.producthunt.com/products/agents-cli",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "agents-cli 把“发布 agent”做成命令行工作流，适合观察开发者是否会为 agent 打包、配置和上线形成新标准。"
+    },
+    {
+      "rank": 6,
+      "product": "Skill-extractor turns coding agent transcripts into reusable skills",
+      "productKey": "https://github.com/surenode-ai/skill-extractor",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Skill-extractor 直接把 coding agent transcript 变成可复用 skill，贴近用户偏好的 skill 资产化方向，值得看抽取质量和复用粒度。"
+    },
+    {
+      "rank": 7,
+      "product": "Korso",
+      "productKey": "https://www.ycombinator.com/launches/rjj-korso-shepherd-tooling-for-all-your-agents-to-collaborate",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Korso 聚焦多 agent 协作冲突，值得看它是否能把权限、状态和锁定机制做成团队可理解的控制面。"
+    },
+    {
+      "rank": 8,
+      "product": "Agentic FC – a football management SIM played by AI agents over MCP",
+      "productKey": "https://github.com/gaemi/agentic-fc",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agentic FC 更像 MCP 和多 agent 的游戏化样例，信息价值在于观察 agent 协议如何进入仿真环境，商业产品性偏弱。"
+    },
+    {
+      "rank": 9,
+      "product": "Agent Sessions – local history and a live quota meter for Codex/Claude",
+      "productKey": "https://jazzyalex.github.io/agent-sessions",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agent Sessions 把本地 agent 历史和额度可视化，抓住真实使用痛点，重点看它能否发展成跨工具运行账本。"
+    },
+    {
+      "rank": 10,
+      "product": "ContextNest versioned, governed context for AI agents (open-source CLI)",
+      "productKey": "https://promptowl.ai/resources/building-a-viewable-second-brain-with-context",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ContextNest 用版本化上下文治理 agent 记忆，值得看它是否能把“第二大脑”从文档库变成可审计的执行依赖。"
+    },
+    {
+      "rank": 11,
+      "product": "Agent-zero-trust – scan a repo before your AI coding agent reads it",
+      "productKey": "https://github.com/ralfyishere/agent-zero-trust",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agent-zero-trust 切中 coding agent 读仓库前的安全检查，适合观察 agent 权限控制是否会成为开发环境标配。"
+    },
+    {
+      "rank": 12,
+      "product": "LemonLime",
+      "productKey": "https://www.ycombinator.com/launches/rhj-lemonlime-automate-your-workflows-with-a-single-click",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "LemonLime 把业务自动化压成单击入口，价值在于能否从学习流程扩展到可维护的自动化，而不是一次性录屏宏。"
+    },
+    {
+      "rank": 13,
+      "product": "Blocks.ai – control plane and network layer for agents",
+      "productKey": "https://blocks.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Blocks.ai 把 agent 控制面和网络层产品化，值得看它如何定义 agent 间通信、监控和故障隔离的购买理由。"
+    },
+    {
+      "rank": 14,
+      "product": "Yogen – 500 AI agents argue about your idea before you bet on it",
+      "productKey": "https://github.com/michaelwrites67-ctrl/yogen",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Yogen 用多 agent 争论想法，产品启发在于把“反方评审”包装成决策工具，但需要警惕它只是数量噱头。"
+    },
+    {
+      "rank": 15,
+      "product": "QX Labs – build agents, flows and grids that work across your tools",
+      "productKey": "https://www.qxlabs.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "QX Labs 把 agent、flow 和 grid 放进同一工具界面，关键看它能否降低多工具协作的编排成本。"
+    },
+    {
+      "rank": 16,
+      "product": "SoulOS–State&persona management for agents without giving up your LLM",
+      "productKey": "https://mziqudhd92.github.io/soul-os",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "SoulOS 聚焦 agent 状态和 persona 管理，值得看长期记忆、角色边界和模型可替换性是否能形成基础设施层。"
+    },
+    {
+      "rank": 17,
+      "product": "Willow Frontier Pro",
+      "productKey": "https://www.producthunt.com/products/willow-voice",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Willow Frontier Pro 把语音转写速度和准确率作为核心卖点，适合观察语音输入如何重新进入 agent 工作流。"
+    },
+    {
+      "rank": 18,
+      "product": "Reverse-engineering web apps into agent tools",
+      "productKey": "https://news.ycombinator.com/item?id=48847834",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Reverse-engineering web apps into agent tools 指向把现有网页反编译成工具接口，价值高但证据稀薄，需看实际可用性。"
+    },
+    {
+      "rank": 19,
+      "product": "MCP Leaderboard that publishes and updates itself",
+      "productKey": "https://artifacta.io/mcp-leaderboard",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "MCP Leaderboard 用自更新榜单展示 MCP 生态，适合观察协议生态如何形成发现入口，但本身更像目录工具。"
+    },
+    {
+      "rank": 20,
+      "product": "Wizard, Self-extending autonomous AI agent in one Rust binary",
+      "productKey": "https://github.com/teddytennant/wizard",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Wizard 的 Rust 单二进制自主 agent 强调部署形态，值得看轻量运行时能否降低本地 agent 的安装和信任成本。"
+    }
+  ]
+}
