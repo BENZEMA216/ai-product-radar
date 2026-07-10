@@ -7,6 +7,8 @@ const REPORT_PATTERN = /^\d{4}-\d{2}-\d{2}-\d{4}-cst\.md$/;
 const REVIEW_PATTERN = /^\d{4}-\d{2}-\d{2}\.json$/;
 const SOURCE_HEALTH_PATTERN = /^\d{4}-\d{2}-\d{2}\.json$/;
 const FEEDBACK_REPO = "https://github.com/BENZEMA216/ai-product-radar";
+const PRIORITY_LIMIT = 20;
+const PAGE_SIZE = 40;
 
 function cleanCell(value) {
   return String(value || "").replace(/\\+\|/g, "|").replace(/\s+/g, " ").trim();
@@ -198,6 +200,17 @@ function sourceHealthLabel(key) {
   );
 }
 
+function sourceHealthStatusLabel(status) {
+  return (
+    {
+      ok: "正常",
+      fallback: "回退抓取",
+      unavailable: "暂不可用",
+      blocked: "阻塞"
+    }[status] || "待确认"
+  );
+}
+
 function reviewMeta(path) {
   const name = path.split("/").at(-1) || path;
   const match = name.match(/^(\d{4}-\d{2}-\d{2})\.json$/);
@@ -303,6 +316,7 @@ export function parseReportMarkdown(markdown, path) {
     const cleanWhy = normalizeArchivedWhy({ source, product: cleanProduct, did: cleanDid, why });
     rows.push({
       id: `${meta.reportDate}-${rows.length}-${cleanProduct.toLowerCase().replace(/[^a-z0-9\u4e00-\u9fa5]+/gi, "-")}`,
+      reportIndex: rows.length,
       product: cleanProduct,
       link: productLink,
       productKey,
@@ -565,8 +579,9 @@ function renderItems(items, latestDate = "") {
     .map((item, index) => {
       const isLatest = latestDate && item.reportDate === latestDate;
       const reviewBlocks = renderReviewBlocks(item.reviews);
+      const anchorId = `signal-${item.id}`;
       return [
-        `<article class="item" data-source="${escapeHtml(item.source)}" data-type="${escapeHtml(
+        `<article class="item" id="${escapeHtml(anchorId)}" data-source="${escapeHtml(item.source)}" data-type="${escapeHtml(
           item.type
         )}" data-category="${escapeHtml(item.category || "product")}" data-quality="${escapeHtml(
           item.qualityLabel || "keep"
@@ -586,11 +601,16 @@ function renderItems(items, latestDate = "") {
             <p class="why"><b>为什么值得看</b>${escapeHtml(item.why)}</p>
           </div>${reviewBlocks ? `\n          ${reviewBlocks}` : ""}
         </div>`,
-        `        <div class="item-actions">
-          <a href="${escapeHtml(item.link)}" target="_blank" rel="noreferrer noopener">产品链接</a>
-          <a class="evidence" href="${escapeHtml(item.evidenceUrl)}" target="_blank" rel="noreferrer noopener">证据来源</a>
-          <div class="feedback-actions" aria-label="反馈">${renderFeedbackLinks(item)}</div>
-        </div>`,
+        `        <details class="item-tools">
+          <summary title="打开证据与反馈"><span>操作</span></summary>
+          <div class="item-tools-panel">
+            <a class="product-action" href="${escapeHtml(item.link)}" target="_blank" rel="noreferrer noopener">打开产品</a>
+            <a class="evidence" href="${escapeHtml(item.evidenceUrl)}" target="_blank" rel="noreferrer noopener">查看证据</a>
+            <button type="button" class="item-share" data-share-id="${escapeHtml(anchorId)}">复制链接</button>
+            <button type="button" class="item-expand" data-expand-card>展开摘要</button>
+            <div class="feedback-actions" aria-label="产品反馈">${renderFeedbackLinks(item)}</div>
+          </div>
+        </details>`,
         `      </article>`
       ].join("\n");
     })
@@ -617,7 +637,7 @@ function renderSourceHealthPanel(sourceHealth) {
       const reportCount = source.reportKeptCount === null ? source.keptCount : source.reportKeptCount;
       const countText = `raw ${source.rawCount} · AI ${source.keptCount} · report ${reportCount}`;
       return `<div class="health-row health-${escapeHtml(source.status || "unknown")}" title="${escapeHtml(source.note)}">
-        <span><b>${escapeHtml(source.label)}</b><small>${escapeHtml(source.status || "unknown")}</small></span>
+        <span><b>${escapeHtml(source.label)}</b><small>${escapeHtml(sourceHealthStatusLabel(source.status))}</small></span>
         <em>${escapeHtml(countText)}</em>
       </div>`;
     })
@@ -655,43 +675,30 @@ function fullDayOptionLabel(day, prefix = "") {
   return `${prefix}${day.reportDate} · ${day.count} 条 · ${runText}`.trim();
 }
 
-function renderReportOptions(reports, reportDays, latestDate) {
+function renderReportOptions(reportDays, latestDate) {
   const latestDay = reportDays.at(-1);
   const olderDays = reportDays
     .filter((day) => day.reportDate !== latestDate)
     .slice()
     .reverse();
-  const olderReports = reports
-    .slice()
-    .reverse();
   return [
-    `<optgroup label="按自然日">`,
     latestDay
       ? `<option value="date:${escapeHtml(latestDay.reportDate)}" data-full-label="${escapeHtml(
           fullDayOptionLabel(latestDay, "最新自然日 · ")
         )}" selected>${escapeHtml(dayOptionLabel(latestDay, "最新自然日 · "))}</option>`
       : "",
-    `<option value="" data-full-label="全部归档">全部归档</option>`,
+    `<option value="" data-full-label="全部日期">全部日期</option>`,
     ...olderDays.map(
       (day) =>
         `<option value="date:${escapeHtml(day.reportDate)}" data-full-label="${escapeHtml(fullDayOptionLabel(day))}">${escapeHtml(
           dayOptionLabel(day)
         )}</option>`
-    ),
-    `</optgroup>`,
-    `<optgroup label="按单次运行">`,
-    ...olderReports.map(
-      (report) =>
-        `<option value="${escapeHtml(report.path)}" data-full-label="${escapeHtml(fullReportOptionLabel(report))}">${escapeHtml(
-          reportOptionLabel(report)
-        )}</option>`
-    ),
-    `</optgroup>`
+    )
   ].join("");
 }
 
 function renderReportTimeline(reportDays) {
-  return reportDays
+  const rows = reportDays
     .slice()
     .reverse()
     .map(
@@ -701,27 +708,76 @@ function renderReportTimeline(reportDays) {
         )}</small></span>
         <b>${day.count}</b>
       </div>`
-    )
-    .join("\n");
+    );
+  const recent = rows.slice(0, 7).join("\n");
+  const older = rows.slice(7);
+  if (!older.length) return recent;
+  return `${recent}
+    <details class="archive-more">
+      <summary>查看更早的 ${older.length} 天</summary>
+      <div>${older.join("\n")}</div>
+    </details>`;
+}
+
+function latestSourceStatus(sourceHealth, hasItems) {
+  if (!sourceHealth) {
+    return {
+      label: hasItems ? "已发布 · 来源状态缺失" : "阻塞",
+      className: hasItems ? "status-warning" : "status-blocked",
+      summary: "未找到与最新日报同日的来源健康记录。",
+      degraded: [{ label: "来源健康", status: "unavailable" }]
+    };
+  }
+  const degraded = Object.values(sourceHealth?.sources || {}).filter((source) => source.status !== "ok");
+  if (!hasItems) {
+    return {
+      label: "阻塞",
+      className: "status-blocked",
+      summary: "最新日报没有可发布条目，请查看来源健康。",
+      degraded
+    };
+  }
+  if (degraded.length) {
+    return {
+      label: `已发布 · ${degraded.length} 个来源降级`,
+      className: "status-warning",
+      summary: degraded.map((source) => `${source.label}：${sourceHealthStatusLabel(source.status)}`).join("；"),
+      degraded
+    };
+  }
+  return {
+    label: "已发布",
+    className: "status-ok",
+    summary: "最新日报来源均正常。",
+    degraded
+  };
 }
 
 export function renderSiteHtml(data) {
-  const items = [...data.items].sort((a, b) => `${b.reportDate} ${b.reportTime}`.localeCompare(`${a.reportDate} ${a.reportTime}`));
+  const items = [...data.items].sort(
+    (a, b) =>
+      `${b.reportDate} ${b.reportTime}`.localeCompare(`${a.reportDate} ${a.reportTime}`) ||
+      Number(a.reportIndex || 0) - Number(b.reportIndex || 0)
+  );
   const latest = data.reports.at(-1);
   const latestDay = data.reportDays.at(-1);
   const latestItems = latestDay ? items.filter((item) => item.reportDate === latestDay.reportDate) : [];
-  const initialItems = latestItems.length ? latestItems : items;
+  const initialScope = latestItems.length ? latestItems : items;
+  const initialItems = initialScope
+    .filter((item) => item.category === "product" && !["deprioritize", "drop"].includes(item.qualityLabel))
+    .slice(0, PRIORITY_LIMIT);
   const latestSourceCounts = countBy(latestItems, "source");
   const latestTypeCounts = countBy(latestItems, "type");
-  const latestPriorityCount = latestItems.filter(
+  const latestPriorityTotal = latestItems.filter(
     (item) => item.category === "product" && !["deprioritize", "drop"].includes(item.qualityLabel)
   ).length;
+  const latestPriorityCount = Math.min(PRIORITY_LIMIT, latestPriorityTotal);
   const latestModelCount = latestItems.filter((item) => item.category === "model_infra").length;
   const latestSourceTotal = Object.keys(latestSourceCounts).length;
   const sources = topEntries(data.stats.bySource, 20).map(([source]) => source);
   const types = Object.keys(data.stats.byType).sort();
   const json = JSON.stringify(data).replace(/</g, "\\u003c");
-  const latestStatus = latest?.count ? "正常" : "阻塞";
+  const latestStatus = latestSourceStatus(data.latestSourceHealth, Boolean(latest?.count));
 
   return `<!doctype html>
 <html lang="zh-CN">
@@ -772,10 +828,15 @@ export function renderSiteHtml(data) {
     a { color: inherit; }
     .app {
       min-height: 100vh;
-      display: grid;
-      grid-template-rows: 40px minmax(0, 1fr);
+      padding-top: 40px;
     }
     .titlebar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 20;
+      min-height: 40px;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -786,6 +847,28 @@ export function renderSiteHtml(data) {
       color: var(--text-secondary);
       font-size: 13px;
     }
+    .nav-toggle, .sidebar-close {
+      display: none;
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
+      border: 0;
+      background: transparent;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+    .menu-icon, .menu-icon::before, .menu-icon::after {
+      display: block;
+      width: 20px;
+      height: 2px;
+      border-radius: 2px;
+      background: currentColor;
+      content: "";
+    }
+    .menu-icon { position: relative; margin: auto; }
+    .menu-icon::before { position: absolute; top: -6px; }
+    .menu-icon::after { position: absolute; top: 6px; }
+    .sidebar-backdrop { display: none; }
     .traffic {
       display: flex;
       gap: 6px;
@@ -804,14 +887,14 @@ export function renderSiteHtml(data) {
       color: var(--text-primary);
       font-weight: 700;
     }
-    .titlebar span:last-child {
+    .titlebar > span:last-child {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
     .workspace {
       display: grid;
-      grid-template-columns: 288px minmax(0, 1fr);
+      grid-template-columns: 260px minmax(0, 1fr);
       min-height: calc(100vh - 40px);
     }
     .sidebar {
@@ -822,22 +905,23 @@ export function renderSiteHtml(data) {
       overflow: auto;
       display: grid;
       align-content: start;
-      gap: 24px;
-      padding: 24px 16px;
+      gap: 18px;
+      padding: 20px 14px;
       background: var(--bg-muted);
       border-right: 1px solid var(--border-default);
     }
     .content {
       justify-self: center;
-      width: min(100%, 1180px);
-      max-width: 1180px;
+      width: min(100%, 1260px);
+      max-width: 1260px;
       min-width: 0;
       margin-inline: auto;
-      padding: 48px;
+      padding: 28px clamp(20px, 3vw, 40px) 48px;
     }
     .content > *, .sidebar > *, .toolbar > *, .item > *, .latest-line > *, .source-row > * { min-width: 0; }
     .brand {
-      padding-bottom: 24px;
+      position: relative;
+      padding-bottom: 18px;
       border-bottom: 1px solid var(--border-default);
     }
     .brand-mark {
@@ -846,7 +930,7 @@ export function renderSiteHtml(data) {
       align-items: start;
       gap: 3px;
       width: fit-content;
-      margin: 0 0 20px;
+      margin: 0 0 14px;
       color: var(--text-primary);
       font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
       font-size: 30px;
@@ -880,8 +964,8 @@ export function renderSiteHtml(data) {
       letter-spacing: 0;
     }
     h1 {
-      margin: 10px 0 8px;
-      font-size: 34px;
+      margin: 8px 0 6px;
+      font-size: 30px;
       line-height: 1.18;
       font-weight: 600;
     }
@@ -918,38 +1002,133 @@ export function renderSiteHtml(data) {
       line-height: 1.35;
     }
     .status-ok strong { color: var(--feedback-success); }
+    .status-warning strong { color: var(--feedback-warning); }
     .status-blocked strong { color: var(--feedback-error); }
     .side-panel {
       display: grid;
       gap: 12px;
     }
+    .side-nav {
+      display: grid;
+      gap: 4px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-default);
+    }
+    .side-nav a, .side-nav button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 40px;
+      border: 0;
+      border-radius: var(--radius-control);
+      padding: 0 10px;
+      background: transparent;
+      color: var(--text-primary);
+      font: inherit;
+      text-align: left;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .side-nav a:hover, .side-nav button:hover {
+      background: var(--bg-hover);
+    }
+    .side-nav b {
+      color: var(--text-secondary);
+      font-size: 12px;
+    }
+    .side-disclosure {
+      border-top: 1px solid var(--border-default);
+      padding-top: 10px;
+    }
+    .side-disclosure > summary, .archive-more > summary {
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--action-primary);
+      font-family: "Geist Mono", "SFMono-Regular", Consolas, monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      list-style: none;
+    }
+    .side-disclosure > summary::-webkit-details-marker,
+    .archive-more > summary::-webkit-details-marker,
+    .item-tools > summary::-webkit-details-marker {
+      display: none;
+    }
+    .side-disclosure > summary::after, .archive-more > summary::after {
+      content: "+";
+      color: var(--text-secondary);
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+    .side-disclosure[open] > summary::after, .archive-more[open] > summary::after { content: "−"; }
+    .side-disclosure-body { display: grid; gap: 10px; padding-top: 4px; }
+    .archive-more { border-top: 1px solid var(--border-default); }
+    .archive-more > summary { color: var(--text-secondary); letter-spacing: 0; text-transform: none; }
+    .source-alert {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 52px;
+      margin-top: 12px;
+      padding: 10px 12px;
+      border: 1px solid var(--border-default);
+      border-left: 4px solid var(--feedback-success);
+      border-radius: var(--radius-control);
+      background: var(--bg-raised);
+    }
+    .source-alert.status-warning { border-left-color: var(--feedback-warning); }
+    .source-alert.status-blocked { border-left-color: var(--feedback-error); }
+    .source-alert-copy { display: grid; gap: 3px; min-width: 0; }
+    .source-alert-copy b { font-size: 13px; }
+    .source-alert-copy span {
+      color: var(--text-secondary);
+      font-size: 12px;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+    .source-alert button {
+      min-height: 40px;
+      flex: 0 0 auto;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-control);
+      padding: 0 12px;
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      font: inherit;
+      font-size: 12px;
+      cursor: pointer;
+    }
     .content-head {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
-      gap: 24px;
-      align-items: end;
-      padding-bottom: 32px;
+      gap: 20px;
+      align-items: center;
+      padding-bottom: 16px;
       border-bottom: 1px solid var(--border-default);
     }
     .content-title {
-      margin: 8px 0 8px;
-      font-size: 46px;
+      margin: 5px 0 5px;
+      font-size: 38px;
       line-height: 1.08;
       font-weight: 500;
     }
     .run-badge {
       display: grid;
       gap: 4px;
-      min-width: 176px;
-      padding: 14px 16px;
+      min-width: 190px;
+      padding: 11px 14px;
       border: 1px solid var(--border-default);
       border-radius: var(--radius-card);
       background: var(--bg-raised);
       box-shadow: var(--shadow-raised);
     }
     .run-badge b {
-      color: var(--feedback-success);
-      font-size: 22px;
+      font-size: 16px;
       line-height: 1;
     }
     .run-badge span {
@@ -1052,16 +1231,16 @@ export function renderSiteHtml(data) {
       top: 40px;
       z-index: 3;
       display: grid;
-      grid-template-columns: minmax(260px, 1fr) minmax(300px, 0.44fr) minmax(160px, 0.28fr) minmax(160px, 0.28fr);
-      gap: 12px;
-      padding: 16px 0;
+      grid-template-columns: minmax(220px, 1fr) minmax(245px, 0.55fr) minmax(145px, 0.3fr) minmax(145px, 0.3fr);
+      gap: 10px;
+      padding: 10px 0;
       background: color-mix(in srgb, var(--bg-page) 92%, transparent);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-default);
     }
     input, select {
       width: 100%;
-      min-height: 42px;
+      min-height: 40px;
       border: 1px solid var(--border-default);
       border-radius: var(--radius-control);
       padding: 0 12px;
@@ -1072,7 +1251,7 @@ export function renderSiteHtml(data) {
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    input:focus, select:focus, .pill:focus-visible, .item-actions a:focus-visible {
+    input:focus, select:focus, button:focus-visible, a:focus-visible, summary:focus-visible {
       outline: 2px solid var(--border-focus);
       outline-offset: 2px;
     }
@@ -1088,7 +1267,7 @@ export function renderSiteHtml(data) {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      padding: 12px 0 0;
+      padding: 9px 0 0;
     }
     .view-tab {
       min-height: 36px;
@@ -1111,7 +1290,7 @@ export function renderSiteHtml(data) {
       justify-content: space-between;
       gap: 16px;
       align-items: center;
-      padding: 16px 0 4px;
+      padding: 10px 0 2px;
       color: var(--text-secondary);
       font-size: 13px;
     }
@@ -1121,7 +1300,7 @@ export function renderSiteHtml(data) {
       min-width: 0;
     }
     .sort-note {
-      max-width: 560px;
+      max-width: 720px;
       line-height: 1.45;
     }
     .type-pills { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -1136,7 +1315,7 @@ export function renderSiteHtml(data) {
       cursor: pointer;
     }
     .pill.is-active { border-color: var(--action-primary); background: var(--action-soft); }
-    .list { display: grid; gap: 10px; padding: 16px 0 48px; }
+    .list { display: grid; gap: 8px; padding: 10px 0 18px; }
     .item {
       border: 1px solid var(--border-default);
       border-left: 5px solid var(--source, var(--border-default));
@@ -1144,10 +1323,10 @@ export function renderSiteHtml(data) {
       background: var(--bg-raised);
       box-shadow: var(--shadow-raised);
       min-height: 0;
-      padding: 14px;
+      padding: 12px;
       display: grid;
-      grid-template-columns: 220px minmax(0, 1fr) 126px;
-      gap: 16px;
+      grid-template-columns: 148px minmax(0, 1fr) 116px;
+      gap: 14px;
       align-items: start;
       transition: border-color 160ms ease, background 160ms ease;
     }
@@ -1185,9 +1364,9 @@ export function renderSiteHtml(data) {
     .source-badge { color: var(--source, var(--text-primary)); font-weight: 700; }
     .item-main { min-width: 0; }
     .item h2 {
-      margin: 0 0 12px;
-      font-size: 24px;
-      line-height: 1.16;
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.2;
       font-weight: 600;
     }
     .item h2 a {
@@ -1198,9 +1377,23 @@ export function renderSiteHtml(data) {
     .signal-copy {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
-      gap: 14px;
+      gap: 12px;
     }
-    .did, .why { line-height: 1.55; margin: 0; }
+    .did, .why {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+      line-height: 1.45;
+      margin: 0;
+      font-size: 14px;
+    }
+    .item:has(.review-panel) .did,
+    .item:has(.review-panel) .why { -webkit-line-clamp: 4; }
+    .item.is-expanded .did, .item.is-expanded .why {
+      display: block;
+      overflow: visible;
+    }
     .did { color: var(--text-primary); }
     .why { color: var(--text-secondary); }
     .did b, .why b {
@@ -1267,54 +1460,123 @@ export function renderSiteHtml(data) {
       color: var(--feedback-success);
       font-size: 12px;
     }
-    .item-actions {
-      display: grid;
-      gap: 8px;
-      align-self: stretch;
-      align-content: start;
+    .item-tools {
+      position: relative;
+      width: 116px;
+      justify-self: end;
     }
-    .item-actions a {
-      display: block;
+    .item-tools > summary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
       border: 1px solid var(--border-default);
       border-radius: var(--radius-control);
-      padding: 8px 10px;
       background: var(--bg-surface);
       font-weight: 700;
       font-size: 13px;
       text-align: center;
-      text-decoration: none;
+      cursor: pointer;
+      list-style: none;
     }
-    .item-actions a:first-child {
+    .item-tools > summary::after {
+      content: "+";
+      margin-left: 8px;
+      color: var(--text-secondary);
+      font-size: 16px;
+    }
+    .item-tools[open] > summary {
+      border-color: var(--action-primary);
+      background: var(--action-soft);
+      color: var(--action-primary);
+    }
+    .item-tools[open] > summary::after { content: "−"; }
+    .item-tools-panel {
+      position: absolute;
+      z-index: 6;
+      top: 48px;
+      right: 0;
+      width: 260px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 7px;
+      padding: 10px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-card);
+      background: var(--bg-raised);
+      box-shadow: 0 12px 30px rgba(20, 20, 26, 0.14);
+    }
+    .item-tools-panel a, .item-tools-panel button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-control);
+      padding: 6px 8px;
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .item-tools-panel .product-action {
       background: var(--action-primary);
       border-color: var(--action-primary);
       color: var(--text-inverse);
     }
-    .item-actions a:first-child:hover { background: var(--action-hover); }
-    .evidence {
-      color: var(--feedback-success);
+    .item-tools-panel .product-action:hover { background: var(--action-hover); }
+    .item-tools-panel .evidence { color: var(--feedback-success); }
+    .share-fallback {
+      grid-column: 1 / -1;
+      width: 100%;
+      min-height: 40px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-control);
+      padding: 0 8px;
+      background: var(--bg-muted);
+      color: var(--text-primary);
+      font: inherit;
+      font-size: 11px;
     }
     .feedback-actions {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 6px;
-      margin-top: 2px;
       grid-column: 1 / -1;
     }
-    .item-actions .feedback-link {
+    .item-tools-panel .feedback-link {
       padding: 6px 7px;
       background: var(--bg-muted);
       color: var(--text-secondary);
       font-size: 12px;
       font-weight: 700;
     }
-    .item-actions .feedback-drop,
-    .item-actions .feedback-downrank {
+    .item-tools-panel .feedback-drop,
+    .item-tools-panel .feedback-downrank {
       color: var(--feedback-error);
     }
-    .item-actions .feedback-keep,
-    .item-actions .feedback-review {
+    .item-tools-panel .feedback-keep,
+    .item-tools-panel .feedback-review {
       color: var(--feedback-success);
     }
+    .load-more {
+      display: block;
+      min-width: 180px;
+      min-height: 44px;
+      margin: 0 auto 48px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-control);
+      background: var(--bg-raised);
+      color: var(--text-primary);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .load-more[hidden] { display: none; }
     .empty {
       display: none;
       margin: 18px 0 0;
@@ -1324,127 +1586,245 @@ export function renderSiteHtml(data) {
       border-radius: var(--radius-card);
       background: var(--bg-surface);
     }
-    @media (max-width: 1120px) {
+    @media (max-width: 900px) {
       .workspace { grid-template-columns: 1fr; }
-      .sidebar {
-        position: static;
-        height: auto;
-        border-right: 0;
-        border-bottom: 1px solid var(--border-default);
-        grid-template-columns: minmax(0, 1fr) minmax(260px, 0.9fr);
+      body.nav-open { overflow: hidden; }
+      .nav-toggle {
+        display: block;
+        margin-left: -8px;
       }
-      .brand { grid-column: 1 / -1; }
-      .content { max-width: none; padding: 32px 24px; }
-      .toolbar { top: 40px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .item { grid-template-columns: 1fr; }
-      .signal-copy { grid-template-columns: 1fr; }
-      .item-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media (max-width: 720px) {
-      .titlebar span:last-child { display: none; }
       .sidebar {
-        padding: 16px;
+        position: fixed;
+        z-index: 12;
+        top: 40px;
+        bottom: auto;
+        left: 0;
+        width: min(340px, 88vw);
+        height: calc(100vh - 40px);
+        max-height: calc(100vh - 40px);
+        transform: translateX(-102%);
+        transition: transform 180ms ease;
+        box-shadow: 18px 0 40px rgba(20, 20, 26, 0.16);
         grid-template-columns: 1fr;
       }
+      .sidebar.is-open { transform: translateX(0); }
+      .sidebar-close {
+        position: absolute;
+        display: block;
+        top: -8px;
+        right: -8px;
+      }
+      .sidebar-close::before, .sidebar-close::after {
+        position: absolute;
+        top: 21px;
+        left: 12px;
+        width: 20px;
+        height: 2px;
+        border-radius: 2px;
+        background: currentColor;
+        content: "";
+        transform: rotate(45deg);
+      }
+      .sidebar-close::after { transform: rotate(-45deg); }
+      .sidebar-backdrop {
+        position: fixed;
+        z-index: 11;
+        inset: 40px 0 0;
+        display: block;
+        border: 0;
+        background: rgba(20, 20, 26, 0.34);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 180ms ease;
+      }
+      body.nav-open .sidebar-backdrop {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .content { max-width: none; padding: 24px; }
+      .toolbar { top: 40px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 720px) {
+      .app { padding-top: 48px; }
+      .titlebar { padding: 0 8px; }
+      .titlebar .traffic { display: none; }
+      .titlebar > span:last-child { display: none; }
+      .sidebar {
+        top: 48px;
+        height: calc(100vh - 48px);
+        max-height: calc(100vh - 48px);
+        padding: 16px;
+      }
+      .sidebar-backdrop { inset: 48px 0 0; }
       .content {
-        padding: 24px 16px;
+        padding: 16px 12px 40px;
       }
       .content-head {
         grid-template-columns: 1fr;
+        gap: 10px;
         align-items: start;
       }
-      .content-title { font-size: 34px; }
-      .status-grid, .toolbar, .item-actions { grid-template-columns: 1fr; }
+      .content-title { font-size: 31px; }
+      .run-badge {
+        width: 100%;
+        min-width: 0;
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: center;
+      }
+      .source-alert {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .source-alert button { min-height: 44px; width: 100%; }
+      .toolbar { grid-template-columns: 1fr; }
+      .toolbar { top: 48px; gap: 8px; }
+      input, select { min-height: 44px; }
+      .view-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        scrollbar-width: none;
+      }
+      .view-tabs::-webkit-scrollbar { display: none; }
+      .view-tab { min-height: 44px; flex: 0 0 auto; }
       .filter-meta {
         flex-direction: column;
         align-items: stretch;
       }
       .sort-note { max-width: 100%; }
       .source-row { grid-template-columns: minmax(82px, 112px) minmax(0, 1fr) 28px; gap: 8px; }
+      .item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 12px;
+      }
+      .item-topline { gap: 6px; }
+      .item h2 a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+      }
+      .signal-copy { grid-template-columns: 1fr; }
+      .did, .why { -webkit-line-clamp: 4; }
+      .item-tools {
+        width: 100%;
+        justify-self: stretch;
+      }
+      .item-tools > summary { min-height: 44px; }
+      .item-tools-panel {
+        position: static;
+        width: 100%;
+        margin-top: 8px;
+        box-shadow: none;
+      }
+      .item-tools-panel a, .item-tools-panel button { min-height: 44px; }
+      .side-nav a, .side-nav button, .side-disclosure > summary, .archive-more > summary { min-height: 44px; }
     }
   </style>
 </head>
 <body>
   <div class="app">
     <header class="titlebar">
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-label="打开概览" aria-controls="sidebar" aria-expanded="false" title="打开概览">
+        <span class="menu-icon" aria-hidden="true"></span>
+      </button>
       <span class="traffic" aria-hidden="true"><i></i><i></i><i></i></span>
       <strong>AI Product Radar</strong>
-      <span>${escapeHtml(latest ? `${latest.reportDate} ${latest.reportTime}` : "暂无报告")} · ${data.stats.totalItems} archived signals</span>
+      <span>${escapeHtml(latest ? `${latest.reportDate} ${latest.reportTime}` : "暂无报告")} · ${data.stats.totalItems} 条历史信号</span>
     </header>
     <div class="workspace">
-      <aside class="sidebar" aria-label="日报概览">
+      <aside class="sidebar" id="sidebar" aria-label="日报概览">
         <section class="brand">
+          <button type="button" class="sidebar-close" id="sidebar-close" aria-label="关闭概览" title="关闭概览"></button>
           <div class="brand-mark" aria-label="benzema"><span class="brand-word">benzema</span><span class="brand-accent" aria-hidden="true"></span></div>
           <div class="kicker">每日 AI 产品雷达</div>
-          <h1>AI 产品更新</h1>
+          <div class="content-title">AI 产品更新</div>
           <p class="subtitle">按证据来源整理过去 24 小时的新产品和老产品更新。默认展示最新日报，也可以切换历史归档。</p>
         </section>
+        <nav class="side-nav" aria-label="站点导航">
+          <a href="#feed">今日优先 <b>${latestPriorityCount}</b></a>
+          <button type="button" data-nav-view="reviewed">我的点评 <b>${data.stats.totalReviews}</b></button>
+          <a href="#archive">日期归档 <b>${data.reportDays.length}</b></a>
+          <a href="#source-health">来源健康 <b>${latestStatus.degraded.length}</b></a>
+        </nav>
         <section class="status-grid" aria-label="日报状态">
           <div class="metric"><strong>${latestDay?.count ?? 0}</strong><span>最新自然日条目</span></div>
           <div class="metric"><strong>${latestSourceTotal}</strong><span>最新自然日来源</span></div>
           <div class="metric"><strong>${data.stats.totalItems}</strong><span>历史归档条目</span></div>
-          <div class="metric ${latest?.count ? "status-ok" : "status-blocked"}"><strong>${escapeHtml(latestStatus)}</strong><span>最新运行状态</span></div>
+          <div class="metric ${latestStatus.className}"><strong>${escapeHtml(
+            latestStatus.degraded.length ? `降级 ${latestStatus.degraded.length}` : latestStatus.label
+          )}</strong><span>最新发布状态</span></div>
         </section>
-        <section class="side-panel">
-          <div class="section-label">日期归档</div>
-          <div class="latest-line">
-            <strong>${escapeHtml(latestDay?.reportDate || "暂无归档")}</strong>
-            <span>${escapeHtml(
-              latestDay ? `${latestDay.count} 条 · ${latestDay.runCount} 次运行 · 最新 ${latestDay.latestReportTime}` : "reports/"
-            )}</span>
+        <details class="side-disclosure" id="archive" open>
+          <summary>日期归档</summary>
+          <div class="side-disclosure-body">
+            <div class="latest-line">
+              <strong>${escapeHtml(latestDay?.reportDate || "暂无归档")}</strong>
+              <span>${escapeHtml(
+                latestDay ? `${latestDay.count} 条 · ${latestDay.runCount} 次运行 · 最新 ${latestDay.latestReportTime}` : "reports/"
+              )}</span>
+            </div>
+            <div class="report-timeline">${renderReportTimeline(data.reportDays)}</div>
           </div>
-          <div class="report-timeline">${renderReportTimeline(data.reportDays)}</div>
-        </section>
-        <section class="side-panel">
-          <div class="section-label">来源覆盖</div>
-          ${renderSourceBars(latestSourceCounts)}
-        </section>
-        <section class="side-panel">
-          <div class="section-label">来源健康</div>
-          ${renderSourceHealthPanel(data.latestSourceHealth)}
-        </section>
+        </details>
+        <details class="side-disclosure" open>
+          <summary>来源覆盖</summary>
+          <div class="side-disclosure-body">${renderSourceBars(latestSourceCounts)}</div>
+        </details>
+        <details class="side-disclosure" id="source-health" open>
+          <summary>来源健康</summary>
+          <div class="side-disclosure-body">${renderSourceHealthPanel(data.latestSourceHealth)}</div>
+        </details>
       </aside>
-      <main class="content">
+      <button type="button" class="sidebar-backdrop" id="sidebar-backdrop" aria-label="关闭概览"></button>
+      <main class="content" id="feed">
         <header class="content-head">
           <section>
             <div class="section-label">Signals · Products · Updates</div>
-            <div class="content-title">AI 产品更新工作台</div>
+            <h1 class="content-title">AI 产品更新工作台</h1>
             <p class="subtitle">面向产品经理的日更情报视图：先看证据来源，再判断产品动作、竞品价值和可复用灵感。</p>
           </section>
-          <aside class="run-badge" aria-label="最新运行状态">
-            <b>${escapeHtml(latestStatus)}</b>
-            <span>${escapeHtml(latestDay ? `${latestDay.count} 条 · ${latestSourceTotal} 个来源` : "暂无归档")}</span>
+          <aside class="run-badge" aria-label="最新日报规模">
+            <b>${escapeHtml(latestDay ? latestDay.count : 0)}</b>
+            <span>${escapeHtml(latestDay ? `今日信号 · ${latestSourceTotal} 个来源` : "暂无归档")}</span>
           </aside>
         </header>
+        <section class="source-alert ${latestStatus.className}" aria-label="来源状态">
+          <div class="source-alert-copy">
+            <b>${escapeHtml(latestStatus.label)}</b>
+            <span>${escapeHtml(latestStatus.summary)}</span>
+          </div>
+          <button type="button" data-open-health>查看来源健康</button>
+        </section>
         <section class="toolbar">
-          <input id="q" type="search" aria-label="Search products, changes, reasons" placeholder="Search products, changes, reasons">
-          <select id="report" aria-label="Filter by report or date">
-            ${renderReportOptions(data.reports, data.reportDays, latestDay?.reportDate || "")}
+          <input id="q" type="search" aria-label="搜索产品、动作或判断" placeholder="搜索产品、动作或判断">
+          <select id="report" aria-label="按日期筛选">
+            ${renderReportOptions(data.reportDays, latestDay?.reportDate || "")}
           </select>
-          <select id="source" aria-label="Filter by source">
-            <option value="">All sources</option>
+          <select id="source" aria-label="按来源筛选">
+            <option value="">全部来源</option>
             ${sources.map((source) => `<option value="${escapeHtml(source)}">${escapeHtml(source)}</option>`).join("")}
           </select>
-          <select id="type" aria-label="Filter by update type">
-            <option value="">All types</option>
+          <select id="type" aria-label="按类型筛选">
+            <option value="">全部类型</option>
             ${types.map((type) => `<option value="${escapeHtml(type)}">${escapeHtml(type)}</option>`).join("")}
           </select>
         </section>
-        <section class="view-tabs" aria-label="Radar views">
-          <button type="button" class="view-tab is-active" data-view="priority" aria-pressed="true">Priority View <b>${latestPriorityCount}</b></button>
-          <button type="button" class="view-tab" data-view="all" aria-pressed="false">All Signals <b>${latestDay?.count ?? items.length}</b></button>
-          <button type="button" class="view-tab" data-view="model_infra" aria-pressed="false">Models & Infra <b>${latestModelCount}</b></button>
-          <button type="button" class="view-tab" data-view="reviewed" aria-pressed="false">My Comments <b>${data.stats.totalReviews}</b></button>
+        <section class="view-tabs" aria-label="雷达视图">
+          <button type="button" class="view-tab is-active" data-view="priority" aria-label="Priority View" aria-pressed="true">今日优先 <b>${latestPriorityCount}</b></button>
+          <button type="button" class="view-tab" data-view="all" aria-label="All Signals" aria-pressed="false">全部信号 <b>${latestDay?.count ?? items.length}</b></button>
+          <button type="button" class="view-tab" data-view="model_infra" aria-label="Models & Infra" aria-pressed="false">模型与基础设施 <b>${latestModelCount}</b></button>
+          <button type="button" class="view-tab" data-view="reviewed" aria-label="My Comments" aria-pressed="false">我的点评 <b>${data.stats.totalReviews}</b></button>
         </section>
         <section class="filter-meta">
           <div class="filter-summary">
-            <div id="result-count" aria-live="polite">${latestDay?.count ?? items.length} 条</div>
-            <div class="sort-note">Priority View 按证据强度、产品深度、PM 启发、热度信号和噪音惩罚排序；All Signals 保留全量归档。</div>
+            <div id="result-count" aria-live="polite">${initialItems.length} 条</div>
+            <div class="sort-note" id="view-note">今日优先（Priority View）沿用日报质量排序，只展示前 ${PRIORITY_LIMIT} 条；全部信号保留完整归档。</div>
           </div>
-          <div class="type-pills">${renderTypePills(latestTypeCounts)}</div>
         </section>
-        <section class="empty" id="empty" role="status" aria-live="polite">No matching signals.</section>
+        <section class="empty" id="empty" role="status" aria-live="polite">没有符合当前条件的信号。</section>
         <section class="list" id="items">${renderItems(initialItems, latestDay?.reportDate || "")}</section>
+        <button type="button" class="load-more" id="load-more" hidden>加载更多</button>
       </main>
     </div>
   </div>
@@ -1460,9 +1840,19 @@ export function renderSiteHtml(data) {
     const empty = document.querySelector("#empty");
     const itemList = document.querySelector("#items");
     const resultCount = document.querySelector("#result-count");
-    const pills = [...document.querySelectorAll("[data-filter-type]")];
+    const viewNote = document.querySelector("#view-note");
+    const loadMore = document.querySelector("#load-more");
     const viewTabs = [...document.querySelectorAll("[data-view]")];
+    const sidebar = document.querySelector("#sidebar");
+    const navToggle = document.querySelector("#nav-toggle");
+    const sidebarClose = document.querySelector("#sidebar-close");
+    const sidebarBackdrop = document.querySelector("#sidebar-backdrop");
+    const navViewButtons = [...document.querySelectorAll("[data-nav-view]")];
+    const healthButtons = [...document.querySelectorAll("[data-open-health]")];
+    const allowedViews = new Set(["priority", "all", "model_infra", "reviewed"]);
+    const initialParams = new URLSearchParams(window.location.search);
     let currentView = "priority";
+    let renderLimit = ${PAGE_SIZE};
     function escapeClient(value) {
       return String(value || "")
         .replace(/&/g, "&amp;")
@@ -1536,29 +1926,41 @@ export function renderSiteHtml(data) {
     function sortClientItems(list) {
       return [...list].sort((a, b) =>
         String((b.reportDate || "") + " " + (b.reportTime || "")).localeCompare(String((a.reportDate || "") + " " + (a.reportTime || ""))) ||
-        String(a.id || a.product || "").localeCompare(String(b.id || b.product || ""))
+        Number(a.reportIndex || 0) - Number(b.reportIndex || 0)
       );
     }
     function scopedItems() {
       const selectedScope = report.value;
       const allItems = Array.isArray(radarData.items) ? radarData.items : [];
+      if (currentView === "reviewed") {
+        const seenReviews = new Set();
+        return sortClientItems(allItems).filter((item) => {
+          const reviewIds = (Array.isArray(item.reviews) ? item.reviews : [])
+            .map((review) => review.id)
+            .filter(Boolean);
+          const unseen = reviewIds.filter((id) => !seenReviews.has(id));
+          unseen.forEach((id) => seenReviews.add(id));
+          return unseen.length > 0;
+        });
+      }
       if (!selectedScope) return sortClientItems(allItems);
       if (selectedScope.startsWith("date:")) {
         const date = selectedScope.slice(5);
         return sortClientItems(allItems.filter((item) => item.reportDate === date));
       }
-      return sortClientItems(allItems.filter((item) => item.reportPath === selectedScope));
+      return sortClientItems(allItems);
     }
     function renderClientItems(list, latestDate) {
       return list
         .map((item, index) => {
           const isLatest = latestDate && item.reportDate === latestDate;
           const reviewBlocks = renderReviewBlocksClient(item.reviews);
+          const anchorId = "signal-" + (item.id || String(index));
           return [
-            '<article class="item" data-source="' + escapeClient(item.source) + '" data-type="' + escapeClient(item.type) + '" data-category="' + escapeClient(item.category || "product") + '" data-quality="' + escapeClient(item.qualityLabel || "keep") + '" data-date="' + escapeClient(item.reportDate) + '" data-report="' + escapeClient(item.reportPath) + '" data-latest="' + String(Boolean(isLatest)) + '" data-reviewed="' + String(Boolean(item.reviews && item.reviews.length)) + '">',
+            '<article class="item" id="' + escapeClient(anchorId) + '" data-source="' + escapeClient(item.source) + '" data-type="' + escapeClient(item.type) + '" data-category="' + escapeClient(item.category || "product") + '" data-quality="' + escapeClient(item.qualityLabel || "keep") + '" data-date="' + escapeClient(item.reportDate) + '" data-report="' + escapeClient(item.reportPath) + '" data-latest="' + String(Boolean(isLatest)) + '" data-reviewed="' + String(Boolean(item.reviews && item.reviews.length)) + '">',
             '<div class="item-topline"><span class="rank">信号 ' + String(index + 1).padStart(2, "0") + '</span><span>' + escapeClient(item.reportDate) + " " + escapeClient(item.reportTime) + '</span><span class="source-badge">' + escapeClient(item.source) + "</span><span>" + escapeClient(item.type) + "</span></div>",
             '<div class="item-main"><h2><a href="' + escapeClient(item.link) + '" target="_blank" rel="noreferrer noopener">' + escapeClient(item.product) + '</a></h2><div class="signal-copy"><p class="did"><b>做了什么</b>' + escapeClient(item.did) + '</p><p class="why"><b>为什么值得看</b>' + escapeClient(item.why) + "</p></div>" + (reviewBlocks ? "\\n" + reviewBlocks : "") + "</div>",
-            '<div class="item-actions"><a href="' + escapeClient(item.link) + '" target="_blank" rel="noreferrer noopener">产品链接</a><a class="evidence" href="' + escapeClient(item.evidenceUrl) + '" target="_blank" rel="noreferrer noopener">证据来源</a><div class="feedback-actions" aria-label="反馈">' + renderFeedbackLinksClient(item) + "</div></div>",
+            '<details class="item-tools"><summary title="打开证据与反馈"><span>操作</span></summary><div class="item-tools-panel"><a class="product-action" href="' + escapeClient(item.link) + '" target="_blank" rel="noreferrer noopener">打开产品</a><a class="evidence" href="' + escapeClient(item.evidenceUrl) + '" target="_blank" rel="noreferrer noopener">查看证据</a><button type="button" class="item-share" data-share-id="' + escapeClient(anchorId) + '">复制链接</button><button type="button" class="item-expand" data-expand-card>展开摘要</button><div class="feedback-actions" aria-label="产品反馈">' + renderFeedbackLinksClient(item) + "</div></div></details>",
             "</article>"
           ].join("\\n");
         })
@@ -1568,54 +1970,206 @@ export function renderSiteHtml(data) {
       const option = report.selectedOptions[0];
       report.title = option?.dataset.fullLabel || option?.textContent || "";
     }
-    function applyFilters() {
-      updateReportTitle();
-      itemList.innerHTML = renderClientItems(scopedItems(), latestReportDate);
-      const items = [...itemList.querySelectorAll(".item")];
+    function itemText(item) {
+      return [
+        item.product,
+        item.did,
+        item.why,
+        item.source,
+        item.type,
+        ...(Array.isArray(item.reviews) ? item.reviews.map((review) => review.review) : [])
+      ].join(" ").toLowerCase();
+    }
+    function filteredItems() {
       const text = q.value.trim().toLowerCase();
       const selectedSource = source.value;
       const selectedType = type.value;
-      let visible = 0;
-      for (const item of items) {
-        const haystack = item.textContent.toLowerCase();
+      return scopedItems().filter((item) => {
         const matchesView =
           currentView === "all" ||
-          (currentView === "priority" && item.dataset.category === "product" && !["deprioritize", "drop"].includes(item.dataset.quality)) ||
-          (currentView === "model_infra" && item.dataset.category === "model_infra") ||
-          (currentView === "reviewed" && item.dataset.reviewed === "true");
-        const ok =
+          currentView === "reviewed" ||
+          (currentView === "priority" && item.category === "product" && !["deprioritize", "drop"].includes(item.qualityLabel)) ||
+          (currentView === "model_infra" && item.category === "model_infra");
+        return (
           matchesView &&
-          (!text || haystack.includes(text)) &&
-          (!selectedSource || item.dataset.source === selectedSource) &&
-          (!selectedType || item.dataset.type === selectedType);
-        item.hidden = !ok;
-        if (ok) visible += 1;
-      }
-      empty.style.display = visible ? "none" : "block";
-      resultCount.textContent = visible + " 条";
-      pills.forEach((pill) => {
-        const active = pill.dataset.filterType === selectedType;
-        pill.classList.toggle("is-active", active);
-        pill.setAttribute("aria-pressed", String(active));
+          (!text || itemText(item).includes(text)) &&
+          (!selectedSource || item.source === selectedSource) &&
+          (!selectedType || item.type === selectedType)
+        );
       });
+    }
+    function updateUrl() {
+      const params = new URLSearchParams();
+      if (currentView !== "priority") params.set("view", currentView);
+      if (currentView !== "reviewed" && report.value.startsWith("date:")) params.set("date", report.value.slice(5));
+      if (source.value) params.set("source", source.value);
+      if (type.value) params.set("type", type.value);
+      if (q.value.trim()) params.set("q", q.value.trim());
+      const url = new URL(window.location.href);
+      url.search = params.toString();
+      window.history.replaceState(null, "", url);
+    }
+    function updateViewNote(total) {
+      const notes = {
+        priority: "今日优先（Priority View）沿用日报质量排序，只展示前 " + ${PRIORITY_LIMIT} + " 条；当前有 " + total + " 条符合优先条件。",
+        all: "全部信号保留当前日期的完整归档，并按每次 " + ${PAGE_SIZE} + " 条渐进加载。",
+        model_infra: "模型与基础设施单独展示，不与产品优先级混排。",
+        reviewed: "我的点评跨全部日期汇总，日期筛选在此视图中暂停。"
+      };
+      viewNote.textContent = notes[currentView] || notes.priority;
+    }
+    function applyFilters(resetLimit = true) {
+      if (resetLimit) renderLimit = ${PAGE_SIZE};
+      updateReportTitle();
+      report.disabled = currentView === "reviewed";
+      const matches = filteredItems();
+      const visibleItems =
+        currentView === "priority" ? matches.slice(0, ${PRIORITY_LIMIT}) : matches.slice(0, renderLimit);
+      itemList.innerHTML = renderClientItems(visibleItems, latestReportDate);
+      empty.style.display = visibleItems.length ? "none" : "block";
+      resultCount.textContent =
+        visibleItems.length < matches.length ? visibleItems.length + " / " + matches.length + " 条" : visibleItems.length + " 条";
+      loadMore.hidden = currentView === "priority" || visibleItems.length >= matches.length;
+      loadMore.textContent = "加载更多（剩余 " + Math.max(0, matches.length - visibleItems.length) + " 条）";
+      updateViewNote(matches.length);
       viewTabs.forEach((tab) => {
         const active = tab.dataset.view === currentView;
         tab.classList.toggle("is-active", active);
         tab.setAttribute("aria-pressed", String(active));
       });
+      updateUrl();
+      if (window.location.hash) {
+        window.requestAnimationFrame(() => {
+          const target = document.getElementById(window.location.hash.slice(1));
+          if (target) target.scrollIntoView({ block: "center" });
+        });
+      }
     }
-    q.addEventListener("input", applyFilters);
-    report.addEventListener("change", applyFilters);
-    source.addEventListener("change", applyFilters);
-    type.addEventListener("change", applyFilters);
-    pills.forEach((pill) => pill.addEventListener("click", () => {
-      type.value = type.value === pill.dataset.filterType ? "" : pill.dataset.filterType;
-      applyFilters();
-    }));
+    function setSelectValue(control, value) {
+      if (!value) return;
+      if ([...control.options].some((option) => option.value === value)) control.value = value;
+    }
+    function closeSidebar() {
+      document.body.classList.remove("nav-open");
+      sidebar.classList.remove("is-open");
+      navToggle.setAttribute("aria-expanded", "false");
+    }
+    function openSidebar() {
+      document.body.classList.add("nav-open");
+      sidebar.classList.add("is-open");
+      navToggle.setAttribute("aria-expanded", "true");
+    }
+    function fallbackCopyText(value) {
+      const field = document.createElement("textarea");
+      field.value = value;
+      field.style.position = "fixed";
+      field.style.opacity = "0";
+      document.body.append(field);
+      field.select();
+      let copied = false;
+      try {
+        copied = typeof document.execCommand === "function" && document.execCommand("copy");
+      } catch {
+        copied = false;
+      }
+      field.remove();
+      return copied;
+    }
+    async function copyShareLink(button) {
+      const url = new URL(window.location.href);
+      url.hash = button.dataset.shareId || "";
+      const shareUrl = url.toString();
+      button.dataset.shareUrl = shareUrl;
+      let copied = fallbackCopyText(shareUrl);
+      if (!copied && navigator.clipboard?.writeText) {
+        try {
+          await navigator.clipboard.writeText(shareUrl);
+          copied = true;
+        } catch {
+          copied = false;
+        }
+      }
+      const oldLabel = button.textContent;
+      button.textContent = copied ? "已复制" : "请手动复制";
+      button.parentElement.querySelector(".share-fallback")?.remove();
+      if (copied) {
+        window.setTimeout(() => {
+          button.textContent = oldLabel;
+        }, 1200);
+        return;
+      }
+      const fallback = document.createElement("input");
+      fallback.className = "share-fallback";
+      fallback.value = shareUrl;
+      fallback.readOnly = true;
+      fallback.setAttribute("aria-label", "产品分享链接");
+      button.parentElement.append(fallback);
+      fallback.select();
+    }
+    const initialView = initialParams.get("view");
+    if (allowedViews.has(initialView)) currentView = initialView;
+    setSelectValue(report, initialParams.get("date") ? "date:" + initialParams.get("date") : "");
+    setSelectValue(source, initialParams.get("source"));
+    setSelectValue(type, initialParams.get("type"));
+    q.value = initialParams.get("q") || "";
+    q.addEventListener("input", () => applyFilters());
+    report.addEventListener("change", () => applyFilters());
+    source.addEventListener("change", () => applyFilters());
+    type.addEventListener("change", () => applyFilters());
     viewTabs.forEach((tab) => tab.addEventListener("click", () => {
       currentView = tab.dataset.view || "priority";
       applyFilters();
     }));
+    loadMore.addEventListener("click", () => {
+      renderLimit += ${PAGE_SIZE};
+      applyFilters(false);
+    });
+    itemList.addEventListener("click", (event) => {
+      const shareButton = event.target.closest("[data-share-id]");
+      if (shareButton) {
+        copyShareLink(shareButton);
+        return;
+      }
+      const expandButton = event.target.closest("[data-expand-card]");
+      if (expandButton) {
+        const card = expandButton.closest(".item");
+        const expanded = card.classList.toggle("is-expanded");
+        expandButton.textContent = expanded ? "收起摘要" : "展开摘要";
+      }
+    });
+    navToggle.addEventListener("click", () => {
+      if (sidebar.classList.contains("is-open")) closeSidebar();
+      else openSidebar();
+    });
+    sidebarClose.addEventListener("click", closeSidebar);
+    sidebarBackdrop.addEventListener("click", closeSidebar);
+    navViewButtons.forEach((button) => button.addEventListener("click", () => {
+      currentView = button.dataset.navView || "reviewed";
+      applyFilters();
+      closeSidebar();
+      document.querySelector("#feed").scrollIntoView({ block: "start" });
+    }));
+    healthButtons.forEach((button) => button.addEventListener("click", () => {
+      const panel = document.querySelector("#source-health");
+      panel.open = true;
+      openSidebar();
+      panel.scrollIntoView({ block: "start" });
+    }));
+    [...document.querySelectorAll('.side-nav a[href^="#"]')].forEach((link) => link.addEventListener("click", (event) => {
+      const id = link.getAttribute("href").slice(1);
+      const target = document.getElementById(id);
+      if (id === "feed") {
+        closeSidebar();
+        return;
+      }
+      event.preventDefault();
+      if (target && "open" in target) target.open = true;
+      openSidebar();
+      target?.scrollIntoView({ block: "start" });
+    }));
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeSidebar();
+    });
     applyFilters();
   </script>
 </body>

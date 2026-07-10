@@ -622,6 +622,8 @@ function testSiteBuilderHelpers() {
   const rows = parseReportMarkdown(report, "reports/2026-06-01-0800-cst.md");
   assert.equal(rows.length, 3);
   assert.equal(rows[0].product, "Agent Deck");
+  assert.equal(rows[0].reportIndex, 0);
+  assert.equal(rows[1].reportIndex, 1);
   assert.equal(rows[0].source, "HN Algolia");
   assert.equal(rows[0].reportDate, "2026-06-01");
   assert.equal(rows[1].product, "Agent Deck: Native Mac app for managing AI coding agents| powered by PI");
@@ -641,13 +643,32 @@ function testSiteBuilderHelpers() {
   assert.match(html, /data-source="HN Algolia"/);
   assert.match(html, /class="brand-mark" aria-label="benzema"><span class="brand-word">benzema<\/span><span class="brand-accent" aria-hidden="true"><\/span><\/div>/);
   assert.match(html, /\.item\[hidden\] \{ display: none; \}/);
-  assert.match(html, /aria-label="Filter by source"/);
+  assert.match(html, /aria-label="按来源筛选"/);
   assert.match(html, /aria-live="polite"/);
   assert.match(html, /aria-pressed="false"/);
   assert.match(html, /<span class="rank">信号 01<\/span>/);
-  assert.match(html, /Priority View 按证据强度、产品深度、PM 启发/);
+  assert.match(html, /今日优先（Priority View）沿用日报质量排序/);
   assert.match(html, /data-view="priority"/);
+  assert.match(html, /data-view="reviewed"/);
   assert.match(html, /data-category="product"/);
+  assert.match(html, /id="nav-toggle"/);
+  assert.match(html, /class="sidebar-backdrop"/);
+  assert.match(html, /class="load-more"/);
+  assert.match(html, /class="item-tools"/);
+  assert.match(html, /data-share-id=/);
+  assert.match(html, /data-expand-card/);
+  assert.match(html, /classList\.toggle\("is-expanded"\)/);
+  assert.match(html, /fallbackCopyText/);
+  assert.match(html, /className = "share-fallback"/);
+  assert.match(html, /window\.history\.replaceState/);
+  assert.match(html, /currentView === "reviewed"/);
+  assert.match(html, /const seenReviews = new Set\(\)/);
+  assert.match(html, /report\.disabled = currentView === "reviewed"/);
+  assert.match(html, /没有符合当前条件的信号/);
+  assert.match(html, /<h1 class="content-title">AI 产品更新工作台<\/h1>/);
+  assert.match(html, /@media \(max-width: 900px\)[\s\S]*position: fixed;[\s\S]*transform: translateX\(-102%\);/);
+  assert.match(html, /\.titlebar\s*\{[^}]*position:\s*fixed;/s);
+  assert.match(html, /\.titlebar > span:last-child/);
   assert.match(html, /radar-feedback/);
   assert.match(html, /不该收录/);
   assert.doesNotMatch(html, /漏掉产品/);
@@ -675,6 +696,38 @@ function testSiteBuilderHelpers() {
   assert.match(multiHtml, /New Agent/);
   assert.match(multiHtml, /Old Agent/);
   assert.match(multiHtml, /renderClientItems/);
+  assert.doesNotMatch(multiHtml, /按单次运行/);
+  assert.doesNotMatch(multiHtml, /<optgroup/);
+}
+
+function testSiteBuilderLimitsInitialPriorityView() {
+  const rows = Array.from(
+    { length: 25 },
+    (_, index) =>
+      "| Agent Product " +
+      (index + 1) +
+      " | [链接](https://example.com/agent-" +
+      (index + 1) +
+      ") | 新产品 | AI agent workflow " +
+      (index + 1) +
+      " | 值得看。 | [HN Algolia 2026-06-03T03:00:00Z](https://news.ycombinator.com/item?id=" +
+      (index + 1) +
+      ") |"
+  ).join("\n");
+  const report = [
+    "| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |",
+    "|---|---|---|---|---|---|",
+    rows
+  ].join("\n");
+  const siteData = buildSiteData([{ path: "reports/2026-06-03-1122-cst.md", markdown: report }]);
+  const html = renderSiteHtml(siteData);
+  const initialHtml = html.slice(0, html.indexOf("<script>window.__RADAR_DATA__"));
+
+  assert.equal(siteData.items.length, 25);
+  assert.equal((initialHtml.match(/<article class="item"/g) || []).length, 20);
+  assert.match(html, /今日优先 <b>20<\/b>/);
+  assert.match(html, /全部信号 <b>25<\/b>/);
+  assert.match(html, /renderLimit = 40/);
 }
 
 function testSiteBuilderIncludesSourceHealth() {
@@ -707,6 +760,8 @@ function testSiteBuilderIncludesSourceHealth() {
   assert.equal(siteData.latestSourceHealth.sources.producthunt.reportKeptCount, 0);
   assert.match(html, /来源健康/);
   assert.match(html, /Product Hunt/);
+  assert.match(html, /已发布 · 1 个来源降级/);
+  assert.match(html, /Product Hunt：回退抓取/);
   assert.match(html, /历史去重移除 6 条/);
   assert.match(html, /最终发布 0 条/);
 }
@@ -768,8 +823,9 @@ function testSiteBuilderSeparatesHuggingFaceModels() {
   assert.equal(siteData.items[0].category, "model_infra");
   assert.equal(siteData.items[1].category, "product");
   const html = renderSiteHtml(siteData);
-  assert.match(html, /Models & Infra <b>1<\/b>/);
-  assert.match(html, /data-category="model_infra"/);
+  assert.match(html, /模型与基础设施 <b>1<\/b>/);
+  assert.match(html, /"category":"model_infra"/);
+  assert.match(html, /data-view="model_infra"/);
 }
 
 function testSiteBuilderMarksNonProductShowHnReportsWeak() {
@@ -3594,6 +3650,7 @@ const tests = [
   ["Product Hunt history filter annotates source health", testProductHuntHistoryFilterAnnotatesSourceHealth],
   ["Product Hunt history filter annotates all duplicates", testProductHuntHistoryFilterAnnotatesAllDuplicates],
   ["Site builder helpers", testSiteBuilderHelpers],
+  ["Site builder limits initial priority view", testSiteBuilderLimitsInitialPriorityView],
   ["Site builder includes source health", testSiteBuilderIncludesSourceHealth],
   ["Pages static publish bypasses Jekyll", testPagesStaticPublishBypassesJekyll],
   ["Product Hunt Pacific completed day", testProductHuntPacificCompletedDay],
