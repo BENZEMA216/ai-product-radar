@@ -1,0 +1,291 @@
+{
+  "date": "2026-07-12",
+  "generatedAt": "2026-07-11T16:02:31.190Z",
+  "reportPath": "reports/2026-07-12-0002-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 80,
+    "top20Sources": [
+      "YC Launch",
+      "Product Hunt",
+      "HN Algolia",
+      "AIHOT"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 17,
+      "keptCount": 13,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-10；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 17 条，AI 相关候选 13 条；历史去重移除 1 条已报道或已处理日榜 Product Hunt 信号，最终发布 12 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 2,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 25,
+      "keptCount": 25,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 4,
+      "keptCount": 1,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 31,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Keystroke",
+      "productKey": "https://www.ycombinator.com/launches/rnb-keystroke-n8n-for-your-coding-agent",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Keystroke 把 Cursor、Claude Code 与 Codex 的自动化编排做成类似 n8n 的可视工作层，值得验证非工程用户能否安全复用编码 agent 流程。"
+    },
+    {
+      "rank": 2,
+      "product": "Sim",
+      "productKey": "https://www.producthunt.com/products/sim-studio",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Sim 用开源工作区统一构建 agent 与 workflow，产品启发在于把节点编排、运行调试和团队复用收进同一入口，而非只提供模型调用画布。"
+    },
+    {
+      "rank": 3,
+      "product": "Agent OS – a local-first harness for reliable software agents",
+      "productKey": "https://github.com/earthwalker17/agent-os",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agent OS 以本地优先 harness 约束软件 agent，值得看任务状态、工具权限和失败恢复能否沉淀为比提示词更可靠的工程运行层。"
+    },
+    {
+      "rank": 4,
+      "product": "Directed Contexts – repo-owned instruction modules for coding agents",
+      "productKey": "https://github.com/tgpski/directed-contexts",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Directed Contexts 把 coding agent 指令拆成由仓库维护的模块，能减少团队规则散落在个人提示词中的问题；关键是版本继承与冲突处理。"
+    },
+    {
+      "rank": 5,
+      "product": "Local Motion – Use Cursor Agents and Chat with a Local LLM",
+      "productKey": "https://github.com/mattmireles/local-motion",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Local Motion 让 Cursor agent 接入本地 LLM，提供隐私与离线开发路径；需要验证本地模型能力不足时，任务如何降级而不破坏工作流。"
+    },
+    {
+      "rank": 6,
+      "product": "Coasty",
+      "productKey": "https://www.ycombinator.com/launches/rm5-coasty-the-computer-use-agent-that-doesn-t-break-on-real-software",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Coasty 试图用稳定的 computer-use agent 替代脆弱 RPA，价值取决于它面对遗留软件界面变化、弹窗和异常状态时能否持续完成任务。"
+    },
+    {
+      "rank": 7,
+      "product": "An MCP server that lets AI agents request disability insurance quotes",
+      "productKey": "https://github.com/seaworthy-io/seaworthy-mcp",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把伤残保险报价封装成 MCP，展示 agent 进入受监管交易流程的接口形态；授权、报价依据和人工复核链路比调用便利性更关键。"
+    },
+    {
+      "rank": 8,
+      "product": "Image Generation API with QR code tracking and MCP support",
+      "productKey": "https://templateson.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把图像生成、二维码追踪与 MCP 调用连成营销素材闭环，值得看生成内容能否直接关联线下触达与转化，而不只停留在出图。"
+    },
+    {
+      "rank": 9,
+      "product": "Bunrun – agent-configured local dashboard to start/stop dev apps",
+      "productKey": "https://github.com/jokkebk/bunrun",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Bunrun 让 agent 配置本地开发应用的启停面板，能降低多服务项目的运行门槛；需观察进程状态、日志与故障恢复是否足够透明。"
+    },
+    {
+      "rank": 10,
+      "product": "Schedule tasks for your AI agents from Google Calendar",
+      "productKey": "https://agentcaly.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用 Google Calendar 调度 agent 任务，把熟悉的日程入口变成自动化触发器；真正价值在时区、重试、权限与执行结果回写是否可靠。"
+    },
+    {
+      "rank": 11,
+      "product": "Agent World – an open standard and live market for personal AI agents",
+      "productKey": "https://github.com/macrokit/agent-world",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agent World 同时提出个人 agent 开放标准与交易市场，值得看身份、能力描述、支付和信誉能否形成可互操作的供需机制。"
+    },
+    {
+      "rank": 12,
+      "product": "I scrape an $8.5M-ARR company run by AI agents and chart it live",
+      "productKey": "https://maertspolsia.mzpx.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这个实时看板把一家由 agent 运营公司的公开经营数据持续可视化，更像可验证的运营观察样本；数据口径和归因真实性决定参考价值。"
+    },
+    {
+      "rank": 13,
+      "product": "@playbykey/theory - Music theory TypeScript engine and MCP server",
+      "productKey": "https://theory-engine.docs.playbykey.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把乐理引擎同时做成 TypeScript 库与 MCP server，说明专业知识工具可直接供 agent 调用；需看规则覆盖和结果可解释性。"
+    },
+    {
+      "rank": 14,
+      "product": "Scarlett.",
+      "productKey": "https://www.producthunt.com/products/tryscarlett",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Scarlett 把 AI 同事放进 Slack 与 iMessage，入口摩擦低，但产品能否成立取决于跨会话记忆、授权动作和群聊中的身份边界。"
+    },
+    {
+      "rank": 15,
+      "product": "ChatCut",
+      "productKey": "https://www.producthunt.com/products/chatcut-ai-video-editor",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ChatCut 把视频编辑同时嵌入 ChatGPT、桌面与网页，值得比较自然语言剪辑在不同入口间是否共享素材状态、版本与可撤销操作。"
+    },
+    {
+      "rank": 16,
+      "product": "The MCP Census – 15,382 MCP servers, health-checked",
+      "productKey": "https://mcpcensus.pages.dev/report",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "MCP Census 对 15,382 个 server 做健康检查，比单纯目录更有基础设施价值；可复用点在可用性、风险与维护状态的持续评分。"
+    },
+    {
+      "rank": 17,
+      "product": "AInvest Terminal",
+      "productKey": "https://www.producthunt.com/products/ainvest-terminal",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AInvest Terminal 把专业市场终端下沉给普通投资者，值得警惕 AI 解读是否清楚区分事实、预测与建议，并提供可追溯数据来源。"
+    },
+    {
+      "rank": 18,
+      "product": "Free AI Visibility Audit Tool& Agent",
+      "productKey": "https://ai-visibility.pro",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AI Visibility Audit 把品牌在答案引擎中的可见性变成可检测任务，值得看它能否从一次评分推进到引用缺口与内容修复闭环。"
+    },
+    {
+      "rank": 19,
+      "product": "Aerial – DIY Orchestration and Agent Messaging",
+      "productKey": "https://dcdeniz.github.io/aerial",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Aerial 提供可自行组合的 agent 编排与消息机制，适合观察轻量协议能否解决多 agent 的状态传递、寻址和失败隔离。"
+    },
+    {
+      "rank": 20,
+      "product": "Berry Xia 开源 Skills 项目",
+      "productKey": "https://aihot.virxact.com/items/cmrgiuqhp01ejih2e79p9jkhi",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ChatCut 把视频编辑同时嵌入 ChatGPT、桌面与网页，值得比较自然语言剪辑在不同入口间是否共享素材状态、版本与可撤销操作。"
+    }
+  ]
+}
