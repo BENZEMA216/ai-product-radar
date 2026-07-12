@@ -657,6 +657,8 @@ function testSiteBuilderHelpers() {
   assert.match(html, /class="item-tools"/);
   assert.match(html, /data-share-id=/);
   assert.match(html, /data-expand-card/);
+  assert.match(html, /const actionControl = event\.target\.closest\("\.item-tools-panel a, \.item-tools-panel button"\);/);
+  assert.match(html, /if \(toolsMenu\) toolsMenu\.open = false;/);
   assert.match(html, /classList\.toggle\("is-expanded"\)/);
   assert.match(html, /fallbackCopyText/);
   assert.match(html, /className = "share-fallback"/);

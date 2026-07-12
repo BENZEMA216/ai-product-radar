@@ -2125,6 +2125,10 @@ export function renderSiteHtml(data) {
       applyFilters(false);
     });
     itemList.addEventListener("click", (event) => {
+      const actionControl = event.target.closest(".item-tools-panel a, .item-tools-panel button");
+      const toolsMenu = actionControl?.closest(".item-tools");
+      if (toolsMenu) toolsMenu.open = false;
+
       const shareButton = event.target.closest("[data-share-id]");
       if (shareButton) {
         copyShareLink(shareButton);
