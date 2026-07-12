@@ -1,0 +1,289 @@
+{
+  "date": "2026-07-13",
+  "generatedAt": "2026-07-12T16:01:39.849Z",
+  "reportPath": "reports/2026-07-13-0001-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 66,
+    "top20Sources": [
+      "HN Algolia",
+      "Product Hunt"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 17,
+      "keptCount": 4,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-11；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 17 条，AI 相关候选 4 条；历史去重后最终发布 4 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "YC Launch 本窗口无候选或来源为空。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 24,
+      "keptCount": 24,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 1,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 17,
+      "keptCount": 17,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 34,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Mindwalk – Replay coding-agent sessions on a 3D map of your codebase",
+      "productKey": "https://github.com/cosmtrek/mindwalk",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Mindwalk 把编码 agent 的文件触达路径变成可回放的 3D 地图，价值在于让上下文遗漏和误改范围可视化，而不只看最终 diff。"
+    },
+    {
+      "rank": 2,
+      "product": "Grinta – a local-first coding agent built for long autonomous runs",
+      "productKey": "https://github.com/josephsenior/grinta-coding-agent",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Grinta 主打本地优先与长时自治，值得验证它能否在长任务中稳定保存计划、恢复失败并控制代码质量，而非只延长单次运行时间。"
+    },
+    {
+      "rank": 3,
+      "product": "Agent Legibility Analyzer see if AI shopping agents can read your store",
+      "productKey": "https://agentmint.net",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它检测电商页面能否被购物 agent 正确读取，抓住了机器顾客时代的新型可发现性问题；关键是诊断能否落到可执行修复。"
+    },
+    {
+      "rank": 4,
+      "product": "Spendict – a performance marketer's verdict for AI agents, over MCP",
+      "productKey": "https://www.spendict.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Spendict 让营销专家通过 MCP 对 agent 的投放判断给出裁决，启发在于把行业经验变成可调用的质量门，而非泛化聊天建议。"
+    },
+    {
+      "rank": 5,
+      "product": "Sanbox, batteries included sandboxes for AI agents",
+      "productKey": "https://sanbox.cloud",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Sanbox 为 agent 提供开箱即用的隔离环境，值得看权限、网络、持久化与冷启动是否足以支撑真实代码执行，而不只是临时容器封装。"
+    },
+    {
+      "rank": 6,
+      "product": "Only 1 of 4,356 reachable MCP servers is ready for the 2026-07-28 spec",
+      "productKey": "https://github.com/roee-tsur/mcp-spec-check",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "对 4,356 个可访问 MCP server 做新规范就绪度检查，揭示生态升级断层；产品机会在兼容性扫描、迁移建议和持续合规监控。"
+    },
+    {
+      "rank": 7,
+      "product": "We beat Anubis with our stealth MCP",
+      "productKey": "https://tilion.dev/blog/anubis-proof-of-work",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "该项目用 stealth MCP 绕过 Anubis 工作量证明，更像安全对抗案例；应警惕 agent 工具链将反爬保护转化为可规模化规避能力。"
+    },
+    {
+      "rank": 8,
+      "product": "Introducing: Zotfile Agents",
+      "productKey": "https://www.zot.sh/docs/zotfiles",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Zotfile Agents 的现有证据只说明发布了 agent 机制，信息不足，先作为弱信号保留；缺少任务场景、工具权限和运行结果说明。"
+    },
+    {
+      "rank": 9,
+      "product": "Praana – a terminal coding agent that curates its own context",
+      "productKey": "https://github.com/amitkumardubey/praana",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Praana 让终端编码 agent 自主管理上下文，值得观察它能否减少长任务中的上下文污染，并明确哪些信息被保留或丢弃。"
+    },
+    {
+      "rank": 10,
+      "product": "Zero Trust Boundary for Agents",
+      "productKey": "https://github.com/open-ags/attestor",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Zero Trust Boundary 把 agent 调用放进零信任边界，产品价值取决于身份、策略执行和审计证据能否覆盖多工具、多代理链路。"
+    },
+    {
+      "rank": 11,
+      "product": "AgentTransfer – open-source file transfer for AI agents (one Go binary)",
+      "productKey": "https://github.com/shehryarsaroya/agenttransfer",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AgentTransfer 用单个 Go 二进制解决 agent 间文件传输，切口具体；需验证权限、过期、加密和大文件失败恢复是否达到生产要求。"
+    },
+    {
+      "rank": 12,
+      "product": "Runeward: Sandboxing AI agents with policy gates",
+      "productKey": "https://runewardd.github.io/runeward",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Runeward 用策略门控制 agent 沙箱，值得看规则是否既能阻止危险动作，又不会让高频人工审批破坏自治任务的完成率。"
+    },
+    {
+      "rank": 13,
+      "product": "Effects SDK",
+      "productKey": "https://www.producthunt.com/products/effects-sdk",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Effects SDK 把实时音视频 AI 特效封装给应用开发者，价值在低延迟集成与端侧性能；现有 PH 证据缺少效果质量和设备覆盖数据。"
+    },
+    {
+      "rank": 14,
+      "product": "A Trust Index for MCP Servers",
+      "productKey": "https://index.canopii.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "MCP Server Trust Index 尝试把安全与维护状态量化，适合作为 agent 选工具的信任层；关键是评分依据能否持续验证而非依赖自报。"
+    },
+    {
+      "rank": 15,
+      "product": "Standalone SearXNG CLI+MCP (no server needed)",
+      "productKey": "https://github.com/nikvdp/searxng-ai-kit",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "无需服务器的 SearXNG CLI 与 MCP 降低了 agent 私有搜索部署门槛，值得比较本地索引、隐私控制和搜索质量的实际取舍。"
+    },
+    {
+      "rank": 16,
+      "product": "Token Time – Screen Time, but for your AI agent tokens",
+      "productKey": "https://tokentime.bar",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Token Time 把 agent token 消耗做成类似 Screen Time 的可感知反馈，启发在于用预算行为设计约束无效自治，而不只提供账单图表。"
+    },
+    {
+      "rank": 17,
+      "product": "ChatGPT Work",
+      "productKey": "https://www.producthunt.com/products/chatgpt-work",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ChatGPT Work 仅以“高目标工作的伙伴”描述自身，信息不足，先作为弱信号保留；缺少具体工作流、差异化能力和交付结果证据。"
+    },
+    {
+      "rank": 18,
+      "product": "Kickbacks CLI",
+      "productKey": "https://www.producthunt.com/products/kickbacks-cli",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Kickbacks CLI 把既有服务延伸到终端与 Mac 菜单栏，值得看高频入口能否缩短任务触发路径；现有证据未说明 Kickbacks.ai 的核心能力。"
+    },
+    {
+      "rank": 19,
+      "product": "Confessor – replay what private info Claude Code accessed on your PC",
+      "productKey": "https://github.com/ninjahawk/confessor",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Confessor 回放 Claude Code 在本机访问过的隐私信息，把模糊的安全担忧变成可审计记录；需看覆盖范围和误报是否可信。"
+    },
+    {
+      "rank": 20,
+      "product": "Avoid codebase sloppification and AI-generated spaghetti code",
+      "productKey": "https://github.com/lambda-alpha-labs/graphenium",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Graphenium 试图抑制 AI 生成的意大利面代码，切中 agent 长期维护痛点；判断重点是能否用结构指标证明改进，而非再次包装 lint。"
+    }
+  ]
+}
