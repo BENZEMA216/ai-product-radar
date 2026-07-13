@@ -1,0 +1,290 @@
+{
+  "date": "2026-07-14",
+  "generatedAt": "2026-07-13T16:01:49.193Z",
+  "reportPath": "reports/2026-07-14-0001-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 73,
+    "top20Sources": [
+      "HN Algolia",
+      "Product Hunt",
+      "AIHOT"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 17,
+      "keptCount": 7,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-12；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 17 条，AI 相关候选 7 条；历史去重后最终发布 7 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "YC Launch 本窗口无候选或来源为空。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 22,
+      "keptCount": 22,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 4,
+      "keptCount": 1,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 23,
+      "keptCount": 23,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 34,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Clawk – Give coding agents a disposable Linux VM, not your laptop",
+      "productKey": "https://github.com/clawkwork/clawk",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Clawk 用一次性 Linux VM 隔离 coding agent 与本机，值得看它能否把安全沙箱做成低摩擦默认配置，同时保留调试与产物回收能力。"
+    },
+    {
+      "rank": 2,
+      "product": "Wisp – open-source private desktop AI overlay with MCP support",
+      "productKey": "https://github.com/sunnylich/wisp-ai-assistant",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Wisp 以本地桌面浮层加 MCP 连接工具，值得观察隐私优先助手能否在不上传工作区的前提下形成跨应用任务闭环。"
+    },
+    {
+      "rank": 3,
+      "product": "Let your coding agent iterate by seeing the browser",
+      "productKey": "https://github.com/puffinsoft/peek-cli",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 coding agent 直接看浏览器可缩短前端修改后的反馈回路，关键是视觉状态、控制动作与错误定位能否可靠串成自主迭代。"
+    },
+    {
+      "rank": 4,
+      "product": "Baton - Know which of your AI coding agents needs you",
+      "productKey": "https://github.com/neilkpatel/baton",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Baton 聚焦“哪个 coding agent 正在等人”，切中多 agent 并行时的人机接管队列；值得看通知优先级和阻塞原因是否足够可操作。"
+    },
+    {
+      "rank": 5,
+      "product": "Agent-run – Run a coding agent in a sandboxed environment",
+      "productKey": "https://github.com/sin-ack/agent-run",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agent-run 把 coding agent 放进沙箱环境，价值在权限隔离与可复现执行；现有发布信号不足以说明环境启动、网络策略和产物持久化体验。"
+    },
+    {
+      "rank": 6,
+      "product": "I gave my AI coding agents a group chat (it's just a Git repo)",
+      "productKey": "https://github.com/yonidavidson/agentcomm",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用 Git 仓库承载多个 coding agent 的群聊，提供了可版本化协作思路；重点看冲突协调、任务归属与消息噪音如何处理。"
+    },
+    {
+      "rank": 7,
+      "product": "Miora",
+      "productKey": "https://www.producthunt.com/products/miora-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Miora 把可编辑画布与 agent memory 结合，适合观察长任务中内容、历史与修改如何持续承接；PH fallback 未提供热度数据。"
+    },
+    {
+      "rank": 8,
+      "product": "Costbase – See what each of your AI apps costs, without a proxy",
+      "productKey": "https://costbase.co",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Costbase 不经代理统计各 AI 应用成本，可能降低接入阻力；需要确认成本归因粒度、数据完整性以及“不经代理”如何取得可信用量。"
+    },
+    {
+      "rank": 9,
+      "product": "AI Visibility",
+      "productKey": "https://www.producthunt.com/products/ai-visibility",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AI Visibility 检查多个大模型如何描述品牌，抓住生成式搜索监测需求；值得看它能否给出可归因、可行动的品牌修正而非只做排名截图。"
+    },
+    {
+      "rank": 10,
+      "product": "Self-hosted voice AI agent for Asterisk/FreePBX",
+      "productKey": "https://github.com/hkjarral/ava-ai-voice-agent-for-asterisk",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "面向 Asterisk/FreePBX 的自托管语音 agent 能切入既有电话系统，产品价值取决于延迟、转人工、知识引用和部署维护成本。"
+    },
+    {
+      "rank": 11,
+      "product": "Nable, open source finops MCP",
+      "productKey": "https://github.com/chaandannn/finopsmcp",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Nable 用 MCP 暴露 FinOps 能力，可能让 agent 直接参与云成本分析与治理；重点看权限边界、建议可解释性和能否安全执行节省动作。"
+    },
+    {
+      "rank": 12,
+      "product": "Broll – an MCP server that gives coding agents a content studio",
+      "productKey": "https://github.com/luke-fairbanks/broll",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Broll 以 MCP 给 coding agent 接入内容工作室，启发在于把编码助手延伸到素材生产；仍需确认支持哪些内容任务与交付闭环。"
+    },
+    {
+      "rank": 13,
+      "product": "Capn-hook for coding agents – don't grep the same mystery twice",
+      "productKey": "https://github.com/cyrusnuevodia/capn-hook",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Capn-hook 试图保存 coding agent 已查过的代码谜题，值得观察这种轻量工程记忆能否减少重复搜索，而不积累过期上下文。"
+    },
+    {
+      "rank": 14,
+      "product": "JustVibe",
+      "productKey": "https://www.producthunt.com/products/justvibe",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "JustVibe 把“搜索”转成按需生成应用的执行入口，值得看用户意图如何落成可操作界面；PH 证据缺少 rank、票数和评论，热度仍不明确。"
+    },
+    {
+      "rank": 15,
+      "product": "Second Brain for AI v2",
+      "productKey": "https://www.producthunt.com/products/second-brain-cloudflare",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Second Brain for AI v2 主打跨工具记忆连接，核心判断是身份、权限与记忆更新能否统一；目前缺少具体连接器和召回质量证据。"
+    },
+    {
+      "rank": 16,
+      "product": "Yes-Brainer – A council of LLMs that debate in the browser, BYOK",
+      "productKey": "https://yesbrainer.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Yes-Brainer 在浏览器内让多个 LLM 辩论且支持 BYOK，适合观察多模型分歧是否改善决策；风险是成本上升却只产生更长答案。"
+    },
+    {
+      "rank": 17,
+      "product": "Call to Control AI Agents via the Web",
+      "productKey": "https://diffforge.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "通过网页电话控制 AI agent 提供了远程接管入口，关键在身份验证、指令确认与异常中止，现有 HN 标题不足以证明这些安全机制。"
+    },
+    {
+      "rank": 18,
+      "product": "Alson Shop",
+      "productKey": "https://www.producthunt.com/products/alsonai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Alson Shop 将 AI 原生体验放进故事书商店，场景明确但证据只有一句定位；需确认 AI 参与创作、发现还是购买，以及对家庭用户的实际价值。"
+    },
+    {
+      "rank": 19,
+      "product": "Use After Effects with Claude Code, Cursor and Antigravity",
+      "productKey": "https://github.com/arman-luthra/aftr",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 After Effects 暴露给 Claude Code、Cursor 与 Antigravity，展示 coding agent 向专业创意软件延伸；关键是可控编辑而非一次性脚本生成。"
+    },
+    {
+      "rank": 20,
+      "product": "Cloudflare 推出 Precursor：通过持续客户端信号检测 AI 智能体行为",
+      "productKey": "https://aihot.virxact.com/items/cmrj9ol0g00txbi03lrhdawar",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "Cloudflare Precursor 用持续客户端行为信号识别 AI agent，切中 agent 访问网站后的风控难题；核心是降低误报且不阻断合法自动化。"
+    }
+  ]
+}
