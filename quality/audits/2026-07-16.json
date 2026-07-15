@@ -1,0 +1,290 @@
+{
+  "date": "2026-07-16",
+  "generatedAt": "2026-07-15T16:02:40.245Z",
+  "reportPath": "reports/2026-07-16-0002-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 91,
+    "top20Sources": [
+      "YC Launch",
+      "Product Hunt",
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 20,
+      "keptCount": 14,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-14；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 20 条，AI 相关候选 14 条；历史去重移除 5 条已报道或已处理日榜 Product Hunt 信号，最终发布 9 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 3,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 30,
+      "keptCount": 30,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 18,
+      "keptCount": 9,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 34,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "OneSignal",
+      "productKey": "https://www.ycombinator.com/launches/rwz-onesignal-is-powering-autonomous-lifecycle-marketing-for-b2c-companies",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "OneSignal 同时推出 AI、品牌中心、MCP 与 Slack Agent，值得看它能否把传统消息触达升级为可自主规划和执行的用户生命周期运营。"
+    },
+    {
+      "rank": 2,
+      "product": "ClawTeams",
+      "productKey": "https://www.producthunt.com/products/clawteams",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ClawTeams 把多渠道店铺运营交给 AI agents，适合看垂直运营场景如何从工具升级为托管执行。"
+    },
+    {
+      "rank": 3,
+      "product": "Fudge MCP",
+      "productKey": "https://www.producthunt.com/products/fudge-mcp",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "从现有网站提取设计判断供 agent 复用，值得观察这种参考驱动方式能否比通用审美提示更稳定地约束生成界面。"
+    },
+    {
+      "rank": 4,
+      "product": "Agnost AI (YC S26) – Extract user feedback from agent conversations",
+      "productKey": "https://agnost.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "从 agent 对话自动抽取用户反馈，价值在于把分散的任务失败与需求信号直接沉淀为产品迭代输入，减少人工翻阅会话。"
+    },
+    {
+      "rank": 5,
+      "product": "Simba Voice Agents",
+      "productKey": "https://www.producthunt.com/products/speechify",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Speechify 把 Simba 3.2 直接包装成语音 agent，值得看模型优势能否落到对话延迟、打断处理和长轮次稳定性，而非只停留在榜单宣称。"
+    },
+    {
+      "rank": 6,
+      "product": "Definite",
+      "productKey": "https://www.ycombinator.com/launches/rwq-definite-turn-weeks-of-regulatory-reports-into-hours",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把数周的监管报告压缩到数小时，值得观察其 agent 如何保留财务数据来源、计算过程与复核痕迹，这是高风险自动化能否交付的关键。"
+    },
+    {
+      "rank": 7,
+      "product": "StyleSeed – a design-rules engine so AI agents stop building generic UI",
+      "productKey": "https://github.com/bitjaru/styleseed",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用设计规则引擎约束 agent 生成界面，值得看规则能否被自动检查并阻断通用化 UI，而不只是换一套提示词。"
+    },
+    {
+      "rank": 8,
+      "product": "Aict – Unix coreutils that output XML/JSON, built for AI agents",
+      "productKey": "https://github.com/synseqack/aict",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 Unix coreutils 输出改成 XML/JSON，核心启发是用稳定结构降低 agent 解析命令行文本的错误率，但需验证兼容成本是否值得。"
+    },
+    {
+      "rank": 9,
+      "product": "A TypeScript repo where AI agents can't break the architecture",
+      "productKey": "https://github.com/lucasgodt/open-agent-ready-typescript",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "通过 TypeScript 仓库约束防止 agent 破坏架构，值得看它是否把边界落实到可执行测试和依赖规则，而非仅靠说明文档。"
+    },
+    {
+      "rank": 10,
+      "product": "Homestead – Build apps for you, your family, and your agents",
+      "productKey": "https://myhomestead.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "面向个人、家庭与 agent 共用的应用构建入口，值得观察权限、数据共享和非技术成员使用是否能形成区别于通用 vibe coding 的产品边界。"
+    },
+    {
+      "rank": 11,
+      "product": "NoMac.app",
+      "productKey": "https://www.producthunt.com/products/nomac",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "NoMac.app 选择本地语音/桌面入口，适合观察低摩擦控制电脑的交互边界和隐私叙事。"
+    },
+    {
+      "rank": 12,
+      "product": "One MCP setup for 22 clients, with lazy tool discovery",
+      "productKey": "https://github.com/tsouth89/toolport",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "一套配置覆盖 22 个 MCP 客户端并延迟发现工具，价值在于减少重复配置和上下文膨胀，需看跨客户端兼容与工具权限是否一致。"
+    },
+    {
+      "rank": 13,
+      "product": "An MCP to create and call Playwright scripts as tools on your extension",
+      "productKey": "https://reduck.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 Playwright 脚本生成并注册为扩展工具，值得看它能否把一次性浏览器操作沉淀成可复用、可调试的 agent 能力。"
+    },
+    {
+      "rank": 14,
+      "product": "An uptime monitor with an MCP server, create monitors by asking Claude",
+      "productKey": "https://uptimemonitoring.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "An uptime monitor with an MCP server, create monitors by asking Claude 把 agent 的运行状态和问题定位做成产品层，适合看可观测性如何进入 AI 开发流程。"
+    },
+    {
+      "rank": 15,
+      "product": "AgentKey",
+      "productKey": "https://www.producthunt.com/products/agentkey",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AgentKey 如果目标是复杂数据场景，价值不在聊天本身，而在它能否把分析、追问和结果交付压进一个稳定入口。"
+    },
+    {
+      "rank": 16,
+      "product": "Agent's Design – Claude/Codex copy-paste templates that kill AI-slop UI",
+      "productKey": "https://agents-design.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用可复制模板纠正 Claude/Codex 的通用化 UI，适合作为低门槛需求信号；但模板能否跨项目保持品牌差异仍需验证。"
+    },
+    {
+      "rank": 17,
+      "product": "LoopGain – Stop agent loops with control theory, not max_iterations",
+      "productKey": "https://github.com/loopgain-ai/loopgain",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用控制理论识别并停止 agent 循环，比固定最大迭代次数更贴近运行状态，值得看是否能降低误停和失控成本。"
+    },
+    {
+      "rank": 18,
+      "product": "MCP Queen – a graded registry that live-probes every MCP server",
+      "productKey": "https://mcpqueen.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "通过实时探测给 MCP server 分级，价值在于把目录发现升级为可用性与信任判断；关键看探测是否覆盖权限、安全和实际调用结果。"
+    },
+    {
+      "rank": 19,
+      "product": "VSCode Inline Comments with MCP",
+      "productKey": "https://github.com/gabi-a/inline-comments",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 agent 通过 MCP 读取和写入 VSCode 行内评论，值得看代码反馈能否从聊天窗口回到精确文件位置，缩短审查闭环。"
+    },
+    {
+      "rank": 20,
+      "product": "Pazi",
+      "productKey": "https://www.producthunt.com/products/pazi",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Pazi 把开发者工作流包装成首日可试用产品，适合观察编码入口、费用门槛和环境粘性。"
+    }
+  ]
+}
