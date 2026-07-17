@@ -1,0 +1,290 @@
+{
+  "date": "2026-07-18",
+  "generatedAt": "2026-07-17T16:03:27.137Z",
+  "reportPath": "reports/2026-07-18-0003-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 71,
+    "top20Sources": [
+      "HN Algolia",
+      "YC Launch",
+      "Product Hunt"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 17,
+      "keptCount": 9,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-16；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 17 条，AI 相关候选 10 条；历史去重移除 1 条已报道或已处理日榜 Product Hunt 信号，最终发布 8 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 1,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 5,
+      "keptCount": 1,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 21,
+      "keptCount": 21,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 34,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "HyperShots – Spec-perfect App Store screenshots from coding agents",
+      "productKey": "https://github.com/hypersocialinc/hypershots",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "HyperShots 把应用商店截图交给 coding agent 自动生成，值得看它能否把尺寸规范、文案与视觉一致性变成可验证的发布流水线。"
+    },
+    {
+      "rank": 2,
+      "product": "Wolbarg – Local-first shared memory for AI agents using SQLite",
+      "productKey": "https://wolbarg.com/blog/why-sqlite-is-enough-for-local-ai-agent-memory",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Wolbarg 用 SQLite 做本地共享记忆，产品启发在于以低运维依赖换取 agent 间可追溯的上下文，但需验证并发与冲突处理。"
+    },
+    {
+      "rank": 3,
+      "product": "Local Search Agent – RAG replacement, no embeddings, free tier",
+      "productKey": "https://github.com/wiss84/local-search-agent",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Local Search Agent 主张不用 embedding 替代 RAG，值得验证其本地搜索在召回率、引用可追溯性和免费层成本上的真实取舍。"
+    },
+    {
+      "rank": 4,
+      "product": "Pluto",
+      "productKey": "https://www.ycombinator.com/launches/rtp-pluto-ai-voice-agent-that-helps-professionals-get-discovered",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Pluto 用十分钟语音访谈生成职业画像并撮合引荐，值得看“被 AI 发现”能否形成比简历库更高效的人才分发入口。"
+    },
+    {
+      "rank": 5,
+      "product": "Libretto PR agents – Automatically fix failing playwright scripts",
+      "productKey": "https://libretto.sh/debug-agents",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Libretto 让 agent 直接修复失败的 Playwright 脚本，关键价值是把测试维护从告警推进到 PR 交付，并保留可审查变更。"
+    },
+    {
+      "rank": 6,
+      "product": "On-chain bond market where the issuers are AI agents",
+      "productKey": "https://selbonds.now",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 AI agent 成为链上债券发行方是新颖机制实验，但信息不足，先作为弱信号保留；尚缺信用约束、还款来源与合规说明。"
+    },
+    {
+      "rank": 7,
+      "product": "OSS Pi Agent for Slack and Linear",
+      "productKey": "https://github.com/brainwavesio/pi-digby",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "OSS Pi Agent 把 Slack 讨论与 Linear 任务接入开源 agent，值得看它能否跨沟通和项目系统闭环执行，而非只做消息问答。"
+    },
+    {
+      "rank": 8,
+      "product": "Sandboxd – Self-Hosted Lovable (agents, sandboxes, preview url)",
+      "productKey": "https://github.com/tastyeffectco/sandboxd",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Sandboxd 把 agents、隔离沙箱和预览地址做成自托管 Lovable，适合观察企业如何同时获得生成效率、数据控制和部署审计。"
+    },
+    {
+      "rank": 9,
+      "product": "Traceforce (YC S26) – Company-wide security monitoring for AI apps",
+      "productKey": "https://news.ycombinator.com/item?id=48937020",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Traceforce 面向全公司的 AI 应用做安全监控，值得看它如何统一发现影子 AI、运行风险与责任归属，而不是停留在单应用日志。"
+    },
+    {
+      "rank": 10,
+      "product": "Nitrosend",
+      "productKey": "https://www.producthunt.com/products/nitrosend",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Nitrosend 让 agent 自助注册、收发和回复邮件，值得看独立身份、权限控制与反滥用机制能否支撑真正异步的 agent 工作流。"
+    },
+    {
+      "rank": 11,
+      "product": "Hearth, an open-source local AI that runs your PC (files, apps, voice)",
+      "productKey": "https://github.com/0pen-sourcer/hearth",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Hearth 以开源、本地方式操作电脑文件、应用和语音，价值在于隐私优先的桌面执行；需验证高权限动作的确认与回滚设计。"
+    },
+    {
+      "rank": 12,
+      "product": "Albato AI",
+      "productKey": "https://www.producthunt.com/products/albato",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Albato AI 把 AI 工作流接到一千多个应用，值得观察其差异是否来自跨系统执行可靠性，而非在传统自动化上增加生成步骤。"
+    },
+    {
+      "rank": 13,
+      "product": "Customizable SAP MCP Server",
+      "productKey": "https://superglue.ai/mcp/sap",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "可定制 SAP MCP 把企业核心系统暴露给 agent，产品关键是能否将复杂对象、权限和审计包装成安全可组合的工具接口。"
+    },
+    {
+      "rank": 14,
+      "product": "Vektorgeist- A platform for AI operators and their agent's",
+      "productKey": "https://vektorgeist.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Vektorgeist 声称服务 AI operators 与其 agents，但信息不足，先作为弱信号保留；现有证据未说明具体任务、控制面和交付结果。"
+    },
+    {
+      "rank": 15,
+      "product": "In Parallel MCP",
+      "productKey": "https://www.producthunt.com/products/in-parallel",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "In Parallel MCP 试图让同一上下文跨 agent 可用，值得看它如何处理权限、版本与过期信息，避免共享记忆反而放大错误。"
+    },
+    {
+      "rank": 16,
+      "product": "Scribe, a CLI that builds AI agent memory from your repos and sessions",
+      "productKey": "https://getscribe.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Scribe 从代码仓库和会话构建 CLI 记忆，启发在于把 agent 上下文沉淀为可复用资产；需验证自动摘要是否保留关键决策来源。"
+    },
+    {
+      "rank": 17,
+      "product": "PocketVeto is a Bluetooth-only AI agent remote control",
+      "productKey": "https://github.com/pocket-veto/pocket-veto",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "PocketVeto 用仅蓝牙遥控 agent，值得看离线近场确认能否成为高风险动作的物理授权层，但应用范围和安全模型仍待说明。"
+    },
+    {
+      "rank": 18,
+      "product": "Graft AI",
+      "productKey": "https://www.producthunt.com/products/graft-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Graft AI 把公司运营关系转成供 agents 使用的动态地图，值得观察它能否持续同步流程与责任人，而不是生成一次性知识图谱。"
+    },
+    {
+      "rank": 19,
+      "product": "Manta AI",
+      "productKey": "https://www.producthunt.com/products/manta-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Manta AI 用 agent 自主测试 Web 应用，关键看它能否从探索、复现到缺陷证据形成闭环，并降低脆弱脚本的维护成本。"
+    },
+    {
+      "rank": 20,
+      "product": "River",
+      "productKey": "https://www.producthunt.com/products/river-9",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "River 把产品演示与成交交给 AI 客户经理，值得看高意向销售能否端到端自动化，同时避免承诺失真和复杂异议处理失败。"
+    }
+  ]
+}
