@@ -1,0 +1,289 @@
+{
+  "date": "2026-07-20",
+  "generatedAt": "2026-07-19T16:01:35.076Z",
+  "reportPath": "reports/2026-07-20-0001-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 70,
+    "top20Sources": [
+      "HN Algolia",
+      "Product Hunt"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 17,
+      "keptCount": 7,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-18；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 17 条，AI 相关候选 7 条；历史去重后最终发布 7 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "YC Launch 本窗口无候选或来源为空。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 21,
+      "keptCount": 21,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 23,
+      "keptCount": 23,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 34,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Shikigami, run AI coding agents in parallel, each in a Git worktree",
+      "productKey": "https://shikigami.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Shikigami 用 Git worktree 隔离并行 coding agents，值得验证冲突合并、任务分派和失败回滚能否支撑真正的团队级并发。"
+    },
+    {
+      "rank": 2,
+      "product": "Flightwake – a flight recorder for AI coding agents, not a navigator",
+      "productKey": "https://github.com/kaiwutech-tw/flightwake",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Flightwake 把 coding agent 定位成需要黑匣子记录的执行者，价值在于能否完整追溯提示、工具调用与代码变更，帮助定位失控原因。"
+    },
+    {
+      "rank": 3,
+      "product": "Synapse – local codebase indexer and MCP server for Claude Code",
+      "productKey": "https://github.com/nrkoka786/synapse",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Synapse 将本地代码库索引通过 MCP 交给 Claude Code，关键看增量索引的新鲜度、检索精度与敏感代码不出本机的边界。"
+    },
+    {
+      "rank": 4,
+      "product": "ZooData",
+      "productKey": "https://www.producthunt.com/products/zoodata",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ZooData 要做 agent 的数据层，值得观察它是否统一数据访问、权限和上下文更新；现有描述未说明连接器与一致性机制。"
+    },
+    {
+      "rank": 5,
+      "product": "Waylou / a multi-provider CLI coding agent / fork of Gemini CLI",
+      "productKey": "https://github.com/helis-d/waylou",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Waylou 从 Gemini CLI 分叉出多模型 coding agent，产品启发在供应商可替换性；需验证不同模型间工具协议和会话状态能否平滑迁移。"
+    },
+    {
+      "rank": 6,
+      "product": "Talon – a self-hosted harness for long-lived AI agents",
+      "productKey": "https://github.com/dylanneve1/talon",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Talon 面向长生命周期 agent 提供自托管 harness，关键是持久状态、定时唤醒、异常恢复和资源上限是否形成可靠运维闭环。"
+    },
+    {
+      "rank": 7,
+      "product": "AgentGrid",
+      "productKey": "https://www.producthunt.com/products/agentgrid",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AgentGrid 把 agents、终端与笔记放进无限画布，值得看空间布局能否承担多任务状态管理，而不只是把多个面板拼在一起。"
+    },
+    {
+      "rank": 8,
+      "product": "We ran 79 MCP servers in microVMs, only 31 passed",
+      "productKey": "https://usethrone.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "79 个 MCP server 仅 31 个通过 microVM 测试，直接暴露工具生态的可运行性缺口；值得看隔离测试能否变成上线前质量门禁。"
+    },
+    {
+      "rank": 9,
+      "product": "Warden – authorization gateway for agentic RAG",
+      "productKey": "https://github.com/geminimir/warden",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Warden 为 agentic RAG 增加授权网关，价值在检索前就执行用户与文档权限，避免 agent 因召回越权内容造成数据泄露。"
+    },
+    {
+      "rank": 10,
+      "product": "OpenMarkdown",
+      "productKey": "https://www.producthunt.com/products/openmarkdown",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "OpenMarkdown 让人和 agent 共编同一 Markdown，值得验证光标冲突、修改归因与接受撤销机制，是否比聊天后复制粘贴更顺畅。"
+    },
+    {
+      "rank": 11,
+      "product": "A self-correcting algebraic agent swarm",
+      "productKey": "https://github.com/michael-ax64/k4-algebraicswarm",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "自纠错代数 agent swarm 展示多 agent 验证数学结果的方向，但现有 HN 标题不足以证明正确率与成本优势，先作为弱信号保留。"
+    },
+    {
+      "rank": 12,
+      "product": "Clark",
+      "productKey": "https://www.producthunt.com/products/clark-agent",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Clark 给 AI coworker 独立云电脑，产品价值在持续执行跨应用任务；需重点观察凭证托管、操作确认与错误恢复如何设计。"
+    },
+    {
+      "rank": 13,
+      "product": "Giving Claude Code and Codex its voice",
+      "productKey": "https://github.com/softcane/aloud",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "为 Claude Code 和 Codex 增加语音输出，可降低长任务盯屏成本；关键看通知粒度和打断控制，避免把终端日志机械朗读。"
+    },
+    {
+      "rank": 14,
+      "product": "Claude Code Workflows for GPT/Codex",
+      "productKey": "https://github.com/cyrusnuevodia/gpt-workflow",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这套工作流试图把 Claude Code 的操作范式迁移到 GPT/Codex，值得看流程资产能否跨模型复用，而不被专有命令和提示格式锁定。"
+    },
+    {
+      "rank": 15,
+      "product": "CallBro – Granola, but Powered by Codex, Claude Code, or Your Local LLM",
+      "productKey": "https://callbro.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "CallBro 用 Codex、Claude Code 或本地模型替代固定会议模型，启发在可插拔推理后端；需验证录音、摘要与隐私链路是否完整。"
+    },
+    {
+      "rank": 16,
+      "product": "Same castle prompt, 8 LLMs, 24 procedural Three.js worlds",
+      "productKey": "https://castle-bakeoff.pages.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "同一城堡提示在 8 个 LLM 上生成 24 个 Three.js 世界，适合作为空间生成能力对照，但更像展示，缺少稳定评测指标与编辑工作流。"
+    },
+    {
+      "rank": 17,
+      "product": "Peek-CLI: Let Claude Code iterate on front end designs",
+      "productKey": "https://github.com/puffinsoft/peek-cli",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Peek-CLI 让 Claude Code 反复检查前端设计，值得看视觉反馈是否能转成可控代码修改，并避免多轮迭代造成样式漂移。"
+    },
+    {
+      "rank": 18,
+      "product": "PilotCite – Get your brand cited by ChatGPT, Gemini, and more",
+      "productKey": "https://www.pilotcite.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "PilotCite 将品牌进入 ChatGPT、Gemini 答案包装成增长目标，关键是能否区分真实引用提升与不可控的生成式搜索波动。"
+    },
+    {
+      "rank": 19,
+      "product": "We ranked our dev tools in Google's new AI Overviews",
+      "productKey": "https://zlvox.com/blog/google-ai-overviews-2026-optimize-agentic-search",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这条信号用 AI Overviews 排名案例验证 agentic search 优化，但本质偏方法文章；价值在揭示新分发入口，不能等同独立产品发布。"
+    },
+    {
+      "rank": 20,
+      "product": "DWS A LLM Generated, \"Drudge Report\" style news site",
+      "productKey": "https://news.dws.rip",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "DWS 用 LLM 自动生成 Drudge 风格新闻站，值得警惕摘要失真、来源透明和重复内容；现有证据不足以证明持续编辑价值。"
+    }
+  ]
+}
