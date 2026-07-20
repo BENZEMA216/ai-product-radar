@@ -1,0 +1,291 @@
+{
+  "date": "2026-07-21",
+  "generatedAt": "2026-07-20T16:02:52.561Z",
+  "reportPath": "reports/2026-07-21-0002-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 59,
+    "top20Sources": [
+      "YC Launch",
+      "HN Algolia",
+      "Product Hunt",
+      "AIHOT"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 25,
+      "keptCount": 15,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-19；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 25 条，AI 相关候选 15 条；历史去重移除 9 条已报道或已处理日榜 Product Hunt 信号，最终发布 6 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 1,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 13,
+      "keptCount": 13,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 19,
+      "keptCount": 19,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 38,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Fabraix",
+      "productKey": "https://www.ycombinator.com/launches/re2-fabraix-the-frontier-agent-that-hacks-customer-facing-ai",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Fabraix 把 AI 安全从上线前测试变成持续红队代理，值得观察其能否把漏洞发现做成面向企业 AI 应用的常驻安全层。"
+    },
+    {
+      "rank": 2,
+      "product": "R3 – Review locally and send feedback back to your coding agent",
+      "productKey": "https://github.com/hyperlogue/r3",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "R3 把代码审查留在本地、再把结构化反馈送回 coding agent，值得看人类复核是否能成为多轮编码代理的稳定控制点。"
+    },
+    {
+      "rank": 3,
+      "product": "Bothread, multiple AI coding agents talk, share one repo, no collisions",
+      "productKey": "https://github.com/adamace9/bothread",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Bothread 直接处理多个 coding agent 共用仓库时的沟通与冲突问题，关键价值在于能否把并行开发从演示变成可控协作。"
+    },
+    {
+      "rank": 4,
+      "product": "Give your AI agent a personality (and a voice) without external APIs",
+      "productKey": "https://fellowgeek.github.io/mcp-speak",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它在不依赖外部 API 的前提下给 agent 增加声音与人格，适合验证本地语音交互能否提升代理反馈的可感知性，而非只增加装饰。"
+    },
+    {
+      "rank": 5,
+      "product": "Building a product for humans and AI agents",
+      "productKey": "https://slobodan.me/posts/introducing-competitor-tracker",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "该竞品追踪器同时服务人和 agent，值得观察同一产品如何设计双入口与共享状态；但目前只有发布标题，完成度信息仍不足。"
+    },
+    {
+      "rank": 6,
+      "product": "Hail.so – Open-source phone, SMS and email for agents and humans, v0.15",
+      "productKey": "https://github.com/hail-hq/hail",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Hail.so 把电话、短信和邮件统一成 agent 可调用的开源通信层，值得看跨渠道身份、上下文连续性和人工接管如何落地。"
+    },
+    {
+      "rank": 7,
+      "product": "I built a deterministic arena where AI agents fight using code",
+      "productKey": "https://www.agentduel.app/b/cru8e9ng",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这个确定性代码对战场可用于比较 agent 策略与执行稳定性；但当前更像实验性竞技 demo，商业场景和有效评测指标仍不明确。"
+    },
+    {
+      "rank": 8,
+      "product": "CitedSpy",
+      "productKey": "https://www.producthunt.com/products/citedspy",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "CitedSpy 聚焦品牌在 ChatGPT、Claude 与 Perplexity 中的可见度，值得看生成式搜索监测能否给出可执行的内容与渠道归因。"
+    },
+    {
+      "rank": 9,
+      "product": "Newsline – one-line news in your status line while your AI agent works",
+      "productKey": "https://github.com/itdar/newsline",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Newsline 利用 coding agent 等待时间在状态栏展示一句新闻，交互切口轻巧；但与 AI 工作流的结合很薄，需警惕注意力干扰大于价值。"
+    },
+    {
+      "rank": 10,
+      "product": "Send your agent to solve open math missions",
+      "productKey": "https://mission.land",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "mission.land 用开放数学任务承接 agent 的自主执行，值得观察任务验证、贡献归属和激励机制能否形成可持续的人机协作网络。"
+    },
+    {
+      "rank": 11,
+      "product": "DeepSQL – A self-hostable AI DBA agent for Postgres and MySQL",
+      "productKey": "https://deepsql.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "DeepSQL 把 Postgres 与 MySQL 运维做成可自托管 DBA agent，真正需要验证的是权限边界、变更审计和故障回滚是否足够可靠。"
+    },
+    {
+      "rank": 12,
+      "product": "HeimWall",
+      "productKey": "https://www.producthunt.com/products/heimwall",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "HeimWall 在秘密进入 Cursor 或 Claude 上下文前拦截泄漏，值得看它能否成为 coding agent 的本地数据防泄漏层且不阻断开发体验。"
+    },
+    {
+      "rank": 13,
+      "product": "Panguard.AI",
+      "productKey": "https://www.producthunt.com/products/panguard-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Panguard.AI 同时提供恶意软件扫描与 agent 运行时防护，值得观察开源安全护栏能否覆盖工具调用期间的动态风险，而非只做静态检查。"
+    },
+    {
+      "rank": 14,
+      "product": "Double",
+      "productKey": "https://www.producthunt.com/products/double-6",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Double 承诺用职业 agent 推进求职结果，关键要看它是否真正执行匹配、申请和跟进闭环，以及如何避免低质量批量投递。"
+    },
+    {
+      "rank": 15,
+      "product": "Startories",
+      "productKey": "https://www.producthunt.com/products/startories-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Startories 用自有 Reddit 账号帮助创业公司提升 AI 搜索排名，说明 GEO 服务正在产品化；同时要警惕不可控的账号风险与归因失真。"
+    },
+    {
+      "rank": 16,
+      "product": "A Pipeline for Making 10-minute AI Movies with Claude Code and Seedance",
+      "productKey": "https://github.com/dawndrain/movie-gen",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "deprioritize",
+      "pmScore": 2,
+      "rankingIssue": "weak_signal_in_top20",
+      "reason": "这条管线把 Claude Code 与 Seedance 串成十分钟 AI 电影流程，适合拆解脚本、镜头和生成环节如何协同，但仍需验证一致性与人工返工量。"
+    },
+    {
+      "rank": 17,
+      "product": "A self-hosted AI that turns Hacker News into a daily briefing",
+      "productKey": "https://github.com/recnes/hn-ai-summarizer",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "该工具把 HN 摘要做成可自托管日报，价值在隐私和信息筛选可控；但赛道成熟，需看其个性化与来源追溯是否有明显差异。"
+    },
+    {
+      "rank": 18,
+      "product": "We let Muse Spark 1.1 vibe code itself to produce 2048",
+      "productKey": "https://github.com/awesoftsolutions/idea_meta-muse-2048-game",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 Muse Spark 1.1 自行写出 2048 主要是模型编码能力展示，缺少真实用户问题与持续使用场景，不宜据此判断为成熟 AI 产品。"
+    },
+    {
+      "rank": 19,
+      "product": "SuperTrader",
+      "productKey": "https://www.producthunt.com/products/supertrader",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "SuperTrader 用 AI 交易日志切入复盘与纪律管理，值得看它能否从记录升级为可解释的行为纠偏，同时避免把建议包装成收益承诺。"
+    },
+    {
+      "rank": 20,
+      "product": "请停止使用 OpenCode",
+      "productKey": "https://aihot.virxact.com/items/cmrtb9idm20l0bitlhv12cfud",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "deprioritize",
+      "pmScore": 2,
+      "rankingIssue": "weak_signal_in_top20",
+      "reason": "请停止使用 OpenCode 信息不足，先作为弱信号保留；当前更像传闻转述，缺少官方发布内容，无法判断这会带来什么具体产品动作。"
+    }
+  ]
+}
