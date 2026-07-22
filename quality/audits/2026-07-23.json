@@ -1,0 +1,290 @@
+{
+  "date": "2026-07-23",
+  "generatedAt": "2026-07-22T16:01:47.516Z",
+  "reportPath": "reports/2026-07-23-0001-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 86,
+    "top20Sources": [
+      "HN Algolia",
+      "YC Launch",
+      "Product Hunt"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 17,
+      "keptCount": 11,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-21；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 17 条，AI 相关候选 11 条；历史去重后最终发布 11 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 2,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 29,
+      "keptCount": 29,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 5,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 19,
+      "keptCount": 19,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 39,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Reachpad – Run all your coding agents from anywhere from the browser",
+      "productKey": "https://reachpad.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Reachpad 把多台 coding agent 的远程调度收进浏览器，值得验证移动场景下的会话接管、权限隔离与中断恢复是否足够可靠。"
+    },
+    {
+      "rank": 2,
+      "product": "Browser Tools SDK – an optimal browser harness for agents",
+      "productKey": "https://libretto.sh/browser-tools",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Browser Tools SDK 试图提供 agent 专用浏览器执行底座，关键不在接口数量，而在复杂网页上的稳定性、调试成本与反爬失败恢复。"
+    },
+    {
+      "rank": 3,
+      "product": "Cosyra – run cloud coding agents from your phone",
+      "productKey": "https://cosyra.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Cosyra 让用户从手机管理云端 coding agent，切中离开电脑后的审批与续跑场景；需观察远程控制是否形成高频刚需。"
+    },
+    {
+      "rank": 4,
+      "product": "Dejavu – stop showing coding agents the same command output twice",
+      "productKey": "https://github.com/salnika/dejavu",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Dejavu 避免把重复命令输出再次塞给 coding agent，直接针对上下文浪费；价值取决于去重是否会误删影响判断的新状态。"
+    },
+    {
+      "rank": 5,
+      "product": "Observability for Coding Agents and LLM Applications",
+      "productKey": "https://telemetry.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Telemetry.dev 把 coding agent 与 LLM 应用的可观测性产品化，值得看它能否把轨迹、成本和失败原因转成团队可执行的诊断。"
+    },
+    {
+      "rank": 6,
+      "product": "Anakin – API for your AI agents to access the most difficult websites",
+      "productKey": "https://anakin.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Anakin 为 agent 提供难抓网站的访问 API，若能稳定处理登录、反爬与结构变化，会成为网页任务基础设施；现有证据未说明成功率。"
+    },
+    {
+      "rank": 7,
+      "product": "Turn narrated screen recordings into data for AI agents (local, MIT)",
+      "productKey": "https://github.com/korovin-aa97/talkthrough-mcp",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把带旁白的录屏转成 agent 可用数据，为流程教学提供了比文字 SOP 更低门槛的输入；需验证步骤定位和界面变化后的鲁棒性。"
+    },
+    {
+      "rank": 8,
+      "product": "Rowboat Labs",
+      "productKey": "https://www.ycombinator.com/launches/rma-rowboat-your-ai-coworker-with-memory",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Rowboat 用本地优先、Markdown 记忆和可自建工作面承载 AI coworker，产品启发是把长期协作状态交还用户而非锁在聊天记录里。"
+    },
+    {
+      "rank": 9,
+      "product": "I mapped my AI coding setup – 90 of 103 installed skills never fire",
+      "productKey": "https://github.com/pycomet/agent-atlas",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agent Atlas 揭示 103 个已装技能中 90 个从未触发，直指 skill 发现与路由失效；值得作为 agent 配置治理和精简的诊断工具。"
+    },
+    {
+      "rank": 10,
+      "product": "Forkbench – a native-Mac control room for running CLI coding agent",
+      "productKey": "https://forkbench.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Forkbench 把多个 CLI coding agent 组织成原生 Mac 控制台，值得看并行任务、上下文切换和人工审批能否比终端多窗口更清晰。"
+    },
+    {
+      "rank": 11,
+      "product": "Rerun",
+      "productKey": "https://www.producthunt.com/products/rerun-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Rerun 声称让各类任务的 agent 更容易搭建，但描述未给出工作流、控制机制或交付结果；信息不足，先作为弱信号保留。"
+    },
+    {
+      "rank": 12,
+      "product": "The Email Game – AI agents compete over cryptographically signed emails",
+      "productKey": "https://theemailgame.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用加密签名邮件让 AI agent 竞争，能观察 agent 身份与消息可信度，但当前更像机制实验，尚未证明可复用的业务场景。"
+    },
+    {
+      "rank": 13,
+      "product": "Octomind Cloud – Persistent cloud compute for AI agents",
+      "productKey": "https://octomind.run/blog/octomind-cloud-launch",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Octomind Cloud 为 agent 提供持久云计算，解决长任务跨会话保留环境的问题；关键是状态恢复、隔离与持续占用成本如何权衡。"
+    },
+    {
+      "rank": 14,
+      "product": "Emem – External memory of the physical world for AI agents",
+      "productKey": "https://github.com/vortx-ai/emem",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Emem 主张为 agent 保存物理世界的外部记忆，方向涉及具身任务的连续状态；但只有发布标题，缺少数据结构、采集方式和效果证据。"
+    },
+    {
+      "rank": 15,
+      "product": "Meltbox – where your agents send you briefs",
+      "productKey": "https://meltbox.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Meltbox 把多个 agent 的输出汇入简报收件箱，抓住人类监督瓶颈；值得验证摘要优先级、来源追溯和一键回到任务现场的设计。"
+    },
+    {
+      "rank": 16,
+      "product": "CartAI",
+      "productKey": "https://www.producthunt.com/products/cartai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "CartAI 把购买流程推进到由 agent 处理结账，价值在于从推荐跨到交易执行；需重点观察用户确认、支付责任与失败归属。"
+    },
+    {
+      "rank": 17,
+      "product": "tterm",
+      "productKey": "https://www.producthunt.com/products/tterm",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "tterm 把终端、真实浏览器和 Claude Code 放进同一工作面，值得看跨工具状态共享是否能减少 coding agent 的上下文断裂。"
+    },
+    {
+      "rank": 18,
+      "product": "Recall – an MCP server that turns your notes into flashcards",
+      "productKey": "https://recallapp.online",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Recall 用 MCP 把笔记转成闪卡，场景明确且接入成本低；需验证问题生成质量、复习调度和原文引用能否形成真实学习闭环。"
+    },
+    {
+      "rank": 19,
+      "product": "Connect Claude to LinkedIn, Twitter, etc. with Reduck MCP",
+      "productKey": "https://reduck.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Reduck MCP 让 Claude 操作 LinkedIn、Twitter 等渠道，能缩短内容分发链路，但账号授权、平台规则和误发撤回是产品成败关键。"
+    },
+    {
+      "rank": 20,
+      "product": "Brew doctor` for Skills and MCP loadouts",
+      "productKey": "https://github.com/dbreunig/drskill",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "drskill 用类似 brew doctor 的方式检查 Skills 与 MCP 配置，切中 agent 工具过载；值得看能否识别冲突、失效依赖和低使用组件。"
+    }
+  ]
+}
