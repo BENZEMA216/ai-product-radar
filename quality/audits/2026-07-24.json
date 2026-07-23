@@ -1,0 +1,289 @@
+{
+  "date": "2026-07-24",
+  "generatedAt": "2026-07-23T16:06:29.051Z",
+  "reportPath": "reports/2026-07-24-0006-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 51,
+    "top20Sources": [
+      "HN Algolia",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-22；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 0 条，AI 相关候选 0 条；fallback 低覆盖时扩展检查 2026-07-21，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 0 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 6,
+      "keptCount": 6,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 32,
+      "keptCount": 32,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 5,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 13,
+      "keptCount": 13,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 42,
+    "error": ""
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Hanesu – An experimental workflow layer for AI coding agents",
+      "productKey": "https://github.com/jezmn/hanesu",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Hanesu 把编码 agent 的任务编排抽成实验性工作流层，值得验证它能否减少多步骤执行漂移，以及失败后是否可恢复。"
+    },
+    {
+      "rank": 2,
+      "product": "STT-MCP – local STT for agents",
+      "productKey": "https://github.com/sm18lr88/stt-mcp",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "STT-MCP 将本地语音转写直接接入 agent，亮点是隐私与低延迟；仍需看识别准确率、模型占用和跨平台体验。"
+    },
+    {
+      "rank": 3,
+      "product": "Stele – A self-maintaining knowledge graph for AI coding agents",
+      "productKey": "https://stele-ai.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Stele 让编码 agent 的知识图谱自行维护，切中长期上下文陈旧问题；关键是更新规则能否避免错误知识持续累积。"
+    },
+    {
+      "rank": 4,
+      "product": "Szr: A safer command output reduction for coding agents",
+      "productKey": "https://github.com/devr-tools/szr",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Szr 面向编码 agent 压缩命令输出，若能保留错误上下文可显著节省 token；需重点验证删减是否导致误判与漏诊。"
+    },
+    {
+      "rank": 5,
+      "product": "OneCLI",
+      "productKey": "https://www.ycombinator.com/launches/roj-onecli-your-ai-agents-shouldn-t-be-holding-raw-secrets",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "OneCLI 用占位令牌与网络层注入隔离真实密钥，直接缓解 agent 持有凭据风险；应关注权限粒度、审计和故障回退。"
+    },
+    {
+      "rank": 6,
+      "product": "Epsilla",
+      "productKey": "https://www.ycombinator.com/launches/rpl-harnessrouter-bring-the-world-s-best-ai-agents-into-your-app-with-one-api",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "HarnessRouter 用一个 API 调用多种编码 agent 并交付视频、游戏、代码等结果，价值在统一执行接口与结果验收层。"
+    },
+    {
+      "rank": 7,
+      "product": "Mwe-MCP – self-hosted memory for AI agents that knows who may know what",
+      "productKey": "https://github.com/fr4nz82/mwe-mcp",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Mwe-MCP 把自托管记忆与“谁可知道什么”结合，适合权限敏感团队；需验证访问控制是否覆盖检索、写入和遗忘。"
+    },
+    {
+      "rank": 8,
+      "product": "Focus on approving agent actions and managing team MCP access",
+      "productKey": "https://gettrustloop.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "TrustLoop 聚焦 agent 动作审批与团队 MCP 权限，切中企业落地的责任边界；关键是审批延迟、策略配置和审计证据。"
+    },
+    {
+      "rank": 9,
+      "product": "I made YAFL – a E2EE file handoff for AI agents",
+      "productKey": "https://yafl.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "YAFL 为 agent 提供端到端加密文件交接，解决跨执行主体传递敏感材料的问题；仍需看身份验证与密钥恢复机制。"
+    },
+    {
+      "rank": 10,
+      "product": "OneCLI – OSS credential gateway that keeps secrets out of AI agents",
+      "productKey": "https://onecli.sh",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "OneCLI 的开源凭据网关把明文密钥移出 agent 进程，产品价值明确；可重点比较部署复杂度、兼容范围与最小权限。"
+    },
+    {
+      "rank": 11,
+      "product": "5dive – Run a Company of Claude Code/Codex Agents (Written in Bash)",
+      "productKey": "https://github.com/5dive-ai/5dive",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "5dive 用 Bash 编排 Claude Code/Codex agent 团队，展示低依赖多 agent 组织方式；需警惕并发冲突和结果验收缺口。"
+    },
+    {
+      "rank": 12,
+      "product": "Setoku - self-hosted knowledge server for AI agents",
+      "productKey": "https://setoku.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Setoku 提供自托管 agent 知识服务，适合数据不出域场景；差异化取决于检索质量、权限隔离与知识更新成本。"
+    },
+    {
+      "rank": 13,
+      "product": "Clueso",
+      "productKey": "https://www.ycombinator.com/launches/rpd-clueso-agents-ship-product-videos-automatically-whenever-you-ship-features",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Clueso 在每次功能发布后自动生成演示、教程和发布视频，把内容生产绑定交付流水线；应验证品牌一致性与人工返工率。"
+    },
+    {
+      "rank": 14,
+      "product": "Remortgaging with Claude, so I built a MCP for Bank of England",
+      "productKey": "https://github.com/moureauf/boe-mcp",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Bank of England MCP 把官方金融数据接入 Claude 的再按揭决策场景，说明垂直数据工具有价值；但需明确数据时效与责任边界。"
+    },
+    {
+      "rank": 15,
+      "product": "15 years of hand-curated architecture, art and design as an MCP server",
+      "productKey": "https://www.thisispaper.com/intelligence/api-docs",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "该 MCP 将十五年人工策展的建筑、艺术与设计资料变成 agent 可调用知识源，价值在稀缺语料而非协议本身。"
+    },
+    {
+      "rank": 16,
+      "product": "Verify what an AI agent did, then tamper with the record (no signup)",
+      "productKey": "https://api.cinchor.com/proof/refund",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Cinchor 用可篡改演示检验 agent 行为证明的可信度，能暴露审计链薄弱点；需看其证据是否具备独立验证和防抵赖能力。"
+    },
+    {
+      "rank": 17,
+      "product": "USB AI Agent – portable uncensored AI with 13 tools, runs from USB",
+      "productKey": "https://github.com/pusucip25/usb-ai-agent",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "USB AI Agent 主打从 U 盘运行的离线工具集，便携与隐私有吸引力；但“uncensored”定位带来安全、更新和可信度风险。"
+    },
+    {
+      "rank": 18,
+      "product": "Rendi, an agent harness on Trigger.dev without spinning up a VM",
+      "productKey": "https://github.com/mcheemaa/rendi",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Rendi 在 Trigger.dev 上运行 agent harness 而无需常驻 VM，可能降低任务型 agent 运维成本；需验证隔离、冷启动和长任务恢复。"
+    },
+    {
+      "rank": 19,
+      "product": "Local-first archive of your ChatGPT/Claude chats",
+      "productKey": "https://chromewebstore.google.com/detail/anamne-%c3%a2%c2%80%c2%94-your-ai-conversa/famgjpiggdaenmgnemmcjobbogdmghlj",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Anamne 将 ChatGPT/Claude 对话本地归档，解决跨平台知识留存；当前链接编码异常，且需核验导入完整性、检索与隐私边界。"
+    },
+    {
+      "rank": 20,
+      "product": "Vifu – A runtime and visual workflow for building AI-native games",
+      "productKey": "https://github.com/vifudotdev/vifu",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Vifu 把 AI 原生游戏运行时与可视化工作流结合，值得观察生成内容如何进入可控玩法循环，而非停留在一次性 demo。"
+    }
+  ]
+}
