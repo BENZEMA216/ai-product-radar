@@ -1,0 +1,403 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-24T15:59:57Z",
+  "generatedBy": "Codex reasoning from GitHub radar-feedback issues",
+  "sourceIssueNumbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42
+  ],
+  "rules": [
+    {
+      "id": "hn-github-stars-below-50-drop",
+      "enabled": true,
+      "action": "drop",
+      "priority": 100,
+      "rationale": "用户反复明确表示，HN 中 star 少于 50 的个人 GitHub 项目不足以证明产品成熟度或技术价值，不进入正式日报。",
+      "issueNumbers": [
+        2,
+        11,
+        16,
+        18,
+        21,
+        34,
+        40,
+        41
+      ],
+      "match": {
+        "sources": [
+          "HN Algolia"
+        ],
+        "linkHosts": [
+          "github.com"
+        ],
+        "githubStarsMax": 49
+      }
+    },
+    {
+      "id": "hn-github-stars-50-to-99-downrank",
+      "enabled": true,
+      "action": "downrank",
+      "scoreDelta": -24,
+      "priority": 90,
+      "rationale": "用户将未过百 star 的 GitHub 项目视为热度和验证不足的弱信号；可以保留在 All Signals，但不能占据前排。",
+      "issueNumbers": [
+        1,
+        2,
+        11,
+        21,
+        35
+      ],
+      "match": {
+        "sources": [
+          "HN Algolia"
+        ],
+        "linkHosts": [
+          "github.com"
+        ],
+        "githubStarsMin": 50,
+        "githubStarsMax": 99
+      }
+    },
+    {
+      "id": "hn-github-stars-unavailable-downrank",
+      "enabled": true,
+      "action": "downrank",
+      "scoreDelta": -18,
+      "priority": 80,
+      "rationale": "GitHub 热度证据不可用时不能假定项目已经被验证；保留召回，但默认不进入 Priority View 前排。",
+      "issueNumbers": [
+        16,
+        18,
+        34,
+        36,
+        40,
+        41
+      ],
+      "match": {
+        "sources": [
+          "HN Algolia"
+        ],
+        "linkHosts": [
+          "github.com"
+        ],
+        "githubStarsMissing": true
+      }
+    },
+    {
+      "id": "product-hunt-very-low-votes-drop",
+      "enabled": true,
+      "action": "drop",
+      "priority": 100,
+      "rationale": "Product Hunt 票数极低时，产品既缺少首日验证，也不应仅因出现在榜单就进入日报。",
+      "issueNumbers": [
+        8
+      ],
+      "match": {
+        "sources": [
+          "Product Hunt"
+        ],
+        "phVotesMax": 9
+      }
+    },
+    {
+      "id": "product-hunt-low-votes-downrank",
+      "enabled": true,
+      "action": "downrank",
+      "scoreDelta": -22,
+      "priority": 90,
+      "rationale": "Product Hunt 票数偏低仍可作为广覆盖信号，但用户明确要求不能因此排到前面。",
+      "issueNumbers": [
+        4,
+        5
+      ],
+      "match": {
+        "sources": [
+          "Product Hunt"
+        ],
+        "phVotesMin": 10,
+        "phVotesMax": 24
+      }
+    },
+    {
+      "id": "trivial-github-release-drop",
+      "enabled": true,
+      "action": "drop",
+      "priority": 100,
+      "rationale": "只有版本号、发布通道或依赖包 patch 的 GitHub Release 不构成有价值的 AI 产品更新。",
+      "issueNumbers": [
+        7,
+        10,
+        13,
+        17,
+        31
+      ],
+      "match": {
+        "sources": [
+          "GitHub Release"
+        ],
+        "weakRelease": true
+      }
+    },
+    {
+      "id": "editorial-or-promotional-content-drop",
+      "enabled": true,
+      "action": "drop",
+      "priority": 95,
+      "rationale": "个人复盘、营销稿、市场排名和企业 PR 不是新产品或产品更新，不应混入产品雷达。",
+      "issueNumbers": [
+        6,
+        29,
+        38
+      ],
+      "match": {
+        "sources": [
+          "HN Algolia",
+          "AIHOT"
+        ],
+        "anyTerms": [
+          "i used",
+          "we ranked",
+          "using wake-on-lan",
+          "lead in",
+          "private beta",
+          "everything that went wrong",
+          "optimize agentic search"
+        ],
+        "noneTerms": [
+          "launch hn:",
+          "show hn:"
+        ]
+      }
+    },
+    {
+      "id": "personal-ai-game-demo-drop",
+      "enabled": true,
+      "action": "drop",
+      "priority": 95,
+      "rationale": "AI 生成的个人小游戏或亲子 demo 缺少可持续产品路径，用户明确不把这类内容当作产品信号。",
+      "issueNumbers": [
+        15,
+        19
+      ],
+      "match": {
+        "anyTerms": [
+          "coded a game",
+          "minecraft phonics",
+          "ai-made game",
+          "built my son",
+          "personal game"
+        ]
+      }
+    },
+    {
+      "id": "research-training-project-not-product-drop",
+      "enabled": true,
+      "action": "drop",
+      "priority": 90,
+      "rationale": "训练控制、数据剪枝等研究型代码项目如果没有可交付产品形态，应放在模型与基础设施观察，而不是产品榜。",
+      "issueNumbers": [
+        27
+      ],
+      "match": {
+        "sources": [
+          "HN Algolia"
+        ],
+        "linkHosts": [
+          "github.com"
+        ],
+        "anyTerms": [
+          "llm training",
+          "vram control",
+          "data pruning",
+          "training framework"
+        ]
+      }
+    },
+    {
+      "id": "generic-memory-assistant-utility-downrank",
+      "enabled": true,
+      "action": "downrank",
+      "scoreDelta": -20,
+      "priority": 70,
+      "rationale": "通用本地记忆、极简聊天、代码索引和配置辅助工具已经高度重复；除非有显著采用或产品创新，否则默认降权。",
+      "issueNumbers": [
+        1,
+        3,
+        11,
+        24,
+        28,
+        33,
+        37,
+        39,
+        42
+      ],
+      "match": {
+        "sources": [
+          "HN Algolia"
+        ],
+        "anyTerms": [
+          "local memory",
+          "persistent memory",
+          "chief of staff",
+          "minimalist llm chatbot",
+          "codebase indexer",
+          "search across all your local coding agents",
+          "instruction modules",
+          "skills and mcp loadouts",
+          "same command output twice",
+          "rate-limit windows"
+        ]
+      }
+    },
+    {
+      "id": "skills-commercialization-and-discovery-boost",
+      "enabled": true,
+      "action": "keep",
+      "scoreDelta": 20,
+      "priority": 80,
+      "rationale": "Skill 的发现、演示、分发和变现是用户明确要求每日重点关注的方向。",
+      "issueNumbers": [
+        25,
+        26
+      ],
+      "match": {
+        "allTerms": [
+          "skill"
+        ],
+        "anyTerms": [
+          "sell",
+          "earn",
+          "monetization",
+          "marketplace",
+          "discover",
+          "video",
+          "economy",
+          "变现"
+        ]
+      }
+    },
+    {
+      "id": "official-claude-product-update-boost",
+      "enabled": true,
+      "action": "keep",
+      "scoreDelta": 20,
+      "priority": 90,
+      "rationale": "用户明确把 Claude 官方产品和开发者能力更新视为最高优先级竞品信号。",
+      "issueNumbers": [
+        9
+      ],
+      "match": {
+        "linkHosts": [
+          "claude.com",
+          "anthropic.com"
+        ],
+        "anyTerms": [
+          "claude",
+          "anthropic"
+        ]
+      }
+    },
+    {
+      "id": "vertical-outcome-agent-product-boost",
+      "enabled": true,
+      "action": "keep",
+      "scoreDelta": 16,
+      "priority": 70,
+      "rationale": "能直接交付业务结果的垂直 agent 和可编排工作流，比泛化助手更有产品启发和商业验证价值。",
+      "issueNumbers": [
+        20,
+        22,
+        32
+      ],
+      "match": {
+        "allTerms": [
+          "agent"
+        ],
+        "anyTerms": [
+          "run your business",
+          "insurance brokerage",
+          "store operations",
+          "coding workflow",
+          "n8n",
+          "business outcome"
+        ]
+      }
+    },
+    {
+      "id": "vertical-ai-video-application-boost",
+      "enabled": true,
+      "action": "keep",
+      "scoreDelta": 14,
+      "priority": 60,
+      "rationale": "用户认可有明确垂直场景和部署形态的 AI 视频应用，不应把所有视频类产品一概视为低价值生成器。",
+      "issueNumbers": [
+        14
+      ],
+      "match": {
+        "allTerms": [
+          "ai",
+          "video"
+        ],
+        "noneTerms": [
+          "game",
+          "baby",
+          "dating"
+        ]
+      }
+    }
+  ],
+  "exactOnly": [
+    {
+      "issueNumber": 12,
+      "reason": "Publora 的反馈是特定产品重复；历史链接去重和精确 productKey 已处理，不泛化为所有 Product Hunt 产品。"
+    },
+    {
+      "issueNumber": 23,
+      "reason": "Grok 4.5 的反馈是特定事件重复；历史信号去重和精确 productKey 已处理。"
+    },
+    {
+      "issueNumber": 30,
+      "reason": "“看不懂”只足以否定当前 Hugging Face Space，缺少可安全泛化的筛选条件。"
+    }
+  ]
+}

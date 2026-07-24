@@ -1,0 +1,293 @@
+{
+  "date": "2026-07-25",
+  "generatedAt": "2026-07-24T16:05:01.467Z",
+  "reportPath": "reports/2026-07-25-0005-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 62,
+    "top20Sources": [
+      "HN Algolia",
+      "YC Launch",
+      "AIHOT"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 17,
+      "keptCount": 12,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-23；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 17 条，AI 相关候选 12 条；历史去重移除 12 条已报道或已处理日榜 Product Hunt 信号，最终发布 0 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 4,
+      "keptCount": 4,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 33,
+      "keptCount": 14,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 7,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 24,
+      "keptCount": 24,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 42,
+    "error": "",
+    "policyGeneratedAt": "2026-07-24T15:59:57Z",
+    "policyIssueCount": 42,
+    "policyRuleCount": 14
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Screenpipe (YC S26) – Record how you work and turn that into agents",
+      "productKey": "https://news.ycombinator.com/item?id=49024620",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Screenpipe 从工作过程录制反推可复用 agent，价值在把隐性操作知识变成自动化；需验证隐私边界与生成流程的可靠性。"
+    },
+    {
+      "rank": 2,
+      "product": "Uploads.sh – the missing upload command for coding agents (open-source)",
+      "productKey": "https://uploads.sh",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Uploads.sh 为编码 agent 补上文件上传命令，能简化产物交付；但功能较窄，需看权限、过期策略和多存储兼容性。"
+    },
+    {
+      "rank": 3,
+      "product": "Agnost AI",
+      "productKey": "https://www.ycombinator.com/launches/ru0-agnost-ai-product-analytics-for-ai-agents",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agnost AI 分析 agent 与用户的全部对话以提炼产品反馈，直接服务 AI 产品迭代；应关注隐私合规和洞察准确率。"
+    },
+    {
+      "rank": 4,
+      "product": "Bohay – Mission control for your AI coding agents",
+      "productKey": "https://bohay.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Bohay 提供多个编码 agent 的任务控制台，适合观察并行开发如何被统一调度；差异化取决于冲突处理和结果验收。"
+    },
+    {
+      "rank": 5,
+      "product": "X402vps – Docker containers for AI agents, paid per hour with USDC",
+      "productKey": "https://x402vps.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "X402vps 用 USDC 按小时购买 agent Docker 容器，尝试机器可支付算力；值得验证结算摩擦、隔离安全和供给稳定性。"
+    },
+    {
+      "rank": 6,
+      "product": "Social Media CLI that works with AI agents",
+      "productKey": "https://getsocialclaw.com/social-media-cli",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这款社媒 CLI 让 agent 直接执行发布工作，入口简单；需验证平台覆盖、审批机制、账号安全和内容效果反馈闭环。"
+    },
+    {
+      "rank": 7,
+      "product": "AgentPulse, drift investigation for multi-agent systems",
+      "productKey": "https://prove-ai.github.io/agentpulse",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AgentPulse 用于调查多 agent 系统漂移，切中生产可观测性；需看它能否定位因果、复现实验并给出可执行修复。"
+    },
+    {
+      "rank": 8,
+      "product": "Rapidfolio",
+      "productKey": "https://www.ycombinator.com/launches/rpa-rapidfolio-ai-platform-for-compliance-operations-risk-fraud-for-fintechs-and-banks",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Rapidfolio 面向银行与 fintech 的合规、运营、风险和欺诈流程，付费方明确；关键是监管可解释性与人工复核成本。"
+    },
+    {
+      "rank": 9,
+      "product": "Run Claude Code Through Codex, Kimi, Grok, or Cursor",
+      "productKey": "https://github.com/raine/claude-code-proxy",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "该代理让 Claude Code 接入 Codex、Kimi、Grok 或 Cursor，提供模型替换弹性；需看协议兼容、能力损失和服务条款风险。"
+    },
+    {
+      "rank": 10,
+      "product": "Generous free tier for SERP and AI web scraping",
+      "productKey": "https://cloro.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Cloro 以免费额度提供 SERP 与 AI 网页抓取，降低 agent 检索成本；差异化取决于数据质量、合规与稳定付费模型。"
+    },
+    {
+      "rank": 11,
+      "product": "Daqstra",
+      "productKey": "https://www.ycombinator.com/launches/rpb-daqstra-test-infrastructure-shouldn-t-bottleneck-great-engineering",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Daqstra 用 AI 编排实体研发测试基础设施，垂直价值高；关键是能否对接异构设备并保证实验可追溯、可复现。"
+    },
+    {
+      "rank": 12,
+      "product": "Robocurve",
+      "productKey": "https://www.ycombinator.com/launches/rpy-robocurve-real-world-evaluations-of-ai-and-robots",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Robocurve 评估 AI 与机器人在真实世界的表现，补足纯基准缺陷；值得看任务设计、测量标准和评测商业模式。"
+    },
+    {
+      "rank": 13,
+      "product": "Turn any recipe into 2-player mode",
+      "productKey": "https://nommer.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把任意食谱改成双人协作模式属于轻量消费体验，AI 产品价值证据不足；需确认是否使用 AI 及是否有持续使用场景。"
+    },
+    {
+      "rank": 14,
+      "product": "CobaltCode – Dedicated persistent computer for Codex",
+      "productKey": "https://cobaltcode.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "CobaltCode 为 Codex 提供持久专用电脑，目标是保持长任务环境连续；应验证隔离、休眠成本、远程控制和故障恢复。"
+    },
+    {
+      "rank": 15,
+      "product": "Detecting AI-written copy without an LLM (deterministic, client-side)",
+      "productKey": "https://1h-money-store.vercel.app/grader",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "该客户端用确定性方法检测 AI 文案，避免模型调用成本；但需公开特征、误报率及对新模型文本的鲁棒性。"
+    },
+    {
+      "rank": 16,
+      "product": "Runway Agent 推出自然语言工作流功能",
+      "productKey": "https://aihot.virxact.com/items/cmrz07a8z00ksroey0zfjw3iq",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "Runway Agent 允许用自然语言构建和编辑节点工作流，把生成能力推进到可复用流程；需验证复杂流程可控性与调试体验。"
+    },
+    {
+      "rank": 17,
+      "product": "OpenAI 为 ChatGPT 桌面应用加入语音模式，支持语音操控 AI 智能体",
+      "productKey": "https://aihot.virxact.com/items/cmrz04pvk00h4roeymkdw8cc5",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "ChatGPT 桌面版若新增语音操控 Work 与 Codex，会把 agent 入口变成免手操作；但当前为聚合报道，需核验官方上线范围。"
+    },
+    {
+      "rank": 18,
+      "product": "Hyper3D 自动拆解3D模型为独立零件",
+      "productKey": "https://aihot.virxact.com/items/cmrz16oq700poroey045ejp35",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "Hyper3D 的 BANG to Parts 自动把 3D 模型拆成可编辑零件，直接改善动画与打印工作流；需验证拓扑质量和复杂物体稳定性。"
+    },
+    {
+      "rank": 19,
+      "product": "Production duplex speech model for revenue calls",
+      "productKey": "https://metavoice.io",
+      "source": "HN Algolia",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "MetaVoice 的双工语音模型瞄准营收电话，实时交互场景明确；需验证打断处理、延迟、合规和转化效果。"
+    },
+    {
+      "rank": 20,
+      "product": "OpenRouter 推出分类器 Beta 版",
+      "productKey": "https://aihot.virxact.com/items/cmrz3at5g01dbroeyqkw0fskb",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "OpenRouter Classifiers 可按任务或部门自动给日志打标并可视化，增强模型运营分析；需验证标签质量和自定义成本。"
+    }
+  ]
+}
