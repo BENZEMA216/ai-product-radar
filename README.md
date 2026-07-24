@@ -127,6 +127,8 @@ Call out duplicate launches, weak AI relevance, and products that look like old 
 - Reports must ship with same-day `source-health`, `feedback`, `audit`, and `ranking` files.
 - The "why it matters" column should be rewritten with product-specific reasoning before formal publish, not left as a repeated rule template.
 - Feedback actions are intentionally small: `keep`, `drop`, `downrank`, `review`.
+- Every open or closed radar-feedback Issue must be covered by `quality/feedback-policy.json`: either as a reusable rule or an explicitly justified exact-only judgment.
+- Exact product feedback overrides generalized rules. Missing GitHub stars never become zero; Product Hunt engagement uses API votes when available and the completed Pacific daily rank as an explicit fallback proxy.
 - GitHub Pages serves from `main /docs`; `docs/.nojekyll` is required so the static site and assets publish correctly.
 
 ## Run Locally / 本地运行
@@ -152,8 +154,9 @@ open http://127.0.0.1:8787/docs/index.html
 | `build-site.mjs` | Static GitHub Pages dashboard builder. |
 | `quality-audit.mjs` | Acceptance checks, ranking audits, and quality artifacts. |
 | `feedback-runner.mjs` | Turns GitHub feedback issues into attached product reviews and quality memory. |
+| `feedback-policy.mjs` | Validates exhaustive Issue coverage and applies reusable feedback rules. |
 | `reports/` | Daily markdown reports. |
-| `quality/` | Source health, feedback snapshots, audits, and ranking diagnostics. |
+| `quality/` | Source health, feedback snapshots, feedback policy, audits, and ranking diagnostics. |
 | `reviews/` | Product-attached user reviews. |
 | `docs/` | Public dashboard served by GitHub Pages. |
 

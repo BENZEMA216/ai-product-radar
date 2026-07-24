@@ -5,6 +5,8 @@ import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { loadFeedbackPolicy, strongestFeedbackPolicyAction } from "./feedback-policy.mjs";
+
 const SHANGHAI = "Asia/Shanghai";
 const PACIFIC = "America/Los_Angeles";
 const USER_AGENT =
@@ -936,6 +938,14 @@ export function parseProductHuntApiDiagnostics(payload, dateKey) {
     const link = post?.url || post?.product?.url || post?.website || post?.product?.website || "";
     if (!rawName || !link) continue;
     rawRows.push(link.split("?")[0]);
+    const phVotes =
+      post?.votesCount === null || post?.votesCount === undefined || post?.votesCount === ""
+        ? null
+        : Number(post.votesCount);
+    const phComments =
+      post?.commentsCount === null || post?.commentsCount === undefined || post?.commentsCount === ""
+        ? null
+        : Number(post.commentsCount);
     const candidate = productHuntCandidate({
       rawName,
       link: link.split("?")[0],
@@ -946,8 +956,8 @@ export function parseProductHuntApiDiagnostics(payload, dateKey) {
       raw: JSON.stringify(post),
       sourceRank: Number.isFinite(Number(post?.dailyRank)) ? Number(post.dailyRank) : index + 1,
       metrics: {
-        phVotes: Number(post?.votesCount || 0),
-        phComments: Number(post?.commentsCount || 0)
+        ...(Number.isFinite(phVotes) ? { phVotes } : {}),
+        ...(Number.isFinite(phComments) ? { phComments } : {})
       },
       observedAt: post?.featuredAt || post?.createdAt || dateKey,
       sourceApi: "producthunt_api"
@@ -1429,6 +1439,120 @@ function ghApi(path) {
     console.error(String(lastError?.stderr || lastError?.message || `GitHub API failed: ${path}`).slice(0, 500));
   }
   return null;
+}
+
+export function githubRepoKeyFromUrl(value) {
+  let url;
+  try {
+    url = new URL(String(value || ""));
+  } catch {
+    return "";
+  }
+  if (url.hostname.toLowerCase().replace(/^www\./, "") !== "github.com") return "";
+  const parts = url.pathname
+    .split("/")
+    .map((part) => decodeURIComponent(part).trim())
+    .filter(Boolean);
+  if (parts.length < 2) return "";
+  if (["apps", "collections", "enterprise", "features", "marketplace", "orgs", "settings", "sponsors", "topics"].includes(parts[0].toLowerCase())) {
+    return "";
+  }
+  return `${parts[0]}/${parts[1].replace(/\.git$/i, "")}`.toLowerCase();
+}
+
+function ghGraphql(query) {
+  let lastError;
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    try {
+      const stdout = execFileSync("gh", ["api", "graphql", "-f", `query=${query}`], {
+        encoding: "utf8",
+        maxBuffer: 10 * 1024 * 1024,
+        timeout: 30000,
+        env: process.env
+      });
+      return JSON.parse(stdout);
+    } catch (error) {
+      lastError = error;
+      sleepSync(750 * (attempt + 1));
+    }
+  }
+  if (process.env.RADAR_DEBUG) {
+    console.error(String(lastError?.stderr || lastError?.message || "GitHub GraphQL failed").slice(0, 500));
+  }
+  return null;
+}
+
+function githubMetricsMap(metrics) {
+  if (metrics instanceof Map) return metrics;
+  return new Map(
+    Object.entries(metrics && typeof metrics === "object" ? metrics : {}).map(([key, value]) => [key.toLowerCase(), value])
+  );
+}
+
+export function applyGithubRepoMetrics(items, metrics) {
+  const byRepo = githubMetricsMap(metrics);
+  return items.map((item) => {
+    const repoKey = githubRepoKeyFromUrl(item.link || item.productKey);
+    const repo = repoKey ? byRepo.get(repoKey) : null;
+    if (!repo) return item;
+    return {
+      ...item,
+      githubRepoKey: repoKey,
+      metrics: {
+        ...(item.metrics || {}),
+        githubStars: Number(repo.stargazerCount || 0),
+        githubForks: Number(repo.forkCount || 0)
+      },
+      githubRepo: {
+        nameWithOwner: clean(repo.nameWithOwner || repoKey),
+        isFork: Boolean(repo.isFork),
+        isArchived: Boolean(repo.isArchived)
+      }
+    };
+  });
+}
+
+function fetchGithubRepoMetrics(items) {
+  const repoKeys = [...new Set(items.map((item) => githubRepoKeyFromUrl(item.link || item.productKey)).filter(Boolean))].sort();
+  if (!repoKeys.length) {
+    return { items, status: "not_applicable", requestedCount: 0, enrichedCount: 0, error: "" };
+  }
+  if (process.env.RADAR_SKIP_GITHUB_METRICS) {
+    return {
+      items,
+      status: "skipped",
+      requestedCount: repoKeys.length,
+      enrichedCount: 0,
+      error: "RADAR_SKIP_GITHUB_METRICS 已设置"
+    };
+  }
+
+  const metrics = new Map();
+  let failedChunks = 0;
+  for (let offset = 0; offset < repoKeys.length; offset += 40) {
+    const chunk = repoKeys.slice(offset, offset + 40);
+    const aliases = chunk.map((repoKey, index) => {
+      const [owner, name] = repoKey.split("/");
+      return `r${index}: repository(owner: ${JSON.stringify(owner)}, name: ${JSON.stringify(name)}) { nameWithOwner stargazerCount forkCount isFork isArchived }`;
+    });
+    const payload = ghGraphql(`query RadarRepositoryMetrics { ${aliases.join("\n")} }`);
+    if (!payload?.data) {
+      failedChunks += 1;
+      continue;
+    }
+    chunk.forEach((repoKey, index) => {
+      const repo = payload.data[`r${index}`];
+      if (repo) metrics.set(repoKey, repo);
+    });
+  }
+  const enrichedItems = applyGithubRepoMetrics(items, metrics);
+  return {
+    items: enrichedItems,
+    status: metrics.size === repoKeys.length ? "ok" : metrics.size ? "partial" : "unavailable",
+    requestedCount: repoKeys.length,
+    enrichedCount: metrics.size,
+    error: failedChunks ? `${failedChunks} 个 GitHub GraphQL 批次失败` : ""
+  };
 }
 
 async function fetchGitHubReleases(start, end) {
@@ -2329,7 +2453,8 @@ function buildRankingSignals(item) {
       Math.floor(Math.log10(Number(metrics.phComments || 0) + 1) * 1) +
       Math.floor(Math.log10(Number(metrics.hnPoints || 0) + 1) * 3) +
       Math.floor(Math.log10(Number(metrics.hnComments || 0) + 1) * 2) +
-      Math.floor(Math.log10(Number(metrics.hfLikes || 0) + 1) * 2)
+      Math.floor(Math.log10(Number(metrics.hfLikes || 0) + 1) * 2) +
+      Math.floor(Math.log10(Number(metrics.githubStars || 0) + 1) * 2)
   );
   const strategicRelevance = Math.min(
     10,
@@ -2389,7 +2514,11 @@ function enrichCandidate(item) {
     category,
     qualityLabel,
     priorityScore: priority,
-    rankingSignals
+    rankingSignals,
+    qualityFeatures: {
+      ...(item.qualityFeatures || {}),
+      weakRelease: isLowSignalGitHubPackageRelease(item)
+    }
   };
 }
 
@@ -2408,7 +2537,7 @@ function readFeedbackRecords(feedbackDir = "quality/feedback") {
   } catch {
     return [];
   }
-  return names
+  const records = names
     .filter((name) => /^\d{4}-\d{2}-\d{2}\.json$/.test(name))
     .sort()
     .flatMap((name) => {
@@ -2416,6 +2545,15 @@ function readFeedbackRecords(feedbackDir = "quality/feedback") {
       return Array.isArray(snapshot.feedback) ? snapshot.feedback : [];
     })
     .filter((record) => cleanKey(record.action) && (cleanKey(record.productKey) || cleanKey(record.link) || cleanKey(record.product)));
+  const latest = new Map();
+  for (const record of records) {
+    const key =
+      Number.isInteger(Number(record.number)) && Number(record.number) > 0
+        ? `issue:${Number(record.number)}`
+        : `${cleanKey(record.url)}|${cleanKey(record.productKey)}|${cleanKey(record.action)}`;
+    latest.set(key, record);
+  }
+  return [...latest.values()];
 }
 
 function readNegativeGoldens(path = "quality/goldens/negative-products.json") {
@@ -2431,12 +2569,14 @@ function readPositiveGoldens(path = "quality/goldens/positive-products.json") {
 export function loadQualityMemory({
   feedbackDir = "quality/feedback",
   negativeGoldensPath = "quality/goldens/negative-products.json",
-  positiveGoldensPath = "quality/goldens/positive-products.json"
+  positiveGoldensPath = "quality/goldens/positive-products.json",
+  feedbackPolicyPath = "quality/feedback-policy.json"
 } = {}) {
   return {
     feedback: readFeedbackRecords(feedbackDir),
     negativeGoldens: readNegativeGoldens(negativeGoldensPath),
-    positiveGoldens: readPositiveGoldens(positiveGoldensPath)
+    positiveGoldens: readPositiveGoldens(positiveGoldensPath),
+    feedbackPolicy: loadFeedbackPolicy(feedbackPolicyPath)
   };
 }
 
@@ -2506,7 +2646,27 @@ function memoryRecordMatchesItem(record, item, { allowRepoReleaseSibling = false
   return itemName === recordName || itemName.includes(recordName) || recordName.includes(itemName);
 }
 
-function strongestMemoryAction(item, memory = {}) {
+function latestFeedbackRecord(records) {
+  return [...records].sort((left, right) => {
+    const leftTime = new Date(left.updatedAt || left.createdAt || 0).getTime();
+    const rightTime = new Date(right.updatedAt || right.createdAt || 0).getTime();
+    if (leftTime !== rightTime) return rightTime - leftTime;
+    return Number(right.number || 0) - Number(left.number || 0);
+  })[0];
+}
+
+function strongestExactMemoryAction(item, memory = {}) {
+  const feedbackMatches = (memory.feedback || [])
+    .map((record) => ({ action: normalizedFeedbackAction(record.action), record }))
+    .filter(
+      ({ action, record }) =>
+        action && memoryRecordMatchesItem(record, item, { allowRepoReleaseSibling: action !== "keep" })
+    );
+  if (feedbackMatches.length) {
+    const record = latestFeedbackRecord(feedbackMatches.map(({ record }) => record));
+    return { action: normalizedFeedbackAction(record.action), record, kind: "feedback", policyMatches: [] };
+  }
+
   let best = { action: "", record: null };
   for (const record of memory.negativeGoldens || []) {
     const action = goldenAction(record);
@@ -2518,52 +2678,116 @@ function strongestMemoryAction(item, memory = {}) {
     if (!action || !memoryRecordMatchesItem(record, item, { allowRepoReleaseSibling: false })) continue;
     if (actionSeverity(action) > actionSeverity(best.action)) best = { action, record };
   }
-  for (const record of memory.feedback || []) {
-    const action = normalizedFeedbackAction(record.action);
-    if (!action || !memoryRecordMatchesItem(record, item, { allowRepoReleaseSibling: action !== "keep" })) continue;
-    if (actionSeverity(action) >= actionSeverity(best.action)) best = { action, record };
-  }
-  return best;
+  return { ...best, kind: best.action ? "golden" : "", policyMatches: [] };
 }
 
-export function applyQualityMemoryToCandidates(candidates, memory = {}) {
-  return candidates.flatMap((item) => {
-    const { action, record } = strongestMemoryAction(item, memory);
-    if (action === "drop") return [];
+function strongestMemoryAction(item, memory = {}) {
+  const exact = strongestExactMemoryAction(item, memory);
+  if (exact.action) return exact;
+  const policy = strongestFeedbackPolicyAction(item, memory.feedbackPolicy || {});
+  return {
+    action: policy.action,
+    record: policy.rule,
+    kind: policy.action ? "policy" : "",
+    policyMatches: policy.matches
+  };
+}
+
+export function applyQualityMemoryWithDiagnostics(candidates, memory = {}) {
+  const policy = memory.feedbackPolicy || {};
+  const ruleStats = new Map(
+    (Array.isArray(policy.rules) ? policy.rules : []).map((rule) => [
+      cleanKey(rule.id),
+      {
+        id: cleanKey(rule.id),
+        action: cleanKey(rule.action),
+        issueNumbers: Array.isArray(rule.issueNumbers) ? rule.issueNumbers : [],
+        matchedCount: 0,
+        selectedCount: 0,
+        droppedCount: 0
+      }
+    ])
+  );
+  const diagnostics = {
+    schemaVersion: Number(policy.schemaVersion || 0),
+    generatedAt: cleanKey(policy.generatedAt),
+    sourceIssueCount: Array.isArray(policy.sourceIssueNumbers) ? policy.sourceIssueNumbers.length : 0,
+    ruleCount: Array.isArray(policy.rules) ? policy.rules.length : 0,
+    exactOnlyCount: Array.isArray(policy.exactOnly) ? policy.exactOnly.length : 0,
+    exactMatchCount: 0,
+    policyMatchCount: 0,
+    droppedCount: 0,
+    rules: []
+  };
+
+  const next = candidates.flatMap((item) => {
+    const { action, record, kind, policyMatches = [] } = strongestMemoryAction(item, memory);
+    if (kind === "feedback" || kind === "golden") diagnostics.exactMatchCount += 1;
+    if (kind === "policy") diagnostics.policyMatchCount += 1;
+    for (const rule of policyMatches) {
+      const stat = ruleStats.get(cleanKey(rule.id));
+      if (stat) stat.matchedCount += 1;
+    }
+    if (kind === "policy") {
+      const selected = ruleStats.get(cleanKey(record?.id));
+      if (selected) selected.selectedCount += 1;
+    }
+    if (action === "drop") {
+      diagnostics.droppedCount += 1;
+      if (kind === "policy") {
+        const selected = ruleStats.get(cleanKey(record?.id));
+        if (selected) selected.droppedCount += 1;
+      }
+      return [];
+    }
     if (action === "downrank") {
-      const feedbackPenalty = 30;
+      const feedbackPenalty = Math.abs(Number(record?.scoreDelta || -30));
       return [
         {
           ...item,
           qualityLabel: "deprioritize",
           priorityScore: item.priorityScore - feedbackPenalty,
           qualityMemoryAction: "downrank",
-          qualityMemoryReason: cleanKey(record?.reason || record?.title || record?.actionLabel),
+          qualityMemoryKind: kind,
+          qualityMemoryReason: cleanKey(record?.rationale || record?.reason || record?.title || record?.actionLabel),
+          qualityPolicyRuleIds: policyMatches.map((rule) => cleanKey(rule.id)).filter(Boolean),
+          qualityPolicyIssueNumbers: Array.isArray(record?.issueNumbers) ? record.issueNumbers : [],
           rankingSignals: {
             ...item.rankingSignals,
-            feedbackPenalty
+            feedbackPenalty,
+            feedbackPolicyPenalty: kind === "policy" ? feedbackPenalty : 0
           }
         }
       ];
     }
     if (action === "keep") {
-      const feedbackBoost = 16;
+      const feedbackBoost = Math.abs(Number(record?.scoreDelta || 16));
       return [
         {
           ...item,
           qualityLabel: "keep",
           priorityScore: item.priorityScore + feedbackBoost,
           qualityMemoryAction: "keep",
-          qualityMemoryReason: cleanKey(record?.reason || record?.title || record?.actionLabel),
+          qualityMemoryKind: kind,
+          qualityMemoryReason: cleanKey(record?.rationale || record?.reason || record?.title || record?.actionLabel),
+          qualityPolicyRuleIds: policyMatches.map((rule) => cleanKey(rule.id)).filter(Boolean),
+          qualityPolicyIssueNumbers: Array.isArray(record?.issueNumbers) ? record.issueNumbers : [],
           rankingSignals: {
             ...item.rankingSignals,
-            feedbackBoost
+            feedbackBoost,
+            feedbackPolicyBoost: kind === "policy" ? feedbackBoost : 0
           }
         }
       ];
     }
     return [item];
   });
+  diagnostics.rules = [...ruleStats.values()];
+  return { candidates: next, diagnostics };
+}
+
+export function applyQualityMemoryToCandidates(candidates, memory = {}) {
+  return applyQualityMemoryWithDiagnostics(candidates, memory).candidates;
 }
 
 function duplicateGroupKey(item) {
@@ -2765,15 +2989,27 @@ export async function runRadar(options = {}) {
     aihot,
     dealflowXhs
   };
-  let candidates = uniqueBy(
+  const discovered = uniqueBy(
     [...phNested.flat(), ...phFallback, ...ycLaunches, ...hn, ...gh, ...hf, ...aihot, ...dealflowXhs],
     (item) => item.link
-  ).map(enrichCandidate);
+  );
+  const githubMetrics =
+    options.githubRepoMetrics !== undefined
+      ? {
+          items: applyGithubRepoMetrics(discovered, options.githubRepoMetrics),
+          status: "provided",
+          requestedCount: [...new Set(discovered.map((item) => githubRepoKeyFromUrl(item.link)).filter(Boolean))].length,
+          enrichedCount: githubMetricsMap(options.githubRepoMetrics).size,
+          error: ""
+        }
+      : fetchGithubRepoMetrics(discovered);
+  let candidates = githubMetrics.items.map(enrichCandidate);
   const qualityMemory =
     options.qualityMemory === false
-      ? { feedback: [], negativeGoldens: [] }
+      ? { feedback: [], negativeGoldens: [], positiveGoldens: [], feedbackPolicy: {} }
       : options.qualityMemory || loadQualityMemory(options.qualityMemoryOptions || { feedbackDir: options.feedbackDir });
-  candidates = applyQualityMemoryToCandidates(candidates, qualityMemory);
+  const qualityMemoryResult = applyQualityMemoryWithDiagnostics(candidates, qualityMemory);
+  candidates = qualityMemoryResult.candidates;
   candidates = rankCandidatesForPriority(candidates);
   candidates = candidates.map((item) => ({
     ...item,
@@ -2788,6 +3024,13 @@ export async function runRadar(options = {}) {
     },
     productHuntDateKeys: phDateKeys,
     sourceHealth: buildSourceHealth({ rawGroups, candidates, phDateKeys }),
+    githubMetrics: {
+      status: githubMetrics.status,
+      requestedCount: githubMetrics.requestedCount,
+      enrichedCount: githubMetrics.enrichedCount,
+      error: githubMetrics.error
+    },
+    feedbackPolicy: qualityMemoryResult.diagnostics,
     candidates
   };
 }
@@ -2820,6 +3063,8 @@ async function main() {
           count: result.candidates.length,
           productHuntDateKeys: result.productHuntDateKeys,
           sourceHealth: result.sourceHealth,
+          githubMetrics: result.githubMetrics,
+          feedbackPolicy: result.feedbackPolicy,
           bySource: result.candidates.reduce((acc, item) => {
             acc[item.source] = (acc[item.source] || 0) + 1;
             return acc;

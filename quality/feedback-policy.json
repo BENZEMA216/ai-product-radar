@@ -128,7 +128,7 @@
       "enabled": true,
       "action": "drop",
       "priority": 100,
-      "rationale": "Product Hunt 票数极低时，产品既缺少首日验证，也不应仅因出现在榜单就进入日报。",
+      "rationale": "Product Hunt 互动极低时，产品既缺少首日验证，也不应仅因出现在榜单就进入日报；API 可用时依据 votes，fallback 时依据已完成日榜 rank。",
       "issueNumbers": [
         8
       ],
@@ -136,7 +136,9 @@
         "sources": [
           "Product Hunt"
         ],
-        "phVotesMax": 9
+        "phEngagementTiers": [
+          "very_low"
+        ]
       }
     },
     {
@@ -145,7 +147,7 @@
       "action": "downrank",
       "scoreDelta": -22,
       "priority": 90,
-      "rationale": "Product Hunt 票数偏低仍可作为广覆盖信号，但用户明确要求不能因此排到前面。",
+      "rationale": "Product Hunt 互动偏低仍可作为广覆盖信号，但用户明确要求不能因此排到前面；API 可用时依据 votes，fallback 时依据已完成日榜 rank。",
       "issueNumbers": [
         4,
         5
@@ -154,8 +156,9 @@
         "sources": [
           "Product Hunt"
         ],
-        "phVotesMin": 10,
-        "phVotesMax": 24
+        "phEngagementTiers": [
+          "low"
+        ]
       }
     },
     {

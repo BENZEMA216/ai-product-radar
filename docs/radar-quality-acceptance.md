@@ -43,7 +43,7 @@ node radar.mjs --hours 24 --json
 - `npm run smoke` 退出码为 0。
 - dry-run 生成同表头报告；如果来源全失败，也必须生成 blocked report。
 - `npm run build-site` 能重建 `docs/index.html`，且页面包含 `window.__RADAR_DATA__`。
-- `npm run acceptance` 能审计最新正式报告、source health、feedback snapshot 和站点数据，写出 `quality/audits/YYYY-MM-DD.json` 与 `quality/ranking/YYYY-MM-DD.json`，且不出现硬负样本、模板化 why、来源健康缺失或模型分类缺失。
+- `npm run acceptance` 能审计最新正式报告、source health、feedback snapshot、feedback policy 和站点数据，写出 `quality/audits/YYYY-MM-DD.json` 与 `quality/ranking/YYYY-MM-DD.json`，且不出现硬负样本、模板化 why、来源健康缺失、反馈策略漏项或模型分类缺失。
 - `npm run acceptance` 必须使用与最新正式报告同一自然日的 `quality/source-health/YYYY-MM-DD.json` 和 `quality/feedback/YYYY-MM-DD.json`；如果只能找到旧文件或新文件，必须失败，不能用错日期的质量文件掩盖当天链路状态。
 - JSON dry-run 有合理候选数量；如果数量异常少，source health 必须解释。
 - 正式报告和站点文件可提交并推送到 GitHub。
@@ -252,8 +252,17 @@ SellerClaw 值得看的是它把“店铺运营”拆成多 agent 工作流，�
 - 按钮生成的反馈包含 `reportDate`、`signalKey`、`productKey`、`source`、`action`。
 - 用户能补充自由文本。
 - 自动化能读取反馈，并生成 `quality/feedback/YYYY-MM-DD.json`。
+- 自动化必须读取 open 和 closed 两种状态的全部 radar-feedback Issue，默认上限不得停留在 100 条；快照应保留 `state`、`updatedAt` 和 `closedAt`。
 - `quality/feedback/YYYY-MM-DD.json` 必须保留用户自由文本；非法 action、缺 `reportDate` / `signalKey` / `productKey` / `source` 的反馈必须进入 `invalidFeedback`，并让 `npm run acceptance` 失败。
 - `action=review` 的反馈必须生成或合并进 `reviews/<reportDate>.json`，使网站可以按 `productKey` / `signalKey` attach 点评。
+- `quality/feedback-policy.json` 的 `sourceIssueNumbers` 必须与当天 feedback snapshot 的有效 Issue 编号完全一致。
+- 每条 Issue 编号必须至少出现在一条规则的 `issueNumbers` 或 `exactOnly` 中；出现新 Issue 但 policy 未更新时，`npm run acceptance` 必须以 `feedback_policy_invalid` 失败。
+- `exactOnly` 必须写明不泛化原因，不能作为静默忽略 Issue 的容器。
+- 通用规则必须带 `id`、`action`、`rationale`、`issueNumbers` 和非空 `match`；不支持的条件或错误的 scoreDelta 方向必须验收失败。
+- 具体产品的最新反馈优先于通用规则；同一个低 star 产品如果被用户明确标记 `keep`，不能仍被通用低 star 规则删除。
+- GitHub star 条件只能在指标成功取回时命中；指标缺失不能按 0 star 处理。
+- Product Hunt 互动反馈在 API 模式下按 votes，在 fallback 模式下按 Pacific 已完成日榜的数字 rank；缺少两种证据时不得按 0 votes 处理。验收样例必须覆盖 `votes=null`、fallback 低 rank 和高 rank。
+- source health 必须输出 GitHub metrics 覆盖和 feedback policy 命中诊断，使当天哪些规则实际改变了筛选/排序可追溯。
 
 ### 11.2 第二天复盘
 
@@ -261,6 +270,7 @@ SellerClaw 值得看的是它把“店铺运营”拆成多 agent 工作流，�
 
 - 昨天标记“不该收录”的产品，今天如果再次出现，必须有解释。
 - 昨天标记“应该降权”的产品，今天同类信号不能继续无理由排前。
+- 昨天新增或修改的 Issue，今天必须已经进入 feedback policy 覆盖；若只能安全精确匹配，必须有 `exactOnly` 理由。
 - 昨天写过点评的产品，在网页上能 attach 到对应产品。
 - 第二天复盘能保留用户语言风格，不改成官样总结。
 
@@ -306,6 +316,12 @@ SellerClaw 值得看的是它把“店铺运营”拆成多 agent 工作流，�
 | Priority View Top 20 | 全量 | 检查默认排序 |
 | All Signals 随机样本 | 10 条 | 检查误收 |
 | 每个来源 drop 样本 | 每源 3 条 | 检查过度过滤 |
+| closed radar-feedback Issue | 1 条 | 关闭后仍进入当天反馈快照和策略覆盖 |
+| 新 Issue 未写入 feedback policy | 1 条 | acceptance 必须失败，禁止发布 |
+| HN GitHub repo 49 stars | 1 条 | 命中用户低热度规则并 drop |
+| HN GitHub repo 50-99 stars | 1 条 | 保留召回但 downrank |
+| HN GitHub metrics unavailable | 1 条 | 不得伪装成 0 star，只能按缺失规则处理 |
+| 精确 keep 与通用 drop 冲突 | 1 条 | 精确用户反馈优先 |
 | 用户反馈样本 | 全量 | 进入正负样本 |
 | 日报级漏项反馈 | 若启用则全量 | 定位漏项阶段；当前不挂在产品卡片上 |
 

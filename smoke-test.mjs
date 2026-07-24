@@ -17,10 +17,13 @@ import {
   parseAihotRssItems,
   parseYcLaunchesPayload,
   dealflowDetailToCandidate,
+  applyGithubRepoMetrics,
   applyQualityMemoryToCandidates,
+  applyQualityMemoryWithDiagnostics,
   fetchDealflowXhs,
   isRelevant,
   isDealflowEnabled,
+  githubRepoKeyFromUrl,
   priorityScore,
   previousProductHuntHistory,
   rankCandidatesForPriority,
@@ -39,6 +42,7 @@ import { buildSiteData, parseReportMarkdown, renderSiteHtml } from "./build-site
 import { buildFeedbackSnapshot, isRadarFeedbackIssue, parseFeedbackIssue } from "./feedback-runner.mjs";
 import { commitMessageForReport, newestReportPath, qualityPathsForDir, reportPathsForDir, reviewPathsForDir } from "./publish-report.mjs";
 import { auditReportQuality, buildQualityArtifacts, qualityArtifactPaths, writeQualityArtifacts } from "./quality-audit.mjs";
+import { feedbackPolicyRuleMatches, validateFeedbackPolicy } from "./feedback-policy.mjs";
 
 async function fetchText(url) {
   let lastError;
@@ -383,11 +387,73 @@ function testFeedbackSnapshotAcceptsUnlabeledRadarIssues() {
   assert.equal(snapshot.invalidFeedback.length, 0);
 }
 
+function testFeedbackSnapshotPreservesClosedIssueState() {
+  const issue = {
+    number: 23,
+    title: "[Radar Feedback] 不该收录: Closed feedback",
+    url: "https://github.com/BENZEMA216/ai-product-radar/issues/23",
+    createdAt: "2026-06-08T00:00:00Z",
+    updatedAt: "2026-06-09T00:00:00Z",
+    closedAt: "2026-06-09T00:00:00Z",
+    state: "CLOSED",
+    labels: [{ name: "radar-feedback" }],
+    body: [
+      "## Radar Feedback",
+      "",
+      "action: drop",
+      "actionLabel: 不该收录",
+      "reportDate: 2026-06-08",
+      "signalKey: 2026-06-08|HN Algolia|https://example.com/closed",
+      "productKey: https://example.com/closed",
+      "source: HN Algolia",
+      "product: Closed feedback",
+      "link: https://example.com/closed",
+      "",
+      "原因：关闭以后也要继续影响后续筛选"
+    ].join("\n")
+  };
+  const snapshot = buildFeedbackSnapshot({ date: "2026-06-10", issues: [issue] });
+  assert.equal(snapshot.feedback[0].state, "closed");
+  assert.equal(snapshot.feedback[0].updatedAt, "2026-06-09T00:00:00Z");
+  assert.equal(snapshot.feedback[0].closedAt, "2026-06-09T00:00:00Z");
+  assert.deepEqual(snapshot.issueStates, { closed: 1 });
+}
+
 function testFeedbackSnapshotUnavailable() {
   const snapshot = buildFeedbackSnapshot({ date: "2026-06-08", issues: { error: "gh unavailable", issues: [] } });
   assert.equal(snapshot.status, "unavailable");
   assert.equal(snapshot.feedback.length, 0);
   assert.match(snapshot.error, /gh unavailable/);
+}
+
+function testFeedbackSnapshotMarksPartialIssueReadUnavailable() {
+  const issue = {
+    number: 24,
+    title: "[Radar Feedback] 值得看: Partial read",
+    url: "https://github.com/BENZEMA216/ai-product-radar/issues/24",
+    createdAt: "2026-06-08T00:00:00Z",
+    state: "OPEN",
+    labels: [{ name: "radar-feedback" }],
+    body: [
+      "## Radar Feedback",
+      "",
+      "action: keep",
+      "actionLabel: 值得看",
+      "reportDate: 2026-06-08",
+      "signalKey: 2026-06-08|HN Algolia|partial",
+      "productKey: https://example.com/partial",
+      "source: HN Algolia",
+      "product: Partial read",
+      "link: https://example.com/partial"
+    ].join("\n")
+  };
+  const snapshot = buildFeedbackSnapshot({
+    date: "2026-06-08",
+    issues: { error: "all-state query failed; labeled fallback only", issues: [issue] }
+  });
+  assert.equal(snapshot.status, "unavailable");
+  assert.equal(snapshot.feedback.length, 1);
+  assert.match(snapshot.error, /fallback only/);
 }
 
 function testFeedbackReviewIssueBecomesAttachableReview() {
@@ -2031,6 +2097,312 @@ function testQualityMemoryBoostsPositiveGoldens() {
   assert.ok(next.rankingSignals.feedbackBoost > 0, "positive golden boost should be visible in ranking signals");
 }
 
+function testGithubRepoMetricsMapIntoCandidates() {
+  assert.equal(
+    githubRepoKeyFromUrl("https://github.com/OpenAI/Codex/releases/tag/v1.0.0"),
+    "openai/codex"
+  );
+  const [candidate] = applyGithubRepoMetrics(
+    [
+      {
+        product: "Codex",
+        link: "https://github.com/OpenAI/Codex",
+        metrics: { hnPoints: 12 }
+      }
+    ],
+    {
+      "openai/codex": {
+        nameWithOwner: "openai/codex",
+        stargazerCount: 12345,
+        forkCount: 456,
+        isFork: false,
+        isArchived: false
+      }
+    }
+  );
+  assert.equal(candidate.metrics.githubStars, 12345);
+  assert.equal(candidate.metrics.githubForks, 456);
+  assert.equal(candidate.githubRepoKey, "openai/codex");
+}
+
+function testFeedbackPolicyCoverageIsExhaustive() {
+  const feedback = [{ number: 1 }, { number: 2 }];
+  const policy = {
+    schemaVersion: 1,
+    generatedAt: "2026-07-24T00:00:00Z",
+    sourceIssueNumbers: [1, 2],
+    rules: [
+      {
+        id: "low-stars",
+        action: "drop",
+        rationale: "Low-star repos are not validated.",
+        issueNumbers: [1],
+        match: { githubStarsMax: 49 }
+      }
+    ],
+    exactOnly: [{ issueNumber: 2, reason: "Only applies to the original duplicate." }]
+  };
+  assert.equal(validateFeedbackPolicy(policy, feedback).ok, true);
+  const missing = validateFeedbackPolicy(
+    {
+      ...policy,
+      sourceIssueNumbers: [1, 2, 3]
+    },
+    [...feedback, { number: 3 }]
+  );
+  assert.equal(missing.ok, false);
+  assert.deepEqual(missing.missingIssueNumbers, [3]);
+}
+
+function testFeedbackPolicyDropsLowStarGithubCandidates() {
+  const rule = {
+    id: "hn-github-stars-below-50-drop",
+    action: "drop",
+    rationale: "Low-star GitHub projects are not validated.",
+    issueNumbers: [41],
+    match: {
+      sources: ["HN Algolia"],
+      linkHosts: ["github.com"],
+      githubStarsMax: 49
+    }
+  };
+  const candidate = {
+    product: "Tiny Agent",
+    link: "https://github.com/example/tiny-agent",
+    type: "新产品",
+    did: "Show HN: Tiny Agent",
+    why: "A small agent utility.",
+    evidence: "[HN](https://news.ycombinator.com/item?id=1)",
+    source: "hackernews",
+    category: "product",
+    qualityLabel: "keep",
+    priorityScore: 50,
+    rankingSignals: {},
+    metrics: { githubStars: 12 },
+    qualityFeatures: { weakRelease: false }
+  };
+  assert.equal(feedbackPolicyRuleMatches(rule, candidate), true);
+  const result = applyQualityMemoryWithDiagnostics([candidate], {
+    feedback: [],
+    negativeGoldens: [],
+    positiveGoldens: [],
+    feedbackPolicy: {
+      schemaVersion: 1,
+      generatedAt: "2026-07-24T00:00:00Z",
+      sourceIssueNumbers: [41],
+      rules: [rule],
+      exactOnly: []
+    }
+  });
+  assert.equal(result.candidates.length, 0);
+  assert.equal(result.diagnostics.policyMatchCount, 1);
+  assert.equal(result.diagnostics.droppedCount, 1);
+  assert.equal(result.diagnostics.rules[0].droppedCount, 1);
+}
+
+function testFeedbackPolicyDoesNotTreatMissingMetricsAsZero() {
+  const candidate = {
+    product: "Unknown Metrics Agent",
+    link: "https://github.com/example/unknown-metrics-agent",
+    source: "hackernews",
+    metrics: { githubStars: null, phVotes: null }
+  };
+  assert.equal(
+    feedbackPolicyRuleMatches(
+      {
+        id: "low-stars",
+        action: "drop",
+        rationale: "Low-star projects are dropped only with evidence.",
+        issueNumbers: [41],
+        match: { githubStarsMax: 49 }
+      },
+      candidate
+    ),
+    false
+  );
+  assert.equal(
+    feedbackPolicyRuleMatches(
+      {
+        id: "missing-stars",
+        action: "downrank",
+        rationale: "Missing metrics are a separate state.",
+        issueNumbers: [41],
+        match: { githubStarsMissing: true }
+      },
+      candidate
+    ),
+    true
+  );
+  assert.equal(
+    feedbackPolicyRuleMatches(
+      {
+        id: "very-low-ph-votes",
+        action: "drop",
+        rationale: "Missing votes are not zero votes.",
+        issueNumbers: [8],
+        match: { phVotesMax: 9 }
+      },
+      candidate
+    ),
+    false
+  );
+}
+
+function testFeedbackPolicyUsesProductHuntRankWhenVotesUnavailable() {
+  const veryLowRule = {
+    id: "product-hunt-very-low-engagement",
+    action: "drop",
+    rationale: "Use votes when available and completed-board rank otherwise.",
+    issueNumbers: [8],
+    match: { sources: ["Product Hunt"], phEngagementTiers: ["very_low"] }
+  };
+  const lowRule = {
+    id: "product-hunt-low-engagement",
+    action: "downrank",
+    rationale: "Use votes when available and completed-board rank otherwise.",
+    issueNumbers: [4, 5],
+    match: { sources: ["Product Hunt"], phEngagementTiers: ["low"] }
+  };
+  const fallbackVeryLow = {
+    product: "Rank 64 Agent",
+    link: "https://www.producthunt.com/products/rank-64-agent",
+    source: "producthunt",
+    sourceRank: 64,
+    metrics: {}
+  };
+  const fallbackLow = { ...fallbackVeryLow, product: "Rank 24 Agent", sourceRank: 24 };
+  const fallbackValidated = { ...fallbackVeryLow, product: "Rank 8 Agent", sourceRank: 8 };
+  const apiVeryLow = { ...fallbackVeryLow, product: "Eight Vote Agent", sourceRank: 3, metrics: { phVotes: 8 } };
+  const unknown = { ...fallbackVeryLow, product: "Unknown PH Agent", sourceRank: null, metrics: { phVotes: null } };
+  assert.equal(feedbackPolicyRuleMatches(veryLowRule, fallbackVeryLow), true);
+  assert.equal(feedbackPolicyRuleMatches(lowRule, fallbackLow), true);
+  assert.equal(feedbackPolicyRuleMatches(veryLowRule, fallbackValidated), false);
+  assert.equal(feedbackPolicyRuleMatches(veryLowRule, apiVeryLow), true);
+  assert.equal(feedbackPolicyRuleMatches(veryLowRule, unknown), false);
+  assert.equal(feedbackPolicyRuleMatches(lowRule, unknown), false);
+}
+
+function testExactFeedbackOverridesGeneralPolicy() {
+  const candidate = {
+    product: "Tiny but approved Agent",
+    link: "https://github.com/example/approved-agent",
+    type: "新产品",
+    did: "Show HN: Tiny but approved Agent",
+    why: "The user explicitly approved this product.",
+    evidence: "[HN](https://news.ycombinator.com/item?id=2)",
+    source: "hackernews",
+    category: "product",
+    qualityLabel: "weak_keep",
+    priorityScore: 30,
+    rankingSignals: {},
+    metrics: { githubStars: 12 },
+    qualityFeatures: { weakRelease: false }
+  };
+  const [next] = applyQualityMemoryToCandidates([candidate], {
+    feedback: [
+      {
+        number: 99,
+        action: "keep",
+        productKey: candidate.link,
+        source: "HN Algolia",
+        updatedAt: "2026-07-24T00:00:00Z"
+      }
+    ],
+    negativeGoldens: [],
+    positiveGoldens: [],
+    feedbackPolicy: {
+      schemaVersion: 1,
+      generatedAt: "2026-07-24T00:00:00Z",
+      sourceIssueNumbers: [41],
+      rules: [
+        {
+          id: "low-stars",
+          action: "drop",
+          rationale: "General low-star rule.",
+          issueNumbers: [41],
+          match: { linkHosts: ["github.com"], githubStarsMax: 49 }
+        }
+      ],
+      exactOnly: []
+    }
+  });
+  assert.equal(next.qualityLabel, "keep");
+  assert.equal(next.qualityMemoryKind, "feedback");
+}
+
+function testQualityAuditRequiresCompleteFeedbackPolicy() {
+  const rows = [
+    {
+      product: "Agent Runtime",
+      link: "https://example.com/agent-runtime",
+      source: "HN Algolia",
+      why: "它把 agent 权限边界做成可交付控制层，适合观察企业采用门槛。",
+      did: "Launch HN: Agent Runtime",
+      category: "product",
+      qualityLabel: "keep"
+    }
+  ];
+  const feedbackSnapshot = {
+    status: "ok",
+    feedback: [
+      {
+        number: 1,
+        action: "drop",
+        reportDate: "2026-07-24",
+        signalKey: "2026-07-24|HN Algolia|tiny",
+        productKey: "https://example.com/tiny",
+        source: "HN Algolia"
+      }
+    ],
+    invalidFeedback: []
+  };
+  const audit = auditReportQuality({
+    rows,
+    feedbackSnapshot,
+    feedbackPolicy: {
+      schemaVersion: 1,
+      generatedAt: "2026-07-24T00:00:00Z",
+      sourceIssueNumbers: [1],
+      rules: [],
+      exactOnly: []
+    },
+    requireFeedbackPolicy: true
+  });
+  assert.equal(audit.ok, false);
+  assert.ok(audit.failures.some((item) => item.code === "feedback_policy_invalid"));
+}
+
+function testQualityAuditRequiresFeedbackPolicyDiagnostics() {
+  const policy = {
+    schemaVersion: 1,
+    generatedAt: "2026-07-24T00:00:00Z",
+    sourceIssueNumbers: [],
+    rules: [],
+    exactOnly: []
+  };
+  const audit = auditReportQuality({
+    rows: [
+      {
+        product: "Agent Runtime",
+        link: "https://example.com/agent-runtime",
+        source: "HN Algolia",
+        why: "它把 agent 权限边界做成可交付控制层，适合观察企业采用门槛。",
+        did: "Launch HN: Agent Runtime",
+        category: "product",
+        qualityLabel: "keep"
+      }
+    ],
+    sourceHealth: { sources: {} },
+    feedbackSnapshot: { status: "ok", feedback: [], invalidFeedback: [] },
+    feedbackPolicy: policy,
+    requireFeedbackPolicy: true,
+    requireFeedbackRuntimeDiagnostics: true
+  });
+  assert.equal(audit.ok, false);
+  assert.ok(audit.failures.some((item) => item.code === "github_metrics_diagnostics_missing"));
+  assert.ok(audit.failures.some((item) => item.code === "feedback_policy_diagnostics_missing"));
+}
+
 function testQualityAuditFlagsHardNegativesAndRepeatedWhy() {
   const rows = [
     {
@@ -3619,6 +3991,8 @@ function testCliOutput() {
     }
   );
   const json = JSON.parse(stdout);
+  assert.ok(json.githubMetrics, "CLI JSON should expose GitHub metrics diagnostics");
+  assert.ok(json.feedbackPolicy, "CLI JSON should expose feedback policy diagnostics");
   if (json.count === 0) {
     const notes = Object.values(json.sourceHealth || {})
       .map((source) => String(source?.note || ""))
@@ -3642,7 +4016,9 @@ const tests = [
   ["Daily runner smoke timeout is configurable", testDailyRunnerSmokeTimeoutIsConfigurable],
   ["Feedback issue parser", testFeedbackIssueParser],
   ["Feedback snapshot accepts unlabeled radar issues", testFeedbackSnapshotAcceptsUnlabeledRadarIssues],
+  ["Feedback snapshot preserves closed issue state", testFeedbackSnapshotPreservesClosedIssueState],
   ["Feedback snapshot unavailable", testFeedbackSnapshotUnavailable],
+  ["Feedback snapshot marks partial Issue read unavailable", testFeedbackSnapshotMarksPartialIssueReadUnavailable],
   ["Feedback review issue becomes attachable review", testFeedbackReviewIssueBecomesAttachableReview],
   ["Feedback snapshot tracks malformed records", testFeedbackSnapshotTracksMalformedRecords],
   ["Missing product feedback action is not per-product action", testMissingProductFeedbackActionIsNotPerProductAction],
@@ -3702,6 +4078,14 @@ const tests = [
   ["Quality memory downranks user feedback", testQualityMemoryDownranksUserFeedback],
   ["Quality memory keeps user feedback", testQualityMemoryKeepsUserFeedback],
   ["Quality memory boosts positive goldens", testQualityMemoryBoostsPositiveGoldens],
+  ["GitHub repo metrics map into candidates", testGithubRepoMetricsMapIntoCandidates],
+  ["Feedback policy coverage is exhaustive", testFeedbackPolicyCoverageIsExhaustive],
+  ["Feedback policy drops low-star GitHub candidates", testFeedbackPolicyDropsLowStarGithubCandidates],
+  ["Feedback policy keeps missing metrics distinct from zero", testFeedbackPolicyDoesNotTreatMissingMetricsAsZero],
+  ["Feedback policy uses Product Hunt rank fallback", testFeedbackPolicyUsesProductHuntRankWhenVotesUnavailable],
+  ["Exact feedback overrides general policy", testExactFeedbackOverridesGeneralPolicy],
+  ["Quality audit requires complete feedback policy", testQualityAuditRequiresCompleteFeedbackPolicy],
+  ["Quality audit requires feedback policy diagnostics", testQualityAuditRequiresFeedbackPolicyDiagnostics],
   ["Quality audit flags hard negatives and repeated why", testQualityAuditFlagsHardNegativesAndRepeatedWhy],
   ["Quality audit flags current source-level why templates", testQualityAuditFlagsCurrentSourceLevelWhyTemplates],
   ["Quality audit flags CRUSHY dating novelty", testQualityAuditFlagsCrushyDatingNovelty],

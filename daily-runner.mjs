@@ -123,7 +123,7 @@ function snapshotFeedback(reportPath, env, outDir, reviewDir) {
       encoding: "utf8",
       env,
       timeout: 30000,
-      maxBuffer: 1024 * 1024
+      maxBuffer: 10 * 1024 * 1024
     });
   } catch {
     // Feedback is a learning loop; never block the daily report on GitHub issue access.
@@ -166,6 +166,8 @@ async function main() {
     generatedAt: now.toISOString(),
     window: result.window,
     productHuntDateKeys: result.productHuntDateKeys,
+    githubMetrics: result.githubMetrics,
+    feedbackPolicy: result.feedbackPolicy,
     sources: sourceHealth
   });
   let markdown = renderMarkdownTable(candidates);

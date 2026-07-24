@@ -74,6 +74,9 @@ export function parseFeedbackIssue(issue) {
     title: clean(issue.title),
     url: clean(issue.url),
     createdAt: clean(issue.createdAt),
+    updatedAt: clean(issue.updatedAt),
+    closedAt: clean(issue.closedAt),
+    state: clean(issue.state).toLowerCase(),
     action: fields.action || "",
     actionLabel: fields.actionLabel || "",
     reportDate: fields.reportDate || "",
@@ -100,11 +103,11 @@ function ghIssueList(args) {
       "--repo",
       "BENZEMA216/ai-product-radar",
       "--state",
-      "open",
+      "all",
       "--limit",
-      "100",
+      "1000",
       "--json",
-      "number,title,body,url,createdAt,labels",
+      "number,title,body,url,createdAt,updatedAt,closedAt,state,labels",
       ...args
     ],
     {
@@ -116,37 +119,24 @@ function ghIssueList(args) {
   return JSON.parse(stdout);
 }
 
-function mergeIssues(lists) {
-  const byKey = new Map();
-  for (const list of lists) {
-    for (const issue of Array.isArray(list) ? list : []) {
-      const key = clean(issue.url) || clean(issue.number);
-      if (key) byKey.set(key, issue);
+function readFeedbackIssues() {
+  try {
+    return ghIssueList([]).filter(isRadarFeedbackIssue);
+  } catch (error) {
+    const allStateError = clean(error.stderr || error.message || "gh all-state issue list failed");
+    try {
+      const partial = ghIssueList(["--label", "radar-feedback"]).filter(isRadarFeedbackIssue);
+      return {
+        error: `${allStateError}; 仅取得带 radar-feedback label 的降级结果，不能证明全量 Issue 覆盖`,
+        issues: partial
+      };
+    } catch (fallbackError) {
+      return {
+        error: `${allStateError}; ${clean(fallbackError.stderr || fallbackError.message || "gh labeled issue list failed")}`,
+        issues: []
+      };
     }
   }
-  return [...byKey.values()];
-}
-
-function readFeedbackIssues() {
-  const errors = [];
-  let labeled = [];
-  let openIssues = [];
-  try {
-    labeled = ghIssueList(["--label", "radar-feedback"]);
-  } catch (error) {
-    errors.push(clean(error.stderr || error.message || "gh labeled issue list failed"));
-  }
-  try {
-    openIssues = ghIssueList([]);
-  } catch (error) {
-    errors.push(clean(error.stderr || error.message || "gh open issue list failed"));
-  }
-  const issues = mergeIssues([labeled, openIssues]).filter(isRadarFeedbackIssue);
-  if (labeled.length || openIssues.length || errors.length === 0) return issues;
-  return {
-    error: errors.filter(Boolean).join("; ") || "gh issue list failed",
-    issues: []
-  };
 }
 
 function radarIssuesFrom(input) {
@@ -165,6 +155,14 @@ export function buildFeedbackSnapshot({ date, issues }) {
     status: Array.isArray(issues) ? "ok" : "unavailable",
     error: Array.isArray(issues) ? "" : issues.error || "",
     count: list.length,
+    issueStates: list.reduce(
+      (counts, issue) => {
+        const state = clean(issue.state).toLowerCase() || "unknown";
+        counts[state] = (counts[state] || 0) + 1;
+        return counts;
+      },
+      {}
+    ),
     feedback: valid,
     invalidFeedback: validated
       .filter(({ errors }) => errors.length)

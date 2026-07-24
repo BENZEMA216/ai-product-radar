@@ -370,12 +370,81 @@ XHS 一般情况下默认启用，但它依赖本地 Dealflow bridge、Chrome �
 - 点击按钮打开预填好的 GitHub Issue。
 - Issue body 自动带上 `reportDate`、`signalKey`、`productKey`、`source`、`action`。
 - 用户可以补一句理由或点评。
-- 每日 automation 读取 open issues，把反馈写入 repo 中的结构化文件；字段不完整或 action 非法的 issue 必须进入 `invalidFeedback`，不能静默丢失。
+- 每日 automation 读取全部 radar-feedback issues，包括 open 和 closed，避免用户关闭 Issue 后反馈从学习链路消失；反馈写入 repo 中的结构化文件，字段不完整或 action 非法的 issue 必须进入 `invalidFeedback`，不能静默丢失。
 - `action=review` 的反馈必须额外生成或合并到 `reviews/<reportDate>.json`，让点评 attach 到对应产品卡片，而不是只停留在 feedback 快照里。
 
 后续如果需要更顺滑，可以再上轻量后端或 GitHub App，但第一版应该先用 GitHub 原生能力闭环。
 
-### 9.3 点评 attach 规则
+### 9.3 反馈学习策略
+
+Issue 不能只对原产品做精确匹配。每日 automation 必须先读取最新反馈快照，再由 Codex/LLM 基于用户原话更新 `quality/feedback-policy.json`。
+
+每条 Issue 必须进入以下两类之一：
+
+1. **可泛化规则**：反馈包含明确、可验证的判断条件，例如 GitHub star、Product Hunt votes、来源、产品类别、版本更新强度或稳定语义特征。
+2. **仅精确命中**：反馈只说明当前产品重复、看不懂或主观不喜欢，无法安全推广到同类产品。必须记录 Issue 编号和不泛化原因，原产品仍由精确 `productKey` 反馈处理。
+
+不允许忽略 Issue，也不允许把单条模糊意见直接扩大成整类产品的永久 drop。
+
+策略文件的核心结构：
+
+```json
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-24T15:59:57Z",
+  "sourceIssueNumbers": [1, 2, 3],
+  "rules": [
+    {
+      "id": "hn-github-stars-below-50-drop",
+      "action": "drop",
+      "scoreDelta": -30,
+      "rationale": "用户明确要求 HN 中 star 少于 50 的个人 GitHub 项目不进入日报。",
+      "issueNumbers": [2, 3],
+      "match": {
+        "sources": ["HN Algolia"],
+        "linkHosts": ["github.com"],
+        "githubStarsMax": 49
+      }
+    }
+  ],
+  "exactOnly": [
+    {
+      "issueNumber": 1,
+      "reason": "只涉及当前产品重复，历史链接去重已经处理。"
+    }
+  ]
+}
+```
+
+支持的规则条件包括：
+
+- 来源、source subtype、产品类别和新旧类型；
+- 链接域名和路径；
+- 产品名、动作描述、证据文本中的 `anyTerms` / `allTerms` / `noneTerms`；
+- GitHub star 区间或 star 证据不可用；
+- Product Hunt 互动层级：官方 API 可用时依据 votes；fallback 不提供 votes 时依据 Pacific 已完成日榜 rank，不能伪造票数；
+- 是否为只有版本号、发布通道或依赖包 patch 的弱 Release。
+
+执行优先级：
+
+1. 用户对当前产品的最新精确反馈；
+2. 正负 golden 样本；
+3. `feedback-policy` 通用规则；
+4. 系统基础筛选和排序。
+
+因此，用户后来对某个低 star 产品明确标记“值得看”时，具体反馈可以覆盖通用低 star 规则；通用规则不会误杀已经被用户明确认可的例外。
+
+GitHub 链接在排序前通过 GraphQL 批量补充 star/fork 数据。接口不可用时必须把指标标为缺失，不能把缺失伪装成 0 star；缺失时可以降权，但不能执行依赖具体 star 上限的 drop 规则。
+
+Product Hunt 的反馈采用同样的证据边界：官方 API 返回 votes 时，`0-9` 视为 `very_low`、`10-24` 视为 `low`；fallback 页面没有 votes 时，只使用已完成日榜的数字 rank 作为代理，`rank >= 50` 视为 `very_low`、`rank >= 20` 视为 `low`。缺少 votes 和 rank 时为 `unknown`，不能命中低互动 drop/downrank 规则。
+
+每日 `quality/source-health/YYYY-MM-DD.json` 必须记录：
+
+- GitHub metrics 请求数、成功补充数和状态；
+- feedback policy 的 Issue 数、规则数、精确命中数、规则命中数和 drop 数；
+- 每条规则当天的 matched / selected / dropped 数。
+
+### 9.4 点评 attach 规则
 
 点评 attach 到产品，不 attach 到页面位置。
 
@@ -398,7 +467,7 @@ XHS 一般情况下默认启用，但它依赖本地 Dealflow bridge、Chrome �
 }
 ```
 
-### 9.4 次日复盘
+### 9.5 次日复盘
 
 次日复盘不是给用户做周报，而是做三个具体动作：
 
@@ -421,6 +490,7 @@ XHS 一般情况下默认启用，但它依赖本地 Dealflow bridge、Chrome �
 | `quality/audits/YYYY-MM-DD.json` | 每日精准率、排序、召回审计 |
 | `quality/source-health/YYYY-MM-DD.json` | 每日来源状态 |
 | `quality/feedback/YYYY-MM-DD.json` | 从 GitHub Issues 读取的反馈 |
+| `quality/feedback-policy.json` | Codex 从全部 Issue 归纳的可审计筛选与排序规则 |
 | `quality/ranking/YYYY-MM-DD.json` | Top-k 排序评分和指标 |
 | `reviews/YYYY-MM-DD.json` | 用户点评与次日复盘，按产品 attach 到站点 |
 

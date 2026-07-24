@@ -4,6 +4,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { parseReportMarkdown } from "./build-site.mjs";
+import { loadFeedbackPolicy, validateFeedbackPolicy } from "./feedback-policy.mjs";
 
 const REPORT_PATTERN = /^\d{4}-\d{2}-\d{2}-\d{4}-cst\.md$/;
 const JSON_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}\.json$/;
@@ -500,6 +501,57 @@ function auditFeedbackSnapshot(feedbackSnapshot, { allowUnavailable = false } = 
   return failures;
 }
 
+function auditFeedbackPolicy(feedbackPolicy, feedbackSnapshot, { allowUnavailable = false } = {}) {
+  if (allowUnavailable && feedbackSnapshot?.status === "unavailable") return [];
+  if (!feedbackPolicy || typeof feedbackPolicy !== "object" || !Object.keys(feedbackPolicy).length) {
+    return [failure("feedback_policy_missing", "缺少反馈策略文件，Issue 只能精确命中，无法证明已影响后续同类产品。")];
+  }
+  const validation = validateFeedbackPolicy(feedbackPolicy, feedbackSnapshot?.feedback || []);
+  if (validation.ok) return [];
+  return [
+    failure("feedback_policy_invalid", "反馈策略未覆盖全部 GitHub Issue，或包含无效规则，不能发布。", {
+      errors: validation.errors,
+      missingIssueNumbers: validation.missingIssueNumbers,
+      unknownIssueNumbers: validation.unknownIssueNumbers,
+      feedbackIssueNumbers: validation.feedbackIssueNumbers,
+      sourceIssueNumbers: validation.sourceIssueNumbers
+    })
+  ];
+}
+
+function auditFeedbackRuntimeDiagnostics(sourceHealth, feedbackPolicy) {
+  const failures = [];
+  const githubMetrics = sourceHealth?.githubMetrics;
+  if (!githubMetrics || !clean(githubMetrics.status)) {
+    failures.push(
+      failure("github_metrics_diagnostics_missing", "source health 缺少 GitHub star 指标覆盖状态，无法证明低 star 规则使用了真实数据。")
+    );
+  }
+  const diagnostics = sourceHealth?.feedbackPolicy;
+  if (!diagnostics || typeof diagnostics !== "object") {
+    failures.push(
+      failure("feedback_policy_diagnostics_missing", "source health 缺少反馈策略命中诊断，无法解释 Issue 如何改变了当天筛选和排序。")
+    );
+    return failures;
+  }
+  const expectedIssueCount = Array.isArray(feedbackPolicy?.sourceIssueNumbers) ? feedbackPolicy.sourceIssueNumbers.length : 0;
+  const expectedRuleCount = Array.isArray(feedbackPolicy?.rules) ? feedbackPolicy.rules.length : 0;
+  if (Number(diagnostics.sourceIssueCount) !== expectedIssueCount || Number(diagnostics.ruleCount) !== expectedRuleCount) {
+    failures.push(
+      failure("feedback_policy_diagnostics_mismatch", "source health 中的反馈策略版本与当前 policy 不一致。", {
+        expectedIssueCount,
+        actualIssueCount: Number(diagnostics.sourceIssueCount || 0),
+        expectedRuleCount,
+        actualRuleCount: Number(diagnostics.ruleCount || 0)
+      })
+    );
+  }
+  if (!Array.isArray(diagnostics.rules)) {
+    failures.push(failure("feedback_policy_rule_stats_missing", "source health 缺少逐规则 matched/selected/dropped 统计。"));
+  }
+  return failures;
+}
+
 function auditQualityFileAlignment({ reportDate = "", sourceHealthPath = "", feedbackPath = "", feedbackSnapshot = null } = {}) {
   if (!reportDate) return [];
   const failures = [];
@@ -553,6 +605,9 @@ export function auditReportQuality({
   sourceHealth = null,
   siteHtml = "",
   feedbackSnapshot = null,
+  feedbackPolicy = null,
+  requireFeedbackPolicy = false,
+  requireFeedbackRuntimeDiagnostics = false,
   reportDate = "",
   sourceHealthPath = "",
   feedbackPath = ""
@@ -586,6 +641,14 @@ export function auditReportQuality({
   }
   if (siteHtml) failures.push(...auditSiteHtml(siteHtml));
   if (feedbackSnapshot) failures.push(...auditFeedbackSnapshot(feedbackSnapshot, { allowUnavailable: blocked || emptyButAligned }));
+  if (feedbackSnapshot && (requireFeedbackPolicy || feedbackPolicy)) {
+    failures.push(
+      ...auditFeedbackPolicy(feedbackPolicy, feedbackSnapshot, {
+        allowUnavailable: blocked || emptyButAligned
+      })
+    );
+  }
+  if (requireFeedbackRuntimeDiagnostics) failures.push(...auditFeedbackRuntimeDiagnostics(sourceHealth, feedbackPolicy));
   const rankingMetrics = rankingQualityMetrics(rows);
   return {
     ok: failures.length === 0,
@@ -645,6 +708,7 @@ export function buildQualityArtifacts({
   reportPath = "",
   sourceHealth = null,
   feedbackSnapshot = null,
+  feedbackPolicy = null,
   generatedAt = sourceHealth?.generatedAt || feedbackSnapshot?.generatedAt || new Date().toISOString()
 } = {}) {
   const { date } = qualityArtifactPaths(reportPath);
@@ -679,7 +743,10 @@ export function buildQualityArtifacts({
       feedback: {
         status: feedback.status || "",
         count: Number(feedback.count ?? feedback.feedback?.length ?? 0),
-        error: feedback.error || ""
+        error: feedback.error || "",
+        policyGeneratedAt: feedbackPolicy?.generatedAt || "",
+        policyIssueCount: Array.isArray(feedbackPolicy?.sourceIssueNumbers) ? feedbackPolicy.sourceIssueNumbers.length : 0,
+        policyRuleCount: Array.isArray(feedbackPolicy?.rules) ? feedbackPolicy.rules.length : 0
       },
       top20Sample: topK.map(({ rank, product, productKey, source, category, qualityLabel, pmScore, rankingIssue, why }) => ({
         rank,
@@ -716,6 +783,7 @@ function parseArgs(argv) {
     report: latestMatchingFile("reports", REPORT_PATTERN),
     sourceHealth: "",
     feedback: "",
+    feedbackPolicy: "quality/feedback-policy.json",
     sourceHealthProvided: false,
     feedbackProvided: false,
     site: "docs/index.html",
@@ -735,6 +803,7 @@ function parseArgs(argv) {
       args.feedback = argv[++i];
       args.feedbackProvided = true;
     }
+    if (arg === "--feedback-policy") args.feedbackPolicy = argv[++i];
     if (arg === "--site") args.site = argv[++i];
     if (arg === "--json") args.json = true;
     if (arg === "--no-write") args.write = false;
@@ -753,11 +822,15 @@ function main() {
   const rows = markdown ? parseReportMarkdown(markdown, args.report) : [];
   const sourceHealth = args.sourceHealth && existsSync(args.sourceHealth) ? readJson(args.sourceHealth, null) : null;
   const feedbackSnapshot = args.feedback && existsSync(args.feedback) ? readJson(args.feedback, null) : null;
+  const feedbackPolicy = args.feedbackPolicy && existsSync(args.feedbackPolicy) ? loadFeedbackPolicy(args.feedbackPolicy) : null;
   const siteHtml = args.site && existsSync(args.site) ? readFileSync(args.site, "utf8") : "";
   const audit = auditReportQuality({
     rows,
     sourceHealth,
     feedbackSnapshot,
+    feedbackPolicy,
+    requireFeedbackPolicy: true,
+    requireFeedbackRuntimeDiagnostics: true,
     siteHtml,
     reportDate: reportDateFromPath(args.report),
     sourceHealthPath: args.sourceHealth || "",
@@ -769,7 +842,8 @@ function main() {
     rows,
     reportPath: args.report || "",
     sourceHealth,
-    feedbackSnapshot
+    feedbackSnapshot,
+    feedbackPolicy
   });
   const written = args.write && paths.auditPath && paths.rankingPath ? writeQualityArtifacts(artifacts, paths) : null;
   const result = {
@@ -777,6 +851,7 @@ function main() {
     report: args.report || "",
     sourceHealth: args.sourceHealth || "",
     feedback: args.feedback || "",
+    feedbackPolicy: args.feedbackPolicy || "",
     site: args.site || "",
     artifacts: written || paths
   };

@@ -31,6 +31,7 @@
     "daily": "node daily-runner.mjs",
     "acceptance": "node quality-audit.mjs",
     "feedback": "node feedback-runner.mjs",
+    "feedback-policy": "node feedback-policy.mjs",
     "publish-report": "node publish-report.mjs",
     "radar": "node radar.mjs",
     "smoke": "node smoke-test.mjs"
