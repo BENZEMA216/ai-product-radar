@@ -1,0 +1,295 @@
+{
+  "date": "2026-07-26",
+  "generatedAt": "2026-07-25T16:02:57.956Z",
+  "reportPath": "reports/2026-07-26-0002-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 58,
+    "top20Sources": [
+      "HN Algolia",
+      "YC Launch",
+      "Product Hunt",
+      "Hugging Face API",
+      "AIHOT"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 1,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 25,
+      "keptCount": 15,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-24；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 25 条，AI 相关候选 16 条；fallback 低覆盖时扩展检查 2026-07-23，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重移除 11 条已报道或已处理日榜 Product Hunt 信号，最终发布 4 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 3,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 14,
+      "keptCount": 7,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 12,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 24,
+      "keptCount": 24,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 42,
+    "error": "",
+    "policyGeneratedAt": "2026-07-25T16:02:22Z",
+    "policyIssueCount": 42,
+    "policyRuleCount": 14
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Fractal, coding agents in a tree with one Git worktree per node",
+      "productKey": "https://github.com/plasma-ai/fractal",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把并行 coding agent 映射成树状 Git worktree，每个节点都有独立代码状态；值得看这种结构能否让分支探索、回滚和人工接管比聊天式多 agent 更清楚。"
+    },
+    {
+      "rank": 2,
+      "product": "Dialogus",
+      "productKey": "https://www.ycombinator.com/launches/rv7-dialogus-building-the-infra-for-enterprise-voice-agents",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "企业语音 agent 的难点往往不在合成声音，而在通话基础设施与稳定交付；Dialogus 直接把这一层做成产品，值得观察它如何定义可采购的服务边界。"
+    },
+    {
+      "rank": 3,
+      "product": "OneWayInterview – type a job role, AI builds the async video interview",
+      "productKey": "https://onewayinterview.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "只输入岗位就生成异步视频面试，说明它在压缩招聘方的流程配置成本；关键是生成的问题与评估框架是否足够岗位化，而非仅替代一份问卷。"
+    },
+    {
+      "rank": 4,
+      "product": "Give your AI ears – live meeting transcripts over MCP on macOS",
+      "productKey": "https://voxai.ethanflow.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它通过 MCP 把 macOS 实时会议转写交给 AI，价值在于让本地对话直接进入 agent 工作流；需要重点看隐私授权、说话人区分和延迟是否可控。"
+    },
+    {
+      "rank": 5,
+      "product": "Added MCP and conditional styling into my habit/metrics tracking app",
+      "productKey": "https://habitpocket.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "在习惯追踪里加入 MCP，意味着个人数据可被外部 agent 调用和更新；值得看条件样式与协议接口能否形成可操作闭环，而不是给成熟品类附加一个入口。"
+    },
+    {
+      "rank": 6,
+      "product": "Buzz",
+      "productKey": "https://www.producthunt.com/products/buzz-3",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Buzz 把人、agent 与项目放在同一协作空间，定位直指混合团队的协调成本；要验证的是任务归属、交接和进度可见性是否比普通项目管理工具更自然。"
+    },
+    {
+      "rank": 7,
+      "product": "Kalytera – Find out why your AI agent failed, step-by-step",
+      "productKey": "https://kalytera.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Kalytera 把 agent 失败拆成逐步可追踪过程，瞄准的是调试与责任定位；如果它能把一次失败变成可复现证据，会比单纯日志面板更接近团队基础设施。"
+    },
+    {
+      "rank": 8,
+      "product": "Pushary",
+      "productKey": "https://www.producthunt.com/products/pushary",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "从锁屏审批 AI 请求，把高频但高风险的 agent 确认动作移到手机最短路径；值得看它如何展示足够上下文，避免便捷审批变成盲目放行。"
+    },
+    {
+      "rank": 9,
+      "product": "How well do you use Claude Code?",
+      "productKey": "https://news.ycombinator.com/item?id=49042653",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这个工具把 Claude Code 使用方式本身做成评估对象，说明开发者开始需要能力诊断而非更多提示词；关键在于评分能否对应真实效率，而不是制造排行榜。"
+    },
+    {
+      "rank": 10,
+      "product": "Reach",
+      "productKey": "https://www.producthunt.com/products/reach-14",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Reach 把 AI 搜索可见性包装成一套运营系统，切入的是传统 SEO 向模型答案分发迁移；值得观察它能否提供可归因、可执行的优化闭环。"
+    },
+    {
+      "rank": 11,
+      "product": "RonanRx Inc.",
+      "productKey": "https://www.ycombinator.com/launches/rve-ronanrx-we-use-ai-to-personalize-peptides-to-your-biology",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "RonanRx 将个体生物信息、肽类方案与药房履约放进同一条链路，产品价值来自全栈交付；同时必须严看医疗责任、证据标准和个性化边界。"
+    },
+    {
+      "rank": 12,
+      "product": "Neuron Industries",
+      "productKey": "https://www.ycombinator.com/launches/rte-neuron-industries-the-world-s-first-purpose-built-industrial-controller-for-ai",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Neuron Industries 为 AI 场景设计工业控制器，试图替代传统 PLC；这不是通用模型叙事，判断重点是实时性、安全认证和现有产线迁移成本。"
+    },
+    {
+      "rank": 13,
+      "product": "AI Toolbox supports Claude Opus 5",
+      "productKey": "https://www.ai-toolbox.co",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AI Toolbox 宣称支持尚新的 Claude Opus 5，更多是兼容性更新信号；值得看它是否提供模型切换之外的工作流价值，证据不足时不应高估。"
+    },
+    {
+      "rank": 14,
+      "product": "Hugging Face Space: diegd12/agente-seo-n8n",
+      "productKey": "https://huggingface.co/spaces/diegd12/agente-seo-n8n",
+      "source": "Hugging Face API",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "这个 Space 把 SEO 与 n8n agent 结合，但当前只有更新事实；可观察其是否真正编排检索、内容与发布，未看到运行样例前只能作为弱信号。"
+    },
+    {
+      "rank": 15,
+      "product": "ego lite：AI智能体原生Chromium浏览器登顶GitHub",
+      "productKey": "https://aihot.virxact.com/items/cms097ddu00hfrodz85d48y3f",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "ego lite 让多个 CLI agent 在隔离浏览器空间并行执行且不抢用户登录态，切中浏览器自动化的真实摩擦；关键是隔离强度与会话复用能否同时成立。"
+    },
+    {
+      "rank": 16,
+      "product": "OpenAI 员工演示用语音控制 ChatGPT 桌面 Agent",
+      "productKey": "https://aihot.virxact.com/items/cms0it1ez00garopf89f24by1",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "语音直接协调 ChatGPT Work 或 Codex 多 agent，把桌面 agent 的入口从键盘扩展到实时指挥；价值取决于打断、确认和并发任务状态能否被用户掌控。"
+    },
+    {
+      "rank": 17,
+      "product": "阿里 Qoder Mobile 移动端 App 上线，iOS / Android / 鸿蒙三大版本同步发布",
+      "productKey": "https://aihot.virxact.com/items/cms06ujmw00ihrofv179wwp94",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "Qoder Mobile 把查看进度、审批、追加指令和云端委派搬到手机，补齐 coding agent 离开电脑后的控制面；值得看跨端连续性与误操作防护。"
+    },
+    {
+      "rank": 18,
+      "product": "腾讯 WorkBuddy 桌面版上架华为鸿蒙电脑 App Gallery，原生适配鸿蒙系统",
+      "productKey": "https://aihot.virxact.com/items/cms0jpk0b00lxropfiwqt2y70",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "WorkBuddy 桌面版原生进入鸿蒙应用商店，说明通用办公 agent 正争夺操作系统入口；值得观察桌面、移动端与代码设计任务能否保持一致上下文。"
+    },
+    {
+      "rank": 19,
+      "product": "华为 AI 眼镜推送 6.0.0.157 SP2 更新，新增\"看一下支付宝小蓝环\"支付与拍照识图功能",
+      "productKey": "https://aihot.virxact.com/items/cms0hkdu7000yropfhwef56ea",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "AI 眼镜把看一眼支付与拍照识图放进同次固件更新，展示了视觉入口如何连接高频交易和信息任务；重点是可见授权、误触与续航代价。"
+    },
+    {
+      "rank": 20,
+      "product": "社群开发者用 Grok 4.5 打造非官方桌面工作台 Grok App",
+      "productKey": "https://aihot.virxact.com/items/cms0for9b02akrodz702v8ui3",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "Grok App 用 GUI 包装 Grok Build CLI，并加入定时任务、资源面板和多账号管理；值得看它是否把命令行能力变成持续可管理的桌面工作台。"
+    }
+  ]
+}
