@@ -401,10 +401,12 @@ function buildReportDays(reports) {
       latestReportTime: "",
       latestReportPath: ""
     };
-    day.count += report.items.length;
     day.runCount += 1;
-    day.latestReportTime = meta.reportTime;
-    day.latestReportPath = report.path;
+    if (!day.latestReportPath || report.path.localeCompare(day.latestReportPath) > 0) {
+      day.count = report.items.length;
+      day.latestReportTime = meta.reportTime;
+      day.latestReportPath = report.path;
+    }
     byDate.set(meta.reportDate, day);
   }
   return [...byDate.values()].sort((a, b) => a.reportDate.localeCompare(b.reportDate));
@@ -459,14 +461,16 @@ export function buildSiteData(reports, reviews = [], sourceHealthFiles = []) {
     .map(parseSourceHealthJson)
     .filter(Boolean)
     .sort((a, b) => a.date.localeCompare(b.date));
-  const items = attachReviewsToItems(normalizedReports.flatMap((report) => report.items), normalizedReviews);
+  const reportDays = buildReportDays(normalizedReports);
+  const canonicalPaths = new Set(reportDays.map((day) => day.latestReportPath));
+  const canonicalReports = normalizedReports.filter((report) => canonicalPaths.has(report.path));
+  const items = attachReviewsToItems(canonicalReports.flatMap((report) => report.items), normalizedReviews);
   const reportSummaries = normalizedReports.map((report) => ({
     path: report.path,
     ...reportMeta(report.path),
     count: report.items.length
   }));
   const latestReport = reportSummaries.at(-1);
-  const reportDays = buildReportDays(normalizedReports);
   const latestDay = reportDays.at(-1);
   const latestSourceHealth = latestDay ? sourceHealth.find((item) => item.date === latestDay.reportDate) || null : null;
   return {

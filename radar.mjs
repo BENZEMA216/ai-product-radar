@@ -1261,6 +1261,8 @@ function productHuntRowsFromReport(markdown) {
 // appeared in a report, do not republish leftovers from that board the next day.
 export function previousProductHuntHistory(reportDir = REPORT_DIR, currentReportPath = "") {
   const history = { links: new Set(), dateKeys: new Set() };
+  const currentReportDate =
+    String(currentReportPath || "").match(/(?:^|\/)(\d{4}-\d{2}-\d{2})-\d{4}-cst\.md$/)?.[1] || "";
   let names = [];
   try {
     names = readdirSync(reportDir);
@@ -1269,6 +1271,7 @@ export function previousProductHuntHistory(reportDir = REPORT_DIR, currentReport
   }
 
   for (const name of names.filter((item) => REPORT_PATTERN.test(item)).sort()) {
+    if (currentReportDate && name.startsWith(`${currentReportDate}-`)) continue;
     const path = join(reportDir, name);
     if (path === currentReportPath) continue;
     let markdown = "";

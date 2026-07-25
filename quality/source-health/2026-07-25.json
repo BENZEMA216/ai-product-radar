@@ -20,8 +20,8 @@
     "ruleCount": 14,
     "exactOnlyCount": 3,
     "exactMatchCount": 7,
-    "policyMatchCount": 20,
-    "droppedCount": 26,
+    "policyMatchCount": 21,
+    "droppedCount": 27,
     "rules": [
       {
         "id": "hn-github-stars-below-50-drop",
@@ -75,9 +75,9 @@
         "issueNumbers": [
           8
         ],
-        "matchedCount": 0,
-        "selectedCount": 0,
-        "droppedCount": 0
+        "matchedCount": 1,
+        "selectedCount": 1,
+        "droppedCount": 1
       },
       {
         "id": "product-hunt-low-votes-downrank",
@@ -204,11 +204,11 @@
     "producthunt": {
       "status": "fallback",
       "rawCount": 17,
-      "keptCount": 12,
-      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-23；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 17 条，AI 相关候选 12 条；历史去重移除 12 条已报道或已处理日榜 Product Hunt 信号，最终发布 0 条。",
-      "discoveredKeptCount": 12,
-      "reportKeptCount": 0,
-      "previouslyReportedCount": 12
+      "keptCount": 11,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-23；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 17 条，AI 相关候选 12 条；历史去重后最终发布 11 条 Product Hunt 信号。",
+      "discoveredKeptCount": 11,
+      "reportKeptCount": 11,
+      "previouslyReportedCount": 0
     },
     "yc_launch": {
       "status": "ok",

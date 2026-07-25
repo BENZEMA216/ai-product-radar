@@ -345,7 +345,8 @@ SellerClaw 值得看的是它把“店铺运营”拆成多 agent 工作流，�
 - 最新 report 文件存在。
 - `docs/index.html` 已由最新 reports 重建。
 - `window.__RADAR_DATA__` 存在。
-- 最新自然日聚合正确。
+- 最新自然日聚合正确：同日多次运行展示最新报告的 canonical snapshot，运行次数可保留，但条数与卡片不得相加。
+- 同日补跑的 Product Hunt 历史去重不得读取当天较早报告；跨日历史仍必须正常去重。
 - 最新 report 和站点文件在本地 git history 中。
 - push 到 `origin/main` 成功。
 - GitHub Pages 可访问；如果 Pages 因 repo/private plan 限制不可用，只记录为仓库可见性限制，不算采集失败。

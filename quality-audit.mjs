@@ -435,7 +435,7 @@ function auditProductHuntReportCount(rows, sourceHealth) {
   return failures;
 }
 
-function auditSiteHtml(siteHtml) {
+function auditSiteHtml(siteHtml, { reportDate = "", reportRowCount = null } = {}) {
   if (!siteHtml) return [];
   const failures = [];
   for (const marker of REQUIRED_SITE_MARKERS) {
@@ -443,6 +443,23 @@ function auditSiteHtml(siteHtml) {
   }
   if (!siteHtml.includes('data-category="model_infra"') && !siteHtml.includes("model_infra")) {
     failures.push(failure("missing_model_category", "站点数据缺少 model_infra 分类。"));
+  }
+  const latestDay = siteHtml.match(/data-full-label="最新自然日 · (\d{4}-\d{2}-\d{2}) · (\d+) 条/);
+  if (latestDay && reportDate && latestDay[1] !== reportDate) {
+    failures.push(
+      failure("site_latest_date_mismatch", "站点最新自然日与最新正式报告日期不一致。", {
+        reportDate,
+        siteDate: latestDay[1]
+      })
+    );
+  }
+  if (latestDay && Number.isInteger(reportRowCount) && Number(latestDay[2]) !== reportRowCount) {
+    failures.push(
+      failure("site_latest_count_mismatch", "站点最新自然日条数与 canonical 正式报告不一致，可能重复累计了同日补跑。", {
+        reportRowCount,
+        siteRowCount: Number(latestDay[2])
+      })
+    );
   }
   return failures;
 }
@@ -639,7 +656,7 @@ export function auditReportQuality({
     failures.push(...auditSourceHealth(sourceHealth));
     failures.push(...auditProductHuntReportCount(rows, sourceHealth));
   }
-  if (siteHtml) failures.push(...auditSiteHtml(siteHtml));
+  if (siteHtml) failures.push(...auditSiteHtml(siteHtml, { reportDate, reportRowCount: rows.length }));
   if (feedbackSnapshot) failures.push(...auditFeedbackSnapshot(feedbackSnapshot, { allowUnavailable: blocked || emptyButAligned }));
   if (feedbackSnapshot && (requireFeedbackPolicy || feedbackPolicy)) {
     failures.push(

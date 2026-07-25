@@ -624,6 +624,38 @@ function testProductHuntHistoryReadsProcessedDailyDates() {
   }
 }
 
+function testProductHuntHistoryIgnoresEarlierSameDayRuns() {
+  const tempDir = mkdtempSync(join(tmpdir(), "radar-ph-same-day-history-"));
+  try {
+    const reportDir = join(tempDir, "reports");
+    mkdirSync(reportDir, { recursive: true });
+    writeFileSync(
+      join(reportDir, "2026-06-11-0800-cst.md"),
+      `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| Same-day PH | [链接](https://www.producthunt.com/products/same-day-ph) | 新产品 | same-day launch | same-day reason | [Product Hunt 2026-06-10](https://www.producthunt.com/leaderboard/daily/2026/6/10/all) |
+`,
+      "utf8"
+    );
+    writeFileSync(
+      join(reportDir, "2026-06-10-0800-cst.md"),
+      `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| Previous-day PH | [链接](https://www.producthunt.com/products/previous-day-ph) | 新产品 | previous-day launch | previous-day reason | [Product Hunt 2026-06-09](https://www.producthunt.com/leaderboard/daily/2026/6/9/all) |
+`,
+      "utf8"
+    );
+
+    const history = previousProductHuntHistory(reportDir, join(reportDir, "2026-06-11-1122-cst.md"));
+    assert.equal(history.links.has("https://www.producthunt.com/products/same-day-ph"), false);
+    assert.equal(history.dateKeys.has("2026-06-10"), false);
+    assert.equal(history.links.has("https://www.producthunt.com/products/previous-day-ph"), true);
+    assert.equal(history.dateKeys.has("2026-06-09"), true);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+}
+
 function testProductHuntHistoryFilterAnnotatesSourceHealth() {
   const before = [
     { source: "producthunt", link: "https://www.producthunt.com/products/databox" },
@@ -874,10 +906,12 @@ function testSiteBuilderAggregatesReportTimelineByNaturalDay() {
 
   assert.equal(siteData.reportDays.length, 2);
   assert.equal(siteData.reportDays.at(-1).reportDate, "2026-06-03");
-  assert.equal(siteData.reportDays.at(-1).count, 3);
+  assert.equal(siteData.reportDays.at(-1).count, 2);
   assert.equal(siteData.reportDays.at(-1).runCount, 2);
-  assert.match(html, /value="date:2026-06-03"[^>]*selected>最新自然日 · 06-03 · 3 条/);
-  assert.match(html, /2026-06-03<small>2 次运行 · 最新 11:22 CST<\/small><\/span>\s*<b>3<\/b>/);
+  assert.equal(siteData.items.filter((item) => item.reportDate === "2026-06-03").length, 2);
+  assert.ok(!siteData.items.some((item) => item.product === "Morning Agent"));
+  assert.match(html, /value="date:2026-06-03"[^>]*selected>最新自然日 · 06-03 · 2 条/);
+  assert.match(html, /2026-06-03<small>2 次运行 · 最新 11:22 CST<\/small><\/span>\s*<b>2<\/b>/);
   assert.doesNotMatch(html, /2026-06-03 08:00 CST\s*<\/span>\s*<b>1<\/b>/);
   assert.doesNotMatch(html, /2026-06-03 11:22 CST\s*<\/span>\s*<b>2<\/b>/);
 }
@@ -2401,6 +2435,29 @@ function testQualityAuditRequiresFeedbackPolicyDiagnostics() {
   assert.equal(audit.ok, false);
   assert.ok(audit.failures.some((item) => item.code === "github_metrics_diagnostics_missing"));
   assert.ok(audit.failures.some((item) => item.code === "feedback_policy_diagnostics_missing"));
+}
+
+function testQualityAuditRejectsSameDaySiteCountInflation() {
+  const audit = auditReportQuality({
+    rows: [
+      {
+        product: "Canonical Agent",
+        link: "https://example.com/canonical-agent",
+        productKey: "https://example.com/canonical-agent",
+        type: "新产品",
+        did: "A complete AI agent workflow.",
+        why: "它提供完整任务闭环，适合验证实际采用和交付质量。",
+        evidence: "[HN Algolia 2026-07-24T00:00:00Z](https://news.ycombinator.com/item?id=1)",
+        source: "HN Algolia",
+        category: "product",
+        qualityLabel: "keep"
+      }
+    ],
+    siteHtml:
+      '<div data-full-label="最新自然日 · 2026-07-25 · 157 条 · 2 次运行"></div><div data-category="model_infra"></div>',
+    reportDate: "2026-07-25"
+  });
+  assert.ok(audit.failures.some((item) => item.code === "site_latest_count_mismatch"));
 }
 
 function testQualityAuditFlagsHardNegativesAndRepeatedWhy() {
@@ -4025,6 +4082,7 @@ const tests = [
   ["Product Hunt history filter", testProductHuntHistoryFilter],
   ["Product Hunt history filter blocks processed daily date", testProductHuntHistoryFilterBlocksProcessedDailyDate],
   ["Product Hunt history reads processed daily dates", testProductHuntHistoryReadsProcessedDailyDates],
+  ["Product Hunt history ignores earlier same-day runs", testProductHuntHistoryIgnoresEarlierSameDayRuns],
   ["Product Hunt history filter annotates source health", testProductHuntHistoryFilterAnnotatesSourceHealth],
   ["Product Hunt history filter annotates all duplicates", testProductHuntHistoryFilterAnnotatesAllDuplicates],
   ["Site builder helpers", testSiteBuilderHelpers],
@@ -4086,6 +4144,7 @@ const tests = [
   ["Exact feedback overrides general policy", testExactFeedbackOverridesGeneralPolicy],
   ["Quality audit requires complete feedback policy", testQualityAuditRequiresCompleteFeedbackPolicy],
   ["Quality audit requires feedback policy diagnostics", testQualityAuditRequiresFeedbackPolicyDiagnostics],
+  ["Quality audit rejects same-day site count inflation", testQualityAuditRejectsSameDaySiteCountInflation],
   ["Quality audit flags hard negatives and repeated why", testQualityAuditFlagsHardNegativesAndRepeatedWhy],
   ["Quality audit flags current source-level why templates", testQualityAuditFlagsCurrentSourceLevelWhyTemplates],
   ["Quality audit flags CRUSHY dating novelty", testQualityAuditFlagsCrushyDatingNovelty],
