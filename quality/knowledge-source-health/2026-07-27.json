@@ -1,15 +1,17 @@
 {
-  "generatedAt": "2026-07-27T14:11:24.640Z",
+  "generatedAt": "2026-07-27T14:29:42.241Z",
   "date": "2026-07-27",
   "window": {
-    "start": "2026-07-20T14:11:24.640Z",
-    "end": "2026-07-27T14:11:24.640Z",
+    "start": "2026-07-20T14:29:42.241Z",
+    "end": "2026-07-27T14:29:42.241Z",
     "lookbackDays": 7
   },
   "targetCount": 20,
+  "desiredBlogCount": 14,
+  "desiredPaperCount": 6,
   "selectedCount": 20,
-  "blogCount": 10,
-  "paperCount": 10,
+  "blogCount": 14,
+  "paperCount": 6,
   "sources": {
     "openai_news": {
       "label": "OpenAI",

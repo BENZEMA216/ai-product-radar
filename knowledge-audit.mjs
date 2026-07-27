@@ -62,8 +62,8 @@ export function auditKnowledge({ report, health, siteHtml, minCount = 18 }) {
   }
   if (new Set(links).size !== links.length) failures.push(failure("knowledge_duplicate_links", "知识日报存在重复链接。"));
   if (new Set(titles).size !== titles.length) failures.push(failure("knowledge_duplicate_titles", "知识日报存在重复标题。"));
-  if (liveBlogSources >= 2 && blogCount < 6) {
-    failures.push(failure("knowledge_blog_mix_low", `Blog 只有 ${blogCount} 条，来源可用时至少应保留 6 条。`));
+  if (liveBlogSources >= 2 && blogCount < 12) {
+    failures.push(failure("knowledge_blog_mix_low", `Blog 只有 ${blogCount} 条，来源可用时至少应保留 12 条。`));
   }
   if (paperAvailable && paperCount < 6) {
     failures.push(failure("knowledge_paper_mix_low", `论文只有 ${paperCount} 条，论文源可用时至少应保留 6 条。`));

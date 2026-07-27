@@ -3819,8 +3819,8 @@ function testKnowledgePaperAndAuditFixture() {
   assert.equal(papers[0].link, "https://arxiv.org/abs/2607.12345");
   assert.ok(papers[0].score > 20);
 
-  const rows = Array.from({ length: 18 }, (_, index) => {
-    const kind = index < 9 ? "Blog" : "论文";
+  const rows = Array.from({ length: 20 }, (_, index) => {
+    const kind = index < 14 ? "Blog" : "论文";
     const link = `https://example.com/item-${index}`;
     return `| ${kind} | [知识条目 ${index}](${link}) | 来源 ${index % 3} | 这是一条经过改写的中文核心信息，用来说明文章或论文真正新增了什么认知。 | 这条内容包含具体机制和证据，值得用于产品、技术和研究判断，而不是只看发布信息。 | [原文](${link}) |`;
   }).join("\n");
@@ -3830,6 +3830,8 @@ function testKnowledgePaperAndAuditFixture() {
   );
   const health = {
     date: "2026-07-27",
+    desiredBlogCount: 14,
+    desiredPaperCount: 6,
     sources: {
       blog_a: { status: "ok", keptCount: 9 },
       blog_b: { status: "ok", keptCount: 7 },
@@ -3841,8 +3843,8 @@ function testKnowledgePaperAndAuditFixture() {
     .join(" ")}`;
   const audit = auditKnowledge({ report, health, siteHtml, minCount: 18 });
   assert.equal(audit.ok, true);
-  assert.equal(audit.blogCount, 9);
-  assert.equal(audit.paperCount, 9);
+  assert.equal(audit.blogCount, 14);
+  assert.equal(audit.paperCount, 6);
 }
 
 function testAihotParserFixture() {

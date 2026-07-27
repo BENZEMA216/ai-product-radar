@@ -659,6 +659,8 @@ export async function runKnowledgeRadar(options = {}) {
     date: dateKey,
     window: { start: start.toISOString(), end: now.toISOString(), lookbackDays: days },
     targetCount: limit,
+    desiredBlogCount: blogQuota,
+    desiredPaperCount: Math.max(0, limit - blogQuota),
     selectedCount: selected.length,
     blogCount: selected.filter((item) => item.kind === "blog").length,
     paperCount: selected.filter((item) => item.kind === "paper").length,
