@@ -1,0 +1,293 @@
+{
+  "date": "2026-07-28",
+  "generatedAt": "2026-07-27T16:02:52.324Z",
+  "reportPath": "reports/2026-07-28-0002-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 35,
+    "top20Sources": [
+      "HN Algolia",
+      "YC Launch",
+      "AIHOT"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-26；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 0 条，AI 相关候选 0 条；fallback 低覆盖时扩展检查 2026-07-25，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 0 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 1,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 30,
+      "keptCount": 16,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 5,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 18,
+      "keptCount": 18,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 43,
+    "error": "",
+    "policyGeneratedAt": "2026-07-27T16:03:30Z",
+    "policyIssueCount": 43,
+    "policyRuleCount": 14
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Forkbench – a native Mac control room for several CLI coding agents",
+      "productKey": "https://forkbench.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Forkbench 把多个 CLI coding agent 的并行运行集中到原生 Mac 控制台，值得验证的不是“多开终端”，而是任务状态、上下文切换和人工接管能否真正降低协调成本。"
+    },
+    {
+      "rank": 2,
+      "product": "Case study: A coding agent refactors a 750k LOC app, no code review",
+      "productKey": "https://news.ycombinator.com/item?id=49068698",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这是一份 75 万行代码重构案例而非独立产品发布；可借它审视大规模 agent 改造的验证边界，但“无代码审查”本身也是需要谨慎核实的高风险主张。"
+    },
+    {
+      "rank": 3,
+      "product": "Pilot Protocol – a network where AI agents find tools and each other",
+      "productKey": "https://news.ycombinator.com/item?id=49070104",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Pilot Protocol 试图把 agent 找工具、发现其他 agent 的过程做成网络协议，产品判断关键在冷启动：是否有足够可调用节点，以及发现结果能否转化为可靠执行。"
+    },
+    {
+      "rank": 4,
+      "product": "We killed our AI stock analysis and kept the news feed (API and MCP)",
+      "productKey": "https://alphai.io/developers",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "团队砍掉股票分析、只保留新闻 API 与 MCP，是一次清晰的产品收缩；值得看原始信息供给是否比成品结论更适合被 agent 组合，也要观察数据授权与时效性。"
+    },
+    {
+      "rank": 5,
+      "product": "Telegram bot that spins up Claude Code/Codex agents on their own VMs",
+      "productKey": "https://agenticcloudcomputer.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用 Telegram 指令为 Claude Code/Codex 启动独立 VM，把移动端沟通入口接到隔离执行环境；价值取决于任务交付、权限控制和资源回收是否形成闭环。"
+    },
+    {
+      "rank": 6,
+      "product": "1,250 SwiftUI components, and an MCP that writes them into your app",
+      "productKey": "https://nibware.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Nibware 把 1,250 个 SwiftUI 组件与可写入项目的 MCP 结合，绕过从截图还原界面的低效环节；应重点验证生成代码能否遵循现有设计系统并保持可维护性。"
+    },
+    {
+      "rank": 7,
+      "product": "We built an MCP server for document generation",
+      "productKey": "https://docuqueue.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Docuqueue 将文档生成暴露为 MCP 工具，让 agent 可直接产出交付物；真正差异不在协议接入，而在模板约束、格式稳定性和复杂文档的可复现程度。"
+    },
+    {
+      "rank": 8,
+      "product": "Tilde Pay – Give your AI agent a bank account to pay for things",
+      "productKey": "https://my.tildepay.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Tilde Pay 把 agent 支付从模拟动作推进到真实账户能力，商业价值很直接；同时必须优先审视限额、授权、审计和争议处理，任何自动执行错误都会变成资金风险。"
+    },
+    {
+      "rank": 9,
+      "product": "Release-gate – a CLI that checks AI-agent PRs for risky changes",
+      "productKey": "https://news.ycombinator.com/item?id=49067759",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Release-gate 针对 agent 生成 PR 做风险检查，切中自动编码扩张后的质量门禁；值得看它能否识别跨文件语义风险，而不只是重复传统静态检查。"
+    },
+    {
+      "rank": 10,
+      "product": "Read what your remote agent wrote (Markdown/image) from Mac menu bar",
+      "productKey": "https://lx2026.github.io/relaybar",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "RelayBar 用 Mac 菜单栏查看远端 agent 的 Markdown 与图片产物，解决的是异步任务的轻量回看；产品上要验证通知、版本追踪和继续操作是否足以支撑完整工作流。"
+    },
+    {
+      "rank": 11,
+      "product": "How I built a debugging tool, and the agent, using it, found bugs in it",
+      "productKey": "https://news.ycombinator.com/item?id=49064283",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这个案例展示 agent 使用调试工具反过来发现工具自身缺陷，提示可观测能力可成为 agent 的反馈回路；但当前链接只给 HN 帖，产品能力与复现证据仍偏弱。"
+    },
+    {
+      "rank": 12,
+      "product": "Browser CAD for stock-tube structures with generated 3D-printed joints",
+      "productKey": "https://app.trusslab.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Trusslab 把管材结构 CAD 与 3D 打印连接件生成结合，AI 是否核心尚不清楚；若几何约束和可制造性确实自动闭环，才具备垂直设计工具的产品价值。"
+    },
+    {
+      "rank": 13,
+      "product": "hardware intelligence",
+      "productKey": "https://www.ycombinator.com/launches/s0t-hardware-intelligence-ai-tools-for-the-chips-your-ai-runs-on",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Hardware Intelligence 面向芯片工具这一高专业门槛市场，YC 发布证明了明确垂直定位；要看它是否把复杂芯片流程压缩为可验证产出，而不只是用 AI 包装既有工程软件。"
+    },
+    {
+      "rank": 14,
+      "product": "Maginary.ai gets seedance2 and GPT-images2 support",
+      "productKey": "https://twitter.com/xucian_/status/2081469757300359289",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Maginary.ai 同时接入 Seedance 2 与 GPT Images 2，说明多模型编排正在成为创作产品的基础能力；判断重点是素材在图像与视频步骤间能否连续复用，而非模型数量。"
+    },
+    {
+      "rank": 15,
+      "product": "Rainslice – AI Employees for Home Services Businesses",
+      "productKey": "https://rainslice.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Rainslice 把“AI 员工”限定在家庭服务商，垂直场景比泛助手更容易衡量回报；需要看它具体承接获客、排期还是客服，以及能否与现有业务系统闭环。"
+    },
+    {
+      "rank": 16,
+      "product": "Open-plan-annotator – local annotation UI for working with agent plans",
+      "productKey": "https://github.com/ndom91/open-plan-annotator",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Open-plan-annotator 为 agent 计划提供本地标注界面，切中人类审阅和修改执行计划的环节；值得看批注能否回写运行流程，而不只是静态 Markdown 查看器。"
+    },
+    {
+      "rank": 17,
+      "product": "PixVerse Mini Apps 上线深度图控制功能",
+      "productKey": "https://aihot.virxact.com/items/cms3bmy7h0a2zro3fmn6fkctz",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "PixVerse 将参考视频转深度图，再用参考图生成受控视频，把空间与运动控制嵌入 Mini Apps；值得看它能否减少反复抽卡，但促销积分不构成产品质量证据。"
+    },
+    {
+      "rank": 18,
+      "product": "PixVerse 语音功能升级上线",
+      "productKey": "https://aihot.virxact.com/items/cms3cpjez0aeero3fw04ldp7e",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "PixVerse 把升级语音能力放进 Avatar Lip Sync 小程序，产品价值在于减少头像口型工作流中的外部配音步骤；现有证据未说明语言覆盖与同步质量。"
+    },
+    {
+      "rank": 19,
+      "product": "黄老板开源AI Agent客户端Cindy",
+      "productKey": "https://aihot.virxact.com/items/cms3elhfo0015rozqclwpuaim",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "Cindy 作为开源 AI Agent 客户端，值得看其是否形成清晰的任务、工具和产物界面；“纯 Vibe 开发实验”意味着完成度与长期维护仍需谨慎评估。"
+    },
+    {
+      "rank": 20,
+      "product": "Watch 14-Byte AI \"brains\" attempt to solve a 2D maze (Its hard)",
+      "productKey": "https://con-dog.github.io/minimio-public-frontend",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "14 字节“AI 大脑”解迷宫更像技术玩具和可视化实验，缺少明确用户任务与持续使用路径；适合作为弱信号观察，不应据此推断产品需求。"
+    }
+  ]
+}

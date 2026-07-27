@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-26T16:03:30Z",
+  "generatedAt": "2026-07-27T16:03:30Z",
   "generatedBy": "Codex reasoning from GitHub radar-feedback issues",
   "sourceIssueNumbers": [
     1,
@@ -44,7 +44,8 @@
     39,
     40,
     41,
-    42
+    42,
+    43
   ],
   "rules": [
     {
@@ -401,6 +402,10 @@
     {
       "issueNumber": 30,
       "reason": "“看不懂”只足以否定当前 Hugging Face Space，缺少可安全泛化的筛选条件。"
+    },
+    {
+      "issueNumber": 43,
+      "reason": "单个 Hugging Face Space 暂时无法打开只足以否定该产品，不能安全泛化为删除其他可访问的 Space。"
     }
   ]
 }

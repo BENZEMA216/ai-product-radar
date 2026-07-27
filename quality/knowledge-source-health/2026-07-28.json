@@ -1,0 +1,103 @@
+{
+  "generatedAt": "2026-07-27T16:27:15.149Z",
+  "date": "2026-07-28",
+  "window": {
+    "start": "2026-07-20T16:27:15.149Z",
+    "end": "2026-07-27T16:27:15.149Z",
+    "lookbackDays": 7
+  },
+  "targetCount": 20,
+  "desiredBlogCount": 14,
+  "desiredPaperCount": 6,
+  "selectedCount": 18,
+  "blogCount": 10,
+  "paperCount": 8,
+  "candidatePool": {
+    "historicalLinkCount": 20,
+    "blogFetchedCount": 23,
+    "paperFetchedCount": 14,
+    "blogAfterHistoricalDedupCount": 10,
+    "paperAfterHistoricalDedupCount": 8,
+    "eligibleAfterHistoricalDedupCount": 18,
+    "shortfallReason": "历史 canonical URL 去重后有效新内容不足；未用旧文或低质量内容补位。"
+  },
+  "sources": {
+    "openai_news": {
+      "label": "OpenAI",
+      "status": "ok",
+      "rawCount": 1051,
+      "keptCount": 10,
+      "note": "7 天窗口"
+    },
+    "anthropic": {
+      "label": "Anthropic Research & Engineering",
+      "status": "ok",
+      "rawCount": 505,
+      "keptCount": 1,
+      "note": "7 天窗口"
+    },
+    "deepmind": {
+      "label": "Google DeepMind",
+      "status": "ok",
+      "rawCount": 100,
+      "keptCount": 2,
+      "note": "7 天窗口"
+    },
+    "simon_willison": {
+      "label": "Simon Willison",
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 2,
+      "note": "7 天窗口"
+    },
+    "lilian_weng": {
+      "label": "Lil'Log · Lilian Weng",
+      "status": "ok",
+      "rawCount": 53,
+      "keptCount": 0,
+      "note": "7 天窗口"
+    },
+    "chip_huyen": {
+      "label": "Chip Huyen",
+      "status": "ok",
+      "rawCount": 10,
+      "keptCount": 0,
+      "note": "7 天窗口"
+    },
+    "eugene_yan": {
+      "label": "Eugene Yan",
+      "status": "ok",
+      "rawCount": 212,
+      "keptCount": 0,
+      "note": "7 天窗口"
+    },
+    "cloudflare_ai": {
+      "label": "Cloudflare",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 0,
+      "note": "7 天窗口"
+    },
+    "latent_space": {
+      "label": "Latent Space",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 7,
+      "note": "7 天窗口"
+    },
+    "interconnects": {
+      "label": "Interconnects",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 1,
+      "note": "7 天窗口"
+    },
+    "hf_daily_papers": {
+      "label": "Hugging Face Daily Papers / arXiv",
+      "status": "ok",
+      "rawCount": 14,
+      "keptCount": 14,
+      "note": "HF Daily Papers curated feed; canonical link points to arXiv"
+    }
+  }
+}
