@@ -11,6 +11,7 @@
 - 默认排序是否符合 AI 产品经理的阅读优先级；
 - Product Hunt、HN、GitHub、Hugging Face、AIHOT、YC Launch、XHS/Dealflow 的异常是否可解释；
 - 用户反馈和点评是否能被第二天自动化读取并影响判断。
+- Knowledge Radar 是否每天生成约 20 篇 Blog + 论文，并保持来源、中文摘要和站点发布一致。
 
 验收标准不是“每天一定很多条”，而是“每一天的数量、来源、排序和漏项都能解释”。
 
@@ -36,6 +37,8 @@ npm run daily -- --hours 24 --report-dir reports-stability-check
 npm run build-site
 npm run acceptance
 node radar.mjs --hours 24 --json
+npm run knowledge -- --days 7 --limit 20
+npm run knowledge-acceptance
 ```
 
 通过条件：
@@ -47,6 +50,19 @@ node radar.mjs --hours 24 --json
 - `npm run acceptance` 必须使用与最新正式报告同一自然日的 `quality/source-health/YYYY-MM-DD.json` 和 `quality/feedback/YYYY-MM-DD.json`；如果只能找到旧文件或新文件，必须失败，不能用错日期的质量文件掩盖当天链路状态。
 - JSON dry-run 有合理候选数量；如果数量异常少，source health 必须解释。
 - 正式报告和站点文件可提交并推送到 GitHub。
+- `knowledge-reports/YYYY-MM-DD.md`、同日 knowledge source health/audit 和 `docs/knowledge.html` 必须对齐。
+
+## 3.1 Knowledge Radar 验收
+
+通过条件：
+
+- 默认目标 20 篇，正常来源状态下不得少于 18 篇。
+- Blog 与论文合并展示；当两类来源都可用时，各自至少 6 篇。
+- 标题和 canonical URL 不重复，且不得与历史知识日报重复推送同一链接。
+- 至少 80% 的“核心信息”由本次 Codex 改写成中文；“为什么值得读”基本全部为具体中文判断，不允许短模板。
+- 论文必须链接 arXiv 原文；Hugging Face Daily Papers 只作为发现与社区信号，不代替论文证据。
+- Blog 来源异常必须记录在 `quality/knowledge-source-health/YYYY-MM-DD.json`；单一来源失败不阻塞产品日报，但不得把知识推送伪报为完整。
+- `docs/knowledge.html` 必须收录同日全部知识条目；`npm run knowledge-acceptance` 失败时不得发布。
 
 ## 4. Product Hunt 验收
 

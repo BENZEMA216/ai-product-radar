@@ -1,0 +1,13 @@
+{
+  "generatedAt": "2026-07-27T14:16:24.551Z",
+  "report": "2026-07-27.md",
+  "health": "quality/knowledge-source-health/2026-07-27.json",
+  "site": "docs/knowledge.html",
+  "ok": true,
+  "date": "2026-07-27",
+  "rows": 20,
+  "blogCount": 10,
+  "paperCount": 10,
+  "sourceCount": 11,
+  "failures": []
+}

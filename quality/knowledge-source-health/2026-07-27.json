@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-07-27T14:11:24.640Z",
+  "date": "2026-07-27",
+  "window": {
+    "start": "2026-07-20T14:11:24.640Z",
+    "end": "2026-07-27T14:11:24.640Z",
+    "lookbackDays": 7
+  },
+  "targetCount": 20,
+  "selectedCount": 20,
+  "blogCount": 10,
+  "paperCount": 10,
+  "sources": {
+    "openai_news": {
+      "label": "OpenAI",
+      "status": "ok",
+      "rawCount": 1051,
+      "keptCount": 10,
+      "note": "7 天窗口"
+    },
+    "anthropic": {
+      "label": "Anthropic Research & Engineering",
+      "status": "ok",
+      "rawCount": 505,
+      "keptCount": 1,
+      "note": "7 天窗口"
+    },
+    "deepmind": {
+      "label": "Google DeepMind",
+      "status": "ok",
+      "rawCount": 100,
+      "keptCount": 2,
+      "note": "7 天窗口"
+    },
+    "simon_willison": {
+      "label": "Simon Willison",
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 2,
+      "note": "7 天窗口"
+    },
+    "lilian_weng": {
+      "label": "Lil'Log · Lilian Weng",
+      "status": "ok",
+      "rawCount": 53,
+      "keptCount": 0,
+      "note": "7 天窗口"
+    },
+    "chip_huyen": {
+      "label": "Chip Huyen",
+      "status": "ok",
+      "rawCount": 10,
+      "keptCount": 0,
+      "note": "7 天窗口"
+    },
+    "eugene_yan": {
+      "label": "Eugene Yan",
+      "status": "ok",
+      "rawCount": 212,
+      "keptCount": 0,
+      "note": "7 天窗口"
+    },
+    "cloudflare_ai": {
+      "label": "Cloudflare",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 0,
+      "note": "7 天窗口"
+    },
+    "latent_space": {
+      "label": "Latent Space",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 7,
+      "note": "7 天窗口"
+    },
+    "interconnects": {
+      "label": "Interconnects",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 2,
+      "note": "7 天窗口"
+    },
+    "hf_daily_papers": {
+      "label": "Hugging Face Daily Papers / arXiv",
+      "status": "ok",
+      "rawCount": 14,
+      "keptCount": 14,
+      "note": "HF Daily Papers curated feed; canonical link points to arXiv"
+    }
+  }
+}

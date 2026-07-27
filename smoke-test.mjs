@@ -39,6 +39,9 @@ import {
   sortCandidatesForPriority
 } from "./radar.mjs";
 import { buildSiteData, parseReportMarkdown, renderSiteHtml } from "./build-site.mjs";
+import { parseKnowledgeReport } from "./build-knowledge-page.mjs";
+import { parseFeed, normalizeDailyPapers } from "./knowledge-runner.mjs";
+import { auditKnowledge } from "./knowledge-audit.mjs";
 import { buildFeedbackSnapshot, isRadarFeedbackIssue, parseFeedbackIssue } from "./feedback-runner.mjs";
 import { commitMessageForReport, newestReportPath, qualityPathsForDir, reportPathsForDir, reviewPathsForDir } from "./publish-report.mjs";
 import { auditReportQuality, buildQualityArtifacts, qualityArtifactPaths, writeQualityArtifacts } from "./quality-audit.mjs";
@@ -3777,6 +3780,71 @@ function testLiveCheckSkipClassifier() {
   );
 }
 
+function testKnowledgeFeedParserFixture() {
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <entry>
+    <title>How we built a reliable AI agent</title>
+    <link rel="alternate" href="https://example.com/agent"/>
+    <published>2026-07-27T00:00:00Z</published>
+    <summary>Architecture, evaluation, and recovery lessons from production.</summary>
+  </entry>
+</feed>`;
+  const items = parseFeed(xml, { id: "fixture", label: "Fixture Blog" });
+  assert.equal(items.length, 1);
+  assert.equal(items[0].source, "Fixture Blog");
+  assert.equal(items[0].link, "https://example.com/agent");
+  assert.match(items[0].summary, /Architecture/);
+}
+
+function testKnowledgePaperAndAuditFixture() {
+  const papers = normalizeDailyPapers(
+    [
+      {
+        paper: {
+          id: "2607.12345",
+          title: "Evaluating Long-Running Agents",
+          summary: "A benchmark with controlled tasks and failure analysis.",
+          submittedOnDailyAt: "2026-07-27T00:00:00Z",
+          publishedAt: "2026-07-26T00:00:00Z",
+          authors: [{ name: "Ada Example" }],
+          upvotes: 8
+        }
+      }
+    ],
+    { id: "hf_daily_papers", label: "Hugging Face Daily Papers / arXiv", weight: 12 },
+    new Date("2026-07-27T01:00:00Z")
+  );
+  assert.equal(papers.length, 1);
+  assert.equal(papers[0].link, "https://arxiv.org/abs/2607.12345");
+  assert.ok(papers[0].score > 20);
+
+  const rows = Array.from({ length: 18 }, (_, index) => {
+    const kind = index < 9 ? "Blog" : "论文";
+    const link = `https://example.com/item-${index}`;
+    return `| ${kind} | [知识条目 ${index}](${link}) | 来源 ${index % 3} | 这是一条经过改写的中文核心信息，用来说明文章或论文真正新增了什么认知。 | 这条内容包含具体机制和证据，值得用于产品、技术和研究判断，而不是只看发布信息。 | [原文](${link}) |`;
+  }).join("\n");
+  const report = parseKnowledgeReport(
+    `# AI Knowledge Radar · 2026-07-27\n\n| 类型 | 标题 | 来源 | 核心信息 | 为什么值得读 | 链接 |\n|---|---|---|---|---|---|\n${rows}`,
+    "knowledge-reports/2026-07-27.md"
+  );
+  const health = {
+    date: "2026-07-27",
+    sources: {
+      blog_a: { status: "ok", keptCount: 9 },
+      blog_b: { status: "ok", keptCount: 7 },
+      hf_daily_papers: { status: "ok", keptCount: 20 }
+    }
+  };
+  const siteHtml = `window.__KNOWLEDGE_DATA__={"latestDate":"2026-07-27"} ${report.items
+    .map((item) => item.link)
+    .join(" ")}`;
+  const audit = auditKnowledge({ report, health, siteHtml, minCount: 18 });
+  assert.equal(audit.ok, true);
+  assert.equal(audit.blogCount, 9);
+  assert.equal(audit.paperCount, 9);
+}
+
 function testAihotParserFixture() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss><channel>
@@ -4182,6 +4250,8 @@ const tests = [
   ["Rendered Product Hunt why copy avoids repeated template", testRenderedProductHuntWhyCopyAvoidsRepeatedTemplate],
   ["Site builder normalizes archived Product Hunt why copy", testSiteBuilderNormalizesArchivedProductHuntWhyCopy],
   ["Live check skip classifier", testLiveCheckSkipClassifier],
+  ["Knowledge feed parser fixture", testKnowledgeFeedParserFixture],
+  ["Knowledge paper mapping and audit fixture", testKnowledgePaperAndAuditFixture],
   ["HN Algolia", testHnAlgolia],
   ["GitHub gh api", testGhApi],
   ["Hugging Face API", testHuggingFaceApi],

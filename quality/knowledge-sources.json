@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "targetCount": 20,
+  "blogQuota": 10,
+  "maxPerBlogSource": 2,
+  "lookbackDays": 7,
+  "blogSources": [
+    {
+      "id": "openai_news",
+      "label": "OpenAI",
+      "type": "feed",
+      "url": "https://openai.com/news/rss.xml",
+      "home": "https://openai.com/news/research/",
+      "weight": 14,
+      "maxItems": 20
+    },
+    {
+      "id": "anthropic",
+      "label": "Anthropic Research & Engineering",
+      "type": "sitemap",
+      "url": "https://www.anthropic.com/sitemap.xml",
+      "home": "https://www.anthropic.com/engineering",
+      "pathPrefixes": ["/engineering/", "/research/"],
+      "excludePaths": ["/research/team/"],
+      "weight": 16,
+      "maxItems": 12
+    },
+    {
+      "id": "deepmind",
+      "label": "Google DeepMind",
+      "type": "feed",
+      "url": "https://deepmind.google/blog/rss.xml",
+      "home": "https://deepmind.google/blog/",
+      "weight": 14,
+      "maxItems": 20
+    },
+    {
+      "id": "simon_willison",
+      "label": "Simon Willison",
+      "type": "feed",
+      "url": "https://simonwillison.net/atom/entries/",
+      "home": "https://simonwillison.net/",
+      "weight": 15,
+      "maxItems": 20
+    },
+    {
+      "id": "lilian_weng",
+      "label": "Lil'Log · Lilian Weng",
+      "type": "feed",
+      "url": "https://lilianweng.github.io/index.xml",
+      "home": "https://lilianweng.github.io/",
+      "weight": 16,
+      "maxItems": 12
+    },
+    {
+      "id": "chip_huyen",
+      "label": "Chip Huyen",
+      "type": "feed",
+      "url": "https://huyenchip.com/feed.xml",
+      "home": "https://huyenchip.com/",
+      "weight": 15,
+      "maxItems": 16
+    },
+    {
+      "id": "eugene_yan",
+      "label": "Eugene Yan",
+      "type": "feed",
+      "url": "https://eugeneyan.com/rss/",
+      "home": "https://eugeneyan.com/writing/",
+      "weight": 15,
+      "maxItems": 16
+    },
+    {
+      "id": "cloudflare_ai",
+      "label": "Cloudflare",
+      "type": "feed",
+      "url": "https://blog.cloudflare.com/rss/",
+      "home": "https://blog.cloudflare.com/tag/ai/",
+      "weight": 12,
+      "maxItems": 24,
+      "requireAiRelevance": true
+    },
+    {
+      "id": "latent_space",
+      "label": "Latent Space",
+      "type": "feed",
+      "url": "https://www.latent.space/feed",
+      "home": "https://www.latent.space/",
+      "weight": 11,
+      "maxItems": 16
+    },
+    {
+      "id": "interconnects",
+      "label": "Interconnects",
+      "type": "feed",
+      "url": "https://www.interconnects.ai/feed",
+      "home": "https://www.interconnects.ai/",
+      "weight": 12,
+      "maxItems": 16
+    }
+  ],
+  "paperSource": {
+    "id": "hf_daily_papers",
+    "label": "Hugging Face Daily Papers / arXiv",
+    "url": "https://huggingface.co/api/daily_papers",
+    "home": "https://huggingface.co/papers",
+    "weight": 12,
+    "maxItems": 60
+  }
+}

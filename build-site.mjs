@@ -1747,6 +1747,7 @@ export function renderSiteHtml(data) {
         </section>
         <nav class="side-nav" aria-label="站点导航">
           <a href="#feed">今日优先 <b>${latestPriorityCount}</b></a>
+          <a href="knowledge.html">知识与论文 <b>20</b></a>
           <button type="button" data-nav-view="reviewed">我的点评 <b>${data.stats.totalReviews}</b></button>
           <a href="#archive">日期归档 <b>${data.reportDays.length}</b></a>
           <a href="#source-health">来源健康 <b>${latestStatus.degraded.length}</b></a>

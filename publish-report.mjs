@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import { sanitizeLocalProxyEnv } from "./radar.mjs";
 
 const REPORT_PATTERN = /^\d{4}-\d{2}-\d{2}-\d{4}-cst\.md$/;
+const KNOWLEDGE_REPORT_PATTERN = /^\d{4}-\d{2}-\d{2}\.md$/;
 const REVIEW_PATTERN = /^\d{4}-\d{2}-\d{2}\.json$/;
 const CLEAN_ENV = sanitizeLocalProxyEnv(process.env);
 
@@ -26,6 +27,18 @@ export function reportPathsForDir(reportDir) {
     .map((name) => join(reportDir, name))
     .filter((path) => REPORT_PATTERN.test(basename(path)))
     .sort();
+}
+
+export function knowledgeReportPathsForDir(reportDir = "knowledge-reports") {
+  try {
+    return readdirSync(reportDir)
+      .map((name) => join(reportDir, name))
+      .filter((path) => KNOWLEDGE_REPORT_PATTERN.test(basename(path)))
+      .sort();
+  } catch (error) {
+    if (error.code === "ENOENT") return [];
+    throw error;
+  }
 }
 
 export function reviewPathsForDir(reviewDir) {
@@ -62,12 +75,13 @@ export function qualityPathsForDir(qualityDir = "quality") {
 }
 
 function parseArgs(argv) {
-  const args = { reportDir: "reports", reviewDir: "reviews" };
+  const args = { reportDir: "reports", reviewDir: "reviews", knowledgeReportDir: "knowledge-reports" };
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
     if (arg === "--report") args.report = argv[++i];
     if (arg === "--report-dir") args.reportDir = argv[++i];
     if (arg === "--review-dir") args.reviewDir = argv[++i];
+    if (arg === "--knowledge-report-dir") args.knowledgeReportDir = argv[++i];
   }
   return args;
 }
@@ -139,7 +153,15 @@ async function main() {
   git(["rev-parse", "--is-inside-work-tree"]);
   buildSite();
   const pathsToStage = Array.from(
-    new Set([...reportPathsForDir(args.reportDir), report, ...reviewPathsForDir(args.reviewDir), ...qualityPathsForDir(), "docs/index.html"])
+    new Set([
+      ...reportPathsForDir(args.reportDir),
+      report,
+      ...knowledgeReportPathsForDir(args.knowledgeReportDir),
+      ...reviewPathsForDir(args.reviewDir),
+      ...qualityPathsForDir(),
+      "docs/index.html",
+      "docs/knowledge.html"
+    ])
   );
   git(["add", "--", ...pathsToStage]);
 

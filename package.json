@@ -27,11 +27,13 @@
     "github-pages"
   ],
   "scripts": {
-    "build-site": "node build-site.mjs",
+    "build-site": "node build-site.mjs && node build-knowledge-page.mjs",
     "daily": "node daily-runner.mjs",
     "acceptance": "node quality-audit.mjs",
     "feedback": "node feedback-runner.mjs",
     "feedback-policy": "node feedback-policy.mjs",
+    "knowledge": "node knowledge-runner.mjs",
+    "knowledge-acceptance": "node knowledge-audit.mjs",
     "publish-report": "node publish-report.mjs",
     "radar": "node radar.mjs",
     "smoke": "node smoke-test.mjs"

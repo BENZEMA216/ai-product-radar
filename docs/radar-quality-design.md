@@ -202,6 +202,25 @@ XHS 一般情况下默认启用，但它依赖本地 Dealflow bridge、Chrome �
 
 国内官方来源后续单独建 watchlist，例如：阿里云/通义、腾讯混元、字节豆包/扣子、百度文心、月之暗面 Kimi、智谱、MiniMax、阶跃星辰、零一万物、商汤、百川、快手可灵、美图、秘塔、硅基流动等。
 
+### 4.9 Knowledge Radar：Blog + 论文
+
+Knowledge Radar 与产品日报分轨运行，避免研究、观点和技术文章污染产品 Top 20。它每天从官方研究/工程博客、可信独立作者和 Hugging Face Daily Papers / arXiv 中选择约 20 篇，发布到 `knowledge-reports/YYYY-MM-DD.md` 与 `docs/knowledge.html`。
+
+默认规则：
+
+- Blog 使用 7 天观察窗口并跨日按 canonical URL 去重；论文优先使用当天 Hugging Face Daily Papers 的社区筛选，再链接到 arXiv 原文。
+- 默认目标为 10 篇 Blog + 10 篇论文；来源不足时可互相补位，但来源可用时两类都不应少于 6 篇。
+- 不按来源名或发布时间直接判定“重要”。排序考虑证据密度、解释增量、决策价值、可迁移性和来源历史质量。
+- 纯发布稿、融资新闻、SEO 教程、泛泛趋势预测和重复产品公告不应占据前排。
+- 正式发布前，由当次 Codex 逐条把“核心信息”和“为什么值得读”改写成中文；只能依据标题、摘要和原文，不得编造论文结论或实验数字。
+- 高质量内容不足时可以少于 20 篇，但必须在 `quality/knowledge-source-health/YYYY-MM-DD.json` 解释来源异常或候选不足；不能用低质量内容硬凑。
+
+首批来源定义在 `quality/knowledge-sources.json`。Blog 与论文候选、来源健康和验收结果分别写入：
+
+- `quality/knowledge-candidates/YYYY-MM-DD.json`
+- `quality/knowledge-source-health/YYYY-MM-DD.json`
+- `quality/knowledge-audits/YYYY-MM-DD.json`
+
 ## 5. 候选数据结构
 
 所有来源最终归一化成统一 candidate：
