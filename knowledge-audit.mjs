@@ -56,16 +56,25 @@ export function auditKnowledge({ report, health, siteHtml, minCount = 18 }) {
     ([key, value]) => key !== "hf_daily_papers" && value?.status === "ok" && Number(value?.keptCount || 0) > 0
   ).length;
   const paperAvailable = Number(health?.sources?.hf_daily_papers?.keptCount || 0) > 0;
+  const eligibleAfterHistoricalDedup = Number(
+    health?.candidatePool?.eligibleAfterHistoricalDedupCount ?? Number.POSITIVE_INFINITY
+  );
+  const blogAfterHistoricalDedup = Number(
+    health?.candidatePool?.blogAfterHistoricalDedupCount ?? Number.POSITIVE_INFINITY
+  );
+  const paperAfterHistoricalDedup = Number(
+    health?.candidatePool?.paperAfterHistoricalDedupCount ?? Number.POSITIVE_INFINITY
+  );
 
-  if (items.length < minCount) {
+  if (items.length < minCount && eligibleAfterHistoricalDedup >= minCount) {
     failures.push(failure("knowledge_count_low", `知识日报只有 ${items.length} 条，低于最低 ${minCount} 条。`));
   }
   if (new Set(links).size !== links.length) failures.push(failure("knowledge_duplicate_links", "知识日报存在重复链接。"));
   if (new Set(titles).size !== titles.length) failures.push(failure("knowledge_duplicate_titles", "知识日报存在重复标题。"));
-  if (liveBlogSources >= 2 && blogCount < 12) {
+  if (liveBlogSources >= 2 && blogCount < 12 && blogAfterHistoricalDedup >= 12) {
     failures.push(failure("knowledge_blog_mix_low", `Blog 只有 ${blogCount} 条，来源可用时至少应保留 12 条。`));
   }
-  if (paperAvailable && paperCount < 6) {
+  if (paperAvailable && paperCount < 6 && paperAfterHistoricalDedup >= 6) {
     failures.push(failure("knowledge_paper_mix_low", `论文只有 ${paperCount} 条，论文源可用时至少应保留 6 条。`));
   }
   if (cjkRatio(items, "core") < 0.8) {
@@ -106,6 +115,7 @@ export function auditKnowledge({ report, health, siteHtml, minCount = 18 }) {
     blogCount,
     paperCount,
     sourceCount: availableSourceCount,
+    candidatePool: health?.candidatePool || null,
     failures
   };
 }

@@ -3845,6 +3845,33 @@ function testKnowledgePaperAndAuditFixture() {
   assert.equal(audit.ok, true);
   assert.equal(audit.blogCount, 14);
   assert.equal(audit.paperCount, 6);
+
+  const shortageReport = {
+    ...report,
+    items: report.items.slice(0, 10)
+  };
+  const shortageHealth = {
+    ...health,
+    candidatePool: {
+      historicalLinkCount: 100,
+      blogFetchedCount: 40,
+      paperFetchedCount: 20,
+      blogAfterHistoricalDedupCount: 10,
+      paperAfterHistoricalDedupCount: 0,
+      eligibleAfterHistoricalDedupCount: 10,
+      shortfallReason: "历史 canonical URL 去重后有效新内容不足；未用旧文或低质量内容补位。"
+    }
+  };
+  const shortageSiteHtml = `window.__KNOWLEDGE_DATA__={"latestDate":"2026-07-27"} ${shortageReport.items
+    .map((item) => item.link)
+    .join(" ")}`;
+  const shortageAudit = auditKnowledge({
+    report: shortageReport,
+    health: shortageHealth,
+    siteHtml: shortageSiteHtml,
+    minCount: 18
+  });
+  assert.equal(shortageAudit.ok, true, "explained post-dedup shortages should not force stale or low-quality filler");
 }
 
 function testAihotParserFixture() {

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -253,6 +254,28 @@ async function fetchText(url, { attempts = 2, timeoutMs = 20000 } = {}) {
       lastError = error;
     }
   }
+  try {
+    return execFileSync(
+      "curl",
+      [
+        "-fsSL",
+        "--connect-timeout",
+        String(Math.max(1, Math.ceil(timeoutMs / 1000))),
+        "--max-time",
+        String(Math.max(1, Math.ceil(timeoutMs / 1000))),
+        "-A",
+        "ai-product-radar/0.1 (+https://github.com/BENZEMA216/ai-product-radar)",
+        url
+      ],
+      {
+        encoding: "utf8",
+        maxBuffer: 20 * 1024 * 1024,
+        timeout: timeoutMs + 5000
+      }
+    );
+  } catch (error) {
+    lastError = error;
+  }
   throw lastError;
 }
 
@@ -463,15 +486,23 @@ async function fetchPapers(source, now, dateKey) {
   if (yesterdayKey !== dateKey) dates.push(yesterdayKey);
   let rawCount = 0;
   const all = [];
+  const errors = [];
   for (const date of dates) {
-    const url = new URL(source.url);
-    url.searchParams.set("date", date);
-    url.searchParams.set("limit", String(source.maxItems || 60));
-    const text = await fetchText(url.toString(), { timeoutMs: 25000 });
-    const payload = JSON.parse(text);
-    rawCount += Array.isArray(payload) ? payload.length : 0;
-    all.push(...normalizeDailyPapers(payload, source, now));
-    if (all.length >= 20) break;
+    try {
+      const url = new URL(source.url);
+      url.searchParams.set("date", date);
+      url.searchParams.set("limit", String(source.maxItems || 60));
+      const text = await fetchText(url.toString(), { timeoutMs: 25000 });
+      const payload = JSON.parse(text);
+      rawCount += Array.isArray(payload) ? payload.length : 0;
+      all.push(...normalizeDailyPapers(payload, source, now));
+      if (all.length >= 20) break;
+    } catch (error) {
+      errors.push(`${date}: ${String(error?.message || error).slice(0, 180)}`);
+    }
+  }
+  if (!all.length && errors.length === dates.length) {
+    throw new Error(`Daily Papers dates failed: ${errors.join(" | ")}`);
   }
   return { rawCount, items: uniqueByLink(all) };
 }
@@ -652,6 +683,12 @@ export async function runKnowledgeRadar(options = {}) {
   }
 
   const seenLinks = historicalLinks(reportDir, reportPath);
+  const blogAfterHistoricalDedupCount = uniqueByLink(blogItems).filter(
+    (item) => !seenLinks.has(item.link.toLowerCase())
+  ).length;
+  const paperAfterHistoricalDedupCount = uniqueByLink(paperItems).filter(
+    (item) => !seenLinks.has(item.link.toLowerCase())
+  ).length;
   const selected = selectItems(blogItems, paperItems, { limit, blogQuota, maxPerBlogSource, seenLinks });
   const generatedAt = now.toISOString();
   const health = {
@@ -664,6 +701,18 @@ export async function runKnowledgeRadar(options = {}) {
     selectedCount: selected.length,
     blogCount: selected.filter((item) => item.kind === "blog").length,
     paperCount: selected.filter((item) => item.kind === "paper").length,
+    candidatePool: {
+      historicalLinkCount: seenLinks.size,
+      blogFetchedCount: uniqueByLink(blogItems).length,
+      paperFetchedCount: uniqueByLink(paperItems).length,
+      blogAfterHistoricalDedupCount,
+      paperAfterHistoricalDedupCount,
+      eligibleAfterHistoricalDedupCount: blogAfterHistoricalDedupCount + paperAfterHistoricalDedupCount,
+      shortfallReason:
+        selected.length < limit
+          ? "历史 canonical URL 去重后有效新内容不足；未用旧文或低质量内容补位。"
+          : ""
+    },
     sources: sourceHealth
   };
   writeJson(candidatePath, { generatedAt, date: dateKey, items: selected });
