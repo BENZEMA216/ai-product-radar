@@ -1,0 +1,22 @@
+{
+  "generatedAt": "2026-07-28T16:21:49.833Z",
+  "report": "2026-07-29.md",
+  "health": "quality/knowledge-source-health/2026-07-29.json",
+  "site": "docs/index.html",
+  "ok": true,
+  "date": "2026-07-29",
+  "rows": 20,
+  "blogCount": 2,
+  "paperCount": 18,
+  "sourceCount": 11,
+  "candidatePool": {
+    "historicalLinkCount": 38,
+    "blogFetchedCount": 20,
+    "paperFetchedCount": 29,
+    "blogAfterHistoricalDedupCount": 2,
+    "paperAfterHistoricalDedupCount": 29,
+    "eligibleAfterHistoricalDedupCount": 31,
+    "shortfallReason": "Blog 历史 canonical URL 去重后仅 2 篇，低于 14 篇目标；未用旧文或低质量内容补位。"
+  },
+  "failures": []
+}

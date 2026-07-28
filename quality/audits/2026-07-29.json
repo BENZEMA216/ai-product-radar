@@ -1,0 +1,293 @@
+{
+  "date": "2026-07-29",
+  "generatedAt": "2026-07-28T16:04:10.042Z",
+  "reportPath": "reports/2026-07-29-0004-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 28,
+    "top20Sources": [
+      "HN Algolia",
+      "YC Launch",
+      "AIHOT"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-27；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 0 条，AI 相关候选 0 条；fallback 低覆盖时扩展检查 2026-07-26，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 0 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 3,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 27,
+      "keptCount": 13,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 4,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 12,
+      "keptCount": 12,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 44,
+    "error": "",
+    "policyGeneratedAt": "2026-07-28T16:03:01Z",
+    "policyIssueCount": 44,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "A lyric video as a Remotion app, written by an agent fleet",
+      "productKey": "https://yupanqui.xyz/shape-of-ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这支歌词视频把多个 agent 的协作结果落到可运行的 Remotion 应用，而非只交付视频文件；值得验证任务拆分、素材一致性与后续人工修改是否真的比单 agent 更高效。"
+    },
+    {
+      "rank": 2,
+      "product": "Manufact",
+      "productKey": "https://www.ycombinator.com/launches/rxg-manufact-mcp-cloud-for-your-claude-connector-chatgpt-plugin",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Manufact 想把产品能力一次部署为 Claude Connector 与 ChatGPT Plugin，切中“如何让服务被 agent 调用”的分发问题；核心要看鉴权、接口适配和跨平台维护是否真被云层统一。"
+    },
+    {
+      "rank": 3,
+      "product": "RenderPop – Free browser-based AI image and video generator",
+      "productKey": "https://www.renderpop.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "RenderPop 用免费、浏览器即开即用降低图像与视频生成门槛，但同类供给高度拥挤；应观察它是否在模型选择、素材连续编辑或导出流程上提供了免费之外的留存理由。"
+    },
+    {
+      "rank": 4,
+      "product": "Waddle Labs",
+      "productKey": "https://www.ycombinator.com/launches/s33-waddle-labs-agents-that-control-robots",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Waddle Labs 把自然语言 agent 入口延伸到真实机器人任务，价值不只是“Claude Code for robotics”的类比；决定产品能否成立的是动作安全、环境反馈与失败恢复是否形成可靠闭环。"
+    },
+    {
+      "rank": 5,
+      "product": "Reverse-engineer viral videos into AI-ready shot breakdowns",
+      "productKey": "https://videolens.cc/zh/landing",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "VideoLens 把爆款视频拆成可供生成模型使用的镜头清单，补的是创作前分析环节；值得验证拆解能否保留节奏、构图和转场因果，而不是输出一份看似专业的通用提示词。"
+    },
+    {
+      "rank": 6,
+      "product": "Citation Safe – MCP server verifies legal citations vs. CourtListener",
+      "productKey": "https://citationsafe.com/mcp",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Citation Safe 让 agent 在交付法律文本前对照 CourtListener 核验引文，把高风险幻觉检查做成 MCP 工具；关键是覆盖范围、版本匹配与无法确认时能否明确阻断而非给出假阳性。"
+    },
+    {
+      "rank": 7,
+      "product": "FileForge Finder: Local file search with AI-optimized export",
+      "productKey": "https://news.ycombinator.com/item?id=49076401",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这条 HN 入口指向 FileForge Finder 的本地检索与 AI 友好导出，重点应看导出是否保留路径、元数据和引用关系；仅有同名发布帖，且与下一条疑似重复，信号置信度有限。"
+    },
+    {
+      "rank": 8,
+      "product": "FileForge Finder: Local file search with AI-optimized export",
+      "productKey": "https://momentumce.com/fileforge",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "产品页版本更便于核查 FileForge 的实际交付形态：本地文件搜索后直接整理给 AI 使用；商业判断在于它能否比系统搜索加手工拖拽显著减少上下文准备时间。"
+    },
+    {
+      "rank": 9,
+      "product": "DynoTable – The DynamoDB GUI with real SQL and your AI agent",
+      "productKey": "https://dynotable.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "DynoTable 将 DynamoDB 的可视化管理、SQL 查询和 agent 放进同一工具，瞄准的是数据库操作摩擦；应验证自然语言生成查询后的权限边界、成本预估和误操作保护。"
+    },
+    {
+      "rank": 10,
+      "product": "Rex",
+      "productKey": "https://www.ycombinator.com/launches/s1s-rex-turn-enterprise-order-to-cash-into-an-autonomous-operation",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Rex 直接承接企业从订单到回款的运营流程，属于结果型垂直 agent；采用门槛取决于它能否接入 ERP、处理异常账款并留下可审计的人机责任边界。"
+    },
+    {
+      "rank": 11,
+      "product": "Nutaan – AI-powered voice calling assistant and live chat widget",
+      "productKey": "https://nutaan.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Nutaan 同时提供电话助手与网页聊天组件，试图统一两类客户入口；值得看语音转人工、跨渠道会话记忆和业务系统回写是否一致，而不是只比较机器人回答效果。"
+    },
+    {
+      "rank": 12,
+      "product": "Permanym – for hiring teams overwhelmed by AI resume spam",
+      "productKey": "https://permanym.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Permanym 针对 AI 批量生成简历带来的筛选失真，切入招聘团队的新痛点；产品成立要靠可信身份或工作证据，而不能再增加一层容易被候选人适配的自动评分。"
+    },
+    {
+      "rank": 13,
+      "product": "Building a new game everyday with AI. Day #106 Zombie Survival Training",
+      "productKey": "https://gamevibe.us/106-zombie-survival-training",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "连续第 106 天生成小游戏能说明生产流水线持续运转，却仍更像内容实验而非独立产品；若没有玩家留存、复用工具或创作者工作流证据，不应把产量等同于需求验证。"
+    },
+    {
+      "rank": 14,
+      "product": "ApplyAssists – AI resume builder using Google XYZ formula",
+      "productKey": "https://applyassists.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ApplyAssists 用 Google XYZ 公式约束简历改写，至少比自由生成多了一层结果表达结构；但简历助手已高度同质化，需看真实经历校验和岗位定制能否避免包装过度。"
+    },
+    {
+      "rank": 15,
+      "product": "Unity中国发布团结引擎2.0，AI Agent\"团结Codely\"与百度智能云合作落地私有化AI Coding",
+      "productKey": "https://aihot.virxact.com/items/cms4r6ukm012proa1qfmzlq4u",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "团结 Codely 把代码搜索、生成与 IDE 编辑嵌入国产游戏引擎，并强调开源模型适配和内网部署，企业采用路径具体；但证据来自聚合摘要，仍需官方材料确认可用范围与交付状态。"
+    },
+    {
+      "rank": 16,
+      "product": "Kdeps – A New CLI Coding Agent That Runs on Open Weight Models",
+      "productKey": "https://kdeps.com",
+      "source": "HN Algolia",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "Kdeps 让 CLI coding agent 运行在开放权重模型上，给重视私有部署与模型可替换性的团队另一条路径；判断重点是工具调用、代码库理解和长任务成功率能否弥补模型能力差距。"
+    },
+    {
+      "rank": 17,
+      "product": "FeyNoBg – Automatic background removal model and training library",
+      "productKey": "https://usefeyn.com/blog/feynobg",
+      "source": "HN Algolia",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "FeyNoBg 同时开放自动抠图模型与训练库，价值在于团队能否针对自有图像域继续训练，而非只能调用黑盒 API；应看边缘质量、推理成本和许可是否支持生产使用。"
+    },
+    {
+      "rank": 18,
+      "product": "80张RTX 5090跑通Kimi K3，速度20 tok/s",
+      "productKey": "https://aihot.virxact.com/items/cms4lgujz05e5roeplmoai5ec",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "80 张 RTX 5090 以普通以太网运行 Kimi K3，说明超大开源模型可绕开 HBM 集群，但硬件规模仍远非普及部署；单流 20 tok/s 是可核查线索，需回到原始测试看稳定性与总成本。"
+    },
+    {
+      "rank": 19,
+      "product": "Kimi Linear：一种表现力强且高效的注意力架构",
+      "productKey": "https://aihot.virxact.com/items/cms4t5zra01o1roa10b19hmbh",
+      "source": "AIHOT",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 1,
+      "rankingIssue": null,
+      "reason": "Kimi Linear 同时开放 KDA 内核、vLLM 实现和权重，降低外部复现实验门槛；摘要中的 KV cache 与吞吐提升很具体，但必须在原文设定和不同硬件上验证后才能转化为部署判断。"
+    },
+    {
+      "rank": 20,
+      "product": "智能戒指正成为我眼中最理想的 AI 设备",
+      "productKey": "https://aihot.virxact.com/items/cms4mqhy205u4roeppiah6ib5",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "Stream 用靠近嘴边并按键的戒指交互，把安静听写接到 Mac 与 iPhone，解决随手捕捉而非泛化助手问题；真正采用触发点是识别可靠性、续航和跨设备输入延迟。"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-27T16:03:30Z",
+  "generatedAt": "2026-07-28T16:03:01Z",
   "generatedBy": "Codex reasoning from GitHub radar-feedback issues",
   "sourceIssueNumbers": [
     1,
@@ -45,7 +45,8 @@
     40,
     41,
     42,
-    43
+    43,
+    44
   ],
   "rules": [
     {
@@ -317,6 +318,31 @@
           "video",
           "economy",
           "变现"
+        ]
+      }
+    },
+    {
+      "id": "agent-tool-and-peer-discovery-network-boost",
+      "enabled": true,
+      "action": "keep",
+      "scoreDelta": 18,
+      "priority": 85,
+      "rationale": "用户明确希望重点关注让 Agent 发现工具、能力或其他 Agent 的连接与发现网络；仅在产品同时具备 Agent 语境和明确发现、注册或互操作机制时提权。",
+      "issueNumbers": [
+        44
+      ],
+      "match": {
+        "allTerms": [
+          "agent"
+        ],
+        "anyTerms": [
+          "find tools",
+          "find each other",
+          "agent discovery",
+          "tool discovery",
+          "agent registry",
+          "agent network",
+          "agent interoperability"
         ]
       }
     },
