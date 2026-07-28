@@ -204,7 +204,7 @@ XHS 一般情况下默认启用，但它依赖本地 Dealflow bridge、Chrome �
 
 ### 4.9 Knowledge Radar：Blog + 论文
 
-Knowledge Radar 与产品日报分轨运行，避免研究、观点和技术文章污染产品 Top 20。它每天从官方研究/工程博客、可信独立作者和 Hugging Face Daily Papers / arXiv 中选择约 20 篇，发布到 `knowledge-reports/YYYY-MM-DD.md` 与 `docs/knowledge.html`。
+Knowledge Radar 与产品日报分轨采集和排序，避免研究、观点和技术文章污染产品 Top 20；展示层统一进入 Radar 首页。它每天从官方研究/工程博客、可信独立作者和 Hugging Face Daily Papers / arXiv 中选择约 20 篇，发布到 `knowledge-reports/YYYY-MM-DD.md` 并直接呈现在 `docs/index.html`。`docs/knowledge.html` 仅保留为历史归档兼容入口。
 
 默认规则：
 

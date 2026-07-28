@@ -738,9 +738,23 @@ function testSiteBuilderHelpers() {
   assert.equal(siteData.generatedAt, "2026-06-01 08:00 CST");
   assert.equal(siteData.generatedAt, siteDataAgain.generatedAt);
 
-  const html = renderSiteHtml(siteData);
+  const knowledgeReport = parseKnowledgeReport(
+    `# AI Knowledge Radar · 2026-06-01
+
+| 类型 | 标题 | 来源 | 核心信息 | 为什么值得读 | 链接 |
+|---|---|---|---|---|---|
+| Blog | [工程 Blog](https://example.com/blog) | Example Blog | 这是一条中文核心信息。 | 这是一条具体的中文阅读判断。 | [原文](https://example.com/blog) |
+| 论文 | [研究论文](https://arxiv.org/abs/2606.00001) | arXiv | 这是一条中文论文摘要。 | 这是一条具体的中文论文判断。 | [原文](https://arxiv.org/abs/2606.00001) |`,
+    "knowledge-reports/2026-06-01.md"
+  );
+  const html = renderSiteHtml(siteData, [knowledgeReport]);
   assert.match(html, /Agent Deck/);
   assert.match(html, /window.__RADAR_DATA__/);
+  assert.match(html, /window.__KNOWLEDGE_DATA__/);
+  assert.match(html, /id="knowledge"/);
+  assert.match(html, /Blog 与论文 <b>2<\/b>/);
+  assert.match(html, /工程 Blog/);
+  assert.match(html, /研究论文/);
   assert.match(html, /data-source="HN Algolia"/);
   assert.match(html, /class="brand-mark" aria-label="benzema"><span class="brand-word">benzema<\/span><span class="brand-accent" aria-hidden="true"><\/span><\/div>/);
   assert.match(html, /\.item\[hidden\] \{ display: none; \}/);

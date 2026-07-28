@@ -3,7 +3,10 @@ import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { parseKnowledgeReport } from "./build-knowledge-page.mjs";
+
 const REPORT_PATTERN = /^\d{4}-\d{2}-\d{2}-\d{4}-cst\.md$/;
+const KNOWLEDGE_REPORT_PATTERN = /^\d{4}-\d{2}-\d{2}\.md$/;
 const REVIEW_PATTERN = /^\d{4}-\d{2}-\d{2}\.json$/;
 const SOURCE_HEALTH_PATTERN = /^\d{4}-\d{2}-\d{2}\.json$/;
 const FEEDBACK_REPO = "https://github.com/BENZEMA216/ai-product-radar";
@@ -621,6 +624,24 @@ function renderItems(items, latestDate = "") {
     .join("\n");
 }
 
+function renderKnowledgeCards(items) {
+  return items
+    .map(
+      (item, index) => `<article class="knowledge-card" data-kind="${escapeHtml(item.kind)}">
+        <div class="knowledge-meta">
+          <span>${String(index + 1).padStart(2, "0")}</span>
+          <b>${escapeHtml(item.kind)}</b>
+          <em>${escapeHtml(item.source)}</em>
+        </div>
+        <h3><a href="${escapeHtml(item.link)}" target="_blank" rel="noreferrer noopener">${escapeHtml(item.title)}</a></h3>
+        <div class="knowledge-block"><strong>核心信息</strong><p>${escapeHtml(item.core)}</p></div>
+        <div class="knowledge-block knowledge-why"><strong>为什么值得读</strong><p>${escapeHtml(item.why)}</p></div>
+        <a class="knowledge-read" href="${escapeHtml(item.link)}" target="_blank" rel="noreferrer noopener">阅读原文 →</a>
+      </article>`
+    )
+    .join("\n");
+}
+
 function renderSourceBars(sourceCounts) {
   const entries = topEntries(sourceCounts, 10);
   const max = Math.max(...entries.map(([, count]) => count), 1);
@@ -757,7 +778,7 @@ function latestSourceStatus(sourceHealth, hasItems) {
   };
 }
 
-export function renderSiteHtml(data) {
+export function renderSiteHtml(data, knowledgeReports = []) {
   const items = [...data.items].sort(
     (a, b) =>
       `${b.reportDate} ${b.reportTime}`.localeCompare(`${a.reportDate} ${a.reportTime}`) ||
@@ -781,6 +802,10 @@ export function renderSiteHtml(data) {
   const sources = topEntries(data.stats.bySource, 20).map(([source]) => source);
   const types = Object.keys(data.stats.byType).sort();
   const json = JSON.stringify(data).replace(/</g, "\\u003c");
+  const latestKnowledge = knowledgeReports.at(-1) || { date: "", items: [] };
+  const latestKnowledgeBlogs = latestKnowledge.items.filter((item) => item.kind === "Blog");
+  const latestKnowledgePapers = latestKnowledge.items.filter((item) => item.kind === "论文");
+  const knowledgeJson = JSON.stringify({ reports: knowledgeReports, latestDate: latestKnowledge.date }).replace(/</g, "\\u003c");
   const latestStatus = latestSourceStatus(data.latestSourceHealth, Boolean(latest?.count));
 
   return `<!doctype html>
@@ -1581,6 +1606,162 @@ export function renderSiteHtml(data) {
       cursor: pointer;
     }
     .load-more[hidden] { display: none; }
+    .knowledge-hub {
+      margin-top: 46px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border-default);
+      scroll-margin-top: 64px;
+    }
+    .knowledge-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+    .knowledge-head h2 {
+      margin: 5px 0;
+      font: 600 clamp(30px, 4vw, 48px)/1.08 "Noto Serif SC", "Songti SC", serif;
+      letter-spacing: -0.025em;
+    }
+    .knowledge-head p {
+      max-width: 720px;
+      margin: 0;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+    .knowledge-metrics {
+      display: flex;
+      gap: 8px;
+    }
+    .knowledge-metric {
+      min-width: 90px;
+      padding: 10px 12px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-card);
+      background: var(--bg-raised);
+    }
+    .knowledge-metric b {
+      display: block;
+      font: 600 24px/1 "Noto Serif SC", "Songti SC", serif;
+    }
+    .knowledge-metric span {
+      display: block;
+      margin-top: 6px;
+      color: var(--text-secondary);
+      font-size: 11px;
+    }
+    .knowledge-group {
+      margin-top: 24px;
+      scroll-margin-top: 64px;
+    }
+    .knowledge-group-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+    .knowledge-group-head h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+    .knowledge-group-head span {
+      color: var(--text-secondary);
+      font-size: 12px;
+    }
+    .knowledge-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .knowledge-card {
+      display: grid;
+      align-content: start;
+      gap: 14px;
+      min-width: 0;
+      padding: 20px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-card);
+      background: var(--bg-raised);
+      box-shadow: var(--shadow-raised);
+    }
+    .knowledge-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      font-size: 11px;
+    }
+    .knowledge-meta span {
+      color: var(--action-primary);
+      font-weight: 800;
+    }
+    .knowledge-meta b {
+      padding: 3px 7px;
+      border-radius: var(--radius-pill);
+      background: var(--action-soft);
+      color: var(--action-primary);
+    }
+    .knowledge-meta em {
+      min-width: 0;
+      margin-left: auto;
+      overflow-wrap: anywhere;
+      font-style: normal;
+      text-align: right;
+    }
+    .knowledge-card h3 {
+      margin: 0;
+      font: 600 21px/1.3 "Noto Serif SC", "Songti SC", serif;
+      overflow-wrap: anywhere;
+    }
+    .knowledge-card h3 a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .knowledge-card h3 a:hover { color: var(--action-primary); }
+    .knowledge-block {
+      padding-top: 11px;
+      border-top: 1px solid var(--border-default);
+    }
+    .knowledge-block strong {
+      color: var(--text-secondary);
+      font-size: 11px;
+    }
+    .knowledge-block p {
+      margin: 6px 0 0;
+      font-size: 13px;
+      line-height: 1.68;
+    }
+    .knowledge-why {
+      padding-left: 11px;
+      border-left: 3px solid var(--category-sea);
+    }
+    .knowledge-read {
+      align-self: end;
+      color: var(--action-primary);
+      font-size: 12px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .knowledge-empty {
+      padding: 32px 0;
+      color: var(--text-secondary);
+    }
+    .knowledge-archive {
+      display: inline-flex;
+      margin-top: 18px;
+      color: var(--action-primary);
+      font-size: 12px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    @media (max-width: 760px) {
+      .knowledge-head { grid-template-columns: 1fr; }
+      .knowledge-metrics { width: 100%; }
+      .knowledge-metric { flex: 1; }
+      .knowledge-grid { grid-template-columns: 1fr; }
+    }
     .empty {
       display: none;
       margin: 18px 0 0;
@@ -1747,7 +1928,7 @@ export function renderSiteHtml(data) {
         </section>
         <nav class="side-nav" aria-label="站点导航">
           <a href="#feed">今日优先 <b>${latestPriorityCount}</b></a>
-          <a href="knowledge.html">知识与论文 <b>20</b></a>
+          <a href="#knowledge">Blog 与论文 <b>${latestKnowledge.items.length}</b></a>
           <button type="button" data-nav-view="reviewed">我的点评 <b>${data.stats.totalReviews}</b></button>
           <a href="#archive">日期归档 <b>${data.reportDays.length}</b></a>
           <a href="#source-health">来源健康 <b>${latestStatus.degraded.length}</b></a>
@@ -1830,10 +2011,38 @@ export function renderSiteHtml(data) {
         <section class="empty" id="empty" role="status" aria-live="polite">没有符合当前条件的信号。</section>
         <section class="list" id="items">${renderItems(initialItems, latestDay?.reportDate || "")}</section>
         <button type="button" class="load-more" id="load-more" hidden>加载更多</button>
+        <section class="knowledge-hub" id="knowledge" aria-label="Blog 与论文">
+          <header class="knowledge-head">
+            <div>
+              <div class="section-label">Knowledge · Research · Practice</div>
+              <h2>Blog 与论文</h2>
+              <p>产品信号、重要 Blog 与论文统一放在同一个 Radar 首页。Blog 优先保留工程经验、产品判断和行业背景；论文用于补充机制与前沿证据。</p>
+            </div>
+            <div class="knowledge-metrics" aria-label="今日知识内容规模">
+              <div class="knowledge-metric"><b>${latestKnowledge.items.length}</b><span>今日精选</span></div>
+              <div class="knowledge-metric"><b>${latestKnowledgeBlogs.length}</b><span>Blog</span></div>
+              <div class="knowledge-metric"><b>${latestKnowledgePapers.length}</b><span>论文</span></div>
+            </div>
+          </header>
+          ${
+            latestKnowledge.items.length
+              ? `<section class="knowledge-group" id="knowledge-blog">
+                  <div class="knowledge-group-head"><h3>Blog</h3><span>${escapeHtml(latestKnowledge.date)} · ${latestKnowledgeBlogs.length} 篇</span></div>
+                  <div class="knowledge-grid">${renderKnowledgeCards(latestKnowledgeBlogs)}</div>
+                </section>
+                <section class="knowledge-group" id="knowledge-paper">
+                  <div class="knowledge-group-head"><h3>论文</h3><span>${escapeHtml(latestKnowledge.date)} · ${latestKnowledgePapers.length} 篇</span></div>
+                  <div class="knowledge-grid">${renderKnowledgeCards(latestKnowledgePapers)}</div>
+                </section>`
+              : `<div class="knowledge-empty">今天尚无通过验收的 Blog 或论文内容。</div>`
+          }
+          <a class="knowledge-archive" href="knowledge.html">查看 Knowledge 历史归档 →</a>
+        </section>
       </main>
     </div>
   </div>
   <script>window.__RADAR_DATA__ = ${json};</script>
+  <script>window.__KNOWLEDGE_DATA__ = ${knowledgeJson};</script>
   <script>
     const radarData = window.__RADAR_DATA__ || { items: [] };
     const latestReportDate = ${JSON.stringify(latestDay?.reportDate || "")};
@@ -2167,7 +2376,7 @@ export function renderSiteHtml(data) {
     [...document.querySelectorAll('.side-nav a[href^="#"]')].forEach((link) => link.addEventListener("click", (event) => {
       const id = link.getAttribute("href").slice(1);
       const target = document.getElementById(id);
-      if (id === "feed") {
+      if (id === "feed" || id === "knowledge") {
         closeSidebar();
         return;
       }
@@ -2194,6 +2403,21 @@ function readReports(reportDir) {
       const path = join(reportDir, name);
       return { path, markdown: readFileSync(path, "utf8") };
     });
+}
+
+function readKnowledgeReports(reportDir) {
+  try {
+    return readdirSync(reportDir)
+      .filter((name) => KNOWLEDGE_REPORT_PATTERN.test(name))
+      .sort()
+      .map((name) => {
+        const path = join(reportDir, name);
+        return parseKnowledgeReport(readFileSync(path, "utf8"), path);
+      });
+  } catch (error) {
+    if (error.code === "ENOENT") return [];
+    throw error;
+  }
 }
 
 function readReviews(reviewDir) {
@@ -2227,12 +2451,19 @@ function readSourceHealth(sourceHealthDir) {
 }
 
 function parseArgs(argv) {
-  const args = { reportDir: "reports", reviewDir: "reviews", sourceHealthDir: "quality/source-health", out: "docs/index.html" };
+  const args = {
+    reportDir: "reports",
+    reviewDir: "reviews",
+    sourceHealthDir: "quality/source-health",
+    knowledgeReportDir: "knowledge-reports",
+    out: "docs/index.html"
+  };
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
     if (arg === "--report-dir") args.reportDir = argv[++i];
     if (arg === "--review-dir") args.reviewDir = argv[++i];
     if (arg === "--source-health-dir") args.sourceHealthDir = argv[++i];
+    if (arg === "--knowledge-report-dir") args.knowledgeReportDir = argv[++i];
     if (arg === "--out") args.out = argv[++i];
   }
   return args;
@@ -2241,10 +2472,13 @@ function parseArgs(argv) {
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   const data = buildSiteData(readReports(args.reportDir), readReviews(args.reviewDir), readSourceHealth(args.sourceHealthDir));
-  const html = renderSiteHtml(data);
+  const knowledgeReports = readKnowledgeReports(args.knowledgeReportDir);
+  const html = renderSiteHtml(data, knowledgeReports);
   mkdirSync(dirname(args.out), { recursive: true });
   writeFileSync(args.out, html, "utf8");
-  console.log(`Built ${args.out} from ${data.reports.length} reports, ${data.items.length} items, and ${data.reviews.length} reviews.`);
+  console.log(
+    `Built ${args.out} from ${data.reports.length} product reports, ${data.items.length} product items, ${knowledgeReports.length} knowledge reports, and ${data.reviews.length} reviews.`
+  );
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {

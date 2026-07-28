@@ -13,7 +13,7 @@ function parseArgs(argv) {
     reportDir: "knowledge-reports",
     healthDir: "quality/knowledge-source-health",
     outDir: "quality/knowledge-audits",
-    site: "docs/knowledge.html",
+    site: "docs/index.html",
     minCount: 18
   };
   for (let index = 0; index < argv.length; index += 1) {
@@ -102,7 +102,7 @@ export function auditKnowledge({ report, health, siteHtml, minCount = 18 }) {
     failures.push(failure("knowledge_sources_low", `只有 ${availableSourceCount} 个知识来源可用，覆盖不足。`));
   }
   if (!siteHtml || !siteHtml.includes(`"latestDate":"${report.date}"`)) {
-    failures.push(failure("knowledge_site_stale", "docs/knowledge.html 未收录最新知识日报。"));
+    failures.push(failure("knowledge_site_stale", "Radar 首页 docs/index.html 未收录最新知识日报。"));
   }
   const missingFromSite = links.filter((link) => !siteHtml.includes(link));
   if (missingFromSite.length) {
