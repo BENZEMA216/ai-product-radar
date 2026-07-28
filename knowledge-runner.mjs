@@ -690,6 +690,19 @@ export async function runKnowledgeRadar(options = {}) {
     (item) => !seenLinks.has(item.link.toLowerCase())
   ).length;
   const selected = selectItems(blogItems, paperItems, { limit, blogQuota, maxPerBlogSource, seenLinks });
+  const selectedBlogCount = selected.filter((item) => item.kind === "blog").length;
+  const selectedPaperCount = selected.filter((item) => item.kind === "paper").length;
+  const desiredPaperCount = Math.max(0, limit - blogQuota);
+  const shortfallReasons = [];
+  if (selected.length < limit) {
+    shortfallReasons.push("历史 canonical URL 去重后有效新内容不足，未达到总量目标");
+  }
+  if (selectedBlogCount < blogQuota && blogAfterHistoricalDedupCount < blogQuota) {
+    shortfallReasons.push(`Blog 历史 canonical URL 去重后仅 ${blogAfterHistoricalDedupCount} 篇，低于 ${blogQuota} 篇目标`);
+  }
+  if (selectedPaperCount < desiredPaperCount && paperAfterHistoricalDedupCount < desiredPaperCount) {
+    shortfallReasons.push(`论文历史 canonical URL 去重后仅 ${paperAfterHistoricalDedupCount} 篇，低于 ${desiredPaperCount} 篇目标`);
+  }
   const generatedAt = now.toISOString();
   const health = {
     generatedAt,
@@ -697,10 +710,10 @@ export async function runKnowledgeRadar(options = {}) {
     window: { start: start.toISOString(), end: now.toISOString(), lookbackDays: days },
     targetCount: limit,
     desiredBlogCount: blogQuota,
-    desiredPaperCount: Math.max(0, limit - blogQuota),
+    desiredPaperCount,
     selectedCount: selected.length,
-    blogCount: selected.filter((item) => item.kind === "blog").length,
-    paperCount: selected.filter((item) => item.kind === "paper").length,
+    blogCount: selectedBlogCount,
+    paperCount: selectedPaperCount,
     candidatePool: {
       historicalLinkCount: seenLinks.size,
       blogFetchedCount: uniqueByLink(blogItems).length,
@@ -708,10 +721,9 @@ export async function runKnowledgeRadar(options = {}) {
       blogAfterHistoricalDedupCount,
       paperAfterHistoricalDedupCount,
       eligibleAfterHistoricalDedupCount: blogAfterHistoricalDedupCount + paperAfterHistoricalDedupCount,
-      shortfallReason:
-        selected.length < limit
-          ? "历史 canonical URL 去重后有效新内容不足；未用旧文或低质量内容补位。"
-          : ""
+      shortfallReason: shortfallReasons.length
+        ? `${shortfallReasons.join("；")}；未用旧文或低质量内容补位。`
+        : ""
     },
     sources: sourceHealth
   };
