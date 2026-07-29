@@ -1,0 +1,293 @@
+{
+  "date": "2026-07-30",
+  "generatedAt": "2026-07-29T16:04:33.106Z",
+  "reportPath": "reports/2026-07-30-0004-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 38,
+    "top20Sources": [
+      "HN Algolia",
+      "YC Launch",
+      "GitHub Release"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-28；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 0 条，AI 相关候选 0 条；fallback 低覆盖时扩展检查 2026-07-27，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 0 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 3,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 31,
+      "keptCount": 20,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 5,
+      "keptCount": 1,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 14,
+      "keptCount": 14,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 44,
+    "error": "",
+    "policyGeneratedAt": "2026-07-29T16:02:09Z",
+    "policyIssueCount": 44,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Expose Your APIs to Agents Without Losing Control via Koodisi MCP",
+      "productKey": "https://koodisi.com/blog/expose-your-apis-to-agents-without-losing-control",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把“给 Agent 开放现有 API”与权限失控放在同一个产品命题里；值得看 Koodisi 是否能把接口暴露、授权边界和审计做成开发团队可直接采用的控制层。"
+    },
+    {
+      "rank": 2,
+      "product": "PassControl – so your AI agents never hold your real API keys",
+      "productKey": "https://passcontrol.vertias.eu",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "PassControl 直接针对 Agent 持有真实 API key 的风险，产品价值取决于它能否用代理凭证和权限控制替代密钥下发，同时不显著增加调用链复杂度。"
+    },
+    {
+      "rank": 3,
+      "product": "Traceforce",
+      "productKey": "https://www.ycombinator.com/launches/rxe-traceforce-catch-risky-agent-actions-your-security-gateway-will-never-spot",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Traceforce 把传统安全网关看不到的 Agent 行为变成公司级监控对象；值得观察它如何定义“高风险动作”，以及能否跨多个 AI 应用形成统一的可追溯视图。"
+    },
+    {
+      "rank": 4,
+      "product": "I built an MCP server for working with SEO and Search Console data",
+      "productKey": "https://seomcp.co",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这是把 Search Console 数据直接变成 Agent 可调用能力的垂直 MCP；判断重点是它是否只做查询封装，还是能支持从诊断到 SEO 动作建议的完整工作流。"
+    },
+    {
+      "rank": 5,
+      "product": "NoClick – Build always-on agents with your existing AI subscriptions",
+      "productKey": "https://www.noclick.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "NoClick 试图把用户已有的 AI 订阅转成常驻 Agent 的运行资源；值得看这种成本入口能否绕开额外 API 采购，同时维持稳定调度和持续执行。"
+    },
+    {
+      "rank": 6,
+      "product": "openai/codex rusty-v8-v150.4.0",
+      "productKey": "https://github.com/openai/codex/releases/tag/rusty-v8-v150.4.0",
+      "source": "GitHub Release",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这条只有 `rusty-v8` 版本标签，没有功能或修复摘要，无法判断对 Codex 用户体验的影响；应仅保留为底层依赖推进的弱信号。"
+    },
+    {
+      "rank": 7,
+      "product": "Orbital – the project agent that maintains your wo",
+      "productKey": "https://github.com/zqiren/orbital",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Orbital 的卖点是让项目 Agent 持续维护工作，而不是只回答一次请求；值得核对它具体维护哪些项目状态，以及持续介入是否带来可验证的更新闭环。"
+    },
+    {
+      "rank": 8,
+      "product": "Video Upscaler – AI video upscaling up to 4K",
+      "productKey": "https://videoupscaler.video",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它提供明确的 4K 视频增强结果，但同类工具已高度商品化；更值得检查的是处理速度、输入限制和稳定画质能否构成持续使用理由。"
+    },
+    {
+      "rank": 9,
+      "product": "Mustuse.ai – Open-source automated ranking system run by agents",
+      "productKey": "https://mustuse.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Mustuse.ai 用 Agent 运行自动化排名，开放源码让排序机制有机会被审计；关键是它排名什么、依据什么证据，以及能否避免被内容生产者反向操纵。"
+    },
+    {
+      "rank": 10,
+      "product": "Cadence Money – a budgeting app with no AI features, just an MCP server",
+      "productKey": "https://www.cadencemoney.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Cadence Money 刻意不内置 AI，而是把预算数据通过 MCP 交给外部 Agent；这个边界值得看，因为它把产品价值放在可信财务数据和可组合接口，而非聊天功能。"
+    },
+    {
+      "rank": 11,
+      "product": "On-prem-deployable voice agent simulation and evals",
+      "productKey": "https://usemarker.ai/blog/hello-world",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这套方案同时强调语音 Agent 仿真、评测和本地部署，切中企业无法把对话数据外发的场景；判断重点是场景覆盖、可重复评测与真实通话之间的差距。"
+    },
+    {
+      "rank": 12,
+      "product": "Echologue – the private AI voice journal I built for myself",
+      "productKey": "https://echologue.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Echologue 把隐私作为 AI 语音日记的首要承诺；值得看它如何处理录音、转写和回顾，以及“为自己做”能否沉淀成可持续的日记习惯。"
+    },
+    {
+      "rank": 13,
+      "product": "Manim (3Blue1Brown's animation engine) in the browser via WebGPU",
+      "productKey": "https://studio.academa.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 Manim 和 WebGPU 放进浏览器，可能显著降低数学动画的安装与渲染门槛；产品价值要看编辑、预览和导出是否真的形成顺畅的创作闭环。"
+    },
+    {
+      "rank": 14,
+      "product": "Extra Headroom – cut Claude Code and Codex token costs by ~50%",
+      "productKey": "https://extraheadroom.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它以降低 Claude Code 与 Codex token 成本为单一价值主张；值得验证所谓约 50% 节省来自上下文压缩、缓存还是任务路由，以及是否牺牲结果质量。"
+    },
+    {
+      "rank": 15,
+      "product": "AI that opens PRs on your repo to fix your SEO",
+      "productKey": "https://zaatar.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Zaatar 把 SEO 建议直接交付为代码 PR，结果形态比报告更接近可执行工作；关键看修改依据是否透明，以及团队能否像审代码一样控制自动优化。"
+    },
+    {
+      "rank": 16,
+      "product": "Avoca Systems",
+      "productKey": "https://www.ycombinator.com/launches/rt4-avoca-systems-ai-powered-radiology-scheduling-and-communications",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Avoca 聚焦放射科排期与患者沟通，是流程明确、结果可衡量的医疗垂直场景；值得看它如何接入既有排期系统并处理高风险沟通的人工兜底。"
+    },
+    {
+      "rank": 17,
+      "product": "MetrIQ – An AI fitness coach who supports you",
+      "productKey": "https://metriq.fitness",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AI 健身教练并不新颖，MetrIQ 是否值得持续关注取决于它如何利用训练记录给出可执行调整，而不是只提供泛化鼓励和对话陪伴。"
+    },
+    {
+      "rank": 18,
+      "product": "Phixo – AI Phishing Protection for Gmail and Outlook",
+      "productKey": "https://phixo.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Phixo 选择 Gmail 与 Outlook 作为直接入口，问题足够具体；判断重点是它能否解释可疑信号、控制误报，并在用户打开邮件前提供有效保护。"
+    },
+    {
+      "rank": 19,
+      "product": "I gave Fable a robot body",
+      "productKey": "https://www.talraviv.co/p/i-gave-claude-a-robot-body",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "这更像把对话智能体接入机器人身体的实验记录，而非成熟产品；可观察的是虚拟人格迁移到实体交互后，哪些能力与安全边界需要重新设计。"
+    },
+    {
+      "rank": 20,
+      "product": "Tokenless (YC S26) – Automatic model switching to save money",
+      "productKey": "https://usetokenless.com",
+      "source": "HN Algolia",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "Tokenless 把自动模型切换包装成成本优化层，且有 Launch HN 的明确发布证据；关键看路由是否按任务质量约束，而不是单纯把请求导向更便宜模型。"
+    }
+  ]
+}
