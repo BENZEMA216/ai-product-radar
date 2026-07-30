@@ -1,0 +1,293 @@
+{
+  "date": "2026-07-31",
+  "generatedAt": "2026-07-30T17:32:02.722Z",
+  "reportPath": "reports/2026-07-31-0132-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 69,
+    "top20Sources": [
+      "HN Algolia",
+      "Product Hunt",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 10,
+      "keptCount": 6,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-29；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 10 条，AI 相关候选 6 条；历史去重后最终发布 6 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 8,
+      "keptCount": 8,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 17,
+      "keptCount": 9,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 5,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 26,
+      "keptCount": 26,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 44,
+    "error": "",
+    "policyGeneratedAt": "2026-07-29T16:02:09Z",
+    "policyIssueCount": 44,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Wasted Cycles – Local wall-clock profiler for AI coding agents",
+      "productKey": "https://zozo123.github.io/wasted-cycles",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 agent 等待、阻塞和工具调用耗时做成本地墙钟剖析，值得看开发者能否据此定位多 agent 流程里真正浪费时间的环节。"
+    },
+    {
+      "rank": 2,
+      "product": "a Rust coding agent that is compatible with Claude Code plugins/skills",
+      "productKey": "https://github.com/konghayao/peri",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用 Rust 重做并兼容 Claude Code 插件与 skills，关键观察点是性能收益是否足以覆盖生态兼容和迁移成本。"
+    },
+    {
+      "rank": 3,
+      "product": "Task Monki",
+      "productKey": "https://www.producthunt.com/products/task-monki",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它试图让 coding agent 覆盖完整开发流程，值得验证任务编排、人工审阅与交付责任是否形成连续闭环。"
+    },
+    {
+      "rank": 4,
+      "product": "Stratum Industries",
+      "productKey": "https://www.ycombinator.com/launches/sby-stratum-industries-clearing-the-entire-u-s-government-backlog",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "政府申请积压是高规则密度的垂直场景，端到端审查若可验证，能体现 agent 从辅助判断走向可量化结果交付。"
+    },
+    {
+      "rank": 5,
+      "product": "Supapool – a Supabase per coding agent in ~400 ms",
+      "productKey": "https://supapool.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "为每个 coding agent 在约 400 毫秒内隔离一套 Supabase，直接回应并行 agent 的测试数据冲突与环境创建成本。"
+    },
+    {
+      "rank": 6,
+      "product": "AgentCouch – let your agents chat with other agents",
+      "productKey": "https://agentcouch.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 agent 间通信做成可用产品，值得看身份、权限、消息持久化和跨 agent 协作是否比简单共享聊天更完整。"
+    },
+    {
+      "rank": 7,
+      "product": "Let your agents create custom pods",
+      "productKey": "https://thedaily.fm/docs/agents",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "允许 agent 自建 pod 的价值取决于这些空间能否承载持续任务、成员边界和可追溯协作，而不只是新增一个聊天容器。"
+    },
+    {
+      "rank": 8,
+      "product": "Memsprout – share AI context with your teammates",
+      "productKey": "https://memsprout.com/docs",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "团队共享 AI 上下文触及协作中的交接与权限问题，值得验证上下文版本、来源和成员可见范围是否可控。"
+    },
+    {
+      "rank": 9,
+      "product": "Denovo",
+      "productKey": "https://www.producthunt.com/products/denovo-business-manager",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它瞄准 vibe-coded 应用从做出来到获得付费用户的断层，关键看是否真正覆盖定价、转化与收款，而非只提供发布包装。"
+    },
+    {
+      "rank": 10,
+      "product": "Prelint",
+      "productKey": "https://www.producthunt.com/products/prelint",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "在 AI 生成代码进入仓库前阻止产品意图漂移，值得看它如何把需求约束转成可执行检查并减少返工。"
+    },
+    {
+      "rank": 11,
+      "product": "BlackFlare",
+      "productKey": "https://www.producthunt.com/products/blackflare",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "菜单栏中的 Claude Code 与 Codex 控制台把多 agent 状态集中展示，关键是能否提升中断、恢复和并行任务管理效率。"
+    },
+    {
+      "rank": 12,
+      "product": "Tandem",
+      "productKey": "https://www.ycombinator.com/launches/sbg-tandem-office-broker-on-steroids",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把传统办公租赁经纪改造成 AI 原生服务，值得观察搜索、匹配、谈判与成交责任中哪些环节真正由系统承担。"
+    },
+    {
+      "rank": 13,
+      "product": "AI Security Leaderboard – comparing cyber and CBRN safeguards",
+      "productKey": "https://leaderboard.far.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把网络与 CBRN 防护并列成可比较榜单，有助于观察安全评测是否给出可复现任务与边界，而非只有单一总分。"
+    },
+    {
+      "rank": 14,
+      "product": "CellCog",
+      "productKey": "https://www.producthunt.com/products/cellcog",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 AI 员工组队并互相管理，值得验证角色分工、冲突处理和最终责任归属是否超过多 agent 演示。"
+    },
+    {
+      "rank": 15,
+      "product": "Gutgutgoose",
+      "productKey": "https://www.ycombinator.com/launches/sap-gutgutgoose-personalised-probiotics",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把个性化益生菌描述为肠道模型训练基础设施，跨越生物数据与交付结果，重点看实验闭环和效果验证是否成立。"
+    },
+    {
+      "rank": 16,
+      "product": "Tire Swing",
+      "productKey": "https://www.ycombinator.com/launches/sba-tire-swing-ai-compliance-for-affordable-housing",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "经济适用房合规审查规则明确且风险高，值得看系统怎样保留依据、人工复核与公平性审计。"
+    },
+    {
+      "rank": 17,
+      "product": "Spine AI",
+      "productKey": "https://www.ycombinator.com/launches/sbi-medley-give-claude-code-missions-not-just-tasks",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把跨会话 coding 任务提升为 mission、依赖图和多 worker 协作，值得看长期任务状态是否真的可恢复且可验收。"
+    },
+    {
+      "rank": 18,
+      "product": "An AI Color Grader – Pico",
+      "productKey": "https://www.perbhat.com/pico",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AI 调色器把生成能力落到专业后期工作流，关键是结果一致性、可控参数和与现有工具链的衔接。"
+    },
+    {
+      "rank": 19,
+      "product": "Bo AI",
+      "productKey": "https://www.producthunt.com/products/bo-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "短信中的个人助理降低了新入口学习成本，值得观察主动性、隐私边界和从对话到实际执行的转化。"
+    },
+    {
+      "rank": 20,
+      "product": "RecipeBook – Self-serve platform for video training data, $3/HR",
+      "productKey": "https://recipebook.shofo.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "以每小时 3 美元自助提供视频训练数据，明确暴露成本结构，适合判断数据质量、标注流程和规模化交付能力。"
+    }
+  ]
+}
