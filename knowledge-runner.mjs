@@ -9,6 +9,7 @@ const DEFAULT_CONFIG = join(SCRIPT_DIR, "quality/knowledge-sources.json");
 const DEFAULT_REPORT_DIR = join(SCRIPT_DIR, "knowledge-reports");
 const DEFAULT_HEALTH_DIR = join(SCRIPT_DIR, "quality/knowledge-source-health");
 const DEFAULT_CANDIDATE_DIR = join(SCRIPT_DIR, "quality/knowledge-candidates");
+const DEFAULT_GMAIL_INTAKE_DIR = join(SCRIPT_DIR, "quality/gmail-knowledge-intake");
 
 const AI_TERMS = [
   "agent",
@@ -114,7 +115,8 @@ function parseArgs(argv) {
     config: DEFAULT_CONFIG,
     reportDir: DEFAULT_REPORT_DIR,
     healthDir: DEFAULT_HEALTH_DIR,
-    candidateDir: DEFAULT_CANDIDATE_DIR
+    candidateDir: DEFAULT_CANDIDATE_DIR,
+    gmailIntakeDir: ""
   };
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index];
@@ -125,6 +127,7 @@ function parseArgs(argv) {
     if (arg === "--report-dir") args.reportDir = resolve(argv[++index]);
     if (arg === "--health-dir") args.healthDir = resolve(argv[++index]);
     if (arg === "--candidate-dir") args.candidateDir = resolve(argv[++index]);
+    if (arg === "--gmail-intake-dir") args.gmailIntakeDir = resolve(argv[++index]);
     if (arg === "--force") args.force = true;
   }
   return args;
@@ -289,9 +292,10 @@ function includesAny(text, terms) {
 }
 
 function isAiRelevant(item, source) {
-  if (!source.requireAiRelevance) return true;
   const text = `${item.title} ${item.summary}`.toLowerCase();
-  return includesAny(text, AI_TERMS);
+  if (source.requireAiRelevance && !includesAny(text, AI_TERMS)) return false;
+  if (source.requireKnowledgeDepth && !includesAny(text, KNOWLEDGE_TERMS)) return false;
+  return true;
 }
 
 function topicScore(text) {
@@ -517,6 +521,78 @@ function uniqueByLink(items) {
   });
 }
 
+function gmailSourceId(value) {
+  const normalized = String(value || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+  return normalized ? `gmail_${normalized}` : "gmail_newsletter";
+}
+
+function publicKnowledgeLink(value) {
+  try {
+    const url = new URL(canonicalizeUrl(value));
+    const host = url.hostname.toLowerCase();
+    if (!["http:", "https:"].includes(url.protocol)) return "";
+    if (
+      host === "mail.google.com" ||
+      host === "substack.com" ||
+      host === "open.substack.com" ||
+      host.endsWith(".clicks.mlsend.com") ||
+      host === "e.customeriomail.com"
+    ) {
+      return "";
+    }
+    if ([...url.searchParams.keys()].some((key) => /^(token|message_id|thread_id)$/i.test(key))) return "";
+    for (const key of [...url.searchParams.keys()]) {
+      if (/^(utm_|ref$|source$|r$)/i.test(key)) url.searchParams.delete(key);
+    }
+    return url.toString().replace(/\/$/, "");
+  } catch {
+    return "";
+  }
+}
+
+export function normalizeGmailNewsletterItems(payload, config, start, end) {
+  const rawItems = Array.isArray(payload) ? payload : Array.isArray(payload?.items) ? payload.items : [];
+  const sourceConfig = config || {};
+  const maxItems = Math.max(0, Number(sourceConfig.maxItems || 30));
+  return uniqueByLink(
+    rawItems
+      .map((item) => {
+        const link = publicKnowledgeLink(item.publicUrl || item.link);
+        const publishedAt = isoDate(item.publishedAt);
+        const source = String(item.source || item.publication || "Gmail Newsletter").trim();
+        const title = String(item.title || "").trim();
+        const summary = stripHtml(item.summary || "");
+        if (!link || !publishedAt || !title || !summary || !withinWindow(publishedAt, start, end)) return null;
+        const normalized = {
+          kind: "blog",
+          sourceId: gmailSourceId(item.sourceId || source),
+          source,
+          title,
+          link,
+          publishedAt,
+          author: String(item.author || "").trim(),
+          summary,
+          origin: "gmail_newsletter"
+        };
+        if (!isAiRelevant(normalized, { requireAiRelevance: true })) return null;
+        return {
+          ...normalized,
+          score:
+            scoreBlog(normalized, { weight: Number(item.weight || sourceConfig.weight || 13) }, end) +
+            Number(sourceConfig.personalizationBoost || 0),
+          core: compactSummary(summary),
+          why: knowledgeWhy(normalized)
+        };
+      })
+      .filter(Boolean)
+  )
+    .sort((a, b) => b.score - a.score || b.publishedAt.localeCompare(a.publishedAt))
+    .slice(0, maxItems);
+}
+
 function historicalLinks(reportDir, excludedPath) {
   const links = new Set();
   if (!existsSync(reportDir)) return links;
@@ -615,6 +691,7 @@ export async function runKnowledgeRadar(options = {}) {
   const days = Number.isFinite(options.days) && options.days > 0 ? options.days : Number(config.lookbackDays || 7);
   const limit = Number.isFinite(options.limit) && options.limit > 0 ? options.limit : Number(config.targetCount || 20);
   const blogQuota = Math.min(limit, Number(config.blogQuota || Math.ceil(limit / 2)));
+  const minimumBlogCount = Math.min(blogQuota, Number(config.minimumBlogCount || 12));
   const maxPerBlogSource = Math.max(1, Number(config.maxPerBlogSource || 2));
   const dateKey = shanghaiDateKey(now);
   const reportDir = options.reportDir || DEFAULT_REPORT_DIR;
@@ -648,7 +725,7 @@ export async function runKnowledgeRadar(options = {}) {
         status: "ok",
         rawCount: settled.value.result.rawCount,
         keptCount: settled.value.result.items.length,
-        note: `${days} 天窗口`
+        note: `${days} 天窗口${source.discoveredVia === "gmail" ? "；由 Gmail 订阅发现后改用公开 RSS" : ""}`
       };
     } else {
       sourceHealth[source.id] = {
@@ -660,6 +737,45 @@ export async function runKnowledgeRadar(options = {}) {
       };
     }
   });
+
+  const gmailConfig = config.gmailSource || {};
+  if (gmailConfig.enabled !== false) {
+    const configuredIntakeDir = gmailConfig.intakeDir
+      ? resolve(SCRIPT_DIR, gmailConfig.intakeDir)
+      : DEFAULT_GMAIL_INTAKE_DIR;
+    const gmailIntakeDir = options.gmailIntakeDir || configuredIntakeDir;
+    const gmailIntakePath = join(gmailIntakeDir, `${dateKey}.json`);
+    if (existsSync(gmailIntakePath)) {
+      try {
+        const payload = JSON.parse(readFileSync(gmailIntakePath, "utf8"));
+        const gmailItems = normalizeGmailNewsletterItems(payload, gmailConfig, start, now);
+        blogItems.push(...gmailItems);
+        sourceHealth[gmailConfig.id || "gmail_newsletters"] = {
+          label: gmailConfig.label || "Gmail Newsletter",
+          status: "ok",
+          rawCount: Array.isArray(payload) ? payload.length : Array.isArray(payload?.items) ? payload.items.length : 0,
+          keptCount: gmailItems.length,
+          note: "只读取已清洗的公开 canonical URL；不写入邮件 ID、收件地址或 Gmail 内部链接"
+        };
+      } catch (error) {
+        sourceHealth[gmailConfig.id || "gmail_newsletters"] = {
+          label: gmailConfig.label || "Gmail Newsletter",
+          status: "unavailable",
+          rawCount: 0,
+          keptCount: 0,
+          note: `Gmail intake invalid: ${String(error?.message || error).slice(0, 220)}`
+        };
+      }
+    } else {
+      sourceHealth[gmailConfig.id || "gmail_newsletters"] = {
+        label: gmailConfig.label || "Gmail Newsletter",
+        status: "optional",
+        rawCount: 0,
+        keptCount: 0,
+        note: "当日未生成 Gmail Newsletter 清洗输入；公开 RSS 来源仍继续采集"
+      };
+    }
+  }
 
   let paperItems = [];
   try {
@@ -710,6 +826,7 @@ export async function runKnowledgeRadar(options = {}) {
     window: { start: start.toISOString(), end: now.toISOString(), lookbackDays: days },
     targetCount: limit,
     desiredBlogCount: blogQuota,
+    minimumBlogCount,
     desiredPaperCount,
     selectedCount: selected.length,
     blogCount: selectedBlogCount,

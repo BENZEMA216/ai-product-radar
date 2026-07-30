@@ -52,30 +52,35 @@ export function auditKnowledge({ report, health, siteHtml, minCount = 18 }) {
   const titles = items.map((item) => item.title.toLowerCase());
   const blogCount = items.filter((item) => item.kind === "Blog").length;
   const paperCount = items.filter((item) => item.kind === "论文").length;
-  const liveBlogSources = Object.entries(health?.sources || {}).filter(
-    ([key, value]) => key !== "hf_daily_papers" && value?.status === "ok" && Number(value?.keptCount || 0) > 0
-  ).length;
-  const paperAvailable = Number(health?.sources?.hf_daily_papers?.keptCount || 0) > 0;
-  const eligibleAfterHistoricalDedup = Number(
-    health?.candidatePool?.eligibleAfterHistoricalDedupCount ?? Number.POSITIVE_INFINITY
-  );
-  const blogAfterHistoricalDedup = Number(
-    health?.candidatePool?.blogAfterHistoricalDedupCount ?? Number.POSITIVE_INFINITY
-  );
-  const paperAfterHistoricalDedup = Number(
-    health?.candidatePool?.paperAfterHistoricalDedupCount ?? Number.POSITIVE_INFINITY
-  );
+  const minimumBlogCount = Number(health?.minimumBlogCount || 12);
+  const desiredPaperCount = Number(health?.desiredPaperCount || 6);
 
-  if (items.length < minCount && eligibleAfterHistoricalDedup >= minCount) {
+  if (items.length < minCount) {
     failures.push(failure("knowledge_count_low", `知识日报只有 ${items.length} 条，低于最低 ${minCount} 条。`));
   }
   if (new Set(links).size !== links.length) failures.push(failure("knowledge_duplicate_links", "知识日报存在重复链接。"));
   if (new Set(titles).size !== titles.length) failures.push(failure("knowledge_duplicate_titles", "知识日报存在重复标题。"));
-  if (liveBlogSources >= 2 && blogCount < 12 && blogAfterHistoricalDedup >= 12) {
-    failures.push(failure("knowledge_blog_mix_low", `Blog 只有 ${blogCount} 条，来源可用时至少应保留 12 条。`));
+  if (blogCount < minimumBlogCount) {
+    failures.push(
+      failure("knowledge_blog_mix_low", `Blog 只有 ${blogCount} 条，低于发布硬下限 ${minimumBlogCount} 条。`)
+    );
   }
-  if (paperAvailable && paperCount < 6 && paperAfterHistoricalDedup >= 6) {
-    failures.push(failure("knowledge_paper_mix_low", `论文只有 ${paperCount} 条，论文源可用时至少应保留 6 条。`));
+  if (paperCount < desiredPaperCount) {
+    failures.push(failure("knowledge_paper_mix_low", `论文只有 ${paperCount} 条，低于发布目标 ${desiredPaperCount} 条。`));
+  }
+  const privateOrTrackingLinks = links.filter((link) =>
+    /(?:mail\.google\.com|substack\.com\/redirect|open\.substack\.com|clicks\.mlsend\.com|e\.customeriomail\.com)/i.test(
+      link
+    )
+  );
+  if (privateOrTrackingLinks.length) {
+    failures.push(
+      failure(
+        "knowledge_private_or_tracking_link",
+        "Knowledge 报告包含 Gmail 内部链接或邮件跟踪链接。",
+        privateOrTrackingLinks
+      )
+    );
   }
   if (cjkRatio(items, "core") < 0.8) {
     failures.push(failure("knowledge_core_not_rewritten", "至少 80% 的“核心信息”必须由当次 Codex 改写成中文判断。"));

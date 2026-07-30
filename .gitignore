@@ -5,3 +5,4 @@ reports-stability-check/
 reports-test-success/
 *.log
 .gstack/
+quality/gmail-knowledge-intake/

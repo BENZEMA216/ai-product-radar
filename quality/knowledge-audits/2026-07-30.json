@@ -1,22 +1,22 @@
 {
-  "generatedAt": "2026-07-29T16:18:52.749Z",
+  "generatedAt": "2026-07-30T09:59:18.285Z",
   "report": "2026-07-30.md",
   "health": "quality/knowledge-source-health/2026-07-30.json",
   "site": "docs/index.html",
   "ok": true,
   "date": "2026-07-30",
   "rows": 20,
-  "blogCount": 4,
-  "paperCount": 16,
-  "sourceCount": 11,
+  "blogCount": 14,
+  "paperCount": 6,
+  "sourceCount": 14,
   "candidatePool": {
     "historicalLinkCount": 58,
-    "blogFetchedCount": 14,
-    "paperFetchedCount": 24,
-    "blogAfterHistoricalDedupCount": 4,
-    "paperAfterHistoricalDedupCount": 24,
-    "eligibleAfterHistoricalDedupCount": 28,
-    "shortfallReason": "Blog 历史 canonical URL 去重后仅 4 篇，低于 14 篇目标；未用旧文或低质量内容补位。"
+    "blogFetchedCount": 103,
+    "paperFetchedCount": 44,
+    "blogAfterHistoricalDedupCount": 85,
+    "paperAfterHistoricalDedupCount": 44,
+    "eligibleAfterHistoricalDedupCount": 129,
+    "shortfallReason": ""
   },
   "failures": []
 }

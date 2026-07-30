@@ -40,7 +40,7 @@ import {
 } from "./radar.mjs";
 import { buildSiteData, parseReportMarkdown, renderSiteHtml } from "./build-site.mjs";
 import { parseKnowledgeReport } from "./build-knowledge-page.mjs";
-import { parseFeed, normalizeDailyPapers } from "./knowledge-runner.mjs";
+import { parseFeed, normalizeDailyPapers, normalizeGmailNewsletterItems } from "./knowledge-runner.mjs";
 import { auditKnowledge } from "./knowledge-audit.mjs";
 import { buildFeedbackSnapshot, isRadarFeedbackIssue, parseFeedbackIssue } from "./feedback-runner.mjs";
 import { commitMessageForReport, newestReportPath, qualityPathsForDir, reportPathsForDir, reviewPathsForDir } from "./publish-report.mjs";
@@ -3811,6 +3811,44 @@ function testKnowledgeFeedParserFixture() {
   assert.match(items[0].summary, /Architecture/);
 }
 
+function testGmailNewsletterFixture() {
+  const items = normalizeGmailNewsletterItems(
+    {
+      items: [
+        {
+          sourceId: "lennys_newsletter",
+          source: "Lenny's Newsletter",
+          title: "How AI changes product discovery",
+          publicUrl: "https://www.lennysnewsletter.com/p/ai-product-discovery?utm_source=email",
+          publishedAt: "2026-07-29T10:00:00Z",
+          summary: "A product analysis of AI workflows, user adoption, and evaluation."
+        },
+        {
+          source: "Private Gmail",
+          title: "Internal mail",
+          publicUrl: "https://mail.google.com/mail/#all/example",
+          publishedAt: "2026-07-29T10:00:00Z",
+          summary: "AI product analysis"
+        },
+        {
+          source: "Tracked Substack",
+          title: "Tracked redirect",
+          publicUrl: "https://substack.com/redirect/example?token=secret",
+          publishedAt: "2026-07-29T10:00:00Z",
+          summary: "AI product analysis"
+        }
+      ]
+    },
+    { weight: 13, personalizationBoost: 4, maxItems: 30 },
+    new Date("2026-07-01T00:00:00Z"),
+    new Date("2026-07-30T00:00:00Z")
+  );
+  assert.equal(items.length, 1);
+  assert.equal(items[0].sourceId, "gmail_lennys_newsletter");
+  assert.equal(items[0].link, "https://www.lennysnewsletter.com/p/ai-product-discovery");
+  assert.equal(items[0].origin, "gmail_newsletter");
+}
+
 function testKnowledgePaperAndAuditFixture() {
   const papers = normalizeDailyPapers(
     [
@@ -3885,7 +3923,10 @@ function testKnowledgePaperAndAuditFixture() {
     siteHtml: shortageSiteHtml,
     minCount: 18
   });
-  assert.equal(shortageAudit.ok, true, "explained post-dedup shortages should not force stale or low-quality filler");
+  assert.equal(shortageAudit.ok, false, "a Blog shortfall must block publication even when historical dedup explains it");
+  assert.ok(shortageAudit.failures.some((item) => item.code === "knowledge_count_low"));
+  assert.ok(shortageAudit.failures.some((item) => item.code === "knowledge_blog_mix_low"));
+  assert.ok(shortageAudit.failures.some((item) => item.code === "knowledge_paper_mix_low"));
 }
 
 function testAihotParserFixture() {
@@ -4294,6 +4335,7 @@ const tests = [
   ["Site builder normalizes archived Product Hunt why copy", testSiteBuilderNormalizesArchivedProductHuntWhyCopy],
   ["Live check skip classifier", testLiveCheckSkipClassifier],
   ["Knowledge feed parser fixture", testKnowledgeFeedParserFixture],
+  ["Gmail newsletter normalization fixture", testGmailNewsletterFixture],
   ["Knowledge paper mapping and audit fixture", testKnowledgePaperAndAuditFixture],
   ["HN Algolia", testHnAlgolia],
   ["GitHub gh api", testGhApi],

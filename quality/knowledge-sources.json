@@ -2,8 +2,18 @@
   "version": 1,
   "targetCount": 20,
   "blogQuota": 14,
+  "minimumBlogCount": 12,
   "maxPerBlogSource": 2,
-  "lookbackDays": 7,
+  "lookbackDays": 30,
+  "gmailSource": {
+    "id": "gmail_newsletters",
+    "label": "Gmail Newsletter",
+    "enabled": true,
+    "intakeDir": "quality/gmail-knowledge-intake",
+    "weight": 13,
+    "personalizationBoost": 4,
+    "maxItems": 30
+  },
   "blogSources": [
     {
       "id": "openai_news",
@@ -97,6 +107,38 @@
       "home": "https://www.interconnects.ai/",
       "weight": 12,
       "maxItems": 16
+    },
+    {
+      "id": "lennys_newsletter",
+      "label": "Lenny's Newsletter",
+      "type": "feed",
+      "url": "https://www.lennysnewsletter.com/feed",
+      "home": "https://www.lennysnewsletter.com/",
+      "weight": 15,
+      "maxItems": 30,
+      "discoveredVia": "gmail"
+    },
+    {
+      "id": "pragmatic_engineer",
+      "label": "The Pragmatic Engineer",
+      "type": "feed",
+      "url": "https://newsletter.pragmaticengineer.com/feed",
+      "home": "https://newsletter.pragmaticengineer.com/",
+      "weight": 16,
+      "maxItems": 30,
+      "discoveredVia": "gmail"
+    },
+    {
+      "id": "funeral_ai",
+      "label": "葬AI",
+      "type": "feed",
+      "url": "https://funeralai.substack.com/feed",
+      "home": "https://funeralai.substack.com/",
+      "weight": 9,
+      "maxItems": 24,
+      "requireAiRelevance": true,
+      "requireKnowledgeDepth": true,
+      "discoveredVia": "gmail"
     }
   ],
   "paperSource": {

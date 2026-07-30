@@ -37,7 +37,7 @@ npm run daily -- --hours 24 --report-dir reports-stability-check
 npm run build-site
 npm run acceptance
 node radar.mjs --hours 24 --json
-npm run knowledge -- --days 7 --limit 20
+npm run knowledge -- --days 30 --limit 20
 npm run knowledge-acceptance
 ```
 
@@ -56,9 +56,10 @@ npm run knowledge-acceptance
 
 通过条件：
 
-- 默认目标 20 篇，正常来源状态下不得少于 18 篇。
-- Blog 与论文合并展示；默认目标为 Blog 14 篇、论文 6 篇。Blog 正常来源可用时至少 12 篇，论文源可用时至少 6 篇。
+- 默认目标 20 篇，发布硬下限为 18 篇；历史去重或来源不足可以解释失败，但不能绕过发布门禁。
+- Blog 与论文合并展示；默认目标为 Blog 14 篇、论文 6 篇。Blog 发布硬下限为 12 篇，论文发布目标为 6 篇；不得用论文替代 Blog 配额后仍宣称完整发布。
 - 标题和 canonical URL 不重复，且不得与历史知识日报重复推送同一链接。
+- Gmail 只作为用户订阅发现与补漏层；报告只允许公开 canonical URL，禁止出现 Gmail 内部链接、邮件 ID、收件地址、Substack redirect/token 或其他邮件跟踪链接。
 - 至少 80% 的“核心信息”由本次 Codex 改写成中文；“为什么值得读”基本全部为具体中文判断，不允许短模板。
 - 论文必须链接 arXiv 原文；Hugging Face Daily Papers 只作为发现与社区信号，不代替论文证据。
 - Blog 来源异常必须记录在 `quality/knowledge-source-health/YYYY-MM-DD.json`；单一来源失败不阻塞产品日报，但不得把知识推送伪报为完整。
