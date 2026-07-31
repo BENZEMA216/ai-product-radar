@@ -1,0 +1,293 @@
+{
+  "date": "2026-08-01",
+  "generatedAt": "2026-07-31T16:02:12.702Z",
+  "reportPath": "reports/2026-08-01-0002-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 37,
+    "top20Sources": [
+      "YC Launch",
+      "HN Algolia",
+      "AIHOT"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-30；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 0 条，AI 相关候选 0 条；fallback 低覆盖时扩展检查 2026-07-29，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 0 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 8,
+      "keptCount": 8,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 21,
+      "keptCount": 14,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 5,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 15,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 44,
+    "error": "",
+    "policyGeneratedAt": "2026-07-31T16:01:58Z",
+    "policyIssueCount": 44,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Hoplite",
+      "productKey": "https://www.ycombinator.com/launches/sam-hoplite-effortless-cloud-agents-for-programming",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把云端编码 agent 接到 Slack、Linear、iMessage 和 Sentry 等不同触发入口，值得看多入口任务如何统一进入可追踪的沙箱执行队列。"
+    },
+    {
+      "rank": 2,
+      "product": "Ski – Voice Coding for Claude Code, Codex and More – On-Device – Free",
+      "productKey": "https://heyski.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用端侧语音同时服务 Claude Code、Codex 等编码工具，把免手操作、隐私和零云端费用放在同一入口，适合观察语音能否成为持续编码界面。"
+    },
+    {
+      "rank": 3,
+      "product": "What should the GUI for AI agents look like?",
+      "productKey": "https://marbleos.com/demo",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这个可体验 demo 直接探索 agent 的图形界面，判断重点是它如何呈现计划、执行状态和人工接管，而不只是把聊天框换一种皮肤。"
+    },
+    {
+      "rank": 4,
+      "product": "Reclip – AI Video Clipper, Voiceover and Creator Tools",
+      "productKey": "https://www.reclip.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把切片、配音和创作者工具并进一个视频生产流程，值得验证这种一站式组合能否真正减少跨工具搬运，而非只增加功能清单。"
+    },
+    {
+      "rank": 5,
+      "product": "machine0",
+      "productKey": "https://www.ycombinator.com/launches/sbd-machine0-cloud-computers-for-agents",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它让 agent 通过 CLI 或 MCP 自行创建持久 VM 并扩展到 GPU 机群，核心观察点是算力编排能否从人工运维变成 agent 可调用的基础能力。"
+    },
+    {
+      "rank": 6,
+      "product": "Mireye",
+      "productKey": "https://www.ycombinator.com/launches/sbp-mireye-the-easiest-way-to-build-agentic-applications-for-the-physical-world",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它试图用一个 API 统一物理世界应用所需的数据、增强、工具与信号，值得看这种抽象能否降低 agent 接入现实设备和事件流的碎片化成本。"
+    },
+    {
+      "rank": 7,
+      "product": "Emem Channel - Signed collaboration between independent AI agents",
+      "productKey": "https://emem.dev/channel",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把独立 agent 的协作记录做成可签名通道，价值在于为跨 agent 交接增加身份与可追责性，正好检验 agent 网络需要怎样的信任层。"
+    },
+    {
+      "rank": 8,
+      "product": "COACH",
+      "productKey": "https://www.ycombinator.com/launches/sbp-coach-the-ai-coach-for-in-person-sales-reps",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它瞄准上门、入户和展厅销售这些离线场景，产品难点不是生成话术，而是能否把最佳销售经验转成现场可用、可复盘的辅导闭环。"
+    },
+    {
+      "rank": 9,
+      "product": "Shared memory graph for Claude and ChatGPT, over MCP",
+      "productKey": "https://uml.gpmai.workers.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它通过 MCP 在 Claude 与 ChatGPT 之间共享记忆图，值得验证的是状态能否跨助手迁移且保持来源边界，而不是再造一个孤立记忆库。"
+    },
+    {
+      "rank": 10,
+      "product": "A notebook for prototyping with your agent",
+      "productKey": "https://nawc.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 notebook 作为人与 agent 共同原型的工作台，值得看它能否同时保留探索过程、可执行结果和人工修改痕迹，补上聊天式原型难复现的问题。"
+    },
+    {
+      "rank": 11,
+      "product": "Surface Labs",
+      "productKey": "https://www.ycombinator.com/launches/sdn-surface-labs-the-ai-research-assistant-that-tells-you-who-every-lead-is-instantly",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它在每条销售线索进入时自动研究人和公司，把价值落在跟进前的响应速度；应重点看研究结果是否足以触发下一步，而不是制造更多资料卡。"
+    },
+    {
+      "rank": 12,
+      "product": "Prompt-scrub – local-first PII redaction for LLM prompts and responses",
+      "productKey": "https://nanocollective.org/blog/prompt-scrub-v100-a-local-first-scrubber-for-prompts-and-their-responses-76",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它在本地同时清洗 LLM 的输入与输出，为接入外部模型增加一道 PII 边界；产品价值取决于脱敏准确率与可审计性，而不只是“local-first”标签。"
+    },
+    {
+      "rank": 13,
+      "product": "ZenResume – Free, local-first ATS resume builder with AI import",
+      "productKey": "https://www.zenresume.online",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 ATS 简历制作、AI 导入与本地处理绑定在一个明确求职任务里，适合观察隐私承诺能否成为用户从在线简历工具迁移的真实理由。"
+    },
+    {
+      "rank": 14,
+      "product": "Genkit Go 引入 Agent Skills，按需加载技能防止上下文膨胀",
+      "productKey": "https://aihot.virxact.com/items/cms944fwo03dzro9k842xje4p",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "渐进式只暴露技能元数据、命中后再加载完整指令与资源，直接针对上下文膨胀；值得看 Skill 能否因此成为可分发、可组合的运行单元。"
+    },
+    {
+      "rank": 15,
+      "product": "Stoa",
+      "productKey": "https://www.ycombinator.com/launches/sdz-stoa-the-market-behind-ai-hardware",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它让审核过的 GPU 经销商以盲标和实盘报价竞价，试图把不透明的 AI 硬件采购做成市场；需继续验证其自报 RFQ 规模能否转成成交与履约。"
+    },
+    {
+      "rank": 16,
+      "product": "Kebra",
+      "productKey": "https://www.ycombinator.com/launches/sbf-kebra-make-your-field-service-company-ai-native",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把现场作业直接转成记录、理赔、配件订单和跟进，把 agent 绑定到可交付业务结果；关键是这些跨系统动作能否可靠闭环。"
+    },
+    {
+      "rank": 17,
+      "product": "Slaide, open-source Markdown slides AI writes and PowerPoint opens",
+      "productKey": "https://getslaide.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它让 AI 直接写 Markdown，同时保持 PowerPoint 可打开，产品切口是生成格式与既有办公交付链兼容；应看导出后的可编辑性是否成立。"
+    },
+    {
+      "rank": 18,
+      "product": "RecipeBook – Self-serve platform for video training data, $3/HR",
+      "productKey": "https://recipebook.shofo.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把视频训练数据做成自助平台并直接报出每小时价格，值得看数据供给是否能标准化交付；低价只有在标注质量和授权清晰时才构成优势。"
+    },
+    {
+      "rank": 19,
+      "product": "Marble",
+      "productKey": "https://www.ycombinator.com/launches/sal-marble-the-autonomous-back-of-house-for-restaurants",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用视觉与语音完成盘点，再让 agent 管库存和排班，形成餐厅后场的端到端闭环；值得看自动化能否落到可量化的损耗与人效。"
+    },
+    {
+      "rank": 20,
+      "product": "Dreamina Seedance 2.5 上线，暂不支持美国",
+      "productKey": "https://aihot.virxact.com/items/cms93v68d03bmro9ki0lzk0ma",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "地区化付费上线、Maya/Blender 插件、多参考和时间戳控制把视频模型推向制作流程；重点是插件与长视频模式是否真能进入专业生产，而非参数展示。"
+    }
+  ]
+}
