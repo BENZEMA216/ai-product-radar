@@ -1,0 +1,293 @@
+{
+  "date": "2026-08-02",
+  "generatedAt": "2026-08-01T16:04:44.969Z",
+  "reportPath": "reports/2026-08-02-0004-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 38,
+    "top20Sources": [
+      "HN Algolia",
+      "YC Launch",
+      "AIHOT"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-07-31；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 0 条，AI 相关候选 0 条；fallback 低覆盖时扩展检查 2026-07-30，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 0 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 5,
+      "keptCount": 5,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 17,
+      "keptCount": 11,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 23,
+      "keptCount": 23,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 44,
+    "error": "",
+    "policyGeneratedAt": "2026-07-31T16:01:58Z",
+    "policyIssueCount": 44,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Agents that learn and remember. On your machine, under your control",
+      "productKey": "https://github.com/exxeta/exxperts",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把学习、记忆和本机控制放在同一个 agent 命题里，产品价值取决于记忆是否可检查、可纠错，而不只是能否长期保存。"
+    },
+    {
+      "rank": 2,
+      "product": "Job board and MCP server for AI developers",
+      "productKey": "https://frontierroles.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "同时做 AI 开发者职位板和 MCP 服务，值得看它是否能把职位发现变成 agent 可调用的结构化流程，而非只给人浏览的目录。"
+    },
+    {
+      "rank": 3,
+      "product": "How to build and self-host a code review agent",
+      "productKey": "https://www.trytilde.ai/blog/how-to-build-code-review-agent",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这是自托管代码审查 agent 的实现型信号；重点是团队能否掌握代码数据、规则和部署边界，而不是把教程本身误当成熟产品。"
+    },
+    {
+      "rank": 4,
+      "product": "One no-subscriptions online search for all your agent needs",
+      "productKey": "https://news.ycombinator.com/item?id=49131426",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用单次付费替代订阅式 agent 搜索，真正需要验证的是检索覆盖、引用可信度和按次成本能否同时成立。"
+    },
+    {
+      "rank": 5,
+      "product": "Tsenta",
+      "productKey": "https://www.ycombinator.com/launches/sbv-tsenta-your-ai-career-agent-that-applies-to-jobs-lands-you-interviews",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把求职匹配、简历定制和代投串成结果型 agent，核心验证不是投递量，而是能否提高有效面试并控制误投风险。"
+    },
+    {
+      "rank": 6,
+      "product": "Shellphone, an MCP Extension to Link Claude Chat and Claude Code",
+      "productKey": "https://www.npmjs.com/package/shellphone",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "连接 Claude Chat 与 Claude Code 的价值在跨入口上下文交接；应看 MCP 扩展能否减少重复说明，同时避免把权限和敏感上下文无边界传递。"
+    },
+    {
+      "rank": 7,
+      "product": "Schema-backed, Git-based structured state for agentic systems",
+      "productKey": "https://news.ycombinator.com/item?id=49126792",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用 schema 约束并以 Git 保存 agent 状态，为多人协作提供可审计的变更轨迹；关键是并发冲突、回滚和状态迁移是否可靠。"
+    },
+    {
+      "rank": 8,
+      "product": "Claude MIDI Twister – An agent visualizer for a DJ MIDI controller",
+      "productKey": "https://www.dylanfisher.com/claude-midi-twister",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 agent 状态映射到实体 MIDI 控制器，是一种可触摸的可视化实验；更适合观察交互反馈，而非据此判断通用产品需求。"
+    },
+    {
+      "rank": 9,
+      "product": "Palette",
+      "productKey": "https://www.ycombinator.com/launches/sdv-palette-an-ai-native-media-platform",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "统一媒体生成工作流的命题比单模型更接近制作系统，值得看它如何处理素材、版本、一致性和不同生成环节的交接。"
+    },
+    {
+      "rank": 10,
+      "product": "Blaze",
+      "productKey": "https://www.ycombinator.com/launches/sfs-blaze-ai-cfo-for-businesses",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "付款、催收和现金流预测都直接触碰企业资金，Blaze 的产品门槛在审批、追责与异常处理，而不是“AI CFO”这个包装。"
+    },
+    {
+      "rank": 11,
+      "product": "Brainstorm – a local-first, AI-native OS for knowledge work",
+      "productKey": "https://getbrainstorm.online",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "local-first 知识工作 OS 的吸引力在数据控制和离线连续性；应验证它是否真能统一知识流，而非新增一个封闭笔记入口。"
+    },
+    {
+      "rank": 12,
+      "product": "Sanitizer – Strip sensitive data from documents locally before an LLM",
+      "productKey": "https://provexar.ai/sanitizer",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "在文档送入 LLM 前本地去敏，把合规控制前移到输入层；产品成败取决于漏检、误删和可解释复核，而非简单替换字符。"
+    },
+    {
+      "rank": 13,
+      "product": "OpenVector",
+      "productKey": "https://www.ycombinator.com/launches/sbk-openvector-self-improving-ai-that-turns-any-camera-into-an-autonomous-worker",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把既有摄像头升级为能执行任务的视觉 agent，部署 wedge 很清晰；应重点看误报成本、持续学习和“自主工作”的实际边界。"
+    },
+    {
+      "rank": 14,
+      "product": "I built an RPG engine where an LLM narrates the GM, not the rules",
+      "productKey": "https://polymyth.quest",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "只让 LLM 负责叙事、把规则留给确定性引擎，是控制生成自由度的清晰设计；价值在体验一致性，不在模型替代整套游戏系统。"
+    },
+    {
+      "rank": 15,
+      "product": "Grok Imagine Video 1.5 新增文生视频与1080p",
+      "productKey": "https://aihot.virxact.com/items/cmsaercbb03dzrob3swk88cvi",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "文生视频、图像与语音参考及原生 1080p 若能组合使用，会把单次生成推进到可控制作；当前证据是聚合摘要，仍需核对官方入口与效果。"
+    },
+    {
+      "rank": 16,
+      "product": "DSCode – Coding Agent Powered by DeepSeek",
+      "productKey": "https://dscode.ai",
+      "source": "HN Algolia",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "以 DeepSeek 驱动编码 agent，差异化不能只靠底模名称；值得核对它在代码库理解、执行反馈和成本上是否形成独立工作流。"
+    },
+    {
+      "rank": 17,
+      "product": "DeepSeek Harness 内测招募开源开发者",
+      "productKey": "https://aihot.virxact.com/items/cmsabi50m00r8rob34vfo58ox",
+      "source": "AIHOT",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "面向开源开发者招募 Harness 内测，说明产品仍在验证接口和使用场景；缺少官方功能与可用入口，只应作为早期观察信号。"
+    },
+    {
+      "rank": 18,
+      "product": "Grok Imagine 升级：语音一致与视频生成",
+      "productKey": "https://aihot.virxact.com/items/cmsacw5ah01pxrob3q6k3xe2x",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "角色语音复用、多参考图和视频生成若跨网页、App、API 一致开放，会显著减少连续创作的重做成本；仍需用官方发布核实范围。"
+    },
+    {
+      "rank": 19,
+      "product": "OpenAI Astra 模型破解 10 道数学难题",
+      "productKey": "https://aihot.virxact.com/items/cmsa8bt4p00cqrojdm8w4j9ju",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "这更像未发布模型的能力与形式化验证信号，不是可用产品；聚合摘要中的难题数量、成本和 Lean 证明都应回到一手材料核验。"
+    },
+    {
+      "rank": 20,
+      "product": "OpenAI 未发布 Astra 模型攻克 10 项数学难题",
+      "productKey": "https://aihot.virxact.com/items/cmsa658rg01pjrox0s1s9lros",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "这里的增量是机器可验证证书与长篇手稿，而非产品入口；在采用“GPT-6”或成本说法前，必须区分官方确认和二手推测。"
+    }
+  ]
+}

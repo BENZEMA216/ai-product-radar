@@ -1,0 +1,132 @@
+{
+  "generatedAt": "2026-08-01T16:25:24.184Z",
+  "date": "2026-08-02",
+  "window": {
+    "start": "2026-07-02T16:25:24.184Z",
+    "end": "2026-08-01T16:25:24.184Z",
+    "lookbackDays": 30
+  },
+  "targetCount": 20,
+  "desiredBlogCount": 14,
+  "minimumBlogCount": 12,
+  "desiredPaperCount": 6,
+  "selectedCount": 20,
+  "blogCount": 14,
+  "paperCount": 6,
+  "candidatePool": {
+    "historicalLinkCount": 118,
+    "blogFetchedCount": 100,
+    "paperFetchedCount": 38,
+    "blogAfterHistoricalDedupCount": 45,
+    "paperAfterHistoricalDedupCount": 32,
+    "eligibleAfterHistoricalDedupCount": 77,
+    "shortfallReason": ""
+  },
+  "sources": {
+    "openai_news": {
+      "label": "OpenAI",
+      "status": "ok",
+      "rawCount": 1105,
+      "keptCount": 20,
+      "note": "30 天窗口"
+    },
+    "anthropic": {
+      "label": "Anthropic Research & Engineering",
+      "status": "ok",
+      "rawCount": 508,
+      "keptCount": 12,
+      "note": "30 天窗口"
+    },
+    "deepmind": {
+      "label": "Google DeepMind",
+      "status": "ok",
+      "rawCount": 100,
+      "keptCount": 9,
+      "note": "30 天窗口"
+    },
+    "simon_willison": {
+      "label": "Simon Willison",
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 7,
+      "note": "30 天窗口"
+    },
+    "lilian_weng": {
+      "label": "Lil'Log · Lilian Weng",
+      "status": "ok",
+      "rawCount": 53,
+      "keptCount": 1,
+      "note": "30 天窗口"
+    },
+    "chip_huyen": {
+      "label": "Chip Huyen",
+      "status": "ok",
+      "rawCount": 10,
+      "keptCount": 0,
+      "note": "30 天窗口"
+    },
+    "eugene_yan": {
+      "label": "Eugene Yan",
+      "status": "ok",
+      "rawCount": 212,
+      "keptCount": 0,
+      "note": "30 天窗口"
+    },
+    "cloudflare_ai": {
+      "label": "Cloudflare",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 1,
+      "note": "30 天窗口"
+    },
+    "latent_space": {
+      "label": "Latent Space",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 16,
+      "note": "30 天窗口"
+    },
+    "interconnects": {
+      "label": "Interconnects",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 3,
+      "note": "30 天窗口"
+    },
+    "lennys_newsletter": {
+      "label": "Lenny's Newsletter",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "30 天窗口；由 Gmail 订阅发现后改用公开 RSS"
+    },
+    "pragmatic_engineer": {
+      "label": "The Pragmatic Engineer",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 10,
+      "note": "30 天窗口；由 Gmail 订阅发现后改用公开 RSS"
+    },
+    "funeral_ai": {
+      "label": "葬AI",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 0,
+      "note": "30 天窗口；由 Gmail 订阅发现后改用公开 RSS"
+    },
+    "gmail_newsletters": {
+      "label": "Gmail Newsletter",
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 1,
+      "note": "只读取已清洗的公开 canonical URL；不写入邮件 ID、收件地址或 Gmail 内部链接"
+    },
+    "hf_daily_papers": {
+      "label": "Hugging Face Daily Papers / arXiv",
+      "status": "ok",
+      "rawCount": 38,
+      "keptCount": 38,
+      "note": "HF Daily Papers curated feed; canonical link points to arXiv"
+    }
+  }
+}

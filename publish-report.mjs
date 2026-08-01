@@ -9,6 +9,7 @@ import { sanitizeLocalProxyEnv } from "./radar.mjs";
 const REPORT_PATTERN = /^\d{4}-\d{2}-\d{2}-\d{4}-cst\.md$/;
 const KNOWLEDGE_REPORT_PATTERN = /^\d{4}-\d{2}-\d{2}\.md$/;
 const REVIEW_PATTERN = /^\d{4}-\d{2}-\d{2}\.json$/;
+const LOCAL_ONLY_QUALITY_DIRS = new Set(["gmail-knowledge-intake"]);
 const CLEAN_ENV = sanitizeLocalProxyEnv(process.env);
 
 export function commitMessageForReport(reportPath) {
@@ -64,6 +65,7 @@ export function qualityPathsForDir(qualityDir = "quality") {
       throw error;
     }
     for (const name of entries) {
+      if (dir === qualityDir && LOCAL_ONLY_QUALITY_DIRS.has(name)) continue;
       const path = join(dir, name);
       const stat = statSync(path);
       if (stat.isDirectory()) walk(path);

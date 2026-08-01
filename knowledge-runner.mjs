@@ -484,10 +484,11 @@ export function normalizeDailyPapers(payload, source, now) {
 }
 
 async function fetchPapers(source, now, dateKey) {
-  const dates = [dateKey];
-  const yesterday = new Date(now.getTime() - 86_400_000);
-  const yesterdayKey = shanghaiDateKey(yesterday);
-  if (yesterdayKey !== dateKey) dates.push(yesterdayKey);
+  const dates = [];
+  for (let offset = 0; offset < 7; offset += 1) {
+    const key = shanghaiDateKey(new Date(now.getTime() - offset * 86_400_000));
+    if (!dates.includes(key)) dates.push(key);
+  }
   let rawCount = 0;
   const all = [];
   const errors = [];
@@ -515,6 +516,20 @@ function uniqueByLink(items) {
   const seen = new Set();
   return items.filter((item) => {
     const key = canonicalizeUrl(item.link).toLowerCase();
+    if (!key || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function uniqueByTitle(items) {
+  const seen = new Set();
+  return items.filter((item) => {
+    const key = String(item.title || "")
+      .normalize("NFKC")
+      .toLowerCase()
+      .replace(/\s+/g, " ")
+      .trim();
     if (!key || seen.has(key)) return false;
     seen.add(key);
     return true;
@@ -609,10 +624,10 @@ function historicalLinks(reportDir, excludedPath) {
 }
 
 function selectItems(blogs, papers, { limit, blogQuota, maxPerBlogSource, seenLinks }) {
-  const availableBlogs = uniqueByLink(blogs)
+  const availableBlogs = uniqueByTitle(uniqueByLink(blogs))
     .filter((item) => !seenLinks.has(item.link.toLowerCase()))
     .sort((a, b) => b.score - a.score);
-  const availablePapers = uniqueByLink(papers)
+  const availablePapers = uniqueByTitle(uniqueByLink(papers))
     .filter((item) => !seenLinks.has(item.link.toLowerCase()))
     .sort((a, b) => b.score - a.score);
   const selectedBlogs = [];
