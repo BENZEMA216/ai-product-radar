@@ -1,0 +1,292 @@
+{
+  "date": "2026-08-03",
+  "generatedAt": "2026-08-02T16:03:23.960Z",
+  "reportPath": "reports/2026-08-03-0003-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 34,
+    "top20Sources": [
+      "HN Algolia",
+      "AIHOT"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 0.9,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-08-01；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 0 条，AI 相关候选 0 条；fallback 低覆盖时扩展检查 2026-07-31，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 0 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "YC Launch 本窗口无候选或来源为空。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 24,
+      "keptCount": 9,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 25,
+      "keptCount": 25,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 44,
+    "error": "",
+    "policyGeneratedAt": "2026-08-02T16:02:50Z",
+    "policyIssueCount": 44,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Agentmetry – local-first flight recorder for AI coding agents",
+      "productKey": "https://agentmetry.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把编码 agent 的运行轨迹留在本地，真正值得看的是调试、审计与隐私如何被合成一个开发者可用的观测层。"
+    },
+    {
+      "rank": 2,
+      "product": "Cockpit for you Claude Code agents in Rust",
+      "productKey": "https://episko.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它尝试给多个 Claude Code agent 提供统一驾驶舱；判断重点是并行任务、状态切换和人工接管能否比终端窗口更清楚。"
+    },
+    {
+      "rank": 3,
+      "product": "Pronto – real‑time wire for AI agents (70k+ feeds connected)",
+      "productKey": "https://pronto.stream",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把实时信息流包装成 agent 可接入的数据层；值得验证的是“7 万多个 feed”能否带来低延迟、可追溯且可筛选的上下文。"
+    },
+    {
+      "rank": 4,
+      "product": "Rails Agent – Build Autonomous AI Agents Natively in Ruby on Rails",
+      "productKey": "https://rails-agent.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它让 Rails 团队在熟悉的应用栈内构建 agent，观察点是状态、任务队列和业务数据能否少一层外部编排胶水。"
+    },
+    {
+      "rank": 5,
+      "product": "CostPerPrompt – Live AI API pricing and real-workload cost calculators",
+      "productKey": "https://costperprompt.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把模型报价换算到真实工作负载，适合用来判断成本透明是否能成为模型路由、预算控制和采购决策的产品入口。"
+    },
+    {
+      "rank": 6,
+      "product": "Run multiple Claude desktop accounts in isolated windows (Mac/Windows)",
+      "productKey": "https://deckspace.dev/claude-accounts",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它解决多 Claude 账号隔离这个明确的重度用户摩擦，但更像桌面效率补丁；要看账号切换之外是否形成持续工作流。"
+    },
+    {
+      "rank": 7,
+      "product": "TamedTable, AI ETL in Natural Language",
+      "productKey": "https://www.tamedtable.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用自然语言定义 ETL，产品价值取决于能否把字段映射、异常校验和可复现执行做得比一次性生成脚本更可靠。"
+    },
+    {
+      "rank": 8,
+      "product": "Galda – Come back to Claude Code/Codex without digging through Git",
+      "productKey": "https://galda.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它瞄准编码 agent 会话中断后的恢复成本；值得看它能否把目标、上下文与未完成动作还原，而不只是重新展示 Git diff。"
+    },
+    {
+      "rank": 9,
+      "product": "Crest, a MacBook notch control room that answers Claude Code prompts",
+      "productKey": "https://crestnotch.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 Claude Code 的批准请求放进常驻系统入口，适合观察“低打扰的人在回路”是否能缩短等待而不牺牲风险提示。"
+    },
+    {
+      "rank": 10,
+      "product": "OpenAI Presence 旨在让 AI 智能体为企业生产环境做好准备",
+      "productKey": "https://aihot.virxact.com/items/cmsbu9elg0qmyrohvb54kbkz0",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "若其描述属实，Presence 的增量在于把 agent 从内部试验推向客户服务等生产流程；但目前只有聚合转述，需等官方能力与交付边界。"
+    },
+    {
+      "rank": 11,
+      "product": "ChatGPT 浏览器扩展与桌面应用更新上线",
+      "productKey": "https://aihot.virxact.com/items/cmsbvc24m0rp3rohveoqebfgj",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "若功能上线，右键提问、标签页引用和历史回顾会把 ChatGPT 更深地嵌入浏览任务；需以官方更新确认范围与隐私控制。"
+    },
+    {
+      "rank": 12,
+      "product": "Claude Opus 5 将提示词生成游戏从粗糙色块推进到带物理和音乐的完整 3D 原型",
+      "productKey": "https://aihot.virxact.com/items/cmsbkm4qh0ij3rohvvzl9h7sh",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "单提示生成可运行 3D 原型说明长程代码生成正在靠近创作工具，但仍需看可编辑性、稳定性和用户反馈闭环。"
+    },
+    {
+      "rank": 13,
+      "product": "启元机器人宣布与暴雪《魔兽世界》合作，推出限定\"鱼人定制款\"Q1",
+      "productKey": "https://aihot.virxact.com/items/cmsbkt2mq0inrrohvvve2ler5",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "这次联名主要验证模块化机器人能否借 IP 进入消费展会场景；值得看的是分发与形态定制，而非把联名误当技术突破。"
+    },
+    {
+      "rank": 14,
+      "product": "Snapchat 更新 Spotlight 推荐算法，完全由 AI 生成的视频将不再被推荐",
+      "productKey": "https://aihot.virxact.com/items/cmsbinvsy0grkrohvvttbj37x",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "推荐算法开始区分全 AI 生成与 AI 辅助内容，会直接改变创作者供给激励；值得跟踪规则执行与申诉机制，而非模型能力。"
+    },
+    {
+      "rank": 15,
+      "product": "DeepSeek V4 Flash 3美分定价击穿行业斩杀线",
+      "productKey": "https://aihot.virxact.com/items/cmsbvbssk0rlhrohvxm71ckx6",
+      "source": "AIHOT",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "低价模型可能改写高频 agent 的单位经济性，但现有分数与成本来自聚合说法，必须先核验模型、计费口径和真实任务质量。"
+    },
+    {
+      "rank": 16,
+      "product": "Pippa 用收入分成吸引艺术家，但能说服他们拥抱 AI 吗？",
+      "productKey": "https://aihot.virxact.com/items/cmsbu99zp0qkwrohvu93iw6h7",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "deprioritize",
+      "pmScore": 1,
+      "rankingIssue": "weak_signal_in_top20",
+      "reason": "Pippa 用按次补偿和版税池处理风格授权，真正值得看的是收入能否覆盖创作者预期，以及训练数据争议是否仍削弱信任。"
+    },
+    {
+      "rank": 17,
+      "product": "Grok 一次生成 15 秒视频，0 抽卡",
+      "productKey": "https://aihot.virxact.com/items/cmsbxgzpe0tgcrohvf3rfu2vm",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "它提供了单次生成 15 秒视频的用户侧样本，能帮助比较体验稳定性；但没有系统测试，不能把一次成功当作模型结论。"
+    },
+    {
+      "rank": 18,
+      "product": "Karpathy 用《指环王》测试 Opus 5 长程生成",
+      "productKey": "https://aihot.virxact.com/items/cmsbjjjhm0hitrohv81mwgc0c",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "长文本到 5500 行 Three.js 的实验可观察长程生成连贯性，同时明确暴露视觉反馈不足；它是能力测试而非独立产品。"
+    },
+    {
+      "rank": 19,
+      "product": "Karpathy 用 Claude Opus 5 生成《魔戒》3D 世界",
+      "productKey": "https://aihot.virxact.com/items/cmsbigsh80gk6rohv8o47jzqg",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "它与同日报告中的长程 3D 生成测试高度重合；可保留为重复证据审计，但不应被当作第二个独立产品。"
+    },
+    {
+      "rank": 20,
+      "product": "本周AI动态与Pokee新功能抢先体验",
+      "productKey": "https://aihot.virxact.com/items/cmsbp4oiu0mgprohvht59iem1",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "这只是限量试用预告，缺少功能、用户问题和交付结果；在公开能力出现前只能作为待核验线索。"
+    }
+  ]
+}
