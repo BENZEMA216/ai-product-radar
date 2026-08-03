@@ -1,0 +1,22 @@
+{
+  "generatedAt": "2026-08-03T16:42:54.835Z",
+  "report": "2026-08-04.md",
+  "health": "quality/knowledge-source-health/2026-08-04.json",
+  "site": "docs/index.html",
+  "ok": true,
+  "date": "2026-08-04",
+  "rows": 20,
+  "blogCount": 14,
+  "paperCount": 6,
+  "sourceCount": 14,
+  "candidatePool": {
+    "historicalLinkCount": 158,
+    "blogFetchedCount": 103,
+    "paperFetchedCount": 25,
+    "blogAfterHistoricalDedupCount": 24,
+    "paperAfterHistoricalDedupCount": 25,
+    "eligibleAfterHistoricalDedupCount": 49,
+    "shortfallReason": ""
+  },
+  "failures": []
+}

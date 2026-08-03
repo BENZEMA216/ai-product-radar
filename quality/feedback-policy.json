@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-02T16:02:50Z",
+  "generatedAt": "2026-08-03T16:04:59Z",
   "generatedBy": "Codex reasoning from GitHub radar-feedback issues",
   "sourceIssueNumbers": [
     1,
@@ -46,7 +46,8 @@
     41,
     42,
     43,
-    44
+    44,
+    45
   ],
   "rules": [
     {
@@ -432,6 +433,10 @@
     {
       "issueNumber": 43,
       "reason": "单个 Hugging Face Space 暂时无法打开只足以否定该产品，不能安全泛化为删除其他可访问的 Space。"
+    },
+    {
+      "issueNumber": 45,
+      "reason": "‘很有趣’只表达对 Pronto 当前产品的主观正向判断，缺少可验证、可安全泛化到同类产品的条件；仅保留精确 productKey keep。"
     }
   ]
 }

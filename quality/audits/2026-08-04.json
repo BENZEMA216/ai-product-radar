@@ -1,0 +1,293 @@
+{
+  "date": "2026-08-04",
+  "generatedAt": "2026-08-03T16:05:33.296Z",
+  "reportPath": "reports/2026-08-04-0005-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 33,
+    "top20Sources": [
+      "HN Algolia",
+      "AIHOT",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-08-02；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 0 条，AI 相关候选 0 条；fallback 低覆盖时扩展检查 2026-08-01，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 0 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 1,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 12,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-08-03T16:04:59Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Nightcrawler – A local AI pentesting agent running on a smartphone",
+      "productKey": "https://github.com/garagehq/nightcrawler",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把本地渗透测试 agent 放到手机上，意味着可在移动端直接发起安全工作流；值得验证端侧资源限制下的扫描能力与权限边界。"
+    },
+    {
+      "rank": 2,
+      "product": "Changed how I use agent harnesses",
+      "productKey": "https://github.com/maximhq/bifrost",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "标题声称 Bifrost 改变了开发者使用 agent harness 的方式，但 HN 证据尚未说明具体机制；应重点核对它究竟统一了哪些执行或观测环节。"
+    },
+    {
+      "rank": 3,
+      "product": "Sprocket – The Best AI Agent for Hardware and Software Development",
+      "productKey": "https://sprocket-demo.spikonado.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它同时覆盖硬件与软件开发，检验点不是“全能”口号，而是 agent 能否把跨领域设计、调试和交付串成可验证的闭环。"
+    },
+    {
+      "rank": 4,
+      "product": "Lucin -static analysis for AI agents with published false-negative list",
+      "productKey": "https://lucin.pages.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "亮点是在给 AI agent 做静态分析的同时公开假阴性清单；这种显式暴露检测盲区的做法，比单纯宣称“安全”更利于建立可审计的信任。"
+    },
+    {
+      "rank": 5,
+      "product": "Kota – Bring AI agent CLIs into the same room",
+      "productKey": "https://www.kota.place",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它试图让多个 agent CLI 进入同一协作空间，值得观察多 agent 编排是否从并排终端进化为可交接任务、共享上下文和处理冲突的协作层。"
+    },
+    {
+      "rank": 6,
+      "product": "Kuvu AI – Your All-in-One AI Creative Studio and Marketing Studio",
+      "productKey": "https://kuvu.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“创意工作室 + 营销工作室”的定位瞰准从内容生成到投放的链路；产品价值取决于它能否真正连起素材、渠道与转化反馈，而不是堆叠生成功能。"
+    },
+    {
+      "rank": 7,
+      "product": "Sixb – the operating layer for enterprise AI",
+      "productKey": "https://sixb.ai/news/sixb-framework-launch",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用“企业 AI 操作层”包装一套框架，值得拆解其是否把治理、运行和业务接入做成可交付产品；当前 HN 证据还不足以证明企业采用深度。"
+    },
+    {
+      "rank": 8,
+      "product": "Argot, a Rust AI guardrail based on your codebase AST patterns",
+      "productKey": "https://argot.tmonier.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它不是用通用文本规则约束 agent，而是按代码库 AST 模式定义护栏；这种结构化、项目特定的约束更接近可执行的工程政策。"
+    },
+    {
+      "rank": 9,
+      "product": "AI Visibility: Check whether ChatGPT/Claude/Gemini recommend your brand",
+      "productKey": "https://aivisibility.pro",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把品牌是否被 ChatGPT、Claude 和 Gemini 推荐变成可检查对象，反映搜索优化正在向“模型推荐可见度”转移；关键是测量能否稳定复现。"
+    },
+    {
+      "rank": 10,
+      "product": "AgentCodeGUI – Multi-Account Desktop GUI for Claude Code and Codex",
+      "productKey": "https://github.com/unrealfactory/agentcodegui",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "多账号桌面 GUI 把 Claude Code 与 Codex 从单一 CLI 使用拉到可视化切换与管理；这暴露了重度用户对账号隔离和多 agent 桌面调度的真实需求。"
+    },
+    {
+      "rank": 11,
+      "product": "Do Codex skills save tokens? A six-run task-size benchmark",
+      "productKey": "https://codex-howto-benchmark.nguyenvantamdk2.chatgpt.site",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用 6 次任务规模对照试图回答 Skill 是否真能节省 token，提供了比使用体感更可核对的方向；应重点看样本量和任务分组是否足以支撑结论。"
+    },
+    {
+      "rank": 12,
+      "product": "Cloudflare Workers 与 Containers 现已支持入站 TCP 连接和 gRPC",
+      "productKey": "https://aihot.virxact.com/items/cmsdal06d16pyroeu00obye0v",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "入站 TCP 与 gRPC 让 Workers 能承接长连接、非 HTTP 协议和容器内服务，对需要持续通信的 agent 和工具连接器是实质性运行时扩展。"
+    },
+    {
+      "rank": 13,
+      "product": "Cloudflare 推出 Billable Usage API：为自助账户提供按产品与计费周期的程序化成本可见性",
+      "productKey": "https://aihot.virxact.com/items/cmsdal06d16pzroeuf2u64pdv",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "单一 API 就能按产品和计费周期返回 Workers AI、Vectorize 等成本，便于把 agent 工作流的资源消耗接入预算、告警与单位经济性管理。"
+    },
+    {
+      "rank": 14,
+      "product": "商汤发布 SenseNova U1.5-Lite-Preview 开源模型",
+      "productKey": "https://aihot.virxact.com/items/cmsdczxnl0138rotj8fjenm4b",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "8B-MoT 的轻量统一多模态模型同时主打生成与编辑，产品启发是能否用更低部署成本支撑可迭代的创作流程；“达到闭源质量”仍需独立证据。"
+    },
+    {
+      "rank": 15,
+      "product": "美团LongCat新增50M token低价包",
+      "productKey": "https://aihot.virxact.com/items/cmsdbuung181vroeunht5hh04",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "可重复购买的 5000 万 token 低价包，把模型消费从抽象单价改造成预付额度商品；值得观察这种包装是否降低试用门槛并提高持续用量。"
+    },
+    {
+      "rank": 16,
+      "product": "Databricks 推出 Variant 通用可用版本，加速半结构化数据摄取",
+      "productKey": "https://aihot.virxact.com/items/cmsd9kiim15ooroeuyw9hsbon",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "Variant 进入 GA 后可直接摄取 JSON、XML、CSV 等半结构化数据，减少为分析或 agent 预先固化 schema 的成本；它的价值在数据入口简化，不是一次模型能力升级。"
+    },
+    {
+      "rank": 17,
+      "product": "Cloudflare 推出 @cloudflare/computer 预览版：为智能体提供虚拟文件系统与多执行环境",
+      "productKey": "https://aihot.virxact.com/items/cmsdal06c16pxroeu5xtlavmg",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "每个 agent 拥有虚拟文件系统，并能在 isolate、容器沙箱或浏览器间选择执行环境，将文件状态与代码执行合并为一个可部署的 agent runtime。"
+    },
+    {
+      "rank": 18,
+      "product": "玉伯推荐 Youmind 精灵：微信与客户端双入口",
+      "productKey": "https://aihot.virxact.com/items/cmsd8fver14h4roeu6id8ebao",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "微信绑定覆盖移动场景，Command + J 覆盖桌面快捷唤起；双入口把生图、PPT、写作和网页生成植入日常工作流，比再造一个独立对话页更值得看。"
+    },
+    {
+      "rank": 19,
+      "product": "Lamb Labs",
+      "productKey": "https://www.ycombinator.com/launches/siu-lamb-labs-custom-chips-for-ai-inference",
+      "source": "YC Launch",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "把模型架构硬编码到芯片中，是用专用化换取推理吞吐和能效的鲜明路线；值得看的是模型与硅协同设计能否支撑可持续的升级周期，而非只看发布数字。"
+    },
+    {
+      "rank": 20,
+      "product": "Google Agent Skills 幕后：如何构建、测试与规模化",
+      "productKey": "https://aihot.virxact.com/items/cmsddya2a01t3rotjo94tdap8",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "deprioritize",
+      "pmScore": 2,
+      "rankingIssue": "weak_signal_in_top20",
+      "reason": "真正有增量的是 Skill 规模化治理：标准目录、linter、链接检查、提交时与每周评估组成质量闭环，为团队维护大规模技能库提供了具体范式。"
+    }
+  ]
+}
