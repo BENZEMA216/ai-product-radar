@@ -12,6 +12,7 @@ function parseArgs(argv) {
     report: "",
     reportDir: "knowledge-reports",
     healthDir: "quality/knowledge-source-health",
+    candidateDir: "quality/knowledge-candidates",
     outDir: "quality/knowledge-audits",
     site: "docs/index.html",
     minCount: 18
@@ -20,6 +21,7 @@ function parseArgs(argv) {
     if (argv[index] === "--report") args.report = argv[++index];
     if (argv[index] === "--report-dir") args.reportDir = argv[++index];
     if (argv[index] === "--health-dir") args.healthDir = argv[++index];
+    if (argv[index] === "--candidate-dir") args.candidateDir = argv[++index];
     if (argv[index] === "--out-dir") args.outDir = argv[++index];
     if (argv[index] === "--site") args.site = argv[++index];
     if (argv[index] === "--min-count") args.minCount = Number(argv[++index]);
@@ -45,7 +47,7 @@ function failure(code, message, detail = null) {
   return { code, message, detail };
 }
 
-export function auditKnowledge({ report, health, siteHtml, minCount = 18 }) {
+export function auditKnowledge({ report, health, candidates, siteHtml, minCount = 18 }) {
   const failures = [];
   const items = report.items || [];
   const links = items.map((item) => item.link);
@@ -53,10 +55,14 @@ export function auditKnowledge({ report, health, siteHtml, minCount = 18 }) {
   const blogCount = items.filter((item) => item.kind === "Blog").length;
   const paperCount = items.filter((item) => item.kind === "论文").length;
   const minimumBlogCount = Number(health?.minimumBlogCount || 12);
-  const desiredPaperCount = Number(health?.desiredPaperCount || 6);
+  const minimumTotalCount = Number(health?.minimumTotalCount || minCount);
+  const maximumPaperCount = Number(health?.maximumPaperCount ?? 4);
+  const candidateItems = Array.isArray(candidates?.items) ? candidates.items : [];
+  const candidateByLink = new Map(candidateItems.map((item) => [item.link, item]));
+  const allowlist = new Set(health?.topConferenceAllowlist || []);
 
-  if (items.length < minCount) {
-    failures.push(failure("knowledge_count_low", `知识日报只有 ${items.length} 条，低于最低 ${minCount} 条。`));
+  if (items.length < minimumTotalCount) {
+    failures.push(failure("knowledge_count_low", `知识日报只有 ${items.length} 条，低于最低 ${minimumTotalCount} 条。`));
   }
   if (new Set(links).size !== links.length) failures.push(failure("knowledge_duplicate_links", "知识日报存在重复链接。"));
   if (new Set(titles).size !== titles.length) failures.push(failure("knowledge_duplicate_titles", "知识日报存在重复标题。"));
@@ -65,8 +71,40 @@ export function auditKnowledge({ report, health, siteHtml, minCount = 18 }) {
       failure("knowledge_blog_mix_low", `Blog 只有 ${blogCount} 条，低于发布硬下限 ${minimumBlogCount} 条。`)
     );
   }
-  if (paperCount < desiredPaperCount) {
-    failures.push(failure("knowledge_paper_mix_low", `论文只有 ${paperCount} 条，低于发布目标 ${desiredPaperCount} 条。`));
+  if (paperCount > maximumPaperCount) {
+    failures.push(failure("knowledge_paper_mix_high", `论文有 ${paperCount} 条，超过 Blog 优先策略上限 ${maximumPaperCount} 条。`));
+  }
+  const blogAccessFailures = items
+    .filter((item) => item.kind === "Blog")
+    .filter((item) => {
+      const access = candidateByLink.get(item.link)?.access;
+      return !access?.verified || !["public", "gmail_subscription"].includes(access.mode);
+    })
+    .map((item) => item.title);
+  if (blogAccessFailures.length) {
+    failures.push(
+      failure(
+        "knowledge_blog_access_unverified",
+        "存在未证明公开可访问、也未证明用户有订阅权限的 Blog。",
+        blogAccessFailures
+      )
+    );
+  }
+  const paperVenueFailures = items
+    .filter((item) => item.kind === "论文")
+    .filter((item) => {
+      const evidence = candidateByLink.get(item.link)?.conferenceEvidence;
+      return !evidence?.verified || !allowlist.has(evidence.venueKey);
+    })
+    .map((item) => item.title);
+  if (paperVenueFailures.length) {
+    failures.push(
+      failure(
+        "knowledge_paper_not_top_conference",
+        "存在没有明确顶会录用元数据、或会议不在白名单内的论文。",
+        paperVenueFailures
+      )
+    );
   }
   const privateOrTrackingLinks = links.filter((link) =>
     /(?:mail\.google\.com|substack\.com\/redirect|open\.substack\.com|clicks\.mlsend\.com|e\.customeriomail\.com)/i.test(
@@ -119,6 +157,8 @@ export function auditKnowledge({ report, health, siteHtml, minCount = 18 }) {
     rows: items.length,
     blogCount,
     paperCount,
+    blogAccessVerifiedCount: blogCount - blogAccessFailures.length,
+    topConferencePaperCount: paperCount - paperVenueFailures.length,
     sourceCount: availableSourceCount,
     candidatePool: health?.candidatePool || null,
     failures
@@ -132,8 +172,10 @@ async function main() {
   const report = parseKnowledgeReport(readFileSync(reportPath, "utf8"), reportPath);
   const healthPath = join(args.healthDir, `${report.date}.json`);
   const health = existsSync(healthPath) ? JSON.parse(readFileSync(healthPath, "utf8")) : null;
+  const candidatePath = join(args.candidateDir, `${report.date}.json`);
+  const candidates = existsSync(candidatePath) ? JSON.parse(readFileSync(candidatePath, "utf8")) : null;
   const siteHtml = existsSync(args.site) ? readFileSync(args.site, "utf8") : "";
-  const audit = auditKnowledge({ report, health, siteHtml, minCount: args.minCount });
+  const audit = auditKnowledge({ report, health, candidates, siteHtml, minCount: args.minCount });
   const outPath = join(args.outDir, `${report.date}.json`);
   mkdirSync(dirname(outPath), { recursive: true });
   writeFileSync(
@@ -143,6 +185,7 @@ async function main() {
         generatedAt: new Date().toISOString(),
         report: basename(reportPath),
         health: existsSync(healthPath) ? healthPath : "",
+        candidates: existsSync(candidatePath) ? candidatePath : "",
         site: args.site,
         ...audit
       },

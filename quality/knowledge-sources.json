@@ -1,8 +1,10 @@
 {
   "version": 1,
   "targetCount": 20,
-  "blogQuota": 14,
-  "minimumBlogCount": 12,
+  "blogQuota": 16,
+  "minimumBlogCount": 16,
+  "minimumTotalCount": 18,
+  "maximumPaperCount": 4,
   "maxPerBlogSource": 2,
   "lookbackDays": 30,
   "gmailSource": {
@@ -97,7 +99,8 @@
       "url": "https://www.latent.space/feed",
       "home": "https://www.latent.space/",
       "weight": 11,
-      "maxItems": 16
+      "maxItems": 16,
+      "accessPolicy": "gmail_subscription"
     },
     {
       "id": "interconnects",
@@ -116,7 +119,8 @@
       "home": "https://www.lennysnewsletter.com/",
       "weight": 15,
       "maxItems": 30,
-      "discoveredVia": "gmail"
+      "discoveredVia": "gmail",
+      "accessPolicy": "gmail_subscription"
     },
     {
       "id": "pragmatic_engineer",
@@ -126,7 +130,8 @@
       "home": "https://newsletter.pragmaticengineer.com/",
       "weight": 16,
       "maxItems": 30,
-      "discoveredVia": "gmail"
+      "discoveredVia": "gmail",
+      "accessPolicy": "gmail_subscription"
     },
     {
       "id": "funeral_ai",
@@ -138,15 +143,44 @@
       "maxItems": 24,
       "requireAiRelevance": true,
       "requireKnowledgeDepth": true,
-      "discoveredVia": "gmail"
+      "discoveredVia": "gmail",
+      "accessPolicy": "gmail_subscription"
     }
   ],
   "paperSource": {
-    "id": "hf_daily_papers",
-    "label": "Hugging Face Daily Papers / arXiv",
-    "url": "https://huggingface.co/api/daily_papers",
-    "home": "https://huggingface.co/papers",
-    "weight": 12,
-    "maxItems": 60
+    "id": "semantic_scholar_top_conferences",
+    "label": "顶会论文 · Semantic Scholar",
+    "type": "semantic_scholar_top_conferences",
+    "url": "https://api.semanticscholar.org/graph/v1/paper/search/bulk",
+    "home": "https://www.semanticscholar.org/",
+    "weight": 16,
+    "lookbackDays": 120,
+    "maxItems": 80,
+    "searchQueries": [
+      "large language model agent",
+      "machine learning artificial intelligence",
+      "multimodal computer vision",
+      "human computer interaction AI"
+    ],
+    "topConferenceAllowlist": [
+      { "key": "NeurIPS", "label": "NeurIPS", "aliases": ["Neural Information Processing Systems", "Advances in Neural Information Processing Systems"] },
+      { "key": "ICML", "label": "ICML", "aliases": ["International Conference on Machine Learning"] },
+      { "key": "ICLR", "label": "ICLR", "aliases": ["International Conference on Learning Representations"] },
+      { "key": "ACL", "label": "ACL", "aliases": ["Annual Meeting of the Association for Computational Linguistics"] },
+      { "key": "EMNLP", "label": "EMNLP", "aliases": ["Empirical Methods in Natural Language Processing"] },
+      { "key": "NAACL", "label": "NAACL", "aliases": ["North American Chapter of the Association for Computational Linguistics"] },
+      { "key": "CVPR", "label": "CVPR", "aliases": ["Computer Vision and Pattern Recognition"] },
+      { "key": "ICCV", "label": "ICCV", "aliases": ["International Conference on Computer Vision"] },
+      { "key": "ECCV", "label": "ECCV", "aliases": ["European Conference on Computer Vision"] },
+      { "key": "AAAI", "label": "AAAI", "aliases": ["AAAI Conference on Artificial Intelligence"] },
+      { "key": "IJCAI", "label": "IJCAI", "aliases": ["International Joint Conference on Artificial Intelligence"] },
+      { "key": "KDD", "label": "KDD", "aliases": ["Knowledge Discovery and Data Mining"] },
+      { "key": "SIGIR", "label": "SIGIR", "aliases": ["Research and Development in Information Retrieval"] },
+      { "key": "WWW", "label": "The Web Conference", "aliases": ["The Web Conference", "International World Wide Web Conference"] },
+      { "key": "CHI", "label": "CHI", "aliases": ["Human Factors in Computing Systems"] },
+      { "key": "SOSP", "label": "SOSP", "aliases": ["Symposium on Operating Systems Principles"] },
+      { "key": "OSDI", "label": "OSDI", "aliases": ["Operating Systems Design and Implementation"] },
+      { "key": "NSDI", "label": "NSDI", "aliases": ["Networked Systems Design and Implementation"] }
+    ]
   }
 }

@@ -57,11 +57,11 @@ npm run knowledge-acceptance
 通过条件：
 
 - 默认目标 20 篇，发布硬下限为 18 篇；历史去重或来源不足可以解释失败，但不能绕过发布门禁。
-- Blog 与论文合并展示；默认目标为 Blog 14 篇、论文 6 篇。Blog 发布硬下限为 12 篇，论文发布目标为 6 篇；不得用论文替代 Blog 配额后仍宣称完整发布。
+- Blog 与论文合并展示；默认至少 16 篇 Blog、论文最多 4 篇。没有合格顶会论文时允许用已验证可访问的 Blog 补足总量，但不得反向用论文替代 Blog 硬下限。
 - 标题和 canonical URL 不重复，且不得与历史知识日报重复推送同一链接。
-- Gmail 只作为用户订阅发现与补漏层；报告只允许公开 canonical URL，禁止出现 Gmail 内部链接、邮件 ID、收件地址、Substack redirect/token 或其他邮件跟踪链接。
+- 每条 Blog 必须在同日候选文件中带 `access.verified=true`，且 `access.mode` 只能是 `public` 或 `gmail_subscription`。Gmail 只作为用户订阅发现、权限核验与补漏层；报告只允许 canonical URL，禁止出现 Gmail 内部链接、邮件 ID、收件/发件地址、Substack redirect/token 或其他邮件跟踪链接。
 - 至少 80% 的“核心信息”由本次 Codex 改写成中文；“为什么值得读”基本全部为具体中文判断，不允许短模板。
-- 论文必须链接 arXiv 原文；Hugging Face Daily Papers 只作为发现与社区信号，不代替论文证据。
+- 每篇论文必须在同日候选文件中带 `conferenceEvidence.verified=true`，会议必须命中配置白名单；Semantic Scholar 的 conference 元数据或 DBLP conference key 是录用证据。Hugging Face 热度、arXiv 上传和作者自述都不能单独替代顶会录用证据。
 - Blog 来源异常必须记录在 `quality/knowledge-source-health/YYYY-MM-DD.json`；单一来源失败不阻塞产品日报，但不得把知识推送伪报为完整。
 - `docs/index.html` 必须在同一首页直接呈现同日全部 Blog 与论文条目；`docs/knowledge.html` 可保留历史归档，但不能再作为用户发现当日知识内容的唯一入口。`npm run knowledge-acceptance` 失败时不得发布。
 

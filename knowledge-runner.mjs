@@ -441,75 +441,144 @@ function paperScore(item, source, now) {
   );
 }
 
-export function normalizeDailyPapers(payload, source, now) {
-  if (!Array.isArray(payload)) return [];
-  return payload
-    .map((entry) => {
-      const paper = entry.paper || {};
-      const id = String(paper.id || "").trim();
-      const title = String(paper.title || entry.title || "").trim();
-      const summary = String(paper.summary || entry.summary || "").trim();
-      const submittedAt = isoDate(paper.submittedOnDailyAt || entry.publishedAt || paper.publishedAt);
-      if (!id || !title || !submittedAt) return null;
+function venueToken(value) {
+  return String(value || "")
+    .normalize("NFKC")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+export function matchTopConference(paper, allowlist = []) {
+  const venue = paper?.publicationVenue || {};
+  const candidates = [paper?.venue, venue.name, ...(Array.isArray(venue.alternate_names) ? venue.alternate_names : [])]
+    .map(venueToken)
+    .filter(Boolean);
+  const publicationTypes = Array.isArray(paper?.publicationTypes) ? paper.publicationTypes : [];
+  const dblpKey = String(paper?.externalIds?.DBLP || "");
+  const isConference =
+    venue.type === "conference" ||
+    publicationTypes.some((value) => /^conference$/i.test(String(value))) ||
+    /^conf\//i.test(dblpKey);
+  if (!isConference) return null;
+  for (const item of allowlist) {
+    const aliases = [item.key, item.label, ...(item.aliases || [])].map(venueToken).filter(Boolean);
+    const matched = candidates.some((candidate) =>
+      aliases.some((alias) => candidate === alias || (alias.length > 4 && candidate.includes(alias)))
+    );
+    if (matched) return item;
+  }
+  return null;
+}
+
+function publicPaperLink(paper) {
+  const arxivId = String(paper?.externalIds?.ArXiv || paper?.externalIds?.ARXIV || "").trim();
+  if (arxivId) return `https://arxiv.org/abs/${encodeURIComponent(arxivId)}`;
+  const openPdf = publicKnowledgeLink(paper?.openAccessPdf?.url || "");
+  return openPdf || publicKnowledgeLink(paper?.url || "");
+}
+
+export function normalizeSemanticScholarPapers(payload, source, now) {
+  const rows = Array.isArray(payload?.data) ? payload.data : [];
+  const allowlist = source.topConferenceAllowlist || [];
+  return rows
+    .map((paper) => {
+      const conference = matchTopConference(paper, allowlist);
+      const title = String(paper?.title || "").trim();
+      const summary = String(paper?.abstract || "").trim();
+      const link = publicPaperLink(paper);
+      const publishedAt = isoDate(paper?.publicationDate || (paper?.year ? `${paper.year}-01-01` : ""));
+      if (!conference || !title || !summary || !link || !publishedAt) return null;
       const item = {
         kind: "paper",
         sourceId: source.id,
-        source: source.label,
+        source: conference.label || conference.key,
         title,
-        link: `https://arxiv.org/abs/${encodeURIComponent(id)}`,
-        discussionLink: `https://huggingface.co/papers/${encodeURIComponent(id)}`,
-        publishedAt: isoDate(paper.publishedAt || entry.publishedAt || submittedAt),
-        submittedAt,
-        author: Array.isArray(paper.authors)
+        link,
+        evidenceLink: publicKnowledgeLink(paper?.url || ""),
+        publishedAt,
+        submittedAt: publishedAt,
+        author: Array.isArray(paper?.authors)
           ? paper.authors
               .slice(0, 5)
-              .map((author) => author.name)
+              .map((author) => author?.name)
               .filter(Boolean)
               .join(", ")
           : "",
         summary,
-        upvotes: Number(paper.upvotes || 0),
-        githubRepo: paper.githubRepo || "",
-        githubStars: Number(paper.githubStars || 0)
+        citationCount: Number(paper?.citationCount || 0),
+        conferenceEvidence: {
+          verified: true,
+          venueKey: conference.key,
+          venueLabel: conference.label || conference.key,
+          venueName: String(paper?.publicationVenue?.name || paper?.venue || conference.label || conference.key),
+          source: "Semantic Scholar Academic Graph",
+          publicationType: "conference"
+        }
       };
       return {
         ...item,
-        score: paperScore(item, source, now),
+        score: paperScore(item, source, now) + Math.min(12, Math.log10(item.citationCount + 1) * 4),
         core: compactSummary(summary),
         why: knowledgeWhy(item)
       };
     })
     .filter(Boolean)
-    .sort((a, b) => b.score - a.score || b.submittedAt.localeCompare(a.submittedAt));
+    .sort((a, b) => b.score - a.score || b.publishedAt.localeCompare(a.publishedAt));
 }
 
-async function fetchPapers(source, now, dateKey) {
-  const dates = [];
-  for (let offset = 0; offset < 7; offset += 1) {
-    const key = shanghaiDateKey(new Date(now.getTime() - offset * 86_400_000));
-    if (!dates.includes(key)) dates.push(key);
-  }
+async function fetchJsonDirect(url, timeoutMs = 15000) {
+  const response = await fetch(url, {
+    redirect: "follow",
+    headers: {
+      "user-agent": "ai-product-radar/0.1 (+https://github.com/BENZEMA216/ai-product-radar)",
+      accept: "application/json"
+    },
+    signal: AbortSignal.timeout(timeoutMs)
+  });
+  if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+  return response.json();
+}
+
+async function fetchPapers(source, now) {
+  const days = Math.max(1, Number(source.lookbackDays || 120));
+  const start = new Date(now.getTime() - days * 86_400_000);
+  const dateRange = `${start.toISOString().slice(0, 10)}:${now.toISOString().slice(0, 10)}`;
+  const venues = (source.topConferenceAllowlist || []).map((item) => item.key).join(",");
+  const queries = Array.isArray(source.searchQueries) && source.searchQueries.length
+    ? source.searchQueries
+    : ["artificial intelligence"];
+  const requests = queries.map(async (query) => {
+    const url = new URL(source.url);
+    url.searchParams.set("query", query);
+    url.searchParams.set("publicationTypes", "Conference");
+    url.searchParams.set("publicationDateOrYear", dateRange);
+    url.searchParams.set("venue", venues);
+    url.searchParams.set(
+      "fields",
+      "title,abstract,venue,publicationVenue,publicationTypes,publicationDate,year,authors,externalIds,url,openAccessPdf,citationCount"
+    );
+    url.searchParams.set("sort", "publicationDate:desc");
+    url.searchParams.set("limit", String(Math.min(100, Number(source.maxItems || 80))));
+    const payload = await fetchJsonDirect(url.toString());
+    return { payload, query };
+  });
+  const settled = await Promise.allSettled(requests);
   let rawCount = 0;
   const all = [];
   const errors = [];
-  for (const date of dates) {
-    try {
-      const url = new URL(source.url);
-      url.searchParams.set("date", date);
-      url.searchParams.set("limit", String(source.maxItems || 60));
-      const text = await fetchText(url.toString(), { timeoutMs: 25000 });
-      const payload = JSON.parse(text);
-      rawCount += Array.isArray(payload) ? payload.length : 0;
-      all.push(...normalizeDailyPapers(payload, source, now));
-      if (all.length >= 20) break;
-    } catch (error) {
-      errors.push(`${date}: ${String(error?.message || error).slice(0, 180)}`);
+  for (const result of settled) {
+    if (result.status === "fulfilled") {
+      rawCount += Array.isArray(result.value.payload?.data) ? result.value.payload.data.length : 0;
+      all.push(...normalizeSemanticScholarPapers(result.value.payload, source, now));
+    } else {
+      errors.push(String(result.reason?.message || result.reason).slice(0, 180));
     }
   }
-  if (!all.length && errors.length === dates.length) {
-    throw new Error(`Daily Papers dates failed: ${errors.join(" | ")}`);
+  if (!all.length && errors.length === requests.length) {
+    throw new Error(`Semantic Scholar top-conference search failed: ${errors.join(" | ")}`);
   }
-  return { rawCount, items: uniqueByLink(all) };
+  return { rawCount, items: uniqueByTitle(uniqueByLink(all)).slice(0, Number(source.maxItems || 80)), errors };
 }
 
 function uniqueByLink(items) {
@@ -590,7 +659,13 @@ export function normalizeGmailNewsletterItems(payload, config, start, end) {
           publishedAt,
           author: String(item.author || "").trim(),
           summary,
-          origin: "gmail_newsletter"
+          origin: "gmail_newsletter",
+          access: {
+            verified: true,
+            mode: "gmail_subscription",
+            checkedAt: end.toISOString(),
+            evidence: "sanitized_gmail_intake"
+          }
         };
         if (!isAiRelevant(normalized, { requireAiRelevance: true })) return null;
         return {
@@ -608,6 +683,112 @@ export function normalizeGmailNewsletterItems(payload, config, start, end) {
     .slice(0, maxItems);
 }
 
+function gmailAccessGrants(payload, dateKey) {
+  const grants = Array.isArray(payload?.accessGrants) ? payload.accessGrants : [];
+  return new Set(
+    grants
+      .filter((grant) => grant?.evidenceType === "gmail_subscription")
+      .filter((grant) => !grant?.date || grant.date === dateKey)
+      .map((grant) => String(grant.sourceId || "").trim())
+      .filter(Boolean)
+  );
+}
+
+function blockedBlogPage(html) {
+  const text = stripHtml(html).toLowerCase();
+  if (text.length < 180) return true;
+  return [
+    "this post is for paid subscribers",
+    "subscribe to continue reading",
+    "sign in to continue reading",
+    "this content is only available to subscribers",
+    "enable javascript and cookies to continue",
+    "checking your browser before accessing",
+    "access denied"
+  ].some((marker) => text.includes(marker));
+}
+
+async function probePublicBlog(item, source, checkedAt) {
+  try {
+    const response = await fetch(item.link, {
+      redirect: "follow",
+      headers: {
+        "user-agent": "Mozilla/5.0 (compatible; ai-product-radar/0.1; +https://github.com/BENZEMA216/ai-product-radar)",
+        accept: "text/html,application/xhtml+xml"
+      },
+      signal: AbortSignal.timeout(15000)
+    });
+    if (response.ok) {
+      const html = await response.text();
+      if (blockedBlogPage(html)) {
+        return { ok: false, reason: "页面返回登录、付费墙或反爬拦截内容" };
+      }
+      return {
+        ok: true,
+        item: {
+          ...item,
+          link: canonicalizeUrl(response.url || item.link),
+          access: {
+            verified: true,
+            mode: "public",
+            checkedAt,
+            evidence: "live_http"
+          }
+        }
+      };
+    }
+    if ([403, 429].includes(response.status) && source.accessPolicy !== "gmail_subscription") {
+      return {
+        ok: true,
+        item: {
+          ...item,
+          access: {
+            verified: true,
+            mode: "public",
+            checkedAt,
+            evidence: "public_canonical_bot_limited"
+          }
+        }
+      };
+    }
+    return { ok: false, reason: `HTTP ${response.status}` };
+  } catch (error) {
+    return { ok: false, reason: String(error?.message || error).slice(0, 180) };
+  }
+}
+
+async function verifyBlogAccess(items, sourceMap, grants, now) {
+  const checkedAt = now.toISOString();
+  const settled = await Promise.all(
+    items.map(async (item) => {
+      if (item.access?.verified) return { ok: true, item };
+      const source = sourceMap.get(item.sourceId) || {};
+      if (grants.has(item.sourceId)) {
+        return {
+          ok: true,
+          item: {
+            ...item,
+            access: {
+              verified: true,
+              mode: "gmail_subscription",
+              checkedAt,
+              evidence: "sanitized_gmail_subscription_grant"
+            }
+          }
+        };
+      }
+      return probePublicBlog(item, source, checkedAt);
+    })
+  );
+  return {
+    items: settled.filter((result) => result.ok).map((result) => result.item),
+    rejected: settled
+      .map((result, index) => ({ result, item: items[index] }))
+      .filter(({ result }) => !result.ok)
+      .map(({ result, item }) => ({ sourceId: item.sourceId, title: item.title, link: item.link, reason: result.reason }))
+  };
+}
+
 function historicalLinks(reportDir, excludedPath) {
   const links = new Set();
   if (!existsSync(reportDir)) return links;
@@ -623,7 +804,7 @@ function historicalLinks(reportDir, excludedPath) {
   return links;
 }
 
-function selectItems(blogs, papers, { limit, blogQuota, maxPerBlogSource, seenLinks }) {
+function selectItems(blogs, papers, { limit, blogQuota, maximumPaperCount, maxPerBlogSource, seenLinks }) {
   const availableBlogs = uniqueByTitle(uniqueByLink(blogs))
     .filter((item) => !seenLinks.has(item.link.toLowerCase()))
     .sort((a, b) => b.score - a.score);
@@ -647,15 +828,25 @@ function selectItems(blogs, papers, { limit, blogQuota, maxPerBlogSource, seenLi
         .slice(0, Math.min(blogQuota, limit) - selectedBlogs.length)
     );
   }
-  const selectedPapers = availablePapers.slice(0, Math.max(0, limit - selectedBlogs.length));
+  const selectedPapers = availablePapers.slice(
+    0,
+    Math.min(Math.max(0, maximumPaperCount), Math.max(0, limit - selectedBlogs.length))
+  );
   const selected = [...selectedBlogs, ...selectedPapers];
   if (selected.length < limit) {
     const used = new Set(selected.map((item) => item.link));
-    const remainder = [...availableBlogs, ...availablePapers]
+    const remainingBlogs = availableBlogs
       .filter((item) => !used.has(item.link))
       .sort((a, b) => b.score - a.score)
       .slice(0, limit - selected.length);
-    selected.push(...remainder);
+    selected.push(...remainingBlogs);
+  }
+  if (selected.length < limit && selectedPapers.length < maximumPaperCount) {
+    const used = new Set(selected.map((item) => item.link));
+    const remainingPapers = availablePapers
+      .filter((item) => !used.has(item.link))
+      .slice(0, Math.min(maximumPaperCount - selectedPapers.length, limit - selected.length));
+    selected.push(...remainingPapers);
   }
   return selected.sort((a, b) => b.score - a.score || b.publishedAt.localeCompare(a.publishedAt));
 }
@@ -675,13 +866,16 @@ function renderReport(items, { dateKey, generatedAt, days }) {
       .replace(/\[/g, "（")
       .replace(/\]/g, "）");
     const title = `[${titleLabel}](${item.link})`;
-    const source = item.kind === "paper" ? `${item.source}${item.upvotes ? ` · ${item.upvotes} 赞` : ""}` : item.source;
+    const source =
+      item.kind === "paper"
+        ? `${item.source} · 顶会录用已核验`
+        : `${item.source} · ${item.access?.mode === "gmail_subscription" ? "Gmail 订阅权限" : "公开可访问"}`;
     return `| ${kind} | ${title} | ${escapeCell(source)} | ${escapeCell(item.core)} | ${escapeCell(item.why)} | [原文](${item.link}) |`;
   });
   return [
     `# AI Knowledge Radar · ${dateKey}`,
     "",
-    `> Blog 观察窗口：过去 ${days} 天；论文来源：Hugging Face Daily Papers / arXiv；生成时间：${generatedAt}`,
+    `> Blog 观察窗口：过去 ${days} 天，且仅保留公开可访问或 Gmail 订阅权限已核验的原文；论文仅保留顶会白名单内且有明确会议元数据的论文；生成时间：${generatedAt}`,
     "",
     "| 类型 | 标题 | 来源 | 核心信息 | 为什么值得读 | 链接 |",
     "|---|---|---|---|---|---|",
@@ -707,6 +901,8 @@ export async function runKnowledgeRadar(options = {}) {
   const limit = Number.isFinite(options.limit) && options.limit > 0 ? options.limit : Number(config.targetCount || 20);
   const blogQuota = Math.min(limit, Number(config.blogQuota || Math.ceil(limit / 2)));
   const minimumBlogCount = Math.min(blogQuota, Number(config.minimumBlogCount || 12));
+  const minimumTotalCount = Math.min(limit, Number(config.minimumTotalCount || 18));
+  const maximumPaperCount = Math.max(0, Math.min(limit - minimumBlogCount, Number(config.maximumPaperCount || 4)));
   const maxPerBlogSource = Math.max(1, Number(config.maxPerBlogSource || 2));
   const dateKey = shanghaiDateKey(now);
   const reportDir = options.reportDir || DEFAULT_REPORT_DIR;
@@ -722,6 +918,7 @@ export async function runKnowledgeRadar(options = {}) {
   const start = new Date(now.getTime() - days * 86_400_000);
   const sourceHealth = {};
   const blogItems = [];
+  const gmailGrants = new Set();
   const settledBlogs = await Promise.allSettled(
     (config.blogSources || []).map(async (source) => {
       const result =
@@ -764,13 +961,15 @@ export async function runKnowledgeRadar(options = {}) {
       try {
         const payload = JSON.parse(readFileSync(gmailIntakePath, "utf8"));
         const gmailItems = normalizeGmailNewsletterItems(payload, gmailConfig, start, now);
+        for (const sourceId of gmailAccessGrants(payload, dateKey)) gmailGrants.add(sourceId);
         blogItems.push(...gmailItems);
         sourceHealth[gmailConfig.id || "gmail_newsletters"] = {
           label: gmailConfig.label || "Gmail Newsletter",
           status: "ok",
           rawCount: Array.isArray(payload) ? payload.length : Array.isArray(payload?.items) ? payload.items.length : 0,
           keptCount: gmailItems.length,
-          note: "只读取已清洗的公开 canonical URL；不写入邮件 ID、收件地址或 Gmail 内部链接"
+          accessGrantCount: gmailGrants.size,
+          note: "只读取已清洗的公开 canonical URL 与订阅权限结论；不写入邮件 ID、收件地址或 Gmail 内部链接"
         };
       } catch (error) {
         sourceHealth[gmailConfig.id || "gmail_newsletters"] = {
@@ -794,14 +993,15 @@ export async function runKnowledgeRadar(options = {}) {
 
   let paperItems = [];
   try {
-    const result = await fetchPapers(config.paperSource, now, dateKey);
+    const result = await fetchPapers(config.paperSource, now);
     paperItems = result.items;
     sourceHealth[config.paperSource.id] = {
       label: config.paperSource.label,
       status: "ok",
       rawCount: result.rawCount,
       keptCount: result.items.length,
-      note: "HF Daily Papers curated feed; canonical link points to arXiv"
+      rejectedCount: Math.max(0, result.rawCount - result.items.length),
+      note: "仅保留 Semantic Scholar 明确标记为 conference 且命中顶会白名单的论文；无会议证据的 arXiv/HF 热榜不进入候选"
     };
   } catch (error) {
     sourceHealth[config.paperSource.id] = {
@@ -814,16 +1014,26 @@ export async function runKnowledgeRadar(options = {}) {
   }
 
   const seenLinks = historicalLinks(reportDir, reportPath);
-  const blogAfterHistoricalDedupCount = uniqueByLink(blogItems).filter(
+  const blogBeforeAccessCheck = uniqueByLink(blogItems).filter(
     (item) => !seenLinks.has(item.link.toLowerCase())
-  ).length;
+  );
+  const sourceMap = new Map((config.blogSources || []).map((source) => [source.id, source]));
+  const accessResult = await verifyBlogAccess(blogBeforeAccessCheck, sourceMap, gmailGrants, now);
+  const verifiedBlogItems = accessResult.items;
+  const blogAfterHistoricalDedupCount = verifiedBlogItems.length;
   const paperAfterHistoricalDedupCount = uniqueByLink(paperItems).filter(
     (item) => !seenLinks.has(item.link.toLowerCase())
   ).length;
-  const selected = selectItems(blogItems, paperItems, { limit, blogQuota, maxPerBlogSource, seenLinks });
+  const selected = selectItems(verifiedBlogItems, paperItems, {
+    limit,
+    blogQuota,
+    maximumPaperCount,
+    maxPerBlogSource,
+    seenLinks
+  });
   const selectedBlogCount = selected.filter((item) => item.kind === "blog").length;
   const selectedPaperCount = selected.filter((item) => item.kind === "paper").length;
-  const desiredPaperCount = Math.max(0, limit - blogQuota);
+  const desiredPaperCount = Math.min(maximumPaperCount, Math.max(0, limit - blogQuota));
   const shortfallReasons = [];
   if (selected.length < limit) {
     shortfallReasons.push("历史 canonical URL 去重后有效新内容不足，未达到总量目标");
@@ -832,7 +1042,9 @@ export async function runKnowledgeRadar(options = {}) {
     shortfallReasons.push(`Blog 历史 canonical URL 去重后仅 ${blogAfterHistoricalDedupCount} 篇，低于 ${blogQuota} 篇目标`);
   }
   if (selectedPaperCount < desiredPaperCount && paperAfterHistoricalDedupCount < desiredPaperCount) {
-    shortfallReasons.push(`论文历史 canonical URL 去重后仅 ${paperAfterHistoricalDedupCount} 篇，低于 ${desiredPaperCount} 篇目标`);
+    shortfallReasons.push(
+      `顶会元数据核验后论文仅 ${paperAfterHistoricalDedupCount} 篇，空缺优先用已验证可访问的 Blog 补位，不用普通 arXiv 论文凑数`
+    );
   }
   const generatedAt = now.toISOString();
   const health = {
@@ -842,6 +1054,8 @@ export async function runKnowledgeRadar(options = {}) {
     targetCount: limit,
     desiredBlogCount: blogQuota,
     minimumBlogCount,
+    minimumTotalCount,
+    maximumPaperCount,
     desiredPaperCount,
     selectedCount: selected.length,
     blogCount: selectedBlogCount,
@@ -849,7 +1063,12 @@ export async function runKnowledgeRadar(options = {}) {
     candidatePool: {
       historicalLinkCount: seenLinks.size,
       blogFetchedCount: uniqueByLink(blogItems).length,
+      blogAccessCheckedCount: blogBeforeAccessCheck.length,
+      blogAccessVerifiedCount: verifiedBlogItems.length,
+      blogAccessRejectedCount: accessResult.rejected.length,
+      blogAccessRejected: accessResult.rejected,
       paperFetchedCount: uniqueByLink(paperItems).length,
+      paperTopConferenceVerifiedCount: uniqueByLink(paperItems).length,
       blogAfterHistoricalDedupCount,
       paperAfterHistoricalDedupCount,
       eligibleAfterHistoricalDedupCount: blogAfterHistoricalDedupCount + paperAfterHistoricalDedupCount,
@@ -857,6 +1076,12 @@ export async function runKnowledgeRadar(options = {}) {
         ? `${shortfallReasons.join("；")}；未用旧文或低质量内容补位。`
         : ""
     },
+    blogAccessPolicy: {
+      allowedModes: ["public", "gmail_subscription"],
+      gmailGrantCount: gmailGrants.size,
+      privateIdentifiersPersisted: false
+    },
+    topConferenceAllowlist: (config.paperSource?.topConferenceAllowlist || []).map((item) => item.key),
     sources: sourceHealth
   };
   writeJson(candidatePath, { generatedAt, date: dateKey, items: selected });

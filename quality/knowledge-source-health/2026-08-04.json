@@ -1,32 +1,67 @@
 {
-  "generatedAt": "2026-08-03T16:14:28.696Z",
+  "generatedAt": "2026-08-04T11:34:55.315Z",
   "date": "2026-08-04",
   "window": {
-    "start": "2026-07-04T16:14:28.696Z",
-    "end": "2026-08-03T16:14:28.696Z",
+    "start": "2026-07-05T11:34:55.315Z",
+    "end": "2026-08-04T11:34:55.315Z",
     "lookbackDays": 30
   },
   "targetCount": 20,
-  "desiredBlogCount": 14,
-  "minimumBlogCount": 12,
-  "desiredPaperCount": 6,
+  "desiredBlogCount": 16,
+  "minimumBlogCount": 16,
+  "minimumTotalCount": 18,
+  "maximumPaperCount": 4,
+  "desiredPaperCount": 4,
   "selectedCount": 20,
-  "blogCount": 14,
-  "paperCount": 6,
+  "blogCount": 16,
+  "paperCount": 4,
   "candidatePool": {
     "historicalLinkCount": 158,
-    "blogFetchedCount": 103,
-    "paperFetchedCount": 25,
-    "blogAfterHistoricalDedupCount": 24,
-    "paperAfterHistoricalDedupCount": 25,
-    "eligibleAfterHistoricalDedupCount": 49,
+    "blogFetchedCount": 102,
+    "blogAccessCheckedCount": 25,
+    "blogAccessVerifiedCount": 25,
+    "blogAccessRejectedCount": 0,
+    "blogAccessRejected": [],
+    "paperFetchedCount": 80,
+    "paperTopConferenceVerifiedCount": 80,
+    "blogAfterHistoricalDedupCount": 25,
+    "paperAfterHistoricalDedupCount": 80,
+    "eligibleAfterHistoricalDedupCount": 105,
     "shortfallReason": ""
   },
+  "blogAccessPolicy": {
+    "allowedModes": [
+      "public",
+      "gmail_subscription"
+    ],
+    "gmailGrantCount": 4,
+    "privateIdentifiersPersisted": false
+  },
+  "topConferenceAllowlist": [
+    "NeurIPS",
+    "ICML",
+    "ICLR",
+    "ACL",
+    "EMNLP",
+    "NAACL",
+    "CVPR",
+    "ICCV",
+    "ECCV",
+    "AAAI",
+    "IJCAI",
+    "KDD",
+    "SIGIR",
+    "WWW",
+    "CHI",
+    "SOSP",
+    "OSDI",
+    "NSDI"
+  ],
   "sources": {
     "openai_news": {
       "label": "OpenAI",
       "status": "ok",
-      "rawCount": 1105,
+      "rawCount": 1108,
       "keptCount": 20,
       "note": "30 天窗口"
     },
@@ -48,7 +83,7 @@
       "label": "Simon Willison",
       "status": "ok",
       "rawCount": 15,
-      "keptCount": 7,
+      "keptCount": 6,
       "note": "30 天窗口"
     },
     "lilian_weng": {
@@ -116,17 +151,19 @@
     },
     "gmail_newsletters": {
       "label": "Gmail Newsletter",
-      "status": "optional",
+      "status": "ok",
       "rawCount": 0,
       "keptCount": 0,
-      "note": "当日未生成 Gmail Newsletter 清洗输入；公开 RSS 来源仍继续采集"
+      "accessGrantCount": 4,
+      "note": "只读取已清洗的公开 canonical URL 与订阅权限结论；不写入邮件 ID、收件地址或 Gmail 内部链接"
     },
-    "hf_daily_papers": {
-      "label": "Hugging Face Daily Papers / arXiv",
+    "semantic_scholar_top_conferences": {
+      "label": "顶会论文 · Semantic Scholar",
       "status": "ok",
-      "rawCount": 25,
-      "keptCount": 25,
-      "note": "HF Daily Papers curated feed; canonical link points to arXiv"
+      "rawCount": 105,
+      "keptCount": 80,
+      "rejectedCount": 25,
+      "note": "仅保留 Semantic Scholar 明确标记为 conference 且命中顶会白名单的论文；无会议证据的 arXiv/HF 热榜不进入候选"
     }
   }
 }

@@ -204,14 +204,15 @@ XHS 一般情况下默认启用，但它依赖本地 Dealflow bridge、Chrome �
 
 ### 4.9 Knowledge Radar：Blog + 论文
 
-Knowledge Radar 与产品日报分轨采集和排序，避免研究、观点和技术文章污染产品 Top 20；展示层统一进入 Radar 首页。它每天从官方研究/工程博客、可信独立作者和 Hugging Face Daily Papers / arXiv 中选择约 20 篇，发布到 `knowledge-reports/YYYY-MM-DD.md` 并直接呈现在 `docs/index.html`。`docs/knowledge.html` 仅保留为历史归档兼容入口。
+Knowledge Radar 与产品日报分轨采集和排序，避免研究、观点和技术文章污染产品 Top 20；展示层统一进入 Radar 首页。它每天从官方研究/工程博客、用户已订阅的可信出版物和有明确顶会元数据的论文中选择约 20 篇，发布到 `knowledge-reports/YYYY-MM-DD.md` 并直接呈现在 `docs/index.html`。`docs/knowledge.html` 仅保留为历史归档兼容入口。
 
 默认规则：
 
-- Blog 默认使用 30 天观察窗口并跨日按 canonical URL 去重；论文优先使用当天 Hugging Face Daily Papers 的社区筛选，再链接到 arXiv 原文。
-- 默认目标为 14 篇 Blog + 6 篇论文，让工程经验、产品判断和行业背景占更大比重；Blog 发布硬下限为 12 篇，论文至少保留 6 篇。低于硬下限时必须停止发布，候选池短缺只能解释失败，不能豁免。
-- Gmail 是个性化来源发现与补漏层：自动化可只读搜索用户近期 Newsletter，优先把稳定来源映射为公开 RSS；邮件独有候选必须先清洗成公开 canonical URL。不得把 Gmail 内部链接、message/thread id、收件地址、带 token 的订阅/跟踪链接写入报告或提交到仓库。
-- Blog 优先保证来源多样性，同一来源先取不超过 2 篇；只有达到 14 篇目标所需且候选质量仍合格时才允许补位。
+- Blog 默认使用 30 天观察窗口并跨日按 canonical URL 去重。每条 Blog 必须带访问证据：要么原文公开可访问，要么同日 Gmail 清洗输入证明用户拥有该出版物的订阅权限；两者都无法证明时不得进入候选。
+- 默认目标为至少 16 篇 Blog、最多 4 篇论文，发布总量硬下限为 18 篇。没有合格顶会论文时，以已验证可访问的 Blog 补位；绝不使用普通 arXiv/Hugging Face 热榜论文凑数。
+- 论文只接受顶会白名单，并要求 Semantic Scholar `publicationVenue` / `publicationTypes` 或 DBLP conference key 能证明会议录用；白名单覆盖 NeurIPS、ICML、ICLR、ACL、EMNLP、NAACL、CVPR、ICCV、ECCV、AAAI、IJCAI、KDD、SIGIR、The Web Conference、CHI、SOSP、OSDI、NSDI。无明确会议元数据的预印本即使热度很高也不收录。
+- Gmail 是个性化来源发现、权限核验与补漏层：自动化可只读搜索用户近期 Newsletter，优先把稳定来源映射为公开 RSS；邮件独有候选必须先清洗成公开 canonical URL。仓库只允许记录“订阅权限已核验”的匿名结论，不得写入 Gmail 内部链接、message/thread id、收件地址、发件地址或带 token 的订阅/跟踪链接。
+- Blog 优先保证来源多样性，同一来源先取不超过 2 篇；只有达到 16 篇目标所需且候选质量仍合格时才允许补位。
 - 不按来源名或发布时间直接判定“重要”。排序考虑证据密度、解释增量、决策价值、可迁移性和来源历史质量。
 - 纯发布稿、融资新闻、SEO 教程、泛泛趋势预测和重复产品公告不应占据前排。
 - 正式发布前，由当次 Codex 逐条把“核心信息”和“为什么值得读”改写成中文；只能依据标题、摘要和原文，不得编造论文结论或实验数字。

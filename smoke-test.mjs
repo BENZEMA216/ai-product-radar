@@ -40,7 +40,12 @@ import {
 } from "./radar.mjs";
 import { buildSiteData, parseReportMarkdown, renderSiteHtml } from "./build-site.mjs";
 import { parseKnowledgeReport } from "./build-knowledge-page.mjs";
-import { parseFeed, normalizeDailyPapers, normalizeGmailNewsletterItems } from "./knowledge-runner.mjs";
+import {
+  parseFeed,
+  matchTopConference,
+  normalizeSemanticScholarPapers,
+  normalizeGmailNewsletterItems
+} from "./knowledge-runner.mjs";
 import { auditKnowledge } from "./knowledge-audit.mjs";
 import { buildFeedbackSnapshot, isRadarFeedbackIssue, parseFeedbackIssue } from "./feedback-runner.mjs";
 import { commitMessageForReport, newestReportPath, qualityPathsForDir, reportPathsForDir, reviewPathsForDir } from "./publish-report.mjs";
@@ -3850,29 +3855,42 @@ function testGmailNewsletterFixture() {
 }
 
 function testKnowledgePaperAndAuditFixture() {
-  const papers = normalizeDailyPapers(
-    [
+  const paperSource = {
+    id: "semantic_scholar_top_conferences",
+    label: "顶会论文 · Semantic Scholar",
+    weight: 16,
+    topConferenceAllowlist: [
+      { key: "ICML", label: "ICML", aliases: ["International Conference on Machine Learning"] }
+    ]
+  };
+  const payload = {
+    data: [
       {
-        paper: {
-          id: "2607.12345",
-          title: "Evaluating Long-Running Agents",
-          summary: "A benchmark with controlled tasks and failure analysis.",
-          submittedOnDailyAt: "2026-07-27T00:00:00Z",
-          publishedAt: "2026-07-26T00:00:00Z",
-          authors: [{ name: "Ada Example" }],
-          upvotes: 8
-        }
+        title: "Evaluating Long-Running Agents",
+        abstract: "A benchmark with controlled tasks and failure analysis.",
+        publicationDate: "2026-07-26",
+        venue: "ICML",
+        publicationVenue: { name: "International Conference on Machine Learning", type: "conference" },
+        publicationTypes: ["Conference"],
+        externalIds: { ArXiv: "2607.12345", DBLP: "conf/icml/Example26" },
+        url: "https://www.semanticscholar.org/paper/example",
+        authors: [{ name: "Ada Example" }]
       }
-    ],
-    { id: "hf_daily_papers", label: "Hugging Face Daily Papers / arXiv", weight: 12 },
+    ]
+  };
+  const papers = normalizeSemanticScholarPapers(
+    payload,
+    paperSource,
     new Date("2026-07-27T01:00:00Z")
   );
   assert.equal(papers.length, 1);
   assert.equal(papers[0].link, "https://arxiv.org/abs/2607.12345");
+  assert.equal(papers[0].conferenceEvidence.venueKey, "ICML");
+  assert.equal(matchTopConference(payload.data[0], paperSource.topConferenceAllowlist)?.key, "ICML");
   assert.ok(papers[0].score > 20);
 
   const rows = Array.from({ length: 20 }, (_, index) => {
-    const kind = index < 14 ? "Blog" : "论文";
+    const kind = index < 16 ? "Blog" : "论文";
     const link = `https://example.com/item-${index}`;
     return `| ${kind} | [知识条目 ${index}](${link}) | 来源 ${index % 3} | 这是一条经过改写的中文核心信息，用来说明文章或论文真正新增了什么认知。 | 这条内容包含具体机制和证据，值得用于产品、技术和研究判断，而不是只看发布信息。 | [原文](${link}) |`;
   }).join("\n");
@@ -3882,8 +3900,11 @@ function testKnowledgePaperAndAuditFixture() {
   );
   const health = {
     date: "2026-07-27",
-    desiredBlogCount: 14,
-    desiredPaperCount: 6,
+    desiredBlogCount: 16,
+    minimumBlogCount: 16,
+    minimumTotalCount: 18,
+    maximumPaperCount: 4,
+    topConferenceAllowlist: ["ICML"],
     sources: {
       blog_a: { status: "ok", keptCount: 9 },
       blog_b: { status: "ok", keptCount: 7 },
@@ -3893,10 +3914,20 @@ function testKnowledgePaperAndAuditFixture() {
   const siteHtml = `window.__KNOWLEDGE_DATA__={"latestDate":"2026-07-27"} ${report.items
     .map((item) => item.link)
     .join(" ")}`;
-  const audit = auditKnowledge({ report, health, siteHtml, minCount: 18 });
+  const candidates = {
+    items: report.items.map((item) =>
+      item.kind === "Blog"
+        ? { link: item.link, access: { verified: true, mode: "public" } }
+        : {
+            link: item.link,
+            conferenceEvidence: { verified: true, venueKey: "ICML", publicationType: "conference" }
+          }
+    )
+  };
+  const audit = auditKnowledge({ report, health, candidates, siteHtml, minCount: 18 });
   assert.equal(audit.ok, true);
-  assert.equal(audit.blogCount, 14);
-  assert.equal(audit.paperCount, 6);
+  assert.equal(audit.blogCount, 16);
+  assert.equal(audit.paperCount, 4);
 
   const shortageReport = {
     ...report,
@@ -3920,13 +3951,14 @@ function testKnowledgePaperAndAuditFixture() {
   const shortageAudit = auditKnowledge({
     report: shortageReport,
     health: shortageHealth,
+    candidates: { items: candidates.items.slice(0, 10) },
     siteHtml: shortageSiteHtml,
     minCount: 18
   });
   assert.equal(shortageAudit.ok, false, "a Blog shortfall must block publication even when historical dedup explains it");
   assert.ok(shortageAudit.failures.some((item) => item.code === "knowledge_count_low"));
   assert.ok(shortageAudit.failures.some((item) => item.code === "knowledge_blog_mix_low"));
-  assert.ok(shortageAudit.failures.some((item) => item.code === "knowledge_paper_mix_low"));
+  assert.ok(!shortageAudit.failures.some((item) => item.code === "knowledge_paper_mix_low"));
 }
 
 function testAihotParserFixture() {

@@ -1,114 +1,121 @@
 {
-  "generatedAt": "2026-08-03T16:14:28.696Z",
+  "generatedAt": "2026-08-04T11:34:55.315Z",
   "date": "2026-08-04",
   "items": [
     {
       "kind": "paper",
-      "sourceId": "hf_daily_papers",
-      "source": "Hugging Face Daily Papers / arXiv",
-      "title": "From RLVR to RLSVR: Task Transformation Induces Self-Verifiable Rewards for Open-Ended LLM Self-Improvement",
-      "link": "https://arxiv.org/abs/2607.23802",
-      "discussionLink": "https://huggingface.co/papers/2607.23802",
-      "publishedAt": "2026-07-26T00:00:00.000Z",
-      "submittedAt": "2026-08-03T00:00:00.000Z",
-      "author": "Qinsi Wang, Jing Shi, Huazheng Wang, Kun Wan, Yiran Wu",
-      "summary": "Reinforcement Learning with Verifiable Rewards (RLVR) has driven recent progress in reasoning-oriented large language models (LLMs) by enabling large-scale optimization. However, its applicability remains largely limited to domains such as mathematics and coding, where correctness can be deterministically verified. Open-ended tasks instead often rely on human preferences, reward models, or LLM-based judges, introducing evaluation bias, judge capability bottlenecks, and additional inference costs.Drawing on the principle of self-supervised learning, which constructs pretext tasks to derive supervision from the data itself, we propose Reinforcement Learning with Self-Verifiable Rewards (RLSVR), a task-transformation-based training paradigm for extending RLVR to open-ended tasks. RLSVR transforms open-ended tasks into verifiable proxy environments whose internal rules and interaction outcomes automatically generate reward signals. We instantiate RLSVR with SpyRL, a multi-agent self-play environment inspired by Who Is the Spy?. Agents receive asymmetric information, complete the same target task, and vote to identify a designated spy. Because the spy identity is predetermined, voting outcomes provide fully verifiable rewards, while successful identification remains closely related to output quality. Experiments on text summarization, creative writing, and mathematical reasoning show that SpyRL outperforms existing self-improvement methods on non-verifiable tasks and yields consistent gains on verifiable reasoning tasks. These results demonstrate that task transformation can extend scalable RLVR-based self-improvement beyond inherently verifiable domains. Models and code have been released at https://github.com/wangqinsi1/SpyRL.",
-      "upvotes": 65,
-      "githubRepo": "https://github.com/wangqinsi1/RLSVR",
-      "githubStars": 138,
-      "score": 102.41196602641321,
-      "core": "Reinforcement Learning with Verifiable Rewards (RLVR) has driven recent progress in reasoning-oriented large language models (LLMs) by enabling large-scale optimization. However, its applicability remains largely limited to domains such as mathematics and coding, where correctness can be deterministically verified. Open-ended tasks instead often rely on human preferences, reward models, or LLM-based judges, introduc…",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "The Web Conference",
+      "title": "Collaborative LLM Agents for End-to-End Software Development",
+      "link": "https://doi.org/10.1145/3774905.3793914",
+      "evidenceLink": "https://www.semanticscholar.org/paper/507e2188a4c4c480afa3e626190eb57f1d5d9e1e",
+      "publishedAt": "2026-05-28T00:00:00.000Z",
+      "submittedAt": "2026-05-28T00:00:00.000Z",
+      "author": "Shweta Garg, Behrooz Omidvar-Tehrani, Shengyu Fu, Gauthier Guinet, Baishakhi Ray",
+      "summary": "This tutorial explores the next generation of AI-powered software development, where large language models (LLMs) function as collaborative agents that plan, code, test, and review alongside human developers. Using GitHub Copilot,Mistral Codec and Kiro as running exemplars, we synthesize the latest advances in multi-agent coordination, reflective collaboration, long-term memory and context maintenance, and tool-integrated verification. We show how role-specialized agent teams, manager–tool routing, and spec-driven development are replacing single-model code completion with structured, repeatable workflows that close the loop from generation to assurance, while addressing critical concerns around evaluation rigor, security guardrails, and safe deployment. Attendees will leave with a practical blueprint for designing and evaluating collaborative coding agents in real engineering environments. The tutorial blends concepts and live demonstrations, covering task decomposition, memory and retrieval, autonomous debugging with runtime feedback, and seamless integration into IDEs, version control, and CI/CD pipelines. We distill proven ''do and don't'' patterns for reliability, security, cost, and scalability, and map open research challenges to concrete experimental setups and metrics. The result is a concise, research-ready guide for building agentic systems that deliver measurable productivity and quality gains in modern software development.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "WWW",
+        "venueLabel": "The Web Conference",
+        "venueName": "The Web Conference",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 76,
+      "core": "This tutorial explores the next generation of AI-powered software development, where large language models (LLMs) function as collaborative agents that plan, code, test, and review alongside human developers. Using GitHub Copilot,Mistral Codec and Kiro as running exemplars, we synthesize the latest advances in multi-agent coordination, reflective collaboration, long-term memory and context maintenance, and tool-inte…",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
     },
     {
       "kind": "paper",
-      "sourceId": "hf_daily_papers",
-      "source": "Hugging Face Daily Papers / arXiv",
-      "title": "ExtractBench: A Benchmark for Schema-Guided Enterprise Document Extraction",
-      "link": "https://arxiv.org/abs/2607.29677",
-      "discussionLink": "https://huggingface.co/papers/2607.29677",
-      "publishedAt": "2026-07-31T00:00:00.000Z",
-      "submittedAt": "2026-08-03T00:00:00.000Z",
-      "author": "Boyang Zhang, Adrian Lyjak, Eli Stewart, Zhaoqi Li, Simon Suo",
-      "summary": "Enterprise workflows increasingly rely on agents for schema-guided extraction: given a document and a user-defined schema, the agent faithfully follows the schema to produce the correct output with source evidence as grounding metadata. We present ExtractBench, a benchmark for schema-guided extraction and, to our knowledge, the first to score value accuracy, record completeness at scale, grounding, and measured cost together. The evaluation system contains 4,869 pages across 370 enterprise documents, 8 business domains, and 67 document types, with clear tags differentiating their challenge scenarios. The scalable schema and ground-truth curation pipeline combines independent-system agreement for real documents, known values for synthetic lists, and human verification for forms. We report order-insensitive value F1 for value accuracy, plus two grounding metrics for source traceability: word- and page-level F1. Commercial VLMs perform well on short documents but often truncate record lists on long ones, while coding agents retain higher accuracy at much higher cost. LlamaExtract Agentic Plus ranks first on all three metrics, with accuracy comparable to coding agents at a fraction of the cost. Dataset and evaluation code are available on https://huggingface.co/datasets/llamaindex/ExtractBench{HuggingFace} and https://github.com/run-llama/ExtractBench{GitHub}.",
-      "upvotes": 13,
-      "githubRepo": "",
-      "githubStars": 0,
-      "score": 85.83990682539682,
-      "core": "Enterprise workflows increasingly rely on agents for schema-guided extraction: given a document and a user-defined schema, the agent faithfully follows the schema to produce the correct output with source evidence as grounding metadata. We present ExtractBench, a benchmark for schema-guided extraction and, to our knowledge, the first to score value accuracy, record completeness at scale, grounding, and measured cost…",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "The Web Conference",
+      "title": "Mitigating Cognitive Vulnerabilities in Code Generation via Multi-Agent Adversarial Debate",
+      "link": "https://doi.org/10.1145/3774904.3792557",
+      "evidenceLink": "https://www.semanticscholar.org/paper/911fa5e882c00523214ed22b317f964692cf5256",
+      "publishedAt": "2026-04-12T00:00:00.000Z",
+      "submittedAt": "2026-04-12T00:00:00.000Z",
+      "author": "Shuofu Liu, Quanjiang Guo, Xiao Liu, Ying Liu",
+      "summary": "Although Large Language Models (LLMs) have demonstrated significant proficiency in code generation, their monolithic and correlation-driven nature renders them susceptible to systematic cognitive biases, deficient counterfactual reasoning, and adversarial manipulation—a characteristic we term cognitive vulnerability. Such vulnerabilities compromise the reliability and security of AI-assisted software development, potentially resulting in code that is not only functionally incorrect but also biased, insecure, and difficult to validate using conventional testing paradigms. While recent multi-agent systems enhance workflow efficiency via task decomposition, they do not fundamentally address these reasoning deficits. This highlights the need for a framework capable of proactively identifying and mitigating the cognitive flaws of an LLM during the reasoning process. To address this challenge, we introduce CodeForge, a multi-agent adversarial reasoning framework that reframes code generation as a cognitive crucible. This process involves a structured debate among three specialized agents—an Optimist, a Pragmatist, and an Adversarial Skeptic—who iteratively cross-examine and refine solution plans. Following convergence, an adversarial verification module systematically generates counterfactual perturbations to stress-test and enhance the final plan. Comprehensive evaluations on the HumanEval and MBPP benchmarks demonstrate that CodeForge significantly outperforms state-of-the-art methods, achieving a pass@1 of 97.3% with GPT-4. Ablation studies confirm the necessity of both the adversarial dialogue and counterfactual verification components. This work represents a shift from passive debugging to proactive cognitive hardening, establishing a pathway toward more trustworthy automated software engineering.",
+      "citationCount": 1,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "WWW",
+        "venueLabel": "The Web Conference",
+        "venueName": "The Web Conference",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 71.20411998265593,
+      "core": "Although Large Language Models (LLMs) have demonstrated significant proficiency in code generation, their monolithic and correlation-driven nature renders them susceptible to systematic cognitive biases, deficient counterfactual reasoning, and adversarial manipulation—a characteristic we term cognitive vulnerability. Such vulnerabilities compromise the reliability and security of AI-assisted software development, po…",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
     },
     {
       "kind": "paper",
-      "sourceId": "hf_daily_papers",
-      "source": "Hugging Face Daily Papers / arXiv",
-      "title": "Fewer Clarifications, Better Code: Benchmarking Cross-Session Personalized Ambiguity Adaptation in Coding Assistants",
-      "link": "https://arxiv.org/abs/2607.26611",
-      "discussionLink": "https://huggingface.co/papers/2607.26611",
-      "publishedAt": "2026-07-29T00:00:00.000Z",
-      "submittedAt": "2026-08-03T00:00:00.000Z",
-      "author": "Zijian Xu, Wenshuo Zhang, Zisen Qin, Rui Sheng, Yushi Sun",
-      "summary": "AI-assisted coding increasingly translates informal user intent into executable software, yet coding requests often contain ambiguities that recur in user-specific ways across tasks and sessions. Existing disambiguation methods typically address each ambiguous request in isolation within the current coding session, often through eliciting additional clarification. However, whether resolved session history from the same user can serve as memory for resolving recurring personalized ambiguity in a newly opened session remains underexplored. We formulate personalized ambiguity adaptation as a new task: given a user's previously resolved coding sessions and a new ambiguous request, an assistant should identify the recurring ambiguity pattern, produce the intended executable solution, and minimize clarification. To benchmark this task, we introduce CAPA, which characterizes personalized coding ambiguity through six mechanisms and injects these mechanisms into unambiguous executable tasks using a controlled three-stage generation pipeline. CAPA contains 600 coding sessions across 60 balanced user--ambiguity cells, including 300 held-out evaluation sessions. We evaluate 12 recent LLMs under no-history and same-user-history conditions using executable success, first-turn success, and turns-to-completion. Our analyses examine task difficulty, user identity, and memory-based history use, and we further propose same-user history gating as a lightweight inference-time method. CAPA provides a foundation for developing long-term coding assistants that better align generated code with user intent while reducing repeated clarification.",
-      "upvotes": 19,
-      "githubRepo": "",
-      "githubStars": 0,
-      "score": 81.83990682539682,
-      "core": "AI-assisted coding increasingly translates informal user intent into executable software, yet coding requests often contain ambiguities that recur in user-specific ways across tasks and sessions. Existing disambiguation methods typically address each ambiguous request in isolation within the current coding session, often through eliciting additional clarification. However, whether resolved session history from the s…",
-      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
-    },
-    {
-      "kind": "paper",
-      "sourceId": "hf_daily_papers",
-      "source": "Hugging Face Daily Papers / arXiv",
-      "title": "Mental World Modeling",
-      "link": "https://arxiv.org/abs/2607.27201",
-      "discussionLink": "https://huggingface.co/papers/2607.27201",
-      "publishedAt": "2026-07-29T00:00:00.000Z",
-      "submittedAt": "2026-08-03T00:00:00.000Z",
-      "author": "Hao Fei, Yiran Zhao",
-      "summary": "World models enable a predictive substrate for planning and action, yet existing formulations merely answer a physical question: what/where it is, and how will it evolve. Human behavior, however, is driven by hidden mental state (what a person believes, wants, intends, feels, and considers socially permissible), so a model that tracks the physical scene but not what each agent knows and believes about it predicts the wrong action for the right-looking scene. We formulate Mental World Modeling (MWM), a generic theoretical framework that makes mental variables core components of a world model rather than posthoc rationales: MWM aintains a coupled physical-mental world state, renders a target-specific partial observation, and simulates how candidate actions jointly update both components. We instantiate the framework in MENTIS, a training-free and fully inspectable baseline that decomposes the process into state parsing, target-observation generation, action decomposition, coupled physical and mental transition, and branch-level value evaluation. On a manually constructed, quality-controlled dataset of situated decision scenarios spanning text, image, and sounding-video stories, experiments with 8 modern LLM-based world models demonstrate that explicitly modeling the mental state is essential for predicting human decisions. Deeper analyses further expose the bottlenecks of current mental world modeling. We expect MWM as a next stage of world modeling, from simulating physical scenes to simulating the minds that act in them.",
-      "upvotes": 48,
-      "githubRepo": "https://github.com/mental-world/Mentis",
-      "githubStars": 1,
-      "score": 77.04402680805275,
-      "core": "World models enable a predictive substrate for planning and action, yet existing formulations merely answer a physical question: what/where it is, and how will it evolve. Human behavior, however, is driven by hidden mental state (what a person believes, wants, intends, feels, and considers socially permissible), so a model that tracks the physical scene but not what each agent knows and believes about it predicts th…",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Aligning Agents via Planning: A Benchmark for Trajectory-Level Reward Modeling",
+      "link": "https://arxiv.org/abs/2604.08178",
+      "evidenceLink": "https://www.semanticscholar.org/paper/d0a2d856179fadd7266b8ef300f7e6fc7f3cab40",
+      "publishedAt": "2026-04-09T00:00:00.000Z",
+      "submittedAt": "2026-04-09T00:00:00.000Z",
+      "author": "Jiaxuan Wang, Yulan Hu, Wenjing Yang, Zheng Pan, Xin Li",
+      "summary": "In classical Reinforcement Learning from Human Feedback (RLHF), Reward Models (RMs) serve as the fundamental signal provider for model alignment. As Large Language Models evolve into agentic systems capable of autonomous tool invocation and complex reasoning, the paradigm of reward modeling faces unprecedented challenges -- most notably, the lack of benchmarks specifically designed to assess RM capabilities within tool-integrated environments. To address this gap, we present Plan-RewardBench, a trajectory-level preference benchmark designed to evaluate how well judges distinguish preferred versus distractor agent trajectories in complex tool-using scenarios. Plan-RewardBench covers four representative task families -- (i) Safety Refusal, (ii) Tool-Irrelevance / Unavailability, (iii) Complex Planning, and (iv) Robust Error Recovery -- comprising validated positive trajectories and confusable hard negatives constructed via multi-model natural rollouts, rule-based perturbations, and minimal-edit LLM perturbations. We benchmark representative RMs (generative, discriminative, and LLM-as-Judge) under a unified pairwise protocol, reporting accuracy trends across varying trajectory lengths and task categories. Furthermore, we provide diagnostic analyses of prevalent failure modes. Our results reveal that all three evaluator families face substantial challenges, with performance degrading sharply on long-horizon trajectories, underscoring the necessity for specialized training in agentic, trajectory-level reward modeling. Ultimately, Plan-RewardBench aims to serve as both a practical evaluation suite and a reusable blueprint for constructing agentic planning preference data.",
+      "citationCount": 1,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 69.20411998265593,
+      "core": "In classical Reinforcement Learning from Human Feedback (RLHF), Reward Models (RMs) serve as the fundamental signal provider for model alignment. As Large Language Models evolve into agentic systems capable of autonomous tool invocation and complex reasoning, the paradigm of reward modeling faces unprecedented challenges -- most notably, the lack of benchmarks specifically designed to assess RM capabilities within t…",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
     },
     {
       "kind": "paper",
-      "sourceId": "hf_daily_papers",
-      "source": "Hugging Face Daily Papers / arXiv",
-      "title": "Scaling Properties of Text Conditioning in Visual Generation",
-      "link": "https://arxiv.org/abs/2607.29679",
-      "discussionLink": "https://huggingface.co/papers/2607.29679",
-      "publishedAt": "2026-07-31T00:00:00.000Z",
-      "submittedAt": "2026-08-03T00:00:00.000Z",
-      "author": "Zilong Chen, Chaorui Deng, Kunchang Li, Hongyi Yuan, Haoqi Fan",
-      "summary": "We study empirical scaling properties for text conditioning in visual generation. Such properties have rarely been measured because diffusion loss does not scale with the number of tokens in natural-language prompts. Surprisingly, we find that the converged diffusion loss scales with the amount of structured language in the prompt. To quantify structured language, we adapt two complementary measures: a white-box likelihood metric (GPG) and a black-box attribute metric (ED). Across controlled training runs, the converged diffusion loss decreases approximately linearly with GPG and follows a power law with ED. Guided by these scaling properties, we improve diffusability by constructing structured prompts with semantic and geometric annotations derived from images, and improve promptability by training a prompter through supervised fine-tuning, cold-start, and verifier-gated on-policy distillation. The resulting system outperforms all evaluated open-weight models on nearly every compositional, reasoning, and world-knowledge benchmark, while matching or surpassing the strongest closed-weight models on most evaluations.",
-      "upvotes": 23,
-      "githubRepo": "https://github.com/heheyas/context-scaling",
-      "githubStars": 55,
-      "score": 73.83265893342163,
-      "core": "We study empirical scaling properties for text conditioning in visual generation. Such properties have rarely been measured because diffusion loss does not scale with the number of tokens in natural-language prompts. Surprisingly, we find that the converged diffusion loss scales with the amount of structured language in the prompt. To quantify structured language, we adapt two complementary measures: a white-box lik…",
-      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "The Web Conference",
+      "title": "A Large Language Model-based Agent for Automated Machine Learning Workflow Construction",
+      "link": "https://www.semanticscholar.org/paper/b15ef907675cf8167147198e9287a18d86d0bd0c",
+      "evidenceLink": "https://www.semanticscholar.org/paper/b15ef907675cf8167147198e9287a18d86d0bd0c",
+      "publishedAt": "2026-05-28T00:00:00.000Z",
+      "submittedAt": "2026-05-28T00:00:00.000Z",
+      "author": "Yutian Xu, Yanhao Wang, Hui Li, Shengjie Xia, Shen Min",
+      "summary": "In this demonstration, we present MLPlatAgent, a large language model (LLM)-based agent that uses a natural language-to-workflow paradigm to take task descriptions as input and construct code-free visual workflows based on machine learning (ML) platforms. MLPlatAgent emphasizes intent-driven task planning, hierarchical tool retrieval, and workflow generation based on function calls to enhance the accuracy of task alignment, tool selection, and workflow construction, rather than improving the accuracy of ML code generation through reasoning or knowledge enhancement. We showcase two scenarios for the usability of MLPlatAgent in real-world applications. We also present preliminary experimental results to validate that MLPlatAgent outperforms existing LLM-based agents in satisfying user requirements and achieving higher ML model performance. A demo video is available at https://youtu.be/aN-5xPOluyU.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "WWW",
+        "venueLabel": "The Web Conference",
+        "venueName": "The Web Conference",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 67,
+      "core": "In this demonstration, we present MLPlatAgent, a large language model (LLM)-based agent that uses a natural language-to-workflow paradigm to take task descriptions as input and construct code-free visual workflows based on machine learning (ML) platforms. MLPlatAgent emphasizes intent-driven task planning, hierarchical tool retrieval, and workflow generation based on function calls to enhance the accuracy of task al…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
     },
     {
-      "kind": "paper",
-      "sourceId": "hf_daily_papers",
-      "source": "Hugging Face Daily Papers / arXiv",
-      "title": "AISPA: User-Centric System Prompt Auditing for Large Language Model Applications",
-      "link": "https://arxiv.org/abs/2607.28617",
-      "discussionLink": "https://huggingface.co/papers/2607.28617",
-      "publishedAt": "2026-07-30T00:00:00.000Z",
-      "submittedAt": "2026-08-03T00:00:00.000Z",
-      "author": "Xiangning Lin, Shenzhe Zhu, Shu Yang, Zhenyu Zhang, Haoqian Zhang",
-      "summary": "System prompts are instructions configured by developers to govern the behaviors of foundation models in AI applications. They are used throughout commercial AI products, but are rarely disclosed to the public or regulators, creating a serious trust and accountability gap in the wide deployment of AI systems. In this paper, we introduce Artificial Intelligence System Prompt Assurance (AISPA), a user-centric framework for systematically auditing system prompts in AI systems. AISPA examines specific parts of a system prompt and evaluates them along eight dimensions that matter to users. We then use this framework to review 3,249 instructions from system prompts in 88 commercial AI products, classifying each instruction as either protective (of users) or problematic. Our audit surfaces four core findings. First, system prompt design varies substantially across products and developers, with some organizations averaging over 60 protective instructions per product while others average fewer than 5. Second, protective instructions are widely adopted but shallow in scope: 98.9% of products contain at least one, yet only 24% cover all eight dimensions of the AISPA taxonomy. Third, system prompts have grown steadily longer and more protective of users, suggesting that user protection is becoming a more visible concern in commercial prompt design. Fourth, despite this progress, problematic instructions remain pervasive: roughly 40% of products contain at least one instruction that works against user interests, and protective and problematic instructions frequently coexist within the same prompt. Our findings highlight the need for greater transparency, standardization, and independent oversight for system prompts in commercial AI products.",
-      "upvotes": 29,
-      "githubRepo": "https://github.com/SystemPromptIndex/SystemPromptIndex",
-      "githubStars": 5,
-      "score": 70.9525118269314,
-      "core": "System prompts are instructions configured by developers to govern the behaviors of foundation models in AI applications. They are used throughout commercial AI products, but are rarely disclosed to the public or regulators, creating a serious trust and accountability gap in the wide deployment of AI systems. In this paper, we introduce Artificial Intelligence System Prompt Assurance (AISPA), a user-centric framewor…",
-      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "How we built a realtime system for responsive voice AI in six months",
+      "link": "https://openai.com/index/continuous-voice-interaction-with-gpt-live",
+      "publishedAt": "2026-08-03T07:00:00.000Z",
+      "author": "",
+      "summary": "GPT-Live enables continuous voice interaction with AI, using a turnless speech model and low-latency architecture for faster, more natural conversations.",
+      "score": 51.80842628968254,
+      "core": "GPT-Live enables continuous voice interaction with AI, using a turnless speech model and low-latency architecture for faster, more natural conversations.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-04T11:34:55.315Z",
+        "evidence": "public_canonical_bot_limited"
+      }
     },
     {
       "kind": "blog",
@@ -119,9 +126,15 @@
       "publishedAt": "2026-08-03T14:03:08.000Z",
       "author": "Nathan Lambert",
       "summary": "Scaling our curation and measurement of the open ecosystem.",
-      "score": 45.171414761904764,
+      "score": 43.789934226190475,
       "core": "Scaling our curation and measurement of the open ecosystem.",
-      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。"
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-04T11:34:55.315Z",
+        "evidence": "live_http"
+      }
     },
     {
       "kind": "blog",
@@ -132,9 +145,15 @@
       "publishedAt": "2026-08-03T13:00:00.000Z",
       "author": "Dominik Picheta",
       "summary": "One coding agent can write a Python Worker and another can write a JavaScript Worker. At runtime, those Workers can exchange references to live objects and call their methods without defining APIs, schemas, or serialization code",
-      "score": 45.03514492063492,
+      "score": 43.65366438492063,
       "core": "One coding agent can write a Python Worker and another can write a JavaScript Worker. At runtime, those Workers can exchange references to live objects and call their methods without defining APIs, schemas, or serialization code",
-      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-04T11:34:55.315Z",
+        "evidence": "live_http"
+      }
     },
     {
       "kind": "blog",
@@ -145,9 +164,15 @@
       "publishedAt": "2026-08-03T12:04:26.000Z",
       "author": "Claire Vo",
       "summary": "Watch now | 🎙️ChatGPT Voice now manages multiple threads, reads your screen, and runs background tasks, and Nick Baumann walks me through the whole workflow live",
-      "score": 39.60232746031746,
+      "score": 38.22084692460317,
       "core": "Watch now | 🎙️ChatGPT Voice now manages multiple threads, reads your screen, and runs background tasks, and Nick Baumann walks me through the whole workflow live",
-      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。"
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-08-04T11:34:55.315Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
     },
     {
       "kind": "blog",
@@ -158,9 +183,15 @@
       "publishedAt": "2026-08-03T15:02:21.000Z",
       "author": "Lenny Rachitsky",
       "summary": "Your weekly listens from How I AI, part of the Lenny's Podcast Network",
-      "score": 39.303021904761906,
+      "score": 37.92154136904762,
       "core": "Your weekly listens from How I AI, part of the Lenny's Podcast Network",
-      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。"
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-08-04T11:34:55.315Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
     },
     {
       "kind": "blog",
@@ -171,9 +202,34 @@
       "publishedAt": "2026-08-03T13:00:00.000Z",
       "author": "Alex Reneau",
       "summary": "Serving frontier models like Kimi and GLM means fighting for GPU memory. Here's how we quantize KV caches, compress model weights, and add integrity checks to serve them faster, cheaper, and safely.",
-      "score": 36.868478253968256,
+      "score": 35.48699771825397,
       "core": "Serving frontier models like Kimi and GLM means fighting for GPU memory. Here's how we quantize KV caches, compress model weights, and add integrity checks to serve them faster, cheaper, and safely.",
-      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-04T11:34:55.315Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "The Inference Engineering Masterclass — Philip Kiely & Ali Taha, Baseten",
+      "link": "https://www.latent.space/p/inference-eng",
+      "publishedAt": "2026-08-03T21:44:03.000Z",
+      "author": "",
+      "summary": "Baseten just raised a $13B Series F and is now one of the leading kings of inference engineering. We go into everything you need to know for autoregressive and diffusion engineering.",
+      "score": 33.02197787698413,
+      "core": "Baseten just raised a $13B Series F and is now one of the leading kings of inference engineering. We go into everything you need to know for autoregressive and diffusion engineering.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-08-04T11:34:55.315Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
     },
     {
       "kind": "blog",
@@ -186,7 +242,32 @@
       "summary": "OpenAI outlines a “reverse federalism” approach to AI governance, where state laws help build a national framework for safe, democratic AI.",
       "score": 31.772222222222222,
       "core": "OpenAI outlines a “reverse federalism” approach to AI governance, where state laws help build a national framework for safe, democratic AI.",
-      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-04T11:34:55.315Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "[AINews] Qwen 3.8 Max(2.4T) and 27B, new open weights models for Coding and Cowork",
+      "link": "https://www.latent.space/p/ainews-qwen-38-max24t-and-27b-new",
+      "publishedAt": "2026-08-04T03:49:14.000Z",
+      "author": "",
+      "summary": "Qwen is so back!",
+      "score": 30.534497718253967,
+      "core": "Qwen is so back!",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-08-04T11:34:55.315Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
     },
     {
       "kind": "blog",
@@ -199,7 +280,13 @@
       "summary": "Your weekly listens from How I AI, part of the Lenny’s Podcast Network",
       "score": 27.38888888888889,
       "core": "Your weekly listens from How I AI, part of the Lenny’s Podcast Network",
-      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-08-04T11:34:55.315Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
     },
     {
       "kind": "blog",
@@ -212,7 +299,13 @@
       "summary": "Listen now (72 mins) | Elizabeth Stone, CPTO of Netflix, on managing AI-era product teams, the rise of systems thinking, and how to build excellence as an operating system",
       "score": 26.95,
       "core": "Listen now (72 mins) | Elizabeth Stone, CPTO of Netflix, on managing AI-era product teams, the rise of systems thinking, and how to build excellence as an operating system",
-      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。"
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-08-04T11:34:55.315Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
     },
     {
       "kind": "blog",
@@ -225,7 +318,13 @@
       "summary": "How Deutsche Telekom is becoming an AI-native telco with OpenAI-transforming customer service, employee workflows, network operations, and the future of voice.",
       "score": 26.883333333333333,
       "core": "How Deutsche Telekom is becoming an AI-native telco with OpenAI-transforming customer service, employee workflows, network operations, and the future of voice.",
-      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。"
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-04T11:34:55.315Z",
+        "evidence": "public_canonical_bot_limited"
+      }
     },
     {
       "kind": "blog",
@@ -238,20 +337,13 @@
       "summary": "ChatGPT Work is an agent that can take action across your apps and files, stay with a project for hours if needed, and turn a goal into finished work.",
       "score": 26.833333333333332,
       "core": "ChatGPT Work is an agent that can take action across your apps and files, stay with a project for hours if needed, and turn a goal into finished work.",
-      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
-    },
-    {
-      "kind": "blog",
-      "sourceId": "openai_news",
-      "source": "OpenAI",
-      "title": "Advancing the price-performance frontier with GPT-5.6",
-      "link": "https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6",
-      "publishedAt": "2026-07-30T10:00:00.000Z",
-      "author": "",
-      "summary": "Explore lower GPT‑5.6 pricing for Luna and Terra—and how OpenAI’s more efficient models help enterprises deploy AI workflows at scale.",
-      "score": 26.44149412698413,
-      "core": "Explore lower GPT‑5.6 pricing for Luna and Terra—and how OpenAI’s more efficient models help enterprises deploy AI workflows at scale.",
-      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。"
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-04T11:34:55.315Z",
+        "evidence": "public_canonical_bot_limited"
+      }
     },
     {
       "kind": "blog",
@@ -264,7 +356,13 @@
       "summary": "In this AMA episode, Gergely Orosz answers listener questions on AI, engineering, hiring, and careers.",
       "score": 20.566666666666666,
       "core": "In this AMA episode, Gergely Orosz answers listener questions on AI, engineering, hiring, and careers.",
-      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-08-04T11:34:55.315Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
     },
     {
       "kind": "blog",
@@ -277,7 +375,13 @@
       "summary": "Also: Chinese open models match closed ones from Anthropic and OpenAI, AWS’s “heart-attack” billing error, and more",
       "score": 16.63888888888889,
       "core": "Also: Chinese open models match closed ones from Anthropic and OpenAI, AWS’s “heart-attack” billing error, and more",
-      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-08-04T11:34:55.315Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
     },
     {
       "kind": "blog",
@@ -290,7 +394,13 @@
       "summary": "New results on a method of controlling access to potentially dangerous AI capabilities",
       "score": 16.477777777777778,
       "core": "New results on a method of controlling access to potentially dangerous AI capabilities",
-      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-04T11:34:55.315Z",
+        "evidence": "live_http"
+      }
     }
   ]
 }
