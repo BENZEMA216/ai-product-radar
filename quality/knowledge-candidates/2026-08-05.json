@@ -1,0 +1,407 @@
+{
+  "generatedAt": "2026-08-04T17:36:40.693Z",
+  "date": "2026-08-05",
+  "items": [
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "KDD",
+      "title": "Uncertainty-Aware Planning for Disambiguating User Intent in Interactive LLM Agents: Application to Baidu Maps",
+      "link": "https://doi.org/10.1145/3770854.3783943",
+      "evidenceLink": "https://www.semanticscholar.org/paper/40825ccf74e72a3bc99c1a87a50a490e99bf1ff4",
+      "publishedAt": "2026-04-20T00:00:00.000Z",
+      "submittedAt": "2026-04-20T00:00:00.000Z",
+      "author": "Deqiang Huang, Xinjiang Lu, Jingbo Zhou, Nijia Lu, Fuxin Li",
+      "summary": "Large language models (LLMs) are revolutionizing user interactions in online map applications by enabling conversational interfaces with intelligent map agents. However, inherent ambiguities and nuances in human communication often lead to incomplete or unclear user instructions. While generating clarification questions can mitigate this issue, existing methods—which rely on prompt-based LLM assessments or supervised fine-tuning (SFT) of LLMs with limited annotated data—struggle to reliably determine when clarification is necessary, resulting in cold-start issues and reduced adaptability. To address this gap, we propose an uncertainty-aware dynamic planning framework for intent disambiguation in interactive agent systems, exemplified by Baidu Maps. Our framework leverages LLMs to dynamically generate agent action sequences while estimating query uncertainty. When uncertainty thresholds are exceeded, targeted clarification questions are triggered. Besides, to efficiently navigate the vast uncertainty space, we introduce a novel beam search-based pruning strategy. Crucially, the framework supports context-aware task planning without any additional model training. We evaluate our approach on Baidu Maps and a public robotic task, focusing on uncertainty management and adaptability. Experiments demonstrate that the framework achieves high precision across diverse LLMs without requiring an additional training phase, highlighting its versatility and robustness. Ablation studies confirm that the framework can significantly improve user intent recognition and task success rates.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "KDD",
+        "venueLabel": "KDD",
+        "venueName": "Knowledge Discovery and Data Mining",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 64,
+      "core": "Large language models (LLMs) are revolutionizing user interactions in online map applications by enabling conversational interfaces with intelligent map agents. However, inherent ambiguities and nuances in human communication often lead to incomplete or unclear user instructions. While generating clarification questions can mitigate this issue, existing methods—which rely on prompt-based LLM assessments or supervise…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "MONETA: Multimodal Industry Classification through Geographic Information with Multi Agent Systems",
+      "link": "https://arxiv.org/abs/2604.07956",
+      "evidenceLink": "https://www.semanticscholar.org/paper/b92cffb6bb8f2fa9647fb3535c8566358304b219",
+      "publishedAt": "2026-04-09T00:00:00.000Z",
+      "submittedAt": "2026-04-09T00:00:00.000Z",
+      "author": "Arda Yuksel, Gabriel Thiem, Susanne Walter, Patrick Felka, Gabriela Alves Werb",
+      "summary": "Industry classification schemes are integral parts of public and corporate databases as they classify businesses based on economic activity. Due to the size of the company registers, manual annotation is costly, and fine-tuning models with every update in industry classification schemes requires significant data collection. We replicate the manual expert verification by using existing or easily retrievable multimodal resources for industry classification. We present MONETA, the first multimodal industry classification benchmark with text (Website, Wikipedia, Wikidata) and geospatial sources (OpenStreetMap and satellite imagery). Our dataset enlists 1,000 businesses in Europe with 20 economic activity labels according to EU guidelines (NACE). Our training-free baseline reaches 62.10% and 74.10% with open and closed-source Multimodal Large Language Models (MLLM). We observe an increase of up to 22.80% with the combination of multi-turn design, context enrichment, and classification explanations. We will release our dataset and the enhanced guidelines.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 64,
+      "core": "Industry classification schemes are integral parts of public and corporate databases as they classify businesses based on economic activity. Due to the size of the company registers, manual annotation is costly, and fine-tuning models with every update in industry classification schemes requires significant data collection. We replicate the manual expert verification by using existing or easily retrievable multimoda…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "GASim: A Graph-Accelerated Hybrid Framework for Social Simulation",
+      "link": "https://arxiv.org/abs/2605.07692",
+      "evidenceLink": "https://www.semanticscholar.org/paper/ed9707f88ae9256f8f9363e8372e51947a4f4635",
+      "publishedAt": "2026-05-08T00:00:00.000Z",
+      "submittedAt": "2026-05-08T00:00:00.000Z",
+      "author": "Xuan Zhou, Yanhui Sun, Hantao Yao, Allen He, Yongdong Zhang",
+      "summary": "Large-scale social simulators are essential for studying complex social patterns. Prior work explores hybrid methods to scale up simulations, combining large language models (LLM)-based agents with numerical agent-based models (ABM). However, this incurs high latency due to expensive memory retrieval and sequential ABM execution. To address this challenge, we propose GASim, a graph-accelerated hybrid multi-agent framework for large-scale social simulations. For core agents driven by LLM, GASim introduces Graph-Optimized Memory (GOM) to replace intensive LLM-based retrieval pipelines with lightweight propagation over a sparse memory graph. For the majority of ordinary agents, GASim employs Graph Message Passing (GMP), substituting sequential ABM execution with parallel updates by fine-grained feature aggregation and Graph Attention Network. We further introduce Entropy-Driven Grouping (EDG) that coordinates this hybrid partitioning, leveraging information entropy to dynamically identify emergent core agents situated in information-diverse neighborhoods. Extensive experiments show that GASim not only delivers a substantial 9.94-fold end-to-end speedup over the traditional hybrid framework but also consumes less than 20% of baseline tokens, significantly reducing costs while preserving strong alignment with real-world public opinion trends. Our code is available at https://github.com/Jasmine0201/GASim.",
+      "citationCount": 2,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 62.90848501887865,
+      "core": "Large-scale social simulators are essential for studying complex social patterns. Prior work explores hybrid methods to scale up simulations, combining large language models (LLM)-based agents with numerical agent-based models (ABM). However, this incurs high latency due to expensive memory retrieval and sequential ABM execution. To address this challenge, we propose GASim, a graph-accelerated hybrid multi-agent fra…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Lightweight LLM Agent Memory with Small Language Models",
+      "link": "https://arxiv.org/abs/2604.07798",
+      "evidenceLink": "https://www.semanticscholar.org/paper/a27a5b3c01117bacb4868a964c679a01eb8c5db9",
+      "publishedAt": "2026-04-09T00:00:00.000Z",
+      "submittedAt": "2026-04-09T00:00:00.000Z",
+      "author": "Jiaquan Zhang, Chaoning Zhang, Shuxu Chen, Zhen Huang, P. Zheng",
+      "summary": "Although LLM agents can leverage tools for complex tasks, they still need memory to maintain cross-turn consistency and accumulate reusable information in long-horizon interactions. However, retrieval-based external memory systems incur low online overhead but suffer from unstable accuracy due to limited query construction and candidate filtering. In contrast, many systems use repeated large-model calls for online memory operations, improving accuracy but accumulating latency over long interactions. We propose LightMem, a lightweight memory system for better agent memory driven by Small Language Models (SLMs). LightMem modularizes memory retrieval, writing, and long-term consolidation, and separates online processing from offline consolidation to enable efficient memory invocation under bounded compute. We organize memory into short-term memory (STM) for immediate conversational context, mid-term memory (MTM) for reusable interaction summaries, and long-term memory (LTM) for consolidated knowledge, and uses user identifiers to support independent retrieval and incremental maintenance in multi-user settings. Online, LightMem operates under a fixed retrieval budget and selects memories via a two-stage procedure: vector-based coarse retrieval followed by semantic consistency re-ranking. Offline, it abstracts reusable interaction evidence and incrementally integrates it into LTM. Experiments show consistent gains across model scales, with an average F1 improvement of about 2.5 over A-MEM on LoCoMo, while achieving higher efficiency and low median latency (83 ms for retrieval and 581 ms end-to-end).",
+      "citationCount": 5,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 62.112605001534575,
+      "core": "Although LLM agents can leverage tools for complex tasks, they still need memory to maintain cross-turn consistency and accumulate reusable information in long-horizon interactions. However, retrieval-based external memory systems incur low online overhead but suffer from unstable accuracy due to limited query construction and candidate filtering. In contrast, many systems use repeated large-model calls for online m…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "How we built a software factory to drive Astro’s GitHub issue count to zero",
+      "link": "https://blog.cloudflare.com/astro-issue-triage",
+      "publishedAt": "2026-08-04T13:00:00.000Z",
+      "author": "Matthew Phillips",
+      "summary": "By replacing manual issue verification with isolated AI subagents running in GitHub Actions, the Astro maintainers reduced open issue count by 85%. This post explores the architecture behind automated bug reproduction, patch verification, and preview releases.",
+      "score": 60.11506561507936,
+      "core": "By replacing manual issue verification with isolated AI subagents running in GitHub Actions, the Astro maintainers reduced open issue count by 85%. This post explores the architecture behind automated bug reproduction, patch verification, and preview releases.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-04T17:36:40.693Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gmail_medium_daily_digest",
+      "source": "Leonie Monigatti",
+      "title": "Agent Journey Map: Designing Software for AI Agents",
+      "link": "https://medium.com/@iamleonie/agent-journey-map-designing-software-for-ai-agents-b89aadcd794f",
+      "publishedAt": "2026-08-02T23:10:00.000Z",
+      "author": "Leonie Monigatti",
+      "summary": "A design framework for mapping an AI agent's end-to-end journey through software, focusing on the interfaces, permissions, feedback, recovery paths, and observability agents need to complete tasks reliably.",
+      "origin": "gmail_newsletter",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-08-04T17:36:40.693Z",
+        "evidence": "sanitized_gmail_intake"
+      },
+      "score": 54.11268466269841,
+      "core": "A design framework for mapping an AI agent's end-to-end journey through software, focusing on the interfaces, permissions, feedback, recovery paths, and observability agents need to complete tasks reliably.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Announcing Cloudflare Wallets: the programmable wallet for the agentic Internet",
+      "link": "https://blog.cloudflare.com/wallets",
+      "publishedAt": "2026-08-04T13:00:00.000Z",
+      "author": "Will Papper",
+      "summary": "Cloudflare Wallets will provide AI agents with native payments and verifiable identity on the web. Using the x402 protocol, agents can autonomously purchase APIs and content within clear safety guardrails.",
+      "score": 49.8095100595238,
+      "core": "Cloudflare Wallets will provide AI agents with native payments and verifiable identity on the web. Using the x402 protocol, agents can autonomously purchase APIs and content within clear safety guardrails.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-04T17:36:40.693Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Your agent can now debug Workers with local tracing",
+      "link": "https://blog.cloudflare.com/local-tracing",
+      "publishedAt": "2026-08-04T13:00:00.000Z",
+      "author": "Zin Khant",
+      "summary": "wrangler dev now produces structured traces for every local request. Your coding agent can hit a single API to pinpoint exactly what failed and why — no deployment required.",
+      "score": 44.631732281746025,
+      "core": "wrangler dev now produces structured traces for every local request. Your coding agent can hit a single API to pinpoint exactly what failed and why — no deployment required.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-04T17:36:40.693Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Run CI/CD for millions of repos — on your platform, on Cloudflare",
+      "link": "https://blog.cloudflare.com/ci-workflows",
+      "publishedAt": "2026-08-04T13:00:00.000Z",
+      "author": "André Venceslau",
+      "summary": "Learn how to build customizable, sandboxed CI/CD pipelines natively on Cloudflare using Workflows, Artifacts, and the CI SDK. We walk through replacing complex YAML configurations with TypeScript workflow steps and self-healing AI agents.",
+      "score": 43.99284339285714,
+      "core": "Learn how to build customizable, sandboxed CI/CD pipelines natively on Cloudflare using Workflows, Artifacts, and the CI SDK. We walk through replacing complex YAML configurations with TypeScript workflow steps and self-healing AI agents.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-04T17:36:40.693Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "How Cloudflare enforces engineering standards using AI",
+      "link": "https://blog.cloudflare.com/engineering-standards-enforcement",
+      "publishedAt": "2026-08-04T13:00:00.000Z",
+      "author": "Timo Reimann",
+      "summary": "We created the Cloudflare Codex, a governed body of engineering standards that AI agents consume across the development lifecycle. By pairing structured RFCs with agentic reviews, teams automatically enforce consistency across code, specs, and incident reports.",
+      "score": 41.12062117063492,
+      "core": "We created the Cloudflare Codex, a governed body of engineering standards that AI agents consume across the development lifecycle. By pairing structured RFCs with agentic reviews, teams automatically enforce consistency across code, specs, and incident reports.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-04T17:36:40.693Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "New ways to learn and teach with ChatGPT Work and Codex",
+      "link": "https://openai.com/index/learn-teach-chatgpt-work-codex",
+      "publishedAt": "2026-08-04T00:00:00.000Z",
+      "author": "",
+      "summary": "Explore new education plugins for ChatGPT Work and Codex that help K–12 teachers, college educators, and students learn, teach, research, and build.",
+      "score": 29.564271964285716,
+      "core": "Explore new education plugins for ChatGPT Work and Codex that help K–12 teachers, college educators, and students learn, teach, research, and build.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-04T17:36:40.693Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "The Agent Development Lifecycle has arrived on Cloudflare",
+      "link": "https://blog.cloudflare.com/agent-development-lifecycle",
+      "publishedAt": "2026-08-04T13:00:00.000Z",
+      "author": "Brendan Irvine-Broque",
+      "summary": "Agents can write code faster than teams can review, deploy, and maintain it. Today we’re introducing the Agent Development Lifecycle and the Cloudflare primitives that underpin it",
+      "score": 24.665065615079364,
+      "core": "Agents can write code faster than teams can review, deploy, and maintain it. Today we’re introducing the Agent Development Lifecycle and the Cloudflare primitives that underpin it",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-04T17:36:40.693Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Introducing: Cloudflare Agents",
+      "link": "https://blog.cloudflare.com/agents-on-cloudflare",
+      "publishedAt": "2026-08-04T13:00:00.000Z",
+      "author": "Nevi Shah",
+      "summary": "Cloudflare Agents brings all of your deployed agent sessions into a single experience, surfacing key information and insights into how your agents perform at scale.",
+      "score": 24.581732281746028,
+      "core": "Cloudflare Agents brings all of your deployed agent sessions into a single experience, surfacing key information and insights into how your agents perform at scale.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-04T17:36:40.693Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "From zero coding background to hardware hacker: How Cursor + a Raspberry Pi makes AI fun",
+      "link": "https://www.lennysnewsletter.com/p/from-zero-coding-background-to-hardware",
+      "publishedAt": "2026-07-27T12:04:34.000Z",
+      "author": "Claire Vo",
+      "summary": "Watch now | 🎙️ Maddie Reese built a thermal printer anyone can message, a working Twitter pager, and a personal API using Cursor, a Raspberry Pi, and the radical idea that fun beats practical",
+      "score": 24.066666666666666,
+      "core": "Watch now | 🎙️ Maddie Reese built a thermal printer anyone can message, a working Twitter pager, and a personal API using Cursor, a Raspberry Pi, and the radical idea that fun beats practical",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-08-04T17:36:40.693Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Your agent needs a computer, not a container — introducing @cloudflare/computer",
+      "link": "https://blog.cloudflare.com/cloudflare-computer",
+      "publishedAt": "2026-08-03T13:15:24.000Z",
+      "author": "Matt Carey",
+      "summary": "Agents need more than just a container to scale. We're introducing @cloudflare/computer, an agent runtime that dynamically orchestrates between fast, efficient isolates and full Linux containers to give every agent a computer of its own.",
+      "score": 23.29133545634921,
+      "core": "Agents need more than just a container to scale. We're introducing @cloudflare/computer, an agent runtime that dynamically orchestrates between fast, efficient isolates and full Linux containers to give every agent a computer of its own.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-04T17:36:40.693Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Accelerating scientific discovery with ChatGPT for Academic Researchers",
+      "link": "https://openai.com/index/chatgpt-for-academic-researchers",
+      "publishedAt": "2026-07-29T10:00:00.000Z",
+      "author": "",
+      "summary": "OpenAI is giving 100,000 academic researchers free access to ChatGPT's most advanced AI models to accelerate scientific research, collaboration, and discovery.",
+      "score": 20.053954503968253,
+      "core": "OpenAI is giving 100,000 academic researchers free access to ChatGPT's most advanced AI models to accelerate scientific research, collaboration, and discovery.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-04T17:36:40.693Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "How tech workers actually feel about AI in 2026 | Annual AI sentiment survey (Noam Segal)",
+      "link": "https://www.lennysnewsletter.com/p/how-tech-workers-actually-feel-about",
+      "publishedAt": "2026-07-12T12:32:14.000Z",
+      "author": "Lenny Rachitsky",
+      "summary": "Listen now | The great tech bifurcation: half the workforce is thriving, half is struggling, and burnout just hit a record high",
+      "score": 19.705555555555556,
+      "core": "Listen now | The great tech bifurcation: half the workforce is thriving, half is struggling, and burnout just hit a record high",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-08-04T17:36:40.693Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "This solo builder runs 24/7 local AI on his own hardware | Alex Finn",
+      "link": "https://www.lennysnewsletter.com/p/this-solo-builder-runs-247-local",
+      "publishedAt": "2026-07-13T12:05:20.000Z",
+      "author": "Claire Vo",
+      "summary": "Watch now | 🎙️ Alex Finn breaks down his five-computer local AI setup, the Claude Code build-and-review loop that ships features while he sleeps, and why unlimited local intelligence beats a $20 subscription",
+      "score": 16.155555555555555,
+      "core": "Watch now | 🎙️ Alex Finn breaks down his five-computer local AI setup, the Claude Code build-and-review loop that ships features while he sleeps, and why unlimited local intelligence beats a $20 subscription",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-08-04T17:36:40.693Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "🎙️ How I AI: Claude Opus 5 Review + Browser use in Codex + How Cursor and a Raspberry Pi makes AI fun",
+      "link": "https://www.lennysnewsletter.com/p/how-i-ai-claude-opus-5-review-browser",
+      "publishedAt": "2026-07-27T15:03:21.000Z",
+      "author": "Lenny Rachitsky",
+      "summary": "Your weekly listens from How I AI, part of the Lenny’s Podcast Network",
+      "score": 15.38888888888889,
+      "core": "Your weekly listens from How I AI, part of the Lenny’s Podcast Network",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-08-04T17:36:40.693Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "🧠 Community Wisdom: Staying on a client’s radar during pilot purgatory, pairing Linear with a discovery tool, the limits of what AI can automate, whether Techstars is worth it, and more",
+      "link": "https://www.lennysnewsletter.com/p/community-wisdom-staying-on-a-clients",
+      "publishedAt": "2026-07-25T16:01:44.000Z",
+      "author": "Kiyani",
+      "summary": "Community Wisdom 194",
+      "score": 15.11111111111111,
+      "core": "Community Wisdom 194",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-08-04T17:36:40.693Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
+    }
+  ]
+}

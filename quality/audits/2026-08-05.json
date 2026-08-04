@@ -1,0 +1,292 @@
+{
+  "date": "2026-08-05",
+  "generatedAt": "2026-08-04T16:27:29.646Z",
+  "reportPath": "reports/2026-08-05-0027-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 38,
+    "top20Sources": [
+      "YC Launch",
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-08-03；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 0 条，AI 相关候选 0 条；fallback 低覆盖时扩展检查 2026-08-02，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 0 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 4,
+      "keptCount": 4,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 34,
+      "keptCount": 17,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 12,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 17,
+      "keptCount": 17,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-08-04T16:02:35Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Amorphic Labs",
+      "productKey": "https://www.ycombinator.com/launches/siw-amorphic-labs-agentic-personalized-product-demo-videos-for-sales",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把销售演示从人工录屏改成可规模化生成的个性化视频，产品验证重点是个性化信息能否准确落到不同线索，以及能否接入外呼、入站和通话跟进。"
+    },
+    {
+      "rank": 2,
+      "product": "Hoplite (YC S26) – Effortlessly deploy cloud coding agents",
+      "productKey": "https://hoplite.sh",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它切的是云端 coding agent 的部署环节；值得看能否把环境配置、发布和故障恢复收敛成普通开发者可放心使用的交付流程。"
+    },
+    {
+      "rank": 3,
+      "product": "Keystroke – open sourcing our internal agents and automations platform",
+      "productKey": "https://news.ycombinator.com/item?id=49160376",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把内部 agent 与自动化平台开源，能检验团队自用流程能否抽象成外部可复用产品；应重点看触发器、权限、失败恢复和可观测性是否完整。"
+    },
+    {
+      "rank": 4,
+      "product": "Jido Assembly; Slack Clone in Pure Elixir with Integrated Agents",
+      "productKey": "https://jido.run/blog/jido-assembly-slack-clone",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它不是单纯给 Slack 加机器人，而是在 Elixir 实现的协作界面里把 agent 作为原生参与者；值得观察人机协作交互和非 Python agent 生态是否成立。"
+    },
+    {
+      "rank": 5,
+      "product": "Executor",
+      "productKey": "https://www.ycombinator.com/launches/sbh-executor-one-place-to-connect-your-agents-to-everything",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它试图把“每个 agent 重复接工具”收敛为一次连接、统一复用并集中控权，核心价值在连接器复用与最小权限能否同时成立。"
+    },
+    {
+      "rank": 6,
+      "product": "Alloy",
+      "productKey": "https://www.ycombinator.com/launches/smd-alloy-cloud-agents",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 codebase session 从工程师专用工具扩展给非工程角色，值得看自然语言改动如何交接给代码仓库，以及权限、审查和回滚是否足以控制风险。"
+    },
+    {
+      "rank": 7,
+      "product": "Benzi – An AI coding assistant grounded in a live code map",
+      "productKey": "https://benzi.fly.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "实时 code map 是它区别于通用 coding assistant 的关键；应验证代码变化后映射是否及时更新，以及这种结构化上下文能否减少错误定位和无效检索。"
+    },
+    {
+      "rank": 8,
+      "product": "MoneyCo – A coding agent built for accounting",
+      "productKey": "https://thecompany.money",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "会计垂直 coding agent 的价值不在“会写代码”，而在是否理解账务对象和控制要求；目前证据仅能支持关注其垂直定位，尚需看实际工作流与审计边界。"
+    },
+    {
+      "rank": 9,
+      "product": "Av9n – Check an AI agents claims against evidence it does not control",
+      "productKey": "https://av9n.ai/demo",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 agent 的结论交给独立证据核验，直指“模型不能自证正确”的信任问题；产品成败取决于证据来源、冲突处理和人工复核路径。"
+    },
+    {
+      "rank": 10,
+      "product": "Stonefold – a deterministic gateway between AI agents and your systems",
+      "productKey": "https://stonefold.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "确定性网关试图在 agent 与业务系统之间建立可预测边界，值得看权限校验、请求重放和审计记录能否把不可控调用变成可运营基础设施。"
+    },
+    {
+      "rank": 11,
+      "product": "Loopers – Fail-closed reverse proxy and circuit breaker for AI agents",
+      "productKey": "https://app.tryloopers.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 fail-closed 反向代理和熔断器放在 agent 调用链上，值得看能否在异常时真正阻断越权或失控调用，而不只是增加一层安全包装。"
+    },
+    {
+      "rank": 12,
+      "product": "Buildbox",
+      "productKey": "https://www.ycombinator.com/launches/sit-buildbox-agent-analytics-for-real-user-outcomes",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它关注 trace 和 eval 显示成功、用户结果却失败的盲区，说明 agent 观测正从技术指标转向用户结果；关键是失败归因能否指导具体产品修复。"
+    },
+    {
+      "rank": 13,
+      "product": "Share context between friends via MCP",
+      "productKey": "https://crosswalk.to",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "通过 MCP 在朋友之间共享上下文，展示了上下文可携带与协作的新入口；需要重点验证授权、撤销和来源标记，避免便利性变成隐私泄漏。"
+    },
+    {
+      "rank": 14,
+      "product": "We gave a voice agent an inner monologue so it stops forgetting",
+      "productKey": "https://waterr.ai/research/monologue",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用“内在独白”维持语音 agent 的连续记忆，是对长对话遗忘的具体架构尝试；应看它对延迟、成本、隐私和错误记忆累积的实际影响。"
+    },
+    {
+      "rank": 15,
+      "product": "Hacker News with AI stories filtered out",
+      "productKey": "https://hcker.news/?view=frontpage&ai=exclude",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这是对 AI 内容过载的反向需求信号：用户愿意主动过滤 AI 话题；它更像信息消费小工具，产品深度取决于过滤准确率和个性化控制。"
+    },
+    {
+      "rank": 16,
+      "product": "Aimeterly – Per-user cost dashboards from Claude Code's built-in OTel",
+      "productKey": "https://aimeterly.com/en",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它利用 Claude Code 已有 OTel 数据做按用户成本看板，把 coding agent 消耗变成团队可归因指标；值得看是否能支持预算、异常检测和团队用量治理。"
+    },
+    {
+      "rank": 17,
+      "product": "I built a tool to find your first users before they find you",
+      "productKey": "https://agenmatic.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它瞄准早期产品最难的首批用户发现，但当前证据只说明结果目标；后续要看候选来源、匹配依据和触达闭环是否比通用线索工具更具体。"
+    },
+    {
+      "rank": 18,
+      "product": "Bourdon – one shared memory file for Claude Code, Codex, Cursor",
+      "productKey": "https://bourdon.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用一个共享记忆文件打通 Claude Code、Codex 和 Cursor，切中跨 agent 上下文断裂；真正门槛在冲突合并、来源追踪和敏感信息隔离。"
+    },
+    {
+      "rank": 19,
+      "product": "My journey into game development with AI",
+      "productKey": "https://playdowntime.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "当前标题更像个人开发经历而非明确产品发布，适合作为 AI 辅助游戏制作的弱需求信号；在缺少可体验功能与用户证据前不宜高估。"
+    },
+    {
+      "rank": 20,
+      "product": "Manhwa AI – Create webtoons with consistent AI characters",
+      "productKey": "https://www.manhwaai.net",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "角色一致性是 AI 漫画从单张生成走向连续叙事的核心痛点；值得看它是否提供可控角色设定、分镜迭代和跨章节资产管理。"
+    }
+  ]
+}

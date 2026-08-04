@@ -24,7 +24,8 @@
       "url": "https://openai.com/news/rss.xml",
       "home": "https://openai.com/news/research/",
       "weight": 14,
-      "maxItems": 20
+      "maxItems": 20,
+      "requireKnowledgeDepth": true
     },
     {
       "id": "anthropic",
@@ -120,7 +121,8 @@
       "weight": 15,
       "maxItems": 30,
       "discoveredVia": "gmail",
-      "accessPolicy": "gmail_subscription"
+      "accessPolicy": "gmail_subscription",
+      "requireAiRelevance": true
     },
     {
       "id": "pragmatic_engineer",

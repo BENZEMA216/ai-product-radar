@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-08-04T17:40:22.316Z",
+  "report": "2026-08-05.md",
+  "health": "quality/knowledge-source-health/2026-08-05.json",
+  "candidates": "quality/knowledge-candidates/2026-08-05.json",
+  "site": "docs/index.html",
+  "ok": true,
+  "date": "2026-08-05",
+  "rows": 20,
+  "blogCount": 16,
+  "paperCount": 4,
+  "blogAccessVerifiedCount": 16,
+  "topConferencePaperCount": 4,
+  "sourceCount": 15,
+  "candidatePool": {
+    "historicalLinkCount": 178,
+    "blogFetchedCount": 97,
+    "blogAccessCheckedCount": 16,
+    "blogAccessVerifiedCount": 16,
+    "blogAccessRejectedCount": 0,
+    "blogAccessRejected": [],
+    "paperFetchedCount": 80,
+    "paperTopConferenceVerifiedCount": 80,
+    "blogAfterHistoricalDedupCount": 16,
+    "paperAfterHistoricalDedupCount": 76,
+    "eligibleAfterHistoricalDedupCount": 92,
+    "shortfallReason": ""
+  },
+  "failures": []
+}

@@ -1,0 +1,169 @@
+{
+  "generatedAt": "2026-08-04T17:36:40.693Z",
+  "date": "2026-08-05",
+  "window": {
+    "start": "2026-07-05T17:36:40.693Z",
+    "end": "2026-08-04T17:36:40.693Z",
+    "lookbackDays": 30
+  },
+  "targetCount": 20,
+  "desiredBlogCount": 16,
+  "minimumBlogCount": 16,
+  "minimumTotalCount": 18,
+  "maximumPaperCount": 4,
+  "desiredPaperCount": 4,
+  "selectedCount": 20,
+  "blogCount": 16,
+  "paperCount": 4,
+  "candidatePool": {
+    "historicalLinkCount": 178,
+    "blogFetchedCount": 97,
+    "blogAccessCheckedCount": 16,
+    "blogAccessVerifiedCount": 16,
+    "blogAccessRejectedCount": 0,
+    "blogAccessRejected": [],
+    "paperFetchedCount": 80,
+    "paperTopConferenceVerifiedCount": 80,
+    "blogAfterHistoricalDedupCount": 16,
+    "paperAfterHistoricalDedupCount": 76,
+    "eligibleAfterHistoricalDedupCount": 92,
+    "shortfallReason": ""
+  },
+  "blogAccessPolicy": {
+    "allowedModes": [
+      "public",
+      "gmail_subscription"
+    ],
+    "gmailGrantCount": 4,
+    "privateIdentifiersPersisted": false
+  },
+  "topConferenceAllowlist": [
+    "NeurIPS",
+    "ICML",
+    "ICLR",
+    "ACL",
+    "EMNLP",
+    "NAACL",
+    "CVPR",
+    "ICCV",
+    "ECCV",
+    "AAAI",
+    "IJCAI",
+    "KDD",
+    "SIGIR",
+    "WWW",
+    "CHI",
+    "SOSP",
+    "OSDI",
+    "NSDI"
+  ],
+  "sources": {
+    "openai_news": {
+      "label": "OpenAI",
+      "status": "ok",
+      "rawCount": 1109,
+      "keptCount": 15,
+      "note": "30 天窗口"
+    },
+    "anthropic": {
+      "label": "Anthropic Research & Engineering",
+      "status": "ok",
+      "rawCount": 509,
+      "keptCount": 12,
+      "note": "30 天窗口"
+    },
+    "deepmind": {
+      "label": "Google DeepMind",
+      "status": "ok",
+      "rawCount": 100,
+      "keptCount": 8,
+      "note": "30 天窗口"
+    },
+    "simon_willison": {
+      "label": "Simon Willison",
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 6,
+      "note": "30 天窗口"
+    },
+    "lilian_weng": {
+      "label": "Lil'Log · Lilian Weng",
+      "status": "ok",
+      "rawCount": 53,
+      "keptCount": 0,
+      "note": "30 天窗口"
+    },
+    "chip_huyen": {
+      "label": "Chip Huyen",
+      "status": "ok",
+      "rawCount": 10,
+      "keptCount": 0,
+      "note": "30 天窗口"
+    },
+    "eugene_yan": {
+      "label": "Eugene Yan",
+      "status": "ok",
+      "rawCount": 212,
+      "keptCount": 0,
+      "note": "30 天窗口"
+    },
+    "cloudflare_ai": {
+      "label": "Cloudflare",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 11,
+      "note": "30 天窗口"
+    },
+    "latent_space": {
+      "label": "Latent Space",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 16,
+      "note": "30 天窗口"
+    },
+    "interconnects": {
+      "label": "Interconnects",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 5,
+      "note": "30 天窗口"
+    },
+    "lennys_newsletter": {
+      "label": "Lenny's Newsletter",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 13,
+      "note": "30 天窗口；由 Gmail 订阅发现后改用公开 RSS"
+    },
+    "pragmatic_engineer": {
+      "label": "The Pragmatic Engineer",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 10,
+      "note": "30 天窗口；由 Gmail 订阅发现后改用公开 RSS"
+    },
+    "funeral_ai": {
+      "label": "葬AI",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 0,
+      "note": "30 天窗口；由 Gmail 订阅发现后改用公开 RSS"
+    },
+    "gmail_newsletters": {
+      "label": "Gmail Newsletter",
+      "status": "ok",
+      "rawCount": 4,
+      "keptCount": 4,
+      "accessGrantCount": 4,
+      "note": "只读取已清洗的公开 canonical URL 与订阅权限结论；不写入邮件 ID、收件地址或 Gmail 内部链接"
+    },
+    "semantic_scholar_top_conferences": {
+      "label": "顶会论文 · Semantic Scholar",
+      "status": "ok",
+      "rawCount": 109,
+      "keptCount": 80,
+      "rejectedCount": 29,
+      "note": "仅保留 Semantic Scholar 明确标记为 conference 且命中顶会白名单的论文；无会议证据的 arXiv/HF 热榜不进入候选"
+    }
+  }
+}
