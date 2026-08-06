@@ -1,0 +1,43 @@
+{
+  "generatedAt": "2026-08-06T16:22:15.004Z",
+  "report": "2026-08-07.md",
+  "health": "quality/knowledge-source-health/2026-08-07.json",
+  "candidates": "quality/knowledge-candidates/2026-08-07.json",
+  "site": "docs/index.html",
+  "ok": true,
+  "date": "2026-08-07",
+  "rows": 20,
+  "blogCount": 16,
+  "paperCount": 4,
+  "blogAccessVerifiedCount": 16,
+  "topConferencePaperCount": 4,
+  "sourceCount": 17,
+  "candidatePool": {
+    "historicalLinkCount": 218,
+    "blogFetchedCount": 116,
+    "blogAccessCheckedCount": 26,
+    "blogAccessVerifiedCount": 25,
+    "blogAccessRejectedCount": 1,
+    "blogAccessRejected": [
+      {
+        "sourceId": "deepmind",
+        "title": "WeatherNext: AI model achieves breakthrough in forecasting cyclones",
+        "link": "https://deepmind.google/blog/weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones",
+        "reason": "fetch failed"
+      }
+    ],
+    "paperFetchedCount": 80,
+    "paperTopConferenceVerifiedCount": 80,
+    "blogAfterHistoricalDedupCount": 25,
+    "paperAfterHistoricalDedupCount": 68,
+    "eligibleAfterHistoricalDedupCount": 93,
+    "maxPerBlogSource": 2,
+    "selectedBlogSourceCounts": {
+      "cloudflare_ai": 2,
+      "vercel_ai": 14
+    },
+    "sourceCapRelaxed": true,
+    "shortfallReason": ""
+  },
+  "failures": []
+}

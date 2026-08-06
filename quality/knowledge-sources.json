@@ -102,6 +102,7 @@
       "weight": 13,
       "maxItems": 20,
       "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
       "requireKnowledgeDepth": true
     },
     {
@@ -136,6 +137,9 @@
       "home": "https://www.latent.space/",
       "weight": 11,
       "maxItems": 16,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true,
       "accessPolicy": "gmail_subscription"
     },
     {
