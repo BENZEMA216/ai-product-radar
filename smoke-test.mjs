@@ -44,7 +44,8 @@ import {
   parseFeed,
   matchTopConference,
   normalizeSemanticScholarPapers,
-  normalizeGmailNewsletterItems
+  normalizeGmailNewsletterItems,
+  normalizeHckerNewsItems
 } from "./knowledge-runner.mjs";
 import { auditKnowledge } from "./knowledge-audit.mjs";
 import { buildFeedbackSnapshot, isRadarFeedbackIssue, parseFeedbackIssue } from "./feedback-runner.mjs";
@@ -3816,6 +3817,59 @@ function testKnowledgeFeedParserFixture() {
   assert.match(items[0].summary, /Architecture/);
 }
 
+async function testHckerNewsKnowledgeFixture() {
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <entry>
+    <title>Eight Myths on Software Engineering and GenAI</title>
+    <id>https://news.ycombinator.com/item?id=49176830</id>
+    <updated>2026-08-04T23:50:52Z</updated>
+    <link rel="alternate" href="https://example.com/genai-myths"/>
+    <content type="html">&lt;p&gt;241 points by tchalla | 200 comments&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Show HN: New AI coding agent</title>
+    <id>https://news.ycombinator.com/item?id=49173984</id>
+    <updated>2026-08-04T19:44:55Z</updated>
+    <link rel="alternate" href="https://example.com/show-hn-agent"/>
+    <content type="html">&lt;p&gt;145 points by author | 43 comments&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>When AI Benchmarks Plateau: A Systematic Study</title>
+    <id>https://news.ycombinator.com/item?id=49170915</id>
+    <updated>2026-08-04T16:10:39Z</updated>
+    <link rel="alternate" href="https://arxiv.org/abs/2602.16763"/>
+    <content type="html">&lt;p&gt;102 points by doppp | 100 comments&lt;/p&gt;</content>
+  </entry>
+</feed>`;
+  const parsed = parseFeed(xml, { id: "hcker_news_ai_blogs", label: "Hacker News · hcker.news" });
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async (url) => {
+    assert.equal(String(url), "https://example.com/genai-myths");
+    return new Response(
+      '<html><head><link rel="canonical" href="https://example.com/genai-myths?utm_source=hn"><meta name="description" content="An analysis of eight myths about generative AI, software engineering, evaluation, and developer productivity."></head><body><main>This public article examines controlled evidence, engineering tradeoffs, adoption data, failure modes, benchmark design, and the limits of common claims about generative AI. It gives teams concrete mechanisms and evaluation questions they can reuse in production decisions.</main></body></html>',
+      { status: 200, headers: { "content-type": "text/html" } }
+    );
+  };
+  try {
+    const items = await normalizeHckerNewsItems(
+      parsed,
+      { weight: 13, minimumPoints: 80, probeItems: 20, maxItems: 8 },
+      new Date("2026-08-04T00:00:00Z"),
+      new Date("2026-08-05T12:00:00Z"),
+      new Date("2026-08-05T12:00:00Z")
+    );
+    assert.equal(items.length, 1);
+    assert.equal(items[0].link, "https://example.com/genai-myths");
+    assert.equal(items[0].evidenceLink, "https://news.ycombinator.com/item?id=49176830");
+    assert.deepEqual(items[0].hnMetrics, { points: 241, comments: 200 });
+    assert.equal(items[0].access.mode, "public");
+    assert.match(items[0].core, /software engineering/);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+}
+
 function testGmailNewsletterFixture() {
   const items = normalizeGmailNewsletterItems(
     {
@@ -4177,7 +4231,11 @@ async function testEndToEndFixture() {
   let result;
   try {
     for (const key of skipKeys) process.env[key] = "1";
-    result = await runRadar({ now: "2026-05-31T08:02:13+08:00", hours: 24 });
+    result = await runRadar({
+      now: "2026-05-31T08:02:13+08:00",
+      hours: 24,
+      qualityMemory: false
+    });
   } finally {
     for (const key of skipKeys) {
       if (previousValues[key] === undefined) delete process.env[key];
@@ -4214,7 +4272,16 @@ async function testEndToEndFixture() {
 function testCliOutput() {
   const stdout = execFileSync(
     "node",
-    ["radar.mjs", "--now", "2026-05-31T08:02:13+08:00", "--hours", "24", "--json"],
+    [
+      "radar.mjs",
+      "--now",
+      "2026-05-31T08:02:13+08:00",
+      "--hours",
+      "24",
+      "--json",
+      "--no-history-filter",
+      "--no-quality-memory"
+    ],
     {
       encoding: "utf8",
       timeout: 30000,
@@ -4367,6 +4434,7 @@ const tests = [
   ["Site builder normalizes archived Product Hunt why copy", testSiteBuilderNormalizesArchivedProductHuntWhyCopy],
   ["Live check skip classifier", testLiveCheckSkipClassifier],
   ["Knowledge feed parser fixture", testKnowledgeFeedParserFixture],
+  ["hcker.news Knowledge filtering fixture", testHckerNewsKnowledgeFixture],
   ["Gmail newsletter normalization fixture", testGmailNewsletterFixture],
   ["Knowledge paper mapping and audit fixture", testKnowledgePaperAndAuditFixture],
   ["HN Algolia", testHnAlgolia],

@@ -95,6 +95,43 @@ const PRODUCT_ONLY_TERMS = [
   "推出"
 ];
 
+const HCKER_KNOWLEDGE_TERMS = [
+  ...KNOWLEDGE_TERMS,
+  "myth",
+  "myths",
+  "demand",
+  "market",
+  "bubble",
+  "tradeoff",
+  "trade-off",
+  "failure",
+  "failures",
+  "postmortem",
+  "case study",
+  "需求",
+  "市场",
+  "泡沫",
+  "权衡",
+  "失败",
+  "案例"
+];
+
+const HCKER_NON_BLOG_HOSTS = [
+  "arxiv.org",
+  "openreview.net",
+  "semanticscholar.org",
+  "doi.org",
+  "dl.acm.org",
+  "github.com",
+  "gitlab.com",
+  "x.com",
+  "twitter.com",
+  "youtube.com",
+  "youtu.be",
+  "news.ycombinator.com",
+  "hcker.news"
+];
+
 const TOPIC_BOOSTS = [
   [/agent|agentic|harness|tool use|computer use|智能体/i, 12],
   [/eval|benchmark|evaluation|测评|评测|基准/i, 10],
@@ -196,6 +233,7 @@ export function parseFeed(xml, source = {}) {
       const summary = tagValue(block, ["description", "summary", "content:encoded", "content"]);
       const publishedAt = isoDate(tagValue(block, ["published", "pubDate", "dc:date", "updated"]));
       const author = tagValue(block, ["dc:creator", "author", "name"]);
+      const feedId = tagValue(block, ["id", "guid"]);
       if (!title || !link || !publishedAt) return null;
       return {
         kind: "blog",
@@ -205,10 +243,94 @@ export function parseFeed(xml, source = {}) {
         link,
         publishedAt,
         author,
-        summary
+        summary,
+        evidenceLink: /^https:\/\/news\.ycombinator\.com\/item\?id=\d+$/i.test(feedId) ? feedId : ""
       };
     })
     .filter(Boolean);
+}
+
+function canonicalLinkValue(html) {
+  const match = String(html || "").match(
+    /<link\b[^>]*\brel=["']canonical["'][^>]*\bhref=["']([^"']+)["'][^>]*\/?>/i
+  );
+  return match ? decodeXml(match[1]).trim() : "";
+}
+
+function hckerPopularity(summary) {
+  const text = stripHtml(summary);
+  const match = text.match(/(\d[\d,]*)\s+points?\b[\s\S]*?\|\s*(\d[\d,]*)\s+comments?\b/i);
+  return {
+    points: Number(String(match?.[1] || "0").replace(/,/g, "")),
+    comments: Number(String(match?.[2] || "0").replace(/,/g, ""))
+  };
+}
+
+function hckerExternalBlogLink(value) {
+  try {
+    const url = new URL(value);
+    const host = url.hostname.toLowerCase();
+    if (!["http:", "https:"].includes(url.protocol)) return false;
+    if (HCKER_NON_BLOG_HOSTS.some((blocked) => host === blocked || host.endsWith(`.${blocked}`))) return false;
+    if (/\.pdf$/i.test(url.pathname)) return false;
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function hckerKnowledgeDepth(item) {
+  const text = `${item.title} ${item.summary}`.toLowerCase();
+  return includesAny(text, HCKER_KNOWLEDGE_TERMS);
+}
+
+export async function normalizeHckerNewsItems(items, source, start, end, now = end) {
+  const minimumPoints = Math.max(0, Number(source.minimumPoints || 80));
+  const probeLimit = Math.max(1, Number(source.probeItems || 20));
+  const candidates = items
+    .filter((item) => withinWindow(item.publishedAt, start, end))
+    .filter((item) => !/^\s*(?:Show|Launch) HN:/i.test(item.title))
+    .filter((item) => hckerExternalBlogLink(item.link))
+    .map((item) => ({ item, popularity: hckerPopularity(item.summary) }))
+    .filter(({ popularity }) => popularity.points >= minimumPoints)
+    .slice(0, probeLimit);
+  const settled = await Promise.allSettled(
+    candidates.map(async ({ item, popularity }) => {
+      const html = await fetchText(item.link, { attempts: 2, timeoutMs: 15000 });
+      if (blockedBlogPage(html)) return null;
+      const canonical = publicKnowledgeLink(canonicalLinkValue(html) || item.link);
+      const summary = metaValue(html, ["description", "og:description", "twitter:description"]);
+      if (!canonical || !summary) return null;
+      const enriched = {
+        ...item,
+        link: canonical,
+        summary,
+        origin: "hcker_news",
+        hnMetrics: popularity,
+        access: {
+          verified: true,
+          mode: "public",
+          checkedAt: now.toISOString(),
+          evidence: "hcker_news_feed_and_live_article"
+        }
+      };
+      if (!isAiRelevant(enriched, { requireAiRelevance: true }) || !hckerKnowledgeDepth(enriched)) return null;
+      const popularityBoost =
+        Math.min(14, Math.log10(popularity.points + 1) * 5) +
+        Math.min(6, Math.log10(popularity.comments + 1) * 2);
+      return {
+        ...enriched,
+        score: scoreBlog(enriched, source, now) + popularityBoost,
+        core: compactSummary(summary),
+        why: knowledgeWhy(enriched)
+      };
+    })
+  );
+  return settled
+    .filter((result) => result.status === "fulfilled" && result.value)
+    .map((result) => result.value)
+    .sort((a, b) => b.score - a.score || b.publishedAt.localeCompare(a.publishedAt))
+    .slice(0, Number(source.maxItems || 8));
 }
 
 function metaValue(html, names) {
@@ -363,6 +485,13 @@ async function fetchFeedSource(source, start, end, now) {
     .sort((a, b) => b.score - a.score || b.publishedAt.localeCompare(a.publishedAt))
     .slice(0, Number(source.maxItems || 20));
   return { rawCount: raw.length, items: kept };
+}
+
+async function fetchHckerNewsSource(source, start, end, now) {
+  const xml = await fetchText(source.url, { timeoutMs: 25000 });
+  const raw = parseFeed(xml, source);
+  const items = await normalizeHckerNewsItems(raw, source, start, end, now);
+  return { rawCount: raw.length, items };
 }
 
 function sitemapRecords(xml) {
@@ -924,6 +1053,8 @@ export async function runKnowledgeRadar(options = {}) {
       const result =
         source.type === "sitemap"
           ? await fetchSitemapSource(source, start, now, now)
+          : source.type === "hcker_news"
+            ? await fetchHckerNewsSource(source, start, now, now)
           : await fetchFeedSource(source, start, now, now);
       return { source, result };
     })
@@ -937,7 +1068,10 @@ export async function runKnowledgeRadar(options = {}) {
         status: "ok",
         rawCount: settled.value.result.rawCount,
         keptCount: settled.value.result.items.length,
-        note: `${days} 天窗口${source.discoveredVia === "gmail" ? "；由 Gmail 订阅发现后改用公开 RSS" : ""}`
+        note:
+          source.type === "hcker_news"
+            ? `hcker.news 滚动 24 小时 AI 外链；HN 分数至少 ${Number(source.minimumPoints || 80)}，排除 Show/Launch HN、代码仓库与论文链接`
+            : `${days} 天窗口${source.discoveredVia === "gmail" ? "；由 Gmail 订阅发现后改用公开 RSS" : ""}`
       };
     } else {
       sourceHealth[source.id] = {

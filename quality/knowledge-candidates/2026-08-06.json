@@ -1,0 +1,432 @@
+{
+  "generatedAt": "2026-08-06T12:42:28.028Z",
+  "date": "2026-08-06",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "How Speechify serves 500,000 dynamic pages to 60 million users on Vercel",
+      "link": "https://vercel.com/customers/how-speechify-serves-50000-dynamic-pages-to-60-million-users-on-vercel",
+      "publishedAt": "2026-07-15T04:00:00.000Z",
+      "author": "Susan Aziz",
+      "summary": "Speechify on Vercel 500,000+ pages served across 40+ languages Cut costs 50% by auto-scaling with Fluid compute Zero user impact on bad deploys with Instant Rollbacks Speechify started as a tool for people with dyslexia. Cliff Weitzman, Founder & CEO, built it because reading was challenging and audio made it much easier. That initial use case led Speechify to tens of millions of users and an Apple Design Award for inclusion. The product has since grown into something much larger: an AI work platform where 60 million people listen to documents, delegate tasks to agents, and complete work entirely through voice. But the journey wasn't easy. Early on, they got hacked, and for half a day, every visitor was redirected to a casino website. After that, Denis Chernobai, Head of Growth Engineering, knew it was time to re-evaluate their infrastructure stack. He decided to rebuild from scratch on Next.js and Vercel, and they ended up serving 40 times more pages, reaching a global audience three times larger, and achieving a 50% cost reduction. Since migrating to Vercel, Speechify has maintained 99.99% uptime and hasn't had a single security incident. The cost of serving 500,000 dynamic pages Speechify's website is its primary growth engine, with 10,000 base pages translated into 40+ languages across onboarding funnels, localized landing pages, and pricing experiments that change constantly. Static generation isn't an option because the content changes too frequently. But serving everything dynamically means every visitor is a potential database read, which compounds fast at hundreds of thousands of visits every day. Vercel's Data Cache, ISR, and Next.js Cache Components resolve both problems at once. Pages render dynamically on first visit, cache immediately, and serve from the closest point of presence until something changes. The result is a global growth engine that scales without the infrastructure costs scaling with it. The risk of shipping to 60 million users Instant Rollbacks: ship fast, fix faster Speechify's growth team ships constantly. New funnels and A/B experiments are deployed every few days to a user base of millions who expect everything to work. At that scale, a bad release isn't a bug for developers to fix. It's a revenue problem that can show up before anyone has time to react. Before Vercel, a bad release meant scrambling to patch it before it became an incident. That shift from deploying with dread to deploying with confidence is what enables a small growth team to operate at a speed that would otherwise require a much larger team. The cost of moving slower than the market Next.js on Vercel: from code to global delivery When AI moves this fast, you need to constantly ship to stay competitive, and capabilities evolve rapidly, often every few weeks. \"We see new voice functionality and agents emerging that didn't exist just last month,\" said Rohan Pavuluri, Speechify's Chief Business Officer. Each week that an idea remains unimplemented is a week someone else might bring it to life first. With Next.js on Vercel, the only hurdle to turning an idea into reality is the code itself. Speechify ships on Next.js with continuous deployments. The growth team doesn't have a dedicated platform engineering function and doesn't need one. Security patches apply automatically, infrastructure scales to demand with Fluid compute , and there's no deployment pipeline to maintain. What's next Speechify is expanding into new international markets and shipping new AI capabilities to millions of users. Most recently, they launched SpeechifyAI , a developer platform bringing the same voice technology behind their consumer success to builders via API, and its flagship Simba 3.2 model ranks number one on the Artificial Analysis text-to-speech leaderboard as of July 2026. As the product grows and the user base expands, Vercel is scaling with it, from cached pages to continuous deployments on a platform that lets their small, focused engineering team compete with companies ten times their size. About Speechify: Speechify is an AI work platform helping people consume content through voice and delegate work to AI agents. Its developer platform, SpeechifyAI , offers the #1-ranked text-to-speech models on Artificial Analysis via API, as of July 2026. Read more",
+      "evidenceLink": "",
+      "score": 94,
+      "core": "Speechify on Vercel 500,000+ pages served across 40+ languages Cut costs 50% by auto-scaling with Fluid compute Zero user impact on bad deploys with Instant Rollbacks Speechify started as a tool for people with dyslexia. Cliff Weitzman, Founder & CEO, built it because reading was challenging and audio made it much easier. That initial use case led Speechify to tens of millions of users and an Apple Design Award for …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-06T12:42:28.028Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "simon_willison",
+      "source": "Simon Willison",
+      "title": "One-shotting a Raccoon Heist game using Claude Fable 5",
+      "link": "https://simonwillison.net/2026/Aug/5/raccoon-heist",
+      "publishedAt": "2026-08-05T19:42:38.000Z",
+      "author": "",
+      "summary": "Back in 2024 I tweeted screenshots of a game concept generated by GPT-3 and some concept \"art\" created using DALL-E. Today, on the fourth anniversary of that tweet, I decided to see if Claude Fable 5 (running in Claude Code for web ) could build the entire game from the content of that tweet. It did a pretty good job of it! You can play the game here . Here's the GitHub repo , and a short video demo: Your browser does not support HTML5 video. How I built this This is the August 5th, 2022 tweet : My GPT-3 prompt back then was: Write a detailed product description of a computer game where a team of raccoons go on heists. This was in the text completion days, where you asked GPT-3 to complete the rest of the text. It completed: In \"Raccoon Heist\", you and your team of thieving raccoons are tasked with pulling off a series of daring heists. From robbing banks to stealing priceless art, no job is too big or too small for your furry crew. You'll need to use your wits and your skills to avoid the police and make a clean getaway with the loot. With exciting gameplay and a charming cast of characters, \"Raccoon Heist\" is the perfect game for anyone looking for a light-hearted caper. My prompt to DALL-E was short: Screenshot from a video game where a team of raccoons go on a heist Today's experiment: can I dump those screenshots into Fable 5 with a prompt telling it to write a game, then leave it to its own devices and get a working game at the end? Setting Claude Code for web up to use GitHub Pages A frustrating thing about Claude Code for web is that it can be hard to test what it's working on while it's still working. I've been using GitHub Pages to work around that limitation, and found it to work really well. Here's my process: Create a new repository for the project at https://github.com/new - this can be public or private, the trick works equally well for both. Start a Claude Code for web session, in the Claude iPhone or Desktop apps or in the browser at https://claude.ai/code Tell Claude what to work on, and encourage it to commit an index.html page as quickly as possible. This will create a branch with a name like claude/3d-raccoon-heist-game-50n293 Navigate to the Settings -> Pages area for the repository ( github.com/simonw/raccoon-heist/settings/pages in my case), select \"Deploy from a branch\", pick the branch name, and hit Save. That's all it takes! Within about 30 seconds of each push the latest content will be visible at yourname.github.io/your-repo/ . If you do this with a private repo, anyone who can guess the name of the repo will be able to view the published content. I don't worry much about this myself. The Fable 5 prompt Here's the prompt I gave Fable 5 (written in the notes app on my phone - this entire project was conducted on mobile). I accompanied it with the two images from the original tweet. Build this 3D game, for the browser. This repo is configured to serve static files so make sure there is an index.html that loads everything else. Make sure it is mobile-friendly (touch controls, works well on small screens). You have an OpenAI API key and access to their image generation model APIs, use that for textures to use with your 3D models. Docs here: https://developers.openai.com/api/docs/guides/image-generation - use gpt-image-2 Work independently - do not ask me to make any further design decisions. Make sure the game is fun, a little surprising, has good raccoon heist vibes, and is visually pleasing. Commit and push as often as possible so I can preview your work - start with an index.html that presents a title screen, then build from there. Append to a notes.md file as you work, including your changes to that as part of every commit. I didn't make any technology choices. I assumed (correctly) that it would probably use Three.js based on previous experiments. Giving Claude access to an OpenAI key turns out to work really well for filling in gaps in its capabilities - in this case we needed some way to generate images to use as textures. Fable is very good at prompting image generators! I said \"Work independently - do not ask me to make any further design decisions\" because I wanted to see if it could produce a full, working game without any further input from me. I also said \"Commit and push as often as possible so I can preview your work\". When you use Claude Code in the Claude iPhone app you give it a GitHub repository and it works in a branch. Telling it to \"push as often as possible\" means commits start landing in that branch straight away. I like asking for notes.md as a bit of added flavor - here's that finished file , and the entry it made when it added the dog: New escalation: from night 3 the yards get a patrolling guard dog — a low-poly brown hound with a spiked red collar and a wagging tail. It wanders between random spots, and within 12 units it catches your scent and tracks you by smell (line of sight is irrelevant — it's all nose, shown by a 👃 over its head and barking). It gives up if you open a 17-unit gap. Getting caught messages are now source-specific: guard / headlights / hound. Verified wander → track → caught with an automated test. Reviewing the transcript You can access the Claude Code shared session , and I also used my claude-code-transcripts tool to export my own HTML version which you can find here . Fable started with an index page, vendored a copy of Three.js, then wrote its own gen_textures.py script ( copy here ). It generated the textures and spot-checked them to make sure they looked OK. The metal.jpg file it generated for the trash can looks like this, though I don't think it was applied exactly right in the game itself: Then it built out the first basic version of the game, then decided to \"smoke-test in the pre-installed Chromium\" using Playwright. This meant it could take screenshots of its own work and eyeball them . It did that for both desktop and mobile widths of the page, then noticed that the raccoon was invisible at mobile widths, so it fixed that : The raccoon, dumpster hideout, and both crew raccoons are now perfectly visible on mobile. Committing this critical fix. It decided to generate a title screen, which it did using this gen_title.py script. Here's the gpt-image-2 prompt it used for that: Video game key art, low-poly 3D render style, moody nighttime scene: a cute low-poly raccoon wearing a tiny black burglar mask sneaking on its hind legs carrying a glowing gold coin, next to a tipped-over metal trash can, suburban house with warm glowing windows in the background, deep blue night, full moon, fireflies, cinematic rim lighting, charming heist caper mood. No text, no words, no logos. And the resulting image (which Claude thought was \"gorgeous\" ) - though I note that when it's shown on desktop it gets cropped to just the top third without the raccoon! Then my favorite change: it added the dog : export function makeDog ( ) { const g = new THREE . Group ( ) ; const BROWN = 0x8a6440 , DARK = 0x5e4128 ; const body = new THREE . Mesh ( new THREE . SphereGeometry ( 0.42 , 10 , 8 ) , M ( BROWN ) ) ; body . scale . set ( 0.9 , 0.8 , 1.5 ) ; body . position . y = 0.55 ; body . castShadow = true ; g . add ( body ) ; const head = new THREE . Mesh ( new THREE . SphereGeometry ( 0.3 , 10 , 8 ) , M ( BROWN ) ) ; head . position . set ( 0 , 0.85 , 0.62 ) ; g . add ( head ) ; const snout = new THREE . Mesh ( new THREE . SphereGeometry ( 0.16 , 8 , 6 ) , M ( DARK ) ) ; snout . scale . set ( 0.9 , 0.7 , 1.3 ) ; snout . position . set ( 0 , 0.76 , 0.9 ) ; g . add ( snout ) ; const nose = new THREE . Mesh ( new THREE . SphereGeometry ( 0.06 , 6 , 6 ) , M ( BLACK ) ) ; nose . position . set ( 0 , 0.78 , 1.08 ) ; g . add ( nose ) ; for ( const s of [ - 1 , 1 ] ) { const ear = new THREE . Mesh ( new THREE . SphereGeometry ( 0.12 , 6 , 6 ) , M ( DARK ) ) ; ear . scale . set ( 0.7 , 1.3 , 0.5 ) ; ear . position . set ( 0.2 * s , 1.08 , 0.55 ) ; g . add ( ear ) ; const eye = new THREE . Mesh ( new THREE . SphereGeometry ( 0.05 , 6 , 6 ) , M ( 0x1a1a1a , { emissive : 0x331111 } ) ) ; eye . position . set ( 0.13 * s , 0.92 , 0.86 ) ; g . add ( eye ) ; } const tail = new THREE . Mesh ( new THREE . CylinderGeometry ( 0.05 , 0.09 , 0.5 , 6 ) , M ( DARK ) ) ; tail . position . set ( 0 , 0.8 , - 0.62 ) ; tail . rotation . x = 0.8 ; g . add ( tail ) ; // spiked collar const collar = new THREE . Mesh ( new THREE . TorusGeometry ( 0.22 , 0.05 , 6 , 12 ) , M ( 0xc0392b ) ) ; collar . position . set ( 0 , 0.78 , 0.5 ) ; collar . rotation . x = Math . PI / 2.4 ; g . add ( collar ) ; const legGeo = new THREE . CylinderGeometry ( 0.07 , 0.09 , 0.34 , 6 ) ; const legs = [ ] ; for ( const [ x , z ] of [ [ - 0.22 , 0.35 ] , [ 0.22 , 0.35 ] , [ - 0.22 , - 0.35 ] , [ 0.22 , - 0.35 ] ] ) { const leg = new THREE . Mesh ( legGeo , M ( DARK ) ) ; leg . position . set ( x , 0.17 , z ) ; g . add ( leg ) ; legs . push ( leg ) ; } let phase = Math . random ( ) * 10 ; return { group : g , animate ( dt , speed ) { phase += dt * ( 3 + speed * 10 ) ; const amp = Math . min ( 0.6 , 0.1 + speed * 0.6 ) ; legs [ 0 ] . rotation . x = Math . sin ( phase ) * amp ; legs [ 3 ] . rotation . x = Math . sin ( phase ) * amp ; legs [ 1 ] . rotation . x = - Math . sin ( phase ) * amp ; legs [ 2 ] . rotation . x = - Math . sin ( phase ) * amp ; tail . rotation . z = Math . sin ( phase * 1.5 ) * 0.4 ; body . position . y = 0.55 + Math . abs ( Math . sin ( phase ) ) * 0.04 * ( 0.3 + speed ) ; } , } ; } And did a round of testing on it using Playwright, including another screenshot . // walk near the dog await page . evaluate ( ( ) => { const d = window . __rh . dog ; window . __rh . teleport ( d . x + 6 , d . z ) ; } ) ; await page . waitForTimeout ( 2000 ) ; info = await page . evaluate ( ( ) => JSON . stringify ( { dog : window . __rh . dog , state : window . __rh . state , player : window . __rh . debug ( ) . player } ) ) ; console . log ( 'after approach:' , info ) ; await page . waitForTimeout ( 3000 ) ; info = await page . evaluate ( ( ) => JSON . stringify ( { dog : window . __rh . dog , state : window . __rh . state } ) ) ; console . log ( 'after chase:' , info ) ; await page . screenshot ( { path : __dirname + '/shot-dog.png' } ) ; It made a few more tweaks, then declared itself done : Raccoon Heist is built, tested, and pushed — 7 commits on claude/3d-raccoon-heist-game-50n293 , all verified with automated Playwright playthroughs on desktop, portrait-phone, and landscape-phone viewports. The game: You're a masked raccoon sneaking out of your crew's dumpster hideout into a moonlit cul-de-sac. Grab coins, gems, rings, donuts, and fish (they visibly stack on your back and slow you down), then waddle home and bank them before dawn. Each night raises the goal and the heat: night 1 has one flashlight-sweeping guard, night 2 has two, night 3 adds a scent-tracking hound that ignores line-of-sight entirely. A police cruiser sweeps the street with headlights, homeowners randomly peek out of windows, a seagull periodically dive-bombs your unclaimed loot, pizza slices trigger a 6-second speed FRENZY, and a rare golden TV is worth 120 points if you can haul its weight home. Win ranks: TRASH PANDA ⭐ → CAT BURGLAR ⭐⭐ → MASTER OF DISGUISE ⭐⭐⭐, with your best run saved to localStorage. How it's built: Vendored Three.js (no CDN), procedural low-poly characters, and a procedural WebAudio soundtrack (sneaky walking-bass jazz plus all sound effects — zero audio files). All seven ground/wall textures and the title-screen hero art were generated with gpt-image-2 and committed as static assets, so the deployed game makes no API calls. Mobile gets a dynamic touch joystick (appears wherever you touch) plus a DASH button; desktop uses WASD/arrows and Space. Testing caught two real bugs worth mentioning: the canvas rendered at 2× size on any real phone (a cssText assignment was wiping Three.js's inline sizing — desktop DPR-1 tests masked it completely), and the win screen's star-rating div inherited the title screen's full-screen .stars CSS and silently swallowed every tap on the \"next night\" button. Both are fixed and regression-tested, along with pickup, banking, chase/caught, dawn, night progression, and lose/retry flows. notes.md has the full build log. The game is live on the branch — just serve the repo root and open index.html . Is the game any good? It's an impressive starting point, but it's not a good game. You move your raccoon around a yard collecting items - donuts, fish, gold coins, jewels - while avoiding guards with flashlights and, in later levels, a dog. You have a limited carrying capacity, and once that's full you need to drop stuff off at the dumpster. If you pick up a pizza slice you get a temporary speed boost. There are no team mechanics at all - there are two other static raccoons next to the dumpster but they're purely decoration. It gets slightly more challenging as the levels progress - the dog introduced in level 3 is the most interesting new mechanic - but it's very, very easy to beat. It's also pretty boring - each night has a fixed duration and you can collect all of the items and then have nothing else to do while waiting for the dawn. I was impressed by the implementation. It's fully 3D, there are trash cans, the flashlight illumination cones are fun, and it has a reasonably coherent visual style. It works on mobile. The music (\"a procedural WebAudio soundtrack (sneaky walking-bass jazz plus all sound effects — zero audio files)\" according to Claude) is simple but feels about right. As a finished game project, it's mediocre. As a starting point from a single prompt I think it's very impressive. I've vibe coded up quite a few games now. They've all been deeply disappointing from a gameplay perspective - it turns out designing games that are fun remains a uniquely human trait, and one which requires significantly more skill and experience than either Claude or I can bring to bear. That said, I thoroughly recommend tinkering with game development projects as a way to explore the capabilities of agents. It's a fun, low-risk way to try out new things. If you stick at it long enough you might even produce something that's worth playing! You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
+      "evidenceLink": "",
+      "score": 83.78591214285714,
+      "core": "Back in 2024 I tweeted screenshots of a game concept generated by GPT-3 and some concept \"art\" created using DALL-E. Today, on the fourth anniversary of that tweet, I decided to see if Claude Fable 5 (running in Claude Code for web ) could build the entire game from the content of that tweet. It did a pretty good job of it! You can play the game here . Here's the GitHub repo , and a short video demo: Your browser do…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-06T12:42:28.028Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "simon_willison",
+      "source": "Simon Willison",
+      "title": "New release of LLM adds support for reasoning traces, OpenAI Responses, server-side tools, and smarter logging",
+      "link": "https://simonwillison.net/2026/Aug/4/new-release-of-llm",
+      "publishedAt": "2026-08-04T23:58:24.000Z",
+      "author": "",
+      "summary": "I released LLM 0.32 this morning, the most significant new version of LLM since the initial launch of the project. The new version includes support for visible reasoning traces, server-side provider tools, redesigned content-addressable SQLite logs, new models, and new features enabled by the OpenAI Responses API. I also released a new version of the llm-anthropic plugin with substantial updates of its own. Headline features for LLM CLI users Running LLM against reasoning models now displays their reasoning traces to standard error, so you can see what they are \"thinking\" without that information being included in the standard output that you might pipe to another tool. Add -R/--hide-reasoning to turn this off. LLM includes support out-of-the-box for the GPT-5.6 model family , and the new default model used with llm \"prompt\" is now the inexpensive but capable GPT-5.6 Luna . LLM calls can now use server-side tools from various providers. OpenAI provide a code execution environment as a server-side tool; LLM can now run prompts that benefit from that like so: llm --tool CodeInterpreter ' Show current python and SQLite versions ' OpenAI also gets a WebSearch tool. The llm-anthropic plugin adds WebSearch , WebFetch , CodeExecution , and AnthropicMCP , which looks like this: llm -m claude-sonnet-5 -T ' AnthropicMCP(\"https://datasette.simonwillison.net/-/mcp\") ' \\ ' how many rows in the blog_blogmark table? ' That causes Anthropic to execute MCP calls against my new datasette-mcp plugin as part of a single request/response interaction with their API. The new llm openai endpoint command provides a tool for executing prompts against any OpenAI compatible endpoint as a one-liner. These aren't logged, which makes this a handy tool for running one-off prompts against anything that speaks the lingua franca of the LLM API world. Here's how I use that to run prompts against Gemma 4 12B running in my localhost LM Studio API, via uvx (no LLM installation required) and mixing in the llm-tools-quickjs tool plugin for good measure: uvx --with llm-tools-quickjs \\ llm openai endpoint http://localhost:1234/v1 -m google/gemma-4-12b \\ -T QuickJS ' Use QuickJS to multiply 3434 * 2434 ' --td New features in the Python API LLM's Python API previously required you to create a conversation and then send messages to it one at a time. This was an abstraction over the true nature of LLMs, where each request carries a complete history of the messages that came before it. That abstraction started to get in the way for some more advanced cases, so the new release introduces a model.prompt(messages=[]) parameter that can be used like this: import llm from llm import user , assistant , system model = llm . get_model ( \"gpt-5.6-luna\" ) response = model . prompt ( messages = [ system ( \"You are a helpful pirate.\" ), user ( \"What is the capital of France?\" ), assistant ( \"Paris, matey.\" ), user ( \"And Germany?\" ), ]) print ( response . text ()) LLM previously returned an iterable sequence of strings from each prompt. This worked great when models returned a string response, but failed to predict the weird shape that models would evolve towards. Today many models return a mix of reasoning text, output strings, tool calls, and even image attachments. With LLM 0.32 you can do this instead : for event in model . prompt ( \"Explain cats\" ). stream_events (): if event . type == \"reasoning\" : print ( f\"[thinking] { event . chunk } \" , end = \"\" , flush = True ) elif event . type == \"text\" : print ( event . chunk , end = \"\" , flush = True ) else : print ( f\"Other event: { event } \" ) Combine these features and we can finally provide a robust implementation of the semi-standard OpenAI chat completions API, which I've now released as the llm-chat-completions-server plugin: llm install llm-chat-completions-server llm chat-completions-server --port 9000 # Server is now running on http://127.0.0.1:9000/v1 Now you can run prompts against LLM via that server, using the new llm openai endpoint command! llm openai endpoint http://127.0.0.1:9000/v1 ' hello ' -m gpt-5.4-mini The bigger challenge with that kind of API concerns logging. If we're going to support the pattern where the message sequence is appended to on every request, ideally we can avoid logging all of that duplicate JSON for every turn. The solution is the new content-addressable message store , modeled after Git. You can see the new schema for that in the documentation , but the llm logs and llm logs --json commands have both been upgraded to convert that format back into something that's easy to consume. And the rest There is a whole lot more in this release. The 0.32 release notes are pretty comprehensive, and the notes for 0.32rc2 , 0.32rc , 0.32a3 , 0.32a2 , and 0.32a0 should fill in any gaps. Existing LLM plugins should all continue to work, but plugins that provide extra models will need to be upgraded to 0.32 in order to participate fully in the new streaming events system. There's a guide to implementing plugins with Structured messages and streaming events in the documentation. I've updated some of my own plugins: llm-anthropic 0.26 adds support for the Claude 5 family of models, plus WebSearch , WebFetch , CodeExecution , and AnthropicMCP server-side tools. llm-gemini and llm-openrouter and llm-mistral are nearly there, releases coming soon. I guess LLM is an agent framework now Quite a few of the lower-level tools changes in this release were driven by the needs of Datasette Agent . When I started work on LLM, the term \"agent\" had such a vague definition that I refused to use it. In September 2025 I came around to the idea that \" An LLM agent runs tools in a loop to achieve a goal \" is well established enough now that I could stop avoiding the term entirely. Tool chains can now pause for human approval and resume from a stored message history - both needed by Datasette Agent. Looking at LLM today it's beginning to look very agent-shaped to me. There's something neat about having a CLI utility that can mix and match different tools from different sources with different models all as a one-liner, and that includes a Python library powerful enough to build systems like Datasette Agent and llm-coding-agent . Maybe the next version of LLM will bake the concept of an \"agent\" into the core library. I'm still trying to figure out what that would look like. You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
+      "evidenceLink": "",
+      "score": 83.37611055555556,
+      "core": "I released LLM 0.32 this morning, the most significant new version of LLM since the initial launch of the project. The new version includes support for visible reasoning traces, server-side provider tools, redesigned content-addressable SQLite logs, new models, and new features enabled by the OpenAI Responses API. I also released a new version of the llm-anthropic plugin with substantial updates of its own. Headline…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-06T12:42:28.028Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "How Sandstone grew 40x in 147 days on Vercel",
+      "link": "https://vercel.com/customers/how-sandstone-grew-40x-in-147-days-on-vercel",
+      "publishedAt": "2026-07-27T14:00:00.000Z",
+      "author": "Susan Aziz",
+      "summary": "Sandstone on Vercel 1,000+ legal requests managed daily across customer teams 7-app turborepo monorepo deployed seamlessly to multiple Vercel projects Multi-step agentic legal workflows built end-to-end with AI SDK When in-house legal teams get a request from their business, it kicks off a manual process of pulling data from multiple systems. In a typical workflow, lawyers will pull deal details from Salesforce, review past contracts, and chase account teams for missing context, all before they start the legal work itself. Sandstone automates this data gathering process, and centralizes requests into a single platform. When a request is created, Sandstone automatically ingests context from every system, including messaging and email tools. By the time the lawyer sees it, they have all of the information they need to get to work. The founding team includes a McKinsey legal tech veteran, a lawyer-turned-engineer, and cybersecurity founder. At Sandstone, that mix shows up directly in the product: legal professionals work alongside engineers, catching the workflow details and legal nuances that only someone who has practiced law would notice. That is how Sandstone ships fast and correctly for one of the most demanding buyers in enterprise software. That attention to detail has paid off: in less than 6 months after their launch, their revenue grew 40x. Three things made their growth possible on Vercel: Preview deployments fast enough to win enterprise trust An AI layer flexible enough to ship agentic workflows in minutes Secure Compute that makes security a one-sentence answer Vercel deployments turned a Sunday request into a five-minute fix For Sandstone's customers, trust is built on responsiveness, and lawyers are trained to notice small details. Liam Germain, Co-Founder and CTO, puts it simply: when a customer asked for a scrollbar accessibility change on a Sunday, he had it live in production in five minutes. On any other platform, he said that same change would have taken five or ten times longer. Vercel deployments help with more than just fixes. Preview branches with inline commenting mean Sandstone's head of marketing can leave a note on a live landing page with Vercel Toolbar, which is configured to automatically creates a Linear issue and assigns it to engineering. What used to take an afternoon happens in a single comment. Vercel Flags runs feature flags across all applications, giving the team dynamic control over what is live, what is demoed, and what is still in progress, without touching a deployment. Sandstone runs a monorepo of over seven applications across multiple Vercel projects with clean environment variable linking and a custom CLI built on top of Vercel's API layer, and every push on every repo generates a preview of production. Without the right foundation, complexity kills velocity Sandstone's product started as smart triage, routing requests to the right lawyer. But the bigger opportunity was what happened when a request landed: every lawyer was still manually gathering context before they could act, pulling relevant details from a handful of separate systems, every time, for every request. Shipping a system that could handle that automatically required infrastructure capable of keeping pace with the product vision. AI SDK unlocks faster agentic workflows Sandstone has evolved into an AI system that executes complex, multi-step legal workflows end-to-end, searching through thousands of procurement agreements, surfacing the most at-risk agreements, alerting owners via Slack, and notifying legal when responses come in. Vercel's AI SDK is what makes those workflows composable enough for a small team to keep pace with a rapidly expanding product surface. The composability shows up across the entire stack. Chat SDK powers the Teams integration. Emulate SDK handles integration testing for Slack and Okta. Agent Browser SDK runs agentic testing locally. Flags SDK drives the toolbar integration. One SDK, four workflows, zero separate infrastructure. Vercel Secure Compute makes security a one-sentence answer Sandstone uses Vercel Secure Compute to establish private communication between Vercel and its data layer. The setup was straightforward to implement and well-architected enough that it became a point of confidence rather than friction in every enterprise conversation. When the security question comes up with customers and prospects, and it always does, the answer is simple: all communication between Vercel and Sandstone's data layer is private and never touches the public internet. Sandstone chooses platforms they believe will be ahead of the market in three to five years, a vendor evaluation framework they apply to both frontier model providers and core infrastructure. Sandstone connected with the Vercel team through the Sequoia startup partnership. Within ten days of starting the company, the program gave them a shared Slack channel and access to engineers who could help think through architecture decisions in real time. What’s next Less than 6 months after launch, Sandstone had grown revenue 40x and landed customers across technology, manufacturing, and ecommerce, leading to a $30M Series A led by Lightspeed. The team is already shipping fast, so the goal for using that capital is straightforward: get Sandstone into more legal departments. The vision they are building toward is a Legal Relationship Management platform that not only manages intake but also connects every workflow to the business context behind it, flags issues before they surface, and operationalizes legal knowledge through supervised agents. Sandstone describes this as a system of action for the legal department of the future. For a team shipping with speed toward that ambition, the infrastructure underneath the product has be a competitive advantage, not a burden, and that's why Sandstone runs on Vercel. About Sandstone : Sandstone was born out of the acute frustration experienced by in-house legal teams who spend more time on process than progress due to fragmentation across disparate business systems. The platform provides a comprehensive solution for intake, triage, execution, fulfillment, and measurement of legal work, designed to run across email, messaging, and the business tools teams already use. Read more",
+      "evidenceLink": "",
+      "score": 83,
+      "core": "Sandstone on Vercel 1,000+ legal requests managed daily across customer teams 7-app turborepo monorepo deployed seamlessly to multiple Vercel projects Multi-step agentic legal workflows built end-to-end with AI SDK When in-house legal teams get a request from their business, it kicks off a manual process of pulling data from multiple systems. In a typical workflow, lawyers will pull deal details from Salesforce, rev…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-06T12:42:28.028Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Introducing the new v0 API",
+      "link": "https://vercel.com/blog/introducing-the-new-v0-api",
+      "publishedAt": "2026-08-05T04:00:00.000Z",
+      "author": "Esteban Suárez",
+      "summary": "Today we're introducing the new v0 API : programmatic, headless access to v0's app-building agent. Send a prompt and v0 generates an app, starts a dev server in a Vercel Sandbox , and gives you a preview URL you can embed in your own UI. Each chat is an isolated workspace for one app, where v0 can read, edit, and run the files. Follow-up messages continue from the current state. v0 verifies the code running in the Sandbox, so it can catch and fix errors in your app in real time. The new API is now generally available. How it works Create a chat from a prompt, stream its work, and render the live preview, all from your own interface. First, install the v0 SDK. Then, create a chat. Send a prompt, and v0 generates your app. Send follow-up messages to the same chat to keep building. Each one continues from the current state. Then embed the app. A prompt goes in, a running app comes out. v0 operates the Sandbox, dev server, and preview behind it. When you're ready, deploy to Vercel in one API call. v0 manages the whole pipeline. What this unlocks The new API lets you run v0's app builder inside your own product or pipeline. This opens use cases like: A white-labeled app builder: Your users describe an app and get one back. Automated app changes: Trigger v0 from a script, CI job, or webhook to generate a new app or update an existing one. A build tool for your agents: An agent hands back a working app instead of a code snippet. Below, we break down the API primitives behind this workflow. Start with a chat Each chat holds the state for one app, and a repo or Vercel project can have many. Keep each chat's ID and send its follow-up messages to that chat. Metadata lets you group chats by customer, workspace, app, or any key you already use. Learn more about messages . Stream the trace Your interface needs to show what happens between sending a request and seeing the updated preview. Every message includes ordered parts : text, thinking, file reads and edits, searches, bash commands, tool calls, and agent actions. The same object can drive a one-line status, a changed-files view, or the full trace. Usage is returned with chat and message responses, so you can account for the work when it finishes. Choose sync, async, or streaming Chat creation and messages support synchronous, asynchronous, and streaming responses. Use sync when the caller needs the completed response. Use async to queue the work and receive updates via webhook or poll for v0's response later. Stream the request to render v0's work as it happens. Work from existing code You can also create a chat from a repository, ZIP archive, or set of files. Render the dev server preview Each chat gets a short-lived preview token. Fetch it from a server route and proxy browser requests through it, so your v0 API key never reaches the browser. When a preview is ready, traffic forwards to it; while the Sandbox spins up, requests fall back to a loading route. Point an iframe at your proxy route and cache the preview details until they expire. Read more about Accessing Previews in the docs. Bring your own tools and design systems Turn on specific MCP servers for a chat, or use the defaults. Design Systems 2.0 saves a design system as a skill. Include it in a request to load its components, tokens, setup, and starter app. You can pass up to three skills per request, from team or user memory, skills.sh , or the connected repo, or let the agent pull them in for you. Use v0 from agents If you're building an agent, give it v0 as a tool. When the agent needs to produce a working app, it calls v0, and gets back a running preview or deployment to hand to the user. Your agent stays in charge of everything else. There are three ways to connect it: MCP Connect the v0 MCP server to an IDE, desktop assistant, or agent runtime that supports MCP. The first connection starts an OAuth flow. The MCP server exposes tools for creating chats, listing chats, getting chat details, listing and sending messages, resolving pending tasks, and getting preview URLs. AI SDK For TypeScript agents built with AI SDK , use @v0-sdk/ai-tools to expose v0's API operations as tools in the agent's own loop. The agent decides when to create or continue a chat. Your AI SDK run keeps control of the orchestration and final response. eve For eve agents, add an OpenAPI connection file. eve turns the allowed operations into tools and attaches the API key at execution time, out of model context. Connect a Vercel project Create a Vercel project for the chat, then manage its environment variables, integrations, and settings through the Vercel API. Your apps get Vercel's security and observability by default. When you're ready to ship, deploy the chat to Vercel. Migrate your chats Chats from the previous version of the v0 API don’t run on the new one, so carry them forward. Pick the version you want to keep, download it as a ZIP, and create a new chat from that ZIP. Store the old identifiers in the new chat’s metadata if you need traceability. The migration guide covers the full mapping. The main changes: Use https://api.v0.dev/v2 for new requests. The chat holds current app state, and messages hold its history. Replace version workflows with chat file workflows, and v0 Project organization with chat metadata. Use vercelProjectId plus the Vercel API for project operations. Render message parts , not only final text. Get started Create an API key in v0 settings and install the SDK. Or, scaffold a full app. Read the documentation and migration guide . Read more",
+      "evidenceLink": "",
+      "score": 82.6637296031746,
+      "core": "Today we're introducing the new v0 API : programmatic, headless access to v0's app-building agent. Send a prompt and v0 generates an app, starts a dev server in a Vercel Sandbox , and gives you a preview URL you can embed in your own UI. Each chat is an isolated workspace for one app, where v0 can read, edit, and run the files. Follow-up messages continue from the current state. v0 verifies the code running in the S…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-06T12:42:28.028Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Qwen 3.8 Max now available on Vercel AI Gateway",
+      "link": "https://vercel.com/changelog/qwen-3-8-max-now-available-on-vercel-ai-gateway",
+      "publishedAt": "2026-08-02T00:00:00.000Z",
+      "author": "Walter Korman",
+      "summary": "Qwen 3.8 Max is now available on AI Gateway. Qwen 3.8 Max handles text-only and vision-language work in one model, with 2.4 trillion parameters and a context window of up to 1 million tokens. The model is suited for software engineering and office productivity, along with visual work like turning screenshots or design files into working pages, captioning video, and answering questions grounded in an image. To use Qwen 3.8 Max, set model to alibaba/qwen3.8-max . Try Qwen 3.8 Max in the model playground . To use it in a coding agent , run vercel ai-gateway coding-agents setup to connect Claude Code, Codex, OpenCode, or Pi, then select alibaba/qwen3.8-max inside the agent. AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. Read more",
+      "evidenceLink": "",
+      "score": 81.53515817460317,
+      "core": "Qwen 3.8 Max is now available on AI Gateway. Qwen 3.8 Max handles text-only and vision-language work in one model, with 2.4 trillion parameters and a context window of up to 1 million tokens. The model is suited for software engineering and office productivity, along with visual work like turning screenshots or design files into working pages, captioning video, and answering questions grounded in an image. To use Qw…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-06T12:42:28.028Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "How Factory scaled its cloud backend to one billion monthly requests on Vercel",
+      "link": "https://vercel.com/customers/how-factory-scaled-its-cloud-backend-to-one-billion-monthly-requests-on-vercel",
+      "publishedAt": "2026-08-03T04:00:00.000Z",
+      "author": "Susan Aziz",
+      "summary": "Factory on Vercel One billion backend API requests served daily 350ms p95 response time Scaled backend, internal tooling, and security without a dedicated infrastructure team Factory's mission is to bring autonomy to every phase of the software development lifecycle, from signals to production. Not to replace engineering judgment, but to automate the repetitive work around it, giving engineers more time to focus on the decisions that matter most. To deliver this enterprise-grade platform, Factory adopted their ideal operation model internally: remaining lean and agile by deploying Droids to manage routine workloads, so their engineers could focus strictly on building the product. As Factory scaled from a simple web app into a multi-surface platform, serving everyone from individual developers to enterprises with tens of thousands of engineers, their backend scaled alongside them. Today, a single Next.js backend on Vercel powers every surface, handling one billion daily requests across API routes, middleware, and webhook handlers, without becoming a separate engineering project. Next.js as a full-stack backend for cloud SaaS: API routes, middleware, and backend logic at scale Most teams think of Next.js as a frontend framework. Factory runs its entire cloud backend on it: API routes handle the customer-facing API, which launched in its own section of their Next.js app Middleware manages authentication and routing logic across every surface Webhook handlers and log drain pipelines run alongside the web platform, feeding analytics downstream As Factory grew rapidly, the same backend absorbed every new workload. None of it required standing up separate infrastructure or making a new vendor decision. The only areas that required tuning were memory limits and function duration. Both scaled up without incident. Fluid compute keeps functions warm across requests, removing the cold start penalty that makes traditional serverless a liability for latency-sensitive workloads. The result is a p95 response time of 350ms or below. Three years in, the trajectory has been smooth growth without the overhead that typically comes with it. Shipping internal tools without pulling engineers off product Non-technical teams were bottlenecked on engineering When an account executive needed an internal analytics dashboard or a solution architect needed to deploy a customer prototype, the request went to engineering. Every context switch cost the team shipping product, and they pointed their own product at Vercel to solve the problem. Droids hit Vercel's APIs to build and deploy autonomously Factory's non-technical teams now use their own Droids in the Factory Desktop App or CLI to build what they need and deploy directly to Vercel. Droids reach Vercel programmatically to handle configuration, builds, and deployments end-to-end. Engineers set guardrails and review high-stakes decisions, and Droids handle everything else. That workflow produces dozens of deployments a day across the team, and a growing library of internal tools: Internal analytics dashboards that pull directly from Factory's analytics databases and software tools Tailored, customer-specific demos that solutions engineers can build and deploy in minutes Custom utilities for one-off internal workflows Securing a consumer-facing product with minimal security overhead Going self-serve exposed Factory's backend to a new category of threat When Factory opened self-serve signups, attacks from automated traffic followed. Bots created fraudulent accounts, and requests flooded in from bad IPs. The team needed route-level protection at the network layer quickly. Observability and WAF handle protection at the network level Vercel Observability gives the team visibility into what's hitting the API, surfacing traffic patterns and problematic IPs as they appear. The Web Application Firewall handles enforcement: the team blocks bad actors with route-level rules, while rate limiting and DDoS protection run continuously beneath the surface. What's next Factory uses their own Droids to build Factory. Every internal automation is a future product feature, stress-tested on their own infrastructure first. That loop is about to run at a different scale. Factory is growing rapidly as it continues to implement and expand its pioneering vision towards autonomous software factories at scale. About Factory: Factory is the platform enterprises use to build and operate their software factory: a 24/7 system that continuously turns signals into production software across the entire lifecycle. It's model-agnostic, deploys anywhere from cloud to fully private, and keeps engineers in control as the governance layer. Factory was founded in 2023 by Matan Grinberg and Eno Reyes and is headquartered in San Francisco. Read more",
+      "evidenceLink": "",
+      "score": 81.23515817460317,
+      "core": "Factory on Vercel One billion backend API requests served daily 350ms p95 response time Scaled backend, internal tooling, and security without a dedicated infrastructure team Factory's mission is to bring autonomy to every phase of the software development lifecycle, from signals to production. Not to replace engineering judgment, but to automate the repetitive work around it, giving engineers more time to focus on …",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-06T12:42:28.028Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Claude Opus 5 now available on AI Gateway",
+      "link": "https://vercel.com/changelog/claude-opus-5-now-available-on-ai-gateway",
+      "publishedAt": "2026-07-24T00:00:00.000Z",
+      "author": "Rohan Taneja",
+      "summary": "Claude Opus 5 from Anthropic is now available on AI Gateway. Opus 5 improves on previous Opus models for long-horizon agentic coding, handling multi-file features, larger refactors, and end-to-end feature work, and completing full tasks rather than leaving stubs or placeholders. Opus 5 is effective at low and medium effort, which produce quality at a fraction of the tokens and latency of higher settings. Vision is stronger on charts, documents, diagrams, and UI replication, and Opus 5 makes effective use of tools to analyze, crop, and verify visual work. It also coordinates teams of subagents well, which suits multi-agent workflows. Reasoning is on by default. In AI SDK 7, set the reasoning effort with the top-level reasoning option, from minimal up to xhigh , or none : Like Fable 5, Opus 5 ships with elevated cybersecurity safeguards, so benign security work can occasionally trigger a safety classifier and get blocked. To add a backstop, use AI Gateway's model fallbacks. List backup models in a models array under providerOptions.gateway , and the gateway tries them in order when the primary model fails. The same option works across every AI Gateway API format. Opus 5 is compatible with Zero Data Retention . Fast mode To enable fast mode, pass speed: 'fast' in the anthropic provider options in AI SDK: Providers and endpoints Opus 5 can be served by more than one provider. To see every provider serving it, along with per-provider pricing, supported parameters, uptime, throughput, and latency, call the model endpoints API: Use Opus 5 in your coding agent Route your coding agent through AI Gateway to run Opus 5 with unified spend tracking, model fallbacks, and access to every model. Run vercel ai-gateway coding-agents setup to detect the agents on your machine, provision a key, and write their config. See how to set it up in Claude Code . Read more",
+      "evidenceLink": "",
+      "score": 79,
+      "core": "Claude Opus 5 from Anthropic is now available on AI Gateway. Opus 5 improves on previous Opus models for long-horizon agentic coding, handling multi-file features, larger refactors, and end-to-end feature work, and completing full tasks rather than leaving stubs or placeholders. Opus 5 is effective at low and medium effort, which produce quality at a fraction of the tokens and latency of higher settings. Vision is s…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-06T12:42:28.028Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Building an Advanced Agentic Harness",
+      "link": "https://data4sci.com/blog/building-an-advanced-agentic-harness",
+      "publishedAt": "2026-08-05T13:54:12.000Z",
+      "author": "Anon84 https://news.ycombinator.com/user?id=Anon84",
+      "summary": "From a single pilot to an air campaign: planning, parallelism, memory, verification, and observability for production-shaped agents.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49182946",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 116,
+        "comments": 43
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-06T12:42:28.028Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 68.73227855059207,
+      "core": "From a single pilot to an air campaign: planning, parallelism, memory, verification, and observability for production-shaped agents.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "IS-CoT: Breaking the Long-form Generation Collapse via Interleaved Structural Thinking",
+      "link": "https://arxiv.org/abs/2606.09709",
+      "evidenceLink": "https://www.semanticscholar.org/paper/b18bd62de4a11e38554cdfd20292ea3c8af3e08b",
+      "publishedAt": "2026-06-08T00:00:00.000Z",
+      "submittedAt": "2026-06-08T00:00:00.000Z",
+      "author": "Zechen Sun, Yuyang Sun, Zecheng Tang, Juntao Li, Wenpeng Hu",
+      "summary": "Generating coherent and controllable long-form content remains a persistent challenge for Large Language Models (LLMs). While reasoning-enhanced models have demonstrated success in logic-intensive domains, our evaluation reveals that they suffer from a severe length collapse in open-ended writing, where performance degrades sharply as target lengths exceed 2,000 words. We attribute this failure to the limitation of static hierarchical planning, which struggles to provide dynamic guidance over extended contexts. To bridge this gap, we introduce the Interleaved Structural Chain-of-Thought (IS-CoT) framework. Unlike external agentic workflows, IS-CoT embeds a dynamic Plan-Write-Reflect cycle into the generation process, enabling continuous strategy adaptation and global alignment without additional assistance. Based on this framework, we construct a high-quality dataset of interleaved reasoning traces via a multi-teacher pipeline and train IS-Writer-8B. Experiments demonstrate that IS-Writer-8B achieves state-of-the-art performance on challenging long-form benchmarks (e.g., +3.08 vs. DeepSeek-V3.2 on LongBench-Write), exhibiting robust length compliance and coherence competitive with significantly larger proprietary models.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 62,
+      "core": "Generating coherent and controllable long-form content remains a persistent challenge for Large Language Models (LLMs). While reasoning-enhanced models have demonstrated success in logic-intensive domains, our evaluation reveals that they suffer from a severe length collapse in open-ended writing, where performance degrades sharply as target lengths exceed 2,000 words. We attribute this failure to the limitation of …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Taming Actor-Observer Asymmetry in Agents via Dialectical Alignment",
+      "link": "https://arxiv.org/abs/2604.19548",
+      "evidenceLink": "https://www.semanticscholar.org/paper/f03915e5a8e9ea621d4031df34edc083422dcf50",
+      "publishedAt": "2026-04-21T00:00:00.000Z",
+      "submittedAt": "2026-04-21T00:00:00.000Z",
+      "author": "Bobo Li, Rui Wu, Zibo Ji, Meishan Zhang, Hao Fei",
+      "summary": "Large Language Model agents have rapidly evolved from static text generators into dynamic systems capable of executing complex autonomous workflows. To enhance reliability, multi-agent frameworks assigning specialized roles are increasingly adopted to enable self-reflection and mutual auditing. While such role-playing effectively leverages domain expert knowledge, we find it simultaneously induces a human-like cognitive bias known as Actor-Observer Asymmetry (AOA). Specifically, an agent acting as an actor (during self-reflection) tends to attribute failures to external factors, whereas an observer (during mutual auditing) attributes the same errors to internal faults. We quantify this using our new Ambiguous Failure Benchmark, which reveals that simply swapping perspectives triggers the AOA effect in over 20% of cases for most models. To tame this bias, we introduce ReTAS (Reasoning via Thesis-Antithesis-Synthesis), a model trained through dialectical alignment to enforce perspective-invariant reasoning. By integrating dialectical chain-of-thought with Group Relative Policy Optimization, ReTAS guides agents to synthesize conflicting viewpoints into an objective consensus. Experiments demonstrate that ReTAS effectively mitigates attribution inconsistency and significantly improves fault resolution rates in ambiguous scenarios.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 62,
+      "core": "Large Language Model agents have rapidly evolved from static text generators into dynamic systems capable of executing complex autonomous workflows. To enhance reliability, multi-agent frameworks assigning specialized roles are increasingly adopted to enable self-reflection and mutual auditing. While such role-playing effectively leverages domain expert knowledge, we find it simultaneously induces a human-like cogni…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "EmoMAS: Emotion-Aware Multi-Agent System for High-Stakes Edge-Deployable Negotiation with Bayesian Orchestration",
+      "link": "https://arxiv.org/abs/2604.07003",
+      "evidenceLink": "https://www.semanticscholar.org/paper/450ffc585d3e2d1d314fec9fafc7b060686e4743",
+      "publishedAt": "2026-04-08T00:00:00.000Z",
+      "submittedAt": "2026-04-08T00:00:00.000Z",
+      "author": "Yunbo Long, Yunhan Liu, Liming Xu",
+      "summary": "Large language models (LLMs) has been widely used for automated negotiation, but their high computational cost and privacy risks limit deployment in privacy-sensitive, on-device settings such as mobile assistants or rescue robots. Small language models (SLMs) offer a viable alternative, yet struggle with the complex emotional dynamics of high-stakes negotiation. We introduces EmoMAS, a Bayesian multi-agent framework that transforms emotional decision-making from reactive to strategic. EmoMAS leverages a Bayesian orchestrator to coordinate three specialized agents: game-theoretic, reinforcement learning, and psychological coherence models. The system fuses their real-time insights to optimize emotional state transitions while continuously updating agent reliability based on negotiation feedback. This mixture-of-agents architecture enables online strategy learning without pre-training. We further introduce four high-stakes, edge-deployable negotiation benchmarks across debt, healthcare, emergency response, and educational domains. Through extensive agent-to-agent simulations across all benchmarks, both SLMs and LLMs equipped with EmoMAS consistently surpass all baseline models in negotiation performance while balancing ethical behavior. These results show that strategic emotional intelligence is also the key driver of negotiation success. By treating emotional expression as a strategic variable within a Bayesian multi-agent optimization framework, EmoMAS establishes a new paradigm for effective, private, and adaptive negotiation AI suitable for high-stakes edge deployment.",
+      "citationCount": 9,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 62,
+      "core": "Large language models (LLMs) has been widely used for automated negotiation, but their high computational cost and privacy risks limit deployment in privacy-sensitive, on-device settings such as mobile assistants or rescue robots. Small language models (SLMs) offer a viable alternative, yet struggle with the complex emotional dynamics of high-stakes negotiation. We introduces EmoMAS, a Bayesian multi-agent framework…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "The Web Conference",
+      "title": "PromptX: A Cognitive Agent Platform with Long-term Memory",
+      "link": "https://doi.org/10.1145/3774905.3793108",
+      "evidenceLink": "https://www.semanticscholar.org/paper/93aaf9274ec766122706bf7bc65ea11453197377",
+      "publishedAt": "2026-05-28T00:00:00.000Z",
+      "submittedAt": "2026-05-28T00:00:00.000Z",
+      "author": "Binhao Wang, Jianglin Huang, Xiao Hu, Shangda Jiang, Maolin Wang",
+      "summary": "While large language models (LLMs) demonstrate impressive contextual understanding, their limitations in long-term memory and personalized reasoning constrain their practical impact in industrial settings. To address these gaps, we introduce PromptX, a cognitive platform that enables AI agents to construct structured memory and develop their reasoning over time. PromptX integrates three core technologies: (1) A new prompt markup language to define agent personas and memory organization; (2) Engram-based activation-diffusion memory networks that unify raw experiences with conceptual sequences, enabling associative retrieval through graph network propagation; (3) a protocol-driven orchestration layer enabling dynamic tool discovery and coordination, inspired by HATEOAS principles from web-engineering. During five months of real-world deployment across a range of 15+ enterprises in 6 industries,, PromptX has been validated in multiple industry domains (e.g., software engineering, education, healthcare), accumulating 50K+ downloads and 3K+ GitHub stars and evidencing practical feasibility and commercial value in production workflows. Our demo and initial product are available at https://promptx.deepractice.ai/. The source code and documentation are available online at https://github.com/Deepractice/PromptX. The supplementary materials are also available online . https://drive.google.com/drive/folders/1wPhEQCKeaZIsQAcFnC7XKmXTtwY1gJL1?usp=sharing.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "WWW",
+        "venueLabel": "The Web Conference",
+        "venueName": "The Web Conference",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 61,
+      "core": "While large language models (LLMs) demonstrate impressive contextual understanding, their limitations in long-term memory and personalized reasoning constrain their practical impact in industrial settings. To address these gaps, we introduce PromptX, a cognitive platform that enables AI agents to construct structured memory and develop their reasoning over time. PromptX integrates three core technologies: (1) A new …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Discovery Loop",
+      "link": "https://www.discoveryloop.com",
+      "publishedAt": "2026-08-05T16:19:44.000Z",
+      "author": "xtreak29 https://news.ycombinator.com/user?id=xtreak29",
+      "summary": "Discovery Loop is building AI systems that automate the experimental loops of science and engineering. Continuous Exploration.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49184960",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 789,
+        "comments": 490
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-06T12:42:28.028Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 51.62652750805546,
+      "core": "Discovery Loop is building AI systems that automate the experimental loops of science and engineering. Continuous Exploration.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Third-party cyber evaluations involving OpenAI models",
+      "link": "https://openai.com/index/third-party-cyber-evaluations-involving-openai-models",
+      "publishedAt": "2026-08-04T19:00:00.000Z",
+      "author": "",
+      "summary": "OpenAI explains recent third-party cybersecurity evaluation incidents and outlines new safeguards to strengthen AI model testing and evaluation.",
+      "evidenceLink": "",
+      "score": 50.82087246031746,
+      "core": "OpenAI explains recent third-party cybersecurity evaluation incidents and outlines new safeguards to strengthen AI model testing and evaluation.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-06T12:42:28.028Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "Unpacking ChatGPT Work: the Agent for a Billion Users",
+      "link": "https://www.latent.space/p/unpacking-chatgpt-work",
+      "publishedAt": "2026-08-04T18:20:14.000Z",
+      "author": "Shlok Khemani",
+      "summary": "An external reconstruction of how Memory, Proactivity, Scheduling, Browser Use, Plugins, Skills and Tools work in the new ChatGPT Work.",
+      "evidenceLink": "",
+      "score": 47.723531190476194,
+      "core": "An external reconstruction of how Memory, Proactivity, Scheduling, Browser Use, Plugins, Skills and Tools work in the new ChatGPT Work.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-06T12:42:28.028Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Catching rogue AI behavior with identity-aware analytics",
+      "link": "https://blog.cloudflare.com/identity-aware-ai-gateway",
+      "publishedAt": "2026-08-05T13:00:00.000Z",
+      "author": "Ming Lu",
+      "summary": "Identity-aware AI Gateway is now in open beta. User Insights turns that traffic into a behavioral baseline for every person and agent, and flags insider risk the moment it appears.",
+      "evidenceLink": "",
+      "score": 46.30658674603175,
+      "core": "Identity-aware AI Gateway is now in open beta. User Insights turns that traffic into a behavioral baseline for every person and agent, and flags insider risk the moment it appears.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-06T12:42:28.028Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "Build an AI code review bot in 30 minutes with Vercel Eve",
+      "link": "https://www.lennysnewsletter.com/p/build-an-ai-code-review-bot-in-30",
+      "publishedAt": "2026-08-05T12:04:01.000Z",
+      "author": "Claire Vo",
+      "summary": "Watch now | 🎙️ I used Vercel Eve agents and Codex to build Merge Mommy: a PR review bot that scores risk, auto-approves the easy ones, and pings me in Slack for the rest",
+      "evidenceLink": "",
+      "score": 46.18438436507937,
+      "core": "Watch now | 🎙️ I used Vercel Eve agents and Codex to build Merge Mommy: a PR review bot that scores risk, auto-approves the easy ones, and pings me in Slack for the rest",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-06T12:42:28.028Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Cloudflare OS: an open platform for agents, apps, and work",
+      "link": "https://blog.cloudflare.com/cloudflare-os",
+      "publishedAt": "2026-08-05T13:00:00.000Z",
+      "author": "Phillip Jones",
+      "summary": "Cloudflare OS is an open-source platform that lets everyone in your company build apps, automate work, and safely access internal systems, shaped around what your organization knows and how it operates",
+      "evidenceLink": "",
+      "score": 39.423253412698415,
+      "core": "Cloudflare OS is an open-source platform that lets everyone in your company build apps, automate work, and safely access internal systems, shaped around what your organization knows and how it operates",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-06T12:42:28.028Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "[AINews] Megakernels are so dead and so back",
+      "link": "https://www.latent.space/p/ainews-megakernels-are-so-dead-and",
+      "publishedAt": "2026-08-05T01:21:47.000Z",
+      "author": "",
+      "summary": "A quiet day lets us highlight a Cursor launch and an engineering debate",
+      "evidenceLink": "",
+      "score": 24.869820873015875,
+      "core": "A quiet day lets us highlight a Cursor launch and an engineering debate",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-06T12:42:28.028Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

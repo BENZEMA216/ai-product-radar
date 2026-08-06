@@ -56,6 +56,7 @@ English keywords: AI product radar, AI product discovery, AI competitive intelli
 | --- | --- | --- |
 | Product Hunt | Launch discovery and market-facing positioning. | Uses the Pacific completed daily leaderboard where available; records rank, votes, comments, and fallback health. |
 | Hacker News | Show HN / Launch HN products and developer adoption signals. | Keeps launch-like product signals; filters news, essays, directories, and weak AI evidence. |
+| hcker.news | High-signal AI essays and engineering blogs for Knowledge Radar. | Uses the public AI/external-link feed with an HN score floor, then keeps the canonical article URL and filters launches, repositories, papers, inaccessible pages, and shallow news. |
 | GitHub Release | Product and infra updates with concrete releases. | Uses release evidence, avoids generic training/search noise, and limits repeated repo dominance. |
 | Hugging Face | Models, datasets, spaces, and infra changes. | Routes model-heavy items into Models & Infra instead of the main product feed. |
 | AIHOT / YC Launch | Structured AI product and startup launch sources. | Requires time evidence and product-level relevance. |

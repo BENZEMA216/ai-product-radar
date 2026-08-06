@@ -248,6 +248,7 @@ function parseArgs(argv) {
     if (arg === "--now") args.now = argv[++i];
     if (arg === "--report-dir") args.reportDir = argv[++i];
     if (arg === "--no-history-filter") args.historyFilter = false;
+    if (arg === "--no-quality-memory") args.qualityMemory = false;
   }
   return args;
 }

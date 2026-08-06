@@ -94,6 +94,41 @@
       "requireAiRelevance": true
     },
     {
+      "id": "vercel_ai",
+      "label": "Vercel",
+      "type": "feed",
+      "url": "https://vercel.com/atom",
+      "home": "https://vercel.com/blog",
+      "weight": 13,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "github_ai_engineering",
+      "label": "GitHub Blog",
+      "type": "feed",
+      "url": "https://github.blog/feed/",
+      "home": "https://github.blog/ai-and-ml/",
+      "weight": 13,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "hcker_news_ai_blogs",
+      "label": "Hacker News · hcker.news",
+      "type": "hcker_news",
+      "url": "https://hcker.news/feeds/atom?period=day&limit=50&ai=include&content_type=external&min_score=80",
+      "home": "https://hcker.news/?view=frontpage&ai=include",
+      "weight": 13,
+      "minimumPoints": 80,
+      "probeItems": 20,
+      "maxItems": 4,
+      "requireAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
       "id": "latent_space",
       "label": "Latent Space",
       "type": "feed",
