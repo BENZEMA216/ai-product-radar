@@ -42,6 +42,8 @@ import { buildSiteData, parseReportMarkdown, renderSiteHtml } from "./build-site
 import { parseKnowledgeReport } from "./build-knowledge-page.mjs";
 import {
   parseFeed,
+  isAiRelevant,
+  knowledgeTopicKey,
   matchTopConference,
   normalizeSemanticScholarPapers,
   normalizeGmailNewsletterItems,
@@ -4015,6 +4017,42 @@ function testKnowledgePaperAndAuditFixture() {
   assert.ok(!shortageAudit.failures.some((item) => item.code === "knowledge_paper_mix_low"));
 }
 
+function testKnowledgeStrongAiRelevanceRejectsIncidentalMentions() {
+  const source = {
+    requireAiRelevance: true,
+    requireStrongAiRelevance: true,
+    requireKnowledgeDepth: true
+  };
+  assert.equal(
+    isAiRelevant(
+      {
+        title: "Vercel WAF for Blob is now generally available",
+        summary: "Rules are evaluated at the edge and can protect AI-generated media uploads in production."
+      },
+      source
+    ),
+    false,
+    "one incidental AI mention must not turn a general infrastructure update into Knowledge Radar content"
+  );
+  assert.equal(
+    isAiRelevant(
+      {
+        title: "DeepsecBench: evaluating model performance in finding vulnerabilities",
+        summary: "This benchmark compares AI models on production security scanning, including recall, precision, cost, and evaluation design."
+      },
+      source
+    ),
+    true
+  );
+}
+
+function testKnowledgeTopicKeyCollapsesVersionedAnnouncements() {
+  assert.equal(
+    knowledgeTopicKey({ sourceId: "vercel_ai", title: "Introducing Agent Plugins" }),
+    knowledgeTopicKey({ sourceId: "vercel_ai", title: "Introducing Agent Plugins 1.0.0" })
+  );
+}
+
 function testAihotParserFixture() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss><channel>
@@ -4436,6 +4474,8 @@ const tests = [
   ["Knowledge feed parser fixture", testKnowledgeFeedParserFixture],
   ["hcker.news Knowledge filtering fixture", testHckerNewsKnowledgeFixture],
   ["Gmail newsletter normalization fixture", testGmailNewsletterFixture],
+  ["Knowledge strong AI relevance rejects incidental mentions", testKnowledgeStrongAiRelevanceRejectsIncidentalMentions],
+  ["Knowledge topic key collapses versioned announcements", testKnowledgeTopicKeyCollapsesVersionedAnnouncements],
   ["Knowledge paper mapping and audit fixture", testKnowledgePaperAndAuditFixture],
   ["HN Algolia", testHnAlgolia],
   ["GitHub gh api", testGhApi],

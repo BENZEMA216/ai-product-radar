@@ -43,6 +43,29 @@ const AI_TERMS = [
   "模型"
 ];
 
+const STRONG_AI_PATTERNS = [
+  /\bagents?\b/i,
+  /\bagentic\b/i,
+  /\bai\b/i,
+  /\bllms?\b/i,
+  /language models?/i,
+  /\binference\b/i,
+  /\breasoning\b/i,
+  /\bmultimodal\b/i,
+  /\bembeddings?\b/i,
+  /\bretrieval\b/i,
+  /\bprompts?\b/i,
+  /\bbenchmarks?\b/i,
+  /\bevaluations?\b/i,
+  /\brobot(?:ics)?\b/i,
+  /machine learning/i,
+  /deep learning/i,
+  /\bgenerative\b/i,
+  /\btransformers?\b/i,
+  /\bdiffusion\b/i,
+  /智能体|人工智能|大模型|推理|多模态|模型/
+];
+
 const KNOWLEDGE_TERMS = [
   "how we built",
   "how we",
@@ -413,9 +436,17 @@ function includesAny(text, terms) {
   return terms.some((term) => text.includes(term));
 }
 
-function isAiRelevant(item, source) {
+function strongAiEvidence(item) {
+  const title = String(item.title || "");
+  const summary = String(item.summary || "");
+  if (STRONG_AI_PATTERNS.some((pattern) => pattern.test(title))) return true;
+  return STRONG_AI_PATTERNS.filter((pattern) => pattern.test(summary)).length >= 2;
+}
+
+export function isAiRelevant(item, source) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
   if (source.requireAiRelevance && !includesAny(text, AI_TERMS)) return false;
+  if (source.requireStrongAiRelevance && !strongAiEvidence(item)) return false;
   if (source.requireKnowledgeDepth && !includesAny(text, KNOWLEDGE_TERMS)) return false;
   return true;
 }
@@ -734,6 +765,28 @@ function uniqueByTitle(items) {
   });
 }
 
+export function knowledgeTopicKey(item) {
+  const normalized = String(item?.title || "")
+    .toLowerCase()
+    .replace(/^\s*(introducing|announcing)\s+/, "")
+    .replace(/\b(?:v)?\d+(?:\.\d+){1,3}\b/g, "")
+    .replace(/\b(?:is\s+)?now\s+available\b/g, "")
+    .replace(/[^a-z0-9\u4e00-\u9fff]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  return `${String(item?.sourceId || item?.source || "unknown").toLowerCase()}|${normalized}`;
+}
+
+function uniqueByKnowledgeTopic(items) {
+  const seen = new Set();
+  return items.filter((item) => {
+    const key = knowledgeTopicKey(item);
+    if (!key || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
 function gmailSourceId(value) {
   const normalized = String(value || "")
     .toLowerCase()
@@ -934,7 +987,7 @@ function historicalLinks(reportDir, excludedPath) {
 }
 
 function selectItems(blogs, papers, { limit, blogQuota, maximumPaperCount, maxPerBlogSource, seenLinks }) {
-  const availableBlogs = uniqueByTitle(uniqueByLink(blogs))
+  const availableBlogs = uniqueByKnowledgeTopic(uniqueByTitle(uniqueByLink(blogs)))
     .filter((item) => !seenLinks.has(item.link.toLowerCase()))
     .sort((a, b) => b.score - a.score);
   const availablePapers = uniqueByTitle(uniqueByLink(papers))
@@ -1167,6 +1220,15 @@ export async function runKnowledgeRadar(options = {}) {
   });
   const selectedBlogCount = selected.filter((item) => item.kind === "blog").length;
   const selectedPaperCount = selected.filter((item) => item.kind === "paper").length;
+  const selectedBlogSourceCounts = Object.fromEntries(
+    [...selected.filter((item) => item.kind === "blog").reduce((counts, item) => {
+      counts.set(item.sourceId, (counts.get(item.sourceId) || 0) + 1);
+      return counts;
+    }, new Map())].sort(([left], [right]) => left.localeCompare(right))
+  );
+  const sourceCapRelaxed = Object.values(selectedBlogSourceCounts).some(
+    (count) => count > maxPerBlogSource
+  );
   const desiredPaperCount = Math.min(maximumPaperCount, Math.max(0, limit - blogQuota));
   const shortfallReasons = [];
   if (selected.length < limit) {
@@ -1206,6 +1268,9 @@ export async function runKnowledgeRadar(options = {}) {
       blogAfterHistoricalDedupCount,
       paperAfterHistoricalDedupCount,
       eligibleAfterHistoricalDedupCount: blogAfterHistoricalDedupCount + paperAfterHistoricalDedupCount,
+      maxPerBlogSource,
+      selectedBlogSourceCounts,
+      sourceCapRelaxed,
       shortfallReason: shortfallReasons.length
         ? `${shortfallReasons.join("；")}；未用旧文或低质量内容补位。`
         : ""
