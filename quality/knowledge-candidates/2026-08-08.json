@@ -1,0 +1,432 @@
+{
+  "generatedAt": "2026-08-07T16:06:58.118Z",
+  "date": "2026-08-08",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Qwen3.8 Max now ranked as the best overall model by agentic index",
+      "link": "https://artificialanalysis.ai",
+      "publishedAt": "2026-08-06T18:44:49.000Z",
+      "author": "apitman https://news.ycombinator.com/user?id=apitman",
+      "summary": "Comparison and analysis of AI models and API hosting providers. Independent benchmarks across key performance metrics including quality, price, output speed & latency.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49200652",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 522,
+        "comments": 328
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-07T16:06:58.118Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 79.02830662912521,
+      "core": "Comparison and analysis of AI models and API hosting providers. Independent benchmarks across key performance metrics including quality, price, output speed & latency.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Ling 3.0 Tiny is now available on AI Gateway",
+      "link": "https://vercel.com/changelog/ling-3-0-tiny-is-now-available-on-ai-gateway",
+      "publishedAt": "2026-08-06T00:00:00.000Z",
+      "author": "Jerilyn Zheng",
+      "summary": "Ling 3.0 Tiny from ANT Group is now on AI Gateway, free to use till 8:00am PT on 8/14. Ling 3.0 Tiny takes the free slot from Ling 3.0 Flash . Ling 3.0 Tiny is a MOE model with 7.9B total parameters and about 1.3B active per token, a 256K token context window, and up to 32K output tokens. The model is built for responsive agents, instruction following, and multi-turn conversation, with native function calling and prompt caching. To use Ling 3.0 Tiny, set model to inclusionai/ling-3.0-tiny-free in the AI SDK . On August 14th, the new model name will be inclusionai/ling-3.0-tiny . Try Ling 3.0 Tiny in the model playground . To use it in a coding agent , run vercel ai-gateway coding-agents setup and select inclusionai/ling-3.0-tiny-free inside the agent. AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. Read more",
+      "evidenceLink": "",
+      "score": 73.89567226190475,
+      "core": "Ling 3.0 Tiny from ANT Group is now on AI Gateway, free to use till 8:00am PT on 8/14. Ling 3.0 Tiny takes the free slot from Ling 3.0 Flash . Ling 3.0 Tiny is a MOE model with 7.9B total parameters and about 1.3B active per token, a 256K token context window, and up to 32K output tokens. The model is built for responsive agents, instruction following, and multi-turn conversation, with native function calling and pr…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-07T16:06:58.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Agent Skills for Automated Reasoning policies in Amazon Bedrock",
+      "link": "https://aws.amazon.com/blogs/machine-learning/agent-skills-for-automated-reasoning-policies-in-amazon-bedrock",
+      "publishedAt": "2026-08-06T16:12:24.000Z",
+      "author": "Adewale Akinfaderin",
+      "summary": "Learn how to run the full Amazon Bedrock Automated Reasoning policy lifecycle from your coding agent. A suite of open source Agent Skills builds, reviews, tests, debugs, deploys, and validates a custom policy end to end, turning a specialized console task into a repeatable engineering workflow.",
+      "evidenceLink": "",
+      "score": 64.93106908730158,
+      "core": "Learn how to run the full Amazon Bedrock Automated Reasoning policy lifecycle from your coding agent. A suite of open source Agent Skills builds, reviews, tests, debugs, deploys, and validates a custom policy end to end, turning a specialized console task into a repeatable engineering workflow.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-07T16:06:58.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "KDD",
+      "title": "Generating Realistic Human Mobility Data with Hybrid Large Language Model Agent",
+      "link": "https://doi.org/10.1145/3770854.3785685",
+      "evidenceLink": "https://www.semanticscholar.org/paper/7f57604cb8c39ce7000039c4e19c01e3906d9b73",
+      "publishedAt": "2026-04-20T00:00:00.000Z",
+      "submittedAt": "2026-04-20T00:00:00.000Z",
+      "author": "Chenyang Shao, Bingbing Fan, Jingtao Ding, Yuan Yuan, Meng Wang",
+      "summary": "Mobility data is crucial for understanding human dynamics and facilitating many applications, but collecting them is often expensive and privacy sensitive. Previous efforts on mobility data generation focus on fitting the statistical distribution and often overlook the underlying intentions behind mobility behavior. Recent breakthroughs in large language models (LLMs) show emergent capabilities of human-like reasoning, inspiring us to harness their power for intention-aware mobility generation. However, this problem is non-trivial since LLMs are not originally optimized for inferring human mobility behavior. To bridge this gap, we propose a novel data generator called Chain-of-Planned-Behavior (CoPB) that consists of three key components: (1) a behavior science-inspired agentic workflow that adapts LLMs for mobility intention reasoning, drawing on the Theory of Planned Behavior to integrate attitude, subjective norms, and perceived behavioral control to jointly decide the next mobility intention; (2) a conditional generative diffusion model that grounds abstract intents into physical space by generating intention-conditioned mobility trajectories; and (3) a lightweight data generator solution that provides a cost-effective alternative, where knowledge distillation is used to transfer the intent reasoning capability of LLMs to smaller language models. We also explore the potential of substituting the diffusion model with a physics-informed mechanistic model. Experiments on three real-world datasets show that the generated data exhibits strong alignment with real data, substantially reducing the error rate of intent reasoning by an average of 59.8 percent and improving average spatial metrics by 18.5 percent. Moreover, the lightweight data generator removes API costs and reduces generation time by 28.8 percent without significant performance loss. Both the generator and the accompanying constructed dataset are publicly available at https://github.com/tsinghua-fib-lab/CoPB .",
+      "citationCount": 1,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "KDD",
+        "venueLabel": "KDD",
+        "venueName": "Knowledge Discovery and Data Mining",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 59.204119982655925,
+      "core": "Mobility data is crucial for understanding human dynamics and facilitating many applications, but collecting them is often expensive and privacy sensitive. Previous efforts on mobility data generation focus on fitting the statistical distribution and often overlook the underlying intentions behind mobility behavior. Recent breakthroughs in large language models (LLMs) show emergent capabilities of human-like reasoni…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "The Web Conference",
+      "title": "Welcome from the History of the Web Track Chairs",
+      "link": "https://doi.org/10.1145/3774905.3795072",
+      "evidenceLink": "https://www.semanticscholar.org/paper/5f3d6234678b2c199752c070e2c2706abd3e8917",
+      "publishedAt": "2026-05-28T00:00:00.000Z",
+      "submittedAt": "2026-05-28T00:00:00.000Z",
+      "author": "O. Seneviratne, Wendy Hall",
+      "summary": "The History of the Web track highlights how key historical decisions, institutional incentives, and socio-technical shifts have shaped the Web's evolution, and how those choices continue to influence the systems we build and rely on today. This year's program traces a connected trajectory from early information retrieval and ranking, through the rise of user experience, engagement, and platform dynamics, to the Semantic Web's vision of machine-understandable data and knowledge graphs. It then brings that historical arc into direct conversation with the current wave of large language models and agentic AI, showing how contemporary AI capabilities are deeply entangled with the Web as both infrastructure and archive: a source of training data, a medium for evaluation, and a space where social impact is felt. Across talks and the panel, the program emphasizes recurring ideas and persistent tensions, such as relevance versus reliability, openness versus governance, scale versus accountability, and shows how historical perspective can sharpen our understanding of what is genuinely new, what is cyclical, and what remains unresolved. Ultimately, the track positions history as an analytical lens for guiding more responsible, informed, and durable choices in future Web research and innovation.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "WWW",
+        "venueLabel": "The Web Conference",
+        "venueName": "The Web Conference",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 59,
+      "core": "The History of the Web track highlights how key historical decisions, institutional incentives, and socio-technical shifts have shaped the Web's evolution, and how those choices continue to influence the systems we build and rely on today. This year's program traces a connected trajectory from early information retrieval and ranking, through the rise of user experience, engagement, and platform dynamics, to the Sema…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How Mobileye transformed support operations using Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-mobileye-transformed-support-operations-using-amazon-bedrock-agentcore",
+      "publishedAt": "2026-08-05T18:09:03.000Z",
+      "author": "Adi Jabkowski",
+      "summary": "In this post, we'll explore how Mobileye deployed an AI support agentic solution on Amazon Bedrock AgentCore - from the support bottleneck that sparked the idea, through the proof of concept that validated it, to the hybrid architecture that bridges on-premises systems with AWS cloud services. This approach is relevant for enterprises struggling to scale AI Agents while maintaining enterprise grade governance and security standards.",
+      "evidenceLink": "",
+      "score": 58.13898575396826,
+      "core": "In this post, we'll explore how Mobileye deployed an AI support agentic solution on Amazon Bedrock AgentCore - from the support bottleneck that sparked the idea, through the proof of concept that validated it, to the hybrid architecture that bridges on-premises systems with AWS cloud services. This approach is relevant for enterprises struggling to scale AI Agents while maintaining enterprise grade governance and se…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-07T16:06:58.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "The Web Conference",
+      "title": "An Interpretable Agentic Framework for Multimodal Hate Video Analysis with Explicit Evidence Attribution",
+      "link": "https://doi.org/10.1145/3774905.3796488",
+      "evidenceLink": "https://www.semanticscholar.org/paper/b347fef1c42dafcff1755badf04b9ceb81468a5d",
+      "publishedAt": "2026-05-28T00:00:00.000Z",
+      "submittedAt": "2026-05-28T00:00:00.000Z",
+      "author": "Ashok Yadav, Vrijendra Singh",
+      "summary": "The proliferation of harmful and toxic content in social media videos poses significant risks to users and online communities. While many state-of-the-art approaches rely on supervised classifiers trained on large benchmark datasets, such models are often evaluated primarily on predictive performance and provide limited transparency for deployment scenarios where explanation and auditability are required. We present an evidence-centric multimodal video analysis system that treats visual, audio, textual, and contextual signals as independent sources of evidence rather than fused features. The system extracts object detections and on-screen text from video frames, speech transcripts from audio, and toxicity scores and named entities from text, while contextual information is obtained from a fixed offline retrieval corpus. All signals are stored in a shared evidence structure and prioritized using a deterministic ranking mechanism that emphasizes semantic contribution, explicitly models cross-modal agreement and conflict, and represents modality absence by marking non-contributory signals as null. Final decisions are produced through a robust orchestration layer that supports a fully deterministic baseline and an optional constrained large language model-based reasoner with fallback guarantees. We evaluate the system on HateMM, ImpliHateVid, and a manually annotated YTHate dataset of 200 real-world YouTube videos. Across all datasets, the system exhibits consistently high recall for hateful content, reflecting a deliberate design choice to reduce false negatives in moderation support settings. Qualitative analysis indicates improved sensitivity to implicit and context-dependent hate, including cases involving visual symbols, late-occurring speech, and cross-modal inconsistencies.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "WWW",
+        "venueLabel": "The Web Conference",
+        "venueName": "The Web Conference",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 58,
+      "core": "The proliferation of harmful and toxic content in social media videos poses significant risks to users and online communities. While many state-of-the-art approaches rely on supervised classifiers trained on large benchmark datasets, such models are often evaluated primarily on predictive performance and provide limited transparency for deployment scenarios where explanation and auditability are required. We present…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "The Web Conference",
+      "title": "Docs2Synth: A Synthetic Data Tuned Retriever Framework for Documents Understanding",
+      "link": "https://www.semanticscholar.org/paper/9c2b2fab06eb743f3b98ca26c75bf8ad8751a18e",
+      "evidenceLink": "https://www.semanticscholar.org/paper/9c2b2fab06eb743f3b98ca26c75bf8ad8751a18e",
+      "publishedAt": "2026-05-28T00:00:00.000Z",
+      "submittedAt": "2026-05-28T00:00:00.000Z",
+      "author": "Yihao Ding, Qiang Sun, Puzhen Wu, Sirui Li, Siwen Luo",
+      "summary": "Document understanding (VRDU) in regulated domains is particularly challenging, since scanned documents often contain sensitive, evolving, and domain specific knowledge. This leads to two major challenges: the lack of manual annotations for model adaptation and the difficulty for pretrained models to stay up-to-date with domain-specific facts. While Multimodal Large Language Models (MLLMs) show strong zero-shot abilities, they still suffer from hallucination and limited domain grounding. In contrast, discriminative Vision-Language Pre-trained Models (VLPMs) provide reliable grounding but require costly annotations to cover new domains. We introduce Docs2Synth, a synthetic-supervision framework that enables retrieval-guided inference for private and low-resource domains. Docs2Synth automatically processes raw document collections, generates and verifies diverse QA pairs via an agent-based system, and trains a lightweight visual retriever to extract domain-relevant evidence. During inference, the retriever collaborates with an MLLM through an iterative retrieval--generation loop, reducing hallucination and improving response consistency. We further deliver Docs2Synth as an easy-to-use Python package, enabling plug-and-play deployment across diverse real-world scenarios. Experiments on multiple VRDU benchmarks show that Docs2Synth substantially enhances grounding and domain generalization without requiring human annotations.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "WWW",
+        "venueLabel": "The Web Conference",
+        "venueName": "The Web Conference",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 57,
+      "core": "Document understanding (VRDU) in regulated domains is particularly challenging, since scanned documents often contain sensitive, evolving, and domain specific knowledge. This leads to two major challenges: the lack of manual annotations for model adaptation and the difficulty for pretrained models to stay up-to-date with domain-specific facts. While Multimodal Large Language Models (MLLMs) show strong zero-shot abil…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Unveiling good and bad behaviors on the Agentic Internet",
+      "link": "https://blog.cloudflare.com/good-and-bad-agentic-behaviors",
+      "publishedAt": "2026-08-07T13:01:00.000Z",
+      "author": "Jin-Hee Lee",
+      "summary": "Cloudflare is shifting bot mitigation from point-in-time Risk assessment to continuous Trust evaluation. Learn how new good and bad behaviors from bots and agents are assessed by our systems, including BotBase and Precursor — and try out our Precursor Trace simulation to see how your own cursor movements would be assessed as human or bot.",
+      "evidenceLink": "",
+      "score": 55.667497658730156,
+      "core": "Cloudflare is shifting bot mitigation from point-in-time Risk assessment to continuous Trust evaluation. Learn how new good and bad behaviors from bots and agents are assessed by our systems, including BotBase and Precursor — and try out our Precursor Trace simulation to see how your own cursor movements would be assessed as human or bot.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-07T16:06:58.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How LendingTree built a multi-agent mortgage assistant on Amazon Bedrock",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-lendingtree-built-a-multi-agent-mortgage-assistant-on-amazon-bedrock",
+      "publishedAt": "2026-08-05T18:50:02.000Z",
+      "author": "Eric Hanson",
+      "summary": "Learn how LendingTree built a production multi-agent mortgage assistant on Amazon Bedrock. Three coordinated agents use LangGraph, the Model Context Protocol, and Amazon Nova models with built-in guardrails to deliver 24/7 personalized mortgage guidance while meeting strict financial-services compliance.",
+      "evidenceLink": "",
+      "score": 55.45999765873016,
+      "core": "Learn how LendingTree built a production multi-agent mortgage assistant on Amazon Bedrock. Three coordinated agents use LangGraph, the Model Context Protocol, and Amazon Nova models with built-in guardrails to deliver 24/7 personalized mortgage guidance while meeting strict financial-services compliance.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-07T16:06:58.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Run production AI agents in n8n with Amazon Bedrock AgentCore harness",
+      "link": "https://aws.amazon.com/blogs/machine-learning/run-production-ai-agents-in-n8n-with-amazon-bedrock-agentcore-harness",
+      "publishedAt": "2026-08-05T18:00:57.000Z",
+      "author": "Sundar Raghavan",
+      "summary": "Amazon Bedrock AgentCore harness is now generally available. Learn how to add it as an agent step in n8n workflows using a new open-source community node, and build agents with persistent memory, real tools, code execution, and VPC isolation — all from the n8n editor with no infrastructure or agent code.",
+      "evidenceLink": "",
+      "score": 55.40156511904762,
+      "core": "Amazon Bedrock AgentCore harness is now generally available. Learn how to add it as an agent step in n8n workflows using a new open-source community node, and build agents with persistent memory, real tools, code execution, and VPC isolation — all from the n8n editor with no infrastructure or agent code.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-07T16:06:58.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "LLM optimization integration for Amazon SageMaker Python SDK",
+      "link": "https://aws.amazon.com/blogs/machine-learning/llm-optimization-integration-for-amazon-sagemaker-python-sdk",
+      "publishedAt": "2026-08-06T16:08:12.000Z",
+      "author": "Dan Ferguson",
+      "summary": "The Amazon SageMaker Python SDK v3 now exposes generative AI inference recommendations in Amazon SageMaker AI directly in your notebook. Benchmark an endpoint, generate data-driven deployment recommendations, and deploy the recommended configuration without leaving your notebook workflow.",
+      "evidenceLink": "",
+      "score": 52.89273575396825,
+      "core": "The Amazon SageMaker Python SDK v3 now exposes generative AI inference recommendations in Amazon SageMaker AI directly in your notebook. Benchmark an endpoint, generate data-driven deployment recommendations, and deploy the recommended configuration without leaving your notebook workflow.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-07T16:06:58.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How we built an MCP bridge to give our AgentCore-hosted AI agent access to local MCP tools",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-we-built-an-mcp-bridge-to-give-our-agentcore-hosted-ai-agent-access-to-local-mcp-tools",
+      "publishedAt": "2026-08-05T18:02:23.000Z",
+      "author": "Rohan Lekhwani",
+      "summary": "AI agents on Amazon Bedrock AgentCore run in the cloud, but users' tools and files live on their laptops. Learn how to build a secure MCP bridge that lets a cloud-hosted agent call local MCP servers by tunneling signed messages over the existing WebSocket connection through a browser extension and Chrome native messaging, with no open ports or VPN required.",
+      "evidenceLink": "",
+      "score": 51.703271468253966,
+      "core": "AI agents on Amazon Bedrock AgentCore run in the cloud, but users' tools and files live on their laptops. Learn how to build a secure MCP bridge that lets a cloud-hosted agent call local MCP servers by tunneling signed messages over the existing WebSocket connection through a browser extension and Chrome native messaging, with no open ports or VPN required.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-07T16:06:58.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Inside vLLM: Anatomy of a High-Throughput LLM Inference System (2025)",
+      "link": "https://www.aleksagordic.com/blog/vllm",
+      "publishedAt": "2026-08-06T21:30:21.000Z",
+      "author": "sebg https://news.ycombinator.com/user?id=sebg",
+      "summary": "From paged attention, continuous batching, prefix caching, specdec, etc. to multi-GPU, multi-node dynamic serving at scale.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49202852",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 132,
+        "comments": 9
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-07T16:06:58.118Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 50.97328364134336,
+      "core": "From paged attention, continuous batching, prefix caching, specdec, etc. to multi-GPU, multi-node dynamic serving at scale.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Optimizing production agents with Amazon Bedrock AgentCore Observability",
+      "link": "https://aws.amazon.com/blogs/machine-learning/optimizing-production-agents-with-amazon-bedrock-agentcore-observability",
+      "publishedAt": "2026-07-31T15:33:11.000Z",
+      "author": "Joshua Lacy",
+      "summary": "As your AI agents move from prototype to production, the challenge shifts from getting them to work to keeping them fast and efficient. Learn how to use Amazon Bedrock AgentCore Observability and Amazon CloudWatch to find performance bottlenecks and diagnose memory issues in long-running agent sessions.",
+      "evidenceLink": "",
+      "score": 46.68888888888889,
+      "core": "As your AI agents move from prototype to production, the challenge shifts from getting them to work to keeping them fast and efficient. Learn how to use Amazon Bedrock AgentCore Observability and Amazon CloudWatch to find performance bottlenecks and diagnose memory issues in long-running agent sessions.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-07T16:06:58.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "From ranking to recommended: get your site ready to thrive in the age of AI agents",
+      "link": "https://blog.cloudflare.com/aeo",
+      "publishedAt": "2026-08-06T13:00:00.000Z",
+      "author": "Matthew Conroy",
+      "summary": "More than half of requests now come from machines, not people. Agent Readiness shows how well agents can discover and read your site, while Answer Engine Optimization tracks how often AI assistants recommend you.",
+      "evidenceLink": "",
+      "score": 39.24091035714286,
+      "core": "More than half of requests now come from machines, not people. Agent Readiness shows how well agents can discover and read your site, while Answer Engine Optimization tracks how often AI assistants recommend you.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-07T16:06:58.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "meta_engineering",
+      "source": "Meta Engineering",
+      "title": "GEM Training: How Meta Doubled the Efficiency of Its LLM-Scale Ads Foundation Model",
+      "link": "https://engineering.fb.com/2026/08/03/ml-applications/training-gem-at-llm-scale-meta-ads-recommendation-foundation-model",
+      "publishedAt": "2026-08-03T18:00:17.000Z",
+      "author": "",
+      "summary": "Meta’s Generative Ads Recommendation Model (GEM), the foundation model behind ads recommendations across Instagram and Facebook, now trains at LLM scale on several thousand of the latest-generation GPUs. This post goes into the details on how we achieved: doubling end-to-end (E2E) training efficiency to 20–25% Model FLOPs Utilization (MFU) while scaling training FLOPs 4x in [...] Read More... The post GEM Training: How Meta Doubled the Efficiency of Its LLM-Scale Ads Foundation Model appeared first on Engineering at Meta .",
+      "evidenceLink": "",
+      "score": 39.21108892857142,
+      "core": "Meta’s Generative Ads Recommendation Model (GEM), the foundation model behind ads recommendations across Instagram and Facebook, now trains at LLM scale on several thousand of the latest-generation GPUs. This post goes into the details on how we achieved: doubling end-to-end (E2E) training efficiency to 20–25% Model FLOPs Utilization (MFU) while scaling training FLOPs 4x in [...] Read More... The post GEM Training: …",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-07T16:06:58.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "The Agent Access Model",
+      "link": "https://blog.cloudflare.com/the-agent-access-model",
+      "publishedAt": "2026-08-05T13:00:41.000Z",
+      "author": "Matt Silverlock",
+      "summary": "The Agent Access Model proposes a new architecture to secure task-scoped agents using strict identity brokering, continuous mediation, and stateful trust.",
+      "evidenceLink": "",
+      "score": 37.205215912698414,
+      "core": "The Agent Access Model proposes a new architecture to secure task-scoped agents using strict identity brokering, continuous mediation, and stateful trust.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-07T16:06:58.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Introducing Radar Researcher: An AI tool for exploring Internet data in plain language",
+      "link": "https://blog.cloudflare.com/introducing-radar-researcher",
+      "publishedAt": "2026-08-07T13:00:00.000Z",
+      "author": "Lai Yi Ohlsen",
+      "summary": "Cloudflare Radar Researcher is a new AI-powered tool that lets you explore global Internet trends and traffic data using plain language. Built entirely on Cloudflare's Developer Platform, it turns natural language queries into real, interactive charts.",
+      "evidenceLink": "",
+      "score": 37.177418293650796,
+      "core": "Cloudflare Radar Researcher is a new AI-powered tool that lets you explore global Internet trends and traffic data using plain language. Built entirely on Cloudflare's Developer Platform, it turns natural language queries into real, interactive charts.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-07T16:06:58.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "deepmind",
+      "source": "Google DeepMind",
+      "title": "WeatherNext: AI model achieves breakthrough in forecasting cyclones",
+      "link": "https://deepmind.google/blog/weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones",
+      "publishedAt": "2026-08-06T15:06:15.000Z",
+      "author": "",
+      "summary": "",
+      "evidenceLink": "",
+      "score": 24.2134301984127,
+      "core": "原文摘要不足，需要精读正文后补充核心结论。",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-07T16:06:58.118Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

@@ -117,6 +117,42 @@
       "requireKnowledgeDepth": true
     },
     {
+      "id": "aws_machine_learning",
+      "label": "AWS Machine Learning Blog",
+      "type": "feed",
+      "url": "https://aws.amazon.com/blogs/machine-learning/feed/",
+      "home": "https://aws.amazon.com/blogs/machine-learning/",
+      "weight": 14,
+      "maxItems": 24,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "google_developers",
+      "label": "Google Developers Blog",
+      "type": "feed",
+      "url": "https://developers.googleblog.com/feeds/posts/default?alt=rss",
+      "home": "https://developers.googleblog.com/",
+      "weight": 14,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "meta_engineering",
+      "label": "Meta Engineering",
+      "type": "feed",
+      "url": "https://engineering.fb.com/feed/",
+      "home": "https://engineering.fb.com/",
+      "weight": 13,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
       "id": "hcker_news_ai_blogs",
       "label": "Hacker News · hcker.news",
       "type": "hcker_news",
