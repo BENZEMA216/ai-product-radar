@@ -3338,6 +3338,24 @@ function testAihotOpinionSignalsStayDeprioritized() {
   );
 }
 
+function testAihotProductMetricsOpinionStaysDeprioritized() {
+  const candidate = {
+    product: "官网 UV 对 OpenClaw 是失真指标，应看 GitHub Stars 与 Gateway 安装量",
+    link: "https://aihot.virxact.com/items/example",
+    type: "疑似新产品",
+    did: "官网 UV 对开源 Agent 是失真指标，应看 GitHub Stars、Gateway 安装量与 Skills 生态。",
+    why: "这是产品度量观点，不是当天产品发布。",
+    evidence: "[AIHOT 2026-08-08T13:43:03.000Z](https://aihot.virxact.com/items/example)",
+    source: "aihot",
+    observedAt: "2026-08-08T13:43:03.000Z"
+  };
+  assert.equal(
+    priorityScore(candidate),
+    priorityScore({ ...candidate, qualityLabel: "deprioritize" }),
+    "开源 Agent 指标观点应保持 deprioritize，不能因包含 Skills 或 Agent 进入 Top 20"
+  );
+}
+
 function testReportWhyCopySpecializesCurrentHnAgentSignals() {
   const candidates = [
     {
@@ -4459,6 +4477,7 @@ const tests = [
   ["AIHOT policy news stays deprioritized across producer and consumer", testAihotPolicyNewsStaysDeprioritizedAcrossProducerAndConsumer],
   ["Entertainment novelty signals stay deprioritized", testEntertainmentNoveltySignalsStayDeprioritized],
   ["AIHOT opinion signals stay deprioritized", testAihotOpinionSignalsStayDeprioritized],
+  ["AIHOT product metrics opinion stays deprioritized", testAihotProductMetricsOpinionStaysDeprioritized],
   ["Report why copy specializes current HN agent signals", testReportWhyCopySpecializesCurrentHnAgentSignals],
   ["Report why copy specializes current HN model and media signals", testReportWhyCopySpecializesCurrentHnModelAndMediaSignals],
   ["Report why copy avoids current AIHOT fallback templates", testReportWhyCopyAvoidsCurrentAihotFallbackTemplates],

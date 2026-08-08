@@ -1,0 +1,43 @@
+{
+  "generatedAt": "2026-08-08T16:16:18.458Z",
+  "report": "2026-08-09.md",
+  "health": "quality/knowledge-source-health/2026-08-09.json",
+  "candidates": "quality/knowledge-candidates/2026-08-09.json",
+  "site": "docs/index.html",
+  "ok": true,
+  "date": "2026-08-09",
+  "rows": 20,
+  "blogCount": 16,
+  "paperCount": 4,
+  "blogAccessVerifiedCount": 16,
+  "topConferencePaperCount": 4,
+  "sourceCount": 25,
+  "candidatePool": {
+    "historicalLinkCount": 258,
+    "blogFetchedCount": 125,
+    "blogAccessCheckedCount": 21,
+    "blogAccessVerifiedCount": 21,
+    "blogAccessRejectedCount": 0,
+    "blogAccessRejected": [],
+    "paperFetchedCount": 80,
+    "paperTopConferenceVerifiedCount": 80,
+    "blogAfterHistoricalDedupCount": 21,
+    "paperAfterHistoricalDedupCount": 64,
+    "eligibleAfterHistoricalDedupCount": 85,
+    "maxPerBlogSource": 2,
+    "selectedBlogSourceCounts": {
+      "aws_machine_learning": 2,
+      "cloudflare_ai": 4,
+      "hcker_news_ai_blogs": 1,
+      "huggingface_blog": 1,
+      "microsoft_research": 2,
+      "mozilla_ai": 3,
+      "openai_news": 1,
+      "simon_willison": 1,
+      "vercel_ai": 1
+    },
+    "sourceCapRelaxed": true,
+    "shortfallReason": ""
+  },
+  "failures": []
+}

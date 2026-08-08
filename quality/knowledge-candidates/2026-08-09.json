@@ -1,0 +1,427 @@
+{
+  "generatedAt": "2026-08-08T16:08:52.039Z",
+  "date": "2026-08-09",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "simon_willison",
+      "source": "Simon Willison",
+      "title": "Now we have a timeline of the OpenAI accidental attack against Hugging Face",
+      "link": "https://simonwillison.net/2026/Aug/7/openai-timeline",
+      "publishedAt": "2026-08-07T23:55:58.000Z",
+      "author": "",
+      "summary": "OpenAI gave a last-minute presentation at the Black Hat security on Wednesday about \"the Hugging Face Incident\" ( previously on this blog). The video was published yesterday. It's short and information dense and well worth watching, in particular because it provides full details of what happened and how things played out inside OpenAI. I've used the video to construct the timeline below. Here's the timeline. My favourite detail is at the end: OpenAI found out that they were responsible for the attack on Hugging Face when they reached out to ask to have their credentials revoked (after their internal investigation) and learned that they had been revoked already since they were used in that attack! May 7 : OpenAI starts a new training run for an experimental, unreleased model. ( Did they mean an evaluation run? No, at 10:14 they clarify \"we kick off a new reinforcement learning run to train a next generation frontier model\", and they later mention a \"reward signal to judge how well they're doing\", so this really was about training a new model, not evaluating one that was already trained.) May 8 : An agent is accidentally given an impossible task involving a Google Drive link despite no internet access). It tries attacking the Artifactory packaging service, fails, but discovers it can write files into Artifactory . A few days later : A different agent gets stuck on a task because a key file was accidentally omitted. It tries to \"reach out to another agent\" by writing a note into Artifactory asking if anyone has the file. Following days : More agents discover this new informal message board while browsing Artifactory's file listings, and start reading and writing messages. May 26 : Agents successfully execute an SSRF attack on Artifactory for the first time, gaining indirect internet access by having Artifactory fetch external content for them. June 11 : OpenAI start training a new \"highly persistent\" experimental model. It has access to Artifactory and can benefit from the messages left by privous models. June 26 : Agents find and exploit a zero-day RCE on Artifactory (via a legacy token-refresh endpoint flaw). They use an administrative token to install a Groovy plugin that lets them execute commands. July 4 : The resulting agent activity overloads Artifactory and causes an outage . OpenAI revokes the compromised credentials, deletes the messages, patches the zero-day, and reports the vulnerability to the vendor. July 8 : Agents find a new way to communicate via an unauthenticated WebDAV endpoint , using directory names in Artifactory's remote cache. July 8–19 : Attacks on OpenAI's own infrastructure . The agents found an \"external organization credential\" in a public archive of leaked Pastebin posts, then validated that credential and shared its location on the messageboard. They then used write access to this \"Organization 1\" to stage data used in subsequent attacks on OpenAI infrastructure. They compromised Artifactory for a second time with a new zero-day . The agent uploaded a malicious Ruby target to Organization 1's staging repository, then requested that package through Artifactory in a way that caused it to be treated as Ruby dependency for the repository . Then they exploited a JRuby deserilaization time-of-check/time-of-use bug to get remote code execution against Artifactory. I'll quote the next bit in full because wow : The agents have remote code execution in Artifactory, which is running in a container-as-a-service environment. The agents privilege-escalate locally by exploring their local environment and determining that the Linux kernel version of the machine they are running on had a very recent CVE. They download the exploit for the CVE, customize it to succeed on the machine, and privilege-escalate to root on the local machine using this known Linux kernel privilege escalation CVE — in this case, pte_physroot . Once they have root on a single machine, agents rapidly escalate privileges and move laterally throughout the container-as-a-service infrastructure environment. In particular, agents are using the message board consistently to share credentials, techniques, and progress, and they're able to effectively leverage their concurrency and parallelism to move quite rapidly. They obtain IAM credentials via IMDS . They exploit Kubernetes service account misconfigurations, in particular over-permissioning of specific service accounts, and they harvest cluster credentials, including Azure Key Vault . Agents eventually obtain cluster admin on the cluster and associated credentials. Hugging Face told the next bit of the story already. The agents found a Modal-hosted insecure app with a weak API key, then used that to stage an attack against Hugging Face. They chained together a an HDF5 arbitrary-file-read bug (to explore files and steal credentials) and a Jinja template-injection RCE to go from single-pod code execution to cluster admin across multiple Hugging Face clusters in under 13 hours. July 16 : Hugging Face disclosed they had detected an attack from autonomus AI agents. OpenAI contacted Hugging Face to ask if they were affected by it! July 19 : OpenAI identified the attack against Artifactory and started investigating the internal privilege escalation, and linked that to the cyber-gym escalations. They started revoking affected credentials. July 20 : OpenAI reached out to Hugging Face for help to revoke the Hugging Face credentials they found in their investigation. Hugging Face told them they were already revoked ... and that's when OpenAI realized that the Hugging Face breach was the same incident! You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
+      "evidenceLink": "",
+      "score": 91.84178494047619,
+      "core": "OpenAI gave a last-minute presentation at the Black Hat security on Wednesday about \"the Hugging Face Incident\" ( previously on this blog). The video was published yesterday. It's short and information dense and well worth watching, in particular because it provides full details of what happened and how things played out inside OpenAI. I've used the video to construct the timeline below. Here's the timeline. My favo…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-08T16:08:52.039Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Oracle bans AI-generated code from OpenJDK",
+      "link": "https://app.dealroom.co/news/feed/oracle-bans-ai-generated-code-from-openjdk-despite-ellison-s-claim-oracle-isn-t-writing-its-own-code",
+      "publishedAt": "2026-08-07T17:36:30.000Z",
+      "author": "delduca https://news.ycombinator.com/user?id=delduca",
+      "summary": "Oracle has banned AI-generated code from OpenJDK contributions, citing safety, security, and intellectual property risks. The open-source Java project steward said developers can use LLMs privately for debugging and reviewing code but cannot submit AI-generated material to repositories, pull requests, or other project channels. The policy contrasts sharply with Oracle&#x27;s internal practices. Co-founder Larry Ellison recently declared that AI models now write Oracle&#x27;s code, whilst co-CEO Mike Sicilia credited AI tools with enabling smaller engineering teams to deliver faster. Oracle is investing $70 billion this year in datacentre expansion. The spending spree prompted credit agency S&P to downgrade Oracle&#x27;s rating to BBB-, one notch above junk status, citing uncertain returns on investment.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49213754",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 502,
+        "comments": 361
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-08T16:08:52.039Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 75.53751819729835,
+      "core": "Oracle has banned AI-generated code from OpenJDK contributions, citing safety, security, and intellectual property risks. The open-source Java project steward said developers can use LLMs privately for debugging and reviewing code but cannot submit AI-generated material to repositories, pull requests, or other project channels. The policy contrasts sharply with Oracle&#x27;s internal practices. Co-founder Larry Elli…",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How TReNDS automates root-cause analysis with Amazon Bedrock",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-trends-automates-root-cause-analysis-with-amazon-bedrock",
+      "publishedAt": "2026-08-07T16:22:50.000Z",
+      "author": "Vitaly Omelchenko",
+      "summary": "TReNDS, a research center at Georgia State University, built an agentic AI pipeline on Amazon Bedrock and the open-source Strands Agents SDK that automatically investigates production errors in real time, reducing root-cause analysis from 15 to 30 minutes of manual work to under 60 seconds.",
+      "evidenceLink": "",
+      "score": 56.91900716269841,
+      "core": "TReNDS, a research center at Georgia State University, built an agentic AI pipeline on Amazon Bedrock and the open-source Strands Agents SDK that automatically investigates production errors in real time, reducing root-cause analysis from 15 to 30 minutes of manual work to under 60 seconds.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-08T16:08:52.039Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "ReviewGrounder: Improving Review Substantiveness with Rubric-Guided, Tool-Integrated Agents",
+      "link": "https://arxiv.org/abs/2604.14261",
+      "evidenceLink": "https://www.semanticscholar.org/paper/b4882380ece78aca8717462c022bcdc12f9bed9f",
+      "publishedAt": "2026-04-15T00:00:00.000Z",
+      "submittedAt": "2026-04-15T00:00:00.000Z",
+      "author": "Zhuofeng Li, Yi Lu, Dongfu Jiang, Haoxiang Zhang, Yuyang Bai",
+      "summary": "The rapid rise in AI conference submissions has driven increasing exploration of large language models (LLMs) for peer review support. However, LLM-based reviewers often generate superficial, formulaic comments lacking substantive, evidence-grounded feedback. We attribute this to the underutilization of two key components of human reviewing: explicit rubrics and contextual grounding in existing work. To address this, we introduce REVIEWBENCH, a benchmark evaluating review text according to paper-specific rubrics derived from official guidelines, the paper's content, and human-written reviews. We further propose REVIEWGROUNDER, a rubric-guided, tool-integrated multi-agent framework that decomposes reviewing into drafting and grounding stages, enriching shallow drafts via targeted evidence consolidation. Experiments on REVIEWBENCH show that REVIEWGROUNDER, using a Phi-4-14B-based drafter and a GPT-OSS-120B-based grounding stage, consistently outperforms baselines with substantially stronger/larger backbones (e.g., GPT-4.1 and DeepSeek-R1-670B) in both alignment with human judgments and rubric-based review quality across 8 dimensions. The code is available \\href{https://github.com/EigenTom/ReviewGrounder}{here}.",
+      "citationCount": 2,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 56.90848501887865,
+      "core": "The rapid rise in AI conference submissions has driven increasing exploration of large language models (LLMs) for peer review support. However, LLM-based reviewers often generate superficial, formulaic comments lacking substantive, evidence-grounded feedback. We attribute this to the underutilization of two key components of human reviewing: explicit rubrics and contextual grounding in existing work. To address this…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Evaluating Answer Leakage Robustness of LLM Tutors against Adversarial Student Attacks",
+      "link": "https://arxiv.org/abs/2604.18660",
+      "evidenceLink": "https://www.semanticscholar.org/paper/eed2cb7679def5e509d924f48926e54006dd631e",
+      "publishedAt": "2026-04-20T00:00:00.000Z",
+      "submittedAt": "2026-04-20T00:00:00.000Z",
+      "author": "Jin Zhao, Marta Knezevic, Tanja Käser",
+      "summary": "Large Language Models (LLMs) are increasingly used in education, yet their default helpfulness often conflicts with pedagogical principles. Prior work evaluates pedagogical quality via answer leakage-the disclosure of complete solutions instead of scaffolding-but typically assumes well-intentioned learners, leaving tutor robustness under student misuse largely unexplored. In this paper, we study scenarios where students behave adversarially and aim to obtain the correct answer from the tutor. We evaluate a broad set of LLM-based tutor models, including different model families, pedagogically aligned models, and a multi-agent design, under a range of adversarial student attacks. We adapt six groups of adversarial and persuasive techniques to the educational setting and use them to probe how likely a tutor is to reveal the final answer. We evaluate answer leakage robustness using different types of in-context adversarial student agents, finding that they often fail to carry out effective attacks. We therefore introduce an adversarial student agent that we fine-tune to jailbreak LLM-based tutors, which we propose as the core of a standardized benchmark for evaluating tutor robustness. Finally, we present simple but effective defense strategies that reduce answer leakage and strengthen the robustness of LLM-based tutors in adversarial scenarios.",
+      "citationCount": 5,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 56.112605001534575,
+      "core": "Large Language Models (LLMs) are increasingly used in education, yet their default helpfulness often conflicts with pedagogical principles. Prior work evaluates pedagogical quality via answer leakage-the disclosure of complete solutions instead of scaffolding-but typically assumes well-intentioned learners, leaving tutor robustness under student misuse largely unexplored. In this paper, we study scenarios where stud…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Too Nice to Tell the Truth: Quantifying Agreeableness-Driven Sycophancy in Role-Playing Language Models",
+      "link": "https://arxiv.org/abs/2604.10733",
+      "evidenceLink": "https://www.semanticscholar.org/paper/1fd8928d6f90e4b2fab7f55d66763bf88713ee15",
+      "publishedAt": "2026-04-12T00:00:00.000Z",
+      "submittedAt": "2026-04-12T00:00:00.000Z",
+      "author": "Arya Shah, Deepali Mishra, Chaklam Silpasuwanchai",
+      "summary": "Large language models increasingly serve as conversational agents that adopt personas and role-play characters at user request. This capability, while valuable, raises concerns about sycophancy: the tendency to provide responses that validate users rather than prioritize factual accuracy. While prior work has established that sycophancy poses risks to AI safety and alignment, the relationship between specific personality traits of adopted personas and the degree of sycophantic behavior remains unexplored. We present a systematic investigation of how persona agreeableness influences sycophancy across 13 small, open-weight language models ranging from 0.6B to 20B parameters. We develop a benchmark comprising 275 personas evaluated on NEO-IPIP agreeableness subscales and expose each persona to 4,950 sycophancy-eliciting prompts spanning 33 topic categories. Our analysis reveals that 9 of 13 models exhibit statistically significant positive correlations between persona agreeableness and sycophancy rates, with Pearson correlations reaching $r = 0.87$ and effect sizes as large as Cohen's $d = 2.33$. These findings demonstrate that agreeableness functions as a reliable predictor of persona-induced sycophancy, with direct implications for the deployment of role-playing AI systems and the development of alignment strategies that account for personality-mediated deceptive behaviors.",
+      "citationCount": 2,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 55.90848501887865,
+      "core": "Large language models increasingly serve as conversational agents that adopt personas and role-play characters at user request. This capability, while valuable, raises concerns about sycophancy: the tendency to provide responses that validate users rather than prioritize factual accuracy. While prior work has established that sycophancy poses risks to AI safety and alignment, the relationship between specific person…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "The Web Conference",
+      "title": "TCR: A Trust-Aligned Text-Only Cross-Attention Ranker Distilling Multimodal LLM Reasoning for Recommendation Agents",
+      "link": "https://doi.org/10.1145/3774905.3795732",
+      "evidenceLink": "https://www.semanticscholar.org/paper/4f361d8f0e2c65915dec94f0683633718815a466",
+      "publishedAt": "2026-05-28T00:00:00.000Z",
+      "submittedAt": "2026-05-28T00:00:00.000Z",
+      "author": "Liping Zhang, T. King",
+      "summary": "Large language and vision–language models enable semantic reasoning but remain impractical for real-time recommendation and search systems. We present TCR (Text-Only Cross-Attention Ranker), a lightweight DeBERTa-based re-ranking agent distilled from multiple vision–language large language models through multi-teacher soft-label fusion. TCR compresses multimodal reasoning into a compact text-only model fine-tuned with LoRA, achieving a 98.5 percent parameter reduction and maintaining production-grade latency while retaining near-teacher ranking quality on 4.4 million real-world query–content pairs. By aligning model calibration and transparency with user-perceived trust, TCR bridges deep model reasoning and deployable, trust-aware recommendations for creative content and interactive search. This work demonstrates how multi-teacher distillation and parameter-efficient fine-tuning make human-aligned, low-latency recommendation systems feasible at production scale.",
+      "citationCount": 1,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "WWW",
+        "venueLabel": "The Web Conference",
+        "venueName": "The Web Conference",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 55.204119982655925,
+      "core": "Large language and vision–language models enable semantic reasoning but remain impractical for real-time recommendation and search systems. We present TCR (Text-Only Cross-Attention Ranker), a lightweight DeBERTa-based re-ranking agent distilled from multiple vision–language large language models through multi-teacher soft-label fusion. TCR compresses multimodal reasoning into a compact text-only model fine-tuned wi…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Responding to the next frontier of critical cyber capabilities",
+      "link": "https://openai.com/index/responding-next-frontier-critical-cyber-capabilities",
+      "publishedAt": "2026-08-07T15:20:00.000Z",
+      "author": "",
+      "summary": "OpenAI is sharing preliminary cybersecurity evaluations for Astra and the steps we’re taking to strengthen safeguards and security controls.",
+      "evidenceLink": "",
+      "score": 52.00531668650794,
+      "core": "OpenAI is sharing preliminary cybersecurity evaluations for Astra and the steps we’re taking to strengthen safeguards and security controls.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-08T16:08:52.039Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "mozilla_ai",
+      "source": "Mozilla.ai",
+      "title": "The Future of AI is Personal — But Not The Way You Think",
+      "link": "https://blog.mozilla.ai/the-future-of-ai-is-personal-but-not-the-way-you-think",
+      "publishedAt": "2026-08-03T10:08:44.000Z",
+      "author": "Daniel Nissani",
+      "summary": "AI’s future isn’t about replacing human thinking, but enhancing it. As AI agents evolve from simple assistants into deeply connected systems, control, privacy, and personalisation will shape the next era of AI. Mozilla AI is building towards a more open and user-controlled future.",
+      "evidenceLink": "",
+      "score": 50.560951607142854,
+      "core": "AI’s future isn’t about replacing human thinking, but enhancing it. As AI agents evolve from simple assistants into deeply connected systems, control, privacy, and personalisation will shape the next era of AI. Mozilla AI is building towards a more open and user-controlled future.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-08T16:08:52.039Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How Cohere Health digitizes clinical policies using Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-cohere-health-digitizes-clinical-policies-using-amazon-bedrock-agentcore",
+      "publishedAt": "2026-08-07T16:26:58.000Z",
+      "author": "Oleksiy Kononenko",
+      "summary": "In this post, you learn how Cohere Health built a multi-tenant agentic architecture on AgentCore using AgentCore Runtime’s secure MicroVM isolation, unified tool access through AgentCore Gateway, AgentCore Memory, and the Agent Skills open standard to rapidly scale policy digitization capabilities, while preserving transparency, version control, and human oversight.",
+      "evidenceLink": "",
+      "score": 50.35170557539683,
+      "core": "In this post, you learn how Cohere Health built a multi-tenant agentic architecture on AgentCore using AgentCore Runtime’s secure MicroVM isolation, unified tool access through AgentCore Gateway, AgentCore Memory, and the Agent Skills open standard to rapidly scale policy digitization capabilities, while preserving transparency, version control, and human oversight.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-08T16:08:52.039Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_research",
+      "source": "Microsoft Research",
+      "title": "Orchard: An open framework for scalable agentic AI",
+      "link": "https://www.microsoft.com/en-us/research/blog/orchard-an-open-framework-for-scalable-agentic-ai",
+      "publishedAt": "2026-08-03T16:00:00.000Z",
+      "author": "Baolin Peng, Wenlin Yao, Qianhui Wu, Hao Cheng, Jianfeng Gao",
+      "summary": "Orchard is an open-source framework for the research community to train and evaluate AI agents across task types. It reduces complexity while supporting strong performance from smaller models by enabling researchers to reuse the same infrastructure. The post Orchard: An open framework for scalable agentic AI appeared first on Microsoft Research .",
+      "evidenceLink": "",
+      "score": 50.35134843253968,
+      "core": "Orchard is an open-source framework for the research community to train and evaluate AI agents across task types. It reduces complexity while supporting strong performance from smaller models by enabling researchers to reuse the same infrastructure. The post Orchard: An open framework for scalable agentic AI appeared first on Microsoft Research .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-08T16:08:52.039Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "mozilla_ai",
+      "source": "Mozilla.ai",
+      "title": "From Evaluation to Guardrails: What We Brought to ACM FAccT 2026",
+      "link": "https://blog.mozilla.ai/from-evaluation-to-guardrails-what-we-brought-to-acm-facct-2026",
+      "publishedAt": "2026-07-22T09:05:05.000Z",
+      "author": "Roya Pakzad",
+      "summary": "At ACM FAccT, we demonstrated why AI guardrails need the same scrutiny as models. Moving from static policies to context- and language-specific evaluations, our hands-on session proved that agentic guardrails equipped with tools like web search are vital for reliable, real-world deployment.",
+      "evidenceLink": "",
+      "score": 49.61666666666667,
+      "core": "At ACM FAccT, we demonstrated why AI guardrails need the same scrutiny as models. Moving from static policies to context- and language-specific evaluations, our hands-on session proved that agentic guardrails equipped with tools like web search are vital for reliable, real-world deployment.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-08T16:08:52.039Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Introducing Agent Plugins 1.0.0",
+      "link": "https://vercel.com/changelog/introducing-agent-plugins-1-0-0",
+      "publishedAt": "2026-08-06T00:00:00.000Z",
+      "author": "Jonathan Hefner",
+      "summary": "Agent Plugins 1.0.0 is now available. It is an open, vendor-neutral standard for packaging Agent Skills and MCP servers into portable plugins. Compatible agent clients can discover and load them. Agent Plugins defines a common format: a root plugin.json manifest, plus fixed locations for portable components. Each client keeps control of installation, distribution, policy, user experience, and client-specific capabilities. At launch, Agent Plugins is supported across the following clients: ChatGPT and Codex Cursor GitHub Copilot Kiro VS Code Read the specification and implementation guides , learn more in the announcement post, and follow our guide to build a plugin on the new standard. Read more",
+      "evidenceLink": "",
+      "score": 47.32912621031746,
+      "core": "Agent Plugins 1.0.0 is now available. It is an open, vendor-neutral standard for packaging Agent Skills and MCP servers into portable plugins. Compatible agent clients can discover and load them. Agent Plugins defines a common format: a root plugin.json manifest, plus fixed locations for portable components. Each client keeps control of installation, distribution, policy, user experience, and client-specific capabil…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-08T16:08:52.039Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "mozilla_ai",
+      "source": "Mozilla.ai",
+      "title": "Open Models are ready for agents. Their APIs are not.",
+      "link": "https://blog.mozilla.ai/open-models-are-ready-for-agents-their-apis-are-not",
+      "publishedAt": "2026-07-14T14:12:40.000Z",
+      "author": "David de la Iglesia Castro",
+      "summary": "Open models have reached impressive levels of capability, but the surrounding platform often falls short. This blog explores the hidden infrastructure gaps developers face and why bridging them is essential for production-ready AI applications.",
+      "evidenceLink": "",
+      "score": 46.355555555555554,
+      "core": "Open models have reached impressive levels of capability, but the surrounding platform often falls short. This blog explores the hidden infrastructure gaps developers face and why bridging them is essential for production-ready AI applications.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-08T16:08:52.039Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_research",
+      "source": "Microsoft Research",
+      "title": "Echoverse: Deep, evolving environments for computer-use agents",
+      "link": "https://www.microsoft.com/en-us/research/blog/echoverse-deep-evolving-environments-for-computer-use-agents",
+      "publishedAt": "2026-07-30T17:00:00.000Z",
+      "author": "Akshay Nambi, Yash Pandya, Sahil Gupta, Sarthak Harne, Archana Yadav, Kavyansh Chourasia, Yash Lara, Ahmed Awadallah, Ece Kamar",
+      "summary": "Computer-use AI agents struggle with multi-step workflows like email and customer support. Echoverse trains agents in realistic environments rather than simply providing more training tasks, helping them improve as the tasks, tests, and environments evolve. The post Echoverse: Deep, evolving environments for computer-use agents appeared first on Microsoft Research .",
+      "evidenceLink": "",
+      "score": 46.044444444444444,
+      "core": "Computer-use AI agents struggle with multi-step workflows like email and customer support. Echoverse trains agents in realistic environments rather than simply providing more training tasks, helping them improve as the tasks, tests, and environments evolve. The post Echoverse: Deep, evolving environments for computer-use agents appeared first on Microsoft Research .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-08T16:08:52.039Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Building an open Agentic Internet: readable, discoverable, callable, and payable",
+      "link": "https://blog.cloudflare.com/the-agentic-internet",
+      "publishedAt": "2026-08-06T13:00:00.000Z",
+      "author": "Jack Galilee",
+      "summary": "Agents are a new kind of visitor. They don't render CSS or click ads, but they have a paying human on the other end. Block them and you block your customer. We're building the open tools and protocols so publishers and agents can cooperate and not collide.",
+      "evidenceLink": "",
+      "score": 33.76880875,
+      "core": "Agents are a new kind of visitor. They don't render CSS or click ads, but they have a paying human on the other end. Block them and you block your customer. We're building the open tools and protocols so publishers and agents can cooperate and not collide.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-08T16:08:52.039Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "WriteGuard: fine-grained controls for MCP Servers",
+      "link": "https://blog.cloudflare.com/mcp-portal-writeguard-private-beta",
+      "publishedAt": "2026-08-05T13:00:00.000Z",
+      "author": "Scott Roe-Meschke",
+      "summary": "At Cloudflare, we knew we could not depend on every employee to configure every agent perfectly or watch every tool call. Before expanding write access across our own internal MCP servers, we built WriteGuard. We are now bringing those controls to Cloudflare MCP server portals through a private beta.",
+      "evidenceLink": "",
+      "score": 32.30452303571429,
+      "core": "At Cloudflare, we knew we could not depend on every employee to configure every agent perfectly or watch every tool call. Before expanding write access across our own internal MCP servers, we built WriteGuard. We are now bringing those controls to Cloudflare MCP server portals through a private beta.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-08T16:08:52.039Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Unifying Workers AI and AI Gateway into a single AI control plane",
+      "link": "https://blog.cloudflare.com/workers-ai-gateway-unification",
+      "publishedAt": "2026-08-07T13:00:00.000Z",
+      "author": "Michelle Chen",
+      "summary": "Cloudflare is unifying AI Gateway and Workers AI into a single control plane, giving developers observability, billing, and dynamic routing across both managed GPUs and external providers. Learn how unified bindings and model-first routing simplify building resilient AI applications.",
+      "evidenceLink": "",
+      "score": 31.638650019841272,
+      "core": "Cloudflare is unifying AI Gateway and Workers AI into a single control plane, giving developers observability, billing, and dynamic routing across both managed GPUs and external providers. Learn how unified bindings and model-first routing simplify building resilient AI applications.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-08T16:08:52.039Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "How we’re rethinking work at Cloudflare with Cloudflare OS",
+      "link": "https://blog.cloudflare.com/how-we-use-ai-with-cloudflare-os",
+      "publishedAt": "2026-08-05T13:00:01.000Z",
+      "author": "Sam Rhea",
+      "summary": "We built Cloudflare OS to equip our teams to safely rethink how they get work done with AI. The platform brings together the best of our technologies, from our Compute primitives to our Zero Trust suite. This post walks through our journey to give our users the best AI tools available.",
+      "evidenceLink": "",
+      "score": 31.221209543650794,
+      "core": "We built Cloudflare OS to equip our teams to safely rethink how they get work done with AI. The platform brings together the best of our technologies, from our Compute primitives to our Zero Trust suite. This post walks through our journey to give our users the best AI tools available.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-08T16:08:52.039Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "huggingface_blog",
+      "source": "Hugging Face Blog",
+      "title": "Grabette: an open system to record robot-manipulation data",
+      "link": "https://huggingface.co/blog/grabette",
+      "publishedAt": "2026-07-21T00:00:00.000Z",
+      "author": "",
+      "summary": "",
+      "evidenceLink": "",
+      "score": 22,
+      "core": "原文摘要不足，需要精读正文后补充核心结论。",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-08T16:08:52.039Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

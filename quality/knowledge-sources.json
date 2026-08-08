@@ -153,6 +153,66 @@
       "requireKnowledgeDepth": true
     },
     {
+      "id": "microsoft_research",
+      "label": "Microsoft Research",
+      "type": "feed",
+      "url": "https://www.microsoft.com/en-us/research/feed/",
+      "home": "https://www.microsoft.com/en-us/research/blog/",
+      "weight": 15,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "nvidia_deep_learning",
+      "label": "NVIDIA Deep Learning",
+      "type": "feed",
+      "url": "https://blogs.nvidia.com/blog/category/deep-learning/feed/",
+      "home": "https://blogs.nvidia.com/blog/category/deep-learning/",
+      "weight": 14,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "huggingface_blog",
+      "label": "Hugging Face Blog",
+      "type": "feed",
+      "url": "https://huggingface.co/blog/feed.xml",
+      "home": "https://huggingface.co/blog",
+      "weight": 13,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "google_research",
+      "label": "Google Research",
+      "type": "feed",
+      "url": "https://research.google/blog/rss/",
+      "home": "https://research.google/blog/",
+      "weight": 15,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "mozilla_ai",
+      "label": "Mozilla.ai",
+      "type": "feed",
+      "url": "https://blog.mozilla.ai/rss/",
+      "home": "https://blog.mozilla.ai/",
+      "weight": 14,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
       "id": "hcker_news_ai_blogs",
       "label": "Hacker News · hcker.news",
       "type": "hcker_news",
