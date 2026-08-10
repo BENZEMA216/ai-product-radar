@@ -1,0 +1,61 @@
+{
+  "generatedAt": "2026-08-09T17:33:29.616Z",
+  "report": "2026-08-10.md",
+  "health": "quality/knowledge-source-health/2026-08-10.json",
+  "candidates": "quality/knowledge-candidates/2026-08-10.json",
+  "site": "docs/index.html",
+  "ok": false,
+  "date": "2026-08-10",
+  "rows": 4,
+  "blogCount": 4,
+  "paperCount": 0,
+  "blogAccessVerifiedCount": 4,
+  "topConferencePaperCount": 0,
+  "sourceCount": 24,
+  "candidatePool": {
+    "historicalLinkCount": 278,
+    "blogFetchedCount": 121,
+    "blogAccessCheckedCount": 7,
+    "blogAccessVerifiedCount": 6,
+    "blogAccessRejectedCount": 1,
+    "blogAccessRejected": [
+      {
+        "sourceId": "interconnects",
+        "title": "Lessons from the hacks",
+        "link": "https://www.interconnects.ai/p/lessons-from-the-hacks",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      }
+    ],
+    "paperFetchedCount": 0,
+    "paperTopConferenceVerifiedCount": 0,
+    "blogAfterHistoricalDedupCount": 6,
+    "paperAfterHistoricalDedupCount": 0,
+    "eligibleAfterHistoricalDedupCount": 6,
+    "maxPerBlogSource": 2,
+    "selectedBlogSourceCounts": {
+      "aws_machine_learning": 1,
+      "cloudflare_ai": 1,
+      "mozilla_ai": 1,
+      "vercel_ai": 1
+    },
+    "sourceCapRelaxed": false,
+    "shortfallReason": "历史 canonical URL 去重后有效新内容不足，未达到总量目标；Blog 历史 canonical URL 去重后仅 6 篇，低于 16 篇目标；顶会元数据核验后论文仅 0 篇，空缺优先用已验证可访问的 Blog 补位，不用普通 arXiv 论文凑数；未用旧文或低质量内容补位。"
+  },
+  "failures": [
+    {
+      "code": "knowledge_count_low",
+      "message": "知识日报只有 4 条，低于最低 18 条。",
+      "detail": null
+    },
+    {
+      "code": "knowledge_blog_mix_low",
+      "message": "Blog 只有 4 条，低于发布硬下限 16 条。",
+      "detail": null
+    },
+    {
+      "code": "knowledge_core_not_rewritten",
+      "message": "至少 80% 的“核心信息”必须由当次 Codex 改写成中文判断。",
+      "detail": null
+    }
+  ]
+}

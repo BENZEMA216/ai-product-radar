@@ -1,0 +1,86 @@
+{
+  "generatedAt": "2026-08-09T17:32:24.353Z",
+  "date": "2026-08-10",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Access and share AI Gateway leaderboard data",
+      "link": "https://vercel.com/changelog/open-data-and-shareable-charts-for-ai-gateway-leaderboards",
+      "publishedAt": "2026-07-14T00:00:00.000Z",
+      "author": "Josh Wolk",
+      "summary": "We are making the data behind the AI Gateway leaderboards open under the CC BY 4.0 license . You can now download or query the data through the leaderboard-export API endpoint and render any chart as a shareable image. The AI Gateway leaderboards show how AI is used in production, ranking traffic for models, labs, apps, and providers. Data is aggregated daily across trillions of tokens, so you can see what gets adopted and how that changes over time. For deeper analysis, see the July AI Gateway Production Index . What's ranked There are four leaderboards, each with its own metrics: Leaderboard Ranks Metrics Models Individual models Requests, token volume, spend, images or videos generated Labs Model labs Requests, token volume, spend, images or videos generated Apps Opted-in apps built on the AI Gateway Token volume, spend Providers Inference providers Token volume, spend Models and labs can be filtered by modality (text, image, video) and show a daily percentage share over time; apps and providers are aggregated across all modalities and show a ranked top list. Open data The data behind the leaderboards is open, published under Creative Commons Attribution 4.0 (CC BY 4.0) . You are free to use, share, and adapt it, including commercially, as long as you give credit, link to the license, and indicate if changes were made. Every chart and ranked list has a download button that exports the current view as a CSV. For programmatic access, use the export endpoint, which returns the same data and is cached for 24 hours: For models and labs, each row is one entity's daily share of a single metric. One response includes rows for requests , tokens , spend , imageCount , and videoCount , so filter on the metric field to pull out the series you want. Share a chart Every chart has a share button that turns the current view into an image. Pick an aspect ratio (landscape, square, or portrait), then download it as a PNG or copy it to your clipboard. The image includes the legend, title, and AI Gateway branding. View the leaderboards or read the AI Production Index . Read more",
+      "evidenceLink": "",
+      "score": 47,
+      "core": "We are making the data behind the AI Gateway leaderboards open under the CC BY 4.0 license . You can now download or query the data through the leaderboard-export API endpoint and render any chart as a shareable image. The AI Gateway leaderboards show how AI is used in production, ranking traffic for models, labs, apps, and providers. Data is aggregated daily across trillions of tokens, so you can see what gets adop…",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-09T17:32:24.353Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "mozilla_ai",
+      "source": "Mozilla.ai",
+      "title": "Stop Chasing New Models. Build Once and Access Them All.",
+      "link": "https://blog.mozilla.ai/stop-chasing-new-models-build-once-and-access-them-all",
+      "publishedAt": "2026-07-27T09:49:44.000Z",
+      "author": "Carlos Alvarez",
+      "summary": "Swapping LLMs sounds simple, but managing separate SDKs, credentials, and billing turns model evaluation into an infrastructure headache. Otari solves this with a unified gateway, decoupling application logic from providers so teams can seamlessly route traffic, test new models, and control spend.",
+      "evidenceLink": "",
+      "score": 29.655555555555555,
+      "core": "Swapping LLMs sounds simple, but managing separate SDKs, credentials, and billing turns model evaluation into an infrastructure headache. Otari solves this with a unified gateway, decoupling application logic from providers so teams can seamlessly route traffic, test new models, and control spend.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-09T17:32:24.353Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Determining playoff clinching scenarios in the NHL using constraint programming",
+      "link": "https://aws.amazon.com/blogs/machine-learning/determining-playoff-clinching-scenarios-in-the-nhl-using-constraint-programming",
+      "publishedAt": "2026-08-07T16:21:00.000Z",
+      "author": "Gili Rosenberg",
+      "summary": "The AWS Generative AI Innovation Center built an automated system that uses constraint programming and custom tree search to determine, with mathematical certainty, when and how an NHL team clinches a playoff spot. The approach was validated against four full NHL seasons of officially published results.",
+      "evidenceLink": "",
+      "score": 28.17531045634921,
+      "core": "The AWS Generative AI Innovation Center built an automated system that uses constraint programming and custom tree search to determine, with mathematical certainty, when and how an NHL team clinches a playoff spot. The approach was validated against four full NHL seasons of officially published results.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-09T17:32:24.353Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Give any website a WebMCP interface",
+      "link": "https://blog.cloudflare.com/webmcp",
+      "publishedAt": "2026-08-06T13:00:00.000Z",
+      "author": "Will Rowe",
+      "summary": "Today we're launching a developer preview of WebMCP on Cloudflare. With one switch, any site becomes usable by browser AI agents — no new APIs, no origin changes — while the human stays in control and creators keep their traffic.",
+      "evidenceLink": "",
+      "score": 27.805072361111115,
+      "core": "Today we're launching a developer preview of WebMCP on Cloudflare. With one switch, any site becomes usable by browser AI agents — no new APIs, no origin changes — while the human stays in control and creators keep their traffic.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-09T17:32:24.353Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

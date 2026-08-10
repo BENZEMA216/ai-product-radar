@@ -1,0 +1,51 @@
+{
+  "generatedAt": "2026-08-10T16:18:12.557Z",
+  "report": "2026-08-11.md",
+  "health": "quality/knowledge-source-health/2026-08-11.json",
+  "candidates": "quality/knowledge-candidates/2026-08-11.json",
+  "site": "docs/index.html",
+  "ok": true,
+  "date": "2026-08-11",
+  "rows": 20,
+  "blogCount": 16,
+  "paperCount": 4,
+  "blogAccessVerifiedCount": 16,
+  "topConferencePaperCount": 4,
+  "sourceCount": 33,
+  "candidatePool": {
+    "historicalLinkCount": 282,
+    "blogFetchedCount": 163,
+    "blogAccessCheckedCount": 47,
+    "blogAccessVerifiedCount": 46,
+    "blogAccessRejectedCount": 1,
+    "blogAccessRejected": [
+      {
+        "sourceId": "interconnects",
+        "title": "Lessons from the hacks",
+        "link": "https://www.interconnects.ai/p/lessons-from-the-hacks",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      }
+    ],
+    "paperFetchedCount": 80,
+    "paperTopConferenceVerifiedCount": 80,
+    "blogAfterHistoricalDedupCount": 46,
+    "paperAfterHistoricalDedupCount": 60,
+    "eligibleAfterHistoricalDedupCount": 106,
+    "maxPerBlogSource": 2,
+    "selectedBlogSourceCounts": {
+      "agentic_engineer": 2,
+      "coder_ai_engineering": 2,
+      "gerald_chen_ai_engineering": 2,
+      "hcker_news_ai_blogs": 1,
+      "interconnects": 1,
+      "itpro_ai": 2,
+      "lennys_newsletter": 2,
+      "openai_news": 1,
+      "rerun_agent_engineering": 2,
+      "sentry_ai_engineering": 1
+    },
+    "sourceCapRelaxed": false,
+    "shortfallReason": ""
+  },
+  "failures": []
+}

@@ -1,0 +1,259 @@
+{
+  "generatedAt": "2026-08-09T17:32:24.353Z",
+  "date": "2026-08-10",
+  "window": {
+    "start": "2026-07-10T17:32:24.353Z",
+    "end": "2026-08-09T17:32:24.353Z",
+    "lookbackDays": 30
+  },
+  "targetCount": 20,
+  "desiredBlogCount": 16,
+  "minimumBlogCount": 16,
+  "minimumTotalCount": 18,
+  "maximumPaperCount": 4,
+  "desiredPaperCount": 4,
+  "selectedCount": 4,
+  "blogCount": 4,
+  "paperCount": 0,
+  "candidatePool": {
+    "historicalLinkCount": 278,
+    "blogFetchedCount": 121,
+    "blogAccessCheckedCount": 7,
+    "blogAccessVerifiedCount": 6,
+    "blogAccessRejectedCount": 1,
+    "blogAccessRejected": [
+      {
+        "sourceId": "interconnects",
+        "title": "Lessons from the hacks",
+        "link": "https://www.interconnects.ai/p/lessons-from-the-hacks",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      }
+    ],
+    "paperFetchedCount": 0,
+    "paperTopConferenceVerifiedCount": 0,
+    "blogAfterHistoricalDedupCount": 6,
+    "paperAfterHistoricalDedupCount": 0,
+    "eligibleAfterHistoricalDedupCount": 6,
+    "maxPerBlogSource": 2,
+    "selectedBlogSourceCounts": {
+      "aws_machine_learning": 1,
+      "cloudflare_ai": 1,
+      "mozilla_ai": 1,
+      "vercel_ai": 1
+    },
+    "sourceCapRelaxed": false,
+    "shortfallReason": "历史 canonical URL 去重后有效新内容不足，未达到总量目标；Blog 历史 canonical URL 去重后仅 6 篇，低于 16 篇目标；顶会元数据核验后论文仅 0 篇，空缺优先用已验证可访问的 Blog 补位，不用普通 arXiv 论文凑数；未用旧文或低质量内容补位。"
+  },
+  "blogAccessPolicy": {
+    "allowedModes": [
+      "public",
+      "gmail_subscription"
+    ],
+    "gmailGrantCount": 0,
+    "privateIdentifiersPersisted": false
+  },
+  "topConferenceAllowlist": [
+    "NeurIPS",
+    "ICML",
+    "ICLR",
+    "ACL",
+    "EMNLP",
+    "NAACL",
+    "CVPR",
+    "ICCV",
+    "ECCV",
+    "AAAI",
+    "IJCAI",
+    "KDD",
+    "SIGIR",
+    "WWW",
+    "CHI",
+    "SOSP",
+    "OSDI",
+    "NSDI"
+  ],
+  "sources": {
+    "openai_news": {
+      "label": "OpenAI",
+      "status": "ok",
+      "rawCount": 1115,
+      "keptCount": 15,
+      "note": "30 天窗口"
+    },
+    "anthropic": {
+      "label": "Anthropic Research & Engineering",
+      "status": "ok",
+      "rawCount": 510,
+      "keptCount": 7,
+      "note": "30 天窗口"
+    },
+    "deepmind": {
+      "label": "Google DeepMind",
+      "status": "ok",
+      "rawCount": 100,
+      "keptCount": 9,
+      "note": "30 天窗口"
+    },
+    "simon_willison": {
+      "label": "Simon Willison",
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 7,
+      "note": "30 天窗口"
+    },
+    "lilian_weng": {
+      "label": "Lil'Log · Lilian Weng",
+      "status": "ok",
+      "rawCount": 53,
+      "keptCount": 0,
+      "note": "30 天窗口"
+    },
+    "chip_huyen": {
+      "label": "Chip Huyen",
+      "status": "ok",
+      "rawCount": 10,
+      "keptCount": 0,
+      "note": "30 天窗口"
+    },
+    "eugene_yan": {
+      "label": "Eugene Yan",
+      "status": "ok",
+      "rawCount": 212,
+      "keptCount": 0,
+      "note": "30 天窗口"
+    },
+    "cloudflare_ai": {
+      "label": "Cloudflare",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 17,
+      "note": "30 天窗口"
+    },
+    "vercel_ai": {
+      "label": "Vercel",
+      "status": "ok",
+      "rawCount": 1445,
+      "keptCount": 20,
+      "note": "30 天窗口"
+    },
+    "github_ai_engineering": {
+      "label": "GitHub Blog",
+      "status": "ok",
+      "rawCount": 10,
+      "keptCount": 0,
+      "note": "30 天窗口"
+    },
+    "aws_machine_learning": {
+      "label": "AWS Machine Learning Blog",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 10,
+      "note": "30 天窗口"
+    },
+    "google_developers": {
+      "label": "Google Developers Blog",
+      "status": "ok",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "30 天窗口"
+    },
+    "meta_engineering": {
+      "label": "Meta Engineering",
+      "status": "ok",
+      "rawCount": 9,
+      "keptCount": 1,
+      "note": "30 天窗口"
+    },
+    "microsoft_research": {
+      "label": "Microsoft Research",
+      "status": "ok",
+      "rawCount": 10,
+      "keptCount": 2,
+      "note": "30 天窗口"
+    },
+    "nvidia_deep_learning": {
+      "label": "NVIDIA Deep Learning",
+      "status": "ok",
+      "rawCount": 18,
+      "keptCount": 0,
+      "note": "30 天窗口"
+    },
+    "huggingface_blog": {
+      "label": "Hugging Face Blog",
+      "status": "ok",
+      "rawCount": 835,
+      "keptCount": 1,
+      "note": "30 天窗口"
+    },
+    "google_research": {
+      "label": "Google Research",
+      "status": "ok",
+      "rawCount": 100,
+      "keptCount": 0,
+      "note": "30 天窗口"
+    },
+    "mozilla_ai": {
+      "label": "Mozilla.ai",
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 4,
+      "note": "30 天窗口"
+    },
+    "hcker_news_ai_blogs": {
+      "label": "Hacker News · hcker.news",
+      "status": "ok",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "hcker.news 滚动 24 小时 AI 外链；HN 分数至少 80，排除 Show/Launch HN、代码仓库与论文链接"
+    },
+    "latent_space": {
+      "label": "Latent Space",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 4,
+      "note": "30 天窗口"
+    },
+    "interconnects": {
+      "label": "Interconnects",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 6,
+      "note": "30 天窗口"
+    },
+    "lennys_newsletter": {
+      "label": "Lenny's Newsletter",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 11,
+      "note": "30 天窗口；由 Gmail 订阅发现后改用公开 RSS"
+    },
+    "pragmatic_engineer": {
+      "label": "The Pragmatic Engineer",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 7,
+      "note": "30 天窗口；由 Gmail 订阅发现后改用公开 RSS"
+    },
+    "funeral_ai": {
+      "label": "葬AI",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 0,
+      "note": "30 天窗口；由 Gmail 订阅发现后改用公开 RSS"
+    },
+    "gmail_newsletters": {
+      "label": "Gmail Newsletter",
+      "status": "optional",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "当日未生成 Gmail Newsletter 清洗输入；公开 RSS 来源仍继续采集"
+    },
+    "semantic_scholar_top_conferences": {
+      "label": "顶会论文 · Semantic Scholar",
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Semantic Scholar top-conference search failed: 429  | 429  | 429  | 429 "
+    }
+  }
+}

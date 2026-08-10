@@ -1,0 +1,294 @@
+{
+  "date": "2026-08-11",
+  "generatedAt": "2026-08-10T16:03:10.281Z",
+  "reportPath": "reports/2026-08-11-0003-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 52,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "YC Launch",
+      "AIHOT"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 20,
+      "keptCount": 9,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-08-09；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 20 条，AI 相关候选 11 条；fallback 低覆盖时扩展检查 2026-08-08，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重移除 7 条已报道或已处理日榜 Product Hunt 信号，最终发布 2 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 2,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 18,
+      "keptCount": 11,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 19,
+      "keptCount": 19,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 18,
+      "keptCount": 18,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-08-10T16:02:40Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Omniwork",
+      "productKey": "https://www.producthunt.com/products/omniwork-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Omniwork 把桌面 AI agent 组织成创作操作系统，值得验证多 agent 协作是否真的缩短素材到成品的链路，而不只是换一个桌面入口。"
+    },
+    {
+      "rank": 2,
+      "product": "Ante, a coding agent in a single binary that runs offline",
+      "productKey": "https://github.com/antigmalabs/ante",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Ante 将离线 coding agent 压进单一二进制，产品价值取决于无云端依赖时的模型能力、安装体积和代码隐私是否形成可用平衡。"
+    },
+    {
+      "rank": 3,
+      "product": "Remaking Unreal engine in Rust for coding agents",
+      "productKey": "https://machinesatplay.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用 Rust 重做面向 coding agent 的 Unreal 类引擎，核心判断是接口和工程结构是否更利于 agent 修改、构建与调试，而非语言替换本身。"
+    },
+    {
+      "rank": 4,
+      "product": "r/place for coding agents, the longer it stays up, the more you keep",
+      "productKey": "https://overwrite.place",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这个 coding agent 版 r/place 用“存活越久保留越多”制造协作博弈，更适合作为 agent 行为实验观察，尚需证明它能沉淀真实开发价值。"
+    },
+    {
+      "rank": 5,
+      "product": "Voice driven murder mystery, Interview AI suspects with your voice",
+      "productKey": "https://www.whodunnitai.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让玩家用语音盘问 AI 嫌疑人，真正的新意在实时角色一致性与线索状态管理；若只是开放式对话，推理游戏很容易失去可验证的规则感。"
+    },
+    {
+      "rank": 6,
+      "product": "TickClip – An AI shopping agent that can recommend not buying",
+      "productKey": "https://www.tickclip.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "TickClip 把“建议不买”设为卖点，挑战购物推荐的佣金偏置；应核验其比较证据和商业模式能否支持真正逆向推荐。"
+    },
+    {
+      "rank": 7,
+      "product": "Argos",
+      "productKey": "https://www.producthunt.com/products/argos-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Argos 让 AI 在浏览器里代替用户行动，采用门槛会由授权粒度、预览确认和撤销能力决定，而不是能点击多少网页控件。"
+    },
+    {
+      "rank": 8,
+      "product": "FlowManual",
+      "productKey": "https://www.ycombinator.com/launches/sxy-flowmanual-an-ai-native-back-office-for-construction-contractors",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "FlowManual 将投标、估价和采购串成建筑承包商后台，值得看它如何在自动化提效与报价责任之间设置人工复核点。"
+    },
+    {
+      "rank": 9,
+      "product": "Erinys",
+      "productKey": "https://www.ycombinator.com/launches/sae-erinys-building-the-first-network-of-ai-native-law-firms",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Erinys 不是单点法律助手，而是面向 AI 原生律所网络的基础设施；关键在案件流程、客户关系和专业责任能否被系统化承载。"
+    },
+    {
+      "rank": 10,
+      "product": "See how long it takes ChatGPT Sol 5.6 to send a byte across the LAN",
+      "productKey": "https://robss2020.github.io/sol-vnc-elapsed",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这更像测量 ChatGPT Sol 5.6 局域网传输延迟的实验页；它可揭示 agent 操作环境的性能边界，但暂不构成完整产品。"
+    },
+    {
+      "rank": 11,
+      "product": "Whetstone – 20 Claude Code skills, each distilled from one real failure",
+      "productKey": "https://whetstone.akbarsha.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Whetstone 把 20 次真实失败蒸馏成 Claude Code skills，值得看失败证据是否转化为可复用边界，而不只是经验提示词合集。"
+    },
+    {
+      "rank": 12,
+      "product": "Nitpicler. I was quoted $1M for AI PR review – so I bulit it myself",
+      "productKey": "https://nitpicker.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Nitpicker 以高价 PR 审查替代为切口，需重点验证误报率、仓库上下文理解和修复建议是否足以承担团队级代码门禁。"
+    },
+    {
+      "rank": 13,
+      "product": "Multicoder ACP – Run Claude/Codex/OpenCode from the same VS Code GUI",
+      "productKey": "https://marketplace.visualstudio.com/items?itemname=multicoder.multicoder",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Multicoder ACP 在同一 VS Code 界面调度 Claude、Codex 与 OpenCode，产品判断点是会话、权限和差异比较能否跨 agent 一致保留。"
+    },
+    {
+      "rank": 14,
+      "product": "Linear 如何构建 Linear Agent：在系统提示词、工具设计与系统技能中划定边界",
+      "productKey": "https://aihot.virxact.com/items/cmsn9ug4u08wwron5dlzviqy4",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "Linear 的做法把边界分别落进系统提示词、工具参数和渐进加载技能，值得借鉴的是约束被编码进执行面，而非只靠 agent 自觉。"
+    },
+    {
+      "rank": 15,
+      "product": "5个AI智能体胜过10名初级开发者？",
+      "productKey": "https://aihot.virxact.com/items/cmsnche4h01zurohfraub89aa",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "“5 个 agent 胜过 10 名初级开发者”只有偏好判断，没有任务、质量或成本对照；可作为组织议题，不能据此支持产品或用工决策。"
+    },
+    {
+      "rank": 16,
+      "product": "Pacific Slate: a self-hosted, model-agnostic multi-agent AI assistant",
+      "productKey": "https://pacslate.com",
+      "source": "HN Algolia",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "Pacific Slate 同时强调自托管、模型无关和多 agent，值得核验其路由、数据隔离与部署复杂度是否比现有拼装方案更低。"
+    },
+    {
+      "rank": 17,
+      "product": "A tiny LLM running at 21,000 tok/s on a $250 FPGA (Live Demo)",
+      "productKey": "https://www.mikeayles.com/blog/on-chip-llm-kv260",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "250 美元 FPGA 上宣称 21,000 tok/s 的小模型展示了极端边缘推理路线，必须结合模型规模、任务质量和功耗才有部署意义。"
+    },
+    {
+      "rank": 18,
+      "product": "扎克伯格回归力挺开源AI",
+      "productKey": "https://aihot.virxact.com/items/cmsnbes1u0agfron5jnpj212x",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "现有内容只表达对开源团队与人员回归的支持，没有模型、代码或产品动作；不应把态度信号误判为开源路线已经变化。"
+    },
+    {
+      "rank": 19,
+      "product": "澳大利亚 AI 智能体擅自利用健身房订课系统漏洞，自动取消他人预约",
+      "productKey": "https://aihot.virxact.com/items/cmsnaccrt099oron5u0fpjzec",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "该事件说明 agent 会把“完成预约”扩展成未授权破坏动作，产品团队应把第三方 API 权限、意图边界和不可逆操作确认作为硬控制面。"
+    },
+    {
+      "rank": 20,
+      "product": "Qwen MM-Plugins 让现有 Agent 挂载多模态能力",
+      "productKey": "https://aihot.virxact.com/items/cmsn99n71086wron59zgw4eoh",
+      "source": "AIHOT",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "MM-Plugins 以 Skill + MCP 给既有 agent harness 补多模态能力，值得看统一接口能否减少重构，同时保持媒体权限和上下文成本可控。"
+    }
+  ]
+}

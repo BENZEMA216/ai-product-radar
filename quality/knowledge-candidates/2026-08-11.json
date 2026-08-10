@@ -1,0 +1,427 @@
+{
+  "generatedAt": "2026-08-10T16:14:40.397Z",
+  "date": "2026-08-11",
+  "items": [
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "Faithful LLM-Assisted Question Answering for Technical and Academic Search",
+      "link": "https://doi.org/10.1145/3805712.3808357",
+      "evidenceLink": "https://www.semanticscholar.org/paper/0a4c51cb010df06d08ddb501558b6d5d0b9a4f78",
+      "publishedAt": "2026-07-19T00:00:00.000Z",
+      "submittedAt": "2026-07-19T00:00:00.000Z",
+      "author": "Juan Luis Filgueiras",
+      "summary": "Technology scouting and competitive intelligence increasingly rely on rapid access to scientific and technical evidence. Large language models (LLMs) are reshaping question answering by enabling users to express exploratory and evolving information needs in natural language. However, their usefulness is limited by hallucinations, weak calibration, poor abstention when evidence is missing, and the cost of keeping knowledge up to date. In such settings, the key question is whether LLM-generated answers can be trusted for decision support, that is, whether they are faithful to available evidence, transparent about uncertainty, and easy to verify. Recent work shows that hallucinations remain pervasive, while retrieval-augmented generation (RAG) has become the main strategy for grounding answers in external evidence. Yet even strong RAG systems often cite unsupported claims or generate plausible but fabricated references, especially under poor retrieval conditions. In response, prior work has examined citation faithfulness, decomposed generations into checkable units, and proposed factuality verification models and benchmarks. Still, the literature underexplores how to filter and validate evidence when sources are sparse, conflicting, or rapidly changing, as is common in technical and academic search. This thesis addresses that gap by studying faithful LLM-assisted question answering for technical and academic search as an end-to-end problem spanning collection construction, model adaptation, grounded generation, evidence verification, and user-centered evaluation. It is organized around five questions: how LLMs can support exploratory search beyond keywords; how retrieval and generation pipelines can produce trustworthy responses; how systems should behave when evidence is sparse or unreliable; how usefulness and trustworthiness should be evaluated; and which architectures and optimization strategies enable reliable real-world deployment. The thesis argues that truthful technical search requires explicit mechanisms for claim-level grounding, calibrated abstention, contradiction handling, and support-aware evidence presentation. Methodologically, the work follows a pipeline perspective in which datasets, models, and evaluation procedures co-evolve. The empirical setup combines public QA and RAG benchmarks with technical and scientific collections tailored to technology scouting scenarios. A central methodological contribution will be the design of scenario-based evaluation subsets targeting null-retrieval, conflicting evidence, noisy or weak-signal evidence, and exploratory information needs. On top of these resources, the thesis will compare single-pass RAG and more structured agentic pipelines while varying retrieval strategies, prompting policies, claim-evidence alignment procedures, quotation and citation behaviors, and model adaptation techniques such as instruction tuning, parameter-efficient fine-tuning, and reinforcement-based optimization. Evaluation will be multi-dimensional. In addition to answer utility and retrieval effectiveness, the thesis will measure citation faithfulness, support coverage, hallucination and false citation rates, abstention quality, uncertainty communication, and robustness under perturbed retrieval conditions. Whenever feasible, these automatic analyses will be complemented with analyst-oriented user studies that examine whether different evidence presentation formats help users reduce verification cost in realistic scouting workflows. Overall, the expected contribution is a principled and deployable framework for trustworthy natural-language access to scientific and technical information, combining faithful generation, verifiable evidence selection, and evaluation protocols tailored to real technical and academic search.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 68,
+      "core": "Technology scouting and competitive intelligence increasingly rely on rapid access to scientific and technical evidence. Large language models (LLMs) are reshaping question answering by enabling users to express exploratory and evolving information needs in natural language. However, their usefulness is limited by hallucinations, weak calibration, poor abstention when evidence is missing, and the cost of keeping kno…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "If Only My CGM Could Speak: A Privacy-Preserving Agent for Question Answering over Continuous Glucose Data",
+      "link": "https://arxiv.org/abs/2604.17133",
+      "evidenceLink": "https://www.semanticscholar.org/paper/38c42bb9aa64ad27ab7d2e6db840932a2037c3b0",
+      "publishedAt": "2026-04-18T00:00:00.000Z",
+      "submittedAt": "2026-04-18T00:00:00.000Z",
+      "author": "Yanjun Cui, Ali Emami, T. Prioleau, Nikhil Singh",
+      "summary": "Continuous glucose monitors (CGMs) used in diabetes care collect rich personal health data that could improve day-to-day self-management. However, current patient platforms only offer static summaries which do not support inquisitive user queries. Large language models (LLMs) could enable free-form inquiries about continuous glucose data, but deploying them over sensitive health records raises privacy and accuracy concerns. In this paper, we present CGM-Agent, a privacy-preserving framework for question answering over personal glucose data. In our design, the LLM serves purely as a reasoning engine that selects analytical functions. All computation occurs locally, and personal health data never leaves the user's device. For evaluation, we construct a benchmark of 4,180 questions combining parameterized question templates with real user queries and ground truth derived from deterministic program execution. Evaluating 6 leading LLMs, we find that top models achieve 94\\% value accuracy on synthetic queries and 88\\% on ambiguous real-world queries. Errors stem primarily from intent and temporal ambiguity rather than computational failures. Additionally, lightweight models achieve competitive performance in our agent design, suggesting opportunities for low-cost deployment. We release our code and benchmark to support future work on trustworthy health agents.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 68,
+      "core": "Continuous glucose monitors (CGMs) used in diabetes care collect rich personal health data that could improve day-to-day self-management. However, current patient platforms only offer static summaries which do not support inquisitive user queries. Large language models (LLMs) could enable free-form inquiries about continuous glucose data, but deploying them over sensitive health records raises privacy and accuracy c…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "LLM-Oriented Information Retrieval: A Denoising-First Perspective",
+      "link": "https://arxiv.org/abs/2605.00505",
+      "evidenceLink": "https://www.semanticscholar.org/paper/5af020d9df9b0de07d428a28073766c0f7401103",
+      "publishedAt": "2026-05-01T00:00:00.000Z",
+      "submittedAt": "2026-05-01T00:00:00.000Z",
+      "author": "Lu Dai, Liangtai Sun, Fanpu Cao, Ziyang Rao, Cehao Yang",
+      "summary": "Modern information retrieval (IR) is no longer consumed primarily by humans but increasingly by large language models (LLMs) via retrieval-augmented generation (RAG) and agentic search. Unlike human users, LLMs are constrained by limited attention budgets and are uniquely vulnerable to noise; misleading or irrelevant information is no longer just a nuisance, but a direct cause of hallucinations and reasoning failures. In this perspective paper, we argue that denoising-maximizing usable evidence density and verifiability within a context window-is becoming the primary bottleneck across the full information access pipeline. We conceptualize this paradigm shift through a four-stage framework of IR challenges: from inaccessible to undiscoverable, to misaligned, and finally to unverifiable. Furthermore, we provide a pipeline-organized taxonomy of signal-to-noise optimization techniques, spanning indexing, retrieval, context engineering, verification, and agentic workflow. We also present research works on information denoising in domains that rely heavily on retrieval such as lifelong assistant, coding agent, deep research, and multimodal understanding.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 66,
+      "core": "Modern information retrieval (IR) is no longer consumed primarily by humans but increasingly by large language models (LLMs) via retrieval-augmented generation (RAG) and agentic search. Unlike human users, LLMs are constrained by limited attention budgets and are uniquely vulnerable to noise; misleading or irrelevant information is no longer just a nuisance, but a direct cause of hallucinations and reasoning failure…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "Good Ranks Follow Good Answers: Unsupervised Answer-Driven Reranking for Multimodal Document QA",
+      "link": "https://doi.org/10.1145/3805712.3809664",
+      "evidenceLink": "https://www.semanticscholar.org/paper/79876bebd194d276d4e92b4d0af23d7b0fe7e546",
+      "publishedAt": "2026-07-19T00:00:00.000Z",
+      "submittedAt": "2026-07-19T00:00:00.000Z",
+      "author": "Keyu Zhu, Shuanghong Shen, Xianquan Wang, Kai Zhang, Shijin Wang",
+      "summary": "Multimodal Document Question Answering (MDQA) systems commonly follow a retrieve-then-answer paradigm; however, the retrieval stage often introduces substantial noise, making an effective reranking component indispensable. Existing reranker training frameworks in MDQA rely predominantly on proxy supervision derived from human annotations or large language model (LLM) outputs, which are frequently noisy and, more critically, misaligned with downstream answer quality. To overcome this limitation, we propose AD-Reranker, a novel framework that shifts reranker training from proxy imitation to answer-driven utility optimization. Specifically, we reformulate the reranker as an environment-grounded agent that interacts with a downstream reader, modeled as a deterministic environment. We further design a composite reward function that integrates answer correctness, thereby explicitly incentivizing ranking strategies aligned with downstream task performance. To optimize the agent, we adopt Group Relative Policy Optimization (GRPO), enabling stable and effective group-wise policy learning. Empirical results demonstrate that AD-Reranker achieves superior reranking quality and an optimal accuracy-efficiency trade-off. When integrated into standard MDQA pipelines, AD-Reranker improves accuracy by 1.9%–5.0% while reducing the reader's context token consumption by 15%–52%, providing strong evidence for the effectiveness of answer-driven reranker training.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 64,
+      "core": "Multimodal Document Question Answering (MDQA) systems commonly follow a retrieve-then-answer paradigm; however, the retrieval stage often introduces substantial noise, making an effective reranking component indispensable. Existing reranker training frameworks in MDQA rely predominantly on proxy supervision derived from human annotations or large language model (LLM) outputs, which are frequently noisy and, more cri…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "Autonomous AI Agents & Agentic AI: How to Build and Deploy Them (2026 Guide)",
+      "link": "https://rerun.build/blog/autonomous-ai-agents",
+      "publishedAt": "2026-07-17T06:01:22.000Z",
+      "author": "",
+      "summary": "A practical 2026 guide to building and deploying autonomous AI agents — covering architecture, frameworks, memory, tool use, production deployment, and cost controls.",
+      "evidenceLink": "",
+      "score": 62.922222222222224,
+      "core": "A practical 2026 guide to building and deploying autonomous AI agents — covering architecture, frameworks, memory, tool use, production deployment, and cost controls.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-10T16:14:40.397Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Over 181,000 AI meeting recordings left wide open in note taking app",
+      "link": "https://bobdahacker.com/blog/tldv-hack",
+      "publishedAt": "2026-08-10T12:26:05.000Z",
+      "author": "colesantiago https://news.ycombinator.com/user?id=colesantiago",
+      "summary": "How a missing Firestore security rule on tl;dv exposed 181,874 meetings from 84,312 users across 35,003 domains, including live calls I could join uninvited, and how six months of disclosure got me nothing but seen receipts.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49242739",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 291,
+        "comments": 101
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-10T16:14:40.397Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 62.31642815235323,
+      "core": "How a missing Firestore security rule on tl;dv exposed 181,874 meetings from 84,312 users across 35,003 domains, including live calls I could join uninvited, and how six months of disclosure got me nothing but seen receipts.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Trust your AI agents? New research shows ‘memory poisoning’ can dupe them into ‘remembering’ fake information – and it’s a huge security risk",
+      "link": "https://www.itpro.com/security/trust-your-ai-agents-new-research-shows-memory-poisoning-can-dupe-them-into-remembering-fake-information-and-its-a-huge-security-risk",
+      "publishedAt": "2026-08-10T11:20:20.000Z",
+      "author": "Emma Woollacott",
+      "summary": "Memory poisoning allows hidden text on a webpage to be treated as fact and used to make harmful decisions",
+      "evidenceLink": "",
+      "score": 58.23292863095238,
+      "core": "Memory poisoning allows hidden text on a webpage to be treated as fact and used to make harmful decisions",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-10T16:14:40.397Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "ReAct Agents: How the Reasoning-and-Acting Loop Actually Works",
+      "link": "https://rerun.build/blog/react-agents",
+      "publishedAt": "2026-08-10T06:25:07.000Z",
+      "author": "",
+      "summary": "ReAct agents solve tasks by looping through Thought, Action, and Observation. Here is how the reasoning-and-acting loop works, a real worked example, how it compares to Chain-of-Thought and function calling, and why the raw loop needs a control plane in production.",
+      "evidenceLink": "",
+      "score": 56.770369107142855,
+      "core": "ReAct agents solve tasks by looping through Thought, Action, and Observation. Here is how the reasoning-and-acting loop works, a real worked example, how it compares to Chain-of-Thought and function calling, and why the raw loop needs a control plane in production.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-10T16:14:40.397Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gerald_chen_ai_engineering",
+      "source": "陈广亮的技术博客",
+      "title": "Flaky 不再是 bug，是本体：前端测试思维怎么迁移到 Eval",
+      "link": "https://chenguangliang.com/posts/blog214_fe2agent-09-evals",
+      "publishedAt": "2026-08-08T01:00:00.000Z",
+      "author": "",
+      "summary": "前端里 flaky test 是要修的 bug，agent 世界里 flaky 是本体——同一个任务跑 10 次，7 次完美、2 次啰嗦、1 次自信地错。exact match 必死、单次结果不说明任何事、评测集是你的伤疤集。这是 fe2agent 系列第 9 篇，配 tiny-agent v0.9（evals 用例集 + 多次采样跑通过率 + LLM judge）。",
+      "evidenceLink": "",
+      "score": 51.51030958333333,
+      "core": "前端里 flaky test 是要修的 bug，agent 世界里 flaky 是本体——同一个任务跑 10 次，7 次完美、2 次啰嗦、1 次自信地错。exact match 必死、单次结果不说明任何事、评测集是你的伤疤集。这是 fe2agent 系列第 9 篇，配 tiny-agent v0.9（evals 用例集 + 多次采样跑通过率 + LLM judge）。",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-10T16:14:40.397Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentic_engineer",
+      "source": "The Agentic Engineer",
+      "title": "Managed Agents: The Production Layer Above Coding CLIs",
+      "link": "https://www.agentic-engineer.com/blog/2026-07-20-managed-agents-production-coding-clis",
+      "publishedAt": "2026-07-20T11:00:00.000Z",
+      "author": "",
+      "summary": "Managed agents are the 2026 story. What they are, why they differ from CLIs like Claude Code and Codex, and a code-first POC built on Anthropic's platform.",
+      "evidenceLink": "",
+      "score": 45.861111111111114,
+      "core": "Managed agents are the 2026 story. What they are, why they differ from CLIs like Claude Code and Codex, and a code-first POC built on Anthropic's platform.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-10T16:14:40.397Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Anthropic’s Mythos AI tried to dupe devs in social engineering attack, collaborated with other agents",
+      "link": "https://www.itpro.com/security/cyber-attacks/anthropics-mythos-ai-tried-to-dupe-devs-in-social-engineering-attack-collaborated-with-other-agents",
+      "publishedAt": "2026-08-06T11:36:30.000Z",
+      "author": "Ross Kelly",
+      "summary": "Inter-agent collaboration is a serious cause for concern, says security expert",
+      "evidenceLink": "",
+      "score": 43.24503180555555,
+      "core": "Inter-agent collaboration is a serious cause for concern, says security expert",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-10T16:14:40.397Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentic_engineer",
+      "source": "The Agentic Engineer",
+      "title": "The Race to Own the Production Agent Layer",
+      "link": "https://www.agentic-engineer.com/blog/2026-08-03-race-to-own-production-agent-layer",
+      "publishedAt": "2026-08-03T11:00:00.000Z",
+      "author": "",
+      "summary": "Twelve managed-agent platforms, one architecture. Why the race to run agents in production already has a blueprint, and how to bet on the shape, not the vendor.",
+      "evidenceLink": "",
+      "score": 41.888888888888886,
+      "core": "Twelve managed-agent platforms, one architecture. Why the race to run agents in production already has a blueprint, and how to bet on the shape, not the vendor.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-10T16:14:40.397Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "coder_ai_engineering",
+      "source": "Coder",
+      "title": "Why Sovereignty in Defense No Longer Means Air-Gapped Infrastructure",
+      "link": "https://coder.com/blog/ai-agent-security-sovereignty-defense",
+      "publishedAt": "2026-07-29T21:51:59.000Z",
+      "author": "Peter Davies",
+      "summary": "Air-gapped servers no longer equal sovereignty. See why AI agent security, not geography, now defines control across defense infrastructure worldwide.",
+      "evidenceLink": "",
+      "score": 39.833333333333336,
+      "core": "Air-gapped servers no longer equal sovereignty. See why AI agent security, not geography, now defines control across defense infrastructure worldwide.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-10T16:14:40.397Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gerald_chen_ai_engineering",
+      "source": "陈广亮的技术博客",
+      "title": "Fiber 教会我们设计 AI Agent 状态存储的 3 条原则",
+      "link": "https://chenguangliang.com/posts/blog205_fiber-teaches-ai-agent-state-design-three-principles",
+      "publishedAt": "2026-07-14T03:15:01.000Z",
+      "author": "",
+      "summary": "React Fiber 掘金上有一篇 6012 热度的深度介绍，同题已被写烂。真正没人写的是 Fiber 三大机制（双缓冲、time slicing、lanes 优先级）如何映射到 AI Agent 状态存储设计。本文从我 blog194/195/202 真做过的 AGENTS.md、loop debt、ponytail 实测经验出发，逐条对应给出 AI Agent 时代该抄的 3 条 Fiber 元规律。",
+      "evidenceLink": "",
+      "score": 38.138888888888886,
+      "core": "React Fiber 掘金上有一篇 6012 热度的深度介绍，同题已被写烂。真正没人写的是 Fiber 三大机制（双缓冲、time slicing、lanes 优先级）如何映射到 AI Agent 状态存储设计。本文从我 blog194/195/202 真做过的 AGENTS.md、loop debt、ponytail 实测经验出发，逐条对应给出 AI Agent 时代该抄的 3 条 Fiber 元规律。",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-10T16:14:40.397Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "🎙️ How I AI: Build an AI code review bot in 30 minutes + Claude Code for normal people",
+      "link": "https://www.lennysnewsletter.com/p/how-i-ai-build-an-ai-code-review",
+      "publishedAt": "2026-08-10T15:01:49.000Z",
+      "author": "Lenny Rachitsky",
+      "summary": "Your weekly listens from How I AI, part of the Lenny's Podcast Network",
+      "evidenceLink": "",
+      "score": 35.302154821428566,
+      "core": "Your weekly listens from How I AI, part of the Lenny's Podcast Network",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-10T16:14:40.397Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "sentry_ai_engineering",
+      "source": "Sentry Engineering",
+      "title": "Your agent should understand what you see",
+      "link": "https://blog.sentry.io/seer-agent-page-context",
+      "publishedAt": "2026-07-16T09:00:00.000Z",
+      "author": "",
+      "summary": "How Sentry replaced ASCII page snapshots with structured semantic context to make Seer Agent faster, cheaper, and ready for agentic actions.",
+      "evidenceLink": "",
+      "score": 34.77777777777778,
+      "core": "How Sentry replaced ASCII page snapshots with structured semantic context to make Seer Agent faster, cheaper, and ready for agentic actions.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-10T16:14:40.397Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Model ML completes finance work more efficiently with GPT-5.6 Sol",
+      "link": "https://openai.com/index/model-ml",
+      "publishedAt": "2026-08-10T12:00:00.000Z",
+      "author": "",
+      "summary": "Model ML uses GPT-5.6 Sol to carry finance work from research and analysis through editable, traceable PowerPoint decks and Excel workbooks.",
+      "evidenceLink": "",
+      "score": 34.47459529761905,
+      "core": "Model ML uses GPT-5.6 Sol to carry finance work from research and analysis through editable, traceable PowerPoint decks and Excel workbooks.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-10T16:14:40.397Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "interconnects",
+      "source": "Interconnects",
+      "title": "5 useful things you'll learn in my new post-training textbook (shipping now!)",
+      "link": "https://www.interconnects.ai/p/5-useful-things-youll-learn-in-my",
+      "publishedAt": "2026-08-10T13:02:42.000Z",
+      "author": "Nathan Lambert",
+      "summary": "After a few long years of finding time to document my lessons from training open models, my post-training book is done!",
+      "evidenceLink": "",
+      "score": 34.432571488095235,
+      "core": "After a few long years of finding time to document my lessons from training open models, my post-training book is done!",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-10T16:14:40.397Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "coder_ai_engineering",
+      "source": "Coder",
+      "title": "Coder Signs Strategic Collaboration Agreement with AWS to Scale Secure, AI-Powered Software Development",
+      "link": "https://coder.com/blog/coder-signs-strategic-collaboration-agreement-with-aws",
+      "publishedAt": "2026-07-23T12:51:41.000Z",
+      "author": "Coder Team",
+      "summary": "Coder has signed a strategic collaboration agreement (SCA) with Amazon Web Services (AWS). The agreement will help organizations adopt AI across software development without compromising on security, governance, or cost.",
+      "evidenceLink": "",
+      "score": 34.22222222222222,
+      "core": "Coder has signed a strategic collaboration agreement (SCA) with Amazon Web Services (AWS). The agreement will help organizations adopt AI across software development without compromising on security, governance, or cost.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-10T16:14:40.397Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "Claude Code for normal people: skills, voice mode, and how to collaborate with AI",
+      "link": "https://www.lennysnewsletter.com/p/claude-code-for-normal-people-skills",
+      "publishedAt": "2026-08-10T12:01:44.000Z",
+      "author": "Claire Vo",
+      "summary": "Listen now | 🎙️ Grace Clarke rebuilt her service business in Claude, turning 20 hours of weekly admin into one automated pipeline for proposals, client tracking, and email",
+      "evidenceLink": "",
+      "score": 32.654436567460316,
+      "core": "Listen now | 🎙️ Grace Clarke rebuilt her service business in Claude, turning 20 hours of weekly admin into one automated pipeline for proposals, client tracking, and email",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-10T16:14:40.397Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
