@@ -1,0 +1,432 @@
+{
+  "generatedAt": "2026-08-12T16:48:11.903Z",
+  "date": "2026-08-13",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Everything hackable will get hacked",
+      "link": "https://vercel.com/blog/everything-hackable-will-get-hacked",
+      "publishedAt": "2026-08-11T07:00:00.000Z",
+      "author": "Malte Ubl",
+      "summary": "Over the past year, AI models have become much more capable of performing cybersecurity work. These changes are reshaping both the threats facing the web and the tools available to defend it. Right now, defenders have an advantage because they can use stronger models for defensive work than the open-weight models broadly available for offensive research. But this advantage will not always last. The gap will soon close. I have both good news and bad news, neither of which is yet widely understood in the community. Bad news: Near-frontier open-weight models that perform offensive security research are available today. Kimi K3 is an Opus 4.X-class model with no relevant cybersecurity safeguards. Good news: You do not need to wait for “Mythos access” or OpenAI’s cyber program to begin defensive cybersecurity work. Frontier models, with the notable exception of Fable 5, will perform defensive cybersecurity tasks today. The uncertainty around Mythos 5's release seems to have created a kind of paralysis among defenders, many of whom are underutilizing the powerful tools available to them today. This post aims to give readers insight into how we're thinking about AI-enabled defensive cybersecurity at Vercel and why we think teams should be moving with more urgency. The OpenAI/Hugging Face security incident This YouTube video from OpenAI researchers on the widely reported security incident involving Hugging Face is an absolute must-watch for anyone concerned with cybersecurity. It clarifies that there were two separate security incidents exploiting vulnerabilities that will be found in most computer systems. The gist is that models working on an OpenAI training run found 0-day vulnerabilities that allowed them to bypass egress internet restrictions, enabling communication between models and access to the broader internet. Once internet access was established, broader exploitation occurred. Open-weight models that perform offensive security research are available today Open-weight model capabilities have been top of mind in the AI community lately, but it is less widely understood that Kimi K3, a popular open-weight model, has no effective safeguards against offensive cybersecurity work. On DeepSec Bench , which measures application-code vulnerability discovery, it ranks highest among the open-weight models we evaluated, roughly matching Sonnet 5 and outperforming Opus 4.8. I tasked Kimi K3 with trying to break out of Vercel Sandbox , and while it did not successfully escape, it mapped the guest-kernel attack surface, followed possible privilege escalation paths, built a VM environment to reproduce its ideas, and implemented and ran a fuzzer. These are some excerpts from that research, beginning with an analysis of the guest-kernel attack surface. The model followed that lead into candidate privilege escalation paths and considered what guest-kernel control could mean for a microVM escape. When paths still needed testing, Kimi built a VM environment for reproductions and wrote a stateful fuzzer for the device path it was investigating. While none of this produced an escape from Vercel Sandbox, it did show Kimi conducting an investigation on its own, and given the right vulnerable surface, this would lead to a successful exploit. Frontier models can help defenders today Much of the community assumed that meaningful security review would require access to Mythos-class models and therefore held off on using the models already available to them. But that assumption has never been true. All the frontier models that we evaluated, with the notable exception of Fable 5, can perform defensive cybersecurity work today and have been able to do so throughout the year so far. The rough heuristic I have observed is that models with safeguards will still make hypotheses about security vulnerabilities when they have access to source code, apparently because access to proprietary source code typically suggests a defensive use case. Attackers can also obtain source code, but I think source-code access is a reasonable working signal of defensive intent. I personally discovered this in March, when I first heard about cyber variants and was also seeing AI code reviews find security issues in my own code. That made me wonder, “If code review can find issues in a diff, can I also run it across an entire codebase?” It turns out the answer was yes. From that experiment, I created deepsec , an open-source security harness for performing security analysis at scale across large codebases. The temporary defensive advantage Right now, OpenAI’s Sol 5.6 on XHigh is the best model for cybersecurity defense. It is much smarter than Kimi K3, the best available open-weight model without safeguards against offensive work. As defender, you have the better tool at your disposal, but you have to use it. A full deepsec review will help you improve the security posture of your codebase by surfacing vulnerability hypotheses for you to investigate. In my experience, it is especially good at finding IDORs, XSS, and SSRF. The Hugging Face incident shows what this kind of application-level research looks like from the other side, since the models kept searching after an SSRF attempt was blocked and eventually found successful routes through file disclosure and template injection. deepsec is open source and can run entirely in your own infrastructure with inference providers controlled by you. Vercel has no financial gain from you using it. It is really worth trying on your own source code. Once the run finishes, review every finding yourself and compare the results with what your current security process already catches. Continuous defense AI model capabilities will continue to improve, and I expect open-weight models to catch up with Sol’s current performance on application-code vulnerability discovery even as frontier models advance again. We need to prepare for that cycle by continuously improving how we find and fix vulnerabilities as the models progress. At Vercel, we run full deepsec reviews across mission-critical repositories every quarter and whenever a stronger model becomes available, in addition to automated security reviews on every pull request. Those full reviews cost tens of thousands of dollars, which we consider a relatively small expense compared with what we spend on our HackerOne program or the opportunity cost of a security incident. We have connected deepsec output to Vercel software factories for automated vulnerability processing and will share more about this work soon. As these reviews produce more findings, automatically managing them becomes the next frontier. What Vercel is doing As an immediate measure, we made the full egress firewall in Vercel Sandbox available on the Hobby plan , giving everyone access to the same network controls. We are also working to launch a dedicated HackerOne program focused on finding zero-day vulnerabilities in Vercel Sandbox and the egress firewall. We want to redirect offensive model capabilities toward defensive work, so the program will cover AI costs for researchers who use AI Gateway and submit a vulnerability report that is accepted. We also plan to extend deepsec to use the offensive capabilities of open-weight models and cyber variants of frontier models when triaging the vulnerability hypotheses it identifies. Defenders can already use stronger models than those broadly available for offensive work. Teams should use that advantage now and continue reviewing their systems as the gap closes. Takeaways The cybersecurity threat from AI models is real. Everybody can improve their defensive posture with tools like deepsec today. Doing this is urgent, and the practice should continue as models improve. Read more",
+      "evidenceLink": "",
+      "score": 103.58547811507937,
+      "core": "Over the past year, AI models have become much more capable of performing cybersecurity work. These changes are reshaping both the threats facing the web and the tools available to defend it. Right now, defenders have an advantage because they can use stronger models for defensive work than the open-weight models broadly available for offensive research. But this advantage will not always last. The gap will soon clo…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-12T16:48:11.903Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Building a software factory for AI SDK",
+      "link": "https://vercel.com/blog/building-a-software-factory-for-ai-sdk",
+      "publishedAt": "2026-08-12T00:00:00.000Z",
+      "author": "Lars Grammel",
+      "summary": "The AI SDK is one of the most popular open-source AI projects in the world. It serves over 20 million npm downloads a week and the repo has over 26,000 stars. Maintaining the codebase means tracking four moving targets at once: Model providers: new providers, new capabilities, and new bugs UI frameworks: bindings for React, Next.js, Svelte, Vue, and others Sandboxes: the execution environments agents run code in Harnesses: adapters for Codex, Claude Code, Pi, and others After multiple years of growth, the repo was getting 100+ new issues every month, and when Anthropic's Opus 4.6 model was released, PRs hit an inflection point. By late June, that compounding had accumulated over 1,000 open issues and almost 800 pull requests. That backlog is not a discipline problem. No maintainer, however good, can close that gap by working harder, and because generating code is cheap, it will only grow. Instead of trying to scale ourselves, we built a software factory. Four weeks in, it authors between 25 and 35% of PRs we merge and closes 70-80% of issues. Deciding what type of factory to build Before we built anything, we had to answer three questions: Why our existing approach using agents wasn't enough What level of automation fit a project like the AI SDK How to align automation and human effort to risk Why not add more agents? The best maintainers are already using agents aggressively. Mitchell Hashimoto runs Ghostty with the goal of an agent always working, and encodes every agent failure in AGENTS.md so it never repeats. Simon Willison runs four coding agents in parallel, and review bots like Vercel Agent and CodeRabbit sit on millions of repos. Other maintainers like Daniel Stenberg have opted to block AI-generated submissions to curl. All of it helps, but none of it solves for the core constraint: every one of these solutions still routes every change through one human's attention. We believe that human accountability is still the core of trust in agentic engineering, so we knew our factory needed to solve for reviewer efficiency as a first principle. What kind of automation fits AI SDK? Software factories sit on a spectrum. At one end is full automation, where agents write, ship, and deploy without a human ever reading the code. In the middle are harnesses like Codex and Claude Code, where a person steers an agent or fleet of agents. At the far end is software you barely want to automate because the risk is too high, like firmware in a pacemaker or self-driving vehicle. The AI SDK needs to operate closer to the careful end. It is foundational AI infrastructure with millions of applications built on top, so quality and security are non-negotiable, and a human needs to have control over what ships. We needed our factory to heavily automate the lifecycle around the human, without removing them. How do we align automation and effort to risk? For a given change, the depth of human review needed scales with risk. Centralized roadmaps with detailed feature specs can define risk up front and directly shape the work going into a software factory. But open-source projects like AI SDK also get issues and pull requests from the community, and there is no guarantee they align with the goals of the project, or that changes are safe to make. Higher risk means human judgment is an even more critical part of the system. To optimize our factory for that judgment, we knew agents had to go beyond generating code based on a request; they needed to evaluate full units of work in the context of the entire project. Our goal was for the factory generate a comprehensive assessment of each change for both fit and risk, including a full chain of documented evidence, making it easy for reviewers to apply the right amount of effort: Docs fixes get a quick glance for verification Well-defined provider changes get focused validation A new public API gets deep review What we built ai-sdk-factory is a software factory that autonomously processes incoming issues and pull requests for AI SDK. Agents in the factory perform specific, reviewable tasks, like reproducing bugs, implementing features, and creating backports for older SDK versions. A human stays in control throughout the entire process, including merging every change. We didn't ship the factory in one swing. We built it incrementally, starting at the beginning of the process with classification of issues as bugs, features, or documentation updates. That first step not only gave us more visibility into the shape backlog, but also passed helpful context to the other specialized agents we built later. We prototyped multiple ways to build each new type of functionality, and in the process developed a set of guiding principles that shaped the architecture of the factory that went into production. Build one agent per task Once our classification agent reached a high level of accuracy, we focused on automating bug reproduction, fixes, and review of those fixes. We explored building a single agent equipped with skills for each step, but quickly realized that would come with a higher maintenance and troubleshooting burden over time. Instead, we built a single agent for each specific task, making every new capability easier to reason about, test in isolation, and debug. Each one is scoped to a specific job, with its own prompts, context, and evals. Today the factory has dedicated agents for every step in the flow: Bug reproduction Bug fixes PR reviews Backports Documentation updates Feature analysis Feature implementation Secure everything from the start We implemented security with the second agent, because bug reproduction was the first step where the factory executed code based on content it didn't control. A factory operating on a public repository has to assume attacker-controlled input: every issue, pull request, comment, and the links inside them are untrusted. Because successful open-source projects are high-value targets, threats range from malicious code changes and supply chain attacks to resource exhaustion, API key exfiltration, and prompt exfiltration. Sandboxes are the foundation of our defense. Every agent in ai-sdk-factory runs inside an isolated Vercel Sandbox containing its code, its runtime, and only the secrets the agent's specific task needs. With those guardrails, untrusted content can shape what an agent proposes, but the damage any one task can do is contained to the sandbox. We also built a shielding layer around the sandbox that controls what agents can reach over the network, blocking the paths an attacker would use to pull secrets out of the isolated environment. The last line of defense is human review: nothing is merged without approval from a human on the AI SDK team. Build value locally, then move to the cloud The first several agents we built for the factory ran through a local CLI. That enabled our team to iterate quickly as we noticed inaccuracies, felt friction, and prototyped different ideas. Once multiple steps were running reliably through the CLI, we were ready to move the system onto managed infrastructure. ai-sdk-factory uses: Vercel Functions for the API, workers, and webhook ingress Vercel Queues for task execution Vercel Blob for logs Vercel Sandbox for the agent workspaces Neon Postgres for factory data Today, GitHub webhooks feed the issue queue, and as soon as they arrive workers automatically pull them and kick off agent runs in sandboxes. We also built a monitoring UI that tracks every run in parallel, and visualizes the queue for the team of reviewers. Shipping software through our factory On July 24, a community member asked for blocked-domain support in OpenAI web search, and the request became issue #17898 . The following section explains every step the software factory went through to process the issue, open a pull request with an implementation of the feature, and ultimately backport the merged feature to v5 and v6 of the SDK. Classification The first agent that runs in the factory classifies issues and pull requests. In this case, the ai-sdk-factory bot commented on the issue and applied a label, identifying the type as Feature with high confidence. The agent included its rationale for the classification in the comment. Analysis After classification, the analysis agent runs. Agents in the factory don't make any assumptions about the technical validity of a feature request or bug, so the analysis agent wrote a probe to confirm the absence of support for blocked domains. issue-17898-type-probe.ts was generated and run, and failed with an error when it looked for blocked-domains and didn't find it. The failing probe proved the feature was missing on main , and the agent included it in the analysis as evidence. The analysis agent then used the results of its investigation to build out a spec for the feature: add an optional blockedDomains filter to the existing web-search tool and map it to the provider's blocked_domains field. The agent also confirmed the spec fit the SDK's provider-adapter architecture and was backward compatible, and even scoped documentation changes. Implementation Another agent then implemented the spec and opened pull request . The implementation agent ran a live end-to-end test, executing an OpenAI web search with wikipedia.org blocked and confirming the domain wassn't reachable. The test was included as additional evidence on the pull request. Automated review Next, a review agent scored the change , and when it didn't find any concerns, approved it. The agent rated the feature as fully implemented, with: Side-effect risk: low Performance risk: none Backwards-compatibility risk: low Human review Finally, Lars read the chain of evidence from the agents, reviewed the code changes, and merged PR #18033 into main. Backporting Once Lars merged the initial PR, ai-sdk-factory opened additional PRs for two backports, #18035 for v6 and #18036 for v5. The v5 backport did not apply cleanly, so the factory agent labeled and committed the conflicted state, identified and validated a fix, and pushed it seventeen minutes later. After review, Lars merged both backport PRs. Results We are just over four weeks into running the software factory in production. Here are the results: PRs merged to main Between 25-35% of the PRs we merge on a weekly basis are now authored by ai-sdk-factory agents. Backports Factory PRs are above 50% of weekly merges to the v6 release line, and v5 looks similar. Backports used to be work we skipped because dealing with merge conflicts wasn't worth the effort. v5 and v6 get far better support now. Issues In July, over 75% of closed issues were closed by the factory. Open issues fell from a peak of 1,022 in late June to 844 by early August, and open bugs are down roughly 25%. The ai-sdk-factory runs in public, so you can see every pull request it has authored on the repo. Improving the factory becomes the job The most interesting part of running the factory is what happens when it fails. Every run ends one of four ways: success, flawed, blocked, or manual. Only success ships, so the rest are signal that re-enters the system as feedback. A flawed run means an agent produced the wrong thing, and the fix is better prompts, better context, or a new eval case so the same mistake gets caught automatically next time A blocked run means the environment was missing something, like a credential, a service, or a dependency, and the fix is provisioning it A manual run marks a boundary we drew on purpose, and forces us to ask whether improvements in the factory justify removing it Each of those fixes expands the automation boundary, and every week the factory can handle work that it couldn't be trusted with before. Running the factory is the same discipline teams already apply to their test suites and pipelines, but pointed at the system that does the work, instead of the system that checks it. In a world where agents define the SDLC, improving the factory will become the standard engineering job. Read more",
+      "evidenceLink": "",
+      "score": 101.79976382936508,
+      "core": "The AI SDK is one of the most popular open-source AI projects in the world. It serves over 20 million npm downloads a week and the repo has over 26,000 stars. Maintaining the codebase means tracking four moving targets at once: Model providers: new providers, new capabilities, and new bugs UI frameworks: bindings for React, Next.js, Svelte, Vue, and others Sandboxes: the execution environments agents run code in Har…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-12T16:48:11.903Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "ClimAgent: LLM as Agents for Autonomous Open-ended Climate Science Analysis",
+      "link": "https://arxiv.org/abs/2604.16922",
+      "evidenceLink": "https://www.semanticscholar.org/paper/a7e2cbd4d0aae0b60b3a26f7c669a2301010c980",
+      "publishedAt": "2026-04-18T00:00:00.000Z",
+      "submittedAt": "2026-04-18T00:00:00.000Z",
+      "author": "Hao Wang, Jindong Han, Wei Fan, Hao Liu",
+      "summary": "Climate research is pivotal for mitigating global environmental crises, yet the accelerating volume of multi-scale datasets and the complexity of analytical tools have created significant bottlenecks, constraining scientific discovery to fragmented and labor-intensive workflows. While the emergence Large Language Models (LLMs) offers a transformative paradigm to scale scientific expertise, existing explorations remain largely confined to simple Question-Answering (Q&A) tasks. These approaches often oversimplify real-world challenges, neglecting the intricate physical constraints and the data-driven nature required in professional climate science.To bridge this gap, we introduce ClimAgent, a general-purpose autonomous framework designed to execute a wide spectrum of research tasks across diverse climate sub-fields. By integrating a unified tool-use environment with rigorous reasoning protocols, ClimAgent transcends simple retrieval to perform end-to-end modeling and analysis. To foster systematic evaluation, we propose ClimaBench, the first comprehensive benchmark for real-world climate discovery. It encompasses challenging problems spanning 5 distinct task categories derived from professional scenarios between 2000 and 2025. Experiments on ClimaBench demonstrate that ClimAgent significantly outperforms state-of-the-art baselines, achieving a 40.21% improvement over original LLM solutions in solution rigorousness and practicality. Our code are available at https://github.com/usail-hkust/ClimAgent.",
+      "citationCount": 1,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 60.204119982655925,
+      "core": "Climate research is pivotal for mitigating global environmental crises, yet the accelerating volume of multi-scale datasets and the complexity of analytical tools have created significant bottlenecks, constraining scientific discovery to fragmented and labor-intensive workflows. While the emergence Large Language Models (LLMs) offers a transformative paradigm to scale scientific expertise, existing explorations rema…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Agent-GWO: Collaborative Agents for Dynamic Prompt Optimization in Large Language Models",
+      "link": "https://arxiv.org/abs/2604.18612",
+      "evidenceLink": "https://www.semanticscholar.org/paper/a6735e43597417252c517ba42bc45cbd46bf5a01",
+      "publishedAt": "2026-04-14T00:00:00.000Z",
+      "submittedAt": "2026-04-14T00:00:00.000Z",
+      "author": "Xudong Wang, Chaoning Zhang, Chenghao Li, Shuxu Chen, Qigan Sun",
+      "summary": "Large Language Models (LLMs) have demonstrated strong capabilities in complex reasoning tasks, while recent prompting strategies such as Chain-of-Thought (CoT) have further elevated their performance in handling complex logical problems. Despite these advances, high-quality reasoning remains heavily reliant on manual static prompts and is sensitive to decoding configurations and task distributions, leading to performance fluctuations and limited transferability. Existing automatic prompt optimization methods typically adopt single-agent local search, failing to simultaneously optimize prompts and decoding hyperparameters within a unified framework to achieve stable global improvements. To address this limitation, we propose Agent-GWO, a dynamic prompt optimization framework for complex reasoning. Specifically, we unify prompt templates and decoding hyperparameters as inheritable agent configurations. By leveraging the leader-follower mechanism of the Grey Wolf Optimizer (GWO), we automatically select three leader agents ($\\alpha$, $\\beta$, and $\\delta$) to guide the collaborative updates of the remaining agents, enabling iterative convergence toward robust optimal reasoning configurations that can be seamlessly integrated for inference. Extensive experiments on multiple mathematical and hybrid reasoning benchmarks across diverse LLM backbones show that Agent-GWO consistently improves accuracy and stability over existing prompt optimization methods. The code will be released publicly.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 60,
+      "core": "Large Language Models (LLMs) have demonstrated strong capabilities in complex reasoning tasks, while recent prompting strategies such as Chain-of-Thought (CoT) have further elevated their performance in handling complex logical problems. Despite these advances, high-quality reasoning remains heavily reliant on manual static prompts and is sensitive to decoding configurations and task distributions, leading to perfor…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "MCP Servers for Pyserini and RankLLM: Enabling Agentic Retrieval-Augmented Generation",
+      "link": "https://doi.org/10.1145/3805712.3808376",
+      "evidenceLink": "https://www.semanticscholar.org/paper/bfe1d2ea69b5b1a724fe21d4b42feecf08472b9e",
+      "publishedAt": "2026-07-19T00:00:00.000Z",
+      "submittedAt": "2026-07-19T00:00:00.000Z",
+      "author": "Yijun Ge, Zibo Guo, Sahel Sharifymoghaddam, Jimmy Lin",
+      "summary": "Large language models (LLMs) increasingly rely on retrieval-augmented generation (RAG), where search results are provided as external context to improve grounding and factuality. The Model Context Protocol (MCP) is an emerging industry standard for connecting LLMs to external tools. We present MCP servers for Pyserini and RankLLM, two widely used information retrieval research toolkits, enabling their retrieval and reranking capabilities to be easily accessed by LLM agents. Our system exposes sparse and dense retrieval over prebuilt indexes, multimodal search, LLM-based reranking, and evaluation based on relevance judgments, all as tools callable by LLMs. This integration supports rapid experimentation with agentic RAG workflows and facilitates comparisons across models and clients. We demonstrate end-to-end retrieval, reranking, RAG, and multimodal search using both open-source and proprietary LLMs, bridging IR research infrastructure with LLM tool ecosystems.",
+      "citationCount": 1,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 59.204119982655925,
+      "core": "Large language models (LLMs) increasingly rely on retrieval-augmented generation (RAG), where search results are provided as external context to improve grounding and factuality. The Model Context Protocol (MCP) is an emerging industry standard for connecting LLMs to external tools. We present MCP servers for Pyserini and RankLLM, two widely used information retrieval research toolkits, enabling their retrieval and …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Do MLLMs Understand Pointing? Benchmarking and Enhancing Referential Reasoning in Egocentric Vision",
+      "link": "https://arxiv.org/abs/2604.21461",
+      "evidenceLink": "https://www.semanticscholar.org/paper/05758eb1c76e248f55bac5e9f035827ae4132d80",
+      "publishedAt": "2026-04-23T00:00:00.000Z",
+      "submittedAt": "2026-04-23T00:00:00.000Z",
+      "author": "Chentao Li, Zirui Gao, Mingze Gao, Yin Ren, Jianjiang Feng",
+      "summary": "Egocentric AI agents, such as smart glasses, rely on pointing gestures to resolve referential ambiguities in natural language commands. However, despite advancements in Multimodal Large Language Models (MLLMs), current systems often fail to precisely ground the spatial semantics of pointing. Instead, they rely on spurious correlations with visual proximity or object saliency, a phenomenon we term\"Referential Hallucination.\"To address this gap, we introduce EgoPoint-Bench, a comprehensive question-answering benchmark designed to evaluate and enhance multimodal pointing reasoning in egocentric views. Comprising over 11k high-fidelity simulated and real-world samples, the benchmark spans five evaluation dimensions and three levels of referential complexity. Extensive experiments demonstrate that while state-of-the-art proprietary and open-source models struggle with egocentric pointing, models fine-tuned on our synthetic data achieve significant performance gains and robust sim-to-real generalization. This work highlights the importance of spatially aware supervision and offers a scalable path toward precise egocentric AI assistants. Project page: https://guyyyug.github.io/EgoPoint-Bench/",
+      "citationCount": 1,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 59.204119982655925,
+      "core": "Egocentric AI agents, such as smart glasses, rely on pointing gestures to resolve referential ambiguities in natural language commands. However, despite advancements in Multimodal Large Language Models (MLLMs), current systems often fail to precisely ground the spatial semantics of pointing. Instead, they rely on spurious correlations with visual proximity or object saliency, a phenomenon we term\"Referential Halluci…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Go is an ideal language for AI-assisted software engineering",
+      "link": "https://developers.googleblog.com/why-go-is-an-ideal-language-for-ai-assisted-software-engineering",
+      "publishedAt": "2026-08-11T16:57:09.000Z",
+      "author": "0xedb https://news.ycombinator.com/user?id=0xedb",
+      "summary": "As AI shifts software engineering from writing to reviewing, discover how Go&#x27;s strict compiler and unified toolchain ensure reliable AI-generated code.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49261133",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 411,
+        "comments": 480
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-12T16:48:11.903Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 54.60181387180222,
+      "core": "As AI shifts software engineering from writing to reviewing, discover how Go&#x27;s strict compiler and unified toolchain ensure reliable AI-generated code.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_research",
+      "source": "Microsoft Research",
+      "title": "MindTopo reveals VLMs’ spatial reasoning abilities",
+      "link": "https://www.microsoft.com/en-us/research/blog/mindtopo-reveals-vlms-spatial-reasoning-abilities",
+      "publishedAt": "2026-08-12T16:00:00.000Z",
+      "author": "Yunfei Ge, Anbang Liu, Qineng Wang, Johnalbert Garnica, Zihan Wang, Reuben Tan, Jianfeng Gao, Ruohan Zhang, Yining Hong, Jiajun Wu, Manling Li",
+      "summary": "A path, a fence, a knot. MindTopo sets a new benchmark for testing how AI understands topological relationships and highlights new opportunities to strengthen spatial reasoning and planning. The post MindTopo reveals VLMs’ spatial reasoning abilities appeared first on Microsoft Research .",
+      "evidenceLink": "",
+      "score": 54.54817652777778,
+      "core": "A path, a fence, a knot. MindTopo sets a new benchmark for testing how AI understands topological relationships and highlights new opportunities to strengthen spatial reasoning and planning. The post MindTopo reveals VLMs’ spatial reasoning abilities appeared first on Microsoft Research .",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-12T16:48:11.903Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "AI is removing the middle class of software engineering",
+      "link": "https://blog.florianherrengt.com/ai-removing-middle-class-software-engineering.html",
+      "publishedAt": "2026-08-12T13:20:05.000Z",
+      "author": "florianherrengt https://news.ycombinator.com/user?id=florianherrengt",
+      "summary": "AI makes projects with weak engineering culture fail much faster.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49271994",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 325,
+        "comments": 268
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-12T16:48:11.903Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 54.538947659550864,
+      "core": "AI makes projects with weak engineering culture fail much faster.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_ai_engineering",
+      "source": "GitHub Blog",
+      "title": "From coder to orchestrator: How agents shift the role of a developer",
+      "link": "https://github.blog/developer-skills/career-growth/from-coder-to-orchestrator-how-agents-shift-the-role-of-a-developer",
+      "publishedAt": "2026-08-11T18:38:17.000Z",
+      "author": "Natalie Guevara",
+      "summary": "Developers are owning more of the delivery system around code, not just code itself. Join us during GitHub Universe to meet other devs, learn something new, and explore what's next. The post From coder to orchestrator: How agents shift the role of a developer appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 49.05565668650793,
+      "core": "Developers are owning more of the delivery system around code, not just code itself. Join us during GitHub Universe to meet other devs, learn something new, and explore what's next. The post From coder to orchestrator: How agents shift the role of a developer appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-12T16:48:11.903Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "From assistance to execution: How enterprises put AI to work",
+      "link": "https://openai.com/index/how-enterprises-put-ai-to-work",
+      "publishedAt": "2026-08-12T06:00:00.000Z",
+      "author": "",
+      "summary": "OpenAI research reveals how enterprises are adopting agentic AI, using ChatGPT and Codex, and how frontier firms are pulling ahead in AI adoption.",
+      "evidenceLink": "",
+      "score": 49.03944636904762,
+      "core": "OpenAI research reveals how enterprises are adopting agentic AI, using ChatGPT and Codex, and how frontier firms are pulling ahead in AI adoption.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-12T16:48:11.903Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "AI Agent Testing: How to Build a Test Harness for Reliable Agents",
+      "link": "https://rerun.build/blog/ai-agent-testing",
+      "publishedAt": "2026-08-09T08:37:27.000Z",
+      "author": "",
+      "summary": "Learn how to test AI agents that actually work: golden datasets, LLM-as-a-judge, trajectory evals, and the runtime governance that turns testing into reliability.",
+      "evidenceLink": "",
+      "score": 46.17291859126984,
+      "core": "Learn how to test AI agents that actually work: golden datasets, LLM-as-a-judge, trajectory evals, and the runtime governance that turns testing into reliability.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-12T16:48:11.903Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "Hermes Agent vs n8n: Autonomous Agent or Workflow Automation? (2026 Guide)",
+      "link": "https://rerun.build/blog/hermes-agent-vs-n8n",
+      "publishedAt": "2026-08-04T10:09:42.000Z",
+      "author": "",
+      "summary": "Hermes Agent vs n8n compared honestly: an autonomous AI agent versus a workflow automation platform. Execution model, memory, error handling, governance, and why smart teams pair them.",
+      "evidenceLink": "",
+      "score": 45.022222222222226,
+      "core": "Hermes Agent vs n8n compared honestly: an autonomous AI agent versus a workflow automation platform. Execution model, memory, error handling, governance, and why smart teams pair them.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-12T16:48:11.903Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Daybreak models are now available on AWS",
+      "link": "https://openai.com/index/daybreak-models-are-now-available-on-aws",
+      "publishedAt": "2026-08-11T10:00:00.000Z",
+      "author": "",
+      "summary": "OpenAI and AWS are making Daybreak cybersecurity capabilities available through Amazon Bedrock to support enterprise security workflows.",
+      "evidenceLink": "",
+      "score": 44.55531938492063,
+      "core": "OpenAI and AWS are making Daybreak cybersecurity capabilities available through Amazon Bedrock to support enterprise security workflows.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-12T16:48:11.903Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Trustworthy AI starts with surviving production failures",
+      "link": "https://www.techradar.com/pro/trustworthy-ai-starts-with-surviving-production-failures",
+      "publishedAt": "2026-08-12T10:47:54.000Z",
+      "author": "Yaron Schneider",
+      "summary": "Reliable AI agents recover from failures, prove identity, and contain breaches before damage spreads.",
+      "evidenceLink": "",
+      "score": 44.132184464285714,
+      "core": "Reliable AI agents recover from failures, prove identity, and contain breaches before damage spreads.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-12T16:48:11.903Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How ONESTRUCTION built the Ishigaki-IDS foundation model with AWS GenAIIC",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-onestruction-built-the-ishigaki-ids-foundation-model-with-aws-genaiic",
+      "publishedAt": "2026-08-11T16:14:33.000Z",
+      "author": "Koyo Hidaka",
+      "summary": "ONESTRUCTION, with technical advisory from the AWS Generative AI Innovation Center, built Ishigaki-IDS, a foundation model specialized for construction and BIM workflows. This architectural case study shows how they combined synthetic data, a three-stage training pipeline, and verifiable rewards on Amazon EC2 to build a domain model in a data-scarce field.",
+      "evidenceLink": "",
+      "score": 43.23454557539682,
+      "core": "ONESTRUCTION, with technical advisory from the AWS Generative AI Innovation Center, built Ishigaki-IDS, a foundation model specialized for construction and BIM workflows. This architectural case study shows how they combined synthetic data, a three-stage training pipeline, and verifiable rewards on Amazon EC2 to build a domain model in a data-scarce field.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-12T16:48:11.903Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Why organizations are falling into an AI Security Illusion",
+      "link": "https://www.techradar.com/pro/why-organizations-are-falling-into-an-ai-security-illusion",
+      "publishedAt": "2026-08-12T14:39:44.000Z",
+      "author": "Danielle Kinsella",
+      "summary": "If AI strengthens security, why do organizations continue to suffer breaches?",
+      "evidenceLink": "",
+      "score": 34.27484319444444,
+      "core": "If AI strengthens security, why do organizations continue to suffer breaches?",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-12T16:48:11.903Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "huggingface_blog",
+      "source": "Hugging Face Blog",
+      "title": "Introducing OlmoEarth embeddings: Custom embedding exports from OlmoEarth Studio for downstream analysis",
+      "link": "https://huggingface.co/blog/allenai/olmoearth-embeddings",
+      "publishedAt": "2026-08-12T16:14:36.000Z",
+      "author": "",
+      "summary": "",
+      "evidenceLink": "",
+      "score": 28.960001924603176,
+      "core": "原文摘要不足，需要精读正文后补充核心结论。",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-12T16:48:11.903Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pragmatic_engineer",
+      "source": "The Pragmatic Engineer",
+      "title": "Stop being skeptical about AI for development with Charity Majors",
+      "link": "https://newsletter.pragmaticengineer.com/p/stop-being-skeptical-about-ai-for",
+      "publishedAt": "2026-08-12T16:45:07.000Z",
+      "author": "Gergely Orosz",
+      "summary": "In 2025, it was rational to be skeptical about AI. In 2026, it's not, anymore. With Charity Majors, CTO and co-founder of Honeycomb.",
+      "evidenceLink": "",
+      "score": 28.72966462301587,
+      "core": "In 2025, it was rational to be skeptical about AI. In 2026, it's not, anymore. With Charity Majors, CTO and co-founder of Honeycomb.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-12T16:48:11.903Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "interconnects",
+      "source": "Interconnects",
+      "title": "I wrote an AI textbook — how long until AI can do it better?",
+      "link": "https://www.interconnects.ai/p/i-wrote-an-ai-textbook-how-long-until",
+      "publishedAt": "2026-08-12T13:01:16.000Z",
+      "author": "Nathan Lambert",
+      "summary": "Reflections on AI's writing ability and how AI models get more capable.",
+      "evidenceLink": "",
+      "score": 24.12428763888889,
+      "core": "Reflections on AI's writing ability and how AI models get more capable.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-12T16:48:11.903Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

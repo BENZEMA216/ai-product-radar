@@ -11,6 +11,7 @@ import {
   parseOrangeBotProductHuntHtml,
   parseProductHuntApiDiagnostics,
   parseProductHuntApiPosts,
+  parseProductHuntSnapshotDiagnostics,
   parseProductHuntMarkdownDiagnostics,
   parseProductHuntMarkdown,
   parseAihotDailyMarkdown,
@@ -51,7 +52,17 @@ import {
 } from "./knowledge-runner.mjs";
 import { auditKnowledge } from "./knowledge-audit.mjs";
 import { buildFeedbackSnapshot, isRadarFeedbackIssue, parseFeedbackIssue } from "./feedback-runner.mjs";
-import { commitMessageForReport, newestReportPath, qualityPathsForDir, reportPathsForDir, reviewPathsForDir } from "./publish-report.mjs";
+import {
+  commitMessageForReport,
+  newestReportPath,
+  productHuntSnapshotPaths,
+  qualityPathsForDir,
+  reportDateForPath,
+  reportPathsForDir,
+  reviewPathsForDir,
+  sameDayKnowledgeReport,
+  sameDayQualityPaths
+} from "./publish-report.mjs";
 import { auditReportQuality, buildQualityArtifacts, qualityArtifactPaths, writeQualityArtifacts } from "./quality-audit.mjs";
 import { feedbackPolicyRuleMatches, validateFeedbackPolicy } from "./feedback-policy.mjs";
 
@@ -144,6 +155,7 @@ function testPublishHelpers() {
     ]),
     "reports/2026-06-01-0800-cst.md"
   );
+  assert.equal(reportDateForPath("reports/2026-06-01-0800-cst.md"), "2026-06-01");
 
   const tempDir = mkdtempSync(join(tmpdir(), "radar-publish-"));
   try {
@@ -152,13 +164,40 @@ function testPublishHelpers() {
     writeFileSync(join(tempDir, "2026-06-03.json"), "reviews");
     writeFileSync(join(tempDir, "notes.txt"), "not a report");
     mkdirSync(join(tempDir, "quality", "source-health"), { recursive: true });
+    mkdirSync(join(tempDir, "quality", "producthunt-snapshots"), { recursive: true });
+    mkdirSync(join(tempDir, "knowledge-reports"), { recursive: true });
     writeFileSync(join(tempDir, "quality", "source-health", "2026-06-03.json"), "{}");
+    writeFileSync(join(tempDir, "quality", "feedback-policy.json"), "{}");
+    writeFileSync(join(tempDir, "quality", "producthunt-snapshots", "2026-06-01.json"), "{}");
+    writeFileSync(join(tempDir, "knowledge-reports", "2026-06-03.md"), "knowledge");
     assert.deepEqual(reportPathsForDir(tempDir).map((path) => basename(path)), [
       "2026-06-02-0801-cst.md",
       "2026-06-03-0837-cst.md"
     ]);
     assert.deepEqual(reviewPathsForDir(tempDir).map((path) => basename(path)), ["2026-06-03.json"]);
-    assert.deepEqual(qualityPathsForDir(join(tempDir, "quality")).map((path) => basename(path)), ["2026-06-03.json"]);
+    assert.deepEqual(qualityPathsForDir(join(tempDir, "quality")).map((path) => basename(path)).sort(), [
+      "2026-06-01.json",
+      "2026-06-03.json",
+      "feedback-policy.json"
+    ]);
+    assert.equal(
+      sameDayKnowledgeReport(join(tempDir, "2026-06-03-0837-cst.md"), join(tempDir, "knowledge-reports")),
+      join(tempDir, "knowledge-reports", "2026-06-03.md")
+    );
+    assert.deepEqual(
+      sameDayQualityPaths(join(tempDir, "2026-06-03-0837-cst.md"), join(tempDir, "quality")).sort(),
+      [
+        join(tempDir, "quality", "feedback-policy.json"),
+        join(tempDir, "quality", "source-health", "2026-06-03.json")
+      ].sort()
+    );
+    writeFileSync(
+      join(tempDir, "quality", "source-health", "2026-06-03.json"),
+      JSON.stringify({ productHuntDateKeys: ["2026-06-01"] })
+    );
+    assert.deepEqual(productHuntSnapshotPaths(join(tempDir, "2026-06-03-0837-cst.md"), join(tempDir, "quality")), [
+      join(tempDir, "quality", "producthunt-snapshots", "2026-06-01.json")
+    ]);
   } finally {
     rmSync(tempDir, { recursive: true, force: true });
   }
@@ -1488,6 +1527,54 @@ function testProductHuntApiDiagnosticsCountsRawPosts() {
   assert.equal(diagnostics.items.length, 1);
 }
 
+function testProductHuntOfficialSnapshotParserFixture() {
+  const diagnostics = parseProductHuntSnapshotDiagnostics(
+    {
+      date: "2026-06-06",
+      sourceUrl: "https://www.producthunt.com/leaderboard/daily/2026/6/6/all",
+      capturedAt: "2026-06-07T16:00:00.000Z",
+      products: [
+        {
+          rank: 1,
+          name: "Agent Browser Shield",
+          url: "https://www.producthunt.com/products/agent-browser-shield",
+          tagline: "Block prompt injection for browser agents",
+          topics: ["Developer Tools", "Artificial Intelligence"],
+          comments: 21,
+          votes: 310
+        },
+        {
+          rank: 2,
+          name: "Plain Billing",
+          url: "https://www.producthunt.com/products/plain-billing",
+          tagline: "Create invoices for small teams",
+          topics: ["Productivity"],
+          comments: 3,
+          votes: 90
+        }
+      ]
+    },
+    "2026-06-06"
+  );
+  assert.equal(diagnostics.sourceKind, "official_snapshot");
+  assert.equal(diagnostics.rawCount, 2);
+  assert.equal(diagnostics.items.length, 1);
+  assert.equal(diagnostics.items[0].sourceRank, 1);
+  assert.equal(diagnostics.items[0].metrics.phVotes, 310);
+  assert.deepEqual(diagnostics.items[0].topics, ["Developer Tools", "Artificial Intelligence"]);
+
+  const invalid = parseProductHuntSnapshotDiagnostics(
+    {
+      date: "2026-06-05",
+      sourceUrl: "https://www.producthunt.com/leaderboard/daily/2026/6/5/all",
+      products: []
+    },
+    "2026-06-06"
+  );
+  assert.equal(invalid.rawCount, 0);
+  assert.equal(invalid.sourceKind, "official_snapshot_invalid");
+}
+
 async function testProductHuntUsesApiWhenTokenConfigured() {
   const originalFetch = globalThis.fetch;
   const originalToken = process.env.PRODUCT_HUNT_TOKEN;
@@ -2664,7 +2751,7 @@ function testQualityAuditAcceptsBlockedReportWithAlignedArtifacts() {
   assert.equal(audit.ok, true, audit.failures.map((failure) => failure.message).join("; "));
 }
 
-function testQualityAuditAcceptsEmptyReportWithAlignedArtifacts() {
+function testQualityAuditBlocksEmptyReportWithoutProductHuntCoverage() {
   const audit = auditReportQuality({
     rows: [],
     reportDate: "2026-06-12",
@@ -2693,7 +2780,8 @@ function testQualityAuditAcceptsEmptyReportWithAlignedArtifacts() {
     siteHtml:
       "window.__RADAR_DATA__ Priority View All Signals Models & Infra 来源健康 radar-feedback feedback-link data-category=\"model_infra\""
   });
-  assert.equal(audit.ok, true, audit.failures.map((failure) => `${failure.code}:${failure.message}`).join("; "));
+  assert.equal(audit.ok, false);
+  assert.ok(audit.failures.some((failure) => failure.code === "producthunt_completed_day_unavailable"));
 }
 
 function testQualityAuditFlagsLowProductHuntFallbackCoverage() {
@@ -3167,7 +3255,18 @@ function testPriorityScoreDownranksAihotNonProductSignals() {
     source: "aihot",
     observedAt: "2026-06-07T18:33:09.000Z"
   });
+  const strategyObservation = priorityScore({
+    product: "GitHub、Vercel 与 Replit 如何应对 AI 代码生成商品化",
+    link: "https://aihot.virxact.com/items/strategy-observation",
+    type: "疑似新产品",
+    did: "文章比较三家开发者平台在 AI 代码生成商品化后的编排、生产路径与验证策略。",
+    why: "这是竞争格局分析，不是明确产品发布。",
+    evidence: "[AIHOT 2026-06-07T18:33:09.000Z](https://aihot.virxact.com/items/strategy-observation)",
+    source: "aihot",
+    observedAt: "2026-06-07T18:33:09.000Z"
+  });
   assert.ok(observationSignal < productSignal - 10, `expected observation ${observationSignal} to trail product ${productSignal}`);
+  assert.ok(strategyObservation < productSignal - 10, `expected strategy observation ${strategyObservation} to trail product ${productSignal}`);
 }
 
 function testAihotObservationStaysWeakAcrossProducerAndConsumer() {
@@ -4418,6 +4517,7 @@ const tests = [
   ["Product Hunt markdown diagnostics rejects promoted no-rank rows", testProductHuntMarkdownDiagnosticsRejectsPromotedNoRankRows],
   ["Product Hunt API parser fixture", testProductHuntApiParserFixture],
   ["Product Hunt API diagnostics counts raw posts", testProductHuntApiDiagnosticsCountsRawPosts],
+  ["Product Hunt official snapshot parser fixture", testProductHuntOfficialSnapshotParserFixture],
   ["Product Hunt uses API when token configured", testProductHuntUsesApiWhenTokenConfigured],
   ["Product Hunt fallback tries alternate readers when coverage low", testProductHuntFallbackTriesAlternateReadersWhenCoverageLow],
   ["Product Hunt why copy uses product context", testProductHuntWhyCopyUsesProductContext],
@@ -4485,7 +4585,7 @@ const tests = [
   ["Quality audit flags malformed feedback", testQualityAuditFlagsMalformedFeedback],
   ["Quality audit flags stale quality files", testQualityAuditFlagsStaleQualityFiles],
   ["Quality audit accepts blocked report with aligned artifacts", testQualityAuditAcceptsBlockedReportWithAlignedArtifacts],
-  ["Quality audit accepts empty report with aligned artifacts", testQualityAuditAcceptsEmptyReportWithAlignedArtifacts],
+  ["Quality audit blocks empty report without Product Hunt coverage", testQualityAuditBlocksEmptyReportWithoutProductHuntCoverage],
   ["Quality audit uses stable generatedAt from source health", testQualityAuditUsesStableGeneratedAtFromSourceHealth],
   ["Rendered Product Hunt why copy avoids repeated template", testRenderedProductHuntWhyCopyAvoidsRepeatedTemplate],
   ["Site builder normalizes archived Product Hunt why copy", testSiteBuilderNormalizesArchivedProductHuntWhyCopy],

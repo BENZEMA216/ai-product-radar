@@ -358,6 +358,15 @@ function auditSourceHealth(sourceHealth) {
     }
   }
   const producthunt = sources.producthunt;
+  if (["empty", "unavailable"].includes(producthunt?.status) && Number(producthunt.rawCount || 0) === 0) {
+    failures.push(
+      failure(
+        "producthunt_completed_day_unavailable",
+        "Product Hunt Pacific 完成日榜没有有效 API/fallback 覆盖，不能把 0 条当成稳定空窗发布。",
+        { status: producthunt.status, note: clean(producthunt.note) }
+      )
+    );
+  }
   if (producthunt?.status === "fallback" && !/fallback|api|Pacific|完成日|官方/i.test(clean(producthunt.note))) {
     failures.push(failure("producthunt_fallback_unexplained", "Product Hunt fallback 状态缺少覆盖风险或日期规则说明。"));
   }

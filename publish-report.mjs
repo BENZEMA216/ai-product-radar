@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 import { execFileSync } from "node:child_process";
-import { existsSync, readdirSync, statSync } from "node:fs";
-import { basename, join } from "node:path";
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { basename, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { sanitizeLocalProxyEnv } from "./radar.mjs";
@@ -98,14 +99,104 @@ function git(args, options = {}) {
   });
 }
 
-function buildSite() {
-  execFileSync("npm", ["run", "build-site"], {
-    encoding: "utf8",
-    stdio: "inherit",
-    env: CLEAN_ENV,
-    timeout: 120000,
-    maxBuffer: 10 * 1024 * 1024
-  });
+export function reportDateForPath(reportPath) {
+  return basename(reportPath).match(/^(\d{4}-\d{2}-\d{2})-/)?.[1] || "";
+}
+
+export function sameDayKnowledgeReport(reportPath, knowledgeReportDir) {
+  const reportDate = reportDateForPath(reportPath);
+  if (!reportDate) return "";
+  const path = join(knowledgeReportDir, `${reportDate}.md`);
+  return existsSync(path) ? path : "";
+}
+
+export function sameDayQualityPaths(reportPath, qualityDir = "quality") {
+  const reportDate = reportDateForPath(reportPath);
+  if (!reportDate) return [];
+  return qualityPathsForDir(qualityDir).filter(
+    (path) => basename(path) === `${reportDate}.json` || path === join(qualityDir, "feedback-policy.json")
+  );
+}
+
+export function productHuntSnapshotPaths(reportPath, qualityDir = "quality") {
+  const reportDate = reportDateForPath(reportPath);
+  const sourceHealthPath = join(qualityDir, "source-health", `${reportDate}.json`);
+  if (!existsSync(sourceHealthPath)) return [];
+  try {
+    const sourceHealth = JSON.parse(readFileSync(sourceHealthPath, "utf8"));
+    return (Array.isArray(sourceHealth.productHuntDateKeys) ? sourceHealth.productHuntDateKeys : [])
+      .map((dateKey) => join(qualityDir, "producthunt-snapshots", `${dateKey}.json`))
+      .filter(existsSync);
+  } catch {
+    return [];
+  }
+}
+
+function trackedPaths(pathspec) {
+  return git(["ls-files", "-z", "--", pathspec])
+    .split("\0")
+    .filter(Boolean)
+    .filter(existsSync);
+}
+
+function copyBuildInput(path, buildRoot) {
+  const destination = join(buildRoot, path);
+  mkdirSync(dirname(destination), { recursive: true });
+  cpSync(path, destination);
+}
+
+export function buildSite(report, knowledgeReport) {
+  const reportDate = reportDateForPath(report);
+  const sourceHealthPath = join("quality", "source-health", `${reportDate}.json`);
+  const buildRoot = mkdtempSync(join(tmpdir(), "ai-product-radar-publish-"));
+  try {
+    const inputs = new Set([
+      ...trackedPaths("reports/*.md"),
+      ...trackedPaths("knowledge-reports/*.md"),
+      ...trackedPaths("reviews/*.json"),
+      ...trackedPaths("quality/source-health/*.json"),
+      report,
+      ...(knowledgeReport ? [knowledgeReport] : []),
+      ...(existsSync(sourceHealthPath) ? [sourceHealthPath] : [])
+    ]);
+    for (const path of inputs) copyBuildInput(path, buildRoot);
+    execFileSync(
+      "node",
+      [
+        "build-site.mjs",
+        "--report-dir",
+        join(buildRoot, "reports"),
+        "--review-dir",
+        join(buildRoot, "reviews"),
+        "--source-health-dir",
+        join(buildRoot, "quality", "source-health"),
+        "--knowledge-report-dir",
+        join(buildRoot, "knowledge-reports"),
+        "--out",
+        "docs/index.html"
+      ],
+      {
+        encoding: "utf8",
+        stdio: "inherit",
+        env: CLEAN_ENV,
+        timeout: 120000,
+        maxBuffer: 10 * 1024 * 1024
+      }
+    );
+    execFileSync(
+      "node",
+      ["build-knowledge-page.mjs", "--report-dir", join(buildRoot, "knowledge-reports"), "--out", "docs/knowledge.html"],
+      {
+        encoding: "utf8",
+        stdio: "inherit",
+        env: CLEAN_ENV,
+        timeout: 120000,
+        maxBuffer: 10 * 1024 * 1024
+      }
+    );
+  } finally {
+    rmSync(buildRoot, { recursive: true, force: true });
+  }
 }
 
 function resolveReport(args) {
@@ -153,14 +244,16 @@ async function main() {
   if (!existsSync(report)) throw new Error(`Report does not exist: ${report}`);
 
   git(["rev-parse", "--is-inside-work-tree"]);
-  buildSite();
+  const reportDate = reportDateForPath(report);
+  const knowledgeReport = sameDayKnowledgeReport(report, args.knowledgeReportDir);
+  buildSite(report, knowledgeReport);
   const pathsToStage = Array.from(
     new Set([
-      ...reportPathsForDir(args.reportDir),
       report,
-      ...knowledgeReportPathsForDir(args.knowledgeReportDir),
-      ...reviewPathsForDir(args.reviewDir),
-      ...qualityPathsForDir(),
+      ...(knowledgeReport ? [knowledgeReport] : []),
+      ...reviewPathsForDir(args.reviewDir).filter((path) => basename(path) === `${reportDate}.json`),
+      ...sameDayQualityPaths(report),
+      ...productHuntSnapshotPaths(report),
       "docs/index.html",
       "docs/knowledge.html"
     ])

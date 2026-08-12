@@ -123,6 +123,7 @@ const AIHOT_FEED_URL = "https://aihot.virxact.com/feed/all.xml";
 const PRODUCT_HUNT_GRAPHQL_URL = "https://api.producthunt.com/v2/api/graphql";
 const ORANGEBOT_PRODUCT_HUNT_URL = "https://orangebot.ai/sources/product-hunt";
 const PRODUCT_HUNT_FALLBACK_MIN_RAW_COUNT = 10;
+const PRODUCT_HUNT_SNAPSHOT_DIR = "quality/producthunt-snapshots";
 const YC_LAUNCHES_URL = "https://www.ycombinator.com/launches";
 const DEALFLOW_KEYWORDS = ["AI产品", "AI Agent", "AI工具创业", "工作流自动化"];
 const DEALFLOW_MAX_PER_KEYWORD = 5;
@@ -391,7 +392,7 @@ function isAihotNonProductSignal(item) {
   const hasProductSurface = /产品|工具|应用|app|api|sdk|agent|智能体|助手|工作流|平台|runtime|browser|插件|扩展/i.test(actionText);
   const explicitNonProduct = /不是产品发布|不是新的产品动作|政策|舆论|新闻/.test(text);
   const nonProductObservation =
-    /研究|论文|基准|评测|排行|榜单|首页|前瞻|预测|观点|访谈|圆桌|融资|估值|财报|监管|风险|采购|求购|高校|军方|报道称|据报道|内幕|出口管制|白宫|播客|ceo|格式|规范|协议|不要相信|不是你的模型|不是你的思维|大型上下文窗口|抽象观点|官网\s*uv|安装量|失真指标|应看.{0,24}(?:stars|指标)/.test(
+    /研究|论文|基准|评测|排行|榜单|首页|前瞻|预测|观点|访谈|圆桌|融资|估值|财报|监管|风险|采购|求购|高校|军方|报道称|据报道|内幕|出口管制|白宫|播客|ceo|格式|规范|协议|如何应对|商品化|竞争格局|战略选择|不要相信|不是你的模型|不是你的思维|大型上下文窗口|抽象观点|官网\s*uv|安装量|失真指标|应看.{0,24}(?:stars|指标)/.test(
       text
     ) ||
     /向量存储|压缩|faiss|terminalbench|benchmark|arxiv|report|survey|forecast|outlook|format|protocol|standard/i.test(text) ||
@@ -978,6 +979,67 @@ export function parseProductHuntApiDiagnostics(payload, dateKey) {
   };
 }
 
+export function parseProductHuntSnapshotDiagnostics(payload, dateKey) {
+  const expectedSourceUrl = `https://www.producthunt.com/leaderboard/daily/${phDatePath(dateKey)}/all`;
+  if (!payload || payload.date !== dateKey || payload.sourceUrl !== expectedSourceUrl) {
+    return { items: [], rawCount: 0, sourceKind: "official_snapshot_invalid" };
+  }
+  const products = Array.isArray(payload.products) ? payload.products : [];
+  const candidates = [];
+  const rawRows = [];
+  for (const product of products) {
+    const rawName = clean(product?.name);
+    const link = clean(product?.url).split("?")[0];
+    const rawDescription = clean(product?.tagline);
+    const sourceRank = Number(product?.rank);
+    if (!rawName || !/^https:\/\/www\.producthunt\.com\/products\//.test(link) || !Number.isFinite(sourceRank)) continue;
+    rawRows.push(link);
+    const phVotes = Number(product?.votes);
+    const phComments = Number(product?.comments);
+    const candidate = productHuntCandidate({
+      rawName,
+      link,
+      rawDescription,
+      dateKey,
+      evidenceUrl: expectedSourceUrl,
+      evidenceLabel: `Product Hunt ${dateKey}`,
+      raw: JSON.stringify(product),
+      sourceRank,
+      metrics: {
+        ...(Number.isFinite(phVotes) ? { phVotes } : {}),
+        ...(Number.isFinite(phComments) ? { phComments } : {})
+      },
+      observedAt: payload.capturedAt || dateKey,
+      sourceApi: "producthunt_official_snapshot",
+      rawTopics: Array.isArray(product?.topics) ? product.topics.map(clean).filter(Boolean) : []
+    });
+    if (candidate) candidates.push(candidate);
+  }
+  return {
+    items: uniqueBy(candidates, (item) => item.link),
+    rawCount: new Set(rawRows).size,
+    sourceKind: "official_snapshot",
+    capturedAt: clean(payload.capturedAt)
+  };
+}
+
+function loadProductHuntSnapshotDiagnostics(dateKey) {
+  const configuredDir = process.env.PRODUCT_HUNT_SNAPSHOT_DIR || PRODUCT_HUNT_SNAPSHOT_DIR;
+  const snapshotDir = resolve(configuredDir);
+  const snapshotPath = join(snapshotDir, `${dateKey}.json`);
+  if (!existsSync(snapshotPath)) return { items: [], rawCount: 0, sourceKind: "official_snapshot_missing" };
+  try {
+    return parseProductHuntSnapshotDiagnostics(JSON.parse(readFileSync(snapshotPath, "utf8")), dateKey);
+  } catch (error) {
+    return {
+      items: [],
+      rawCount: 0,
+      sourceKind: "official_snapshot_invalid",
+      error: clean(error.message)
+    };
+  }
+}
+
 async function fetchProductHuntApiDateDiagnostics(dateKey) {
   const token = process.env.PRODUCT_HUNT_TOKEN?.trim();
   if (!token) return { items: [], rawCount: 0, sourceKind: "api_unconfigured" };
@@ -1035,6 +1097,8 @@ async function fetchProductHuntDateDiagnostics(dateKey) {
   } catch {
     // Fall back to the public page path below; source health records fallback coverage.
   }
+  const snapshotDiagnostics = loadProductHuntSnapshotDiagnostics(dateKey);
+  if (snapshotDiagnostics.rawCount >= PRODUCT_HUNT_FALLBACK_MIN_RAW_COUNT) return snapshotDiagnostics;
   const sourceUrl = `https://www.producthunt.com/leaderboard/daily/${phDatePath(dateKey)}/all`;
   const rejectPatterns = [/upstream connect error/i, /just a moment/i, /enable javascript/i, /captcha/i];
   const results = [];
@@ -2883,14 +2947,17 @@ function buildSourceHealth({ rawGroups, candidates, phDateKeys }) {
       : "";
   const productHuntApiUsed =
     productHuntSourceKinds.includes("api") || rawGroups.producthuntOfficial.some((item) => item.sourceApi === "producthunt_api");
+  const productHuntOfficialSnapshotUsed =
+    productHuntSourceKinds.includes("official_snapshot") ||
+    rawGroups.producthuntOfficial.some((item) => item.sourceApi === "producthunt_official_snapshot");
   const productHuntSkipped = sourceSkipped("producthunt");
   const productHuntStatus = productHuntSkipped
     ? "skipped"
-    : productHuntApiUsed
+    : productHuntApiUsed || productHuntOfficialSnapshotUsed
     ? "ok"
     : productHuntOfficialRawCount || productHuntFallbackRawCount
       ? "fallback"
-      : "empty";
+      : "unavailable";
   const productHuntFallbackRisk =
     productHuntStatus === "fallback" && productHuntRawCount < 10
       ? `；低覆盖风险：fallback 只返回 ${productHuntRawCount} 条候选，不能视为完整 PH 日榜。`
@@ -2899,9 +2966,13 @@ function buildSourceHealth({ rawGroups, candidates, phDateKeys }) {
     ? "RADAR_SKIP_PRODUCT_HUNT/RADAR_SKIP_PH 已设置，Product Hunt 本次跳过。"
     : productHuntApiUsed
     ? `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；Product Hunt API v2 GraphQL 已启用，原始覆盖 ${productHuntRawCount} 条，候选带 rank/votes/comments。`
+    : productHuntOfficialSnapshotUsed
+    ? `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；官方日榜页面的可审计快照已启用，原始覆盖 ${productHuntRawCount} 条，AI 相关候选 ${rawGroups.producthuntOfficial.length} 条，候选带 rank/votes/comments。`
     : process.env.PRODUCT_HUNT_TOKEN
       ? `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；PRODUCT_HUNT_TOKEN 已配置但 API 未返回可解析候选，已回退到 Jina/OrangeBot；原始覆盖 ${productHuntRawCount} 条${productHuntReaderNote}${productHuntExpandedNote}。`
-      : `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 ${productHuntRawCount} 条，AI 相关候选 ${rawGroups.producthuntOfficial.length + rawGroups.producthuntFallback.length} 条${productHuntFallbackRisk}${productHuntReaderNote}${productHuntExpandedNote}`;
+      : `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 ${productHuntRawCount} 条，AI 相关候选 ${rawGroups.producthuntOfficial.length + rawGroups.producthuntFallback.length} 条${
+          productHuntStatus === "unavailable" ? "；完成日榜无有效 fallback 覆盖，不能视为稳定 0 条。" : ""
+        }${productHuntFallbackRisk}${productHuntReaderNote}${productHuntExpandedNote}`;
   return {
     producthunt: sourceHealthEntry({
       status: productHuntStatus,

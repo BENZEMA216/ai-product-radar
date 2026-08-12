@@ -1,0 +1,58 @@
+{
+  "generatedAt": "2026-08-12T16:55:51.775Z",
+  "report": "2026-08-13.md",
+  "health": "quality/knowledge-source-health/2026-08-13.json",
+  "candidates": "quality/knowledge-candidates/2026-08-13.json",
+  "site": "docs/index.html",
+  "ok": true,
+  "date": "2026-08-13",
+  "rows": 20,
+  "blogCount": 16,
+  "paperCount": 4,
+  "blogAccessVerifiedCount": 16,
+  "topConferencePaperCount": 4,
+  "sourceCount": 33,
+  "candidatePool": {
+    "historicalLinkCount": 322,
+    "blogFetchedCount": 174,
+    "blogAccessCheckedCount": 50,
+    "blogAccessVerifiedCount": 48,
+    "blogAccessRejectedCount": 2,
+    "blogAccessRejected": [
+      {
+        "sourceId": "interconnects",
+        "title": "Lessons from the hacks",
+        "link": "https://www.interconnects.ai/p/lessons-from-the-hacks",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Software engineering at a proprietary trading company: Optiver",
+        "link": "https://newsletter.pragmaticengineer.com/p/optiver",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      }
+    ],
+    "paperFetchedCount": 80,
+    "paperTopConferenceVerifiedCount": 80,
+    "blogAfterHistoricalDedupCount": 48,
+    "paperAfterHistoricalDedupCount": 56,
+    "eligibleAfterHistoricalDedupCount": 104,
+    "maxPerBlogSource": 2,
+    "selectedBlogSourceCounts": {
+      "aws_machine_learning": 1,
+      "github_ai_engineering": 1,
+      "hcker_news_ai_blogs": 2,
+      "huggingface_blog": 1,
+      "interconnects": 1,
+      "microsoft_research": 1,
+      "openai_news": 2,
+      "pragmatic_engineer": 1,
+      "rerun_agent_engineering": 2,
+      "techradar_pro_ai": 2,
+      "vercel_ai": 2
+    },
+    "sourceCapRelaxed": false,
+    "shortfallReason": ""
+  },
+  "failures": []
+}
