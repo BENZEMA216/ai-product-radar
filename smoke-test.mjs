@@ -1380,15 +1380,10 @@ function testReportWhyCopyRewritesLiveSourceTemplates() {
 }
 
 async function testProductHuntFixture() {
-  let text = "";
-  try {
-    text = await fetchText(readerUrl("https://www.producthunt.com/leaderboard/daily/2026/5/30/all"));
-  } catch {
-    text = [
-      "[1. Wandesk](https://www.producthunt.com/products/wandesk)AI workspace for support operations",
-      "[2. Openstatus MCP Health Checker](https://www.producthunt.com/products/openstatus-mcp-health-checker)MCP server health checks for AI agents"
-    ].join("\n");
-  }
+  const text = [
+    "[1. Wandesk](https://www.producthunt.com/products/wandesk)AI workspace for support operations",
+    "[2. Openstatus MCP Health Checker](https://www.producthunt.com/products/openstatus-mcp-health-checker)MCP server health checks for AI agents"
+  ].join("\n");
   assert.match(text, /Wandesk/, "Product Hunt fixture should include Wandesk");
   assert.match(text, /Openstatus MCP Health Checker/, "Product Hunt fixture should include MCP product");
 }

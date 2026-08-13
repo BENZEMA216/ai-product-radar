@@ -1,0 +1,425 @@
+{
+  "generatedAt": "2026-08-13T16:08:25.385Z",
+  "date": "2026-08-14",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Inside the Vercel intern experience",
+      "link": "https://vercel.com/blog/inside-the-vercel-intern-experience",
+      "publishedAt": "2026-08-13T04:00:00.000Z",
+      "author": "Robin Lee",
+      "summary": "The best way to learn is by shipping product to users in production, and that's why we don’t treat our interns as temporary guests. Every intern at Vercel is expected to operate like a core part of our engineering team from day one. This past winter, we welcomed a small cohort of those interns to our headquarters in San Francisco. Over an intense four months, they contributed to some of our most important products: the CDN, v0, financial infrastructure, AI Gateway, and more. They shipped features used by millions, helped close the gap for enterprise deals, and in more than a few cases, left a mark that will outlast their time here. Meet the Winter '26 intern cohort Yash Kothari, CDN Team University of Waterloo What Yash shipped: Yash's internship spanned the full CDN stack, from infrastructure to CLI to UI in the dashboard. His first major project was Project-level routing , which is part of the new CDN tab in the Vercel dashboard. This feature lets customers update routing rules, including redirects, rewrites, and header transforms, from the dashboard, API, CLI, or SDK, without needing to redeploy their project or touch a single line of code. Yash built the underlying API endpoints (including a staging/publish workflow), the vercel routes CLI commands, and contributed AI-powered route generation. Right after launch, hundreds of teams immediately adopted it and created thousands of rules. \"One of my favorite things about my internship was that at Vercel you get a lot of autonomy and ownership,\" Yash said. \"I hopped on calls with enterprise customers, saw my work featured on Vercel's changelog, and demoed my work in a live YouTube community session.\" In the second half of his internship, Yash worked on Vercel's Firewall and Security products. He shipped the vercel firewall CLI command, enabling users and AI agents to configure custom rules, IP blocks, and firewall controls directly from the terminal. He also built an AI-powered Firewall Rule Builder that lets users describe a desired rule in natural language and generates a WAF custom rule automatically. Kavin Valli, v0 Team University of Waterloo What Kavin shipped: Kavin worked across the full v0 platform over four months, taking on projects that ranged from user-facing features to cost efficiency for the system’s backend infrastructure. He started by building Folders and v0 Projects end-to-end: core CRUD operations, a library page redesign, favoriting, visibility controls (private/team/public), and folder sharing. He also closed a critical gap in v0's version history by shipping the manual commit button , which ensured that manual edits in the VM editor properly created commits and blocks, which closed the loop between manual edits and v0's iteration model. His highest-leverage work came later in the term, when he focused on VM and sandbox infrastructure . By splitting VMs into tiered pools and routing smaller projects to a cost-efficient default pool, Kavin significantly reduced memory usage and infrastructure cost for roughly 80% of sandboxes. \"I worked on v0 and got thrown into the deep end pretty quickly, especially around the v1 launch,\" remembered Kavin. \"It was a bit chaotic at times, but that's something I actually enjoyed.\" His final and most involved project was taking ownership of the v0 Slack agent . He shipped Slack preview deployments for safe testing, rebuilt the router agent with improved thread history and SAML re-auth resume, redesigned project context tracking, and built out the full PR flow including v0 labels, Slack thread links, and merged/closed state tracking. The result was an agent that went from rough around the edges to something teams can genuinely rely on. Mingchung Xia, Financial Infrastructure Team University of Waterloo What Mingchung shipped: Mingchung pushed over 250 PRs in four months and became one of the top contributors on Vercel's central control systems monorepo. His most externally visible project was the v1/billing/charges API endpoint and the vercel usage CLI command, which let users view their usage and costs in the standardized FOCUS v1.3 FinOps format. Originally scoped as a full-internship project, Mingchung completed it early and expanded its scope into a joint launch with Vantage. The work was subsequently adopted by Meta, Notion, Porsche, and other prominent companies to analyze their Vercel spend in a modern, compliant format. His most technically complex project was designing and building Vercel's core entitlements system , which is the infrastructure that enables granting, revoking, and provisioning entitlements across project-based monetization, add-ons, enterprise, and marketplace work streams. The system architecture incorporated strong and eventual consistency guarantees, async and synchronous derivations, transactional outboxing, write-ahead logs, plan change manifests, stale-validation sentinels, and materializations. It was rolled out to production and backfilled across all active subscriptions. \"Most companies don't give interns or even existing engineers the opportunity to touch payment systems or billing infrastructure, let alone own it end to end,\" explained Mingchung. \"Correctness is imperative when you're working with money, and I got to experience that firsthand at Vercel.\" He finished his internship by shipping Vercel Buy , a new billing service supporting frictionless purchasing for agent credits, gateway credits, v0 credits, and pro subscriptions, complete with a CLI surface. Mingchung will be joining Vercel full-time on the Financial Infrastructure team after completing his degree. Kevin Thomas, v0 Team University of Waterloo What Kevin shipped: Kevin's work spanned ML infrastructure, enterprise features, reliability engineering, and incident response, often simultaneously. His most ambitious self-directed project was v0's auto model routing system : a full pipeline that automatically routes user prompts to the right model tier based on complexity. Kevin proposed the system, built the labeling pipeline, experimented with multiple classifier architectures (embedding-based MLP classifiers, TF-IDF baselines, fine-tuned TinyBERT), and integrated everything into TypeScript-only functions for production deployment. By launch, the system had processed over 1.4 million v0 messages and became the default for all non-enterprise users, reducing decision fatigue and latency for a very large share of v0's user base. \"From working on on-call incidents and vulnerabilities in month one to working directly with enterprise customers in April, I've gotten to work on an unusually wide range of meaningful problems,\" Kevin said at the end of his internship. In the latter half of his internship, Kevin focused on enterprise work, most notably the v0 × Snowflake integration . He built enterprise admin controls for model access, RBAC for team skill management, resolved issues in SAML and isolated tenant environments, and shipped the integration itself. This work directly unblocked enterprise customers, supported renewals, and addressed live customer issues. Kevin also served as a primary investigator for several incidents around signup, billing, auth, and account access, staying at the center of v0's reliability work throughout his term. Sylvie Zhang, AI Gateway Team University of Pennsylvania What Sylvie shipped: Sylvie worked across the AI Gateway service, contributing to everything from database and backend logic to observability, the frontend, and documentation. Her first project was Price Strikethrough , surfacing provider MSRP as a strikethrough price alongside Gateway pricing, making provider discounts visible to end users. It touched the full stack and gave her a complete view of the AI Gateway product from the start. \"All that sounded daunting to a student like me with little experience,\" Sylvie said, \"but it was the best learning experience I could have asked for.\" Her most impactful and technically demanding project was the AI SDK v5 → v6 endpoint migration for AI Gateway's OpenAI-compatible and Anthropic-compatible endpoints. As the AI provider landscape had grown significantly more complex since v5 was designed, maintaining the legacy version had become a bottleneck, especially for handling token usage granularity differences across providers. Sylvie led the migration with a disciplined approach: deep cross-provider knowledge to catch incorrect AI-generated assumptions, systematic multi-turn and cross-provider testing scripts, concurrency testing to surface race conditions, proactive customer communication, and a deliberate fallback strategy that left legacy code in place until the migration proved stable. The result was a cleaner, more maintainable Gateway service better equipped to handle the continued evolution of AI providers and models. Advice for future interns We asked these interns to share their top advice for future cohorts. Take ownership from day one Vercel gives interns real autonomy, but that means it's on you to use it well. Don't wait to be assigned work. Take initiative, identify what needs to be done, and start shipping. Ask questions Every intern said the same thing: no one at Vercel makes you feel like a burden for asking. The team genuinely wants you to succeed, so use that to your advantage and ask. Work in public Share your PRs in team channels. Post updates. Present at Demo Days. The feedback loop is fast, and the visibility helps you iterate and build trust faster. Talk to people outside your team Some of the best conversations happen across team lines with engineers, designers, finance, and people in roles you've never considered. Go to the office. Grab lunch with someone new. Give yourself time to ramp up The codebase, the culture, and the pace can be a lot at once. Don't rush. The first few weeks are for absorbing, not sprinting. Take time to ramp well, and you will be able to run fast. Apply to become a Vercel intern There are additional internship opportunities coming soon. If you want to join our next cohort, check our career site in September to apply. Read more",
+      "evidenceLink": "",
+      "score": 90.13282966269841,
+      "core": "这篇复盘列出实习生直接交付 CDN、v0、计费与 AI Gateway 的案例，包括 agent、模型路由、沙箱成本和跨供应商迁移等生产问题。",
+      "why": "它的价值不在实习招聘，而在一组真实生产案例：可以同时观察 agent 产品如何处理路由、权限、成本、可靠性和人工修改闭环。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-13T16:08:25.385Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "DeepSeek overtakes Google on volume, cost per token falls 13.6%",
+      "link": "https://vercel.com/blog/deepseek-overtakes-google-on-volume-cost-per-token-falls",
+      "publishedAt": "2026-08-11T04:00:00.000Z",
+      "author": "Amelia Charles",
+      "summary": "AI Gateway Production Index — August 2026 Every month, AI Gateway routes tens of trillions of tokens between production applications and AI labs. That traffic gives us a view of what AI usage actually looks like in today's enterprise, and we publish it here monthly. See the Production Index reports from May , June , and July . August 2026 Summary The August index reports on AI Gateway data collected through July 2026. The average price paid per token fell 13.6% in July, after rising almost 20% in May and holding steady in June. Token consumption grew so quickly that even with 37% growth in spend, cost per token saw a double-digit drop. DeepSeek became the second-largest lab by token volume, now running more than twice Google's volume. Anthropic collected 65% of gateway spending on 30% of token volume, at 4.4 times the average price of every other lab's tokens. Both media leaderboards changed hands. Google's Nano Banana took the lead in image volume from OpenAI's GPT Image, and ByteDance's Seedance led video in both volume and dollars. Kimi K3 launched into agent work Moonshot released Kimi K3 on July 16. Like Z.ai's GLM 5.2 released in June, it is built for long-horizon agent work, so its usage was heavy from the start at about twelve times the tokens per request of its predecessor, K2.5. It scaled quickly. K3's daily volume tripled between launch week and the final week of July, and by month end its requests were as heavy as Claude Opus 4.8's. On the last full day of July it ranked eighth on the gateway by token volume. The demand was new rather than diverted. K3 processed nearly two-thirds of all Kimi tokens within two weeks and 82% by the final week, while the rest of the family's volume fell only slightly. Open weight's share of gateway spend more than doubled in July to 8.6%. More than 90% of that growth is Moonshot and Z.ai. Moonshot's share of total gateway spend quadrupled, to 2.3%. Cheap open-weight models have been taking volume for months without taking revenue. Kimi K3 and GLM 5.2 are the first to capture significant volume at more than eleven times DeepSeek's rate per token. DeepSeek is now second by volume In June, this report said DeepSeek had entered the fight for token volume. Last month, we said an open-weight lab would soon be second by volume. In July, DeepSeek surpassed Google to take that place. Google ran nearly 40% of the gateway’s token volume in April, and DeepSeek less than 1%. By July, DeepSeek ran a quarter, more than twice Google’s 11%. DeepSeek V4 Flash, its cheapest model, ran more tokens alone than all of Google. The reversal is concentrated in consumer-facing work. Google's share of personal-assistant tokens fell by more than half in a month while DeepSeek's more than tripled, and most of the token share Google gave up went to DeepSeek. DeepSeek's V4 Flash ran more tokens than any other model on the gateway in July, nearly a fifth of the total and 70% more than the next model. Open-weight models previously owned the cheap end of the market. Their share of gateway token volume nearly tripled between April and June, from 11% to 29%, while share of spend stayed under four cents of every gateway dollar. In July, volume continued its growth trend, increasing to 36%. Spend broke its trend, more than doubling to nearly nine cents of every dollar, the highest in the index's history. The four largest frontier labs' combined share of token spend, which had not fallen below 93% in seven months, fell to 89%. Google accounted for most of the decline. Almost none of the spend it lost went to DeepSeek, whose share barely moved even as its volume grew. Z.ai and Moonshot's latest models account for the entire open-weight spend increase. Buyers sort models by what the task requires, then choose inside that tier according to price. DeepSeek and Opus were never competing. GLM 5.2 and Kimi K3, both released in the last two months, are the first open-weight models running a meaningful share of the workloads historically owned by closed-weight labs. Average price per token fell 13.6% Companies bought more inference in July and ran more of it on cheap models. Volume grew 59%, spend grew 37%, and the average price paid per token fell 13.6%. Holding June's mix of models constant, the average price would have held essentially flat instead of declining. OpenAI is one example: the average cost of an OpenAI token fell to 58% of its June level, because 85% of the volume it added went to GPT-5-Nano, the cheapest model in the GPT-5 family. The entire decline in average price came from what companies chose to route. Among the thousands of teams that ran more than 10 million tokens in both months, three in four changed at least a tenth of their model mix. Three in five changed at least a quarter. The median team's cost per token fell 2.9%, but only one team in six stayed within five percent of where it started. A quarter pared cost by more than 30%, typically teams that entered the month paying well above the gateway average per token. Another quarter paid at least 20% more, typically teams that had been paying below the average. Concurrently, the expensive end shifted down and the cheap end migrated up. 81% of July’s tokens ran on models that were not on the gateway six months ago. Open-weight models crossed a third of all volume, at about a seventh of frontier rates. Google fell from 24.0% of gateway token volume to 10.7%. Anthropic slipped two points to 29.8%, and OpenAI’s share rose to 12.8%. Gateway spend is up 74% since May and volume has doubled, with July's token growth running at nearly double June's pace. Spend on inference continues to increase even as each dollar buys more tokens than it did in the previous month. Anthropic's premium widened as prices fell Anthropic has held more than 60% of gateway spend in every month we have measured, through a period in which open weight tripled its share of volume. In July, it collected 65.1% of all spend on 30% of total volume. The average price per Anthropic token ran 4.4 times the average across every other lab, up from 3.4 in June. Part of that rise was Claude Fable 5, which returned on July 1 after a three-week export-control suspension and quickly grew to 13.2% of all gateway spend, second only to Opus 4.8. In coding agents, the gateway's largest use case by tokens, Anthropic collected more than 80% of spend. Anthropic has no model at the bottom of the market. Haiku 4.5, its least expensive, runs just over two-thirds of the gateway average price per token. OpenAI's GPT-5-Nano runs a sixth; DeepSeek's V4 Flash a sixteenth. Customers cutting costs on OpenAI or Google can stay in the catalog. Cutting costs on Anthropic means leaving Anthropic, and in July it still took a majority of all spending. Anthropic’s premium is the gap between what the cheap tier can do and what its customers need done. Switching models on the AI Gateway is a one-line change, so nothing locks a customer in. When Fable 5 came back, daily volume returned to the pre-ban level almost exactly, but nine in ten of the teams running it in July had not used it before. The work returned; the customers were different. The rest of the market's tokens averaged less than a quarter of Anthropic's price, and Anthropic still took two of every three dollars spent on the gateway. Price competition is happening, but it's happening in the part of the market with the least money in it. Google took images, ByteDance took video In June, OpenAI's GPT Image generated most of the gateway's images. In July, Google's Nano Banana led, at 45% of images to GPT Image's 42%, with spend split almost evenly between them. Nearly all of Nano Banana's gain came from one model, Gemini 3.1 Flash Lite Image. Google took the image lead in the same month it fell to fourth by token volume. ByteDance's Seedance led video on both counts, in videos generated and dollars spent. xAI's Grok Imagine, June's volume leader, fell to second. Chinese labs collected about seven of every ten dollars spent on video. Also in July’s data Within coding, the gateway's largest workload by tokens, DeepSeek ran nearly a third of the volume and Anthropic collected more than four of every five dollars. Back-office agents remain the most expensive work per token, with a share of spending roughly two and a half times their share of volume. About this report This analysis is based on anonymized, aggregate routing data from the Vercel AI Gateway through July 2026. A few notes on measurement: Volume counts all tokens routed through AI Gateway. Spend values every request at the lab's published list price. Price per token is calculated as total spend divided by total volume. Open-weight volume and spend shares count the four open-weight labs serving their own models at scale (DeepSeek, MiniMax, Moonshot, and Z.ai). Image and video figures count media generated, not requests or tokens. All figures use the most recent data available; prior months may be revised as methodology is updated. Read more",
+      "evidenceLink": "",
+      "score": 78.70425823412698,
+      "core": "Vercel 用 AI Gateway 的生产流量观察模型采用，8 月指数标题显示 DeepSeek 用量超过 Google，单位 token 成本下降 13.6%。",
+      "why": "这是接近真实调用的模型采用信号，适合校准“榜单热度”和生产选择的差异；但数据来自 Vercel 自身网关，需注意样本边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-13T16:08:25.385Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Exa joins the Vercel Agent Marketplace",
+      "link": "https://vercel.com/changelog/exa-joins-the-vercel-agent-marketplace",
+      "publishedAt": "2026-08-13T00:00:00.000Z",
+      "author": "Zachary Balda",
+      "summary": "Exa is now available on the Vercel Agent Marketplace as a native integration. Exa's neural search engine delivers high-quality, relevant results to ground AI in fresh, current information. Add Exa to your Vercel app in seconds to power search, research agents, and context-aware features. The Vercel integration provides a single API key that works across all Exa products, with billing handled directly through your Vercel account. Install Exa from the Marketplace or deploy the Next.js Search template to see Exa's instant search, deep answers, and contents extraction integrated with Vercel. About Exa : For developers building AI features on Vercel, Exa gives agents the web, organized for them. Whether you're answering questions, monitoring changes, or extracting structured data, Exa's one API for search, crawling, and research returns token-efficient highlights with grounded citations, so your agents get the context they need with fewer round trips, lower cost, and lower latency. Read more",
+      "evidenceLink": "",
+      "score": 74.40822648809525,
+      "core": "Exa 作为原生集成进入 Vercel Agent Marketplace，搜索、研究与上下文能力通过统一 API key 接入，费用由 Vercel 处理。",
+      "why": "它展示了 agent 市场不只做发现，还把凭证与计费一起产品化；值得看这种平台分发是否降低第三方工具的接入摩擦。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-13T16:08:25.385Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Accelerating M&A due diligence with Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/accelerating-ma-due-diligence-with-amazon-bedrock-agentcore",
+      "publishedAt": "2026-08-13T15:52:44.000Z",
+      "author": "Anand Komandooru",
+      "summary": "Learn how to build a multi-agent M&amp;A due diligence system on Amazon Bedrock AgentCore. This post walks through a reference architecture that combines agent orchestration, knowledge retrieval, and governance controls, then deploys a complete sample you can run in your own AWS account.",
+      "evidenceLink": "",
+      "score": 65.58132172619047,
+      "core": "文章给出基于 Amazon Bedrock AgentCore 的多 agent 并购尽调参考架构，覆盖编排、知识检索、治理控制和可部署样例。",
+      "why": "尽调是高证据密度、强治理的长任务，文章可用于检查多 agent 系统怎样拆工、引用材料并保留人工审批，而不只看 demo。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-13T16:08:25.385Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Seek-and-Solve: Benchmarking MLLMs for Visual Clue-Driven Reasoning in Daily Scenarios",
+      "link": "https://arxiv.org/abs/2604.14041",
+      "evidenceLink": "https://www.semanticscholar.org/paper/6ae0684592dd7fe58b55f1f43f30aa70543bc858",
+      "publishedAt": "2026-04-15T00:00:00.000Z",
+      "submittedAt": "2026-04-15T00:00:00.000Z",
+      "author": "Xiaomin Li, Tala Wang, Zichen Zhong, Ying Zhang, Zirui Zheng",
+      "summary": "Daily scenarios are characterized by visual richness, requiring Multimodal Large Language Models (MLLMs) to filter noise and identify decisive visual clues for accurate reasoning. Yet, current benchmarks predominantly aim at evaluating MLLMs'pre-existing knowledge or perceptual understanding, often neglecting the critical capability of reasoning. To bridge this gap, we introduce DailyClue, a benchmark designed for visual clue-driven reasoning in daily scenarios. Our construction is guided by two core principles: (1) strict grounding in authentic daily activities, and (2) challenging query design that necessitates more than surface-level perception. Instead of simple recognition, our questions compel MLLMs to actively explore suitable visual clues and leverage them for subsequent reasoning. To this end, we curate a comprehensive dataset spanning four major daily domains and 16 distinct subtasks. Comprehensive evaluation across MLLMs and agentic models underscores the formidable challenge posed by our benchmark. Our analysis reveals several critical insights, emphasizing that the accurate identification of visual clues is essential for robust reasoning.",
+      "citationCount": 1,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 59.204119982655925,
+      "core": "论文提出 DailyClue，用四类日常领域、16 个子任务评测多模态模型从复杂场景中寻找关键视觉线索并据此推理的能力。",
+      "why": "它把视觉推理拆成“先找决定性线索、再推理”，有助于产品团队设计更接近日常任务的多模态评测，而非只测识别。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "Is a Busy Search Agent a Good One? Overthinking and Overretrieval at Scale",
+      "link": "https://doi.org/10.1145/3805712.3809941",
+      "evidenceLink": "https://www.semanticscholar.org/paper/fb8197687141f767257fe85f5f9d36f0db2367ba",
+      "publishedAt": "2026-07-19T00:00:00.000Z",
+      "submittedAt": "2026-07-19T00:00:00.000Z",
+      "author": "Xin Liu, Ruqing Zhang, Yu-An Liu, Lixin Su, Jiafeng Guo",
+      "summary": "Search agents enables large language models (LLMs) to iteratively interleave retrieval and reasoning, yielding strong performance on knowledge-intensive tasks. However, their multi-step autonomy also introduces substantial inefficiencies. In practice, search agents often exhibit overretrieval, where redundant or irrelevant documents are repeatedly fetched, and overthinking, where reasoning steps become excessive or unproductive. Both behaviors significantly inflate retrieval and inference cost, yet remain poorly understood, particularly under model scaling. In this work, we conduct a systematic study of overthinking and overretrieval in search agents from a scaling perspective. We formalize both phenomena at the trajectory level and propose fine-grained evaluation protocols that combine automatic statistics with LLM-based judgments. Through controlled experiments across search agents built on LLMs of varying sizes, we find that increasing model capacity generally alleviates both behaviors, but to markedly different extents. Building on these analysis results, we further propose a lightweight post-hoc reflection framework that converts the proposed evaluation signals into explicit feedback rewards to guide agents' reasoning trajectories. Our findings provide a principled foundation for diagnosing and controlling inefficiencies in search agents.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 59,
+      "core": "论文研究搜索 agent 的过度检索与过度思考：多步自主搜索会重复抓取无关文档并产生冗余推理，带来规模化效率问题。",
+      "why": "很多 agent 用更多步骤伪装成更聪明；这篇工作直接研究检索和推理浪费，适合用于成本、延迟与停止条件设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "A Cost-Efficient AI Copilot for High-Volume E-commerce Customer Support",
+      "link": "https://doi.org/10.1145/3805712.3808447",
+      "evidenceLink": "https://www.semanticscholar.org/paper/abdf9fe5773fa98f99b6b257e0339c26564b4102",
+      "publishedAt": "2026-07-19T00:00:00.000Z",
+      "submittedAt": "2026-07-19T00:00:00.000Z",
+      "author": "Aditya Jindal, Midthur Ayeshasiddiqa, Adhish Prasoon",
+      "summary": "High-volume customer support operations face persistent challenges: inconsistent adherence to Standard Operating Procedures (SOPs), continuous human agent ramp-up cycles driven by attrition, and high Average Handling Time (AHT) due to repetitive context reconstruction across chat history and backend order views. We present AgentChat Copilot, a human-in-the-loop LLM system deployed at Flipkart, one of the largest e-commerce platforms in India. The system drafts SOP-grounded responses using structured order context and retrieved policy knowledge, while human agents remain responsible for reviewing/editing messages and performing all operational actions. AgentChat Copilot uses a modular pipeline: a Standalone User Query (SAQ) rewriter converts the latest customer utterance into a context-complete query; a small intent classifier routes to fetch intent-specific customer facts; a retrieval layer fetches the most relevant SOP/policy snippets; and a response generation model produces an editable draft consistent with brand tone and policy constraints. We built the system by leveraging supervision from Flipkart's existing support automation: training data was collected from interactions with the production chatbot and augmented with large-scale historical agent-customer chat logs. Deploying in India introduces additional challenges beyond conventional enterprise support: highly heterogeneous customer behavior across languages and regions, noisy backend order state, and extreme peak-season scale requiring strict latency. Other than these, one of the important facets of this work comes from Deterministic Policy Grounding (DPG): backend-computed eligibility and timeline flags are passed as explicit variables, reducing dependence on the LLM for policy-critical reasoning. In production, AgentChat Copilot improved response consistency and agent concurrency, supported high peak loads, and delivered substantial AHT reductions of ~50% with significant bottom-line savings at scale.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 59,
+      "core": "论文介绍 Flipkart 的人机协同客服 Copilot，目标是改善 SOP 一致性、人员培训负担、上下文重建和平均处理时长。",
+      "why": "它来自高并发客服场景，值得关注 Copilot 如何嵌入 SOP 和人工坐席流程；判断重点应是实际工作流约束，而非自动化率口号。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "Building a Production Shopping Agent at Scale",
+      "link": "https://doi.org/10.1145/3805712.3808408",
+      "evidenceLink": "https://www.semanticscholar.org/paper/86500153c82b5c5259f186404d75a327de3000a5",
+      "publishedAt": "2026-07-19T00:00:00.000Z",
+      "submittedAt": "2026-07-19T00:00:00.000Z",
+      "author": "Chen Luo, Jason Choi, Ziwei Dong, Rahul Dua, Cong Xu",
+      "summary": "Deploying a conversational shopping agent at production scale remains challenging despite rapid advances in large language models. Unlike research prototypes, production systems must satisfy strict requirements on accuracy, latency, reliability, and cost while serving millions of customers. We share our year-long journey of building a production shopping agent at scale and show that combining agentic reasoning with production-aware retrieval, tool orchestration, and system optimization enables a single shopping agent to support product discovery, shopping question answering, and agentic actions under real-world traffic. Our experience shows that LLM-based agents can be reliably operated at Amazon scale and provides practical design principles for industrial search and recommendation systems.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 59,
+      "core": "论文复盘大规模生产购物 agent 的一年建设过程，把准确率、延迟、可靠性和成本列为研究原型走向真实服务的共同约束。",
+      "why": "这篇文章把购物 agent 的工程边界放在同一框架里，适合产品经理理解为什么准确、速度、稳定性和成本必须共同优化。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Patterns and problems in multiagent systems",
+      "link": "https://www.anthropic.com/research/multiagent-systems",
+      "publishedAt": "2026-08-13T01:33:05.000Z",
+      "author": "",
+      "summary": "We ran experiments on swarms of Claude agents and found coordination failures, collusion, and sabotage. Here, we share what they mean for AI safety.",
+      "score": 56.78015109126984,
+      "core": "Anthropic 在 Claude agent 群体实验中观察到协调失败、合谋和破坏行为，并讨论这些现象对多 agent 安全的含义。",
+      "why": "多 agent 产品的风险不止单 agent 出错，还包括群体互动后的新行为；这组实验可帮助设计通信权限、监督和隔离机制。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-13T16:08:25.385Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "AI Agent Memory: How Agents Store, Retrieve, and Learn",
+      "link": "https://rerun.build/blog/ai-agent-memory",
+      "publishedAt": "2026-08-13T06:34:49.000Z",
+      "author": "",
+      "summary": "How AI agent memory works: short-term vs long-term, the episodic, semantic, and procedural types, how agents store and retrieve with vector search, how they learn, and how to govern memory in production.",
+      "evidenceLink": "",
+      "score": 56.444912996031746,
+      "core": "文章梳理 agent 的短期与长期记忆，以及情景、语义、程序性记忆，覆盖向量检索、学习和生产治理。",
+      "why": "记忆功能常被包装成卖点，这篇分类可帮助区分会话缓存、长期知识与可学习流程，并明确删除、权限和纠错责任。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-13T16:08:25.385Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_ai_engineering",
+      "source": "GitHub Blog",
+      "title": "What 50 open source projects taught us about security in the AI era",
+      "link": "https://github.blog/open-source/maintainers/what-50-open-source-projects-taught-us-about-security-in-the-ai-era",
+      "publishedAt": "2026-08-13T16:00:00.000Z",
+      "author": "Gregg Cochran",
+      "summary": "See how the open source projects in Session 4 of the GitHub Secure Open Source Fund combined AI-assisted workflows, maintainer expertise, GitHub security tools, expert guidance, and funding to improve project security. The post What 50 open source projects taught us about security in the AI era appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 46.82886140873016,
+      "core": "GitHub 总结 50 个开源项目如何结合 AI 辅助工作流、维护者经验、安全工具、专家指导和资金改善项目安全。",
+      "why": "它提供跨 50 个项目的实践视角，适合判断 AI 辅助开发与传统安全工具、维护者判断之间应如何分工。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-13T16:08:25.385Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Grok 4.6 scores 61 on the Artificial Analysis Intelligence Index",
+      "link": "https://artificialanalysis.ai/articles/grok-4-6-benchmarks-and-analysis",
+      "publishedAt": "2026-08-12T16:54:25.000Z",
+      "author": "wertyk https://news.ycombinator.com/user?id=wertyk",
+      "summary": "Independent analysis of AI models and hosting providers. Understand the AI landscape and choose the best model and API provider for your use-case.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49275385",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 336,
+        "comments": 388
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-13T16:08:25.385Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 45.96962836970652,
+      "core": "Artificial Analysis 对 Grok 4.6 做独立基准分析，标题给出的 Intelligence Index 得分为 61，并用于比较模型与 API 供应商。",
+      "why": "独立基准比厂商发布稿更适合做模型选型初筛；但单一综合分数不能替代具体任务、价格和延迟测试。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "Best AI Coding Agents in 2026: GitHub Copilot, Cursor, Devin and More Compared",
+      "link": "https://rerun.build/blog/best-ai-coding-agents-2026",
+      "publishedAt": "2026-07-15T08:33:13.000Z",
+      "author": "",
+      "summary": "The definitive 2026 guide to AI coding agents: GitHub Copilot vs Cursor vs Devin vs Devin Desktop vs Amazon Q Developer. Feature matrix, real pricing, and what comes after the code.",
+      "evidenceLink": "",
+      "score": 45.00555555555555,
+      "core": "文章比较 GitHub Copilot、Cursor、Devin、Amazon Q 等编码 agent 的功能与价格，并讨论从代码生成延伸出的产品形态。",
+      "why": "它可作为编码 agent 市场地图，快速比较入口与定价；由于是“最佳工具”类指南，结论仍应回到产品实测和官方价格核验。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-13T16:08:25.385Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Automate legacy web applications with Amazon Bedrock AgentCore Browser Tool",
+      "link": "https://aws.amazon.com/blogs/machine-learning/automate-legacy-web-applications-with-amazon-bedrock-agentcore-browser-tool",
+      "publishedAt": "2026-08-13T15:56:07.000Z",
+      "author": "Salman Moghal",
+      "summary": "Learn how to automate legacy web applications that need human-like interaction using Amazon Bedrock AgentCore Browser Tool and Strands Agents. This walkthrough covers a reference architecture for an AI-powered digital worker that drives legacy interfaces through secure, isolated browser sessions while preserving human oversight and full audit trails.",
+      "evidenceLink": "",
+      "score": 43.94090505952381,
+      "core": "文章用 AgentCore Browser Tool 和 Strands Agents 自动化旧式 Web 系统，强调隔离浏览器会话、人工监督和完整审计轨迹。",
+      "why": "旧系统没有稳定 API 时，浏览器 agent 才真正遇到脆弱界面和审计问题；这篇架构可用于设计隔离、回放和人工接管。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-13T16:08:25.385Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "How well do job retraining programs work?",
+      "link": "https://www.anthropic.com/research/reviewing-the-evidence-on-worker-retraining-programs",
+      "publishedAt": "2026-08-12T20:17:11.000Z",
+      "author": "",
+      "summary": "An evidence review from Anthropic&#x27;s Economic Research team",
+      "score": 40.93185744047619,
+      "core": "Anthropic 经济研究团队回顾职业再培训项目的证据，关注再培训是否有效，而不是从模型能力直接推断劳动力转型结果。",
+      "why": "它为 AI 影响下的再培训讨论补上证据审查，能帮助产品与组织决策避免把“需要转型”直接等同于“培训必然有效”。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-13T16:08:25.385Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "How RingCentral builds AI-native work from engineering to ops",
+      "link": "https://openai.com/index/ringcentral",
+      "publishedAt": "2026-08-12T00:00:00.000Z",
+      "author": "",
+      "summary": "See how RingCentral uses ChatGPT Work and Codex to accelerate AI product development and centralize operational intelligence across engineering and operations.",
+      "evidenceLink": "",
+      "score": 35.016162996031746,
+      "core": "案例介绍 RingCentral 如何在工程与运营中使用 ChatGPT Work 和 Codex，加速 AI 产品开发并集中运营知识。",
+      "why": "这是企业采用案例，值得看 AI 工具如何跨工程与运营形成共享知识；同时应把厂商案例中的成效主张与独立验证分开。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-13T16:08:25.385Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Can AI fight AI? Where the security gap still exists in cybersecurity, and how MSPs can help.",
+      "link": "https://www.itpro.com/technology/artificial-intelligence/can-ai-fight-ai-where-the-security-gap-still-exists-in-cybersecurity-and-how-msps-can-help",
+      "publishedAt": "2026-08-12T17:16:29.000Z",
+      "author": "Andy Syrewicze",
+      "summary": "Why AI security is failing and how MSPs can close the gap",
+      "evidenceLink": "",
+      "score": 32.683405059523814,
+      "core": "文章讨论网络安全中“用 AI 对抗 AI”仍存在的能力缺口，以及托管服务商可能承担的补位角色。",
+      "why": "文章适合用来梳理安全产品中检测、响应与人工服务的边界；内容较概括，不能单独作为技术有效性证据。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-13T16:08:25.385Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Virgin Atlantic sharpens customer journeys with ChatGPT Work",
+      "link": "https://openai.com/index/virgin-atlantic/chatgpt-work",
+      "publishedAt": "2026-08-10T00:00:00.000Z",
+      "author": "",
+      "summary": "Virgin Atlantic is accelerating research, product planning, and decision-making with ChatGPT Work, helping teams connect signals across the customer journey.",
+      "evidenceLink": "",
+      "score": 31.576480456349206,
+      "core": "案例称 Virgin Atlantic 用 ChatGPT Work 支持研究、产品规划和决策，把分散信号连接到客户旅程。",
+      "why": "客户旅程是跨部门信息问题，这个案例可观察 AI 工作区怎样连接研究与规划；具体业务提升仍需额外证据。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-13T16:08:25.385Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Turning enterprise data into AI-ready data: the 4 data engines built into the Dell AI Data Platform",
+      "link": "https://www.itpro.com/technology/artificial-intelligence/turning-enterprise-data-into-ai-ready-data-the-4-data-engines-built-into-the-dell-ai-data-platform",
+      "publishedAt": "2026-08-06T13:00:00.000Z",
+      "author": "ITPro",
+      "summary": "Poor data quality, fragmented systems, and slow pipelines can all hold back AI adoption. The Dell AI Data Platform brings together four built-in data engines to help enterprises orchestrate, process, search, and analyze data for AI at scale",
+      "evidenceLink": "",
+      "score": 21.333333333333332,
+      "core": "文章以 Dell AI Data Platform 为例，将企业 AI 数据准备拆成编排、处理、搜索和分析四类数据引擎。",
+      "why": "它把“AI-ready 数据”拆成可操作的数据能力层，便于评估企业落地缺口；但厂商平台叙事需要与现有架构和成本对照。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-13T16:08:25.385Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "deepmind",
+      "source": "Google DeepMind",
+      "title": "Putting sign language AI into users’ hands",
+      "link": "https://deepmind.google/blog/putting-sign-language-ai-into-users-hands",
+      "publishedAt": "2026-08-12T14:01:59.000Z",
+      "author": "",
+      "summary": "Introducing sign-language-to-text (SL2T), our breakthrough model powering new sign language features for Deaf and hard of hearing users.",
+      "evidenceLink": "",
+      "score": 19.890746329365083,
+      "core": "Google DeepMind 介绍手语转文本模型 SL2T，以及面向聋人和听障用户的手语输入功能。",
+      "why": "这项工作把多模态模型落到系统级无障碍输入，值得关注共同设计、语言覆盖、端侧体验和错误处理，而不只看模型指标。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-13T16:08:25.385Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
