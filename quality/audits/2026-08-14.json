@@ -1,11 +1,11 @@
 {
   "date": "2026-08-14",
-  "generatedAt": "2026-08-13T16:05:40.001Z",
-  "reportPath": "reports/2026-08-14-0005-cst.md",
+  "generatedAt": "2026-08-13T17:31:22.331Z",
+  "reportPath": "reports/2026-08-14-0131-cst.md",
   "ok": true,
   "failures": [],
   "metrics": {
-    "rows": 61,
+    "rows": 69,
     "top20Sources": [
       "HN Algolia",
       "YC Launch"
@@ -24,14 +24,14 @@
     },
     "yc_launch": {
       "status": "ok",
-      "rawCount": 7,
-      "keptCount": 7,
+      "rawCount": 8,
+      "keptCount": 8,
       "note": "YC Launch 正常返回窗口内候选。"
     },
     "hackernews": {
       "status": "ok",
-      "rawCount": 31,
-      "keptCount": 21,
+      "rawCount": 29,
+      "keptCount": 20,
       "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
     },
     "github": {
@@ -48,8 +48,8 @@
     },
     "aihot": {
       "status": "ok",
-      "rawCount": 13,
-      "keptCount": 13,
+      "rawCount": 21,
+      "keptCount": 21,
       "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
     },
     "xhs_dealflow": {
@@ -77,7 +77,7 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "它把 agent 发现做成基于 MCP 和 Cloudflare Worker 的可访问入口，值得验证注册、身份与互操作是否足以形成真实网络，而不只是一次连接演示。"
+      "reason": "把 agent 身份发现压到 Cloudflare Worker 与 MCP 上，值得验证的是无需中心目录时的互认、信任与滥用防护。"
     },
     {
       "rank": 2,
@@ -88,7 +88,7 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "“更快”是编码 agent 最直接也最容易失真的卖点；应重点比较端到端完成时间、修改质量和返工率，而不是只看 Launch HN 标题。"
+      "reason": "主张更快的编码 agent，真正应比较端到端任务完成时间、返工率与上下文保持，而不是单看生成速度。"
     },
     {
       "rank": 3,
@@ -99,10 +99,21 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "它把 API 发现与按调用付费放进同一条 agent 交易链，值得看工具上架、计费和失败结算能否形成机器可用的市场。"
+      "reason": "把 API 发现和按次支付合为 agent 市场，关键在调用授权、价格透明度与失败后的结算责任。"
     },
     {
       "rank": 4,
+      "product": "Risklytics",
+      "productKey": "https://www.ycombinator.com/launches/sfn-risklytics-insurance-for-the-frontier",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "为机器人车队和生产 agent 提供保险，说明 AI 风险正被产品化定价；重点看承保数据与免责边界。"
+    },
+    {
+      "rank": 5,
       "product": "Almanac",
       "productKey": "https://www.ycombinator.com/launches/rdq-almanac-the-agent-with-a-company-brain",
       "source": "YC Launch",
@@ -110,32 +121,10 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Almanac 让 agent 带着已连接账号使用浏览器和终端，关键产品问题是公司上下文如何持续积累，同时把权限与可追责边界讲清楚。"
-    },
-    {
-      "rank": 5,
-      "product": "Decawork",
-      "productKey": "https://www.ycombinator.com/launches/saj-decawork-the-agent-control-plane-for-it-teams",
-      "source": "YC Launch",
-      "category": "product",
-      "qualityLabel": "keep",
-      "pmScore": 5,
-      "rankingIssue": null,
-      "reason": "Decawork 把内部 AI 的部署、治理和维护集中成 IT 控制面，值得看它能否把分散试点变成可审计、可持续运营的企业能力。"
+      "reason": "让 agent 带着已登录浏览器和终端理解公司上下文，价值取决于权限隔离、审计轨迹和长期记忆准确性。"
     },
     {
       "rank": 6,
-      "product": "An idle desktop incremental game driven by coding-agent",
-      "productKey": "https://news.ycombinator.com/item?id=49275479",
-      "source": "HN Algolia",
-      "category": "product",
-      "qualityLabel": "keep",
-      "pmScore": 5,
-      "rankingIssue": null,
-      "reason": "这是 coding agent 驱动桌面游戏的个人实验，产品信号偏弱；更适合观察人如何持续给 agent 反馈并迭代玩法，而非判断商业成熟度。"
-    },
-    {
-      "rank": 7,
       "product": "An agent engine with no SDK, just TOML and webhooks",
       "productKey": "https://substructure.ai",
       "source": "HN Algolia",
@@ -143,10 +132,10 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "用 TOML 和 webhook 取代 SDK，降低了 agent 编排的接入门槛；值得验证这种配置式抽象能否覆盖复杂状态、重试和调试。"
+      "reason": "用 TOML 与 webhook 取代 SDK，降低接入成本的同时，也把可观测性、状态管理和错误恢复变成核心考题。"
     },
     {
-      "rank": 8,
+      "rank": 7,
       "product": "A Way for AI agents to support you with regulatory compliance",
       "productKey": "https://rulemesh.com/how-it-works",
       "source": "HN Algolia",
@@ -154,21 +143,10 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "它把 agent 放进监管合规流程，真正的门槛不是生成答案，而是规则出处、证据链、误判处置和人工复核能否被产品化。"
+      "reason": "合规 agent 的价值不在回答法规，而在能否给出可追溯依据、处理规则冲突并保留人工复核。"
     },
     {
-      "rank": 9,
-      "product": "How to use Mu – Tools for Agents – with x402 payments",
-      "productKey": "https://micro.mu/blog/post?id=1786633600633959421",
-      "source": "HN Algolia",
-      "category": "product",
-      "qualityLabel": "keep",
-      "pmScore": 5,
-      "rankingIssue": null,
-      "reason": "Mu 把 agent 工具调用与 x402 支付连接起来，值得看服务发现、授权和逐次结算是否能组成无需人工介入的交易闭环。"
-    },
-    {
-      "rank": 10,
+      "rank": 8,
       "product": "SightDiff – before/after visual proof of what your AI agent changed",
       "productKey": "https://sightdiff.com",
       "source": "HN Algolia",
@@ -176,10 +154,10 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "SightDiff 用前后视觉对比证明 agent 改了什么，切中了结果验收缺口；关键看它能否覆盖多应用状态并支持可追责复核。"
+      "reason": "用变更前后截图证明 agent 做了什么，切中执行可审计性；重点看差异语义是否比像素对比更可靠。"
     },
     {
-      "rank": 11,
+      "rank": 9,
       "product": "Delphi – Build your own AI trading agent in seconds",
       "productKey": "https://tradewithdelphi.com",
       "source": "HN Algolia",
@@ -187,10 +165,10 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "“数秒搭建交易 agent”降低了策略配置门槛，也放大了金融风险；应重点看数据来源、风控护栏和用户责任如何设计。"
+      "reason": "数秒生成交易 agent 很容易，难点是数据时效、风险约束、策略回测与不可逆交易前的确认机制。"
     },
     {
-      "rank": 12,
+      "rank": 10,
       "product": "Remarc – comment on anything on your screen and send it to your agent",
       "productKey": "https://remarc.app",
       "source": "HN Algolia",
@@ -198,10 +176,10 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Remarc 把屏幕上的具体评论直接交给 agent，值得看它是否比复制上下文更高效，并能形成定位准确的修改—复核循环。"
+      "reason": "把屏幕任意位置的批注直接交给 agent，缩短反馈回路；应看它如何稳定定位对象并跨应用保留上下文。"
     },
     {
-      "rank": 13,
+      "rank": 11,
       "product": "I'm tired replying my social media visitors, I let AI agent handle it",
       "productKey": "https://www.agle.app",
       "source": "HN Algolia",
@@ -209,10 +187,10 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "它把社媒访客回复交给 agent，产品价值取决于是否能分辨销售机会、保持品牌语气，并把高风险对话及时交还人工。"
+      "reason": "用 agent 接管社媒访客回复，商业价值在响应规模化，但品牌语气、升级人工和误回复成本决定能否落地。"
     },
     {
-      "rank": 14,
+      "rank": 12,
       "product": "Marengo",
       "productKey": "https://www.ycombinator.com/launches/sik-marengo-accelerated-data-center-design",
       "source": "YC Launch",
@@ -220,10 +198,10 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Marengo 把 AI 用于数据中心设计这一高成本流程；“更快、更便宜”目前只是发布描述，后续应核验设计约束、审查责任和交付结果。"
+      "reason": "AI 加速数据中心设计是高客单价垂直场景；值得看设计周期缩短是否有工程校验和交付责任支撑。"
     },
     {
-      "rank": 15,
+      "rank": 13,
       "product": "Click",
       "productKey": "https://www.ycombinator.com/launches/set-click-research-services-inside-codex-claude",
       "source": "YC Launch",
@@ -231,10 +209,10 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Click 将专业平台、社交与市场数据直接送入 Codex 和 Claude，值得看连接器覆盖、数据时效、权限合规与引用可追溯性。"
+      "reason": "把专业与社交平台数据接入 Codex/Claude，关键不是来源数量，而是授权、时效、引用和可复现检索。"
     },
     {
-      "rank": 16,
+      "rank": 14,
       "product": "Pennant",
       "productKey": "https://www.ycombinator.com/launches/sei-pennant-the-corporate-governance-os-for-public-markets",
       "source": "YC Launch",
@@ -242,21 +220,21 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Pennant 把代理投票和治理研究这一人工流程做成 AI 原生系统，关键看判断依据能否追溯，以及机构用户如何保留最终责任。"
+      "reason": "将代理投票与治理情报做成 AI-native OS，适合观察高合规工作流如何把建议、证据和最终责任分层。"
     },
     {
-      "rank": 17,
-      "product": "My Grok Voice Mode System Prompt",
-      "productKey": "https://news.ycombinator.com/item?id=49287963",
-      "source": "HN Algolia",
+      "rank": 15,
+      "product": "Dipole Labs",
+      "productKey": "https://www.ycombinator.com/launches/sie-dipole-labs-shooting-lasers-to-solve-the-billion-dollar-bottleneck-inside-ai-datacenters",
+      "source": "YC Launch",
       "category": "product",
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "这只是 Grok 语音模式的系统提示词，产品信号有限；可观察提示词如何塑造语音交互，但不能据此推断新的产品能力。"
+      "reason": "用光交换提升 AI 集群有效算力，产品价值要由真实负载吞吐、兼容成本和运维复杂度验证。"
     },
     {
-      "rank": 18,
+      "rank": 16,
       "product": "Feldy",
       "productKey": "https://www.ycombinator.com/launches/siz-feldy-field-first-ai-for-home-services-and-contractors",
       "source": "YC Launch",
@@ -264,10 +242,10 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Feldy 把工地采集、3D 扫描、估价和现场文档放进一个应用，值得看多模态输入能否贯通承包商从现场到报价的完整作业链。"
+      "reason": "把工地采集、3D 扫描、报价和文档合成一条现场工作流，值得看离线环境与脏数据下的完成度。"
     },
     {
-      "rank": 19,
+      "rank": 17,
       "product": "Shiraz AI",
       "productKey": "https://www.ycombinator.com/launches/si7-shiraz-ai-robots-that-learn-on-the-job",
       "source": "YC Launch",
@@ -275,10 +253,10 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Shiraz AI 主张让工厂机器人从一次人工示范学习任务，关键看换任务成本、安全约束和现场稳定性是否真能降低部署门槛。"
+      "reason": "单次人工示范让工厂机器人学任务，关键证据是跨场景泛化、安全停机和部署后的持续校准成本。"
     },
     {
-      "rank": 20,
+      "rank": 18,
       "product": "Posts grew 6x since ChatGPT, but success rate remained relatively flat",
       "productKey": "https://www.orangecrumbs.com/stories/show-hn",
       "source": "HN Algolia",
@@ -286,7 +264,29 @@
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "这是关于 Show HN 在 ChatGPT 后数量增长、成功率近乎持平的观察，不是产品发布；价值在于提醒团队区分供给繁荣与真实采用。"
+      "reason": "这是一条对 Show HN 供给变化的分析，不是产品发布；可用来校准发现渠道，但不应占产品优先位。"
+    },
+    {
+      "rank": 19,
+      "product": "Markleft – how I review Claude's Markdown plans",
+      "productKey": "https://blog.lysk.tech/markleft-ai-markdown-review",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "围绕 Claude Markdown 计划做审阅，切中 agent 执行前的人类审批点；应看批注能否回写并形成闭环。"
+    },
+    {
+      "rank": 20,
+      "product": "Meat-O-Meter – the internet most generous ruler (18+)",
+      "productKey": "https://meat-o-meter.ya-abr97.chatgpt.site",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "成人娱乐量尺是低信号 novelty，缺少可持续工作流与明确 AI 能力，不应进入默认优先阅读。"
     }
   ]
 }

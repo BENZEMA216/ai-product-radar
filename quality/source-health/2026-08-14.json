@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-13T16:05:40.001Z",
+  "generatedAt": "2026-08-13T17:31:22.331Z",
   "window": {
-    "start": "2026-08-13 00:05:40 CST",
-    "end": "2026-08-14 00:05:40 CST"
+    "start": "2026-08-13 01:31:22 CST",
+    "end": "2026-08-14 01:31:22 CST"
   },
   "productHuntDateKeys": [
     "2026-08-12"
@@ -20,8 +20,8 @@
     "ruleCount": 15,
     "exactOnlyCount": 5,
     "exactMatchCount": 13,
-    "policyMatchCount": 22,
-    "droppedCount": 26,
+    "policyMatchCount": 23,
+    "droppedCount": 25,
     "rules": [
       {
         "id": "hn-github-stars-below-50-drop",
@@ -36,9 +36,9 @@
           40,
           41
         ],
-        "matchedCount": 10,
-        "selectedCount": 10,
-        "droppedCount": 10
+        "matchedCount": 9,
+        "selectedCount": 9,
+        "droppedCount": 9
       },
       {
         "id": "hn-github-stars-50-to-99-downrank",
@@ -50,8 +50,8 @@
           21,
           35
         ],
-        "matchedCount": 0,
-        "selectedCount": 0,
+        "matchedCount": 1,
+        "selectedCount": 1,
         "droppedCount": 0
       },
       {
@@ -204,8 +204,8 @@
         "issueNumbers": [
           14
         ],
-        "matchedCount": 1,
-        "selectedCount": 1,
+        "matchedCount": 2,
+        "selectedCount": 2,
         "droppedCount": 0
       }
     ]
@@ -222,14 +222,14 @@
     },
     "yc_launch": {
       "status": "ok",
-      "rawCount": 7,
-      "keptCount": 7,
+      "rawCount": 8,
+      "keptCount": 8,
       "note": "YC Launch 正常返回窗口内候选。"
     },
     "hackernews": {
       "status": "ok",
-      "rawCount": 31,
-      "keptCount": 21,
+      "rawCount": 29,
+      "keptCount": 20,
       "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
     },
     "github": {
@@ -246,8 +246,8 @@
     },
     "aihot": {
       "status": "ok",
-      "rawCount": 13,
-      "keptCount": 13,
+      "rawCount": 21,
+      "keptCount": 21,
       "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
     },
     "xhs_dealflow": {
