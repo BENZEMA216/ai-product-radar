@@ -1,0 +1,293 @@
+{
+  "date": "2026-08-15",
+  "generatedAt": "2026-08-14T16:07:57.036Z",
+  "reportPath": "reports/2026-08-15-0007-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 79,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "ok",
+      "rawCount": 34,
+      "keptCount": 15,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-08-13；官方日榜页面的可审计快照已启用，原始覆盖 34 条，AI 相关候选 16 条，候选带 rank/votes/comments。；历史去重后最终发布 15 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 10,
+      "keptCount": 10,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 24,
+      "keptCount": 11,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 7,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 23,
+      "keptCount": 23,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-08-14T16:01:48Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Qencode MCP",
+      "productKey": "https://www.producthunt.com/products/qencode",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Qencode MCP 把视频转码能力直接交给 agent 调用，产品价值在于让多媒体处理成为可编排工具，而非另一个独立控制台。"
+    },
+    {
+      "rank": 2,
+      "product": "Cadre.rocks A local-first board for orchestrating coding agents",
+      "productKey": "https://cadre.rocks",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Cadre.rocks 用本地优先看板协调 coding agents，值得验证可视化编排能否解决并行任务、状态追踪和隐私控制。"
+    },
+    {
+      "rank": 3,
+      "product": "Palisade",
+      "productKey": "https://www.ycombinator.com/launches/sjq-palisade-personalized-sales-agents-for-online-marketplaces",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Palisade 为电商平台的每位访客启动专属销售 agent，关键看个性化是否能持续推进成交，而不只是换一套导购话术。"
+    },
+    {
+      "rank": 4,
+      "product": "EdotEnv",
+      "productKey": "https://www.ycombinator.com/launches/sic-edotenv-quant-neolab-building-towards-rsi",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "EdotEnv 把市场数据组织成 agent 可反复训练的研究环境，值得关注反馈闭环如何定义、以及策略改进是否可验证。"
+    },
+    {
+      "rank": 5,
+      "product": "Oasis",
+      "productKey": "https://www.producthunt.com/products/oasis-6",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Oasis 把人和 agent 共处的工作空间作为定位，真正的检验点是任务交接、权限边界与协作记录能否统一。"
+    },
+    {
+      "rank": 6,
+      "product": "Pickle Browser",
+      "productKey": "https://www.producthunt.com/products/pickle-browser",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Pickle Browser 让 agent 在用户可见的本地窗口中操作浏览器，透明执行有助于建立控制感，但仍需看失败恢复和权限隔离。"
+    },
+    {
+      "rank": 7,
+      "product": "Clixad – Free AI coding agent in the terminal, funded by an offerwall",
+      "productKey": "https://clixad.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Clixad 用 offerwall 补贴免费的终端 coding agent，是不同于订阅制的获客实验；重点看广告激励是否会破坏开发流和信任。"
+    },
+    {
+      "rank": 8,
+      "product": "Ooak Data",
+      "productKey": "https://www.ycombinator.com/launches/sih-ooak-data-turn-internal-company-data-into-a-training-ground-where-ai-agents-can-be-trained-on-real-work",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Ooak Data 把企业内部真实工作数据变成 agent 训练场，直指专有数据瓶颈；需要验证脱敏、评测和反馈归因能否闭环。"
+    },
+    {
+      "rank": 9,
+      "product": "Magma",
+      "productKey": "https://www.ycombinator.com/launches/sk4-magma-ai-labs-will-pay-you-to-learn-from-your-agent-s-mistakes",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Magma 试图把 agent 失败轨迹变成可交易的数据资产，值得看供需双方如何定义质量、隐私权和可复用训练信号。"
+    },
+    {
+      "rank": 10,
+      "product": "Powder",
+      "productKey": "https://www.ycombinator.com/launches/sjr-playbook-ai-agents-that-run-wealth-management-operations",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Powder 让 agent 在财富管理中发现、执行并核验工作，产品深度取决于合规审批、可追溯证据和人工接管是否完整。"
+    },
+    {
+      "rank": 11,
+      "product": "Risklytics",
+      "productKey": "https://www.ycombinator.com/launches/sfn-risklytics-insurance-for-the-frontier",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Risklytics 为机器人车队和生产 agent 提供保险，说明 AI 风险开始被产品化定价；关键是承保数据与事故责任如何界定。"
+    },
+    {
+      "rank": 12,
+      "product": "Burla – Distributed computing framework for AI agents",
+      "productKey": "https://burla.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Burla 把分布式计算包装成 agent 可用框架，值得检查任务分片、资源调度与失败重试是否比现有队列方案更省心。"
+    },
+    {
+      "rank": 13,
+      "product": "Artifex - Graph Based GPU Harness for AI Agents",
+      "productKey": "https://gatewai.studio/artifex",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Artifex 用图结构组织 GPU 与 agent harness，潜在价值是把算力工作流显式化；仍需看到节点语义、调度开销和调试体验。"
+    },
+    {
+      "rank": 14,
+      "product": "Taurus Agents, my take on multi-agent hierarchies",
+      "productKey": "https://taurusagents.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Taurus Agents 主打多 agent 层级，值得看的不是数量，而是上级如何分派、校验和收敛下级输出，避免协调成本吞掉收益。"
+    },
+    {
+      "rank": 15,
+      "product": "Execlave",
+      "productKey": "https://www.producthunt.com/products/execlave",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Execlave 把 agent 与现实世界之间的安全闸门做成产品，核心验证是高风险动作能否在执行前被识别、授权和审计。"
+    },
+    {
+      "rank": 16,
+      "product": "Coarena by Coasty",
+      "productKey": "https://www.producthunt.com/products/coarena-by-coasty",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Coarena 用真实工作让 agents 对战，可能形成更贴近任务的评测场；需关注题目代表性、裁判机制和可复现性。"
+    },
+    {
+      "rank": 17,
+      "product": "Agents that run your finances",
+      "productKey": "https://blaze.money",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这个财务 agent 直接承诺替用户运行资金事务，场景价值明确，但必须先验证授权粒度、交易确认和异常追责。"
+    },
+    {
+      "rank": 18,
+      "product": "Hearth – a shared family workspace where an agent can build apps",
+      "productKey": "https://news.ycombinator.com/item?id=49292004",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Hearth 让家庭成员共享空间并由 agent 构建应用，值得看非技术用户能否共同定义需求、修改结果并管理家庭数据。"
+    },
+    {
+      "rank": 19,
+      "product": "apra-fleet",
+      "productKey": "https://www.producthunt.com/products/apra-fleet",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "apra-fleet 面向跨机器运行一组 agents，价值在统一部署与运维；关键是机器发现、密钥管理和任务故障转移。"
+    },
+    {
+      "rank": 20,
+      "product": "Phinq",
+      "productKey": "https://www.producthunt.com/products/phinq",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Phinq 主张在 agent 造成破坏前拦截动作，产品成败取决于策略是否可解释、误报成本是否可控，以及能否覆盖真实工具调用。"
+    }
+  ]
+}

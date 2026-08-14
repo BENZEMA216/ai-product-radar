@@ -1,0 +1,427 @@
+{
+  "generatedAt": "2026-08-14T16:11:07.713Z",
+  "date": "2026-08-15",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Gemini 3.7 Flash now available on AI Gateway for 50% off",
+      "link": "https://vercel.com/changelog/gemini-3-7-flash-now-available-on-ai-gateway-for-50-off",
+      "publishedAt": "2026-08-13T00:00:00.000Z",
+      "author": "Joe McKenney",
+      "summary": "Gemini 3.7 Flash from Google is now available on AI Gateway for 50% off till December 31st, 2026. Gemini 3.7 Flash improves on prior Flash models at software engineering and agentic work. It resolves issues more reliably and spends less time stuck in failed agent loops, which matters on long tool-calling sequences where one derailment costs the rest of the run. It also generates desktop and web application code directly from design mocks, with closer adherence to the source design. To use Gemini 3.7 Flash, set model to google/gemini-3.7-flash in the AI SDK : To use it in a coding agent , run vercel ai-gateway coding-agents setup to connect Claude Code, Codex, OpenCode, or Pi, then select google/gemini-3.7-flash inside the agent. To try Gemini 3.7 Flash with no code, try the model in the model playground . AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. Read more",
+      "evidenceLink": "",
+      "score": 74.19627553571428,
+      "core": "Vercel AI Gateway 已接入 Gemini 3.7 Flash，并在 2026 年底前提供五折价格；文章称新版更适合软件工程和长链工具调用，也支持从设计稿生成桌面与 Web 应用。",
+      "why": "这条更新把模型能力、agent 可靠性和渠道定价放在同一页，适合评估网关促销会如何影响模型选型与单位任务成本。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-14T16:11:07.713Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "DeepSeek V4 Pro now runs updated weights on AI Gateway",
+      "link": "https://vercel.com/changelog/deepseek-v4-pro-now-runs-updated-weights-on-ai-gateway",
+      "publishedAt": "2026-08-12T07:00:00.000Z",
+      "author": "Jerilyn Zheng",
+      "summary": "DeepSeek V4 Pro now runs on updated weights on AI Gateway. They are used by default when you call deepseek/deepseek-v4-pro , so existing requests pick them up with no change to the model ID or your code. To use the updated DeepSeek V4 Pro, set model to deepseek/deepseek-v4-pro-0813 in the AI SDK . AI Gateway will route to providers with the new weights: To run V4 Pro in a coding agent, use vercel ai-gateway coding-agents setup to connect your agents to AI Gateway, then select deepseek/deepseek-v4-pro-0813 in the agent's model configuration. See the coding agents guide . AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. Learn more about AI Gateway , view the AI Gateway model leaderboard or try it in our model playground . Read more",
+      "evidenceLink": "",
+      "score": 62.58198982142857,
+      "core": "Vercel AI Gateway 已将 DeepSeek V4 Pro 切换到更新权重，旧模型 ID 可无代码变更获得新版；显式指定 0813 ID 则可用于 coding agent 配置。",
+      "why": "它揭示了网关层可在不改客户端的情况下替换模型权重，也提醒产品团队必须管理版本可追溯性和静默升级风险。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-14T16:11:07.713Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "LLM Agents Factory: Retrieval of Domain-Specific LLM Agents",
+      "link": "https://arxiv.org/abs/2608.09934",
+      "evidenceLink": "https://www.semanticscholar.org/paper/acbed35dbb19854566f7df43ca05ed063af08e95",
+      "publishedAt": "2026-05-20T00:00:00.000Z",
+      "submittedAt": "2026-05-20T00:00:00.000Z",
+      "author": "Vitalii Belov, Artyom Sosedka, Andrey Sakhovskiy, E. Kovtun, A. Boyarskikh",
+      "summary": "Large language model (LLM) agents improve task performance by decomposing problems into role-specialized behaviors. However, their practical deployment is often limited by the computational cost and instability associated with the on-the-fly agent design for each user request. To address this, we present LLM Agents Factory, a retrieval-based framework that constructs domain-specific and Wikipedia-grounded agents on demand using a base of over 20K predetermined agent profiles. Our framework supports two modes: (1) agent profile retrieval via semantic search and (2) distillation into a compact model fine-tuned for direct agent generation. Experiments on MMLU, BIG-bench, and BIG-bench Hard in a single-agent scenario demonstrate that our retrieval-based agent construction surpasses non-agent baselines in accuracy while matching AutoGen generation quality with a 120B backbone at a substantially lower inference cost. Our work reveals that retrieval from a structured agent repository provides a cost-efficient, accurate, and controllable alternative to dynamic agent generation, responding to the strict demands of industrial applications. We provide the implementation code and the agent base in https://huggingface.co/frontier-ai/llm-agent-factory.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 59,
+      "core": "论文提出从超过 2 万个预设 agent profile 中检索领域角色，或将该能力蒸馏进小模型，以替代每次请求临时生成 agent；摘要报告其在多项基准上降低推理成本并保持生成质量。",
+      "why": "把 agent 设计从在线生成改成可检索资产库，是降低成本和波动的具体架构；值得关注 profile 治理、领域覆盖与检索错误。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "MA2P: A Meta-Cognitive Autonomous Intelligent Agents Framework for Complex Persuasion",
+      "link": "https://arxiv.org/abs/2605.18572",
+      "evidenceLink": "https://www.semanticscholar.org/paper/d2bdd7b32853c190c1d91ed792f92e354dcf71e7",
+      "publishedAt": "2026-05-18T00:00:00.000Z",
+      "submittedAt": "2026-05-18T00:00:00.000Z",
+      "author": "Dingyi Zhang, Z. Zhuang, Linhai Zhang, Ziyang Gao, Deyu Zhou",
+      "summary": "Persuasive dialogue generation plays a vital role in decision-making, negotiation, counseling, and behavior change, yet it remains a challenging problem. In complex persuasion where the persuadee's internal states are not expressed clearly, the persuader must interpret responses, infer the persuadee's latent mental states (e.g., beliefs and desires), and translate them into targeted, strategy-consistent actions; however, current approaches often produce generic or weakly grounded responses even when such cues are identified. Moreover, although large language models (LLMs) can generate persuasive content, their performance varies substantially across domains due to uneven knowledge coverage and limited reasoning generalization. To address these challenges, we propose MA$^{2}$P, a meta-cognitive autonomous intelligent agent framework for complex persuasion. Specifically, we develop an autonomous multi-agent architecture that coordinates perception management, mental-state inference, strategy execution, memory maintenance, and performance evaluation. To mitigate cross-domain performance variation, we further design a meta-cognitive configurator that selects an appropriate meta-strategy from a structured knowledge base at the outset, thereby guiding subsequent reasoning and planning. Experimental results show that our approach achieves a higher persuasion success rate than baselines.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 59,
+      "core": "MA2P 用多 agent 协调感知管理、心理状态推断、策略执行、记忆和评估，并由元认知配置器先选择跨领域说服策略；摘要称其说服成功率优于基线。",
+      "why": "它把复杂对话中的隐含状态和策略选择拆成可观察模块，对谈判、辅导等产品有启发，但必须警惕操纵风险与评测外推。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Seeing Isn't Believing: Mitigating Belief Inertia via Active Intervention in Embodied Agents",
+      "link": "https://arxiv.org/abs/2604.17252",
+      "evidenceLink": "https://www.semanticscholar.org/paper/9d54c1efee146e6984c13f575ae4fcad54a96afc",
+      "publishedAt": "2026-04-19T00:00:00.000Z",
+      "submittedAt": "2026-04-19T00:00:00.000Z",
+      "author": "Hanlin Wang, Chak Tou Leong, Jian Wang, Wenjie Li",
+      "summary": "Recent advancements in large language models (LLMs) have enabled agents to tackle complex embodied tasks through environmental interaction. However, these agents still make suboptimal decisions and perform ineffective actions, as they often overlook critical environmental feedback that differs from their internal beliefs. Through a formal probing analysis, we characterize this as belief inertia, a phenomenon where agents stubbornly adhere to prior beliefs despite explicit observations. To address this, we advocate active belief intervention, moving from passive understanding to active management. We introduce the Estimate-Verify-Update (EVU) mechanism, which empowers agents to predict expected outcomes, verify them against observations through explicit reasoning, and actively update prior beliefs based on the verification evidence. EVU is designed as a unified intervention mechanism that generates textual belief states explicitly, and can be integrated into both prompting-based and training-based agent reasoning methods. Extensive experiments across three embodied benchmarks demonstrate that EVU consistently yields substantial gains in task success rates. Further analyses validate that our approach effectively mitigates belief inertia, advancing the development of more robust embodied agents. Our code is available at https://github.com/WangHanLinHenry/EVU.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 59,
+      "core": "论文将 embodied agent 忽略新环境证据的现象定义为“信念惯性”，并提出 Estimate-Verify-Update 机制，让 agent 先预测结果、对照观察，再主动更新既有判断。",
+      "why": "EVU 提供了一种显式失败恢复回路，可迁移到浏览器和机器人 agent；关键是验证步骤是否可靠，以及额外推理成本是否值得。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Beyond Static Benchmarks: Synthesizing Harmful Content via Persona-based Simulation for Robust Evaluation",
+      "link": "https://arxiv.org/abs/2604.17020",
+      "evidenceLink": "https://www.semanticscholar.org/paper/2e96036e96855754a9caaee0a792bd2acb647f2f",
+      "publishedAt": "2026-04-18T00:00:00.000Z",
+      "submittedAt": "2026-04-18T00:00:00.000Z",
+      "author": "Huije Lee, Jisu Shin, Hoyun Song, Changgeon Ko, Jong C. Park",
+      "summary": "Static benchmarks for harmful content detection face limitations in scalability and diversity, and may also be affected by contamination from web-scale pre-training corpora. To address these issues, we propose a framework for synthesizing harmful content, leveraging persona-guided large language model (LLM) agents. Our approach constructs two-dimensional user personas by integrating demographic identities and topical interests with situational harmful strategies, enabling the simulation of diverse and contextually grounded harmful interactions. We evaluate the framework along three dimensions: harmfulness, challenge level, and diversity. Both human and LLM-based evaluations confirm that our framework achieves a high harmful generation success rate. Experiments across multiple detection systems reveal that our synthetic scenarios are more challenging to detect than those in existing benchmarks. Furthermore, a multi-faceted analysis confirms that our approach achieves linguistic and topical diversity comparable to human-curated datasets, establishing our framework as an effective tool for robust stress-testing of harmful content detection systems.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 59,
+      "core": "研究用人口身份、兴趣主题与情境化有害策略组合 persona，驱动 LLM agents 合成更丰富的有害内容，再从危害性、难度和多样性评估检测系统。",
+      "why": "动态 persona 模拟能补足静态安全集的污染和覆盖问题，适合安全评测设计；同时需审查合成偏见、可控生成与泄漏风险。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "AI agents are inside the enterprise – are your security foundations ready for them?",
+      "link": "https://www.techradar.com/pro/ai-agents-are-inside-the-enterprise-are-your-security-foundations-ready-for-them",
+      "publishedAt": "2026-08-14T10:30:58.000Z",
+      "author": "Camellia Chan",
+      "summary": "How AI agents are exposing the need for hardware-level security foundations.",
+      "evidenceLink": "",
+      "score": 50.01726759920635,
+      "core": "文章主张企业 agent 已进入实际环境，现有软件权限之外还需要硬件级安全基础，以约束身份、密钥和执行边界。",
+      "why": "它把 agent 安全从提示词与应用层推进到硬件信任根，适合用来检查企业方案是否覆盖设备身份和不可绕过的权限控制。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-14T16:11:07.713Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "How AI text watermarking works",
+      "link": "https://declaude.org/watermarking",
+      "publishedAt": "2026-08-13T23:16:55.000Z",
+      "author": "padolsey https://news.ycombinator.com/user?id=padolsey",
+      "summary": "A gentle visual guide to how statistical watermarks hide inside AI-generated text, and what erases them.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49292932",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 123,
+        "comments": 93
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-14T16:11:07.713Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 46.783746811582,
+      "core": "这篇可视化指南解释统计水印如何嵌入 AI 文本，以及改写、采样等操作为何会削弱或移除检测信号。",
+      "why": "理解水印失效机制有助于避免把检测分数误当来源证明，并能更清楚地区分水印、内容凭证与行为审计的边界。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "The builder’s guide to GPT‑5.6",
+      "link": "https://openai.com/index/builders-guide-to-gpt-5-6",
+      "publishedAt": "2026-08-13T11:00:00.000Z",
+      "author": "",
+      "summary": "Learn how startups use GPT-5.6 to build faster, more cost-efficient AI agents with smarter model selection and new Responses API capabilities.",
+      "evidenceLink": "",
+      "score": 46.7042120436508,
+      "core": "OpenAI 汇总创业团队使用 GPT-5.6 的实践，重点放在更聪明的模型选择、Responses API 能力，以及更快、更省成本地构建 AI agents。",
+      "why": "官方案例的价值在具体选型与接口用法，可用于检查何时需要更强模型、何时应通过路由和工具设计控制成本。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-14T16:11:07.713Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Dynatrace acquires observability firm Arize in $915m deal",
+      "link": "https://www.itpro.com/business/acquisition/dynatrace-acquires-observability-firm-arize-in-usd915m-deal",
+      "publishedAt": "2026-08-14T10:59:04.000Z",
+      "author": "Daniel Todd",
+      "summary": "The move will see Arize’s AI evaluation capabilities combined with Dynatrace’s production monitoring technology across the AI development lifecycle",
+      "evidenceLink": "",
+      "score": 46.44516442460318,
+      "core": "Dynatrace 以 9.15 亿美元收购 Arize，计划把后者的 AI 评测能力与自身生产监控结合，覆盖 AI 开发生命周期。",
+      "why": "这笔交易说明离线评测与线上可观测性正在合并；产品团队可据此审视模型质量、业务指标和事故追踪是否仍割裂。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-14T16:11:07.713Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "LangGraph vs CrewAI: How to Choose an AI Agent Framework (2026)",
+      "link": "https://rerun.build/blog/langgraph-vs-crewai",
+      "publishedAt": "2026-08-03T04:31:50.000Z",
+      "author": "",
+      "summary": "CrewAI vs LangGraph compared across architecture, state, human-in-the-loop, observability and production readiness, plus when to pick each and how to govern both in production.",
+      "evidenceLink": "",
+      "score": 44.977777777777774,
+      "core": "文章从架构、状态管理、人工介入、可观测性和生产就绪度对比 LangGraph 与 CrewAI，并给出不同团队的选型边界。",
+      "why": "相比功能清单，这种维度化比较更适合做框架决策；阅读时应重点核对作者经验是否覆盖自身的状态复杂度和治理要求。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-14T16:11:07.713Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Amazon Quick for Microsoft 365: Agentic AI where you work",
+      "link": "https://aws.amazon.com/blogs/machine-learning/amazon-quick-for-microsoft-365-agentic-ai-where-you-work",
+      "publishedAt": "2026-08-13T15:48:15.000Z",
+      "author": "Art Chan",
+      "summary": "Amazon Quick is now available directly inside Microsoft Word, Excel, PowerPoint, and Outlook. These extensions bring connected data access and agentic document editing into the Microsoft 365 apps your teams already use, so you can analyze data, draft content, and reach enterprise knowledge without switching applications.",
+      "evidenceLink": "",
+      "score": 42.047366805555555,
+      "core": "Amazon Quick 已进入 Word、Excel、PowerPoint 和 Outlook，可在原有办公入口中访问关联数据、编辑文档并调用企业知识。",
+      "why": "它展示了 agent 通过宿主应用分发的路径，关键产品问题是跨文档上下文、企业权限和可逆编辑能否保持一致。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-14T16:11:07.713Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "AI Agent Orchestration: How to Coordinate Multi-Agent Systems",
+      "link": "https://rerun.build/blog/ai-agent-orchestration",
+      "publishedAt": "2026-07-26T11:08:06.000Z",
+      "author": "",
+      "summary": "AI agent orchestration coordinates multiple reasoning agents toward one goal. Learn the four patterns, the architecture, and how to run a multi-agent system with no code.",
+      "evidenceLink": "",
+      "score": 41.94444444444444,
+      "core": "文章把多 agent 协作归纳为四种编排模式，并讨论共同目标下的角色协调、架构选择和无代码运行方式。",
+      "why": "四种模式可作为拆解复杂 agent 系统的设计框架，但需要结合通信开销、冲突处理和最终责任归属判断是否值得多 agent 化。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-14T16:11:07.713Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "What Is the Hermes AI Agent? How It Works, Whether It's Safe, and How to Run It",
+      "link": "https://rerun.build/blog/hermes-ai-agent",
+      "publishedAt": "2026-07-29T13:15:03.000Z",
+      "author": "",
+      "summary": "Hermes Agent is the open-source, self-improving AI agent by Nous Research. Here is what it is, how it works, whether it is free and safe, and where the line sits between running an agent and governing one in production.",
+      "evidenceLink": "",
+      "score": 41.21666666666667,
+      "core": "文章介绍 Nous Research 的开源 Hermes Agent、自我改进机制、运行方法与安全边界，并区分“能运行”与“可在生产中治理”。",
+      "why": "它适合建立开源 agent 的尽调清单：能力之外还要看权限、更新来源、持久状态和生产控制是否可审计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-14T16:11:07.713Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "How to Deploy AI Agents in Production: A Step-by-Step Guide",
+      "link": "https://rerun.build/blog/how-to-deploy-ai-agents",
+      "publishedAt": "2026-07-29T06:06:45.000Z",
+      "author": "",
+      "summary": "A governance-first, step-by-step guide to deploying AI agents in production, plus the four pillars that separate a demo from an agent you can trust: approvals, observability, least privilege, and secure hosting.",
+      "evidenceLink": "",
+      "score": 41.172222222222224,
+      "core": "这份生产部署指南以治理为先，提出审批、可观测性、最小权限和安全托管四个支柱，用来区分 demo 与可被信任的 agent。",
+      "why": "四个支柱能直接转成上线门禁，尤其适合审查高风险工具调用；仍应结合业务损失模型设置不同级别的控制。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-14T16:11:07.713Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "Human-in-the-Loop AI Agents: The Complete Guide to Building Agents You Can Actually Deploy",
+      "link": "https://rerun.build/blog/human-in-the-loop-ai-agents",
+      "publishedAt": "2026-07-31T06:11:58.000Z",
+      "author": "",
+      "summary": "Human-in-the-loop AI agents pause on high-stakes actions to get human approval. Here are the approval gates, confidence thresholds, and escalation patterns that make agents production-ready.",
+      "evidenceLink": "",
+      "score": 41.05555555555556,
+      "core": "文章讨论高风险动作前暂停 agent 并请求人工确认，涵盖审批门、置信阈值和升级路径等 human-in-the-loop 模式。",
+      "why": "它把“有人兜底”细化成可实现的控制点，可用于设计审批体验；关键是减少确认疲劳并定义超时和拒绝后的行为。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-14T16:11:07.713Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "AMD pledges support for Oxford frontier AI research lab",
+      "link": "https://www.itpro.com/infrastructure/amd-pledges-support-for-oxford-frontier-ai-research-lab",
+      "publishedAt": "2026-08-14T05:00:00.000Z",
+      "author": "Emma Woollacott",
+      "summary": "The British Open-ended Learning and Discovery Lab (BOLD) will work on new learning algorithms, human-centered AI and embodied systems such as robots",
+      "evidenceLink": "",
+      "score": 34.023259662698415,
+      "core": "AMD 将支持牛津 BOLD 前沿 AI 研究实验室，研究方向包括新学习算法、人本 AI，以及机器人等 embodied systems。",
+      "why": "这条信息更适合作为算力企业布局开放式学习和具身研究的组织信号；应等待具体项目与成果再判断技术影响。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-14T16:11:07.713Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "What building an AI-native finance function taught me",
+      "link": "https://openai.com/index/building-an-ai-native-finance-function",
+      "publishedAt": "2026-08-10T17:00:00.000Z",
+      "author": "",
+      "summary": "OpenAI CFO Sarah Friar shares five lessons for building an AI-native finance function, from automated forecasting to stronger controls and AI ROI.",
+      "evidenceLink": "",
+      "score": 24.012148551587302,
+      "core": "OpenAI CFO 总结建设 AI-native 财务职能的五条经验，覆盖自动化预测、更强控制以及 AI 投资回报管理。",
+      "why": "财务场景能检验 agent 是否真正进入高责任流程；重点可看自动化范围、控制权保留和 ROI 如何被量化。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-14T16:11:07.713Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "deepmind",
+      "source": "Google DeepMind",
+      "title": "Putting sign language AI into users’ hands",
+      "link": "https://deepmind.google/blog/putting-sign-language-ai-into-users-hands",
+      "publishedAt": "2026-08-12T14:01:59.000Z",
+      "author": "",
+      "summary": "Introducing sign-language-to-text (SL2T), our breakthrough model powering new sign language features for Deaf and hard of hearing users.",
+      "evidenceLink": "",
+      "score": 18.17323982142857,
+      "core": "Google DeepMind 发布手语转文本模型 SL2T，并将其用于面向聋人和听障用户的新手语功能。",
+      "why": "它把多模态模型落到明确的无障碍任务，值得关注数据代表性、地区手语差异、实时延迟和用户共同设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-14T16:11:07.713Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "deepmind",
+      "source": "Google DeepMind",
+      "title": "Introducing Gemini 3.7 Flash",
+      "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash",
+      "publishedAt": "2026-08-13T17:04:18.000Z",
+      "author": "",
+      "summary": "",
+      "evidenceLink": "",
+      "score": 12.349013630952381,
+      "core": "Google 将 Gemini 3.7 Flash 定位为面向编码与 agents 的高智能主力模型，强调在速度、成本和复杂任务能力之间的平衡。",
+      "why": "官方定位可与网关侧的价格和可靠性描述交叉阅读，帮助判断 Flash 档是否正在从轻任务模型升级为默认 agent 执行层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-14T16:11:07.713Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
