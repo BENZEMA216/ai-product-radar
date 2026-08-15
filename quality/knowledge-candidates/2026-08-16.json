@@ -1,0 +1,422 @@
+{
+  "generatedAt": "2026-08-15T16:12:46.971Z",
+  "date": "2026-08-16",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Why managed agents are the next big thing in agent building",
+      "link": "https://www.langchain.com/blog/why-managed-agents-are-the-next-big-thing-in-agent-building",
+      "publishedAt": "2026-08-14T08:32:11.000Z",
+      "author": "",
+      "summary": "Managed Deep Agents gives developers a managed way to build, run, and deploy Deep Agents with built-in runtime, streaming, sandboxes, evals, memory, and auth.",
+      "evidenceLink": "",
+      "score": 66.61515930555557,
+      "core": "Managed Deep Agents 把运行时、流式输出、沙箱、评测、记忆与认证组合成托管式构建和部署环境。",
+      "why": "它把 agent 平台的竞争边界从模型调用扩展到整套生产运行面，适合拆解哪些基础能力应由平台统一承接。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-15T16:12:46.971Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "How We Benchmark Deep Agents",
+      "link": "https://www.langchain.com/blog/how-we-benchmark-deep-agents",
+      "publishedAt": "2026-07-24T02:31:15.000Z",
+      "author": "",
+      "summary": "We revamped how we benchmark Deep Agents. Here's the eval setup we run in Harbor across coding, conversation, and retrieval, and how we use it to ship changes.",
+      "evidenceLink": "",
+      "score": 60.88333333333333,
+      "core": "LangChain 重构了 Deep Agents 的评测方法，在 Harbor 中覆盖编码、对话和检索任务，并把结果用于版本发布判断。",
+      "why": "这不是单一榜单，而是评测如何进入工程发布循环的案例；重点可借鉴任务覆盖与上线决策之间的连接方式。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-15T16:12:46.971Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Managed Deep Agents is now in public beta",
+      "link": "https://www.langchain.com/blog/managed-deep-agents-is-now-in-public-beta",
+      "publishedAt": "2026-08-07T19:39:38.000Z",
+      "author": "",
+      "summary": "Deploy Deep Agents to a managed LangSmith runtime with durable execution, memory, sandboxes, channels, evals, and production-ready infrastructure.",
+      "evidenceLink": "",
+      "score": 59.81111111111111,
+      "core": "Managed Deep Agents 进入公测，提供持久执行、记忆、沙箱、渠道与评测，并运行在托管 LangSmith runtime 上。",
+      "why": "公测意味着这些能力从架构主张进入可用产品阶段；可重点核对长任务恢复、隔离与观测是否真的形成一体化体验。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-15T16:12:46.971Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "From Search to Ask to Act: The Evolution of Information Access in the Age of Large Models and Agents",
+      "link": "https://doi.org/10.1145/3805712.3809404",
+      "evidenceLink": "https://www.semanticscholar.org/paper/a920850d31dc49ab69d4a00ce6df3c77553ee807",
+      "publishedAt": "2026-07-19T00:00:00.000Z",
+      "submittedAt": "2026-07-19T00:00:00.000Z",
+      "author": "Ji-rong Wen",
+      "summary": "Information access has evolved from search to ask to act. For more than two decades, information retrieval made networked information usable through crawling, indexing, ranking, user modeling, and recommendation. My early work on Web page understanding, vertical search, learning-to-rank, personalized search, and recommendation followed this user-centered view. This keynote briefly revisits that trajectory as the context for a large shift recently: from retrieving documents to constructing systems that reason over evidence, generate grounded answers, and execute information-seeking tasks. I will discuss WenLan, YuLan, and LLaDA as examples of how multimodal foundation models, large language models, and diffusion language models reshape the interface between retrieval and generation. More importantly, I will focus on retrieval-augmented generation and AI search agents. FlashRAG provides a modular open-source platform for RAG research; Search-o1 and WebThinker connect large reasoning models with active search and deep research; and DeepAgent studies scalable tool use for general reasoning. Together, these works expose new IR problems: when and what to retrieve, how to align model and retriever knowledge preferences, how to refine long-context evidence, how to maintain memory and source credibility, and how to evaluate multi-step search behavior. I will close by arguing that future IR systems should not stop at answers. Large-model-driven agents can plan, search, verify, call tools, and support decisions. RAG and AI search agents turn information access into an iterative process of evidence gathering, grounded reasoning, tool use, and responsible action, linking retrieval to decision support and human-centered applications.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 58,
+      "core": "这篇 SIGIR keynote 回顾信息访问从抓取、索引、排序与推荐，走向大模型时代的“搜索—提问—行动”演进。",
+      "why": "它提供了理解 agent 产品入口变化的历史坐标：当系统开始替用户行动，检索质量之外还要重新设计控制与责任边界。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "DLLM-Searcher: Adapting Diffusion Language Model for Efficient Search Agents",
+      "link": "https://doi.org/10.1145/3805712.3809643",
+      "evidenceLink": "https://www.semanticscholar.org/paper/f053acd7135df48fc65a45cb62848dddd2131928",
+      "publishedAt": "2026-07-19T00:00:00.000Z",
+      "submittedAt": "2026-07-19T00:00:00.000Z",
+      "author": "Jiahao Zhao, Shaoxuan Xu, ZhongXiang Sun, Fengqi Zhu, Jingyang Ou",
+      "summary": "Recently, Diffusion Large Language Models (dLLMs) have demonstrated unique efficiency advantages, enabled by their inherently parallel decoding mechanism and flexible generation paradigm. Meanwhile, despite the rapid advancement of Search Agents, their practical deployment is constrained by a fundamental limitation, termed as 1) Latency Challenge : the serial execution of multi-round reasoning, tool calling, and tool response waiting under the ReAct agent paradigm induces severe end-to-end latency. Intuitively, dLLMs can leverage their distinctive strengths to optimize the operational efficiency of agents under the ReAct agent paradigm. Practically, existing dLLM backbones face the 2) Agent Ability Challenge. That is, existing dLLMs exhibit remarkably weak reasoning and tool-calling capabilities, preventing these advantages from being effectively realized in practice. In this paper, we propose DLLM-Searcher, an optimization framework for dLLM-based Search Agents. To solve the Agent Ability Challenge, we design a two-stage post-training pipeline encompassing Agentic Supervised Fine-Tuning (Agentic SFT) and Agentic Variance-Reduced Preference Optimization (Agentic VRPO), which enhances the backbone dLLM's information seeking and reasoning capabilities. To mitigate the Latency Challenge, we leverage the flexible generation mechanism of dLLMs and propose a novel agent paradigm termed Parallel-Reasoning and Acting (P-ReAct). P-ReAct guides the model to prioritize decoding tool_call instructions, thereby allowing the model to keep thinking while waiting for the tool's return. Experimental results demonstrate that DLLM-Searcher achieves performance comparable to mainstream LLM-based search agents and P-ReAct delivers approximately 15% inference acceleration. Our code is available at https://github.com/bubble65/DLLM-Searcher",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 57,
+      "core": "DLLM-Searcher 尝试把扩散语言模型的并行解码用于搜索 agent，以缓解多轮推理、工具调用串行执行带来的延迟。",
+      "why": "搜索 agent 的产品瓶颈往往是整条行动链的等待时间；这篇论文值得看其并行生成如何改变延迟与质量的权衡。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "K-MetBench: A Multi-Dimensional Benchmark for Fine-Grained Evaluation of Expert Reasoning, Locality, and Multimodality in Meteorology",
+      "link": "https://arxiv.org/abs/2604.24645",
+      "evidenceLink": "https://www.semanticscholar.org/paper/911c87aa06e442d667330a6b5a133ef6159de12b",
+      "publishedAt": "2026-04-27T00:00:00.000Z",
+      "submittedAt": "2026-04-27T00:00:00.000Z",
+      "author": "Soyeon Kim, Cheon-kyu Kang, Myeongjin Lee, Eun‐Chul Chang, Jae‐Deok Lee",
+      "summary": "The development of practical (multimodal) large language model assistants for Korean weather forecasters is hindered by the absence of a multidimensional, expert-level evaluation framework grounded in authoritative sources. To address this, we introduce K-MetBench, a diagnostic benchmark grounded in national qualification exams. It exposes critical gaps across four dimensions: expert visual reasoning of charts, logical validity via expert-verified rationales, Korean-specific geo-cultural comprehension, and fine-grained domain analysis. Our evaluation of 55 models reveals a profound modality gap in interpreting specialized diagrams and a reasoning gap where models hallucinate logic despite correct predictions. Crucially, Korean models outperform significantly larger global models in local contexts, demonstrating that parameter scaling alone cannot resolve cultural dependencies. K-MetBench serves as a roadmap for developing reliable, culturally aware expert AI agents. The dataset is available at https://huggingface.co/datasets/soyeonbot/K-MetBench .",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 57,
+      "core": "K-MetBench 以韩国国家资格考试等权威材料构建气象领域诊断基准，评估专家推理、本地知识和多模态理解。",
+      "why": "它展示了垂直助手不能只测通用问答：专业图表、地域知识与细粒度推理需要被拆成独立能力门槛。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "MHSafeEval: Role-Aware Interaction-Level Evaluation of Mental Health Safety in Large Language Models",
+      "link": "https://arxiv.org/abs/2604.17730",
+      "evidenceLink": "https://www.semanticscholar.org/paper/d8c0fefde38b2162c600fd1e288a7c54462b1103",
+      "publishedAt": "2026-04-20T00:00:00.000Z",
+      "submittedAt": "2026-04-20T00:00:00.000Z",
+      "author": "Suhyun Lee, P. Achananuparp, Neemesh Yadav, Ee-Peng Lim, Yang Deng",
+      "summary": "Large language models (LLMs) are increasingly explored as scalable tools for mental health counseling, yet evaluating their safety remains challenging due to the interactional and context-dependent nature of clinical harm. Existing evaluation frameworks predominantly assess isolated responses using coarse-grained taxonomies or static datasets, limiting their ability to diagnose how harms emerge and accumulate over multi-turn counseling interactions. In this work, we introduce R-MHSafe, a role-aware mental health safety taxonomy that characterizes clinically significant harm in terms of the interactional roles an AI counselor adopts, including perpetrator, instigator, facilitator, or enabler, combined with clinically grounded harm categories. Then, we propose MHSafeEval, a closed-loop, agent-based evaluation framework that formulates safety assessment as trajectory-level discovery of harm through adversarial multi-turn interactions, guided by role-aware modeling. Using R-MHSafe and MHSafeEval, we conduct a large-scale evaluation across state-of-the-art LLMs. Our results reveal substantial role-dependent and cumulative safety failures that are systematically missed by existing static benchmarks, and show that our framework significantly improves failure-mode coverage and diagnostic granularity.",
+      "citationCount": 2,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 56.90848501887865,
+      "core": "MHSafeEval 面向心理健康对话，以角色和交互过程评估安全风险，关注伤害如何随上下文累积，而非只审查单轮回复。",
+      "why": "高风险对话产品的安全性发生在连续互动中；该框架可帮助产品团队把角色、阶段和累计风险纳入评测设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "How to Debug AI Agents",
+      "link": "https://www.langchain.com/blog/agent-observability-powers-agent-evaluation",
+      "publishedAt": "2026-08-12T05:37:30.000Z",
+      "author": "",
+      "summary": "Learn how agent observability enables effective evaluation of AI agents. Understand tracing, debugging reasoning, and performance insights to iterate and improve agent behavior.",
+      "evidenceLink": "",
+      "score": 55.08418708333333,
+      "core": "文章把 agent 可观测性与评测连起来，讨论如何通过 trace、推理调试和性能信号迭代 agent 行为。",
+      "why": "它适合建立“线上失败—轨迹定位—评测样本—行为改进”的闭环，而不是把 debug 停留在看最终输出。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-15T16:12:46.971Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "How to Monitor AI Agents in Production",
+      "link": "https://www.langchain.com/blog/production-monitoring",
+      "publishedAt": "2026-08-12T05:37:30.000Z",
+      "author": "",
+      "summary": "Production monitoring for LLM agents requires new observability tools. Learn how to trace, evaluate, and improve AI agents at scale.",
+      "evidenceLink": "",
+      "score": 53.83418708333333,
+      "core": "生产级 LLM agent 需要不同于传统服务的监控方式，文章围绕追踪、评测与规模化改进展开。",
+      "why": "与上一篇偏调试不同，这篇更适合梳理线上监控面：任务成功、工具链路、成本和行为漂移应如何持续观测。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-15T16:12:46.971Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "How many of your agent's calls actually need a frontier model?",
+      "link": "https://www.langchain.com/blog/switchyard-agent-routing-benchmark",
+      "publishedAt": "2026-08-11T15:25:30.000Z",
+      "author": "",
+      "summary": "We benchmarked NVIDIA NeMo Switchyard on 145 agent tasks. Only 7% of turns needed a frontier model, and routing cut cost 74% for six points of accuracy.",
+      "evidenceLink": "",
+      "score": 51.93101248015873,
+      "core": "LangChain 在 145 个 agent 任务上评测 NVIDIA NeMo Switchyard，报告仅 7% 轮次需要前沿模型，路由以 6 个准确率点换取 74% 成本下降。",
+      "why": "这组结果给多模型路由提供了可量化假设，但是否可迁移取决于任务分布、准确率口径和被路由到低成本模型的具体步骤。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-15T16:12:46.971Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "The Best Hermes AI Alternative in 2026: Governed, Human-in-the-Loop AI Agents",
+      "link": "https://rerun.build/blog/hermes-ai-alternative",
+      "publishedAt": "2026-07-28T13:48:28.000Z",
+      "author": "",
+      "summary": "Looking for a Hermes AI alternative? We rank and compare Hermes Agent, OpenClaw forks, Claude Code, Lindy and Rerun on security, control, and governance, and explain why a human-in-the-loop agent wins.",
+      "evidenceLink": "",
+      "score": 39.11666666666667,
+      "core": "文章比较 Hermes Agent、OpenClaw forks、Claude Code、Lindy 与 Rerun，重点放在安全、控制、治理和人工介入。",
+      "why": "这是厂商立场鲜明的竞品比较，价值在其治理维度清单；结论不能直接照收，应逐项核对各产品能力证据。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-15T16:12:46.971Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "Agentic AI vs. AI Agents: What's Actually the Difference?",
+      "link": "https://rerun.build/blog/agentic-ai-vs-ai-agents",
+      "publishedAt": "2026-07-30T05:34:55.000Z",
+      "author": "",
+      "summary": "Agentic AI and AI agents are not the same thing. One is an entity, the other a paradigm. Here is the real difference, why it matters in production, and how to govern the autonomy that comes with it.",
+      "evidenceLink": "",
+      "score": 37.1,
+      "core": "文章区分 AI agent 这一执行实体与 agentic AI 这一自治范式，并把差异落到生产治理问题。",
+      "why": "概念辨析的用处在于避免团队把“接了工具”误当成完整自治系统，并据此明确不同自主级别需要的控制措施。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-15T16:12:46.971Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "AI Agent Examples: 15 Real-World Use Cases (2026)",
+      "link": "https://rerun.build/blog/ai-agent-examples",
+      "publishedAt": "2026-07-24T08:23:30.000Z",
+      "author": "",
+      "summary": "15 real-world AI agent examples in production today, grouped by function, each with the task it owns and the outcome it drives. No thermostats, no hype, plus how to build your own without code.",
+      "evidenceLink": "",
+      "score": 37.07222222222222,
+      "core": "文章按职能整理 15 个生产中的 agent 用例，强调每个 agent 拥有的任务与交付结果，而非泛化设备或概念展示。",
+      "why": "可把这 15 例当作场景拆解索引，重点筛选哪些案例真正拥有端到端结果，以及“生产中”的证据强度。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-15T16:12:46.971Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "AI Agent Guardrails: LLM Guardrails for Safe Production Agents",
+      "link": "https://rerun.build/blog/ai-agent-guardrails",
+      "publishedAt": "2026-08-04T06:44:15.000Z",
+      "author": "",
+      "summary": "AI agent guardrails are the runtime controls that keep autonomous agents safe. Learn the 6 guardrail types, where to enforce them, and how to ship agents you can actually trust.",
+      "evidenceLink": "",
+      "score": 36.983333333333334,
+      "core": "文章把 agent guardrails 定义为运行时控制，并归纳六类约束及其适合介入的位置。",
+      "why": "值得读的是“在哪里拦”而非安全口号：输入、模型、工具与结果确认处的护栏承担不同风险，便于转成产品权限设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-15T16:12:46.971Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "OpenClaw vs n8n: Autonomous Agents vs Visual Workflows (2026)",
+      "link": "https://rerun.build/blog/openclaw-vs-n8n",
+      "publishedAt": "2026-08-04T18:18:01.000Z",
+      "author": "",
+      "summary": "OpenClaw runs autonomous agents; n8n runs visual workflows. Neither ships production governance. Here is how the governed middle ground beats both in 2026.",
+      "evidenceLink": "",
+      "score": 36.861111111111114,
+      "core": "文章以 OpenClaw 的自治 agent 与 n8n 的可视化工作流为两端，主张两者都缺少完整生产治理。",
+      "why": "这个对比有助于判断何时需要确定性工作流、何时允许自治；“治理中间层更优”是作者立场，仍需产品证据验证。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-15T16:12:46.971Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "CrewAI Alternatives: 7 Governed No-Code AI Agent Platforms Compared (2026)",
+      "link": "https://rerun.build/blog/crewai-alternatives",
+      "publishedAt": "2026-08-12T06:58:35.000Z",
+      "author": "",
+      "summary": "Gartner says 40% of agentic AI projects will be canceled by 2027, mostly over governance. Here are 7 CrewAI alternatives compared on human-in-the-loop, observability, and audit, from frameworks to governed no-code platforms.",
+      "evidenceLink": "",
+      "score": 36.441825972222226,
+      "core": "文章从人工介入、可观测性与审计维度比较七个 CrewAI 替代方案，覆盖框架到无代码治理平台。",
+      "why": "可直接借用其评估维度做选型清单，但文中的市场预测和产品排名应回到原始来源与实际试用再判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-15T16:12:46.971Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "sierra_engineering",
+      "source": "Sierra Blog",
+      "title": "Teaching agents to navigate janky IVR systems",
+      "link": "https://sierra.ai/blog/navigating-ivr-systems",
+      "publishedAt": "2026-08-11T14:00:00.000Z",
+      "author": "Marta Garcia Ferreiro, Raymond Mo",
+      "summary": "Agents built on Sierra can now navigate the most challenging IVR systems out of the box: they understand when to call, how to get through a multi-level menu, when to stay silent, and how to recognize when they’ve reached a person.",
+      "evidenceLink": "",
+      "score": 36.26256009920635,
+      "core": "Sierra 介绍其 agent 如何选择拨号时机、穿过多层 IVR、判断静默并识别真人接通。",
+      "why": "这是语音 agent 处理真实电话摩擦的具体机制，能帮助产品团队把菜单状态、等待和转人工纳入端到端评测。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-15T16:12:46.971Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Is AI really helping your SMB? Study finds a quarter of execs can't explain what their AI actually does",
+      "link": "https://www.techradar.com/pro/is-ai-really-helping-your-smb-study-finds-a-quarter-of-execs-cant-explain-what-their-ai-actually-does",
+      "publishedAt": "2026-08-15T07:00:00.000Z",
+      "author": "Christian Cawley",
+      "summary": "An incredible 25% of business leaders are unable to explain AI-generated outputs, while a worrying majority rely on AI for vital financial tasks, including expenses and payments",
+      "evidenceLink": "",
+      "score": 25.325258511904764,
+      "core": "报道称 25% 的企业管理者无法解释 AI 输出，同时不少企业已把 AI 用于费用和支付等关键财务任务。",
+      "why": "认知不足与高风险采用并存，是 SMB 产品设计的重要警报；应重点查看调查样本、任务权限与人工复核设置。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-15T16:12:46.971Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Young people increasingly don't trust AI - or the billionaires that keep telling us we should all love AI, survey finds",
+      "link": "https://www.techradar.com/pro/young-people-increasingly-dont-trust-ai-or-the-billionaires-that-keep-telling-us-we-should-all-love-ai-survey-finds",
+      "publishedAt": "2026-08-14T17:05:00.000Z",
+      "author": "Mike Moore",
+      "summary": "Survey of younger Americans finds increasing distrust in AI and the people who own and run the technology.",
+      "evidenceLink": "",
+      "score": 23.936766448412698,
+      "core": "一项针对美国年轻人的调查显示，他们对 AI 以及控制相关技术的富豪群体信任正在下降。",
+      "why": "这条内容的价值不在泛化“年轻人反 AI”，而在提醒产品团队把机构信任与技术信任分开，并回看调查方法和人群构成。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-15T16:12:46.971Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "interconnects",
+      "source": "Interconnects",
+      "title": "GLM-5.3: How Chinese labs keep stride with the frontier",
+      "link": "https://www.interconnects.ai/p/glm-53-how-chinese-labs-keep-stride",
+      "publishedAt": "2026-08-14T21:23:35.000Z",
+      "author": "Nathan Lambert",
+      "summary": "Hint: It’s really not a distillation story.",
+      "evidenceLink": "",
+      "score": 22.894603749999998,
+      "core": "文章讨论中国实验室如何让 GLM-5.3 跟上前沿，并明确提示其进展不能简单归因为蒸馏。",
+      "why": "摘要信息很少，适合作为模型训练路线的待读入口；真正有价值的是作者为“非蒸馏解释”提供了哪些机制证据。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-15T16:12:46.971Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

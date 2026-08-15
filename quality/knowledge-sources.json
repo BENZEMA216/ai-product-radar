@@ -321,6 +321,30 @@
       "requireKnowledgeDepth": true
     },
     {
+      "id": "langchain_engineering",
+      "label": "LangChain Blog",
+      "type": "feed",
+      "url": "https://www.langchain.com/blog/rss.xml",
+      "home": "https://www.langchain.com/blog",
+      "weight": 14,
+      "maxItems": 24,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "sierra_engineering",
+      "label": "Sierra Blog",
+      "type": "feed",
+      "url": "https://sierra.ai/rss.xml",
+      "home": "https://sierra.ai/blog",
+      "weight": 14,
+      "maxItems": 24,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
       "id": "latent_space",
       "label": "Latent Space",
       "type": "feed",

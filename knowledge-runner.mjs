@@ -1004,11 +1004,16 @@ function selectItems(blogs, papers, { limit, blogQuota, maximumPaperCount, maxPe
   }
   if (selectedBlogs.length < Math.min(blogQuota, limit)) {
     const selectedLinks = new Set(selectedBlogs.map((item) => item.link));
-    selectedBlogs.push(
-      ...availableBlogs
-        .filter((item) => !selectedLinks.has(item.link))
-        .slice(0, Math.min(blogQuota, limit) - selectedBlogs.length)
-    );
+    const remainingBlogs = availableBlogs.filter((item) => !selectedLinks.has(item.link));
+    while (selectedBlogs.length < Math.min(blogQuota, limit) && remainingBlogs.length) {
+      remainingBlogs.sort((a, b) => {
+        const sourceDelta = (sourceCounts.get(a.sourceId) || 0) - (sourceCounts.get(b.sourceId) || 0);
+        return sourceDelta || b.score - a.score;
+      });
+      const item = remainingBlogs.shift();
+      selectedBlogs.push(item);
+      sourceCounts.set(item.sourceId, (sourceCounts.get(item.sourceId) || 0) + 1);
+    }
   }
   const selectedPapers = availablePapers.slice(
     0,

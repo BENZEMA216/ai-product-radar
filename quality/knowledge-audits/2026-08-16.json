@@ -1,0 +1,64 @@
+{
+  "generatedAt": "2026-08-15T16:17:33.826Z",
+  "report": "2026-08-16.md",
+  "health": "quality/knowledge-source-health/2026-08-16.json",
+  "candidates": "quality/knowledge-candidates/2026-08-16.json",
+  "site": "docs/index.html",
+  "ok": true,
+  "date": "2026-08-16",
+  "rows": 20,
+  "blogCount": 16,
+  "paperCount": 4,
+  "blogAccessVerifiedCount": 16,
+  "topConferencePaperCount": 4,
+  "sourceCount": 35,
+  "candidatePool": {
+    "historicalLinkCount": 382,
+    "blogFetchedCount": 181,
+    "blogAccessCheckedCount": 38,
+    "blogAccessVerifiedCount": 34,
+    "blogAccessRejectedCount": 4,
+    "blogAccessRejected": [
+      {
+        "sourceId": "deepmind",
+        "title": "Introducing Gemini 3.7 Flash",
+        "link": "https://deepmind.google/blog/introducing-gemini-3-7-flash",
+        "reason": "The operation was aborted due to timeout"
+      },
+      {
+        "sourceId": "interconnects",
+        "title": "Lessons from the hacks",
+        "link": "https://www.interconnects.ai/p/lessons-from-the-hacks",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Software engineering at a proprietary trading company: Optiver",
+        "link": "https://newsletter.pragmaticengineer.com/p/optiver",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: Meta’s self-inflicted resignation-wave",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-metas-self-inflicted-resignation",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      }
+    ],
+    "paperFetchedCount": 80,
+    "paperTopConferenceVerifiedCount": 80,
+    "blogAfterHistoricalDedupCount": 34,
+    "paperAfterHistoricalDedupCount": 47,
+    "eligibleAfterHistoricalDedupCount": 81,
+    "maxPerBlogSource": 2,
+    "selectedBlogSourceCounts": {
+      "interconnects": 1,
+      "langchain_engineering": 6,
+      "rerun_agent_engineering": 6,
+      "sierra_engineering": 1,
+      "techradar_pro_ai": 2
+    },
+    "sourceCapRelaxed": true,
+    "shortfallReason": ""
+  },
+  "failures": []
+}

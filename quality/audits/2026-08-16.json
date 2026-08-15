@@ -1,0 +1,292 @@
+{
+  "date": "2026-08-16",
+  "generatedAt": "2026-08-15T16:02:55.047Z",
+  "reportPath": "reports/2026-08-16-0002-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 42,
+    "top20Sources": [
+      "HN Algolia",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "ok",
+      "rawCount": 34,
+      "keptCount": 15,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-08-14；官方日榜页面的可审计快照已启用，原始覆盖 34 条，AI 相关候选 16 条，候选带 rank/votes/comments。；历史去重移除 15 条已报道或已处理日榜 Product Hunt 信号，最终发布 0 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 4,
+      "keptCount": 4,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 25,
+      "keptCount": 21,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 17,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 17,
+      "keptCount": 17,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-08-15T16:02:47Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "I spent 3 months making desktop automation stop lying to AI agents",
+      "productKey": "https://github.com/lahfir/agent-desktop/tree/main",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把桌面自动化的可信度直接定义为产品问题：agent 不只要能点击，还要能让执行结果与屏幕真实状态对得上。"
+    },
+    {
+      "rank": 2,
+      "product": "Bernstein – run 44 CLI coding agents from one deterministic scheduler",
+      "productKey": "https://github.com/sipyourdrink-ltd/bernstein",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "44 个 CLI coding agent 由确定性调度器统一运行，值得看的是多 agent 开发从聊天界面转向可复现的任务编排。"
+    },
+    {
+      "rank": 3,
+      "product": "Mole – Deep research agent for your terminal",
+      "productKey": "https://github.com/lajosdeme/mole",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 deep research 放进终端，意味着研究结果能更自然地接入脚本和开发流程；关键验证点是引用可追溯性，而非对话长度。"
+    },
+    {
+      "rank": 4,
+      "product": "Stratum Industries",
+      "productKey": "https://www.ycombinator.com/launches/sbm-stratum-industries-applied-ai-for-governments",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "政府复杂人工流程是高约束、长交付周期的垂直场景；若 agent 能真正自动化执行，壁垒会来自流程接入而不是模型包装。"
+    },
+    {
+      "rank": 5,
+      "product": "Agent-shell – vendor-neutral chat with AI agents in Emacs",
+      "productKey": "https://xenodium.com/agent-shell-0-73-updates",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Emacs 内的厂商中立 agent 聊天层，把模型切换权留给用户；可观察其是否能复用编辑器上下文，而不被单一模型接口锁定。"
+    },
+    {
+      "rank": 6,
+      "product": "AletheionAGI – Grounding enforcement for AI agents",
+      "productKey": "https://www.aletheionagi.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它主打对 agent 强制 grounding，切中生产环境里“有答案但无依据”的风险；真正价值取决于约束能否覆盖工具执行而非只校验文本。"
+    },
+    {
+      "rank": 7,
+      "product": "WeaveScope – Elixir native observability for AI agents",
+      "productKey": "https://weavescope.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "原生面向 Elixir 的 agent 可观测性说明监控需求正进入非 Python 后端；值得验证它能否把调用链、状态和失败原因串成一次任务视图。"
+    },
+    {
+      "rank": 8,
+      "product": "A sandbox for AI agents using nothing but Go's standard library",
+      "productKey": "https://towardsdev.com/i-built-an-ai-agent-sandbox-from-the-go-standard-library-350ecac5d578?sk=f58cedafe6394788d87ecb3179f2ccbd",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "只用 Go 标准库构建 agent sandbox，提供了低依赖隔离路线；需要重点看它实际限制了哪些系统能力和逃逸面。"
+    },
+    {
+      "rank": 9,
+      "product": "Embassia – LLM Search Console – Web crawlers talk to your site's agent",
+      "productKey": "https://embassia.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让网站 agent 直接回应 LLM crawler，是把搜索站长工具改造成机器访问接口；核心观察点是能否提供可控、可审计的站点答案。"
+    },
+    {
+      "rank": 10,
+      "product": "Kungfu – One human, agents, and 3,467 merged PRs in 30 days",
+      "productKey": "https://kungfu.tech",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“一人 + agents、30 天合并 3,467 个 PR”是强烈的规模化主张；比数量更应追问 PR 粒度、回滚率和人工审核成本。"
+    },
+    {
+      "rank": 11,
+      "product": "Captain, AI Travel Agent",
+      "productKey": "https://www.moonlight.ng/captain",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "旅行 agent 的门槛不是给建议，而是把路线、预订与变更连成闭环；这条发布信号值得用是否能执行到结果来检验。"
+    },
+    {
+      "rank": 12,
+      "product": "Dream",
+      "productKey": "https://www.ycombinator.com/launches/sjp-dream-pocket-sized-ai-cameras-that-catch-asset-damage",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "便携、电池供电的 AI 相机把资产损伤检测带到现场，产品壁垒可能落在部署密度、漏检成本与巡检工作流，而非单次识别。"
+    },
+    {
+      "rank": 13,
+      "product": "AI Meeting Assistant in Browser",
+      "productKey": "https://chatpanel.net",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "浏览器内会议助手降低了客户端安装门槛，但同类竞争拥挤；应看它是否能跨会议产品稳定捕获并形成可执行后续。"
+    },
+    {
+      "rank": 14,
+      "product": "A prompt to check Supabase DB security",
+      "productKey": "https://defencecore.com/audit",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用一段 prompt 作为 Supabase 安全审计入口，采用成本很低；同时也要警惕它是否只是提示词包装，缺少可重复的数据库检查证据。"
+    },
+    {
+      "rank": 15,
+      "product": "MOCHI.TV",
+      "productKey": "https://www.ycombinator.com/launches/sii-mochi-tv-1-minute-anime",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 AI 动画压缩成一分钟竖屏消费产品，值得观察生成成本优势能否转化为稳定供给与连续追看，而非一次性 novelty。"
+    },
+    {
+      "rank": 16,
+      "product": "Peer",
+      "productKey": "https://www.ycombinator.com/launches/skb-peer-ai-native-freight-brokerage",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "从报价到交付自主经纪整车货运，是直接承接业务结果的 agent 形态；价值在于把异常处理也纳入闭环，而不只是自动报价。"
+    },
+    {
+      "rank": 17,
+      "product": "I built a spatial node canvas to fix LLM context drift",
+      "productKey": "https://treequence.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用空间节点画布处理上下文漂移，把不可见的提示历史变成可操作结构；关键是视觉组织是否真能改善长任务连续性。"
+    },
+    {
+      "rank": 18,
+      "product": "I evaluated file, vector, graph and RL based memory frameworks",
+      "productKey": "https://www.pinglin.tw/blog/the-shapes-of-agent-memory",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它横向比较文件、向量、图与 RL 记忆框架，为 agent memory 的架构取舍提供线索；但当前证据更接近评测文章而非独立产品。"
+    },
+    {
+      "rank": 19,
+      "product": "Tempered – AI Powered PC Optimizer",
+      "productKey": "https://tempered.to",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "PC 优化是成熟品类，加入 AI 本身不足以形成差异；值得看它是否能给出可解释、可撤销的系统调整，而非泛化清理。"
+    },
+    {
+      "rank": 20,
+      "product": "Sandbox the install step of any NPM package",
+      "productKey": "https://www.npmjs.com/package/@kenwea/mcp",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "将任意 NPM 包的安装阶段放入 sandbox，直接针对供应链脚本风险；MCP 包装是否必要，要看隔离边界与审计输出。"
+    }
+  ]
+}
