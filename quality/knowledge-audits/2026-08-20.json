@@ -1,0 +1,71 @@
+{
+  "generatedAt": "2026-08-20T04:16:24.559Z",
+  "report": "2026-08-20.md",
+  "health": "quality/knowledge-source-health/2026-08-20.json",
+  "candidates": "quality/knowledge-candidates/2026-08-20.json",
+  "site": "docs/index.html",
+  "ok": true,
+  "date": "2026-08-20",
+  "rows": 20,
+  "blogCount": 16,
+  "paperCount": 4,
+  "blogAccessVerifiedCount": 16,
+  "topConferencePaperCount": 4,
+  "sourceCount": 35,
+  "candidatePool": {
+    "historicalLinkCount": 442,
+    "blogFetchedCount": 177,
+    "blogAccessCheckedCount": 34,
+    "blogAccessVerifiedCount": 30,
+    "blogAccessRejectedCount": 4,
+    "blogAccessRejected": [
+      {
+        "sourceId": "interconnects",
+        "title": "Lessons from the hacks",
+        "link": "https://www.interconnects.ai/p/lessons-from-the-hacks",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Software engineering at a proprietary trading company: Optiver",
+        "link": "https://newsletter.pragmaticengineer.com/p/optiver",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: Meta’s self-inflicted resignation-wave",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-metas-self-inflicted-resignation",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Headed for the Exit: the Great Engineering Leader Career Break",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-great-engineering-leader-career-break",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      }
+    ],
+    "paperFetchedCount": 80,
+    "paperTopConferenceVerifiedCount": 80,
+    "blogAfterHistoricalDedupCount": 30,
+    "paperAfterHistoricalDedupCount": 48,
+    "eligibleAfterHistoricalDedupCount": 78,
+    "maxPerBlogSource": 2,
+    "selectedBlogSourceCounts": {
+      "agentailor": 1,
+      "anthropic": 1,
+      "aws_machine_learning": 2,
+      "gerald_chen_ai_engineering": 1,
+      "itpro_ai": 1,
+      "langchain_engineering": 1,
+      "openai_news": 2,
+      "pragmatic_engineer": 1,
+      "rerun_agent_engineering": 2,
+      "simon_willison": 1,
+      "techradar_pro_ai": 1,
+      "vercel_ai": 2
+    },
+    "sourceCapRelaxed": false,
+    "shortfallReason": ""
+  },
+  "failures": []
+}

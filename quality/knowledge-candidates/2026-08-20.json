@@ -1,0 +1,421 @@
+{
+  "generatedAt": "2026-08-20T04:13:45.376Z",
+  "date": "2026-08-20",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "GLM 5.3 now available on AI Gateway",
+      "link": "https://vercel.com/changelog/glm-5-3-now-available-on-ai-gateway",
+      "publishedAt": "2026-08-18T00:00:00.000Z",
+      "author": "Walter Korman",
+      "summary": "GLM 5.3 from Z.ai is now available on AI Gateway. GLM 5.3 has improvements vs. GLM 5.2 at complex software engineering and at agent tasks that run across many steps, and it reaches those results while producing fewer output tokens than GLM 5.2 did at the same effort level. Z.ai also reports stronger vulnerability discovery, including reasoning across the successive stages of an exploitation chain. DeepsecBench measures that work directly, scoring how reliably a model finds security vulnerabilities in application code and what a run costs, and it covers GLM-5.3 at both high and max effort. GLM 5.3 takes text input, with a 1M token context window and a maximum output of 128K tokens, both unchanged from GLM 5.2. It supports function calling, structured output, streaming, and context caching. To use the model, the slug is zai/glm-5.3 : To use it in a coding agent , run vercel ai-gateway coding-agents setup to connect agents like Claude Code, Codex, OpenCode, Cursor, Pi, and more, then select zai/glm-5.3 inside the agent. AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. Read more",
+      "evidenceLink": "",
+      "score": 91.26933777777778,
+      "core": "GLM 5.3 from Z.ai is now available on AI Gateway. GLM 5.3 has improvements vs. GLM 5.2 at complex software engineering and at agent tasks that run across many steps, and it reaches those results while producing fewer output tokens than GLM 5.2 did at the same effort level. Z.ai also reports stronger vulnerability discovery, including reasoning across the successive stages of an exploitation chain. DeepsecBench measu…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T04:13:45.376Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Introducing Vercel for Slack",
+      "link": "https://vercel.com/blog/introducing-vercel-for-slack",
+      "publishedAt": "2026-08-19T00:00:00.000Z",
+      "author": "Bryan Hunter",
+      "summary": "Vercel Agent now works in Slack. Mention it the way you'd pull a teammate into a thread, and it reads the discussion, answers with the context of the platform running your app, and turns the team's decisions into changes you approve. Vercel for Slack is available today in Public Beta for Pro and Enterprise teams. Work starts in conversation . An alert gets noticed in a channel, a fix gets agreed on in a thread, and then someone leaves Slack to do the work. With Vercel Agent, you can tag it in for answers about your infrastructure or hand it the work, all without leaving the conversation. What is Vercel Agent? When we introduced Vercel Agent , we called it an AI teammate for your development workflow. Today it's the first responder for your production apps . When something changes, it investigates your logs, metrics, and deployments, finds the root cause, and proposes a fix, often before anyone's opened a laptop. Give it a PR and it flags the regressions and risky changes that a passing CI run won't show. In Slack, that agent joins the conversation itself. It is a core part of Vercel , so your deployments, build statuses, logs, metrics, code reviews, and PRs are in front of it before you've typed anything. Mention @Vercel in a channel, a thread, or a DM, and it answers like a teammate with every tab already open. And answering is only half of it, because once you know what's wrong, the agent can go fix it: Diagnose issues : Investigate incidents, trace errors to the deploy that caused them, explain a cost spike, and answer questions about your codebase. Code alongside your team : Fix failing builds and CI, review PRs with knowledge of how the code runs in production, and turn a thread's decision into a tested pull request. Operate your projects : Roll back deployments, update configuration, manage feature flags, and resolve unusual usage before it becomes a bill. The agent is read-only by default, and anything that changes code or configuration goes through a plan that you approve. Vercel for Slack brings that whole loop into the threads where you and your team are already discussing work. Accelerating development with a conversation Teams form decisions through collaboration. Incidents get triaged in a channel, code reviews are hashed out in threads, and features get scoped between standups. But once a thread settles on what needs to be done, the actions still need to be translated into tickets, terminal commands, and PR descriptions. Every handoff drops context, and the conversation that held the full picture becomes the thing everyone summarizes from memory. Vercel for Slack gives the agent the full context of the original conversation for every turn. Answers in one place speed up the whole team A deployment goes out at 1:42pm. By 1:51, checkout error rates are climbing and an alert lands in the platform engineering channel. What used to happen next was a scatter. One responder opens logs to see how bad it is, another asks their coding agent to line up the anomaly up against the deploy timeline, a third starts reading the diff of the suspect PR. Each person investigates alone, in their own view of the same system, and the thread is where they reconcile by pasting screenshots, summarizing agent findings, and correcting each other as they establish the actual state of the situation. The minutes that matter get spent assembling the picture before anyone can act on it. With Vercel for Slack, the first question goes to the agent, right in the thread. \"@Vercel, checkout errors spiked after the 1:42 deploy. What's going on?\" It sizes the blast radius, correlates the spike with the deployment, identifies the PR that shipped in it, and explains which change, in which file, caused which behavior. The answer arrives in the channel, where the whole team reads the same diagnosis at the same time. Nobody has to re-run a teammate's investigation or wait for the recap, because everyone is looking at the same report. The engineer who knows the checkout code speaks to the change itself, the on-call weighs how many users are hit against how long a fix would take, and what's left for the thread is the decision, whether to roll back or fix forward. Vercel Agent understands how your team already talks The thread, channel, or DM is the beginning of the prompt itself. You don't have to re-explain anything that was already said, or pass in any context from your app or codebase. Bring it into a conversation like any other team member and it reads the room, picks up what the team has been discussing, and can act on it when asked. One example of this was our iteration on Vercel Agent's plan card, the message it posts in Slack to request approval for the work it wants to do. The first version we tested internally was a wall of text, but when one of our engineers noticed that people were often approving actions without reading all of the details, we had a redesign thread that ran 47 replies deep on what a person needs to see before confirming an action on the group's behalf. Tagging Vercel Agent in at the end of that thread is what resulted in the card you see today. By the time a PR from a conversation like this lands in a thread, the tests have already run and the preview deployment is live, so the team can start reviewing it in the conversation that kicked off the feature in the first place. Vercel Agent reviews pull requests in the thread Ask Vercel Agent for a review in the thread where the PR is being discussed, and the conversation is passed along with the request. What your team has been raising becomes context for what Vercel Agent checks, and its findings land back in the same thread, so discussing them, deciding, and fixing them is one loop instead of a trip to another tool. One example from one of our own PR discussions was a review someone requested mid-thread. The agent came back with a bug sitting just outside the diff, the same title rendered twice in the UI. A finding doesn't have to end as a comment. If the team agrees it should be fixed, the agent can patch the PR itself, and that change arrives the same way everything else does, as a proposal waiting on an approval. Changes always go through a plan your team approves When a thread lands on a change, Vercel Agent replies with a plan that says what will happen, in which project, and at what scope. Decisions in a channel form in fragments, across people and hours, and nobody types \"DECISION:\", so the plan is where all of that becomes one explicit thing to say yes to. Once approved, the agent does the work under its own identity, and the audit trail shows who asked, who approved, and what ran. One example from our own threads was a cached page showing stale data after we shipped an update. Someone called for a cache purge scoped to just the specific pages, since it was peak hours, and asked the agent to set it up. The plan that came back matched the ask exactly, a purge of the specific path and its sub-paths with the rest of the site's cache left warm, and nothing ran until someone approved it. Whether a thread ends in a diagnosis, a pull request, or a cache purge, the last step belongs to a person. Getting started The easiest way to get started is to simply ask Vercel Agent questions. Ask about the error you're chasing or the build that just failed, see what comes back, and let your team decide over time how much of the work the agent takes on. Until someone approves a plan, it's only ever reading. Vercel for Slack is available in Public Beta for Pro and Enterprise teams. To start using Vercel Agent in Slack: Open the Slack app in the Vercel Marketplace and click Connect Account . Choose the Slack workspace to connect, then click Allow . Mention @Vercel in a channel, a thread, or a DM. Sign in to your Vercel account when it prompts you the first time. See the Vercel for Slack docs for setup and permissions. Read more",
+      "evidenceLink": "",
+      "score": 87.98362349206349,
+      "core": "Vercel Agent now works in Slack. Mention it the way you'd pull a teammate into a thread, and it reads the discussion, answers with the context of the platform running your app, and turns the team's decisions into changes you approve. Vercel for Slack is available today in Public Beta for Pro and Enterprise teams. Work starts in conversation . An alert gets noticed in a channel, a fix gets agreed on in a thread, and …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T04:13:45.376Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "simon_willison",
+      "source": "Simon Willison",
+      "title": "Conceptual integrity and counting lines of code",
+      "link": "https://simonwillison.net/2026/Aug/19/conceptual-integrity-and-counting-lines-of-code",
+      "publishedAt": "2026-08-19T22:46:07.000Z",
+      "author": "",
+      "summary": "Last week I recorded an episode of the Talking Postgres podcast with Claire Giordano on the subject of \"How AI is changing software development\". We had a really great conversation. Here are a couple of my highlights from a lightly edited transcript (prompt to Claude: \"very minor edits to remove disfluencies\"). This is the latest version of an argument I've been trying to build about why sometimes it does make sense to talk about lines of code as an indicator of productivity with coding agents, at 35:01 : A lot of people will tell you it makes no sense to measure productivity in lines of code. I’d actually disagree, because there’s a hard limit. In the before-times, a software engineer could produce a few hundred lines of production-ready code per day — and 200 lines of working, debugged, production-level code is an incredibly good day. Most days you’d produce 50 or 60. If agents let you produce a thousand lines of debugged code, that really is a very meaningful improvement — as long as the code is the same quality: maintainable, tested, all of that. You can get to that point with agents, but it takes a huge amount of skill and knowledge and experience. That’s what senior engineers are made of. I can do way more work as a single engineer than I could without agents. So you could argue, why should a company have more than one engineer? Beyond the obvious bus factor thing — a team of one is a very badly designed team — the answer is that the new limiting factor is cognitive capacity. I can churn out code a hundred times faster. I don’t have the cognitive capacity to stay on top of 100 times the amount of code. So you still need a team of engineers, so you can load balance that cognitive capacity across the team. And this section on conceptual integrity at 46:03 , which Claire equated to the Winchester Mystery House ! Simon : There’s a concept in The Mythical Man-Month — conceptual integrity — where well-designed software has an integrity to it: there are no surprises in it, it covers exactly the right domain of things, everything fits together and makes sense. That’s so much harder with coding agents, where you can have an idea for a feature, run a prompt, and five minuteslater you’ve got the feature. Your software grows little weird bumps in funny different directions. Claire : You know my analogy for that? The Winchester Mystery House. Simon : It’s got 140 rooms, because the woman who built it was the widow of the guy who invented the Winchester rifle, and her psychic told her she’d be haunted by the ghosts of everyone killed with that rifle unless she kept building the house forever. So for 40 years she kept adding new rooms. That’s exactly the problem with coding agents and software: it’s very easy to keep adding new rooms, because the cost of adding those rooms is so much cheaper. What you end up with is something where the conceptual integrity falls apart — and then it’s harder to make decisions about it. It all keeps coming back to discipline. It used to be that the discipline was enforced on you by the amount of time it took. You’d come up with an idea for a crazy feature and think “yeah, but that would take me a week — I cannot justify that, so I’ll forget about it.” If it takes an hour, it’s so much easier to justify. (Side-note: the Wikipedia article includes credible sources that dispute the story about the psychic.) You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
+      "evidenceLink": "",
+      "score": 75.60995285714286,
+      "core": "Last week I recorded an episode of the Talking Postgres podcast with Claire Giordano on the subject of \"How AI is changing software development\". We had a really great conversation. Here are a couple of my highlights from a lightly edited transcript (prompt to Claude: \"very minor edits to remove disfluencies\"). This is the latest version of an argument I've been trying to build about why sometimes it does make sense…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T04:13:45.376Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pragmatic_engineer",
+      "source": "The Pragmatic Engineer",
+      "title": "From Chrome DevTools to AI Engineering, with Addy Osmani",
+      "link": "https://newsletter.pragmaticengineer.com/p/from-chrome-devtools-to-ai-engineering",
+      "publishedAt": "2026-08-19T16:53:57.000Z",
+      "author": "Gergely Orosz",
+      "summary": "Addy Osmani shares lessons from 14 years at Google and how AI agents are reshaping software engineering, developer workflows, and the skills engineers need to succeed.",
+      "evidenceLink": "",
+      "score": 63.1184846031746,
+      "core": "Addy Osmani shares lessons from 14 years at Google and how AI agents are reshaping software engineering, developer workflows, and the skills engineers need to succeed.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T04:13:45.376Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "How Claude is accelerating protein design and analytical chemistry",
+      "link": "https://www.anthropic.com/research/Claude-accelerates-protein-design",
+      "publishedAt": "2026-08-18T22:13:08.000Z",
+      "author": "",
+      "summary": "In this post, we share two results that show how Claude can help life scientists increase the pace of their research. In the first, we tested Claude’s ability to design protein binders from scratch, a key step in creating protein-based drugs that has historically taken a specialist weeks or months per target. In the second example, we evaluated whether Claude can accelerate chemical analysis. Claude Opus 5, a generally available model, was given NMR and LC-MS data (the data that allows chemists to assess the identity and purity of the compounds they work with).",
+      "score": 58.00640126984127,
+      "core": "In this post, we share two results that show how Claude can help life scientists increase the pace of their research. In the first, we tested Claude’s ability to design protein binders from scratch, a key step in creating protein-based drugs that has historically taken a specialist weeks or months per target. In the second example, we evaluated whether Claude can accelerate chemical analysis. Claude Opus 5, a genera…",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T04:13:45.376Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "How to Build an AI Agent (That You Can Actually Trust in Production)",
+      "link": "https://rerun.build/blog/how-to-build-an-ai-agent",
+      "publishedAt": "2026-08-18T05:28:48.000Z",
+      "author": "",
+      "summary": "A step-by-step guide to building an AI agent: the model, tools, memory, and reasoning loop, plus the guardrails, approvals, and observability that make it production-ready.",
+      "evidenceLink": "",
+      "score": 57.616321904761904,
+      "core": "A step-by-step guide to building an AI agent: the model, tools, memory, and reasoning loop, plus the guardrails, approvals, and observability that make it production-ready.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T04:13:45.376Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "FormalScience: Scalable Human-in-the-Loop Autoformalisation of Science with Agentic Code Generation in Lean",
+      "link": "https://arxiv.org/abs/2604.23002",
+      "evidenceLink": "https://www.semanticscholar.org/paper/8430ded17c85fcc341d6fb700ce7b2228b2c0394",
+      "publishedAt": "2026-04-24T00:00:00.000Z",
+      "submittedAt": "2026-04-24T00:00:00.000Z",
+      "author": "Jordan Meadows, Lan Zhang, Andr'e Freitas",
+      "summary": "Formalising informal mathematical reasoning into formally verifiable code is a significant challenge for large language models. In scientific fields such as physics, domain-specific machinery (\\textit{e.g.} Dirac notation, vector calculus) imposes additional formalisation challenges that modern LLMs and agentic approaches have yet to tackle. To aid autoformalisation in scientific domains, we present FormalScience; a domain-agnostic human-in-the-loop agentic pipeline that enables a single domain expert (without deep formal language experience) to produce \\textit{syntactically correct} and \\textit{semantically aligned} formal proofs of informal reasoning for low economic cost. Applying FormalScience to physics, we construct FormalPhysics, a dataset of 200 university-level (LaTeX) physics problems and solutions (primarily quantum mechanics and electromagnetism), along with their Lean4 formal representations. Compared to existing formal math benchmarks, FormalPhysics achieves perfect formal validity and exhibits greater statement complexity. We evaluate open-source models and proprietary systems on a statement autoformalisation task on our dataset via zero-shot prompting, self-refinement with error feedback, and a novel multi-stage agentic approach, and explore autoformalisation limitations in modern LLM-based approaches. We provide the first systematic characterisation of semantic drift in physics autoformalisation in terms of concepts such as notational collapse and abstraction elevation which reveals what formal language verifies when full semantic preservation is unattainable. We release the codebase together with an interactive UI-based FormalScience system which facilitates autoformalisation and theorem proving in scientific domains beyond physics.https://github.com/jmeadows17/formal-science",
+      "citationCount": 3,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 54.40823996531185,
+      "core": "Formalising informal mathematical reasoning into formally verifiable code is a significant challenge for large language models. In scientific fields such as physics, domain-specific machinery (\\textit{e.g.} Dirac notation, vector calculus) imposes additional formalisation challenges that modern LLMs and agentic approaches have yet to tackle. To aid autoformalisation in scientific domains, we present FormalScience; a…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "AgentGym2: Benchmarking Large Language Model Agents in De-Idealized Real-World Environments",
+      "link": "https://arxiv.org/abs/2607.05174",
+      "evidenceLink": "https://www.semanticscholar.org/paper/022703059d035ac7feba942c2dac209a68bd0d55",
+      "publishedAt": "2026-07-06T00:00:00.000Z",
+      "submittedAt": "2026-07-06T00:00:00.000Z",
+      "author": "Zhiheng Xi, Dingwen Yang, Jiaqi Liu, Jixuan Huang, Honglin Guo",
+      "summary": "Language agents, i.e., LLM agents, progress rapidly and are increasingly deployed in production environments. This trend underscores the urgent need for rigorous and realistic evaluations. However, most existing benchmarks evaluate agents in simplified, idealized settings. They typically rely on pre-packaged tool interfaces, overlook critical steps, and assume inputs are clean and fully specified. Consequently, they understate the difficulty of real deployments, where uncertainty and noise are ubiquitous and agents must proactively explore the environment to uncover new tools. To bridge this gap, we present AgentGym2, a new evaluation framework with task instances grounded in real-world end-to-end working demands. Beyond reasoning and planning, it measures agents'ability to execute end-to-end procedures, discover tools via exploration, compose tools for unseen tasks, and remain robust to noisy and underspecified information. Experiments on 15 proprietary and open-source models show that even SOTA systems like Gemini and GPT-5 struggle on AgentGym2, revealing a substantial gap between the capability of current agents and the demands of real-world applications.",
+      "citationCount": 1,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 54.204119982655925,
+      "core": "Language agents, i.e., LLM agents, progress rapidly and are increasingly deployed in production environments. This trend underscores the urgent need for rigorous and realistic evaluations. However, most existing benchmarks evaluate agents in simplified, idealized settings. They typically rely on pre-packaged tool interfaces, overlook critical steps, and assume inputs are clean and fully specified. Consequently, they…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "EvoSci: A Bio-Inspired Multi-Agent Framework for the Evolution of Scientific Discovery",
+      "link": "https://arxiv.org/abs/2605.24018",
+      "evidenceLink": "https://www.semanticscholar.org/paper/3845c08ed0e13bdf6d11be66750e82d54f84cf90",
+      "publishedAt": "2026-05-20T00:00:00.000Z",
+      "submittedAt": "2026-05-20T00:00:00.000Z",
+      "author": "Xiaoyu Xiong, Yuqi Ren, Deyi Xiong",
+      "summary": "Large language models (LLMs), have shown strong potential in scientific discovery, yet existing methods still face substantial challenges in the design of research workflows and multi-role collaboration mechanisms. To mitigate these issues, we propose EvoSci, a multi-agent scientific collaboration framework, which integrates bio-inspired evolution with knowledge graph modeling. To iteratively generate, evaluate, and refine research ideas, EvoSci incorporates multiple role-based agents, including mentor, researcher, and reviewer. By combining collaborative reasoning, shared memory, and evolutionary feedback, EvoSci significantly enhances the coherence and creativity of scientific exploration. Experiments on real-world research topics demonstrate that EvoSci significantly outperforms strong baselines in LLM-based structured peer-review and comparative ranking evaluations, achieving the highest overall peer-review score (ICLR 4.90) and top ranking (Top-10 = 54). These results suggest its superiority in both scientific idea generation and continuous discovery.",
+      "citationCount": 1,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 54.204119982655925,
+      "core": "Large language models (LLMs), have shown strong potential in scientific discovery, yet existing methods still face substantial challenges in the design of research workflows and multi-role collaboration mechanisms. To mitigate these issues, we propose EvoSci, a multi-agent scientific collaboration framework, which integrates bio-inspired evolution with knowledge graph modeling. To iteratively generate, evaluate, and…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "The Web Conference",
+      "title": "Fair Geolocation Extraction from Humanitarian Documents Using Large Language Models",
+      "link": "https://www.semanticscholar.org/paper/a3e0afe1182889845c5d69177a96f43fad964d92",
+      "evidenceLink": "https://www.semanticscholar.org/paper/a3e0afe1182889845c5d69177a96f43fad964d92",
+      "publishedAt": "2026-05-28T00:00:00.000Z",
+      "submittedAt": "2026-05-28T00:00:00.000Z",
+      "author": "G. Cafferata, T. Demarco, K. Kalimeri, Y. Mejova, Mariano G. Beiró",
+      "summary": "Humanitarian crises demand timely and accurate geographic information to inform effective response efforts. Yet, automated systems that extract locations from text often reproduce existing geographic and socioeconomic biases, leading to uneven visibility of crisis-affected regions. This paper investigates whether Large Language Models (LLMs) can address these geographic disparities in extracting location information from humanitarian documents. We introduce a two-step framework that combines few-shot LLM-based named entity recognition with an agent-based geocoding module that leverages context to resolve ambiguous toponyms. We benchmark our approach against state-of-the-art pretrained and rule-based systems using both accuracy and fairness metrics across geographic and socioeconomic dimensions. Our evaluation uses an extended version of the HumSet dataset with refined literal toponym annotations. Results show that LLM-based methods substantially improve both the precision and fairness of geolocation extraction from humanitarian texts, particularly for underrepresented regions. By bridging advances in LLM reasoning with principles of responsible and inclusive AI, this work contributes to more equitable geospatial data systems for humanitarian response, advancing the goal of leaving no place behind in crisis analytics.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "WWW",
+        "venueLabel": "The Web Conference",
+        "venueName": "The Web Conference",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 54,
+      "core": "Humanitarian crises demand timely and accurate geographic information to inform effective response efforts. Yet, automated systems that extract locations from text often reproduce existing geographic and socioeconomic biases, leading to uneven visibility of crisis-affected regions. This paper investigates whether Large Language Models (LLMs) can address these geographic disparities in extracting location information…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "AI Agents for Data Analysis: From Demos to Production",
+      "link": "https://rerun.build/blog/ai-agents-for-data-analysis",
+      "publishedAt": "2026-08-19T05:41:11.000Z",
+      "author": "",
+      "summary": "AI agents for data analysis are easy to demo and hard to trust in production. Here is what they do, where they break, and how to run one you can actually watch and govern.",
+      "evidenceLink": "",
+      "score": 51.33979412698413,
+      "core": "AI agents for data analysis are easy to demo and hard to trust in production. Here is what they do, where they break, and how to run one you can actually watch and govern.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T04:13:45.376Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gerald_chen_ai_engineering",
+      "source": "陈广亮的技术博客",
+      "title": "Agent 的 UI 才是前端主场：Chat 只是 fallback",
+      "link": "https://chenguangliang.com/posts/blog218_fe2agent-extra-b-agent-ui",
+      "publishedAt": "2026-08-18T01:00:00.000Z",
+      "author": "",
+      "summary": "从 Cursor 到 ChatGPT，Agent 产品长成一模一样的消息气泡列表——不是前端的宿命，是设计的懒惰。Chat 是让人跟不确定输出建立信任的最低成本 UI，一旦信任建立，就该被工具面板、状态观测层、决策 gate 替代。这是《从 useEffect 到 Agent Loop》番外 B。",
+      "evidenceLink": "",
+      "score": 51.16854412698412,
+      "core": "从 Cursor 到 ChatGPT，Agent 产品长成一模一样的消息气泡列表——不是前端的宿命，是设计的懒惰。Chat 是让人跟不确定输出建立信任的最低成本 UI，一旦信任建立，就该被工具面板、状态观测层、决策 gate 替代。这是《从 useEffect 到 Agent Loop》番外 B。",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T04:13:45.376Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "'There is no reliable, economical one-size-fits-all model on the horizon': Experts claim AI costs will grow fivefold by 2028, as demand continues to soar",
+      "link": "https://www.techradar.com/pro/there-is-no-reliable-economical-one-size-fits-all-model-on-the-horizon-experts-claim-ai-costs-will-grow-fivefold-by-2028-as-demand-continues-to-soar",
+      "publishedAt": "2026-08-19T18:15:00.000Z",
+      "author": "Christian Cawley",
+      "summary": "Experts have determined some uncomfortable truths about token economics, where falling token prices are pushing the development of complex agentic workflows, outweighing the savings",
+      "evidenceLink": "",
+      "score": 50.29275047619047,
+      "core": "Experts have determined some uncomfortable truths about token economics, where falling token prices are pushing the development of complex agentic workflows, outweighing the savings",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T04:13:45.376Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How Axonius built secure multi-tenant AI agents on Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-axonius-built-secure-multi-tenant-ai-agents-on-bedrock-agentcore",
+      "publishedAt": "2026-08-18T16:27:07.000Z",
+      "author": "Amir Krispin",
+      "summary": "Learn how Axonius, a cybersecurity SaaS provider, used Amazon Bedrock AgentCore to deploy fully isolated, multi-tenant AI agents across hundreds of customer environments, without building custom compute isolation, authentication, or observability infrastructure from scratch.",
+      "evidenceLink": "",
+      "score": 49.972254444444445,
+      "core": "Learn how Axonius, a cybersecurity SaaS provider, used Amazon Bedrock AgentCore to deploy fully isolated, multi-tenant AI agents across hundreds of customer environments, without building custom compute isolation, authentication, or observability infrastructure from scratch.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T04:13:45.376Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Amazon Bedrock AgentCore payments is now generally available: Enabling agents to transact safely and autonomously at scale",
+      "link": "https://aws.amazon.com/blogs/machine-learning/amazon-bedrock-agentcore-payments-is-now-generally-available-enabling-agents-to-transact-safely-and-autonomously-at-scale",
+      "publishedAt": "2026-08-18T18:56:14.000Z",
+      "author": "Chethan Shriyan",
+      "summary": "Amazon Bedrock AgentCore payments is now generally available, enabling AI agents to autonomously transact at scale with built-in spending guardrails, protocol-agnostic payment orchestration, and production-ready observability.",
+      "evidenceLink": "",
+      "score": 47.87755206349206,
+      "core": "Amazon Bedrock AgentCore payments is now generally available, enabling AI agents to autonomously transact at scale with built-in spending guardrails, protocol-agnostic payment orchestration, and production-ready observability.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T04:13:45.376Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Strengthening democratic oversight in national security",
+      "link": "https://openai.com/index/strengthening-democratic-oversight-in-national-security",
+      "publishedAt": "2026-08-18T19:00:00.000Z",
+      "author": "",
+      "summary": "OpenAI launches an initiative to strengthen democratic oversight of AI in national security, supporting government institutions with tools, training, and expertise.",
+      "evidenceLink": "",
+      "score": 43.53759174603175,
+      "core": "OpenAI launches an initiative to strengthen democratic oversight of AI in national security, supporting government institutions with tools, training, and expertise.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T04:13:45.376Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentailor",
+      "source": "Agentailor",
+      "title": "Agent Plugins Explained: Skills and MCP in One Folder",
+      "link": "https://blog.agentailor.com/posts/agent-plugins-explained",
+      "publishedAt": "2026-08-19T00:00:00.000Z",
+      "author": "undefined (Ali Ibrahim)",
+      "summary": "Agent Plugins is an open standard for packaging Agent Skills and MCP servers into one portable folder any client can load. What plugin.json and mcp.json actually define, which clients support it, and whether to package one yet.",
+      "evidenceLink": "",
+      "score": 40.24473460317461,
+      "core": "Agent Plugins is an open standard for packaging Agent Skills and MCP servers into one portable folder any client can load. What plugin.json and mcp.json actually define, which clients support it, and whether to package one yet.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T04:13:45.376Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Offering Zero Data Retention for frontier models",
+      "link": "https://openai.com/index/offering-zero-data-retention-for-frontier-models",
+      "publishedAt": "2026-08-19T19:00:00.000Z",
+      "author": "",
+      "summary": "OpenAI reaffirms Zero Data Retention for eligible API customers and previews Private Safety Processing for advanced AI safety without compromising data privacy.",
+      "evidenceLink": "",
+      "score": 39.22965523809523,
+      "core": "OpenAI reaffirms Zero Data Retention for eligible API customers and previews Private Safety Processing for advanced AI safety without compromising data privacy.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T04:13:45.376Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Fortinet eyes AI security gains with Virtue AI acquisition",
+      "link": "https://www.itpro.com/business/acquisition/fortinet-eyes-ai-security-gains-with-virtue-ai-acquisition",
+      "publishedAt": "2026-08-19T10:38:00.000Z",
+      "author": "Daniel Todd",
+      "summary": "The acquisition will add AI runtime protection and automated validation capabilities to Fortinet’s existing Security for AI portfolio",
+      "evidenceLink": "",
+      "score": 33.48203619047619,
+      "core": "The acquisition will add AI runtime protection and automated validation capabilities to Fortinet’s existing Security for AI portfolio",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T04:13:45.376Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Deep Agents vs LangChain vs LangGraph",
+      "link": "https://www.langchain.com/blog/deep-agents-vs-langchain-vs-langgraph",
+      "publishedAt": "2026-08-07T07:27:53.000Z",
+      "author": "",
+      "summary": "Deep Agents, LangChain, and LangGraph each offer distinct approaches to building agents. In this post, we cover the key distinctions between our open source frameworks and when you should reach for each one.",
+      "evidenceLink": "",
+      "score": 31.15,
+      "core": "Deep Agents, LangChain, and LangGraph each offer distinct approaches to building agents. In this post, we cover the key distinctions between our open source frameworks and when you should reach for each one.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T04:13:45.376Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

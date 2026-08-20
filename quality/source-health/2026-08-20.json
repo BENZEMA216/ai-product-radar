@@ -1,0 +1,260 @@
+{
+  "generatedAt": "2026-08-20T04:09:55.599Z",
+  "window": {
+    "start": "2026-08-19 12:09:55 CST",
+    "end": "2026-08-20 12:09:55 CST"
+  },
+  "productHuntDateKeys": [
+    "2026-08-18"
+  ],
+  "githubMetrics": {
+    "status": "ok",
+    "requestedCount": 17,
+    "enrichedCount": 17,
+    "error": ""
+  },
+  "feedbackPolicy": {
+    "schemaVersion": 1,
+    "generatedAt": "2026-08-17T16:01:51.000Z",
+    "sourceIssueCount": 45,
+    "ruleCount": 15,
+    "exactOnlyCount": 5,
+    "exactMatchCount": 16,
+    "policyMatchCount": 30,
+    "droppedCount": 39,
+    "rules": [
+      {
+        "id": "hn-github-stars-below-50-drop",
+        "action": "drop",
+        "issueNumbers": [
+          2,
+          11,
+          16,
+          18,
+          21,
+          34,
+          40,
+          41
+        ],
+        "matchedCount": 7,
+        "selectedCount": 7,
+        "droppedCount": 7
+      },
+      {
+        "id": "hn-github-stars-50-to-99-downrank",
+        "action": "downrank",
+        "issueNumbers": [
+          1,
+          2,
+          11,
+          21,
+          35
+        ],
+        "matchedCount": 2,
+        "selectedCount": 2,
+        "droppedCount": 0
+      },
+      {
+        "id": "hn-github-stars-unavailable-downrank",
+        "action": "downrank",
+        "issueNumbers": [
+          16,
+          18,
+          34,
+          36,
+          40,
+          41
+        ],
+        "matchedCount": 0,
+        "selectedCount": 0,
+        "droppedCount": 0
+      },
+      {
+        "id": "product-hunt-very-low-votes-drop",
+        "action": "drop",
+        "issueNumbers": [
+          8
+        ],
+        "matchedCount": 4,
+        "selectedCount": 4,
+        "droppedCount": 4
+      },
+      {
+        "id": "product-hunt-low-votes-downrank",
+        "action": "downrank",
+        "issueNumbers": [
+          4,
+          5
+        ],
+        "matchedCount": 5,
+        "selectedCount": 5,
+        "droppedCount": 0
+      },
+      {
+        "id": "trivial-github-release-drop",
+        "action": "drop",
+        "issueNumbers": [
+          7,
+          10,
+          13,
+          17,
+          31
+        ],
+        "matchedCount": 12,
+        "selectedCount": 12,
+        "droppedCount": 12
+      },
+      {
+        "id": "editorial-or-promotional-content-drop",
+        "action": "drop",
+        "issueNumbers": [
+          6,
+          29,
+          38
+        ],
+        "matchedCount": 0,
+        "selectedCount": 0,
+        "droppedCount": 0
+      },
+      {
+        "id": "personal-ai-game-demo-drop",
+        "action": "drop",
+        "issueNumbers": [
+          15,
+          19
+        ],
+        "matchedCount": 0,
+        "selectedCount": 0,
+        "droppedCount": 0
+      },
+      {
+        "id": "research-training-project-not-product-drop",
+        "action": "drop",
+        "issueNumbers": [
+          27
+        ],
+        "matchedCount": 0,
+        "selectedCount": 0,
+        "droppedCount": 0
+      },
+      {
+        "id": "generic-memory-assistant-utility-downrank",
+        "action": "downrank",
+        "issueNumbers": [
+          1,
+          3,
+          11,
+          24,
+          28,
+          33,
+          37,
+          39,
+          42
+        ],
+        "matchedCount": 0,
+        "selectedCount": 0,
+        "droppedCount": 0
+      },
+      {
+        "id": "skills-commercialization-and-discovery-boost",
+        "action": "keep",
+        "issueNumbers": [
+          25,
+          26
+        ],
+        "matchedCount": 0,
+        "selectedCount": 0,
+        "droppedCount": 0
+      },
+      {
+        "id": "agent-tool-and-peer-discovery-network-boost",
+        "action": "keep",
+        "issueNumbers": [
+          44
+        ],
+        "matchedCount": 0,
+        "selectedCount": 0,
+        "droppedCount": 0
+      },
+      {
+        "id": "official-claude-product-update-boost",
+        "action": "keep",
+        "issueNumbers": [
+          9
+        ],
+        "matchedCount": 0,
+        "selectedCount": 0,
+        "droppedCount": 0
+      },
+      {
+        "id": "vertical-outcome-agent-product-boost",
+        "action": "keep",
+        "issueNumbers": [
+          20,
+          22,
+          32
+        ],
+        "matchedCount": 0,
+        "selectedCount": 0,
+        "droppedCount": 0
+      },
+      {
+        "id": "vertical-ai-video-application-boost",
+        "action": "keep",
+        "issueNumbers": [
+          14
+        ],
+        "matchedCount": 0,
+        "selectedCount": 0,
+        "droppedCount": 0
+      }
+    ]
+  },
+  "sources": {
+    "producthunt": {
+      "status": "ok",
+      "rawCount": 50,
+      "keptCount": 21,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-08-18；官方日榜页面的可审计快照已启用，原始覆盖 50 条，AI 相关候选 25 条，候选带 rank/votes/comments。；历史去重后最终发布 21 条 Product Hunt 信号。",
+      "discoveredKeptCount": 21,
+      "reportKeptCount": 21,
+      "previouslyReportedCount": 0
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 7,
+      "keptCount": 7,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 22,
+      "keptCount": 15,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 28,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 23,
+      "keptCount": 23,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  }
+}

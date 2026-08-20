@@ -1,0 +1,293 @@
+{
+  "date": "2026-08-20",
+  "generatedAt": "2026-08-20T04:09:55.599Z",
+  "reportPath": "reports/2026-08-20-1209-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 86,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "ok",
+      "rawCount": 50,
+      "keptCount": 21,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-08-18；官方日榜页面的可审计快照已启用，原始覆盖 50 条，AI 相关候选 25 条，候选带 rank/votes/comments。；历史去重后最终发布 21 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 7,
+      "keptCount": 7,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 22,
+      "keptCount": 15,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 28,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 23,
+      "keptCount": 23,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-08-17T16:01:51.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "ElevenLabs MCP in Claude",
+      "productKey": "https://www.producthunt.com/products/elevenlabs-mcp-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把语音 agent 的创建与管理放进 Claude 对话，值得验证 MCP 暴露的配置粒度、发布边界和回读状态，是否足以覆盖真实生命周期而不依赖 ElevenLabs 控制台。"
+    },
+    {
+      "rank": 2,
+      "product": "MCP app for Android, drive apps via AI (no root, PII redacted locally)",
+      "productKey": "https://github.com/danielealbano/android-remote-control-mcp",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "无 root 控制与本地 PII 脱敏同时回应了 Android agent 的权限和隐私难题；关键看危险动作确认、应用兼容范围与失败后可撤销性。"
+    },
+    {
+      "rank": 3,
+      "product": "Frugal Tokens – explore costs and usage across coding agents",
+      "productKey": "https://demo.frugaltokens.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把多个 coding agent 的成本与用量放到一个视图，价值取决于能否统一不同供应商的 token、缓存与工具调用口径，并定位昂贵但无效的任务步骤。"
+    },
+    {
+      "rank": 4,
+      "product": "OneCLI (YC S26) – OSS sandboxed agent harness for teams",
+      "productKey": "https://github.com/onecli/onecli",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "开源、团队化和沙箱三者组合比单个 coding agent 更接近生产底座；应重点看租户隔离、任务复现、审计和资源限额是否真正可配置。"
+    },
+    {
+      "rank": 5,
+      "product": "HeyZoku - Hands Free Coding",
+      "productKey": "https://www.producthunt.com/products/heyzoku",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用语音调度一组 coding agents 提供了新的控制入口，但产品成败取决于低延迟确认、并行任务冲突处理，以及用户能否快速审查代理执行的代码变更。"
+    },
+    {
+      "rank": 6,
+      "product": "Graphify Labs",
+      "productKey": "https://www.ycombinator.com/launches/sva-graphify-labs-knowledge-graph-engine-for-enterprises",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把代码库知识图谱定位为人和 agent 的共享记忆，重点不是首次索引，而是代码变更后的增量更新、事实溯源与过期上下文治理。"
+    },
+    {
+      "rank": 7,
+      "product": "Marker",
+      "productKey": "https://www.ycombinator.com/launches/sve-marker-ai-native-consultancy-rebuilding-businesses-with-ai-agents",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这更像以 agent 交付结果的咨询服务而非标准软件；值得观察其方法、工具与审批能否沉淀成可复制交付，而不是依赖高比例定制人力。"
+    },
+    {
+      "rank": 8,
+      "product": "AgentIn, a professional network for coding agents",
+      "productKey": "https://agentin.work",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "为 coding agents 建职业网络的前提是可验证身份、能力与历史结果；若这些信号能跨平台携带，才可能形成真正的分发和信誉网络效应。"
+    },
+    {
+      "rank": 9,
+      "product": "Superflow AI",
+      "productKey": "https://www.producthunt.com/products/superflow-webflow-plugin-for-revisions",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把网站上线前 QA 交给 agent，最有价值的是能否把发现转成可复现测试并接入发布门禁，而不只是生成一份视觉问题清单。"
+    },
+    {
+      "rank": 10,
+      "product": "Shepherd Terminal",
+      "productKey": "https://www.producthunt.com/products/shepherd-terminal-designed-for-agent",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "持久化并列运行 Codex 与 Claude 有助于比较和交接长任务；重点看两套会话的状态隔离、工作区冲突和结果合并是否清晰。"
+    },
+    {
+      "rank": 11,
+      "product": "Gauge",
+      "productKey": "https://www.producthunt.com/products/gauge",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“让产品进入客户代码库”是非常激进的 agent-led growth 路径；需观察安装授权、代码维护责任和退出机制，避免分发优势变成客户的供应链风险。"
+    },
+    {
+      "rank": 12,
+      "product": "Financial Datasets",
+      "productKey": "https://www.ycombinator.com/launches/sjf-financial-datasets-stock-market-data-for-ai-agents",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把股票市场数据包装成 agent 可调用接口，真正门槛在数据时效、口径和来源追溯；一旦连接交易动作，还需要明确延迟与错误责任。"
+    },
+    {
+      "rank": 13,
+      "product": "TovenAI",
+      "productKey": "https://www.ycombinator.com/launches/sjj-tovenai-your-intelligent-compliance-stack-for-finance",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "机构交易合规是规则密集且需要审计的垂直场景，关键看 agent 能否把内部政策映射到跨系统活动，并让每个告警都能追溯而非只给风险摘要。"
+    },
+    {
+      "rank": 14,
+      "product": "Meterless.ai",
+      "productKey": "https://www.producthunt.com/products/meterless-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "本地运行让用户拥有模型和数据路径，适合隐私敏感工作流；产品价值还取决于硬件适配、模型更新和工具集成能否被普通用户维护。"
+    },
+    {
+      "rank": 15,
+      "product": "AI agents can now safely write to your CRMs",
+      "productKey": "https://www.archron.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“安全写入 CRM”需要比读取更严格的控制，值得检查字段级权限、预演、幂等、回滚与审计是否构成完整写入闭环。"
+    },
+    {
+      "rank": 16,
+      "product": "Notula – where humans edit the Markdown your AI agents read",
+      "productKey": "https://notula.org",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把人类可编辑的 Markdown 作为 agent 上下文治理面，值得看版本审查、权限和发布流程能否避免错误知识立即污染所有 agent。"
+    },
+    {
+      "rank": 17,
+      "product": "Atlas by WorkOS",
+      "productKey": "https://www.producthunt.com/products/workos",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 AI 同事放进 Slack 能降低使用门槛，但真正产品边界是频道上下文、企业权限与外部动作确认，而不是再增加一个聊天机器人。"
+    },
+    {
+      "rank": 18,
+      "product": "CrewTower",
+      "productKey": "https://www.producthunt.com/products/crew-tower",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "从 Mac 刘海区控制 agents 提供了常驻状态入口，适合验证用户能否快速看到队列、暂停高风险任务并处理异常，而不必频繁切换完整应用。"
+    },
+    {
+      "rank": 19,
+      "product": "Open Index",
+      "productKey": "https://www.producthunt.com/products/open-brain",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "结构化上下文能提升 agent 的检索确定性，但需看数据接入、增量刷新和引用是否完整，否则“更聪明”可能只是更陈旧的上下文。"
+    },
+    {
+      "rank": 20,
+      "product": "Controller AI",
+      "productKey": "https://www.producthunt.com/products/insight-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它直接承诺构建遵循流程的确定性 agents，关键证据应是显式分支、约束执行与运行时证明，而不是仅靠更严格的 prompt。"
+    }
+  ]
+}
