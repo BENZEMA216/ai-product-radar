@@ -1,0 +1,422 @@
+{
+  "generatedAt": "2026-08-20T16:10:01.783Z",
+  "date": "2026-08-21",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "$1 million hacker challenge for Vercel Sandbox",
+      "link": "https://vercel.com/blog/one-million-dollar-hacker-challenge-for-vercel-sandbox",
+      "publishedAt": "2026-08-18T13:00:00.000Z",
+      "author": "Andy Riancho",
+      "summary": "Agents need to run untrusted code, and the microVM has become the standard way to do it: a dedicated guest kernel per workload, isolated from the host and from every other workload on the same machine. But recent security research and real-world incidents have revealed that agents running untrusted code do not need to cross a VM boundary to escape containment; they only need one network path the security model failed to account for, which we explained in our post A sandbox without a network boundary is only half a sandbox . Isolation only holds if both sides of it hold: the Firecracker microVM and the host-side network controls. Recently our CTO pointed an open-weight model with no safeguards at Vercel Sandbox. It did not escape, but it mapped the guest kernel, built a VM to reproduce its ideas, and wrote a fuzzer. Defenders have first-mover advantage, but it won't last forever, and the choice is when to test the boundaries (we strongly encourage building a scanning program , which you can do on any budget with an open-source tool like deepsec and AI Gateway ). We are proactively choosing to test Vercel Sandbox on our own schedule, not an attacker's, and we are doing it in the open, with the best researchers in the world. So for two weeks, we are paying up to $1,000,000 USD to the researchers who can escape a Vercel Sandbox. The challenge Starting today , Vercel is running a two-week public HackerOne program focused on Vercel Sandbox isolation. Program: Public HackerOne program , open to all eligible researchers Window: Tuesday, August 18 to Tuesday, September 1, 2026, or earlier if the reward pool is exhausted Max per report: $50,000 USD, for a vulnerability that lets a threat actor read or modify another Vercel tenant's data Total pool : Up to $1,000,000 USD in total payouts Bounties are paid per report, scoped to a single root cause, and assigned by Vercel triage based on the maximum demonstrable impact. The full bounty table, detailed scope, and the list of known-duplicate classes are on the HackerOne program page . How Vercel Sandbox is built Vercel Sandbox runs on bare-metal EC2 hosts. Each sandbox gets its own Firecracker microVM with a dedicated guest kernel, and inside that microVM a Linux container runs the operator's code. The microVM, not the container, is the security boundary, so operator-supplied code runs two layers removed from the host. We assume that code is fully hostile: root inside the container, full kernel access inside the microVM, and motivated to reach the host or another tenant. The network side of the boundary is enforced on the host, outside the microVM, where code inside the sandbox cannot modify or disable it. The sandbox firewall intercepts outbound TCP and DNS, checks each connection against the operator's domain and CIDR policies, and can inject credentials at the boundary so they never enter the microVM. What we're looking for In short: anything that breaks the sandbox boundary. Compute boundary: Escaping the Firecracker microVM to the EC2 host, or reaching another tenant's sandbox through the compute layer (reading, modifying, or executing code in it), or crashing another tenant's sandbox from within another sandbox Network boundary: Defeating the sandbox firewall without crossing the microVM: reaching destinations the operator did not authorize, exfiltrating data, or retrieving brokered credentials Container namespace escapes that only reach the Firecracker guest OS are not in scope. Namespaces are a developer-experience feature, not the security boundary. Bounties Severity Bounty Critical $25,000 – $50,000 High $10,000 – $25,000 Medium $5,000 – $10,000 Low $1,000 – $5,000 The full bounty table, with example vulnerability classes for each tier, is on the HackerOne program page . How to participate The program is open now and closes on Tuesday, September 1, 2026 , or earlier if the $1,000,000 USD reward pool is exhausted. Reports go through the HackerOne program page . To reproduce a finding, boot a sandbox with the @vercel/sandbox SDK and demonstrate the impact with a live proof of concept. The default sandbox OS is enough for most reports; bring a custom image from the Vercel Container Registry only if your PoC needs extra tooling. We will not reward static-analysis-only findings; to issue a payout, we need to see the boundary break. Full rules, eligibility, the complete scope and bounty table, and the submission process are on the HackerOne program page. Results and payouts We will triage reports from the day the program opens through one month after it closes. As findings are confirmed, we will pay bounties, ship fixes, and credit every researcher whose report holds up. The techniques discovered during this program will become permanent additions to the sandbox boundary, protecting every workload on Vercel long after the challenge ends. After the program closes, we will publish a follow-up writeup of the techniques and the fixes we shipped. Thanks to HackerOne for standing up the program, and to the researchers who will spend the next two weeks trying to break what we built. Read more",
+      "evidenceLink": "",
+      "score": 74.34520271825397,
+      "core": "Agents need to run untrusted code, and the microVM has become the standard way to do it: a dedicated guest kernel per workload, isolated from the host and from every other workload on the same machine. But recent security research and real-world incidents have revealed that agents running untrusted code do not need to cross a VM boundary to escape containment; they only need one network path the security model faile…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T16:10:01.783Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Latent Agents: A Post-Training Procedure for Internalized Multi-Agent Debate",
+      "link": "https://arxiv.org/abs/2604.24881",
+      "evidenceLink": "https://www.semanticscholar.org/paper/f5b4fd570f485666a164dcdfe46ec35889c15b8c",
+      "publishedAt": "2026-04-27T00:00:00.000Z",
+      "submittedAt": "2026-04-27T00:00:00.000Z",
+      "author": "John Seon Keun Yi, Aaron Mueller, Dokyun Lee",
+      "summary": "Multi-agent debate has been shown to improve reasoning in large language models (LLMs). However, it is compute-intensive, requiring generation of long transcripts before answering questions. To address this inefficiency, we develop a framework that distills multi-agent debate into a single LLM through a two-stage fine-tuning pipeline combining debate structure learning with internalization via dynamic reward scheduling and length clipping. Across multiple models and benchmarks, our internalized models match or exceed explicit multi-agent debate performance using up to 93% fewer tokens. We then investigate the mechanistic basis of this capability through activation steering, finding that internalization creates agent-specific subspaces: interpretable directions in activation space corresponding to different agent perspectives. We further demonstrate a practical application: by instilling malicious agents into the LLM through internalized debate, then applying negative steering to suppress them, we show that distillation makes harmful behaviors easier to localize and control with smaller reductions in general performance compared to steering base models. Our findings offer a new perspective for understanding multi-agent capabilities in distilled models and provide practical guidelines for controlling internalized reasoning behaviors. Code available at https://github.com/johnsk95/latent_agents",
+      "citationCount": 3,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 54.40823996531185,
+      "core": "Multi-agent debate has been shown to improve reasoning in large language models (LLMs). However, it is compute-intensive, requiring generation of long transcripts before answering questions. To address this inefficiency, we develop a framework that distills multi-agent debate into a single LLM through a two-stage fine-tuning pipeline combining debate structure learning with internalization via dynamic reward schedul…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "The Web Conference",
+      "title": "Frugal Agents: Efficient Bio Reasoning via Long-Sequence Compression and Prompt-Gated Memory",
+      "link": "https://doi.org/10.1145/3774905.3795456",
+      "evidenceLink": "https://www.semanticscholar.org/paper/8ec0f18f32d680e46c748f5137cde31ccf3ed677",
+      "publishedAt": "2026-05-28T00:00:00.000Z",
+      "submittedAt": "2026-05-28T00:00:00.000Z",
+      "author": "Mohammadhossein Ahmadi, Saleh Afzoon, Kamyar Taeb, Parimehr Morassa Far, Amin Beheshti",
+      "summary": "Large language model (LLM)-based agents are increasingly capable across a range of tasks, but their practical usage becomes prohibitively expensive as input sequence length grows. This challenge becomes even more severe in multimodal settings, where inputs may include not only natural language but also long, domain-specific sequences, such as biological data, or financial time series, that are not directly interpretable by the model. Passing these sequences to the LLM increases token counts and compute costs without meaningful gain, limiting access to such systems for broader communities. In many cases, these inputs require external tools to extract useful representations before being used by the agent. We address this challenge with a token-efficient multi-agent framework designed to reduce resource consumption and enable more affordable, scalable usage of agentic AI. Our approach introduces two core components. First, a Long-Sequence Compression (LSC) layer replaces raw input sequences with compact, semantically meaningful representations, significantly lowering token usage. Second, a Prompt-based Gate-Guided Memory (PGM) mechanism, inspired by gated recurrent networks, selectively retains relevant intermediate states and context across agent steps based on the current prompt. Integrated into a modular multi-agent architecture, LSC and PGM together reduce redundant context propagation while preserving the information necessary for complex reasoning. On biological sequence analysis and design tasks, LSC alone achieves over 80% reductions in token usage and inference time over long sequence processing, while the combination with PGM yields further savings with minimal performance tradeoffs. These results demonstrate that principled compression and memory control can make agentic AI systems more cost-effective and accessible, supporting broader, more equitable use across resource-constrained settings.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "WWW",
+        "venueLabel": "The Web Conference",
+        "venueName": "The Web Conference",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 54,
+      "core": "Large language model (LLM)-based agents are increasingly capable across a range of tasks, but their practical usage becomes prohibitively expensive as input sequence length grows. This challenge becomes even more severe in multimodal settings, where inputs may include not only natural language but also long, domain-specific sequences, such as biological data, or financial time series, that are not directly interpret…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Pushing the Limits of LLM Tool Calling via Experiential Knowledge Integration and Activation",
+      "link": "https://arxiv.org/abs/2606.10875",
+      "evidenceLink": "https://www.semanticscholar.org/paper/758b5c29fb85af9620266a266c669f31472f43ba",
+      "publishedAt": "2026-06-09T00:00:00.000Z",
+      "submittedAt": "2026-06-09T00:00:00.000Z",
+      "author": "Yupu Hao, Zhuoran Jin, Huanxuan Liao, Kang Liu, Jun Zhao",
+      "summary": "Large language models (LLMs) rely on tool use to act as autonomous agents, yet often fail in multi-step execution due to insufficient tool-related knowledge and ineffective knowledge activation. Therefore, we present a systematic study on how knowledge influences tool-use performance, covering the stages of knowledge acquisition, activation, and internalization. In the knowledge acquisition stage, we acquire and evaluate various forms of experiential knowledge, and our analysis shows that simple instance-level knowledge can already provide strong and reliable gains, while abstract intent-level knowledge offers limited benefits. At inference time, to activate knowledge, we find that prompting LLM to expand the depth of reasoning yields diminishing returns, whereas expanding the width of reasoning by parallel sampling with aggregation more effectively activates latent experiential knowledge. At training time, for knowledge internalization, post-training with knowledge-augmented data further improves performance, with reinforcement learning outperforming supervised fine-tuning. Based on these insights, we propose the Knowledge-Augmented Tool Execution (KATE), a knowledge-augmented tool execution framework that integrates experiential knowledge with reasoning-width-expanded inference and knowledge-aware training. Experiments on BFCL-V3 and AppWorld demonstrate consistent and substantial improvements over strong baselines across model scales. Our Code is available at https://github.com/hypasd-art/KATE.",
+      "citationCount": 2,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 53.90848501887865,
+      "core": "Large language models (LLMs) rely on tool use to act as autonomous agents, yet often fail in multi-step execution due to insufficient tool-related knowledge and ineffective knowledge activation. Therefore, we present a systematic study on how knowledge influences tool-use performance, covering the stages of knowledge acquisition, activation, and internalization. In the knowledge acquisition stage, we acquire and eva…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Bridging the Pose-Semantic Gap: A Cascade Framework for Text-Based Person Anomaly Search",
+      "link": "https://arxiv.org/abs/2604.23282",
+      "evidenceLink": "https://www.semanticscholar.org/paper/baf4f93a07db7e40d25ae72953dc4e8548f877b8",
+      "publishedAt": "2026-04-25T00:00:00.000Z",
+      "submittedAt": "2026-04-25T00:00:00.000Z",
+      "author": "Zequn Xie, Guijin luo, Chuxin Wang, Sihang Cai, Tao Jin",
+      "summary": "Text-based person anomaly search retrieves specific behavioral events from surveillance archives using natural-language queries. Although recent pose-aware methods align geometric structures well, they face a fundamental Pose-Semantic Gap: semantically different actions can share similar skeletal geometries. While Multimodal Large Language Models (MLLMs) can reduce this ambiguity, using them for large-scale retrieval is computationally prohibitive. We propose the Structure-Semantic Decoupled Cascade (SSDC) framework, which decouples retrieval into two stages: (1) Structure-Aware Coarse Retrieval, where a lightweight model quickly filters candidates by skeletal similarity ; and (2) Detective Squad Interaction, a multi-agent semantic verification module. The squad consists of a Detective for fast binary filtering, an Analyst for evidence extraction, and a Writer for semantic synthesis. Finally, we re-rank candidates by fusing the synthesized captions with structural priors. Experiments on the PAB benchmark show that SSDC achieves state-of-the-art performance by balancing efficiency and semantic reasoning.",
+      "citationCount": 4,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 53.795880017344075,
+      "core": "Text-based person anomaly search retrieves specific behavioral events from surveillance archives using natural-language queries. Although recent pose-aware methods align geometric structures well, they face a fundamental Pose-Semantic Gap: semantically different actions can share similar skeletal geometries. While Multimodal Large Language Models (MLLMs) can reduce this ambiguity, using them for large-scale retrieva…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentailor",
+      "source": "Agentailor",
+      "title": "Your System Prompt Has a Shelf Life: Maintaining Prompts as Models Improve",
+      "link": "https://blog.agentailor.com/posts/system-prompt-shelf-life",
+      "publishedAt": "2026-08-20T00:00:00.000Z",
+      "author": "undefined (Ali Ibrahim)",
+      "summary": "Anthropic deleted over 80% of Claude Code system prompt for Claude 5 with no measurable loss on their coding evals. The instructions did not become wrong. The model outgrew needing them. Here is the maintenance pass that finds which of yours have expired, and why you need evals before you delete a single line.",
+      "evidenceLink": "",
+      "score": 51.57298049603175,
+      "core": "Anthropic deleted over 80% of Claude Code system prompt for Claude 5 with no measurable loss on their coding evals. The instructions did not become wrong. The model outgrew needing them. Here is the maintenance pass that finds which of yours have expired, and why you need evals before you delete a single line.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T16:10:01.783Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How Fanatics Betting and Gaming built a multi-agent customer support system",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-fanatics-betting-and-gaming-built-a-multi-agent-customer-support-system",
+      "publishedAt": "2026-08-19T20:40:45.000Z",
+      "author": "Parker Bradshaw",
+      "summary": "Fanatics Betting and Gaming built a multi-agent customer support system on AWS to handle the complexity of sports betting: state-specific rules, real-time responsible gaming, and traffic spikes during major sporting events. This post walks through the architecture, the AWS services involved, and the patterns for your own multi-agent support solution.",
+      "evidenceLink": "",
+      "score": 46.563555892857146,
+      "core": "Fanatics Betting and Gaming built a multi-agent customer support system on AWS to handle the complexity of sports betting: state-specific rules, real-time responsible gaming, and traffic spikes during major sporting events. This post walks through the architecture, the AWS services involved, and the patterns for your own multi-agent support solution.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T16:10:01.783Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Implement vector-prompt document classification using Amazon Bedrock",
+      "link": "https://aws.amazon.com/blogs/machine-learning/implement-vector-prompt-document-classification-using-amazon-bedrock",
+      "publishedAt": "2026-08-18T17:10:37.000Z",
+      "author": "Pavana Sai Sree Chalamarla",
+      "summary": "Learn how to build a multi-agent document classification solution on Amazon Bedrock using the Strands Agents SDK. Three specialized agents combine textual analysis with Claude Haiku 4.5 and visual similarity search with Amazon Titan Multimodal Embeddings to accurately classify insurance documents such as policies and affidavits.",
+      "evidenceLink": "",
+      "score": 45.47688922619048,
+      "core": "Learn how to build a multi-agent document classification solution on Amazon Bedrock using the Strands Agents SDK. Three specialized agents combine textual analysis with Claude Haiku 4.5 and visual similarity search with Amazon Titan Multimodal Embeddings to accurately classify insurance documents such as policies and affidavits.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T16:10:01.783Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "AWS vector solutions: Build agentic AI where your data lives",
+      "link": "https://aws.amazon.com/blogs/machine-learning/aws-vector-solutions-build-agentic-ai-where-your-data-lives",
+      "publishedAt": "2026-08-20T16:06:06.000Z",
+      "author": "Marc Trimuschat",
+      "summary": "AWS offers a broad portfolio of vector search built directly into the databases and storage services you already use, with no standalone vector database or data migration required. This post covers six purpose-built services, a decision framework for choosing the right engine, and customer proof points for each.",
+      "evidenceLink": "",
+      "score": 43.7342106547619,
+      "core": "AWS offers a broad portfolio of vector search built directly into the databases and storage services you already use, with no standalone vector database or data migration required. This post covers six purpose-built services, a decision framework for choosing the right engine, and customer proof points for each.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T16:10:01.783Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Moving AI from pilot to production",
+      "link": "https://www.techradar.com/pro/moving-ai-from-pilot-to-production",
+      "publishedAt": "2026-08-20T14:22:25.000Z",
+      "author": "Rob Lay",
+      "summary": "Why infrastructure, trust and leadership are key to scaling enterprise AI successfully.",
+      "evidenceLink": "",
+      "score": 42.35522255952381,
+      "core": "Why infrastructure, trust and leadership are key to scaling enterprise AI successfully.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T16:10:01.783Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "How ChatGPT Work helps Stampli move ideas to market",
+      "link": "https://openai.com/index/stampli",
+      "publishedAt": "2026-08-20T00:00:00.000Z",
+      "author": "",
+      "summary": "With a fixed deadline and design resources committed elsewhere, Stampli used Codex and ChatGPT Work to compress weeks of launch production into days.",
+      "evidenceLink": "",
+      "score": 40.67298049603175,
+      "core": "With a fixed deadline and design resources committed elsewhere, Stampli used Codex and ChatGPT Work to compress weeks of launch production into days.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T16:10:01.783Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "‘The economics of vulnerability discovery have changed’: NIST wants to modernize the National Vulnerability Database amid AI advances – cyber experts say it needs to be redesigned with machine-speed in mind",
+      "link": "https://www.itpro.com/security/nist-national-vulnerability-database-modernization-machine-speed-consumption",
+      "publishedAt": "2026-08-20T07:35:37.000Z",
+      "author": "Ross Kelly",
+      "summary": "The National Vulnerability Database was designed for human-speed. Advances in AI mean it needs a much-needed overhaul",
+      "evidenceLink": "",
+      "score": 36.03760351190476,
+      "core": "The National Vulnerability Database was designed for human-speed. Advances in AI mean it needs a much-needed overhaul",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T16:10:01.783Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Pacing model development in an era of cyber-critical capabilities",
+      "link": "https://openai.com/index/pacing-model-development-cyber-capabilities",
+      "publishedAt": "2026-08-18T11:00:00.000Z",
+      "author": "",
+      "summary": "OpenAI is strengthening monitoring, alignment, and security for frontier AI models. See how new safeguards are guiding the pace of model development.",
+      "evidenceLink": "",
+      "score": 36.0301233531746,
+      "core": "OpenAI is strengthening monitoring, alignment, and security for frontier AI models. See how new safeguards are guiding the pace of model development.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T16:10:01.783Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "'An evolution in threat actor capabilities': CISA warns hackers are targeting Siemens industrial controllers – and they're using AI generated code",
+      "link": "https://www.itpro.com/security/an-evolution-in-threat-actor-capabilities-cisa-warns-hackers-are-targeting-siemens-industrial-controllers-and-theyre-using-ai-generated-code",
+      "publishedAt": "2026-08-20T10:39:21.000Z",
+      "author": "Emma Woollacott",
+      "summary": "Security agencies are warning that attackers are exploiting Siemens S7 Series programmable logic controllers to target critical infrastructure",
+      "evidenceLink": "",
+      "score": 34.395222559523816,
+      "core": "Security agencies are warning that attackers are exploiting Siemens S7 Series programmable logic controllers to target critical infrastructure",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T16:10:01.783Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "[AINews] Death of Params: Z.ai CEO Jie Tang on GLM 5.3 and the new Post-training Scaling Law",
+      "link": "https://www.latent.space/p/ainews-death-of-params-zai-ceo-jie",
+      "publishedAt": "2026-08-20T05:17:12.000Z",
+      "author": "",
+      "summary": "Every lab CEO is on X now",
+      "evidenceLink": "",
+      "score": 32.3617106547619,
+      "core": "Every lab CEO is on X now",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T16:10:01.783Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Before approving the next AI budget, check the network",
+      "link": "https://www.techradar.com/pro/before-approving-the-next-ai-budget-check-the-network",
+      "publishedAt": "2026-08-20T10:01:26.000Z",
+      "author": "Jean-Philippe Avelange",
+      "summary": "UK boards must assess connectivity, resilience and visibility before scaling their AI investments.",
+      "evidenceLink": "",
+      "score": 31.105639226190476,
+      "core": "UK boards must assess connectivity, resilience and visibility before scaling their AI investments.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T16:10:01.783Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "How LangChain Built an Agent-First Data Stack",
+      "link": "https://www.langchain.com/blog/agent-data-stack",
+      "publishedAt": "2026-08-03T10:39:11.000Z",
+      "author": "",
+      "summary": "Learn how LangChain used Hex, dbt, semantic models, and observability to build a trusted data agent and scale self-service analysis by 40x.",
+      "evidenceLink": "",
+      "score": 30.772222222222222,
+      "core": "Learn how LangChain used Hex, dbt, semantic models, and observability to build a trusted data agent and scale self-service analysis by 40x.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T16:10:01.783Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Asana cleared 5 years of engineering work in 2 weeks with Codex",
+      "link": "https://openai.com/index/asana",
+      "publishedAt": "2026-08-18T07:00:00.000Z",
+      "author": "",
+      "summary": "Asana used OpenAI Codex to replace an outdated testing system in two weeks, completing work expected to take five years for about $12K.",
+      "evidenceLink": "",
+      "score": 30.66663128968254,
+      "core": "Asana used OpenAI Codex to replace an outdated testing system in two weeks, completing work expected to take five years for about $12K.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T16:10:01.783Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "BGP Role model: tracking the adoption of RFC 9234",
+      "link": "https://blog.cloudflare.com/rfc9234-bgp-role-model",
+      "publishedAt": "2026-08-18T15:21:32.000Z",
+      "author": "Bryton Herdes",
+      "summary": "RFC 9234 lets routers reject route leaks on their own, using BGP Roles and the Only to Customer attribute. We measured who has deployed it, and found two Tier 1 networks unexpectedly stripping OTC.",
+      "evidenceLink": "",
+      "score": 28.608139226190477,
+      "core": "RFC 9234 lets routers reject route leaks on their own, using BGP Roles and the Only to Customer attribute. We measured who has deployed it, and found two Tier 1 networks unexpectedly stripping OTC.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T16:10:01.783Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "I tested Grok Bot, Grok 4.6, and Cursor Origin - here’s my honest take",
+      "link": "https://www.lennysnewsletter.com/p/i-tested-grok-bot-grok-46-and-cursor",
+      "publishedAt": "2026-08-18T21:30:31.000Z",
+      "author": "Claire Vo",
+      "summary": "Watch now | 🎙️ I tested Grok Bot, Cursor Origin, and Grok 4.6 head-to-head against my favorite models and ranked them on the Claire Index: here's what actually moved the needle",
+      "evidenceLink": "",
+      "score": 24.936293988095237,
+      "core": "Watch now | 🎙️ I tested Grok Bot, Cursor Origin, and Grok 4.6 head-to-head against my favorite models and ranked them on the Claire Index: here's what actually moved the needle",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-20T16:10:01.783Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

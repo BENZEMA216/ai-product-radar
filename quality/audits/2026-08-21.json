@@ -1,0 +1,293 @@
+{
+  "date": "2026-08-21",
+  "generatedAt": "2026-08-20T16:02:35.743Z",
+  "reportPath": "reports/2026-08-21-0002-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 39,
+    "top20Sources": [
+      "HN Algolia",
+      "YC Launch",
+      "AIHOT"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "ok",
+      "rawCount": 50,
+      "keptCount": 21,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-08-19；官方日榜页面的可审计快照已启用，原始覆盖 50 条，AI 相关候选 25 条，候选带 rank/votes/comments。；历史去重移除 21 条已报道或已处理日榜 Product Hunt 信号，最终发布 0 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 9,
+      "keptCount": 9,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 16,
+      "keptCount": 10,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 24,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-08-17T16:01:51.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Frugal Tokens – explore costs and usage across coding agents",
+      "productKey": "https://demo.frugaltokens.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把分散在不同 coding agent 里的成本与用量拉到同一视图，值得判断“跨工具成本治理”能否成为团队采购入口。"
+    },
+    {
+      "rank": 2,
+      "product": "OneCLI (YC S26) – OSS sandboxed agent harness for teams",
+      "productKey": "https://github.com/onecli/onecli",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "团队版 agent harness 的关键不在“能运行 agent”，而在沙箱能否把权限边界变成可部署、可审计的默认能力。"
+    },
+    {
+      "rank": 3,
+      "product": "Rove – parallel coding agents that can fan out subtasks and report back",
+      "productKey": "https://github.com/sma1lboy/rove",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "并行拆任务只是起点，更值得看的是子任务回报能否被主 agent 汇总成可验证结果，而不是放大协调成本。"
+    },
+    {
+      "rank": 4,
+      "product": "OneCLI",
+      "productKey": "https://www.ycombinator.com/launches/svj-onecli-give-every-employee-a-secured-sandboxed-pro-assistant-agent",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Web 与 Slack 入口加上自托管、策略控制和“不接触真实凭证”，显示它在用安全承诺降低企业把 agent 交给员工的阻力。"
+    },
+    {
+      "rank": 5,
+      "product": "testmagic.link – Zero-setup magic link testing for coding agents",
+      "productKey": "https://testmagic.link",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它瞄准 coding agent 难以穿过 magic-link 登录的具体测试断点；价值取决于零配置是否真能缩短端到端验证链路。"
+    },
+    {
+      "rank": 6,
+      "product": "Qlo",
+      "productKey": "https://www.ycombinator.com/launches/sz8-qlo-ai-agents-that-run-commercial-underwriting",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“承保 agent”与“system of record”绑定，意味着它想占据流程主系统；应重点看判断责任、人工复核和数据回写是否闭环。"
+    },
+    {
+      "rank": 7,
+      "product": "Financial Datasets",
+      "productKey": "https://www.ycombinator.com/launches/sjf-financial-datasets-stock-market-data-for-ai-agents",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把股票数据直接包装成 agent 可调用接口，值得看其护城河是数据质量与权限，还是仅把既有行情 API 改成 agent 友好形态。"
+    },
+    {
+      "rank": 8,
+      "product": "TovenAI",
+      "productKey": "https://www.ycombinator.com/launches/sjj-tovenai-your-intelligent-compliance-stack-for-finance",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把机构交易合规拆成政策理解、跨系统活动分析与异常呈现，产品成败取决于证据链是否足够让合规人员复核。"
+    },
+    {
+      "rank": 9,
+      "product": "AI agents can now safely write to your CRMs",
+      "productKey": "https://www.archron.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 agent 从“读 CRM”迈向安全写入，抓住了自动化落地的高风险一步；需要观察授权、回滚与字段级审计是否真可控。"
+    },
+    {
+      "rank": 10,
+      "product": "Gini",
+      "productKey": "https://www.ycombinator.com/launches/sz9-gini-ai-coworker-that-lives-in-slack",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Slack 内执行任务并把频道知识沉淀成“公司大脑”，同时测试了入口与记忆两层价值；关键是权限隔离和噪音控制。"
+    },
+    {
+      "rank": 11,
+      "product": "Callbook AI",
+      "productKey": "https://www.ycombinator.com/launches/svh-callbook-ai-the-ai-collections-agency-for-late-stage-portfolios",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "语音、邮件、短信协同催收把 agent 直接放进谈判环节；值得追踪其合规边界、升级人工机制和结果计费方式。"
+    },
+    {
+      "rank": 12,
+      "product": "Editor UI toolkit for building AI writing workflows",
+      "productKey": "https://imperavi.com/redactor/ai-assistant",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AI 写作编辑器的差异往往落在交互细节，这套 UI toolkit 值得看能否把选择、改写、审批等模式标准化供产品复用。"
+    },
+    {
+      "rank": 13,
+      "product": "Allia Health",
+      "productKey": "https://www.ycombinator.com/launches/sze-allia-the-first-full-stack-ai-native-mental-health-group",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它不是单点心理健康助手，而是试图把独立临床网络组织成可与大型付款方签约的服务体系，AI 是否改善协同与可衡量照护是核心。"
+    },
+    {
+      "rank": 14,
+      "product": "Donkey",
+      "productKey": "https://www.ycombinator.com/launches/svi-donkey-the-ai-native-trading-company",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“工厂价、送到手、一个号码”把交易服务压成结果式承诺，但现有证据未说明 AI 如何实现，适合保留观察而不宜高估技术差异。"
+    },
+    {
+      "rank": 15,
+      "product": "Epho – run Claude Code with a curl",
+      "productKey": "https://epho.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用一次 curl 调起 Claude Code，把 coding agent 从交互式工具变成可编排服务；应看它如何处理会话、权限和长任务回传。"
+    },
+    {
+      "rank": 16,
+      "product": "LLM-enabled large data analysis",
+      "productKey": "https://app.verbagpt.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "标题只证明“大数据分析 + LLM”的方向，未给出数据规模、工作流或验证方式；先看它能否把分析过程做成可复核交付。"
+    },
+    {
+      "rank": 17,
+      "product": "AI Resume Screening – Looking for feedback from recruiters",
+      "productKey": "https://aiomniu.top/services/resume-screening",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "招聘筛选是高频但高风险场景；这条信号更值得用来观察招聘方反馈、可解释性与偏差控制，而非仅看“AI 筛简历”功能。"
+    },
+    {
+      "rank": 18,
+      "product": "Slack 推出协作式 vibe-coding 频道",
+      "productKey": "https://aihot.virxact.com/items/cmt1htbsw04xxrokx95ng98ra",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "若信息属实，Slack 正把代码差异审计、预览和审批嵌入团队频道，这比单人 vibe coding 更接近多人协作产品；但当前仍需官方原文确认。"
+    },
+    {
+      "rank": 19,
+      "product": "Agnost AI",
+      "productKey": "https://www.ycombinator.com/launches/sxk-agnost-ai-turn-your-agent-traces-into-a-faster-cheaper-more-accurate-custom-model",
+      "source": "YC Launch",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "用生产 trace 训练专用模型，形成“使用数据—定制模型—更低成本”的优化环；要看 trace 质量和迁移后效果能否稳定兑现。"
+    },
+    {
+      "rank": 20,
+      "product": "Find every AI model your code calls and warn before it's retired",
+      "productKey": "https://llmstatus.ai",
+      "source": "HN Algolia",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "自动发现代码中的模型依赖并在退役前预警，解决了多模型应用的生命周期治理；应看扫描覆盖率和告警能否接入工程流程。"
+    }
+  ]
+}
