@@ -1,0 +1,427 @@
+{
+  "generatedAt": "2026-08-21T16:12:01.817Z",
+  "date": "2026-08-22",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "mistral_ai_engineering",
+      "source": "Mistral AI",
+      "title": "Agentic Search. More accurate and efficient results from your AI systems.",
+      "link": "https://mistral.ai/news/agentic-search",
+      "publishedAt": "2026-08-20T12:00:17.000Z",
+      "author": "",
+      "summary": "The retrieval layer that helps AI systems navigate, read, and verify information inside even the most complex documents",
+      "evidenceLink": "",
+      "score": 62.6471266468254,
+      "core": "The retrieval layer that helps AI systems navigate, read, and verify information inside even the most complex documents",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-21T16:12:01.817Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Scaling agentic AI: Enterprise patterns without vendor lock-in",
+      "link": "https://aws.amazon.com/blogs/machine-learning/scaling-agentic-ai-enterprise-patterns-without-vendor-lock-in",
+      "publishedAt": "2026-08-20T16:24:12.000Z",
+      "author": "Kristine Pearce",
+      "summary": "Scaling agentic AI across an enterprise requires patterns that preserve flexibility while avoiding vendor lock-in. In this second post of our multi-agent series, we examine how ML teams operate many agentic AI systems across a multi-everything environment of frameworks, models, and providers, and the principles that let those systems scale together.",
+      "evidenceLink": "",
+      "score": 56.250202043650795,
+      "core": "Scaling agentic AI across an enterprise requires patterns that preserve flexibility while avoiding vendor lock-in. In this second post of our multi-agent series, we examine how ML teams operate many agentic AI systems across a multi-everything environment of frameworks, models, and providers, and the principles that let those systems scale together.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-21T16:12:01.817Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Skill Weaving: Efficient LLM Improvement via Modular Skillpacks",
+      "link": "https://arxiv.org/abs/2605.22205",
+      "evidenceLink": "https://www.semanticscholar.org/paper/b8919a0eadffb4ec60cac9a8a88305736d9d1bca",
+      "publishedAt": "2026-05-21T00:00:00.000Z",
+      "submittedAt": "2026-05-21T00:00:00.000Z",
+      "author": "Zhuo Li, Guodong Du, Zesheng Shi, Weiyang Guo, Weijun Yao",
+      "summary": "Large language models increasingly require specialization across diverse domains, yet existing approaches struggle to balance multi-domain capacities with strict memory and inference constraints. In this work, we introduce SkillWeave, a modular improvement framework that enables LLMs to specialize under fixed memory budgets. SkillWeave partitions full capabilities of a general-purpose model into skillpacks -- lightweight, domain-specific delta modules -- that reorganize and refine the model's internal knowledge. For efficient deployment, SkillWeave integrates SkillZip to compress skillpacks into compact and inference-ready format, enabling strong multi-domain performance with low-latency execution. On multi-task and agentic benchmarks, a 9B SkillWeave model outperforms several baselines and even surpasses a 32B monolithic LLM, while achieving up to 4x speedup.",
+      "citationCount": 1,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 53.204119982655925,
+      "core": "Large language models increasingly require specialization across diverse domains, yet existing approaches struggle to balance multi-domain capacities with strict memory and inference constraints. In this work, we introduce SkillWeave, a modular improvement framework that enables LLMs to specialize under fixed memory budgets. SkillWeave partitions full capabilities of a general-purpose model into skillpacks -- lightw…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "Who Is Shopping With You? How Persona Design Shapes Cognitive and Social Engagement in AI Shopping Agents",
+      "link": "https://doi.org/10.1145/3805712.3809984",
+      "evidenceLink": "https://www.semanticscholar.org/paper/fe674e1a290e134be484be8059d583e781552fff",
+      "publishedAt": "2026-07-19T00:00:00.000Z",
+      "submittedAt": "2026-07-19T00:00:00.000Z",
+      "author": "Hyungwoo Song, Kyusik Kim, Hyeonseok Jeon, Minjeong Shin, Bongwon Suh",
+      "summary": "Conversational shopping agents powered by large language models are increasingly used for online product exploration, yet the role of interaction style in shaping shopping behavior and user experience remains underexplored in shopping IR. To address the gap, we conducted two studies in experience-goods domains. Study 1 involved 24 participants and compared a neutral conversational agent with a traditional product search interface, confirming functional adequacy and identifying two unmet needs, self-reflective preference structuring and socially grounded relational guidance. Study 2 involved 30 participants and evaluated two personas derived from these needs, Self-Mirroring and Relational Peer, against the same neutral agent in a within-subjects design with information availability held constant. Self-Mirroring increased critical thinking scores and sustained follow-up questioning of retrieved content, whereas Relational Peer increased social presence while reducing explicit verification behaviors such as comparing alternatives and checking conditions. The discussion outlines implications for AI shopping agents that adapt interaction style to decision context, balancing efficient exploration with user-led evaluation.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 53,
+      "core": "Conversational shopping agents powered by large language models are increasingly used for online product exploration, yet the role of interaction style in shaping shopping behavior and user experience remains underexplored in shopping IR. To address the gap, we conducted two studies in experience-goods domains. Study 1 involved 24 participants and compared a neutral conversational agent with a traditional product se…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "Multi-Agentic Recommender Systems: Foundations, Perspectives, and Lessons from Large Scale Deployments in eCommerce",
+      "link": "https://doi.org/10.1145/3805712.3808643",
+      "evidenceLink": "https://www.semanticscholar.org/paper/ddfafd4ec641b91e1c5a5ad6c6cf142efe65339b",
+      "publishedAt": "2026-07-19T00:00:00.000Z",
+      "submittedAt": "2026-07-19T00:00:00.000Z",
+      "author": "Reza Yousefi Maragheh, Yashar Deldjoo, Benjamin Coleman, Jason H. D. Cho, Chi Wang",
+      "summary": "This tutorial covers topics on multi-agentic recommender systems — recommender systems augmented with Large Language Models (LLMs) and multi-agent orchestration to enable multi-step reasoning, tool use, and interactive decision-making. The tutorial emphasizes foundational concepts, reusable design patterns, and practical lessons learned from large-scale e-commerce deployments. Specifically, we first cover background and recent trends in generative recommender systems and their connection to agentic approaches. We then survey major deployment areas in industry and review the agent orchestration frameworks developed to support them. Finally, we present a project walkthrough that traces the full lifecycle of an agentic recommender system, from scoping and data definition through modeling, deployment, and monitoring, to provide actionable deployment insights. The tutorial bridges perspectives from information retrieval (IR), recommender systems (RecSys), and large-scale industrial practice. The accompanying material can be found at agenticrecsys.github.io.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 53,
+      "core": "This tutorial covers topics on multi-agentic recommender systems — recommender systems augmented with Large Language Models (LLMs) and multi-agent orchestration to enable multi-step reasoning, tool use, and interactive decision-making. The tutorial emphasizes foundational concepts, reusable design patterns, and practical lessons learned from large-scale e-commerce deployments. Specifically, we first cover background…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "Verifiable User Simulation for Search and Recommendation Systems",
+      "link": "https://arxiv.org/abs/2606.14474",
+      "evidenceLink": "https://www.semanticscholar.org/paper/18cc20140ebc71b6c629f284c015cdd9f45bf739",
+      "publishedAt": "2026-06-12T00:00:00.000Z",
+      "submittedAt": "2026-06-12T00:00:00.000Z",
+      "author": "Chenglong Ma, Xinye Wanyan, Danula Hettiachchi, Ziqi Xu, Yongli Ren",
+      "summary": "Large-language-model (LLM) based user simulation is increasingly adopted for evaluating search engines, recommender systems, and retrieval-augmented generation pipelines, yet most simulators remain opaque: it is difficult to determine why a simulated user made a particular choice or whether that choice is consistent with the intended user profile. Compounding this, recent research shows that LLMs can produce biased or discriminatory responses depending on user background characteristics such as language, education level, and cultural context, raising concerns about the equitable treatment of minority and disadvantaged groups. This half-day, in-person tutorial introduces a proposed design-and-audit framework that treats a user simulator as a verifiable engineering artefact composed of seven auditable components---structured Persona, task-aware Contract, matched human-vs-agent Execution, auditable Trace, persona-aligned Verification, structured Feedback, and a Refinement loop that updates personas and contracts. Through two hands-on mini-labs on recommendation-list evaluation and search-query formulation, participants will inspect simulator behaviour end-to-end, distinguish diagnostic discrepancy analysis from statistical validation, and apply checks for fidelity, credibility, and demographic bias. The tutorial targets information retrieval and recommender systems researchers and practitioners interested in user behaviour simulation and responsible AI.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 53,
+      "core": "Large-language-model (LLM) based user simulation is increasingly adopted for evaluating search engines, recommender systems, and retrieval-augmented generation pipelines, yet most simulators remain opaque: it is difficult to determine why a simulated user made a particular choice or whether that choice is consistent with the intended user profile. Compounding this, recent research shows that LLMs can produce biased …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Scaling cloud migrations with agentic AI on Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/scaling-cloud-migrations-with-agentic-ai-on-amazon-bedrock-agentcore",
+      "publishedAt": "2026-08-20T16:11:18.000Z",
+      "author": "Nikhil Jha",
+      "summary": "Learn how AWS Professional Services uses a multi-agent framework built on Amazon Bedrock AgentCore to automate enterprise cloud migrations end to end. Purpose-built AI agents handle discovery, infrastructure as code generation, portfolio governance, and post-migration operations, reducing IaC development time from weeks to minutes.",
+      "evidenceLink": "",
+      "score": 52.13484490079365,
+      "core": "Learn how AWS Professional Services uses a multi-agent framework built on Amazon Bedrock AgentCore to automate enterprise cloud migrations end to end. Purpose-built AI agents handle discovery, infrastructure as code generation, portfolio governance, and post-migration operations, reducing IaC development time from weeks to minutes.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-21T16:12:01.817Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "AI companies destroy physical books – let's scan rare books before it's too late",
+      "link": "https://annas-archive.pk/blog/physical-destruction.html",
+      "publishedAt": "2026-08-21T10:05:46.000Z",
+      "author": "darccio https://news.ycombinator.com/user?id=darccio",
+      "summary": "AI companies are secretly buying, scanning, and destroying millions of physical books to train their models, permanently locking human knowledge inside private corporate servers. Anna’s Archive is urgently calling on volunteers worldwide to scan and upload books to their shadow library before this cultural heritage disappears forever.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49385994",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 562,
+        "comments": 358
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-21T16:12:01.817Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 49.29336942300067,
+      "core": "AI companies are secretly buying, scanning, and destroying millions of physical books to train their models, permanently locking human knowledge inside private corporate servers. Anna’s Archive is urgently calling on volunteers worldwide to scan and upload books to their shadow library before this cultural heritage disappears forever.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Test Agent Changes with LangSmith Preview Builds",
+      "link": "https://www.langchain.com/blog/langsmith-preview-builds-test-agent-changes-before-production",
+      "publishedAt": "2026-08-20T19:20:50.000Z",
+      "author": "",
+      "summary": "Preview Builds let teams test pull request branches in temporary, production-like LangSmith deployments before merging agent changes.",
+      "evidenceLink": "",
+      "score": 48.24936871031746,
+      "core": "Preview Builds let teams test pull request branches in temporary, production-like LangSmith deployments before merging agent changes.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-21T16:12:01.817Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gerald_chen_ai_engineering",
+      "source": "陈广亮的技术博客",
+      "title": "Fiber 双缓冲教 Agent state 三招：workInProgress、commit、rollback",
+      "link": "https://chenguangliang.com/posts/blog219_fe2agent-extra-c-fiber-doublebuffer",
+      "publishedAt": "2026-08-21T01:00:00.000Z",
+      "author": "",
+      "summary": "blog205 讲了 Fiber 教 Agent 状态设计的 3 条原则，本文把\"双缓冲\"掰到底：workInProgress 试算、commit 原子切换、rollback 一键丢弃——对应 agent 的 draft 隔离、gate 原子翻转、无成本回滚。答案在 Fiber 里躺了 9 年。这是 fe2agent 番外 C，全系列 13 篇收官。",
+      "evidenceLink": "",
+      "score": 46.892027440476184,
+      "core": "blog205 讲了 Fiber 教 Agent 状态设计的 3 条原则，本文把\"双缓冲\"掰到底：workInProgress 试算、commit 原子切换、rollback 一键丢弃——对应 agent 的 draft 隔离、gate 原子翻转、无成本回滚。答案在 Fiber 里躺了 9 年。这是 fe2agent 番外 C，全系列 13 篇收官。",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-21T16:12:01.817Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "together_ai_engineering",
+      "source": "Together AI",
+      "title": "Kimi K3: the complete developer guide",
+      "link": "https://www.together.ai/blog/kimi-k3-guide",
+      "publishedAt": "2026-08-01T00:00:00.000Z",
+      "author": "",
+      "summary": "Kimi K3 is the first open 3T-class model. See how it benchmarks, what it costs, and how to call it on the Together AI API, with copy-paste code examples.",
+      "evidenceLink": "",
+      "score": 46.85,
+      "core": "Kimi K3 is the first open 3T-class model. See how it benchmarks, what it costs, and how to call it on the Together AI API, with copy-paste code examples.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-21T16:12:01.817Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "together_ai_engineering",
+      "source": "Together AI",
+      "title": "ThunderAgent: 2x Faster Agentic Inference for Synthetic Data Generation at Scale",
+      "link": "https://www.together.ai/blog/thunderagent",
+      "publishedAt": "2026-07-29T00:00:00.000Z",
+      "author": "",
+      "summary": "ThunderAgent is a program-aware scheduler for agentic inference. By treating each agent workflow as a schedulable program, it eliminates KV cache thrashing to deliver more than 2x single-node throughput and near-linear multi-node scaling.",
+      "evidenceLink": "",
+      "score": 44.32222222222222,
+      "core": "ThunderAgent is a program-aware scheduler for agentic inference. By treating each agent workflow as a schedulable program, it eliminates KV cache thrashing to deliver more than 2x single-node throughput and near-linear multi-node scaling.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-21T16:12:01.817Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "AI Agent Governance: What It Is and Why It Matters",
+      "link": "https://rerun.build/blog/ai-agent-governance",
+      "publishedAt": "2026-08-21T05:43:04.000Z",
+      "author": "",
+      "summary": "AI agent governance controls what autonomous agents can access and do, enforced at runtime, not just on paper. Here are the five pillars of a real framework and how to close the gap between policy and enforcement.",
+      "evidenceLink": "",
+      "score": 41.43456712301587,
+      "core": "AI agent governance controls what autonomous agents can access and do, enforced at runtime, not just on paper. Here are the five pillars of a real framework and how to close the gap between policy and enforcement.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-21T16:12:01.817Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "huggingface_blog",
+      "source": "Hugging Face Blog",
+      "title": "Measuring benchmark optimization in speech recognition",
+      "link": "https://huggingface.co/blog/asr-benchmark-optimization",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "author": "",
+      "summary": "",
+      "evidenceLink": "",
+      "score": 37.84282109126984,
+      "core": "原文摘要不足，需要精读正文后补充核心结论。",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-21T16:12:01.817Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Quote of the day by OpenAI CEO Sam Altman: 'There's no way to get there without a breakthrough' — a blunt reality check on the path to superintelligent AI",
+      "link": "https://www.techradar.com/pro/quote-of-the-day-by-openai-ceo-sam-altman-theres-no-way-to-get-there-without-a-breakthrough-a-blunt-reality-check-on-the-path-to-superintelligent-ai",
+      "publishedAt": "2026-08-20T22:00:00.000Z",
+      "author": "Keumars Afifi-Sabet",
+      "summary": "Although AI models continue to improve in metrics and benchmarks, fundamental improvements may not come for a while",
+      "evidenceLink": "",
+      "score": 34.33885283730159,
+      "core": "Although AI models continue to improve in metrics and benchmarks, fundamental improvements may not come for a while",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-21T16:12:01.817Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "together_ai_engineering",
+      "source": "Together AI",
+      "title": "The production platform for open-weight AI inference",
+      "link": "https://www.together.ai/blog/the-production-platform-for-open-weight-ai-inference",
+      "publishedAt": "2026-07-23T00:00:00.000Z",
+      "author": "",
+      "summary": "Run open models in production with full control over performance, cost, and quality. Deploy in minutes, roll out safely, and scale to your SLOs.",
+      "evidenceLink": "",
+      "score": 31.8,
+      "core": "Run open models in production with full control over performance, cost, and quality. Deploy in minutes, roll out safely, and scale to your SLOs.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-21T16:12:01.817Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "deepmind",
+      "source": "Google DeepMind",
+      "title": "From Atari to EVE Online: Building on 15 Years of AI Research in Games",
+      "link": "https://deepmind.google/blog/from-atari-to-eve-online-building-on-15-years-of-ai-research-in-games",
+      "publishedAt": "2026-08-21T11:59:48.000Z",
+      "author": "",
+      "summary": "Google DeepMind partners with game studios to prototype breakthrough AI gameplay.",
+      "evidenceLink": "",
+      "score": 30.149725853174605,
+      "core": "Google DeepMind partners with game studios to prototype breakthrough AI gameplay.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-21T16:12:01.817Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "“Enterprises are becoming much more rigorous about the economics of AI”: Snowflake wants to help you cut AI costs by choosing the right model for the right task",
+      "link": "https://www.itpro.com/technology/artificial-intelligence/enterprises-are-becoming-much-more-rigorous-about-the-economics-of-ai-snowflake-wants-to-help-you-cut-ai-costs-by-choosing-the-right-model-for-the-right-task",
+      "publishedAt": "2026-08-18T16:34:19.000Z",
+      "author": "Ross Kelly",
+      "summary": "New dynamic model routing capabilities aim to help customers box clever when it comes to their AI model choice",
+      "evidenceLink": "",
+      "score": 26.494785376984126,
+      "core": "New dynamic model routing capabilities aim to help customers box clever when it comes to their AI model choice",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-21T16:12:01.817Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "together_ai_engineering",
+      "source": "Together AI",
+      "title": "Autoscaling endpoints for LLM inference",
+      "link": "https://www.together.ai/blog/autoscaling-endpoints-for-llm-inference",
+      "publishedAt": "2026-07-31T00:00:00.000Z",
+      "author": "",
+      "summary": "GPU utilization can read healthy while your queue backs up, and a new replica takes minutes to warm. Here's how to pick autoscaling metrics, tune scale-up/down windows, and budget for cold starts on dedicated inference.",
+      "evidenceLink": "",
+      "score": 25.216666666666665,
+      "core": "GPU utilization can read healthy while your queue backs up, and a new replica takes minutes to warm. Here's how to pick autoscaling metrics, tune scale-up/down windows, and budget for cold starts on dedicated inference.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-21T16:12:01.817Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "AI was meant to simplify IT service management – new research shows it's creating bigger workloads for teams",
+      "link": "https://www.itpro.com/technology/artificial-intelligence/ai-was-meant-to-simplify-it-service-management-new-research-shows-its-creating-bigger-workloads-for-teams",
+      "publishedAt": "2026-08-19T10:34:24.000Z",
+      "author": "Emma Woollacott",
+      "summary": "IT service management teams might be saving time on some tasks, but work is piling up in other areas",
+      "evidenceLink": "",
+      "score": 21.725043313492066,
+      "core": "IT service management teams might be saving time on some tasks, but work is piling up in other areas",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-21T16:12:01.817Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

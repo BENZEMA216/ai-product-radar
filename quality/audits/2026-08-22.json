@@ -1,0 +1,293 @@
+{
+  "date": "2026-08-22",
+  "generatedAt": "2026-08-21T16:17:44.987Z",
+  "reportPath": "reports/2026-08-22-0017-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 66,
+    "top20Sources": [
+      "HN Algolia",
+      "Product Hunt",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 21,
+      "keptCount": 11,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-08-20；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 21 条，AI 相关候选 11 条；实际 fallback：hunted_space。；历史去重后最终发布 11 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 5,
+      "keptCount": 5,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 25,
+      "keptCount": 17,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 22,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 13,
+      "keptCount": 13,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-08-17T16:01:51.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Huzzah – a novel approach to coding with AI",
+      "productKey": "https://www.danielvaughn.dev/posts/huzzah",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Huzzah 值得看的是它对“AI 编程”提出了不同交互路径；当前只有 Show HN 发布证据，判断重点应放在实际工作流是否比现有 coding agent 更省步骤。"
+    },
+    {
+      "rank": 2,
+      "product": "Checksum AI",
+      "productKey": "https://www.producthunt.com/products/checksum-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把测试生成、执行和反馈接到编码 agent 旁边，值得验证是否真能形成持续 QA 闭环，而不只是一次性补测试。"
+    },
+    {
+      "rank": 3,
+      "product": "MeetStream AI",
+      "productKey": "https://www.producthunt.com/products/meetstream-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "统一会议接入 API 能替开发者吞掉入会、采集和转写的脏活，关键是跨平台稳定性与下游 agent 的差异化空间。"
+    },
+    {
+      "rank": 4,
+      "product": "AgentSight – eBPF observability for AI agents, no code changes",
+      "productKey": "https://github.com/alibaba/anolisa/blob/main/docs/user-guide/en/agent-observability/agentsight.md",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AgentSight 用 eBPF 在不改代码的前提下观测 agent，产品价值在于把接入成本从埋点改造降到基础设施层；值得验证它能否定位一次 agent 调用中的真实瓶颈。"
+    },
+    {
+      "rank": 5,
+      "product": "Argentic – An L402 Lightning toll booth for AI scraping agents",
+      "productKey": "https://argentic.network",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Argentic 把 AI 抓取 agent 的访问权做成基于 L402 的按次收费关卡，值得观察网站方能否从“封禁机器人”转向机器客户计费，以及开发者接入是否足够轻。"
+    },
+    {
+      "rank": 6,
+      "product": "Let your coding agents set up your test coverage",
+      "productKey": "https://blog.codacy.com/introducing-codacy-skills-part-3-let-your-agent-set-up-test-coverage",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Codacy 把测试覆盖率配置封装成 coding agent 可调用的 skill，切中了“生成代码之后谁补质量门禁”；应重点看它能否读取现有项目约束并产出可合并的测试改动。"
+    },
+    {
+      "rank": 7,
+      "product": "Aloud",
+      "productKey": "https://www.producthunt.com/products/aloud-4",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它试图把口头反馈直接变成编码 agent 可执行任务，真正门槛在于能否保留意图、上下文和验收标准。"
+    },
+    {
+      "rank": 8,
+      "product": "Grok 4.6",
+      "productKey": "https://www.producthunt.com/products/grok-4-6-7",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“长时间运行”比单轮能力更接近真实 agent 需求，应重点验证任务持续性、错误恢复和成本，而非只看模型能力宣称。"
+    },
+    {
+      "rank": 9,
+      "product": "Berd",
+      "productKey": "https://www.producthunt.com/products/berd",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用轻量桌面界面降低搭建 agent 的心理门槛很有产品感，但仍需看权限配置、调试和复用是否同样简单。"
+    },
+    {
+      "rank": 10,
+      "product": "Glen",
+      "productKey": "https://www.ycombinator.com/launches/svl-glen-a-shared-learning-layer-for-all-the-agents-in-your-organization",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Glen 试图给组织内多个 agent 建共享学习层，产品判断点不是又一个记忆库，而是它能否把一次 agent 的纠错安全地迁移给其他 agent，并处理权限与错误传播。"
+    },
+    {
+      "rank": 11,
+      "product": "ctx 1.0 - `git blame` but for agent sessions",
+      "productKey": "https://github.com/ctxrs/ctx/releases/tag/v1.0.0",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ctx 用“agent 会话版 git blame”把代码变更追溯到具体会话，直接回应团队采用 coding agent 后的责任与复盘问题；值得看追踪粒度是否足以复现决策，而非只留日志。"
+    },
+    {
+      "rank": 12,
+      "product": "Plainspeak, make AI agents write like a human",
+      "productKey": "https://sufiyan.cc/plainspeak",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Plainspeak 瞄准 agent 文案的机器腔，价值取决于它能否在保持事实与指令约束的同时改善语气；若只是通用改写提示词，护城河和持续使用场景都有限。"
+    },
+    {
+      "rank": 13,
+      "product": "bitdrift.ai",
+      "productKey": "https://www.producthunt.com/products/bitdrift",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "移动端可观测性若能让 agent 从现场日志走到可核验诊断，会缩短排障链路；重点看它是否保留证据与人工确认。"
+    },
+    {
+      "rank": 14,
+      "product": "MiniMax Design",
+      "productKey": "https://www.producthunt.com/products/minimax",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“创作型 agent 团队”把卖点从单次生成推向协作编排，值得看多角色是否提升成品一致性，而非增加流程噪声。"
+    },
+    {
+      "rank": 15,
+      "product": "Squid Pay – Financial infrastructure for autonomous AI agents",
+      "productKey": "https://www.squidpay.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Squid Pay 把自主 agent 的支付能力单列为金融基础设施，值得看授权额度、审计和撤销机制是否先于“自动花钱”体验落地，这决定企业是否敢让 agent 真正执行交易。"
+    },
+    {
+      "rank": 16,
+      "product": "Cloudways Managed AI Agents",
+      "productKey": "https://www.producthunt.com/products/cloudways",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "托管 OpenClaw 与 Hermes 直接消除部署负担，采用价值取决于隔离、升级、凭证管理和长期运行成本是否透明。"
+    },
+    {
+      "rank": 17,
+      "product": "NobodyWho",
+      "productKey": "https://www.producthunt.com/products/nobodywho",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "跨设备本地运行能扩展隐私和离线场景，但产品成立仍取决于硬件适配、模型压缩与端侧体验的真实取舍。"
+    },
+    {
+      "rank": 18,
+      "product": "Shape",
+      "productKey": "https://www.producthunt.com/products/shape-5",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把设计师和程序员放进同一 agentic IDE，核心不是生成更多，而是共享制品、反馈与交接能否真正减少往返。"
+    },
+    {
+      "rank": 19,
+      "product": "Touchy",
+      "productKey": "https://www.ycombinator.com/launches/syt-touchy-voice-first-ai-assistant-for-iphone-that-understands-the-world-around-you",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Touchy 把视觉环境、长期记忆和跨工具执行组合进 iPhone 语音入口，关键不是“能聊”，而是手机权限边界内能完成多少真实任务，以及持续监听带来的隐私成本。"
+    },
+    {
+      "rank": 20,
+      "product": "Verified business dashboards inside ChatGPT and Claude via MCP Apps",
+      "productKey": "https://www.corpusiq.io/docs/hermes/mcp/mcp-apps-interactive-ui",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这项能力把可验证业务仪表盘直接嵌入 ChatGPT 与 Claude 的 MCP Apps，值得看交互式 UI 能否保留指标来源和权限语义，避免对话层把经营数据变成不可审计摘要。"
+    }
+  ]
+}

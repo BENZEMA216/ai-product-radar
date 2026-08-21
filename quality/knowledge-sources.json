@@ -345,6 +345,42 @@
       "requireKnowledgeDepth": true
     },
     {
+      "id": "modal_engineering",
+      "label": "Modal Engineering",
+      "type": "feed",
+      "url": "https://modal.com/blog/atom.xml",
+      "home": "https://modal.com/blog",
+      "weight": 14,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "together_ai_engineering",
+      "label": "Together AI",
+      "type": "feed",
+      "url": "https://www.together.ai/blog/rss.xml",
+      "home": "https://www.together.ai/blog",
+      "weight": 14,
+      "maxItems": 24,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "mistral_ai_engineering",
+      "label": "Mistral AI",
+      "type": "feed",
+      "url": "https://mistral.ai/news/rss",
+      "home": "https://mistral.ai/news/",
+      "weight": 14,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
       "id": "latent_space",
       "label": "Latent Space",
       "type": "feed",

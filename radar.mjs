@@ -1124,7 +1124,71 @@ async function fetchProductHuntDateDiagnostics(dateKey) {
   }
   const best = results.sort((a, b) => b.rawCount - a.rawCount || b.items.length - a.items.length)[0];
   if (best?.rawCount || best?.items?.length) return best;
+  try {
+    const huntedSpaceHtml = await fetchText("https://www.hunted.space/history", {
+      attempts: 2,
+      timeoutMs: 25000,
+      rejectEmpty: true,
+      minLength: 1000
+    });
+    const huntedSpaceDiagnostics = parseHuntedSpaceProductHuntDiagnostics(huntedSpaceHtml, dateKey);
+    if (huntedSpaceDiagnostics.rawCount || huntedSpaceDiagnostics.items.length) return huntedSpaceDiagnostics;
+  } catch (error) {
+    errors.push(`Hunted.Space: ${clean(error.message)}`);
+  }
   return { items: [], rawCount: 0, sourceKind: "unavailable", error: errors.join("; ") };
+}
+
+export function parseHuntedSpaceProductHuntDiagnostics(html, dateKey) {
+  const nextDataMatch = String(html || "").match(
+    /<script id=["']__NEXT_DATA__["'] type=["']application\/json["']>([\s\S]*?)<\/script>/i
+  );
+  if (!nextDataMatch) return { items: [], rawCount: 0, sourceKind: "hunted_space_unavailable" };
+  let payload;
+  try {
+    payload = JSON.parse(nextDataMatch[1]);
+  } catch {
+    return { items: [], rawCount: 0, sourceKind: "hunted_space_invalid" };
+  }
+  const rows = payload?.props?.pageProps?.postsByDate?.[dateKey];
+  if (!Array.isArray(rows)) return { items: [], rawCount: 0, sourceKind: "hunted_space_missing_date" };
+  const candidates = [];
+  const rawRows = [];
+  for (const row of rows) {
+    if (!Array.isArray(row)) continue;
+    const link = clean(row[0]).replace(/^https:\/(?!\/)/, "https://").split("?")[0];
+    const rawDescription = clean(row[6]);
+    const rawName = clean(row[9]);
+    const zeroBasedRank = Number(row[4]);
+    const phVotes = Number(row[11]);
+    const phComments = Number(row[12]);
+    if (!rawName || !/^https:\/\/www\.producthunt\.com\/products\//.test(link) || !Number.isFinite(zeroBasedRank)) {
+      continue;
+    }
+    rawRows.push(link);
+    const candidate = productHuntCandidate({
+      rawName,
+      link,
+      rawDescription,
+      dateKey,
+      evidenceUrl: `https://www.hunted.space/history#post-${dateKey}`,
+      evidenceLabel: `Product Hunt fallback ${dateKey}`,
+      raw: JSON.stringify(row),
+      sourceRank: zeroBasedRank + 1,
+      metrics: {
+        ...(Number.isFinite(phVotes) ? { phVotes } : {}),
+        ...(Number.isFinite(phComments) ? { phComments } : {})
+      },
+      observedAt: dateKey,
+      sourceApi: "hunted_space_fallback"
+    });
+    if (candidate) candidates.push(candidate);
+  }
+  return {
+    items: uniqueBy(candidates, (item) => item.link),
+    rawCount: new Set(rawRows).size,
+    sourceKind: "hunted_space"
+  };
 }
 
 async function fetchProductHuntDiagnosticsForRun(dateKeys) {
@@ -2942,8 +3006,8 @@ function buildSourceHealth({ rawGroups, candidates, phDateKeys }) {
     ? `；fallback 低覆盖时扩展检查 ${productHuntExpandedDates.join(", ")}，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。`
     : "";
   const productHuntReaderNote =
-    productHuntSourceKinds.filter((kind) => /^jina/.test(kind)).length > 1
-      ? `；已尝试备用 reader：${productHuntSourceKinds.filter((kind) => /^jina/.test(kind)).join(", ")}。`
+    productHuntSourceKinds.filter((kind) => /^jina|hunted_space/.test(kind)).length
+      ? `；实际 fallback：${productHuntSourceKinds.filter((kind) => /^jina|hunted_space/.test(kind)).join(", ")}。`
       : "";
   const productHuntApiUsed =
     productHuntSourceKinds.includes("api") || rawGroups.producthuntOfficial.some((item) => item.sourceApi === "producthunt_api");
@@ -2969,8 +3033,8 @@ function buildSourceHealth({ rawGroups, candidates, phDateKeys }) {
     : productHuntOfficialSnapshotUsed
     ? `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；官方日榜页面的可审计快照已启用，原始覆盖 ${productHuntRawCount} 条，AI 相关候选 ${rawGroups.producthuntOfficial.length} 条，候选带 rank/votes/comments。`
     : process.env.PRODUCT_HUNT_TOKEN
-      ? `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；PRODUCT_HUNT_TOKEN 已配置但 API 未返回可解析候选，已回退到 Jina/OrangeBot；原始覆盖 ${productHuntRawCount} 条${productHuntReaderNote}${productHuntExpandedNote}。`
-      : `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot fallback；原始覆盖 ${productHuntRawCount} 条，AI 相关候选 ${rawGroups.producthuntOfficial.length + rawGroups.producthuntFallback.length} 条${
+      ? `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；PRODUCT_HUNT_TOKEN 已配置但 API 未返回可解析候选，已回退到公开第三方日榜；原始覆盖 ${productHuntRawCount} 条${productHuntReaderNote}${productHuntExpandedNote}。`
+      : `Product Hunt 按 Pacific 完成日抓取 ${phDateKeys.join(", ")}；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 ${productHuntRawCount} 条，AI 相关候选 ${rawGroups.producthuntOfficial.length + rawGroups.producthuntFallback.length} 条${
           productHuntStatus === "unavailable" ? "；完成日榜无有效 fallback 覆盖，不能视为稳定 0 条。" : ""
         }${productHuntFallbackRisk}${productHuntReaderNote}${productHuntExpandedNote}`;
   return {

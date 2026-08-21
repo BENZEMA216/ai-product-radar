@@ -65,10 +65,14 @@ function normalizeProductKey(value) {
 function evidenceSource(value) {
   const text = cleanCell(value).replace(/\[[^\]]+\]\(([^)]+)\)/g, "$1");
   const label = cleanCell(value).match(/\[([^\]]+)\]/)?.[1] || text;
-  return cleanCell(label)
+  const source = cleanCell(label)
     .replace(/\s+\d{4}-\d{2}-\d{2}.*$/, "")
     .replace(/\s+\d{4}$/, "")
     .trim();
+  // API and public-board fallbacks are transport details for the same source.
+  // Keep the detail in the evidence label while normalizing source accounting.
+  if (/^Product Hunt(?: API| fallback)?$/i.test(source)) return "Product Hunt";
+  return source;
 }
 
 function inferCategory({ source, product, did, evidence }) {
