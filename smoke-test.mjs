@@ -4156,6 +4156,17 @@ function testKnowledgeStrongAiRelevanceRejectsIncidentalMentions() {
     ),
     true
   );
+  assert.equal(
+    isAiRelevant(
+      {
+        title: "A Tale of Two Flink Autoscalers",
+        summary: "The autoscaler reasons from job metrics and runs an evaluation algorithm for production scaling."
+      },
+      source
+    ),
+    false,
+    "generic reasoning and evaluation language must not be treated as explicit AI evidence"
+  );
 }
 
 function testKnowledgeTopicKeyCollapsesVersionedAnnouncements() {

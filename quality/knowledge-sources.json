@@ -437,6 +437,90 @@
       "requireKnowledgeDepth": true,
       "discoveredVia": "gmail",
       "accessPolicy": "gmail_subscription"
+    },
+    {
+      "id": "netflix_technology",
+      "label": "Netflix Technology Blog",
+      "type": "feed",
+      "url": "https://netflixtechblog.com/feed",
+      "home": "https://netflixtechblog.com/",
+      "weight": 14,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "databricks_engineering",
+      "label": "Databricks Blog",
+      "type": "feed",
+      "url": "https://www.databricks.com/feed",
+      "home": "https://www.databricks.com/blog",
+      "weight": 14,
+      "maxItems": 24,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "nvidia_developer",
+      "label": "NVIDIA Technical Blog",
+      "type": "feed",
+      "url": "https://developer.nvidia.com/blog/feed/",
+      "home": "https://developer.nvidia.com/blog/",
+      "weight": 14,
+      "maxItems": 24,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "salesforce_engineering",
+      "label": "Salesforce Engineering",
+      "type": "feed",
+      "url": "https://engineering.salesforce.com/feed/",
+      "home": "https://engineering.salesforce.com/",
+      "weight": 13,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "slack_engineering",
+      "label": "Slack Engineering",
+      "type": "feed",
+      "url": "https://slack.engineering/feed/",
+      "home": "https://slack.engineering/",
+      "weight": 13,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "spotify_engineering",
+      "label": "Spotify Engineering",
+      "type": "feed",
+      "url": "https://engineering.atspotify.com/feed/",
+      "home": "https://engineering.atspotify.com/",
+      "weight": 13,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "datadog_engineering",
+      "label": "Datadog Engineering",
+      "type": "feed",
+      "url": "https://www.datadoghq.com/blog/engineering/index.xml",
+      "home": "https://www.datadoghq.com/blog/engineering/",
+      "weight": 13,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
     }
   ],
   "paperSource": {

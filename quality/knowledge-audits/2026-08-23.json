@@ -1,0 +1,76 @@
+{
+  "generatedAt": "2026-08-22T16:09:31.171Z",
+  "report": "2026-08-23.md",
+  "health": "quality/knowledge-source-health/2026-08-23.json",
+  "candidates": "quality/knowledge-candidates/2026-08-23.json",
+  "site": "docs/index.html",
+  "ok": true,
+  "date": "2026-08-23",
+  "rows": 20,
+  "blogCount": 16,
+  "paperCount": 4,
+  "blogAccessVerifiedCount": 16,
+  "topConferencePaperCount": 4,
+  "sourceCount": 45,
+  "candidatePool": {
+    "historicalLinkCount": 502,
+    "blogFetchedCount": 198,
+    "blogAccessCheckedCount": 41,
+    "blogAccessVerifiedCount": 36,
+    "blogAccessRejectedCount": 5,
+    "blogAccessRejected": [
+      {
+        "sourceId": "interconnects",
+        "title": "Lessons from the hacks",
+        "link": "https://www.interconnects.ai/p/lessons-from-the-hacks",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Software engineering at a proprietary trading company: Optiver",
+        "link": "https://newsletter.pragmaticengineer.com/p/optiver",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: We need to talk about migrations with AI",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-we-need-to-talk-about-migrations",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: Meta’s self-inflicted resignation-wave",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-metas-self-inflicted-resignation",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Headed for the Exit: the Great Engineering Leader Career Break",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-great-engineering-leader-career-break",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      }
+    ],
+    "paperFetchedCount": 80,
+    "paperTopConferenceVerifiedCount": 80,
+    "blogAfterHistoricalDedupCount": 36,
+    "paperAfterHistoricalDedupCount": 38,
+    "eligibleAfterHistoricalDedupCount": 74,
+    "maxPerBlogSource": 2,
+    "selectedBlogSourceCounts": {
+      "aws_machine_learning": 2,
+      "cloudflare_ai": 1,
+      "databricks_engineering": 1,
+      "google_research": 1,
+      "latent_space": 1,
+      "netflix_technology": 1,
+      "nvidia_developer": 2,
+      "salesforce_engineering": 2,
+      "spotify_engineering": 1,
+      "techradar_pro_ai": 2,
+      "vercel_ai": 2
+    },
+    "sourceCapRelaxed": false,
+    "shortfallReason": ""
+  },
+  "failures": []
+}

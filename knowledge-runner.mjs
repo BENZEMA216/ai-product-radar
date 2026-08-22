@@ -66,6 +66,24 @@ const STRONG_AI_PATTERNS = [
   /智能体|人工智能|大模型|推理|多模态|模型/
 ];
 
+const AI_ANCHOR_PATTERNS = [
+  /\bagents?\b/i,
+  /\bagentic\b/i,
+  /\bai\b/i,
+  /\bllms?\b/i,
+  /language models?/i,
+  /\binference\b/i,
+  /\bmultimodal\b/i,
+  /\bembeddings?\b/i,
+  /\brobot(?:ics)?\b/i,
+  /machine learning/i,
+  /deep learning/i,
+  /\bgenerative\b/i,
+  /\btransformers?\b/i,
+  /\bdiffusion\b/i,
+  /智能体|人工智能|大模型|多模态|模型/
+];
+
 const KNOWLEDGE_TERMS = [
   "how we built",
   "how we",
@@ -440,7 +458,10 @@ function strongAiEvidence(item) {
   const title = String(item.title || "");
   const summary = String(item.summary || "");
   if (STRONG_AI_PATTERNS.some((pattern) => pattern.test(title))) return true;
-  return STRONG_AI_PATTERNS.filter((pattern) => pattern.test(summary)).length >= 2;
+  return (
+    AI_ANCHOR_PATTERNS.some((pattern) => pattern.test(summary)) &&
+    STRONG_AI_PATTERNS.filter((pattern) => pattern.test(summary)).length >= 2
+  );
 }
 
 export function isAiRelevant(item, source) {
