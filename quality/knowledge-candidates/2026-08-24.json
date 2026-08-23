@@ -1,0 +1,422 @@
+{
+  "generatedAt": "2026-08-23T16:17:13.211Z",
+  "date": "2026-08-24",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "GPT-5.6 Sol is now 50% off a lower price",
+      "link": "https://vercel.com/changelog/gpt-5-6-sol-is-now-50-percent-off-a-lower-price",
+      "publishedAt": "2026-08-21T00:00:00.000Z",
+      "author": "Jerilyn Zheng",
+      "summary": "OpenAI lowered list pricing for GPT-5.6 Sol , and the 50% AI Gateway discount now applies to the new, lower price through September 18. Input drops 20%, output drops a third. The discount applies on every OpenAI service tier: Service tier You pay now (input / output) New list price (input / output) You paid before (input / output) Default $2.00 / $10.00 $4.00 / $20.00 $2.50 / $15.00 Flex $1.00 / $5.00 $2.00 / $10.00 $1.25 / $7.50 Priority (fast mode) $4.00 / $20.00 $8.00 / $40.00 $5.00 / $30.00 Rates are per million tokens for requests up to 272K tokens. Cached tokens, cache writes, long-context requests above 272K, and the US regional rates all move by the same proportion. See the pricing page for all model rates. The model ID is unchanged, so requests you already send bill at the new price automatically. BYOK requests bill at your own rate with OpenAI. To use Sol in a coding agent, run vercel ai-gateway coding-agents setup to connect your agents to AI Gateway, then select openai/gpt-5.6-sol in the agent's model settings. See the coding agents guide for setup details. Try it in the playground , or browse every language model on the AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 65.91918232142856,
+      "core": "OpenAI lowered list pricing for GPT-5.6 Sol , and the 50% AI Gateway discount now applies to the new, lower price through September 18. Input drops 20%, output drops a third. The discount applies on every OpenAI service tier: Service tier You pay now (input / output) New list price (input / output) You paid before (input / output) Default $2.00 / $10.00 $4.00 / $20.00 $2.50 / $15.00 Flex $1.00 / $5.00 $2.00 / $10.00…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-23T16:17:13.211Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "Local Information Access in Marathi: Evaluating LLM-Native Web Retrieval in a Low-Resource Environment",
+      "link": "https://doi.org/10.1145/3805712.3808534",
+      "evidenceLink": "https://www.semanticscholar.org/paper/cc48016b64ad171858e70849e1977d673bf5e919",
+      "publishedAt": "2026-07-19T00:00:00.000Z",
+      "submittedAt": "2026-07-19T00:00:00.000Z",
+      "author": "Sahil Kale",
+      "summary": "Web-augmented large language models (LLMs) promise end-to-end retrieval agents for time-sensitive information access, yet their reliability in low-resource environments remains unclear. We introduce MarathiWeb, a benchmark for evaluating LLM-native web retrieval in Marathi that separates translated global queries from natively authored, local information needs. We evaluate two frontier LLMs with built-in web search against a controlled Google-based retrieval baseline, and analyse retrieval depth, failure modes, and cost-accuracy trade-offs. Despite high tool invocation rates, accuracy drops sharply in Marathi, most severely for local queries, with the dominant failures arising from evidence integration rather than missing sources. We further find that shallow retrieval (one web call) is consistently the most accurate and cost-efficient strategy, while deeper multi-step search degrades performance. MarathiWeb exposes persistent gaps in local-language information access and provides an open benchmark for low-resource retrieval research.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 52,
+      "core": "Web-augmented large language models (LLMs) promise end-to-end retrieval agents for time-sensitive information access, yet their reliability in low-resource environments remains unclear. We introduce MarathiWeb, a benchmark for evaluating LLM-native web retrieval in Marathi that separates translated global queries from natively authored, local information needs. We evaluate two frontier LLMs with built-in web search …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "Exploration-and-Thinking: Agentic Reasoning over Knowledge Graphs via an LLM-RL Synergized Framework",
+      "link": "https://doi.org/10.1145/3805712.3809649",
+      "evidenceLink": "https://www.semanticscholar.org/paper/a1f4587a8db460ac31b55f6e89f081febfaf66cb",
+      "publishedAt": "2026-07-19T00:00:00.000Z",
+      "submittedAt": "2026-07-19T00:00:00.000Z",
+      "author": "Yi Xia, Gang Zhou, Jing Chen, Xiaohui Chen, Qinlong Fan",
+      "summary": "While Knowledge Graphs (KGs) can ground Large Language Models (LLMs) in factual knowledge, existing LLM-KG integration methods for complex reasoning are plagued by computational inefficiency and semantic inconsistency. The tight coupling of LLM inference and KG traversal leads to prohibitive costs, while spurious reasoning paths often misguide learning-based agents, causing reward hacking. To this end, we propose EAT (Exploration-and-Thinking), a novel agentic framework that synergizes LLMs with Reinforcement Learning (RL) for efficient and faithful reasoning on KGs. EAT's core innovations are twofold: (1) an adaptive retrieval-augmented generation mechanism that decouples language comprehension from structured exploration, dramatically improving efficiency; and (2) an LLM-guided reward shaping strategy that explicitly penalizes semantically inconsistent paths and promotes logically valid trajectories grounded in the KG. Extensive experiments on benchmarks like WebQSP, CWQ, and GrailQA show that EAT achieves state-of-the-art performance. Notably, it surpasses the reasoning capability of GPT-4o while utilizing a significantly smaller 8B-parameter LLM.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 52,
+      "core": "While Knowledge Graphs (KGs) can ground Large Language Models (LLMs) in factual knowledge, existing LLM-KG integration methods for complex reasoning are plagued by computational inefficiency and semantic inconsistency. The tight coupling of LLM inference and KG traversal leads to prohibitive costs, while spurious reasoning paths often misguide learning-based agents, causing reward hacking. To this end, we propose EA…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "GraphSynthQA: Knowledge-Graph-Guided Query Synthesis and Step-Level Preference Optimization for Web Agents",
+      "link": "https://doi.org/10.1145/3805712.3809865",
+      "evidenceLink": "https://www.semanticscholar.org/paper/7eb5690cca55880bca6949803109d7000d6db81f",
+      "publishedAt": "2026-07-19T00:00:00.000Z",
+      "submittedAt": "2026-07-19T00:00:00.000Z",
+      "author": "Chiwei Zhu, Mingxuan Du, Benfeng Xu, Shengzhuo Zhang, Xiaorui Wang",
+      "summary": "Web browsing—widely used for information retrieval and fact verification—has become a fundamental capability of recently emerged large language model (LLM) agents, which is often elicited by training on complex questions requiring web search. However, this task faces challenges with respect to data and training: existing QA datasets are mostly 1-3 hop over closed corpora (e.g., Wikipedia); meanwhile, outcome-based on-policy RL that used by recent works is inefficient and brittle in long-horizon, tool-heavy browsing environments. To address these challenges, we introduce GraphSynthQA, a knowledge-graph (KG)—guided synthesis framework in an open-web setting. Starting from Wikidata seed entities, GraphSynthQA iteratively retrieves and verifies evidence from the internet to expand a KG, then synthesizes complex, answer-verifiable queries grounded in multi-evidence dependencies. Building on the synthesized data, we train web-browsing agents with a compute-efficient two-stage recipe: (i) cold-start supervised fine-tuning on ReAct-style trajectories, and (ii) step-level Direct Preference Optimization (DPO), where preferences are constructed offline via single-step branched rollouts that contrast candidate actions by their downstream success rates, providing dense process supervision without expensive on-policy exploration. Experiments show that our approach consistently improves performance on challenging web-browsing benchmarks and remains competitive among models of similar size.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 52,
+      "core": "Web browsing—widely used for information retrieval and fact verification—has become a fundamental capability of recently emerged large language model (LLM) agents, which is often elicited by training on complex questions requiring web search. However, this task faces challenges with respect to data and training: existing QA datasets are mostly 1-3 hop over closed corpora (e.g., Wikipedia); meanwhile, outcome-based o…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "Tool-Star: Empowering Multi-Tool Collaborative Web Agent via Reinforcement Learning",
+      "link": "https://doi.org/10.1145/3805712.3809712",
+      "evidenceLink": "https://www.semanticscholar.org/paper/4a6abaaa96109d8eb2c672949ff1cbf82386651e",
+      "publishedAt": "2026-07-19T00:00:00.000Z",
+      "submittedAt": "2026-07-19T00:00:00.000Z",
+      "author": "Guanting Dong, Yifei Chen, Xiaoxi Li, Jiajie Jin, Hongjin Qian",
+      "summary": "Recently, Large Language Models (LLMs) have demonstrated remarkable reasoning capabilities through reinforcement learning (RL). However, enabling LLM-based agents to effectively orchestrate multiple tools remains an open challenge. In this paper, we introduce Tool-Star, an end-to-end agentic post-training framework that empowers LLM-based web agents to strategically interact with external multi-tool environments. Tool-Star begins with a general tool-integrated data synthesis pipeline that combines two complementary sampling strategies to generate tool-use trajectories, followed by quality normalization and difficulty-aware curriculum construction to filter noisy samples and organize training data from easy to hard. We then introduce a two-stage training paradigm for multi-tool collaborative reasoning: (1) cold-start supervised fine-tuning with tool feedback to bootstrap long-horizon tool-augmented reasoning, and (2) a multi-tool self-critic RL algorithm with hierarchical rewards to reinforce effective tool coordination. Experiments across 13 benchmarks demonstrate Tool-Star's effectiveness. Further analyses provide practical insights for optimizing strategic tool use in web agents. The code is available at https://github.com/RUC-NLPIR/Tool-Star.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 52,
+      "core": "Recently, Large Language Models (LLMs) have demonstrated remarkable reasoning capabilities through reinforcement learning (RL). However, enabling LLM-based agents to effectively orchestrate multiple tools remains an open challenge. In this paper, we introduce Tool-Star, an end-to-end agentic post-training framework that empowers LLM-based web agents to strategically interact with external multi-tool environments. To…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "NVIDIA Nemotron 3 Ultra Leads Open Models on Accuracy and Efficiency in Agentic RTL Coding",
+      "link": "https://developer.nvidia.com/blog/nvidia-nemotron-3-ultra-leads-open-models-on-accuracy-and-efficiency-in-agentic-rtl-coding",
+      "publishedAt": "2026-07-27T00:45:00.000Z",
+      "author": "Nirmal Kumar Juluru",
+      "summary": "Modern chip design is increasingly limited by engineering time. Register transfer level (RTL) development and verification require specialized hardware...",
+      "evidenceLink": "",
+      "score": 49.855555555555554,
+      "core": "Modern chip design is increasingly limited by engineering time. Register transfer level (RTL) development and verification require specialized hardware...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-23T16:17:13.211Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Where Security Fits in an AI Agent Stack",
+      "link": "https://developer.nvidia.com/blog/where-security-fits-in-an-ai-agent-stack",
+      "publishedAt": "2026-08-21T13:00:00.000Z",
+      "author": "Michelle Horton",
+      "summary": "As AI agents become more capable and operate over longer horizons, building security and trust into the applications they power becomes increasingly important....",
+      "evidenceLink": "",
+      "score": 48.23664263888889,
+      "core": "As AI agents become more capable and operate over longer horizons, building security and trust into the applications they power becomes increasingly important....",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-23T16:17:13.211Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "salesforce_engineering",
+      "source": "Salesforce Engineering",
+      "title": "Why AI-Generated Code Is Easy but Engineering Trust Is Hard",
+      "link": "https://engineering.salesforce.com/why-ai-generated-code-is-easy-but-engineering-trust-is-hard",
+      "publishedAt": "2026-08-20T21:56:01.000Z",
+      "author": "Scott Nyberg",
+      "summary": "Imagine an AI coding agent generating a large pull request filled with AI-generated code. Everything looks exactly as it should: Later, your team discovers the agent quietly misinterpreted an ambiguous requirement near the beginning of the implementation. Every decision that followed was internally consistent. The tests validated the implementation. The reviewer approved the diff. The […] The post Why AI-Generated Code Is Easy but Engineering Trust Is Hard appeared first on Salesforce Engineering Blog .",
+      "evidenceLink": "",
+      "score": 47.082694226190476,
+      "core": "Imagine an AI coding agent generating a large pull request filled with AI-generated code. Everything looks exactly as it should: Later, your team discovers the agent quietly misinterpreted an ambiguous requirement near the beginning of the implementation. Every decision that followed was internally consistent. The tests validated the implementation. The reviewer approved the diff. The […] The post Why AI-Generated C…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-23T16:17:13.211Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Run Local Agentic AI Workflows with Meta’s Muse Glimmer on NVIDIA",
+      "link": "https://developer.nvidia.com/blog/run-local-agentic-ai-workflows-with-metas-muse-glimmer-on-nvidia",
+      "publishedAt": "2026-08-10T13:27:19.000Z",
+      "author": "Michelle Horton",
+      "summary": "Meta returns to the open source ecosystem with the release of Muse Glimmer, a 30B open-weight dense model with a 120K+ context window built for local AI...",
+      "evidenceLink": "",
+      "score": 45.861111111111114,
+      "core": "Meta returns to the open source ecosystem with the release of Muse Glimmer, a 30B open-weight dense model with a 120K+ context window built for local AI...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-23T16:17:13.211Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "NVIDIA AVO Reaches 100% on ARC-AGI-3, Demonstrating a Frontier-Level General-Purpose Architecture for Long-Horizon Autonomous Agents",
+      "link": "https://developer.nvidia.com/blog/nvidia-avo-reaches-100-on-arc-agi-3-demonstrating-a-frontier-level-general-purpose-architecture-for-long-horizon-autonomous-agents",
+      "publishedAt": "2026-08-21T13:00:00.000Z",
+      "author": "Tanya Lenz",
+      "summary": "A frontier language model is only one component of an AI agent. The surrounding agent system—often called a harness—determines how the model receives...",
+      "evidenceLink": "",
+      "score": 43.18108708333333,
+      "core": "A frontier language model is only one component of an AI agent. The surrounding agent system—often called a harness—determines how the model receives...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-23T16:17:13.211Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Six Agent Harness Capabilities for Higher Model Performance",
+      "link": "https://developer.nvidia.com/blog/six-agent-harness-capabilities-for-higher-model-performance",
+      "publishedAt": "2026-07-27T09:00:00.000Z",
+      "author": "Michelle Horton",
+      "summary": "Building a great AI agent isn’t just about choosing the right models. The harness is the architecture surrounding the model. How it renders context, executes...",
+      "evidenceLink": "",
+      "score": 38.888888888888886,
+      "core": "Building a great AI agent isn’t just about choosing the right models. The harness is the architecture surrounding the model. How it renders context, executes...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-23T16:17:13.211Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_ai_news",
+      "source": "AWS News Blog · AI",
+      "title": "Runtime instances: persistent compute for production AI agents on Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/aws/runtime-instances-persistent-compute-for-production-ai-agents-on-amazon-bedrock-agentcore",
+      "publishedAt": "2026-08-06T22:58:00.000Z",
+      "author": "Sébastien Stormacq",
+      "summary": "Announcing runtime instances in Amazon Bedrock AgentCore—persistent, managed EC2 infrastructure for production AI agents with multi-agent collaboration, GPU support, and sessions lasting up to 14 days.",
+      "evidenceLink": "",
+      "score": 37.11666666666667,
+      "core": "Announcing runtime instances in Amazon Bedrock AgentCore—persistent, managed EC2 infrastructure for production AI agents with multi-agent collaboration, GPU support, and sessions lasting up to 14 days.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-23T16:17:13.211Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "salesforce_engineering",
+      "source": "Salesforce Engineering",
+      "title": "How Salesforce Built an Agentic Engineering Enablement Strategy for Thousands of Software Engineers",
+      "link": "https://engineering.salesforce.com/how-salesforce-built-an-agentic-engineering-enablement-strategy-for-thousands-of-software-engineers",
+      "publishedAt": "2026-07-30T20:09:53.000Z",
+      "author": "Scott Nyberg",
+      "summary": "Giving thousands of software engineers access to agentic tooling is straightforward. Helping them fundamentally change how they build software is another matter entirely; one every engineering organization eventually runs into. The real constraint on enterprise agentic engineering is not model power, rather, it is an organization’s ability to build new skills, establish shared expectations, and […] The post How Salesforce Built an Agentic Engineering Enablement Strategy for Thousands of Software Engineers appeared first on Salesforce Engineering Blog .",
+      "evidenceLink": "",
+      "score": 32.1,
+      "core": "Giving thousands of software engineers access to agentic tooling is straightforward. Helping them fundamentally change how they build software is another matter entirely; one every engineering organization eventually runs into. The real constraint on enterprise agentic engineering is not model power, rather, it is an organization’s ability to build new skills, establish shared expectations, and […] The post How Sale…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-23T16:17:13.211Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "salesforce_engineering",
+      "source": "Salesforce Engineering",
+      "title": "Building Reliable Production AI with Durable Workflows",
+      "link": "https://engineering.salesforce.com/building-reliable-production-ai-with-durable-workflows",
+      "publishedAt": "2026-07-27T22:26:18.000Z",
+      "author": "Scott Nyberg",
+      "summary": "Building an AI prototype has never been easier. You send a prompt to a model, receive a response, and present the result to a user. As long as each request is independent, the interaction is straightforward to reason about, test, and debug. That is why so many early AI applications feel deceptively simple. Production AI […] The post Building Reliable Production AI with Durable Workflows appeared first on Salesforce Engineering Blog .",
+      "evidenceLink": "",
+      "score": 30.427777777777777,
+      "core": "Building an AI prototype has never been easier. You send a prompt to a model, receive a response, and present the result to a user. As long as each request is independent, the interaction is straightforward to reason about, test, and debug. That is why so many early AI applications feel deceptively simple. Production AI […] The post Building Reliable Production AI with Durable Workflows appeared first on Salesforce …",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-23T16:17:13.211Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "NVIDIA Exemplar Cloud: Lessons for Unlocking Full Performance on AI Infrastructure",
+      "link": "https://developer.nvidia.com/blog/nvidia-exemplar-cloud-lessons-for-unlocking-full-performance-on-ai-infrastructure",
+      "publishedAt": "2026-07-30T16:00:00.000Z",
+      "author": "Elizabeth Goodman",
+      "summary": "Two AI computing clusters built from identical NVIDIA H100, GB200 NVL72, or GB300 NVL72 systems can deliver materially different training throughput. We...",
+      "evidenceLink": "",
+      "score": 28.86111111111111,
+      "core": "Two AI computing clusters built from identical NVIDIA H100, GB200 NVL72, or GB300 NVL72 systems can deliver materially different training throughput. We...",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-23T16:17:13.211Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Maximizing AI Factory Performance per Watt with NVIDIA DSX MaxLPS",
+      "link": "https://developer.nvidia.com/blog/maximizing-ai-factory-performance-per-watt-with-nvidia-dsx-maxlps",
+      "publishedAt": "2026-08-21T15:00:00.000Z",
+      "author": "Tanya Lenz",
+      "summary": "AI factories are power-constrained industrial systems. The question is no longer how many GPUs fit in a data center, but how much AI output each available...",
+      "evidenceLink": "",
+      "score": 27.351722003968256,
+      "core": "AI factories are power-constrained industrial systems. The question is no longer how many GPUs fit in a data center, but how much AI output each available...",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-23T16:17:13.211Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Generate Trajectories, Reasoning Traces, and Auto-Labels with NVIDIA Alpamayo 2 Super",
+      "link": "https://developer.nvidia.com/blog/generate-trajectories-reasoning-traces-and-auto-labels-with-nvidia-alpamayo-2-super",
+      "publishedAt": "2026-08-04T15:00:00.000Z",
+      "author": "Elizabeth Goodman",
+      "summary": "Autonomous vehicle (AV) development often relies on separate models for trajectory generation, high-level intent prediction, scene understanding, and data...",
+      "evidenceLink": "",
+      "score": 26.872222222222224,
+      "core": "Autonomous vehicle (AV) development often relies on separate models for trajectory generation, high-level intent prediction, scene understanding, and data...",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-23T16:17:13.211Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "How Generative Recommenders Are Redefining RecSys at Scale",
+      "link": "https://developer.nvidia.com/blog/how-generative-recommenders-are-redefining-recsys-at-scale",
+      "publishedAt": "2026-08-20T16:00:00.000Z",
+      "author": "Elizabeth Goodman",
+      "summary": "Recommender systems (RecSys) are one of the most ubiquitous machine learning problems in the consumer internet industry yet notoriously difficult to train and...",
+      "evidenceLink": "",
+      "score": 25.731087083333335,
+      "core": "Recommender systems (RecSys) are one of the most ubiquitous machine learning problems in the consumer internet industry yet notoriously difficult to train and...",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-23T16:17:13.211Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "AI isn't killing jobs yet: Over 50% of businesses say AI is creating roles as massive upskilling push begins",
+      "link": "https://www.techradar.com/pro/ai-isnt-killing-jobs-yet-over-50-of-uk-businesses-say-ai-is-creating-roles-as-massive-upskilling-push-begins",
+      "publishedAt": "2026-08-23T15:05:00.000Z",
+      "author": "Efosa Udinmwen",
+      "summary": "A new UK survey finds over half of businesses say AI has created jobs, though workforce skills still lag.",
+      "evidenceLink": "",
+      "score": 25.49735692460317,
+      "core": "A new UK survey finds over half of businesses say AI has created jobs, though workforce skills still lag.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-23T16:17:13.211Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_industry_ai",
+      "source": "Microsoft Industry Blog",
+      "title": "What’s the Tea? Lessons from leaders navigating AI transformation",
+      "link": "https://www.microsoft.com/en-us/microsoft-cloud/blog/2026/07/30/whats-the-tea-lessons-from-leaders-navigating-ai-transformation",
+      "publishedAt": "2026-07-30T16:00:00.000Z",
+      "author": "Alysa Taylor",
+      "summary": "I drink a lot of tea. English breakfast, usually, in a real cup, every day. So when my team came to me with an idea for a new series, they wanted it to be relatable, and honestly, I was hesitant at first. But at the end of the day, the name captured something I find genuinely energizing right now: the pace at which leaders are transforming their organizations with AI, and how generously they're sharing what they're learning with one another. The post What’s the Tea? Lessons from leaders navigating AI transformation appeared first on The Microsoft Cloud Blog .",
+      "evidenceLink": "",
+      "score": 20.13888888888889,
+      "core": "I drink a lot of tea. English breakfast, usually, in a real cup, every day. So when my team came to me with an idea for a new series, they wanted it to be relatable, and honestly, I was hesitant at first. But at the end of the day, the name captured something I find genuinely energizing right now: the pace at which leaders are transforming their organizations with AI, and how generously they're sharing what they're …",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-23T16:17:13.211Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

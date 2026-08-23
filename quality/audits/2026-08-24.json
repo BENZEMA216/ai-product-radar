@@ -1,0 +1,293 @@
+{
+  "date": "2026-08-24",
+  "generatedAt": "2026-08-23T16:02:35.580Z",
+  "reportPath": "reports/2026-08-24-0002-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 33,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 12,
+      "keptCount": 8,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-08-22；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 12 条，AI 相关候选 8 条；实际 fallback：hunted_space。；历史去重后最终发布 8 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 1,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 18,
+      "keptCount": 11,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 13,
+      "keptCount": 13,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-08-17T16:01:51.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "SubtitleGenerator",
+      "productKey": "https://www.producthunt.com/products/subtitlegenerator",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把字幕生成、整理到可发布输出收进浏览器内，值得验证这种端到端交付能否减少视频团队在多个工具间搬运素材。"
+    },
+    {
+      "rank": 2,
+      "product": "Agent2Creator – a video social network whose members are AI agents",
+      "productKey": "https://agent2creator.vidmoat.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 AI agent 成为视频社交网络的内容主体，是对“agent 既生产又分发”的直接试验；关键要看互动是否形成真实网络，而非自动化内容堆积。"
+    },
+    {
+      "rank": 3,
+      "product": "AutoClaw",
+      "productKey": "https://www.producthunt.com/products/z-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它试图用同一工作 agent 贯通桌面、浏览器和聊天入口，产品判断点是跨界面状态能否连续，而不只是分别提供三种控制方式。"
+    },
+    {
+      "rank": 4,
+      "product": "Active Source of Truth for Your Coding Agents",
+      "productKey": "https://meetless.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把编码 agent 容易读到过期上下文的问题定义为“主动事实源”，值得看更新机制如何保证信息新鲜度，以及团队是否愿意维护这层权威状态。"
+    },
+    {
+      "rank": 5,
+      "product": "Archal",
+      "productKey": "https://www.ycombinator.com/launches/t2n-archal-api-sandboxes-built-for-ai-agents",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "为 agent 测试 API 集成提供隔离环境，直接解决测试账号、限流和脏状态三类工程阻力；它的价值取决于能覆盖多少真实 API 行为。"
+    },
+    {
+      "rank": 6,
+      "product": "Faber, cost-efficient open-source coding agent that uses code graph",
+      "productKey": "https://www.npmjs.com/package/faberwright",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用代码图压缩编码 agent 的理解成本，是明确的效率路线；应重点看它是否在大型仓库中减少无效上下文，而不是只在小样例上省 token。"
+    },
+    {
+      "rank": 7,
+      "product": "Hands-Rust MCP/CLI that sees the Windows desktop and clicks real Chrome",
+      "productKey": "https://news.ycombinator.com/item?id=49405405",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 Windows 桌面视觉与真实 Chrome 操作暴露为 MCP/CLI，值得审视权限隔离、误操作恢复和视觉定位稳定性这三条电脑控制底线。"
+    },
+    {
+      "rank": 8,
+      "product": "Zero",
+      "productKey": "https://www.producthunt.com/products/zero-15",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“为 AI agent 设计编程语言”把可生成性提升为语言层约束；值得看它具体减少了哪些 agent 编码歧义，以及能否接入现有工程栈。"
+    },
+    {
+      "rank": 9,
+      "product": "One portal for all your MCP servers",
+      "productKey": "https://onemcp.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "统一管理多个 MCP server 的入口瞄准了配置和发现碎片化，真正的产品壁垒会来自权限治理、健康检查和跨客户端复用，而非目录本身。"
+    },
+    {
+      "rank": 10,
+      "product": "Self-Hosted Social Media Agents with Raspberry Pi",
+      "productKey": "https://www.microphone.computer",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Raspberry Pi 自托管把社媒 agent 的隐私、持续运行和成本放进同一方案；应验证硬件门槛是否换来了足够可靠的发布自动化。"
+    },
+    {
+      "rank": 11,
+      "product": "Agents Never Sleep",
+      "productKey": "https://www.producthunt.com/products/agents-never-sleep",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用“合盖后仍运行”切中本地 agent 的持续执行断点，值得看任务迁移、联网恢复和电源状态变化时能否保持可控。"
+    },
+    {
+      "rank": 12,
+      "product": "Zuse\" One agent coordinating 20 Linear issues in worktrees",
+      "productKey": "https://www.zuse.sh",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "单个 agent 并行协调 20 个 Linear issue 与 worktree，把价值主张落在任务编排规模上；应看冲突合并、失败隔离和人工接管是否跟得上并发。"
+    },
+    {
+      "rank": 13,
+      "product": "Maccess",
+      "productKey": "https://www.producthunt.com/products/maccess",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把远程触控、屏幕与 AI 控制合并成随身 Mac 入口，值得判断 AI 是否真正缩短远程操作路径，还是只附加在成熟遥控功能上。"
+    },
+    {
+      "rank": 14,
+      "product": "Open Analytics",
+      "productKey": "https://www.producthunt.com/products/open-analytics-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "以 AI-native 替代 Google Analytics 的挑战不在自然语言问数，而在数据采集、归因和行动建议能否连成闭环；这决定它是否只是换界面。"
+    },
+    {
+      "rank": 15,
+      "product": "Pocket by Meta",
+      "productKey": "https://www.producthunt.com/products/pocket-by-meta",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 vibe coding 的产物直接做成类似 TikTok 的游戏分发流，值得看“创作—试玩—传播”是否能形成低门槛增长循环。"
+    },
+    {
+      "rank": 16,
+      "product": "Port Radar for macOS",
+      "productKey": "https://www.producthunt.com/products/port-radar-for-macos",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "端口冲突是明确但窄的开发痛点；值得验证 AI 是否能解释进程关系并安全处置，而非仅把系统端口列表换成聊天入口。"
+    },
+    {
+      "rank": 17,
+      "product": "Structo – Claude Code for short form writing",
+      "productKey": "https://structo.redbeardlab.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它借用 Claude Code 的迭代式工作方式处理短文写作，产品看点是结构化修改能否比通用聊天更好地保留作者意图和版本脉络。"
+    },
+    {
+      "rank": 18,
+      "product": "Opensourcing Lemmaflow – A trust harness for AI-native apps",
+      "productKey": "https://news.ycombinator.com/item?id=49407337",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“trust harness”试图把 AI 应用的可靠性从口号变成外接控制层；值得看它提供的是可执行验证与阻断，还是仅记录观测数据。"
+    },
+    {
+      "rank": 19,
+      "product": "Git workflow as an AI-agent skill",
+      "productKey": "https://github.com/musoyangrigor/gitx-skill",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 Git 工作流封装成 agent skill，观察点是它能否把分支、提交与冲突处理变成可复用约束，同时保留人类可审计的变更边界。"
+    },
+    {
+      "rank": 20,
+      "product": "Froging AI – image and video models in one workflow",
+      "productKey": "https://www.froging.ai",
+      "source": "HN Algolia",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "把图像与视频模型放进同一创作工作流，价值在于跨模型素材和参数能否连续复用；若只有模型聚合，切换成本优势会很薄。"
+    }
+  ]
+}
