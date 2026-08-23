@@ -129,6 +129,18 @@
       "requireKnowledgeDepth": true
     },
     {
+      "id": "aws_ai_news",
+      "label": "AWS News Blog · AI",
+      "type": "feed",
+      "url": "https://aws.amazon.com/blogs/aws/category/artificial-intelligence/amazon-machine-learning/feed/",
+      "home": "https://aws.amazon.com/blogs/aws/category/artificial-intelligence/amazon-machine-learning/",
+      "weight": 13,
+      "maxItems": 24,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
       "id": "google_developers",
       "label": "Google Developers Blog",
       "type": "feed",
@@ -160,6 +172,18 @@
       "home": "https://www.microsoft.com/en-us/research/blog/",
       "weight": 15,
       "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "microsoft_industry_ai",
+      "label": "Microsoft Industry Blog",
+      "type": "feed",
+      "url": "https://www.microsoft.com/en-us/industry/blog/feed/",
+      "home": "https://www.microsoft.com/en-us/industry/blog/",
+      "weight": 13,
+      "maxItems": 24,
       "requireAiRelevance": true,
       "requireStrongAiRelevance": true,
       "requireKnowledgeDepth": true
