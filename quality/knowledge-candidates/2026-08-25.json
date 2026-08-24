@@ -1,0 +1,421 @@
+{
+  "generatedAt": "2026-08-24T16:08:08.118Z",
+  "date": "2026-08-25",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Exa joins the Vercel AI Gateway and Agent Marketplace",
+      "link": "https://vercel.com/changelog/exa-joins-vercel-ai-gateway-agent-marketplace",
+      "publishedAt": "2026-08-19T00:00:00.000Z",
+      "author": "Zachary Balda",
+      "summary": "Exa is now available on the Vercel AI Gateway and Agent Marketplace as a native integration. Exa's neural search engine grounds models in current information. Exa search is now a built-in tool on AI Gateway , which runs the search for you without an Exa account of your own. You can also add Exa to a Vercel project from the Agent Marketplace to power search or a research agent, with a single API key that works across every Exa product and billing through your Vercel account. Exa search on AI Gateway Every model on AI Gateway can search with Exa through a built-in tool , with no Exa account or key of your own required. Pass gateway.tools.exaSearch() alongside your prompt and the gateway runs the search, hands the results back to the model, and keeps going until the model stops searching. You get one finished response with a synthesized answer rather than raw results to stream back yourself. The tool takes the same controls as the Exa API, so you can set how many results come back, focus a search on a category such as news or research papers, restrict it to a country, and include or exclude domains. Searches bill through AI Gateway next to your model usage at list price with no markup. Exa on the Agent Marketplace Install Exa from the Marketplace or deploy the Next.js Search template to integrate Exa's instant search, deep answers, and content extraction to your Vercel project. About Exa : For developers building AI features on Vercel, Exa gives agents the web, organized for them. Whether you're answering questions, monitoring changes, or extracting structured data, Exa's one API for search, crawling, and research returns token-efficient highlights with grounded citations, so your agents get the context they need with fewer round trips, lower cost, and lower latency. Read more",
+      "evidenceLink": "",
+      "score": 68.2760294047619,
+      "core": "Exa is now available on the Vercel AI Gateway and Agent Marketplace as a native integration. Exa's neural search engine grounds models in current information. Exa search is now a built-in tool on AI Gateway , which runs the search for you without an Exa account of your own. You can also add Exa to a Vercel project from the Agent Marketplace to power search or a research agent, with a single API key that works across…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-24T16:08:08.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "GLM-5.3 (open-weight) beat Anthropic/OpenAI models – for 1/5 the cost",
+      "link": "https://reinvently.co.uk/tools/ed-o-meter",
+      "publishedAt": "2026-08-23T16:24:21.000Z",
+      "author": "ed-is-ai https://news.ycombinator.com/user?id=ed-is-ai",
+      "summary": "Seventeen models on the Featherbench leaderboard: glm-5.3 leads at 100%, eight tie at 96%, and checker errors flip the safety ranking. See who tops the board.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49410097",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 235,
+        "comments": 109
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-24T16:08:08.118Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 59.13014066294476,
+      "core": "Seventeen models on the Featherbench leaderboard: glm-5.3 leads at 100%, eight tie at 96%, and checker errors flip the safety ranking. See who tops the board.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "CSMAD: Hallucination Detection via Multi-Agent Debate with NLI-Verified Contradictory Statements",
+      "link": "https://doi.org/10.1145/3805712.3808508",
+      "evidenceLink": "https://www.semanticscholar.org/paper/1a07f52be28761af771308ae478b58a8c4bb079d",
+      "publishedAt": "2026-07-19T00:00:00.000Z",
+      "submittedAt": "2026-07-19T00:00:00.000Z",
+      "author": "Swapnil Gupta, Akshay Verma, Khush Gupta, Prateek Sircar, Deepak Gupta",
+      "summary": "Large Language Models (LLMs) are prone to hallucinations, producing fluent but factually incorrect statements. Recent multi-agent debate methods improve hallucination detection by jointly improving reasoning and decision-making. However, existing approaches either collaborate which amplifies shared overconfidence, or adopt adversarial preset stances, that can inject incorrect information complicating decision making. To address this, we propose Contradictory Statement Multi-Agent Debate (CSMAD), a multi-agent framework that creates structured disagreement by generating a contradictory claim for each input claim. CSMAD asks independent agents to evaluate the claim and the contradictory claim, which encourages different lines of reasoning without assigning preset stances. When the outcome is non-discriminative; both the contradictory statements are either accepted or rejected; the agents exchange rationales and update their judgments after considering opposing evidence. A final judge then decides the truth of the original claim, using both arguments as context. To make contradictory statement generation reliable, we add a Natural Language Inference (NLI) based verifier that checks whether the generated statement actually contradicts the original claim; if it does not, the system falls back to an explicit negation-based contradiction. Across public benchmarks for question answering and scientific claim verification, as well as a proprietary e-commerce claims dataset, we show that CSMAD consistently outperforms the strongest baseline for both large (Claude-3.5 Sonnet) and medium-sized (Qwen3-8B) language models, improving F1 by +2.3 and +4.1 points, respectively, while reducing LLM token cost by 28%.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 52,
+      "core": "Large Language Models (LLMs) are prone to hallucinations, producing fluent but factually incorrect statements. Recent multi-agent debate methods improve hallucination detection by jointly improving reasoning and decision-making. However, existing approaches either collaborate which amplifies shared overconfidence, or adopt adversarial preset stances, that can inject incorrect information complicating decision making…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Beyond Prompt Engineering: A Systematic Analysis of Prompt Lexical Sensitivity and Its Impacts on Quality",
+      "link": "https://arxiv.org/abs/2608.20349",
+      "evidenceLink": "https://www.semanticscholar.org/paper/c32d472903956c8ef6a4bf541957a550248a15a9",
+      "publishedAt": "2026-06-16T00:00:00.000Z",
+      "submittedAt": "2026-06-16T00:00:00.000Z",
+      "author": "Qipeng Xie, Zi Liang, Jiafei Wu, Yufei Chen, Weizheng Wang",
+      "summary": "Large Language Models (LLMs) exhibit extreme sensitivity to surface-level prompt variations, in which minor lexical changes can trigger disproportionate performance fluctuations. Moving beyond black-box optimization and coarse-grained templates, we present the first large-scale, n-gram token-level mechanistic analysis of prompt stability, leveraging a dataset of 132,000 prompt variants. Our investigation reveals a fundamental Scaling Law of Prompt Performance Stability: higher average task performance is strongly associated with lower variance and greater robustness across prompt perturbation. We identify two core linguistic drivers underlying this robustness: (1) Domain-Specific Terminology, which tightly anchors semantic boundaries, and (2) Explicit Action Directives, which formalize reasoning trajectories. Together, these elements constrain the model's interpretative space, effectively ``locking in''more deterministic generation behavior. Building on these insights, we introduce an automated Prompt-Refining Agent that systematically restructures input queries by injecting domain anchoring and operational constraints. Empirical evaluation shows that our approach reduces performance variance by 40.7% in code generation task, while preserving or improving mean performance. These findings provide a statistically grounded and mechanistically interpretable framework for achieving robust prompt engineering.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 52,
+      "core": "Large Language Models (LLMs) exhibit extreme sensitivity to surface-level prompt variations, in which minor lexical changes can trigger disproportionate performance fluctuations. Moving beyond black-box optimization and coarse-grained templates, we present the first large-scale, n-gram token-level mechanistic analysis of prompt stability, leveraging a dataset of 132,000 prompt variants. Our investigation reveals a f…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "TheraAgent: Self-Improving Therapeutic Agent for Precise and Comprehensive Treatment Planning",
+      "link": "https://arxiv.org/abs/2605.05963",
+      "evidenceLink": "https://www.semanticscholar.org/paper/1a9b8de7688dbb5f3049f5bc8a700502332cfc22",
+      "publishedAt": "2026-05-07T00:00:00.000Z",
+      "submittedAt": "2026-05-07T00:00:00.000Z",
+      "author": "Junkai Li, Yunghwei Lai, Tianyi Zhu, Zheng Long Lee, Wei Ma",
+      "summary": "Formulating a treatment plan is inherently a complex reasoning and refinement task rather than a simple generation problem. However, existing large language models (LLMs) mainly rely on one-shot output without explicit verification, which may result in rough, incomplete, and potentially unsafe treatment plans. To address these limitations, we propose TheraAgent, an agentic framework that replaces one-shot generation with an iterative generate-judge-refine pipeline. By mirroring the actual reasoning process of human experts who iteratively revise treatment plans, our framework progressively transforms coarse and incomplete drafts into precise, comprehensive, and safer therapeutic regimens. To facilitate the critical judge component, we introduce TheraJudge, a treatment-specific evaluation module integrated into the inference loop to enforce clinical standards. Experiments show TheraAgent achieves state-of-the-art results on HealthBench, leading in Accuracy and Completeness. In expert evaluations, it attains an 86% win rate against physicians, with superior Targeting and Harm Control. Moreover, the highly agreement between TheraJudge and HealthBench evaluations confirms the reliability of our framework.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 52,
+      "core": "Formulating a treatment plan is inherently a complex reasoning and refinement task rather than a simple generation problem. However, existing large language models (LLMs) mainly rely on one-shot output without explicit verification, which may result in rough, incomplete, and potentially unsafe treatment plans. To address these limitations, we propose TheraAgent, an agentic framework that replaces one-shot generation…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Verbal-R3: Verbal Reranker as the Missing Bridge between Retrieval and Reasoning",
+      "link": "https://arxiv.org/abs/2605.01399",
+      "evidenceLink": "https://www.semanticscholar.org/paper/03c83b8b7e8815d02db101006220c79cb7173c42",
+      "publishedAt": "2026-05-02T00:00:00.000Z",
+      "submittedAt": "2026-05-02T00:00:00.000Z",
+      "author": "Sangkwon Park, Donghun Kang, J. Mok, Sungroh Yoon",
+      "summary": "The conventional Retrieval-Augmented Generation (RAG) paradigm of injecting raw retrieved texts into the Large Language Model (LLM)'s context often results in suboptimal integration of retrieved information. This paper proposes to bridge retrieval results and the LLM's reasoning ability through Verbal Annotations, analytic narratives that explicitly articulate the logical connection between a search query and retrieved contexts. Our empirical investigation reveals the potential of Verbal Annotations to substantially enhance the LLM's ability to generate accurate, contextually-grounded responses. Motivated by this finding, we introduce Verbal-R3, a novel agentic RAG framework that consists of a Generator and a Verbal Reranker. The Generator performs iterative retrieval and reasoning, while the Verbal Reranker returns relevance scores and Verbal Annotations to guide the reasoning and answering process of the Generator. The inference process of Verbal-R3 is further refined through relevance-guided test-time scaling, which efficiently allocates test-time compute for effective trajectory expansion. Verbal-R3 achieves state-of-the-art performance on complex Question Answering benchmarks, validating the effectiveness of the proposed framework.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 52,
+      "core": "The conventional Retrieval-Augmented Generation (RAG) paradigm of injecting raw retrieved texts into the Large Language Model (LLM)'s context often results in suboptimal integration of retrieved information. This paper proposes to bridge retrieval results and the LLM's reasoning ability through Verbal Annotations, analytic narratives that explicitly articulate the logical connection between a search query and retrie…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "AI-powered metadata correction and harmonization",
+      "link": "https://aws.amazon.com/blogs/machine-learning/ai-powered-metadata-correction-and-harmonization",
+      "publishedAt": "2026-08-24T15:53:03.000Z",
+      "author": "Joseph Cottingham",
+      "summary": "Metadata harmonization (standardizing labels, identifiers, and formats so datasets can work together) is still largely manual. This post shows how AI-powered metadata correction works in practice, covering two approaches, human-in-the-loop validation and autonomous agent-driven workflows, plus governance considerations for production deployment.",
+      "evidenceLink": "",
+      "score": 50.909819087301585,
+      "core": "Metadata harmonization (standardizing labels, identifiers, and formats so datasets can work together) is still largely manual. This post shows how AI-powered metadata correction works in practice, covering two approaches, human-in-the-loop validation and autonomous agent-driven workflows, plus governance considerations for production deployment.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-24T16:08:08.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "NVIDIA BlueField-4 Powers New Scale-In Network Infrastructure for Agentic AI Factories",
+      "link": "https://developer.nvidia.com/blog/nvidia-bluefield-4-powers-new-scale-in-network-infrastructure-for-agentic-ai-factories",
+      "publishedAt": "2026-08-24T15:00:00.000Z",
+      "author": "Michelle Horton",
+      "summary": "Traditional cloud infrastructure was designed for predictable, general-purpose workloads and standard interfaces. Agentic AI factories connect diverse users,...",
+      "evidenceLink": "",
+      "score": 49.80777543650793,
+      "core": "Traditional cloud infrastructure was designed for predictable, general-purpose workloads and standard interfaces. Agentic AI factories connect diverse users,...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-24T16:08:08.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cohere_blog",
+      "source": "Cohere Blog",
+      "title": "Creating a Security Agent with Cohere North and Wiz | Cohere",
+      "link": "https://cohere.com/blog/cohere-security-ai-agent-north-wiz",
+      "publishedAt": "2026-07-30T00:00:00.000Z",
+      "author": "",
+      "summary": "Learn how the Cohere team uses North, Wiz, and a custom MCP server to automate incident response workflows with AI.",
+      "score": 47.638888888888886,
+      "core": "Learn how the Cohere team uses North, Wiz, and a custom MCP server to automate incident response workflows with AI.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-24T16:08:08.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Solving Agentic AI Fleet Challenges with NVIDIA Vera CPU",
+      "link": "https://developer.nvidia.com/blog/solving-agentic-ai-fleet-challenges-with-nvidia-vera-cpu",
+      "publishedAt": "2026-08-24T15:00:00.000Z",
+      "author": "Michelle Horton",
+      "summary": "AI factories are interconnected systems where fleet economics depend on how efficiently the entire stack converts power and capital into completed agent tasks....",
+      "evidenceLink": "",
+      "score": 46.818886547619044,
+      "core": "AI factories are interconnected systems where fleet economics depend on how efficiently the entire stack converts power and capital into completed agent tasks....",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-24T16:08:08.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Giga-Scale AI and the Ethernet Evolution: How Spectrum-X Ethernet Rewrites the Rules",
+      "link": "https://developer.nvidia.com/blog/giga-scale-ai-ethernet-evolution-spectrum-x-ethernet-rewrites-rules",
+      "publishedAt": "2026-08-24T15:08:39.000Z",
+      "author": "Elizabeth Goodman",
+      "summary": "The massive growth of generative AI has fundamentally altered data center design. As distributed model training scales to span hundreds of thousands of GPUs,...",
+      "evidenceLink": "",
+      "score": 43.81807305555555,
+      "core": "The massive growth of generative AI has fundamentally altered data center design. As distributed model training scales to span hundreds of thousands of GPUs,...",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-24T16:08:08.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "I spent $20,000 on Devin in a month. Here’s what I learned | Ryan Carson (solo founder)",
+      "link": "https://www.lennysnewsletter.com/p/i-spent-20000-on-devin-in-a-month",
+      "publishedAt": "2026-08-24T12:04:02.000Z",
+      "author": "Claire Vo",
+      "summary": "Watch now | 🎙️ Solo founder Ryan Carson runs 15 concurrent Devin agents to handle engineering, customer success, and investor updates, and he uses a handwritten list to keep it all straight",
+      "evidenceLink": "",
+      "score": 43.76495797619048,
+      "core": "Watch now | 🎙️ Solo founder Ryan Carson runs 15 concurrent Devin agents to handle engineering, customer success, and investor updates, and he uses a handwritten list to keep it all straight",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-24T16:08:08.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Why most organizations are getting AI security wrong (and why it’s about to catch up with them)",
+      "link": "https://www.techradar.com/pro/why-most-organizations-are-getting-ai-security-wrong-and-why-its-about-to-catch-up-with-them",
+      "publishedAt": "2026-08-24T10:42:21.000Z",
+      "author": "Paul Dignan",
+      "summary": "Most organizations are securing AI incorrectly, leaving critical runtime vulnerabilities exposed as enterprise adoption accelerates.",
+      "evidenceLink": "",
+      "score": 41.34549369047619,
+      "core": "Most organizations are securing AI incorrectly, leaving critical runtime vulnerabilities exposed as enterprise adoption accelerates.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-24T16:08:08.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cohere_blog",
+      "source": "Cohere Blog",
+      "title": "Orchestrate Agentic Workflows with North Automations | Cohere",
+      "link": "https://cohere.com/blog/introducing-north-automations-ai-workflows",
+      "publishedAt": "2026-07-30T00:00:00.000Z",
+      "author": "",
+      "summary": "Coordinate agentic workflows across the enterprise with North Automations — designed for simplicity, control, and visibility at every step.",
+      "score": 38.772222222222226,
+      "core": "Coordinate agentic workflows across the enterprise with North Automations — designed for simplicity, control, and visibility at every step.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-24T16:08:08.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cohere_blog",
+      "source": "Cohere Blog",
+      "title": "Unpacking AI Safety for Enterprises | Cohere",
+      "link": "https://cohere.com/blog/unpacking-ai-safety",
+      "publishedAt": "2026-08-20T00:00:00.000Z",
+      "author": "",
+      "summary": "Navigate AI safety with confidence. This guide explains 7 key enterprise AI safety themes to help you address biases, misinformation, and other real-world risks.",
+      "score": 36.88475956349207,
+      "core": "Navigate AI safety with confidence. This guide explains 7 key enterprise AI safety themes to help you address biases, misinformation, and other real-world risks.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-24T16:08:08.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cohere_blog",
+      "source": "Cohere Blog",
+      "title": "North Mini Code: Agentic Coding for Developers | Cohere",
+      "link": "https://cohere.com/blog/north-mini-code",
+      "publishedAt": "2026-08-12T00:00:00.000Z",
+      "author": "",
+      "summary": "Meet North Mini Code, Cohere&#x27;s first open-source agentic coding model: a 30B MoE that codes strongly on minimal hardware.",
+      "score": 35.7,
+      "core": "Meet North Mini Code, Cohere&#x27;s first open-source agentic coding model: a 30B MoE that codes strongly on minimal hardware.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-24T16:08:08.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cohere_blog",
+      "source": "Cohere Blog",
+      "title": "Cohere and Mila Partner on Quebec French AI | Cohere",
+      "link": "https://cohere.com/blog/cohere-and-mila-partner-to-advance-quebec-french-language-and-cultural-context-in-ai",
+      "publishedAt": "2026-07-30T00:00:00.000Z",
+      "author": "",
+      "summary": "Cohere and Mila launch a research collaboration to improve AI evaluation across languages and cultures, starting with Quebec French.",
+      "score": 33.733333333333334,
+      "core": "Cohere and Mila launch a research collaboration to improve AI evaluation across languages and cultures, starting with Quebec French.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-24T16:08:08.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Why scaling AI requires a new economic strategy",
+      "link": "https://www.techradar.com/pro/why-scaling-ai-requires-a-new-economic-strategy",
+      "publishedAt": "2026-08-24T13:47:40.000Z",
+      "author": "David Villalón",
+      "summary": "Moving past simple model routing to fix enterprise AI's scaling and budget challenges.",
+      "evidenceLink": "",
+      "score": 31.310553214285715,
+      "core": "Moving past simple model routing to fix enterprise AI's scaling and budget challenges.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-24T16:08:08.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cohere_blog",
+      "source": "Cohere Blog",
+      "title": "The Total Cost of AI Ownership (AI TCO) | Cohere",
+      "link": "https://cohere.com/blog/the-total-cost-of-ai-ownership",
+      "publishedAt": "2026-07-30T00:00:00.000Z",
+      "author": "",
+      "summary": "Learn about the total cost of AI ownership for enterprises, from token pricing and model selection to private deployment and vendor infrastructure costs.",
+      "score": 28.85,
+      "core": "Learn about the total cost of AI ownership for enterprises, from token pricing and model selection to private deployment and vendor infrastructure costs.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-24T16:08:08.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "When AI dating goes wrong: as EVA AI hires the world's first ‘AI Companionship Therapist’, its resident relationship expert talks chatbot dependency — and the 28-year-old CEO of a human-only meet-up app tells me why he thinks AI infatuation is over",
+      "link": "https://www.techradar.com/ai-platforms-assistants/when-ai-dating-goes-wrong-eva-ai-hires-the-worlds-first-ai-companionship-therapist-a-psychotherapist-talks-chatbot-love-and-why-the-28-year-old-ceo-of-a-human-only-meet-up-app-thinks-ai-infatuation-is-over",
+      "publishedAt": "2026-08-23T18:00:00.000Z",
+      "author": "Becky Scarrott",
+      "summary": "Shame, jealousy, anger, addiction: are AI relationships causing more harm than good? and what’s the alternative to dating inside a screen in 2026?",
+      "evidenceLink": "",
+      "score": 24.229997658730156,
+      "core": "Shame, jealousy, anger, addiction: are AI relationships causing more harm than good? and what’s the alternative to dating inside a screen in 2026?",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-24T16:08:08.118Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
