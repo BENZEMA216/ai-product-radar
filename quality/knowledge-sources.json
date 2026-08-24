@@ -144,10 +144,25 @@
       "id": "google_developers",
       "label": "Google Developers Blog",
       "type": "feed",
-      "url": "https://developers.googleblog.com/feeds/posts/default?alt=rss",
+      "url": "https://developers.googleblog.com/feeds/posts/default",
       "home": "https://developers.googleblog.com/",
       "weight": 14,
       "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "cohere_blog",
+      "label": "Cohere Blog",
+      "type": "sitemap",
+      "url": "https://cohere.com/sitemap.xml",
+      "home": "https://cohere.com/blog",
+      "pathPrefixes": [
+        "/blog/"
+      ],
+      "weight": 15,
+      "maxItems": 24,
       "requireAiRelevance": true,
       "requireStrongAiRelevance": true,
       "requireKnowledgeDepth": true
