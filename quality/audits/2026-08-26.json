@@ -1,0 +1,293 @@
+{
+  "date": "2026-08-26",
+  "generatedAt": "2026-08-25T16:03:03.217Z",
+  "reportPath": "reports/2026-08-26-0003-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 55,
+    "top20Sources": [
+      "HN Algolia",
+      "Product Hunt",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 18,
+      "keptCount": 6,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-08-24；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 18 条，AI 相关候选 6 条；实际 fallback：hunted_space。；历史去重后最终发布 6 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 2,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 28,
+      "keptCount": 16,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 4,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 11,
+      "keptCount": 11,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-08-17T16:01:51.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Keenable – A different web search API for AI agents",
+      "productKey": "https://keenable.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Keenable 把检索专门做成面向 Agent 的 API，值得验证的不只是搜索结果数量，而是引用可追溯性、时效性与每次检索的 token 成本。"
+    },
+    {
+      "rank": 2,
+      "product": "Antigravity Remote Control",
+      "productKey": "https://www.producthunt.com/products/google-antigravity",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Antigravity Remote Control 允许从任意浏览器驱动 Agent，关键产品问题是远程接管、权限确认和高风险操作能否让人及时介入。"
+    },
+    {
+      "rank": 3,
+      "product": "Omnara",
+      "productKey": "https://www.ycombinator.com/launches/t9k-omnara-the-api-for-production-ready-agents",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Omnara 把“生产可用 Agent”收敛成一层 API，并以开源方式对标托管 Agent；值得看它是否真正覆盖部署、监控和故障恢复。"
+    },
+    {
+      "rank": 4,
+      "product": "Phoenix",
+      "productKey": "https://www.producthunt.com/products/phoenix-10",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Phoenix 专攻 iOS 与 macOS 开发，差异化不在通用写代码，而在能否打通 Xcode 编译、测试、签名和真机调试这一整条原生链路。"
+    },
+    {
+      "rank": 5,
+      "product": "Offloop",
+      "productKey": "https://www.producthunt.com/products/offloop",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Offloop 把人和 Agent 放进同一工作空间，值得看任务归属、交接与审计记录是否清楚，避免“共同工作”只停留在聊天界面。"
+    },
+    {
+      "rank": 6,
+      "product": "Decawork",
+      "productKey": "https://www.producthunt.com/products/decawork",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Decawork 面向企业统一控制内部 Agent 与工具，产品价值取决于权限、工具白名单、执行日志和成本治理能否集中落到一个控制面。"
+    },
+    {
+      "rank": 7,
+      "product": "Turn any website into a CLI for AI agents (142x fewer tokens than HTML)",
+      "productKey": "https://github.com/only-cli/oc",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把网站转换成 Agent 可调用的 CLI，确实可能比传整页 HTML 更省上下文；但“142 倍”需要用真实网站覆盖率和失败回退来验证。"
+    },
+    {
+      "rank": 8,
+      "product": "See if bloated 'skills' are degrading your coding agent's performance",
+      "productKey": "https://seoagent.com/skill-grader",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Skill Grader 把上下文工程从经验判断变成可检测对象，值得看它能否指出哪段 Skill 拖累表现，并给出可复现、可执行的精简建议。"
+    },
+    {
+      "rank": 9,
+      "product": "Rust Analyzer MCP Server Crate – std-thread bridge (no async)",
+      "productKey": "https://crates.io/crates/r3bl-rust-analyzer-mcp-server",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这个 Rust Analyzer MCP 用同步线程桥接，工程取舍明确；价值要看它是否换来更简单的部署、更稳定的调用，以及足够完整的分析能力。"
+    },
+    {
+      "rank": 10,
+      "product": "Agent Notifier",
+      "productKey": "https://notifier.aicrew.in/setup",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agent Notifier 试图解决开发者必须守着 Agent 等结果的问题，值得看通知触发是否准确，以及多任务并行时能否控制噪音和路由。"
+    },
+    {
+      "rank": 11,
+      "product": "Navigara",
+      "productKey": "https://www.producthunt.com/products/navigara",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Navigara 把 AI 支出直接连到产品路线图，切中企业“花了多少钱、换来什么优先级”的问题；核心是成本归因能否落到具体项目成果。"
+    },
+    {
+      "rank": 12,
+      "product": "Dropstone",
+      "productKey": "https://www.producthunt.com/products/dropstone-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Dropstone 把记忆、学习与跨环境执行放在同一运行时里，值得验证记忆是否可控、可迁移，并能避免旧信息持续污染后续行动。"
+    },
+    {
+      "rank": 13,
+      "product": "Zoetrope – Watch a Claude Code session as a live flow graph",
+      "productKey": "https://github.com/furkankly/zoetrope",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Zoetrope 用实时流程图呈现 Claude Code 会话，为调试和复盘提供可视入口；关键是能否还原工具调用、分支和失败节点，而非只画动画。"
+    },
+    {
+      "rank": 14,
+      "product": "Gibson ADK and Security Runtime",
+      "productKey": "https://www.zeroroot.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Gibson 把 Agent 开发套件与安全运行时放在一起，值得看权限限制和策略执行是否位于模型之外，能否对真实工具调用形成硬约束。"
+    },
+    {
+      "rank": 15,
+      "product": "Coffeetable, A new UX to discover books inside Claude",
+      "productKey": "https://claude.ai/directory/coffeetable",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Coffeetable 把图书发现嵌入 Claude 目录，值得观察这种“对话内垂直入口”是否比普通书单更好地支持探索、比较和下一步阅读。"
+    },
+    {
+      "rank": 16,
+      "product": "Rank21 – the AI product outbid board where earlier boosts cost less",
+      "productKey": "https://outbidlol.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Rank21 用竞价决定产品曝光，机制很新但也可能把发现质量变成付费排名；需要看是否有防刷、质量校准和持续用户价值。"
+    },
+    {
+      "rank": 17,
+      "product": "Diet Cola themed Chrome Extension to track you Claude usage",
+      "productKey": "https://dietclaude.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Diet Claude 是一个带强烈主题包装的用量追踪小工具，实际价值主要在成本与额度可见性；若没有更深控制能力，产品上限有限。"
+    },
+    {
+      "rank": 18,
+      "product": "A hash-chained ledger for AI reasoning you can verify yourself",
+      "productKey": "https://www.sdi-protocol.org",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "哈希链账本试图让 Agent 推理记录可验证，值得追问链上究竟记录了哪些可复核事件，以及日志完整性是否等于决策本身可信。"
+    },
+    {
+      "rank": 19,
+      "product": "CookWing, an AI chef that doesn't hallucinate quantities",
+      "productKey": "https://play.google.com/store/apps/details?id=com.redwing.vibecooking&hl=en_us",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "CookWing 用“不把份量说错”切入 AI 菜谱，垂直承诺足够具体；产品可信度取决于配方来源、单位换算和异常输入的校验机制。"
+    },
+    {
+      "rank": 20,
+      "product": "Save Claude, codex, Grok and OpenCode sessions to an infinite canvas",
+      "productKey": "https://agentgrid.sh",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AgentGrid 把多个编码 Agent 的会话存进无限画布，值得看跨工具导入、上下文复用和隐私边界是否能支撑长期项目，而非单次展示。"
+    }
+  ]
+}

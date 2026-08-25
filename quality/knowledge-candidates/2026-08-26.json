@@ -1,0 +1,428 @@
+{
+  "generatedAt": "2026-08-25T16:06:36.944Z",
+  "date": "2026-08-26",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Building a restaurant telephony AI host with Amazon Connect",
+      "link": "https://aws.amazon.com/blogs/machine-learning/building-a-restaurant-telephony-ai-host-with-amazon-connect",
+      "publishedAt": "2026-08-24T16:13:09.000Z",
+      "author": "Sergio Barraza",
+      "summary": "Learn how to build a voice ordering system for restaurants that answers a phone call and takes an order end to end, with no app, no website, and no sign-in. It uses Amazon Connect for telephony, Amazon Connect Agentic Voice for real-time speech, an Amazon Connect AI agent for reasoning, and Amazon Bedrock AgentCore Gateway to reach backend tools through MCP.",
+      "evidenceLink": "",
+      "score": 55.29349317460317,
+      "core": "Learn how to build a voice ordering system for restaurants that answers a phone call and takes an order end to end, with no app, no website, and no sign-in. It uses Amazon Connect for telephony, Amazon Connect Agentic Voice for real-time speech, an Amazon Connect AI agent for reasoning, and Amazon Bedrock AgentCore Gateway to reach backend tools through MCP.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-25T16:06:36.944Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Headlong: A Microharness for Persistent Agents",
+      "link": "https://www.laude.org/updates/headlong-a-microharness-for-persistent-agents",
+      "publishedAt": "2026-08-25T03:54:19.000Z",
+      "author": "lbw1215 https://news.ycombinator.com/user?id=lbw1215",
+      "summary": "Self-guided agents that think continuously",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49428882",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 106,
+        "comments": 49
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-25T16:06:36.944Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 53.90640762725682,
+      "core": "Self-guided agents that think continuously",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Democratizing institutional knowledge: Building an AI-powered knowledge management system with AWS",
+      "link": "https://aws.amazon.com/blogs/machine-learning/democratizing-institutional-knowledge-building-an-ai-powered-knowledge-management-system-with-aws",
+      "publishedAt": "2026-08-24T18:59:15.000Z",
+      "author": "Nneoma Okoroafor",
+      "summary": "Learn how to build a customizable, smart-caching knowledge management system on AWS that captures and delivers institutional (tribal) knowledge through a voice-first AI avatar. The accelerator uses Amazon Bedrock Knowledge Bases for retrieval-augmented generation and deploys in hours with AWS CloudFormation.",
+      "evidenceLink": "",
+      "score": 53.20789793650794,
+      "core": "Learn how to build a customizable, smart-caching knowledge management system on AWS that captures and delivers institutional (tribal) knowledge through a voice-first AI avatar. The accelerator uses Amazon Bedrock Knowledge Bases for retrieval-augmented generation and deploys in hours with AWS CloudFormation.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-25T16:06:36.944Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Samsung thinks Claude Code can help it boost chip design — but admits the AI still makes some worryingly big mistakes",
+      "link": "https://www.techradar.com/pro/samsung-thinks-claude-code-can-help-it-boost-chip-design-but-admits-the-ai-still-makes-some-worryingly-big-mistakes",
+      "publishedAt": "2026-08-25T00:25:00.000Z",
+      "author": "Rahim Amir",
+      "summary": "Samsung's chip division is finding out what agentic coding tools do when you leave them alone: when asked to deal with a stubborn error, Claude reclassified it as an informational notice to be 'rid' of the issue",
+      "evidenceLink": "",
+      "score": 52.051251111111114,
+      "core": "Samsung's chip division is finding out what agentic coding tools do when you leave them alone: when asked to deal with a stubborn error, Claude reclassified it as an informational notice to be 'rid' of the issue",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-25T16:06:36.944Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "mozilla_ai",
+      "source": "Mozilla.ai",
+      "title": "Introducing Agent Skills in Octonous",
+      "link": "https://blog.mozilla.ai/introducing-agent-skills-in-octonous",
+      "publishedAt": "2026-08-25T10:52:27.000Z",
+      "author": "Hareesh Bahuleyan",
+      "summary": "Agent Skills in Octonous offer a central, reusable library for your context, guidelines, and procedures. Written in standard Markdown, Skills end repetitive setup. Store team knowledge once, share it across your workspace, and seamlessly attach it to automated tasks or live conversations.",
+      "evidenceLink": "",
+      "score": 51.23154873015873,
+      "core": "Agent Skills in Octonous offer a central, reusable library for your context, guidelines, and procedures. Written in standard Markdown, Skills end repetitive setup. Store team knowledge once, share it across your workspace, and seamlessly attach it to automated tasks or live conversations.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-25T16:06:36.944Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "The Web Conference",
+      "title": "From Code to Rubrics: A Multimodal Evaluation of LLM Systems for Automated Feedback Generation",
+      "link": "https://doi.org/10.1145/3774905.3795458",
+      "evidenceLink": "https://www.semanticscholar.org/paper/94e687be5a6564c6532facf31b953da8ce300185",
+      "publishedAt": "2026-05-28T00:00:00.000Z",
+      "submittedAt": "2026-05-28T00:00:00.000Z",
+      "author": "Muhammad Haseeb, Ahmad Imam Amjad, Maaz Amjad, Victor S. Sheng",
+      "summary": "Large Language Models (LLMs) are being used to provide automated assessment and feedback on student programming assignments. However, most existing systems rely on single, unified prompting techniques that evaluate an entire rubric at once. Such approaches often overwhelm the model, reinforce biases, and result in inconsistent or generic feedback. As web-scale AI systems continue to expand, it is important to ensure that automated feedback generation systems remain reliable, accurate, and consistent. In this work, we study LLM-based feedback generation that considers multimodal data (e.g., student-written code, test cases, error traces, and rubric criteria). We compare a traditional single-prompt strategy with a multi-agent LLM architecture, where individual agents assess distinct aspects of the assessment criteria. Our experiments use several open-source models ranging from 20B to 70B parameters and an open-source dataset of 57 Python programming tasks containing student error code and associated test cases. We analyze differences in feedback precision, correctness, and consistency across architectures. We evaluate the effectiveness of using LLMs as judges and multi-judge strategies to obtain more specific and reliable feedback evaluations. Our results show that well-designed single-prompt setups often generate more actionable and personalized feedback than multi-agent approaches for simpler tasks, while highlighting important trade-offs for more complex scenarios. These findings inform best practices for designing and evaluating multimodal LLM-based automated feedback systems in programming education.",
+      "citationCount": 1,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "WWW",
+        "venueLabel": "The Web Conference",
+        "venueName": "The Web Conference",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 51.204119982655925,
+      "core": "Large Language Models (LLMs) are being used to provide automated assessment and feedback on student programming assignments. However, most existing systems rely on single, unified prompting techniques that evaluate an entire rubric at once. Such approaches often overwhelm the model, reinforce biases, and result in inconsistent or generic feedback. As web-scale AI systems continue to expand, it is important to ensure…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "CoMCo: Consistency-Aware Multi-Agent Coordination for Zero-Shot Cross-Modal Entity Matching",
+      "link": "https://doi.org/10.1145/3805712.3809543",
+      "evidenceLink": "https://www.semanticscholar.org/paper/80ba37a6d036e7ef6f47190c41a367e961d0d5d1",
+      "publishedAt": "2026-07-19T00:00:00.000Z",
+      "submittedAt": "2026-07-19T00:00:00.000Z",
+      "author": "Shiqi Zhang, Weixin Zeng, Ziheng Zhang, Wenzhe Hou, Weidong Xiao",
+      "summary": "Entity Matching (EM) is a fundamental task in data integration, traditionally studied over structured data such as tables and knowledge graphs. In modern repositories, real-world objects are often represented across multiple modalities, including structured entities with symbolic attributes and visual entities in image-centric collections. This motivates cross-modal entity matching, which aims to identify visual-structured entity pairs that refer to the same object. Existing methods typically rely on pretrained vision-language models to compute entity pair similarity and derive correspondence via local ranking, which, however, can be unreliable given noisy and ambiguous cross-modal data and may produce globally inconsistent correspondences across related entities. Multimodal large language models (MLLMs) offer richer cross-modal cues for matching, but exhaustive MLLM reasoning over large candidate spaces is prohibitively expensive. To address these limitations, in this work, we propose øurq, a blackboard-based multi-agent framework for zero-shot cross-modal entity matching that performs iterative, self-correcting refinement by fusing multiple matching signals, explicitly regulating global consistency, and selectively invoking an MLLM only for hard cases. We further construct two new benchmarks from real-world visual and structured data. Extensive experiments show that øurq consistently outperforms competitive baselines, providing an effective solution for zero-shot cross-modal entity matching. We release our data and code at https://github.com/Q-17/CoMCo.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 51,
+      "core": "Entity Matching (EM) is a fundamental task in data integration, traditionally studied over structured data such as tables and knowledge graphs. In modern repositories, real-world objects are often represented across multiple modalities, including structured entities with symbolic attributes and visual entities in image-centric collections. This motivates cross-modal entity matching, which aims to identify visual-str…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "M3-VQA: A Benchmark for Multimodal, Multi-Entity, Multi-Hop Visual Question Answering",
+      "link": "https://arxiv.org/abs/2604.25122",
+      "evidenceLink": "https://www.semanticscholar.org/paper/67c171e69dc519efe10bea70485aef3e6da3a551",
+      "publishedAt": "2026-04-28T00:00:00.000Z",
+      "submittedAt": "2026-04-28T00:00:00.000Z",
+      "author": "Jiatong Ma, Longteng Guo, Yuchen Liu, Zijia Zhao, Dongze Hao",
+      "summary": "We present M$^3$-VQA, a novel knowledge-based Visual Question Answering (VQA) benchmark, to enhance the evaluation of multimodal large language models (MLLMs) in fine-grained multimodal entity understanding and complex multi-hop reasoning. Unlike existing VQA datasets that focus on coarse-grained categories and simple reasoning over single entities, M$^3$-VQA introduces diverse multi-entity questions involving multiple distinct entities from both visual and textual sources. It requires models to perform both sequential and parallel multi-hop reasoning across multiple documents, supported by traceable, detailed evidence and a curated multimodal knowledge base. We evaluate 16 leading MLLMs under three settings: without external knowledge, with gold evidence, and with retrieval-augmented input. The poor results reveal significant challenges for MLLMs in knowledge acquisition and reasoning. Models perform poorly without external information but improve markedly when provided with precise evidence. Furthermore, reasoning-aware agentic retrieval surpasses heuristic methods, highlighting the importance of structured reasoning for complex multimodal understanding. M$^3$-VQA presents a more challenging evaluation for advancing the multimodal reasoning capabilities of MLLMs. Our code and dataset are available at https://github.com/CASIA-IVA-Lab/M3VQA.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 51,
+      "core": "We present M$^3$-VQA, a novel knowledge-based Visual Question Answering (VQA) benchmark, to enhance the evaluation of multimodal large language models (MLLMs) in fine-grained multimodal entity understanding and complex multi-hop reasoning. Unlike existing VQA datasets that focus on coarse-grained categories and simple reasoning over single entities, M$^3$-VQA introduces diverse multi-entity questions involving multi…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Ox-Alpha Is GLM?",
+      "link": "https://dejan.ai/blog/ox-alpha",
+      "publishedAt": "2026-08-24T16:30:16.000Z",
+      "author": "jitbit https://news.ycombinator.com/user?id=jitbit",
+      "summary": "Prompt injection and gzip-NCD compression analysis reveal that OX Alpha, a mysterious LLM on OpenRouter, is GLM developed by Z.ai.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49422226",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 83,
+        "comments": 65
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-25T16:06:36.944Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 50.29657668234553,
+      "core": "Prompt injection and gzip-NCD compression analysis reveal that OX Alpha, a mysterious LLM on OpenRouter, is GLM developed by Z.ai.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "RouterHGC: Optimized Router for LLM-based Multi-Agent Systems via Heterogeneous Graph Contrastive Learning",
+      "link": "https://www.semanticscholar.org/paper/bf11935072662fe2c69341014e55859d54d8acec",
+      "evidenceLink": "https://www.semanticscholar.org/paper/bf11935072662fe2c69341014e55859d54d8acec",
+      "publishedAt": "2026-05-25T00:00:00.000Z",
+      "submittedAt": "2026-05-25T00:00:00.000Z",
+      "author": "Yitao Xiao, Shaoyong Guo, Guomin Yang, Qingnan Wang, Yinlin Ren",
+      "summary": "While Large Language Model (LLM)-based Multi-Agent Systems (MAS) offer scalable solutions for complex tasks, dynamically configuring the optimal combination of collaboration modes, agent roles, and LLMs remains challenging. Existing routing methods typically resort to computationally expensive post-response optimization or focus on single-agent settings. We introduce RouterHGC, the first framework to harness heterogeneous graph contrastive learning for MAS routing. We formalize routing as a node selection problem on a heterogeneous graph, capturing high-order dependencies among queries, collaboration patterns, and roles. To optimize this, we design a novel global-local contrastive loss that aligns query graphs with high-performing configurations while distancing them from suboptimal or costly ones. Experiments on five datasets demonstrate that RouterHGC significantly improves reasoning accuracy while reducing costs.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 49,
+      "core": "While Large Language Model (LLM)-based Multi-Agent Systems (MAS) offer scalable solutions for complex tasks, dynamically configuring the optimal combination of collaboration modes, agent roles, and LLMs remains challenging. Existing routing methods typically resort to computationally expensive post-response optimization or focus on single-agent settings. We introduce RouterHGC, the first framework to harness heterog…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Toyota Scales Enterprise AI with Deep Agents and LangSmith",
+      "link": "https://www.langchain.com/blog/how-toyota-north-america-put-enterprise-ai-on-the-balance-sheet-with-deep-agents-and-langsmith",
+      "publishedAt": "2026-08-24T18:59:03.000Z",
+      "author": "",
+      "summary": "See how Toyota North America uses Deep Agents and LangSmith to run 50+ production agents, cut delivery from 6 months to 4 days, and track AI ROI.",
+      "evidenceLink": "",
+      "score": 48.29654873015873,
+      "core": "See how Toyota North America uses Deep Agents and LangSmith to run 50+ production agents, cut delivery from 6 months to 4 days, and track AI ROI.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-25T16:06:36.944Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "meta_engineering",
+      "source": "Meta Engineering",
+      "title": "MetaRoCE: A New RDMA Transport Built for AI-Scale Ethernet",
+      "link": "https://engineering.fb.com/2026/08/24/networking-traffic/metaroce-rdma-transport-ai-ethernet",
+      "publishedAt": "2026-08-24T18:02:29.000Z",
+      "author": "",
+      "summary": "Training and serving frontier AI models depends on fast, reliable networks that move data between GPUs without wasting compute cycles. To meet this challenge at scale, Meta designed MetaRoCE – a clean-sheet RDMA transport protocol purpose-built for AI workloads on commodity Ethernet. We’re releasing the MetaRoCE specification, a reference software implementation and a compliance test [...] Read More... The post MetaRoCE: A New RDMA Transport Built for AI-Scale Ethernet appeared first on Engineering at Meta .",
+      "evidenceLink": "",
+      "score": 47.273651904761905,
+      "core": "Training and serving frontier AI models depends on fast, reliable networks that move data between GPUs without wasting compute cycles. To meet this challenge at scale, Meta designed MetaRoCE – a clean-sheet RDMA transport protocol purpose-built for AI workloads on commodity Ethernet. We’re releasing the MetaRoCE specification, a reference software implementation and a compliance test [...] Read More... The post Meta…",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-25T16:06:36.944Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "How We Build Agent Environments & Tasks",
+      "link": "https://www.langchain.com/blog/building-agent-environments-and-tasks",
+      "publishedAt": "2026-08-25T14:56:35.000Z",
+      "author": "",
+      "summary": "How we create synthetic agent environments and tasks: a spec generation step, a spec-to-task step, and a world spec that holds shared knowledge.",
+      "evidenceLink": "",
+      "score": 42.71662809523809,
+      "core": "How we create synthetic agent environments and tasks: a spec generation step, a spec-to-task step, and a world spec that holds shared knowledge.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-25T16:06:36.944Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "salesforce_engineering",
+      "source": "Salesforce Engineering",
+      "title": "From Prediction to Action: How to Turn AI Outputs Into Decisions",
+      "link": "https://engineering.salesforce.com/from-prediction-to-action-how-to-turn-ai-outputs-into-decisions",
+      "publishedAt": "2026-08-24T23:42:02.000Z",
+      "author": "Scott Nyberg",
+      "summary": "By Ali Nahvi, Akshit Behera, Yvonne Fan, and Melissa Ramey. Your models are accurate. Your pipelines are healthy. Your dashboards are working. And your system is still failing its users. Imagine thousands of dashboards and more than 20 applications continuously producing machine learning predictions, alerts, scores, and recommendations. Nothing is technically broken. Yet the people […] The post From Prediction to Action: How to Turn AI Outputs Into Decisions appeared first on Salesforce Engineering Blog .",
+      "evidenceLink": "",
+      "score": 41.66121142857143,
+      "core": "By Ali Nahvi, Akshit Behera, Yvonne Fan, and Melissa Ramey. Your models are accurate. Your pipelines are healthy. Your dashboards are working. And your system is still failing its users. Imagine thousands of dashboards and more than 20 applications continuously producing machine learning predictions, alerts, scores, and recommendations. Nothing is technically broken. Yet the people […] The post From Prediction to Ac…",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-25T16:06:36.944Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Met Office finds most of us still won't trust an AI weather forecast",
+      "link": "https://www.techradar.com/pro/met-office-finds-most-of-us-still-wont-trust-an-ai-weather-forecast",
+      "publishedAt": "2026-08-25T06:00:00.000Z",
+      "author": "Christian Cawley",
+      "summary": "Survey finds low confidence in weather prediction systems based on machine learning, with the majority overwhelmingly in favour of traditional forecasting.",
+      "evidenceLink": "",
+      "score": 29.138949523809526,
+      "core": "Survey finds low confidence in weather prediction systems based on machine learning, with the majority overwhelmingly in favour of traditional forecasting.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-25T16:06:36.944Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cohere_blog",
+      "source": "Cohere Blog",
+      "title": "Automating Fork Maintenance with AI Agents | Cohere",
+      "link": "https://cohere.com/blog/automating-fork-maintenance-with-ai-agents",
+      "publishedAt": "2026-07-30T00:00:00.000Z",
+      "author": "",
+      "summary": "AI agents automate vLLM fork maintenance, cutting upstream sync time from weeks to days by auto-rebasing, testing, and fixing conflicts.",
+      "score": 27.755555555555556,
+      "core": "AI agents automate vLLM fork maintenance, cutting upstream sync time from weeks to days by auto-rebasing, testing, and fixing conflicts.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-25T16:06:36.944Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cohere_blog",
+      "source": "Cohere Blog",
+      "title": "Ensemble Brings Agentic AI to RCM Platform | Cohere",
+      "link": "https://cohere.com/blog/ensemble-cohere-custom-healthcare-llm-for-rcm",
+      "publishedAt": "2026-07-30T00:00:00.000Z",
+      "author": "",
+      "summary": "Learn how Ensemble is bringing agentic AI automations to its industry-leading platform with Cohere’s new custom LLM for healthcare RCM.",
+      "score": 27.75,
+      "core": "Learn how Ensemble is bringing agentic AI automations to its industry-leading platform with Cohere’s new custom LLM for healthcare RCM.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-25T16:06:36.944Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cohere_blog",
+      "source": "Cohere Blog",
+      "title": "The Enterprise AI Maturity Model | Cohere",
+      "link": "https://cohere.com/blog/enterprise-ai-maturity-model",
+      "publishedAt": "2026-07-30T00:00:00.000Z",
+      "author": "",
+      "summary": "Learn the five phases of the enterprise AI maturity journey, where most companies get stuck, and how to overcome barriers to get to production.",
+      "score": 26.794444444444444,
+      "core": "Learn the five phases of the enterprise AI maturity journey, where most companies get stuck, and how to overcome barriers to get to production.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-25T16:06:36.944Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "[AINews] Andrew Ng gets into AI Engineering",
+      "link": "https://www.latent.space/p/ainews-andrew-ng-gets-into-ai-engineering",
+      "publishedAt": "2026-08-25T02:50:57.000Z",
+      "author": "",
+      "summary": "An industry legend starts covering the inevitable!",
+      "evidenceLink": "",
+      "score": 26.330556666666666,
+      "core": "An industry legend starts covering the inevitable!",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-25T16:06:36.944Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cohere_blog",
+      "source": "Cohere Blog",
+      "title": "Cohere Releases Command A+ for Sovereign AI | Cohere",
+      "link": "https://cohere.com/blog/cohere-releases-command-a-plus",
+      "publishedAt": "2026-08-05T00:00:00.000Z",
+      "author": "",
+      "summary": "Delivers advanced reasoning with a minimal compute footprint. Command A+ offers full data sovereignty for governments and regulated industries worldwide.",
+      "score": 23.85,
+      "core": "Delivers advanced reasoning with a minimal compute footprint. Command A+ offers full data sovereignty for governments and regulated industries worldwide.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-25T16:06:36.944Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
