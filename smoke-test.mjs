@@ -788,6 +788,9 @@ function testSiteBuilderHelpers() {
     { path: "/tmp/ai-product-radar-publish-test/reports/2026-06-01-0800-cst.md", markdown: report }
   ]);
   assert.equal(stagedSiteData.items[0].reportPath, "reports/2026-06-01-0800-cst.md");
+  assert.equal(stagedSiteData.reports[0].path, "reports/2026-06-01-0800-cst.md");
+  assert.equal(stagedSiteData.stats.latestReport, "reports/2026-06-01-0800-cst.md");
+  assert.ok(!JSON.stringify(stagedSiteData).includes("ai-product-radar-publish-test"));
 
   const knowledgeReport = parseKnowledgeReport(
     `# AI Knowledge Radar · 2026-06-01

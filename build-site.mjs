@@ -421,6 +421,7 @@ function buildReportDays(reports) {
 
 function parseSourceHealthJson(sourceHealthFile) {
   const date = jsonDateFromPath(sourceHealthFile.path);
+  const stablePath = join("quality", "source-health", basename(sourceHealthFile.path));
   if (!date) return null;
   try {
     const parsed = JSON.parse(sourceHealthFile.json || "{}");
@@ -441,7 +442,7 @@ function parseSourceHealthJson(sourceHealthFile) {
     );
     return {
       date,
-      path: sourceHealthFile.path,
+      path: stablePath,
       generatedAt: parsed.generatedAt || "",
       productHuntDateKeys: Array.isArray(parsed.productHuntDateKeys) ? parsed.productHuntDateKeys : [],
       sources
@@ -449,7 +450,7 @@ function parseSourceHealthJson(sourceHealthFile) {
   } catch {
     return {
       date,
-      path: sourceHealthFile.path,
+      path: stablePath,
       generatedAt: "",
       productHuntDateKeys: [],
       sources: {}
@@ -459,7 +460,10 @@ function parseSourceHealthJson(sourceHealthFile) {
 
 export function buildSiteData(reports, reviews = [], sourceHealthFiles = []) {
   const normalizedReports = reports
-    .map((report) => ({ ...report, items: parseReportMarkdown(report.markdown, report.path) }))
+    .map((report) => {
+      const stablePath = reportMeta(report.path).reportPath;
+      return { ...report, path: stablePath, items: parseReportMarkdown(report.markdown, stablePath) };
+    })
     .sort((a, b) => a.path.localeCompare(b.path));
   const normalizedReviews = reviews
     .flatMap((reviewFile) => parseReviewJson(reviewFile.json, reviewFile.path))
