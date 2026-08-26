@@ -466,6 +466,10 @@ function strongAiEvidence(item) {
 
 export function isAiRelevant(item, source) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
+  const title = String(item.title || "").toLowerCase();
+  if (/\b(?:announc(?:e|ing)|rais(?:e|ed|ing))\b[^\n]{0,80}\b(?:pre-?seed|seed round|series [a-z]|funding round|\$\d+(?:\.\d+)?m round)\b/i.test(title)) {
+    return false;
+  }
   if (source.requireAiRelevance && !includesAny(text, AI_TERMS)) return false;
   if (source.requireStrongAiRelevance && !strongAiEvidence(item)) return false;
   if (source.requireKnowledgeDepth && !includesAny(text, KNOWLEDGE_TERMS)) return false;

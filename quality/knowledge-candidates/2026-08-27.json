@@ -1,0 +1,430 @@
+{
+  "generatedAt": "2026-08-26T16:07:16.467Z",
+  "date": "2026-08-27",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Introducing Run SDK: secure eval for your agents",
+      "link": "https://vercel.com/blog/introducing-run",
+      "publishedAt": "2026-08-25T04:00:00.000Z",
+      "author": "Aayush Kapoor",
+      "summary": "Agents increasingly write TypeScript programs to coordinate tools and process their results. Once those programs touch real applications, some steps require authentication, while others need human approval. Executing that code with eval gives it the same access as the application around it, including its secrets and internal services, and leaves no durable way to pause at those boundaries. Today, we're releasing the Run SDK , a package for executing untrusted JavaScript and TypeScript without giving it direct access to your application or system. Applications expose narrow host functions and can interrupt execution for authentication or human-in-the-loop approval. The program resumes after a decision without repeating completed work. A small interface to the host The Run SDK evaluates JavaScript or type-stripped TypeScript in a fresh QuickJS context inside a worker thread, with no direct route to Node.js or the network. The application exposes selected operations through hostFunctions . These are regular functions that become callable globals inside the sandbox: Here, the generated program knows about store.listOrders() . The database client and its credentials remain in the application. Calls cross the sandbox boundary through serialization. A host function may return a promise, so existing service clients can sit behind this interface without being passed into the sandbox. You can try this in the playground . Code you run there can only reach the host functions on the page. Code mode in practice The Run SDK is the internal module powering code mode tool execution in the AI SDK . Giving an agent a program changes the unit of work. One model response can describe the calls and the logic connecting them: The two requests happen concurrently, and invoice filtering stays local to the program. Only the useful result returns to the application. This is a good fit for agents that work across several internal services. A research agent can combine search results before answering. A support agent can inspect an account without putting an entire billing response back into its context. The same package can power a code interpreter or a product feature that accepts customer-defined transformations. In both cases, the application chooses the available data and operations. Host functions work best when they map to actions in your product, like refunding an order. Exposing orders.refund(id) gives the application a clear place to check the user and the order. A generic request function would make that authority much harder to reason about. Native support for human-in-the-loop and auth Reading invoices is different from issuing a refund. When generated code reaches a sensitive operation, the host function can interrupt execution: When the run is interrupted, the result includes a signed token the application can save with an approval request and use to resume the run when a decision arrives. Resuming replays the program, but settled host function calls use their recorded results. Host function work completed before the interruption does not run again. The interrupted function receives the approval and continues from there. This mechanism also works when a workflow must wait for authentication. The application owns the waiting period; the worker does not need to remain alive. Running within limits A sandbox still needs to account for code that loops forever or produces an oversized result. createRunner() sets shared limits: Limits can also be set per run. The defaults cover the QuickJS heap and the values crossing the host boundary; applications can tighten them for their workload. Each invocation receives a new QuickJS context. Dynamic evaluation is disabled and built-in prototypes are hardened. This boundary applies to the generated program, while host functions remain trusted application code and must perform their normal authorization checks. The Run SDK is intended for JavaScript computation inside an application. Workloads that require an operating system, package installation, or process-level isolation should use Vercel Sandbox instead. Extracting the execution layer The first version of this runtime lived inside just-bash as js-exec , backed by QuickJS. It let agents write TypeScript against the shell's virtual filesystem and command set. We extracted that layer into the Run SDK and replaced the Node-shaped environment with application-defined host functions. We tested the underlying mechanism in eve , using it to run agent-generated TypeScript against real tools. It now powers code mode in the AI SDK where existing AI SDK tools are mapped to host functions, while the Run SDK handles their sandboxed execution. Getting started The Run SDK supports Node.js 22.13+ and Bun. You will need pnpm or another package manager installed on your local development machine. Check out the documentation and API reference . Read more",
+      "evidenceLink": "",
+      "score": 88.41991136904761,
+      "core": "Agents increasingly write TypeScript programs to coordinate tools and process their results. Once those programs touch real applications, some steps require authentication, while others need human approval. Executing that code with eval gives it the same access as the application around it, including its secrets and internal services, and leaves no durable way to pause at those boundaries. Today, we're releasing the…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-26T16:07:16.467Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "The end of credential sprawl for agents",
+      "link": "https://vercel.com/blog/the-end-of-credential-sprawl-for-agents",
+      "publishedAt": "2026-08-25T04:00:00.000Z",
+      "author": "Hedi Zandi",
+      "summary": "Every useful agent reaches beyond your codebase. It posts to Slack, opens pull requests, queries Snowflake, or calls an internal API. That reach is what makes it valuable, and it's also where the risk lives, because for years, granting it meant provisioning a long-lived token and hoping it never leaked. Vercel Connect replaces long-lived tokens with ones your code requests at runtime, scoped to the task and expiring on their own. During the public beta , we've grown the ecosystem past 100 connectors, unified how they work, and added the governance capabilities teams need in production. Today, Vercel Connect is generally available. Vaults don't fix long-lived tokens Managing credentials has become its own workload. Teams write rotation scripts, copy secrets across environments, and share tokens between users. Putting a token in a vault made it harder to steal, but no less dangerous once stolen. It never expires, and no vault limits what a leaked credential can do. Agents compounded the problem by touching more systems with greater autonomy, more often. Yet the tools to contain a secret haven't changed. With Vercel Connect, your app never stores credentials. It requests one: You register a connector once for a provider like Slack, GitHub, Snowflake, Shopify, or your own OAuth service You attach it to the projects and environments that need it Your code requests a token at runtime, and it refreshes automatically Your app has no provider secret to commit by accident Requesting a token doesn't require another secret. Every deployment on Vercel carries an OIDC identity , and the SDK uses it to prove who's asking. What changes when access becomes a request The difference shows up in the properties of the credential: Property Stored token Vercel Connect Lifetime Never expires Short-lived, refreshed automatically Reach Everything the agent could need Scoped to the task in the request Identity One shared bot for every user App or a specific named user Rotation Mint, update copies, redeploy None to perform Revocation Rotate and redeploy One command, per user or all tokens Credentials that used to sit in environments long after the work finished now expire on their own. Nothing lingers for an attacker to find. Scoping happens per request. One step of an agent might read a repository, the next opens an issue, and each asks for only that. How fine-grained a token can be depends on the service, and GitHub is the clearest example. Requests can restrict a token to a single repository with read-only permissions, rather than trusting a standing grant organization-wide. The open-source GitHub Tools SDK puts this into practice. Choose a preset like code-review , and it mints tokens with only the required scopes. Identity is per request as well. Tokens act as the app by default, but pass a named user as the subject and the token acts on their behalf, scoped to what they authorized during a one-time consent flow. Connectors for the services you already use Vercel Connect now ships with 100+ preset connectors for developer tools and SaaS providers like Notion, Shopify, and Workday, as well as managed connectors for Slack, GitHub, Linear, Salesforce, and more. Your own services follow the same model via custom OAuth and API Key authentication, and any OAuth-capable MCP server can serve as a connector. Finding and creating them is faster, too. Browse the full catalog on the Vercel website, create a connector in fewer steps, and manage everything from the dashboard, CLI, or API. Governance that scales with your team Teams adopting Vercel Connect need more than scoped tokens. They need to control who manages connectors and to track how access is used. GA adds three capabilities: Fine-grained RBAC controls who can create and manage connectors Audit logs record authorization and connector activity Token and trigger observability shows usage across projects Together with per-environment attachment and one-command revocation, access becomes something you can inspect and prove. When an auditor asks who had access to a system and when, the answer is a query against the audit log, not an investigation across projects and Slack threads. Wherever your agents run Vercel Connect is available wherever you and your users are: Custom Environments are supported, so a qa environment gets its own connector alongside production, preview, and development eve supports Connect out of the box, with connections declared per agent Chat SDK support brings the same model to conversational apps Build connected apps in v0 Apps and agents built in v0 use the same model. Tell v0 which service your app needs, and it sets up the connector during the build. Slack, GitHub, and other managed connectors need nothing on the provider's side, and since tokens are minted at runtime, the generated app has no secret to keep. The KERNEL team shipped a voice-driven browser agent this way: Events flow in, without a secret either Requesting tokens is half the picture. Your agent also needs to hear about events. Triggers handle this without putting a secret back in your app. When a user posts in Slack, the provider sends the event to Vercel Connect. It verifies the signature server-side, re-attests the event with an OIDC identity, and forwards it to your project. Forwarded events arrive even with Deployment Protection enabled. Your app has no bot token to act with and no signing secret to verify webhooks, yet the full loop still runs. Moonpig Group runs its internal legal agent on this loop in production: Built around a single call Underneath everything is getToken from the Vercel Connect SDK . Whether your agent is built on eve or the AI SDK, runs as a background job in Vercel Workflows, or is a loop you wrote yourself, it asks for a credential the same way. Around that call, adapters handle the wiring: @vercel/connect/eve supplies the credentials behind an agent's connections @vercel/connect/chat hooks Connect into Chat SDK adapters @vercel/connect/betterauth and @vercel/connect/authjs produce provider configs for Better Auth and Auth.js @vercel/connect/ai-sdk and @vercel/connect/mcp do the same for AI SDK tools and MCP clients, whether your agent calls tools directly or through a server For eve agents and Chat SDK applications, the two secrets a Slack integration usually keeps in your environment, SLACK_BOT_TOKEN and SLACK_SIGNING_SECRET , are gone from your app entirely. Pricing and availability Vercel Connect is available on all plans, with pricing based on token requests and trigger events. The Hobby plan includes 500 token requests and 1,000 triggers per month at no additional cost. Pro plans are billed at $3 per 1,000 token requests and $0.95 per 1,000 triggers, with custom pricing on Enterprise. If you used Vercel Connect during the beta, your current billing terms stay unchanged until September 25, 2026, when the updated pricing takes effect. Get started Deploy a software factory template with Vercel Connect or browse the source Follow the complete guide in the knowledge base or read the changelog Hand the prompt below to your coding agent to set up Vercel Connect: Read more",
+      "evidenceLink": "",
+      "score": 80.41991136904761,
+      "core": "Every useful agent reaches beyond your codebase. It posts to Slack, opens pull requests, queries Snowflake, or calls an internal API. That reach is what makes it valuable, and it's also where the risk lives, because for years, granting it meant provisioning a long-lived token and hoping it never leaked. Vercel Connect replaces long-lived tokens with ones your code requests at runtime, scoped to the task and expiring…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-26T16:07:16.467Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "RAG Is Simpler Than You Think",
+      "link": "https://www.lighthousenewsletter.com/p/rag-is-simpler-than-you-think",
+      "publishedAt": "2026-08-26T08:39:17.000Z",
+      "author": "j0selit0 https://news.ycombinator.com/user?id=j0selit0",
+      "summary": "Most RAG systems are more complex than they need to be. Compare six retrieval architectures, from naive to agentic, and pick the simplest one that works.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49445727",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 308,
+        "comments": 135
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-26T16:07:16.467Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 80.0335474559281,
+      "core": "Most RAG systems are more complex than they need to be. Compare six retrieval architectures, from naive to agentic, and pick the simplest one that works.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Benchmarking Question/Answering Over CSV Data",
+      "link": "https://www.langchain.com/blog/benchmarking-question-answering-over-csv-data",
+      "publishedAt": "2026-08-26T10:46:33.000Z",
+      "author": "",
+      "summary": "Build better Q&A systems for CSV data using LangChain agents, retrieval, and LLM evaluation. Includes benchmarks, debugging insights, and open-source code.",
+      "evidenceLink": "",
+      "score": 68.47929628968254,
+      "core": "Build better Q&A systems for CSV data using LangChain agents, retrieval, and LLM evaluation. Includes benchmarks, debugging insights, and open-source code.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-26T16:07:16.467Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "How to design an Agent for Production",
+      "link": "https://www.langchain.com/blog/how-to-design-an-agent-for-production",
+      "publishedAt": "2026-08-26T14:17:58.000Z",
+      "author": "",
+      "summary": "Build production-ready AI agents with LangChain. Technical guide covering OpenAI functions, tools, prompts, and architecture for Cal.ai's scheduling assistant.",
+      "evidenceLink": "",
+      "score": 61.75320501984127,
+      "core": "Build production-ready AI agents with LangChain. Technical guide covering OpenAI functions, tools, prompts, and architecture for Cal.ai's scheduling assistant.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-26T16:07:16.467Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "How Claude Code is used in practice",
+      "link": "https://www.anthropic.com/research/claude-code-expertise",
+      "publishedAt": "2026-08-25T16:13:14.000Z",
+      "author": "",
+      "summary": "New Anthropic research looking at interactive agentic coding. We evaluate the composition of tasks, human-AI collaboration, and success rates.",
+      "score": 61.08169708333334,
+      "core": "New Anthropic research looking at interactive agentic coding. We evaluate the composition of tasks, human-AI collaboration, and success rates.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-26T16:07:16.467Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "Agentic Design Patterns: The Complete Guide to Building Reliable AI Agents",
+      "link": "https://rerun.build/blog/agentic-design-patterns",
+      "publishedAt": "2026-08-26T07:38:42.000Z",
+      "author": "",
+      "summary": "A practical catalog of agentic design patterns: Reflection, Tool Use, Planning, and Multi-Agent, plus the five workflow patterns, a decision framework for choosing between them, and how to run them in production.",
+      "evidenceLink": "",
+      "score": 60.572332003968256,
+      "core": "A practical catalog of agentic design patterns: Reflection, Tool Use, Planning, and Multi-Agent, plus the five workflow patterns, a decision framework for choosing between them, and how to run them in production.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-26T16:07:16.467Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Wanted: Token spend control and governance without slowing down agentic AI innovation",
+      "link": "https://www.techradar.com/pro/wanted-token-spend-control-and-governance-without-slowing-down-agentic-ai-innovation",
+      "publishedAt": "2026-08-26T14:32:28.000Z",
+      "author": "Sammy Zoghlami",
+      "summary": "Agentic AI is accelerating, but organizations need stronger governance to control costs, security and access.",
+      "evidenceLink": "",
+      "score": 52.4926891468254,
+      "core": "Agentic AI is accelerating, but organizations need stronger governance to control costs, security and access.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-26T16:07:16.467Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "The Anthropic Economic Index report: New building blocks for understanding AI use",
+      "link": "https://www.anthropic.com/research/economic-index-primitives",
+      "publishedAt": "2026-08-25T16:13:14.000Z",
+      "author": "",
+      "summary": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "score": 51.99280819444445,
+      "core": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-26T16:07:16.467Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "A2A Protocol: How Autonomous Agents Communicate",
+      "link": "https://rerun.build/blog/a2a-protocol",
+      "publishedAt": "2026-08-25T17:47:43.000Z",
+      "author": "",
+      "summary": "The A2A protocol is the open standard for agent-to-agent communication. Here is how it works, how it differs from MCP, and what it means for building and governing multi-agent systems in production.",
+      "evidenceLink": "",
+      "score": 51.505288353174606,
+      "core": "The A2A protocol is the open standard for agent-to-agent communication. Here is how it works, how it differs from MCP, and what it means for building and governing multi-agent systems in production.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-26T16:07:16.467Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "RecGPT-Mobile: On-Device Large Language Models for User Intent Understanding in Taobao Feed Recommendation",
+      "link": "https://arxiv.org/abs/2605.04726",
+      "evidenceLink": "https://www.semanticscholar.org/paper/9d51d28dd0dbbff318e4fc5559c888a1c2cc73ef",
+      "publishedAt": "2026-05-06T00:00:00.000Z",
+      "submittedAt": "2026-05-06T00:00:00.000Z",
+      "author": "Bin Zhang, Weipeng Huang, Dimin Wang, Jialin Zhu, Yuning Jiang",
+      "summary": "Predicting a user's next search query from recent interaction behaviors is a critical problem in modern e-commerce systems, particularly in scenarios where user intent evolves rapidly. Large Language Models (LLMs) offer strong semantic reasoning capabilities and have recently been adopted to enhance training data construction for next-query prediction. However, due to resource constraints on mobile devices, existing applications are deployed on cloud servers, resulting in high inference costs. In this paper, we propose RecGPT-Mobile, a framework that designs a lightweight LLM-based intent understanding agent to improve recommendation quality in mobile e-commerce scenarios. By deploying LLM directly on mobile devices, our approach can capture the evolving interests of users more quickly and adjust the recommendation results in real time. Extensive offline analyzes and online experiments demonstrate that our method significantly improves the accuracy of recommendation results, laying a practical path for LLM deployment in production-scale recommendation systems on mobile devices, as well as a scalable solution for integrating LLMs into real-world next-query prediction systems.",
+      "citationCount": 1,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 50.204119982655925,
+      "core": "Predicting a user's next search query from recent interaction behaviors is a critical problem in modern e-commerce systems, particularly in scenarios where user intent evolves rapidly. Large Language Models (LLMs) offer strong semantic reasoning capabilities and have recently been adopted to enhance training data construction for next-query prediction. However, due to resource constraints on mobile devices, existing…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_ai_engineering",
+      "source": "GitHub Blog",
+      "title": "How to evaluate LLMs before production",
+      "link": "https://github.blog/ai-and-ml/llms/how-to-evaluate-llms-before-production",
+      "publishedAt": "2026-08-25T21:35:11.000Z",
+      "author": "Mariko Wakabayashi",
+      "summary": "These are the lessons we learned evaluating LLMs for real-world secret scanning. The post How to evaluate LLMs before production appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 49.587193115079366,
+      "core": "These are the lessons we learned evaluating LLMs for real-world secret scanning. The post How to evaluate LLMs before production appeared first on The GitHub Blog .",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-26T16:07:16.467Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "From Storage to Experience: A Survey on the Evolution of LLM Agent Memory Mechanisms",
+      "link": "https://arxiv.org/abs/2605.06716",
+      "evidenceLink": "https://www.semanticscholar.org/paper/1c89de35696bf695378dc9a734e6e1848c754cee",
+      "publishedAt": "2026-05-07T00:00:00.000Z",
+      "submittedAt": "2026-05-07T00:00:00.000Z",
+      "author": "Jing Luo, Yuchen Tian, Chuxue Cao, Ziyang Luo, Hongzhan Lin",
+      "summary": "Large Language Model (LLM)-based agents have fundamentally reshaped artificial intelligence by integrating external tools and planning capabilities. While memory mechanisms have emerged as the architectural cornerstone of these systems, current research remains fragmented, oscillating between operating system engineering and cognitive science. This theoretical divide prevents a unified view of technological synthesis and a coherent evolutionary perspective. To bridge this gap, this survey proposes a novel evolutionary framework for LLM agent memory mechanisms, formalizing the development process into three stages: Storage (trajectory preservation), Reflection (trajectory refinement), and Experience (trajectory abstraction). We first formally define these three stages before analyzing the three core drivers of this evolution: the necessity for long-range consistency, the challenges in dynamic environments, and the ultimate goal of continual learning. Furthermore, we specifically explore two transformative mechanisms in the frontier Experience stage: proactive exploration and cross-trajectory abstraction. By synthesizing these disparate views, this work offers robust design principles and a clear roadmap for the development of next-generation LLM agents.",
+      "citationCount": 18,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 48.115014403811315,
+      "core": "Large Language Model (LLM)-based agents have fundamentally reshaped artificial intelligence by integrating external tools and planning capabilities. While memory mechanisms have emerged as the architectural cornerstone of these systems, current research remains fragmented, oscillating between operating system engineering and cognitive science. This theoretical divide prevents a unified view of technological synthesi…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Can AI Be a Good Peer Reviewer? A Survey of Peer Review Process, Evaluation, and the Future",
+      "link": "https://arxiv.org/abs/2604.27924",
+      "evidenceLink": "https://www.semanticscholar.org/paper/29136983bf1b2df7b3ecaeab500ecbd687977bcd",
+      "publishedAt": "2026-04-30T00:00:00.000Z",
+      "submittedAt": "2026-04-30T00:00:00.000Z",
+      "author": "Sihong Wu, Owen Jiang, Yilun Zhao, Tiansheng Hu, Yi Ma",
+      "summary": "Peer review is a multi-stage process involving reviews, rebuttals, meta-reviews, final decisions, and subsequent manuscript revisions. Recent advances in large language models (LLMs) have motivated methods that assist or automate different stages of this pipeline. In this survey, we synthesize techniques for (i) peer review generation, including fine-tuning strategies, agent-based systems, RL-based methods, and emerging paradigms to enhance generation; (ii) after-review tasks including rebuttals, meta-review and revision aligned to reviews; and (iii) evaluation methods spanning human-centered, reference-based, LLM-based and aspect-oriented. We catalog datasets, compare modeling choices, and discuss limitations, ethical concerns, and future directions. The survey aims to provide practical guidance for building, evaluating, and integrating LLM systems across the full peer review workflow.",
+      "citationCount": 4,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 47.795880017344075,
+      "core": "Peer review is a multi-stage process involving reviews, rebuttals, meta-reviews, final decisions, and subsequent manuscript revisions. Recent advances in large language models (LLMs) have motivated methods that assist or automate different stages of this pipeline. In this survey, we synthesize techniques for (i) peer review generation, including fine-tuning strategies, agent-based systems, RL-based methods, and emer…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "SafeMCP: Proactive Power Regulation for LLM Agent Defense via Environment-Grounded Look-Ahead Reasoning",
+      "link": "https://arxiv.org/abs/2606.01991",
+      "evidenceLink": "https://www.semanticscholar.org/paper/f49e114e688e36a242be9b0d1fdb147d5c4f340a",
+      "publishedAt": "2026-06-01T00:00:00.000Z",
+      "submittedAt": "2026-06-01T00:00:00.000Z",
+      "author": "Lichao Wang, Z. Ren, Tianzhuo Yang, Jiaming Ji, Chi Harold Liu",
+      "summary": "As Large Language Model (LLM) agents increasingly leverage the Model Context Protocol (MCP) to operate in complex environments, the expansion of their action spaces offers agents unsafe capabilities and underscores the risk of power-seeking. While broad action space and greater environment influence are essential for task fulfillment, they create a fragile risk surface where minor errors or hallucinations are magnified into catastrophic failures. In response, we propose SafeMCP, a {server-side} defense plugin that constrains tool acquisition via predictive reasoning regarding future safety risks. SafeMCP utilizes an internal world model for look-ahead reasoning to implement a two-tier defense: proactive tool filtering to constrain hazardous power expansion and immediate intervention as a fail-safe. To train SafeMCP, we introduce a three-stage pipeline comprising environmental dynamic grounding, safe policy initialization, and reinforcement learning (RL) with dual verifiable rewards. Experiments on PowerSeeking Bench, ToolEmu, and AgentHarm show that SafeMCP achieves a safe equilibrium, effectively mitigating risks while preserving agent utility.",
+      "citationCount": 3,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 47.40823996531185,
+      "core": "As Large Language Model (LLM) agents increasingly leverage the Model Context Protocol (MCP) to operate in complex environments, the expansion of their action spaces offers agents unsafe capabilities and underscores the risk of power-seeking. While broad action space and greater environment influence are essential for task fulfillment, they create a fragile risk surface where minor errors or hallucinations are magnif…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Fake US thinktank set up and funded by Israel sought to game AI for propaganda",
+      "link": "https://www.theguardian.com/world/2026/aug/26/fake-thinktank-israel-ai-propaganda",
+      "publishedAt": "2026-08-26T12:11:19.000Z",
+      "author": "n1b0m https://news.ycombinator.com/user?id=n1b0m",
+      "summary": "In effort to prime chatbots to make pro-Israel arguments the site published 124 reports, over 560,000 words in nine days, Guardian analysis shows",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49447600",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 214,
+        "comments": 37
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-26T16:07:16.467Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 44.34641292535133,
+      "core": "In effort to prime chatbots to make pro-Israel arguments the site published 124 reports, over 560,000 words in nine days, Guardian analysis shows",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "AI coding is putting software risk on steroids",
+      "link": "https://www.techradar.com/pro/ai-coding-is-putting-software-risk-on-steroids",
+      "publishedAt": "2026-08-26T10:28:34.000Z",
+      "author": "Sohail Iqbal",
+      "summary": "AI accelerates software development, but can security and governance keep pace with rising risk?",
+      "evidenceLink": "",
+      "score": 42.13010978174603,
+      "core": "AI accelerates software development, but can security and governance keep pace with rising risk?",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-26T16:07:16.467Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pragmatic_engineer",
+      "source": "The Pragmatic Engineer",
+      "title": "Why performant code matters (but gets widely ignored), with Casey Muratori",
+      "link": "https://newsletter.pragmaticengineer.com/p/why-performant-code-matters-but-gets",
+      "publishedAt": "2026-08-26T15:59:59.000Z",
+      "author": "Gergely Orosz",
+      "summary": "Casey Muratori explains why software performance matters, how developers can write faster code, and why he challenges conventional engineering practices.",
+      "evidenceLink": "",
+      "score": 40.84132009920635,
+      "core": "Casey Muratori explains why software performance matters, how developers can write faster code, and why he challenges conventional engineering practices.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-26T16:07:16.467Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_industry_ai",
+      "source": "Microsoft Industry Blog",
+      "title": "5 signals of trusted AI: How organizations scale AI with security, governance, and observability",
+      "link": "https://www.microsoft.com/en-us/microsoft-cloud/blog/2026/08/24/5-signals-of-trusted-ai-how-organizations-scale-ai-with-security-governance-and-observability",
+      "publishedAt": "2026-08-24T16:00:00.000Z",
+      "author": "Alym Rayani",
+      "summary": "Learn the five signals of trusted AI, from AI governance and security to observability and sovereignty, and discover how organizations scale AI with confidence. The post 5 signals of trusted AI: How organizations scale AI with security, governance, and observability appeared first on The Microsoft Cloud Blog .",
+      "evidenceLink": "",
+      "score": 36.29054628968254,
+      "core": "Learn the five signals of trusted AI, from AI governance and security to observability and sovereignty, and discover how organizations scale AI with confidence. The post 5 signals of trusted AI: How organizations scale AI with security, governance, and observability appeared first on The Microsoft Cloud Blog .",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-26T16:07:16.467Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Most business leaders aren't completely sure what 'sovereign AI' means – but they’re starting to understand its importance",
+      "link": "https://www.itpro.com/technology/artificial-intelligence/most-business-leaders-arent-completely-sure-what-sovereign-ai-means-but-theyre-starting-to-understand-its-importance",
+      "publishedAt": "2026-08-26T09:34:39.000Z",
+      "author": "Emma Woollacott",
+      "summary": "A new study finds that few organizations fully understand the concept of sovereign AI, and many are making AI investment decisions without sufficient context",
+      "evidenceLink": "",
+      "score": 33.40481216269841,
+      "core": "A new study finds that few organizations fully understand the concept of sovereign AI, and many are making AI investment decisions without sufficient context",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-26T16:07:16.467Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

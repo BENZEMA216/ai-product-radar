@@ -1,0 +1,293 @@
+{
+  "date": "2026-08-27",
+  "generatedAt": "2026-08-26T16:02:13.123Z",
+  "reportPath": "reports/2026-08-27-0002-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 72,
+    "top20Sources": [
+      "YC Launch",
+      "HN Algolia",
+      "Product Hunt"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 27,
+      "keptCount": 13,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-08-25；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 27 条，AI 相关候选 13 条；实际 fallback：jina, hunted_space。；fallback 低覆盖时扩展检查 2026-08-24，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重后最终发布 13 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 6,
+      "keptCount": 6,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 13,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 7,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-08-17T16:01:51.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Prized",
+      "productKey": "https://www.ycombinator.com/launches/tam-prized-a-cloud-devbox-that-feels-local",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把云端开发机做出接近本地的交互感，直接击中 coding agent 需要持续算力却不愿迁移工作流的矛盾；应重点验证延迟、环境持久化与本地工具衔接。"
+    },
+    {
+      "rank": 2,
+      "product": "Oynix – Make your coding agent aware of your whole codebase, locally",
+      "productKey": "https://oynix.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "强调在本机建立全代码库认知，价值取决于它能否在不上传代码的前提下持续更新上下文，并让 agent 的跨文件修改更可靠。"
+    },
+    {
+      "rank": 3,
+      "product": "Antigravity Remote Control",
+      "productKey": "https://www.producthunt.com/products/google-antigravity",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "从任意浏览器遥控 Antigravity agent，把长任务从桌面前解放出来；真正的产品门槛会是权限隔离、断线恢复和远程审批体验。"
+    },
+    {
+      "rank": 4,
+      "product": "Ninjō AI",
+      "productKey": "https://www.producthunt.com/products/ninjo-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把销售 agent 放到多个触达渠道并由 Claude Code 驱动，说明开发者工具正在变成业务执行底座；要看渠道适配是否统一、交付结果是否可审计。"
+    },
+    {
+      "rank": 5,
+      "product": "Phoenix",
+      "productKey": "https://www.producthunt.com/products/phoenix-10",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "专门面向 iOS 与 macOS 的编码 agent，垂直价值在于理解 Xcode、签名和苹果平台构建链，而不是再提供一个通用代码聊天框。"
+    },
+    {
+      "rank": 6,
+      "product": "Offloop",
+      "productKey": "https://www.producthunt.com/products/offloop",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把人和 AI agent 放进同一共享工作区，关键问题是任务归属、交接与状态是否对双方都可见；这决定它是协作系统还是另一层消息界面。"
+    },
+    {
+      "rank": 7,
+      "product": "Decawork",
+      "productKey": "https://www.producthunt.com/products/decawork",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "主打企业内部 agent 与工具控制，切中部署后的治理环节；值得核对权限、调用记录和工具目录能否形成可执行的管理面。"
+    },
+    {
+      "rank": 8,
+      "product": "Floot",
+      "productKey": "https://www.ycombinator.com/launches/tct-floot-build-and-run-your-app-with-chatgpt-and-claude-no-ai-credits-needed",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "为 ChatGPT、Claude 提供写码、测试和发布环境且免去多账户配置，试图把模型订阅直接接到交付闭环；核心是环境隔离与发布失败后的可恢复性。"
+    },
+    {
+      "rank": 9,
+      "product": "Amorphic Labs",
+      "productKey": "https://www.ycombinator.com/launches/tbk-agentmuxer-by-amorphic-labs-openrouter-for-agent-capabilities",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用一个 MCP 和统一钱包路由 agent 能力，把工具发现、支付与调用合并；若路由质量和结算可信，可能成为 agent 服务的交易层。"
+    },
+    {
+      "rank": 10,
+      "product": "Skillsync",
+      "productKey": "https://www.ycombinator.com/launches/tbj-skillsync-move-your-context-across-every-coding-agent",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 Claude Code、Cursor、Codex 之间迁移上下文，回应多 agent 用户最直接的切换成本；应看同步粒度、冲突处理和敏感上下文边界。"
+    },
+    {
+      "rank": 11,
+      "product": "akta.pro",
+      "productKey": "https://www.producthunt.com/products/akta-pro",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把私有公司数据与信号包装成 agent 可调用 API，价值在数据新鲜度和实体匹配，而不只是接口形式；销售和研究 agent 都可能因此少做数据清洗。"
+    },
+    {
+      "rank": 12,
+      "product": "coolplugz",
+      "productKey": "https://www.producthunt.com/products/coolplugz",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用 Claude 编排多个开发任务，产品价值取决于并发任务是否能被清楚拆分、监控和接管；单纯多开会话并不足以节省时间。"
+    },
+    {
+      "rank": 13,
+      "product": "Flare",
+      "productKey": "https://www.producthunt.com/products/flare-11",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "以图结构呈现 agentic coding 的代码关系和操作路径，可能缓解 AI 生成代码难以理解的问题；需验证地图是否随改动实时更新且能支持定位。"
+    },
+    {
+      "rank": 14,
+      "product": "Neoswarm – Neovim for controlling AI agents",
+      "productKey": "https://neoswarm.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 Neovim 变成多 agent 控制台，服务不愿离开终端的重度开发者；是否值得长期使用取决于会话状态、人工接管和结果比较是否顺手。"
+    },
+    {
+      "rank": 15,
+      "product": "Launched free browser agent (the catch: ads)",
+      "productKey": "https://rtrvr.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用广告补贴免费浏览器 agent 是清晰但有风险的商业实验；应观察广告是否影响任务选择、隐私边界和用户对自动执行的信任。"
+    },
+    {
+      "rank": 16,
+      "product": "MiniMax H3 – Turn text and images into AI video clips",
+      "productKey": "https://minimax3.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "文本与图片直接生成视频片段，产品判断重点不是单次效果，而是输入控制、镜头一致性和可编辑输出能否支撑连续创作。"
+    },
+    {
+      "rank": 17,
+      "product": "/dev/fast",
+      "productKey": "https://www.ycombinator.com/launches/tcs-dev-fast-cursor-for-code-review",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 AI 生成代码的 diff、可视化与 agent trace 集中给人审查，正面解决“生成快、理解慢”；若能缩短审查时间，会比再造编码 agent 更有团队价值。"
+    },
+    {
+      "rank": 18,
+      "product": "backpressure.systems adds MCP and CLI",
+      "productKey": "https://backpressure.systems/mcp-and-cli",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "为 backpressure.systems 增加 MCP 与 CLI，意味着服务开始进入 agent 和自动化工作流；应看接口是否覆盖核心能力、错误是否机器可处理。"
+    },
+    {
+      "rank": 19,
+      "product": "CaptureAgent – find, price, draft, grade, run and fund federal work",
+      "productKey": "https://captureagent.us",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把联邦项目的发现、定价、起草、评分、执行与融资串成垂直流程，场景边界很具体；价值取决于法规证据和人工审批能否贯穿全链路。"
+    },
+    {
+      "rank": 20,
+      "product": "Navigara",
+      "productKey": "https://www.producthunt.com/products/navigara",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 AI 支出直接关联路线图，为管理者补上“成本为何发生”的解释层；应验证归因能否落到功能、团队和实际产出，而非只做账单聚合。"
+    }
+  ]
+}

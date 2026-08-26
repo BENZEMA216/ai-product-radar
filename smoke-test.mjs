@@ -4167,6 +4167,17 @@ function testKnowledgeStrongAiRelevanceRejectsIncidentalMentions() {
     false,
     "generic reasoning and evaluation language must not be treated as explicit AI evidence"
   );
+  assert.equal(
+    isAiRelevant(
+      {
+        title: "Announcing our $10M seed round led by Benchmark",
+        summary: "Funding will support developers building agentic AI applications."
+      },
+      source
+    ),
+    false,
+    "pure financing announcements must not occupy Knowledge Radar slots"
+  );
 }
 
 function testKnowledgeTopicKeyCollapsesVersionedAnnouncements() {
