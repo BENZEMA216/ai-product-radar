@@ -784,6 +784,10 @@ function testSiteBuilderHelpers() {
   assert.equal(siteData.stats.bySource["HN Algolia"], 2);
   assert.equal(siteData.generatedAt, "2026-06-01 08:00 CST");
   assert.equal(siteData.generatedAt, siteDataAgain.generatedAt);
+  const stagedSiteData = buildSiteData([
+    { path: "/tmp/ai-product-radar-publish-test/reports/2026-06-01-0800-cst.md", markdown: report }
+  ]);
+  assert.equal(stagedSiteData.items[0].reportPath, "reports/2026-06-01-0800-cst.md");
 
   const knowledgeReport = parseKnowledgeReport(
     `# AI Knowledge Radar · 2026-06-01
@@ -794,6 +798,11 @@ function testSiteBuilderHelpers() {
 | 论文 | [研究论文](https://arxiv.org/abs/2606.00001) | arXiv | 这是一条中文论文摘要。 | 这是一条具体的中文论文判断。 | [原文](https://arxiv.org/abs/2606.00001) |`,
     "knowledge-reports/2026-06-01.md"
   );
+  const stagedKnowledgeReport = parseKnowledgeReport(
+    `| Blog | [工程 Blog](https://example.com/blog) | Example Blog | 核心信息。 | 阅读判断。 | [原文](https://example.com/blog) |`,
+    "/tmp/ai-product-radar-publish-test/knowledge-reports/2026-06-01.md"
+  );
+  assert.equal(stagedKnowledgeReport.path, "knowledge-reports/2026-06-01.md");
   const html = renderSiteHtml(siteData, [knowledgeReport]);
   assert.match(html, /Agent Deck/);
   assert.match(html, /window.__RADAR_DATA__/);

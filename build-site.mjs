@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { basename, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { parseKnowledgeReport } from "./build-knowledge-page.mjs";
@@ -185,7 +185,7 @@ function reportMeta(path) {
   return {
     reportDate: match?.[1] || "",
     reportTime: match ? `${match[2]}:${match[3]} CST` : "",
-    reportPath: path
+    reportPath: join("reports", basename(path))
   };
 }
 
@@ -223,7 +223,7 @@ function reviewMeta(path) {
   const match = name.match(/^(\d{4}-\d{2}-\d{2})\.json$/);
   return {
     reviewDate: match?.[1] || "",
-    reviewPath: path
+    reviewPath: join("reviews", basename(path))
   };
 }
 

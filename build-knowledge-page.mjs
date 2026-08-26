@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { basename, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const REPORT_PATTERN = /^\d{4}-\d{2}-\d{2}\.md$/;
@@ -65,7 +65,7 @@ export function parseKnowledgeReport(markdown, path = "") {
       why: cleanCell(why)
     });
   }
-  return { date, path, items };
+  return { date, path: path ? join("knowledge-reports", basename(path)) : "", items };
 }
 
 function readReports(reportDir) {
