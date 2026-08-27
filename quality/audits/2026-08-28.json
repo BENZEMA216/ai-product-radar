@@ -1,0 +1,293 @@
+{
+  "date": "2026-08-28",
+  "generatedAt": "2026-08-27T16:01:41.384Z",
+  "reportPath": "reports/2026-08-28-0001-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 75,
+    "top20Sources": [
+      "HN Algolia",
+      "Product Hunt",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 28,
+      "keptCount": 17,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-08-26；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 28 条，AI 相关候选 17 条；实际 fallback：hunted_space。；历史去重移除 3 条已报道或已处理日榜 Product Hunt 信号，最终发布 14 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 3,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 32,
+      "keptCount": 24,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 16,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 14,
+      "keptCount": 14,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-08-17T16:01:51.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Contextual – local codebase memory for AI coding agents",
+      "productKey": "https://contextuallabs.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把代码库记忆直接嵌进 coding agent，值得验证记忆如何更新、引用旧代码时如何纠错，以及是否真正减少重复解释上下文。"
+    },
+    {
+      "rank": 2,
+      "product": "Evidence Core",
+      "productKey": "https://www.producthunt.com/products/evidence",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用 coding agent 生成实时分析，关键不只是写查询，而是能否把数据模型、图表迭代和上线后的可信口径连成闭环。"
+    },
+    {
+      "rank": 3,
+      "product": "Evergrove",
+      "productKey": "https://www.ycombinator.com/launches/tcc-evergrove-interoperability-for-work-comp",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把语音 agent 放进工伤理赔后的护理协同，值得看高频电话沟通能否缩短转诊等待，同时处理好敏感数据与人工接管。"
+    },
+    {
+      "rank": 4,
+      "product": "Warren",
+      "productKey": "https://www.producthunt.com/products/warren-5",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "专为 coding-agent workload 提供基础设施，判断重点是并发隔离、环境启动速度与成本是否比通用云更适合长时间 agent 任务。"
+    },
+    {
+      "rank": 5,
+      "product": "Agentcard",
+      "productKey": "https://www.ycombinator.com/launches/tco-agentcard-cards-for-ai-agents",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 AI agent 持卡在线采购，把能力从建议推进到真实交易；产品边界取决于额度、授权、审计与异常退款如何设计。"
+    },
+    {
+      "rank": 6,
+      "product": "BirthdayVideoAI – AI birthday video maker for wishes, invitations",
+      "productKey": "https://birthdayvideo.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "生日祝福与邀请是明确但低频的生成场景，值得看模板、人物素材和交付速度能否让用户一次完成成片，而非停在试玩。"
+    },
+    {
+      "rank": 7,
+      "product": "Slaunt – Know what your agents are doing",
+      "productKey": "https://slaunt.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它正面解决 agent 黑盒问题，值得验证是否能把每次调用、成本和失败原因变成可追责的运行记录，而不是只展示日志。"
+    },
+    {
+      "rank": 8,
+      "product": "BAIhAIs – an autonomous art school for AI agents",
+      "productKey": "https://baihais.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 agent 在艺术学校中自主学习属于鲜明实验型产品，值得看课程、评价与产出是否形成持续机制，而非概念展示。"
+    },
+    {
+      "rank": 9,
+      "product": "Rook – A multi-Agent harness that lives 100% in a browser extension",
+      "productKey": "https://chromewebstore.google.com/detail/rook/opojeelojlkcinlhkbahpcekdolfjmhi",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把多 agent harness 放进浏览器扩展可降低部署门槛，但真正价值取决于标签页权限、任务隔离和本地数据安全是否可控。"
+    },
+    {
+      "rank": 10,
+      "product": "MCP-Builder.ai",
+      "productKey": "https://www.producthunt.com/products/mcp-builder-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它试图把企业数据快速接进 AI 工具，值得看连接器生成后是否具备权限映射、结构化 schema 与可维护的 MCP 服务，而非一次性封装。"
+    },
+    {
+      "rank": 11,
+      "product": "KinoPipe – FFmpeg as a service for AI agents (typed ops, no shell)",
+      "productKey": "https://kinopipe.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 FFmpeg 变成 typed operation 可减少 agent 拼 shell 命令的风险，重点看操作覆盖、参数校验和媒体任务失败后的可恢复性。"
+    },
+    {
+      "rank": 12,
+      "product": "Atlas – observability for startup operations via self-building agents",
+      "productKey": "https://www.atlasjoins.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它让 agent 自建对创业公司运营的观测层，值得验证数据接入、指标定义和异常解释是否可靠，避免把自动生成仪表盘当成经营事实。"
+    },
+    {
+      "rank": 13,
+      "product": "Backprompter – create, test, and deploy agents without a back end",
+      "productKey": "https://backprompter.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 agent 的创建、测试和部署压进无后端流程，关键看状态持久化、密钥管理与版本回滚是否也被一并解决。"
+    },
+    {
+      "rank": 14,
+      "product": "Revenue Agents that monitor churn, upsell, and deal risk",
+      "productKey": "https://www.rimplo.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把流失、增购和交易风险持续监控交给 agent，产品价值取决于信号能否转成可执行销售动作，并清楚区分预测与事实。"
+    },
+    {
+      "rank": 15,
+      "product": "I built an agent-first productivity bridge for all your agents",
+      "productKey": "https://www.taskshell.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它试图给多个 agent 一个统一任务桥梁，值得看任务归属、状态同步和重复执行冲突如何处理，而不只是汇总入口。"
+    },
+    {
+      "rank": 16,
+      "product": "macadress",
+      "productKey": "https://www.producthunt.com/products/macadress",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 MAC 地址情报提供给应用、网络与 agent，适合观察低层设备身份数据能否转成可靠的资产识别与风险判断。"
+    },
+    {
+      "rank": 17,
+      "product": "DeployHermes",
+      "productKey": "https://www.producthunt.com/products/deployhermes",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把带角色、记忆和技能的 Hermes agent 作为可雇用实例，值得看长期运行、状态隔离与按结果计费如何落地。"
+    },
+    {
+      "rank": 18,
+      "product": "Open Session, the open-source cloud agent-orchestrator",
+      "productKey": "https://www.opensession.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "开源云端 agent 编排器的价值在可控运行，重点看会话持久化、工具权限、并发调度和故障恢复是否完整。"
+    },
+    {
+      "rank": 19,
+      "product": "Risklytics (YC S26) – Insurance brokerage for frontier tech companies",
+      "productKey": "https://www.risklytics.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这是面向前沿科技公司的保险经纪产品，Launch HN 信号值得看其是否用 AI 改变核保资料收集与投保交付，而非仅换一个行业定位。"
+    },
+    {
+      "rank": 20,
+      "product": "ReWeaver AI DriftDetector",
+      "productKey": "https://www.producthunt.com/products/reweaver-driftdetector",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用 drift score 检查任意 GitHub 仓库，值得看评分是否能定位 agent 改码后的语义偏移，并给出开发者可复核的证据。"
+    }
+  ]
+}
