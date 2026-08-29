@@ -1,0 +1,424 @@
+{
+  "generatedAt": "2026-08-29T16:06:32.174Z",
+  "date": "2026-08-30",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "netflix_technology",
+      "source": "Netflix Technology Blog",
+      "title": "MAPS: Netflix’s Multimodal Asset Personalization at Scale",
+      "link": "https://netflixtechblog.com/maps-netflixs-multimodal-asset-personalization-at-scale-32f96320785e",
+      "publishedAt": "2026-08-28T16:01:02.000Z",
+      "author": "Netflix Technology Blog",
+      "summary": "By Emma Yanyang Kong , Aditya Deshpande , Asad Abbasi , Bowei Yan , David Fagnan , Ashish Rastogi , Dhaval Patel , Ray Zhang Introduction The Netflix experience is a journey of discovery. Every visual cue, from the artwork on a title to the video previews that autoplay while you browse, is there to connect you with a story you will love. We call these visual cues assets , and choosing the right one for each member is a personalization problem of its own. But which image or video preview of Squid Game should we show you? And what do we do right after a title launches, when there’s far too little interaction data to know which asset we should recommend to each member? For years, our models answered the first question well and the second poorly. They learned which assets members interacted with, but treated every asset as an opaque ID, blind to what was actually in the artwork or video preview. Right after a title launched, its assets had no history, so we dialed up exploration on its assets to gather interaction data, and otherwise fell back to popularity heuristics that ignore your taste. Only once enough interactions had piled up could personalization take over. This is the classic cold-start problem. This post shares how multimodal embeddings let our models see and hear the assets they recommend, so personalization can kick in far sooner, close to a title’s launch. Because a new asset arrives with its embedding the model already understands, that embedding carries member taste signals from related assets immediately. Consequently, the model needs far less interaction history before it can personalize. We cover three production systems, artwork personalization, query-aware artwork ranking, and video preview personalization, plus a cheap trick for choosing new embeddings before committing to full end-to-end integration and A/B testing. Artwork Personalization A single image is often a member’s first touchpoint with a title, so we create a diverse set of artworks for each title to appeal to different member tastes. We already use personalized artwork based on members’ interaction histories, but this approach breaks down for newer titles and their assets, where there is little or no behavioral data to learn from. Making the Model See the Artwork Our solution is to let the model “look” at the picture. We encode each artwork with CLIP , a pretrained image-text embedding model, and fold the result into how the model represents that asset, concatenating the per-asset CLIP image embedding, a 768-dimensional vector, with the asset’s learned ID embedding to give an asset representation: e_id(a) is the asset’s learned ID embedding, and e_a is its CLIP image embedding. The two are concatenated and passed through an MLP layer to give h_a, the representation the model scores against a member. This single change transforms how the model handles a brand-new artwork. Instead of treating it as an unseen ID, the model now receives a CLIP embedding the moment the asset is created. That allows a member’s preferences over visual themes, talent, and color palettes to be applied immediately, long before the asset accumulates any interactions of its own. Because those preferences are expressed in image-embedding space rather than tied to specific asset IDs, they transfer seamlessly across titles . If you consistently engage with artwork featuring a particular comedian, the model can carry that signal to their new title and prioritize the asset that places them front and center, even if it has never shown you that exact image before, as in the figure below. In this way, cold-start shifts from being a blind spot to something the embedding space already has an informed opinion about. Knowledge transfer through CLIP embeddings. A member who has interacted with a comedian’s past stand-up artwork (left) leads the model to favor the new-title asset that features that comedian prominently (green check) over one that does not, even though it has never seen that specific image before. From Five Models to One That shift, from scoring an asset by the ID it happens to carry to scoring it by what the image actually contains, powers a second big win, model consolidation. Each title’s artwork spans multiple canvases with different croppings (billboard, vertical-box, horizontal-panel, short-panel, landscape-panel), and historically we trained a separate model per canvas, since an ID-based model has no way to know that the cropped and resized renderings of one scene are related, so signal could not flow between canvases and each faced its own cold-start. CLIP embeddings break that barrier. Because they are largely invariant to crop, resize, and aspect ratio, those near-identical renderings map to nearly the same vector, as the figure further below shows. A single unified model can therefore pool interaction signal across every canvas, so a member’s affinity learned on a high-traffic canvas immediately informs the artwork we pick on a sparse one. The result is one model in place of five, with the largest gains on the canvases that have the least interaction data. One source image, many canvases. The same Running Point artwork is cropped and resized across billboard, TV, mobile, and out-of-home placements, each with a different asset ID. Because CLIP embeddings barely change under crop and resize, a single unified model can personalize all of them. Mixing Five Canvases of Training Data Consolidation introduced a challenge that the per-canvas models never faced: how to effectively mix data across disparate canvases? The canvases differ widely in impression volume, and the interactions they log are not all worth the same to a member’s long-term experience. Training on pooled raw counts would let the highest-volume canvas and the most frequent interaction types dominate, so the low-data canvases we were trying to help would benefit least. Hand-tuning a weight per canvas would just trade that problem for a set of arbitrary hyperparameters and endless online sweeps to tune them. Instead we use reward-based weighting , building on Netflix’s long-term reward modeling . Each training example is weighted by the long-term reward score attached to its interaction type: a_ti is a training example, a positive interaction on asset i of title t. Its weight is set by the interaction type e observed on it, scored by ρ, that type’s long-term reward. where e (·) is the type of the observed positive interaction and ρ is that type’s long-term reward score. Because interaction types are not distributed evenly across canvases, weighting by long-term value rebalances the canvas mixture on its own, with no weight set by hand. A canvas contributes in proportion to the long-term value of the interactions it drives rather than to how many impressions it happens to get. Consolidation becomes feasible, and the unified model optimizes for long-term member satisfaction instead of whichever short-term action is most frequent. A Note on Offline Evaluation Every result presented here must clear two bars: an offline metric evaluation followed by a large-scale online A/B test. The offline metric is the subtle one. Judging a new model on logs from the current production policy is biased, because that policy shows some assets far more often than others. The logged rewards describe what the policy preferred, not what members would have chosen from the full candidate set, so a new model that disagrees with the logging policy looks worse than it is, because the impressions it would have picked are barely represented in the data. We handle this with inverse propensity scoring (IPS) computed on a dedicated slice of exploration traffic. A small fraction of traffic is served by a randomized policy that samples among a title’s candidate assets from a known distribution, so the propensity of showing a given asset in a given context is logged exactly at serving time rather than estimated after the fact. Reweighting every observation by the inverse of its logged propensity gives: where D is the exploration slice and r ( x , a ) is the observed reward, such as a play. Impressions that exploration made rare are upweighted accordingly, and the estimator becomes an unbiased estimate of the reward a candidate policy would have earned had we actually deployed it. Having propensities that are known by construction, rather than modeled after the fact, is in our experience the single biggest reason our offline numbers track online outcomes. We report IPS as a ratio against the production baseline, and a candidate has to win there before it gets any A/B traffic. Combining Both Ideas Works Better Two ideas are bundled together here, so we ablated them separately against the old five-model production system. V1, image embeddings only. The five per-canvas models kept as they were, each one augmented with image embeddings. V2, unified model only. A single model trained over all five canvases, but with learned ID embeddings alone and no image content. V3, both together. One unified model over all five canvases, with image embeddings in its asset representation. As the chart below shows, each idea helped exactly where we expected: on the data-starved short-panel canvas and landscape-panel canvas. V3 was the clear winner. A change inside ±1% is not significant for this offline metric, and those bars are hatched in the chart. Most of what V1 and V2 do on their own sits inside that band. Relative offline IPS lift by canvas for the three variants, each measured against the prior per-canvas model on that same canvas. Both ideas help where interaction data is scarcest, and V3 is strongest. Hatched bars fall inside the ±1% band, where the change in the offline metric is not significant; V3 values are labeled on the plot. In the online A/B test across all device platforms, which ran for at least four weeks, the results drew a much clearer line: Neither idea moved our online core member metrics on its own. V1 and V2 were both flat and non-significant, and only V3 won a statistically significant lift. It is what runs in production today. The two ingredients need each other. V1 tells a per-canvas model what an asset looks like, but one sparse canvas has too few examples to teach it how to use that. V2 supplies plenty of data, but only ID-based data, which a new asset lacks. V3 has both, so mature canvases teach the shared model how CLIP embeddings map to member preference and that mapping transfers straight to the sparse ones. The effects compound rather than add, since the V3 short-panel lift (5.691%) exceeds V1 and V2 combined. The lesson is to look for a second blocking factor before concluding that content features do not help. Cold-Start Challenge from a New UI Launch The real test came from the product change that motivated the work. Netflix was preparing its largest TV home-screen redesign in a decade , which would make short-panel the dominant artwork canvas effectively overnight. This was a cold-start problem in its sharpest form. The canvas about to receive the most impressions had the least historical data, and waiting for short-panel interactions to accumulate would have degraded the user experience. Consolidation lets short-panel selection draw on signal pooled from every canvas, and CLIP embeddings let the unified model personalize a short-panel asset that has gathered very few interactions of its own. We shipped V3 ahead of the launch and measured it with a month-long holdback A/B test, keeping a small control group on the prior per-canvas model. V3 absorbed the shift immediately, with statistically significant gains on both our core discovery metric and streaming hours, and larger gains than in the steady-state ablation. That stronger result is what we expected, since a sudden shift in which canvas dominates is exactly where V3 should help most. Query-Aware Artwork Personalization Your general taste is the right signal when browsing, but not when searching . For example, when searching for a specific actor, you want artwork that features them, even if your broader taste says otherwise. On the Netflix Search Page, the member’s intent is explicit and stated in the query, and the displayed artwork should reflect it. The same CLIP embeddings we added for cold-start hand us this almost for free. Because CLIP projects text and images into one shared embedding space, we can measure how well a query matches a candidate artwork directly by the cosine similarity between the CLIP text embedding of the query and the CLIP image embedding of the asset. We blend that alignment term with the usual personalization score: Here the personalization term is the score the artwork model above already produces for a member and asset, the second term compares the text embedding of the query against the image embedding of the asset, and the mixing weight α between 0 and 1 is tuned through online A/B testing. The first term is “what we think you like”; the second is “what you just asked for,” and α sets how much each matters. Crucially, this took no extra modeling effort. The CLIP embeddings already sit in the asset representation from the artwork work above, so they carry the text-image alignment for free, and we get a query-aware ranker by adding a single similarity term at scoring time. The effect is visible in the search results themselves. Query-aware artwork for a search for a specific actor. Each result surfaces an asset that visually features the searched actor, aligning the artwork with the member’s explicit intent. Personalizing Video Previews via MediaFM Video previews raise the bar over still artwork. A video preview unfolds over time, and its appeal comes as much from motion, pacing, dialogue, and soundtrack as from any single frame. Our older video preview personalization models saw none of that. Like the early artwork models, they treated each preview as an opaque ID. Our first content-aware attempt, SeqCLIP , described a video preview by its frames, encoding each with a CLIP embedding and then averaging them into one vector. That captured what a video preview looked like, but a mean of still frames still misses what it sounds like, the dialogue and music that carry so much of a preview’s tone. To capture the rest, we turned to MediaFM , Netflix’s first in-house multimodal foundation model. Trained on 80 million shots, MediaFM fuses the following three signals per shot into a single embedding: Visual: SeqCLIP Audio: A pretrained speech and audio embedding model Text: Captions encoded via a large-scale text model Adopting MediaFM required no new infrastructure, since we simply integrate its shot embeddings into the asset representation, exactly as we did with CLIP embeddings for artwork. The added modalities paid off. We evaluated both embeddings against the ID-only baseline offline with IPS and then in a five-week online A/B test across all device platforms, and both signals gave the same ordering, MediaFM > SeqCLIP > ID-only, and each step of added content awareness helped, with the gains largest on TV. Offline, both content-aware embeddings beat the ID-only baseline on IPS and MediaFM beat SeqCLIP, as the chart below shows. Online, MediaFM came out on top too, delivering a statistically significant lift in our core streaming metric over the ID-only baseline and outperforming SeqCLIP. This shows that the audio and timed-text signals, which a visual-only encoder like SeqCLIP cannot capture, add real value. We have since shipped MediaFM as the default video preview embedding across all platforms. Relative offline IPS lift for the two content-aware video preview embeddings, each measured against the ID-only baseline at the zero rule. Adding visual content awareness helps, and adding audio and timed text on top of it helps further. Choosing Embeddings Cheaply with a Proxy Task New embeddings arrive constantly, but end-to-end trials are expensive, which cost data engineering, model retraining, and weeks of A/B test traffic. We couldn’t afford to run the full pipeline for every candidate, so we gated the funnel with a cheap question: From the content embedding alone, can you predict which asset wins under a plain, unpersonalized policy? We first select a fixed set of titles. For each title we use exploration data to find its debiased popularity winner, the asset with the highest interaction rate after we adjust for how often it was shown using its propensity score. We mark this winner with a binary label, 1 for the winner and 0 otherwise. We then train a linear probe to recover that label from the asset embedding alone, with no title, cast, or metadata, by minimizing the standard binary cross-entropy loss: Keeping the probe linear and embedding-only is intentional, since it isolates how much of an asset’s popularity is actually encoded in the embedding. If the embedding captures the semantic drivers of popularity, a simple linear classifier should be able to identify likely winners. If it does not, the probe performs no better than random guessing, which is the baseline we score it against. We first used the linear probe to screen and prune a broad set of candidate embeddings before modifying any production pipeline, narrowing the field to two finalists, SeqCLIP and the leading MediaFM variant. We then carried both through full offline evaluation and online A/B testing. All three signals, the linear probe accuracies, the offline IPS lifts, and the online A/B results, ranked MediaFM ahead of SeqCLIP, as the chart below shows. That alignment is why the linear probe now gates every new MediaFM version before release. Linear probe Δaccuracy, offline IPS lift, and online A/B metric lift for the two finalists. All three agree that MediaFM beats SeqCLIP. The online panel is measured against the ID-based baseline, with its values withheld. The Netflix Embedding Store None of this would be practical without shared infrastructure. Every embedding in this post, CLIP for artwork, SeqCLIP and MediaFM for video previews, lives in the Netflix Embedding Store , a component of Netflix’s AI Platform that hosts dense embeddings for titles, games, member profiles and multimedia assets. A foundation model encodes raw asset content into a dense vector once, and the Embedding Store serves that vector to every downstream system, the artwork model, the query-aware ranker, the video preview model, and others, through the same interface. Crucially, it serves the exact same embeddings at training time and at online inference time, so there is no skew between what a model learns from and what it sees in production. Its key property is that it decouples foundation-model updates from personalization-model deployments . A new embedding, or a new version of an existing one, can be registered, backfilled across the catalog, and validated entirely on its own, without touching the training or serving code of any model that consumes it. Once it is in the Embedding Store, it becomes available to every ranking and personalization model through configuration alone, no downstream code changes, no coordinated release. This is what let us swap CLIP into the artwork model, stand up the query-aware ranker on the same vectors, and roll MediaFM through the video preview model, each as an independent change rather than a cross-team migration. Foundation-model embeddings (CLIP, SeqCLIP, MediaFM) are stored once and consumed by every downstream system: artwork, query-aware artwork, video previews, and other rankers. What We Learned, and What’s Next Three lessons stood out. Pretrained CLIP embeddings let us consolidate five artwork models into one while boosting performance on data-starved canvases. This benefit became especially clear when the redesigned TV home screen rolled out. For video, multimodality wins decisively. The audio and text signals that a purely visual encoder cannot access pushed MediaFM past SeqCLIP. A cheap proxy task yields big savings , efficiently pruning the candidate set before running full end-to-end experiments and online A/B tests. Next, we aim to extend the Embedding Store toward a single shared semantic space for image, text, and video . Such a unified representation would enable cross-modal retrieval, such as matching a video preview to a search query, or a static artwork to the video preview it was derived from, as well as unified asset ranking across surface types and a more cohesive, intuitive discovery experience for members everywhere. Acknowledgements We thank Aneesh Vartakavi , Santiago Castro , and Avneesh Saluja for the CLIP embedding and MediaFM work that made the content-aware models described here possible, and Ratna Kavuri for the backend systems that serve multimedia personalization in production. MAPS: Netflix’s Multimodal Asset Personalization at Scale was originally published in Netflix TechBlog on Medium, where people are continuing the conversation by highlighting and responding to this story.",
+      "evidenceLink": "",
+      "score": 101.27916321428572,
+      "core": "By Emma Yanyang Kong , Aditya Deshpande , Asad Abbasi , Bowei Yan , David Fagnan , Ashish Rastogi , Dhaval Patel , Ray Zhang Introduction The Netflix experience is a journey of discovery. Every visual cue, from the artwork on a title to the video previews that autoplay while you browse, is there to connect you with a story you will love. We call these visual cues assets , and choosing the right one for each member i…",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-29T16:06:32.174Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "I accidentally turned LLM memory into program analysis",
+      "link": "https://pwning.systems/posts/llm-memory-program-analysis",
+      "publishedAt": "2026-08-28T23:27:45.000Z",
+      "author": "matt_d https://news.ycombinator.com/user?id=matt_d",
+      "summary": "Why I stopped trying to give LLM agents a better memory and instead built Lemmalog, a Datalog engine that maintains an agent's knowledge as analysis state, with provenance, retractions and incremental evaluation, plus what happened when I benchmarked it on LongMemEval and LoCoMo.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49485416",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 217,
+        "comments": 64
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-29T16:06:32.174Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 82.68463350670555,
+      "core": "Why I stopped trying to give LLM agents a better memory and instead built Lemmalog, a Datalog engine that maintains an agent's knowledge as analysis state, with provenance, retractions and incremental evaluation, plus what happened when I benchmarked it on LongMemEval and LoCoMo.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Hy4 Preview now available on AI Gateway",
+      "link": "https://vercel.com/changelog/hy4-preview-now-available-on-ai-gateway",
+      "publishedAt": "2026-08-28T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "Hy4 Preview from Tencent is now available on AI Gateway. Hy4 Preview is an open-source Mixture-of-Experts model with 770B total parameters and 49B active per token, aimed at long-horizon coding, document analysis, game development, and scientific reasoning. It serves a context window of 1M tokens. To use Hy4 Preview, set model to tencent/hy4-preview in the AI SDK : To use it in a coding agent, see the coding agents guide , then run vercel ai-gateway coding-agents setup to connect agents like Claude Code, Codex, OpenCode, Cursor, Pi, and more and select tencent/hy4-preview inside the agent. Try Hy4 Preview in the model playground . AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. You can view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 81.53507591269842,
+      "core": "Hy4 Preview from Tencent is now available on AI Gateway. Hy4 Preview is an open-source Mixture-of-Experts model with 770B total parameters and 49B active per token, aimed at long-horizon coding, document analysis, game development, and scientific reasoning. It serves a context window of 1M tokens. To use Hy4 Preview, set model to tencent/hy4-preview in the AI SDK : To use it in a coding agent, see the coding agents …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-29T16:06:32.174Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Ling 3.0 Flash Fin now available on AI Gateway for free",
+      "link": "https://vercel.com/changelog/ling-3-0-flash-fin-now-available-on-ai-gateway-for-free",
+      "publishedAt": "2026-08-27T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "Ling 3.0 Flash Fin from Inclusion AI is now available on AI Gateway and free to use through September 25. Ling 3.0 Flash Fin is a finance-focused version of Ling 3.0 Flash . It has a 256K-token context window, produces up to 32K output tokens, and supports reasoning and function calling. The model is designed for financial research and analysis, including multi-step workflows that user multiple tool calls before producing an answer. Choose a model ID based on what should happen after the free period: Continue after September 25: Use inclusionai/ling-3.0-flash-fin . Requests are free during the offer and begin billing at the standard rate when it ends. Stop after September 25: Use inclusionai/ling-3.0-flash-fin-free . This model ID returns an error after the offer ends, preventing future charges. To use Ling 3.0 Flash Fin with a coding agent , run vercel ai-gateway coding-agents setup , then select either model ID as your agent’s model. See the coding agents guide for more. Try Ling 3.0 Flash Fin in the model playground , or browse all language models . Read more",
+      "evidenceLink": "",
+      "score": 77.4096790873016,
+      "core": "Ling 3.0 Flash Fin from Inclusion AI is now available on AI Gateway and free to use through September 25. Ling 3.0 Flash Fin is a finance-focused version of Ling 3.0 Flash . It has a 256K-token context window, produces up to 32K output tokens, and supports reasoning and function calling. The model is designed for financial research and analysis, including multi-step workflows that user multiple tool calls before pro…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-29T16:06:32.174Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Build agentic creative workflows with Amazon Quick and fal",
+      "link": "https://aws.amazon.com/blogs/machine-learning/build-agentic-creative-workflows-with-amazon-quick-and-fal",
+      "publishedAt": "2026-08-27T23:04:22.000Z",
+      "author": "James Wu",
+      "summary": "Creative teams produce more assets than ever, but fragmented tools and manual context transfer slow production. This post shows how to build a reusable agent harness with Amazon Quick and fal, connected through the Model Context Protocol (MCP), using two hands-on workflows: an eight-panel storyboard and a music-video concept prototype.",
+      "evidenceLink": "",
+      "score": 60.941067976190475,
+      "core": "Creative teams produce more assets than ever, but fragmented tools and manual context transfer slow production. This post shows how to build a reusable agent harness with Amazon Quick and fal, connected through the Model Context Protocol (MCP), using two hands-on workflows: an eight-panel storyboard and a music-video concept prototype.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-29T16:06:32.174Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Automated researchers can reliably mitigate alignment failures",
+      "link": "https://www.anthropic.com/research/automated-researchers-mitigate-alignment-failures",
+      "publishedAt": "2026-08-28T17:02:17.000Z",
+      "author": "",
+      "summary": "We had Claude autonomously train models to improve their performance on several public benchmarks that measure 10 categories of alignment failure. For all 10, Claude found fixes that improved the target benchmarks without degrading capabilities.",
+      "score": 54.713190992063495,
+      "core": "We had Claude autonomously train models to improve their performance on several public benchmarks that measure 10 categories of alignment failure. For all 10, Claude found fixes that improved the target benchmarks without degrading capabilities.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-29T16:06:32.174Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "LangChain vs LangGraph: Which AI Agent Framework Should You Use in 2026?",
+      "link": "https://rerun.build/blog/langchain-vs-langgraph",
+      "publishedAt": "2026-08-28T04:42:51.000Z",
+      "author": "",
+      "summary": "LangChain vs LangGraph, explained by engineers: they're from the same company. Learn which layer your AI agent needs in 2026, when to use both, and how to run either safely in production.",
+      "evidenceLink": "",
+      "score": 54.510690992063495,
+      "core": "LangChain vs LangGraph, explained by engineers: they're from the same company. Learn which layer your AI agent needs in 2026, when to use both, and how to run either safely in production.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-29T16:06:32.174Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "LangSmith Engine: How We Built an Agent for Improving Agents",
+      "link": "https://www.langchain.com/blog/how-we-built-langsmith-engine-our-agent-for-improving-agents",
+      "publishedAt": "2026-08-26T15:02:51.000Z",
+      "author": "",
+      "summary": "A technical look at LangSmith Engine: how it analyzes traces at scale, turns recurring failures into actionable issues, and proposes evaluators and fixes.",
+      "evidenceLink": "",
+      "score": 51.63688146825397,
+      "core": "A technical look at LangSmith Engine: how it analyzes traces at scale, turns recurring failures into actionable issues, and proposes evaluators and fixes.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-29T16:06:32.174Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Making Data Ingestion Production Ready: a LangChain-Powered Airbyte Destination",
+      "link": "https://www.langchain.com/blog/making-data-ingestion-production-ready-a-langchain-powered-airbyte-destination",
+      "publishedAt": "2026-08-26T10:46:33.000Z",
+      "author": "",
+      "summary": "Scale retrieval apps to production with LangChain's Airbyte integration. Automate data ingestion with scheduling, text splitting, and 50+ embeddings.",
+      "evidenceLink": "",
+      "score": 50.30398464285714,
+      "core": "Scale retrieval apps to production with LangChain's Airbyte integration. Automate data ingestion with scheduling, text splitting, and 50+ embeddings.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-29T16:06:32.174Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "AI Agent Infrastructure: The Runtime & Serving Stack",
+      "link": "https://rerun.build/blog/ai-agent-infrastructure",
+      "publishedAt": "2026-08-29T06:36:58.000Z",
+      "author": "",
+      "summary": "AI agent infrastructure is the runtime and serving stack that keeps agents safe in production. The layers, the control plane, and why 40% of projects fail.",
+      "evidenceLink": "",
+      "score": 48.1830521031746,
+      "core": "AI agent infrastructure is the runtime and serving stack that keeps agents safe in production. The layers, the control plane, and why 40% of projects fail.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-29T16:06:32.174Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Everyone is unique: Towards Behaviorally Heterogeneous Negotiation Dialogue Systems for Debt Collection",
+      "link": "https://arxiv.org/abs/2607.25218",
+      "evidenceLink": "https://www.semanticscholar.org/paper/fc27e2c6ec8adc66c6f0ad52cbfc778e4048c3bb",
+      "publishedAt": "2026-07-28T00:00:00.000Z",
+      "submittedAt": "2026-07-28T00:00:00.000Z",
+      "author": "Yuhang Yang, Kai Tang, Chaonan Ye, Haobo Wang, Qiqi Luo",
+      "summary": "Debt collection is a critical negotiation task in the financial industry, with strong practical relevance and exceptional academic value as a behaviorally rich, high-stakes testbed for human-centered dialogue systems. While large language models (LLMs) have shown promise in dialogue and negotiation, effectively evaluating their performance in this complex scenarios remains a major challenge: existing benchmarks uniformly assume users to be static, rational agents with fixed preferences, failing to capture the rich behavioral heterogeneity inherent in real-world debt collection. To bridge this gap, we propose DebtBench, the first public persona-enriched debt collection benchmark, that highlights behavioral heterogeneity in negotiation. Moreover, we develop DebtGPT, a debt collection agent trained to jointly optimize financial recovery and interaction experience. Our experimental results, using 16 state-of-the-art LLMs, find that most existing models struggle in this complex but realistic scenarios, whereas DebtGPT outperforms all open-source baselines and achieves performance on par with GPT-4o. The code and data are available at https://github.com/YYuHhhh/DebtNegotiation.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 45,
+      "core": "Debt collection is a critical negotiation task in the financial industry, with strong practical relevance and exceptional academic value as a behaviorally rich, high-stakes testbed for human-centered dialogue systems. While large language models (LLMs) have shown promise in dialogue and negotiation, effectively evaluating their performance in this complex scenarios remains a major challenge: existing benchmarks unif…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "TREC iKAT 2025: A Test Collection for the Offline and Interactive Evaluation of Conversational Search",
+      "link": "https://doi.org/10.1145/3805712.3808591",
+      "evidenceLink": "https://www.semanticscholar.org/paper/2352fe330c9c8493dfdea783f609387e4ea97439",
+      "publishedAt": "2026-07-19T00:00:00.000Z",
+      "submittedAt": "2026-07-19T00:00:00.000Z",
+      "author": "Zahra Abbasiantaeb, Simon Lupart, Marcel Gohsen, Nailia Mirzakhmedova, Johannes Kiesel",
+      "summary": "Conversational search agents, especially with the advent of large language models, have developed into useful tools to satisfy complex information needs of their users. Former research has shown that personalization (i.e., adaptation of agent responses to the preferences and traits of the user) can increase the relevance and perceived answer quality of these systems even further. However, developing accurate personalization methods typically requires rich datasets, both in terms of user profiles and complex conversations, for which only a few resources are publicly available. Over the past three years, the goal of the TREC Interactive Knowledge Assistance Track (iKAT) has been to bridge this gap. In organizing this shared task, we have developed a collection of complex information needs and associated conversations, made to challenge today's conversational agents and thus highlight aspects in need of further research. In this paper, we present the resources made for iKAT 2025, focusing on multi-session conversations (i.e., multiple dialogues per user), dynamically evolving user models, mixed-initiative dialogues, and large-scale human and automatic assessments. In addition to manually designed user profiles and conversations, the test collection for 2025 also contains dialogues between participating systems and our user simulators. All the resources are publicly available in our repository, including the system evaluation both as a result of the offline (i.e., test collection-based) and interactive tasks (i.e., user simulation-based), as well as their source code and model weights, to foster future research in this direction.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 45,
+      "core": "Conversational search agents, especially with the advent of large language models, have developed into useful tools to satisfy complex information needs of their users. Former research has shown that personalization (i.e., adaptation of agent responses to the preferences and traits of the user) can increase the relevance and perceived answer quality of these systems even further. However, developing accurate persona…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "ClinicalMC: A Benchmark for Multi-Course Clinical Decision-Making with Large Language Models",
+      "link": "https://arxiv.org/abs/2606.03157",
+      "evidenceLink": "https://www.semanticscholar.org/paper/6a52b41855dbfe504b3f815186b23fa60544771f",
+      "publishedAt": "2026-06-02T00:00:00.000Z",
+      "submittedAt": "2026-06-02T00:00:00.000Z",
+      "author": "Ruihui Hou, Siyi Zhu, Ziyue Huai, Guangya Yu, Yongqi Fan",
+      "summary": "Large language models (LLMs) have been widely adopted in healthcare, yet they still encounter significant challenges in complex clinical decision-making scenarios. Existing benchmarks primarily assess LLM performance in single-course settings and lack systematic evaluation in multi-course scenarios, where a patient's condition evolves over time. To address this gap, we propose ClinicalMC, a benchmark for multi-course clinical decision-making. It includes 1,275 Chinese and 5,804 English samples across four stages from admission to discharge. These stages cover triage, first-course examination/diagnosis/treatment, subsequent multi-course examination/assessment/treatment, and final diagnosis. In ClinicalMC, patients in the English dataset undergo an average of 5.11 clinical courses, whereas those in the Chinese dataset undergo 3.42. To assess LLM performance, we construct a multi-agent evaluation framework that includes patient, examiner, and doctor agents. Based on the benchmark and framework, we design two experimental settings -- a single-turn static setting and a multi-turn dynamic setting -- and assess three categories of LLMs: 1) closed-source LLMs like GPT5-mini; 2) open-source LLMs like DeepSeek-V3.2; and 3) medical LLMs like HuatuoGPT-o1. Through extensive evaluation, we aim to better understand LLM performance in the medical domain and support its effective deployment in healthcare.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 45,
+      "core": "Large language models (LLMs) have been widely adopted in healthcare, yet they still encounter significant challenges in complex clinical decision-making scenarios. Existing benchmarks primarily assess LLM performance in single-course settings and lack systematic evaluation in multi-course scenarios, where a patient's condition evolves over time. To address this gap, we propose ClinicalMC, a benchmark for multi-cours…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "MOOSE-Copilot: A Web-Based Interactive Assistant for Unified Exploratory and Fine-Grained Scientific Hypothesis Discovery",
+      "link": "https://arxiv.org/abs/2605.29475",
+      "evidenceLink": "https://www.semanticscholar.org/paper/69b51cf8b19fa4b0f70612e50f043d522e62e399",
+      "publishedAt": "2026-05-28T00:00:00.000Z",
+      "submittedAt": "2026-05-28T00:00:00.000Z",
+      "author": "Hongran An, Zonglin Yang",
+      "summary": "Large language models (LLMs) show remarkable potential in scientific hypothesis discovery. However, existing approaches face two critical limitations: they treat divergent exploratory search and convergent fine-grained refinement as isolated tasks, and they operate autonomously with little to no human guidance. We present MOOSE-Copilot, the first unified framework to bridge this abstraction gap through a formalized human-AI interaction (HAII) protocol. Our system empowers scientists to steer the generative process via three explicit signals: initial blueprints, inter-stage routing, and intra-stage feedback. Using an oracle-simulated evaluation in which an LLM provides idealized expert signals, we show that injecting these structured signals significantly outperforms purely autonomous baselines, characterizing the gains achievable under high-quality guidance. Furthermore, we build a web-based interface that turns the framework into a no-code workflow: researchers pose a question, watch the hypothesis search unfold as an interactive tree, and steer it by selecting hypotheses, routing between stages, and injecting feedback-no command-line agents required. This makes end-to-end hypothesis discovery directly accessible to interdisciplinary researchers.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 45,
+      "core": "Large language models (LLMs) show remarkable potential in scientific hypothesis discovery. However, existing approaches face two critical limitations: they treat divergent exploratory search and convergent fine-grained refinement as isolated tasks, and they operate autonomously with little to no human guidance. We present MOOSE-Copilot, the first unified framework to bridge this abstraction gap through a formalized …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Interpretability dreams",
+      "link": "https://www.anthropic.com/research/interpretability-dreams",
+      "publishedAt": "2026-08-26T18:13:29.000Z",
+      "author": "",
+      "summary": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "score": 44.70827035714286,
+      "core": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-29T16:06:32.174Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "BotBase for Operators: A clearer path to joining Cloudflare's directory of bots and agents",
+      "link": "https://blog.cloudflare.com/botbase-for-operators",
+      "publishedAt": "2026-08-28T12:59:44.000Z",
+      "author": "Julian Laxman",
+      "summary": "Bot operators now have a home in the Cloudflare dashboard to manage submissions. This update adds submission status tracking, submission editing, and a behavior model so operators can accurately declare how their bots use content.",
+      "evidenceLink": "",
+      "score": 35.34110765873016,
+      "core": "Bot operators now have a home in the Cloudflare dashboard to manage submissions. This update adds submission status tracking, submission editing, and a behavior model so operators can accurately declare how their bots use content.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-29T16:06:32.174Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Bring your own model with Amazon SageMaker AI: Script mode in SDK v3",
+      "link": "https://aws.amazon.com/blogs/machine-learning/bring-your-own-model-with-amazon-sagemaker-ai-script-mode-in-sdk-v3",
+      "publishedAt": "2026-08-26T16:31:32.000Z",
+      "author": "Bobby Lindsey",
+      "summary": "The SageMaker Python SDK v3 redesigns script mode with unified ModelTrainer and ModelBuilder classes. This post walks through two end-to-end examples, a scikit-learn Random Forest and a multi-GPU Stable Diffusion 3.5 LoRA fine-tune, showing how SourceCode syncs your local code into any container at runtime so you can iterate without rebuilding Docker images.",
+      "evidenceLink": "",
+      "score": 33.88690130952381,
+      "core": "The SageMaker Python SDK v3 redesigns script mode with unified ModelTrainer and ModelBuilder classes. This post walks through two end-to-end examples, a scikit-learn Random Forest and a multi-GPU Stable Diffusion 3.5 LoRA fine-tune, showing how SourceCode syncs your local code into any container at runtime so you can iterate without rebuilding Docker images.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-29T16:06:32.174Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "'The threat landscape is moving so quickly': CrowdStrike CEO George Kurtz warns AI is raising the stakes in cybersecurity – and the firm is poised to capitalize on ‘the largest market opportunity in our history’",
+      "link": "https://www.itpro.com/security/the-threat-landscape-is-moving-so-quickly-crowdstrike-ceo-george-kurtz-warns-ai-is-raising-the-stakes-in-cybersecurity-and-the-firm-is-poised-to-capitalize-on-the-largest-market-opportunity-in-our-history",
+      "publishedAt": "2026-08-28T10:28:34.000Z",
+      "author": "Ross Kelly",
+      "summary": "With concerns over AI security rising, Kurtz believes CrowdStrike can position itself as the go-to provider for enterprises",
+      "evidenceLink": "",
+      "score": 32.5667028968254,
+      "core": "With concerns over AI security rising, Kurtz believes CrowdStrike can position itself as the go-to provider for enterprises",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-29T16:06:32.174Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cohere_blog",
+      "source": "Cohere Blog",
+      "title": "Generative AI for Business | Cohere",
+      "link": "https://cohere.com/blog/generative-ai-for-business",
+      "publishedAt": "2026-08-28T00:00:00.000Z",
+      "author": "",
+      "summary": "Explore how businesses use generative AI, the benefits and challenges involved, and a practical approach to effective adoption.",
+      "score": 31.840631468253967,
+      "core": "Explore how businesses use generative AI, the benefits and challenges involved, and a practical approach to effective adoption.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-29T16:06:32.174Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Bringing ChatGPT for Teachers to more U.S. school districts",
+      "link": "https://openai.com/index/bringing-chatgpt-for-teachers-to-more-us-school-districts",
+      "publishedAt": "2026-08-26T10:00:00.000Z",
+      "author": "",
+      "summary": "ChatGPT for Teachers is expanding to 55 U.S. school systems, bringing secure AI tools, training, and support to over 100,000 more educators and staff.",
+      "evidenceLink": "",
+      "score": 31.25412353174603,
+      "core": "ChatGPT for Teachers is expanding to 55 U.S. school systems, bringing secure AI tools, training, and support to over 100,000 more educators and staff.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-29T16:06:32.174Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    }
+  ]
+}

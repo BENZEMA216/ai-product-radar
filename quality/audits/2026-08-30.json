@@ -1,0 +1,294 @@
+{
+  "date": "2026-08-30",
+  "generatedAt": "2026-08-29T16:03:13.157Z",
+  "reportPath": "reports/2026-08-30-0003-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 61,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "YC Launch",
+      "AIHOT"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 20,
+      "keptCount": 11,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-08-28；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 20 条，AI 相关候选 11 条；实际 fallback：hunted_space。；历史去重移除 1 条已报道或已处理日榜 Product Hunt 信号，最终发布 10 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 1,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 7,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 6,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 23,
+      "keptCount": 23,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-08-17T16:01:51.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "OpenTag",
+      "productKey": "https://www.producthunt.com/products/opentag",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "OpenTag 把 AI 同事直接放进 Slack 和 Teams，值得看它能否借现成协作入口减少新工具的采用阻力。"
+    },
+    {
+      "rank": 2,
+      "product": "Itsuki – open-source memory engine for AI agents (API and MCP)",
+      "productKey": "https://itsuki.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Itsuki 同时提供 API 与 MCP 的开源记忆层，关键是观察跨 agent 记忆能否成为可替换的基础设施，而不是又一个封闭功能。"
+    },
+    {
+      "rank": 3,
+      "product": "Caddi",
+      "productKey": "https://www.producthunt.com/products/caddi-3",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Caddi 让用户演示一次工作就生成 agent，值得看示范式配置能否替代复杂流程搭建，并把隐性操作稳定抽取出来。"
+    },
+    {
+      "rank": 4,
+      "product": "VT Code – a terminal coding agent with a human-reviewed WebMCP editor",
+      "productKey": "https://vinhnx.github.io/vtcode",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "VT Code 把终端编码 agent 与人工审核的 WebMCP 编辑器组合，重点是它如何在自动执行和可控确认之间划边界。"
+    },
+    {
+      "rank": 5,
+      "product": "screenpipe",
+      "productKey": "https://www.producthunt.com/products/screenpipe",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "screenpipe 用本地记录的电脑工作为 agent 提供上下文，产品判断点在持续采集的价值能否覆盖隐私与存储成本。"
+    },
+    {
+      "rank": 6,
+      "product": "Aramb",
+      "productKey": "https://www.producthunt.com/products/aramb",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Aramb 把 agent 的构建、发布和变现压缩到同一流程，值得看它是否真的打通分发与收费，而非只缩短 demo 制作。"
+    },
+    {
+      "rank": 7,
+      "product": "Gemini Omni 1.1 Flash",
+      "productKey": "https://www.producthunt.com/products/gemini-omni-1-1-flash",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Gemini Omni 1.1 Flash 面向视频生成与编辑，值得关注多模态模型是否把创作流程从单次生成推进到连续可修改。"
+    },
+    {
+      "rank": 8,
+      "product": "Play with Putty",
+      "productKey": "https://www.producthunt.com/products/google-labs",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Play with Putty 强调协作式 vibe coding，关键是多人共同编辑和交接能否补上个人编码 agent 的协作缺口。"
+    },
+    {
+      "rank": 9,
+      "product": "Almanac",
+      "productKey": "https://www.producthunt.com/products/almanac-5",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Almanac 用“第二大脑”定位 agent，值得看它如何把长期上下文转成可验证行动，而不是停留在通用记忆叙事。"
+    },
+    {
+      "rank": 10,
+      "product": "CTRL Micro",
+      "productKey": "https://www.producthunt.com/products/ctrl-micro",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "CTRL Micro 用实体触觉控制台连接 Mac 与 AI agent，值得观察硬件快捷入口能否降低高频任务的唤起与确认成本。"
+    },
+    {
+      "rank": 11,
+      "product": "Agentify Chat – E2E-Encrypted Remote Chat for Codex, Claude, Grok CLIs",
+      "productKey": "https://news.ycombinator.com/item?id=49482455",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agentify Chat 为多种编码 CLI 提供端到端加密的远程聊天入口，重点是远程便利性是否仍保留命令执行的安全确认。"
+    },
+    {
+      "rank": 12,
+      "product": "Watermarks Remover: Clean LLM watermarks from text and files",
+      "productKey": "https://github.com/guillaumemeyer/watermarks-remover",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Watermarks Remover 面向文本和文件中的 LLM 水印清理，需求很具体，但需要判断它解决的是稳定工作流还是短期对抗工具。"
+    },
+    {
+      "rank": 13,
+      "product": "Spline V2",
+      "productKey": "https://www.producthunt.com/products/spline",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Spline V2 把 3D 平台重新定位到 agent 时代，值得看 agent 是否真正参与建模与迭代，而非只给既有工具增加口号。"
+    },
+    {
+      "rank": 14,
+      "product": "Revalvo",
+      "productKey": "https://www.producthunt.com/products/revalvo",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Revalvo 把多模型并行运行、评分和版本管理串成发布流程，适合评估模型选择是否能从人工试用变成可复现决策。"
+    },
+    {
+      "rank": 15,
+      "product": "Osmaura",
+      "productKey": "https://www.ycombinator.com/launches/tig-osmaura-ai-growth-engine-for-law-firms",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Osmaura 直接承诺为律所寻找客户，垂直价值明确；关键是增长结果能否被归因和审计，而不只是自动生成营销内容。"
+    },
+    {
+      "rank": 16,
+      "product": "Passively Earn BTC/Sol/Anthropic for Using Claude Code",
+      "productKey": "https://prmpt.cash",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "prmpt.cash 把使用 Claude Code 与加密资产收益绑定，值得观察激励能否形成真实使用增长，同时要警惕补贴驱动的虚假活跃。"
+    },
+    {
+      "rank": 17,
+      "product": "Organize ChatGPT and Claude chats. Never lose a conversation",
+      "productKey": "https://simplefolder.hestenns.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Simple Folder 专门整理 ChatGPT 与 Claude 对话，切中跨工具信息散落问题；价值取决于检索、迁移和长期归档是否可靠。"
+    },
+    {
+      "rank": 18,
+      "product": "LAION 发布 Big Video Dataset：1000 万小时开源视频数据集",
+      "productKey": "https://aihot.virxact.com/items/cmte7k79x01clrobgtilz3qz5",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "LAION 的大规模视频数据集可能降低视频模型训练门槛，但当前仅有聚合摘要，应该作为数据基础设施弱信号而非产品发布判断。"
+    },
+    {
+      "rank": 19,
+      "product": "云智能体可在自有 Mac mini 上运行",
+      "productKey": "https://aihot.virxact.com/items/cmte75gql0204roed3ortvos6",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "把云 agent 接到自有 Mac mini，可让 iOS 模拟器验证进入远程任务闭环；值得看自托管 worker 的部署和权限成本是否可接受。"
+    },
+    {
+      "rank": 20,
+      "product": "Claude Code 或将支持免选文件夹启动会话",
+      "productKey": "https://aihot.virxact.com/items/cmtehwoju02mkroumi9t5qhsr",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "Claude Code 若无需预选文件夹即可启动，会显著降低会话入口摩擦；但功能仍属隐藏开发信号，需等官方可用性确认。"
+    }
+  ]
+}
