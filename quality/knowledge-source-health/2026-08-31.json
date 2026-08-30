@@ -1,0 +1,472 @@
+{
+  "generatedAt": "2026-08-30T16:05:47.630Z",
+  "date": "2026-08-31",
+  "window": {
+    "start": "2026-07-31T16:05:47.630Z",
+    "end": "2026-08-30T16:05:47.630Z",
+    "lookbackDays": 30
+  },
+  "targetCount": 20,
+  "desiredBlogCount": 16,
+  "minimumBlogCount": 16,
+  "minimumTotalCount": 18,
+  "maximumPaperCount": 4,
+  "desiredPaperCount": 4,
+  "selectedCount": 20,
+  "blogCount": 16,
+  "paperCount": 4,
+  "candidatePool": {
+    "historicalLinkCount": 642,
+    "blogFetchedCount": 210,
+    "blogAccessCheckedCount": 38,
+    "blogAccessVerifiedCount": 29,
+    "blogAccessRejectedCount": 9,
+    "blogAccessRejected": [
+      {
+        "sourceId": "interconnects",
+        "title": "Lessons from the hacks",
+        "link": "https://www.interconnects.ai/p/lessons-from-the-hacks",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "AI’s third era: the rise of persistent AI coworkers | Tara Seshan (OpenAI’s product lead)",
+        "link": "https://www.lennysnewsletter.com/p/ais-third-era-the-rise-of-persistent",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "🧠 Community Wisdom: Favorite Lenny’s Product Pass tools, how AI is reshaping hiring, what to prioritize when you join a new company, and more",
+        "link": "https://www.lennysnewsletter.com/p/community-wisdom-favorite-lennys",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Why Ramp built its own in-house coding agent, Inspect",
+        "link": "https://newsletter.pragmaticengineer.com/p/why-ramp-built-inspect",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Software engineering at a proprietary trading company: Optiver",
+        "link": "https://newsletter.pragmaticengineer.com/p/optiver",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: Meta’s self-inflicted resignation-wave",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-metas-self-inflicted-resignation",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: Meta wanted to reduce teams by 60% because of AI",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-meta-wanted-to-reduce-teams",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: We need to talk about migrations with AI",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-we-need-to-talk-about-migrations",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Headed for the Exit: the Great Engineering Leader Career Break",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-great-engineering-leader-career-break",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      }
+    ],
+    "paperFetchedCount": 80,
+    "paperTopConferenceVerifiedCount": 80,
+    "blogAfterHistoricalDedupCount": 29,
+    "paperAfterHistoricalDedupCount": 20,
+    "eligibleAfterHistoricalDedupCount": 49,
+    "maxPerBlogSource": 2,
+    "selectedBlogSourceCounts": {
+      "anthropic": 4,
+      "cohere_blog": 3,
+      "deepmind": 2,
+      "itpro_ai": 1,
+      "langchain_engineering": 4,
+      "rerun_agent_engineering": 1,
+      "techradar_pro_ai": 1
+    },
+    "sourceCapRelaxed": true,
+    "shortfallReason": ""
+  },
+  "blogAccessPolicy": {
+    "allowedModes": [
+      "public",
+      "gmail_subscription"
+    ],
+    "gmailGrantCount": 0,
+    "privateIdentifiersPersisted": false
+  },
+  "topConferenceAllowlist": [
+    "NeurIPS",
+    "ICML",
+    "ICLR",
+    "ACL",
+    "EMNLP",
+    "NAACL",
+    "CVPR",
+    "ICCV",
+    "ECCV",
+    "AAAI",
+    "IJCAI",
+    "KDD",
+    "SIGIR",
+    "WWW",
+    "CHI",
+    "SOSP",
+    "OSDI",
+    "NSDI"
+  ],
+  "sources": {
+    "openai_news": {
+      "label": "OpenAI",
+      "status": "ok",
+      "rawCount": 1157,
+      "keptCount": 20,
+      "note": "30 天窗口"
+    },
+    "anthropic": {
+      "label": "Anthropic Research & Engineering",
+      "status": "ok",
+      "rawCount": 522,
+      "keptCount": 12,
+      "note": "30 天窗口"
+    },
+    "deepmind": {
+      "label": "Google DeepMind",
+      "status": "ok",
+      "rawCount": 100,
+      "keptCount": 7,
+      "note": "30 天窗口"
+    },
+    "simon_willison": {
+      "label": "Simon Willison",
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 6,
+      "note": "30 天窗口"
+    },
+    "lilian_weng": {
+      "label": "Lil'Log · Lilian Weng",
+      "status": "ok",
+      "rawCount": 53,
+      "keptCount": 0,
+      "note": "30 天窗口"
+    },
+    "chip_huyen": {
+      "label": "Chip Huyen",
+      "status": "ok",
+      "rawCount": 10,
+      "keptCount": 0,
+      "note": "30 天窗口"
+    },
+    "eugene_yan": {
+      "label": "Eugene Yan",
+      "status": "ok",
+      "rawCount": 212,
+      "keptCount": 0,
+      "note": "30 天窗口"
+    },
+    "cloudflare_ai": {
+      "label": "Cloudflare",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 8,
+      "note": "30 天窗口"
+    },
+    "vercel_ai": {
+      "label": "Vercel",
+      "status": "ok",
+      "rawCount": 1530,
+      "keptCount": 20,
+      "note": "30 天窗口"
+    },
+    "github_ai_engineering": {
+      "label": "GitHub Blog",
+      "status": "ok",
+      "rawCount": 10,
+      "keptCount": 2,
+      "note": "30 天窗口"
+    },
+    "aws_machine_learning": {
+      "label": "AWS Machine Learning Blog",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 6,
+      "note": "30 天窗口"
+    },
+    "aws_ai_news": {
+      "label": "AWS News Blog · AI",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 1,
+      "note": "30 天窗口"
+    },
+    "google_developers": {
+      "label": "Google Developers Blog",
+      "status": "ok",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "30 天窗口"
+    },
+    "cohere_blog": {
+      "label": "Cohere Blog",
+      "status": "ok",
+      "rawCount": 772,
+      "keptCount": 11,
+      "note": "30 天窗口"
+    },
+    "meta_engineering": {
+      "label": "Meta Engineering",
+      "status": "ok",
+      "rawCount": 9,
+      "keptCount": 2,
+      "note": "30 天窗口"
+    },
+    "microsoft_research": {
+      "label": "Microsoft Research",
+      "status": "ok",
+      "rawCount": 10,
+      "keptCount": 3,
+      "note": "30 天窗口"
+    },
+    "microsoft_industry_ai": {
+      "label": "Microsoft Industry Blog",
+      "status": "ok",
+      "rawCount": 10,
+      "keptCount": 1,
+      "note": "30 天窗口"
+    },
+    "nvidia_deep_learning": {
+      "label": "NVIDIA Deep Learning",
+      "status": "ok",
+      "rawCount": 18,
+      "keptCount": 0,
+      "note": "30 天窗口"
+    },
+    "huggingface_blog": {
+      "label": "Hugging Face Blog",
+      "status": "ok",
+      "rawCount": 852,
+      "keptCount": 2,
+      "note": "30 天窗口"
+    },
+    "google_research": {
+      "label": "Google Research",
+      "status": "ok",
+      "rawCount": 100,
+      "keptCount": 1,
+      "note": "30 天窗口"
+    },
+    "mozilla_ai": {
+      "label": "Mozilla.ai",
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 2,
+      "note": "30 天窗口"
+    },
+    "sentry_ai_engineering": {
+      "label": "Sentry Engineering",
+      "status": "ok",
+      "rawCount": 30,
+      "keptCount": 1,
+      "note": "30 天窗口"
+    },
+    "coder_ai_engineering": {
+      "label": "Coder",
+      "status": "ok",
+      "rawCount": 303,
+      "keptCount": 0,
+      "note": "30 天窗口"
+    },
+    "agentic_engineer": {
+      "label": "The Agentic Engineer",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 1,
+      "note": "30 天窗口"
+    },
+    "agentailor": {
+      "label": "Agentailor",
+      "status": "ok",
+      "rawCount": 45,
+      "keptCount": 3,
+      "note": "30 天窗口"
+    },
+    "gerald_chen_ai_engineering": {
+      "label": "陈广亮的技术博客",
+      "status": "ok",
+      "rawCount": 93,
+      "keptCount": 4,
+      "note": "30 天窗口"
+    },
+    "rerun_agent_engineering": {
+      "label": "Rerun Engineering",
+      "status": "ok",
+      "rawCount": 57,
+      "keptCount": 20,
+      "note": "30 天窗口"
+    },
+    "techradar_pro_ai": {
+      "label": "TechRadar Pro",
+      "status": "ok",
+      "rawCount": 50,
+      "keptCount": 1,
+      "note": "30 天窗口"
+    },
+    "itpro_ai": {
+      "label": "ITPro",
+      "status": "ok",
+      "rawCount": 50,
+      "keptCount": 5,
+      "note": "30 天窗口"
+    },
+    "hcker_news_ai_blogs": {
+      "label": "Hacker News · hcker.news",
+      "status": "ok",
+      "rawCount": 8,
+      "keptCount": 0,
+      "note": "hcker.news 滚动 24 小时 AI 外链；HN 分数至少 80，排除 Show/Launch HN、代码仓库与论文链接"
+    },
+    "langchain_engineering": {
+      "label": "LangChain Blog",
+      "status": "ok",
+      "rawCount": 99,
+      "keptCount": 24,
+      "note": "30 天窗口"
+    },
+    "sierra_engineering": {
+      "label": "Sierra Blog",
+      "status": "ok",
+      "rawCount": 118,
+      "keptCount": 1,
+      "note": "30 天窗口"
+    },
+    "modal_engineering": {
+      "label": "Modal Engineering",
+      "status": "ok",
+      "rawCount": 130,
+      "keptCount": 0,
+      "note": "30 天窗口"
+    },
+    "together_ai_engineering": {
+      "label": "Together AI",
+      "status": "ok",
+      "rawCount": 100,
+      "keptCount": 1,
+      "note": "30 天窗口"
+    },
+    "mistral_ai_engineering": {
+      "label": "Mistral AI",
+      "status": "ok",
+      "rawCount": 82,
+      "keptCount": 1,
+      "note": "30 天窗口"
+    },
+    "latent_space": {
+      "label": "Latent Space",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 3,
+      "note": "30 天窗口"
+    },
+    "interconnects": {
+      "label": "Interconnects",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 7,
+      "note": "30 天窗口"
+    },
+    "lennys_newsletter": {
+      "label": "Lenny's Newsletter",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 7,
+      "note": "30 天窗口；由 Gmail 订阅发现后改用公开 RSS"
+    },
+    "pragmatic_engineer": {
+      "label": "The Pragmatic Engineer",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 9,
+      "note": "30 天窗口；由 Gmail 订阅发现后改用公开 RSS"
+    },
+    "funeral_ai": {
+      "label": "葬AI",
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 0,
+      "note": "30 天窗口；由 Gmail 订阅发现后改用公开 RSS"
+    },
+    "netflix_technology": {
+      "label": "Netflix Technology Blog",
+      "status": "ok",
+      "rawCount": 10,
+      "keptCount": 1,
+      "note": "30 天窗口"
+    },
+    "databricks_engineering": {
+      "label": "Databricks Blog",
+      "status": "ok",
+      "rawCount": 10,
+      "keptCount": 0,
+      "note": "30 天窗口"
+    },
+    "nvidia_developer": {
+      "label": "NVIDIA Technical Blog",
+      "status": "ok",
+      "rawCount": 100,
+      "keptCount": 12,
+      "note": "30 天窗口"
+    },
+    "salesforce_engineering": {
+      "label": "Salesforce Engineering",
+      "status": "ok",
+      "rawCount": 10,
+      "keptCount": 4,
+      "note": "30 天窗口"
+    },
+    "slack_engineering": {
+      "label": "Slack Engineering",
+      "status": "ok",
+      "rawCount": 8,
+      "keptCount": 0,
+      "note": "30 天窗口"
+    },
+    "spotify_engineering": {
+      "label": "Spotify Engineering",
+      "status": "ok",
+      "rawCount": 5,
+      "keptCount": 1,
+      "note": "30 天窗口"
+    },
+    "datadog_engineering": {
+      "label": "Datadog Engineering",
+      "status": "ok",
+      "rawCount": 99,
+      "keptCount": 0,
+      "note": "30 天窗口"
+    },
+    "gmail_newsletters": {
+      "label": "Gmail Newsletter",
+      "status": "optional",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "当日未生成 Gmail Newsletter 清洗输入；公开 RSS 来源仍继续采集"
+    },
+    "semantic_scholar_top_conferences": {
+      "label": "顶会论文 · Semantic Scholar",
+      "status": "ok",
+      "rawCount": 84,
+      "keptCount": 80,
+      "rejectedCount": 4,
+      "note": "仅保留 Semantic Scholar 明确标记为 conference 且命中顶会白名单的论文；无会议证据的 arXiv/HF 热榜不进入候选"
+    }
+  }
+}

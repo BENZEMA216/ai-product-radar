@@ -1,0 +1,415 @@
+{
+  "generatedAt": "2026-08-30T16:05:47.630Z",
+  "date": "2026-08-31",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Introducing Rubrics: Build Agents that Evaluate and Correct Their Work",
+      "link": "https://www.langchain.com/blog/introducing-rubrics-for-deepagents",
+      "publishedAt": "2026-08-25T19:38:39.000Z",
+      "author": "",
+      "summary": "Deep Agents' RubricMiddleware adds a self-evaluation loop to your agent runs. Set a rubric, configure a grader, and get reliable outputs on tasks where correctness matters.",
+      "evidenceLink": "",
+      "score": 44.637527182539685,
+      "core": "Deep Agents' RubricMiddleware adds a self-evaluation loop to your agent runs. Set a rubric, configure a grader, and get reliable outputs on tasks where correctness matters.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-30T16:05:47.630Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "SocialDropout: Dynamic Agent Dropout for Social Simulation",
+      "link": "https://doi.org/10.1145/3805712.3809974",
+      "evidenceLink": "https://www.semanticscholar.org/paper/2550a554f73149ce136a3f66d77d321e39a7b935",
+      "publishedAt": "2026-07-19T00:00:00.000Z",
+      "submittedAt": "2026-07-19T00:00:00.000Z",
+      "author": "Huajie Wang, Geng Tu, Xi Zeng, Ruifeng Xu, Min Zhang",
+      "summary": "Large language model driven multi-agent social simulation frameworks enable realistic modeling of complex societal dynamics but incur substantial computational overhead due to dense agent participation and extensive interaction costs. To address this limitation, we propose SocialDropout, a reinforcement learning–based agent selection strategy within the AgentSociety framework, inspired by the AgentDropout paradigm, which dynamically identifies and samples informative agent subsets for each simulation round. Each agent is assigned an adaptive importance weight optimized to jointly minimize agent sparsity and computational cost measured by LLM calls, token consumption, and execution time—while preserving social interaction intensity within the environment. Extensive performance evaluation demonstrates that the proposed method significantly improves simulation efficiency and scalability. Moreover, ablation studies verify that high-level behavioral realism and outcome consistency are largely maintained despite substantial agent reduction. Our approach offers a practical and general optimization mechanism for large-scale LLM-based multi-agent social simulations under constrained computational budgets.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 44,
+      "core": "Large language model driven multi-agent social simulation frameworks enable realistic modeling of complex societal dynamics but incur substantial computational overhead due to dense agent participation and extensive interaction costs. To address this limitation, we propose SocialDropout, a reinforcement learning–based agent selection strategy within the AgentSociety framework, inspired by the AgentDropout paradigm, …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Breaking the Evaluation Paradox: Evaluating High-Entropy Search with Computationally Irreducible Constraints",
+      "link": "https://arxiv.org/abs/2606.22783",
+      "evidenceLink": "https://www.semanticscholar.org/paper/a2a6b54e1eb87cd30ffc72fc1d8e2901e65a769a",
+      "publishedAt": "2026-06-22T00:00:00.000Z",
+      "submittedAt": "2026-06-22T00:00:00.000Z",
+      "author": "Juntao Wu, Wei Wen, Xianting Huang, Shuai Pang, Ruizhi Qiao",
+      "summary": "Evaluating the exhaustive search capabilities of large language models (LLMs) is plagued by a fundamental paradox: verifying completeness requires complete ground truth, yet high-entropy enumeration tasks make such ground truth impossible for humans to create. This causes benchmarks to systematically penalize models for outperforming their human annotators. Despite rapid progress in web-search and deep research agents -- which now issue hundreds of queries, traverse diverse sites, and synthesize long reports -- evaluation still largely relies on partially annotated answer sets, LLM-based judges, or single-answer questions that avoid genuinely exhaustive search scenarios. We break this paradox by shifting the evaluation paradigm from simulating a messy reality to constructing computationally pure challenges. We introduce VERITAS (Verifiable Traversal Assessment for Search), a framework built on the principle of computationally irreducible constraints. By introducing novel, non-optimizable constraints, we create verifiable, sparse-answer search tasks that are computationally equivalent to exhaustive enumeration. These constraints are easy to verify but impossible for LLMs or search engines to optimize, forcing agents to genuinely traverse the entire search space. VERITAS can automatically generate a virtually infinite number of test cases with perfect ground truth and precise difficulty control, with marginal instance cost dominated by hash computations. This provides not only a robust benchmark for evaluating systematic exploration under uncertainty but also a scalable method for generating training data to improve these crucial, yet underdeveloped, capabilities.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 44,
+      "core": "Evaluating the exhaustive search capabilities of large language models (LLMs) is plagued by a fundamental paradox: verifying completeness requires complete ground truth, yet high-entropy enumeration tasks make such ground truth impossible for humans to create. This causes benchmarks to systematically penalize models for outperforming their human annotators. Despite rapid progress in web-search and deep research agen…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "AInterviewer: A Platform for Designing and Conducting AI-led Qualitative Interviews",
+      "link": "https://arxiv.org/abs/2606.20588",
+      "evidenceLink": "https://www.semanticscholar.org/paper/1ee39102bd0e396ab7f21f96fd355b8e3a2d1e0f",
+      "publishedAt": "2026-05-15T00:00:00.000Z",
+      "submittedAt": "2026-05-15T00:00:00.000Z",
+      "author": "T. Gårdhus, Nikolas Vitsakis, Fie Lejre Frederiksen, Anna Rogers, H. Carlsen",
+      "summary": "There are now multiple proposals for systems based on Large Language Models (LLMs) to conduct automated qualitative interviews, but most of the current solutions rely on proprietary LLMs, which compromises reproducibility and data security. They also rely on LLMs for all interview tasks, which limits standardisation of question wording as well as control over question order. To address these issues, we introduce the AInterviewer platform, an opensource solution based on a multi-agent pipeline that combines controlled question administration of survey software with the flexibility of LLMs. AInterviewer is an interdisciplinary effort designed to implement best practices of qualitative interviewing in social science, and it can run with locally hosted models to ensure security, transparency, and reproducibility. Our platform provides a web-based GUI supporting each phase of data collection: from interview guide design and pilot testing to interview distribution and data collection monitoring.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 44,
+      "core": "There are now multiple proposals for systems based on Large Language Models (LLMs) to conduct automated qualitative interviews, but most of the current solutions rely on proprietary LLMs, which compromises reproducibility and data security. They also rely on LLMs for all interview tasks, which limits standardisation of question wording as well as control over question order. To address these issues, we introduce the…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Autonomous Agents & Agent Simulations",
+      "link": "https://www.langchain.com/blog/agents-round",
+      "publishedAt": "2026-08-26T14:14:49.000Z",
+      "author": "",
+      "summary": "Explore how LangChain implements autonomous agents like AutoGPT and BabyAGI. Learn about planning techniques, memory systems, and agent simulations.",
+      "evidenceLink": "",
+      "score": 43.83296369047619,
+      "core": "Explore how LangChain implements autonomous agents like AutoGPT and BabyAGI. Learn about planning techniques, memory systems, and agent simulations.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-30T16:05:47.630Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "LangSmith LLM Gateway: Runtime Controls for Agents",
+      "link": "https://www.langchain.com/blog/langsmith-llm-gateway-runtime-controls-for-production-agents",
+      "publishedAt": "2026-08-26T16:53:53.000Z",
+      "author": "",
+      "summary": "LangSmith LLM Gateway is in public beta: spend caps, rate limits, model fallbacks and PII redaction for production agents, without provider lock-in.",
+      "evidenceLink": "",
+      "score": 43.022328769841266,
+      "core": "LangSmith LLM Gateway is in public beta: spend caps, rate limits, model fallbacks and PII redaction for production agents, without provider lock-in.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-30T16:05:47.630Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "Labadain Chat: A Conversational Agent for the Tetun Language",
+      "link": "https://doi.org/10.1145/3805712.3808372",
+      "evidenceLink": "https://www.semanticscholar.org/paper/a1d1e43940f0130ede9e2cf66d24f03910f7fcea",
+      "publishedAt": "2026-07-19T00:00:00.000Z",
+      "submittedAt": "2026-07-19T00:00:00.000Z",
+      "author": "Gabriel de Jesus, Sérgio Nunes",
+      "summary": "Large language model (LLM)-based conversational assistants are designed for general-purpose conversation tasks and are primarily optimized for high-resource languages. Although these systems support some low-resource languages (LRLs), their responses often fall short of user expectations. Consequently, speakers of LRLs remain marginalized and unable to fully benefit from advances in LLMs. These challenges underscore the need for targeted, language-specific solutions that can effectively serve underrepresented language communities. This study presents Labadain Chat, a conversational agent for Tetun, a low-resource language spoken by over 932,000 people in Timor-Leste. We adapt existing LLMs to Tetun using language-specific prompting strategies and report on the system's architecture, features, applications, and utility for the Tetun-speaking community. Results from the user study show a high task success rate for Labadain Chat (91%, with substantial inter-annotator agreement, Cohen's κ=0.67) and high user satisfaction (4.30 out of 5, with Cohen's weighted κ=0.75), demonstrating the effectiveness of language-specific LLM customization for Tetun. Overall, this study provides a practical pathway toward promoting equitable access to AI-powered information services for the Tetun-speaking community and suggests an adaptable methodology that can be applied to other under-resourced languages in similar contexts. The system is publicly available at https://www.labadain.com, with mobile applications for both iOS and Android.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 43,
+      "core": "Large language model (LLM)-based conversational assistants are designed for general-purpose conversation tasks and are primarily optimized for high-resource languages. Although these systems support some low-resource languages (LRLs), their responses often fall short of user expectations. Consequently, speakers of LRLs remain marginalized and unable to fully benefit from advances in LLMs. These challenges underscore…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Superposition, memorization, and double descent",
+      "link": "https://www.anthropic.com/research/superposition-memorization-and-double-descent",
+      "publishedAt": "2026-08-26T18:08:40.000Z",
+      "author": "",
+      "summary": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "score": 42.989134325396826,
+      "core": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-30T16:05:47.630Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Constitutional AI: Harmlessness from AI feedback",
+      "link": "https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback",
+      "publishedAt": "2026-08-26T18:07:10.000Z",
+      "author": "",
+      "summary": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "score": 42.987348611111116,
+      "core": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-30T16:05:47.630Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "LangChain Announces Enterprise Agentic AI Platform Built with NVIDIA",
+      "link": "https://www.langchain.com/blog/nvidia-enterprise",
+      "publishedAt": "2026-08-26T16:15:01.000Z",
+      "author": "",
+      "summary": "Build, deploy, and monitor production-grade AI agents at scale with LangChain's enterprise agentic AI platform integrated with NVIDIA.",
+      "evidenceLink": "",
+      "score": 42.89828115079366,
+      "core": "Build, deploy, and monitor production-grade AI agents at scale with LangChain's enterprise agentic AI platform integrated with NVIDIA.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-30T16:05:47.630Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "Hermès Agent vs OpenAI Codex: Autonomous Orchestrator or Code Engine? (2026)",
+      "link": "https://rerun.build/blog/hermes-agent-vs-codex",
+      "publishedAt": "2026-08-06T13:10:32.000Z",
+      "author": "",
+      "summary": "Codex writes code on demand. Hermès Agent orchestrates and governs it 24/7. A 2026 decision framework, plus how to drive Codex from inside Hermès.",
+      "evidenceLink": "",
+      "score": 33.81111111111111,
+      "core": "Codex writes code on demand. Hermès Agent orchestrates and governs it 24/7. A 2026 decision framework, plus how to drive Codex from inside Hermès.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-30T16:05:47.630Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cohere_blog",
+      "source": "Cohere Blog",
+      "title": "The State of Sovereign AI Adoption (Research) | Cohere",
+      "link": "https://cohere.com/blog/state-of-sovereign-ai-adoption-2026",
+      "publishedAt": "2026-08-25T00:00:00.000Z",
+      "author": "",
+      "summary": "Understand the key drivers and barriers for adopting sovereign AI across critical industries, based on an IDC InfoBrief commissioned by Cohere.",
+      "score": 29.073261309523808,
+      "core": "Understand the key drivers and barriers for adopting sovereign AI across critical industries, based on an IDC InfoBrief commissioned by Cohere.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-30T16:05:47.630Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Developing nuclear safeguards for AI",
+      "link": "https://www.anthropic.com/research/nuclear-safeguards-for-ai",
+      "publishedAt": "2026-08-26T20:55:42.000Z",
+      "author": "",
+      "summary": "Together with the NNSA and DOE national laboratories, we have co-developed a classifier—an AI system that automatically categorizes content—that distinguishes between concerning and benign nuclear-related conversations with high accuracy in preliminary testing.",
+      "score": 26.93798353174603,
+      "core": "Together with the NNSA and DOE national laboratories, we have co-developed a classifier—an AI system that automatically categorizes content—that distinguishes between concerning and benign nuclear-related conversations with high accuracy in preliminary testing.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-30T16:05:47.630Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Top AI tools including Claude, Codex, and Hermes installed suspicious code inside corporate networks",
+      "link": "https://www.techradar.com/pro/security/top-ai-tools-including-claude-codex-and-hermes-installed-suspicious-code-inside-corporate-networks",
+      "publishedAt": "2026-08-30T12:05:00.000Z",
+      "author": "Sead Fadilpašić",
+      "summary": "There is a new class of \"squatting\" risks emerging right in front of us and it involves llms.txt and llms-full.txt documentation.",
+      "evidenceLink": "",
+      "score": 25.43000734126984,
+      "core": "There is a new class of \"squatting\" risks emerging right in front of us and it involves llms.txt and llms-full.txt documentation.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-30T16:05:47.630Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cohere_blog",
+      "source": "Cohere Blog",
+      "title": "Hardware-Aware, Dynamic Speculative Decoding (DSD) | Cohere",
+      "link": "https://cohere.com/blog/hardware-aware-dynamic-speculative-decoding",
+      "publishedAt": "2026-08-04T00:00:00.000Z",
+      "author": "",
+      "summary": "See how DSD overcomes the limitations of standard SD by controlling the optimal K based on hardware constraints.",
+      "score": 23.622222222222224,
+      "core": "See how DSD overcomes the limitations of standard SD by controlling the optimal K based on hardware constraints.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-30T16:05:47.630Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cohere_blog",
+      "source": "Cohere Blog",
+      "title": "Cultural Awareness in Global AI | Cohere",
+      "link": "https://cohere.com/blog/the-culture-funnel-you-cant-align-what-isnt-in-the-data",
+      "publishedAt": "2026-08-19T00:00:00.000Z",
+      "author": "",
+      "summary": "See why cultural awareness must be built into AI from the start, and how language coverage alone fails users around the world.",
+      "score": 22.7,
+      "core": "See why cultural awareness must be built into AI from the start, and how language coverage alone fails users around the world.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-30T16:05:47.630Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Measuring the persuasiveness of language models",
+      "link": "https://www.anthropic.com/research/measuring-model-persuasiveness",
+      "publishedAt": "2026-08-26T18:22:26.000Z",
+      "author": "",
+      "summary": "Anthropic developed a way to test how persuasive language models (LMs) are, and analyzed how persuasiveness scales across different versions of Claude.",
+      "score": 22.144412103174602,
+      "core": "Anthropic developed a way to test how persuasive language models (LMs) are, and analyzed how persuasiveness scales across different versions of Claude.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-30T16:05:47.630Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "deepmind",
+      "source": "Google DeepMind",
+      "title": "Gemini Omni 1.1 Flash lets you build with more control",
+      "link": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-omni-1-1-flash",
+      "publishedAt": "2026-08-27T16:11:32.000Z",
+      "author": "",
+      "summary": "",
+      "evidenceLink": "",
+      "score": 20.863975595238095,
+      "core": "原文摘要不足，需要精读正文后补充核心结论。",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-30T16:05:47.630Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Glean expands enterprise AI ecosystem with new partner program",
+      "link": "https://www.itpro.com/business/business-strategy/glean-expands-enterprise-ai-ecosystem-with-new-partner-program",
+      "publishedAt": "2026-08-27T09:16:16.000Z",
+      "author": "Daniel Todd",
+      "summary": "The Glean Partner Network gives partners more ways to build, sell, and support the vendor’s enterprise AI technology",
+      "evidenceLink": "",
+      "score": 20.01405496031746,
+      "core": "The Glean Partner Network gives partners more ways to build, sell, and support the vendor’s enterprise AI technology",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-30T16:05:47.630Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "deepmind",
+      "source": "Google DeepMind",
+      "title": "Intelligent transcription with Gemini 3.5 Transcribe",
+      "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5-transcribe",
+      "publishedAt": "2026-08-26T17:01:00.000Z",
+      "author": "",
+      "summary": "Now you can get more intelligent speech-to-text transcription with Gemini 3.5 Transcribe.",
+      "evidenceLink": "",
+      "score": 19.70302321428571,
+      "core": "Now you can get more intelligent speech-to-text transcription with Gemini 3.5 Transcribe.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-30T16:05:47.630Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

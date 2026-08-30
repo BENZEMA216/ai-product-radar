@@ -3444,6 +3444,47 @@ function testAihotOpinionSignalsStayDeprioritized() {
   );
 }
 
+function testCurrentAihotNonProductSignalsStayDeprioritized() {
+  const signals = [
+    {
+      product: "Our Agents， Ourselves",
+      did: "🔗 阅读原文 via AIHOT · https://aihot.virxact.com/items/current-non-product"
+    },
+    {
+      product: '"代理人文明"的兴衰',
+      did: '文章探讨 AI 智能体大规模协作可能形成的代理人文明及其潜在兴衰周期。'
+    },
+    {
+      product: "Grok 为萨尔瓦多全国学校提供教育支持",
+      did: "Grok 正在为萨尔瓦多每所学校提供教育支持。"
+    },
+    {
+      product: "OpenAI Astra 连续运行数日，持续智能体将至",
+      did: '产品负责人表示连续智能体界面"很快推出"。'
+    },
+    {
+      product: "新Mac Studio配屏与挂机游戏求推荐",
+      did: "我买了新的 Mac Studio，有什么显示器和挂机游戏推荐？"
+    }
+  ];
+  for (const signal of signals) {
+    const candidate = {
+      ...signal,
+      link: "https://aihot.virxact.com/items/current-non-product",
+      type: "疑似新产品",
+      why: "AIHOT 聚合信号，尚无明确产品动作。",
+      evidence: "[AIHOT 2026-08-30T12:00:00.000Z](https://aihot.virxact.com/items/current-non-product)",
+      source: "aihot",
+      observedAt: "2026-08-30T12:00:00.000Z"
+    };
+    assert.equal(
+      priorityScore(candidate),
+      priorityScore({ ...candidate, qualityLabel: "deprioritize" }),
+      `${signal.product} should stay deprioritized`
+    );
+  }
+}
+
 function testAihotProductMetricsOpinionStaysDeprioritized() {
   const candidate = {
     product: "官网 UV 对 OpenClaw 是失真指标，应看 GitHub Stars 与 Gateway 安装量",
@@ -4606,6 +4647,7 @@ const tests = [
   ["AIHOT policy news stays deprioritized across producer and consumer", testAihotPolicyNewsStaysDeprioritizedAcrossProducerAndConsumer],
   ["Entertainment novelty signals stay deprioritized", testEntertainmentNoveltySignalsStayDeprioritized],
   ["AIHOT opinion signals stay deprioritized", testAihotOpinionSignalsStayDeprioritized],
+  ["Current AIHOT non-product signals stay deprioritized", testCurrentAihotNonProductSignalsStayDeprioritized],
   ["AIHOT product metrics opinion stays deprioritized", testAihotProductMetricsOpinionStaysDeprioritized],
   ["Report why copy specializes current HN agent signals", testReportWhyCopySpecializesCurrentHnAgentSignals],
   ["Report why copy specializes current HN model and media signals", testReportWhyCopySpecializesCurrentHnModelAndMediaSignals],

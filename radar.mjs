@@ -390,14 +390,15 @@ function isAihotNonProductSignal(item) {
   const actionText = `${item.product} ${item.did} ${item.evidence}`.toLowerCase();
   const hasProductAction = /发布|推出|上线|更新|开源|release|released|launch|launched|introducing|now available/i.test(actionText);
   const hasProductSurface = /产品|工具|应用|app|api|sdk|agent|智能体|助手|工作流|平台|runtime|browser|插件|扩展/i.test(actionText);
-  const explicitNonProduct = /不是产品发布|不是新的产品动作|政策|舆论|新闻/.test(text);
+  const linkOnlyRelay = /^🔗?\s*阅读原文(?:\s+via\s+aihot)?\b/i.test(cleanKey(item.did));
+  const explicitNonProduct = /不是产品发布|不是新的产品动作|政策|舆论|新闻|将至|很快推出|最终希望推出/.test(text);
   const nonProductObservation =
-    /研究|论文|基准|评测|排行|榜单|首页|前瞻|预测|观点|访谈|圆桌|融资|估值|财报|监管|风险|采购|求购|高校|军方|报道称|据报道|内幕|出口管制|白宫|播客|ceo|格式|规范|协议|如何应对|商品化|竞争格局|战略选择|不要相信|不是你的模型|不是你的思维|大型上下文窗口|抽象观点|官网\s*uv|安装量|失真指标|应看.{0,24}(?:stars|指标)/.test(
+    /研究|论文|基准|评测|排行|榜单|首页|前瞻|预测|观点|访谈|圆桌|融资|估值|财报|监管|风险|采购|求购|高校|军方|报道称|据报道|内幕|出口管制|白宫|播客|ceo|格式|规范|协议|如何应对|商品化|竞争格局|战略选择|不要相信|不是你的模型|不是你的思维|大型上下文窗口|抽象观点|官网\s*uv|安装量|失真指标|应看.{0,24}(?:stars|指标)|文章探讨|文明.{0,8}兴衰|教育支持|学校.{0,12}提供|求推荐|有什么推荐|我买了新的|将至|很快推出|最终希望推出/.test(
       text
     ) ||
     /向量存储|压缩|faiss|terminalbench|benchmark|arxiv|report|survey|forecast|outlook|format|protocol|standard/i.test(text) ||
     /不敌|击败|超过|占\s*(?:huggingface|hf|首页)|前\s*\d+\s*个模型/i.test(text);
-  if (explicitNonProduct) return true;
+  if (explicitNonProduct || linkOnlyRelay) return true;
   return nonProductObservation && !(hasProductAction && hasProductSurface);
 }
 
