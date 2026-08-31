@@ -560,6 +560,56 @@
       "requireAiRelevance": true,
       "requireStrongAiRelevance": true,
       "requireKnowledgeDepth": true
+    },
+    {
+      "id": "arize_ai_engineering",
+      "label": "Arize AI Engineering",
+      "type": "feed",
+      "url": "https://arize.com/feed/",
+      "home": "https://arize.com/blog/",
+      "weight": 14,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "weaviate_engineering",
+      "label": "Weaviate Blog",
+      "type": "feed",
+      "url": "https://weaviate.io/blog/rss.xml",
+      "home": "https://weaviate.io/blog/",
+      "weight": 14,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "braintrust_ai_engineering",
+      "label": "Braintrust AI Engineering",
+      "type": "sitemap",
+      "url": "https://www.braintrust.dev/sitemap.xml",
+      "home": "https://www.braintrust.dev/articles",
+      "pathPrefixes": ["/articles/"],
+      "weight": 14,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "baseten_ai_engineering",
+      "label": "Baseten AI Engineering",
+      "type": "sitemap",
+      "url": "https://www.baseten.co/sitemap.xml",
+      "home": "https://www.baseten.co/blog/",
+      "pathPrefixes": ["/blog/"],
+      "weight": 14,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
     }
   ],
   "paperSource": {

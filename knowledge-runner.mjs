@@ -457,7 +457,7 @@ function includesAny(text, terms) {
 function strongAiEvidence(item) {
   const title = String(item.title || "");
   const summary = String(item.summary || "");
-  if (STRONG_AI_PATTERNS.some((pattern) => pattern.test(title))) return true;
+  if (AI_ANCHOR_PATTERNS.some((pattern) => pattern.test(title))) return true;
   return (
     AI_ANCHOR_PATTERNS.some((pattern) => pattern.test(summary)) &&
     STRONG_AI_PATTERNS.filter((pattern) => pattern.test(summary)).length >= 2
@@ -596,6 +596,7 @@ async function fetchSitemapSource(source, start, end, now) {
         author: "",
         summary
       };
+      if (!isAiRelevant(item, source)) return null;
       return {
         ...item,
         score: scoreBlog(item, source, now),
@@ -1013,10 +1014,10 @@ function historicalLinks(reportDir, excludedPath) {
 
 function selectItems(blogs, papers, { limit, blogQuota, maximumPaperCount, maxPerBlogSource, seenLinks }) {
   const availableBlogs = uniqueByKnowledgeTopic(uniqueByTitle(uniqueByLink(blogs)))
-    .filter((item) => !seenLinks.has(item.link.toLowerCase()))
+    .filter((item) => !seenLinks.has(canonicalizeUrl(item.link).toLowerCase()))
     .sort((a, b) => b.score - a.score);
   const availablePapers = uniqueByTitle(uniqueByLink(papers))
-    .filter((item) => !seenLinks.has(item.link.toLowerCase()))
+    .filter((item) => !seenLinks.has(canonicalizeUrl(item.link).toLowerCase()))
     .sort((a, b) => b.score - a.score);
   const selectedBlogs = [];
   const sourceCounts = new Map();
@@ -1232,14 +1233,14 @@ export async function runKnowledgeRadar(options = {}) {
 
   const seenLinks = historicalLinks(reportDir, reportPath);
   const blogBeforeAccessCheck = uniqueByLink(blogItems).filter(
-    (item) => !seenLinks.has(item.link.toLowerCase())
+    (item) => !seenLinks.has(canonicalizeUrl(item.link).toLowerCase())
   );
   const sourceMap = new Map((config.blogSources || []).map((source) => [source.id, source]));
   const accessResult = await verifyBlogAccess(blogBeforeAccessCheck, sourceMap, gmailGrants, now);
   const verifiedBlogItems = accessResult.items;
   const blogAfterHistoricalDedupCount = verifiedBlogItems.length;
   const paperAfterHistoricalDedupCount = uniqueByLink(paperItems).filter(
-    (item) => !seenLinks.has(item.link.toLowerCase())
+    (item) => !seenLinks.has(canonicalizeUrl(item.link).toLowerCase())
   ).length;
   const selected = selectItems(verifiedBlogItems, paperItems, {
     limit,

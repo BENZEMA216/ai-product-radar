@@ -101,10 +101,18 @@ function isWeakShowHnDemo({ source, product, did, why }) {
   const text = `${source} ${product} ${did} ${why}`.toLowerCase();
   const isHn = source === "HN Algolia" || source === "hackernews" || text.includes("news.ycombinator.com");
   const isShowHn = text.includes("show hn:");
-  if (!isHn || !isShowHn || hasExplicitProductSurface(text)) return false;
+  if (!isHn || !isShowHn) return false;
+  if (/\b(?:raises?|raised|funding|fundraise|seed round|series [a-z])\b|融资|募资/i.test(text)) return true;
+  if (hasExplicitProductSurface(text)) return false;
   return /for dummies|tutorial|course|lesson|learn |research|paper|benchmark|beats|roguelike|pokemon|neural net|demo|experiment|实验|教程|课程|研究/i.test(
     text
   );
+}
+
+function isHnFundraisingSignal({ source, product, did, why }) {
+  const text = `${source} ${product} ${did} ${why}`.toLowerCase();
+  const isHn = source === "HN Algolia" || source === "hackernews" || text.includes("news.ycombinator.com");
+  return isHn && text.includes("show hn:") && /\b(?:raises?|raised|funding|fundraise|seed round|series [a-z])\b|融资|募资/i.test(text);
 }
 
 function isLowSignalGitHubPackageRelease({ source, product, did, evidence }) {
@@ -136,6 +144,7 @@ function isAihotNonProductSignal({ source, product, did, why, evidence }) {
   const actionText = `${product} ${did} ${evidence}`.toLowerCase();
   const hasProductAction = /发布|推出|上线|更新|开源|release|released|launch|launched|introducing|now available/i.test(actionText);
   const hasProductSurface = /产品|工具|应用|app|api|sdk|agent|智能体|助手|工作流|平台|runtime|browser|插件|扩展/i.test(actionText);
+  const conferenceSystemDemo = /(?:入选|录用).{0,24}\b(?:emnlp|acl|naacl|neurips|icml|iclr|cvpr|iccv|eccv|aaai|ijcai|kdd|sigir|chi)\b.{0,20}系统演示/i.test(text);
   const explicitNonProduct = /不是产品发布|不是新的产品动作|政策|舆论|新闻/.test(text);
   const nonProductObservation =
     /研究|论文|基准|评测|排行|榜单|首页|前瞻|预测|观点|访谈|圆桌|融资|估值|财报|监管|风险|采购|求购|高校|军方|报道称|据报道|内幕|出口管制|白宫|播客|ceo|格式|规范|协议|不要相信|不是你的模型|不是你的思维|大型上下文窗口|抽象观点/.test(
@@ -143,7 +152,7 @@ function isAihotNonProductSignal({ source, product, did, why, evidence }) {
     ) ||
     /向量存储|压缩|faiss|terminalbench|benchmark|arxiv|report|survey|forecast|outlook|format|protocol|standard/i.test(text) ||
     /不敌|击败|超过|占\s*(?:huggingface|hf|首页)|前\s*\d+\s*个模型/i.test(text);
-  if (explicitNonProduct) return true;
+  if (explicitNonProduct || conferenceSystemDemo) return true;
   return nonProductObservation && !(hasProductAction && hasProductSurface);
 }
 
@@ -162,6 +171,7 @@ function inferQualityLabel({ source, product, did, why, evidence, category }) {
   const text = `${source} ${product} ${did} ${why}`.toLowerCase();
   if (category === "model_infra") return "weak_keep";
   if (isLowSignalGitHubPackageRelease({ source, product, did, evidence })) return "weak_keep";
+  if (isHnFundraisingSignal({ source, product, did, why })) return "deprioritize";
   if (isAihotNonProductSignal({ source, product, did, why, evidence })) return "deprioritize";
   if (isAihotWeakRelaySignal({ source, product, did, why })) return "deprioritize";
   if (includesAny(text, ["iptv", "影视", "电视剧", "电影", "纪录片"])) return "deprioritize";

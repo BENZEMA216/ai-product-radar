@@ -1943,6 +1943,42 @@ function testPriorityScoreDownranksHotNonProductShowHnDemos() {
   );
 }
 
+function testPriorityScoreDownranksShowHnFundraisingAnnouncements() {
+  const fundraising = {
+    product: "AI startup TrustedRouter raises $1.25M",
+    link: "https://news.ycombinator.com/item?id=49510283",
+    type: "新产品",
+    did: "HN 发布帖出现：Show HN: AI startup TrustedRouter raises $1.25M",
+    why: "融资动态不是新的产品动作。",
+    evidence: "[HN Algolia](https://news.ycombinator.com/item?id=49510283)",
+    source: "hackernews",
+    sourceSubtype: "show_hn",
+    category: "product",
+    metrics: { hnPoints: 120, hnComments: 30 }
+  };
+  const productLaunch = {
+    product: "Almanac – AI that knows your company",
+    link: "https://usealmanac.com/",
+    type: "新产品",
+    did: "HN 发布帖出现：Launch HN: Almanac – AI that knows your company",
+    why: "明确的企业知识产品发布。",
+    evidence: "[HN Algolia](https://news.ycombinator.com/item?id=49511007)",
+    source: "hackernews",
+    sourceSubtype: "launch_hn",
+    category: "product",
+    metrics: { hnPoints: 4, hnComments: 1 }
+  };
+  assert.ok(
+    priorityScore(productLaunch) > priorityScore(fundraising),
+    "Show HN fundraising announcements should not outrank explicit product launches"
+  );
+  assert.equal(
+    priorityScore(fundraising),
+    priorityScore({ ...fundraising, qualityLabel: "deprioritize" }),
+    "Show HN fundraising announcements should be classified as deprioritized non-product signals"
+  );
+}
+
 function testPriorityScoreDownranksResourceLists() {
   const resourceList = {
     product: "A List of AI Neolabs",
@@ -3465,6 +3501,10 @@ function testCurrentAihotNonProductSignalsStayDeprioritized() {
     {
       product: "新Mac Studio配屏与挂机游戏求推荐",
       did: "我买了新的 Mac Studio，有什么显示器和挂机游戏推荐？"
+    },
+    {
+      product: "面壁智能九歌推敲：让用户而非模型执笔改古诗",
+      did: "清华NLP团队推出九歌推敲，入选EMNLP 2026系统演示，并报告完形任务与格律合规实验结果。"
     }
   ];
   for (const signal of signals) {
@@ -4223,6 +4263,17 @@ function testKnowledgeStrongAiRelevanceRejectsIncidentalMentions() {
   assert.equal(
     isAiRelevant(
       {
+        title: "The Motorola Edge 70 Pro is a case of style over substance, with middling performance and battery benchmarks",
+        summary: "A gorgeous curved design and screen, undone by underwhelming performance."
+      },
+      source
+    ),
+    false,
+    "a generic hardware benchmark must not count as explicit AI evidence"
+  );
+  assert.equal(
+    isAiRelevant(
+      {
         title: "Announcing our $10M seed round led by Benchmark",
         summary: "Funding will support developers building agentic AI applications."
       },
@@ -4602,6 +4653,7 @@ const tests = [
   ["Priority score keeps weak HF spaces behind strong launches", testPriorityScoreKeepsWeakHfSpacesBehindStrongProductLaunches],
   ["Priority score downranks generic HF spaces", testPriorityScoreDownranksGenericHfSpaces],
   ["Priority score downranks hot non-product Show HN demos", testPriorityScoreDownranksHotNonProductShowHnDemos],
+  ["Priority score downranks Show HN fundraising announcements", testPriorityScoreDownranksShowHnFundraisingAnnouncements],
   ["Priority score downranks resource lists", testPriorityScoreDownranksResourceLists],
   ["Priority score uses Product Hunt engagement", testPriorityScoreUsesProductHuntEngagement],
   ["Priority score downranks low-signal patch releases", testPriorityScoreDownranksLowSignalPatchRelease],

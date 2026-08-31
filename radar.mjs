@@ -391,6 +391,7 @@ function isAihotNonProductSignal(item) {
   const hasProductAction = /发布|推出|上线|更新|开源|release|released|launch|launched|introducing|now available/i.test(actionText);
   const hasProductSurface = /产品|工具|应用|app|api|sdk|agent|智能体|助手|工作流|平台|runtime|browser|插件|扩展/i.test(actionText);
   const linkOnlyRelay = /^🔗?\s*阅读原文(?:\s+via\s+aihot)?\b/i.test(cleanKey(item.did));
+  const conferenceSystemDemo = /(?:入选|录用).{0,24}\b(?:emnlp|acl|naacl|neurips|icml|iclr|cvpr|iccv|eccv|aaai|ijcai|kdd|sigir|chi)\b.{0,20}系统演示/i.test(text);
   const explicitNonProduct = /不是产品发布|不是新的产品动作|政策|舆论|新闻|将至|很快推出|最终希望推出/.test(text);
   const nonProductObservation =
     /研究|论文|基准|评测|排行|榜单|首页|前瞻|预测|观点|访谈|圆桌|融资|估值|财报|监管|风险|采购|求购|高校|军方|报道称|据报道|内幕|出口管制|白宫|播客|ceo|格式|规范|协议|如何应对|商品化|竞争格局|战略选择|不要相信|不是你的模型|不是你的思维|大型上下文窗口|抽象观点|官网\s*uv|安装量|失真指标|应看.{0,24}(?:stars|指标)|文章探讨|文明.{0,8}兴衰|教育支持|学校.{0,12}提供|求推荐|有什么推荐|我买了新的|将至|很快推出|最终希望推出/.test(
@@ -398,7 +399,7 @@ function isAihotNonProductSignal(item) {
     ) ||
     /向量存储|压缩|faiss|terminalbench|benchmark|arxiv|report|survey|forecast|outlook|format|protocol|standard/i.test(text) ||
     /不敌|击败|超过|占\s*(?:huggingface|hf|首页)|前\s*\d+\s*个模型/i.test(text);
-  if (explicitNonProduct || linkOnlyRelay) return true;
+  if (explicitNonProduct || linkOnlyRelay || conferenceSystemDemo) return true;
   return nonProductObservation && !(hasProductAction && hasProductSurface);
 }
 
@@ -2384,6 +2385,7 @@ function isWeakShowHnDemo(item, text) {
   const isHn = source === "hackernews" || source === "hn algolia" || text.includes("news.ycombinator.com");
   const isShowHn = item.sourceSubtype === "show_hn" || text.includes("show hn:");
   if (!isHn || !isShowHn) return false;
+  if (/\b(?:raises?|raised|funding|fundraise|seed round|series [a-z])\b|融资|募资/i.test(text)) return true;
   if (isResourceListSignal(text)) return true;
   if (hasExplicitProductSurface(text)) return false;
   return includesAny(text, [
@@ -2411,6 +2413,13 @@ function isWeakShowHnDemo(item, text) {
     "课程",
     "研究"
   ]);
+}
+
+function isHnFundraisingSignal(item, text) {
+  const source = cleanKey(item.source).toLowerCase();
+  const isHn = source === "hackernews" || source === "hn algolia" || text.includes("news.ycombinator.com");
+  const isShowHn = item.sourceSubtype === "show_hn" || text.includes("show hn:");
+  return isHn && isShowHn && /\b(?:raises?|raised|funding|fundraise|seed round|series [a-z])\b|融资|募资/i.test(text);
 }
 
 function isResourceListSignal(text) {
@@ -2499,6 +2508,7 @@ function qualityLabelForItem(item) {
   if (isLowSignalGitHubPackageRelease(item)) return "weak_keep";
   if (isLowSignalProductHuntConsumerNovelty(text)) return "deprioritize";
   if (isResourceListSignal(text)) return "deprioritize";
+  if (isHnFundraisingSignal(item, text)) return "deprioritize";
   if (isAihotMetricOpinionSignal(item)) return "deprioritize";
   if (isAihotNonProductSignal(item)) return "deprioritize";
   if (isAihotWeakRelaySignal(item)) return "deprioritize";
