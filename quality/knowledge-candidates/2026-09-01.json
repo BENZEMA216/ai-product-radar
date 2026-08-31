@@ -1,0 +1,421 @@
+{
+  "generatedAt": "2026-08-31T16:22:30.681Z",
+  "date": "2026-09-01",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "simon_willison",
+      "source": "Simon Willison",
+      "title": "Understanding ChatGPT Work",
+      "link": "https://simonwillison.net/2026/Aug/30/understanding-chatgpt-work",
+      "publishedAt": "2026-08-30T23:59:47.000Z",
+      "author": "",
+      "summary": "OpenAI announced ChatGPT Work on July 9th, and have been furiously iterating on it ever since. It is an extraordinarily confusing and very powerful product. Here's what I've figured out about it so far. ChatGPT Work is actually two products The more interesting version of ChatGPT Work is the one that runs in the cloud. This can be accessed via chatgpt.com or through the ChatGPT mobile apps. Let's call it Work Cloud . If you install the ChatGPT desktop app - the app that used to be called Codex - you gain access to a thing called ChatGPT Work that can access files and run programs directly on your computer. Let's call that one Work Local . This one feels more like regular Codex re-skinned to be less intimidating to non-software-developers. ( Update : Work Cloud is also available from the ChatGPT desktop app, via a Where should this chat run? dropdown.) For the rest of this article I'm going to talk exclusively about Work Cloud. Work is for paid subscribers only Right now, ChatGPT Work (in both flavors) is available only to $20/month and up subscribers. Free users and $8/month Go users do not have access. Work has features that aren't available in Chat The interface for accessing Work is a tab selector, which presents it as an alternative to Chat: The obvious question is when should I use Chat, and when should I use Work? OpenAI's official answer to that question is: Use Chat when you want an answer, explanation, brainstorm, or short draft. Use ChatGPT Work when you want ChatGPT to complete a task with a clear outcome, such as a brief, deck, analysis, recurring update, workflow, or file you can review and use. I find that almost entirely useless, because I've been using regular ChatGPT Chat for all of those task categories for years! The better question then is what features does Work have that are missing from Chat? After extensive experimentation I think I've mostly figured that out: Options to use Luna and Terra in place of Sol A code execution environment with Internet access A headless Chrome browser A persistent filesystem shared between sessions The ability to publish ChatGPT Sites The ability to run sub-agent sessions with Sol, Luna, and Terra Scheduled prompt automations (may be in ChatGPT Chat too) Model selection In Work, you get the option to pick GPT-5.6 Sol, Luna, or Terra, each with Light, Medium, High, Extra High, Max, or Ultra reasoning levels. You can also pick GPT-5.5 at Light, Medium, High, or Extra High. These look to be the same models that are available through the OpenAI API. Chat offers a different selection: 5.6 Instant, Medium, High, Extra High, and Pro (actually Extra High and Pro are only available for $100/month+ subscribers - $20/month subscribers cap out at High). It doesn't explain if those are Luna or Terra or Sol (I'm assuming Sol?). 5.6 Pro appears to be exclusive to Chat, with no equivalent in Work. My current understanding from using Codex is that Ultra is a special mode that more eagerly delegates to sub-agents. I believe ChatGPT Work sessions are billed against your Codex allowance, while ChatGPT Chat Sessions get their own, separate allowance. This may help explain the model availability differences. Code execution with Internet access! As a long-time fan of the Code Interpreter pattern - pioneered by OpenAI in 2023 - this is by far the most exciting feature of ChatGPT Work (Cloud) for me. The code execution environment can now talk to the rest of the internet! ChatGPT Chat can't do this - if you ask it to install additional software packages or interact with websites or APIs that access will be blocked by the container proxy. (Weirdly, back in January it grew the ability to install packages , but that doesn't seem to work any more. I wish they had better changelogs!) Claude's equivalent container has allowed restricted internet access since it launched last September . Claude can install packages from PYPI and NPM and clone repositories from GitHub. But that is about it: the allowlist of domains is very short. ChatGPT Work allows a whole lot more than that. It can be configured with a specific list of allowed domains, but the default appears to be open to all. This makes Work an incredibly useful tool. You can have it clone GitHub repositories, install their dependencies, then use them to interact with the rest of the web! A full, headless Chrome browser Another killer feature of ChatGPT Work is the browser tool . ChatGPT Work can launch a full Chrome instance, load websites, fill out forms, and take screenshots. \", followed by the reply \"Here's the screenshot of the live site:\" and an embedded screenshot of a website.\" style=\"max-width: 100%\" /> If a site requires sign in the browser can prompt you to take over and enter both passwords and 2FA codes, without round-tripping those credentials through the model itself. It can even run JavaScript against the DOM of loaded pages. I prompted: Load simonwillison.net in your browser and extract the headings using JavaScript ChatGPT Work fired up a browser instance and ran the code: await tab . playwright . evaluate ( ( ) => { return Array . from ( document . querySelectorAll ( \"h1,h2,h3,h4,h5,h6\" ) , heading => ( { level : heading . tagName . toLowerCase ( ) , text : heading . innerText . trim ( ) . replace ( / \\s + / g , \" \" ) , id : heading . id || null } ) ) ; } ) ; This feels a lot like my shot-scraper javascript tool, only now I can access it on my phone! A persistent, shared filesystem ChatGPT Chat gets a fresh filesystem for each chat session. These cannot be accessed from any other session. In ChatGPT Work each session gets its own scratch folder - named something like /workspace/scratch/e00a0a017944 - but each of those are persisted across sessions, so you can access files from previous chats. I have 171 folders in /workspace/scratch right now! As far as I can tell that /workspace volume is mounted to all Work sessions that are currently running - file edits from one can be instantly seen by the others. They don't seem to share the same process space though, and localhost servers running in one can't be accessed from another. ChatGPT Sites ChatGPT Work has the ability to build and deploy entire websites, using Cloudflare Workers. These can have HTML and JavaScript and can run server-side features too, including stateful features on top of Cloudflare D1 and R2. Here's a simple site I built with this feature: london-pelicans-in-her-piety.simonw.chatgpt.site My prompt was: Figure out all of the places in London with a pelican in her piety, then turn that into a JSON file and build a ChatGPT sites site about them (A pelican in her piety is a fascinating piece of medieval Christian imagery - once you know about them you'll find them all over the place.) These sites default to being private to the user that created them, but you can make them public and (on team plans) share them with other specific individuals. Sub-agents with Sol, Luna, and Terra There's not much to say about this one. ChatGPT Chat can't run sub-agents. ChatGPT Work can. This is very much a power-user feature: if you are running a complex project that can benefit from multiple parallel agents working together, Work can do that. Scheduled prompt automations Another feature that seems to have migrated from regular ChatGPT to ChatGPT Work at some point. You can prompt ChatGPT Work like this: run a search to see if Waymo have announced a launch date for Half Moon Bay every day at 8am This will schedule a prompt to run on that frequency. These prompts can decide that nothing interesting has happened, or they can decide to notify you of some new information. Update : Actually this seems to work in ChatGPT Chat as well. It's still worth noting here though, as it can be used in conjunction with other ChatGPT Work exclusive features. You can set a scheduled task to update a ChatGPT Site on an hourly basis, for example. Is this safe? An open question for me right now is how safe all of this stuff is. My lethal trifecta model warns about the risks inherent in any agent system that combines access to private data with exposure to untrusted content and a way to communicate stolen information back to an attacker. ChatGPT Work combines all three! I'd love to hear more from OpenAI about how they protect ChatGPT Work sessions against prompt injection attacks. I expect their answer is the same auto-review mechanism as Codex. OpenAI could make this a lot less confusing Figuring this all out took way more work than it should have. I think there are two key problems here: OpenAI explain Work in terms of what it's for, not what it actually does OpenAI still insist on hiding their system prompts and tools descriptions If the ChatGPT Work documentation included the exact system prompt and tool descriptions used by the agent I wouldn't have needed to write this post. A list of all the tools Shortly after publishing this article I had an idea. I started a fresh Work session and prompted: Build a site that lists every one of your tools - nearly grouped into categories - and for each one explain what it does. Try to exactly duplicate arguments and tool descriptions where possible. Design aesthetic should be technical docs, minimal flare Here's the site it built , which includes details of 223 registered tools - though 6 of those are from my own personal MCPs served via datasette-mcp . And a whole lot of Skills I noticed that the only browser-related tool in the list was web.run , which has methods for running searches, opening URLs, and clicking links, but didn't look like the full story in regards to headless browser automation. This made me suspicious that something was missing, so I told the ChatGPT Work session that built that tools reference site: Add full copies of every skill to the website (separate pages linked to from the homepage) It turns out ChatGPT Work uses a lot of skills - 44 in fact! The control-browser skill explains how the browser works: Run browser setup code through the Node REPL js tool. In this environment the callable tool id typically appears as mcp__node_repl__js . [...] The ability to interact directly with the browser is exposed through the browser-client runtime via the agent.browsers.* API. Before trying to interact with it, you MUST emit and read the complete documentation returned by await browser.documentation() in one go. So I told Work: Add the full output of await browser.documentation() to the bottom of the /skills/control-browser page And now you can read that on /skills/control-browser as well. A few more interesting Skills: documents for creating .docx files imagegen with tips on creating images with the image_gen tool pdf for both reading and rendering PDFs Spreadsheets for manipulating .xlsx , .xls , .csv , .tsv sites:sites-building for creating ChatGPT Sites openai-docs for answering questions about itself data-analytics:build-dashboard for building data dashboards You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
+      "evidenceLink": "",
+      "score": 103.83008569444445,
+      "core": "OpenAI announced ChatGPT Work on July 9th, and have been furiously iterating on it ever since. It is an extraordinarily confusing and very powerful product. Here's what I've figured out about it so far. ChatGPT Work is actually two products The more interesting version of ChatGPT Work is the one that runs in the cloud. This can be accessed via chatgpt.com or through the ChatGPT mobile apps. Let's call it Work Cloud …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-31T16:22:30.681Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "Where agent evals are going: Agent-as-a-Judge",
+      "link": "https://arize.com/blog/agent-as-a-judge-agentic-evaluation",
+      "publishedAt": "2026-08-19T15:05:12.000Z",
+      "author": "Laurie Voss",
+      "summary": "Agents changed what failure looks like, and the evaluation layer has to change with them. Why agent-as-a-judge is moving from research paper to production eval stack. The post Where agent evals are going: Agent-as-a-Judge appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 60.388888888888886,
+      "core": "Agents changed what failure looks like, and the evaluation layer has to change with them. Why agent-as-a-judge is moving from research paper to production eval stack. The post Where agent evals are going: Agent-as-a-Judge appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-31T16:22:30.681Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "Evaluation-driven development: How to move AI agents from pilot to production",
+      "link": "https://arize.com/blog/evaluation-driven-development-ai-agents-production",
+      "publishedAt": "2026-08-13T09:30:29.000Z",
+      "author": "Sara Verdi",
+      "summary": "Learn how evaluation-driven development, agent harnesses, AI observability, guardrails, and cost-per-outcome metrics move AI agents from pilot to production. The post Evaluation-driven development: How to move AI agents from pilot to production appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 58.516666666666666,
+      "core": "Learn how evaluation-driven development, agent harnesses, AI observability, guardrails, and cost-per-outcome metrics move AI agents from pilot to production. The post Evaluation-driven development: How to move AI agents from pilot to production appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-31T16:22:30.681Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "How to test AI agents: A practical guide - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/how-to-test-ai-agents",
+      "publishedAt": "2026-08-16T00:00:00.000Z",
+      "author": "",
+      "summary": "Learn how to test AI agents across single-step checks, trajectory evaluations, CI regression suites, and production monitoring, with reproducible environments and scoring criteria that reflect real agent behavior.",
+      "score": 56.18333333333333,
+      "core": "Learn how to test AI agents across single-step checks, trajectory evaluations, CI regression suites, and production monitoring, with reproducible environments and scoring criteria that reflect real agent behavior.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-31T16:22:30.681Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "Why better models don’t fix every agent failure: Lessons from OpenAI",
+      "link": "https://arize.com/blog/why-better-models-dont-fix-every-agent-failure",
+      "publishedAt": "2026-08-25T15:15:52.000Z",
+      "author": "Sara Verdi",
+      "summary": "In this installment of Rise of the AI Engineer, Stuart Sy from OpenAI, explains why the bottleneck has moved off the model and onto context, evals, and observability. The post Why better models don’t fix every agent failure: Lessons from OpenAI appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 55.15161347222222,
+      "core": "In this installment of Rise of the AI Engineer, Stuart Sy from OpenAI, explains why the bottleneck has moved off the model and onto context, evals, and observability. The post Why better models don’t fix every agent failure: Lessons from OpenAI appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-31T16:22:30.681Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "baseten_ai_engineering",
+      "source": "Baseten AI Engineering",
+      "title": "Agentic kernels in production",
+      "link": "https://www.baseten.co/blog/agentic-kernels-in-production",
+      "publishedAt": "2026-08-28T23:34:10.000Z",
+      "author": "",
+      "summary": "Baseten&#x27;s agentic kernel optimization framework cuts latency by 42.3% on Qwen-Image and by 15.2% on FLUX.2.",
+      "score": 54.993240456349206,
+      "core": "Baseten&#x27;s agentic kernel optimization framework cuts latency by 42.3% on Qwen-Image and by 15.2% on FLUX.2.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-31T16:22:30.681Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "How to evaluate web and browser agents - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/how-to-evaluate-web-agents",
+      "publishedAt": "2026-08-16T00:00:00.000Z",
+      "author": "",
+      "summary": "Learn how to evaluate web and browser agents by tracing observations, actions, and page state, scoring task completion and action correctness, and turning production failures into regression datasets with Braintrust.",
+      "score": 48.2,
+      "core": "Learn how to evaluate web and browser agents by tracing observations, actions, and page state, scoring task completion and action correctness, and turning production failures into regression datasets with Braintrust.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-31T16:22:30.681Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Top security teams use AI agents, says Hack The Box",
+      "link": "https://www.itpro.com/security/top-security-teams-use-ai-agents-says-hack-the-box",
+      "publishedAt": "2026-08-31T05:00:00.000Z",
+      "author": "Emma Woollacott",
+      "summary": "Median solve times are dropping, and more teams are completing the entire challenge board",
+      "evidenceLink": "",
+      "score": 45.681930932539686,
+      "core": "Median solve times are dropping, and more teams are completing the entire challenge board",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-31T16:22:30.681Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "The Web Conference",
+      "title": "Bandits, LLMs, and Agentic Web",
+      "link": "https://doi.org/10.1145/3774905.3793919",
+      "evidenceLink": "https://www.semanticscholar.org/paper/70d77f57768fdbe31da5397e91e59816d224b254",
+      "publishedAt": "2026-05-28T00:00:00.000Z",
+      "submittedAt": "2026-05-28T00:00:00.000Z",
+      "author": "Djallel Bouneffouf, Raphaël Féraud",
+      "summary": "This tutorial provides a comprehensive guide on leveraging multi-armed bandit (MAB) algorithms to enhance Large Language Models (LLMs) within the Agentic Web—an ecosystem where LLMs act autonomously, coordinate with other agents, make decisions, and adapt continuously based on feedback. As the web becomes increasingly populated by intelligent systems, adaptive, decentralized, and agentic language generation platforms are essential. MAB algorithms, which balance exploration and exploitation under uncertainty, offer a powerful framework for enabling such autonomous decision-making at scale. The tutorial introduces core MAB concepts, including the exploration-exploitation trade-off and strategies like epsilon-greedy, UCB (Upper Confidence Bound), and Thompson Sampling. It then details how to embed MAB mechanisms into LLM-based agents, treating text generation choices, content selection, or interaction strategies as arms in a bandit problem. Key practical considerations—reward design, exploration policies, scalability, and the emergence of agentic behavior—are examined in the context of networked, multi-agent interactions. Through real-world case studies, the tutorial illustrates the impact of MAB-augmented, agentic LLMs in the Agentic Web: coordinating multi-agent dialogue, dynamically curating personalized content, and optimizing recommendation strategies. These approaches demonstrate how autonomous, bandit-driven agents can enhance relevance, diversity, collaboration, and overall user engagement across interconnected web platforms.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "WWW",
+        "venueLabel": "The Web Conference",
+        "venueName": "The Web Conference",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 43,
+      "core": "This tutorial provides a comprehensive guide on leveraging multi-armed bandit (MAB) algorithms to enhance Large Language Models (LLMs) within the Agentic Web—an ecosystem where LLMs act autonomously, coordinate with other agents, make decisions, and adapt continuously based on feedback. As the web becomes increasingly populated by intelligent systems, adaptive, decentralized, and agentic language generation platform…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "AgentSlimming: Towards Efficient and Cost-Aware Multi-Agent Systems",
+      "link": "https://arxiv.org/abs/2605.08813",
+      "evidenceLink": "https://www.semanticscholar.org/paper/1d6916eb235e0a3e4b797a4a8bdac4fe74c54962",
+      "publishedAt": "2026-05-09T00:00:00.000Z",
+      "submittedAt": "2026-05-09T00:00:00.000Z",
+      "author": "Yulan Chen, Hao Peng, Jinyang Liu, Zichen Wen, Dongrui Liu",
+      "summary": "Large Language Model-based Multi-Agent Systems (MAS) have demonstrated remarkable capabilities in complex tasks. However, manually designing optimal communication topologies is labor-intensive, while automated expansion methods often result in bloated structures with redundant agents, leading to excessive token consumption. To address this problem, we introduce \\textbf{AgentSlimming}, a plug-and-play compression framework for graph-structured multi-agent workflows. Motivated by pruning and quantization in neural networks, AgentSlimming compresses workflows by first estimating the importance score of each agent with a hybrid mechanism, and then removes redundant agents or replaces them with low-cost ones, where each operation is validated using a baseline-anchored acceptance rule to prevent performance collapse. Experiments show that AgentSlimming reduces average token cost by up to 78.9\\% with negligible performance degradation, and sometimes even improves accuracy, achieving a strong Pareto-optimal trade-off between cost and quality. \\textit{Our code is publicly available at https://github.com/CitrusYL/AgentSlimming",
+      "citationCount": 1,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 42.204119982655925,
+      "core": "Large Language Model-based Multi-Agent Systems (MAS) have demonstrated remarkable capabilities in complex tasks. However, manually designing optimal communication topologies is labor-intensive, while automated expansion methods often result in bloated structures with redundant agents, leading to excessive token consumption. To address this problem, we introduce \\textbf{AgentSlimming}, a plug-and-play compression fra…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Mitigating Context Interference for Reliable and Efficient Search Agents",
+      "link": "https://arxiv.org/abs/2608.10743",
+      "evidenceLink": "https://www.semanticscholar.org/paper/9494e560a19dac9b8a4ecce373996d82b2586423",
+      "publishedAt": "2026-08-11T00:00:00.000Z",
+      "submittedAt": "2026-08-11T00:00:00.000Z",
+      "author": "Boyang Xue, Bin Wu, Shuofei Qiao, Sheng Wang, Rui Wang",
+      "summary": "Recent research empowers Large Language Models (LLMs) as multi-turn search agents to iteratively retrieve and generate outputs until complex tasks are solved. However, the contexts of multi-turn search agents are lengthy and complex. For example, the retrieved set of documents in each turn would inevitably introduce irrelevant information that distracts LLMs, referring to \\textit{context interference}, potentially hindering the reliability and efficiency of search agents. Therefore, we conduct a systematic study on context interference in multi-turn search agents, focusing on investigating i) which parts of the context of search agents will contribute to the context interference, ii) how to refine the contexts of search agents to mitigate the interference, and iii) can incorporating context refinement into search agent training yield further improvements. We reveal that interference primarily arises from the latest retrieved documents. Based on the explored findings, we then introduce a distill-based context refiner to dynamically mitigate context interference for multi-turn search agents. Finally, we validate that incorporating context refinement into RL training pipelines of search agents can significantly enhance both reliability and efficiency. This study highlights the importance of mitigating context interference of search agents, inspiring a novel paradigm of ``refine context and then generate''for AI agents.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 42,
+      "core": "Recent research empowers Large Language Models (LLMs) as multi-turn search agents to iteratively retrieve and generate outputs until complex tasks are solved. However, the contexts of multi-turn search agents are lengthy and complex. For example, the retrieved set of documents in each turn would inevitably introduce irrelevant information that distracts LLMs, referring to \\textit{context interference}, potentially h…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "How to build a diffusion language model",
+      "link": "https://kuleshov-group.github.io/blog/blog/2026/how-to-build-a-diffusion-language-model",
+      "publishedAt": "2026-08-30T23:41:32.000Z",
+      "author": "volodia https://news.ycombinator.com/user?id=volodia",
+      "summary": "An introduction to diffusion language models and the research advances that underlie today",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49503956",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 159,
+        "comments": 19
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-31T16:22:30.681Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 41.93101940857584,
+      "core": "An introduction to diffusion language models and the research advances that underlie today",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "The Web Conference",
+      "title": "Multimodal Content Analysis for Social Good",
+      "link": "https://doi.org/10.1145/3774905.3795452",
+      "evidenceLink": "https://www.semanticscholar.org/paper/618461639155126ec90e494d5a474ceb896dd4b1",
+      "publishedAt": "2026-05-28T00:00:00.000Z",
+      "submittedAt": "2026-05-28T00:00:00.000Z",
+      "author": "Surendrabikram Thapa, Roy Ka-Wei Lee, Mehwish Nasim, Usman Naseem",
+      "summary": "The fourth edition of the International Workshop on Multimedia Content Analysis for Social Good (MM4SG 2026) was held alongside the prestigious Web Conference 2026. Building on the momentum of prior editions, the workshop continued to address the critical challenge of analyzing and moderating multimodal content across digital platforms. In an era where diverse multimodal media, including memes, text-embedded images, synthetic and manipulated content, and cross-platform narratives can rapidly shape public opinion and influence societal discourse, the need for robust, transparent, and ethically grounded content understanding has become increasingly urgent. MM4SG 2026 provided a dedicated forum for interdisciplinary collaboration, bringing together researchers and practitioners from natural language processing, computer vision, machine learning, computational social science, and AI ethics to advance the state of the art in socially responsible multimodal intelligence. A major theme of this edition was the growing role of agentic multimodal systems and large vision-language models (VLMs), including emerging agentic LVLM paradigms, for scalable reasoning, moderation, and decision-making in real-world settings.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "WWW",
+        "venueLabel": "The Web Conference",
+        "venueName": "The Web Conference",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 41,
+      "core": "The fourth edition of the International Workshop on Multimedia Content Analysis for Social Good (MM4SG 2026) was held alongside the prestigious Web Conference 2026. Building on the momentum of prior editions, the workshop continued to address the critical challenge of analyzing and moderating multimodal content across digital platforms. In an era where diverse multimodal media, including memes, text-embedded images,…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gerald_chen_ai_engineering",
+      "source": "陈广亮的技术博客",
+      "title": "2026 年 8 月，AI 祛魅期正式成型：一个独立开发者的三条防线",
+      "link": "https://chenguangliang.com/posts/blog220_ai-demystification-three-lines-2026-08",
+      "publishedAt": "2026-08-30T12:00:00.000Z",
+      "author": "",
+      "summary": "8 月最后一周，中文圈 AI 祛魅期三条叙事线同期成型——工具退潮、流程反噬、能力退化。用我 blog agent 集群的三次真实翻车账单，加上 260+ 篇 100% AI 生成的博客没退化的机制，讲清楚祛魅期到底该怎么活。",
+      "evidenceLink": "",
+      "score": 39.6009785515873,
+      "core": "8 月最后一周，中文圈 AI 祛魅期三条叙事线同期成型——工具退潮、流程反噬、能力退化。用我 blog agent 集群的三次真实翻车账单，加上 260+ 篇 100% AI 生成的博客没退化的机制，讲清楚祛魅期到底该怎么活。",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-31T16:22:30.681Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "EU Macroeconomic Analysis with Deep Agents and You.com",
+      "link": "https://www.langchain.com/blog/financial-ai-that-investigates-macro-trends-eu-economic-analysis-with-you-com-and-langchain",
+      "publishedAt": "2026-08-26T15:02:51.000Z",
+      "author": "",
+      "summary": "A Deep Agents research agent analyzes GDP across all 27 EU states, flags outliers like Ireland and Germany, and writes a cited briefing in about 45 minutes.",
+      "evidenceLink": "",
+      "score": 38.20040315476191,
+      "core": "A Deep Agents research agent analyzes GDP across all 27 EU states, flags outliers like Ireland and Germany, and writes a cited briefing in about 45 minutes.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-31T16:22:30.681Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "OpenAI's Bet on a Cognitive Architecture",
+      "link": "https://www.langchain.com/blog/openais-bet-on-a-cognitive-architecture",
+      "publishedAt": "2026-08-26T15:02:51.000Z",
+      "author": "",
+      "summary": "Why LangChain believes in open, customizable cognitive architectures over closed systems. Build reliable LLM agents with OpenGPTs and LangSmith.",
+      "evidenceLink": "",
+      "score": 38.13373648809524,
+      "core": "Why LangChain believes in open, customizable cognitive architectures over closed systems. Build reliable LLM agents with OpenGPTs and LangSmith.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-31T16:22:30.681Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "baseten_ai_engineering",
+      "source": "Baseten AI Engineering",
+      "title": "The two AI gateway patterns in production inference",
+      "link": "https://www.baseten.co/blog/ai-gateways-production-inference",
+      "publishedAt": "2026-08-25T13:37:51.000Z",
+      "author": "",
+      "summary": "Access gateways and serving gateways explained, and how they handle identity, tenancy, limits, and metering for teams using and serving AI models.",
+      "score": 37.32937140873016,
+      "core": "Access gateways and serving gateways explained, and how they handle identity, tenancy, limits, and metering for teams using and serving AI models.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-31T16:22:30.681Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Shadow AI is a security problem, but the EU AI Act makes it a legal one",
+      "link": "https://www.techradar.com/pro/shadow-ai-is-a-security-problem-but-the-eu-ai-act-makes-it-a-legal-one",
+      "publishedAt": "2026-08-31T09:46:41.000Z",
+      "author": "Darren Williams",
+      "summary": "Employees at larger enterprises regularly feed corporate data into AI tools.",
+      "evidenceLink": "",
+      "score": 33.950998392857144,
+      "core": "Employees at larger enterprises regularly feed corporate data into AI tools.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-31T16:22:30.681Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Persona vectors: Monitoring and controlling character traits in language models",
+      "link": "https://www.anthropic.com/research/persona-vectors",
+      "publishedAt": "2026-08-26T20:53:12.000Z",
+      "author": "",
+      "summary": "A paper from Anthropic describing persona vectors and their applications to monitoring and controlling model behavior.",
+      "score": 20.406375376984126,
+      "core": "A paper from Anthropic describing persona vectors and their applications to monitoring and controlling model behavior.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-31T16:22:30.681Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Constitutional Classifiers: Defending against universal jailbreaks",
+      "link": "https://www.anthropic.com/research/constitutional-classifiers",
+      "publishedAt": "2026-08-26T20:45:34.000Z",
+      "author": "",
+      "summary": "A paper from Anthropic describing a new way to guard LLMs against jailbreaking.",
+      "score": 20.18062140873016,
+      "core": "A paper from Anthropic describing a new way to guard LLMs against jailbreaking.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-08-31T16:22:30.681Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
