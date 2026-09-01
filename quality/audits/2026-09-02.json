@@ -1,0 +1,294 @@
+{
+  "date": "2026-09-02",
+  "generatedAt": "2026-09-01T16:04:58.027Z",
+  "reportPath": "reports/2026-09-02-0004-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 57,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "AIHOT",
+      "Hugging Face API"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 1,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 12,
+      "keptCount": 3,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-08-31；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 12 条，AI 相关候选 3 条；实际 fallback：hunted_space。；历史去重后最终发布 3 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "YC Launch 本窗口无候选或来源为空。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 26,
+      "keptCount": 19,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 19,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 15,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-08-17T16:01:51.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Video Agent by Fotor",
+      "productKey": "https://www.producthunt.com/products/fotor",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Fotor 把聊天式指令直接连到精准动效和视频编辑，值得看自然语言能否承担专业时间线的操作复杂度。"
+    },
+    {
+      "rank": 2,
+      "product": "49 IDE – 2D Canvas for Agents",
+      "productKey": "https://github.com/alpbahadur/49-ide",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "49 IDE 将 agent 工作区做成 2D 画布，关键在于空间化编排是否比线性对话更适合管理多 agent 任务。"
+    },
+    {
+      "rank": 3,
+      "product": "Interactive Sessions by Revolte",
+      "productKey": "https://www.producthunt.com/products/revolte",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Revolte 把完整 SDLC 拆成可逐步推进的 agent 会话，值得验证人工介入点能否真正降低自动化失控风险。"
+    },
+    {
+      "rank": 4,
+      "product": "Orthogonal – One integration for agents to discover and pay for APIs",
+      "productKey": "https://www.orthogonal.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Orthogonal 想用一次集成同时解决 agent 的 API 发现和付费，值得关注它能否把工具选择与计费授权做成可控闭环。"
+    },
+    {
+      "rank": 5,
+      "product": "An open URL format for AI agents to report status to humans",
+      "productKey": "https://agentdisplay.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AgentDisplay 用开放 URL 格式让 agent 向人报告状态，产品价值取决于这个协议能否跨工具通用并保留可审计性。"
+    },
+    {
+      "rank": 6,
+      "product": "AI Answers with Interactive Video",
+      "productKey": "https://appearing.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Appearing.ai 将 AI 回答做成互动视频，值得看视频形态是否提升理解和参与，而不只是更昂贵的输出容器。"
+    },
+    {
+      "rank": 7,
+      "product": "Transform text and images into cinematic AI videos",
+      "productKey": "https://h3max.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "H3Max 把文字和图像统一到高质感视频生成，值得比较跨模态控制对镜头连续性和可编辑性的实际帮助。"
+    },
+    {
+      "rank": 8,
+      "product": "Selfship.ai – Surface and fix isues with your agentic applications 24x7",
+      "productKey": "https://selfship.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Selfship.ai 把 agent 应用的 24×7 问题发现与修复作为卖点，值得看它能否从告警跨越到可验证的自动修复。"
+    },
+    {
+      "rank": 9,
+      "product": "CalPrep – AI calendar agent with human-in-the-loop confirmation",
+      "productKey": "https://calprep.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "CalPrep 在日历 agent 中明确加入人工确认，值得关注它如何平衡主动准备与误操作风险。"
+    },
+    {
+      "rank": 10,
+      "product": "Openheim – a multi-provider LLM agent runtime, written in Rust",
+      "productKey": "https://openheim.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Openheim 用 Rust 做多模型供应商的 agent runtime，值得看路由抽象是否真能换来更低延迟、更好可移植性和稳定工具调用。"
+    },
+    {
+      "rank": 11,
+      "product": "Orato",
+      "productKey": "https://www.producthunt.com/products/orato-speech-coach",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Orato 把 AI 用在口语练习，判断点是反馈能否具体到可立即修正的表达问题，而不是泛化鼓励。"
+    },
+    {
+      "rank": 12,
+      "product": "Seatlr – We rebuilt our traveler chat into an AI-powered travel network",
+      "productKey": "https://www.seatlr.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Seatlr 把旅行者聊天重做成 AI 旅行网络，值得看它能否把建议转成可执行行程与真实人际协作。"
+    },
+    {
+      "rank": 13,
+      "product": "Will your money last? AI-assisted financial simulator",
+      "productKey": "https://futurezapp.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Futurezapp 用 AI 辅助做资金可持续性模拟，关键不是给出乐观答案，而是能否让假设、不确定性和风险可检查。"
+    },
+    {
+      "rank": 14,
+      "product": "Strunk – revise Google Docs from Claude without breaking comments",
+      "productKey": "https://strunk.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Strunk 瞄准了用 Claude 修订 Google Docs 时不破坏评论的具体痛点，值得看它是否真能保留协作语义和文档结构。"
+    },
+    {
+      "rank": 15,
+      "product": "I built a live stream site where every spot is instantly AI-generated",
+      "productKey": "https://videoai.me/live",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "这个站点将直播每个广告位即时生成，只能先作弱信号；需要证明生成速度、安全性和广告效果才有产品价值。"
+    },
+    {
+      "rank": 16,
+      "product": "Luma AI 推出 FLUX Video Upscale，可将视频上采样至 2K 和 4K",
+      "productKey": "https://aihot.virxact.com/items/cmtismwsk03vlro9yo7xec0p4",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "FLUX Video Upscale 直接把视频提升到 2K/4K，产品判断应聚焦人脸细节、时序稳定性与输出成本，而不只看演示分辨率。"
+    },
+    {
+      "rank": 17,
+      "product": "Hugging Face Space: jinn313/ai-video-editor",
+      "productKey": "https://huggingface.co/spaces/jinn313/ai-video-editor",
+      "source": "Hugging Face API",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "jinn313/ai-video-editor 仅能确认近期更新了 Space；可以作为 AI 视频编辑样本，但尚无证据证明它有完整创作流程。"
+    },
+    {
+      "rank": 18,
+      "product": "GLM Coding Plan 一周年，智谱向订阅者发放 Reset Card 补充配额",
+      "productKey": "https://aihot.virxact.com/items/cmtiojs3704ubrovqkebksx0f",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "Reset Card 是对 GLM Coding Plan 订阅配额的具体运营动作，值得看频次限制如何影响用户留存和团队版使用。"
+    },
+    {
+      "rank": 19,
+      "product": "Sonos发布Beam Ultra回音壁、Ace Ultra耳机及AI音频系统Sonos 27",
+      "productKey": "https://aihot.virxact.com/items/cmtirk0cw02wlro9y023p9bxo",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "Sonos 27 同时引入自研语音助手、外部模型接入和未来自定义 agent，值得看家庭音频系统是否会变成持续可用的 AI 入口。"
+    },
+    {
+      "rank": 20,
+      "product": "Zero Shot – Energy Drink for You and Your AI Agents",
+      "productKey": "https://news.ycombinator.com/item?id=49522983",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "标题把能量饮料与 AI agent 捆绑，但行内没有可验证的 AI 产品能力；应保持弱信号，不作为产品趋势依据。"
+    }
+  ]
+}

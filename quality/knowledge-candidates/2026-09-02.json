@@ -1,0 +1,415 @@
+{
+  "generatedAt": "2026-09-01T16:09:23.717Z",
+  "date": "2026-09-02",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "How our agents build on-brand pages with design.md",
+      "link": "https://vercel.com/blog/how-our-agents-build-on-brand-pages-with-design-md",
+      "publishedAt": "2026-08-31T04:00:00.000Z",
+      "author": "John Phamous",
+      "summary": "Across Vercel, we use coding agents to design and build pages that have to look and feel like Vercel. The typography, color, and composition all need to carry the same judgment that we put into the pages we already ship ourselves. We recently wrote about product-design , our skill that teaches agents how we design when they work in our codebases. The skill lives in each repository alongside the code that it governs, explaining how agents can find and understand our design system as well as product guidelines for whatever they are building. This works great when agents are working in our codebases, where everything the skill needs is right there. But what about reports, proposals, and the one-off pages that still have to look like Vercel but get made in tools that can't read any of those files? For us, the answer was design.md , one public file any agent can load. How we approached building design.md What made product-design work well was that the design system and product guidelines were sitting right there in the repository for agents to read. We needed a way for agents and tools outside that environment to reach the same knowledge, so that the pages coming out the other end would still look like something we designed ourselves. That set two requirements: A single public URL that anyone can point their agents at, regardless of the environment they run in. Guidance covering everything that made product-design useful in the first place, from brand, layout, and copywriting to the design system, responsiveness, and information architecture. The naive approach we tried first was to simply port product-design into a public prompt, collapsing the skill's reference files into one file any agent could read from a URL. The problem we found was that while the prompt described our visual language just fine, every model reading it interpreted that description differently, generating vastly different pages from the same guidance. Part of this comes from the fact that design language is subjective. Phrases like \"keep the layout clean\" can really mean anything. What is \"clean\"? Beyond that, the bigger problem was everything else the prompt left behind. Inside our codebases, an agent reads product-design surrounded by real components and shipped examples of the things it describes. But a public prompt includes none of that, leaving every model to rebuild our style from just words alone. So what we needed to do was distill what that environment provided into a single file, and the only way to know whether we were getting closer was to look at the pages coming out. We set the port aside and started writing a new file from scratch, this time testing every change against a repeatable set of eval prompts. We wrote seven of them, pulled from real use cases and paired with mock inputs: Usage and performance report Renewal proposal Benchmark report Interactive planning page Build-versus-buy brief Security governance brief Presentation deck The prompts stayed fixed while the file changed, so any difference in the output traced back to the guidance. The first comparison These evals gave us a way to measure both what the file was actually doing and how it was being interpreted by different agents. For our first test, we wanted to know whether design.md would actually change what a model produced at all. We ran the renewal proposal eval twice in the same environment with the same model, once without design.md and once with it loaded, keeping the prompt, data, and viewport identical in both runs. Without design.md , the model generated a generic SaaS dashboard. But with it, the page led with the renewal recommendation itself, pulled the commercial evidence into one grid, put peer values on a single scale so they could actually be compared, and kept supporting detail available without letting it compete with the summary. This allowed us to conclude that the file changed the page’s structure and hierarchy as well, not just the styling like we originally found, giving us enough signal to keep building the guidance like this, one rule at a time. The three parts that make the system work As we tested and rebuilt design.md , the scope evolved into a three-part system that made the entire thing work: design.md supplies guidance that shows agents how to frame the reader's job, structure evidence, and choose a composition. A public stylesheet that defines a bounded, documented vocabulary of classes and tokens. An evaluation loop turns repeated human feedback into better guidance and deterministic checks. Each of these layers covers a different slice of the work that creates a high-quality, on-brand Vercel page. The judgment that gets encoded in design.md gives agents guidance on: Shaping a page for both a quick executive read and a detailed audit. Writing copy with concrete claims and honest caveats. Composing hierarchy, typography, and color so that evidence and prose support each other. How to publish as Vercel, down to the asset rules for our wordmark and the triangle logo. design.md also names the recurring generated-design patterns that we never want to see, allowing agents to recognize and avoid them far more reliably by giving the patterns names. We created a stylesheet because agents kept inventing their own typography, spacing, and layout, so we took those decisions away from the model entirely. The stylesheet packages our design system's primitives, such as headers, tables, stat strips, and chart styles, as CSS that any page can use via a public URL. Then design.md documents the class names and tokens that the stylesheet provides, allowing the agent to build the page with those names in the HTML instead of reinventing them. Another benefit to this is that the agent never actually reads the stylesheet itself. The stylesheet loads when the page renders in your browser, so none of the code enters the model's context, saving more room for design guidance instead. Last, the evaluation loop is what helps make the other two pieces work. Deterministic checks are used to help catch mechanical failures, such as a table that ignores the width available to it, while people judge the subjective parts that can't be automated, like hierarchy, composition, and whether the page actually gives the reader what they came for. How guidance made it into the file Every line of guidance in design.md earned its place through the eval loop. We generated pages from fixed scenarios, reviewed what came back, encoded the corrections we accepted, and reran the scenarios to see whether each change stuck, since a change that helped one artifact could quietly hurt another. Nothing got in any other way. Scenarios and rounds Each of the seven prompts becomes a scenario, meaning the prompt is frozen together with its mock inputs and render settings. The renewal proposal, for example, always runs with the same fake customer data with the same viewport settings, keeping design.md as the only thing that changes between runs. A round means generating a fresh page from every scenario against the current version of the file. Full rounds cover all seven scenarios on both Claude Opus 4.8 and Codex with GPT-5.5. If we want to investigate something specific, such as a rule change that only affects tables, we can rerun the affected scenarios or a single model, keeping iteration loops tight. Generating all seven pages together also made them easy to compare side by side, and what stood out was that design.md wasn't pushing every page toward one template. The interactive planning page put its controls front and center, because someone opens a planning page to change the numbers and see what happens. The renewal proposal instead led with the recommendation and the commercial comparison behind it, because its reader is deciding whether to renew. Every page used the same Vercel typography, color, and spacing, but each one was structured around what its reader came to do. Reviewing every run To review the pages each round produced, we built a local app that displays full-page renders and runs blind A/B comparisons. This app eventually became our eval harness, running each scenario and storing the results. Each stored run keeps the prompt, inputs, model configuration, the version of design.md it used, the screenshots, and whatever feedback the reviewer left about it. Reviewers record every correction against the exact run that produced it. Turning corrections into rules and checks Each correction a reviewer records gets landed in the narrowest place that can consistently enforce it. Judgment changes go into design.md as prose, reusable mechanics go into the stylesheet, and anything that we can check mechanically becomes a deterministic check in code. Problems with the harness itself stay in the harness, and when a single model fails in a way the others don't, we keep it out of the rules until it repeats. Take one of the early renewal proposals. Its commercial terms table came back squeezed to the same width as the prose, even though the page had room for the table to be twice as wide. During review, we flagged that evidence tables should use the full width available to them. But when looking through previous outputs, we found this same failure everywhere. So this correction ended up going into two places: A rule in design.md stating the intended behavior. A deterministic check in code that catches the same layout failure the next time it appears. Once this landed, later renewal proposal prompts resulted in pages with correct full-width tables. To verify changes like this one, we reran the affected scenarios after encoding them. At milestones we went further, running blind A/B rounds that put the updated design.md against an earlier version of the file to decide whether to keep, revise, or revert each change. Measuring whether it worked Building the file had taken well over 200 runs, counting full rounds, targeted checks, dry runs, and all of the dead ends. Alongside the human reviewers, a model judge wrote critiques for each round, and every round's feedback went into improving the next run. After all of those runs, we wanted to know whether the corrections we had encoded were actually preventing the failures they were written for. So we picked three desktop scenarios, and for each one we had Codex with GPT-5.5 generate the page twice, once with design.md loaded and once without. We kept the first attempt from every generation, with no re-rolls. Then we ran our deterministic checks over all six pages and counted how many times a known failure, like a table that ignores its available width, showed up in each set. The pages generated with design.md had 39 of those failures. The pages generated without it had 91, which works out to 57% fewer in this test. Those numbers come with two caveats. The checks can only catch failures we have already seen and written down, so this test says nothing about whether a page is well designed overall. Six pages is also far too small a sample to make claims about quality or reliability, and every one of them, with or without the file, still had at least one failure serious enough to block shipping. But what the test does well is tell us that once we name a failure and encode it, that failure tends to stay gone. How design.md stays current The eval loop got the file shipped, but what keeps it current is real usage. Inside our Slack, that usage comes through @design-agent , an agent built on eve that we use for anything from design critiques and copy alternatives to icon recommendations and report sites built from pasted data. Instead of setting up a prompt or hunting down source files, you just mention the agent in a thread. For website requests, it loads the current design.md , builds the page against the published stylesheet, and posts a full-page screenshot and deployment URL back to the thread. Unlike our fixed scenarios, each of these threads captures a real request, a real output, and whatever feedback or steering followed, showing us how the guidance performs out in the wild. Every week, we gather all of that feedback in one place, the Slack threads along with comments from GitHub reviews and Figma. Automation groups the comments that keep repeating, and each repeated complaint becomes a proposed change. A person then reviews each proposal, checks whether the system already handles it, and decides where the accepted fix belongs, whether that is @design-agent , the product-design skill, design.md , the stylesheet, or a deterministic check. And if people start asking for a kind of page we have never tested, that request becomes a new eval scenario. To know whether any of this is working, we count how often each kind of complaint shows up in similar work over time. Once we encode a fix, that count should start falling. When it does not, something about the fix is wrong. The rule might be unclear, it might not be loading when it is needed, the stylesheet might not have a primitive that can express it, or it might need a deterministic check instead of prose. Build your own You can build the same loop yourself, starting with one recurring artifact and one manual comparison. 1. Pick one repeated artifact Use a recent task with a real reader and real inputs, like a proposal, performance report, benchmark, or microsite. Avoid broad goals such as \"make it on-brand.\" Before generating anything, write down a short rubric. A good one checks that the supplied facts survived, that the reader's decision is clear, and that the correction you keep making by hand actually got resolved. 2. Save the baseline first Generate the page once without any new design context, and save the prompt, inputs, configuration, and a screenshot. Keep that first output even if it looks rough, unless the harness itself failed. You cannot tell whether new context helped without a before. 3. Start from your last ten corrections Collect the feedback you keep giving in design reviews, pull requests, or Slack, and rewrite each correction as something observable. That means writing Let evidence tables use the full available width instead of Make the table feel less cramped , since only one of those can be checked. Put the decisions in one file with sections for scope, reader and task, observable decisions, and available primitives. That file is your first design.md . 4. Constrain repeatable mechanics If your outputs keep inventing their own typography, spacing, or layout, publish a stylesheet and document the exact classes and tokens the agent may use. Keep your judgment in prose, and push the repeatable mechanics into CSS or deterministic checks. 5. Run one matched comparison Generate the page one more time with the same input, model, and viewport, but now with your file loaded. Shuffle it with the baseline and score both against your rubric without knowing which is which. You do not need a runner or a model judge to start, a single trial can reveal the large, obvious failures. To measure reliability, run multiple independent first-attempt trials ( Anthropic's guide to evals for agents ) and report how often the result holds. 6. Encode the correction Review the output alongside whatever follow-up prompts you have to send, and then ask: What did the user have to repeat or steer manually? Is a rule missing or unclear? Can the stylesheet express the correction? Is the failure mechanical enough to check in code? Does the correction generalize beyond this output? Update the guidance instead of hand-tuning the generated page. Your next comparison tells you whether first attempts actually improved. Add tooling after the manual loop starts paying off: Include scenarios where the guidance should and should not apply. Keep a small holdout hidden while editing. Record model and guidance versions. Automate mechanical checks. Use multiple blind reviewers. However far you take the automation, keep final changes human-reviewed. Then keep the loop running. Collect feedback on a cadence, and watch whether each kind of complaint actually becomes less common after you change the guidance. A passing evaluation matters less if people keep correcting the same mistake in production. And if you want working examples, ours are public. We load design.md into tools like v0 , Codex, and Claude every day to make artifacts that feel like Vercel, and the eve design agent template will get you a Slack design agent like the one we run. Read more",
+      "evidenceLink": "",
+      "score": 100.41738656746031,
+      "core": "Across Vercel, we use coding agents to design and build pages that have to look and feel like Vercel. The typography, color, and composition all need to carry the same judgment that we put into the pages we already ship ourselves. We recently wrote about product-design , our skill that teaches agents how we design when they work in our codebases. The skill lives in each repository alongside the code that it governs,…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-01T16:09:23.717Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Securing Amazon Quick from POC to production: Agents, Flows, and Spaces",
+      "link": "https://aws.amazon.com/blogs/machine-learning/securing-amazon-quick-from-poc-to-production-agents-flows-and-spaces",
+      "publishedAt": "2026-09-01T16:02:22.000Z",
+      "author": "Archana Ambavane",
+      "summary": "Amazon Quick proof-of-concept projects often stall when security teams review the production plan. This post walks through designing dashboards, Spaces, knowledge bases, agents, and Flows with security controls that hold as you scale: dataset shaping, agent isolation, document classification, and approval gates.",
+      "evidenceLink": "",
+      "score": 67.73052148809525,
+      "core": "Amazon Quick proof-of-concept projects often stall when security teams review the production plan. This post walks through designing dashboards, Spaces, knowledge bases, agents, and Flows with security controls that hold as you scale: dataset shaping, agent isolation, document classification, and approval gates.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-01T16:09:23.717Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Overcoming the biggest blocker to AI production",
+      "link": "https://www.techradar.com/pro/overcoming-the-biggest-blocker-to-ai-production",
+      "publishedAt": "2026-09-01T09:09:32.000Z",
+      "author": "Ev Kontsevoy",
+      "summary": "Outdated security models stall AI agents, requiring unified, zero-trust identity architectures to prevent catastrophic risks.",
+      "evidenceLink": "",
+      "score": 61.19460878968254,
+      "core": "Outdated security models stall AI agents, requiring unified, zero-trust identity architectures to prevent catastrophic risks.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-01T16:09:23.717Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Build observable enterprise agentic retrieval using Managed Amazon Bedrock Knowledge Base with AWS CloudFormation",
+      "link": "https://aws.amazon.com/blogs/machine-learning/build-observable-enterprise-agentic-retrieval-using-managed-amazon-bedrock-knowledge-base-with-aws-cloudformation",
+      "publishedAt": "2026-08-31T19:08:45.000Z",
+      "author": "Luis Felipe Yepez Barrios",
+      "summary": "This post builds an enterprise agentic retrieval solution on the Amazon Bedrock Managed Knowledge Base and Amazon Bedrock AgentCore. An agent reasons, routes across multiple knowledge bases, and returns cited answers, with seven layers of observability and both on-demand and continuous evaluation, all deployed with a single AWS CloudFormation chain.",
+      "evidenceLink": "",
+      "score": 60.449231805555556,
+      "core": "This post builds an enterprise agentic retrieval solution on the Amazon Bedrock Managed Knowledge Base and Amazon Bedrock AgentCore. An agent reasons, routes across multiple knowledge bases, and returns cited answers, with seven layers of observability and both on-demand and continuous evaluation, all deployed with a single AWS CloudFormation chain.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-01T16:09:23.717Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentailor",
+      "source": "Agentailor",
+      "title": "Building an Agent Eval Harness: The Complete Guide",
+      "link": "https://blog.agentailor.com/posts/agent-eval-harness",
+      "publishedAt": "2026-09-01T00:00:00.000Z",
+      "author": "undefined (Ali Ibrahim)",
+      "summary": "An eval harness is four components: the case, the runner, the capture, and the graders. A guide to what each one has to do for an AI agent, built around two real harnesses, so you can decide whether to build one, adopt a framework, or combine both.",
+      "evidenceLink": "",
+      "score": 55.22373577380952,
+      "core": "An eval harness is four components: the case, the runner, the capture, and the graders. A guide to what each one has to do for an AI agent, built around two real harnesses, so you can decide whether to build one, adopt a framework, or combine both.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-01T16:09:23.717Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "How Uber evaluates AI agents at production scale",
+      "link": "https://arize.com/blog/how-uber-evaluates-ai-agents-at-production-scale",
+      "publishedAt": "2026-08-14T15:00:25.000Z",
+      "author": "Sara Verdi",
+      "summary": "A background comment about pizza exposed a failure that Uber’s offline evaluations had missed. The incident helped reveal what production AI agent evaluation actually requires: automatic tracing, living datasets, shared ownership, and a direct connection to product decisions. The post How Uber evaluates AI agents at production scale appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 53.016666666666666,
+      "core": "A background comment about pizza exposed a failure that Uber’s offline evaluations had missed. The incident helped reveal what production AI agent evaluation actually requires: automatic tracing, living datasets, shared ownership, and a direct connection to product decisions. The post How Uber evaluates AI agents at production scale appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-01T16:09:23.717Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Connect an AgentCore Runtime hosted MCP server to Amazon Quick",
+      "link": "https://aws.amazon.com/blogs/machine-learning/connect-an-agentcore-runtime-hosted-mcp-server-to-amazon-quick",
+      "publishedAt": "2026-08-31T22:47:53.000Z",
+      "author": "Vivek Ghatala",
+      "summary": "In this post, you will learn how to deploy and host your MCP server in AgentCore Runtime and integrate it with Amazon Quick, along with the prerequisites. With this pattern, you promote reusability and avoid duplication of AI tools, so clients can reuse commonly used tools and agents exposed through an MCP server instead of authoring them from scratch again. Your customers get a way to use your product inside Amazon Quick (chat agents and workflows) without building custom connectors for every use case.",
+      "evidenceLink": "",
+      "score": 50.58232704365079,
+      "core": "In this post, you will learn how to deploy and host your MCP server in AgentCore Runtime and integrate it with Amazon Quick, along with the prerequisites. With this pattern, you promote reusability and avoid duplication of AI tools, so clients can reuse commonly used tools and agents exposed through an MCP server instead of authoring them from scratch again. Your customers get a way to use your product inside Amazon…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-01T16:09:23.717Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "What are LLM guardrails? A practical guide to implementing them with evals - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/what-are-llm-guardrails",
+      "publishedAt": "2026-08-09T00:00:00.000Z",
+      "author": "",
+      "summary": "Learn what LLM guardrails are, why static filters fail in production, and how to build measurable guardrails with custom scorers, online evaluation, and alerts. Includes a comparison of six guardrail tools.",
+      "score": 48.144444444444446,
+      "core": "Learn what LLM guardrails are, why static filters fail in production, and how to build measurable guardrails with custom scorers, online evaluation, and alerts. Includes a comparison of six guardrail tools.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-01T16:09:23.717Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "How Signal found two hidden retry loops in our production agent Alyx",
+      "link": "https://arize.com/blog/how-signal-found-two-hidden-retry-loops-in-alyx",
+      "publishedAt": "2026-08-27T19:28:05.000Z",
+      "author": "Nancy Chauhan",
+      "summary": "We ran Signal on Alyx, the AI engineering agent built into Arize AX. It surfaced a duplicate task-state loop and a 43-call dataset retry that appeared as valid tool activity or an OK root span. The post How Signal found two hidden retry loops in our production agent Alyx appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 46.331771488095235,
+      "core": "We ran Signal on Alyx, the AI engineering agent built into Arize AX. It surfaced a duplicate task-state loop and a 43-call dataset retry that appeared as valid tool activity or an OK root span. The post How Signal found two hidden retry loops in our production agent Alyx appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-01T16:09:23.717Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "salesforce_engineering",
+      "source": "Salesforce Engineering",
+      "title": "Why AI Agents Get the Right Facts but the Wrong Answer—and How GraphRAG Helps",
+      "link": "https://engineering.salesforce.com/why-ai-agents-get-the-right-facts-but-the-wrong-answer-and-how-graphrag-helps",
+      "publishedAt": "2026-08-31T17:41:11.000Z",
+      "author": "Scott Nyberg",
+      "summary": "By Sivakumar Shanmugam and Indrojit Deb.An AI agent rejects a valid customer return. You check its citation: the policy really does say 90 days. You check the purchase: it falls outside that window. Both facts are correct, but the customer qualifies for an exception the system never retrieved. Checking the evidence has made the wrong […] The post Why AI Agents Get the Right Facts but the Wrong Answer—and How GraphRAG Helps appeared first on Salesforce Engineering Blog .",
+      "evidenceLink": "",
+      "score": 46.028319107142856,
+      "core": "By Sivakumar Shanmugam and Indrojit Deb.An AI agent rejects a valid customer return. You check its citation: the policy really does say 90 days. You check the purchase: it falls outside that window. Both facts are correct, but the customer qualifies for an exception the system never retrieved. Checking the evidence has made the wrong […] The post Why AI Agents Get the Right Facts but the Wrong Answer—and How GraphRA…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-01T16:09:23.717Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "Braintrust vs Portkey: gateway with evals vs gateway with guardrails - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/braintrust-vs-portkey",
+      "publishedAt": "2026-08-23T00:00:00.000Z",
+      "author": "",
+      "summary": "Compare Braintrust and Portkey across model access, routing, guardrails, caching, governance, prompt management, observability, deployment, and evaluation. See which AI gateway fits how your team controls production quality.",
+      "score": 44.24444444444445,
+      "core": "Compare Braintrust and Portkey across model access, routing, guardrails, caching, governance, prompt management, observability, deployment, and evaluation. See which AI gateway fits how your team controls production quality.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-01T16:09:23.717Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "Best LLM guardrails and security testing tools (2026) - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/best-llm-guardrails-security-testing-tools-2026",
+      "publishedAt": "2026-08-09T00:00:00.000Z",
+      "author": "",
+      "summary": "Compare the best LLM guardrail and security testing tools of 2026 across five defense layers: input filtering, output moderation, schema validation, tool permissions, and evaluation and monitoring.",
+      "score": 42.09444444444444,
+      "core": "Compare the best LLM guardrail and security testing tools of 2026 across five defense layers: input filtering, output moderation, schema validation, tool permissions, and evaluation and monitoring.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-01T16:09:23.717Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "EFF to Courts: Don't Rewrite Copyright over AI Hype",
+      "link": "https://www.eff.org/deeplinks/2026/08/eff-courts-dont-rewrite-copyright-over-ai-hype",
+      "publishedAt": "2026-09-01T12:53:51.000Z",
+      "author": "DeepLogin https://news.ycombinator.com/user?id=DeepLogin",
+      "summary": "New markets, new ideas, and new creators are actually what copyright is supposed to promote, not restrict. Using copyright to lock in existing gatekeepers and massive rightsholders’ profits helps neither the public nor individual artists.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49521315",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 143,
+        "comments": 147
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-01T16:09:23.717Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 41.22176610952013,
+      "core": "New markets, new ideas, and new creators are actually what copyright is supposed to promote, not restrict. Using copyright to lock in existing gatekeepers and massive rightsholders’ profits helps neither the public nor individual artists.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Run NVIDIA BioNeMo NIM Microservices for Protein Structure Prediction in Claude Science",
+      "link": "https://developer.nvidia.com/blog/run-nvidia-bionemo-nim-microservices-for-protein-structure-prediction-in-claude-science",
+      "publishedAt": "2026-08-31T16:30:00.000Z",
+      "author": "Michelle Horton",
+      "summary": "Agentic AI is changing how research is done. AI scientists can read papers, propose hypotheses, call models, and determine which experiments to prioritize next....",
+      "evidenceLink": "",
+      "score": 41.21579926587302,
+      "core": "Agentic AI is changing how research is done. AI scientists can read papers, propose hypotheses, call models, and determine which experiments to prioritize next....",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-01T16:09:23.717Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "The Web Conference",
+      "title": "AiOfAi: 4th Workshop on Adverse Impacts and Collateral Effects of Artificial Intelligence Technologies",
+      "link": "https://doi.org/10.1145/3774905.3795468",
+      "evidenceLink": "https://www.semanticscholar.org/paper/538d99fb1249565c80d28db67fd67c40398fd203",
+      "publishedAt": "2026-05-28T00:00:00.000Z",
+      "submittedAt": "2026-05-28T00:00:00.000Z",
+      "author": "Esma Aïmeur, Rim Ben Salem, D. Sallami, Julita Vassileva, N. Cuppens-Boulahia",
+      "summary": "The emerging Web era of Artificial Intelligence (AI) presents a paradox: the same innovations that threaten security and truth also offer unprecedented solutions. AI technologies are becoming ever more interwoven in the fabric of online systems, presenting potential that can be used both for constructive and destructive purposes. In the post-truth era, generating persuasive yet deceptive content and automating social engineering attacks and the spread of disinformation has never been easier since the conception of the World Wide Web. At the same time, there exist exceptional opportunities for innovation and creating powerful tools to mitigate these threats, thanks to intrusion detection, threat modeling, and context-aware access control, etc. The AiOfAi workshop, which has had three prior editions at the International Joint Conference on Artificial Intelligence (IJCAI), aims to highlight the double-edged nature of AI in the digital age, examining how it can be exploited to undermine trust, privacy, and integrity, while also serving as a foundation for more secure, ethical, and resilient digital ecosystems. We will discuss the societal impact of widespread adoption of AI tools, especially with the advent of Generative AI and its consequences, ranging from the erosion of public trust to the blurring privacy lines. AiOfAi will also address the ethical and legal frameworks needed to guide responsible AI deployment, which embodies fairness, transparent decision-making, and privacy preservation. We aim to bring together researchers, practitioners, and enthusiasts interested in AI, cybersecurity, ethics, law, and human computer interaction to discuss methodologies, case studies, and tools that address the complex tradeoffs between AI capabilities and vulnerabilities. We welcome original contributions that present innovative ideas, proof of concepts, and use cases to tackle the challenges of the AI-powered Web.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "WWW",
+        "venueLabel": "The Web Conference",
+        "venueName": "The Web Conference",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 40,
+      "core": "The emerging Web era of Artificial Intelligence (AI) presents a paradox: the same innovations that threaten security and truth also offer unprecedented solutions. AI technologies are becoming ever more interwoven in the fabric of online systems, presenting potential that can be used both for constructive and destructive purposes. In the post-truth era, generating persuasive yet deceptive content and automating socia…",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "What Are Browser Agents? How AI Agents Navigate and Act on the Web",
+      "link": "https://rerun.build/blog/browser-agents",
+      "publishedAt": "2026-08-31T05:28:04.000Z",
+      "author": "",
+      "summary": "Browser agents are AI systems that operate a real web browser to reach a goal you describe in plain language. Here is how they work, what they can and cannot do, and how to run one safely when it acts on the web.",
+      "evidenceLink": "",
+      "score": 39.70000561507936,
+      "core": "Browser agents are AI systems that operate a real web browser to reach a goal you describe in plain language. Here is how they work, what they can and cannot do, and how to run one safely when it acts on the web.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-01T16:09:23.717Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "OpenAI supports California’s bill to advance youth AI safety",
+      "link": "https://openai.com/index/supporting-california-bill-advance-ai-youth-safety",
+      "publishedAt": "2026-08-31T07:00:00.000Z",
+      "author": "",
+      "summary": "OpenAI supports California SB 1119, advancing strong, age-appropriate AI safeguards for teens while preserving opportunities to learn, create, and explore.",
+      "evidenceLink": "",
+      "score": 37.49278339285715,
+      "core": "OpenAI supports California SB 1119, advancing strong, age-appropriate AI safeguards for teens while preserving opportunities to learn, create, and explore.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-01T16:09:23.717Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "The Web Conference",
+      "title": "Quantum-Safe, Efficient, and AI-Enhanced Blockchains for the Web: A Cooperative Tutorial on Quantum Computing, Blockchain Applications, and Data Standards",
+      "link": "https://doi.org/10.1145/3774905.3793916",
+      "evidenceLink": "https://www.semanticscholar.org/paper/0859f6cd141b5ba5282f9b258389f407a03d315e",
+      "publishedAt": "2026-05-28T00:00:00.000Z",
+      "submittedAt": "2026-05-28T00:00:00.000Z",
+      "author": "Dongping Liu, Aoyu Zhang, Luyao Zhang",
+      "summary": "The 2025 Nobel Prize in Physics recognized groundbreaking advances in quantum information science, underscoring the transformative potential of quantum technologies for computation and communication. As these developments accelerate, they simultaneously pose profound challenges to classical cryptographic foundations—particularly the public-key algorithms securing blockchain systems, digital signatures, and distributed consensus. However, despite the clear urgency to address quantum-induced vulnerabilities, the translation of theoretical quantum computing breakthroughs from laboratory research into robust, real-world applications for blockchain security remains limited. Building on this momentum, our tutorial explores how quantum computing and blockchain can jointly redefine the trust, efficiency, and intelligence of next-generation Web systems. We introduce the principles of quantum computing and their implications for secure, scalable blockchain architectures, emphasizing post-quantum and quantum-assisted cryptography. The tutorial situates these technologies within broader contexts of privacy, human–computer interaction, and ethical data governance, highlighting how interdisciplinary collaboration across computer science, economics, and human-centered computing can enable a more trustworthy Web. We further discuss how quantum techniques can enhance computational efficiency, randomness, and resilience for decentralized systems, while open data standards provide a foundation for transparency, interoperability, and reproducibility. The session culminates in an immersive experience where participants engage with cloud-based quantum computation through Amazon Braket, comparing multiple quantum backends to witness firsthand how such tools advance secure and efficient blockchain innovation. By integrating insights from quantum computing, blockchain applications, and artificial intelligence, the session provides a forward-looking roadmap toward building trust and intelligence for a quantum-ready internet.",
+      "citationCount": 3,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "WWW",
+        "venueLabel": "The Web Conference",
+        "venueName": "The Web Conference",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 35.40823996531185,
+      "core": "The 2025 Nobel Prize in Physics recognized groundbreaking advances in quantum information science, underscoring the transformative potential of quantum technologies for computation and communication. As these developments accelerate, they simultaneously pose profound challenges to classical cryptographic foundations—particularly the public-key algorithms securing blockchain systems, digital signatures, and distribut…",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Bank of England head warns AI threatens financial stability — cites investment concentration and AI model security risks",
+      "link": "https://www.techradar.com/pro/bank-of-england-head-warns-ai-threatens-financial-stability-cites-investment-concentration-and-ai-model-security-risks",
+      "publishedAt": "2026-09-01T10:25:00.000Z",
+      "author": "Craig Hale",
+      "summary": "Bank of England Governor is worried about AI's impacts on security and the concentration of investments.",
+      "evidenceLink": "",
+      "score": 34.16778339285714,
+      "core": "Bank of England Governor is worried about AI's impacts on security and the concentration of investments.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-01T16:09:23.717Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "baseten_ai_engineering",
+      "source": "Baseten AI Engineering",
+      "title": "Inference engineering for DeepSeek V4 Pro 0813",
+      "link": "https://www.baseten.co/blog/inference-engineering-for-deepseek-v4-pro-0813",
+      "publishedAt": "2026-08-13T23:58:44.000Z",
+      "author": "",
+      "summary": "DeepSeek V4 Pro 0813 is a 1.7T-parameter open frontier model under the MIT license and is available for inference today on Baseten model APIs.",
+      "score": 24.788888888888888,
+      "core": "DeepSeek V4 Pro 0813 is a 1.7T-parameter open frontier model under the MIT license and is available for inference today on Baseten model APIs.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-01T16:09:23.717Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
