@@ -2387,6 +2387,13 @@ function isWeakShowHnDemo(item, text) {
   if (!isHn || !isShowHn) return false;
   if (/\b(?:raises?|raised|funding|fundraise|seed round|series [a-z])\b|融资|募资/i.test(text)) return true;
   if (isResourceListSignal(text)) return true;
+  if (
+    /\benergy drink\b|\bmake fun of (?:other )?ai\b|\bchatgpt work isn['’]t working\b|\bevery spot is instantly ai-generated\b/i.test(
+      text
+    )
+  ) {
+    return true;
+  }
   if (hasExplicitProductSurface(text)) return false;
   return includesAny(text, [
     "for dummies",
@@ -2427,7 +2434,8 @@ function isResourceListSignal(text) {
     /\b(?:a\s+)?list\s+of\s+ai\b/i.test(text) ||
     /\b(?:awesome|curated)\s+(?:ai\s+)?(?:list|resources?)\b/i.test(text) ||
     /\bai\s+(?:resources?|directory|catalog|collection)\b/i.test(text) ||
-    /\b(?:directory|catalog|collection)\s+of\s+ai\b/i.test(text)
+    /\b(?:directory|catalog|collection)\s+of\s+ai\b/i.test(text) ||
+    /\b(?:gallery|directory|catalog)\s+(?:for|of)\s+(?:vibecoded\s+)?tools\b/i.test(text)
   );
 }
 

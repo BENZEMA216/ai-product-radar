@@ -103,9 +103,26 @@ function isWeakShowHnDemo({ source, product, did, why }) {
   const isShowHn = text.includes("show hn:");
   if (!isHn || !isShowHn) return false;
   if (/\b(?:raises?|raised|funding|fundraise|seed round|series [a-z])\b|融资|募资/i.test(text)) return true;
+  if (
+    /\benergy drink\b|\bmake fun of (?:other )?ai\b|\bchatgpt work isn['’]t working\b|\bevery spot is instantly ai-generated\b/i.test(
+      text
+    )
+  ) {
+    return true;
+  }
   if (hasExplicitProductSurface(text)) return false;
   return /for dummies|tutorial|course|lesson|learn |research|paper|benchmark|beats|roguelike|pokemon|neural net|demo|experiment|实验|教程|课程|研究/i.test(
     text
+  );
+}
+
+function isResourceListSignal(text) {
+  return (
+    /\b(?:a\s+)?list\s+of\s+ai\b/i.test(text) ||
+    /\b(?:awesome|curated)\s+(?:ai\s+)?(?:list|resources?)\b/i.test(text) ||
+    /\bai\s+(?:resources?|directory|catalog|collection)\b/i.test(text) ||
+    /\b(?:directory|catalog|collection)\s+of\s+ai\b/i.test(text) ||
+    /\b(?:gallery|directory|catalog)\s+(?:for|of)\s+(?:vibecoded\s+)?tools\b/i.test(text)
   );
 }
 
@@ -171,6 +188,7 @@ function inferQualityLabel({ source, product, did, why, evidence, category }) {
   const text = `${source} ${product} ${did} ${why}`.toLowerCase();
   if (category === "model_infra") return "weak_keep";
   if (isLowSignalGitHubPackageRelease({ source, product, did, evidence })) return "weak_keep";
+  if (isResourceListSignal(text)) return "deprioritize";
   if (isHnFundraisingSignal({ source, product, did, why })) return "deprioritize";
   if (isAihotNonProductSignal({ source, product, did, why, evidence })) return "deprioritize";
   if (isAihotWeakRelaySignal({ source, product, did, why })) return "deprioritize";

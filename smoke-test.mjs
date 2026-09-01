@@ -1943,6 +1943,36 @@ function testPriorityScoreDownranksHotNonProductShowHnDemos() {
   );
 }
 
+function testShowHnNoveltyAndComplaintSignalsStayWeak() {
+  const titles = [
+    "Zero Shot – Energy Drink for You and Your AI Agents",
+    "Use AI to make fun of other AI",
+    "ChatGPT Work Isn't Working",
+    "I built a live stream site where every spot is instantly AI-generated",
+    "Slopyard – a textboard inspired gallery for vibecoded tools"
+  ];
+  for (const title of titles) {
+    const item = {
+      product: title,
+      link: "https://example.com",
+      type: "新产品",
+      did: `HN 发布帖出现：Show HN: ${title}`,
+      why: "Show HN 当日信号。",
+      evidence: "[HN Algolia](https://news.ycombinator.com/item?id=1)",
+      source: "hackernews",
+      sourceSubtype: "show_hn",
+      category: "product"
+    };
+    const inferred = priorityScore(item);
+    const weak = priorityScore({ ...item, qualityLabel: "weak_keep" });
+    const deprioritized = priorityScore({ ...item, qualityLabel: "deprioritize" });
+    assert.ok(inferred === weak || inferred === deprioritized, `${title} should not remain a strong Show HN signal`);
+    const markdown = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |\n|---|---|---|---|---|---|\n| ${title} | [链接](https://example.com) | 新产品 | HN 发布帖出现：Show HN: ${title} | 当日信号。 | [HN Algolia](https://news.ycombinator.com/item?id=1) |`;
+    const [rendered] = parseReportMarkdown(markdown, "reports/2026-09-02-0001-cst.md");
+    assert.notEqual(rendered.qualityLabel, "keep", `${title} should stay weak after site parsing`);
+  }
+}
+
 function testPriorityScoreDownranksShowHnFundraisingAnnouncements() {
   const fundraising = {
     product: "AI startup TrustedRouter raises $1.25M",
@@ -4653,6 +4683,7 @@ const tests = [
   ["Priority score keeps weak HF spaces behind strong launches", testPriorityScoreKeepsWeakHfSpacesBehindStrongProductLaunches],
   ["Priority score downranks generic HF spaces", testPriorityScoreDownranksGenericHfSpaces],
   ["Priority score downranks hot non-product Show HN demos", testPriorityScoreDownranksHotNonProductShowHnDemos],
+  ["Show HN novelty and complaint signals stay weak", testShowHnNoveltyAndComplaintSignalsStayWeak],
   ["Priority score downranks Show HN fundraising announcements", testPriorityScoreDownranksShowHnFundraisingAnnouncements],
   ["Priority score downranks resource lists", testPriorityScoreDownranksResourceLists],
   ["Priority score uses Product Hunt engagement", testPriorityScoreUsesProductHuntEngagement],
