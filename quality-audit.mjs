@@ -156,7 +156,11 @@ function auditHardNegatives(rows) {
 function auditResourceLists(rows) {
   const bad = rows.slice(0, 20).filter((row) => {
     const text = `${row.product} ${row.did}`.toLowerCase();
-    return /\b(?:a\s+)?list\s+of\s+ai\b/.test(text) || /\b(?:awesome|curated)\s+(?:ai\s+)?(?:list|resources?)\b/.test(text);
+    return (
+      /\b(?:a\s+)?list\s+of\s+ai\b/.test(text) ||
+      /\b(?:index|database) of (?:coding )?agent incidents?\b/.test(text) ||
+      /\b(?:awesome|curated)\s+(?:ai\s+)?(?:list|resources?)\b/.test(text)
+    );
   });
   if (!bad.length) return [];
   return [

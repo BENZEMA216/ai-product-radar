@@ -1949,7 +1949,10 @@ function testShowHnNoveltyAndComplaintSignalsStayWeak() {
     "Use AI to make fun of other AI",
     "ChatGPT Work Isn't Working",
     "I built a live stream site where every spot is instantly AI-generated",
-    "Slopyard – a textboard inspired gallery for vibecoded tools"
+    "Slopyard – a textboard inspired gallery for vibecoded tools",
+    "Weedout – Safari extension that hides YouTube AI-labeled videos",
+    "I Have Been Clawed – Index of coding agent incidents",
+    "Me and 28,000 AI agents built this research; every claim is traceable"
   ];
   for (const title of titles) {
     const item = {
@@ -1966,10 +1969,22 @@ function testShowHnNoveltyAndComplaintSignalsStayWeak() {
     const inferred = priorityScore(item);
     const weak = priorityScore({ ...item, qualityLabel: "weak_keep" });
     const deprioritized = priorityScore({ ...item, qualityLabel: "deprioritize" });
-    assert.ok(inferred === weak || inferred === deprioritized, `${title} should not remain a strong Show HN signal`);
+    const dropped = priorityScore({ ...item, qualityLabel: "drop" });
+    assert.ok(inferred === weak || inferred === deprioritized || inferred === dropped, `${title} should not remain a strong Show HN signal`);
     const markdown = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |\n|---|---|---|---|---|---|\n| ${title} | [链接](https://example.com) | 新产品 | HN 发布帖出现：Show HN: ${title} | 当日信号。 | [HN Algolia](https://news.ycombinator.com/item?id=1) |`;
     const [rendered] = parseReportMarkdown(markdown, "reports/2026-09-02-0001-cst.md");
     assert.notEqual(rendered.qualityLabel, "keep", `${title} should stay weak after site parsing`);
+    if (/hides youtube ai-labeled videos|index of coding agent incidents|built this research/i.test(title)) {
+      assert.equal(inferred, dropped, `${title} should be dropped as a non-product observation`);
+      assert.equal(rendered.qualityLabel, "drop", `${title} should stay dropped after site parsing`);
+      const afterMemory = applyQualityMemoryToCandidates([{ ...item, qualityLabel: "drop" }], {
+        feedback: [],
+        negativeGoldens: [],
+        positiveGoldens: [],
+        feedbackPolicy: {}
+      });
+      assert.equal(afterMemory.length, 0, `${title} should not remain in the formal candidate list`);
+    }
   }
 }
 

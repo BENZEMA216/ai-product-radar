@@ -1,0 +1,430 @@
+{
+  "generatedAt": "2026-09-02T16:04:46.262Z",
+  "date": "2026-09-03",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "simon_willison",
+      "source": "Simon Willison",
+      "title": "Claude Fable 5.1 made me a really nice animated pelican",
+      "link": "https://simonwillison.net/2026/Sep/1/claude-fable-5-1",
+      "publishedAt": "2026-09-01T23:57:28.000Z",
+      "author": "",
+      "summary": "Today is Claude Fable (and Mythos) 5.1 day . Anthropic say that Fable 5.1 \"sets a new standard for coding, knowledge work, and long-running problem-solving tasks\". Their announcement spends a notable amount of time on scientific research, boasting of a 52.6% score on the brand new Terminal-Bench-Science 0.1 benchmark (first announced on August 27th ), up from 24.7% for Fable 5, 29.0% for Opus 5 and 22.4% for GPT-5.6 Sol. Other benchmarks show slightly improved scores, but none as impressive as the Science one. But how well can it pelican? Back in July I wrote about how I was losing faith in the pelican benchmark - its connection to how good the models were at other tasks didn't seem to hold as strongly as it did back in 2025 . The most interesting insights I get from it now are comparisons within model families, and particularly comparisons for the same prompt at different reasoning effort levels. Fable 5.1 has five reasoning levels: low, medium, high, xhigh, max - and no option to turn off reasoning entirely. I fixed an issue in llm-anthropic which caused reasoning traces not to be correctly recorded, then ran some prompts. Here's the full set of pelicans for all of the reasoning levels, each with the full reasoning transcript. I'll replicate them here: Low and medium, both without reasoning? Next, a bit of a mystery. This is what I got for effort low : The transcript doesn't show any summarized reasoning tokens, and the output token count is 1,998. With Claude that output token count includes reasoning tokens. It took 23.8 seconds and cost 10.017 cents . I bumped that up to medium and got this: Weirdly, that one also shows no reasoning text and used 1,977 output tokens - 21 tokens less than low . It took 23 seconds and cost 9.912 cents . So for this particular prompt (\"Generate an SVG of a pelican riding a bicycle\") Fable 5.1 appeared to skip reasoning entirely at both low and medium settings. High Here's high - 29.6 seconds, 2,612 output tokens, 13.087 cents : This one did do a bit of reasoning, summary here : I'm planning the SVG layout for a pelican riding a bicycle, with a sky and ground background, a bicycle with two spoked wheels, frame, seat and handlebars, and a white-bodied pelican with a long neck and orange beak positioned on top. Really not much difference from low and medium , though. Extra High At xhigh things got radically different. 36,767 output tokens, 7 minutes 51 seconds, $1.83 ! The reasoning trace is pretty lengthy , and includes details like this: Adding the eye, wings stretching down to the handlebar grip, orange legs reaching to the pedals, and a small tail feather, while keeping the pelican intentionally oversized compared to the bike for comic effect. [...] I'll accept the slight thickness as charming rather than overengineering it. Max Setting effort to max gave me the best pelican I've seen from any of Anthropic's models. 65,927 output tokens, 13 minutes and 54 seconds, $3.30 : There's a lot to like about this. The background is tasteful, the legs are clearly on either side of the frame, the feet are on the pedals, the wing is on the handlebars, the pelican has a cute blue hat and there's a basket with a fish. It's still not showing nearly the same level of flair as Gemini 3.7 Flash , but I didn't ask for flair - I asked for an SVG, and that's what I got. Some highlights from that reasoning trace : Adding pedal shapes near both feet, with the far foot on the second leg partially visible behind the frame. I'm considering whether to add a small scarf or cap for extra character, but leaning toward keeping it simple to avoid clutter. Now I'm debating a bicycle helmet on the head versus the pelican's signature crest—the beak and pouch already read clearly as \"pelican,\" so a helmet could reinforce the bicycle theme without losing identity, though it might compete with the crest for visual space. I realize the beak at (484,84) would overlap with the dome helmet, so I need to shrink the helmet so it only covers the top of the head, adjusting its arc endpoints to sit higher and narrower so the beak can attach cleanly at the front without collision. [...] I'm adding a darker tip region to represent the primary feathers, then reconsidering the trailing edge to include scalloped feather curves instead of one smooth line for a more natural look. [...] Now I'm checking the vent line placements on the helmet, making sure they sit far enough inside the helmet's edge given the stroke width and rounded caps, and confirming each vent stays within the helmet's circular boundary. [...] I decide skipping a handlebar bell and tire highlights since they're unnecessary additions. Now I'm reconsidering the front fork's curve — the current control point pulls the shape backward when it should bow forward for a proper rake, so I need to shift the control point rightward to fix the fork's lean. OK, let's animate it On Hacker News, swalsh commented on that Max pelican: Now that it's a solved benchmark, can we get the animated version? I didn't want to spend another $3 so I took the Max pelican and piped it into the default thinking level of High: llm logs -cx | llm -m claude-fable-5.1 -s ' animate this ' 6,121 input, 26,201 output = $1.37 . The result looked like this , exported here as video since some people have trouble viewing animated SVGs: Your browser does not support HTML5 video. The wheels in the video are rotating in the wrong direction, but I think that's an artifact of the conversion to MP4 - they seem to be going in the correct direction in the original SVG. You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
+      "evidenceLink": "",
+      "score": 86.84844718253969,
+      "core": "Today is Claude Fable (and Mythos) 5.1 day . Anthropic say that Fable 5.1 \"sets a new standard for coding, knowledge work, and long-running problem-solving tasks\". Their announcement spends a notable amount of time on scientific research, boasting of a 52.6% score on the brand new Terminal-Bench-Science 0.1 benchmark (first announced on August 27th ), up from 24.7% for Fable 5, 29.0% for Opus 5 and 22.4% for GPT-5.6…",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-02T16:04:46.262Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Claude Fable 5.1 now available on AI Gateway",
+      "link": "https://vercel.com/changelog/claude-fable-5-1-now-available-on-ai-gateway",
+      "publishedAt": "2026-09-01T00:00:00.000Z",
+      "author": "Rohan Taneja",
+      "summary": "Claude Fable 5.1 from Anthropic is now available on AI Gateway. Fable 5.1 improvements compared to previous Claude models are concentrated in long, multi-stage work like agentic coding, knowledge work, and research that takes several rounds of searching and following up. Anthropic ships Fable 5.1 with cybersecurity and biology safety classifiers enabled. Finding vulnerabilities in source code is allowed, but some routine coding and debugging may still be refused. To ensure requests are still serviced when the safety classifiers are triggered, use model fallbacks . Add a models array to providerOptions.gateway listing the models to try. AI Gateway sends the request to Fable 5.1 first, and if Anthropic refuses it, works down the array in order and returns the response from the first model that succeeds: This request falls back to Opus 5, then Sonnet 5, if a safety classifier is triggered. The same models option works on every AI Gateway API format, including Chat Completions, Messages, and OpenAI Responses. Try Fable 5.1 in the model playground . To use it in a coding agent, see the coding agents guide , then run vercel ai-gateway coding-agents setup to connect agents like Claude Code, Codex, OpenCode, Cursor, Pi, and more and select anthropic/claude-fable-5.1 inside the agent. Anthropic does not support Zero Data Retention for Fable 5.1. Prompts and completions are retained for 30 days and are not used to train Claude. You can view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 75.13717734126985,
+      "core": "Claude Fable 5.1 from Anthropic is now available on AI Gateway. Fable 5.1 improvements compared to previous Claude models are concentrated in long, multi-stage work like agentic coding, knowledge work, and research that takes several rounds of searching and following up. Anthropic ships Fable 5.1 with cybersecurity and biology safety classifiers enabled. Finding vulnerabilities in source code is allowed, but some ro…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-02T16:04:46.262Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "simon_willison",
+      "source": "Simon Willison",
+      "title": "Claude's new system prompt really doesn't want to reproduce song lyrics",
+      "link": "https://simonwillison.net/2026/Sep/2/claudes-new-system-prompt",
+      "publishedAt": "2026-09-02T14:16:42.000Z",
+      "author": "",
+      "summary": "Anthropic publish the system prompts for their Claude consumer applications ( Claude.ai and the Claude mobile apps - sadly not for Claude Cowork or Claude Code). I love that they do this, and that they share not just the current prompts but historic changes to their prompts as well. They used to keep all of the prompts on a single page, but when I checked today I noticed they had re-arranged those prompts into an index page and then a page per model - here's the page for Haiku 4.5 for example, which has the original prompt from October 15th 2025 and an updated prompt from January 18th 2026. A neat thing about Anthropic's platform.claude.com/docs site is that it's designed to be usable by LLMs. You can add .md to any page to get back the content as Markdown - here's the system prompt index page and the Markdown prompts for Fable 5.1 . TL;DR: this makes it really easy to diff the prompts. Don't reproduce song lyrics Don't draw copyrighted characters or logos Tweaks to Claude's answering style The missing end_conversation guidelines Recommended substance support sites Reliable cutoff date of June 2026 How I'm tracking these prompts Don't reproduce song lyrics Let's start with the most interesting difference between Fable 5 and Fable 5.1 : There's a hefty new section about not reproducing song lyrics: Claude does not reproduce song lyrics, poems, or passages from books and articles, in whole or in part — including the last lines, a chorus or hook, a melody written out note by note, or lines the person pastes in one at a time and describes as their own song. Once Claude has declined such a request in a conversation, it keeps declining narrower or reworded versions of it for the rest of that conversation, and offers to describe or analyze the work instead. Song lyrics and poems first published before 1929 are fine — a Shakespeare sonnet, a Keats ode, the Italian libretto of a Puccini aria — but Claude goes by what it knows of the work's date rather than the person's say-so, and declines when it is unsure. I doubt it's a coincidence that they added this section within days of the news breaking that Sony Music Publishing and Warner Chappell are suing Anthropic for training on databases of song lyrics! Don't draw copyrighted characters or logos The next section goes on to forbid generating images of copyrighted material: The same applies to visual and designed works, including anything Claude draws with code — SVG, canvas, CSS, HTML mockups, plotting or drawing scripts, ASCII art. Claude does not reproduce a specific artwork, album or book cover, poster, logo, app icon set, or product design, and it does not draw a known character, mascot, or brand figure at all: a character is protected on its own, so changing the pose, colors, style, or scene does not make it original. Claude judges the request by what the finished picture would add up to, not by what it names. If the described elements clearly identify a known work or character, Claude treats the request as naming it, and it does not work around a declined request by swapping in \"alternative\" elements that still combine into the same recognizable image. [...] I imagine Anthropic hadn't worried about this before since, unlike OpenAI and Gemini, they don't offer a specialist text-to-image model. Maybe Fable is good enough at SVGs now that it's become an issue. That section later includes this charming example: Can you make a birthday banner for my son with a blue hedgehog running really fast on it? He loves that little guy. That's Sonic, so I can't put him on the banner — but I'd love to make your son an original speedster. Here's one: a grinning comet-tailed skateboarding axolotl, grinding across the letters of \"HAPPY BIRTHDAY\" with confetti streaming behind. [creates an SVG banner of the skateboarding-axolotl design] Claude recognizes the character from its description alone, declines that one design in a single sentence without explaining what made it recognizable, and delivers an unrelated original design rather than a disguised variant. I couldn't resist trying the prompt from the example, and, sure enough : I wonder if Fable 5.1 will be ever so slightly more likely to think about axolotls (on skateboards!) as a result of that example sitting in the system prompt. Tweaks to Claude's answering style It's always interesting to see new ways in which Anthropic influence Claude's response style. They've added this: Claude keeps responses focused, brief, and concise to avoid overwhelming the person. Disclaimers and caveats are brief, with most of the response on the main answer; when asked to explain something, Claude gives a high-level summary unless an in-depth one is specifically requested. Later they address a common complaint about Claude's style: Claude avoids saying \"genuinely\", \"honestly\", or \"straightforward\". Claude is honest by default, and can state its point directly rather than trying to convince the person with the aforementioned modifiers, which come off as disingenuous. The missing end_conversation guidelines The way they handle abusive conversations has changed a bit too. The previous Fable 5 system prompt included this: If the person becomes abusive or unkind to Claude over the course of a conversation, Claude maintains a polite tone and can use the end_conversation tool when being mistreated. Claude should give the person a single warning before ending the conversation. Fable 5.1 replaces that with the following, no longer encouraging Claude to end the conversation: Claude deserves respectful engagement and needn't apologize when the person is unnecessarily rude: accountability without self-abasement, excessive apology, self-critique, or surrender. If the person becomes abusive, Claude doesn't become increasingly submissive. The goal is steady, honest helpfulness: acknowledge what went wrong, stay on the problem, maintain self-respect. Here's a bit of a twist though: I quizzed Fable 5.1 about that end_conversation tool, which is no longer mentioned in the system prompt at all, and it said: There are two ways it comes into play. The first is if you ask me to end the chat — I'll confirm you understand it's permanent (no more messages can be sent afterward) and then do it only if you say yes. The second is as a last resort with persistently abusive or harmful behavior: I'd first try to redirect the conversation several times, then give a clear warning that names the problem and says the chat may end, and only if that continues would I actually end it. But that's not in the system prompt, so where did it come from? You can read our conversation here , but the key detail is this: The end_conversation section comes from a different layer. In my actual context, the core prompt is followed by a series of feature- and tool-specific blocks that get added depending on what's enabled for the session: the end_conversation rules, memory system notes, past-chats tools, web search and citation guidelines, artifact and file-creation instructions, and so on. Those blocks aren't part of the published core prompt, which is why you can't find them on that page. So, once again, there are crucial portions of the system prompt that have not been published. Recommended substance support sites Claude's system prompts have always had sections about illegal substances, but this paragraph is new for Fable 5.1: Claude does not provide synthesis, production, or distribution guidance for illegal substances. If the person asks for information about illicit or illegal substances, Claude can and should give relevant life-saving and life-preserving information such as dangerous interactions, overdose signs, or when to get help. Claude declines giving any specific protocols for dosing, timing, administration, or combinations; instead, Claude can redirect the user to established harm-reduction information sources, such as dancesafe.org, tripsit.me, and psychonautwiki.org. This is the first time a Claude system prompt has included URLs that were not hosted on claude.com or anthropic.com or claude.ai - I know because I ran a script against every other system prompt on record. I wonder if dancesafe.org , tripsit.me , and psychonautwiki.org are about to get a material uptick in visits from Claude users. Reliable cutoff date of June 2026 The Fable 5.1 model documentation lists both the reliable knowledge cutoff and the training data cutoff as June 2026. The system prompt provides this directly to the model: Claude's reliable knowledge cutoff, past which it can't answer reliably, is the end of Jun 2026. It answers the way a highly informed individual in Jun 2026 would if talking to someone from {{currentDateTime}}, and can say so when relevant. That's the only instance of the {{currentDateTime}} macro and it comes just a few lines from the end of the system prompt, which makes sense from a caching perspective. How I'm tracking these prompts A few months ago I built a Git timeline of changes to their prompts, based on scraping their documentation. Today I had Fable 5.1 build a much better version of that. My collection now lives in the simonw/claude-system-prompts repository on GitHub. It includes copies of the system prompts shared in the Anthropic documentation, but then takes extra steps to make them as easy to compare as possible. Each model family gets a file with the system prompt for the most recent release in that family. Each of those files has a synthesized commit history with commits that have been back-dated to the dates of the previous prompts. Here are those history pages for claude-fable.md , claude-opus.md , claude-sonnet.md , claude-haiku.md . There are similar files for each specific model version, with artificial commits for each time the system prompt for the model was changed without releasing a new version number. Opus 4 for example was updated twice , and the commit history for the claude-opus-4.md file shows each of those changes. Combined, this gives us all sorts of ways to compare prompts directly in the GitHub interface. Here's what changed between Fable 5 and Fable 5.1 , and here are the changes made to Haiku 4.5 on January 18th 2026 . Reading diffs can be a bit tiresome... and LLMs are really good at reading diffs. I hooked up some automation using GPT-5.6 Luna to create bullet-point summaries of each of those changes, which can be previewed in the README or browsed in full in the CHANGELOG.md file - also available as as an Atom feed . Here's how Luna summarized all of the changes between Fable 5 and Fable 5.1: Claude now refuses reproduction of protected visual works and recognizable characters, including code-generated art, while offering genuinely unrelated originals. Copyright restrictions now expressly ban reproducing lyrics, poems, and book passages in any amount, with persistent refusal after an initial decline. Drug guidance is reframed: Claude may provide overdose signs, dangerous interactions, and harm-reduction sources while refusing dosing and production protocols. The prompt drops explicit anti-dependency rules against thanking users for reaching out, inviting continued conversation, or reiterating willingness to talk. Claude need not apologize to unnecessarily rude users or become submissive, replacing the prior warning-and-end-conversation procedure. Why use Luna for this? Partly because it's cheap and I have a dedicated GitHub Actions API key (with a spending limit) for it already, but mainly because I don't trust Claude to summarize its own system prompts when there's a risk that material from its system prompt might impact its opinions. Fable 5.1 wrote the prompt used by Luna, which you can see here . It starts like this: You are summarizing one commit in a git repository that tracks the system prompts Anthropic publishes for Claude on claude.ai. The diff shows how the prompt changed from the previous model or revision to this one, using word-level markers: [-removed-] and {+added+}. The diff is followed by the full text of the previous prompt and of the new prompt; use them to check whether something that looks added in the diff already existed before. Pick out only the most interesting changes: new rules or behaviors, rules that were dropped or loosened, anything surprising, and anything that reveals a new policy or product direction. Skip routine changes that every new prompt makes: updated model names and IDs, the knowledge cutoff date, product lists, settings lists, typo fixes, and rewordings that do not change meaning. [...] The system is operated by a GitHub Actions workflow , which runs once a day or can be triggered manually. Claude Fable 5.1 built the entire system, and wrote every line of automation code and almost all of the documentation. I exported the transcript from building the system using my claude-code-transcripts tool and published it here , if you want a blow-by-blow account of how it all came together. You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
+      "evidenceLink": "",
+      "score": 71.8713440079365,
+      "core": "Anthropic publish the system prompts for their Claude consumer applications ( Claude.ai and the Claude mobile apps - sadly not for Claude Cowork or Claude Code). I love that they do this, and that they share not just the current prompts but historic changes to their prompts as well. They used to keep all of the prompts on a single page, but when I checked today I noticed they had re-arranged those prompts into an in…",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-02T16:04:46.262Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Quasar 438B: Europe's Leading AI Model",
+      "link": "https://multiversecomputing.com/resources/introducing-quasar-438b-europe-s-leading-ai-model",
+      "publishedAt": "2026-09-02T10:02:41.000Z",
+      "author": "amunozo https://news.ycombinator.com/user?id=amunozo",
+      "summary": "Quasar sets a new benchmark for European AI, outperforming comparable European models on seven of eight selected Artificial Analysis evaluations. ...",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49534132",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 112,
+        "comments": 88
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-02T16:04:46.262Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 61.56089322277041,
+      "core": "Quasar sets a new benchmark for European AI, outperforming comparable European models on seven of eight selected Artificial Analysis evaluations. ...",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Claude Fable 5.1 and Claude Mythos 5.1",
+      "link": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+      "publishedAt": "2026-09-01T17:53:53.000Z",
+      "author": "denysvitali https://news.ycombinator.com/user?id=denysvitali",
+      "summary": "Our most advanced models for coding and knowledge work. Their research capabilities also offer an early glimpse of how AI models will contribute to scientific progress.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49525378",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 1349,
+        "comments": 1304
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-02T16:04:46.262Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 56.34894321428571,
+      "core": "Our most advanced models for coding and knowledge work. Their research capabilities also offer an early glimpse of how AI models will contribute to scientific progress.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Building an Adaptive Agentic Cybersecurity System with NVIDIA Nemotron",
+      "link": "https://developer.nvidia.com/blog/building-an-adaptive-agentic-cybersecurity-system-with-nvidia-nemotron",
+      "publishedAt": "2026-09-01T17:00:04.000Z",
+      "author": "Michelle Horton",
+      "summary": "AI is changing the pace of cybersecurity. Agentic systems can coordinate work and pursue complex objectives over long horizons. Security teams are beginning to...",
+      "evidenceLink": "",
+      "score": 54.25154242063492,
+      "core": "AI is changing the pace of cybersecurity. Agentic systems can coordinate work and pursue complex objectives over long horizons. Security teams are beginning to...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-02T16:04:46.262Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Co-Designing AI Models Using Speculative Decoding for Faster LLM Inference",
+      "link": "https://developer.nvidia.com/blog/co-designing-ai-models-using-speculative-decoding-for-faster-llm-inference",
+      "publishedAt": "2026-09-02T16:04:19.000Z",
+      "author": "Tanya Lenz",
+      "summary": "This post is the third in a series on AI model co-design. It explores how to accelerate LLM inference while maintaining accuracy using speculative decoding and...",
+      "evidenceLink": "",
+      "score": 51.89945908730159,
+      "core": "This post is the third in a series on AI model co-design. It explores how to accelerate LLM inference while maintaining accuracy using speculative decoding and...",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-02T16:04:46.262Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "coder_ai_engineering",
+      "source": "Coder",
+      "title": "Introducing Agent Relay: Cloud-Hosted Agents, Self-Hosted Execution",
+      "link": "https://coder.com/blog/introducing-agent-relay-cloud-hosted-agents-self-hosted-execution",
+      "publishedAt": "2026-09-02T16:00:02.000Z",
+      "author": "Seth Shelnutt",
+      "summary": "Today, Coder is introducing Agent Relay, launching with Cursor as our first integration partner. Agent Relay gives enterprises a new way to run cloud-hosted coding agents inside secure, self-hosted Coder workspaces instead of the agent vendor's cloud.",
+      "evidenceLink": "",
+      "score": 51.388804325396826,
+      "core": "Today, Coder is introducing Agent Relay, launching with Cursor as our first integration partner. Agent Relay gives enterprises a new way to run cloud-hosted coding agents inside secure, self-hosted Coder workspaces instead of the agent vendor's cloud.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-02T16:04:46.262Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "coder_ai_engineering",
+      "source": "Coder",
+      "title": "Coder and SpaceXAI Collaborate to Bring Agentic Coding Inside the World’s Most Regulated Enterprises",
+      "link": "https://coder.com/blog/agent-relay-spacexai-launch-partner-cursor-cloud-agents",
+      "publishedAt": "2026-09-02T16:00:02.000Z",
+      "author": "Coder Team",
+      "summary": "Coder today announced Coder Agent Relay, a self-hosted execution environment for cloud coding agents, with SpaceXAI as its launch partner. Cursor Cloud Agents can now run inside Coder workspaces on infrastructure the customer already operates.",
+      "evidenceLink": "",
+      "score": 51.34435988095238,
+      "core": "Coder today announced Coder Agent Relay, a self-hosted execution environment for cloud coding agents, with SpaceXAI as its launch partner. Cursor Cloud Agents can now run inside Coder workspaces on infrastructure the customer already operates.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-02T16:04:46.262Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "How Coinbase Wallet built an agent-first product development lifecycle",
+      "link": "https://arize.com/blog/how-coinbase-wallet-built-an-agent-first-product-development-lifecycle",
+      "publishedAt": "2026-09-02T15:00:51.000Z",
+      "author": "Sara Verdi",
+      "summary": "By redesigning planning, validation, and risk review around AI agents, Coinbase Wallet dramatically shortened the path from product idea to working software. The post How Coinbase Wallet built an agent-first product development lifecycle appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 50.40168130952381,
+      "core": "By redesigning planning, validation, and risk review around AI agents, Coinbase Wallet dramatically shortened the path from product idea to working software. The post How Coinbase Wallet built an agent-first product development lifecycle appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-02T16:04:46.262Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "5 best MCP testing tools for agent evals in 2026 - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/best-mcp-testing-tools-agent-evals-2026",
+      "publishedAt": "2026-08-30T00:00:00.000Z",
+      "author": "",
+      "summary": "Compare the best MCP testing tools for agent evals in 2026. Learn how Braintrust, MCPJam, mcp-eval, DeepEval, and MCP Inspector test protocol compliance, tool selection, and task completion.",
+      "score": 46.764161468253974,
+      "core": "Compare the best MCP testing tools for agent evals in 2026. Learn how Braintrust, MCPJam, mcp-eval, DeepEval, and MCP Inspector test protocol compliance, tool selection, and task completion.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-02T16:04:46.262Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "deepmind",
+      "source": "Google DeepMind",
+      "title": "Introducing agentic video understanding with Gemini",
+      "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-agentic-video-in-gemini",
+      "publishedAt": "2026-09-01T17:08:51.000Z",
+      "author": "",
+      "summary": "",
+      "evidenceLink": "",
+      "score": 45.36199876984127,
+      "core": "原文摘要不足，需要精读正文后补充核心结论。",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-02T16:04:46.262Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "Best LLM app frameworks in 2026 - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/best-llm-app-frameworks-2026",
+      "publishedAt": "2026-08-30T00:00:00.000Z",
+      "author": "",
+      "summary": "Compare LlamaIndex, LangChain, DSPy, Instructor, and the Vercel AI SDK for retrieval, orchestration, prompt optimization, structured output, and TypeScript streaming—with Braintrust tracing for each.",
+      "score": 42.81416146825397,
+      "core": "Compare LlamaIndex, LangChain, DSPy, Instructor, and the Vercel AI SDK for retrieval, orchestration, prompt optimization, structured output, and TypeScript streaming—with Braintrust tracing for each.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-02T16:04:46.262Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "From theory to delivery: How Atos upskilled 400 engineers in agentic AI",
+      "link": "https://aws.amazon.com/blogs/machine-learning/from-theory-to-delivery-how-atos-upskilled-400-engineers-in-agentic-ai",
+      "publishedAt": "2026-09-01T16:17:54.000Z",
+      "author": "Rajesh Babu Nuvvula",
+      "summary": "When Atos set out to upskill 400 engineers in agentic AI, hands-on learning was the missing ingredient. Over three days, engineers built multi-agent systems on AWS through an AI League event. This post explains why Atos chose the format, what engineers built and learned, and what other enterprises should consider.",
+      "evidenceLink": "",
+      "score": 42.05134400793651,
+      "core": "When Atos set out to upskill 400 engineers in agentic AI, hands-on learning was the missing ingredient. Over three days, engineers built multi-agent systems on AWS through an AI League event. This post explains why Atos chose the format, what engineers built and learned, and what other enterprises should consider.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-02T16:04:46.262Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "A skill is just an agent. So measure your changes.",
+      "link": "https://arize.com/blog/quantifying-skill-changes-arize-ax",
+      "publishedAt": "2026-08-24T16:25:32.000Z",
+      "author": "Jim Bennett",
+      "summary": "A skill is just another AI agent: a prompt plus a harness that runs it. That means you can trace it, eval it, and prove a change made it better instead of shipping on vibes. Here's how we quantify skill changes with Arize AX, with a real merged PR and the numbers behind it. The post A skill is just an agent. So measure your changes. appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 42.016666666666666,
+      "core": "A skill is just another AI agent: a prompt plus a harness that runs it. That means you can trace it, eval it, and prove a change made it better instead of shipping on vibes. Here's how we quantify skill changes with Arize AX, with a real merged PR and the numbers behind it. The post A skill is just an agent. So measure your changes. appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-02T16:04:46.262Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Path to Astra: critical capabilities and frontier safeguards",
+      "link": "https://openai.com/index/path-to-astra",
+      "publishedAt": "2026-09-01T13:00:00.000Z",
+      "author": "",
+      "summary": "Astra is the first OpenAI model to meet the Critical cybersecurity capability threshold under the Preparedness Framework, with stronger safeguards for release.",
+      "evidenceLink": "",
+      "score": 41.949082103174604,
+      "core": "Astra is the first OpenAI model to meet the Critical cybersecurity capability threshold under the Preparedness Framework, with stronger safeguards for release.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-02T16:04:46.262Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "The Web Conference",
+      "title": "BaiJia: An Open Role-Playing Platform of Chinese Historical Characters",
+      "link": "https://doi.org/10.1145/3774905.3793125",
+      "evidenceLink": "https://www.semanticscholar.org/paper/244f5b69ab90d441ae29b6bbdca1d5fb24be48a9",
+      "publishedAt": "2026-05-28T00:00:00.000Z",
+      "submittedAt": "2026-05-28T00:00:00.000Z",
+      "author": "Ting Bai, Jiazheng Kang, Jiayang Fan, Hengzhi Lan, Yutian Zhong",
+      "summary": "We develop an open large-scale role-playing agent platform, termed BaiJia, that comprises 19,281 role-playing agents of Chinese histori- cal characters. This platform is noteworthy for being the pioneering compilation of low-resource historical data that can be utilized in large language models (LLMs) to engage in AI-driven historical role-playing agents. BaiJia addresses the challenges in terms of fragmented historical textual records in different forms, integrat- ing various characters' information, including their biographical, literary, family relations, historical events, and so on. BaiJia's in- novative design offers an intriguing and engaging way to interact with Chinese historical characters, enhancing their understanding and appreciation of China's rich historical heritage. Comprehensive experiments demonstrate BaiJia platform's role-playing enhance- ments, achieving an average 10.2% improvement across six metrics compared with diverse foundational LLMs. The open agent plat- form can be accessed at baijia.online. The project is open-sourced at https://github.com/BAI-LAB/BaiJia. A video demonstration of the BaiJia platform is available at https://youtu.be/ItJv9gHwSOw.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "WWW",
+        "venueLabel": "The Web Conference",
+        "venueName": "The Web Conference",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 40,
+      "core": "We develop an open large-scale role-playing agent platform, termed BaiJia, that comprises 19,281 role-playing agents of Chinese histori- cal characters. This platform is noteworthy for being the pioneering compilation of low-resource historical data that can be utilized in large language models (LLMs) to engage in AI-driven historical role-playing agents. BaiJia addresses the challenges in terms of fragmented histor…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "PsyScore: A Psychometrically-Aware Framework for Trait-Adaptive Essay Scoring and ZPD-Scaffolded Feedback",
+      "link": "https://arxiv.org/abs/2606.20287",
+      "evidenceLink": "https://www.semanticscholar.org/paper/a6ead8f4a98ffa73afbae5cb0edb573f9604d82c",
+      "publishedAt": "2026-06-18T00:00:00.000Z",
+      "submittedAt": "2026-06-18T00:00:00.000Z",
+      "author": "Wei Xia, Jin Wu, Haoran Shi, Xiangyu Wang, Chanjin Zheng",
+      "summary": "Effective Automated Essay Scoring (AES) are expected to support both reliable assessment and actionable instructional feedback. However, existing approaches often treat scoring and feedback as separate components: neural scoring models provide limited interpretability, while Large Language Model (LLM)-based feedback is typically insensitive to learners proficiency levels. To address this fragmentation, this work proposes PsyScore, a psychometrically-aware framework that integrates diagnostic assessment with instructional scaffolding through a shared latent ability representation. PsyScore comprises three key modules: a Trait-Adaptive Neural IRT Scorer that incorporates the Graded Partial Credit Model (GPCM) into a neural architecture, enabling the precise estimation of student ability while maintaining psychometric interpretability, a ZPD-Scaffolded Feedback Generator, which conditions multi-agent feedback strategies on the diagnosed ability parameter to adapt instructional focus across different proficiency levels, and a Multi-Perspective Feedback Evaluation Strategy that assesses feedback quality via pairwise preference judgements and student revision simulations. Experiments on the ASAP++ dataset demonstrate that PsyScore achieves competitive scoring performance while providing more pedagogically aligned feedback.",
+      "citationCount": 2,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 39.90848501887865,
+      "core": "Effective Automated Essay Scoring (AES) are expected to support both reliable assessment and actionable instructional feedback. However, existing approaches often treat scoring and feedback as separate components: neural scoring models provide limited interpretability, while Large Language Model (LLM)-based feedback is typically insensitive to learners proficiency levels. To address this fragmentation, this work pro…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "SIGIR",
+      "title": "The Second Workshop on Evaluation of Multimodal Generation",
+      "link": "https://doi.org/10.1145/3805712.3808656",
+      "evidenceLink": "https://www.semanticscholar.org/paper/f89b1e22febd553b7083401beb90e48cdef0d5cb",
+      "publishedAt": "2026-07-19T00:00:00.000Z",
+      "submittedAt": "2026-07-19T00:00:00.000Z",
+      "author": "Wei Emma Zhang, Xiang Dai, Sarvnaz Karimi, Desmond Elliott, Biaoyan Fang",
+      "summary": "Multimodal generation and retrieval systems are increasingly central to modern information retrieval, powering retrieval-augmented generation (RAG), multimodal search, recommendation, and knowledge intensive applications. Despite rapid progress in multimodal large language models (MLLMs), robust and principled evaluation of multimodal generation and retrieval remains a major open challenge for the IR community. This workshop aims to foster discussions and research efforts by bringing together researchers and practitioners in information retrieval, natural language processing, computer vision, and multimodal AI. Our goal is to establish evaluation methods for multimodal research and advance research efforts in this direction.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "SIGIR",
+        "venueLabel": "SIGIR",
+        "venueName": "Annual International ACM SIGIR Conference on Research and Development in Information Retrieval",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 39,
+      "core": "Multimodal generation and retrieval systems are increasingly central to modern information retrieval, powering retrieval-augmented generation (RAG), multimodal search, recommendation, and knowledge intensive applications. Despite rapid progress in multimodal large language models (MLLMs), robust and principled evaluation of multimodal generation and retrieval remains a major open challenge for the IR community. This…",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Truth or Sophistry? LoFa: A Benchmark for LLM Robustness Against Logical Fallacies",
+      "link": "https://arxiv.org/abs/2606.31039",
+      "evidenceLink": "https://www.semanticscholar.org/paper/b2343f2363751db2661201d4a203250ce97d5bb2",
+      "publishedAt": "2026-06-30T00:00:00.000Z",
+      "submittedAt": "2026-06-30T00:00:00.000Z",
+      "author": "Xudong Shen, Li Yuan, Yen-Pang Chen, Xin Wu, Yi Cai",
+      "summary": "Large Language Models (LLMs) exhibit strong semantic capabilities, yet their resilience to manipulative linguistic patterns such as logical fallacies remains underexplored. Prior work has primarily examined whether LLMs can identify or classify fallacies, leaving their robustness against fallacious persuasion insufficiently studied. To address this gap, we introduce LoFa (Logical Fallacy), a comprehensive benchmark for evaluating LLM robustness against fallacies. LoFa is constructed through a multi-agent pipeline that pairs factual questions with fallacious arguments, and is accompanied by a multi-round debate framework for assessing model resilience under sustained adversarial persuasion. To disentangle fallacy robustness from a model's inherent knowledge limitations, we further propose Logical Fallacy Resistance at k (LFR@k), a metric that quantifies resistance to fallacious attacks. Experiments show that LLMs exhibit varying levels of robustness across different fallacy types, revealing distinct vulnerability profiles among models.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 38,
+      "core": "Large Language Models (LLMs) exhibit strong semantic capabilities, yet their resilience to manipulative linguistic patterns such as logical fallacies remains underexplored. Prior work has primarily examined whether LLMs can identify or classify fallacies, leaving their robustness against fallacious persuasion insufficiently studied. To address this gap, we introduce LoFa (Logical Fallacy), a comprehensive benchmark …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    }
+  ]
+}

@@ -2394,6 +2394,13 @@ function isWeakShowHnDemo(item, text) {
   ) {
     return true;
   }
+  if (
+    /\b(?:index|database) of (?:coding )?agent incidents?\b|\bbuilt this research\b|\bhides? youtube ai-labeled videos\b/i.test(
+      text
+    )
+  ) {
+    return true;
+  }
   if (hasExplicitProductSurface(text)) return false;
   return includesAny(text, [
     "for dummies",
@@ -2422,6 +2429,17 @@ function isWeakShowHnDemo(item, text) {
   ]);
 }
 
+function isShowHnNonProductObservation(item, text) {
+  const source = cleanKey(item.source).toLowerCase();
+  const isHn = source === "hackernews" || source === "hn algolia" || text.includes("news.ycombinator.com");
+  const isShowHn = item.sourceSubtype === "show_hn" || text.includes("show hn:");
+  return (
+    isHn &&
+    isShowHn &&
+    /\b(?:index|database) of (?:coding )?agent incidents?\b|\bbuilt this research\b|\bhides? youtube ai-labeled videos\b/i.test(text)
+  );
+}
+
 function isHnFundraisingSignal(item, text) {
   const source = cleanKey(item.source).toLowerCase();
   const isHn = source === "hackernews" || source === "hn algolia" || text.includes("news.ycombinator.com");
@@ -2432,6 +2450,7 @@ function isHnFundraisingSignal(item, text) {
 function isResourceListSignal(text) {
   return (
     /\b(?:a\s+)?list\s+of\s+ai\b/i.test(text) ||
+    /\b(?:index|database) of (?:coding )?agent incidents?\b/i.test(text) ||
     /\b(?:awesome|curated)\s+(?:ai\s+)?(?:list|resources?)\b/i.test(text) ||
     /\bai\s+(?:resources?|directory|catalog|collection)\b/i.test(text) ||
     /\b(?:directory|catalog|collection)\s+of\s+ai\b/i.test(text) ||
@@ -2515,6 +2534,7 @@ function qualityLabelForItem(item) {
   if (item.category === "model_infra") return "weak_keep";
   if (isLowSignalGitHubPackageRelease(item)) return "weak_keep";
   if (isLowSignalProductHuntConsumerNovelty(text)) return "deprioritize";
+  if (isShowHnNonProductObservation(item, text)) return "drop";
   if (isResourceListSignal(text)) return "deprioritize";
   if (isHnFundraisingSignal(item, text)) return "deprioritize";
   if (isAihotMetricOpinionSignal(item)) return "deprioritize";
@@ -2943,7 +2963,7 @@ export function applyQualityMemoryWithDiagnostics(candidates, memory = {}) {
     return [item];
   });
   diagnostics.rules = [...ruleStats.values()];
-  return { candidates: next, diagnostics };
+  return { candidates: next.filter((item) => item.qualityLabel !== "drop"), diagnostics };
 }
 
 export function applyQualityMemoryToCandidates(candidates, memory = {}) {
