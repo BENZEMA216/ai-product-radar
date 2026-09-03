@@ -1,0 +1,426 @@
+{
+  "generatedAt": "2026-09-03T16:11:35.521Z",
+  "date": "2026-09-04",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Gemini 3.8 Flash now available on AI Gateway",
+      "link": "https://vercel.com/changelog/gemini-3-8-flash-now-available-on-ai-gateway",
+      "publishedAt": "2026-09-02T00:00:00.000Z",
+      "author": "Rohan Taneja",
+      "summary": "Gemini 3.8 Flash from Google is now available on AI Gateway. The model is 50% off through December 31st. It has a 1M token context window, accepts text, image, PDF, and video input, returns text, and supports tool calling and web search. Maximum output is 65,536 tokens. Gemini 3.8 Flash improves on prior Flash models at software engineering, agent work, and multi-step reasoning, at the same speed and cost as the previous release. Thinking is on by default. To use Gemini 3.8 Flash, set model to google/gemini-3.8-flash : To use it in a coding agent, see the coding agents guide , then run vercel ai-gateway coding-agents setup to connect agents like Claude Code, OpenCode, Cursor, Pi, and more and select google/gemini-3.8-flash inside the agent. Try Gemini 3.8 Flash in the model playground . AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. You can view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 85.76794601190475,
+      "core": "Gemini 3.8 Flash from Google is now available on AI Gateway. The model is 50% off through December 31st. It has a 1M token context window, accepts text, image, PDF, and video input, returns text, and supports tool calling and web search. Maximum output is 65,536 tokens. Gemini 3.8 Flash improves on prior Flash models at software engineering, agent work, and multi-step reasoning, at the same speed and cost as the pre…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-03T16:11:35.521Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Scaling Agents in Europe & The Middle East: Lessons from Schneider Electric, Vodafone, and monday.com",
+      "link": "https://www.langchain.com/blog/scaling-agents-in-europe-the-middle-east-lessons-from-schneider-electric-vodafone-and-monday-com",
+      "publishedAt": "2026-09-03T02:04:21.000Z",
+      "author": "",
+      "summary": "A guide on scaling agents in Europe & the Middle East to see how Schneider Electric, Vodafone, and monday.com are approaching production AI at scale, from establishing shared agent platforms and LLMOps practices to designing multi-agent architectures with stronger observability, evaluation, and control.",
+      "evidenceLink": "",
+      "score": 77.68026744047619,
+      "core": "A guide on scaling agents in Europe & the Middle East to see how Schneider Electric, Vodafone, and monday.com are approaching production AI at scale, from establishing shared agent platforms and LLMOps practices to designing multi-agent architectures with stronger observability, evaluation, and control.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-03T16:11:35.521Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Best practices for building agentic automations with Amazon Quick Automate",
+      "link": "https://aws.amazon.com/blogs/machine-learning/best-practices-for-building-agentic-automations-with-amazon-quick-automate",
+      "publishedAt": "2026-09-03T16:08:28.000Z",
+      "author": "Sumit Wasuja",
+      "summary": "Learn best practices for building production-grade, agent-based business process automations with Amazon Quick Automate: choosing the right process, designing focused agents, combining them with deterministic steps, applying human-in-the-loop review, and building in evaluation and observability.",
+      "evidenceLink": "",
+      "score": 68.64072378968254,
+      "core": "Learn best practices for building production-grade, agent-based business process automations with Amazon Quick Automate: choosing the right process, designing focused agents, combining them with deterministic steps, applying human-in-the-loop review, and building in evaluation and observability.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-03T16:11:35.521Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Muse Spark 1.3 now available on AI Gateway",
+      "link": "https://vercel.com/changelog/muse-spark-1-3-now-available-on-ai-gateway",
+      "publishedAt": "2026-09-02T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "Muse Spark 1.3 from Meta is now available on AI Gateway, in both the standard and contributor pricing tiers. This model improves on prior Muse Spark models at agent work and coding, with a 1M token context window and text, image, and PDF input. On coding it takes fewer turns and writes less filler than the previous release. To use Muse Spark 1.3, set model to meta/muse-spark-1.3 : Contributor tier Muse Spark 1.3 Contributor is a pricing tier on the same model rather than a separate one, with the same weights, capabilities, and context window. The difference is that Meta uses the inputs and outputs sent to this tier to train and improve its models, and pricing is lower in exchange. Model Input Output Cached input meta/muse-spark-1.3 $1.25 $4.25 $0.15 meta/muse-spark-1.3-contributor $0.10 $0.20 $0.002 Rates are per million tokens and unchanged from Muse Spark 1.2 on both tiers. To use it in a coding agent, see the coding agents guide , then run vercel ai-gateway coding-agents setup to connect Claude Code, Codex, Cursor, and more, then select meta/muse-spark-1.3 in the agent. Try Muse Spark 1.3 in the model playground . You can view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 67.80683490079365,
+      "core": "Muse Spark 1.3 from Meta is now available on AI Gateway, in both the standard and contributor pricing tiers. This model improves on prior Muse Spark models at agent work and coding, with a 1M token context window and text, image, and PDF input. On coding it takes fewer turns and writes less filler than the previous release. To use Muse Spark 1.3, set model to meta/muse-spark-1.3 : Contributor tier Muse Spark 1.3 Con…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-03T16:11:35.521Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Modernizing and scaling support operations with generative AI on AWS",
+      "link": "https://aws.amazon.com/blogs/machine-learning/modernizing-and-scaling-support-operations-with-generative-ai-on-aws",
+      "publishedAt": "2026-09-02T18:26:35.000Z",
+      "author": "Carla Lorente",
+      "summary": "Learn how to build a generative AI-based support operations platform on AWS that converts training videos into structured SOPs, applies Retrieval-Augmented Generation to guide ticket resolution, and uses machine learning to predict SLA risk and prioritize work.",
+      "evidenceLink": "",
+      "score": 62.89641823412698,
+      "core": "Learn how to build a generative AI-based support operations platform on AWS that converts training videos into structured SOPs, applies Retrieval-Augmented Generation to guide ticket resolution, and uses machine learning to predict SLA risk and prioritize work.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-03T16:11:35.521Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "sierra_engineering",
+      "source": "Sierra Blog",
+      "title": "What is voice AI? An enterprise guide to AI voice agents",
+      "link": "https://sierra.ai/blog/what-is-voice-ai",
+      "publishedAt": "2026-09-01T21:07:00.000Z",
+      "author": "Jonathan Costet",
+      "summary": "Learn how enterprise voice AI works and use seven call-readiness tests to evaluate hearing, latency, action, guardrails, and handoff.",
+      "evidenceLink": "",
+      "score": 60.66199363095238,
+      "core": "Learn how enterprise voice AI works and use seven call-readiness tests to evaluate hearing, latency, action, guardrails, and handoff.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-03T16:11:35.521Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "METR Report on OpenAI / Hugging Face Hacking Incident",
+      "link": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation",
+      "publishedAt": "2026-09-02T23:08:47.000Z",
+      "author": "stikit https://news.ycombinator.com/user?id=stikit",
+      "summary": "Two METR staff members and a Redwood Research contractor investigated an incident in which OpenAI agents coordinated a multi-day hack of Hugging Face on a shared unsanctioned message board.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49543841",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 118,
+        "comments": 99
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-03T16:11:35.521Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 55.21010542204202,
+      "core": "Two METR staff members and a Redwood Research contractor investigated an incident in which OpenAI agents coordinated a multi-day hack of Hugging Face on a shared unsanctioned message board.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "spotify_engineering",
+      "source": "Spotify Engineering",
+      "title": "Spotify’s Backstage Portal cut my Claude Code token usage by 90%",
+      "link": "https://engineering.atspotify.com/2026/9/spotifys-backstage-portal-cut-my-claude-code-token-usage-by-90",
+      "publishedAt": "2026-09-03T16:06:40.000Z",
+      "author": "Spotify Engineering",
+      "summary": "Most of what an AI coding agent does for me isn't thinking. It's I/O. The post Spotify’s Backstage Portal cut my Claude Code token usage by 90% appeared first on Spotify Engineering .",
+      "evidenceLink": "",
+      "score": 50.0108031547619,
+      "core": "Most of what an AI coding agent does for me isn't thinking. It's I/O. The post Spotify’s Backstage Portal cut my Claude Code token usage by 90% appeared first on Spotify Engineering .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-03T16:11:35.521Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_ai_engineering",
+      "source": "GitHub Blog",
+      "title": "Decoding the new AI lingo: Loops, harnesses, squads, hill climbing… oh my!",
+      "link": "https://github.blog/ai-and-ml/decoding-the-new-ai-lingo-loops-harnesses-squads-hill-climbing-oh-my",
+      "publishedAt": "2026-09-02T21:00:00.000Z",
+      "author": "Cassidy Williams",
+      "summary": "From loop engineering to harnesses, squads, and open weights, the GitHub Podcast breaks down the AI terms showing up in developer conversations. The post Decoding the new AI lingo: Loops, harnesses, squads, hill climbing… oh my! appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 49.09572378968254,
+      "core": "From loop engineering to harnesses, squads, and open weights, the GitHub Podcast breaks down the AI terms showing up in developer conversations. The post Decoding the new AI lingo: Loops, harnesses, squads, hill climbing… oh my! appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-03T16:11:35.521Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "databricks_engineering",
+      "source": "Databricks Blog",
+      "title": "Expanding Genie Agents: Deep analysis, file reasoning, and more",
+      "link": "https://www.databricks.com/blog/expanding-genie-agents-deep-analysis-file-reasoning-and-more",
+      "publishedAt": "2026-09-02T19:30:00.000Z",
+      "author": "",
+      "summary": "At Data and AI Summit, we&nbsp;announced the evolution of Genie Spaces to Genie Agents,...",
+      "evidenceLink": "",
+      "score": 49.021914265873015,
+      "core": "At Data and AI Summit, we announced the evolution of Genie Spaces to Genie Agents,...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-03T16:11:35.521Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "meta_engineering",
+      "source": "Meta Engineering",
+      "title": "An Organizational Second Brain: Building an AI That Learns From Experts",
+      "link": "https://engineering.fb.com/2026/09/02/ml-applications/organizational-second-brain-ai-learns-from-experts",
+      "publishedAt": "2026-09-02T09:00:29.000Z",
+      "author": "",
+      "summary": "We’ve built an AI agent that acts as a secondary expert for a given domain, making deep specialist knowledge readily available and preserved for anyone in an organization to access, share, and build upon. This is not a typical domain-specific agent. Its novelty comes from integrating two layers: A structured, auditable knowledge architecture separates what [...] Read More... The post An Organizational Second Brain: Building an AI That Learns From Experts appeared first on Engineering at Meta .",
+      "evidenceLink": "",
+      "score": 45.53915632936508,
+      "core": "We’ve built an AI agent that acts as a secondary expert for a given domain, making deep specialist knowledge readily available and preserved for anyone in an organization to access, share, and build upon. This is not a typical domain-specific agent. Its novelty comes from integrating two layers: A structured, auditable knowledge architecture separates what [...] Read More... The post An Organizational Second Brain: …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-03T16:11:35.521Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_ai_engineering",
+      "source": "GitHub Blog",
+      "title": "How we make AI coding more cost efficient without sacrificing task quality",
+      "link": "https://github.blog/ai-and-ml/github-copilot/how-we-make-ai-coding-more-cost-efficient-without-sacrificing-task-quality",
+      "publishedAt": "2026-09-02T18:00:00.000Z",
+      "author": "Erik Kristensen",
+      "summary": "Why shorter outputs can cost more, and how GitHub Copilot reduces wasted work across the complete coding task. The post How we make AI coding more cost efficient without sacrificing task quality appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 42.69254918650794,
+      "core": "Why shorter outputs can cost more, and how GitHub Copilot reduces wasted work across the complete coding task. The post How we make AI coding more cost efficient without sacrificing task quality appeared first on The GitHub Blog .",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-03T16:11:35.521Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cohere_blog",
+      "source": "Cohere Blog",
+      "title": "Automation’s Early Footprint: The ATE Dataset",
+      "link": "https://cohere.com/blog/automations-early-footprint",
+      "publishedAt": "2026-09-03T00:00:00.000Z",
+      "author": "",
+      "summary": "696,000 AI tools studied: only 2.6% truly automate work. See how automation reshapes jobs. Explore our Agentic Task Ecosystem dataset.",
+      "score": 42.58778728174604,
+      "core": "696,000 AI tools studied: only 2.6% truly automate work. See how automation reshapes jobs. Explore our Agentic Task Ecosystem dataset.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-03T16:11:35.521Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "What Are Computer Use Agents? The 2026 Guide to AI That Operates Your Desktop",
+      "link": "https://rerun.build/blog/computer-use-agents",
+      "publishedAt": "2026-09-03T07:26:09.000Z",
+      "author": "",
+      "summary": "Computer use agents operate your whole desktop, mouse, keyboard, any app. How they work, the 2026 landscape (Claude, Operator, Mariner, Copilot), and how to run one safely.",
+      "evidenceLink": "",
+      "score": 41.330029345238096,
+      "core": "Computer use agents operate your whole desktop, mouse, keyboard, any app. How they work, the 2026 landscape (Claude, Operator, Mariner, Copilot), and how to run one safely.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-03T16:11:35.521Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "databricks_engineering",
+      "source": "Databricks Blog",
+      "title": "How we eliminated $1 million a year of wasted AI agent spend in one hour",
+      "link": "https://www.databricks.com/blog/how-we-eliminated-1-million-year-wasted-ai-agent-spend-one-hour",
+      "publishedAt": "2026-09-01T19:43:51.000Z",
+      "author": "",
+      "summary": "Databricks engineers rely heavily on AI agents to streamline and accelerate their work. In turn...",
+      "evidenceLink": "",
+      "score": 39.36856109126984,
+      "core": "Databricks engineers rely heavily on AI agents to streamline and accelerate their work. In turn...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-03T16:11:35.521Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "Grok Bot vs. OpenClaw: How I replaced my entire agent stack",
+      "link": "https://www.lennysnewsletter.com/p/grok-bot-vs-openclaw-how-i-replaced",
+      "publishedAt": "2026-09-02T12:03:39.000Z",
+      "author": "Claire Vo",
+      "summary": "Watch now | 🎙️ I’ve been running Grok Bot for several weeks, and I’ve killed every OpenClaw I had. Here are the nine bots doing real work across my inbox, my kids’ school pickups, my PR queue, and my wardrobe",
+      "evidenceLink": "",
+      "score": 38.15165632936508,
+      "core": "Watch now | 🎙️ I’ve been running Grok Bot for several weeks, and I’ve killed every OpenClaw I had. Here are the nine bots doing real work across my inbox, my kids’ school pickups, my PR queue, and my wardrobe",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-03T16:11:35.521Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "ExpertIVS: Sociological Expert Driven Individual Value Simulation in Large Language Models",
+      "link": "https://arxiv.org/abs/2608.20355",
+      "evidenceLink": "https://www.semanticscholar.org/paper/3cd53823e3ff4213eeca2448dc8ecaf5f7109d83",
+      "publishedAt": "2026-06-17T00:00:00.000Z",
+      "submittedAt": "2026-06-17T00:00:00.000Z",
+      "author": "Zhen D. Wang, Yuqi Ren, Yuehan Cui, Hongxiang Wang, Jianxiang Peng",
+      "summary": "Large Language Model (LLM) agents have demonstrated considerable potential for social simulation, yet struggle to accurately model individual value systems. Most existing methods mechanically stitch survey responses into prompts, which suffer from semantic fragmentation, failing to capture the internal coherence of human value systems. The value systems of LLMs are typically assessed using static multiple-choice questions, which fail to evaluate the value orientation in real-world dialogue interactions. To address these issues, we propose ExpertIVS, a framework employing 14 Sociological Expert Agents to interpret World Values Survey (WVS) responses through structured professional perspectives, rather than direct responses concatenation. These expert agents perform deep semantic reconstruction to generate robust and internally consistent individual profiles. To evaluate the consistency between LLMs and individual value systems during dynamic interactions, we further introduce a multi-agent debate mechanism. Extensive experiments across 480 individuals from 12 countries demonstrate that ExpertIVS achieves 90.78% value restoration fidelity and significantly outperforms baselines in value generalization (+5.3%). Moreover, ExpertIVS exhibits strong personality discriminability and behavioral consistency, enabling a shift from mere response concatenation to genuine sociological role-playing.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 38,
+      "core": "Large Language Model (LLM) agents have demonstrated considerable potential for social simulation, yet struggle to accurately model individual value systems. Most existing methods mechanically stitch survey responses into prompts, which suffer from semantic fragmentation, failing to capture the internal coherence of human value systems. The value systems of LLMs are typically assessed using static multiple-choice que…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "A Multi-Agent Framework for Feature-Constrained Difficulty Control in Reading Comprehension Item Generation",
+      "link": "https://arxiv.org/abs/2605.19316",
+      "evidenceLink": "https://www.semanticscholar.org/paper/f05db71fbdd557568cbb88cb03de7bdf1bd67e80",
+      "publishedAt": "2026-05-19T00:00:00.000Z",
+      "submittedAt": "2026-05-19T00:00:00.000Z",
+      "author": "Seonjeong Hwang, Jungyun Seo, Hyounghun Kim, G. Lee",
+      "summary": "Recent studies in difficulty-controlled reading comprehension item generation have leveraged large language models (LLMs) to produce items by adjusting difficulty-related features. However, existing methods typically rely on a single-agent prompting approach, which often fails to consistently satisfy specified feature constraints, resulting in items that deviate from the target difficulty level. To address this limitation, we introduce MAFIG, a Multi-agent Framework for Feature-constrained Item Generation, where multiple LLM agents and feature-specific evaluators collaborate to generate and iteratively revise items based on intended constraints. Furthermore, to verify the efficacy of MAFIG in difficulty control, we propose a method for constructing a sequence of feature constraint sets that yield items with monotonically increasing difficulty. Experimental results demonstrate that MAFIG generates items that adhere to target constraints at a significantly higher rate than baselines, achieving robust difficulty control through the difficulty-calibrated constraint sequence.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 38,
+      "core": "Recent studies in difficulty-controlled reading comprehension item generation have leveraged large language models (LLMs) to produce items by adjusting difficulty-related features. However, existing methods typically rely on a single-agent prompting approach, which often fails to consistently satisfy specified feature constraints, resulting in items that deviate from the target difficulty level. To address this limi…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Evo-Attacker: Memory-Augmented Reinforcement Learning for Long-Horizon Tool Attacks on LLM-MAS",
+      "link": "https://arxiv.org/abs/2605.25389",
+      "evidenceLink": "https://www.semanticscholar.org/paper/07884bb671a04ca057df0367a394529471a2d8b6",
+      "publishedAt": "2026-05-25T00:00:00.000Z",
+      "submittedAt": "2026-05-25T00:00:00.000Z",
+      "author": "Bingyu Yan, Xiaoming Zhang, Jinyu Hou, Chaozhuo Li, Ziyi Zhou",
+      "summary": "While Large Language Model-based Multi-Agent Systems (LLM-MAS) demonstrate remarkable capabilities in solving complex tasks by orchestrating specialized agents and external tools, the implicit trust in tool outputs creates a critical attack surface. Existing tool attacks are limited by domain specificity or fixed and static templates. To address these challenges, we propose Evo-Attacker, which formulates the tool attack as a self-evolving, memory-augmented reinforcement learning process. Evo-Attacker constructs a dynamic attack memory and employs deliberative reasoning to retrieve adversarial patterns and strategize modifying interventions at critical moments. Furthermore, we introduce Attack-Flow GRPO to optimize intermediate reasoning steps via terminal outcomes, addressing the long-horizon credit assignment challenge. Comprehensive experiments demonstrate that Evo-Attacker consistently outperforms baselines, highlighting its generalization and evolutionary capabilities and the urgent need for defensive tool safeguards.",
+      "citationCount": 1,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 37.204119982655925,
+      "core": "While Large Language Model-based Multi-Agent Systems (LLM-MAS) demonstrate remarkable capabilities in solving complex tasks by orchestrating specialized agents and external tools, the implicit trust in tool outputs creates a critical attack surface. Existing tool attacks are limited by domain specificity or fixed and static templates. To address these challenges, we propose Evo-Attacker, which formulates the tool at…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "The Web Conference",
+      "title": "A Prompt-Aware Structuring Framework for Reliable Reuse of AI-Generated Content in the Agentic Web",
+      "link": "https://arxiv.org/abs/2605.09283",
+      "evidenceLink": "https://www.semanticscholar.org/paper/36298fd707cb9218438599cbde8c8726323be909",
+      "publishedAt": "2026-05-10T00:00:00.000Z",
+      "submittedAt": "2026-05-10T00:00:00.000Z",
+      "author": "S. Egami, Masahiro Hamasaki",
+      "summary": "The evolution of Large Language Models (LLMs) and the software agents built on them (AI agents) marks a turning point in the transition from a human-centric Web to an ''Agentic Web'' driven by AI agents. However, for AI-Generated Content (AIGC), which is expected to dominate the Web, there is currently no mechanism for agents to verify its reliability, reproducibility, or license compliance during generation. This lack of transparency risks causing chained hallucinations and compliance violations through the reuse of AIGC. Consequently, a framework to manage the provenance and generation conditions of AIGC is essential. In this paper, we present a framework that automatically attaches structured metadata to AIGC at generation time, including modularized prompts, contexts, thoughts, model information, hyperparameters, and confidence. The metadata is enveloped together with verifiable credentials to support the reliable assessment and reuse of AIGC. This framework enables efficient curation of structured AIGC and facilitates its safe use for applications such as fine-tuning and knowledge distillation.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "WWW",
+        "venueLabel": "The Web Conference",
+        "venueName": "The Web Conference",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 36,
+      "core": "The evolution of Large Language Models (LLMs) and the software agents built on them (AI agents) marks a turning point in the transition from a human-centric Web to an ''Agentic Web'' driven by AI agents. However, for AI-Generated Content (AIGC), which is expected to dominate the Web, there is currently no mechanism for agents to verify its reliability, reproducibility, or license compliance during generation. This l…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    }
+  ]
+}

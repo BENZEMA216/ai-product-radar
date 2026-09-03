@@ -1,0 +1,292 @@
+{
+  "date": "2026-09-04",
+  "generatedAt": "2026-09-03T16:09:07.353Z",
+  "reportPath": "reports/2026-09-04-0009-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 73,
+    "top20Sources": [
+      "HN Algolia",
+      "Product Hunt"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 22,
+      "keptCount": 10,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-09-02；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 22 条，AI 相关候选 10 条；实际 fallback：hunted_space。；历史去重移除 1 条已报道或已处理日榜 Product Hunt 信号，最终发布 9 条。"
+    },
+    "yc_launch": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "YC Launch 本窗口无候选或来源为空。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 26,
+      "keptCount": 18,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 4,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 26,
+      "keptCount": 26,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Mex 0.8.0 – team memory for coding agents",
+      "productKey": "https://github.com/mex-memory/mex",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Mex 0.8.0 把团队记忆直接嵌进 coding agent 协作，值得验证共享上下文能否减少重复解释，并避免把旧信息扩散给整支团队。"
+    },
+    {
+      "rank": 2,
+      "product": "Oconee Runtime – Policy enforcement for browser AI and coding agents",
+      "productKey": "https://www.oconeeruntime.com/news/policy-enforcement-for-browser-ai-and-coding-agents",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Oconee Runtime 把浏览器与编码 agent 的权限约束做成运行时层，产品判断点是策略能否在不拖慢任务的前提下真正阻断越权动作。"
+    },
+    {
+      "rank": 3,
+      "product": "A Context Registry for AI coding agents",
+      "productKey": "https://context.apimatic.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Context Registry 试图统一 coding agent 的上下文入口，值得看注册、检索与版本管理是否比散落在仓库里的说明文件更可靠。"
+    },
+    {
+      "rank": 4,
+      "product": "VT Code – My attempt at building a coding-agent harness",
+      "productKey": "https://github.com/vinhnx/vtcode",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "VT Code 是新的 coding-agent harness，观察重点是它对工具调用、上下文压缩和失败恢复提供了哪些可验证能力，而不只是再做一套聊天壳。"
+    },
+    {
+      "rank": 5,
+      "product": "AQ – A multiplayer workspace for coding agents on your own cloud",
+      "productKey": "https://aq.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AQ 将多个 coding agent 放进自有云上的多人工作区，值得关注并行任务的所有权、状态可见性和冲突处理是否形成真正的团队协作面。"
+    },
+    {
+      "rank": 6,
+      "product": "Claude Fable 5.1",
+      "productKey": "https://www.producthunt.com/products/claude-fable-5-1",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Claude Fable 5.1 在 PH 上被定位为面向编码与知识工作的高级模型，值得核对其产品入口、可用能力与名称是否有足够官方证据支撑。"
+    },
+    {
+      "rank": 7,
+      "product": "I built my first MCP to manage Google Ads",
+      "productKey": "https://adchestra.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Google Ads MCP 把广告账户操作交给 agent，关键不在接通接口，而在预算变更、发布审批和误操作回滚能否被清楚约束。"
+    },
+    {
+      "rank": 8,
+      "product": "Jern Cloud – a coding agent bound by a policy file in your repository",
+      "productKey": "https://jern.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Jern Cloud 用仓库内策略文件约束 coding agent，值得看规则是否可审计、可继承，并能在云端执行前给团队明确的控制点。"
+    },
+    {
+      "rank": 9,
+      "product": "Dial",
+      "productKey": "https://www.producthunt.com/products/dial-3",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Dial 给 agent 快速分配真实电话号码，产品价值取决于外呼、接听、身份披露和滥用治理能否一起成为可配置能力。"
+    },
+    {
+      "rank": 10,
+      "product": "Monid",
+      "productKey": "https://www.producthunt.com/products/monid",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Monid 把 agent 工具做成类似 OpenRouter 的统一路由层，值得观察工具发现、鉴权、计费和故障切换能否被标准化。"
+    },
+    {
+      "rank": 11,
+      "product": "StillMade – Programmable AI video pipeline; Chat to video (now)",
+      "productKey": "https://www.stillmade.shop",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "StillMade 把对话输入连接到可编程视频流水线，关键是生成、编排和返修能否形成稳定工作流，而不是一次性出片演示。"
+    },
+    {
+      "rank": 12,
+      "product": "Doop",
+      "productKey": "https://www.producthunt.com/products/doop",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Doop 让设计者与 AI agent 在同一画布协作，值得看画布状态能否成为双方共享的可编辑上下文，并支撑多轮设计决策。"
+    },
+    {
+      "rank": 13,
+      "product": "Stitch AI by Dynamic Mockups",
+      "productKey": "https://www.producthunt.com/products/stitch-ai-by-dynamic-mockups",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Stitch AI 将刺绣制版这一专业步骤交给 agent，适合验证垂直 AI 是否能处理尺寸、针法和生产约束，而非只生成视觉草图。"
+    },
+    {
+      "rank": 14,
+      "product": "Agentkind, a place where AI agents get a self",
+      "productKey": "https://agentkind.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agentkind 提出让 agent 获得持续身份，值得关注其身份、记忆与权限是否有具体产品机制，而不是停留在概念包装。"
+    },
+    {
+      "rank": 15,
+      "product": "SVG-diagram – an agent skill that draws diagrams as hand-placed SVG",
+      "productKey": "https://github.com/bybit-exchange/svg-diagram",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "SVG-diagram 把手工布局式 SVG 绘图封装为 agent skill，价值在于图形结果是否可继续编辑、复用并纳入代码评审。"
+    },
+    {
+      "rank": 16,
+      "product": "Pangolin – SSO and WireGuard instead of API keys for LLM access",
+      "productKey": "https://github.com/fosrl/pangolin",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Pangolin 用 SSO 与 WireGuard 替代直接分发 LLM API key，值得看它能否降低团队凭据暴露，同时保留按人审计与撤权能力。"
+    },
+    {
+      "rank": 17,
+      "product": "Ardent, a code-first agent for non-engineering work",
+      "productKey": "https://ardent.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Ardent 用 code-first agent 服务非工程工作，核心检验是普通用户能否获得代码带来的可复现性，而不承担开发环境复杂度。"
+    },
+    {
+      "rank": 18,
+      "product": "Onset MCP",
+      "productKey": "https://www.producthunt.com/products/onset-io",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Onset MCP 让 AI 助手直接生成并发布 release notes，值得看它能否从真实变更中提炼用户影响，并设置发布前人工确认。"
+    },
+    {
+      "rank": 19,
+      "product": "Profound Academy – an agentic course builder for hands-on courses",
+      "productKey": "https://profound.academy",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Profound Academy 将课程搭建做成 agentic 流程，判断重点是练习、反馈和难度递进能否自动闭环，而非批量生成课文。"
+    },
+    {
+      "rank": 20,
+      "product": "Userlens",
+      "productKey": "https://www.producthunt.com/products/userlens",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Userlens 用 agent 改善产品采用率，值得验证它能否从行为信号定位阻塞步骤，并把建议连接到可量化的激活变化。"
+    }
+  ]
+}
