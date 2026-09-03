@@ -1952,7 +1952,9 @@ function testShowHnNoveltyAndComplaintSignalsStayWeak() {
     "Slopyard – a textboard inspired gallery for vibecoded tools",
     "Weedout – Safari extension that hides YouTube AI-labeled videos",
     "I Have Been Clawed – Index of coding agent incidents",
-    "Me and 28,000 AI agents built this research; every claim is traceable"
+    "Me and 28,000 AI agents built this research; every claim is traceable",
+    "Sleeper Agents in Robot Dogs and Kinetic Prompt Injections",
+    "What Engineers must own in the AI Era? [video]"
   ];
   for (const title of titles) {
     const item = {
@@ -1974,7 +1976,7 @@ function testShowHnNoveltyAndComplaintSignalsStayWeak() {
     const markdown = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |\n|---|---|---|---|---|---|\n| ${title} | [链接](https://example.com) | 新产品 | HN 发布帖出现：Show HN: ${title} | 当日信号。 | [HN Algolia](https://news.ycombinator.com/item?id=1) |`;
     const [rendered] = parseReportMarkdown(markdown, "reports/2026-09-02-0001-cst.md");
     assert.notEqual(rendered.qualityLabel, "keep", `${title} should stay weak after site parsing`);
-    if (/hides youtube ai-labeled videos|index of coding agent incidents|built this research/i.test(title)) {
+    if (/hides youtube ai-labeled videos|index of coding agent incidents|built this research|sleeper agents in robot dogs|what engineers must own in the ai era/i.test(title)) {
       assert.equal(inferred, dropped, `${title} should be dropped as a non-product observation`);
       assert.equal(rendered.qualityLabel, "drop", `${title} should stay dropped after site parsing`);
       const afterMemory = applyQualityMemoryToCandidates([{ ...item, qualityLabel: "drop" }], {
@@ -2058,6 +2060,15 @@ function testPriorityScoreDownranksResourceLists() {
   assert.ok(
     priorityScore(productLaunch) > priorityScore(resourceList),
     "resource lists should not outrank clear AI product launches"
+  );
+  const talksIndex = {
+    ...resourceList,
+    product: "A searchable, timestamped index of 1,124 AI Engineer talks",
+    did: "HN 发布帖出现：Show HN: A searchable, timestamped index of 1,124 AI Engineer talks"
+  };
+  assert.ok(
+    priorityScore(productLaunch) > priorityScore(talksIndex),
+    "AI talk indexes should not outrank clear AI product launches"
   );
 }
 

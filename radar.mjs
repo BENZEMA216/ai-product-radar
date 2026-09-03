@@ -2436,7 +2436,7 @@ function isShowHnNonProductObservation(item, text) {
   return (
     isHn &&
     isShowHn &&
-    /\b(?:index|database) of (?:coding )?agent incidents?\b|\bbuilt this research\b|\bhides? youtube ai-labeled videos\b/i.test(text)
+    /\b(?:index|database) of (?:coding )?agent incidents?\b|\bbuilt this research\b|\bhides? youtube ai-labeled videos\b|\bsleeper agents? in robot dogs\b|\bwhat engineers? must own in the ai era\b/i.test(text)
   );
 }
 
@@ -2454,7 +2454,8 @@ function isResourceListSignal(text) {
     /\b(?:awesome|curated)\s+(?:ai\s+)?(?:list|resources?)\b/i.test(text) ||
     /\bai\s+(?:resources?|directory|catalog|collection)\b/i.test(text) ||
     /\b(?:directory|catalog|collection)\s+of\s+ai\b/i.test(text) ||
-    /\b(?:gallery|directory|catalog)\s+(?:for|of)\s+(?:vibecoded\s+)?tools\b/i.test(text)
+    /\b(?:gallery|directory|catalog)\s+(?:for|of)\s+(?:vibecoded\s+)?tools\b/i.test(text) ||
+    /\b(?:searchable,?\s+)?(?:timestamped\s+)?index of [\d,]+ ai (?:engineer )?talks\b/i.test(text)
   );
 }
 
