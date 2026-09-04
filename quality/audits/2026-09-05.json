@@ -1,0 +1,292 @@
+{
+  "date": "2026-09-05",
+  "generatedAt": "2026-09-04T16:05:05.774Z",
+  "reportPath": "reports/2026-09-05-0005-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 57,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 16,
+      "keptCount": 10,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-09-03；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 16 条，AI 相关候选 10 条；实际 fallback：hunted_space。；历史去重后最终发布 10 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "YC Launch 本窗口无候选或来源为空。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 23,
+      "keptCount": 14,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 5,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 13,
+      "keptCount": 13,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Nex",
+      "productKey": "https://www.producthunt.com/products/nex-4",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Nex 把高吞吐 GTM 招聘流程交给 Claude 式协作代理，值得验证的是筛选偏好能否持续沉淀，并在批量处理时保持判断一致。"
+    },
+    {
+      "rank": 2,
+      "product": "Mireye (YC S26) – Infrastructure for Physical World AI Agents",
+      "productKey": "https://news.ycombinator.com/item?id=49552616",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Mireye 面向物理世界 Agent 提供基础设施，产品价值取决于它能否把感知、设备接入与任务执行做成开发者可复用的运行层。"
+    },
+    {
+      "rank": 3,
+      "product": "Tabbit AI",
+      "productKey": "https://www.producthunt.com/products/tabbitai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Tabbit 同时服务人和 Agent 的浏览器定位很直接，重点看共享页面状态、权限与自动操作是否比现有浏览器自动化更可靠。"
+    },
+    {
+      "rank": 4,
+      "product": "Blume.codes",
+      "productKey": "https://www.producthunt.com/products/blume-codes",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Blume.codes 将编码会话反向提炼为 rules 和 skills，值得关注这种“使用中学习”能否降低团队维护指令与经验库的成本。"
+    },
+    {
+      "rank": 5,
+      "product": "Agent Builder by Airtop",
+      "productKey": "https://www.producthunt.com/products/airtop",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Airtop 把 Agent 的自愈作为卖点，关键不是自动重试，而是能否识别页面变化、选择修复动作并留下可审计的恢复记录。"
+    },
+    {
+      "rank": 6,
+      "product": "DrawDB Pro – design database schemas for your team and agents",
+      "productKey": "https://www.drawdb.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "DrawDB Pro 让团队和 Agent 共用数据库 schema 设计界面，值得看可视化修改、版本协作与代码生成能否形成一致的交付闭环。"
+    },
+    {
+      "rank": 7,
+      "product": "Fillo",
+      "productKey": "https://www.producthunt.com/products/fillo-native-forms-without-the-backend",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Fillo 让编码 Agent 直接把表单嵌入产品，产品判断点在于它是否真正代管数据接收与后端集成，而非只生成前端组件。"
+    },
+    {
+      "rank": 8,
+      "product": "viaSocket – AI-built workflows, and your apps as an MCP server",
+      "productKey": "https://viasocket.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "viaSocket 把自然语言工作流和 MCP 服务暴露放在一起，值得看非技术用户编排出的流程能否稳定成为 Agent 可调用能力。"
+    },
+    {
+      "rank": 9,
+      "product": "MCP Security Auditor – Zero-execution static scanner for MCP servers",
+      "productKey": "https://apify.com/neon_innovation_lab/mcp-security-auditor",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "MCP Security Auditor 用零执行静态扫描检查 MCP server，价值在于把上线前的权限、危险调用和依赖风险变成可自动化门禁。"
+    },
+    {
+      "rank": 10,
+      "product": "Devbar – Point at what to change. Leave a comment. Your agent ships it",
+      "productKey": "https://devbar.sh",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Devbar 把页面指点和评论直接转成 Agent 可执行修改，值得验证反馈定位是否足够精确，以及从意见到提交之间有哪些审批边界。"
+    },
+    {
+      "rank": 11,
+      "product": "Give every agent the right data, access and context to get work done",
+      "productKey": "https://lanes.sh/showcase/agentic-fleet",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Lanes 的 Agentic Fleet 聚焦为每个 Agent 分配正确数据、访问权和上下文，关键看权限最小化与上下文隔离能否随多 Agent 规模扩展。"
+    },
+    {
+      "rank": 12,
+      "product": "Kovavue – a rented Linux box where your AI agent works like a human",
+      "productKey": "https://kovavue.kovanex.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Kovavue 给 Agent 租用可像人一样操作的 Linux 环境，值得看环境持久化、身份凭据与操作回放是否足以支撑长期任务。"
+    },
+    {
+      "rank": 13,
+      "product": "Floyi, a topic-first content workflow for Google and AI search",
+      "productKey": "https://floyi.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Floyi 以主题为单位组织 Google 与 AI 搜索内容，产品启发在于把一次性关键词优化转成可持续的内容规划和证据更新流程。"
+    },
+    {
+      "rank": 14,
+      "product": "Grove",
+      "productKey": "https://www.producthunt.com/products/grove-8",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Grove 把用户与 Agent 放进同一个终端，值得看命令上下文、接管机制和执行结果是否能让人机协作比传统 CLI 更清晰。"
+    },
+    {
+      "rank": 15,
+      "product": "MagiCrew",
+      "productKey": "https://www.producthunt.com/products/magicrew",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "MagiCrew 用统一平台提供个人 AI workforce，判断重点是是否有明确角色分工、任务交接和可验收产出，而不是 Agent 数量。"
+    },
+    {
+      "rank": 16,
+      "product": "Tidy",
+      "productKey": "https://www.producthunt.com/products/tidy-6",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Tidy 在任意 Mac 应用中用端侧 AI 修正文法，值得关注其低摩擦入口、离线隐私和跨应用文本替换是否足够稳定。"
+    },
+    {
+      "rank": 17,
+      "product": "I processed 100k+ LinkedIn posts into open-source Claude Code skills",
+      "productKey": "https://github.com/sergebulaev/linkedin-skills",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把十万条 LinkedIn 内容加工成 Claude Code skills 展示了大规模经验提炼路径；更重要的是验证来源噪声会不会被固化进可执行规则。"
+    },
+    {
+      "rank": 18,
+      "product": "Causal",
+      "productKey": "https://www.producthunt.com/products/causal-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Causal 用 AI canvas 组织视觉项目规划，值得看自由布局能否承载依赖、决策与进度，而不只是把聊天结果换成卡片。"
+    },
+    {
+      "rank": 19,
+      "product": "ARBR",
+      "productKey": "https://www.producthunt.com/products/arbr",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ARBR 试图控制每一次 AI 请求，产品价值在于能否统一呈现路由、成本、策略与失败记录，让团队真正治理模型调用。"
+    },
+    {
+      "rank": 20,
+      "product": "Audioreality.ai – email to private daily podcast summary show",
+      "productKey": "https://www.audioreality.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Audioreality 把邮件变成私人每日播客，值得看筛选、摘要和音频编排是否能节省信息处理时间，并避免遗漏关键原文。"
+    }
+  ]
+}

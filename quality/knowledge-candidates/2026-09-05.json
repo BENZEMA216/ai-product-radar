@@ -1,0 +1,430 @@
+{
+  "generatedAt": "2026-09-04T16:13:47.930Z",
+  "date": "2026-09-05",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "GPT-6 Astra",
+      "link": "https://openai.com/index/gpt-6-astra",
+      "publishedAt": "2026-09-03T18:41:05.000Z",
+      "author": "kibae https://news.ycombinator.com/user?id=kibae",
+      "summary": "Introducing GPT-6 Astra, our most intelligent and aligned model yet, with state-of-the-art capabilities across computer use, coding, cybersecurity, and science.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49554643",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 2020,
+        "comments": 1842
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-04T16:13:47.930Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 77.34994186507936,
+      "core": "Introducing GPT-6 Astra, our most intelligent and aligned model yet, with state-of-the-art capabilities across computer use, coding, cybersecurity, and science.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_ai_engineering",
+      "source": "GitHub Blog",
+      "title": "Project HydraFusion: Frontier quality via multi-model orchestration",
+      "link": "https://github.blog/ai-and-ml/github-copilot/project-hydrafusion-frontier-quality-via-multi-model-orchestration",
+      "publishedAt": "2026-09-04T16:04:14.000Z",
+      "author": "GitHub Staff",
+      "summary": "In controlled offline evaluations, HydraFusion’s selective coding workflows matched or exceeded the evaluated Opus 5 baseline while reducing estimated workflow cost. Now available as a research preview in GitHub Copilot. The post Project HydraFusion: Frontier quality via multi-model orchestration appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 65.8386125,
+      "core": "In controlled offline evaluations, HydraFusion’s selective coding workflows matched or exceeded the evaluated Opus 5 baseline while reducing estimated workflow cost. Now available as a research preview in GitHub Copilot. The post Project HydraFusion: Frontier quality via multi-model orchestration appeared first on The GitHub Blog .",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-04T16:13:47.930Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "salesforce_engineering",
+      "source": "Salesforce Engineering",
+      "title": "How Agentforce Achieves 100% Deterministic Rendering for AI Agent UX",
+      "link": "https://engineering.salesforce.com/how-agentforce-achieves-100-deterministic-rendering-for-ai-agent-ux",
+      "publishedAt": "2026-09-03T19:18:50.000Z",
+      "author": "Scott Nyberg",
+      "summary": "In our Engineering Energizers Q&A series, we highlight the engineering minds driving innovation across Salesforce. Today, we spotlight Abhi Rathna, Product Management Director for Agentforce, whose team tackled a fundamental engineering contradiction: how do you preserve the stochastic LLM reasoning that makes an AI agent intelligent while guaranteeing that specific outputs render correctly 100% of […] The post How Agentforce Achieves 100% Deterministic Rendering for AI Agent UX appeared first on Salesforce Engineering Blog .",
+      "evidenceLink": "",
+      "score": 57.45599345238095,
+      "core": "In our Engineering Energizers Q&A series, we highlight the engineering minds driving innovation across Salesforce. Today, we spotlight Abhi Rathna, Product Management Director for Agentforce, whose team tackled a fundamental engineering contradiction: how do you preserve the stochastic LLM reasoning that makes an AI agent intelligent while guaranteeing that specific outputs render correctly 100% of […] The post How …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-04T16:13:47.930Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Migrate agentic workloads to Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/migrate-agentic-workloads-to-amazon-bedrock-agentcore",
+      "publishedAt": "2026-09-03T16:14:12.000Z",
+      "author": "Sruthi Vedula",
+      "summary": "An agent that works in a notebook is not an agent in production. This post walks through migrating a LangGraph customer support agent to Amazon Bedrock AgentCore in two stages: onto Runtime, Gateway, and Memory, then to model-driven planning on Strands Agents, retiring operational burdens along the way.",
+      "evidenceLink": "",
+      "score": 56.97508075396826,
+      "core": "An agent that works in a notebook is not an agent in production. This post walks through migrating a LangGraph customer support agent to Amazon Bedrock AgentCore in two stages: onto Runtime, Gateway, and Memory, then to model-driven planning on Strands Agents, retiring operational burdens along the way.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-04T16:13:47.930Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Introducing context-aware vulnerability discovery and remediation with Cloudflare Managed Defense and OpenAI Daybreak models",
+      "link": "https://blog.cloudflare.com/vulnerability-discovery-remediation",
+      "publishedAt": "2026-09-03T21:03:02.000Z",
+      "author": "Ken Sanderson",
+      "summary": "Use production traffic and security signals to prioritize findings, prepare edge mitigations when safe, and propose code patches. By combining WAF data with OpenAI Daybreak models, Vulnerability Discovery and Remediation helps teams identify and patch the most critical threats first.",
+      "evidenceLink": "",
+      "score": 56.20781884920635,
+      "core": "Use production traffic and security signals to prioritize findings, prepare edge mitigations when safe, and propose code patches. By combining WAF data with OpenAI Daybreak models, Vulnerability Discovery and Remediation helps teams identify and patch the most critical threats first.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-04T16:13:47.930Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "AI-driven development lifecycle using Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/ai-driven-development-lifecycle-using-amazon-bedrock-agentcore",
+      "publishedAt": "2026-09-03T16:16:28.000Z",
+      "author": "Arghya Banerjee",
+      "summary": "Engineering teams adopting the AI-Driven Development Lifecycle (AI-DLC) often struggle to turn concepts into working code. This post walks through two reference implementations on Amazon Bedrock AgentCore, Kiro, and Claude Code: an SQL-to-ER-diagram generator and a multi-agent code security analyzer that put the AI-DLC construction phase into practice.",
+      "evidenceLink": "",
+      "score": 55.25555694444445,
+      "core": "Engineering teams adopting the AI-Driven Development Lifecycle (AI-DLC) often struggle to turn concepts into working code. This post walks through two reference implementations on Amazon Bedrock AgentCore, Kiro, and Claude Code: an SQL-to-ER-diagram generator and a multi-agent code security analyzer that put the AI-DLC construction phase into practice.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-04T16:13:47.930Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "OpenAI begins rolling out GPT-6 Astra",
+      "link": "https://www.cnbc.com/2026/09/03/open-ai-astra-gpt-6-cyber.html",
+      "publishedAt": "2026-09-03T18:18:22.000Z",
+      "author": "maskil https://news.ycombinator.com/user?id=maskil",
+      "summary": "OpenAI said companies participating in its application-based cybersecurity program will be first to get access to Astra.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49554273",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 274,
+        "comments": 251
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-04T16:13:47.930Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 54.10014054277789,
+      "core": "OpenAI said companies participating in its application-based cybersecurity program will be first to get access to Astra.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "India Country Brief: The Anthropic Economic Index",
+      "link": "https://www.anthropic.com/research/india-brief-economic-index",
+      "publishedAt": "2026-09-03T21:12:06.000Z",
+      "author": "",
+      "summary": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "score": 48.340834722222226,
+      "core": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-04T16:13:47.930Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "spotify_engineering",
+      "source": "Spotify Engineering",
+      "title": "Portal by Spotify cut my Claude Code token usage by 90%",
+      "link": "https://engineering.atspotify.com/2026/9/portal-by-spotify-cut-my-claude-code-token-usage-by-90",
+      "publishedAt": "2026-09-03T16:06:40.000Z",
+      "author": "Spotify Engineering",
+      "summary": "Most of what an AI coding agent does for me isn't thinking. It's I/O. The post Portal by Spotify cut my Claude Code token usage by 90% appeared first on Spotify Engineering .",
+      "evidenceLink": "",
+      "score": 48.24389027777778,
+      "core": "Most of what an AI coding agent does for me isn't thinking. It's I/O. The post Portal by Spotify cut my Claude Code token usage by 90% appeared first on Spotify Engineering .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-04T16:13:47.930Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Agents on the frontline: How Box is using AI to supercharge cybersecurity",
+      "link": "https://www.itpro.com/technology/artificial-intelligence/agents-on-the-frontline-how-box-is-using-ai-to-supercharge-cybersecurity",
+      "publishedAt": "2026-09-04T12:31:32.000Z",
+      "author": "Ross Kelly",
+      "summary": "How can enterprises adopt AI agents in a safe and secure manner?",
+      "evidenceLink": "",
+      "score": 46.09095376984127,
+      "core": "How can enterprises adopt AI agents in a safe and secure manner?",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-04T16:13:47.930Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Safety overview: GPT-6 Astra",
+      "link": "https://openai.com/index/safety-overview-gpt-6-astra",
+      "publishedAt": "2026-09-03T00:00:00.000Z",
+      "author": "",
+      "summary": "GPT-6 Astra is our most capable broadly deployed model and our first to reach the Critical level of cybersecurity capability under our Preparedness Framework.",
+      "evidenceLink": "",
+      "score": 45.00420773809524,
+      "core": "GPT-6 Astra is our most capable broadly deployed model and our first to reach the Critical level of cybersecurity capability under our Preparedness Framework.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-04T16:13:47.930Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "What Is Agentic AI? A Complete Guide",
+      "link": "https://rerun.build/blog/what-is-agentic-ai",
+      "publishedAt": "2026-09-04T06:18:38.000Z",
+      "author": "",
+      "summary": "Agentic AI is AI that acts, not just answers. It plans, uses tools, and executes goals on its own. A clear guide to how it works, real examples, and the risks.",
+      "evidenceLink": "",
+      "score": 41.17480297619048,
+      "core": "Agentic AI is AI that acts, not just answers. It plans, uses tools, and executes goals on its own. A clear guide to how it works, real examples, and the risks.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-04T16:13:47.930Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pragmatic_engineer",
+      "source": "The Pragmatic Engineer",
+      "title": "The Pragmatic Engineer: Five years",
+      "link": "https://newsletter.pragmaticengineer.com/p/the-pragmatic-engineer-five-years",
+      "publishedAt": "2026-09-01T17:14:34.000Z",
+      "author": "Gergely Orosz",
+      "summary": "As the newsletter reaches its fifth birthday, we reflect on how the publication has changed, and what to expect. Also: the launch of the ‘How Software Engineering is Changing’ essay contest",
+      "evidenceLink": "",
+      "score": 35.97948551587301,
+      "core": "As the newsletter reaches its fifth birthday, we reflect on how the publication has changed, and what to expect. Also: the launch of the ‘How Software Engineering is Changing’ essay contest",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-04T16:13:47.930Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "LLM gateway caching: how it works and when to use it - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/llm-gateway-caching",
+      "publishedAt": "2026-08-09T00:00:00.000Z",
+      "author": "",
+      "summary": "Learn how LLM gateway caching reduces latency and token costs, how exact-match, semantic, and provider prompt caching differ, and how to keep cached responses accurate with TTLs and evaluation.",
+      "score": 35.07222222222222,
+      "core": "Learn how LLM gateway caching reduces latency and token costs, how exact-match, semantic, and provider prompt caching differ, and how to keep cached responses accurate with TTLs and evaluation.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-04T16:13:47.930Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "The Web Conference",
+      "title": "An Agentic System for Automated Polymer Property Prediction in Low-Code Environments",
+      "link": "https://www.semanticscholar.org/paper/4985a8cb373d7a43c786a3b0e0519591e0d0ff89",
+      "evidenceLink": "https://www.semanticscholar.org/paper/4985a8cb373d7a43c786a3b0e0519591e0d0ff89",
+      "publishedAt": "2026-05-28T00:00:00.000Z",
+      "submittedAt": "2026-05-28T00:00:00.000Z",
+      "author": "Djamel-Eddine Louhbaibat, Juba Agoun, Mohand-Saïd Hacid",
+      "summary": "The polymer industry faces increasing complexity in material design and property characterization, often requiring advanced data handling skills that domain experts may lack. This work presents Poly-WorkFlowX, an integrated agentic system combining machine learning and low-code automation to bridge the gap between materials science and artificial intelligence. We propose an architecture where a conversational agent, powered by Large Language Models (LLMs), orchestrates data workflows based on natural language instructions. The system integrates a custom Multi-Task Learning model for polymer property prediction directly into the n8n low-code platform. This approach enables non-expert researchers to predict physico-chemical properties from molecular representations (PSMILES) and automatically generate reproducible data processing pipelines. We demonstrate the system's efficiency through a complexity analysis, highlighting the reduction in manual configuration steps required to deploy scientific workflows.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "WWW",
+        "venueLabel": "The Web Conference",
+        "venueName": "The Web Conference",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 35,
+      "core": "The polymer industry faces increasing complexity in material design and property characterization, often requiring advanced data handling skills that domain experts may lack. This work presents Poly-WorkFlowX, an integrated agentic system combining machine learning and low-code automation to bridge the gap between materials science and artificial intelligence. We propose an architecture where a conversational agent,…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "huggingface_blog",
+      "source": "Hugging Face Blog",
+      "title": "BenchMIRT: What are LLM benchmarks actually measuring?",
+      "link": "https://huggingface.co/blog/allenai/benchmirt",
+      "publishedAt": "2026-09-01T21:39:07.000Z",
+      "author": "",
+      "summary": "",
+      "evidenceLink": "",
+      "score": 34.24442599206349,
+      "core": "原文摘要不足，需要精读正文后补充核心结论。",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-04T16:13:47.930Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "STAPO: Selective Trajectory-Aware Policy Optimization for LLM Agent Training",
+      "link": "https://arxiv.org/abs/2607.04963",
+      "evidenceLink": "https://www.semanticscholar.org/paper/d38df55c73c4dcfd73885518d609e19b10481b23",
+      "publishedAt": "2026-07-06T00:00:00.000Z",
+      "submittedAt": "2026-07-06T00:00:00.000Z",
+      "author": "Qiuyi Qi, Tian Liang, Mutian Bao, Jinjian Zhang, Dongnan Liu",
+      "summary": "Reinforcement Learning (RL) is the dominant paradigm for training Large Language Model (LLM) agents on long-horizon tasks. However, sparse and delayed rewards often lead to trajectory neglect, in which agents lose focus on the task goal and interaction history at intermediate steps. Prior work has explored step-level supervision using Shannon-entropy-based uncertainty signals, which conflate inherent state complexity with agent confidence and therefore provide unreliable estimates of decision reliability. To address this issue, we propose normalized entropy, which measures confidence deviations relative to an agent's average behavior under a given state, thereby strengthening the association between low-quality actions and trajectory neglect. Building on this insight, we introduce Selective Trajectory-Aware Policy Optimization (STAPO), a hierarchical group-based RL framework. STAPO leverages normalized entropy to locate outlier steps associated with trajectory neglect and optimizes them via a joint mechanism of trajectory-aware reward and trajectory-independent penalty, enhancing trajectory awareness while preserving training stability. Extensive experiments on ALFWorld, WebShop, and Search-Augmented QA demonstrate that STAPO achieves state-of-the-art performance while substantially alleviating trajectory neglect, validating its effectiveness and robustness for agentic tasks.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 34,
+      "core": "Reinforcement Learning (RL) is the dominant paradigm for training Large Language Model (LLM) agents on long-horizon tasks. However, sparse and delayed rewards often lead to trajectory neglect, in which agents lose focus on the task goal and interaction history at intermediate steps. Prior work has explored step-level supervision using Shannon-entropy-based uncertainty signals, which conflate inherent state complexit…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "The Web Conference",
+      "title": "How to Measure Node Importance in the Agentic Web",
+      "link": "https://doi.org/10.1145/3774905.3795094",
+      "evidenceLink": "https://www.semanticscholar.org/paper/b2945cfb4cde120378f1f83bca367b1a9c66fdfe",
+      "publishedAt": "2026-05-28T00:00:00.000Z",
+      "submittedAt": "2026-05-28T00:00:00.000Z",
+      "author": "I. Samoylenko, E.I. Pribytkova",
+      "summary": "The rapid progress of large language models is giving rise to an agentic web, a paradigm in which autonomous agents, rather than humans, become the primary actors of the internet. In such systems, identifying which agents play a central role is a fundamental problem, as importance metrics govern the spread of information, influence, and other network processes [1]. Classical centrality measures, such as PageRank and betweenness centrality, were developed for human-centric networks and may fail to capture the utility-driven dynamics of agentic systems. We propose a game-theoretic perspective in which agents seek to maximize informational utility while minimizing communication costs under progressive information degradation. Within this framework, we introduce Information Spreading Betweenness Centrality (ISBC), a directed and distance-aware measure that models cumulative information decay along shortest paths. We validate ISBC through a controlled synthetic experiment simulating LLM-mediated information propagation on news data annotated with semantic highlights. The results show that ISBC identifies vertices that are more effective in terms of both information throughput and semantic preservation than those selected by PageRank or classical betweenness centrality. These findings highlight the need for centrality measures tailored to the dynamics of autonomous agent communication.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "WWW",
+        "venueLabel": "The Web Conference",
+        "venueName": "The Web Conference",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 34,
+      "core": "The rapid progress of large language models is giving rise to an agentic web, a paradigm in which autonomous agents, rather than humans, become the primary actors of the internet. In such systems, identifying which agents play a central role is a fundamental problem, as importance metrics govern the spread of information, influence, and other network processes [1]. Classical centrality measures, such as PageRank and…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Healthcare organizations can now connect EHR and additional industry data to ChatGPT",
+      "link": "https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources",
+      "publishedAt": "2026-09-01T12:00:00.000Z",
+      "author": "",
+      "summary": "ChatGPT can now connect to trusted healthcare data, helping clinicians securely access patient context, medical research, and more.",
+      "evidenceLink": "",
+      "score": 33.282779166666664,
+      "core": "ChatGPT can now connect to trusted healthcare data, helping clinicians securely access patient context, medical research, and more.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-04T16:13:47.930Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Do LLM Agents Mirror Socio-Cognitive Effects in Power-Asymmetric Conversations?",
+      "link": "https://arxiv.org/abs/2605.17694",
+      "evidenceLink": "https://www.semanticscholar.org/paper/3d7264f430da6cf0f9bfd87e278254061f2805ff",
+      "publishedAt": "2026-05-17T00:00:00.000Z",
+      "submittedAt": "2026-05-17T00:00:00.000Z",
+      "author": "Anvesh Rao Vijjini, S. Manjunath, Snigdha Chaturvedi",
+      "summary": "Power differences shape human communication through well documented socio cognitive effects, including language coordination, pronoun usage, authority bias, and harmful compliance. We examine whether large language models (LLMs) exhibit similar behaviors when assigned high or low status personas. Using personas from diverse professions, we simulate multi turn, power asymmetric dialogues (e.g., principal teacher, justice lawyer) and measure (i) language coordination, (ii) pronoun usage, (iii) persuasion success, and (iv) compliance with unsafe requests. Our results show that LLMs show key socio-cognitive effects of power, albeit with nuances and variability, linking simulated interactions to both desirable and unsafe behaviors.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 28,
+      "core": "Power differences shape human communication through well documented socio cognitive effects, including language coordination, pronoun usage, authority bias, and harmful compliance. We examine whether large language models (LLMs) exhibit similar behaviors when assigned high or low status personas. Using personas from diverse professions, we simulate multi turn, power asymmetric dialogues (e.g., principal teacher, jus…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    }
+  ]
+}
