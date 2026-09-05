@@ -174,6 +174,7 @@ function isAihotNonProductObservation(row) {
   if (clean(row.source) !== "AIHOT") return false;
   const text = `${row.product} ${row.did} ${row.why}`.toLowerCase();
   return (
+    /研究|论文|基准|评测|建议定期|实测|作者用|转发|承认|事故|灌水|失控|集群|模拟科学会议|手术|临床应用|实用提示词|转发.{0,30}提示词|派对|心跳程序|测试自身|事件报告机制|rogue|swarm/i.test(text) ||
     /研究|论文|基准|评测|排行|榜单|首页|前瞻|预测|观点|访谈|圆桌|融资|估值|财报|监管|风险|采购|求购|高校|军方|报道称|据报道/.test(text) ||
     /向量存储|压缩|faiss|terminalbench|benchmark|arxiv|report|survey|forecast|outlook/i.test(text) ||
     /不敌|击败|超过|占\s*(?:huggingface|hf|首页)|前\s*\d+\s*个模型/i.test(text)

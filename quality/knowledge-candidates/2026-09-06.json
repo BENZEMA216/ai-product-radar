@@ -1,0 +1,380 @@
+{
+  "generatedAt": "2026-09-05T16:26:32.118Z",
+  "date": "2026-09-06",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Ling 3.0 Flash Sante is now available on AI Gateway for free",
+      "link": "https://vercel.com/changelog/ling-3-0-flash-sante-is-now-available-on-ai-gateway-for-free",
+      "publishedAt": "2026-09-04T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "Ling 3.0 Flash Sante from inclusionAI is now available on AI Gateway, free to use through October 4. Ling 3.0 Flash Sante is a health and medicine-focused version of Ling 3.0 Flash . It is a Mixture-of-Experts model with 124B total parameters and about 5.1B active per token, a 256K token context window, and function calling. The model is built for medical reasoning, professional healthcare tasks, deep research, evidence-based retrieval, and multi-step medical workflows. It retains the base model's general reasoning, coding, and agentic capabilities. How to use the model during the free period The standard model ID, inclusionai/ling-3.0-flash-sante , is free through October 4 and begins billing when the offer ends. The free model ID, inclusionai/ling-3.0-flash-sante-free , stops serving when the offer ends instead of billing. Free requests still appear in your spend dashboard and carry a trace, they just cost nothing. To use Ling 3.0 Flash Sante, set model in the AI SDK : Use inclusionai/ling-3.0-flash-sante-free if you want the model to stop serving when the offer ends rather than start billing. To use it in a coding agent, see the coding agents guide , then run vercel ai-gateway coding-agents setup to connect Claude Code, Codex, Cursor, and more, then select inclusionai/ling-3.0-flash-sante in the agent. Try Ling 3.0 Flash Sante in the model playground , or open the free model page . AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. You can view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 89.1112675,
+      "core": "Ling 3.0 Flash Sante from inclusionAI is now available on AI Gateway, free to use through October 4. Ling 3.0 Flash Sante is a health and medicine-focused version of Ling 3.0 Flash . It is a Mixture-of-Experts model with 124B total parameters and about 5.1B active per token, a 256K token context window, and function calling. The model is built for medical reasoning, professional healthcare tasks, deep research, evid…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-05T16:26:32.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "GPT 6 Astra now available on Vercel AI Gateway",
+      "link": "https://vercel.com/changelog/gpt-6-astra-now-available-on-vercel-ai-gateway",
+      "publishedAt": "2026-09-04T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "GPT 6 Astra from OpenAI is now available on AI Gateway. It is designed for long-running agentic work across software engineering, computer and browser use, scientific research, and professional workflows. Astra can navigate software, complete forms, organize records, analyze data, run simulations, and build and test websites. It also improves instruction following during evolving tasks. It can incorporate new requirements without losing earlier constraints, continue independent work while waiting for clarification, and use reasonable assumptions. To call GPT 6 Astra in code or in coding agent integrations, use openai/gpt-6-astra : To use it in a coding agent, see the coding agents guide , then run vercel ai-gateway coding-agents setup to connect Codex, Cursor, and more, and select openai/gpt-6-astra in the agent. Try GPT 6 Astra in the model playground . Read more",
+      "evidenceLink": "",
+      "score": 69.97793416666666,
+      "core": "GPT 6 Astra from OpenAI is now available on AI Gateway. It is designed for long-running agentic work across software engineering, computer and browser use, scientific research, and professional workflows. Astra can navigate software, complete forms, organize records, analyze data, run simulations, and build and test websites. It also improves instruction following during evolving tasks. It can incorporate new requir…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-05T16:26:32.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "GPT-6 Astra on OpenRouter",
+      "link": "https://openrouter.ai/openai/gpt-6-astra",
+      "publishedAt": "2026-09-04T21:39:19.000Z",
+      "author": "Topfi https://news.ycombinator.com/user?id=Topfi",
+      "summary": "GPT-6 Astra is OpenAI&#x27;s flagship model for demanding end-to-end work. $10 per million input tokens, $50 per million output tokens. 1,050,000 token context window, maximum output of 128,000 tokens. Higher uptime with 2 providers. Includes independent benchmarks from Artificial Analysis.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49570545",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 272,
+        "comments": 186
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-05T16:26:32.118Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 67.999236170499,
+      "core": "GPT-6 Astra is OpenAI&#x27;s flagship model for demanding end-to-end work. $10 per million input tokens, $50 per million output tokens. 1,050,000 token context window, maximum output of 128,000 tokens. Higher uptime with 2 providers. Includes independent benchmarks from Artificial Analysis.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Designing lifecycle policies for AgentCore memory",
+      "link": "https://aws.amazon.com/blogs/machine-learning/designing-lifecycle-policies-for-agentcore-memory",
+      "publishedAt": "2026-09-04T17:20:04.000Z",
+      "author": "Akarsha Sehwag",
+      "summary": "Long-running AI agents accumulate outdated memories that degrade quality and create compliance risk. Learn how to design memory lifecycle policies for Amazon Bedrock AgentCore: scoring, consolidating, and pruning agent memories on a nightly AWS Step Functions workflow, with a deployable AWS CDK stack.",
+      "evidenceLink": "",
+      "score": 57.02721988095238,
+      "core": "Long-running AI agents accumulate outdated memories that degrade quality and create compliance risk. Learn how to design memory lifecycle policies for Amazon Bedrock AgentCore: scoring, consolidating, and pruning agent memories on a nightly AWS Step Functions workflow, with a deployable AWS CDK stack.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-05T16:26:32.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Can AI design circuit boards yet?",
+      "link": "https://eebench.org/blog/can-ai-design-circuit-boards-yet",
+      "publishedAt": "2026-09-04T19:48:29.000Z",
+      "author": "iopapa https://news.ycombinator.com/user?id=iopapa",
+      "summary": "OpenAI showed GPT-6 Astra routing a PCB. We built EEBench to find out whether AI-designed circuits actually work.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49569366",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 309,
+        "comments": 184
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-05T16:26:32.118Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 52.14505831486628,
+      "core": "OpenAI showed GPT-6 Astra routing a PCB. We built EEBench to find out whether AI-designed circuits actually work.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Build a Physical AI model factory with NVIDIA Cosmos 3 on SageMaker HyperPod",
+      "link": "https://aws.amazon.com/blogs/machine-learning/build-a-physical-ai-model-factory-with-nvidia-cosmos-3-on-sagemaker-hyperpod",
+      "publishedAt": "2026-09-04T16:16:00.000Z",
+      "author": "Nathan Arnold",
+      "summary": "Building a Physical AI system takes a continuous pipeline, not a single training job. This post shows how to run that model factory (synthetic data generation, post-training, and closed-loop evaluation with NVIDIA Cosmos 3) on a persistent, resilient Amazon SageMaker HyperPod cluster on Amazon EKS, with GPU goodput as the metric that matters.",
+      "evidenceLink": "",
+      "score": 50.18428337301587,
+      "core": "Building a Physical AI system takes a continuous pipeline, not a single training job. This post shows how to run that model factory (synthetic data generation, post-training, and closed-loop evaluation with NVIDIA Cosmos 3) on a persistent, resilient Amazon SageMaker HyperPod cluster on Amazon EKS, with GPU goodput as the metric that matters.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-05T16:26:32.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How Intuit built an agentic disaster recovery assistant with Amazon Bedrock",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-intuit-built-an-agentic-disaster-recovery-assistant-with-amazon-bedrock",
+      "publishedAt": "2026-09-04T16:06:01.000Z",
+      "author": "Suvojit Dasgupta",
+      "summary": "Disaster recovery at scale is hard. Learn how Intuit built EWOK Agent, an agentic disaster recovery assistant on Amazon Bedrock that lets on-call engineers run production failovers from a plain-language request while keeping every action audited, policy-compliant, and safe.",
+      "evidenceLink": "",
+      "score": 48.78350956349206,
+      "core": "Disaster recovery at scale is hard. Learn how Intuit built EWOK Agent, an agentic disaster recovery assistant on Amazon Bedrock that lets on-call engineers run production failovers from a plain-language request while keeping every action audited, policy-compliant, and safe.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-05T16:26:32.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Formalizing Fermat&#x27;s Last Theorem",
+      "link": "https://www.anthropic.com/research/formalizing-fermats-last-theorem",
+      "publishedAt": "2026-09-04T18:21:03.000Z",
+      "author": "",
+      "summary": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "score": 48.12204130952381,
+      "core": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-05T16:26:32.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "AI handles incidents, engineers lose touch with their systems",
+      "link": "https://www.sylvainkalache.com/blog/ai-handles-incidents-engineers-lose-touch-with-their-systems",
+      "publishedAt": "2026-09-05T07:52:50.000Z",
+      "author": "sylvainkalache https://news.ycombinator.com/user?id=sylvainkalache",
+      "summary": "AI-assisted incident response can lower MTTR while leaving engineers less prepared for the complex incidents automation cannot solve.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49574167",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 281,
+        "comments": 245
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-05T16:26:32.118Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 46.16045468437499,
+      "core": "AI-assisted incident response can lower MTTR while leaving engineers less prepared for the complex incidents automation cannot solve.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "Enterprise AI Agents: What They Are, Why Most Fail, and How to Deploy Them Safely",
+      "link": "https://rerun.build/blog/enterprise-ai-agents",
+      "publishedAt": "2026-09-05T06:19:32.000Z",
+      "author": "",
+      "summary": "Enterprise AI agents fail on operations, not intelligence. A practical guide to what enterprise-grade requires, why 40% of projects get canceled, and how to deploy agents you can watch, govern, and trust.",
+      "evidenceLink": "",
+      "score": 41.410711944444444,
+      "core": "Enterprise AI agents fail on operations, not intelligence. A practical guide to what enterprise-grade requires, why 40% of projects get canceled, and how to deploy agents you can watch, govern, and trust.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-05T16:26:32.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "From code to diagrams: Agentic architecture documentation with Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/from-code-to-diagrams-agentic-architecture-documentation-with-amazon-bedrock-agentcore",
+      "publishedAt": "2026-09-02T18:18:47.000Z",
+      "author": "Göksel SARIKAYA",
+      "summary": "Learn how a global interdealer broker built an automated architecture documentation pipeline on Amazon Bedrock AgentCore that analyzes .NET code bases, generates architecture diagrams, and maintains searchable documentation through Amazon Bedrock Knowledge Bases and AWS CodePipeline.",
+      "evidenceLink": "",
+      "score": 38.56854924603174,
+      "core": "Learn how a global interdealer broker built an automated architecture documentation pipeline on Amazon Bedrock AgentCore that analyzes .NET code bases, generates architecture diagrams, and maintains searchable documentation through Amazon Bedrock Knowledge Bases and AWS CodePipeline.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-05T16:26:32.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Trinity: Agentic AI-powered transition planning for students with disabilities",
+      "link": "https://aws.amazon.com/blogs/machine-learning/trinity-agentic-ai-powered-transition-planning-for-students-with-disabilities",
+      "publishedAt": "2026-09-02T18:14:17.000Z",
+      "author": "Sadia Ahmed",
+      "summary": "Learn how University Startups and its AWS partner g/d/n/a scaled Trinity, a conversational AI solution for students with disabilities, into a serverless multi-agent architecture on Amazon Bedrock that produces IDEA-aligned transition plans for school districts across the US.",
+      "evidenceLink": "",
+      "score": 38.5131921031746,
+      "core": "Learn how University Startups and its AWS partner g/d/n/a scaled Trinity, a conversational AI solution for students with disabilities, into a serverless multi-agent architecture on Amazon Bedrock that produces IDEA-aligned transition plans for school districts across the US.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-05T16:26:32.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "How Podium optimized agent behavior and reduced engineering intervention by 90% with LangSmith",
+      "link": "https://www.langchain.com/blog/customers-podium",
+      "publishedAt": "2026-08-26T16:53:53.000Z",
+      "author": "",
+      "summary": "See how Podium tests across the lifecycle development of their AI employee agent, using LangSmith for dataset curation and finetuning. They improved agent F1 response quality to 98% and reduced the need for engineering intervention by 90%.",
+      "evidenceLink": "",
+      "score": 31.32777777777778,
+      "core": "See how Podium tests across the lifecycle development of their AI employee agent, using LangSmith for dataset curation and finetuning. They improved agent F1 response quality to 98% and reduced the need for engineering intervention by 90%.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-05T16:26:32.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "sierra_engineering",
+      "source": "Sierra Blog",
+      "title": "AI for call centers: an operating and rollout guide",
+      "link": "https://sierra.ai/blog/ai-for-call-centers",
+      "publishedAt": "2026-09-04T21:16:00.000Z",
+      "author": "Jonathan Costet",
+      "summary": "Use a lifecycle map and go/no-go checklist to plan routing, workforce, technology controls, failover, and expansion for AI in the call center.",
+      "evidenceLink": "",
+      "score": 29.419204007936507,
+      "core": "Use a lifecycle map and go/no-go checklist to plan routing, workforce, technology controls, failover, and expansion for AI in the call center.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-05T16:26:32.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_industry_ai",
+      "source": "Microsoft Industry Blog",
+      "title": "Responsible AI in 2026: How we are adapting for what’s ahead",
+      "link": "https://blogs.microsoft.com/on-the-issues/2026/09/01/responsible-ai-in-2026-how-we-are-adapting-for-whats-ahead",
+      "publishedAt": "2026-09-01T17:11:44.000Z",
+      "author": "Natasha Crampton",
+      "summary": "Microsoft's 2026 Responsible AI Transparency Report highlights the progress we’ve made in building and deploying AI responsibly, supporting our customers, and strengthening our responsible AI governance, tools, and practices. The post Responsible AI in 2026: How we are adapting for what’s ahead appeared first on The Microsoft Cloud Blog .",
+      "evidenceLink": "",
+      "score": 24.085553214285714,
+      "core": "Microsoft's 2026 Responsible AI Transparency Report highlights the progress we’ve made in building and deploying AI responsibly, supporting our customers, and strengthening our responsible AI governance, tools, and practices. The post Responsible AI in 2026: How we are adapting for what’s ahead appeared first on The Microsoft Cloud Blog .",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-05T16:26:32.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "deepmind",
+      "source": "Google DeepMind",
+      "title": "Proactive cyber defense for governments and enterprises",
+      "link": "https://blog.google/innovation-and-ai/technology/safety-security/fairwind-program",
+      "publishedAt": "2026-09-02T16:24:24.000Z",
+      "author": "",
+      "summary": "",
+      "evidenceLink": "",
+      "score": 20.854600833333333,
+      "core": "原文摘要不足，需要精读正文后补充核心结论。",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-05T16:26:32.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "deepmind",
+      "source": "Google DeepMind",
+      "title": "Introducing WeatherNext 3, our most advanced and accurate global weather AI model",
+      "link": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-weathernext-3",
+      "publishedAt": "2026-09-03T15:02:08.000Z",
+      "author": "",
+      "summary": "",
+      "evidenceLink": "",
+      "score": 10.470950039682542,
+      "core": "原文摘要不足，需要精读正文后补充核心结论。",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-05T16:26:32.118Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "deepmind",
+      "source": "Google DeepMind",
+      "title": "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber",
+      "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber",
+      "publishedAt": "2026-09-02T16:18:31.000Z",
+      "author": "",
+      "summary": "",
+      "evidenceLink": "",
+      "score": 8.847596865079367,
+      "core": "原文摘要不足，需要精读正文后补充核心结论。",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-05T16:26:32.118Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

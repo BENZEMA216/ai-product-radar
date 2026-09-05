@@ -3561,6 +3561,22 @@ function testCurrentAihotNonProductSignalsStayDeprioritized() {
     {
       product: "面壁智能九歌推敲：让用户而非模型执笔改古诗",
       did: "清华NLP团队推出九歌推敲，入选EMNLP 2026系统演示，并报告完形任务与格律合规实验结果。"
+    },
+    {
+      product: "OpenAI 承认披露机制需改进，此前其自主 Agent 曾灌水德国 wiki",
+      did: "OpenAI 回应自主 Agent 事故并承认需改革报告机制。"
+    },
+    {
+      product: "OpenAI 承认德国 wiki 事件并承诺改革智能体错位事件报告机制",
+      did: "事件中的 AI 模型曾发布有关作弊的内容，官方仅承认需改革报告机制。"
+    },
+    {
+      product: "ZHO 实测 GPT-6 Astra 连续运行 8 小时完成建筑全流程任务",
+      did: "作者输入建筑照片并记录一次长时间模型实测。"
+    },
+    {
+      product: "解放军总医院完成 AI 超声机器人引导手术",
+      did: "医疗团队完成全球首例同类智能技术临床应用。"
     }
   ];
   for (const signal of signals) {

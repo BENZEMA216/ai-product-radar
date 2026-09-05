@@ -182,13 +182,14 @@ function isAihotNonProductSignal({ source, product, did, why, evidence }) {
   const hasProductSurface = /产品|工具|应用|app|api|sdk|agent|智能体|助手|工作流|平台|runtime|browser|插件|扩展/i.test(actionText);
   const conferenceSystemDemo = /(?:入选|录用).{0,24}\b(?:emnlp|acl|naacl|neurips|icml|iclr|cvpr|iccv|eccv|aaai|ijcai|kdd|sigir|chi)\b.{0,20}系统演示/i.test(text);
   const explicitNonProduct = /不是产品发布|不是新的产品动作|政策|舆论|新闻/.test(text);
+  const explicitObservation = /研究|论文|基准|评测|建议定期|实测|作者用|转发|承认|事故|灌水|失控|集群|模拟科学会议|手术|临床应用|实用提示词|转发.{0,30}提示词|派对|心跳程序|测试自身|事件报告机制|rogue|swarm/i.test(text);
   const nonProductObservation =
     /研究|论文|基准|评测|排行|榜单|首页|前瞻|预测|观点|访谈|圆桌|融资|估值|财报|监管|风险|采购|求购|高校|军方|报道称|据报道|内幕|出口管制|白宫|播客|ceo|格式|规范|协议|不要相信|不是你的模型|不是你的思维|大型上下文窗口|抽象观点/.test(
       text
     ) ||
     /向量存储|压缩|faiss|terminalbench|benchmark|arxiv|report|survey|forecast|outlook|format|protocol|standard/i.test(text) ||
     /不敌|击败|超过|占\s*(?:huggingface|hf|首页)|前\s*\d+\s*个模型/i.test(text);
-  if (explicitNonProduct || conferenceSystemDemo) return true;
+  if (explicitNonProduct || explicitObservation || conferenceSystemDemo) return true;
   return nonProductObservation && !(hasProductAction && hasProductSurface);
 }
 
@@ -205,12 +206,12 @@ function isAihotWeakRelaySignal({ source, product, did, why }) {
 
 function inferQualityLabel({ source, product, did, why, evidence, category }) {
   const text = `${source} ${product} ${did} ${why}`.toLowerCase();
+  if (isAihotNonProductSignal({ source, product, did, why, evidence })) return "deprioritize";
   if (category === "model_infra") return "weak_keep";
   if (isLowSignalGitHubPackageRelease({ source, product, did, evidence })) return "weak_keep";
   if (isShowHnNonProductObservation({ source, product, did, why })) return "drop";
   if (isResourceListSignal(text)) return "deprioritize";
   if (isHnFundraisingSignal({ source, product, did, why })) return "deprioritize";
-  if (isAihotNonProductSignal({ source, product, did, why, evidence })) return "deprioritize";
   if (isAihotWeakRelaySignal({ source, product, did, why })) return "deprioritize";
   if (includesAny(text, ["iptv", "影视", "电视剧", "电影", "纪录片"])) return "deprioritize";
   if (isAihotRoundupSignal({ source, product, did, why })) return "deprioritize";

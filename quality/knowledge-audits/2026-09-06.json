@@ -1,0 +1,122 @@
+{
+  "generatedAt": "2026-09-05T16:29:12.045Z",
+  "report": "2026-09-06.md",
+  "health": "quality/knowledge-source-health/2026-09-06.json",
+  "candidates": "quality/knowledge-candidates/2026-09-06.json",
+  "site": "docs/index.html",
+  "ok": true,
+  "date": "2026-09-06",
+  "rows": 18,
+  "blogCount": 18,
+  "paperCount": 0,
+  "blogAccessVerifiedCount": 18,
+  "topConferencePaperCount": 0,
+  "sourceCount": 51,
+  "candidatePool": {
+    "historicalLinkCount": 762,
+    "blogFetchedCount": 237,
+    "blogAccessCheckedCount": 39,
+    "blogAccessVerifiedCount": 26,
+    "blogAccessRejectedCount": 13,
+    "blogAccessRejected": [
+      {
+        "sourceId": "simon_willison",
+        "title": "OpenAI's rogue agents were caught communicating via public wikis",
+        "link": "https://simonwillison.net/2026/Sep/4/rogue-agent-wikis",
+        "reason": "HTTP 500"
+      },
+      {
+        "sourceId": "simon_willison",
+        "title": "The Pelican comparison grid for Astra is pretty interesting",
+        "link": "https://simonwillison.net/2026/Sep/4/astra-pelicans",
+        "reason": "HTTP 500"
+      },
+      {
+        "sourceId": "interconnects",
+        "title": "Lessons from the hacks",
+        "link": "https://www.interconnects.ai/p/lessons-from-the-hacks",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "How to turn your AI into a world-class designer",
+        "link": "https://www.lennysnewsletter.com/p/how-to-turn-your-ai-into-a-world",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "AI’s third era: the rise of persistent AI coworkers | Tara Seshan (Product Lead ChatGPT Work)",
+        "link": "https://www.lennysnewsletter.com/p/ais-third-era-the-rise-of-persistent",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "🧠 Community Wisdom: Favorite Lenny’s Product Pass tools, how AI is reshaping hiring, what to prioritize when you join a new company, and more",
+        "link": "https://www.lennysnewsletter.com/p/community-wisdom-favorite-lennys",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Why Ramp built its own in-house coding agent, Inspect",
+        "link": "https://newsletter.pragmaticengineer.com/p/why-ramp-built-inspect",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Software engineering at a proprietary trading company: Optiver",
+        "link": "https://newsletter.pragmaticengineer.com/p/optiver",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: tech companies move to open AI models",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-tech-companies-move-to",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: Meta’s self-inflicted resignation-wave",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-metas-self-inflicted-resignation",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: Meta wanted to reduce teams by 60% because of AI",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-meta-wanted-to-reduce-teams",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: We need to talk about migrations with AI",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-we-need-to-talk-about-migrations",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Headed for the Exit: the Great Engineering Leader Career Break",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-great-engineering-leader-career-break",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      }
+    ],
+    "paperFetchedCount": 76,
+    "paperTopConferenceVerifiedCount": 76,
+    "blogAfterHistoricalDedupCount": 26,
+    "paperAfterHistoricalDedupCount": 0,
+    "eligibleAfterHistoricalDedupCount": 26,
+    "maxPerBlogSource": 2,
+    "selectedBlogSourceCounts": {
+      "anthropic": 1,
+      "aws_machine_learning": 5,
+      "deepmind": 3,
+      "hcker_news_ai_blogs": 3,
+      "langchain_engineering": 1,
+      "microsoft_industry_ai": 1,
+      "rerun_agent_engineering": 1,
+      "sierra_engineering": 1,
+      "vercel_ai": 2
+    },
+    "sourceCapRelaxed": true,
+    "shortfallReason": "历史 canonical URL 去重后有效新内容不足，未达到总量目标；顶会元数据核验后论文仅 0 篇，空缺优先用已验证可访问的 Blog 补位，不用普通 arXiv 论文凑数；未用旧文或低质量内容补位。"
+  },
+  "failures": []
+}
