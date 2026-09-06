@@ -3577,6 +3577,18 @@ function testCurrentAihotNonProductSignalsStayDeprioritized() {
     {
       product: "解放军总医院完成 AI 超声机器人引导手术",
       did: "医疗团队完成全球首例同类智能技术临床应用。"
+    },
+    {
+      product: "CNBC：科技巨头一周密集更新 AI 模型，模型疲劳问题凸显",
+      did: "据 CNBC 报道，一周内多家公司密集发布模型。"
+    },
+    {
+      product: "阑夕用《帝国时代II》奇观类比解读SOTA模型的领先周期",
+      did: "作者以奇观类比评论模型领先通常在三个月内被追平。"
+    },
+    {
+      product: "中国联通反诈大模型预警并协助捣毁涉诈 VOIP 黑盒设备",
+      did: "团队依托模型预警，联合公安捣毁设备并抓捕嫌疑人。"
     }
   ];
   for (const signal of signals) {
@@ -3595,6 +3607,40 @@ function testCurrentAihotNonProductSignalsStayDeprioritized() {
       `${signal.product} should stay deprioritized`
     );
   }
+}
+
+function testQualityAuditKeepsExplicitAihotProductUpdates() {
+  const rows = [
+    {
+      product: "Grok Imagine Video 1.5 Agent 上线",
+      link: "https://example.com/grok-imagine",
+      source: "AIHOT",
+      why: "已上线的视频 Agent 适合检查多镜头连续性是否改善创作交付。",
+      did: "Grok Imagine Video 1.5 agent 现已上线，测试者实测了广告横幅。",
+      category: "product",
+      qualityLabel: "weak_keep"
+    },
+    {
+      product: "Google 将 Lyria 3.5 集成进 Gemini app",
+      link: "https://example.com/lyria",
+      source: "AIHOT",
+      why: "音乐生成直接进入 Gemini 任务入口，可观察用户是否在对话内完成创作。",
+      did: "Google 在 Gemini app 和 API 中发布 Lyria 3.5，官方称人声表现超过前代。",
+      category: "product",
+      qualityLabel: "weak_keep"
+    },
+    ...Array.from({ length: 18 }, (_, index) => ({
+      product: `Useful Agent Product ${index}`,
+      link: `https://example.com/useful-agent-${index}`,
+      source: index % 2 ? "HN Algolia" : "Product Hunt",
+      why: "它有明确的 agent 工作流场景，适合检查产品任务闭环。",
+      did: "发布 AI agent workflow 产品。",
+      category: "product",
+      qualityLabel: "keep"
+    }))
+  ];
+  const audit = auditReportQuality({ rows });
+  assert.equal(audit.failures.some((failure) => failure.code === "aihot_news_or_research_top20"), false);
 }
 
 function testAihotProductMetricsOpinionStaysDeprioritized() {
@@ -4764,6 +4810,7 @@ const tests = [
   ["Quality audit flags generic HF Space flood Top 20", testQualityAuditFlagsGenericHfSpaceFloodTop20],
   ["Quality audit flags AIHOT research Top 20", testQualityAuditFlagsAihotResearchTop20],
   ["Quality audit flags AIHOT infra observations Top 20", testQualityAuditFlagsAihotInfraObservationTop20],
+  ["Quality audit keeps explicit AIHOT product updates", testQualityAuditKeepsExplicitAihotProductUpdates],
   ["Priority score downranks AIHOT non-product signals", testPriorityScoreDownranksAihotNonProductSignals],
   ["AIHOT observations stay weak across producer and consumer", testAihotObservationStaysWeakAcrossProducerAndConsumer],
   ["AIHOT skills updates stay strong across producer and consumer", testAihotSkillsUpdateStaysStrongAcrossProducerAndConsumer],
