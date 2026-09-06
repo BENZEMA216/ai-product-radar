@@ -1,0 +1,132 @@
+{
+  "generatedAt": "2026-09-06T16:23:35.003Z",
+  "report": "2026-09-07.md",
+  "health": "quality/knowledge-source-health/2026-09-07.json",
+  "candidates": "quality/knowledge-candidates/2026-09-07.json",
+  "site": "docs/index.html",
+  "ok": true,
+  "date": "2026-09-07",
+  "rows": 20,
+  "blogCount": 20,
+  "paperCount": 0,
+  "blogAccessVerifiedCount": 20,
+  "topConferencePaperCount": 0,
+  "sourceCount": 63,
+  "candidatePool": {
+    "historicalLinkCount": 780,
+    "blogFetchedCount": 254,
+    "blogAccessCheckedCount": 52,
+    "blogAccessVerifiedCount": 37,
+    "blogAccessRejectedCount": 15,
+    "blogAccessRejected": [
+      {
+        "sourceId": "interconnects",
+        "title": "Lessons from the hacks",
+        "link": "https://www.interconnects.ai/p/lessons-from-the-hacks",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "🧠 Community Wisdom: Driving AI adoption when habits are the bottleneck, leveling up from APM to a mid-level PM role, converting a wave of new users to subscription, and more",
+        "link": "https://www.lennysnewsletter.com/p/community-wisdom-driving-ai-adoption",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "How to turn your AI into a world-class designer",
+        "link": "https://www.lennysnewsletter.com/p/how-to-turn-your-ai-into-a-world",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "Why companies are becoming a series of loops | Anish Acharya (a16z)",
+        "link": "https://www.lennysnewsletter.com/p/why-companies-are-becoming-a-series",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "AI’s third era: the rise of persistent AI coworkers | Tara Seshan (Product Lead ChatGPT Work)",
+        "link": "https://www.lennysnewsletter.com/p/ais-third-era-the-rise-of-persistent",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "🧠 Community Wisdom: Favorite Lenny’s Product Pass tools, how AI is reshaping hiring, what to prioritize when you join a new company, and more",
+        "link": "https://www.lennysnewsletter.com/p/community-wisdom-favorite-lennys",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Why Ramp built its own in-house coding agent, Inspect",
+        "link": "https://newsletter.pragmaticengineer.com/p/why-ramp-built-inspect",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Software engineering at a proprietary trading company: Optiver",
+        "link": "https://newsletter.pragmaticengineer.com/p/optiver",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: tech companies move to open AI models",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-tech-companies-move-to",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: Meta’s self-inflicted resignation-wave",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-metas-self-inflicted-resignation",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: Meta wanted to reduce teams by 60% because of AI",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-meta-wanted-to-reduce-teams",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: We need to talk about migrations with AI",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-we-need-to-talk-about-migrations",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Headed for the Exit: the Great Engineering Leader Career Break",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-great-engineering-leader-career-break",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "wandb_ai_engineering",
+        "title": "When axis-aligned boxes break: Lessons from a CVPR-published traffic AI",
+        "link": "https://wandb.ai/aman-goyal1099-carnegie-mellon-university/motorcycle-violations/reports/When-axis-aligned-boxes-break-Lessons-from-a-CVPR-published-traffic-AI--VmlldzoxNzU5NzgwNw",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "wandb_ai_engineering",
+        "title": "I built a research agent that reads the internet so I don’t have to. Then I plugged it into my wiki.",
+        "link": "https://wandb.ai/Lorenzo-Team/can-it-run-doom/reports/I-built-a-research-agent-that-reads-the-internet-so-I-don-t-have-to-Then-I-plugged-it-into-my-wiki---VmlldzoxNzY3NjY2MA",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      }
+    ],
+    "paperFetchedCount": 0,
+    "paperTopConferenceVerifiedCount": 0,
+    "blogAfterHistoricalDedupCount": 37,
+    "paperAfterHistoricalDedupCount": 0,
+    "eligibleAfterHistoricalDedupCount": 37,
+    "maxPerBlogSource": 2,
+    "selectedBlogSourceCounts": {
+      "docker_ai_engineering": 3,
+      "elastic_search_labs": 2,
+      "gitlab_ai_engineering": 8,
+      "neon_ai_engineering": 3,
+      "openai_news": 1,
+      "simon_willison": 2,
+      "techradar_pro_ai": 1
+    },
+    "sourceCapRelaxed": true,
+    "shortfallReason": "顶会元数据核验后论文仅 0 篇，空缺优先用已验证可访问的 Blog 补位，不用普通 arXiv 论文凑数；未用旧文或低质量内容补位。"
+  },
+  "failures": []
+}

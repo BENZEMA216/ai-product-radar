@@ -1,0 +1,294 @@
+{
+  "date": "2026-09-07",
+  "generatedAt": "2026-09-06T16:14:09.453Z",
+  "reportPath": "reports/2026-09-07-0014-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 46,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "AIHOT",
+      "Hugging Face API"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 1,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 12,
+      "keptCount": 6,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-09-05；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 12 条，AI 相关候选 6 条；实际 fallback：hunted_space。；历史去重后最终发布 6 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "YC Launch 本窗口无候选或来源为空。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 10,
+      "keptCount": 4,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 16,
+      "keptCount": 16,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "dif.sh",
+      "productKey": "https://www.producthunt.com/products/dif-sh",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 feature flag 压缩成 agent 可安装的 Markdown 配置，值得验证团队能否在不引入重型平台的情况下让编码代理安全切换功能。"
+    },
+    {
+      "rank": 2,
+      "product": "GitWarren",
+      "productKey": "https://www.producthunt.com/products/gitwarren",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把提交前审查交给现有 coding agents，关键看多代理意见能否形成可执行修订，而不是再增加一层泛化代码点评。"
+    },
+    {
+      "rank": 3,
+      "product": "Hyperprobe",
+      "productKey": "https://www.producthunt.com/products/hyperprobe",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它主打无需重新部署就让 agent 调试生产环境，产品价值取决于权限隔离、现场诊断深度和对线上风险的控制。"
+    },
+    {
+      "rank": 4,
+      "product": "Reflexio",
+      "productKey": "https://www.producthunt.com/products/reflexio-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它试图让 agent 从行为反馈中持续学习，值得观察学习结果是否可解释、可撤销，并真正改善后续任务而非累积偏差。"
+    },
+    {
+      "rank": 5,
+      "product": "Vibes – A Mac app for friends to see who's online and coding",
+      "productKey": "https://vibes.opentangle.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用 Mac 在线状态连接正在编码的朋友，当前证据只证明 Show HN 发布；值得看这种轻社交入口能否形成稳定的共同开发场景。"
+    },
+    {
+      "rank": 6,
+      "product": "Object Remover – AI Video Object Remover Online",
+      "productKey": "https://objectremover.online",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把视频物体移除做成在线工具，重点应检查复杂镜头下的时序一致性、边缘修复和导出质量，而不只是单帧效果。"
+    },
+    {
+      "rank": 7,
+      "product": "Experiential Labs",
+      "productKey": "https://www.producthunt.com/products/experiential-labs",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它让 AI gateway 用真实流量反哺模型选择，值得看观测、评测与路由是否能闭成生产反馈环，而非停留在代理转发。"
+    },
+    {
+      "rank": 8,
+      "product": "Phntm-ONE: I built a local AI desk assistant",
+      "productKey": "https://www.phntmcore.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把本地 AI 助手放到桌面硬件形态，值得验证隐私、本地响应和持续陪伴是否足以支撑高频任务，而不只是陈列型 demo。"
+    },
+    {
+      "rank": 9,
+      "product": "BrickForgerAI",
+      "productKey": "https://www.producthunt.com/products/brickforgerai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把提示词直接转成可搭建的积木套装，亮点是连接生成设计与实体约束；要看零件可得性和成品可复现率。"
+    },
+    {
+      "rank": 10,
+      "product": "Robin – restyle any website with a one-line prompt",
+      "productKey": "https://thisisrobin.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它让用户用一句提示词重塑任意网站，值得看修改是否可逆、是否保留原站功能，以及能否从一次换肤升级为日常浏览控制。"
+    },
+    {
+      "rank": 11,
+      "product": "Grok Imagine Video 1.5 Agent 上线，底层换用 Image 2.0 图像模型",
+      "productKey": "https://aihot.virxact.com/items/cmtou61sc018vromzen1kn5wk",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "这是视频 Agent 与新图像底模结合的可用更新，产品判断应落在多镜头连续性和叙事控制是否比旧版稳定；现有证据仍是聚合转述。"
+    },
+    {
+      "rank": 12,
+      "product": "UC Berkeley 发布 CUA-Lite：统一沙箱、数据、评测与 RL 的计算机使用智能体开源平台",
+      "productKey": "https://aihot.virxact.com/items/cmtpfqa3a018brodgixr0zu1m",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "它统一 computer-use agent 的沙箱、轨迹、评测与强化学习接口，价值在于能否降低跨桌面、浏览器和移动端实验的迁移成本。"
+    },
+    {
+      "rank": 13,
+      "product": "Gemini Business 支持自定义 MCP 服务器连接",
+      "productKey": "https://aihot.virxact.com/items/cmtoygfmy0181roqccs7uiiui",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "企业版自定义 MCP 入口意味着 Gemini 可接私有数据和内部工具；需重点验证权限边界、审计能力和连接失败时的降级行为。"
+    },
+    {
+      "rank": 14,
+      "product": "Meta 发布实时音频模型 Muse Voice Transcribe，主打语音转写与说话人分离",
+      "productKey": "https://aihot.virxact.com/items/cmtpn9uou01fcrow73d4tf75y",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "实时音频转写把低延迟、说话人分离和句界检测放在同一模型里，值得看多人会议中是否能稳定减少后处理链路。"
+    },
+    {
+      "rank": 15,
+      "product": "Google 与 DeepMind 发布 WeatherNext 3：跳过物理模拟，直接从实时卫星数据学习天气预报",
+      "productKey": "https://aihot.virxact.com/items/cmtppezy2011brokzee6er80h",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "它直接从实时卫星数据生成逐小时天气预报，属于模型能力更新；产品侧要观察是否形成可调用服务及其时效、地域与置信度表达。"
+    },
+    {
+      "rank": 16,
+      "product": "Google 将新音乐生成模型 Lyria 3.5 直接集成进 Gemini app",
+      "productKey": "https://aihot.virxact.com/items/cmtpn9uou01fbrow7hm2lwipj",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "把 Lyria 3.5 同时放进 Gemini app 与 API，意味着音乐生成从独立工具进入对话工作流；关键看人声、编曲控制和商用输出边界。"
+    },
+    {
+      "rank": 17,
+      "product": "Hugging Face Model: azherali/Riazi-8B-GRPO",
+      "productKey": "https://huggingface.co/azherali/riazi-8b-grpo",
+      "source": "Hugging Face API",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 1,
+      "rankingIssue": null,
+      "reason": "当前只有模型创建或更新时间，没有任务、基准与许可细节；先把它作为 GRPO 训练资产线索，不据此判断能力提升。"
+    },
+    {
+      "rank": 18,
+      "product": "Hugging Face Model: sundaycoil/vendor-comparison-tool",
+      "productKey": "https://huggingface.co/sundaycoil/vendor-comparison-tool",
+      "source": "Hugging Face API",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 1,
+      "rankingIssue": null,
+      "reason": "名称暗示供应商比较用途，但现有证据只有 HF 更新时间；需补模型卡、输入输出和评测方法后才能判断是否有采购决策价值。"
+    },
+    {
+      "rank": 19,
+      "product": "Hugging Face Model: ASzecsenyi/VQLM",
+      "productKey": "https://huggingface.co/aszecsenyi/vqlm",
+      "source": "Hugging Face API",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 1,
+      "rankingIssue": null,
+      "reason": "VQLM 目前只有模型更新信号；值得跟进其视觉语言任务定义、数据来源和可复现基准，暂不把新鲜度等同于质量。"
+    },
+    {
+      "rank": 20,
+      "product": "Hugging Face Space: G-G-T/Steam-analysis",
+      "productKey": "https://huggingface.co/spaces/g-g-t/steam-analysis",
+      "source": "Hugging Face API",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "Steam-analysis 只有 Space 更新时间，产品价值仍未知；应先检查它分析什么数据、是否可运行以及输出能否支持具体决策。"
+    }
+  ]
+}
