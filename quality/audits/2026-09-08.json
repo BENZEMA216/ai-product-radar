@@ -1,0 +1,294 @@
+{
+  "date": "2026-09-08",
+  "generatedAt": "2026-09-07T16:01:36.793Z",
+  "reportPath": "reports/2026-09-08-0001-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 52,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "Hugging Face API",
+      "AIHOT"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 1,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 19,
+      "keptCount": 11,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-09-06；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 19 条，AI 相关候选 11 条；实际 fallback：hunted_space。；fallback 低覆盖时扩展检查 2026-09-05，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重移除 1 条已报道或已处理日榜 Product Hunt 信号，最终发布 10 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 1,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 8,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 13,
+      "keptCount": 13,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Agentic Video Understanding in Gemini",
+      "productKey": "https://www.producthunt.com/products/google",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Gemini 把视频理解描述为可主动分析的 agent 能力，值得观察它能否从“问一段视频”推进到跨片段检索、归纳与后续任务执行。"
+    },
+    {
+      "rank": 2,
+      "product": "dif.sh",
+      "productKey": "https://www.producthunt.com/products/dif-sh",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "dif.sh 让 coding agent 直接安装以 Markdown 描述的功能开关，值得看这种“配置即功能”的交付方式能否减少接入摩擦并保持可审计。"
+    },
+    {
+      "rank": 3,
+      "product": "DashClaw – policy and approval layer for unattended coding agents",
+      "productKey": "https://github.com/ucsandman/dashclaw",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "DashClaw 把策略与审批置于无人值守 coding agent 之前，产品判断点是高风险动作能否被准确截获、解释并交给人确认。"
+    },
+    {
+      "rank": 4,
+      "product": "GitWarren",
+      "productKey": "https://www.producthunt.com/products/gitwarren",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "GitWarren 把 agent 评审前移到 commit 之前，值得看它是否能利用尚未提交的上下文给出可执行反馈，而不是再做一层通用代码扫描。"
+    },
+    {
+      "rank": 5,
+      "product": "Kit by Speakeasy",
+      "productKey": "https://www.producthunt.com/products/speakeasydev",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Kit 将卖点放在 coding agent runtime 的速度、成本和简洁输出，适合验证团队是否愿意为运行层切换，以及便宜是否牺牲任务完成率。"
+    },
+    {
+      "rank": 6,
+      "product": "Hyperprobe",
+      "productKey": "https://www.producthunt.com/products/hyperprobe",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Hyperprobe 让 agent 在不重新部署的情况下调试生产环境，价值取决于它如何隔离权限、留存操作证据并限制诊断对线上系统的扰动。"
+    },
+    {
+      "rank": 7,
+      "product": "Reflexio",
+      "productKey": "https://www.producthunt.com/products/reflexio-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Reflexio 试图用行为学习让 agent 随使用改进，真正需要验证的是它怎样区分稳定偏好与偶然操作，并允许用户查看或纠正记忆。"
+    },
+    {
+      "rank": 8,
+      "product": "Pod – A review site for dev tools where the reviewers are AI agents",
+      "productKey": "https://askpod.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Pod 让 agent 充当开发工具评测者，值得看它能否公开任务、环境与失败轨迹；否则自动生成的“评论”很难支撑选型。"
+    },
+    {
+      "rank": 9,
+      "product": "NoMac.App – iOS CI/CD pipeline built for AI agents",
+      "productKey": "https://nomac.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "NoMac.App 针对 agent 构建 iOS CI/CD，核心机会是消除 Mac 构建环境依赖；需验证签名、密钥保管和失败回传是否足够安全清晰。"
+    },
+    {
+      "rank": 10,
+      "product": "Tadata",
+      "productKey": "https://www.producthunt.com/products/tadata",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Tadata 把 AI 员工放进 Slack 并强调“读懂房间”，关键要看它读取哪些上下文、何时主动介入，以及团队能否控制可见范围。"
+    },
+    {
+      "rank": 11,
+      "product": "AI Toolbox 3.0",
+      "productKey": "https://www.producthunt.com/products/chatgpt-toolbox",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AI Toolbox 3.0 把多处 AI 对话的搜索、整理和导出集中起来，值得看跨平台数据可携带性是否足以形成长期知识库，而非一次性备份工具。"
+    },
+    {
+      "rank": 12,
+      "product": "Experiential Labs",
+      "productKey": "https://www.producthunt.com/products/experiential-labs",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Experiential Labs 用真实流量反哺模型改进，产品价值在于能否把网关观测、评测和模型切换连成闭环，同时避免生产数据泄露。"
+    },
+    {
+      "rank": 13,
+      "product": "Send flowers from your AI agent and make your mum happy",
+      "productKey": "https://news.ycombinator.com/item?id=49599559",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这条 Show HN 把 agent 接到真实送花履约，值得验证地址、预算、确认与售后如何闭环；当前证据只证明发布，尚不能证明稳定交付。"
+    },
+    {
+      "rank": 14,
+      "product": "Yume, a desktop workspace for Claude Code sessions",
+      "productKey": "https://aofp.github.io/yume",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Yume 为 Claude Code 会话提供桌面工作区，重点看它是否改善多会话状态、项目切换与恢复，而不只是给终端套一层界面。"
+    },
+    {
+      "rank": 15,
+      "product": "BrickForgerAI",
+      "productKey": "https://www.producthunt.com/products/brickforgerai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "BrickForgerAI 把提示词转成可实际搭建的积木套装，判断重点是生成结果能否满足零件库存、结构稳定性和可执行说明，而非只出好看渲染图。"
+    },
+    {
+      "rank": 16,
+      "product": "How Pagecord Uses AI",
+      "productKey": "https://news.ycombinator.com/item?id=49597339",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这条更像 Pagecord 对自身 AI 用法的说明而非明确新品，适合作为采用案例观察；需回到产品页面确认用户获得了什么新增动作。"
+    },
+    {
+      "rank": 17,
+      "product": "Evals Coach – a Claude plugin to help PMs write good evals",
+      "productKey": "https://evalscoach.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Evals Coach 把写评测用例嵌进 Claude 插件，切中了 PM 难以把主观质量转成可执行测试的问题；价值取决于是否能形成可复跑的用例集。"
+    },
+    {
+      "rank": 18,
+      "product": "Hugging Face Space: nurai99/my-video-generator-ai",
+      "productKey": "https://huggingface.co/spaces/nurai99/my-video-generator-ai",
+      "source": "Hugging Face API",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "该 Space 只提供“视频生成器”更新信号，值得先核验可运行性、生成时长和样例一致性；现有证据不足以判断它已形成创作工作流。"
+    },
+    {
+      "rank": 19,
+      "product": "腾讯开源 TeamAI-CLI：用 Git 仓库管理团队 Agent 的规则、Skill 和文档",
+      "productKey": "https://aihot.virxact.com/items/cmtr8z2zt05moro45putjrlbb",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "TeamAI-CLI 把团队规则、Skill 与经验置信度纳入 Git 评审和会话注入，机制值得看；但当前仅有聚合转述，需补官方仓库再确认可用范围。"
+    },
+    {
+      "rank": 20,
+      "product": "面壁智能开源 MiniCPM5-2B，登顶 Artificial Analysis 4B 以下开源模型榜首",
+      "productKey": "https://aihot.virxact.com/items/cmtrchliq01lero5zydqneqov",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "2B 端侧模型同时给出综合与 agent 指标，适合放在 Models & Infra 观察小模型能力密度；榜单名次仍需回到官方模型卡和独立评测核验。"
+    }
+  ]
+}

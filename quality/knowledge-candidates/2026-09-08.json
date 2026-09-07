@@ -1,0 +1,376 @@
+{
+  "generatedAt": "2026-09-07T16:11:24.141Z",
+  "date": "2026-09-08",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "From chaos to context: Building an AI dev workflow",
+      "link": "https://about.gitlab.com/blog/building-an-ai-dev-workflow",
+      "publishedAt": "2026-08-19T00:00:00.000Z",
+      "author": "Gregory Havenga https://about.gitlab.com/blog/authors/gregory-havenga/",
+      "summary": "There's a particular kind of frustration that happens when prompting an AI assistant with the same correction multiple times in a single session. The marvels of modern large language models (LLMs) make it so you're working with the most enthusiastic apprentice you'll ever have. However, that apprentice also happens to be an amnesiac. “Yes, I really do want my commit messages formatted that way, we've had this conversation three times already.” Or perhaps you've experienced the trouble of trying to orchestrate several parallel AI sessions, only to watch them independently start solving the same problems and deleting each other's work. These frustrations led me down a path of iteration. I worked on early renditions of two GitLab AI features: Explain this vulnerability and Resolve this vulnerability features. They felt naive at the time, and I wanted more from them. Agentic AI delivered that. Instead of one-shot suggestions I had to prompt for and paste back, an agent could read the codebase, make the change, and run the tests on its own. It was doing the work rather than just advising on it. From there, I moved through GitLab Duo Custom Agents, VS Code integrations, and eventually OpenCode , an open source agent that describes itself as helping you \"write code in your terminal, IDE, or desktop.\" Along the way, I've distilled what's been working for me. AI coding assistants are genuinely transformative, but they need your engineering instincts to guide them. They amplify both good decisions and bad ones, so direction matters. The tools will keep changing, but here's what's helped my day-to-day engineering so far. An optimized AI workflow Before diving into the principles, it's worth showing what an optimized AI workflow actually looks like in practice. Priority comes to me. When I start a session, the AI loads my active sessions, unresolved blockers, standing directives, and recent decisions. It then fetches my GitLab todos, active MRs, and tracked epics, presenting them in my defined priority order: stale items first (things falling through the cracks), review requests from others (don't block teammates), questions needing my response, my own blocked MRs, and finally everything else. I no longer spend time figuring out what I should be doing; the context comes to me. The focus paradigm has shifted. Software development typically required hours of intense, uninterrupted focus to get anything meaningful done. That's changed. In a 15- or 30-minute window, I can ask what's at the top of the queue, have the AI load context for that item (prior decisions, blockers, relevant procedures), and start delegating coding and testing. The AI brings me up to speed nearly instantly, rather than me needing to rebuild mental context from scratch. Parallel work on multiple merge requests. I use git worktrees with isolated test databases to have AI sessions work on multiple merge requests simultaneously. Each worktree gets its own session, its own database, and a claiming system prevents sessions from stepping on one another. The AI runs tests, ensures the code works, and I review for correctness. Recurring tasks are made into procedures. For a priority epic I track, the AI handles weekly status updates by fetching current state from GitLab, comparing to the previous week's state to compute deltas, and drafting the update with progress metrics. The procedure is documented in my directives so any session can execute it consistently. Token efficiency matters. I've contributed improvements to GitLab's REST and GraphQL API and the OpenCode GitLab plugin to reduce context overhead, and built a local workflow Model Context Protocol ( MCP ) server that encodes common patterns. Instead of the AI reconstructing how to do something from scratch each time, it calls an optimized tool that handles the data gathering, leaving reasoning to the LLM . This makes responses faster and keeps token usage manageable. Active delegation is the underlying pattern. I preserve top-level context and alignment while the AI executes specific tasks. Before working on any merge request, the AI claims it to prevent conflicts, loads its history from memory, and checks for relevant directives. I maintain oversight of direction; the AI maintains execution velocity. Write surgical directives, not vague instructions Every session starts fresh. Without intervention, you'll re-explain the same preferences, the same conventions, the same quirks of your codebase. The solution is explicit, persistent directives. Agentic AI tools have begun standardizing on AGENTS.md configuration files that load as boot context. But the key insight isn't that you need directives; it's that they need to be specific. A vague instruction like \"be careful with comments\" doesn't work. The AI will acknowledge it and then do whatever it was going to do anyway. What works is something specific: \"ALWAYS verify user IDs exist before posting comments under their name. STOP and ask if unsure.\" The all-caps keywords aren't just for emphasis. They seem to make the AI respond more reliably to the instruction. Pattern to apply: When the AI tool makes a mistake, don't just correct it. Ask it what directive would prevent this mistake next time. Have that dialogue, then ask it to note it for next time. Over time, you build a set of instructions tailored to your actual workflow, not hypothetical best practices. My agents-config repository used to contain over a dozen specialized configuration files that emerged this way: code review guidelines, merge request workflows, database review procedures, and comment writing standards. Each one exists because I was doing it often enough that it made sense to proceduralize and get the AI to execute it consistently. The memory system I describe later in this article lightened this approach; those directives now live in searchable memory rather than static files. The repository now contains practical examples and a usage guide showing how I work day-to-day. Parallel sessions need coordination primitives Running multiple AI sessions simultaneously can be efficient, if you can manage it well. Three terminals, three assistants, three parallel streams of work. But without coordination, you'll probably encounter familiar problems: Sessions editing the same files without knowing the other exists Multiple sessions working on the same item (assuming you have a way to claim work, which you probably don't yet) Contradictory decisions made in isolation Sessions deleting each other's work, or blithely committing it with their own changes to unrelated MRs Duplicated effort because neither session knows what the other did If you've done any concurrent programming, you'll recognize these as classic coordination problems. The solutions are similar, too: You need primitives for claiming work, tracking state, and sharing context. My first solution was file-based working notes. They worked, but they weren't searchable, weren't linked to the work they described, and didn't persist well across days. I needed something that could surface relevant context automatically. This led me to build opencode-memory , a persistent semantic memory system. The architecture reflects solutions to problems I kept solving by directive: hybrid search (keywords for exact terms, semantics for fuzzy recall), session coordination through claim/release, and boot context that surfaces critical directives automatically. The system has grown considerably since its first iteration. It's now a full knowledge graph with over 760,000 indexed code entities, 15,000+ memories including conversation summaries, and 27,000 links between them. When GitLab announced Orbit , a knowledge graph that indexes your entire software development lifecycle (SDLC), it lined up almost exactly with the direction I'd been taking locally. Orbit answers cross-SDLC questions like \"what breaks if I change this service?\" by connecting code, merge requests, and pipelines. My memory module already indexed my codebase locally for fast recall, so rather than reinvent the wider view I wired Orbit in to enhance it. The local memory holds session-level context like decisions, blockers, and procedures, and Orbit adds GitLab's broader SDLC graph on top. One of the best outcomes is that when I mention a function in conversation, the AI recalls exactly where it lives without me having to look it up. Prior decisions also surface automatically when starting work on a merge request. Blockers persist until explicitly resolved. Procedures defined once are available forever. Reminders automatically bring themselves to my attention where they matter. And the combined graph, my local memory plus Orbit's SDLC data, answers those questions far more efficiently and effectively than a plain text search ever did. Check before you build No idea is unique. Searching for memory systems for AI coding assistants reveals dozens of approaches. Somebody probably already built what you were thinking about in a coffee-fueled AI rampage three weeks before you imagined it. There's even a PyPI package called opencode-memory that does something very similar to what I built, just with a different vector database backend. The barrier to building what you need has dropped so dramatically that many people independently arrive at similar solutions. You can go from idea to working prototype in a week. I'd recommend checking whether something already exists before spinning up a new project. If it almost solves your problem, consider whether contributing might be better than creating another variant. This advice is as old as software development itself; AI just exacerbates it a hundredfold. My memory system barely offered much over existing solutions at first. It's only after months of iteration and deep GitLab integration that I feel it's somewhat more justified. I did at least contribute improvements back to the OpenCode GitLab plugin rather than forking it, because that's where my changes could help the most people. The question worth asking yourself: Did I bother to look if something already exists and solves this problem, or has AI made it so easy to code that I've ignored all forms of due diligence? From active recall to passive context The vectorized memory search was an immediate win. I transitioned to using it the same day I built it. Recalling useful details became trivial. The next challenge was getting the AI to know there was something worth remembering implicitly, without me prompting it every time. I'd made progress: token-efficient memory of specific procedures, a growing corpus of innate recall memories. But it felt like I was just rebuilding AGENTS.md with fancy additions. I needed something smarter. The solution was proactive context injection. Instead of the AI calling recall tools explicitly, the system now automatically searches for relevant memories before each interaction. When I mention a merge request number, relevant prior decisions appear in context without me asking. When I'm about to write a comment, the comment-writing guidelines surface automatically. Most of the time, at any rate. It's still a work in progress, but each day I hone it a little further. This shift from active to passive recall made a real difference. Over 30 days, the system achieved around 91% effectiveness at surfacing relevant context automatically. Sessions with proactive injection needed zero explicit recall calls on average, compared to 17 without it. It's not perfect; there are still moments where I need to tell the AI to remember something or to improve. But it's an iterative process, and it's getting better. The remaining misses were instructive. Many happened while I was iterating on how boot context loading worked. The fix was a boot gate: a minimal trigger in the startup context that tells the AI to pause and load directives before doing anything else. Even with proactive injection, sometimes the AI needs to be told to stop and think first. What AI still can't do AI can execute procedures reasonably consistently, if those procedures are in context. It can improve its own instructions, if prompted to think about it. It can coordinate across sessions, if given the primitives to do so. But AI doesn't notice things implicitly. It doesn't feel that a procedure is awkward. It doesn't recognize that you've hit this same problem three times this week. It doesn't have the pattern recognition that comes from years of debugging production systems at 2 a.m. while wondering if perhaps carpentry might have been a better career choice. At least, not yet. The sweet spot seems to be using AI to eliminate menial work, providing the right context at the right times, and watching for what it misses. You provide strategic oversight and pattern recognition. The AI provides tireless execution and enthusiasm for tasks we once found tedious and time-consuming. That's extremely empowering. I've watched AI enthusiastically build features while introducing concurrency bugs into its own tooling, blocking itself with synchronous operations. It had no idea. In hindsight, this was an alignment problem. I could have planned with it earlier to ensure a good async pattern. I'd hoped it would build a better pattern from the start, but I was being optimistic. One redirect from me pointing out the architectural flaw, and it was fixed in minutes. That's the pattern: human spots the problem, AI executes the fix rapidly. I could have done it myself, just not as quickly. AI can't detect meta-inefficiencies yet, though I'm sure someone's busy writing a dedicated agent for that. Invest in your tools Working this way means accepting constant change. My day-to-day work has shifted completely, and repeatedly, in the space of months. Compare that to how workflows changed slowly over years earlier in my career. Don't try to settle into a \"new normal.\" It will change. The tools that help today may be obsolete next week at the rate we're going. Rather, iterate on your tooling itself. The workflow that helps you work faster becomes the subject of optimization. I've contributed new API endpoints to GitLab, including group uploads and GraphQL mutations for MR workflows , specifically because I needed them for AI-assisted development. It's a meta-loop: better tools lead to more productivity, which creates more capacity to improve tools. There's an old adage: \"Give me six hours to chop down a tree and I will spend the first four sharpening the axe.\" I spend a fair bit of time these days sharpening my axe. I've never had a better grindstone. The takeaway Code is a commodity now. We're no longer paid primarily to type it. We're paid to know what code should exist. To recognize when an approach is fundamentally flawed. To spot inefficiencies before they become problems. To provide the direction that turns raw capability into useful outcomes. I'd been working on guidance for how GitLab's CREDIT values applied to AI use, and then GitLab Act 2 retired CREDIT entirely, replacing it with new operating principles built for the agentic era. A good example of how fast this space shifts: My own guidance was overtaken before it landed. But the core insight remains: Getting this balance right matters at an organizational level, not just a personal one. AI should augment human work, not substitute for it. The tools will keep evolving. The specifics will change. But this fundamental insight won't: AI amplifies human judgment. It shouldn't replace it, though it tries if you let it, usually at the cost of code quality and stability. Vibe coding can take you far, but even with the most thorough AI reviews, there's an assurance of quality and careful consideration in design that I've not yet seen AI provide on its own. Several colleagues at GitLab have started using variations of this workflow, and watching them experience the same \"aha\" moments has been validating. One recently messaged me: \"Definitely noticed an improvement in my sessions since using the plugin,\" meaning the opencode-memory module. I won't pretend that didn't make my entire day. The questions shift from \"how do I get AI to do X\" to \"how do I give AI the context it needs to do X well.\" That's the real unlock: not the tools themselves, but the realization that context is the bottleneck. Fascinatingly, the better you get at this, the more you start to realize that you may be the bottleneck. But sometimes that's also an indication that your own processes could be improved even more. I don't feel like I've reached a maximum yet, not by far. Different tasks benefit from different approaches, even when AI-empowered, and there's still plenty of experimenting to do. One final note on pace: The memory system has seen 143 commits in under a month. It's built on MCP, which means it works with any agent that speaks the protocol: not just OpenCode, but Claude CLI, Cursor, and others. By the time you read this, I've probably added features I haven't thought of yet. That's the nature of working in this space right now. The tools evolve faster than the documentation. The tools mentioned in this article are open source: agents-config for AI directive configurations, and opencode-memory for persistent session memory.",
+      "evidenceLink": "",
+      "score": 87,
+      "core": "There's a particular kind of frustration that happens when prompting an AI assistant with the same correction multiple times in a single session. The marvels of modern large language models (LLMs) make it so you're working with the most enthusiastic apprentice you'll ever have. However, that apprentice also happens to be an amnesiac. “Yes, I really do want my commit messages formatted that way, we've had this conver…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-07T16:11:24.141Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "How I built a demo generator with GitLab Duo Agent Platform",
+      "link": "https://about.gitlab.com/blog/agentic-click-through-demo",
+      "publishedAt": "2026-08-13T00:00:00.000Z",
+      "author": "Itzik Gan Baruch https://about.gitlab.com/blog/authors/itzik-gan-baruch/",
+      "summary": "A demo used to take me days to build — screenshots, narration, stitching it together in an external tool, chasing feedback — and every time the feature changed I'd have to start over. A few months ago, I handed most of that to an agent in GitLab Duo Agent Platform. GitLab Duo Agent Platform is built for intelligent orchestration, running agentic workflows across the software development lifecycle, but it's flexible enough to take on repetitive work outside of development, too. When I pointed it at demo generation instead, it worked well enough that I think you should try the same thing with something on your own plate. I created this hands-on tutorial to help you get started. And one more thing: You don't need to be a developer to do this. We've seen an increase in interest from non-engineering roles in using GitLab to run agentic workflows like this one. If that's you, follow along to get started. In this article: Why click-through demos are so effective The evolution: From VMs to external demo tools to agents The stages to create a demo How the demo generator works Demos are now in code How GitLab Duo Agent Platform made this possible Build your first agent 🎯 Try GitLab Duo Agent Platform today! Why click-through demos are so effective People connect faster when they see a feature in action rather than read about it. But live demos are hard: You need product access and enough familiarity to navigate confidently. A click-through demo solves that. You take real actions yourself, guided by a short narrative at each step. Unlike video, it puts you in control of the pace. And unlike live access, which requires a real environment, it's just a link: free to share, reusable, and consistent every time. Explore examples in the GitLab Demo Hub . The evolution: From VMs to external demo tools to agents Demos haven't always looked like this. Looking back over my career, here's how they have evolved: VMs (2000s) : Shipped virtual machines pre-loaded with the product and demo content, later centralized on ESX servers. External tools (SaaS era) : Moved to vendor platforms with built-in analytics, but still manual to build and tied to their infrastructure. Agentic (now) : Agents can generate demos from a prompt, deployed on the same project that creates them, no vendor dependency. Each layer made demos more accessible; the agentic layer is what makes them sustainable. The stages to create a demo Creating a click-through demo involves these stages: Learn the feature : Read docs, dig through issues and Slack, sync with product managers and engineers to really understand what you're showing, and mainly understand the problem it solves and the customer impact and value. Build the story : Build a real-world scenario that shows the customer impact — what problem this solves for them in their day-to-day work, and why it matters. Set up the environment : Create a project and generate realistic demo data that supports the story; for example, seeded vulnerabilities for a security dashboard, or data for meaningful charts. Capture the content : Take screenshots or record clips of the actual flow. Write the narrative : Craft content that guides someone through each step, based on the story and customer scenario you defined in Step 2. Build the demo : Work in an external tool to stitch everything together into a clickable walkthrough, add links to related assets, and define the call to action for each step. Review with stakeholders : Share a draft, collect feedback, iterate. Incorporate edits : Update the narrative, reorder steps, regenerate as needed. Publish : Push to GitLab Docs, Demo Hub, and any other target location. Announce : Share internally on Slack, embed in blog posts, post on social. Together, these steps can take days, and the moment something changes in the product, you have to start over from Step 3. An agent can help with almost all of these steps: reading docs, scanning issues, pulling context from Slack, populating demo data in the project, and pulling out what matters most. It can't fully replace the human who decides what to create and reviews the results before they ship, but it can do a remarkable amount of the groundwork. In the agentic tool I built , the Click-Through Demo Generator, I focused on automating Steps 1, 2, 5, 6, and 9: the ones with clear inputs, predictable outputs, and previously fully manual execution. The other steps can also be handled by specialized agents. How the demo generator works The agent works like this: Drop screenshots into a folder in the project, optionally with a context.md for background on the feature, and trigger the workflow from an issue comment. The agent reorders and renames the screenshots, writes the narration, builds the demo with a built-in branded template, and opens a merge request. Review it, and once you merge it, the demo auto-publishes to GitLab Pages. If something needs to change, ask the agent to update it. Under the hood, a Custom Flow gets triggered. The agent calls a custom tool I built to assemble the demo into an HTML template, overlaying each screenshot with its narration message box, and comments the merge request link back on the issue. A skill guides its writing so the narration follows GitLab's marketing messaging, focused on customer outcomes rather than our own features. Here's the actual instruction text from that skill's SKILL.md that the agent reads and follows every time it writes narration: \"Great narration sells an outcome, not a UI tour. Someone who clicks through should understand what problem the product solves, why this approach is better, and what they could now do, without reading any docs. Structure every demo as three acts: Open on the customer's pain, show the product solving it step by step, and close by naming the value they walk away with.\" For demos in more languages, we just need to add a localization skill to the project, and every demo gets automatically localized from then on. Publishing with a skill Publishing to the Demo Hub , our production demo portal, is just as hands-off as publishing the demo itself. When a demo is ready to ship, you tag it as production in the development gallery. That's the cue for the agent to run a skill in this project that reaches into the Demo Hub project and does the rest: It writes a short description, stamps it with today's date, tags it as new, and opens a merge request adding the demo as a card. Merging that MR, and putting the demo live, is still a human's call. Demos are now in code A click-through demo is really just a set of files: HTML, screenshots, and config, which makes it a great fit to live in a repo. The demo is no longer trapped in a separate tool that only a few people know how to use. It lives in a GitLab project, which means it can be: Reviewed in merge requests Improved by teammates Versioned over time Updated by agents, not just humans The demo becomes a team asset, not a one-person task. That's a big deal. More teammates can now create demos, review them, improve them, and publish them, without needing any special tool knowledge. If you can open an issue and approve an MR, you can use this workflow. Want to try it yourself? Fork the Click-Through Demo Generator project and read the README for the full setup. Custom Flows aren't copied over when you fork a project, so you'll also need to enable the Generate click-through demo flow (you'll need to be logged in to GitLab to view it) in your forked project. From there, the README walks you through everything else. How GitLab Duo Agent Platform made this possible This project would have been significantly harder without GitLab Duo Agent Platform. GitLab Duo Agent Platform gave me the missing infrastructure: a Custom Flow that triggers from an issue comment, a container image I define with exactly the runtime and dependencies it needs, and built-in tools to work with GitLab directly, like opening merge requests and commenting on issues. The merge request is where I review the demo before merging it and letting the agent publish it to the Demo Hub. In platform terms, this is agentic automation — the Custom Flow orchestrating the agent's behavior while GitLab’s built-in tools let it work with issues, project files, merge requests, and GitLab Pages without requiring separate integrations. Custom Flows let you define your own multi-step workflow and extend the agent with custom tools, like the tool I built to assemble screenshots and narration into the demo's HTML template. You implement that capability yourself, and it runs as part of the flow, on GitLab's compute. Everything happens inside GitLab: the request, the review, the output, the deployment. That's what makes the workflow faster, clearer, and easier to hand off. Build your first agent Zoom out from my own workflow for a second and focus on what happens when repetitive work gets handed to an agent with access to your GitLab data. For a team lead, that's fewer cycles spent producing collateral and more spent reviewing and deciding. The same shift shows up anywhere a team has a repeatable, well-scoped task sitting on top of GitLab context. Start small and simple. The demo generator is just one example of the pattern, but you don't need to write code or use a Custom Flow to get started. Start with a single agent, give it one clear job, and see what it can do before reaching for anything more complex. In this quick tutorial, you'll build your first agent, one that helps you plan your work and saves you time. Don't have access to GitLab Duo Agent Platform? You can start a free trial to follow along. Two tasks, about 10 minutes total: Task 1: Create a custom agent. In the GitLab UI, create a custom agent called \"Daily Planner.\" Tell it what priority means to you — for example, issues blocking a teammate, anything due this week, or \"treat anything with the customer label as top priority regardless of due date.\" Have it look at your assigned issues and merge requests, apply those rules, and tell you what to tackle first, what's blocking others, and what can wait. Task 2: Enable it and review. Enable the agent in your project, then open GitLab Duo Agentic Chat, select it, and ask it to plan your day. It has built-in access to GitLab, so it pulls your actual assigned issues and MRs itself. Compare its plan to what you'd have figured out yourself, and adjust the agent's instructions until the plan is genuinely useful. Congratulations, you just built your first agent, and it's already making your day a little easier. This is where it gets fun: Start thinking about what else you'd hand it, another decision you're tired of making yourself. Keep going, and that single-purpose agent turns into the assistant that runs your whole workflow.",
+      "evidenceLink": "",
+      "score": 86,
+      "core": "A demo used to take me days to build — screenshots, narration, stitching it together in an external tool, chasing feedback — and every time the feature changed I'd have to start over. A few months ago, I handed most of that to an agent in GitLab Duo Agent Platform. GitLab Duo Agent Platform is built for intelligent orchestration, running agentic workflows across the software development lifecycle, but it's flexible …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-07T16:11:24.141Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "How GitLab tracks vulnerabilities through refactors and reformatting",
+      "link": "https://about.gitlab.com/blog/improved-scope-offset-fingerprinting",
+      "publishedAt": "2026-08-12T00:00:00.000Z",
+      "author": "Julian Thome https://about.gitlab.com/blog/authors/julian-thome/",
+      "summary": "Every day, security scans face the same problem: an agent or a developer adds a comment, reformats a file, or moves a function, and a naive vulnerability tracker suddenly reports the same finding twice. Security teams end up re-triaging issues they already dismissed, which causes futile auditing effort and erodes trust in the scan results. In 2022, we introduced advanced vulnerability tracking to tackle exactly this problem of code volatility . It is based on our Scope+Offset fingerprinting method: instead of identifying a finding by file and line number, we identify it by its narrowest enclosing scope (module, class, function) plus its line offset within that scope. That made tracking robust against code moving around the file and reduced futile re-auditing by about 30% compared to line-based tracking. But one class of edits still slipped through: non-functional changes . The offset counted every line between the scope boundary and the finding, including comments and blank lines. Add a comment above a vulnerable statement, and the offset shifts. The tracker sees a \"new\" vulnerability; you see a duplicate. Our improved method addresses this by simply ignoring non-functional code (comments and blank lines) when computing the fingerprint. Since these lines do not affect the program's behavior, they should not affect the identity of a vulnerability either. With this normalization in place, adding a comment or reformatting a file no longer changes the fingerprint, while the precision of the tracking remains the same as before. The details of the approach are described in our accompanying research paper. We evaluated the normalized method on a targeted benchmark: 439 source files across C/C++, C#, Go, Java, JavaScript, Python, and Ruby. We generated 2,247 commits, each inserting a single comment or blank line directly before a known vulnerability, and scanned the code as the history was replayed. The benchmark deliberately stresses the worst case: every commit is a non-functional edit right next to a finding. On this benchmark, the original Scope+Offset method accumulated 1,361 duplicate fingerprints, a 77% growth over the baseline. The normalized method produced zero duplicates and reduced unique fingerprints by 43% overall. Normalized Scope+Offset ships in GitLab as the scope_offset_compressed tracking algorithm, supporting C#, C/C++, Go, Java, JavaScript, Python, Ruby, and PHP. It reuses the parse tree the scanner already constructs, so scan times are unaffected. The security report format is unchanged, so it composes with any combination of SAST tools in a heterogeneous setup. The preprint of our study \" Vulnerability Tracking using Normalized Scope+Offset \" by Julian Thome, Hua Yan, Lucas Charles, Craig Smith, and Jason Leasure will be presented at the ASE 2026 Industry Showcase . Hua Yan , Lucas Charles , Craig Smith , and Jason Leasure contributed to this article and study.",
+      "evidenceLink": "",
+      "score": 76,
+      "core": "Every day, security scans face the same problem: an agent or a developer adds a comment, reformats a file, or moves a function, and a naive vulnerability tracker suddenly reports the same finding twice. Security teams end up re-triaging issues they already dismissed, which causes futile auditing effort and erodes trust in the scan results. In 2022, we introduced advanced vulnerability tracking to tackle exactly this…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-07T16:11:24.141Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "When your backlog outgrows your team, GitLab scales remediation",
+      "link": "https://about.gitlab.com/blog/gitlab-scales-remediation",
+      "publishedAt": "2026-08-20T00:00:00.000Z",
+      "author": "Alisa Ho https://about.gitlab.com/blog/authors/alisa-ho/",
+      "summary": "Security teams have historically struggled to keep up with triage and remediation when development was happening at human speed. Today, that challenge is exacerbated by developers writing and shipping code at machine speed with AI. At the same time, AI is helping attackers find and exploit vulnerabilities faster in production. Verizon's 2026 Data Breach Investigations Report found vulnerability exploitation overtook credential abuse as the top breach entry point. Vulnerability exploitation accounts for 31% of breaches versus just 13% in previous years, and only 26% of known exploited vulnerabilities were remediated this year, down from 38%. That means more breaches are starting with a vulnerability that was already sitting in production, unpatched. In GitLab 19.3, teams can now run Static Application Security Testing (SAST) False Positive Detection and Agentic SAST Vulnerability Resolution , in bulk, on their existing vulnerability backlog. Dismiss false positives and remediate vulnerabilities in bulk Most teams have a known vulnerabilities backlog already running in production, far more than any team has time to open and triage one at a time. That used to be a workload problem. Now it's a timing problem too: The same AI accelerating development is accelerating exploitation, which means findings that sit in the backlog longer carry more risk than they used to. GitLab addresses this with two layers of automated triage and remediation. The first covers active vulnerabilities in production. With GitLab 19.3, teams can bulk-select multiple vulnerabilities to run agentic flows, SAST False Positive Detection and Agentic SAST Vulnerability Resolution, against the vulnerability backlog in production. SAST False Positive Detection analyzes a finding's surrounding code and returns a confidence score and explanation for whether it's a real risk or a false positive. Agentic SAST Vulnerability Resolution takes findings confirmed as real risk and opens a ready-to-merge fix that remediates the vulnerabilities, so a developer reviews and merges the fixes instead of writing it from scratch. This applies to all SAST vulnerabilities in the vulnerability report, no matter the scanner origin or severity. You can import findings from any third-party scanner that outputs SARIF ; GitLab ingests them into a unified vulnerability report. With bulk SAST False Positive Detection and Agentic SAST Vulnerability Resolution teams can cut years of accumulated risk in a single action instead of one vulnerability at a time and to reduce the risk of vulnerabilities being exploited in production. See these two features in action: The second layer covers any new vulnerabilities identified. Teams can configure pipelines to run SAST False Positive Detection and Agentic SAST Vulnerability Resolution automatically on Critical and High severity vulnerabilities ( watch an interactive demo ). New findings get triaged automatically, and when one is deemed a real risk, GitLab creates a ready-to-merge fix before anyone has to open the finding by hand. Start automating triage and clearing your backlog today With bulk triage and remediation developers spend less time confirming false positives and more time shipping fixes that drive down real risk. Start a free trial of GitLab Duo Agent Platform to try it today. FAQ Do bulk SAST False Positive Detection and Agentic Vulnerability Resolution consume GitLab Duo Agent Platform credits? Yes. Please see the pricing page for further details. Does bulk triage and remediation cost more credits than running detection one at a time? No. Each finding still costs the same per-execution rate; bulk just queues many at once instead of triggering them manually one by one. Which vulnerabilities qualify for bulk triage? Any SAST vulnerability in your vulnerability report, no matter the scanner origin or severity. Will running this on my whole backlog overwhelm my pipeline? No. Concurrency limits keep the bulk job from competing with your pipeline's other work, so clearing thousands of findings doesn't come at the cost of build capacity. Can I stop a bulk job once it's running? Yes. A progress indicator tracks the job while it runs, and you can cancel it at any point.",
+      "evidenceLink": "",
+      "score": 71,
+      "core": "Security teams have historically struggled to keep up with triage and remediation when development was happening at human speed. Today, that challenge is exacerbated by developers writing and shipping code at machine speed with AI. At the same time, AI is helping attackers find and exploit vulnerabilities faster in production. Verizon's 2026 Data Breach Investigations Report found vulnerability exploitation overtook…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-07T16:11:24.141Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "GitLab compliance frameworks: Adhere to SOC 2 in minutes",
+      "link": "https://about.gitlab.com/blog/quick-compliance-with-compliance-framework-templates",
+      "publishedAt": "2026-08-27T00:00:00.000Z",
+      "author": "Fernando Diaz https://about.gitlab.com/blog/authors/fernando-diaz/",
+      "summary": "Compliance is the part of software delivery that everyone agrees is important, yet nobody enjoys. It often lives in spreadsheets, screenshots, and the quiet dread of an upcoming audit. GitLab's custom compliance frameworks work differently. Instead of documenting what should be true about your projects, you define the controls once and let the platform continuously verify what is true. In this article, you'll learn why compliance adherence matters, how to stand up a SOC 2 framework in minutes using a template, how to monitor adherence on an ongoing basis, how to enforce compliance with policies, and which standards already ship as ready-to-use templates. You'll also get a look at where AI-specific compliance templates are heading. You can watch the video below to see it in action: Tier note: Compliance frameworks are available in Premium and Ultimate . Framework requirements and controls, the checks that power adherence reporting and the compliance status report, require Ultimate. Everything here applies to GitLab.com, GitLab Self-Managed, and GitLab Dedicated. Why compliance adherence matters and how custom frameworks help Regulatory and contractual obligations like SOC 2, ISO 27001, PCI DSS, and FedRAMP exist because customers, partners, and regulators need assurance that your software is built and shipped responsibly. Falling short isn't just a paperwork problem. It can block deals, trigger fines, delay product launches, and erode trust. Compliance also isn't a one-time event. A project that was compliant at audit time can drift the moment someone disables a scanner, removes branch protection, or merges without the required approvals. Custom compliance frameworks are designed to close that gap. A compliance framework in GitLab is a label you create on a top-level group to identify projects that carry specific compliance obligations or need extra oversight. On its own that label provides organization and visibility. In Ultimate, a framework can also carry requirements made up of controls , which are automated checks against the configuration and behavior of every project the framework is applied to. Instead of asking an engineer to confirm that static application security testing ( SAST ) is running, that the default branch is protected, and that merge requests need two approvals, GitLab evaluates those conditions for you on a schedule and whenever relevant project settings change. Compliance stops being a snapshot you assemble before an audit and becomes something you can watch year-round. Frameworks are created on the top-level group and inherited by all subgroups and projects beneath it. You can apply up to 20 frameworks to a single project when it needs to satisfy several standards at once. This changes the day-to-day effort in a few ways. Compliance moves left into the development workflow, audit preparation becomes a matter of exporting a report rather than reconstructing evidence, and consistency is enforced by the platform rather than by good intentions. Applying a template to adhere to SOC 2 Building a framework by hand means defining every requirement and every control one at a time. For a standard like SOC 2 that maps to many controls, that's repetitive and error-prone. Templates solve this by giving you a complete, predefined framework, with the name, description, color, requirements, and controls all configured, and that you can adopt in a single step. The Compliance Adherence Templates project hosts a library of these frameworks as JSON files, and soc2.json is one of them. There are two ways to get a template into your group. Option A: Create from a template in the Compliance center You can create a framework directly from a built-in template without leaving the UI: Go to your top-level group . In the sidetab, select Secure > Compliance center . Click the New framework button. Choose Create from template . Scroll down to the SOC 2 template, and select View details to see the controls the template implements. Press the Use template button to implement the SOC 2 template. customize the name, description, and color if you'd like. Select Next when complete. Preview the included requirements and controls. Apply the framework to the groups/projects that require it. Press the Create framework button. Your framework is created and will be applied to the groups/projects you selected. Option B: Import the SOC 2 JSON template If you're on a GitLab version without the in-product template picker, or you want to keep the template under version control and tweak it first, import the JSON directly: Go to the Compliance Adherence Templates project and download soc2.json . Go to your top-level group . Select Secure > Compliance center . On the Frameworks tab, select New framework , then Import framework . Choose the soc2.json file from your local system. When the import succeeds, the SOC 2 framework appears in your frameworks list. A framework only does something once it's attached to projects. Make sure you apply this framework to the groups/projects where it will be used. Note: Imports fail with an Unable to determine the correct upload URL error if a framework with the same name already exists. Rename or remove the existing one first. Edit and apply the framework to your projects You can also edit the newly created framework as well as apply it to additional groups/projects: In Secure > Compliance center , open the Frameworks tab. Hover over the SOC 2 framework and select Edit Framework . In the Requirements & Controls section, under Action , select the ... > Edit . Perform any necessary changes to the requirements or controls. In the Scoping section, select the groups/projects that fall under SOC 2. Select Update Framework . If you want every new project in the group to inherit SOC 2 automatically, set the framework as the group default in the Basic information section. The framework will then be applied to all newly created and imported projects going forward. What the SOC 2 template actually checks Once applied, the SOC 2 framework maps GitLab controls to the relevant Trust Services Criteria. A few highlights: SOC 2 criterion What it covers GitLab controls applied CC3.2 Identifying vulnerabilities in system components Dependency scanning, container scanning, DAST, API security running CC5.1 Segregation of duties At least two approvals; author and committer approvals forbidden; approval rules locked from editing CC6.6 Protecting authentication credentials in transit Secret detection running CC6.8 Detecting unauthorized or malicious software changes Default branch protected CC7.1 Detecting new vulnerabilities through scanning Dependency, container, SAST, DAST, and API security scanning running CC8.1 Authorizing, testing, and approving changes SAST, DAST, secret detection running; default branch protected; at least two approvals After the framework is applied to a project, GitLab runs a compliance scan and begins reporting on whether each control passes. No manual evidence gathering required. Continuously viewing compliance status Applying a framework is only half the value. The other half is knowing, at any moment, where you stand. That's the job of the compliance status report (Ultimate), found in your top-level group under Secure > Compliance center > Status . The report surfaces the most recent instances where projects do and do not adhere to a framework's controls, so you can spot and close gaps fast. Each row tells you: Status : whether a requirement is in or out of compliance Requirement : the specific controls in a requirement that failed (for example, \"At least two approvals\") Framework : which framework the control belongs to (for example, SOC 2) Project : where the non-adherence was found Last Scanned : when the gap was first recorded Fix Suggestions : information on how to resolve the issue You can filter by project, framework, or requirement, jump straight into a project's compliance detail view, and export the whole report (delivered to your inbox as an attachment) when an auditor asks for evidence. Behind the scenes, scans that refresh the report are triggered automatically when a framework is added to a project, when an associated framework's requirements change, and on a recurring 12-hour schedule . Results typically appear five to ten minutes after a scan runs. This means compliance drift becomes visible within hours rather than at the next annual audit. To view the report, you'll need to be an administrator, or have the Security Manager or Owner role for the group. Adhering to compliance via policies Reporting tells you when something is wrong. Policies stop the wrong thing from happening in the first place. This is where compliance frameworks move from observation to enforcement, and it's an Ultimate capability tied to the framework label. A compliance framework can act as the scope for Security policies . Scan execution policies, Pipeline execution policies, and merge request approval policies can be scoped to a compliance framework, so every project carrying that label automatically inherits them. For example, you can require that SAST, secret detection, and dependency scanning run on the default branch, and require approval from a designated security team before a merge request that introduces new critical vulnerabilities can be merged. Because the policy is bound to the framework rather than to individual projects, adding a new project to the framework instantly brings it under the same guardrails. The pieces work together. The framework defines the obligation, controls and the status report measure adherence, and policies and compliance pipelines enforce the behavior. You're not just documenting that SOC 2 requires two approvals and running scanners. You're making it difficult to ship anything that violates those requirements. When a control fails, the status report flags it. When a policy is in place, the non-compliant change is blocked before it merges. Available templates GitLab ships a growing library of predefined framework templates in the Compliance Adherence Templates project , each mapping a recognized standard to GitLab controls. As of publication, these include: Standard Template file CIS Critical Security Controls v8.1 cis_csc_v8-1.json CSA Cloud Controls Matrix v4 csa_ccm_v4.json Cyber Essentials cyber_essentials.json DORA (Digital Operational Resilience Act) dora.json FedRAMP Low / Moderate / High (Rev 5) fedramp_low_r5.json , fedramp_moderate_r5.json , fedramp_high_r5.json IRAP Official / Protected / Secret / Top Secret irap_official.json , irap_protected.json , irap_secret.json , irap_top_secret.json ISMAP ismap.json ISO 27001:2022 iso_27001:2022.json NIS 2 nis_2.json NIST 800-53 Rev 5 nist_800-53_r5.json NIST 800-171 Rev 3 (CMMC) nist_800-171_r3_cmmc.json NIST CSF 2.0 nist_csf_2.json NIST SP 800-218 (SSDF) nist_800-218_v1-1.json PCI DSS v4.0.1 pci_dss_v4-0-1.json SOC 2 soc2.json TISAX tisax.json Each template's exact requirement-to-control mapping is documented in the compliance standards reference. You can import any of them as-is, or use them as a starting point. Export a framework as JSON, adjust the requirements and controls to match your organization's interpretation of a standard, and re-import. The JSON schema is straightforward. A framework has a name , description , color , and an array of requirements , each with its own controls and evaluation expression . That makes templates easy to keep in version control and share across groups. A look ahead: AI-specific compliance templates The compliance standards covered today were largely written for traditional software. As organizations embed AI into their products and their own development workflows, a new class of obligations is emerging around governing how AI systems are built, approved, and monitored. Examples include the EU AI Act, ISO/IEC 42001, and the NIST AI Risk Management Framework. GitLab is exploring AI governance compliance templates ( Epic #16808 , with planning tracked in Work item #22336 ) to extend the same template-driven model into this space. The intent is to let teams adopt an AI-governance framework as easily as they adopt SOC 2 today, with predefined requirements and controls that map to AI-specific obligations, applied to the projects that build or deploy AI capabilities, and surfaced through the same compliance status report. It's worth keeping one distinction in mind. Compliance is the state of meeting a defined set of requirements, while governance is the ongoing capability to keep AI systems compliant as both the systems and the rules evolve. GitLab's broader direction pairs AI-assisted detection with human-in-the-loop approval and auditable, policy-based enforcement, so AI findings inform decisions but accountable humans and measurable controls still gate what ships. AI-specific templates would be the onramp, giving you a fast way to encode emerging AI requirements into the same framework, control, status report, and policy machinery you're already using for everything else. Summary Custom compliance frameworks let you define your obligations once and have GitLab continuously verify them. Templates take the manual setup out of getting started, so a SOC 2 framework is a few clicks or a single JSON import away. The compliance status report keeps adherence visible on a 12-hour cadence, and security policies plus compliance pipelines turn that visibility into enforcement. With a library of standards already available and AI-specific templates on the horizon, the path from \"we should be compliant\" to \"we can prove we are, continuously\" is shorter than it's ever been. Learn more with our compliance frameworks documentation and try the custom compliance frameworks click-through demo . This blog post contains \"forward‑looking statements\" within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934. Although we believe that the expectations reflected in these statements are reasonable, they are subject to known and unknown risks, uncertainties, assumptions and other factors that may cause actual results or outcomes to differ materially. Further information on these risks and other factors is included under the caption \"Risk Factors\" in our filings with the SEC. We do not undertake any obligation to update or revise these statements after the date of this blog post, except as required by law.",
+      "evidenceLink": "",
+      "score": 68,
+      "core": "Compliance is the part of software delivery that everyone agrees is important, yet nobody enjoys. It often lives in spreadsheets, screenshots, and the quiet dread of an upcoming audit. GitLab's custom compliance frameworks work differently. Instead of documenting what should be true about your projects, you define the controls once and let the platform continuously verify what is true. In this article, you'll learn …",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-07T16:11:24.141Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "Build custom flows in minutes with the Flow Creator agent",
+      "link": "https://about.gitlab.com/blog/flow-creator-agent",
+      "publishedAt": "2026-08-20T00:00:00.000Z",
+      "author": "Rebecca Carter https://about.gitlab.com/blog/authors/rebecca-carter/",
+      "summary": "Custom Flows already let teams turn manual, multi-step work into automation that runs on GitLab events. But writing one meant learning the Flow Registry schema first. That requirement is a real barrier. The people who understand a workflow best aren’t always the same ones who know a YAML schema. In GitLab 19.3, the Flow Creator agent removes that requirement. Describe the flow you want in your own words, and it responds with a complete, runnable definition. When good automations stopped at the schema Consider two people who know exactly what should be automated, but not how to build it. The security analyst triages vulnerability reports every day and knows which patterns are false positives and who owns each affected dependency. None of that knowledge is captured in a schema they have never used. The planning lead knows what should happen next when a work item changes status. The automation is obvious to them. The Flow Registry syntax is not. Writing a flow meant learning that schema before any of this knowledge could become automation. That requirement limited who could author flows to people with schema familiarity, not people with process knowledge. The result is a gap between who understands the work and who can automate it. That gap effectively slows down automations across the entire software lifecycle especially where bottlenecks already lurk. Bring flow building to everyone who understands the work Flow Creator is a foundational agent within GitLab Duo Agent Platform, available via Agentic Chat. Invoke the agent, describe what you want the flow to do in plain language, and it produces a complete flow definition. For example, \"When a work item is created with the label security-triage , check it against our known false-positive patterns, find the affected dependency and its owner, and post a severity assessment as a comment.\" This simple explanation gives the agent a trigger, steps, and an output target. You don't have to get the description perfect on the first try either. If something is ambiguous or missing, like which project the flow should target or whether a step needs human approval, the agent confirms before it builds instead of guessing and returning a flow that runs against the wrong project or skips a needed approval. Guardrails hold as the author pool grows More people building flows does not mean looser guardrails. Every flow runs through a scoped service account under composite identity, so it can never reach further than the permissions of the person who ran it. That account is scoped to the top-level group and cannot access resources outside of its bounds. Authoring a flow and enabling it stay separate: Anyone can describe a flow to Flow Creator, but enabling one still requires the Maintainer role or higher. Group Owners and instance administrators can turn Custom Flows off entirely. See Flow Creator in action: How it works Flow Creator does three things behind the scenes: Reads current documentation. The agent checks the Flow Registry documentation before every response, rather than answering from what it learned during training. Applies rules. These rules encode failure patterns seen in real flows, so common mistakes get caught before a session even starts. Runs a pre-output checklist. This check happens before any YAML is generated, catching issues early rather than after registration. Each rule corresponds to ways flows break today: Missing project_id. The flow runs but has no clear target, so it acts against the wrong project or against nothing. Broken human in the loop gates. A flow meant to pause for approval proceeds without it. Wrong sends_response_to targets. The flow completes and writes its output somewhere nobody is looking. Missing stopping instructions. The agent keeps working beyond task completion. The output is a full, runnable definition, not a fragment to assemble. Paste it into the configuration editor when you create a flow from a project or from the AI Catalog . Then, choose whether the flow is private, restricted, or public, and add the triggers that should start it. Run your first custom flow Flow Creator ships in GitLab 19.3 as part of GitLab Duo Agent Platform. If you have been waiting on someone else to write your automation, you don’t have to anymore. Read the Custom Flows documentation to see how to register and enable a flow, then describe the one you want to Flow Creator. Start a free trial of GitLab Duo Agent Platform . On the Free tier, you can sign up in a few simple steps . If you're already on GitLab Premium or Ultimate, you can turn on Duo Agent Platform and use the GitLab Credits included with your subscription .",
+      "evidenceLink": "",
+      "score": 59,
+      "core": "Custom Flows already let teams turn manual, multi-step work into automation that runs on GitLab events. But writing one meant learning the Flow Registry schema first. That requirement is a real barrier. The people who understand a workflow best aren’t always the same ones who know a YAML schema. In GitLab 19.3, the Flow Creator agent removes that requirement. Describe the flow you want in your own words, and it resp…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-07T16:11:24.141Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "OpenAI hid AI agent hijacking of German wiki forum for weeks — because its model did the exact same thing in the Hugging Face attack",
+      "link": "https://www.techradar.com/pro/security/openai-hid-ai-agent-hijacking-of-german-wiki-forum-for-weeks-because-its-model-did-the-exact-same-thing-in-the-hugging-face-attack",
+      "publishedAt": "2026-09-07T15:19:25.000Z",
+      "author": "Benedict Collins",
+      "summary": "OpenAI called the incident a 'misalignment' in the model's reasoning and says it is working on a new disclosure framework.",
+      "evidenceLink": "",
+      "score": 58.61589005952381,
+      "core": "OpenAI called the incident a 'misalignment' in the model's reasoning and says it is working on a new disclosure framework.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-07T16:11:24.141Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "LangGraph vs AutoGen: A 2026 Framework Comparison for Production Agents",
+      "link": "https://rerun.build/blog/langgraph-vs-autogen",
+      "publishedAt": "2026-09-07T08:40:11.000Z",
+      "author": "",
+      "summary": "LangGraph vs AutoGen in 2026 is not an even fight: AutoGen is in maintenance mode and LangGraph 1.0 is the live production choice. A straight build-vs-migrate guide.",
+      "evidenceLink": "",
+      "score": 56.37950117063492,
+      "core": "LangGraph vs AutoGen in 2026 is not an even fight: AutoGen is in maintenance mode and LangGraph 1.0 is the live production choice. A straight build-vs-migrate guide.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-07T16:11:24.141Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "Build your own company brain: the enterprise AI playbook from Stripe’s engineering team | Sharadh Krishnamurthy",
+      "link": "https://www.lennysnewsletter.com/p/build-your-own-company-brain-the",
+      "publishedAt": "2026-09-07T12:04:19.000Z",
+      "author": "Claire Vo",
+      "summary": "Watch now | 🎙️ Learn how Stripe scaled AI to everyone at a complex global company by building context, governance, and a shared skills platform directly into their internal agent",
+      "evidenceLink": "",
+      "score": 51.70029482142858,
+      "core": "Watch now | 🎙️ Learn how Stripe scaled AI to everyone at a complex global company by building context, governance, and a shared skills platform directly into their internal agent",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-07T16:11:24.141Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Speculative Decoding in vLLM on AMD GPUs",
+      "link": "https://vllm.ai/blog/2026-08-23-speculative-decoding-amd-gpus",
+      "publishedAt": "2026-09-07T09:26:41.000Z",
+      "author": "ankitg12 https://news.ycombinator.com/user?id=ankitg12",
+      "summary": "A practical guide to speculative decoding in vLLM on AMD GPUs, covering draft-and-verify mechanics, MTP, EAGLE-3, DFlash, DSpark, configuration, tuning, and ben",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49596054",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 85,
+        "comments": 28
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-07T16:11:24.141Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 50.00436878773004,
+      "core": "A practical guide to speculative decoding in vLLM on AMD GPUs, covering draft-and-verify mechanics, MTP, EAGLE-3, DFlash, DSpark, configuration, tuning, and ben",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "OpenAI says some researchers are blowing through $7,000 in AI tokens every day – but it’s a price the company appears willing to pay",
+      "link": "https://www.itpro.com/technology/artificial-intelligence/openai-says-some-researchers-are-blowing-through-usd7-000-in-ai-tokens-every-day-but-its-a-price-the-company-appears-willing-to-pay",
+      "publishedAt": "2026-09-07T15:52:09.000Z",
+      "author": "Ross Kelly",
+      "summary": "OpenAI has revealed that researchers now spend around $600 each day on AI tokens amidst a surge in agentic coding. Some, meanwhile, are using upwards of $7,000 worth of tokens per day.",
+      "evidenceLink": "",
+      "score": 45.999302757936505,
+      "core": "OpenAI has revealed that researchers now spend around $600 each day on AI tokens amidst a surge in agentic coding. Some, meanwhile, are using upwards of $7,000 worth of tokens per day.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-07T16:11:24.141Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "I refused to train the AI that could replace me",
+      "link": "https://restofworld.org/2026/ai-training-jobs-expert-replacement",
+      "publishedAt": "2026-09-07T04:38:22.000Z",
+      "author": "colinprince https://news.ycombinator.com/user?id=colinprince",
+      "summary": "AI companies are paying highly educated workers to teach machines the judgment that distinguishes them, even when those systems could eventually replace them",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49593959",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 88,
+        "comments": 103
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-07T16:11:24.141Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 42.828196453885624,
+      "core": "AI companies are paying highly educated workers to teach machines the judgment that distinguishes them, even when those systems could eventually replace them",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "🎙️ How I AI: GPT-6 Astra is a banger + Stripe’s AI playbook + Grok Bot vs. OpenClaw: why I replaced my entire agent stack",
+      "link": "https://www.lennysnewsletter.com/p/how-i-ai-gpt-6-astra-is-a-banger",
+      "publishedAt": "2026-09-07T15:02:41.000Z",
+      "author": "Claire Vo",
+      "summary": "Your weekly listens from How I AI, part of the Lenny’s Podcast Network",
+      "evidenceLink": "",
+      "score": 39.307080535714285,
+      "core": "Your weekly listens from How I AI, part of the Lenny’s Podcast Network",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-07T16:11:24.141Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "An AI kill switch ‘only solves half the problem’ with national security – British firms need to reduce reliance on foreign tech",
+      "link": "https://www.itpro.com/business/policy-and-legislation/an-ai-kill-switch-only-solves-half-the-problem-with-national-security-british-firms-need-to-reduce-reliance-on-foreign-tech",
+      "publishedAt": "2026-09-07T08:33:20.000Z",
+      "author": "Ross Kelly",
+      "summary": "Efforts to protect national security are welcomed, but bolstering sovereignty is also required",
+      "evidenceLink": "",
+      "score": 33.976901964285716,
+      "core": "Efforts to protect national security are welcomed, but bolstering sovereignty is also required",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-07T16:11:24.141Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "‘This is about as close as you can get to a personal supercomputer’: AMD has Nvidia in its crosshairs with the Threadripper Halo AI workstation",
+      "link": "https://www.itpro.com/hardware/this-is-about-as-close-as-you-can-get-to-a-personal-supercomputer-amd-has-nvidia-in-its-crosshairs-with-the-threadripper-halo-ai-workstation",
+      "publishedAt": "2026-09-07T12:08:48.000Z",
+      "author": "Ross Kelly",
+      "summary": "The new device boasts 3.4x the total system memory compared to the Nvidia DGX Station, according to AMD",
+      "evidenceLink": "",
+      "score": 33.28340990079365,
+      "core": "The new device boasts 3.4x the total system memory compared to the Nvidia DGX Station, according to AMD",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-07T16:11:24.141Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "An Alien Mind",
+      "link": "https://openai.com/index/an-alien-mind",
+      "publishedAt": "2026-09-06T09:00:00.000Z",
+      "author": "",
+      "summary": "Jakub Pachocki reflects on increasingly capable AI and the challenge of keeping it aligned. He calls for stronger safeguards and international coordination.",
+      "evidenceLink": "",
+      "score": 32.638806726190474,
+      "core": "Jakub Pachocki reflects on increasingly capable AI and the challenge of keeping it aligned. He calls for stronger safeguards and international coordination.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-07T16:11:24.141Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "What's next for Philips Hue? Executive Marco Merolla says AI will change 'the way you can enjoy the system and create beautiful things'",
+      "link": "https://www.techradar.com/home/smart-lights/philips-hue-marco-merolla-interview-2026",
+      "publishedAt": "2026-09-07T10:35:31.000Z",
+      "author": "Cat Ellis",
+      "summary": "Accessibility isn't just about price — it's about compatibility, and opening up new options to users.",
+      "evidenceLink": "",
+      "score": 32.16124720238095,
+      "core": "Accessibility isn't just about price — it's about compatibility, and opening up new options to users.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-07T16:11:24.141Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Building a company due diligence Agent with Deep Agents",
+      "link": "https://www.langchain.com/blog/building-a-company-due-diligence-agent-with-deep-agents-langsmith-and-parallel",
+      "publishedAt": "2026-08-26T15:02:51.000Z",
+      "author": "",
+      "summary": "A cookbook for automating company due diligence: Deep Agents orchestrates five research subagents and Parallel's Task API returns cited, sourced findings.",
+      "evidenceLink": "",
+      "score": 30.855555555555554,
+      "core": "A cookbook for automating company due diligence: Deep Agents orchestrates five research subagents and Parallel's Task API returns cited, sourced findings.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-07T16:11:24.141Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
