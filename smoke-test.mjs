@@ -4400,6 +4400,17 @@ function testKnowledgeStrongAiRelevanceRejectsIncidentalMentions() {
     false,
     "pure financing announcements must not occupy Knowledge Radar slots"
   );
+  assert.equal(
+    isAiRelevant(
+      {
+        title: "An Alien Mind",
+        summary: "A researcher reflects on increasingly capable AI and the challenge of keeping it aligned, calling for stronger safeguards and international coordination."
+      },
+      { requireAiRelevance: true, requireKnowledgeDepth: true }
+    ),
+    true,
+    "first-party AI alignment and safeguards analysis should satisfy the Knowledge depth gate"
+  );
 }
 
 function testKnowledgeTopicKeyCollapsesVersionedAnnouncements() {
