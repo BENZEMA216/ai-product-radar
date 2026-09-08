@@ -1015,7 +1015,7 @@ function historicalLinks(reportDir, excludedPath) {
   return links;
 }
 
-function selectItems(blogs, papers, { limit, blogQuota, maximumPaperCount, maxPerBlogSource, seenLinks }) {
+export function selectItems(blogs, papers, { limit, blogQuota, maximumPaperCount, maxPerBlogSource, seenLinks }) {
   const availableBlogs = uniqueByKnowledgeTopic(uniqueByTitle(uniqueByLink(blogs)))
     .filter((item) => !seenLinks.has(canonicalizeUrl(item.link).toLowerCase()))
     .sort((a, b) => b.score - a.score);
@@ -1052,10 +1052,16 @@ function selectItems(blogs, papers, { limit, blogQuota, maximumPaperCount, maxPe
   if (selected.length < limit) {
     const used = new Set(selected.map((item) => item.link));
     const remainingBlogs = availableBlogs
-      .filter((item) => !used.has(item.link))
-      .sort((a, b) => b.score - a.score)
-      .slice(0, limit - selected.length);
-    selected.push(...remainingBlogs);
+      .filter((item) => !used.has(item.link));
+    while (selected.length < limit && remainingBlogs.length) {
+      remainingBlogs.sort((a, b) => {
+        const sourceDelta = (sourceCounts.get(a.sourceId) || 0) - (sourceCounts.get(b.sourceId) || 0);
+        return sourceDelta || b.score - a.score;
+      });
+      const item = remainingBlogs.shift();
+      selected.push(item);
+      sourceCounts.set(item.sourceId, (sourceCounts.get(item.sourceId) || 0) + 1);
+    }
   }
   if (selected.length < limit && selectedPapers.length < maximumPaperCount) {
     const used = new Set(selected.map((item) => item.link));

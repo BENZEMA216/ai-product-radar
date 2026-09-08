@@ -48,7 +48,8 @@ import {
   matchTopConference,
   normalizeSemanticScholarPapers,
   normalizeGmailNewsletterItems,
-  normalizeHckerNewsItems
+  normalizeHckerNewsItems,
+  selectItems
 } from "./knowledge-runner.mjs";
 import { auditKnowledge } from "./knowledge-audit.mjs";
 import { buildFeedbackSnapshot, isRadarFeedbackIssue, parseFeedbackIssue } from "./feedback-runner.mjs";
@@ -4142,6 +4143,42 @@ function testKnowledgeFeedParserFixture() {
   assert.match(items[0].summary, /Architecture/);
 }
 
+function testKnowledgeBlogBackfillBalancesSources() {
+  const blogs = [
+    ...Array.from({ length: 8 }, (_, index) => ({
+      kind: "blog",
+      title: `Source A ${index}`,
+      link: `https://a.example/${index}`,
+      sourceId: "a",
+      score: 100 - index,
+      publishedAt: `2026-09-${String(index + 1).padStart(2, "0")}T00:00:00.000Z`
+    })),
+    ...["b", "c", "d"].flatMap((sourceId, sourceIndex) =>
+      Array.from({ length: 4 }, (_, index) => ({
+        kind: "blog",
+        title: `Source ${sourceId} ${index}`,
+        link: `https://${sourceId}.example/${index}`,
+        sourceId,
+        score: 80 - sourceIndex * 10 - index,
+        publishedAt: `2026-08-${String(index + 1).padStart(2, "0")}T00:00:00.000Z`
+      }))
+    )
+  ];
+  const selected = selectItems(blogs, [], {
+    limit: 12,
+    blogQuota: 8,
+    maximumPaperCount: 4,
+    maxPerBlogSource: 2,
+    seenLinks: new Set()
+  });
+  const counts = selected.reduce((result, item) => {
+    result[item.sourceId] = (result[item.sourceId] || 0) + 1;
+    return result;
+  }, {});
+  assert.equal(selected.length, 12);
+  assert.ok(Math.max(...Object.values(counts)) - Math.min(...Object.values(counts)) <= 1);
+}
+
 async function testHckerNewsKnowledgeFixture() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
@@ -4845,6 +4882,7 @@ const tests = [
   ["Site builder normalizes archived Product Hunt why copy", testSiteBuilderNormalizesArchivedProductHuntWhyCopy],
   ["Live check skip classifier", testLiveCheckSkipClassifier],
   ["Knowledge feed parser fixture", testKnowledgeFeedParserFixture],
+  ["Knowledge Blog backfill balances sources", testKnowledgeBlogBackfillBalancesSources],
   ["hcker.news Knowledge filtering fixture", testHckerNewsKnowledgeFixture],
   ["Gmail newsletter normalization fixture", testGmailNewsletterFixture],
   ["Knowledge strong AI relevance rejects incidental mentions", testKnowledgeStrongAiRelevanceRejectsIncidentalMentions],
