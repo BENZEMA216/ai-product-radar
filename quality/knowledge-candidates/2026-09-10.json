@@ -1,0 +1,412 @@
+{
+  "generatedAt": "2026-09-09T16:19:53.395Z",
+  "date": "2026-09-10",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_azure_ai",
+      "source": "Microsoft Azure Blog",
+      "title": "The Economics of Agent Optimization: Context engineering for enterprise AI agents",
+      "link": "https://azure.microsoft.com/en-us/blog/the-economics-of-agent-optimization-context-engineering-for-enterprise-ai-agents",
+      "publishedAt": "2026-09-02T16:00:00.000Z",
+      "author": "Jeff Hollan",
+      "summary": "AI cost optimization goes beyond model selection. Discover how context engineering in Microsoft Foundry helps lower AI costs by improving knowledge retrieval, tool selection, memory, and agent performance at scale. The post The Economics of Agent Optimization: Context engineering for enterprise AI agents appeared first on Microsoft Azure Blog .",
+      "evidenceLink": "",
+      "score": 59.922222222222224,
+      "core": "AI cost optimization goes beyond model selection. Discover how context engineering in Microsoft Foundry helps lower AI costs by improving knowledge retrieval, tool selection, memory, and agent performance at scale. The post The Economics of Agent Optimization: Context engineering for enterprise AI agents appeared first on Microsoft Azure Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-09T16:19:53.395Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "sierra_engineering",
+      "source": "Sierra Blog",
+      "title": "Hyper-𝜏-bench: Evaluating agents that build agents",
+      "link": "https://sierra.ai/blog/hyper-t-bench-evaluating-agents-that-build-agents",
+      "publishedAt": "2026-09-08T20:25:11.000Z",
+      "author": "Ben Shi, Keshav Dhandhania",
+      "summary": "Today we’re open-sourcing hyper-𝜏-bench, a new long horizon agent evaluation that measures how well models can not only act as an agent, but construct one.",
+      "evidenceLink": "",
+      "score": 55.444396924603176,
+      "core": "Today we’re open-sourcing hyper-𝜏-bench, a new long horizon agent evaluation that measures how well models can not only act as an agent, but construct one.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-09T16:19:53.395Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "How to detect and test for prompt injection in production LLM apps - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/how-to-detect-prompt-injection-production-llm-apps",
+      "publishedAt": "2026-09-08T00:00:00.000Z",
+      "author": "",
+      "summary": "Build a prompt injection detector, evaluate it against labeled prompts, score production traces online, turn verified attacks into regression tests, and alert on injection rate changes.",
+      "score": 54.1469564484127,
+      "core": "Build a prompt injection detector, evaluate it against labeled prompts, score production traces online, turn verified attacks into regression tests, and alert on injection rate changes.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-09T16:19:53.395Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Take on your most ambitious work with GPT-6 Astra on Amazon Bedrock",
+      "link": "https://aws.amazon.com/blogs/machine-learning/take-on-your-most-ambitious-work-with-gpt-6-astra-on-amazon-bedrock",
+      "publishedAt": "2026-09-08T22:06:58.000Z",
+      "author": "Tanvi Girinath",
+      "summary": "GPT-6 Astra from OpenAI is now generally available on Amazon Bedrock. It brings deeper reasoning and sharper judgment to your most demanding tasks, running on the Amazon Bedrock inference engine built for high performance, security, and scale.",
+      "evidenceLink": "",
+      "score": 53.04890089285714,
+      "core": "GPT-6 Astra from OpenAI is now generally available on Amazon Bedrock. It brings deeper reasoning and sharper judgment to your most demanding tasks, running on the Amazon Bedrock inference engine built for high performance, security, and scale.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-09T16:19:53.395Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Anthropic reportedly withholds access to Mythos 5.1 from UK safety testing body",
+      "link": "https://www.itpro.com/technology/artificial-intelligence/anthropic-reportedly-withholds-access-to-mythos-5-1-from-uk-safety-testing-body",
+      "publishedAt": "2026-09-09T09:31:26.000Z",
+      "author": "Ross Kelly",
+      "summary": "The decision marks the first time the AI Security Institute has been left out of pre-release evaluations of Anthropic models",
+      "evidenceLink": "",
+      "score": 52.2026310515873,
+      "core": "The decision marks the first time the AI Security Institute has been left out of pre-release evaluations of Anthropic models",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-09T16:19:53.395Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "1Password increases engineering productivity 21% with Codex",
+      "link": "https://openai.com/index/1password",
+      "publishedAt": "2026-09-08T00:00:00.000Z",
+      "author": "",
+      "summary": "Engineers at 1Password use Codex to rapidly build new features and internal tools, reaching production-readiness while maintaining rigorous security policies.",
+      "evidenceLink": "",
+      "score": 51.9969564484127,
+      "core": "Engineers at 1Password use Codex to rapidly build new features and internal tools, reaching production-readiness while maintaining rigorous security policies.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-09T16:19:53.395Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Automated agent evaluation with Amazon Bedrock AgentCore and GitHub Actions",
+      "link": "https://aws.amazon.com/blogs/machine-learning/automated-agent-evaluation-with-amazon-bedrock-agentcore-and-github-actions",
+      "publishedAt": "2026-09-08T16:23:21.000Z",
+      "author": "Mahsa Paknezhad",
+      "summary": "Wire Amazon Bedrock AgentCore Evaluations into a GitHub Actions pipeline: deploy an AI agent and an OAuth-protected MCP server to AgentCore runtime, invoke the agent with test prompts, score the responses, and automatically block pull requests when agent behavior regresses.",
+      "evidenceLink": "",
+      "score": 51.812055654761906,
+      "core": "Wire Amazon Bedrock AgentCore Evaluations into a GitHub Actions pipeline: deploy an AI agent and an OAuth-protected MCP server to AgentCore runtime, invoke the agent with test prompts, score the responses, and automatically block pull requests when agent behavior regresses.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-09T16:19:53.395Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "databricks_engineering",
+      "source": "Databricks Blog",
+      "title": "Evaluation-First AI Agents: How Zepto Scales Customer Support on Databricks and MLflow",
+      "link": "https://www.databricks.com/blog/evaluation-first-ai-agents-how-zepto-scales-customer-support-databricks-and-mlflow",
+      "publishedAt": "2026-09-09T03:00:00.000Z",
+      "author": "",
+      "summary": "Zepto's Push for Reliable, Real-Time Customer SupportZepto is one of India's fastest-growing...",
+      "evidenceLink": "",
+      "score": 51.575527876984125,
+      "core": "Zepto's Push for Reliable, Real-Time Customer SupportZepto is one of India's fastest-growing...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-09T16:19:53.395Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "baseten_ai_engineering",
+      "source": "Baseten AI Engineering",
+      "title": "Baseten leads Coval’s voice AI benchmark",
+      "link": "https://www.baseten.co/blog/baseten-leads-covals-voice-ai-benchmark",
+      "publishedAt": "2026-09-08T22:20:40.000Z",
+      "author": "",
+      "summary": "Baseten defines the quality-latency Pareto frontier for STT in Coval&#x27;s benchmarks.",
+      "score": 50.19854375,
+      "core": "Baseten defines the quality-latency Pareto frontier for STT in Coval&#x27;s benchmarks.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-09T16:19:53.395Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Pathway’s brain-inspired architecture development on Amazon SageMaker HyperPod",
+      "link": "https://aws.amazon.com/blogs/machine-learning/pathways-brain-inspired-architecture-development-on-amazon-sagemaker-hyperpod",
+      "publishedAt": "2026-09-08T19:12:51.000Z",
+      "author": "Paulo Aragão",
+      "summary": "Pathway's Baby Dragon Hatchling (BDH) is a brain-inspired, post-transformer architecture that reasons in latent space instead of emitting chain-of-thought tokens. See how Pathway develops and scales BDH on Amazon SageMaker HyperPod, and how BDH-CQ set a new cost-efficiency mark on the ARC-AGI-1 benchmark.",
+      "evidenceLink": "",
+      "score": 50.1916191468254,
+      "core": "Pathway's Baby Dragon Hatchling (BDH) is a brain-inspired, post-transformer architecture that reasons in latent space instead of emitting chain-of-thought tokens. See how Pathway develops and scales BDH on Amazon SageMaker HyperPod, and how BDH-CQ set a new cost-efficiency mark on the ARC-AGI-1 benchmark.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-09T16:19:53.395Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Mercury 2.5",
+      "link": "https://www.inceptionlabs.ai/blog/introducing-mercury-2-5",
+      "publishedAt": "2026-09-08T20:14:52.000Z",
+      "author": "Topfi https://news.ycombinator.com/user?id=Topfi",
+      "summary": "Mercury 2.5 is the most capable diffusion LLM on the market. It runs at 1,107 tokens/sec and offers a 40% increase in intelligence over Mercury 2, comparable to cost-optimized frontier models.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49616354",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 241,
+        "comments": 49
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-09T16:19:53.395Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 45.94913201714562,
+      "core": "Mercury 2.5 is the most capable diffusion LLM on the market. It runs at 1,107 tokens/sec and offers a 40% increase in intelligence over Mercury 2, comparable to cost-optimized frontier models.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "What will our economic future look like?",
+      "link": "https://www.anthropic.com/features/econ-scenarios",
+      "publishedAt": "2026-09-09T13:38:23.000Z",
+      "author": "oumua_don17 https://news.ycombinator.com/user?id=oumua_don17",
+      "summary": "The Anthropic Economics Team models the effects of AI on the economy of 2030.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49626373",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 100,
+        "comments": 155
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-09T16:19:53.395Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 43.64336410133642,
+      "core": "The Anthropic Economics Team models the effects of AI on the economy of 2030.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Measuring LLMs’ ability to develop exploits",
+      "link": "https://www.anthropic.com/research/exploit-evals",
+      "publishedAt": "2026-09-09T15:46:02.000Z",
+      "author": "",
+      "summary": "Two new academic benchmarks measure AI models&#x27; ability to develop exploits, plus an updated benchmark for smart contract exploitation.",
+      "score": 42.731916765873024,
+      "core": "Two new academic benchmarks measure AI models&#x27; ability to develop exploits, plus an updated benchmark for smart contract exploitation.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-09T16:19:53.395Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_azure_ai",
+      "source": "Microsoft Azure Blog",
+      "title": "Enterprise AI transformation relies on the end-to-end platform: Azure was built for this moment",
+      "link": "https://azure.microsoft.com/en-us/blog/enterprise-ai-transformation-relies-on-the-end-to-end-platform-azure-was-built-for-this-moment",
+      "publishedAt": "2026-09-03T19:00:00.000Z",
+      "author": "Jeremy Winter",
+      "summary": "The recognition for Microsoft over the past couple of weeks comes down to models, infrastructure, data, applications, and developer tools working as one system when AI moves into production. The post Enterprise AI transformation relies on the end-to-end platform: Azure was built for this moment appeared first on Microsoft Azure Blog .",
+      "evidenceLink": "",
+      "score": 40.771559623015875,
+      "core": "The recognition for Microsoft over the past couple of weeks comes down to models, infrastructure, data, applications, and developer tools working as one system when AI moves into production. The post Enterprise AI transformation relies on the end-to-end platform: Azure was built for this moment appeared first on Microsoft Azure Blog .",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-09T16:19:53.395Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Measuring LLMs&#x27; impact on N-day exploits",
+      "link": "https://www.anthropic.com/research/n-days",
+      "publishedAt": "2026-09-09T15:35:41.000Z",
+      "author": "",
+      "summary": "N-days are disclosed but unpatched vulnerabilities. We evaluate how much large language models can accelerate and automate N-day exploit development.",
+      "score": 38.77515089285714,
+      "core": "N-days are disclosed but unpatched vulnerabilities. We evaluate how much large language models can accelerate and automate N-day exploit development.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-09T16:19:53.395Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "How AI is reshaping the economics of cyberattacks and defense",
+      "link": "https://www.techradar.com/pro/how-ai-is-reshaping-the-economics-of-cyberattacks-and-defense",
+      "publishedAt": "2026-09-09T14:07:42.000Z",
+      "author": "Kfir Fleischer",
+      "summary": "AI is scaling cyberattacks, forcing defenders to rethink how they respond and act.",
+      "evidenceLink": "",
+      "score": 35.29818660714286,
+      "core": "AI is scaling cyberattacks, forcing defenders to rethink how they respond and act.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-09T16:19:53.395Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "NordVPN warns AI is making scams more personal and devastating than ever",
+      "link": "https://www.techradar.com/vpn/vpn-services/nordvpn-warns-ai-is-making-scams-more-personal-and-devastating-than-ever",
+      "publishedAt": "2026-09-09T15:18:50.000Z",
+      "author": "Rene Millman",
+      "summary": "NordVPN's first flagship Consumer Cybersecurity Report reveals how AI is industrializing fraud and bypassing technical defenses by targeting the human element. Here is what you need to know to stay safe.",
+      "evidenceLink": "",
+      "score": 35.055091369047624,
+      "core": "NordVPN's first flagship Consumer Cybersecurity Report reveals how AI is industrializing fraud and bypassing technical defenses by targeting the human element. Here is what you need to know to stay safe.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-09T16:19:53.395Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "How GPT-5.6 Sol helps run quantum computing experiments",
+      "link": "https://openai.com/index/codex-quantum-computing-experiments",
+      "publishedAt": "2026-09-08T17:00:00.000Z",
+      "author": "",
+      "summary": "See how an MIT researcher uses GPT-5.6 Sol with Codex to autonomously run quantum computing experiments, analyze results, and calibrate qubits.",
+      "evidenceLink": "",
+      "score": 29.12790882936508,
+      "core": "See how an MIT researcher uses GPT-5.6 Sol with Codex to autonomously run quantum computing experiments, analyze results, and calibrate qubits.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-09T16:19:53.395Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pragmatic_engineer",
+      "source": "The Pragmatic Engineer",
+      "title": "Building Codex with Tibo Sottiaux",
+      "link": "https://newsletter.pragmaticengineer.com/p/building-codex-with-tibo-sottiaux",
+      "publishedAt": "2026-09-09T15:57:24.000Z",
+      "author": "Gergely Orosz",
+      "summary": "OpenAI’s Tibo Sottiaux shares how Codex was built and how it’s reshaping software development.",
+      "evidenceLink": "",
+      "score": 28.495448511904762,
+      "core": "OpenAI’s Tibo Sottiaux shares how Codex was built and how it’s reshaping software development.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-09T16:19:53.395Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "interconnects",
+      "source": "Interconnects",
+      "title": "When will average people feel AI’s impact?",
+      "link": "https://www.interconnects.ai/p/when-will-average-people-feel-ais",
+      "publishedAt": "2026-09-09T11:01:23.000Z",
+      "author": "Nathan Lambert",
+      "summary": "We’re <5 years into a compounding revolution which could take a century, and how the AI industry should manage this.",
+      "evidenceLink": "",
+      "score": 24.26526994047619,
+      "core": "We’re <5 years into a compounding revolution which could take a century, and how the AI industry should manage this.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-09T16:19:53.395Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
