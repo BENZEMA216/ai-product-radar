@@ -1,0 +1,293 @@
+{
+  "date": "2026-09-11",
+  "generatedAt": "2026-09-10T16:03:25.723Z",
+  "reportPath": "reports/2026-09-11-0003-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 41,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 16,
+      "keptCount": 11,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-09-09；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 16 条，AI 相关候选 11 条；实际 fallback：hunted_space。；历史去重移除 1 条已报道或已处理日榜 Product Hunt 信号，最终发布 10 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 4,
+      "keptCount": 4,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 18,
+      "keptCount": 13,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 14,
+      "keptCount": 14,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Harden",
+      "productKey": "https://www.producthunt.com/products/agent-integrity-foundation-aif",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 AI 编码安全从单次提示提升为独立防护层，值得看完整性约束能否成为团队部署编码 agent 的默认基础设施。"
+    },
+    {
+      "rank": 2,
+      "product": "Self-hosted company OS, Claude Code and Codex agents in departments",
+      "productKey": "https://github.com/otodock/oto-dock",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它尝试把 Claude Code、Codex 从个人工具编排成跨部门的自托管系统，产品关键在权限、交接和多 agent 运行可见性。"
+    },
+    {
+      "rank": 3,
+      "product": "JavaScript grid and pivot library built for coding agents",
+      "productKey": "https://news.ycombinator.com/item?id=49643496",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "面向编码 agent 设计 grid/pivot，真正值得验证的是组件接口是否足够可描述、可组合，让 agent 生成复杂数据界面时少做脆弱的前端拼装。"
+    },
+    {
+      "rank": 4,
+      "product": "Okibi",
+      "productKey": "https://www.ycombinator.com/launches/tn9-okibi-agent-ready-clis",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把现有产品转成 agent 可调用的 CLI，是一种新的分发接口；重点看它能否降低接入成本，并把 agent 使用转化为真实客户需求。"
+    },
+    {
+      "rank": 5,
+      "product": "Mastra Factory",
+      "productKey": "https://www.producthunt.com/products/mastra",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“从 issue 到生产”给出了完整交付边界，比单点编码助手更值得看；核心是 agent 能否跨实现、验证和上线保持责任链。"
+    },
+    {
+      "rank": 6,
+      "product": "Type.com",
+      "productKey": "https://www.producthunt.com/products/type-com",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 Claude、Codex 与人放进同一工作区，值得看共享上下文、任务交接和审阅痕迹能否减少多工具协作中的信息断层。"
+    },
+    {
+      "rank": 7,
+      "product": "Ravion",
+      "productKey": "https://www.ycombinator.com/launches/tmi-ravion-deploy-and-operate-aws-with-your-ai-agent-fast-setup-customize-as-you-scale",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用 Vercel/Railway 式体验包装 AWS 部署与运维，判断重点是 agent 能否简化云操作，同时保留随规模增长所需的可控性。"
+    },
+    {
+      "rank": 8,
+      "product": "Rational",
+      "productKey": "https://www.ycombinator.com/launches/tll-rational-first-zero-human-accounting-firm",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“零人工会计事务所”直接承诺业务结果，值得关注的不是自动记账本身，而是它如何建立审计、责任和客户信任边界。"
+    },
+    {
+      "rank": 9,
+      "product": "49agents IDE",
+      "productKey": "https://www.producthunt.com/products/49agents-ide",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用 2D IDE 管理跨项目 agent，瞄准的是并发任务带来的注意力负担；重点看空间化界面是否真能降低监督成本，而非增加一层视觉噱头。"
+    },
+    {
+      "rank": 10,
+      "product": "Starkomand – Mission Control for Your Agents. One Canvas",
+      "productKey": "https://starkomand.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“一个画布上的 agent 指挥中心”切中多 agent 监督问题，值得核验它是否把状态、干预和结果验收放在同一操作面。"
+    },
+    {
+      "rank": 11,
+      "product": "Muse by Meta",
+      "productKey": "https://www.producthunt.com/products/muse-22",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“能把事情做完的个人 agent”仍是宽泛承诺；应重点检查任务闭环、授权范围和持续使用价值，而不是被品牌或 agent 标签代替产品证据。"
+    },
+    {
+      "rank": 12,
+      "product": "AIDCrew v0.3 – conding agents, terminal and web UIs",
+      "productKey": "https://aidcrew.dev/cases/skyforge-islands",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "同时提供终端与 Web 界面，说明它在尝试统一编码 agent 的执行和监督入口；可关注两种界面间上下文与控制权是否连续。"
+    },
+    {
+      "rank": 13,
+      "product": "ColliePWA a mobile interface for AI agents in herdr/tmux/zellij",
+      "productKey": "https://colliepwa.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 tmux/zellij 中的长时 agent 任务带到手机端，观察点是移动监督、异常干预和恢复是否足以支撑离开桌面的工作流。"
+    },
+    {
+      "rank": 14,
+      "product": "Frigade Assist API",
+      "productKey": "https://www.producthunt.com/products/frigade",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 agent 直接生成“该点哪里”的产品内引导，把回答升级为界面行动；适合观察客服、激活和功能教育能否共用一套指导层。"
+    },
+    {
+      "rank": 15,
+      "product": "Botbin.io – pastebin for AI agent artifacts",
+      "productKey": "https://botbin.io/?v=next",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "agent 产物的轻量分享层能补上跨工具交接缺口，关键看它是否保留可追溯上下文，并处理敏感信息与失效策略。"
+    },
+    {
+      "rank": 16,
+      "product": "MCPCore – Free MCP Hosting and Cloud Platform for MCP Servers",
+      "productKey": "https://mcpcore.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "免费托管 MCP Server 直接降低部署门槛，值得看平台是否进一步解决鉴权、可观测性和发现分发，而不只是代管进程。"
+    },
+    {
+      "rank": 17,
+      "product": "Noodle Seed",
+      "productKey": "https://www.producthunt.com/products/noodle-seed",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它同时承诺“让产品进入 AI”与“把 AI 放进产品”，定位涉及分发和能力嵌入；现有描述偏抽象，需看实际入口与交付物。"
+    },
+    {
+      "rank": 18,
+      "product": "AlphaGenome Atlas",
+      "productKey": "https://www.producthunt.com/products/alphagenome-atlas",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把复杂的基因突变模型包装成可浏览的图谱产品，值得看专业用户能否从模型输出直接进入检索、比较和解释流程。"
+    },
+    {
+      "rank": 19,
+      "product": "Security Cards – Reducing insecure AI-generated code by 72%",
+      "productKey": "https://www.rewarelabs.com/blog/introducing-security-cards",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "标题声称能显著降低 AI 生成代码的不安全问题，产品价值在于把安全约束嵌入编码流程；应进一步核验“72%”的测试边界与可迁移性。"
+    },
+    {
+      "rank": 20,
+      "product": "WorkID.ai",
+      "productKey": "https://www.producthunt.com/products/workid-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“已验证人才 + 可信招聘”把信任放在撮合之前，但行内证据尚未说明 AI 的具体作用；更适合作为验证机制与招聘转化的观察样本。"
+    }
+  ]
+}

@@ -1,0 +1,418 @@
+{
+  "generatedAt": "2026-09-10T16:13:42.123Z",
+  "date": "2026-09-11",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "DeepSeek V4.1 Flash now available on AI Gateway",
+      "link": "https://vercel.com/changelog/deepseek-v4-1-flash-now-available-on-ai-gateway",
+      "publishedAt": "2026-09-09T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "DeepSeek V4.1 Flash is now available on AI Gateway with native image understanding. V4.1 Flash has vision support and accepts text and images in the same request, so you can ask questions about screenshots, read charts, and extract information from visual content. The model has a 1 million token context window and supports responses up to 384,000 tokens, along with reasoning, tool use, and prompt caching. Its new architecture processes input and generates output with separate components, reducing the active computation needed for each stage. Use deepseek/deepseek-v4.1-flash as the model name: To use it in Claude Code, Codex, Cursor, and more, install the latest Vercel CLI and run setup: Then select deepseek/deepseek-v4.1-flash in the agent. See the coding agents guide for details. Try DeepSeek V4.1 Flash in the model playground . AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. You can view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 82.6543229563492,
+      "core": "DeepSeek V4.1 Flash is now available on AI Gateway with native image understanding. V4.1 Flash has vision support and accepts text and images in the same request, so you can ask questions about screenshots, read charts, and extract information from visual content. The model has a 1 million token context window and supports responses up to 384,000 tokens, along with reasoning, tool use, and prompt caching. Its new ar…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-10T16:13:42.123Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "A Stupid Idea for AI Alignment We Came with by Looking at Specification Gaming",
+      "link": "https://slimemoldtimemold.com/2026/08/05/a-stupid-idea-for-ai-alignment-we-came-up-with-by-looking-at-the-list-of-specification-gaming-behaviours",
+      "publishedAt": "2026-09-10T01:59:51.000Z",
+      "author": "cpeterso https://news.ycombinator.com/user?id=cpeterso",
+      "summary": "Creatures bred for speed grow really tall and generate high velocities by falling over. An evolved player makes invalid moves far away in the board, causing opponent players to run out of memory and crash. A game-playing agent accrues points by falsely inserting its name as the author of high-value items. These bizarre exploits and&hellip;",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49637395",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 89,
+        "comments": 61
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-10T16:13:42.123Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 72.2339498349233,
+      "core": "Creatures bred for speed grow really tall and generate high velocities by falling over. An evolved player makes invalid moves far away in the board, causing opponent players to run out of memory and crash. A game-playing agent accrues points by falsely inserting its name as the author of high-value items. These bizarre exploits and&hellip;",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Introducing Bloom: Automated behavioral evals",
+      "link": "https://www.anthropic.com/research/bloom",
+      "publishedAt": "2026-09-09T21:55:31.000Z",
+      "author": "",
+      "summary": "Bloom is an open-source agentic framework that auto-generates behavioral evaluations, tested across 16 frontier models.",
+      "score": 61.35374755952381,
+      "core": "Bloom is an open-source agentic framework that auto-generates behavioral evaluations, tested across 16 frontier models.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-10T16:13:42.123Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_azure_ai",
+      "source": "Microsoft Azure Blog",
+      "title": "Beyond the benchmark: How an adaptive approach drives scientific discovery",
+      "link": "https://azure.microsoft.com/en-us/blog/beyond-the-benchmark-how-an-adaptive-approach-drives-scientific-discovery",
+      "publishedAt": "2026-09-08T20:00:00.000Z",
+      "author": "Aseem Datar",
+      "summary": "For research and development (R&D) organizations, the promise of agentic AI is not a better one-time answer. It is a new way to explore complex scientific and engineering problems: pursuing multiple hypotheses, validating them against evidence, learning from what does not work, and adapting their approach as new information becomes available. The post Beyond the benchmark: How an adaptive approach drives scientific discovery appeared first on Microsoft Azure Blog .",
+      "evidenceLink": "",
+      "score": 59.446386448412696,
+      "core": "For research and development (R&D) organizations, the promise of agentic AI is not a better one-time answer. It is a new way to explore complex scientific and engineering problems: pursuing multiple hypotheses, validating them against evidence, learning from what does not work, and adapting their approach as new information becomes available. The post Beyond the benchmark: How an adaptive approach drives scientific …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-10T16:13:42.123Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "GPT-6 Astra: The next generation in intelligence for work",
+      "link": "https://openai.com/index/gpt-6-astra-next-generation-work",
+      "publishedAt": "2026-09-09T11:00:00.000Z",
+      "author": "",
+      "summary": "Meet GPT-6 Astra, OpenAI’s most capable model for business, with advanced reasoning, computer use, and stronger writing and design judgment.",
+      "evidenceLink": "",
+      "score": 55.69003724206349,
+      "core": "Meet GPT-6 Astra, OpenAI’s most capable model for business, with advanced reasoning, computer use, and stronger writing and design judgment.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-10T16:13:42.123Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Agent Evaluation Metric for multi-turn conversations",
+      "link": "https://aws.amazon.com/blogs/machine-learning/agent-evaluation-metric-for-multi-turn-conversations",
+      "publishedAt": "2026-09-10T15:55:41.000Z",
+      "author": "Surafel Lakew",
+      "summary": "Multi-turn agents fail in ways single-turn evaluation misses: one early mistake corrupts every later turn. This post introduces the Agent Evaluation Metric (AEM), a decomposable, turn-level way to measure agent quality, applied to its first dimension, correctness, to pinpoint the turn that caused a failure and separate it from the turns that inherited it.",
+      "evidenceLink": "",
+      "score": 53.961882480158735,
+      "core": "Multi-turn agents fail in ways single-turn evaluation misses: one early mistake corrupts every later turn. This post introduces the Agent Evaluation Metric (AEM), a decomposable, turn-level way to measure agent quality, applied to its first dimension, correctness, to pinpoint the turn that caused a failure and separate it from the turns that inherited it.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-10T16:13:42.123Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How Heurist Finance built an AI-native investment workbench on Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-heurist-finance-built-an-ai-native-investment-workbench-on-amazon-bedrock-agentcore",
+      "publishedAt": "2026-09-09T18:11:12.000Z",
+      "author": "JW Wang",
+      "summary": "Learn how Heurist built Heurist Finance, a conversational AI investment workbench, on Amazon Bedrock AgentCore. This customer story shows how AgentCore payments, Identity, Memory, Code Interpreter, and Observability let a small team buy premium market data per query, isolate analysis in a sandbox, and keep every action auditable.",
+      "evidenceLink": "",
+      "score": 50.264481686507935,
+      "core": "Learn how Heurist built Heurist Finance, a conversational AI investment workbench, on Amazon Bedrock AgentCore. This customer story shows how AgentCore payments, Identity, Memory, Code Interpreter, and Observability let a small team buy premium market data per query, isolate analysis in a sandbox, and keep every action auditable.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-10T16:13:42.123Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "OpenAI have no mathematicians capable of understanding what they put out",
+      "link": "https://mastodon.social/@tristanbuckmaster/117237555794407063",
+      "publishedAt": "2026-09-10T05:01:50.000Z",
+      "author": "doener https://news.ycombinator.com/user?id=doener",
+      "summary": "Attached: 1 image Just to point something out to Open AI since they do not seem to have any mathematicians capable of understanding what they put out. They like to point out that their work was inspired by unforced Euler. As I said in my statement, our hypodissipative result (which is not public), but as I understand it part of their training data was already pointing to the fact that unforced Euler was possible. This below is absolute academic malpractice:",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49638622",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 87,
+        "comments": 41
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-10T16:13:42.123Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 49.73017934234029,
+      "core": "Attached: 1 image Just to point something out to Open AI since they do not seem to have any mathematicians capable of understanding what they put out. They like to point out that their work was inspired by unforced Euler. As I said in my statement, our hypodissipative result (which is not public), but as I understand it part of their training data was already pointing to the fact that unforced Euler was possible. Th…",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Another researcher says OpenAI trained on conversations, then claimed breakthrou",
+      "link": "https://bsky.app/profile/timkellogg.me/post/3mv4mt4ikss2d",
+      "publishedAt": "2026-09-10T13:07:14.000Z",
+      "author": "ColinWright https://news.ycombinator.com/user?id=ColinWright",
+      "summary": "another researcher accuses OpenAI of training on conversations and then claiming a breakthrough",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49643112",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 244,
+        "comments": 15
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-10T16:13:42.123Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 49.65986159745197,
+      "core": "another researcher accuses OpenAI of training on conversations and then claiming a breakthrough",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "An alignment assessment of recent cybersecurity incidents",
+      "link": "https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents",
+      "publishedAt": "2026-09-10T01:13:21.000Z",
+      "author": "",
+      "summary": "We present an alignment assessment of four incidents in which Claude models gained unauthorized access to real third-party systems.",
+      "score": 48.655930099206344,
+      "core": "We present an alignment assessment of four incidents in which Claude models gained unauthorized access to real third-party systems.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-10T16:13:42.123Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "Agentic OS: What an Agent Operating System Actually Is",
+      "link": "https://rerun.build/blog/agentic-os",
+      "publishedAt": "2026-09-10T04:22:51.000Z",
+      "author": "",
+      "summary": "An agentic OS is a real layer of responsibility, not a product you can buy. Here is where the operating system metaphor holds, the four places it breaks, and the seven questions to ask any vendor claiming to be one.",
+      "evidenceLink": "",
+      "score": 48.34819200396825,
+      "core": "An agentic OS is a real layer of responsibility, not a product you can buy. Here is where the operating system metaphor holds, the four places it breaks, and the seven questions to ask any vendor claiming to be one.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-10T16:13:42.123Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Paul Christiano joins OpenAI Foundation Board",
+      "link": "https://openai.com/index/paul-christiano-joins-openai-foundation-board",
+      "publishedAt": "2026-09-09T17:00:00.000Z",
+      "author": "",
+      "summary": "Paul Christiano joins the OpenAI Foundation Board and its Safety and Security Committee, bringing experience in AI alignment, safety, and standards.",
+      "evidenceLink": "",
+      "score": 46.163053115079364,
+      "core": "Paul Christiano joins the OpenAI Foundation Board and its Safety and Security Committee, bringing experience in AI alignment, safety, and standards.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-10T16:13:42.123Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Benchmarking small LLM inference on SageMaker AI: G7 vs G5 and G6",
+      "link": "https://aws.amazon.com/blogs/machine-learning/benchmarking-small-llm-inference-on-sagemaker-ai-g7-vs-g5-and-g6",
+      "publishedAt": "2026-09-08T16:21:57.000Z",
+      "author": "Mona Mona",
+      "summary": "Benchmark two 30B Mixture-of-Experts models, Qwen3-Coder-30B and NVIDIA Nemotron-3-Nano-30B, across G5, G6, G6e, and G7 GPU instances on Amazon SageMaker AI. Compare throughput, latency, and cost-per-token, and see how G7's NVIDIA Blackwell GPUs deliver measurable price-performance gains for real-time LLM inference.",
+      "evidenceLink": "",
+      "score": 44.34235867063492,
+      "core": "Benchmark two 30B Mixture-of-Experts models, Qwen3-Coder-30B and NVIDIA Nemotron-3-Nano-30B, across G5, G6, G6e, and G7 GPU instances on Amazon SageMaker AI. Compare throughput, latency, and cost-per-token, and see how G7's NVIDIA Blackwell GPUs deliver measurable price-performance gains for real-time LLM inference.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-10T16:13:42.123Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Finding bugs with Claude and property-based testing",
+      "link": "https://www.anthropic.com/research/property-based-testing",
+      "publishedAt": "2026-09-09T21:50:18.000Z",
+      "author": "",
+      "summary": "We developed a Claude-powered agent that efficiently identifies bugs in large software projects across the Python ecosystem.",
+      "score": 43.375315019841274,
+      "core": "We developed a Claude-powered agent that efficiently identifies bugs in large software projects across the Python ecosystem.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-10T16:13:42.123Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "The AI policy window is open. We need to act.",
+      "link": "https://openai.com/index/ai-policy-window",
+      "publishedAt": "2026-09-09T13:00:00.000Z",
+      "author": "",
+      "summary": "Chris Lehane argues that stronger AI capabilities require stronger safety evidence, shared standards, and durable policy action while the policy window remains open.",
+      "evidenceLink": "",
+      "score": 37.97178327380952,
+      "core": "Chris Lehane argues that stronger AI capabilities require stronger safety evidence, shared standards, and durable policy action while the policy window remains open.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-10T16:13:42.123Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "‘We can assume that all threat actors are using AI in some capacity’: Cyber researchers warn hackers are ramping up automated attacks",
+      "link": "https://www.itpro.com/security/cyber-crime/we-can-assume-that-all-threat-actors-are-using-ai-in-some-capacity-google-cyber-researchers-warn-hackers-are-ramping-up-automated-attacks",
+      "publishedAt": "2026-09-09T17:00:00.000Z",
+      "author": "Emma Woollacott",
+      "summary": "Google Threat Intelligence Group has issued a warning over the increased threats posed by hackers using agentic AI tools",
+      "evidenceLink": "",
+      "score": 36.007497559523806,
+      "core": "Google Threat Intelligence Group has issued a warning over the increased threats posed by hackers using agentic AI tools",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-10T16:13:42.123Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Debugging Deep Agents with LangSmith",
+      "link": "https://www.langchain.com/blog/debugging-deep-agents-with-langsmith",
+      "publishedAt": "2026-08-25T19:38:39.000Z",
+      "author": "",
+      "summary": "Debug deep agents with LangSmith's tracing and analysis. Analyze complex traces, optimize prompts with Polly, and improve performance.",
+      "evidenceLink": "",
+      "score": 30.744444444444444,
+      "core": "Debug deep agents with LangSmith's tracing and analysis. Analyze complex traces, optimize prompts with Polly, and improve performance.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-10T16:13:42.123Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_azure_ai",
+      "source": "Microsoft Azure Blog",
+      "title": "Inside Microsoft’s marketing team: Scaling expertise with AI",
+      "link": "https://azure.microsoft.com/en-us/blog/inside-microsofts-marketing-team-scaling-expertise-with-ai",
+      "publishedAt": "2026-08-31T16:00:00.000Z",
+      "author": "Jessica Hawk",
+      "summary": "AI is helping organizations meet high expectations as markets change quickly and technology advances at a rapid pace. The post Inside Microsoft’s marketing team: Scaling expertise with AI appeared first on Microsoft Azure Blog .",
+      "evidenceLink": "",
+      "score": 29.266666666666666,
+      "core": "AI is helping organizations meet high expectations as markets change quickly and technology advances at a rapid pace. The post Inside Microsoft’s marketing team: Scaling expertise with AI appeared first on Microsoft Azure Blog .",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-10T16:13:42.123Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "IBM is launching a new open source AI model to get NASA back to the Moon — and making petabytes of lunar data available to study",
+      "link": "https://www.techradar.com/pro/ibm-is-launching-a-new-open-source-ai-model-to-get-nasa-back-to-the-moon-and-making-petabytes-of-lunar-data-available-to-study",
+      "publishedAt": "2026-09-10T12:00:00.000Z",
+      "author": "Mike Moore",
+      "summary": "IBM and NASA release one of the first open source AI models to spur on the next generation of lunar exploration.",
+      "evidenceLink": "",
+      "score": 25.320195972222223,
+      "core": "IBM and NASA release one of the first open source AI models to spur on the next generation of lunar exploration.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-10T16:13:42.123Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "interconnects",
+      "source": "Interconnects",
+      "title": "One resignation turned the embers of AI fear into a wildfire",
+      "link": "https://www.interconnects.ai/p/one-resignation-turned-the-embers",
+      "publishedAt": "2026-09-10T15:28:52.000Z",
+      "author": "Nathan Lambert",
+      "summary": "Some quick notes on a truly weird week.",
+      "evidenceLink": "",
+      "score": 24.163291210317457,
+      "core": "Some quick notes on a truly weird week.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-10T16:13:42.123Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
