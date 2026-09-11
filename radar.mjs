@@ -60,7 +60,9 @@ const AI_KEYWORDS = [
   "gpt",
   "model",
   "prompt",
-  "vibe",
+  "vibe coding",
+  "vibe-coded",
+  "vibecoded",
   "生成",
   "智能体",
   "大模型",
@@ -2404,6 +2406,7 @@ function isWeakShowHnDemo(item, text) {
   ) {
     return true;
   }
+  if (/\b(?:agentic|mcp-driven)\s+game(?:\s*play)?\b/i.test(text)) return true;
   if (hasExplicitProductSurface(text)) return false;
   return includesAny(text, [
     "for dummies",
@@ -2507,7 +2510,8 @@ function isLowSignalGitHubPackageRelease(item) {
   const onlyVersionAnnouncement = /^发布\s+[^。]{1,140}。$/.test(did);
   const releaseTag = did.match(/^发布\s+([^。]{1,140})。$/)?.[1] || "";
   const hasOnlyChannelTag = /^(stable|beta|alpha|latest|nightly|canary)$/i.test(releaseTag);
-  return onlyVersionAnnouncement && (isScopedPackageVersion || hasVersionInTitle || hasOnlyChannelTag);
+  const isBuildSourceBundle = /\bcygwin build inputs and matching source\b/i.test(releaseText);
+  return onlyVersionAnnouncement && (isScopedPackageVersion || hasVersionInTitle || hasOnlyChannelTag || isBuildSourceBundle);
 }
 
 function isStrongAggregatorProductSignal(item) {
@@ -2533,7 +2537,7 @@ function isStrongAggregatorProductSignal(item) {
   ]);
 }
 
-function qualityLabelForItem(item) {
+export function qualityLabelForItem(item) {
   const text = `${item.product} ${item.did} ${item.why}`.toLowerCase();
   if (isAihotNonProductSignal(item)) return "deprioritize";
   if (item.category === "model_infra") return "weak_keep";

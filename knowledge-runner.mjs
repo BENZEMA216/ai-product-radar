@@ -470,7 +470,7 @@ function strongAiEvidence(item) {
 export function isAiRelevant(item, source) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
   const title = String(item.title || "").toLowerCase();
-  if (/\b(?:announc(?:e|ing)|rais(?:e|ed|ing))\b[^\n]{0,80}\b(?:pre-?seed|seed round|series [a-z]|funding round|\$\d+(?:\.\d+)?m round)\b/i.test(title)) {
+  if (/\b(?:announc(?:e|ing)|rais(?:e|es|ed|ing))\b[^\n]{0,80}(?:\b(?:pre-?seed|seed round|series [a-z]|funding round)\b|\$\d+(?:\.\d+)?[mb]\b(?:\s+round)?)/i.test(title)) {
     return false;
   }
   if (source.requireAiRelevance && !includesAny(text, AI_TERMS)) return false;

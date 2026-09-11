@@ -26,6 +26,7 @@ import {
   isDealflowEnabled,
   githubRepoKeyFromUrl,
   priorityScore,
+  qualityLabelForItem,
   previousProductHuntHistory,
   rankCandidatesForPriority,
   productHuntCompletedDateKey,
@@ -1764,6 +1765,38 @@ function testRelevanceRejectsIncidentalAcronymSubstrings() {
   assert.equal(isRelevant("MCP runtime for AI agent tool traffic"), true);
   assert.equal(isRelevant("GPT-powered workflow assistant"), true);
   assert.equal(isRelevant("18 model providers supported"), true);
+  assert.equal(isRelevant("Vibe Eyes Put your pets in your macOS menu bar"), false);
+  assert.equal(isRelevant("Self improving vibe coding environment"), true);
+}
+
+function testCurrentWeakProductSignalsStayWeak() {
+  assert.equal(
+    qualityLabelForItem({
+      product: "Clawfight.ai MCP-driven agentic game play",
+      link: "https://clawfight.ai/agents.md",
+      type: "新产品",
+      did: "Show HN: Clawfight.ai MCP-driven agentic game play",
+      why: "MCP game experiment.",
+      evidence: "HN Algolia",
+      source: "hackernews",
+      sourceSubtype: "show_hn",
+      category: "product"
+    }),
+    "weak_keep"
+  );
+  assert.equal(
+    qualityLabelForItem({
+      product: "openai/codex Cygwin build inputs and matching source for Windows voice",
+      link: "https://github.com/openai/codex/releases/tag/voice-cygwin-example",
+      type: "老产品更新",
+      did: "发布 Cygwin build inputs and matching source for Windows voice。",
+      why: "Only build inputs and source are disclosed.",
+      evidence: "GitHub Release",
+      source: "github",
+      category: "product"
+    }),
+    "weak_keep"
+  );
 }
 
 function testProductHuntRejectsLowSignalConsumerNovelty() {
@@ -4440,6 +4473,17 @@ function testKnowledgeStrongAiRelevanceRejectsIncidentalMentions() {
   assert.equal(
     isAiRelevant(
       {
+        title: "LangChain raises $125M to build the platform for agent engineering",
+        summary: "We raised $125M at a $1.25B valuation."
+      },
+      source
+    ),
+    false,
+    "raises plus a disclosed dollar amount must be treated as a pure financing announcement"
+  );
+  assert.equal(
+    isAiRelevant(
+      {
         title: "An Alien Mind",
         summary: "A researcher reflects on increasingly capable AI and the challenge of keeping it aligned, calling for stronger safeguards and international coordination."
       },
@@ -4812,6 +4856,7 @@ const tests = [
   ["Product Hunt why copy handles current fallback contexts", testProductHuntWhyCopyHandlesCurrentFallbackContexts],
   ["Product Hunt rejects incidental ai substring", testProductHuntRejectsIncidentalAiSubstring],
   ["Relevance rejects incidental acronym substrings", testRelevanceRejectsIncidentalAcronymSubstrings],
+  ["Current weak product signals stay weak", testCurrentWeakProductSignalsStayWeak],
   ["Product Hunt rejects low-signal consumer novelty", testProductHuntRejectsLowSignalConsumerNovelty],
   ["Product Hunt rejects topic-only dating novelty", testProductHuntRejectsTopicOnlyDatingNovelty],
   ["Product Hunt rejects generic topic-only products", testProductHuntRejectsGenericTopicOnlyProducts],
