@@ -1,0 +1,422 @@
+{
+  "generatedAt": "2026-09-11T16:15:00.737Z",
+  "date": "2026-09-12",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "simon_willison",
+      "source": "Simon Willison",
+      "title": "Some thoughts on the Navier–Stokes Millennium Prize Problem",
+      "link": "https://simonwillison.net/2026/Sep/8/on-navier-stokes",
+      "publishedAt": "2026-09-08T23:55:12.000Z",
+      "author": "",
+      "summary": "On the Navier–Stokes Millennium Prize Problem introduces an impressive result from OpenAI, who used an unreleased model to produce a resolution to the Navier–Stokes existence and smoothness problem , one of the seven Millennium Prize Problems that have been subject to a $1,000,000 prize since May 24th, 2000. The discovery is somewhat overshadowed by accusations of skulduggery from Tristan Buckmaster, an NYU mathematics professor who was collaborating on related problems with Levent Alpöge, an accomplished mathematician who currently works for Anthropic. Tristan's complaint accompanied a hastily published version of their own results. Here's the PDF describing what happened . The very short version is that Tristan and Levent worked on the problem for almost a year, making extensive use of Claude and Codex (mainly GPT-5.6 Sol), then had a breakthrough on August 15th. The mathematical rumour mill kicked into gear and Tristan and Levent heard that OpenAI had heard that Anthropic had resolved \"a major open problem\", so they reached out and learned that OpenAI had a team working on a related problem, with a similar approach. Quoting Tristan: I asked when the first prompt had been sent by them. This question was not answered directly by OpenAI for some time. Eventually it was agreed that it had been sent in the past few days, after information about our work had reached OpenAI. I asked whether the model had been trained on, or had access to, our sessions in Codex, into which we had been putting all our drafts for the whole of this project. I was told the model did not look up user data. I asked again, about training, and I did not get an answer. It gets more complicated from there. The OpenAI team offered to wait for Tristan to publish, or to have him author a paper about their result, but were clear that Levent would not be invited as a co-author due to OpenAI's competitive relationship with his employer. Here's how OpenAI described their work: On Tuesday, September 1, we heard rumors that two Millennium Prize problems had been resolved. Inspired by these rumors and by the step change in performance of our internal model, we launched an effort to evaluate it on all open Millennium Prize problems and a few other high-impact problems. [...] The agents arrived at their resolution on Saturday, September 5, about 88 hours after the first agents were launched. Lean formalization and verification took an additional 17 hours via GPT‑6 Astra. Across all attempted problems, the agents sent 4.9 million messages and used about 300 billion output tokens. In the process of resolving the Navier–Stokes problem, the agents sent 2.7 million messages and used approximately 130 billion output tokens. (We don't know the cost structure of the internal model they used, but 300 billion output tokens at public API prices for GPT-6 Astra would cost $15,000,000 .) Here's where they provide their perspective on Tristan and Levent's work (emphasis mine): Our effort began on September 1st after hearing a rumor which we later realized was related to Levent Alpöge, an Anthropic employee, and Tristan Buckmaster, a math professor at NYU. After the completion of our full project and Lean verification (on September 6th), believing from the rumor they also had a solution of Navier–Stokes, we reached out to them to offer a concurrent release of our result and to recognize their priority in a joint announcement. [...] We (the researchers and the agents) did not see any of their work through any means until they released it publicly — in particular, no specific user data was accessed in order to solve this problem. While unlikely, we cannot rule out that de-identified data derived from their usage of our products helped improve our models . However, our proofs differ significantly and even the precise results proved are different in the Euler case (forced vs unforced). My interpretation of what happened here is that OpenAI heard that some Millennium Prize problems had been solved using LLMs and saw this as an opportunity to demonstrate the power of their latest model, without thinking too hard about the optics of scooping a team who had been using OpenAI's own models to work on this problem for the best part of a year. This situation appears to mirror what's happening in the world of computer security right now. Anil Madhavapeddy recently pointed out that Just a rumour of a bug is enough to find a security exploit these days , because if someone knows that some software has an unpatched vulnerability, they can set their agents the task of finding it. Is the same now true of mathematics? Just knowing that there is an unpublished solution to a problem might trigger millions of dollars in LLM spending to get there first. This also highlights one of my ongoing frustrations about how all of this works. When an AI lab says that my data is \"used to improve model performance\", what does that actually mean ? My two favourite hypothetical questions regarding this used to be: If I'm running Codex and one of my API keys accidentally gets consumed in the context, what are the chances that someone else might ask for an API key in the future and get mine back? (I asked someone at OpenAI once and they called this the \"regurgitation\" problem and assured me that they take great pains to prevent that... but wouldn't describe how.) If I brainstorm with ChatGPT about potential new directions for my company, what's the chance that information might be exposed to a competitor in six months' time who asks \"what might company X plan to do next\"? My new preferred hypothetical for this is: If I use ChatGPT to help me partially solve a Millennium Prize problem, what are the chances that my work will influence training such that a later model helps someone else solve it first? Via Hacker News . You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
+      "evidenceLink": "",
+      "score": 90.40498537698413,
+      "core": "On the Navier–Stokes Millennium Prize Problem introduces an impressive result from OpenAI, who used an unreleased model to produce a resolution to the Navier–Stokes existence and smoothness problem , one of the seven Millennium Prize Problems that have been subject to a $1,000,000 prize since May 24th, 2000. The discovery is somewhat overshadowed by accusations of skulduggery from Tristan Buckmaster, an NYU mathemat…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-11T16:15:00.737Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "salesforce_engineering",
+      "source": "Salesforce Engineering",
+      "title": "Enterprise AI Accuracy: Building a More Trustworthy RAG Application",
+      "link": "https://engineering.salesforce.com/enterprise-ai-accuracy-building-a-more-trustworthy-rag-application",
+      "publishedAt": "2026-09-09T22:30:06.000Z",
+      "author": "Scott Nyberg",
+      "summary": "By Sivakumar Shanmugam, Kartik Muktinutalapati, and Palani Ramanathan. Your retrieval-augmented generation (RAG) application passes its benchmarks, reaches production, and begins confidently giving customers the wrong answers. Financial tables lose their headers at page breaks. Coverage matrices become garbled. Retrieval selects an article that appears relevant but belongs to the wrong product. Meanwhile, the clean, text-based […] The post Enterprise AI Accuracy: Building a More Trustworthy RAG Application appeared first on Salesforce Engineering Blog .",
+      "evidenceLink": "",
+      "score": 62.12351712301587,
+      "core": "By Sivakumar Shanmugam, Kartik Muktinutalapati, and Palani Ramanathan. Your retrieval-augmented generation (RAG) application passes its benchmarks, reaches production, and begins confidently giving customers the wrong answers. Financial tables lose their headers at page breaks. Coverage matrices become garbled. Retrieval selects an article that appears relevant but belongs to the wrong product. Meanwhile, the clean,…",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-11T16:15:00.737Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "elastic_search_labs",
+      "source": "Elastic Search Labs",
+      "title": "Trust, but benchmark: How we let an AI agent optimize Elasticsearch",
+      "link": "https://www.elastic.co/search-labs/blog/ai-code-optimization-elasticsearch-agent-harness",
+      "publishedAt": "2026-09-11T00:00:00.000Z",
+      "author": "Thomas Veasey,Chris Hegarty",
+      "summary": "We share how we built a harness that automatically identifies and implements optimizations in the Elasticsearch codebase.",
+      "evidenceLink": "",
+      "score": 59.51149331349207,
+      "core": "We share how we built a harness that automatically identifies and implements optimizations in the Elasticsearch codebase.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-11T16:15:00.737Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "RTK reports token savings, but our cost benchmarks disagree",
+      "link": "https://quesma.com/blog/does-rtk-make-ai-coding-cheaper",
+      "publishedAt": "2026-09-11T11:15:13.000Z",
+      "author": "michalwarda https://news.ycombinator.com/user?id=michalwarda",
+      "summary": "We tested RTK (Rust Token Killer) with Claude Code on Fable 5.0, and OpenCode with DeepSeek V4 Pro 0813 on Terminal-Bench 2.1.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49656471",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 92,
+        "comments": 51
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-11T16:15:00.737Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 58.61752188638848,
+      "core": "We tested RTK (Rust Token Killer) with Claude Code on Fable 5.0, and OpenCode with DeepSeek V4 Pro 0813 on Terminal-Bench 2.1.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Agents have hit the mainstream in software engineering, but security and governance practices aren’t evolving fast enough",
+      "link": "https://www.itpro.com/software/development/agents-have-hit-the-mainstream-in-software-engineering-but-security-and-governance-practices-arent-evolving-fast-enough",
+      "publishedAt": "2026-09-11T10:29:10.000Z",
+      "author": "Ross Kelly",
+      "summary": "The number of agent-related security incidents is rising and shows no sign of slowing down, according to Harness",
+      "evidenceLink": "",
+      "score": 58.21050125,
+      "core": "The number of agent-related security incidents is rising and shows no sign of slowing down, according to Harness",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-11T16:15:00.737Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "DuIVRS-2: An LLM-based Interactive Voice Response System for Large-scale POI Attribute Acquisition",
+      "link": "https://arxiv.org/abs/2605.17900",
+      "evidenceLink": "https://www.semanticscholar.org/paper/8a611aa084d5ebcf87d0b7ef653c14dd434aabeb",
+      "publishedAt": "2026-05-18T00:00:00.000Z",
+      "submittedAt": "2026-05-18T00:00:00.000Z",
+      "author": "Le Zhang, Shengmin Zhang, Rui Zha, Yunpeng Wu, Jingbo Zhou",
+      "summary": "Accurate Point of Interest (POI) attribute acquisition is essential for location-based services, yet traditional modular Interactive Voice Response (IVR) systems suffer from error accumulation and high maintenance overhead. We present DuIVRS-2, a large language model (LLM)-based end-to-end framework designed for large-scale POI attribute acquisition at Baidu Maps. To address the long-tail distribution of real-world interactions, our methodology first employs a finite state machine (FSM)-guided data augmentation strategy to synthesize a balanced and diverse training dataset. We then streamline dialogue management via a selective generation scheme combined with a Chain-of-Thought (CoT) mechanism, which ensures output stability and effectively eliminates hallucinations in industrial settings. To facilitate continuous policy refinement with minimal manual effort, we design a cooperative iterative learning framework that leverages a dual-evaluator voting system. Deployed in production for two months, DuIVRS-2 processed 0.4 million calls daily and achieved a 83.9\\% Task Success Rate (TSR), outperforming its predecessor by 4 percentage points while maintaining a low reaction time of 130ms. This work provides a production-proven reference for developing robust, cost-effective LLM agents for large-scale industrial dialogue applications.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 56,
+      "core": "Accurate Point of Interest (POI) attribute acquisition is essential for location-based services, yet traditional modular Interactive Voice Response (IVR) systems suffer from error accumulation and high maintenance overhead. We present DuIVRS-2, a large language model (LLM)-based end-to-end framework designed for large-scale POI attribute acquisition at Baidu Maps. To address the long-tail distribution of real-world …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Many-shot jailbreaking",
+      "link": "https://www.anthropic.com/research/many-shot-jailbreaking",
+      "publishedAt": "2026-09-11T12:13:44.000Z",
+      "author": "",
+      "summary": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "score": 49.412763154761905,
+      "core": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-11T16:15:00.737Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Pathway’s brain-inspired architecture development on Amazon SageMaker HyperPod",
+      "link": "https://aws.amazon.com/blogs/machine-learning/pathway-s-brain-inspired-architecture-development-on-amazon-sagemaker-hyperpod",
+      "publishedAt": "2026-09-08T19:12:51.000Z",
+      "author": "Paulo Aragão",
+      "summary": "Pathway's Baby Dragon Hatchling (BDH) is a brain-inspired, post-transformer architecture that reasons in latent space instead of emitting chain-of-thought tokens. See how Pathway develops and scales BDH on Amazon SageMaker HyperPod, and how BDH-CQ set a new cost-efficiency mark on the ARC-AGI-1 benchmark.",
+      "evidenceLink": "",
+      "score": 46.76885442460318,
+      "core": "Pathway's Baby Dragon Hatchling (BDH) is a brain-inspired, post-transformer architecture that reasons in latent space instead of emitting chain-of-thought tokens. See how Pathway develops and scales BDH on Amazon SageMaker HyperPod, and how BDH-CQ set a new cost-efficiency mark on the ARC-AGI-1 benchmark.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-11T16:15:00.737Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Reduce LLM latency with prefix-aware routing on Amazon SageMaker Inference",
+      "link": "https://aws.amazon.com/blogs/machine-learning/reduce-llm-latency-with-prefix-aware-routing-on-amazon-sagemaker-inference",
+      "publishedAt": "2026-09-10T21:58:09.000Z",
+      "author": "Kareem Syed-Mohammed",
+      "summary": "Amazon SageMaker Inference now offers prefix-aware routing, a routing strategy that sends requests sharing the same prompt prefix to the same instance so the KV cache stays warm. In benchmarks on Llama 3.1 70B, it reduced P50 time-to-first-token by up to 77% and raised KV cache hit rates from about 25% to over 80%.",
+      "evidenceLink": "",
+      "score": 46.44976712301587,
+      "core": "Amazon SageMaker Inference now offers prefix-aware routing, a routing strategy that sends requests sharing the same prompt prefix to the same instance so the KV cache stays warm. In benchmarks on Llama 3.1 70B, it reduced P50 time-to-first-token by up to 77% and raised KV cache hit rates from about 25% to over 80%.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-11T16:15:00.737Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "The Waymo effect: how AI is quietly making research less collaborative",
+      "link": "https://www.researchagenda.news/articles/the-waymo-effect.html",
+      "publishedAt": "2026-09-11T11:17:50.000Z",
+      "author": "JohnHammersley https://news.ycombinator.com/user?id=JohnHammersley",
+      "summary": "How frictionless technologies teach us to prefer our own company – and why research leaders should worry.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49656496",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 304,
+        "comments": 245
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-11T16:15:00.737Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 46.4329182799883,
+      "core": "How frictionless technologies teach us to prefer our own company – and why research leaders should worry.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Mapping the mind of a large language model",
+      "link": "https://www.anthropic.com/research/mapping-mind-language-model",
+      "publishedAt": "2026-09-11T12:12:58.000Z",
+      "author": "",
+      "summary": "We have identified how millions of concepts are represented inside Claude Sonnet, one of our deployed large language models. This is the first ever detailed look inside a modern, production-grade large language model.",
+      "score": 43.91740601190476,
+      "core": "We have identified how millions of concepts are represented inside Claude Sonnet, one of our deployed large language models. This is the first ever detailed look inside a modern, production-grade large language model.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-11T16:15:00.737Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Govern models with MLflow and Amazon SageMaker AI Model Registry sync: Part 1",
+      "link": "https://aws.amazon.com/blogs/machine-learning/govern-models-with-mlflow-and-amazon-sagemaker-ai-model-registry-sync-part-1",
+      "publishedAt": "2026-09-08T17:03:20.000Z",
+      "author": "Paolo Di Francesco",
+      "summary": "Managed MLflow on Amazon SageMaker AI now syncs richer model metadata (training metrics, evaluation results, inference specs, and lineage) into the SageMaker AI Model Registry, with lifecycle stage promotion. Part 1 shows how to govern candidate models in a single account using IAM guardrails.",
+      "evidenceLink": "",
+      "score": 42.54800125,
+      "core": "Managed MLflow on Amazon SageMaker AI now syncs richer model metadata (training metrics, evaluation results, inference specs, and lineage) into the SageMaker AI Model Registry, with lifecycle stage promotion. Part 1 shows how to govern candidate models in a single account using IAM guardrails.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-11T16:15:00.737Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "Natural-Language Policies to Executable Decisions: An Interpretable Large Language Model Framework",
+      "link": "https://arxiv.org/abs/2608.26124",
+      "evidenceLink": "https://www.semanticscholar.org/paper/cc66ba176356a5ed02966c2fd53d18983269e89a",
+      "publishedAt": "2026-06-22T00:00:00.000Z",
+      "submittedAt": "2026-06-22T00:00:00.000Z",
+      "author": "Ziqiang Zhang, Jing Ma, Zilong Wang, Jiayuan Chen, Yi Qiao",
+      "summary": "Pricing automation in large-scale tourism is challenging because travel orders are highly unstructured, while pricing policies are complex, rapidly evolving, and inherently open-ended. Traditional rule engines are brittle and costly to maintain, whereas unconstrained LLM agents lack the reliability and auditability required for financial decisions. We present a production-grade LLM-powered pricing system with a strict decision boundary: LLMs perform structured extraction and bounded policy/path selection, while all numeric pricing, including total-price computation, is executed deterministically. Policies are compiled into interpretable condition trees, enabling open-ended support for new clauses and evolving rules without code changes, while exposing auditable artifacts for human-in-the-loop control. Periodic fine-tuning on logged traces further improves tree induction and path matching. Deployed at a municipal state-owned tourism enterprise across 7 scenic sites and 12 business categories with 1,500+ operators and 1,000+ active policies, the system processed 3,960 orders in six months, reduced the order management team from 15-20 to 3, and cut per-order handling time from 10 minutes to<2 minutes.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 41,
+      "core": "Pricing automation in large-scale tourism is challenging because travel orders are highly unstructured, while pricing policies are complex, rapidly evolving, and inherently open-ended. Traditional rule engines are brittle and costly to maintain, whereas unconstrained LLM agents lack the reliability and auditability required for financial decisions. We present a production-grade LLM-powered pricing system with a stri…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_ai_news",
+      "source": "AWS News Blog · AI",
+      "title": "AWS Weekly Roundup: Claude Fable 5.1 on AWS, Amazon Linux 2027 preview, AWS Certified AI Business Strategist, and more (September 7, 2026)",
+      "link": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-claude-fable-5-1-on-aws-amazon-linux-2027-preview-aws-certified-ai-business-strategist-and-more-september-7-2026",
+      "publishedAt": "2026-09-07T14:24:08.000Z",
+      "author": "Channy Yun (윤석찬)",
+      "summary": "Last week, Claude Fable 5.1 became available on AWS. According to Anthropic, Claude Fable 5.1 delivers frontier intelligence for ambitious tasks across coding, scientific research, and enterprise workflows. Claude Fable 5.1 is built for long-running, high-stakes work that runs for hours and spans many applications. It can own more of a software project on its […]",
+      "evidenceLink": "",
+      "score": 39.03863617063492,
+      "core": "Last week, Claude Fable 5.1 became available on AWS. According to Anthropic, Claude Fable 5.1 delivers frontier intelligence for ambitious tasks across coding, scientific research, and enterprise workflows. Claude Fable 5.1 is built for long-running, high-stakes work that runs for hours and spans many applications. It can own more of a software project on its […]",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-11T16:15:00.737Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Plan-and-Execute Agents",
+      "link": "https://www.langchain.com/blog/plan-and-execute-agents",
+      "publishedAt": "2026-08-26T10:46:33.000Z",
+      "author": "",
+      "summary": "Build reliable AI agents with Plan-and-Execute framework. Separate planning from execution for complex tasks with fewer errors.",
+      "evidenceLink": "",
+      "score": 30.705555555555556,
+      "core": "Build reliable AI agents with Plan-and-Execute framework. Separate planning from execution for complex tasks with fewer errors.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-11T16:15:00.737Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "How a researcher uses Codex and ChatGPT to search for new antimicrobial molecules",
+      "link": "https://openai.com/index/using-codex-chatgpt-to-search-for-new-antimicrobials",
+      "publishedAt": "2026-09-10T16:00:00.000Z",
+      "author": "",
+      "summary": "César de la Fuente’s lab uses Codex and ChatGPT to search living and extinct genomes for antimicrobial candidates to fight drug-resistant infections.",
+      "evidenceLink": "",
+      "score": 29.09562029761905,
+      "core": "César de la Fuente’s lab uses Codex and ChatGPT to search living and extinct genomes for antimicrobial candidates to fight drug-resistant infections.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-11T16:15:00.737Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Aligning LLM-as-a-Judge with Human Preferences",
+      "link": "https://www.langchain.com/blog/aligning-llm-as-a-judge-with-human-preferences",
+      "publishedAt": "2026-08-26T16:53:53.000Z",
+      "author": "",
+      "summary": "Deep dive into self-improving evaluators in LangSmith, motivated by the rise of LLM-as-a-Judge evaluators plus research on few-shot learning and aligning human preferences.",
+      "evidenceLink": "",
+      "score": 28.955555555555556,
+      "core": "Deep dive into self-improving evaluators in LangSmith, motivated by the rise of LLM-as-a-Judge evaluators plus research on few-shot learning and aligning human preferences.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-11T16:15:00.737Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Introducing ChatGPT for Financial Services",
+      "link": "https://openai.com/index/introducing-chatgpt-financial-services",
+      "publishedAt": "2026-09-10T07:00:00.000Z",
+      "author": "",
+      "summary": "Introducing ChatGPT for Financial Services, combining built-in financial data and GPT-6 Astra for research, modeling, and client-ready materials.",
+      "evidenceLink": "",
+      "score": 28.430540932539685,
+      "core": "Introducing ChatGPT for Financial Services, combining built-in financial data and GPT-6 Astra for research, modeling, and client-ready materials.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-11T16:15:00.737Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Younger workers apparently want their bosses to start behaving more like AI",
+      "link": "https://www.techradar.com/pro/younger-workers-apparently-want-their-bosses-to-start-behaving-more-like-ai",
+      "publishedAt": "2026-09-11T06:00:00.000Z",
+      "author": "Christian Cawley",
+      "summary": "The specificity of AI prompting is proving popular with 18-28 year old workers, who prefer their bosses to deliver instructions with clear steps and parameters, according to new research.",
+      "evidenceLink": "",
+      "score": 25.30673140873016,
+      "core": "The specificity of AI prompting is proving popular with 18-28 year old workers, who prefer their bosses to deliver instructions with clear steps and parameters, according to new research.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-11T16:15:00.737Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "interconnects",
+      "source": "Interconnects",
+      "title": "Open-Source AI & Open Models Reading List",
+      "link": "https://www.interconnects.ai/p/open-source-ai-reading-list",
+      "publishedAt": "2026-09-11T12:36:25.000Z",
+      "author": "Nathan Lambert",
+      "summary": "How to get up to speed on open models and their implications.",
+      "evidenceLink": "",
+      "score": 24.078656011904762,
+      "core": "How to get up to speed on open models and their implications.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-11T16:15:00.737Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
