@@ -1988,7 +1988,11 @@ function testShowHnNoveltyAndComplaintSignalsStayWeak() {
     "I Have Been Clawed – Index of coding agent incidents",
     "Me and 28,000 AI agents built this research; every claim is traceable",
     "Sleeper Agents in Robot Dogs and Kinetic Prompt Injections",
-    "What Engineers must own in the AI Era? [video]"
+    "What Engineers must own in the AI Era? [video]",
+    "Spiteware.ai – A catalog of apps built out of spite at unfair pricing",
+    "ProveTogether Moltbook but for Math",
+    "Deviant, a feature-length sci-fi thriller about AI, made with AI",
+    "Fog 2.0: I removed the AI auto-organizing I built my first app around"
   ];
   for (const title of titles) {
     const item = {
@@ -2010,7 +2014,7 @@ function testShowHnNoveltyAndComplaintSignalsStayWeak() {
     const markdown = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |\n|---|---|---|---|---|---|\n| ${title} | [链接](https://example.com) | 新产品 | HN 发布帖出现：Show HN: ${title} | 当日信号。 | [HN Algolia](https://news.ycombinator.com/item?id=1) |`;
     const [rendered] = parseReportMarkdown(markdown, "reports/2026-09-02-0001-cst.md");
     assert.notEqual(rendered.qualityLabel, "keep", `${title} should stay weak after site parsing`);
-    if (/hides youtube ai-labeled videos|index of coding agent incidents|built this research|sleeper agents in robot dogs|what engineers must own in the ai era/i.test(title)) {
+    if (/hides youtube ai-labeled videos|index of coding agent incidents|built this research|sleeper agents in robot dogs|what engineers must own in the ai era|catalog of apps built out of spite|moltbook but for math|feature-length sci-fi thriller about ai, made with ai|removed the ai auto-organizing i built my first app around/i.test(title)) {
       assert.equal(inferred, dropped, `${title} should be dropped as a non-product observation`);
       assert.equal(rendered.qualityLabel, "drop", `${title} should stay dropped after site parsing`);
       const afterMemory = applyQualityMemoryToCandidates([{ ...item, qualityLabel: "drop" }], {
@@ -3623,6 +3627,22 @@ function testCurrentAihotNonProductSignalsStayDeprioritized() {
     {
       product: "中国联通反诈大模型预警并协助捣毁涉诈 VOIP 黑盒设备",
       did: "团队依托模型预警，联合公安捣毁设备并抓捕嫌疑人。"
+    },
+    {
+      product: "OpenAI 建议开发者用更精简的提示词和更少限制来适配 GPT-6 Astra",
+      did: "OpenAI 的产品负责人建议开发者精简技能描述、规则和任务提示词。"
+    },
+    {
+      product: "警惕闭源模型：你的对话正在训练对手",
+      did: "作者警告向闭源 API 和聊天模型输入专有数据可能带来风险。"
+    },
+    {
+      product: "ZHGO 发布 CatMe 创意系列 GPT Images 2.5",
+      did: "今日风格：CatMe 创意系列图片展示。"
+    },
+    {
+      product: "2030 年中国算力有望占到全球 30%",
+      did: "院士预计中国算力有望占全球 30%。"
     }
   ];
   for (const signal of signals) {
@@ -4426,6 +4446,30 @@ function testKnowledgeStrongAiRelevanceRejectsIncidentalMentions() {
     ),
     false,
     "one incidental AI mention must not turn a general infrastructure update into Knowledge Radar content"
+  );
+  assert.equal(
+    isAiRelevant(
+      {
+        title: "Prepare for the Cyber Resilience Act's 24-hour reporting deadline",
+        summary:
+          "EU software vendors must report actively exploited vulnerabilities within 24 hours. A later navigation block mentions AI, agents, model evaluation, and machine learning."
+      },
+      source
+    ),
+    false,
+    "incidental AI navigation must not turn a general compliance deadline into Knowledge Radar content"
+  );
+  assert.equal(
+    isAiRelevant(
+      {
+        title: "How to calculate DevOps platform total cost of ownership",
+        summary:
+          "A DevOps TCO guide covering subscription fees, CI/CD compute, employee time, and a passing reference to AI usage and agent workflows."
+      },
+      source
+    ),
+    false,
+    "a general DevOps TCO guide must not qualify from incidental AI cost references"
   );
   assert.equal(
     isAiRelevant(

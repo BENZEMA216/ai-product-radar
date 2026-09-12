@@ -129,7 +129,7 @@ function isShowHnNonProductObservation({ source, product, did, why }) {
   return (
     isHn &&
     text.includes("show hn:") &&
-    /\b(?:index|database) of (?:coding )?agent incidents?\b|\bbuilt this research\b|\bhides? youtube ai-labeled videos\b|\bsleeper agents? in robot dogs\b|\bwhat engineers? must own in the ai era\b/i.test(text)
+    /\b(?:index|database) of (?:coding )?agent incidents?\b|\bbuilt this research\b|\bhides? youtube ai-labeled videos\b|\bsleeper agents? in robot dogs\b|\bwhat engineers? must own in the ai era\b|\bcatalog of apps built out of spite\b|\bmoltbook but for math\b|\bfeature-length sci-fi thriller about ai, made with ai\b|\bremoved the ai auto-organizing i built my first app around\b/i.test(text)
   );
 }
 
@@ -182,7 +182,7 @@ function isAihotNonProductSignal({ source, product, did, why, evidence }) {
   const hasProductSurface = /产品|工具|应用|app|api|sdk|agent|智能体|助手|工作流|平台|runtime|browser|插件|扩展/i.test(actionText);
   const conferenceSystemDemo = /(?:入选|录用).{0,24}\b(?:emnlp|acl|naacl|neurips|icml|iclr|cvpr|iccv|eccv|aaai|ijcai|kdd|sigir|chi)\b.{0,20}系统演示/i.test(text);
   const explicitNonProduct = /不是产品发布|不是新的产品动作|政策|舆论|新闻/.test(text);
-  const explicitObservation = /研究|论文|基准|评测|建议定期|实测|作者用|转发|承认|事故|灌水|失控|集群|模拟科学会议|手术|临床应用|实用提示词|转发.{0,30}提示词|派对|心跳程序|测试自身|事件报告机制|模型疲劳|类比解读|奇观类比|预警并协助|捣毁|抓捕|rogue|swarm/i.test(text);
+  const explicitObservation = /研究|论文|基准|评测|建议定期|建议开发者|实测|作者用|转发|警告|承认|事故|灌水|失控|集群|模拟科学会议|手术|临床应用|实用提示词|转发.{0,30}提示词|今日风格|有望.{0,24}(?:占|达到).{0,24}%|派对|心跳程序|测试自身|事件报告机制|模型疲劳|类比解读|奇观类比|预警并协助|捣毁|抓捕|rogue|swarm/i.test(text);
   const hardObservation = /承认|事故|灌水|失控|事件报告机制|模型疲劳|类比解读|奇观类比|预警并协助|捣毁|抓捕|rogue|swarm/i.test(text);
   const nonProductObservation =
     /研究|论文|基准|评测|排行|榜单|首页|前瞻|预测|观点|访谈|圆桌|融资|估值|财报|监管|风险|采购|求购|高校|军方|报道称|据报道|内幕|出口管制|白宫|播客|ceo|格式|规范|协议|不要相信|不是你的模型|不是你的思维|大型上下文窗口|抽象观点/.test(

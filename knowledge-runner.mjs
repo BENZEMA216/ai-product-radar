@@ -470,6 +470,12 @@ function strongAiEvidence(item) {
 export function isAiRelevant(item, source) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
   const title = String(item.title || "").toLowerCase();
+  if (/cyber resilience act.{0,40}(?:reporting|deadline)/i.test(title) && !AI_ANCHOR_PATTERNS.some((pattern) => pattern.test(title))) {
+    return false;
+  }
+  if (/^how to calculate devops platform total cost of ownership$/i.test(title)) {
+    return false;
+  }
   if (/\b(?:announc(?:e|ing)|rais(?:e|es|ed|ing))\b[^\n]{0,80}(?:\b(?:pre-?seed|seed round|series [a-z]|funding round)\b|\$\d+(?:\.\d+)?[mb]\b(?:\s+round)?)/i.test(title)) {
     return false;
   }
