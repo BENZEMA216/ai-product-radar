@@ -1,0 +1,294 @@
+{
+  "date": "2026-09-13",
+  "generatedAt": "2026-09-12T16:08:07.944Z",
+  "reportPath": "reports/2026-09-13-0008-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 44,
+    "top20Sources": [
+      "HN Algolia",
+      "Product Hunt",
+      "AIHOT",
+      "Hugging Face API"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 1,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 21,
+      "keptCount": 9,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-09-11；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 21 条，AI 相关候选 9 条；实际 fallback：hunted_space。；历史去重后最终发布 9 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "YC Launch 本窗口无候选或来源为空。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 18,
+      "keptCount": 8,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 7,
+      "keptCount": 7,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Viaduct – Architecture change sets for AI coding agents",
+      "productKey": "https://c4.quietgridlabs.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 AI 编码代理的架构改动组织成 change set，值得验证这种中间产物能否让评审者更快理解、批准或驳回跨文件方案。"
+    },
+    {
+      "rank": 2,
+      "product": "Anysite.io",
+      "productKey": "https://www.producthunt.com/products/anysite",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用对话驱动 B2B 名单搭建与补全，产品判断点是 agent 能否把自然语言筛选条件稳定转成可复用的数据工作流。"
+    },
+    {
+      "rank": 3,
+      "product": "Spaces",
+      "productKey": "https://www.producthunt.com/products/spaces-21",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把团队成员与 AI agents 放进同一协作空间，值得看任务归属、上下文共享和人工接管是否真正统一，而不只是并排展示。"
+    },
+    {
+      "rank": 4,
+      "product": "Java MCP Runtime for virtual threads",
+      "productKey": "https://tachyonmcp.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Java virtual threads 与 MCP runtime 的组合直指高并发工具调用，关键是它能否降低服务端会话调度和阻塞 I/O 的工程负担。"
+    },
+    {
+      "rank": 5,
+      "product": "MCP that gives Codex/Claude your SEO and AI visibility data",
+      "productKey": "https://bloomiro.com/mcp",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 SEO 与 AI 可见性数据直接交给 Codex/Claude，值得验证分析代理是否能从“读报表”推进到诊断问题并生成可执行改动。"
+    },
+    {
+      "rank": 6,
+      "product": "Jackalope",
+      "productKey": "https://www.producthunt.com/products/jackalope",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把四种编码代理聚合进共享工作区，真正的价值取决于多代理任务切换、上下文隔离和结果比较是否比开多个终端更省心。"
+    },
+    {
+      "rank": 7,
+      "product": "Accordio",
+      "productKey": "https://www.producthunt.com/products/accordio",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它补齐 Claude 缺失的管理工具，优先要看授权范围、操作确认和审计记录是否足以让管理员放心把真实动作交给模型。"
+    },
+    {
+      "rank": 8,
+      "product": "Agentic Deployment and Hosting",
+      "productKey": "https://sitedropper.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它切的是 agent 生成应用后的部署与托管环节，值得核验环境配置、发布失败恢复和回滚是否被收敛为可靠闭环。"
+    },
+    {
+      "rank": 9,
+      "product": "Stend – share whatever your agent came up with",
+      "productKey": "https://stend.sh",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它专门解决 agent 产物的分享问题，产品关键不在生成，而在链接权限、产物保真和接收者无需复现环境即可查看。"
+    },
+    {
+      "rank": 10,
+      "product": "Cadenya",
+      "productKey": "https://www.producthunt.com/products/cadenya-the-agent-runtime",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 agent loop 做成托管运行时，值得看状态持久化、重试和人工中断等长期执行能力是否被产品化。"
+    },
+    {
+      "rank": 11,
+      "product": "easyspecs.ai",
+      "productKey": "https://www.producthunt.com/products/easyspecs-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它瞄准规格评审这一协作节点，但当前证据只说明是 review platform；后续应重点确认 AI 是否能发现冲突、遗漏和不可验收条款。"
+    },
+    {
+      "rank": 12,
+      "product": "chat-recall",
+      "productKey": "https://www.producthunt.com/products/chat-recall",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把分散的 AI 对话变成可检索历史，值得看跨平台导入、语义召回和本地隐私能否同时成立。"
+    },
+    {
+      "rank": 13,
+      "product": "TIM PG",
+      "productKey": "https://www.producthunt.com/products/tim-pg",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它在内容进入 AI 工具前做敏感数据匿名化，核心要验证实体替换是否可逆、误删率是否可控，以及复制粘贴链路是否足够低摩擦。"
+    },
+    {
+      "rank": 14,
+      "product": "sizeless",
+      "productKey": "https://www.producthunt.com/products/sizeless",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "地下基础设施的空间 AI 是高约束垂直场景，判断重点应放在定位误差、现场数据接入和结果能否进入工程决策。"
+    },
+    {
+      "rank": 15,
+      "product": "KnowMeNot – your ChatGPT vs. a ChatGPT that has never met you",
+      "productKey": "https://knowmenot.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把“认识你的 ChatGPT”和空白实例并置比较，让个性化记忆的实际影响可见，适合作为记忆收益与偏见风险的体验样本。"
+    },
+    {
+      "rank": 16,
+      "product": "Socratix – an AI tutor for proving mastery, not memorizing",
+      "productKey": "https://socratix-nine.vercel.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 AI 辅导目标从记忆转向证明掌握，值得看评估任务能否区分真实理解与模型提示下的表面正确。"
+    },
+    {
+      "rank": 17,
+      "product": "TattooPreview AI – a planning workflow for tattoo artist conversations",
+      "productKey": "https://tattoopreviewai.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "deprioritize",
+      "pmScore": 1,
+      "rankingIssue": "weak_signal_in_top20",
+      "reason": "它把生成预览定位为纹身师沟通前的规划工具，而非直接替代设计；应关注预览是否减少需求反复和错误期待。"
+    },
+    {
+      "rank": 18,
+      "product": "Meta 推出 Muse：每周送用户 1 亿 Token 配云电脑，作者解读为 Agent 商业税单",
+      "productKey": "https://aihot.news/items/cmtydh4z80aqzrojhtebhklko",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 3,
+      "rankingIssue": null,
+      "reason": "若聚合描述属实，免费 Token、独立 Linux 环境与真实浏览器构成完整 agent 运行入口；但缺少官方原始证据，当前只能作为待核实的分发信号。"
+    },
+    {
+      "rank": 19,
+      "product": "Hugging Face Space: khalid0o01/zizo-voice",
+      "productKey": "https://huggingface.co/spaces/khalid0o01/zizo-voice",
+      "source": "Hugging Face API",
+      "category": "product",
+      "qualityLabel": "weak_keep",
+      "pmScore": 2,
+      "rankingIssue": null,
+      "reason": "名称只透露语音方向，当前证据不足以判断输入、输出和目标用户；先看 Space 是否可运行及语音延迟，再决定是否上提。"
+    },
+    {
+      "rank": 20,
+      "product": "Hugging Face Model: Mahesh151525/cleanrl-ppo-LunarLander-v2",
+      "productKey": "https://huggingface.co/mahesh151525/cleanrl-ppo-lunarlander-v2",
+      "source": "Hugging Face API",
+      "category": "model_infra",
+      "qualityLabel": "weak_keep",
+      "pmScore": 1,
+      "rankingIssue": null,
+      "reason": "这是 CleanRL PPO 在 LunarLander-v2 上的模型资产，适合放入 Models & Infra 核对训练配置与复现实验，不应当作独立产品发布。"
+    }
+  ]
+}

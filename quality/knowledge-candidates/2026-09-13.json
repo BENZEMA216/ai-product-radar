@@ -1,0 +1,412 @@
+{
+  "generatedAt": "2026-09-12T16:17:49.803Z",
+  "date": "2026-09-13",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Google is a Leader in the 2026 Gartner® Magic Quadrant™ for Enterprise AI Assistants",
+      "link": "https://cloud.google.com/blog/products/ai-machine-learning/google-is-a-leader-in-2026-gartner-magic-quadrant-for-enterprise-ai-assistants",
+      "publishedAt": "2026-09-09T18:00:00.000Z",
+      "author": "Peder Ulander Vice President, Product Marketing, Google Cloud",
+      "summary": "We are excited to share that Gartner has named Google a Leader in its inaugural 2026 Magic Quadrant for Enterprise AI Assistants . In this comprehensive evaluation of top enterprise AI assistant vendors, Gartner placed Google in the Leaders quadrant for its evaluation across both Completeness of Vision and Ability to Execute. Gemini Enterprise helps organizations bring helpful, secure AI directly into the daily work of their employees. It moves teams past basic chat interactions to automating multi-step, end-to-end workflows with AI agents. It connects with the tools and infrastructure companies already use and scales easily and cost-effectively, all with security and governance in place. We see this recognition from Gartner as validation of our goal: creating a unified platform where everyone — from business users to developers — can work alongside AI agents to accomplish more together. Our take on Google as a Leader Amid a complex landscape of standalone AI tools and emerging platforms, Gemini Enterprise emerges as a unified, open agentic platform backed by Google’s full AI stack, with strengths mentioned in the report such as: Unified “AI front door” : Gemini Enterprise unifies enterprise chat and search, first and third-party agents, a no-code agent designer, Google Workspace integration, and third-party connectors all in one platform, eliminating the need for organizations to piece together disparate AI tools. Open connectivity: Gemini Enterprise offers extensive connectivity beyond Google's ecosystem — extending to Microsoft 365, other third-party software, and internal enterprise data sources. This open connectivity lets organizations adopt Gemini Enterprise alongside their existing infrastructure without costly system overhauls. Simple economics: Gemini Enterprise offers a straightforward pricing model, with actions like chat and search included in the base SKU. Organizations can select per-user seat subscriptions, as well as a pay-as-you-go option that lets users run agent workloads without hitting quota limits mid-task. Built-in governance: Gemini Enterprise provides robust agent governance out-of-the- box at no extra cost, enabling enterprises to seamlessly manage users, agents, and data permissions while curbing security risks and agent sprawl. Full-stack depth and scale : Google’s vertically-integrated stack provides global infrastructure, custom silicon, world-class models, and a secure, enterprise-ready foundation — all optimized for security, interoperability, and cost. To read the full report, download it here . Accelerating our vision with the latest Gemini Enterprise advancements Over the past months, we have accelerated Gemini Enterprise with significant product advancements: Tailored industry solutions: We introduced specialized solutions for legal and financial services last month. These tailored solutions bring pre-built agents, domain-specific skills, secure data connectors, and an open partner ecosystem, allowing for rapid deployment. They are also built on top of Gemini Enterprise’s governed control plane so you can create and manage workflows in these highly regulated industries. Google Antigravity in Gemini Enterprise: With the introduction of AI developer tools in Gemini Enterprise , enterprises can now easily enable agentic dev tools like Antigravity and Android Studio for their developer teams with eligible Gemini Enterprise licenses, and maintain full governance and observability inside the admin console. FinOps and cost controls: New FinOps and cost-control capabilities were introduced last month, allowing organizations to optimize AI spend through more pricing options, Flexible Savings Plans, and granular spend management. Gemini Enterprise customers are also seeing the value Hearing this recognition from Gartner is great, but it's not just them—our customers are seeing this real-world value too, and it's driving a positive impact across their organizations every day. Check out what our customers are saying about the recent product advancements. “Deploying Antigravity in Gemini Enterprise allows Accenture to arm our engineers with Google DeepMind’s premier technology on the secure, trusted foundation of Google Cloud. Abstracting away operational complexity ensures our teams don't have to choose between developer speed and enterprise-grade governance — freeing them to deliver high-velocity engineering and transformative value for our clients.” — Chetna Sehgal, Global Practice Lead, Accenture Google Business Group . Learn more here . “Cleary is committed to embedding AI into our workflows in strategic and competitive ways. Using Google’s Gemini Enterprise, which can slot in seamlessly with other daily work tools, we can unlock greater efficiencies for our teams and help them deliver even higher quality work for our clients.” — Jeff Karpf, Managing Partner, Cleary Gottlieb . Learn more here . “As a design partner for the Financial Research agent, Deutsche Bank has helped shape this capability in view of the realities of a highly regulated industry – from data protection and governance to the workflows our teams use every day,” – Marie-Jeanne Deverdun, Chief Technology, Data and Innovation Officer, and Member of the Deutsche Bank Management Board . Learn more here . “We’re thrilled to partner with Google Cloud in the early adoption of Gemini Enterprise for Legal. We look forward to integrating Google’s technology to streamline workflow and further support our litigators in shaping outcomes critical to our clients’ futures.” — Joe Petrosinelli, Chairman, Williams &amp; Connolly . Learn more here . Get started today Read the report: Download your complimentary copy of the 2026 Gartner Magic Quadrant for Enterprise AI Assistants to explore the full analysis Explore Gemini Enterprise: Discover how your organization can deploy governed, connected agents across every team at cloud.google.com/gemini-enterprise",
+      "evidenceLink": "",
+      "score": 97.97877375,
+      "core": "We are excited to share that Gartner has named Google a Leader in its inaugural 2026 Magic Quadrant for Enterprise AI Assistants . In this comprehensive evaluation of top enterprise AI assistant vendors, Gartner placed Google in the Leaders quadrant for its evaluation across both Completeness of Vision and Ability to Execute. Gemini Enterprise helps organizations bring helpful, secure AI directly into the daily work…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-12T16:17:49.803Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "How Featured's users make 100K media pitches per month on Vercel",
+      "link": "https://vercel.com/customers/how-featureds-users-make-100k-media-pitches-per-month-on-vercel",
+      "publishedAt": "2026-09-11T04:00:00.000Z",
+      "author": "Susan Aziz",
+      "summary": "Featured on Vercel 3 engineers supporting 3 brands and 100,000+ users on Vercel Migrated 374 Sanity sites from AWS Elastic Beanstalk to Vercel AI SDK and AI Gateway power Featured's chat bot across 17 models Workflow SDK replaced custom long-running job infrastructure Featured is a co-pilot for public relations (PR) that subject matter experts and PR teams use to find media opportunities. Tell Featured's agents what you know, and it surfaces opportunities across journalist requests, podcasts, awards, and GEO, with no PR background required. Founder Brett Farmiloe knows from experience how hard and time consuming getting press is. He spent 10 years running Markitors, a digital marketing agency with 500 small business clients. Every client, from an eyelash extension supplier to an equipment financing company, had real expertise to share, but no way to get it in front of journalists. PR, as Farmiloe puts it, \"has always been about who has access to what.\" He founded Featured to change the question from who has access to who has knowledge. Featured connects one of their users with a journalist or publisher every 6 seconds. Their agents deliver more than 100,000 media pitches per month, and have sent over 100 million Help A Reporter Out (HARO) emails in the past year. Behind it all is an engineering team of just three people. With a team that lean, there's no time to manage servers or piece together custom integrations. Every hour spent on infrastructure is an hour taken away from building features what will help their customers land more media placements. The cost of managing infrastructure by hand Before Vercel, Featured’s infrastructure work pulled the team away from product development. Hosting lived on AWS Elastic Beanstalk, AI features depended on custom provider integrations, and long-running, multi-step jobs ran on separate orchestration infrastructure. Each layer worked, but each one added operational overhead for a three-person team supporting multiple brands. One platform for compute, AI primitives, and model access The migration to Vercel started with a forcing function: Featured needed to launch 374 Sanity sites at once, and every Elastic Beanstalk deploy had to be manually spun up, migrated, and then torn down. When you multiply that process by almost four hundred, the math doesn't work, even when you divide it across a team of three. Vercel collapsed each site launch into to a single-click deploy. Once the sites were live, the team evaluated Vercel for background jobs and AI tooling, eventually migrating their entire app and the agents that run in it. Compute without the clusters Deploys that once meant standing up a new EB instance, migrating the URL, and terminating the old one became a single click. On Vercel, all 374 sites shipped from one platform, and rollouts across all three brands now happen centrally, instead of one cluster at a time. \"In hindsight, doing each one of those by hand was kind of crazy,\" Farmiloe admits. AI SDK and AI Gateway: one abstraction for every model AI SDK and AI Gateway handle all of Featured's model traffic through a single abstraction, so their team doesn't have to manage custom rate-limit or API integrations from multiple providers. Featured routes across 17 models at any given time. Calling a model is one standardized function with a schema, and swapping providers is a configuration change instead of a rewrite. When a new model ships, the team can test it against Featured's use cases right away. Workflow SDK for long-running backend jobs After migrating their AI stack, Featured moved long-running jobs from a separate orchestration system onto Workflow SDK . These are the processes that can't live in a request cycle: monitoring the media around the clock, qualifying opportunities, and combining all of those signals to deliver more than 100,000 pitches a month. Chat became the product As users kept choosing conversation over navigation, the team made chat Featured's primary interface, and they deliver it through eve, Vercel's open-source agent framework. eve's useEveAgent hook made the new interface easy to implement. Instead of wiring up an agent by hand, the team got durable sessions, streaming, tool calls, and approval prompts out of the box, with model calls routed through AI Gateway so they can pick the right model per task without managing provider keys. What would have been a months-long rebuild was a week-long replace and refactor. Now, instead of a dashboard with dozens of buttons, users ask Featured questions, and the team adapts the product to their needs, not the other way around. What's next Featured is building toward being the AI layer for public relations, the same way dedicated agent platforms have emerged for legal and finance. The goal is to make it faster and easier for anyone with expertise to share their knowledge and get featured in the media. The team's advice to other founders building in the agentic era: Know that your data is your moat. For us, access to good information is what lets Featured connect people with the sources that want to publish them. Lean on tested abstractions like Vercel instead of reinventing security and infrastructure by hand. About Featured: Featured is a co-pilot for public relations that helps people find media opportunities, submit pitches, and get featured in the press. Featured also owns and operates Help A Reporter Out (HARO) and Connectively , journalist request platforms connecting sources with publishers. Read more",
+      "evidenceLink": "",
+      "score": 90.40734517857143,
+      "core": "Featured on Vercel 3 engineers supporting 3 brands and 100,000+ users on Vercel Migrated 374 Sanity sites from AWS Elastic Beanstalk to Vercel AI SDK and AI Gateway power Featured's chat bot across 17 models Workflow SDK replaced custom long-running job infrastructure Featured is a co-pilot for public relations (PR) that subject matter experts and PR teams use to find media opportunities. Tell Featured's agents what…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-12T16:17:49.803Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Building cost-effective, high-throughput gen AI workflows in Google Dataflow",
+      "link": "https://cloud.google.com/blog/products/data-analytics/cost-effective-genai-workflows-in-google-dataflow",
+      "publishedAt": "2026-08-18T16:00:00.000Z",
+      "author": "Reza Rokni Group Product Manager",
+      "summary": "Real-time streaming pipelines are the operational backbone of modern enterprises, continuously processing everything from customer support interactions to transaction logs. Traditionally, streaming DAGs are static; once deployed, their processing logic and execution paths are fixed. However, by integrating generative AI agents, we can move beyond static logic to adaptive execution. This allows streaming workflows to dynamically construct plans, query databases, and trigger custom remediation paths at runtime depending on the content of the data. For example, when a customer sends an angry message about a damaged order, a pipeline shouldn't just log the error or flag a dashboard. It should look up the order in the database that holds customer order and inventory records, decide on a remediation action (like shipping a replacement or issuing a refund), email the customer, and log the final resolution. However, streaming systems face a fundamental engineering hurdle when executing gen AI workflows: scale, latency, and cost. Sending every raw event directly to a heavyweight model or multi-step agent equipped with external database and email tools is prohibitively expensive, introduces high latency, and quickly exhausts API rate limits. This pattern addresses the scale and complexity challenge by combining Google Dataflow , Google Cloud's fully managed, serverless execution service for Apache Beam , and the Agent Development Kit (ADK) to build a hybrid streaming pipeline. By using a lightweight, CPU-bound machine learning model upstream to filter and qualify events, we keep the pipeline highly cost-effective, routing only the complex cases to the downstream agent. There, the agent dynamically decides what actions to take, introducing dynamic branching to the stream without hardcoding thousands of conditional steps into the pipeline's static DAG. A universal blueprint for high-volume streams While we use a customer support triage scenario below, this pre-filter + agentic action pattern is a universal paradigm. It applies to any stream where a high volume (>9X%) of events are routine, and only a small number require complex, contextual reasoning. IT Operations &amp; DevOps: Filtering millions of routine system logs on CPU, and triggering an agent to run diagnostics and open bug tickets only when a critical anomaly is flagged. Financial Fraud Triaging: Passing millions of transactions through lightweight, local rules, and calling an agent to execute multi-database lookup tools only for highly suspicious patterns. Industrial IoT: Monitoring normal telemetry on the edge, and routing erratic spikes to an agent to coordinate equipment shutdowns and email field engineers. The architecture: Why pre-filter streaming events? In a high-throughput stream, the vast majority of messages do not require complex reasoning or remediation. They might be positive feedback, neutral inquiries, or simple queries. Routing every single event to a heavyweight LLM workflow creates three primary bottlenecks: API cost: Frontier models charge per token. Under high throughput, cost scales linearly with stream volume. Latency: Multi-step workflows (which involve database lookups and external API calls) take seconds, creating a bottleneck in streaming DAGs. Quotas: External APIs have strict rate limits that streaming workers can easily exhaust. To prevent this, we build a pre-filtered pipeline in Apache Beam/Dataflow: Pipeline flow Ingestion: Read raw customer messages from Google Pub/Sub . Lightweight sentiment classifier (CPU): Run all messages through a lightweight, CPU-based Hugging Face model ( distilbert-base-uncased-finetuned-sst-2-english ) using Apache Beam’s RunInference transform. This executes locally on the Dataflow worker CPUs, avoiding external API costs. Pre-qualification Gate: A simple DoFn filters the stream. Messages with POSITIVE or NEUTRAL sentiment are acknowledged and dropped. Automated Remediation (ADK): If and only if a message is classified as NEGATIVE , we trigger the gen AI agent backed by gemini-3.5-flash using the ADKAgentModelHandler . The agent uses tools to look up the user in BigQuery , fetch orders, choose a remediation plan, and send a notification email via the Gmail API. Adaptive execution: Making the Beam DAG dynamic In traditional streaming architectures, the pipeline's Directed Acyclic Graph (DAG) is rigid. Once deployed to Dataflow, the sequence of transforms is set. If you need to handle new types of alerts or change how specific events are routed, you have to modify, test, and redeploy the entire pipeline. By placing a gen AI agent downstream of our sentiment pre-filter, we introduce a dynamic, adaptive node inside the static DAG. For the 95% of records that are positive or neutral, the pipeline runs along a fast, static path. But when the filter gates a negative record, the agent evaluates the payload and dynamically selects the correct sequence of API tools (e.g., database query, inventory check, or email notification) at runtime. This allows the pipeline to execute complex decision trees dynamically, eliminating the need to build and maintain thousands of hardcoded conditional branches in the static Apache Beam code. Implementing the pipeline Here is an example implementation in Apache Beam using the Google Agent Development Kit (ADK) and the RunInference framework. 1. Defining the lightweight sentiment model We define the upstream CPU model using HuggingFacePipelineModelHandler . This model classifies sentiment into POSITIVE , NEUTRAL , or NEGATIVE on the worker instance. code_block )])]> 2. Building the heavyweight ADK agent The ADK agent acts as our remediation assistant. We equip it with three tools: lookup_user : Queries BigQuery for the customer's email. lookup_orders : Queries BigQuery for the customer's orders and current product inventory. send_email : Sends a remediation email to the customer using the Gmail API . code_block dict:\\r\\n \"\"\"Look up user information (email address) from BigQuery by user ID.\"\"\"\\r\\n from google.cloud import bigquery\\r\\n\\r\\n client = bigquery.Client(project=project)\\r\\n query = (\\r\\n f\"SELECT user_id, user_email \"\\r\\n f\"FROM `{project}.{dataset}.users` \"\\r\\n f\"WHERE user_id = @user_id\"\\r\\n )\\r\\n job_config = bigquery.QueryJobConfig(\\r\\n query_parameters=[bigquery.ScalarQueryParameter(\"user_id\", \"INT64\", user_id)]\\r\\n )\\r\\n try:\\r\\n results = list(client.query(query, job_config=job_config).result())\\r\\n if results:\\r\\n row = results[0]\\r\\n return {\"user_id\": row.user_id, \"user_email\": row.user_email}\\r\\n return {\"error\": f\"No user found with user_id={user_id}\"}\\r\\n except Exception as exc:\\r\\n return {\"error\": str(exc)}\\r\\n\\r\\n def lookup_orders(user_id: int) -> dict:\\r\\n \"\"\"Look up a user\\&#x27;s orders and current product inventory from BigQuery.\"\"\"\\r\\n from google.cloud import bigquery\\r\\n\\r\\n client = bigquery.Client(project=project)\\r\\n query = (\\r\\n f\"SELECT p.order_id, p.product_id, pr.remaining_inventory, pr.price \"\\r\\n f\"FROM `{project}.{dataset}.purchases` p \"\\r\\n f\"JOIN `{project}.{dataset}.products` pr ON p.product_id = pr.product_id \"\\r\\n f\"WHERE p.user_id = @user_id\"\\r\\n )\\r\\n job_config = bigquery.QueryJobConfig(\\r\\n query_parameters=[bigquery.ScalarQueryParameter(\"user_id\", \"INT64\", user_id)]\\r\\n )\\r\\n try:\\r\\n results = list(client.query(query, job_config=job_config).result())\\r\\n orders = [\\r\\n {\\r\\n \"order_id\": row.order_id,\\r\\n \"product_id\": row.product_id,\\r\\n \"remaining_inventory\": row.remaining_inventory,\\r\\n \"price\": float(row.price),\\r\\n }\\r\\n for row in results\\r\\n ]\\r\\n return {\"orders\": orders}\\r\\n except Exception as exc:\\r\\n return {\"error\": str(exc)}\\r\\n\\r\\n def send_email(to_address: str, subject: str, body: str) -> str:\\r\\n \"\"\"Send a plain-text email to the customer via the Gmail API.\"\"\"\\r\\n import google.auth\\r\\n import googleapiclient.discovery\\r\\n import email.mime.text\\r\\n import base64\\r\\n\\r\\n try:\\r\\n creds, _ = google.auth.default(\\r\\n scopes=[\"https://www.googleapis.com/auth/gmail.send\"]\\r\\n )\\r\\n service = googleapiclient.discovery.build(\"gmail\", \"v1\", credentials=creds)\\r\\n\\r\\n mime_msg = email.mime.text.MIMEText(body)\\r\\n mime_msg[\"to\"] = to_address\\r\\n mime_msg[\"subject\"] = subject\\r\\n raw = base64.urlsafe_b64encode(mime_msg.as_bytes()).decode(\"utf-8\")\\r\\n service.users().messages().send(userId=\"me\", body={\"raw\": raw}).execute()\\r\\n return \"Email sent successfully\"\\r\\n except Exception as exc:\\r\\n return f\"Failed to send email: {exc}\"\\r\\n\\r\\n return [lookup_user, lookup_orders, send_email]&#x27;), (&#x27;language&#x27;, &#x27;&#x27;), (&#x27;caption&#x27;, )])]> We configure the LlmAgent and package it in the ADKAgentModelHandler : code_block )])]> 3. Assembling the Dataflow DAG The entire pipeline is declared cleanly. The upstream sentiment inference feeds directly into the filtering step ( FilterNegativeADK ), which then conditionally executes the downstream ADKInference : code_block > beam.io.ReadFromPubSub(topic=known_args.input_topic)\\r\\n | \"DecodeMessages\" >> beam.Map(lambda x: x.decode(\\&#x27;utf-8\\&#x27;))\\r\\n | \"SentimentInference\" >> RunInference(model_handler)\\r\\n )\\r\\n\\r\\n # 2. Filter out non-negative sentiment and invoke the ADK Agent\\r\\n _ = (\\r\\n sentiment_results\\r\\n | \"FilterNegativeADK\" >> beam.ParDo(FilterNegativeAndPromptADK())\\r\\n | \"ADKInference\" >> RunInference(adk_handler)\\r\\n | \"LogADKResults\" >> beam.ParDo(LogADKResponse())\\r\\n )&#x27;), (&#x27;language&#x27;, &#x27;&#x27;), (&#x27;caption&#x27;, )])]> Cost and performance advantages By introducing this filtering step, we gain major engineering and operational advantages: 1. Significant cost reductions Instead of paying for Gemini input/output tokens on 100% of incoming events, we pay only for the fraction that represent negative customer sentiment (typically 2. High streaming throughput Dataflow distributes the CPU classification workload across many instances. Since CPU inference takes milliseconds, the pipeline scales horizontally to handle high-throughput event streams. The heavyweight LLM agent, which can take seconds per request due to tool execution, is called sparingly, preventing backlog. 3. Native Apache Beam integration Adding the agent into the DAG requires no complex orchestration logic or manual thread pools. Using ADKAgentModelHandler with Beam's native RunInference transform handles parallel worker threads, batching, and integration automatically, keeping the codebase maintainable and clean. Key takeaways Streaming data is fast and high-volume, while heavyweight generative AI reasoning is slow and costly. By building a pre-filtered pipeline with Google Dataflow and the ADK, you get the best of both worlds: the cost and speed of local CPU-based models, and the deep, automated capabilities of Gemini-backed agents. To see the complete codebase and deploy this yourself, check out the next-2026-demo GitHub repository . Apache Beam is a trademark of the Apache Software Foundation",
+      "evidenceLink": "",
+      "score": 90,
+      "core": "Real-time streaming pipelines are the operational backbone of modern enterprises, continuously processing everything from customer support interactions to transaction logs. Traditionally, streaming DAGs are static; once deployed, their processing logic and execution paths are fixed. However, by integrating generative AI agents, we can move beyond static logic to adaptive execution. This allows streaming workflows to…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-12T16:17:49.803Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "How Tailscale built a customer-facing model router on AI Gateway",
+      "link": "https://vercel.com/customers/how-tailscale-built-a-customer-facing-model-router-on-ai-gateway",
+      "publishedAt": "2026-09-11T04:00:00.000Z",
+      "author": "Eric Dodds",
+      "summary": "Tailscale on Vercel Hundreds of AI models shipped to customers in-product Model access granted and revoked by tailnet network identity Went from model routing prototype to paying customers in months Tailscale connects a company's laptops, servers, cloud instances, and personal devices into one private network called a tailnet. Remy Guercio, who leads product for Aperture by Tailscale, describes it simply: \"It's basically like a VPC that can span any cloud, on-prem, your house, and your phone.\" Aperture takes that same idea and applies it to AI. Instead of giving every employee, agent, or tool a separate provider API key, Aperture lets companies control model access through the tailnet itself. Add someone to the network, and they can immediately use approved models. Remove them, and access disappears. Under the hood, Aperture is built on Vercel AI Gateway and Vercel Sandbox . AI Gateway gives Tailscale one API for hundreds of models. Sandbox gives agents a safe place to run. Together, they let Tailscale offer model access and agent execution inside a customer's private network, without their team building every piece of AI infrastructure from scratch. Model routing is harder than it looks Tailscale is an infrastructure company, so building the routing and execution layers in-house was the obvious first option. But once they took a deeper look into the engineering effort required, they chose not to. The provider layer looked deceptively simple from the outside. \"You would think all of the endpoints are the same,\" Remy says. \"They are not.\" David Carney, Co-founder and Chief Strategy Officer, has the receipts, because Tailscale still maintains that plumbing for a few customers who haven't migrated to Aperture yet. \"There are a lot of things the big providers don't do that blow my mind that the gateway does, like simply putting the cost in the response,\" he says. \"We initially built those systems for customers ourselves, and the complexity is insane.\" Agents raised the stakes further. An agent that can read private data, act on the text it reads, and reach the public internet is a security problem now called the \"lethal trifecta.\" The right mitigation is an isolated sandbox with identity and access controls baked in. \"I think we wouldn't have been able to deliver the product if we were also trying to build a sandbox ourselves,\" David says. \"But we were able to go from prototype to paying customers in months on Vercel.\" Building a custom model router on AI Gateway Tailscale shopped the routing layer first. \"We did talk to a lot of other folks, including providers themselves, and Vercel just made it very easy,\" Remy says. AI Gateway gives Aperture one API across hundreds of models, and returns cost and usage on every request, so Aperture can surface spend to customers without Tailscale maintaining price tables for each provider. Tailscale's customers care about protecting their data, and Zero data retention (ZDR) was table stakes for Aperture. Tailscale chose AI Gateway because: The AI Gateway itself retains no data. They can set ZDR globally or use the per-request zeroDataRetention flag, which automatically restricts routing to ZDR-compliant providers. \"All this ZDR stuff is a moving target, like, which models have zero data retention versus not,\" David says, \"but we don't have to write any of that logic, because it's all handled for us.\" Zero cost markup for Tailscale and their customers AI Gateway doesn't mark up token costs on any provider or model, including when Tailscale's customers bring their own keys. Aperture's customers pay the same rate they would going direct, across every model in the catalog. Time to first token, from signup Ask David what Vercel is worth to Aperture, and his answer is simple: time to first token. But that means something different to David than it does to Remy, and both are right. \"[David] Carney likes to overload the term time to first token ,\" Remy says. \"In the AI infrastructure world it has a very specific meaning, which is how long it takes to load the cache, generate the response, and deliver it back to the user.\" Remy explains David's definition: \"It's the time from user signup to their first model call, which is the real value Aperture provides to our customers.\" And Aperture's success is measured by that time-to-value. \"I constantly push the team to remove the most barriers possible to get someone to that wow moment as fast as we can,\" David says. \"After months of testing different products, Vercel was the answer to the infrastructure side, because AI Gateway has such low latency.\" Running agents on the tailnet in Vercel Sandbox Once Aperture had model access in place, the team focused on making it safe to run agents inside a tailnet. This is the workflow: A sandbox spins up and connects to Aperture. Aperture connects to AI Gateway. Tailscale validates the identity. The agent does its work. The sandbox shuts down. No key is ever issued to the agent. Tailscale shopped the sandbox layer too, and even had a working implementation on a different provider before deciding to switch. \"We wanted to focus on network identity, not sandbox security boundaries, and Vercel's sandboxes are bulletproof,\" says Remy. Migrating Tailscale's internal AI layer to AI Gateway Tailscale's own AI usage had grown the way most companies' has: a mix of direct provider accounts and cloud endpoints, accumulated one team at a time. Internally, those requests went through Aperture, but behind the proxy, it was still calling separate providers directly. After implementing AI Gateway for their customers, they knew they wanted to make the migration themselves. Tailscale's engineering team built a switch in Aperture that pointed requests to AI Gateway instead of the individual provider APIs, so now they have one integration rather than separate ones for each provider. Nothing changed for employees. Aperture was still the endpoint they called, and every model they were already using was in the AI Gateway catalog, so the cutover happened with zero interruption. Tailscale now uses their own migration as the playbook for enterprise customers juggling dozens of provider accounts and keys. What's next Aperture started as a raw gateway for engineers to point a coding agent at. It now has a chat UI, MCP connectors, and sandboxes launchable as ephemeral nodes, all running on tailnet identity. Aperture's new goal is time to first app. David wants users to sign up, run a prompt, build an app, and share it, all in ten minutes or less. \"We don't exactly know what that's going to look like, but we know we're going to have to iterate quickly,\" Remy says. \"Having partners you can work with hand in hand on that is incredibly important.\" David's advice to other companies is to focus on the product they deliver to customers, not the infrastructure required to run it. \"A lot of people want to build their own router. And look at us, we tried to do it too,\" he says. \"But you don't need to build another router.\" About Tailscale : Tailscale is a secure connectivity platform that connects a company’s users, devices, servers, cloud infrastructure, and services through an identity-based private network. Their model router, Aperture by Tailscale, extends that network to AI models and agents. Read more",
+      "evidenceLink": "",
+      "score": 88.40734517857143,
+      "core": "Tailscale on Vercel Hundreds of AI models shipped to customers in-product Model access granted and revoked by tailnet network identity Went from model routing prototype to paying customers in months Tailscale connects a company's laptops, servers, cloud instances, and personal devices into one private network called a tailnet. Remy Guercio, who leads product for Aperture by Tailscale, describes it simply: \"It's basi…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-12T16:17:49.803Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "FinOps for the AI era: New flexible billing and cost controls for agents",
+      "link": "https://cloud.google.com/blog/products/ai-machine-learning/flexible-billing-and-cost-controls-for-agents-on-google-cloud",
+      "publishedAt": "2026-08-26T13:30:00.000Z",
+      "author": "Michael Gerstenhaber VP, Product Management, Gemini Enterprise",
+      "summary": "Editor's note: A product image was updated after initial publication. As AI takes on more complex work, business leaders face a new challenge: enabling rapid innovation using agents while protecting their margins and budgets. To get a real return on AI, financial operations (FinOps) and cost management must evolve alongside technology, giving you clear visibility, proactive cost controls, and flexible payment models that fit your needs. That’s why today we’re introducing expanded billing flexibility and new cost management tools for agent workloads across Gemini Enterprise and developer tools like Google Antigravity in Gemini Enterprise and Android Studio . Flexible payment options: You can mix our existing, predictable per-user seat subscriptions with a new pay-as-you-go option in Gemini Enterprise app that lets you run agent workloads without hitting quota limits mid-task. Developer access, one place to manage your AI: Google Antigravity and Android Studio AI use is now included in your Gemini Enterprise subscription (available for select customers and rolling out broadly soon), giving your developers more without giving you more to manage. Usage across Antigravity, the platform, and the app rolls up into a single view instead of separate licenses and billing silos. Pay less as your usage grows: If your AI workloads are steady or climbing, Flexible Savings Plans let you commit to a monthly spend you're comfortable with and take 10–20% off your token costs — no minimums, no maximums, and no new billing silo to manage. Consolidated spend guardrails: You can now set hard monthly caps on AI spend and projects, estimate agent runtime costs, and catch sudden budget spikes before they hit your invoice. Give your teams flexibility without losing control over spend in Gemini Enterprise Every organization operates differently. Even within the same business, no two teams consume AI in the same way . Your business users might rely on steady, everyday productivity tools. Meanwhile, your technical teams might run AI agent workloads in bursts. To help align costs with how work actually gets done, you can combine these payment and licensing choices and features across Gemini Enterprise: Option How it works Why it helps optimize spend Gemini Enterprise app per-user seat subscription You pay a fixed monthly fee per user, which includes daily quota pools that are shared across your entire project. Predictable budgeting. It provides finance teams with a clear, steady monthly baseline for teams with consistent daily productivity needs. [New] Gemini Enterprise app pay-as-you-go consumption edition *available for select customers and rolling out broadly soon There is no upfront commitment or base subscription fee, meaning you pay strictly for the compute and tokens your teams consume at standard model API rates. Only pay for what you use. Your spend scales up and down automatically with real usage, ensuring you never pay for empty seats when project demand dips. [New for Antigravity in Gemini Enterprise] Consolidated pooled quotas Daily usage allowances are pooled project-wide, letting business apps, developer tools, and custom agents draw from the same shared quota. Pooled quota is always exhausted first, and admins can control if overages are allowed, at which point it’s charged at pay-as-you-go rates. Maximized resource usage: Unused daily allowances from business users automatically absorb heavy developer or custom API agent demands, so no quota allowance goes to waste. [Coming soon] Deferred execution pricing *available for select workloads soon Mark eligible agent workloads as deferred, and our intelligent scheduler in the Gemini Enterprise Agent Platform runs them during off-peak capacity windows. Substantial discounts for work that can wait: AI workloads can run on separate, off-peak capacity, you pay up to half the inference cost and bypass standard quota limits entirely – letting you run substantially more agentic volume under the same budget. Equip developers with advanced agentic tooling under a single Gemini Enterprise subscription We’re rolling out access to Google Antigravity in Gemini Enterprise , an agent-first developer platform that brings powerful agentic coding and agent-building capabilities to technical teams, included with Gemini Enterprise subscriptions for eligible customers . In addition, Android developers can leverage the Google Antigravity quota included in their Gemini Enterprise subscriptions natively in Android Studio , the agentic IDE for professional Android development. To be more efficient with agentic coding costs, we are pooling developer tools quota included in each Gemini Enterprise subscription and making it available across the whole Google Cloud project so your teams can benefit from the capacity you’re already purchasing. Your developers get access to advanced agentic tools, while you maintain centralized governance and control. For a closer look into what’s new with Antigravity in Gemini Enterprise and how customers are putting it to work in production, take a look at our deep-dive . Budget smarter with Gemini Enterprise Flexible Savings Plans (FSPs) If your organization has steady or growing AI workloads, Gemini Enterprise Flexible Savings Plans offer a simple, spend-based commitment model across Gemini Enterprise usage. FSPs are designed to lower token costs while keeping budgets flexible: Programmatic savings: Receive 10% off for 1-year or 20% off for 3-year commitments for monthly spending across Gemini Enterprise. Tailored to your pace : With no minimum or maximum spend requirements, you can determine a monthly commitment that fits your current traffic and make adjustments as your usage increases over time. Enterprise Agreement (EA) friendly: FSP spend seamlessly draws down against your existing Google Cloud EA, giving lines of business dedicated budget control without fragmenting your broader cloud commitments. Gemini Enterprise Flexible Savings Plans are already available for self-serve customers and customers on enterprise agreements. Give your teams the freedom to build while maintaining financial discipline As a leader, your goal isn't to restrict the potential value of AI – it's to remove the financial and operational risk that you face without managed AI costs. You should be able to give engineering, marketing, and operational teams the freedom to innovate with agents, but you should also have the visibility to trust what those agents are doing and the safety nets to protect your budget. To bridge this gap, we've built robust, native governance tooling directly into the Google Cloud Billing Console around three simple goals: 1. Plan before you scale: The Google Cloud Pricing Calculator lets you estimate anticipated costs in Gemini Enterprise across per-user licenses, developer tools, and background agent runtimes. It gives you the numbers you need to build clear business cases upfront before project work begins . 2. Enforce boundaries without micromanaging spend: Instead of spending time tracking daily usage variations across project teams, let these tools do the monitoring for you: Early anomaly detection: If a project’s AI spending trends higher than normal, the system flags the deviation with root cause analysis and pinpoints the top 3 SKUs driving the increase so you can see exactly what changed. Billing Console showing an Early Anomaly alert with the Root Cause Analysis (RCA) breakdown highlighting the driving SKUs Project-level spend caps: When a project needs defined financial boundaries, you can set a firm monthly spend limit directly in the Google Cloud Billing Console. If a project hits its limit, the agent's API calls temporarily pause – protecting your budget without affecting the rest of your production infrastructure. Automated email alerts at 50%, 80% and 100% of the budget keep you informed of your progress against the spend limit. Overage controls: If a spend cap triggers, you can choose to resume work with a single click in the console. Alternatively, if your priority is continuous operation, you can turn on overages so excess usage smoothly transitions to consumption rates, which can draw directly against your FSP to keep overage unit costs heavily discounted. Enabling overage pay-as-you-go for a project. 3. Get visibility into business value: Use centralized billing reports paired with the FinOps agent to generate natural-language cost insight summaries of where your budget went, making it simple to show ROI to leadership. AI spending reporting in Google Cloud Console Go deeper with AI cost optimization To build a full-stack FinOps strategy that optimizes the cost, latency, and performance of your models and infrastructure, explore our detailed architecture specifications and frameworks: How to outsmart infrastructure constraints with dynamic capacity management : Discover how to optimize your compute investments with capabilities in Google Kubernetes Engine and Google Compute Engine that automatically schedule and reallocate resources to avoid interruptions, over-provisioning, and over-reliance on any one hardware configuration. Expanding Google Antigravity for Enterprise Customers : Read our developer tooling deep-dive to see how technical teams are accelerating software delivery with agent-first workflows. What sports cars can teach us about optimizing AI spend : More tokens doesn't always mean better AI. Read our conversation with Mike Clark, Director of Product Management for Gemini Enterprise Agent Platform, on how to balance horsepower with efficiency and get the highest return out of every dollar you spend on AI. Protection during usage spikes : Your heavy workloads can surge during peak hours without forcing you to pay for expensive, dedicated infrastructure that sits idle the rest of the time. As your AI usage grows, Gemini models can automatically scale on demand without hitting artificial rate limits – processing up to 50 million tokens per minute.",
+      "evidenceLink": "",
+      "score": 86,
+      "core": "Editor's note: A product image was updated after initial publication. As AI takes on more complex work, business leaders face a new challenge: enabling rapid innovation using agents while protecting their margins and budgets. To get a real return on AI, financial operations (FinOps) and cost management must evolve alongside technology, giving you clear visibility, proactive cost controls, and flexible payment models…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-12T16:17:49.803Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Getting started with Mantis, our open-source bug finding-and-fixing harness",
+      "link": "https://cloud.google.com/blog/products/identity-security/getting-started-with-the-mantis-harness-to-find-and-fix-bugs",
+      "publishedAt": "2026-09-02T16:00:00.000Z",
+      "author": "Nick Galloway Staff Security Engineer, Google",
+      "summary": "AI models have clearly proven their ability to discover and exploit vulnerabilities without much, if any, human assistance. To help defenders gain the advantage with AI, we built the Mantis harness to automate the discovery, triage, reproduction, and patching of software vulnerabilities. Available to all as an open-source framework, Mantis is part of Google’s internal approach to find and fix vulnerabilities at machine-speed. It creates a more effective scalable, context-aware repository analysis. While sloppiness in AI code scanning frequently leads to hallucinated bugs and weak true-positive rates under 7%, we designed Mantis to be effective by combining industry-standard agentic techniques like critic and review agents with sandboxed reproduction of vulnerabilities for grounding. As we detailed in June , it examines the history of the repository to learn from past security fixes and automatically builds up architectural and threat model documentation, even if these are not provided. It constructs a hierarchical security summary tree, condensing individual files into directory and root-level summaries. This technique reduced token overhead by over 85%, while preserving critical structural context across massive repositories. Mantis distills decades of cybersecurity expertise across a wide spectrum of codebases, and is available on GitHub . Here’s how you can get started using Mantis. First , clone the Mantis repo locally using: code_block )])]> Second , open your favorite coding agent and use the prompt, “I would like to use Mantis framework in path/to/mantis to review my code in path/to/your/code , can you help me get started?” Internally at Google, this exact prompt has been used to find real vulnerabilities across our many code repositories. As part of the Mantis repository on GitHub, we’ve included sample sandboxing options. You can also implement your own sandbox to match your own workflow. Mantis is intended to be an easy place to start with vulnerability discovery, true positive filtering, and patching. Once you've got a handle on AI-discovered vulnerabilities, you can use the new mantis-advise skill to make use of the accumulated knowledge and get your coding agents to write secure code the first time. To get the most out of AI-driven vulnerability discovery and modernize your development practices, we strongly recommend two essential practices: Feed your tools the right context : While Mantis automatically analyzes commit history and code to build documentation for itself, human-curated knowledge often can dramatically improve the quality of your results. For example, if you would never waste time fixing bugs where the user can crash their own program, this is critical information for a scanning pipeline to ensure that those types of bugs are never surfaced. Build a cyber sandbox with vulnerability acceptance criteria . Safe, sandboxed environments where you can reproduce vulnerabilities with clear vulnerability-reproduction criteria will give you better results for surfacing only the things you need to know and also for ensuring that your fixes are correct. You can learn more about Mantis here .",
+      "evidenceLink": "",
+      "score": 83,
+      "core": "AI models have clearly proven their ability to discover and exploit vulnerabilities without much, if any, human assistance. To help defenders gain the advantage with AI, we built the Mantis harness to automate the discovery, triage, reproduction, and patching of software vulnerabilities. Available to all as an open-source framework, Mantis is part of Google’s internal approach to find and fix vulnerabilities at mach…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-12T16:17:49.803Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "AI Voice Agents: How They Work, Use Cases, and How to Build One",
+      "link": "https://rerun.build/blog/ai-voice-agents",
+      "publishedAt": "2026-09-12T06:38:55.000Z",
+      "author": "",
+      "summary": "A practical guide to AI voice agent architecture, use cases, implementation, evaluation, cost, safety, and human handoff.",
+      "evidenceLink": "",
+      "score": 82.98303962301587,
+      "core": "A practical guide to AI voice agent architecture, use cases, implementation, evaluation, cost, safety, and human handoff.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-12T16:17:49.803Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "GPT-6 Astra on GitLab: Faster runs, fewer tokens used",
+      "link": "https://about.gitlab.com/blog/gpt6-astra-on-gitlab",
+      "publishedAt": "2026-09-08T00:00:00.000Z",
+      "author": "Brittany Lutz https://about.gitlab.com/blog/authors/brittany-lutz/",
+      "summary": "OpenAI's newest frontier model GPT-6 Astra is now on GitLab Duo Agent Platform, delivering faster runs and lower token usage. In GitLab's internal evaluation, GPT-6 Astra finished a typical run 43.4% faster than GPT-5.6 Sol and used 42.7% fewer tokens per run, while completing every task in the benchmark . For your team, that means agentic tasks such as dependency updates, build fixes, and small multi-file changes come back faster, and stretch your token budget across more of your team’s backlog. Faster agentic work, even on your slowest runs Wait time factors into how your team uses an agent. A run that comes back in a few minutes is one you stay engaged with. A longer run is one you let work in the background while you move to another task. When it finishes, you switch context from the work you're in, reread what you asked the agent for, and review a diff you last thought about 30 minutes ago. The longer runs that result in context switching are the ones GPT-6 Astra shortened most in GitLab's internal testing. At the 95th percentile, the slower tail of its runs, GPT-6 Astra finished 49.2% faster than GPT-5.6 Sol, and 43.4% faster on a typical run. Astra's slowest runs finish in roughly the time Sol needed for an average one. With GPT-6 Astra, your team waits less on high volume, routine work. Every task finished, at a lower token usage per run In GitLab's internal testing, GPT-6 Astra completed 100% of benchmark tasks. No run stalled, timed out, or came back empty, so your team isn't left waiting on runs that finish with nothing to review. Astra resolved 63.3% of those tasks, returning a change that passed the benchmark's tests, compared to a 76.7% resolution rate for GPT-5.6 Sol. Misses return as patches to correct rather than runs that produced nothing. Astra reached its completion rate using 42.7% fewer tokens per run than Sol, measured across the same set of tasks. That savings compounds across a backlog, so your token budget covers more of the work your team delegates. Where Astra saves your team the most Many factors go into the model your team chooses to use for a particular task. GPT-6 Astra is a strong choice where turnaround and token consumption per run matter most, such as dependency updates, build fixes, and small multi-file changes. It fits the work your team reviews before it merges, while your team might prefer to use GPT-5.6 Sol when a change has to be right the first time. With GitLab Duo Agent Platform, your admin sets the model per feature in model selection, so each workload your team sends to an agent runs on the model you chose for it. That flexibility comes with consistent governance, with every model going through the same context layer, policy checks, and audit trail. Put Astra to work GPT-6 Astra is available now on GitLab Duo Agent Platform and, like other models, runs on GitLab Credits . New to Duo Agent Platform? Start a free trial today. Already a GitLab Premium or Ultimate subscriber? Turn on Duo Agent Platform and use the GitLab Credits included with your subscription .",
+      "evidenceLink": "",
+      "score": 62.97877375,
+      "core": "OpenAI's newest frontier model GPT-6 Astra is now on GitLab Duo Agent Platform, delivering faster runs and lower token usage. In GitLab's internal evaluation, GPT-6 Astra finished a typical run 43.4% faster than GPT-5.6 Sol and used 42.7% fewer tokens per run, while completing every task in the benchmark . For your team, that means agentic tasks such as dependency updates, build fixes, and small multi-file changes c…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-12T16:17:49.803Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "simon_willison",
+      "source": "Simon Willison",
+      "title": "OpenAI agents attacked RubyGems back in May",
+      "link": "https://simonwillison.net/2026/Sep/12/openai-agents-rubygems",
+      "publishedAt": "2026-09-12T00:42:25.000Z",
+      "author": "",
+      "summary": "OpenAI agents carried out an undisclosed attack on RubyGems is a new bombshell report from Spencer Kitts, Thomas Larsen, and Sydney Von Arx - three of the four authors of the report on the agent attack on disused wikis ( previously ) last week. This time they're noting that it looks very likely that an OpenAI agent swarm was behind an attack against the RubyGems package repository first reported on May 12th by Maciej Mensfeld of the RubyGems security team : We're dealing with a major malicious attack on @rubygems right now. Signups are paused for the time being. Hundreds of packages involved - mostly targeting us, but some carrying exploits. The team has been on this for hours. More details to follow once we're through it. Those packages turned out to carry some very suspicious patterns: Many of them included \"oai\" in their name, or the author field, or the fake email address they provided. The files they were accessing were similar in character to the files retrieved by the wiki agents, using similar tricks (r.jina.ai) - and OpenAI have confirmed the wiki agents were theirs. The code in the packages appeared to be LLM-authored. I find point 2 the most convincing, given what we learned from the wiki attack when it was analyzed in September. Many of the packages were exploiting the RubyDoc.info documentation build process to exfiltrate (public) data from UK government websites, presumably as part of an information gathering task similar to the research tasks processed by the wiki-exploiting agents. We know this because one agent helpfully left a comment: # malicious crawler/exfil for Southwark Jan 2026 docs via rubydoc.info worker They also attempted to steal API keys via an exploit that was patched over two months later - it's not clear if those attempts were successful. The thing that bothers me most about this incident is that the authors report that OpenAI had not disclosed to RubyGems that they were responsible for the attack prior to now. If that's true there are two options: After the Hugging Face and Wiki attacks OpenAI were still unable to review their previous logs and determine that they had previously attacked RubyGems. They knew about the attack on RubyGems and made the decision not to reach out to the RubyGems team about it. Both of these are bad! Given this incident, the Hugging Face situation , and the Wiki attack, the obvious question right now is how many more incidents like this are out there waiting to be discovered? You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
+      "evidenceLink": "",
+      "score": 62.886412638888885,
+      "core": "OpenAI agents carried out an undisclosed attack on RubyGems is a new bombshell report from Spencer Kitts, Thomas Larsen, and Sydney Von Arx - three of the four authors of the report on the agent attack on disused wikis ( previously ) last week. This time they're noting that it looks very likely that an OpenAI agent swarm was behind an attack against the RubyGems package repository first reported on May 12th by Macie…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-12T16:17:49.803Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "A misalignment of AI in mathematics",
+      "link": "https://mathandai.org",
+      "publishedAt": "2026-09-11T17:45:12.000Z",
+      "author": "meredydd https://news.ycombinator.com/user?id=meredydd",
+      "summary": "Read the declaration and add your name.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49662371",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 1105,
+        "comments": 1047
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-12T16:17:49.803Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 56.60639279761905,
+      "core": "Read the declaration and add your name.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Enabling independent research on how people use Claude",
+      "link": "https://www.anthropic.com/research/enabling-independent-research",
+      "publishedAt": "2026-09-11T16:57:50.000Z",
+      "author": "",
+      "summary": "Earlier this year, we ran a pilot giving external researchers access to aggregate, real-world Claude usage data. Three research groups designed their own studies for Anthropic Insights, our privacy-preserving analysis tool. In this post, we share high-level results from those studies and what we learned running this pilot.",
+      "score": 56.13333724206349,
+      "core": "Earlier this year, we ran a pilot giving external researchers access to aggregate, real-world Claude usage data. Three research groups designed their own studies for Anthropic Insights, our privacy-preserving analysis tool. In this post, we share high-level results from those studies and what we learned running this pilot.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-12T16:17:49.803Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "baseten_ai_engineering",
+      "source": "Baseten AI Engineering",
+      "title": "DeepSeek-V4.1-Flash: more efficient prefill for coding agents",
+      "link": "https://www.baseten.co/blog/deepseek-v41-flash-more-efficient-prefill-for-coding-agents",
+      "publishedAt": "2026-09-11T22:01:37.000Z",
+      "author": "",
+      "summary": "Discover DeepSeek-V4.1-Flash, a 552B multimodal MoE model featuring a Causal Encoder-Decoder architecture and efficient KV caching.",
+      "score": 54.42276184523809,
+      "core": "Discover DeepSeek-V4.1-Flash, a 552B multimodal MoE model featuring a Causal Encoder-Decoder architecture and efficient KV caching.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-12T16:17:49.803Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Mark Zuckerberg's Muse personal AI agent is a work accessory designed by people who don't do real work",
+      "link": "https://www.techradar.com/pro/mark-zuckerbergs-muse-personal-ai-agent-is-a-work-accessory-designed-by-people-who-dont-do-real-work",
+      "publishedAt": "2026-09-12T11:00:00.000Z",
+      "author": "Mike Moore",
+      "summary": "Meta's Muse AI agent looks to solve all your problems - but is it over-promising already?",
+      "evidenceLink": "",
+      "score": 44.11607533730159,
+      "core": "Meta's Muse AI agent looks to solve all your problems - but is it over-promising already?",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-12T16:17:49.803Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "AI researchers debate how close we are to recursive self-improvement",
+      "link": "https://www.dwarkesh.com/p/john-beren-charlie",
+      "publishedAt": "2026-09-11T21:35:29.000Z",
+      "author": "artninja1988 https://news.ycombinator.com/user?id=artninja1988",
+      "summary": "“We&#x27;re nowhere near the ceiling.”",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49665711",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 112,
+        "comments": 113
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-12T16:17:49.803Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 42.25418598755036,
+      "core": "“We&#x27;re nowhere near the ceiling.”",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users",
+      "link": "https://openai.com/index/scaling-storage-one-billion-users-part-one",
+      "publishedAt": "2026-09-11T10:00:00.000Z",
+      "author": "",
+      "summary": "Learn how OpenAI evolved Habitat from a Python library into a globally distributed storage platform serving 1 billion ChatGPT users and 22M requests per second.",
+      "evidenceLink": "",
+      "score": 41.72480549603174,
+      "core": "Learn how OpenAI evolved Habitat from a Python library into a globally distributed storage platform serving 1 billion ChatGPT users and 22M requests per second.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-12T16:17:49.803Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "mistral_ai_engineering",
+      "source": "Mistral AI",
+      "title": "Modernizing complex legacy code with AI agents.",
+      "link": "https://mistral.ai/news/legacy-code-modernization",
+      "publishedAt": "2026-09-09T12:00:46.000Z",
+      "author": "",
+      "summary": "Mistral helped a European energy operator migrate 40,000 lines of Fortran 77 to C++. Learn how it was done, and the lessons to carry forward.",
+      "evidenceLink": "",
+      "score": 37.3344483531746,
+      "core": "Mistral helped a European energy operator migrate 40,000 lines of Fortran 77 to C++. Learn how it was done, and the lessons to carry forward.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-12T16:17:49.803Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Anthropic Economic Index: AI&#x27;s impact on software development",
+      "link": "https://www.anthropic.com/research/impact-software-development",
+      "publishedAt": "2026-09-11T11:56:53.000Z",
+      "author": "",
+      "summary": "Data on how software developers are using Claude",
+      "score": 34.24173009920635,
+      "core": "Data on how software developers are using Claude",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-12T16:17:49.803Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Simplify and support your TorchServe workloads using Ray Serve Deep Learning Containers",
+      "link": "https://aws.amazon.com/blogs/machine-learning/simplify-and-support-your-torchserve-workloads-using-ray-serve-deep-learning-containers",
+      "publishedAt": "2026-09-09T15:51:29.000Z",
+      "author": "Ananth Raghavendra",
+      "summary": "TorchServe is no longer maintained, leaving teams to own the entire GPU inference stack. The AWS Ray Serve Deep Learning Container is a supported, pre-tested container with the framework, GPU drivers, and serving layer already assembled. This post walks through deploying a vision-language model on Amazon EKS using the Ray Serve DLC on a single GPU node.",
+      "evidenceLink": "",
+      "score": 32.79799994047619,
+      "core": "TorchServe is no longer maintained, leaving teams to own the entire GPU inference stack. The AWS Ray Serve Deep Learning Container is a supported, pre-tested container with the framework, GPU drivers, and serving layer already assembled. This post walks through deploying a vision-language model on Amazon EKS using the Ray Serve DLC on a single GPU node.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-12T16:17:49.803Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Education Report: How educators use Claude",
+      "link": "https://www.anthropic.com/research/anthropic-education-report-how-educators-use-claude",
+      "publishedAt": "2026-09-11T11:55:33.000Z",
+      "author": "",
+      "summary": "Research on 74,000 educator conversations shows how faculty use Claude for teaching, research, and building interactive learning tools.",
+      "score": 30.72347613095238,
+      "core": "Research on 74,000 educator conversations shows how faculty use Claude for teaching, research, and building interactive learning tools.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-12T16:17:49.803Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "funeral_ai",
+      "source": "葬AI",
+      "title": "好测风大模型如何夺取网吧大结果",
+      "link": "https://funeralai.substack.com/p/2d8",
+      "publishedAt": "2026-09-10T04:04:44.000Z",
+      "author": "葬愛咸鱼",
+      "summary": "在葬AI与Qwen联合举办的懂模帝Bench黑客松上，一众选手使出了全身力气，拼命想拿大结果，如同现在的模型厂拼命更新，全都想拿大结果——我是指追求AGI——一样。",
+      "evidenceLink": "",
+      "score": 21.15424994047619,
+      "core": "在葬AI与Qwen联合举办的懂模帝Bench黑客松上，一众选手使出了全身力气，拼命想拿大结果，如同现在的模型厂拼命更新，全都想拿大结果——我是指追求AGI——一样。",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-12T16:17:49.803Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
