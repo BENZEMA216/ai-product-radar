@@ -1,0 +1,387 @@
+{
+  "generatedAt": "2026-09-13T16:27:20.229Z",
+  "date": "2026-09-14",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Reimagining work: How Pythian’s internal AI playbook delivers customer ROI",
+      "link": "https://cloud.google.com/blog/topics/startups/how-pythians-internal-ai-playbook-delivers-customer-roi",
+      "publishedAt": "2026-08-27T16:00:00.000Z",
+      "author": "Paul Lewis Chief Technology Officer, Pythian",
+      "summary": "When Pythian rolled out Google Cloud’s Gemini Enterprise across our 500-person company in 27 countries, the goal was simple: use our own company as a proving ground to discover how enterprise AI actually delivers ROI. What we found changed our strategy entirely. Since the rollout of Gemini Enterprise and our previous enterprise AI deployments, Pythian observed firsthand why so many enterprise AI initiatives stall out or fail. Most organizations trap themselves in a tool-centric mindset — buying licenses, making tools broadly available, and assuming value will naturally follow. They get stuck chasing \"nickel and dime\" micro-efficiencies (like saving 5 minutes per user) while missing structural, high-ROI workflow transformations. Compounding the problem, even when custom agents are built, they frequently stall in pilot mode or break down in production because teams lack the operational capability to manage AI model drift, agent lifecycles, and ongoing observability. To solve this, we engineered the Pythian AI Operating Model — a multifaceted, end-to-end framework designed to take enterprise AI from high-level strategy all the way into sustained production. While our dual center of excellence (COE) serves as the core execution muscle, it is the application of the entire framework, from Field CTO strategy and tooling deployment to the dual COE and XOps, that consistently unlocks million-dollar outcomes. By proving this complete model internally first, Pythian drove a 3x surge in active user engagement and cut our database incident resolution times by 80%. The four pillars of the Pythian AI operating model To move past the common failure points of enterprise AI, our framework consolidates strategy, execution, and operations into a single continuous loop: Field CTO strategy ──> tooling deployment ──> dual COE execution ──> production XOps Field CTO strategy and governance: Generative AI is arguably the most academically challenging architectural shift in IT history. Led by former C-suite tech leaders, our Field CTO practice provides executive advisory to establish steering committees and clear value metrics. The team audits operations using 16 horizontal agentic patterns (like automated document processing and runbook creation) to build a prioritized backlog of high-ROI use cases before development starts. Tooling and platform deployment: The team establishes a secure, production-grade foundation on platforms like Gemini Enterprise and connects AI directly into CRMs, ERPs, and database estates to ground models in real corporate context. The dualCOE: This execution muscle is split into two specialized engines: People productivity COE: This group handles adoption and change management. Instead of expecting non-technical teams (like HR or Procurement) to build its own agents, this COE builds no-code agents for them, focusing entirely on enablement. Process productivity COE: This team engineers deep, custom-coded AI agents and complex agentic workflows that integrate into core data platforms for autonomous operations. XOps (AI production management): While deploying an agent is 20% of the journey, maintaining accuracy in production is 80%. Because AI models and prompt structures naturally drift over time, this XOps practice provides the continuous monitoring, prompt tuning, and model observability needed to keep agents performing without breaking core workflows. The difference between chasing minor, scattered efficiencies and driving structural enterprise ROI comes down to how you align your operating strategy: Alignment element Tool-centric approach Pythian AI operating model Primary metric Individual minutes saved per user High-impact workflow reimagination and ROI Operational focus Broad, unguided tool availability Prioritized backlog via 16 agentic patterns Execution muscle Ad-hoc user experimentation Dual COE (people and process productivity) Production lifecycle Unmonitored static deployments Active XOps (Continuous accuracy and drift management) Real-world impact: from database ops to global supply chains Whether managing 70 manufacturing plants or 30,000 enterprise databases, AI succeeds when tied to structural, high-value workflows: Pythian “as a customer:” Across 15,000 monthly database tickets, our Process COE deployed an agentic workflow that reads tickets, searches knowledge bases, and auto-generates mini runbooks before an engineer touches them. The result was slashed mean time to resolution by 80% and tripled active user engagement . Knowledge management customer: We deployed autonomous IT support agents across 10,000 consultants. As a result, we were able to automate 10% of 20,000 annual IT tickets into \"no-touch\" resolutions, saving 1,000,000+ operational hours . Supply chain customer: By building custom agentic supply chain tools on Gemini Enterprise, we compressed forecast-matching cycles from weeks down to 2–3 days across 70 global manufacturing sites . Retail customer: We combined Gemini Agentic AI and computer vision to automate store product onboarding. As a result, we transformed a 20-minute manual task into a multi-second flow . Ready to build your AI operating model? Scaling AI demands more than tool-level experimentation. It also requires an end-to-end AI operating model. Learn how Pythian pairs with Google Cloud to operationalize strategy, streamline XOps, and fast-track your Gemini Enterprise journey.",
+      "evidenceLink": "",
+      "score": 81,
+      "core": "When Pythian rolled out Google Cloud’s Gemini Enterprise across our 500-person company in 27 countries, the goal was simple: use our own company as a proving ground to discover how enterprise AI actually delivers ROI. What we found changed our strategy entirely. Since the rollout of Gemini Enterprise and our previous enterprise AI deployments, Pythian observed firsthand why so many enterprise AI initiatives stall ou…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-13T16:27:20.229Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "How agents can delegate better",
+      "link": "https://cloud.google.com/blog/products/ai-machine-learning/how-agents-can-delegate-better",
+      "publishedAt": "2026-08-21T16:00:00.000Z",
+      "author": "Nenad Tomasev Research Scientist, Google DeepMind",
+      "summary": "In any organizational behavior class, students will learn that effective delegation is among the most important skills for a seasoned leader. Getting meaningful work done involves careful coordination, starting with a subdivision of projects into manageable tasks, mapped onto the skills of the team, and assigned to the right people. At Google Cloud, we’re learning a similar lesson when it comes to building and deploying AI agents in enterprise workflows. These workflows are best approached by multi-agent systems that can break apart and execute complex tasks. To do so, AI agents need to become good delegators. To learn how, we turned to research from Google DeepMind. In their recent study titled Intelligent AI Delegation , they prove how delegation itself involves intelligence: adaptive negotiations, aligning on formal contracts, and security guardrails. This work opens up new opportunities for customers building AI agents that can communicate, share tasks, and coordinate towards set objectives. Today, we’ll share four principles that emerged from that work, and how you might apply them to your own workflows. Principle 1: Verify delegated work If we are to permit AI to delegate tasks, we want it to do more than arbitrarily assign work. Agents should intelligently break down work into tasks that can be reliably verified. In our research, we call this \"contract-first decomposition.\" Like human delegation, this takes thoughtful deliberation. With people, this might mean a leader understanding their team’s strengths, and perhaps checking their work before it’s completed. For AI, there’s a similar learning curve. The orchestrating AI (the manager that sits atop a multi-agentic system) may consider multiple plans for how best to decompose and assign work, and keep decomposing sub-goals into smaller and smaller chunks until they become sufficiently simple to monitor and verify. Ideally, this should result in a plan where everything can be reliably graded. In reality, however, this may not always be possible to achieve. Sometimes, it may be necessary to involve subjective assessment of whether work has been completed successfully, in line with expectations. Rather than being a problem, identifying such components helps us determine where human time is best spent, and how best to involve human expert judgement in oversight of agentic systems. Principle 2: Be smart about cost The research framework helps us answer a question that keeps coming up with customers: Can this particular task be handled by a smaller, cheaper model? Enterprises are increasingly attentive to cost, and rightly so. Finding the right balance between performance and budget is tricky. Taking a complex problem, like payroll, and handing it off to a lightweight model, might not be powerful enough for the results you want. On the other hand, it’s unnecessary to route simple tasks, like reformatting a spreadsheet, to a strong reasoning model. According to the research, an agent that is intelligent about delegation would learn to recognize these scenarios, and match each task to the right tool or endpoint, to achieve the desired result and maximum reliability at a minimum cost. Use of model routing capabilities within API gateways is becoming a popular choice among customers, in addition to the alternative for using client-side proxies (such as LiteLLM). You can learn more about model routing here . Principle #3: Respect sensitive data Many workflows handle private, sensitive data, and AI agents need to respect those boundaries and permissions. For example, if you’re deploying your orchestrator agent for payroll data, you know that agent should never pass along its full set of information to a sub-agent. This not only compromises security, but also bloats the context window for agents and degrades performance. An agent should grant the absolute minimum permissions required to complete that specific assignment, and nothing more. The challenging part arises when needing to demonstrate, according to our first principle, that work has been reliably completed, without revealing private information. According to the research , advanced cryptography can help address this, via techniques such as zero-knowledge proofs. Zero-knowledge proofs enable one AI agent to prove to the other AI agent that a planned computation was performed correctly, without revealing the data itself. For example, an agent tasked with analyzing a sensitive dataset can generate a succinct non-interactive argument of knowledge that proves a specific property of the result. This enables the delegator to instantly verify the validity of the proof. Principles #4: Beware the zone of indifference The zone of indifference is a term coined by Chester Barnard, an American business executive, in his 1938 book called The Function of the Executive. The zone is the space in which an employee will accept a task without questioning it. The task usually falls within their scope, so they unconsciously accept it. For example, if you’re a sales rep and your manager asks you to attend an upcoming pitch with a valued client, you probably wouldn’t push back or think too deeply about it. As expressed in the research, current AI systems are defined by post-training safety filters and system instructions. As long as a request does not trigger a hard violation, the model complies. But when considering the emerging agentic web, this compliance might actually create a systemic risk. As mentioned in the research, “As delegation chains lengthen (? → ? → ?), a broad zone of indifference allows subtle intent mismatches or context-dependent harms to propagate rapidly downstream, with each agent acting as an unthinking router rather than a responsible actor.” This has serious implications, because it means intelligent delegation requires “dynamic cognitive friction.” This means validating the information provided to agents to ensure that they are accurate, relevant, controlled and efficient. This way, an agent can recognize when a request is ambiguous enough to warrant stepping outside their zone of indifference to challenge the delegator, or request human verification. Human participation and oversight similarly presume a degree of cognitive friction and active engagement, though this must be carefully managed, so as not to over-burden the users of the system. Human time is valuable and should only be invoked when necessary. Looking ahead At Google Cloud, our long-term goal is to integrate agents naturally and efficiently into organizations, which will mean delegating to and from human experts and respecting boundaries. Together, we believe this will deliver business value beyond what individual agents can handle. Ready to navigate the agentic web? Read Google DeepMind’s report paper, Intelligent AI Delegation , on arXiv. Note: A special thanks to Matija Franklin, Simon Osindero from Google DeepMind, and Vishal Agarwal, Andrea Morange from Google Cloud, for their contributions.",
+      "evidenceLink": "",
+      "score": 81,
+      "core": "In any organizational behavior class, students will learn that effective delegation is among the most important skills for a seasoned leader. Getting meaningful work done involves careful coordination, starting with a subdivision of projects into manageable tasks, mapped onto the skills of the team, and assigned to the right people. At Google Cloud, we’re learning a similar lesson when it comes to building and deplo…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-13T16:27:20.229Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "How to Choose an AI Agent Development Company: A Practical Buyer’s Guide",
+      "link": "https://rerun.build/blog/ai-agent-development-company",
+      "publishedAt": "2026-09-13T04:18:49.000Z",
+      "author": "",
+      "summary": "A practical buyer’s guide to evaluating AI agent development companies on production evidence, security, testing, integrations, operations, and total cost.",
+      "evidenceLink": "",
+      "score": 80.99382482142857,
+      "core": "A practical buyer’s guide to evaluating AI agent development companies on production evidence, security, testing, integrations, operations, and total cost.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-13T16:27:20.229Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Real-SWE: Benchmarking AI models on private, real-world, enterprise codebases",
+      "link": "https://withspecific.com/benchmarks/real-swe",
+      "publishedAt": "2026-09-12T20:25:48.000Z",
+      "author": "theanonymousone https://news.ycombinator.com/user?id=theanonymousone",
+      "summary": "Real-SWE benchmarks frontier AI models on private production codebases licensed from real companies. Eight model and harness configurations, ten tasks, 640 scored rollouts.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49676820",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 257,
+        "comments": 140
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-13T16:27:20.229Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 77.88169094163484,
+      "core": "Real-SWE benchmarks frontier AI models on private production codebases licensed from real companies. Eight model and harness configurations, ten tasks, 640 scored rollouts.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "How AlloyDB ScaNN scales vector search to 10 billion vectors",
+      "link": "https://cloud.google.com/blog/products/databases/alloydb-scann-index-four-level-tree-improves-vector-search",
+      "publishedAt": "2026-08-20T16:00:00.000Z",
+      "author": "Bin Song Software Engineer",
+      "summary": "To satisfy the demands of enterprise-grade agentic AI applications, underlying vector databases often struggle to scale effectively as modern use cases can scale to billions of vectors. As a fully managed PostgreSQL-compatible database service, AlloyDB is engineered to handle demanding enterprise workloads. Combining Google's infrastructure with the reliability of commercial databases, it delivers high availability, scalability, and includes a cutting-edge analytical engine, optimal for agentic AI use cases. A key part of this is its ScaNN index , which now operates efficiently at a scale of 10 billion vectors . This was achieved through a major architectural enhancement: an innovative four-level tree (preview) paired with efficient memory usage . The 10 billion vector scale challenge Scaling to a 10 billion vector workload presents significant memory and computational challenges. Previous AlloyDB ScaNN tree-based index was limited to two - or three -level tree configurations, and attempting to scale those structures led to several bottlenecks: Increased compute intensity: Larger tree structures demand significantly more operations for both index construction and query traversal. Memory constraints: The sampling processes required for 10 billion vectors can easily exceed the system's available memory capacity. Solution: Four-level architecture The introduction of a four-level tree (preview) is the primary innovation in the recent AlloyDB ScaNN release. This architecture, illustrated in Figure 1, employs a top-down strategy to optimize the balance between accuracy and build efficiency. To maintain high performance and mitigate recall loss, the system integrates key enhancements such as Top-K branch, SOAR , centroid adjustment and balanced tree shape. Figure 1. AlloyDB ScaNN four-level tree architecture This design has two primary benefits: 1. Reduced compute intensity via hierarchical partitioning The four-level architecture drastically reduces compute intensity by using hierarchical partitioning to restrict the volume of vectors scanned during a query. Instead of traversing a flat or poorly segmented space, the multi-layered hierarchy narrows down the search path exponentially. Figure 2 illustrates the search spaces across different tree levels, demonstrating how structural layering optimizes traversal efficiency: Figure 2. Search space for two-, three- and four-level trees Two-level: Utilizes coarse partitioning to guide queries, resulting in a basic search complexity of O( N 1/2 ) . Three-level: Introduces an intermediate layer to further subdivide clusters, narrowing exploration to O( N 1/3 ) . Four-level: Implements refined, highly granular partitions that optimize traversal efficiency down to O( N 1/4 ) , sufficiently allowing for more than 10-billion vectors. By dynamically expanding hierarchical layers as the dataset expands, AlloyDB ScaNN maintains ultra-low query latency and avoids computational scale walls from impacting performance. 2. Efficient memory usage Achieving a 10 billion vector scale requires high memory efficiency. AlloyDB ScaNN uses these strategies to maximize memory management performance: Balanced tree shape construction: The four-level tree utilizes a balanced configuration to circumvent memory limitations that restrict the size of training datasets. This balanced architecture effectively leverages reduced sampling sizes to construct high-fidelity tree partitions. Sampling optimization: When the system encounters memory limitations, it generates a condensed sampling set that considers performance and accuracy. Performance test results By leveraging the innovative four-level tree architecture in our internal tests, we are able to achieve the following performance results: AlloyDB can scale to over 10 billion vectors with its ScaNN index. AlloyDB can deliver Get started today Experience AlloyDB ScaNN's four-level tree (preview) architecture today. You can deploy ScaNN for AlloyDB by following our quickstart guide to set up an instance. For optimized, high-speed vector search, refer to the official ScaNN documentation . New users can also explore AlloyDB through our 30-day free trial program. We can’t wait to hear about what you build!",
+      "evidenceLink": "",
+      "score": 72,
+      "core": "To satisfy the demands of enterprise-grade agentic AI applications, underlying vector databases often struggle to scale effectively as modern use cases can scale to billions of vectors. As a fully managed PostgreSQL-compatible database service, AlloyDB is engineered to handle demanding enterprise workloads. Combining Google's infrastructure with the reliability of commercial databases, it delivers high availability,…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-13T16:27:20.229Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Building operational resilience with agentic AI in financial services",
+      "link": "https://cloud.google.com/blog/topics/financial-services/building-operational-resilience-with-agentic-ai-in-financial-services",
+      "publishedAt": "2026-08-18T14:00:00.000Z",
+      "author": "Pankaj Ojha Director & Lead Architect – Agentic Resilience Platform, Deutsche Bank",
+      "summary": "For financial institutions, operational resilience has long been embedded in regulatory and supervisory expectations — to say nothing of the high expectations of consumers. With the implementation of the European Union’s Digital Operational Resiliency Act (DORA), those expectations have become even more stringent, with more explicit, harmonized, and evidence-driven requirements. Firms must now demonstrate that their critical business services and supporting digital infrastructures can withstand disruption, support coordinated response, and recover with control. To meet these conditions, Deutsche Bank developed an AI-powered agentic resilience platform that modernized its regulatory tabletop resilience exercises at scale and turned manual preparation into context-aware and evidence-ready simulations grounded in actual operational data. The platform builds enterprise context from architecture, data flows, logs, incident history, alerting signals, and operational telemetry to generate scenarios, simulated operational evidence, structured session records, and regulator-ready artifacts. At many large banks with operations that span interdependent applications, data flows, and third-party services, this is a critical and even existential shift. Across financial services, supervisory expectations are evolving and as they do, banks’ tabletop exercises must reflect their production dependencies, real operating conditions, and compliance with consistent evidence standards more directly. As Deutsche Bank considered how to successfully and efficiently make this shift at scale, it looked to its long-time partner, Google Cloud , and its growing suite of agentic AI tools. From tabletop exercises to resilience intelligence With its agentic resilience platform, DB has been able to transform its tabletop exercises from manual preparation to a continuous intelligence model. And it’s been able to extend the same agentic layer to root-cause analysis when real operational context is needed. This means that every scenario it runs is based on real enterprise signals. The platform can then reflect true system dependencies, failure patterns, and business impact instead of relying on static inputs that are more likely to return assumptions than real-time insights. By using Gemini Enterprise Agent Platform , DB has been able to migrate this operational context into structured scenarios with clear timelines, decision points, and expected responses. This has ensured that each exercise is grounded in real system behavior that produces consistent, audit-ready evidence that meets regulatory expectations. Dual orchestration for control and flexibility In order to deliver both regulator-grade control and operational flexibility, DB’s platform introduced a dual-orchestration architecture that separates workflows into two complementary execution models. First, for regulator-aligned execution, the bank is using LangGraph to ensure that it generates every scenario through a traceable, deterministic process — with clear lineage from input context to output — that supports the auditability required for supervisory review. Next, for its adaptive and investigative scenarios, DB is using Google Agent Development Kit (ADK) to enable agent-driven coordination. This approach allows the bank’s platform to dynamically analyze conditions and generate responses without predefined execution paths. Figure 1. Architecture for context assembly, orchestration, and scenario generation. With this architectural separation, the platform can combine governed execution with adaptive investigation while preserving a common intelligence layer. The same agents and tools can reason over architecture, data-flow diagrams, logs, and code artifacts across tabletop scenario generation and related incident-analysis workflows. Importantly, this supports a consistent resilience model across both planned exercises and real operational events. Deutsche Bank’s objective with this platform was to engineer a resilience model for critical financial systems that meets regulatory expectations — even within highly complex, distributed environments. By linking dynamically generated scenarios to real business context and combining governed orchestration with adaptive analysis, the platform has given us an intelligent, continuously adaptive model for operational resilience.” – Sanjay Tripathi , Managing Director, Global Head of Surveillance Technology &amp; Compliance Cloud &amp; AI Transformation Lead, Deutsche Bank Powering generation and governance with Google Cloud Google Cloud’s suite of agentic tools is providing the foundation for scaling Deutsche Bank’s platform across its many governed, enterprise-grade resilience workflows. Here’s how: Cloud Run supports elastic execution of scenario and evidence-generation services. Gemini Enterprise Agent Platform transforms operational context into structured resilience scenarios. Google ADK enables adaptive agent coordination. Cloud SQL provides durable persistence for scenarios, session artifacts, and review records. Collectively, these services give DB support for the traceable generation, controlled execution, and persistent evidence record required for compliance review and continuous improvement. Scalable, evidence-ready resilience testing Every scenario generated by Deutsche Bank’s platform drives a structured tabletop session for the teams that run response, escalation, and recovery. Because these exercises are grounded in real enterprise context, they reflect operational reality while also strengthening consistency across teams and creating audit-ready evidence that meets regulatory expectations. For institutions that operate under DORA or similar frameworks, this makes it easier to demonstrate controlled, coordinated, and disciplined response at scale. This model is now being applied across multiple DB portfolios, which is helping the bank establish more consistent and scalable resilience paradigms and a replicable blueprint for the broader financial sector. In this model, root-cause analysis acts as the feedback loop between real incidents and future resilience testing. The resulting insights from production events can inform future tabletop scenarios, while exercise outcomes can strengthen response playbooks, escalation paths, and recovery readiness. All of this extends the platform’s value from planned resilience exercises to real operational events while keeping scenario-based resilience testing as the primary use case. As adoption expands, this platform brings consistency by embedding Google Cloud’s methodology for context-aware resilience. It eliminates fragmented manual approaches and establishes a cross-functional, AI-informed operating model across the bank. Toward resilience intelligence The bank’s next step is to extend this approach into a broader resilience intelligence layer, which is possible because it can deploy the same patterns to support playbook refinement, recovery-readiness assessments, and continuous validation of controls against evolving system conditions. For financial institutions, this is a strategic shift. As systems become more distributed and regulatory expectations more demanding, banks must move from periodic resilience testing to continuous, intelligence-driven capabilities. At Deutsche Bank, Google Cloud is making that transition simple across the organization. Learn more about Google Cloud’s methodology for context-aware resilience in this article .",
+      "evidenceLink": "",
+      "score": 72,
+      "core": "For financial institutions, operational resilience has long been embedded in regulatory and supervisory expectations — to say nothing of the high expectations of consumers. With the implementation of the European Union’s Digital Operational Resiliency Act (DORA), those expectations have become even more stringent, with more explicit, harmonized, and evidence-driven requirements. Firms must now demonstrate that their…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-13T16:27:20.229Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Spanner migrations: Automating dual-write with Antigravity CLI for minimal disruption",
+      "link": "https://cloud.google.com/blog/topics/developers-practitioners/using-antigravity-cli-to-streamline-dual-write-database-migration",
+      "publishedAt": "2026-09-04T16:00:00.000Z",
+      "author": "Sachin Mathapati Application Engineer",
+      "summary": "When Google's Finance Engineering team needed to modernize their legacy data layer, they chose Spanner , a globally distributed, strongly consistent, multi-model database with high availability capabilities. But migrating to Spanner without taking production services offline was a daunting engineering challenge: As the internal team responsible for the application, we needed to manually rewrite dual-write logic across dozens of Data Access Objects (DAOs), a process that is slow and prone to human error. Further, doing so without disruption would have required implementing multi-phase dual-write architectures across every DAO in our codebase. To solve this, we took an alternative approach: We built an automated refactoring pipeline powered by Antigravity CLI in headless mode. This helped us accelerate our migration velocity significantly while maintaining strict data parity in our staging environments as we prepare for production. The challenge: Anatomy of a dual-write migration When migrating high-throughput production services where financial accuracy is essential, simple cutover scripts do not work. You must verify that both the legacy datastore and Spanner receive identical writes simultaneously until all the historical data backfills and verifications are complete. We structured our migration across three distinct phases: Historical backfill: Copying existing historical records to Spanner while maintaining referential integrity. Dual-write / dual-read implementation: Modifying every DAO to write mutations to both the primary store and Cloud Spanner in parallel during the migration window. Automated API verification and parity checking: Intercepting RPC traffic and verifying end-to-end that every write lands with byte-for-byte equivalence across both stores. The architectural pattern is clean, but at our scale, we began to encounter friction. That’s because each DAO requires: A dedicated MutationConverter class mapping complex domain models to Spanner schema columns Dual-write branch handling and rollback or error-reporting logic A suite of unit tests verifying both primary and Spanner writes using fake time sources and test doubles ( FakeTimeSource ) Performing these identical, high-precision code changes across 30+ DAOs by hand would have taken months of engineering time. The solution: Standardized mutation converter patterns To verify that our automation pipeline could reliably generate clean code, we first standardized our DAO refactoring pattern around a decoupled MutationConverter interface. Instead of embedding raw Spanner table names and column assignments directly inside core DAO business logic, we isolate Spanner schema translation into dedicated converter units: code_block )])]> By establishing a rigid, deterministic contract between the DAO and the Spanner SDK ( spanner.Mutation ), we created an exact target specification that an AI coding agent could reason about and generate reliably. Why use Antigravity CLI in headless mode? Interactive AI chat interfaces in IDEs work well for exploratory coding, but they are poorly suited for systematic, multi-file code updates across an entire codebase. When you need to apply repeatable refactoring to dozens of targets without missing edge cases, you need automated workflows. We addressed this by building an orchestration script ( migration_ui.py ) that runs Antigravity CLI in headless mode ( -p ). Headless mode lets Antigravity run directly inside shell scripts, continuous integration pipelines, and background automation jobs without requiring manual terminal prompts. This approach helped us scale our work in three key ways: Deterministic prompt architectures: We treated our prompts as version-controlled engineering artifacts. We codified precise rules handling common Spanner edge cases — such as timestamp serialization, nullability conversions, mutation ambiguity, and FakeTimeSource test injection — directly into reusable prompt templates. Batch execution and automated verification: Our orchestration script takes a target DAO name as input, retrieves the existing single-write source code and schema, and feeds it to headless Antigravity alongside our structural conventions. Antigravity generates the new converter, the refactored dual-write DAO, and corresponding unit tests. The script then runs blaze test . If a linter error or test assertion fails, the error log feeds directly back into Antigravity for self-correction. Overnight execution at scale: Because the loop runs unattended, engineers can queue up 10 DAOs at the end of the day. By morning, the pipeline generates, tests, and validates 10 clean changelists ready for human code review. Results and key takeaways for cloud engineers Combining Spanner's distributed database primitives with Antigravity CLI's headless automation produced clear benefits across our engineering organization: Significant reduction in migration effort : DAO dual-write migrations that previously required extensive manual coding and testing were completed and reviewed in a fraction of the time Highly reliable data migration: Because every generated DAO adhered to the exact same tested MutationConverter pattern and underwent automated unit testing against Spanner test doubles, we sustained high data fidelity during our extensive migration testing. Focus on higher-value engineering: Engineers avoided repetitive boilerplate refactoring, giving them time to focus on data modeling, architectural resilience, and performance optimization. Three tips for your next database migration Decouple schema translation first: Before writing migration scripts, define a strict interface (like our MutationConverter ) that isolates your new cloud database SDK requirements from your existing business logic. AI agents work best when given clear, bounded design patterns. Move from interactive chat to headless automation: When executing repetitive refactoring across more than three or four files, invest in scripted, headless workflows. Treating prompt inputs and test verifications as automated build steps help maintain quality and consistency. Let the build system act as your guardrail: Connect your AI generation loop directly to your build and test harness ( bazel test or go test ). This lets the model fix compile and assertion errors before a developer reviews the code. Get started Whether you’re migrating financial systems or building cloud-native applications from scratch, Spanner and Antigravity provide a foundation for scalable software development. Explore Cloud Spanner: Learn more about Spanner's distributed architecture Google Cloud Spanner documentation . Discover Gemini for Developers: See how AI-assisted coding and headless CLI automation can assist your engineering workflows at Google Cloud AI for Developers .",
+      "evidenceLink": "",
+      "score": 66,
+      "core": "When Google's Finance Engineering team needed to modernize their legacy data layer, they chose Spanner , a globally distributed, strongly consistent, multi-model database with high availability capabilities. But migrating to Spanner without taking production services offline was a daunting engineering challenge: As the internal team responsible for the application, we needed to manually rewrite dual-write logic acro…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-13T16:27:20.229Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "simon_willison",
+      "source": "Simon Willison",
+      "title": "Generating running routes with GPT-6 Astra and ChatGPT Work",
+      "link": "https://simonwillison.net/2026/Sep/12/astra-running-routes",
+      "publishedAt": "2026-09-12T23:56:42.000Z",
+      "author": "",
+      "summary": "Here's a neat thing I had ChatGPT Work with GPT-6 Astra (Max) do this morning: I live at . Figure out 5K and 10K running routes from me that loop from my house. Use OSM data. It worked for 27 minutes and produced exactly what I'd asked for, as both an embedded visualization and downloadable GPX file and GeoJSON files. Here's that 5K route: When I asked it how it had created the route, it replied: I used Nominatim to locate the address and Overpass to download local OpenStreetMap roads and trails , then calculated the loops locally. Frustratingly, the actual code it ran and exact details of what it did weren't visible to me in the ChatGPT UI. I see this lack of transparency is an anti-feature. By the time I thought to ask for a copy of the Python code it had used, ChatGPT was unable to provide it. This appears to be because the thread had been compacted. I think any LLM system that uses compaction needs to both preserve the pre-compacted text and make that text available via agent tool calls, to protect against this kind of problem. As for displaying the map to me, that used the visualize skill . It created a file called /workspace/el-granada-5k-share.html to embed directly into the ChatGPT UI. Here's a copy of that HTML , which starts like this: div id =\" eg-share-loop \" > div class =\" viz-row \" > h3 > El Granada harbor loop h3 > span class =\" text-small \" > 5.1 km span > div > div id =\" eg-share-stage \" > div > div class =\" text-small text-muted \" > Map data © a href =\" https://www.openstreetmap.org/copyright \" target =\" _blank \" rel =\" noopener \" > OpenStreetMap contributors a > div > style > # eg-share-loop { width : 100 % ; } # eg-share-loop # eg-share-stage { width : 100 % ; margin : 8 px 0 ; } # eg-share-loop . eg-share-map { display : block; width : 100 % ; touch-action : none; } # eg-share-loop . eg-share-map text { fill : var ( --foreground ); font-size : 12 px ; font-weight : 400 ; } # eg-share-loop . eg-share-label { paint-order : stroke; stroke : var ( --background ); stroke-width : 3 px ; stroke-linejoin : round; } style > script type =\" application/json \" id =\" eg-share-data \" > { \"route\" : { \"type\" : \"LineString\" , \"coordinates\" : [ [ - 122.467425 , 37.4997753 ] . . . script > script src =\" https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js \" > script > script > (() => { const root=document.getElementById('eg-share-loop'); The element contains the full geometry needed to render both the running route and the map itself, using D3, which is loaded from an allow-listed CDN location described in this section of the visualize skill : External resources The CSP allows only cdnjs.cloudflare.com , esm.sh , cdn.jsdelivr.net , unpkg.com , fonts.googleapis.com , fonts.gstatic.com , and fonts.bunny.net . Other origins are blocked and fail silently. You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
+      "evidenceLink": "",
+      "score": 49.820670059523806,
+      "core": "Here's a neat thing I had ChatGPT Work with GPT-6 Astra (Max) do this morning: I live at . Figure out 5K and 10K running routes from me that loop from my house. Use OSM data. It worked for 27 minutes and produced exactly what I'd asked for, as both an embedded visualization and downloadable GPX file and GeoJSON files. Here's that 5K route: When I asked it how it had created the route, it replied: I used Nominatim to…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-13T16:27:20.229Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_azure_ai",
+      "source": "Microsoft Azure Blog",
+      "title": "The Economics of Agent Optimization: How AI agent governance controls cost and proves ROI",
+      "link": "https://azure.microsoft.com/en-us/blog/the-economics-of-agent-optimization-how-ai-agent-governance-controls-cost-and-proves-roi",
+      "publishedAt": "2026-09-10T17:00:00.000Z",
+      "author": "Steve Sweetman",
+      "summary": "This blog post is the fourth and final installment of The Economics of Agent Optimization, which shares the strategies, capabilities, and proof points that can help you optimize agent costs and run AI as a managed investment system on Microsoft Foundry. The post The Economics of Agent Optimization: How AI agent governance controls cost and proves ROI appeared first on Microsoft Azure Blog .",
+      "evidenceLink": "",
+      "score": 49.07936053571428,
+      "core": "This blog post is the fourth and final installment of The Economics of Agent Optimization, which shares the strategies, capabilities, and proof points that can help you optimize agent costs and run AI as a managed investment system on Microsoft Foundry. The post The Economics of Agent Optimization: How AI agent governance controls cost and proves ROI appeared first on Microsoft Azure Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-13T16:27:20.229Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "meta_engineering",
+      "source": "Meta Engineering",
+      "title": "MTIA 300: Meta’s First Training Chip with Built-in NICs and Communication-Offloading Engines",
+      "link": "https://engineering.fb.com/2026/08/24/networking-traffic/mtia-300-meta-training-chip-built-in-nics",
+      "publishedAt": "2026-08-24T17:45:52.000Z",
+      "author": "",
+      "summary": "MTIA 300 is the first of Meta’s family of in-house training and inference accelerators optimized for training ranking and recommendation models. We’re sharing how MTIA 300’s built-in NIC chiplets allow it to meet the communication needs associated with training recommendation models with superior performance over general-purpose GPUs. By co-designing MTIA’s communication library, HCCL, alongside the [...] Read More... The post MTIA 300: Meta’s First Training Chip with Built-in NICs and Communication-Offloading Engines appeared first on Engineering at Meta .",
+      "evidenceLink": "",
+      "score": 41.12777777777778,
+      "core": "MTIA 300 is the first of Meta’s family of in-house training and inference accelerators optimized for training ranking and recommendation models. We’re sharing how MTIA 300’s built-in NIC chiplets allow it to meet the communication needs associated with training recommendation models with superior performance over general-purpose GPUs. By co-designing MTIA’s communication library, HCCL, alongside the [...] Read More.…",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-13T16:27:20.229Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "shopify_engineering",
+      "source": "Shopify Engineering",
+      "title": "Gisting: Compressing LLM Agent context to ↑ throughput and ↓ cost",
+      "link": "https://shopify.engineering/gisting",
+      "publishedAt": "2026-08-19T14:32:58.000Z",
+      "author": "",
+      "summary": "Gisting compresses context into a set of learned tokens, preserving its quality while making the model faster and cheaper.",
+      "evidenceLink": "",
+      "score": 40.67777777777778,
+      "core": "Gisting compresses context into a set of learned tokens, preserving its quality while making the model faster and cheaper.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-13T16:27:20.229Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "shopify_engineering",
+      "source": "Shopify Engineering",
+      "title": "How River takes security work from a fix to merge",
+      "link": "https://shopify.engineering/river-vulnerability-remediation",
+      "publishedAt": "2026-09-02T16:30:45.000Z",
+      "author": "",
+      "summary": "River, Shopify’s AI agent in Slack, enables autonomous vulnerability remediation, not just detection.",
+      "evidenceLink": "",
+      "score": 39.56111111111111,
+      "core": "River, Shopify’s AI agent in Slack, enables autonomous vulnerability remediation, not just detection.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-13T16:27:20.229Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Microsoft is working with the American Federation of Teachers to work out how best to use AI in the classroom",
+      "link": "https://www.techradar.com/pro/microsoft-is-working-with-the-american-federation-of-teachers-to-work-out-how-best-to-use-ai-in-the-classroom",
+      "publishedAt": "2026-09-13T16:20:00.000Z",
+      "author": "Christian Cawley",
+      "summary": "American teaching federations establish “legally enforceable protections” with Microsoft to ensure the National AI Safety & Privacy Standard.",
+      "evidenceLink": "",
+      "score": 34.77459863095238,
+      "core": "American teaching federations establish “legally enforceable protections” with Microsoft to ensure the National AI Safety & Privacy Standard.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-13T16:27:20.229Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Economic Index: AI&#x27;s role in the US and global economy",
+      "link": "https://www.anthropic.com/research/economic-index-geography",
+      "publishedAt": "2026-09-11T11:55:40.000Z",
+      "author": "",
+      "summary": "New research from the Anthropic Economic Index exploring geographic patterns of AI use across the US and the global economy.",
+      "score": 28.936900218253967,
+      "core": "New research from the Anthropic Economic Index exploring geographic patterns of AI use across the US and the global economy.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-13T16:27:20.229Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "LangChain State of AI 2024 Report",
+      "link": "https://www.langchain.com/blog/langchain-state-of-ai-2024",
+      "publishedAt": "2026-08-26T16:53:53.000Z",
+      "author": "",
+      "summary": "Dive into LangSmith product usage patterns that show how the AI ecosystem and the way people are building LLM apps is evolving.",
+      "evidenceLink": "",
+      "score": 25.705555555555556,
+      "core": "Dive into LangSmith product usage patterns that show how the AI ecosystem and the way people are building LLM apps is evolving.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-13T16:27:20.229Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Anthropic Economic Index report: Cadences",
+      "link": "https://www.anthropic.com/research/economic-index-june-2026-report",
+      "publishedAt": "2026-09-11T11:57:10.000Z",
+      "author": "",
+      "summary": "The latest Economic Index report looks at when people come to Claude, what they produce with it, and how they perceive AI&#x27;s impact on their work.",
+      "score": 25.083130376984126,
+      "core": "The latest Economic Index report looks at when people come to Claude, what they produce with it, and how they perceive AI&#x27;s impact on their work.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-13T16:27:20.229Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Anthropic Economic Index: Insights from Claude 3.7 Sonnet",
+      "link": "https://www.anthropic.com/research/anthropic-economic-index-insights-from-claude-sonnet-3-7",
+      "publishedAt": "2026-09-11T11:56:44.000Z",
+      "author": "",
+      "summary": "The second update from the Anthropic Economic Index",
+      "score": 24.532614503968254,
+      "core": "The second update from the Anthropic Economic Index",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-13T16:27:20.229Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "dropbox_engineering",
+      "source": "Dropbox Tech",
+      "title": "Improving infrastructure efficiency for growing demand in the age of AI",
+      "link": "https://dropbox.tech/infrastructure/improving-infrastructure-efficiency-for-growing-demand-in-the-age-of-ai",
+      "publishedAt": "2026-08-18T17:00:00.000Z",
+      "author": "Yasmin McDowell,Lawrence Good,Ilya Yakovlev",
+      "summary": "As demand for AI continues to grow, so does the infrastructure needed to support it.",
+      "evidenceLink": "",
+      "score": 14.466666666666667,
+      "core": "As demand for AI continues to grow, so does the infrastructure needed to support it.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-13T16:27:20.229Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Introducing the Anthropic Economic Index",
+      "link": "https://www.anthropic.com/research/the-anthropic-economic-index",
+      "publishedAt": "2026-09-11T11:57:00.000Z",
+      "author": "",
+      "summary": "Announcement of the new Anthropic Economic Index and description of the new data on AI use in occupations",
+      "score": 12.832931964285713,
+      "core": "Announcement of the new Anthropic Economic Index and description of the new data on AI use in occupations",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-13T16:27:20.229Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

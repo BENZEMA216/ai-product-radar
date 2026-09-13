@@ -81,6 +81,7 @@ const AI_ANCHOR_PATTERNS = [
   /\bgenerative\b/i,
   /\btransformers?\b/i,
   /\bdiffusion\b/i,
+  /\btraining chips?\b/i,
   /智能体|人工智能|大模型|多模态|模型/
 ];
 
@@ -93,6 +94,7 @@ const KNOWLEDGE_TERMS = [
   "study",
   "analysis",
   "architecture",
+  "training chip",
   "engineering",
   "benchmark",
   "evaluation",

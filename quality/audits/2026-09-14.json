@@ -1,0 +1,138 @@
+{
+  "date": "2026-09-14",
+  "generatedAt": "2026-09-13T16:07:18.621Z",
+  "reportPath": "reports/2026-09-14-0007-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 39,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 3,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 18,
+      "keptCount": 4,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-09-12；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 18 条，AI 相关候选 4 条；实际 fallback：hunted_space。；历史去重后最终发布 4 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "YC Launch 本窗口无候选或来源为空。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 3,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 12,
+      "keptCount": 12,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "QApilot MCP for Android",
+      "productKey": "https://www.producthunt.com/products/qapilot",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 Android App 测试直接接进 coding agent，值得验证代理能否从写代码跨到真机验收，而不只是再加一个测试面板。"
+    },
+    {
+      "rank": 2,
+      "product": "Cortex",
+      "productKey": "https://www.producthunt.com/products/cortex-25",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "从一份 API 规范同时产出文档、SDK 与 MCP server，切中接口维护的重复劳动；关键是三种产物能否持续同步而非一次生成。"
+    },
+    {
+      "rank": 3,
+      "product": "Lumae Native macOS screen-demo recorder that agents can edit over MCP",
+      "productKey": "https://lumae.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "原生录屏器把剪辑控制暴露给 MCP，意味着 agent 可参与演示视频的后期；应重点看可控编辑粒度和对人工时间线的兼容。"
+    },
+    {
+      "rank": 4,
+      "product": "Tarfio – monetize MCP tools with credits and usage-based pricing",
+      "productKey": "https://tarfio.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它为 MCP 工具补上 credits 与按量计费，直接触及 agent 工具商业化；真正的产品门槛在鉴权、计量可信度和失败扣费处理。"
+    },
+    {
+      "rank": 5,
+      "product": "ABrush",
+      "productKey": "https://www.producthunt.com/products/abrush-ai-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“面向数字艺术家的 AI Studio”定位清楚，但现有证据未说明具体工作流；值得后续核对它是可编辑创作环境，还是生成按钮的重新包装。"
+    },
+    {
+      "rank": 6,
+      "product": "Work Life Panda",
+      "productKey": "https://www.producthunt.com/products/work-life-panda",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "任务与日历统一后再用端侧 AI 协调，是明确的隐私差异点；需要验证跨来源同步质量，以及“端侧”是否覆盖核心智能功能。"
+    }
+  ]
+}

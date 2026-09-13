@@ -159,7 +159,8 @@ function auditResourceLists(rows) {
     return (
       /\b(?:a\s+)?list\s+of\s+ai\b/.test(text) ||
       /\b(?:index|database) of (?:coding )?agent incidents?\b/.test(text) ||
-      /\b(?:awesome|curated)\s+(?:ai\s+)?(?:list|resources?)\b/.test(text)
+      /\b(?:awesome|curated)\s+(?:ai\s+)?(?:list|resources?)\b/.test(text) ||
+      /\b(?:directory|catalog|collection)\s+of\s+(?:[\d,]+\s+)?ai\b/.test(text)
     );
   });
   if (!bad.length) return [];
@@ -176,7 +177,10 @@ function isAihotNonProductObservation(row) {
   const actionText = `${row.product} ${row.did}`.toLowerCase();
   const hasProductAction = /发布|推出|上线|更新|开源|release|released|launch|launched|introducing|now available/i.test(actionText);
   const hasProductSurface = /产品|工具|应用|app|api|sdk|agent|智能体|助手|工作流|平台|runtime|browser|插件|扩展/i.test(actionText);
-  const hardObservation = /承认|事故|灌水|失控|事件报告机制|模型疲劳|类比解读|奇观类比|预警并协助|捣毁|抓捕|rogue|swarm/i.test(text);
+  const hardObservation =
+    /承认|事故|灌水|失控|事件报告机制|模型疲劳|类比解读|奇观类比|预警并协助|捣毁|抓捕|rogue|swarm|长文.{0,24}(?:提出|认为|断言)|(?:模型|ai).{0,16}(?:更安全|瓶颈在算力|不会赚钱|封禁)|将安全作为发布前提|易用性设计|功能出自我的构想|训练营|千禧年难题|(?:用|使用).{0,40}(?:做出|开发出).{0,30}游戏/i.test(
+      text
+    );
   return hardObservation || (!(hasProductAction && hasProductSurface) && (
     /研究|论文|基准|评测|建议定期|实测|作者用|转发|承认|事故|灌水|失控|集群|模拟科学会议|手术|临床应用|实用提示词|转发.{0,30}提示词|派对|心跳程序|测试自身|事件报告机制|模型疲劳|类比解读|奇观类比|预警并协助|捣毁|抓捕|rogue|swarm/i.test(text) ||
     /研究|论文|基准|评测|排行|榜单|首页|前瞻|预测|观点|访谈|圆桌|融资|估值|财报|监管|风险|采购|求购|高校|军方|报道称|据报道/.test(text) ||
@@ -220,7 +224,10 @@ function auditSourceDiversity(rows, sourceHealth = null) {
 }
 
 function auditModelPlacement(rows) {
-  const bad = rows.slice(0, 10).filter((row) => row.category === "model_infra");
+  const bad = rows
+    .filter((row) => row.category === "product" && row.qualityLabel === "keep")
+    .slice(0, 10)
+    .filter((row) => row.category === "model_infra");
   if (!bad.length) return [];
   return [
     failure("model_infra_top10", "Models & Infra 条目进入了产品默认 Top 10。", {
@@ -317,7 +324,7 @@ function auditDuplicateGroupsTop20(rows) {
 }
 
 function rankingQualityMetrics(rows) {
-  const top10 = rows.slice(0, 10);
+  const top10 = rows.filter((row) => row.category === "product" && row.qualityLabel === "keep").slice(0, 10);
   const scores = top10.map((row, index) => pmScoreForRow(row, index + 1));
   const goodCount = scores.filter((score) => score >= 4).length;
   const badRows = top10
@@ -685,13 +692,14 @@ export function auditReportQuality({
   }
   if (requireFeedbackRuntimeDiagnostics) failures.push(...auditFeedbackRuntimeDiagnostics(sourceHealth, feedbackPolicy));
   const rankingMetrics = rankingQualityMetrics(rows);
+  const priorityRows = rows.filter((row) => row.category === "product" && row.qualityLabel === "keep");
   return {
     ok: failures.length === 0,
     failures,
     metrics: {
       rows: rows.length,
-      top20Sources: [...new Set(rows.slice(0, 20).map((row) => clean(row.source)).filter(Boolean))],
-      top10ModelInfra: rows.slice(0, 10).filter((row) => row.category === "model_infra").length,
+      top20Sources: [...new Set(priorityRows.slice(0, 20).map((row) => clean(row.source)).filter(Boolean))],
+      top10ModelInfra: priorityRows.slice(0, 10).filter((row) => row.category === "model_infra").length,
       genericHfSpaceTop20: rows.slice(0, 20).filter(isGenericHuggingFaceSpaceRow).length,
       precisionAt10: rankingMetrics.precisionAt10,
       badTop10Count: rankingMetrics.badTop10Count
@@ -747,24 +755,27 @@ export function buildQualityArtifacts({
   generatedAt = sourceHealth?.generatedAt || feedbackSnapshot?.generatedAt || new Date().toISOString()
 } = {}) {
   const { date } = qualityArtifactPaths(reportPath);
-  const topK = rows.slice(0, 20).map((row, index) => {
-    const rank = index + 1;
-    return {
-      rank,
-      product: row.product,
-      productKey: row.productKey || row.link || "",
-      signalKey: row.signalKey || "",
-      link: row.link || "",
-      source: row.source,
-      type: row.type || "",
-      category: row.category || "",
-      qualityLabel: row.qualityLabel || "",
-      pmScore: pmScoreForRow(row, rank),
-      rankingIssue: rankingIssueForRow(row, rank),
-      did: row.did || "",
-      why: row.why || ""
-    };
-  });
+  const topK = rows
+    .filter((row) => row.category === "product" && row.qualityLabel === "keep")
+    .slice(0, 20)
+    .map((row, index) => {
+      const rank = index + 1;
+      return {
+        rank,
+        product: row.product,
+        productKey: row.productKey || row.link || "",
+        signalKey: row.signalKey || "",
+        link: row.link || "",
+        source: row.source,
+        type: row.type || "",
+        category: row.category || "",
+        qualityLabel: row.qualityLabel || "",
+        pmScore: pmScoreForRow(row, rank),
+        rankingIssue: rankingIssueForRow(row, rank),
+        did: row.did || "",
+        why: row.why || ""
+      };
+    });
   const feedback = feedbackSnapshot || {};
   return {
     audit: {

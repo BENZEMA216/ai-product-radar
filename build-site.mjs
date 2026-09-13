@@ -129,7 +129,7 @@ function isShowHnNonProductObservation({ source, product, did, why }) {
   return (
     isHn &&
     text.includes("show hn:") &&
-    /\b(?:index|database) of (?:coding )?agent incidents?\b|\bbuilt this research\b|\bhides? youtube ai-labeled videos\b|\bsleeper agents? in robot dogs\b|\bwhat engineers? must own in the ai era\b|\bcatalog of apps built out of spite\b|\bmoltbook but for math\b|\bfeature-length sci-fi thriller about ai, made with ai\b|\bremoved the ai auto-organizing i built my first app around\b/i.test(text)
+    /\b(?:index|database) of (?:coding )?agent incidents?\b|\bbuilt this research\b|\bhides? youtube ai-labeled videos\b|\bsleeper agents? in robot dogs\b|\bwhat engineers? must own in the ai era\b|\bcatalog of apps built out of spite\b|\bmoltbook but for math\b|\bfeature-length sci-fi thriller about ai, made with ai\b|\bremoved the ai auto-organizing i built my first app around\b|\b(?:ai-powered\s+)?word guessing game\b|\bprove the .{0,48} conjecture with (?:a )?swarm of agents\b|\bllms? work,? explained through .{0,80} analogies\b|\bvibe logic programming language\b/i.test(text)
   );
 }
 
@@ -139,7 +139,7 @@ function isResourceListSignal(text) {
     /\b(?:index|database) of (?:coding )?agent incidents?\b/i.test(text) ||
     /\b(?:awesome|curated)\s+(?:ai\s+)?(?:list|resources?)\b/i.test(text) ||
     /\bai\s+(?:resources?|directory|catalog|collection)\b/i.test(text) ||
-    /\b(?:directory|catalog|collection)\s+of\s+ai\b/i.test(text) ||
+    /\b(?:directory|catalog|collection)\s+of\s+(?:[\d,]+\s+)?ai\b/i.test(text) ||
     /\b(?:gallery|directory|catalog)\s+(?:for|of)\s+(?:vibecoded\s+)?tools\b/i.test(text) ||
     /\b(?:searchable,?\s+)?(?:timestamped\s+)?index of [\d,]+ ai (?:engineer )?talks\b/i.test(text)
   );
@@ -183,7 +183,10 @@ function isAihotNonProductSignal({ source, product, did, why, evidence }) {
   const conferenceSystemDemo = /(?:入选|录用).{0,24}\b(?:emnlp|acl|naacl|neurips|icml|iclr|cvpr|iccv|eccv|aaai|ijcai|kdd|sigir|chi)\b.{0,20}系统演示/i.test(text);
   const explicitNonProduct = /不是产品发布|不是新的产品动作|政策|舆论|新闻/.test(text);
   const explicitObservation = /研究|论文|基准|评测|建议定期|建议开发者|实测|作者用|转发|警告|承认|事故|灌水|失控|集群|模拟科学会议|手术|临床应用|实用提示词|转发.{0,30}提示词|今日风格|有望.{0,24}(?:占|达到).{0,24}%|派对|心跳程序|测试自身|事件报告机制|模型疲劳|类比解读|奇观类比|预警并协助|捣毁|抓捕|rogue|swarm/i.test(text);
-  const hardObservation = /承认|事故|灌水|失控|事件报告机制|模型疲劳|类比解读|奇观类比|预警并协助|捣毁|抓捕|rogue|swarm/i.test(text);
+  const hardObservation =
+    /承认|事故|灌水|失控|事件报告机制|模型疲劳|类比解读|奇观类比|预警并协助|捣毁|抓捕|rogue|swarm|长文.{0,24}(?:提出|认为|断言)|(?:模型|ai).{0,16}(?:更安全|瓶颈在算力|不会赚钱|封禁)|将安全作为发布前提|易用性设计|功能出自我的构想|训练营|千禧年难题|(?:用|使用).{0,40}(?:做出|开发出).{0,30}游戏/i.test(
+      text
+    );
   const nonProductObservation =
     /研究|论文|基准|评测|排行|榜单|首页|前瞻|预测|观点|访谈|圆桌|融资|估值|财报|监管|风险|采购|求购|高校|军方|报道称|据报道|内幕|出口管制|白宫|播客|ceo|格式|规范|协议|不要相信|不是你的模型|不是你的思维|大型上下文窗口|抽象观点/.test(
       text
@@ -848,12 +851,12 @@ export function renderSiteHtml(data, knowledgeReports = []) {
   const latestItems = latestDay ? items.filter((item) => item.reportDate === latestDay.reportDate) : [];
   const initialScope = latestItems.length ? latestItems : items;
   const initialItems = initialScope
-    .filter((item) => item.category === "product" && !["deprioritize", "drop"].includes(item.qualityLabel))
+    .filter((item) => item.category === "product" && item.qualityLabel === "keep")
     .slice(0, PRIORITY_LIMIT);
   const latestSourceCounts = countBy(latestItems, "source");
   const latestTypeCounts = countBy(latestItems, "type");
   const latestPriorityTotal = latestItems.filter(
-    (item) => item.category === "product" && !["deprioritize", "drop"].includes(item.qualityLabel)
+    (item) => item.category === "product" && item.qualityLabel === "keep"
   ).length;
   const latestPriorityCount = Math.min(PRIORITY_LIMIT, latestPriorityTotal);
   const latestModelCount = latestItems.filter((item) => item.category === "model_infra").length;
@@ -2261,7 +2264,7 @@ export function renderSiteHtml(data, knowledgeReports = []) {
         const matchesView =
           currentView === "all" ||
           currentView === "reviewed" ||
-          (currentView === "priority" && item.category === "product" && !["deprioritize", "drop"].includes(item.qualityLabel)) ||
+          (currentView === "priority" && item.category === "product" && item.qualityLabel === "keep") ||
           (currentView === "model_infra" && item.category === "model_infra");
         return (
           matchesView &&

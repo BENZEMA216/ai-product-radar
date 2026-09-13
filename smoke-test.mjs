@@ -1992,7 +1992,11 @@ function testShowHnNoveltyAndComplaintSignalsStayWeak() {
     "Spiteware.ai – A catalog of apps built out of spite at unfair pricing",
     "ProveTogether Moltbook but for Math",
     "Deviant, a feature-length sci-fi thriller about AI, made with AI",
-    "Fog 2.0: I removed the AI auto-organizing I built my first app around"
+    "Fog 2.0: I removed the AI auto-organizing I built my first app around",
+    "AI-Powered Word Guessing Game",
+    "Come prove the Berge Fulkerson conjecture with a swarm of agents",
+    "How LLMs work, explained through music, football or cricket analogies",
+    "Vibe Logic Programming Language"
   ];
   for (const title of titles) {
     const item = {
@@ -2014,7 +2018,7 @@ function testShowHnNoveltyAndComplaintSignalsStayWeak() {
     const markdown = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |\n|---|---|---|---|---|---|\n| ${title} | [链接](https://example.com) | 新产品 | HN 发布帖出现：Show HN: ${title} | 当日信号。 | [HN Algolia](https://news.ycombinator.com/item?id=1) |`;
     const [rendered] = parseReportMarkdown(markdown, "reports/2026-09-02-0001-cst.md");
     assert.notEqual(rendered.qualityLabel, "keep", `${title} should stay weak after site parsing`);
-    if (/hides youtube ai-labeled videos|index of coding agent incidents|built this research|sleeper agents in robot dogs|what engineers must own in the ai era|catalog of apps built out of spite|moltbook but for math|feature-length sci-fi thriller about ai, made with ai|removed the ai auto-organizing i built my first app around/i.test(title)) {
+    if (/hides youtube ai-labeled videos|index of coding agent incidents|built this research|sleeper agents in robot dogs|what engineers must own in the ai era|catalog of apps built out of spite|moltbook but for math|feature-length sci-fi thriller about ai, made with ai|removed the ai auto-organizing i built my first app around|word guessing game|prove the .* conjecture with (?:a )?swarm of agents|llms? work,? explained through .* analogies|vibe logic programming language/i.test(title)) {
       assert.equal(inferred, dropped, `${title} should be dropped as a non-product observation`);
       assert.equal(rendered.qualityLabel, "drop", `${title} should stay dropped after site parsing`);
       const afterMemory = applyQualityMemoryToCandidates([{ ...item, qualityLabel: "drop" }], {
@@ -3161,7 +3165,7 @@ function testQualityAuditFlagsWeakBeforeStrong() {
   assert.ok(audit.failures.some((failure) => failure.code === "weak_before_strong"));
 }
 
-function testQualityAuditFlagsPoorTop10PmScores() {
+function testQualityAuditExcludesWeakOnlyRowsFromPriorityMetrics() {
   const rows = Array.from({ length: 10 }, (_, index) => ({
     product: `Thin Signal ${index}`,
     source: ["AIHOT", "Hugging Face API", "XHS Dealflow"][index % 3],
@@ -3191,9 +3195,10 @@ function testQualityAuditFlagsPoorTop10PmScores() {
     siteHtml:
       "window.__RADAR_DATA__ Priority View All Signals Models & Infra 来源健康 radar-feedback feedback-link data-category=\"model_infra\""
   });
-  assert.ok(!audit.ok);
-  assert.ok(audit.failures.some((failure) => failure.code === "precision_at_10_low"));
-  assert.ok(audit.failures.some((failure) => failure.code === "bad_top10_pm_score"));
+  assert.equal(audit.failures.some((failure) => failure.code === "precision_at_10_low"), false);
+  assert.equal(audit.failures.some((failure) => failure.code === "bad_top10_pm_score"), false);
+  assert.equal(audit.metrics.precisionAt10, null);
+  assert.equal(audit.metrics.badTop10Count, 0);
 }
 
 function testQualityAuditFlagsDuplicateRepoTop10() {
@@ -3643,6 +3648,26 @@ function testCurrentAihotNonProductSignalsStayDeprioritized() {
     {
       product: "2030 年中国算力有望占到全球 30%",
       did: "院士预计中国算力有望占全球 30%。"
+    },
+    {
+      product: "阿易 AI Notes 推荐长文：超级智能更像一场无总部的天气",
+      did: "一篇长文提出并断言，多 Agent 的智能更像涌现的天气。"
+    },
+    {
+      product: "Meta 的 Muse 将安全作为发布前提",
+      did: "团队表示构建 Muse 时把安全作为发布前提，但没有公布新的产品动作。"
+    },
+    {
+      product: "Meta Muse 智能体易用性设计",
+      did: "团队回顾 Muse 易用性设计，未宣布新功能上线。"
+    },
+    {
+      product: "AI 模型瓶颈在算力而非速度",
+      did: "作者认为模型瓶颈在算力，并评论超大规模厂商的供给速度。"
+    },
+    {
+      product: "开发者用 GPT 做出 3D 送报游戏",
+      did: "开发者使用模型做出浏览器游戏并披露 token 消耗。"
     }
   ];
   for (const signal of signals) {
@@ -4484,6 +4509,28 @@ function testKnowledgeStrongAiRelevanceRejectsIncidentalMentions() {
   assert.equal(
     isAiRelevant(
       {
+        title: "MTIA 300: Our first training chip with built-in NICs",
+        summary: "We explain how co-designed communication engines improve recommendation-model training efficiency."
+      },
+      source
+    ),
+    true,
+    "an explicit AI training chip architecture article should pass the strong relevance gate"
+  );
+  assert.equal(
+    isAiRelevant(
+      {
+        title: "Gisting: Compressing LLM agent context",
+        summary: "Context compression preserves quality while improving throughput and cost."
+      },
+      { ...source, requireKnowledgeDepth: false }
+    ),
+    true,
+    "a curated first-party engineering feed may admit explicit technical LLM work without generic depth keywords"
+  );
+  assert.equal(
+    isAiRelevant(
+      {
         title: "A Tale of Two Flink Autoscalers",
         summary: "The autoscaler reasons from job metrics and runs an evaluation algorithm for production scaling."
       },
@@ -4939,7 +4986,7 @@ const tests = [
   ["Quality audit flags Product Hunt report count mismatch", testQualityAuditFlagsProductHuntReportCountMismatch],
   ["Quality audit accepts Product Hunt report filter explanation", testQualityAuditAcceptsProductHuntReportFilterExplanation],
   ["Quality audit flags weak before strong", testQualityAuditFlagsWeakBeforeStrong],
-  ["Quality audit flags poor Top 10 PM scores", testQualityAuditFlagsPoorTop10PmScores],
+  ["Quality audit excludes weak-only rows from Priority metrics", testQualityAuditExcludesWeakOnlyRowsFromPriorityMetrics],
   ["Quality audit flags duplicate repo Top 10", testQualityAuditFlagsDuplicateRepoTop10],
   ["Quality audit flags duplicate repo Top 20", testQualityAuditFlagsDuplicateRepoTop20],
   ["Quality audit allows two sources when remaining sources are only weak", testQualityAuditAllowsTwoSourcesWhenRemainingSourcesAreOnlyWeak],
