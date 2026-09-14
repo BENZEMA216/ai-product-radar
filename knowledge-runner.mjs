@@ -561,13 +561,17 @@ async function fetchHckerNewsSource(source, start, end, now) {
   return { rawCount: raw.length, items };
 }
 
-function sitemapRecords(xml) {
+export function sitemapRecords(xml) {
   return [...String(xml || "").matchAll(/<url\b[^>]*>([\s\S]*?)<\/url>/gi)]
     .map((match) => ({
       link: tagValue(match[1], ["loc"]),
       publishedAt: isoDate(tagValue(match[1], ["lastmod"]))
     }))
-    .filter((item) => item.link && item.publishedAt);
+    .filter((item) => item.link);
+}
+
+export function sitemapPagePublishedAt(html, fallback = "") {
+  return fallback || isoDate(metaValue(html, ["article:published_time", "published_time", "datePublished"]));
 }
 
 function sitemapPathAllowed(link, source) {
@@ -585,27 +589,36 @@ async function fetchSitemapSource(source, start, end, now) {
   const xml = await fetchText(source.url, { timeoutMs: 25000 });
   const records = sitemapRecords(xml);
   const recent = records
-    .filter((item) => withinWindow(item.publishedAt, start, end))
     .filter((item) => sitemapPathAllowed(item.link, source))
-    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+    .filter((item) => item.publishedAt ? withinWindow(item.publishedAt, start, end) : source.derivePublishedAtFromPage === true)
+    .sort((a, b) => String(b.publishedAt || "").localeCompare(String(a.publishedAt || "")))
     .slice(0, Number(source.maxItems || 12));
   const settled = await Promise.allSettled(
     recent.map(async (record) => {
       const html = await fetchText(record.link, { attempts: 2, timeoutMs: 20000 });
+      if (blockedBlogPage(html)) return null;
       const title =
         metaValue(html, ["og:title", "twitter:title"]) ||
         stripHtml(String(html).match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] || "");
       const summary = metaValue(html, ["description", "og:description", "twitter:description"]);
+      const publishedAt = sitemapPagePublishedAt(html, record.publishedAt);
       if (!title) return null;
+      if (!withinWindow(publishedAt, start, end)) return null;
       const item = {
         kind: "blog",
         sourceId: source.id,
         source: source.label,
         title,
         link: canonicalizeUrl(record.link),
-        publishedAt: record.publishedAt,
+        publishedAt,
         author: "",
-        summary
+        summary,
+        access: {
+          verified: true,
+          mode: "public",
+          checkedAt: now.toISOString(),
+          evidence: "sitemap_live_http"
+        }
       };
       if (!isAiRelevant(item, source)) return null;
       return {
@@ -1255,11 +1268,14 @@ export async function runKnowledgeRadar(options = {}) {
   const sourceMap = new Map((config.blogSources || []).map((source) => [source.id, source]));
   const accessResult = await verifyBlogAccess(blogBeforeAccessCheck, sourceMap, gmailGrants, now);
   const verifiedBlogItems = accessResult.items;
-  const blogAfterHistoricalDedupCount = verifiedBlogItems.length;
+  const verifiedBlogItemsAfterCanonicalHistoricalDedup = uniqueByLink(verifiedBlogItems).filter(
+    (item) => !seenLinks.has(canonicalizeUrl(item.link).toLowerCase())
+  );
+  const blogAfterHistoricalDedupCount = verifiedBlogItemsAfterCanonicalHistoricalDedup.length;
   const paperAfterHistoricalDedupCount = uniqueByLink(paperItems).filter(
     (item) => !seenLinks.has(canonicalizeUrl(item.link).toLowerCase())
   ).length;
-  const selected = selectItems(verifiedBlogItems, paperItems, {
+  const selected = selectItems(verifiedBlogItemsAfterCanonicalHistoricalDedup, paperItems, {
     limit,
     blogQuota,
     maximumPaperCount,
@@ -1311,6 +1327,7 @@ export async function runKnowledgeRadar(options = {}) {
       blogAccessVerifiedCount: verifiedBlogItems.length,
       blogAccessRejectedCount: accessResult.rejected.length,
       blogAccessRejected: accessResult.rejected,
+      blogCanonicalRedirectHistoricalDedupCount: Math.max(0, verifiedBlogItems.length - blogAfterHistoricalDedupCount),
       paperFetchedCount: uniqueByLink(paperItems).length,
       paperTopConferenceVerifiedCount: uniqueByLink(paperItems).length,
       blogAfterHistoricalDedupCount,

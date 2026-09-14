@@ -50,6 +50,8 @@ import {
   normalizeSemanticScholarPapers,
   normalizeGmailNewsletterItems,
   normalizeHckerNewsItems,
+  sitemapPagePublishedAt,
+  sitemapRecords,
   selectItems
 } from "./knowledge-runner.mjs";
 import { auditKnowledge } from "./knowledge-audit.mjs";
@@ -3668,6 +3670,42 @@ function testCurrentAihotNonProductSignalsStayDeprioritized() {
     {
       product: "开发者用 GPT 做出 3D 送报游戏",
       did: "开发者使用模型做出浏览器游戏并披露 token 消耗。"
+    },
+    {
+      product: "Dex Horthy 今晚在伦敦办小型聚会",
+      did: "面向 coding agent 爱好者举办线下聚会，无产品发布。"
+    },
+    {
+      product: "TNG Digital 谈 AI 智能体重塑人机协作",
+      did: "负责人将在行业会议上探讨智能体如何改变人机协作。"
+    },
+    {
+      product: "阿里云谈东南亚 AI 机遇",
+      did: "区域负责人分享对东南亚 AI 格局与未来前景的看法。"
+    },
+    {
+      product: "日常仍混用 Opus 5 与 GPT-5.6",
+      did: "作者讲述日常工作中混用多种模型的个人偏好。"
+    },
+    {
+      product: "Emad Mostaque 感叹英国前沿模型领先地位短暂",
+      did: "作者感叹英国曾短暂拥有前沿模型领先地位。"
+    },
+    {
+      product: "BorisMPower：AI 每瓦 IQ 效率已超人类",
+      did: "作者按服务硬件和开源模型做了粗略测算。"
+    },
+    {
+      product: "DeepSeek R1 长思考与蒸馏小模型往事回顾",
+      did: "作者回顾去年模型蒸馏与安装事件的往事。"
+    },
+    {
+      product: "工程师用 VR 联动 3D 打印机",
+      did: "这是个人演示，代码尚未公开。"
+    },
+    {
+      product: "工程师用 Meta Quest 3 联动 3D 打印机",
+      did: "软件工程师汉克演示设备联动方案，代码尚未上传 GitHub。"
     }
   ];
   for (const signal of signals) {
@@ -4592,6 +4630,16 @@ function testKnowledgeTopicKeyCollapsesVersionedAnnouncements() {
   );
 }
 
+function testSitemapCanDeriveMissingLastmodFromArticleMetadata() {
+  const [record] = sitemapRecords(`<?xml version="1.0"?><urlset><url><loc>https://example.com/blog/voice-ai</loc></url></urlset>`);
+  assert.equal(record.link, "https://example.com/blog/voice-ai");
+  assert.equal(record.publishedAt, "");
+  assert.equal(
+    sitemapPagePublishedAt('<meta property="article:published_time" content="2026-09-14T00:00:00+09:00">'),
+    "2026-09-13T15:00:00.000Z"
+  );
+}
+
 function testAihotParserFixture() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss><channel>
@@ -5023,6 +5071,7 @@ const tests = [
   ["Gmail newsletter normalization fixture", testGmailNewsletterFixture],
   ["Knowledge strong AI relevance rejects incidental mentions", testKnowledgeStrongAiRelevanceRejectsIncidentalMentions],
   ["Knowledge topic key collapses versioned announcements", testKnowledgeTopicKeyCollapsesVersionedAnnouncements],
+  ["Knowledge sitemap derives missing lastmod from article metadata", testSitemapCanDeriveMissingLastmodFromArticleMetadata],
   ["Knowledge paper mapping and audit fixture", testKnowledgePaperAndAuditFixture],
   ["HN Algolia", testHnAlgolia],
   ["GitHub gh api", testGhApi],

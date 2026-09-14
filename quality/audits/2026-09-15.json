@@ -1,0 +1,204 @@
+{
+  "date": "2026-09-15",
+  "generatedAt": "2026-09-14T16:36:26.800Z",
+  "reportPath": "reports/2026-09-15-0024-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 53,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 12,
+      "keptCount": 4,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-09-13；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 12 条，AI 相关候选 4 条；实际 fallback：hunted_space。；历史去重后最终发布 4 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 1,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 21,
+      "keptCount": 11,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 17,
+      "keptCount": 17,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Cognition's SWE-2",
+      "productKey": "https://www.producthunt.com/products/cognition-s-swe-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Cognition's SWE-2 把编码模型的卖点直接落在相对 Fable 5.1 降低 64% 成本；值得核验的是同等任务质量下，价格优势是否成立。"
+    },
+    {
+      "rank": 2,
+      "product": "Crypto portfolio risk and scenario analysis with AI agents on top",
+      "productKey": "https://sentralis.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把加密组合风险与情景分析交给 agent，产品判断应聚焦风险输入是否透明、结论能否追溯，而不是只看“多智能体”标签。"
+    },
+    {
+      "rank": 3,
+      "product": "AgentDrive – persistent, versioned file storage for AI agents",
+      "productKey": "https://tokencanopy.com/products/agentdrive",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AgentDrive 为 agent 提供持久、可版本化的文件存储；值得验证并发写入、回滚和跨任务权限是否足以支撑长期工作。"
+    },
+    {
+      "rank": 4,
+      "product": "Vigilator – human-in-the-loop layer for AI agents",
+      "productKey": "https://vigilator.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Vigilator 把 human-in-the-loop 做成 agent 的独立控制层；关键是审批粒度、超时处置和审计记录能否适配真实自动化。"
+    },
+    {
+      "rank": 5,
+      "product": "Botbin – A zero-login HTML pastebin for AI agents",
+      "productKey": "http://botbin.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Botbin 用免登录 HTML pastebin 给 agent 提供可分享结果页；值得看的是低摩擦交付与链接权限、过期机制之间如何取舍。"
+    },
+    {
+      "rank": 6,
+      "product": "Visiby",
+      "productKey": "https://www.producthunt.com/products/visiby",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Visiby 面向 AI 搜索可见性追踪，代表品牌监测从传统 SEO 延伸到回答引擎；核心验证点是引用归因是否可靠。"
+    },
+    {
+      "rank": 7,
+      "product": "Perplexity Hybrid Compute",
+      "productKey": "https://www.producthunt.com/products/perplexity-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Perplexity Hybrid Compute 按隐私与研究任务拆分 Mac 本地和云端计算；这套边界若清晰，会直接影响企业采用与成本控制。"
+    },
+    {
+      "rank": 8,
+      "product": "Bastion – run each MCP server once, for every client on your Mac",
+      "productKey": "https://bastion.mgcrea.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Bastion 让多客户端复用同一个 MCP server；重点应看连接复用是否减少资源占用，同时保持客户端间认证和数据隔离。"
+    },
+    {
+      "rank": 9,
+      "product": "Prmptree – AI email agent with a trust dial, not an on/off switch",
+      "productKey": "https://www.prmptree.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Prmptree 用“信任旋钮”替代邮件 agent 的全开全关，值得观察渐进授权能否让用户安全地扩大自动化范围。"
+    },
+    {
+      "rank": 10,
+      "product": "Replay – Audit silent prompt cache misses in AI agent transcripts",
+      "productKey": "https://replay.doctor",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Replay 专查 agent transcript 中未被察觉的 prompt cache miss；它把隐性推理成本变成可定位问题，价值取决于诊断是否能指向具体修复。"
+    },
+    {
+      "rank": 11,
+      "product": "Socratix – update: the AI voice oral exam (Viva) is live",
+      "productKey": "https://socratix-nine.vercel.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Socratix 已上线 AI 语音口试，产品深度在于能否围绕追问、评分与反馈形成闭环，而不只是把文本测验换成语音。"
+    },
+    {
+      "rank": 12,
+      "product": "Neopress",
+      "productKey": "https://www.producthunt.com/products/neopress",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Neopress 让用户通过对话搭建并增长网站；值得核验生成后的局部编辑、发布和持续运营是否真的连成一条工作流。"
+    }
+  ]
+}

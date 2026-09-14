@@ -178,7 +178,7 @@ function isAihotNonProductObservation(row) {
   const hasProductAction = /发布|推出|上线|更新|开源|release|released|launch|launched|introducing|now available/i.test(actionText);
   const hasProductSurface = /产品|工具|应用|app|api|sdk|agent|智能体|助手|工作流|平台|runtime|browser|插件|扩展/i.test(actionText);
   const hardObservation =
-    /承认|事故|灌水|失控|事件报告机制|模型疲劳|类比解读|奇观类比|预警并协助|捣毁|抓捕|rogue|swarm|长文.{0,24}(?:提出|认为|断言)|(?:模型|ai).{0,16}(?:更安全|瓶颈在算力|不会赚钱|封禁)|将安全作为发布前提|易用性设计|功能出自我的构想|训练营|千禧年难题|(?:用|使用).{0,40}(?:做出|开发出).{0,30}游戏/i.test(
+    /承认|事故|灌水|失控|事件报告机制|模型疲劳|类比解读|奇观类比|预警并协助|捣毁|抓捕|rogue|swarm|小型聚会|(?:办|举办).{0,20}聚会|将.{0,20}探讨|分享.{0,32}(?:格局|前景|看法|观点)|日常.{0,20}混用|感叹|粗略测算|往事回顾|个人演示|代码尚未.{0,16}(?:上传|公开|开源)|长文.{0,24}(?:提出|认为|断言)|(?:模型|ai).{0,16}(?:更安全|瓶颈在算力|不会赚钱|封禁)|将安全作为发布前提|易用性设计|功能出自我的构想|训练营|千禧年难题|(?:用|使用).{0,40}(?:做出|开发出).{0,30}游戏/i.test(
       text
     );
   return hardObservation || (!(hasProductAction && hasProductSurface) && (

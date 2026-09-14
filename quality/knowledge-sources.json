@@ -636,6 +636,20 @@
       "requireKnowledgeDepth": true
     },
     {
+      "id": "nari_labs_engineering",
+      "label": "Nari Labs",
+      "type": "sitemap",
+      "url": "https://narilabs.com/sitemap.xml",
+      "home": "https://narilabs.com/blog/",
+      "pathPrefixes": ["/blog/"],
+      "derivePublishedAtFromPage": true,
+      "weight": 14,
+      "maxItems": 12,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
       "id": "docker_ai_engineering",
       "label": "Docker Blog",
       "type": "feed",

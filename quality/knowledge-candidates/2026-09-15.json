@@ -1,0 +1,374 @@
+{
+  "generatedAt": "2026-09-14T16:22:11.644Z",
+  "date": "2026-09-15",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Apple's Siri AI Can Be Swapped Out for Claude, ChatGPT, Code Shows",
+      "link": "https://www.macrumors.com/2026/09/14/siri-can-be-swapped-out-for-chatgpt-claude",
+      "publishedAt": "2026-09-14T12:01:32.000Z",
+      "author": "tosh https://news.ycombinator.com/user?id=tosh",
+      "summary": "Code sleuth \"pdfu\" has uncovered iOS 27 and macOS Golden Gate private frameworks that show Apple has designed its new Siri architecture to work with third-party AI models at what appears to be a surprisingly deep level. One mechanism called Model Delegation allows Claude to appear as a Siri extension in the same way as the existing built-in ChatGPT extension.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49695409",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 188,
+        "comments": 103
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-14T16:22:11.644Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 65.11162085819393,
+      "core": "Code sleuth \"pdfu\" has uncovered iOS 27 and macOS Golden Gate private frameworks that show Apple has designed its new Siri architecture to work with third-party AI models at what appears to be a surprisingly deep level. One mechanism called Model Delegation allows Claude to appear as a Siri extension in the same way as the existing built-in ChatGPT extension.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Fable 5.1 Solves the Cyphral Distich, a 370-year-old cipher",
+      "link": "https://www.vals.ai/blogs/fable-solves-cyphral-distich",
+      "publishedAt": "2026-09-13T21:06:13.000Z",
+      "author": "u1hcw9nx https://news.ycombinator.com/user?id=u1hcw9nx",
+      "summary": "Private, domain-specific benchmarks in legal, tax, and finance.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49688695",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 1145,
+        "comments": 527
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-14T16:22:11.644Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 57.41910427363906,
+      "core": "Private, domain-specific benchmarks in legal, tax, and finance.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "How Grok Bot designers use AI agents to build personal sites and product prototypes | John Bai & Peng Zheng",
+      "link": "https://www.lennysnewsletter.com/p/how-grok-bot-designers-use-ai-agents",
+      "publishedAt": "2026-09-14T12:04:39.000Z",
+      "author": "Claire Vo",
+      "summary": "Watch now (42 mins) | 🎙️ Two designers at SpaceXAI show me how they use Grok Bot to run Figma from the gym, update a portfolio with one photo, and turn shower thoughts into working prototypes",
+      "evidenceLink": "",
+      "score": 50.76006658730159,
+      "core": "Watch now (42 mins) | 🎙️ Two designers at SpaceXAI show me how they use Grok Bot to run Figma from the gym, update a portfolio with one photo, and turn shower thoughts into working prototypes",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-14T16:22:11.644Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nari_labs_engineering",
+      "source": "Nari Labs",
+      "title": "Nari Labs Leads Coval’s Voice AI Benchmarks",
+      "link": "https://narilabs.com/blog/nari-labs-leads-coval-voice-ai-benchmarks",
+      "publishedAt": "2026-09-13T15:00:00.000Z",
+      "author": "",
+      "summary": "Nari ranks first in STT latency, second in STT WER, second in TTS latency, and first in TTS WER in Coval’s September 14, 2026 benchmarks.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-14T16:22:11.644Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 49.94897531746032,
+      "core": "Nari ranks first in STT latency, second in STT WER, second in TTS latency, and first in TTS WER in Coval’s September 14, 2026 benchmarks.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "Multi-Agent Systems: Architecture, Patterns, and Real-World Examples",
+      "link": "https://rerun.build/blog/multi-agent-systems",
+      "publishedAt": "2026-09-14T04:15:52.000Z",
+      "author": "",
+      "summary": "A practical guide to multi-agent system architecture, patterns, examples, failure modes, and the controls required to run multiple AI agents safely.",
+      "evidenceLink": "",
+      "score": 48.957546746031745,
+      "core": "A practical guide to multi-agent system architecture, patterns, examples, failure modes, and the controls required to run multiple AI agents safely.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-14T16:22:11.644Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "How We Built LangChain’s Paid Media Agent",
+      "link": "https://www.langchain.com/blog/paid-media-agent",
+      "publishedAt": "2026-09-14T15:32:56.000Z",
+      "author": "",
+      "summary": "How LangChain built a paid media agent to analyze campaign performance, optimize ads, propose changes, and turn marketing data into action.",
+      "evidenceLink": "",
+      "score": 46.7135784920635,
+      "core": "How LangChain built a paid media agent to analyze campaign performance, optimize ads, propose changes, and turn marketing data into action.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-14T16:22:11.644Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "How we built LangChain’s GTM Agent",
+      "link": "https://www.langchain.com/blog/how-we-built-langchains-gtm-agent",
+      "publishedAt": "2026-09-14T01:53:59.000Z",
+      "author": "",
+      "summary": "Learn how we built a GTM agent that increased lead conversion by 250% while saving each sales rep 40 hours per month",
+      "evidenceLink": "",
+      "score": 45.61086023809524,
+      "core": "Learn how we built a GTM agent that increased lead conversion by 250% while saving each sales rep 40 hours per month",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-14T16:22:11.644Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "The generative AI customization spectrum: From prompt engineering to custom models on AWS",
+      "link": "https://aws.amazon.com/blogs/machine-learning/the-generative-ai-customization-spectrum-from-prompt-engineering-to-custom-models-on-aws",
+      "publishedAt": "2026-09-14T15:47:12.000Z",
+      "author": "Bhavya Sruthi Sode",
+      "summary": "Pick the right generative AI customization approach on AWS with an 8-step decision framework, from prompt engineering and RAG to fine-tuning, continued pre-training, and Amazon Nova Forge. Start simple and escalate only when you must.",
+      "evidenceLink": "",
+      "score": 41.258340396825396,
+      "core": "Pick the right generative AI customization approach on AWS with an 8-step decision framework, from prompt engineering and RAG to fine-tuning, continued pre-training, and Amazon Nova Forge. Start simple and escalate only when you must.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-14T16:22:11.644Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Perplexity trusts GPT-6 Astra with end-to-end systems",
+      "link": "https://openai.com/index/perplexity-improving-accuracy-with-astra",
+      "publishedAt": "2026-09-14T00:00:00.000Z",
+      "author": "",
+      "summary": "Perplexity uses Astra to write communications, change software, and monitor production systems, and checks in much less frequently than with earlier models.",
+      "evidenceLink": "",
+      "score": 40.69738801587302,
+      "core": "Perplexity uses Astra to write communications, change software, and monitor production systems, and checks in much less frequently than with earlier models.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-14T16:22:11.644Z",
+        "evidence": "public_canonical_bot_limited"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "🎙️ How I AI: How two SpaceXAI designers use Grok Bot to do their jobs",
+      "link": "https://www.lennysnewsletter.com/p/how-i-ai-how-two-spacexai-designers",
+      "publishedAt": "2026-09-14T15:03:48.000Z",
+      "author": "Lenny Rachitsky",
+      "summary": "Your weekly listens from How I AI, part of the Lenny’s Podcast Network",
+      "evidenceLink": "",
+      "score": 38.295562619047615,
+      "core": "Your weekly listens from How I AI, part of the Lenny’s Podcast Network",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-14T16:22:11.644Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Human rights committee calls for new AI safety law",
+      "link": "https://www.itpro.com/technology/artificial-intelligence/human-rights-committee-calls-for-new-ai-safety-law",
+      "publishedAt": "2026-09-14T11:00:34.000Z",
+      "author": "Emma Woollacott",
+      "summary": "The UK needs a new oversight body with teeth, said the Joint Committee on Human Rights, regulating the entire AI supply chain",
+      "evidenceLink": "",
+      "score": 34.31155468253968,
+      "core": "The UK needs a new oversight body with teeth, said the Joint Committee on Human Rights, regulating the entire AI supply chain",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-14T16:22:11.644Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "Why you should work on AI for AI Research — Richard Socher of Recursive",
+      "link": "https://www.latent.space/p/recursive",
+      "publishedAt": "2026-09-14T16:04:16.000Z",
+      "author": "",
+      "summary": "Richard Socher is an NLP OG and CEO of You.com, who has now spun out an even more ambitious startup focused on RSI — already worth $5B!",
+      "evidenceLink": "",
+      "score": 27.728657857142856,
+      "core": "Richard Socher is an NLP OG and CEO of You.com, who has now spun out an even more ambitious startup focused on RSI — already worth $5B!",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-14T16:22:11.644Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Study provides 'early evidence' that AI could be holding back US wage growth and reducing living standards",
+      "link": "https://www.techradar.com/pro/study-provides-early-evidence-that-ai-could-be-holding-back-us-wage-growth-and-reducing-living-standards",
+      "publishedAt": "2026-09-14T14:35:00.000Z",
+      "author": "Craig Hale",
+      "summary": "While AI isn't being observed taking human jobs, analysts have seen it reducing how quickly you're likely to get a pay rise.",
+      "evidenceLink": "",
+      "score": 25.561276904761904,
+      "core": "While AI isn't being observed taking human jobs, analysts have seen it reducing how quickly you're likely to get a pay rise.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-14T16:22:11.644Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "'The introduction of AI is an accelerator, not a replacement for packaged applications': Oracle bets on AI to strengthen customer ROI",
+      "link": "https://www.techradar.com/pro/the-introduction-of-ai-is-an-accelerator-not-a-replacement-for-packaged-applications-oracle-bets-on-ai-to-strengthen-customer-roi",
+      "publishedAt": "2026-09-14T11:20:00.000Z",
+      "author": "Craig Hale",
+      "summary": "Oracle says that SaaS and software isn't going anywhere, but AI will ultimately change how we interact with it for good.",
+      "evidenceLink": "",
+      "score": 25.306911825396828,
+      "core": "Oracle says that SaaS and software isn't going anywhere, but AI will ultimately change how we interact with it for good.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-14T16:22:11.644Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Which iPhones support iOS 27 and Siri AI? Apple's complex compatibility list explained",
+      "link": "https://www.techradar.com/phones/ios/ios-27-and-siri-ai-compatibility-explained",
+      "publishedAt": "2026-09-14T11:23:56.000Z",
+      "author": "Axel Metz",
+      "summary": "iOS 27, iPadOS 27, and Siri AI are available now — here's which devices are supported by each software package.",
+      "evidenceLink": "",
+      "score": 25.261594365079368,
+      "core": "iOS 27, iPadOS 27, and Siri AI are available now — here's which devices are supported by each software package.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-14T16:22:11.644Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Meta enlists tiny Korean startup to build 'one-chip-like datacenter' — CXL architecture introduced by Facebook's parent company and Panmnesia can handle almost 1000 AI GPUs per domain",
+      "link": "https://www.techradar.com/pro/meta-enlists-tiny-korean-startup-to-build-one-chip-like-datacenter-cxl-architecture-introduced-by-facebooks-parent-company-and-panmnesia-can-handle-almost-1000-ai-gpus-per-domain",
+      "publishedAt": "2026-09-13T22:35:00.000Z",
+      "author": "Efosa Udinmwen",
+      "summary": "Meta and Panmnesia propose a CXL data center architecture connecting up to 960 accelerators within one coherent computing domain across multiple racks.",
+      "evidenceLink": "",
+      "score": 24.568419761904764,
+      "core": "Meta and Panmnesia propose a CXL data center architecture connecting up to 960 accelerators within one coherent computing domain across multiple racks.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-14T16:22:11.644Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "The Pentagon reportedly asked OpenAI to provide an AI that doesn't like saying no to requests",
+      "link": "https://www.techradar.com/pro/the-pentagon-reportedly-asked-openai-to-provide-an-ai-that-doesnt-like-saying-no-to-requests",
+      "publishedAt": "2026-09-13T22:05:00.000Z",
+      "author": "Efosa Udinmwen",
+      "summary": "Documents revealed disputed Pentagon requests for an OpenAI system with fewer refusals, while officials denied such language existed in final agreements.",
+      "evidenceLink": "",
+      "score": 24.54381658730159,
+      "core": "Documents revealed disputed Pentagon requests for an OpenAI system with fewer refusals, while officials denied such language existed in final agreements.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-14T16:22:11.644Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Anthropic Education Report: The AI Fluency Index · Claude Academy",
+      "link": "https://www.anthropic.com/research/AI-fluency-index",
+      "publishedAt": "2026-09-11T11:57:15.000Z",
+      "author": "",
+      "summary": "Anthropic&#x27;s AI Fluency Index measures 11 observable behaviors across thousands of Claude.ai conversations to understand how people develop AI collaboration skills.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-14T16:22:11.644Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 23.475066587301587,
+      "core": "Anthropic&#x27;s AI Fluency Index measures 11 observable behaviors across thousands of Claude.ai conversations to understand how people develop AI collaboration skills.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    }
+  ]
+}
