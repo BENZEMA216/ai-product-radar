@@ -2396,7 +2396,7 @@ function isWeakShowHnDemo(item, text) {
   if (/\b(?:raises?|raised|funding|fundraise|seed round|series [a-z])\b|融资|募资/i.test(text)) return true;
   if (isResourceListSignal(text)) return true;
   if (
-    /\benergy drink\b|\bmake fun of (?:other )?ai\b|\bchatgpt work isn['’]t working\b|\bevery spot is instantly ai-generated\b/i.test(
+    /\benergy drink\b|\bmake fun of (?:other )?ai\b|\bchatgpt work isn['’]t working\b|\bevery spot is instantly ai-generated\b|\btiny satire about ai progress\b/i.test(
       text
     )
   ) {
@@ -2445,7 +2445,7 @@ function isShowHnNonProductObservation(item, text) {
   return (
     isHn &&
     isShowHn &&
-    /\b(?:index|database) of (?:coding )?agent incidents?\b|\bbuilt this research\b|\bhides? youtube ai-labeled videos\b|\bsleeper agents? in robot dogs\b|\bwhat engineers? must own in the ai era\b|\bcatalog of apps built out of spite\b|\bmoltbook but for math\b|\bfeature-length sci-fi thriller about ai, made with ai\b|\bremoved the ai auto-organizing i built my first app around\b|\b(?:ai-powered\s+)?word guessing game\b|\bprove the .{0,48} conjecture with (?:a )?swarm of agents\b|\bllms? work,? explained through .{0,80} analogies\b|\bvibe logic programming language\b/i.test(text)
+    /\b(?:index|database) of (?:coding )?agent incidents?\b|\bbuilt this research\b|\bhides? youtube ai-labeled videos\b|\bsleeper agents? in robot dogs\b|\bwhat engineers? must own in the ai era\b|\bcatalog of apps built out of spite\b|\bmoltbook but for math\b|\bfeature-length sci-fi thriller about ai, made with ai\b|\bremoved the ai auto-organizing i built my first app around\b|\b(?:ai-powered\s+)?word guessing game\b|\bprove the .{0,48} conjecture with (?:a )?swarm of agents\b|\bllms? work,? explained through .{0,80} analogies\b|\bvibe logic programming language\b|\btiny satire about ai progress\b/i.test(text)
   );
 }
 

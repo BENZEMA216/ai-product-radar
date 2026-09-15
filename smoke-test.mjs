@@ -1998,7 +1998,8 @@ function testShowHnNoveltyAndComplaintSignalsStayWeak() {
     "AI-Powered Word Guessing Game",
     "Come prove the Berge Fulkerson conjecture with a swarm of agents",
     "How LLMs work, explained through music, football or cricket analogies",
-    "Vibe Logic Programming Language"
+    "Vibe Logic Programming Language",
+    "Loss. a tiny satire about AI progress"
   ];
   for (const title of titles) {
     const item = {
@@ -2020,7 +2021,7 @@ function testShowHnNoveltyAndComplaintSignalsStayWeak() {
     const markdown = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |\n|---|---|---|---|---|---|\n| ${title} | [链接](https://example.com) | 新产品 | HN 发布帖出现：Show HN: ${title} | 当日信号。 | [HN Algolia](https://news.ycombinator.com/item?id=1) |`;
     const [rendered] = parseReportMarkdown(markdown, "reports/2026-09-02-0001-cst.md");
     assert.notEqual(rendered.qualityLabel, "keep", `${title} should stay weak after site parsing`);
-    if (/hides youtube ai-labeled videos|index of coding agent incidents|built this research|sleeper agents in robot dogs|what engineers must own in the ai era|catalog of apps built out of spite|moltbook but for math|feature-length sci-fi thriller about ai, made with ai|removed the ai auto-organizing i built my first app around|word guessing game|prove the .* conjecture with (?:a )?swarm of agents|llms? work,? explained through .* analogies|vibe logic programming language/i.test(title)) {
+    if (/hides youtube ai-labeled videos|index of coding agent incidents|built this research|sleeper agents in robot dogs|what engineers must own in the ai era|catalog of apps built out of spite|moltbook but for math|feature-length sci-fi thriller about ai, made with ai|removed the ai auto-organizing i built my first app around|word guessing game|prove the .* conjecture with (?:a )?swarm of agents|llms? work,? explained through .* analogies|vibe logic programming language|tiny satire about ai progress/i.test(title)) {
       assert.equal(inferred, dropped, `${title} should be dropped as a non-product observation`);
       assert.equal(rendered.qualityLabel, "drop", `${title} should stay dropped after site parsing`);
       const afterMemory = applyQualityMemoryToCandidates([{ ...item, qualityLabel: "drop" }], {

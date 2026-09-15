@@ -840,6 +840,18 @@
       "requireAiRelevance": true,
       "requireStrongAiRelevance": true,
       "requireKnowledgeDepth": true
+    },
+    {
+      "id": "qdrant_retrieval_engineering",
+      "label": "Qdrant Retrieval Engineering",
+      "type": "feed",
+      "url": "https://qdrant.tech/articles/index.xml",
+      "home": "https://qdrant.tech/articles/",
+      "weight": 14,
+      "maxItems": 16,
+      "requireAiRelevance": false,
+      "requireStrongAiRelevance": false,
+      "requireKnowledgeDepth": false
     }
   ],
   "paperSource": {
