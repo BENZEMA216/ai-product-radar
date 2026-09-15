@@ -1,0 +1,396 @@
+{
+  "generatedAt": "2026-09-15T16:12:07.560Z",
+  "date": "2026-09-16",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Abnormal AI: Amazon Bedrock AgentCore for agentic email security at scale",
+      "link": "https://aws.amazon.com/blogs/machine-learning/abnormal-ai-amazon-bedrock-agentcore-for-agentic-email-security-at-scale",
+      "publishedAt": "2026-09-14T21:22:45.000Z",
+      "author": "Aswin Vasudevan",
+      "summary": "Learn how Abnormal AI deployed Amazon Bedrock AgentCore Code Interpreter as an ephemeral compute scratch pad for the agents behind its real-time email threat detection at billion-message scale, plus the sandbox design decisions and practical lessons for builders deploying Code Interpreter in production.",
+      "evidenceLink": "",
+      "score": 70.34439365079365,
+      "core": "Learn how Abnormal AI deployed Amazon Bedrock AgentCore Code Interpreter as an ephemeral compute scratch pad for the agents behind its real-time email threat detection at billion-message scale, plus the sandbox design decisions and practical lessons for builders deploying Code Interpreter in production.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-15T16:12:07.560Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Why don't machine learning research agents overfit?",
+      "link": "https://www.amazon.science/blog/why-dont-machine-learning-research-agents-overfit",
+      "publishedAt": "2026-09-14T16:32:23.000Z",
+      "author": "Betelbuddy https://news.ycombinator.com/user?id=Betelbuddy",
+      "summary": "New research shows that AI agents — like human research communities — learn strategies compressible enough to fit in a few tokens, which prevents memorization and explains why benchmark-driven ML keeps producing real progress.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49699648",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 132,
+        "comments": 83
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-15T16:12:07.560Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 69.03320249124491,
+      "core": "New research shows that AI agents — like human research communities — learn strategies compressible enough to fit in a few tokens, which prevents memorization and explains why benchmark-driven ML keeps producing real progress.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Pion, an agent designed to run any company autonomously",
+      "link": "https://andonlabs.com/blog/why-we-built-pion",
+      "publishedAt": "2026-09-14T17:16:06.000Z",
+      "author": "lukaspetersson https://news.ycombinator.com/user?id=lukaspetersson",
+      "summary": "Pion is the platform we built to run our autonomous businesses. Today we are opening it up so many more people can experiment with autonomous businesses, and here is why.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49700477",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 466,
+        "comments": 564
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-15T16:12:07.560Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 66.1569995524377,
+      "core": "Pion is the platform we built to run our autonomous businesses. Today we are opening it up so many more people can experiment with autonomous businesses, and here is why.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Scaling Agents in Healthcare & Life Sciences: Lessons from Madrigal Pharmaceuticals, Abridge, and Vizient",
+      "link": "https://www.langchain.com/blog/scaling-agents-in-healthcare-life-sciences-lessons-from-madrigal-pharmaceuticals-abridge-and-vizient",
+      "publishedAt": "2026-09-15T14:00:02.000Z",
+      "author": "",
+      "summary": "Agent programs in healthcare and life sciences are being built under a different set of constraints than those in most industries. There’s plenty of upside if the constraints can be resolved. Success can mean hours of manual review compressed into minutes, data spread across a dozen systems finally queryable in one place, and clinicians getting time back from documentation. At the same time, the cost of a wrong answer can be higher here than almost anywhere else, which changes how teams build.",
+      "evidenceLink": "",
+      "score": 58.60941349206349,
+      "core": "Agent programs in healthcare and life sciences are being built under a different set of constraints than those in most industries. There’s plenty of upside if the constraints can be resolved. Success can mean hours of manual review compressed into minutes, data spread across a dozen systems finally queryable in one place, and clinicians getting time back from documentation. At the same time, the cost of a wrong answ…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-15T16:12:07.560Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "qdrant_retrieval_engineering",
+      "source": "Qdrant Retrieval Engineering",
+      "title": "Configure Qdrant's Optimizer for Predictable Search Latency",
+      "link": "https://qdrant.tech/articles/tuning-qdrant-optimizer",
+      "publishedAt": "2026-08-25T08:00:00.000Z",
+      "author": "info@qdrant.tech (Andrey Vasnetsov)",
+      "summary": "A bulk load finishes, and the collection looks ready: every point is in, and the upload call has returned. Then the first queries land, and search takes hundreds of milliseconds, sometimes several seconds at a stretch, while Qdrant&rsquo;s indexing, merge, and vacuum optimizers work through the backlog the upload left behind. How long that lasts, and what it costs each query, depends on settings most people never touch. Qdrant&rsquo;s optimizer docs and read-write contention guide already describe that trade-off qualitatively. To put numbers on it, we built a benchmark harness:",
+      "evidenceLink": "",
+      "score": 53.24444444444445,
+      "core": "A bulk load finishes, and the collection looks ready: every point is in, and the upload call has returned. Then the first queries land, and search takes hundreds of milliseconds, sometimes several seconds at a stretch, while Qdrant&rsquo;s indexing, merge, and vacuum optimizers work through the backlog the upload left behind. How long that lasts, and what it costs each query, depends on settings most people never to…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-15T16:12:07.560Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "AI agent regression testing with Agent Experiments in Arize AX",
+      "link": "https://arize.com/blog/ai-agent-regression-testing-with-arize-ax",
+      "publishedAt": "2026-09-14T16:32:39.000Z",
+      "author": "Nancy Chauhan",
+      "summary": "A cancellation-policy fix raised action safety and dropped average task completion from 0.89 to 0.72. This walkthrough shows how to regression-test agent changes with Agent Experiments in Arize AX. The post AI agent regression testing with Agent Experiments in Arize AX appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 50.96570317460318,
+      "core": "A cancellation-policy fix raised action safety and dropped average task completion from 0.89 to 0.72. This walkthrough shows how to regression-test agent changes with Agent Experiments in Arize AX. The post AI agent regression testing with Agent Experiments in Arize AX appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-15T16:12:07.560Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "salesforce_engineering",
+      "source": "Salesforce Engineering",
+      "title": "How AI Agents Get Trusted Customer Context with Data 360 Data Graphs",
+      "link": "https://engineering.salesforce.com/how-ai-agents-get-trusted-customer-context-with-data-360-data-graphs",
+      "publishedAt": "2026-09-14T19:32:39.000Z",
+      "author": "Scott Nyberg",
+      "summary": "In our Engineering Energizers Q&A series, we explore the engineering minds behind some of Salesforce’s most complex technical challenges. Today, we spotlight Alex Smith, Senior Director of AI Engineering, whose team uses Data 360 data graphs to give Agentforce something every personalized interaction depends on: trusted customer context. Their goal is to turn decades of […] The post How AI Agents Get Trusted Customer Context with Data 360 Data Graphs appeared first on Salesforce Engineering Blog .",
+      "evidenceLink": "",
+      "score": 50.313322222222226,
+      "core": "In our Engineering Energizers Q&A series, we explore the engineering minds behind some of Salesforce’s most complex technical challenges. Today, we spotlight Alex Smith, Senior Director of AI Engineering, whose team uses Data 360 data graphs to give Agentforce something every personalized interaction depends on: trusted customer context. Their goal is to turn decades of […] The post How AI Agents Get Trusted Custome…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-15T16:12:07.560Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "qdrant_retrieval_engineering",
+      "source": "Qdrant Retrieval Engineering",
+      "title": "What to Check Before Tuning a Qdrant Collection",
+      "link": "https://qdrant.tech/articles/before-tuning-a-qdrant-collection",
+      "publishedAt": "2026-08-19T21:00:00.000Z",
+      "author": "info@qdrant.tech (Andrey Vasnetsov)",
+      "summary": "Before you change a setting, decide what better retrieval means for your workload. The right document at rank one, more candidates for a reranker, lower latency, and a smaller memory footprint each favor different settings, so pick your goal first. If your labeled queries can&rsquo;t detect the improvement you&rsquo;re chasing, you won&rsquo;t be able to tell whether a change helped. Some settings are there to verify correctness, not to tune performance. If a vector is unindexed, a sparse vector is missing the IDF modifier, or the BM25 average length is wrong, the results are invalid. Any benchmark or comparison you run after that will reflect a broken setup. This article shows you how to check each setting and what the correct state looks like.",
+      "evidenceLink": "",
+      "score": 46.19444444444444,
+      "core": "Before you change a setting, decide what better retrieval means for your workload. The right document at rank one, more candidates for a reranker, lower latency, and a smaller memory footprint each favor different settings, so pick your goal first. If your labeled queries can&rsquo;t detect the improvement you&rsquo;re chasing, you won&rsquo;t be able to tell whether a change helped. Some settings are there to verif…",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-15T16:12:07.560Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Give every teammate and agent the right level of access to your Workers",
+      "link": "https://blog.cloudflare.com/workers-granular-authorization",
+      "publishedAt": "2026-09-15T13:00:00.000Z",
+      "author": "Dina Kozlov",
+      "summary": "You can now scope access to individual Workers and assign narrower Developer Platform roles, so teammates, CI tokens, and agents get only the access they need to debug, deploy, or monitor safely.",
+      "evidenceLink": "",
+      "score": 44.8546119047619,
+      "core": "You can now scope access to individual Workers and assign narrower Developer Platform roles, so teammates, CI tokens, and agents get only the access they need to debug, deploy, or monitor safely.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-15T16:12:07.560Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Have it both ways: stay discoverable in search while disallowing AI training",
+      "link": "https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers",
+      "publishedAt": "2026-09-15T13:00:00.000Z",
+      "author": "Bryan Becker",
+      "summary": "Cloudflare is giving site owners a way to stay discoverable while disallowing AI training. New controls and an Accountable designation establish a shared model with Apple, Google, and Microsoft.",
+      "evidenceLink": "",
+      "score": 41.84905634920634,
+      "core": "Cloudflare is giving site owners a way to stay discoverable while disallowing AI training. New controls and an Accountable designation establish a shared model with Apple, Google, and Microsoft.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-15T16:12:07.560Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "qdrant_retrieval_engineering",
+      "source": "Qdrant Retrieval Engineering",
+      "title": "Candidate Depth: How Much Retrieval Is Enough?",
+      "link": "https://qdrant.tech/articles/candidate-depth",
+      "publishedAt": "2026-08-20T21:00:00.000Z",
+      "author": "info@qdrant.tech (Andrey Vasnetsov)",
+      "summary": "Before you tune candidate depth, use the pre-tuning checks to verify index state and set a labeled baseline. Everything below measures against that baseline. Candidate depth is the number of candidates a retrieval stage passes to a later ranking stage. It matters only when a later stage can use the extra candidates. In hybrid search, every prefetch carries its own limit , and a multi-stage query that nests one prefetch inside another sets a depth at each level. In dense-only or sparse-only search, it is the number of candidates you pass to a reranker or other downstream stage.",
+      "evidenceLink": "",
+      "score": 39.23888888888889,
+      "core": "Before you tune candidate depth, use the pre-tuning checks to verify index state and set a labeled baseline. Everything below measures against that baseline. Candidate depth is the number of candidates a retrieval stage passes to a later ranking stage. It matters only when a later stage can use the extra candidates. In hybrid search, every prefetch carries its own limit , and a multi-stage query that nests one prefe…",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-15T16:12:07.560Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "qdrant_retrieval_engineering",
+      "source": "Qdrant Retrieval Engineering",
+      "title": "How to Tune Hybrid Search in Qdrant",
+      "link": "https://qdrant.tech/articles/how-to-tune-hybrid-search",
+      "publishedAt": "2026-08-21T21:00:00.000Z",
+      "author": "info@qdrant.tech (Andrey Vasnetsov)",
+      "summary": "Before you tune fusion, use the pre-tuning checks to verify index state and set a labeled baseline. Hybrid search retrieves dense and sparse candidate lists, then fuses them into one ranking. The dense prefetch finds similar meaning; the sparse prefetch finds matching keywords. Fusion reorders the candidates the prefetches return, so a document missing from both lists cannot appear in the result. Confirm Fusion Beats Either Prefetch Before tuning, compare dense retrieval, sparse retrieval, and default Reciprocal Rank Fusion (RRF) at k=2 and equal weights. Score all three with nDCG@10 , which grades the top 10 results and gives more credit to relevant documents near the top.",
+      "evidenceLink": "",
+      "score": 35.78888888888889,
+      "core": "Before you tune fusion, use the pre-tuning checks to verify index state and set a labeled baseline. Hybrid search retrieves dense and sparse candidate lists, then fuses them into one ranking. The dense prefetch finds similar meaning; the sparse prefetch finds matching keywords. Fusion reorders the candidates the prefetches return, so a document missing from both lists cannot appear in the result. Confirm Fusion Beat…",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-15T16:12:07.560Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "qdrant_retrieval_engineering",
+      "source": "Qdrant Retrieval Engineering",
+      "title": "Hybrid Search in Qdrant",
+      "link": "https://qdrant.tech/articles/hybrid-search",
+      "publishedAt": "2026-08-24T06:00:00.000Z",
+      "author": "info@qdrant.tech (Andrey Vasnetsov)",
+      "summary": "A search result can look plausible and still be wrong. Dense retrieval can return a document on the right topic but miss an exact identifier copied into the query. Sparse retrieval can miss a relevant document when the query describes it with terms the corpus doesn&rsquo;t use. Either way, your logs record a successful query. Hybrid search runs dense and sparse retrieval over the same query, then merges their result lists. Dense retrieval adds semantic similarity, so paraphrases can rank together. Sparse retrieval adds weighted term matching for exact words and identifiers.",
+      "evidenceLink": "",
+      "score": 35.22222222222222,
+      "core": "A search result can look plausible and still be wrong. Dense retrieval can return a document on the right topic but miss an exact identifier copied into the query. Sparse retrieval can miss a relevant document when the query describes it with terms the corpus doesn&rsquo;t use. Either way, your logs record a successful query. Hybrid search runs dense and sparse retrieval over the same query, then merges their result…",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-15T16:12:07.560Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Anthropic's new Claude tool is here to help financial advisors — add AI to your spreadsheets, portfolios, CRMs, and more",
+      "link": "https://www.techradar.com/pro/anthropic-targets-financial-advisors-with-new-claude-tool-add-ai-to-your-spreadsheets-portfolios-crms-and-more",
+      "publishedAt": "2026-09-15T11:30:00.000Z",
+      "author": "Craig Hale",
+      "summary": "Anthropic just added even more tools to Claude, this time designed specifically for financial advisors.",
+      "evidenceLink": "",
+      "score": 32.236357936507936,
+      "core": "Anthropic just added even more tools to Claude, this time designed specifically for financial advisors.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-15T16:12:07.560Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "sentry_ai_engineering",
+      "source": "Sentry Engineering",
+      "title": "Debugging our AI search assistant with agent tracing",
+      "link": "https://blog.sentry.io/debugging-our-ai-search-assistant-with-agent-tracing",
+      "publishedAt": "2026-09-11T09:00:00.000Z",
+      "author": "",
+      "summary": "See how Sentry engineers used AI Conversations to debug a natural language search assistant and fix a tricky query generation bug.",
+      "evidenceLink": "",
+      "score": 31.35064365079365,
+      "core": "See how Sentry engineers used AI Conversations to debug a natural language search assistant and fix a tricky query generation bug.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-15T16:12:07.560Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "'Nowhere in the world, including the UK, has a current legislative and regulatory approach to AI that is fit for purpose' — Britain’s lawmakers have started calling for AI regulation, and they should refuse to settle for half-measures",
+      "link": "https://www.techradar.com/ai-platforms-assistants/nowhere-in-the-world-including-the-uk-has-a-current-legislative-and-regulatory-approach-to-ai-that-is-fit-for-purpose-britains-lawmakers-have-started-calling-for-ai-regulation-and-they-should-refuse-to-settle-for-half-measures",
+      "publishedAt": "2026-09-15T16:03:10.000Z",
+      "author": "Eric Hal Schwartz",
+      "summary": "British lawmakers and OpenAI agree voluntary AI safeguards are no longer enough, increasing pressure on the UK government to adopt enforceable rules",
+      "evidenceLink": "",
+      "score": 29.81155634920635,
+      "core": "British lawmakers and OpenAI agree voluntary AI safeguards are no longer enough, increasing pressure on the UK government to adopt enforceable rules",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-15T16:12:07.560Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "qdrant_retrieval_engineering",
+      "source": "Qdrant Retrieval Engineering",
+      "title": "When Your Collection Outgrows RAM",
+      "link": "https://qdrant.tech/articles/when-your-collection-outgrows-ram",
+      "publishedAt": "2026-08-23T21:00:00.000Z",
+      "author": "info@qdrant.tech (Andrey Vasnetsov)",
+      "summary": "Once a collection no longer fits in RAM, the kernel evicts vector pages, and the next query waits on a disk read to get them back. Quantization buys that memory back. Qdrant keeps a compressed copy of each dense vector in RAM and moves the full-precision originals to disk. TurboQuant is the method measured here. It rotates each vector before compressing it, which spreads the error evenly across coordinates, and its bits parameter sets the depth from bits4 down to bits1 . Start at bits4 , a good default for many workloads at eight times compression.",
+      "evidenceLink": "",
+      "score": 25.07777777777778,
+      "core": "Once a collection no longer fits in RAM, the kernel evicts vector pages, and the next query waits on a disk read to get them back. Quantization buys that memory back. Qdrant keeps a compressed copy of each dense vector in RAM and moves the full-precision originals to disk. TurboQuant is the method measured here. It rotates each vector before compressing it, which spreads the error evenly across coordinates, and its …",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-15T16:12:07.560Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "qdrant_retrieval_engineering",
+      "source": "Qdrant Retrieval Engineering",
+      "title": "Memory Tiers in Qdrant: What to Use and When",
+      "link": "https://qdrant.tech/articles/memory-tiers-in-qdrant-what-to-use-and-when",
+      "publishedAt": "2026-08-28T08:00:00.000Z",
+      "author": "info@qdrant.tech (Andrey Vasnetsov)",
+      "summary": "A growing vector collection eventually outgrows the RAM it started with: Qdrant handles that by letting you assign dense vectors, the HNSW graph, quantized vectors, payloads, and payload indexes each to whichever memory tier that structure supports, instead of forcing one RAM-versus-disk trade-off onto the whole collection. This article will give you practical guidance over which combination of tiers and quantization to reach for at each stage of a collection&rsquo;s growth, and the reasons behind the choice.",
+      "evidenceLink": "",
+      "score": 24.855555555555554,
+      "core": "A growing vector collection eventually outgrows the RAM it started with: Qdrant handles that by letting you assign dense vectors, the HNSW graph, quantized vectors, payloads, and payload indexes each to whichever memory tier that structure supports, instead of forcing one RAM-versus-disk trade-off onto the whole collection. This article will give you practical guidance over which combination of tiers and quantizatio…",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-15T16:12:07.560Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "qdrant_retrieval_engineering",
+      "source": "Qdrant Retrieval Engineering",
+      "title": "When Is a Reranker Worth It?",
+      "link": "https://qdrant.tech/articles/when-a-reranker-is-worth-it",
+      "publishedAt": "2026-08-22T21:00:00.000Z",
+      "author": "info@qdrant.tech (Andrey Vasnetsov)",
+      "summary": "Before you tune a reranker, use the pre-tuning checks to verify index state and set a labeled baseline. Your candidate list can already contain documents your ranking never shows. Score those candidates as if they were perfectly ordered, then compare that with the score your pipeline returns today. The gap between the two is everything a better ranking stage could recover, so measure it before you reach for a model. Use nDCG@10 , which grades the top 10 results and gives more credit to relevant documents near the top.",
+      "evidenceLink": "",
+      "score": 16.905555555555555,
+      "core": "Before you tune a reranker, use the pre-tuning checks to verify index state and set a labeled baseline. Your candidate list can already contain documents your ranking never shows. Score those candidates as if they were perfectly ordered, then compare that with the score your pipeline returns today. The gap between the two is everything a better ranking stage could recover, so measure it before you reach for a model.…",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-15T16:12:07.560Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

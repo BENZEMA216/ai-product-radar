@@ -1,0 +1,270 @@
+{
+  "date": "2026-09-16",
+  "generatedAt": "2026-09-15T16:15:56.904Z",
+  "reportPath": "reports/2026-09-16-0015-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 54,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 19,
+      "keptCount": 9,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-09-14；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 19 条，AI 相关候选 9 条；实际 fallback：hunted_space。；历史去重移除 2 条已报道或已处理日榜 Product Hunt 信号，最终发布 7 条。"
+    },
+    "yc_launch": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "YC Launch 本窗口无候选或来源为空。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 25,
+      "keptCount": 11,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 6,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 16,
+      "keptCount": 16,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Web Search Agents by Nimble",
+      "productKey": "https://www.producthunt.com/products/nimbleway",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Nimble 把网页检索做成可持续学习的研究 agent，值得验证它是否能在多轮任务中积累有效检索策略，而不只是重复搜索。"
+    },
+    {
+      "rank": 2,
+      "product": "Pizza Bot – An inbox for AI agents that work in the background",
+      "productKey": "https://github.com/pizza-bot-app/pizza-bot",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Pizza Bot 用收件箱承接后台 agent 任务，产品关键在异步委派、结果回传和失败重试是否形成清晰闭环。"
+    },
+    {
+      "rank": 3,
+      "product": "Bulkgrid – Search websites and GitHub repositories from your AI agent",
+      "productKey": "https://bulkgrid.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Bulkgrid 同时向 agent 提供网站与 GitHub 检索，值得看统一入口如何处理索引新鲜度、权限边界和引用可追溯性。"
+    },
+    {
+      "rank": 4,
+      "product": "OzBrain",
+      "productKey": "https://www.producthunt.com/products/ozbrain",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "OzBrain 试图让知识在多个 agent 与队友之间复用，重点是共享上下文能否保留来源、访问控制和更新责任。"
+    },
+    {
+      "rank": 5,
+      "product": "Talk to Claude – voice agent designs, plans, builds across all projects",
+      "productKey": "https://github.com/ethanplusai/jarvis",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这款语音入口覆盖规划、设计和构建多个项目，值得观察连续任务状态、纠错与人工接管能否在语音交互中成立。"
+    },
+    {
+      "rank": 6,
+      "product": "Naoma AI Demo Agent V2",
+      "productKey": "https://www.producthunt.com/products/naoma",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Naoma 把网站流量直接转成合格会议，值得看资格判断、预约与销售交接能否真正交付结果，而非只增加聊天入口。"
+    },
+    {
+      "rank": 7,
+      "product": "White-label AI voice and chat agent platform for resellers",
+      "productKey": "https://www.famulor.io/whitelabel",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "白标语音与聊天 agent 面向转售商，值得关注多租户配置、品牌定制和运维责任是否足以支撑渠道规模化。"
+    },
+    {
+      "rank": 8,
+      "product": "Juggler",
+      "productKey": "https://www.producthunt.com/products/juggler",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Juggler 用可视化方式承载 AI 编码流程，关键是能否让用户看清 agent 步骤、依赖和待审核改动，而不只是换一层界面。"
+    },
+    {
+      "rank": 9,
+      "product": "LLMagnet",
+      "productKey": "https://www.producthunt.com/products/llmagnet",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "LLMagnet 解决 WordPress 内容被 AI 答案系统发现的问题，值得验证可见性优化是否有可测指标，并能区分抓取、引用和转化。"
+    },
+    {
+      "rank": 10,
+      "product": "Aside",
+      "productKey": "https://www.producthunt.com/products/aside-6",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Aside 将浏览器定位为直接完成工作的 agent，重点看跨站执行、权限确认和中途恢复是否比普通浏览器助手更可靠。"
+    },
+    {
+      "rank": 11,
+      "product": "Voice AI that runs on CPUs",
+      "productKey": "https://lokutor.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "在 CPU 上运行语音 AI 可能改变私有部署与单位调用成本，需重点核验延迟、准确率和并发下的实际取舍。"
+    },
+    {
+      "rank": 12,
+      "product": "Marqly 6.0",
+      "productKey": "https://www.producthunt.com/products/marqly",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Marqly 6.0 把书签库变成可被 AI 查询和带走的上下文，值得看个人知识能否在不同模型间保持结构、出处和可控范围。"
+    },
+    {
+      "rank": 13,
+      "product": "Free tool to check how ChatGPT and Perplexity rank your brand",
+      "productKey": "https://ukaiseoconsultant.co.uk/ai-driven-seo-audits",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这款工具测量品牌在 ChatGPT 与 Perplexity 中的呈现，价值在于能否提供可重复的查询样本和行动建议，而非一次性排名截图。"
+    },
+    {
+      "rank": 14,
+      "product": "Kario – AI Native Motion Graphics Editor",
+      "productKey": "https://www.karioai.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Kario 把 AI 放进动态图形编辑器，值得观察生成结果能否继续精细编辑、保持时间轴一致性并进入专业交付流程。"
+    },
+    {
+      "rank": 15,
+      "product": "Threshyr – An offline automatic time tracker with on-device AI",
+      "productKey": "https://threshyr.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Threshyr 用端侧 AI 自动归类时间，产品判断点是隐私优势能否与识别准确率、耗电和用户校正成本同时成立。"
+    },
+    {
+      "rank": 16,
+      "product": "Control Claude Code from your Tesla's screen",
+      "productKey": "https://teslacode.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "在车载屏幕控制 Claude Code 展示了远程编码入口，但安全、注意力与确认机制决定它更像实用工作流还是场景噱头。"
+    },
+    {
+      "rank": 17,
+      "product": "Ordewell – turn one goal into an ordered plan of coding-agent tasks",
+      "productKey": "https://github.com/ordewell/ordewell",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Ordewell 把一个目标拆成有顺序的编码 agent 任务，值得看依赖解析、并行边界和失败后的重新规划能否形成可执行计划。"
+    },
+    {
+      "rank": 18,
+      "product": "Taskuary – turn your inbox into tasks for Claude Code, Codex, or Gemini",
+      "productKey": "https://github.com/ldbumble/taskuary",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Taskuary 把邮件转成 Claude Code、Codex 或 Gemini 的任务入口，值得看任务结构化、授权确认和执行结果回写是否完整。"
+    }
+  ]
+}
