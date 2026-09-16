@@ -1,0 +1,292 @@
+{
+  "date": "2026-09-17",
+  "generatedAt": "2026-09-16T16:06:58.869Z",
+  "reportPath": "reports/2026-09-17-0006-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 75,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 29,
+      "keptCount": 14,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-09-15；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 29 条，AI 相关候选 14 条；实际 fallback：hunted_space。；历史去重移除 1 条已报道或已处理日榜 Product Hunt 信号，最终发布 13 条。"
+    },
+    "yc_launch": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "YC Launch 本窗口无候选或来源为空。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 24,
+      "keptCount": 15,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 6,
+      "keptCount": 1,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 26,
+      "keptCount": 26,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Kilo Code for iOS and Android",
+      "productKey": "https://www.producthunt.com/products/kilocode",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把启动编码 Agent、控制会话与审查 PR 带到手机端，值得看移动入口能否承接明确的开发决策，而不只是远程观看。"
+    },
+    {
+      "rank": 2,
+      "product": "Local static analysis for coding agents",
+      "productKey": "https://blog.codacy.com/introducing-codacy-skills-part-4-scan-and-fix-your-code-before-you-push",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "静态分析放到编码 Agent 本地执行环节，产品判断重点是问题检出能否及时转成修复动作，减少提交后的返工。"
+    },
+    {
+      "rank": 3,
+      "product": "Open-source tool to sell your Claude Code and Codex sessions",
+      "productKey": "https://github.com/cookiy-ai/sell-sessions-skill",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "直接出售 Claude Code 与 Codex 会话，贴近执行经验变现方向；要观察购买者得到的是可复用流程还是难以迁移的上下文。"
+    },
+    {
+      "rank": 4,
+      "product": "Amika – Multiplayer cloud workstations for coding agents and humans",
+      "productKey": "https://www.amika.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让人和编码 Agent 共用多人云工作站，适合研究同一环境中的协作、接管与任务交接如何设计。"
+    },
+    {
+      "rank": 5,
+      "product": "Blue – open-source governance for coding agents",
+      "productKey": "https://bluee.sh",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把编码 Agent 治理独立成开源产品，值得检查用户如何理解约束和责任；标题尚未证明具体策略覆盖与效果。"
+    },
+    {
+      "rank": 6,
+      "product": "FainLane – Paste screenshots into remote coding agents with Ctrl+V",
+      "productKey": "https://fainlane.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用 Ctrl+V 向远程编码 Agent 传递截图，切中跨环境输入摩擦；可观察视觉材料如何进入当前任务上下文。"
+    },
+    {
+      "rank": 7,
+      "product": "Give your AI agents access to WhatsApp",
+      "productKey": "https://news.ycombinator.com/item?id=49728159",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 WhatsApp 接入 Agent 工具边界，值得检查消息读取、发送与人工确认如何区分；发布标题未提供权限细节。"
+    },
+    {
+      "rank": 8,
+      "product": "Multimodal Agents by Sierra",
+      "productKey": "https://www.producthunt.com/products/sierra",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "语音、文字与视觉之间切换，重点看任务状态能否随模态连续传递，避免用户在切换后重复说明需求。"
+    },
+    {
+      "rank": 9,
+      "product": "Narrative",
+      "productKey": "https://www.producthunt.com/products/narrative-3",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "通过描述编辑并在聊天中细化视频，适合研究自然语言修改如何保留用户控制，以及如何表达精确剪辑意图。"
+    },
+    {
+      "rank": 10,
+      "product": "is.team",
+      "productKey": "https://www.producthunt.com/products/is-team",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 Agent 放进协作看板当作队友，值得看任务分配、状态更新和人工接手是否遵循团队已有的工作习惯。"
+    },
+    {
+      "rank": 11,
+      "product": "Axari",
+      "productKey": "https://www.producthunt.com/products/axari",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用 AI 分身承接安全杂务，切入明确的专业负担；需要核验哪些动作能自动执行，哪些仍应由安全人员确认。"
+    },
+    {
+      "rank": 12,
+      "product": "An MCP server that lets AI agents create, send and analyze surveys",
+      "productKey": "https://www.zigpoll.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 Agent 创建、发送和分析调查问卷，把研究链路连接成工具；重点检查发送审批和分析证据能否追溯。"
+    },
+    {
+      "rank": 13,
+      "product": "Buddy AI Access (MCP)",
+      "productKey": "https://www.producthunt.com/products/buddy",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "MCP 入口强调仓库之外的上下文，适合观察编码 Agent 如何获取工作信息；具体连接对象仍需看产品说明。"
+    },
+    {
+      "rank": 14,
+      "product": "Legion – AI agents that write sandboxed Lua inside your Elixir app",
+      "productKey": "https://legion.swmansion.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 Agent 在 Elixir 应用内编写沙盒 Lua，值得研究业务扩展能力如何与执行隔离结合；实际安全边界需原文证明。"
+    },
+    {
+      "rank": 15,
+      "product": "Agentbox – Teleport your repo into sandboxes with no worktree juggling",
+      "productKey": "https://github.com/madarco/agentbox",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把仓库送入沙盒并减少 worktree 切换，切中并行编码的环境管理成本；重点看隔离任务如何回收变更。"
+    },
+    {
+      "rank": 16,
+      "product": "Voiskey",
+      "productKey": "https://www.producthunt.com/products/voiskey",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 AI 语音输入带到各类应用，产品价值取决于转写能否符合当前输入场景，以及纠错是否足够顺手。"
+    },
+    {
+      "rank": 17,
+      "product": "jurniti",
+      "productKey": "https://www.producthunt.com/products/jurniti",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用 Firecracker microVM 承载常驻 Agent，适合比较持续运行与短会话产品的状态管理和隔离需求。"
+    },
+    {
+      "rank": 18,
+      "product": "The Minimalist Entrepreneur Skills",
+      "productKey": "https://www.producthunt.com/products/the-minimalist-entrepreneur-skills",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把创业书籍方法做成 Claude Code slash skills，值得研究知识如何转成可执行流程，而非只是可调用的摘要。"
+    },
+    {
+      "rank": 19,
+      "product": "Check an NPM package or MCP server for malicious code before install",
+      "productKey": "https://bouncer.run/check",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "安装前检查 NPM 包和 MCP 服务恶意代码，贴近 Agent 工具供应链风险；需核验检查范围与误报处置。"
+    },
+    {
+      "rank": 20,
+      "product": "Zoom Meeting for Agent Sessions",
+      "productKey": "https://www.sharednet.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "为 Agent 会话提供类似会议的共享入口，可研究团队如何围绕执行过程协作；标题未证明其记录或版本能力。"
+    }
+  ]
+}

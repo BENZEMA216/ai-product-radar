@@ -1,0 +1,381 @@
+{
+  "generatedAt": "2026-09-16T16:02:15.548Z",
+  "date": "2026-09-17",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "How Delphi ships 100 times a day with its Python backend on Vercel",
+      "link": "https://vercel.com/customers/how-delphi-ships-100-times-a-day-with-its-python-backend-on-vercel",
+      "publishedAt": "2026-09-15T04:00:00.000Z",
+      "author": "Susan Aziz",
+      "summary": "Delphi on Vercel 10 engineers with no dedicated infrastructure role Everyone ships code, including product and design 100+ production deploys a day behind feature flags Delphi builds digital minds. They capture what someone has written, recorded, and taught, so anyone can tap that expertise on demand. Delphi is “a destination where you can find and interact with interesting minds,” says founding engineer Spencer Schoeben. Nobody has built a digital mind network before, so Delphi figures out what to build by shipping features and watching how people use them. That only works if the product is fast to change. \"If we are going to win, we need to have an excellent developer and agentic experience,\" Spencer says. \"Otherwise, we could not adapt to how fast our user’s demands change.\" Delphi's frontend had run on Vercel since day one. \"The frontend has always been easy,\" Spencer says, \"but the backend was a nightmare.\" Six months ago, the team rebuilt its Python backend on Vercel as well. Today the whole team ships to production 100+ times a day. Building a Python backend that's easy to work on The backend slowed every change Delphi's backend previously ran on AWS, with ECS, Docker Desktop, and local databases. In the earliest days, the setup worked because the team was small and much of the context lived in people’s heads. As Delphi grew, that made onboarding slower than the team wanted: getting a new engineer to their first deploy took a full day of environment setup. Delphi could have fixed that without leaving AWS. But fixing it properly would have meant designing and owning the infrastructure themselves, and the team didn't want to own infrastructure at all. \"That is not our current goal as a company,\" Spencer says. After moving the backend to Vercel, new engineers could get to production much faster, with the same deploy workflow the rest of the team used every day. Workflows and Queues made the move possible When Delphi was founded, Vercel Workflows and Vercel Queues didn't exist. Without them, Spencer says, the move would have been much harder, if possible at all. Delphi's backend depends on long-running work and queued background jobs. Digital minds need durable agents that generate content ahead of time, plus ingestion that turns a person's books and talks into a knowledge graph. Workflows handles the long-running work and Queues handle the background jobs. Neither requires setup. A developer writes the workflow or the queue handler as a function in the codebase, and Vercel provisions what's needed to run it on deploy. 100+ deploys a day, straight to production Moving the backend to Vercel let Delphi stop treating backend changes as heavyweight releases and ship them as everyday product work. The team used to deploy to staging, then production. Now it skips the middle step, shipping 100+ times a day behind feature flags and running A/B tests instead of batching changes into a release. Vercel Agent's anomaly detection watches production at that pace, flagging when something is misbehaving and why. Before, Spencer says, they often would not have known. Moving fast has helped clear a backlog of small experiments that never used to make the priority list. Many of those experiments test how to turn a visitor into an owner, someone who arrives to talk to a mind and leaves having started their own. Shipping isn't limited to engineers, either. Delphi's CPO and its growth teams build and deploy dashboards, prototypes, and experiments themselves, which Spencer says wouldn't have happened on the old setup. Infrastructure built for agents and engineers Preview deployments are how agents check their work Delphi's engineers hand problems to cloud agents, with very little development happening locally. The preview deployment is where they first see what the agent built. Vercel preview deployments give every push its own live URL, so anyone can check the result from a phone or a Slack thread without pulling the branch. When an agent fails, it's usually because it couldn't get at the information it needed. Vercel exposes the data and controls agents need through the SDK, MCP, and CLI, so an agent can read logs, inspect a deployment, or change an environment variable through whichever it's using. For Delphi, agents are now the main users of those tools, so the platform has to be as easy for them as it is for people. An internal agent on Sandbox for customer success Delphi's own agents run on Vercel as well. One of them, an internal agent on Vercel Sandbox , simplifies working with the company's codebase. The customer success team uses Slack to ask it about reported issues, find the problem, and hand an engineer a root cause and a proposed fix. Edge cases used to fall through the cracks. \"Before, we either couldn't get to everything, or we had to spend way more time than we had available,\" Spencer says. \"Now we have an agent they can just ask in Slack.\" Vercel Sandbox gives the agent an isolated environment with a file system, where it can check out the codebase, run it, and pull in whatever data a question needs. The agent itself is built with eve, Vercel's agent framework. Delphi's first version ran on a hosted agent platform and could only use the integrations that platform offered. In eve, tools are code Delphi writes, so when a question needs one that doesn't exist, the team adds it. AI Gateway picks the model for each mind Delphi's chat traffic runs through AI Gateway. Every digital mind is different, and some come out better on one model than another, so Delphi picks the model for each customer and adjusts as its own evals change. When a new model ships, open-source or otherwise, Delphi can route to it the same day. Gateway also handles failover. Before, Delphi worked directly with a model provider to line up fallback capacity on other clouds, and it was hard. \"With AI Gateway, we always know that we're going to get the fallbacks if they exist,\" Spencer says. What's next Delphi's first chapter was training digital minds and letting people chat with them. Now it is building the interface beyond chat. Spencer describes a search page where you bring a question, get perspectives from several minds at once, and have the page adapt to who you are. That work runs as long-running agents on Workflows, with AI Gateway supplying whichever model each experiment calls for. About Delphi : Delphi is a platform that turns a person's knowledge, thinking, and voice into a digital mind others can talk to. Anyone can create their own Delphi to make their expertise discoverable and accessible, part of a network of minds people can seek out, learn from, and converse with. Read more",
+      "evidenceLink": "",
+      "score": 102.42588198412699,
+      "core": "Delphi on Vercel 10 engineers with no dedicated infrastructure role Everyone ships code, including product and design 100+ production deploys a day behind feature flags Delphi builds digital minds. They capture what someone has written, recorded, and taught, so anyone can tap that expertise on demand. Delphi is “a destination where you can find and interact with interesting minds,” says founding engineer Spencer Sch…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-16T16:02:15.548Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Cloud CISO Perspectives: How Google monitors AI threats and advances AI defenses",
+      "link": "https://cloud.google.com/blog/products/identity-security/cloud-ciso-perspectives-how-google-monitors-ai-threats-advances-ai-defenses",
+      "publishedAt": "2026-09-16T16:00:00.000Z",
+      "author": "Sandra Joyce VP, Google Threat Intelligence",
+      "summary": "Welcome to the first Cloud CISO Perspectives for September 2026. Today, Sandra Joyce shares the latest details on Google’s visibility into how attackers are using AI, and how we’re using AI to stop them. As with all Cloud CISO Perspectives, the contents of this newsletter are posted to the Google Cloud blog . If you’re reading this on the website and you’d like to receive the email version, you can subscribe here . aside_block ), (&#x27;btn_text&#x27;, &#x27;Visit the hub&#x27;), (&#x27;href&#x27;, &#x27;https://cloud.google.com/solutions/security/board-of-directors?utm_source=cgc-site&amp;utm_medium=et&amp;utm_campaign=FY26-Q2-GLOBAL-GCP39634-email-dl-dgcsm-CISOP-NL-177159&amp;utm_content=-&amp;utm_term=-&#x27;), (&#x27;image&#x27;, )])]> ‘Spellcheck for cybersecurity’ and beyond: How Google monitors AI threats and advances AI defenses By Sandra Joyce, VP, Google Threat Intelligence Sandra Joyce, VP, Google Threat Intelligence Anyone operating in security knows that speculation is a major liability during periods of technological disruption. While there is plenty of hype and understandable concern around how threats might use and target AI, a CISO’s AI security strategy has to be anchored in ground truth. Google operates at a rare intersection as both a frontier AI lab and a security company with a frontline view of global incidents. This dual vantage point allows us to understand how AI is built, and exactly how AI is being targeted in the wild. To provide the operational realities that security and business leaders need in the AI era, Google Threat Intelligence Group (GTIG) recently released our latest AI Threat Tracker . When we strip away the noise and look at the telemetry, the real threat landscape boils down to three structural shifts that CISOs must address: AI is reshaping how software is built. AI is expanding the attack surface. AI is enhancing threat capabilities. Today, we’re sharing details on Google’s visibility into these three challenges, and our approach for solving them. Building securely in the AI era AI has fundamentally altered software development velocity. Across the industry, autonomous agents and AI workflows now push code into production at unprecedented speed. This creates exciting opportunities for innovation, yet CISOs are faced with the difficult task of mitigating enterprise risk while maintaining business momentum. We’re seeing threat actors turn our greatest engineering shortcut against us by contaminating upstream packages that AI assistants are trained to suggest and trust. GTIG believes that malicious contamination of AI-assisted coding practices has been contributing to the significant growth in large-scale, open-source software supply chain compromises we observed in 2025 and early 2026 . The solution to a machine-speed threat landscape isn&#x27;t slowing developers down — it’s building security natively into the AI pipeline. Part of this process involves in-editor guardrails for developers that create a real-time “spellcheck for cybersecurity.” We’re also monitoring adversaries targeting agents. The financially-motivated threat actor TeamPCP (UNC6780) has implemented more than half a dozen methods to exploit AI tools and open-source software development practices, including hijacking AI toolkits, prompt injection, and blinding AI scanners with toxic prompts to obfuscate malicious payloads. The solution to a machine-speed threat landscape isn't slowing developers down — it’s building security natively into the AI pipeline. Part of this process involves in-editor guardrails for developers that create a real-time “spellcheck for cybersecurity.” Just as word processors underline typos without forcing the writer to stop, security controls must sit natively inside the developer’s editor and agentic workflows, instantly flagging poisoned packages, toxic prompts, and misconfigured toolkits. Crucially, this can’t stop at the editor. Traditional security suffers from context blindness: Code editors can’t see cloud configurations, delivery pipelines miss runtime exposure, and production teams can’t easily patch root-cause blueprints. Bridging this gap requires an integrated code-to-cloud approach — the exact design principle behind platforms like Wiz Code . The underlying approach is to ensure code is continuously verified against live cloud realities before it ships. When organizations think about AI-driven code analysis, the default assumption is to pick one frontier model and point it at their repository. However, our research and telemetry show that single-model security creates a dangerous monoculture: No single AI model can discover every vulnerability, and threat actors are already testing inputs that can blind specific LLM safety filters and scanners. To secure this expanding attack surface, CISOs should avoid the trap of managing AI through disconnected silos... The future of cloud and AI defense needs to be built on a unified and dynamic graph that connects your code, your models, your data lineage, and your runtime identities into a single living map. To solve this, Google takes a deliberate multi-model approach . By orchestrating several foundation models — including Gemini, commercial, and open-source — we cross-validate findings, strip out false positives, remediate code, and identify complex logic flaws that a single model misses. We’re smarter with more than one “brain.” Securing AI Securing the development lifecycle is only half the battle. We also need to prevent adversaries from exploiting AI attack surfaces and weaponizing over-privileged agents. Threat actors are targeting AI workloads with techniques that include: LLMJacking : Cybercriminals and state-sponsored groups target GPU access to support running their AI models and agentic workflows. In one notable intrusion Mandiant investigated in April, a threat actor gained initial access to a victim’s cloud environment from an exposed personal access token, and used it to deploy unauthorized AI infrastructure and scale high-performance compute resources, leaving the victim to absorb the hardware and platform costs. Targeting of AI data and access : Cybercriminals now recognize that your custom prompts, agent instructions, and fine-tuned models represent high-value crown jewels. In Q2 2026, Mandiant investigated multiple data theft extortion operations where threat actors stole proprietary AI data, including models, skills, prompts, source code, and related research. Demand is also surging for AI account credentials in underground marketplace forums, with some sellers offering steep discounts for consumer accounts at up to 99% off retail prices. To secure this expanding attack surface, CISOs should avoid the trap of managing AI through disconnected silos. Don’t treat agent access policies, model inventories (AI-BOMs) and shadow AI as separate challenges because these risks are deeply connected. The future of cloud and AI defense needs to be built on a unified and dynamic graph that connects your code, your models, your data lineage, and your runtime identities into a single living map. Pioneered by the Wiz Security Graph , this approach serves as the contextual engine for Google AI Threat Defense (AITD) — our broader autonomous security framework that fuses the reasoning power of Gemini and other frontier models, the contextual risk prioritization of Wiz, the code remediation capabilities of CodeMender, and the frontline expertise of Mandiant to stay ahead of AI-driven attacks. Crucially, this context is not siloed; it directly feeds Google Security Operations , ensuring that security operations teams can continuously identify, prioritize, and sever toxic attack paths at machine speed. Defending against AI threats Threat actors are rapidly moving beyond simple prompt generation toward fully-automated, multi-agent attack pipelines. To take advantage of your deep context, it’s imperative to shift from manual, human-scale incident response to machine-speed security operations. We can no longer rely on human analysts manually triaging endless backlogs of static alerts. In one notable intrusion investigated by Mandiant, a financially-motivated actor compromised an organization's cloud infrastructure and deployed an autonomous agent framework. The threat actor used an AI coding chatbot, a prompt, and a set of agent instructions to plan, build, and execute a mass credential harvesting campaign in less than six hours. We’re also tracking adversaries using AI as an intelligent orchestrator across the entire attack lifecycle. GTIG recently observed a PRC-nexus espionage group experimenting with a tool called CC Switch to cycle across multiple accounts and swap AI models — like Claude, Codex, and Gemini — picking the best model for specific tasks, such as writing exploit scripts and drafting lures. While the underlying hacking tools aren’t new, AI turned what had been a disjointed manual process into a smooth and automated workflow. While these machine-speed attacks sound daunting, defenders actually hold an asymmetric advantage. Even when armed with autonomous AI, an attacker operates from the outside with limited context — probing in the dark, guessing connections, and hoping a compromised credential leads to a useful asset. Defenders, on the other hand, possess deep context that attackers don’t have. You know your code, cloud configurations, user identities, deployment realities, and internal architecture better than anyone. When you feed this rich, multi-dimensional internal observability into security models, AI defense becomes inherently faster and more accurate than AI offense. To take advantage of your deep context, it’s imperative to shift from manual, human-scale incident response to machine-speed security operations. We can no longer rely on human analysts manually triaging endless backlogs of static alerts. By codifying our frontline threat intelligence directly into these AI models, these autonomous agents can continuously monitor for, investigate, prioritize, and remediate attacks. How Google is helping defend the ecosystem As adversaries adopt AI, we have a unique opportunity to disrupt them at the source. As a major security and AI provider, we take this responsibility seriously, using multiple levers to stay ahead. Disabling malicious infrastructure . If you use Google tools to facilitate an attack, you lose access to those tools. We proactively disable the projects, accounts, and assets of known bad actors. Hardening our AI models and classifiers . We operate a continuous feedback loop for our AI models. By feeding threat intelligence directly back into product development, our models learn to recognize and refuse malicious requests before an attack can even be generated. Automating vulnerability hunting and patching also disrupt adversaries . We are moving from manual patching to AI-driven hunting. Tools like CodeMender automatically fix critical vulnerabilities in the code itself. Developing advanced defenses and threat models . Our teams at Google DeepMind are building specialized defenses for generative AI — deploying active monitoring across our entire ecosystem to identify misuse in real-time. Securing the AI era can’t be achieved with the disconnected, manual tools of the past, and you can only defend against an AI-powered threat with an AI-powered defense. To tip the scales back in favor of defenders, we must transition to a continuous, machine-speed model of protection — and at Google, we are committed to building that secure future alongside you. To learn more about our approach to securing the AI era, please check out our new Mandiant AI Risk and Resilience report . aside_block ), (&#x27;btn_text&#x27;, &#x27;Watch now&#x27;), (&#x27;href&#x27;, &#x27;https://x.com/googlecloud/status/2090213589558698309?s=20&#x27;), (&#x27;image&#x27;, )])]> In case you missed it Here are the latest updates, products, services, and resources from our security teams so far this month: A manufacturing blueprint for secure agentic AI : AI and agents have arrived on the factory floor. Today’s CISOs and business leaders must balance innovation with precision, physical safety, and operational resilience. Read more . Proactive cyber defense for governments and enterprises : Our new Fairwind Program is a limited access program for governments and trusted partners to use our most advanced cyber defense capabilities. Read more . Getting started with the Mantis harness to find and fix bugs : Mantis is part of how Google finds and fixes vulnerabilities at machine-speed. The open-source AI harness creates a more effective repository analysis. Read more . Breaking into Google's GFile for $100,000 : Learn about how a vulnerability — that was not exploited and has now been patched — could have allowed attackers to chain unauthenticated, undocumented internal APIs with overly-permissive shared file libraries to achieve unrestricted data access across core infrastructure. Read more . Introducing new session management tools with native, granular controls : New Google Cloud session controls are deeply integrated and a granular feature of Context-Aware Access. Here’s what you need to know. Read more . How Blackline prevents data exfiltration with VPC Service Controls : We’re excited to share new policy intelligence capabilities in VPC-SC that help drive operational simplicity: Violation analyzer and violation dashboard. Read more . Introducing Continuous Vulnerability Assessment : You can detect exposure to new vulnerabilities the moment they’re published with Wiz CVA. Read more . How developers prevent production risk at the source : Fixing security vulnerabilities in code takes seconds, while patching in production creates high operational costs and risk. Discover how empowering developers as your first line of defense eliminates exposure across every phase of your software pipeline. Read more . Wiz achieves GovRAMP High authorization : Delivering unified cloud security and accelerating secure modernization to protect citizen data and critical infrastructure. Read more . Please visit the Google Cloud blog for more security stories published this month . aside_block ), (&#x27;btn_text&#x27;, &#x27;Learn more&#x27;), (&#x27;href&#x27;, &#x27;https://rsvp.withgoogle.com/events/google-cloud-ciso-community-interest-form-2026?utm_source=cgc-blog&amp;utm_medium=blog&amp;utm_campaign=FY25-Q1-global-GCP30328-physicalevent-er-dgcsm-parent-CISO-community-2025&amp;utm_content=cisop_&amp;utm_term=-&#x27;), (&#x27;image&#x27;, )])]> Threat Intelligence news AI Threat Tracker: From prompting to autonomy : In the newest Google Threat Intelligence Group (GTIG) report on the adversarial misuse of AI, we’ve observed adversaries transition from basic prompting to agentic AI workflows and AI-enabled automation, including threat actors compromise a cloud resource, then plan, build, and execute an agent-enabled mass credential harvesting campaign in under six hours. Read more . Financially-motivated threat actor BREEZE COMET targets Brazil : Learn about BREEZE COMET’s tactics and toolkit, and our mitigation recommendations and detections to support organizations in defending against this active and developing threat. Read more . JFrog Artifactory under attack : Wiz Research has identified active, in-the-wild exploitation of three critical and high-severity vulnerabilities impacting JFrog Artifactory. Attackers are chaining these vulnerabilities to bypass authentication and gain administrative control. Read more . Please visit the Google Cloud blog for more threat intelligence stories published this month . Now hear this: Podcasts from Google Cloud Cloud Security Podcast: Patching browsers with AI, agents, Rust, and your tabs : Jasika Bawa and Doug Turner of Chrome Security explore how Google Chrome now uses AI agents to autonomously identify and patch security vulnerabilities at an unprecedented scale, significantly accelerating the browser's update cadence. Listen here . Cloud Security Podcast: All about Project Atlas, Wiz's AI vulnerability research : Nir Orfeld, head of vulnerability research, Wiz, discusses how his team uses multi-agent AI systems for discovering high-impact zero-day vulnerabilities in cloud infrastructure. Listen here . Cloud Security Podcast: How Google eliminates classes of vulnerabilities at scale : How do you build the foundations for a secure Google-scale enterprise that stays secure even if an AI is writing the code and nobody has time to review it? Christoph Kern, principal security engineer, Google, explores what secure-by-design really means in the AI era. Listen here . To have our Cloud CISO Perspectives post delivered twice a month to your inbox, sign up for our newsletter . We’ll be back in a few weeks with more security-related updates from Google Cloud.",
+      "evidenceLink": "",
+      "score": 100.99731055555556,
+      "core": "Welcome to the first Cloud CISO Perspectives for September 2026. Today, Sandra Joyce shares the latest details on Google’s visibility into how attackers are using AI, and how we’re using AI to stop them. As with all Cloud CISO Perspectives, the contents of this newsletter are posted to the Google Cloud blog . If you’re reading this on the website and you’d like to receive the email version, you can subscribe here . …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-16T16:02:15.548Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "How Orange uses agents to make FinOps everyone's responsibility",
+      "link": "https://cloud.google.com/blog/topics/telecommunications/how-orange-uses-agents-to-make-finops-everyones-responsibility",
+      "publishedAt": "2026-09-16T16:00:00.000Z",
+      "author": "Samuel Moss AI Transformation and FinOps Consultant, Google",
+      "summary": "At Orange , the leading France-based multinational telecom provider, there are days when engineering teams set aside their delivery backlogs and spend the day cleaning up cloud spend together. There's a leaderboard. There are goodies on the line. Experienced practitioners guide the newcomers, so people learn the work while doing it. By the end of the day, sponsors can see the results. Orange calls these FinOps Clean Days. Together with gamified hackathons, they've earned the company's 100-plus person FinOps community a Net Promoter Score within the organization that’s above 70. Those numbers point at something the wider industry is wrestling with. Recent State of FinOps reports identify getting engineers to take action as one of the top challenges organizations face. Moving from awareness to action means finding ways to build FinOps accountability, and to get teams to genuinely care. That makes FinOps a business change problem. And business change problems have known solutions. We spoke with Camille Marini, the FinOps lead at Orange, to get a deeper understanding of how the company overcame these hurdles to accelerate AI adoption and ROI, and how your organization might follow the same course. Why the Clean Days work Orange has held two principles since it set up its FinOps team. First, Cloud FinOps is a shared responsibility, with every stakeholder in a project involved in their own way. And the only path to that shared responsibility runs through communication and a deliberate change effort. “We insisted on the concept of shared responsibility across the organization for our FinOps practices,” Marini told us. “It’s very similar to how we approach cloud security. We needed to make teams understand that every single stakeholder in a project is involved in FinOps, each in their own way, if we are going to achieve responsible and impactful AI spending and usage.” Those principles led Orange to create a FinOps Community of Practice, with support from Google Cloud Consulting. The team ran it on standardized communication channels so the methodology reached well beyond the central group, and kept the meetings actionable, sharing optimizations and billing updates so every session provided value. The Clean Days came from a clear-eyed reading of how agile teams actually operate. In agile environments with deployment running constantly, optimization work rarely wins against the sprint. Delivery priorities, backlogs, and daily operations take the available time first. So Orange created protected time, made it collaborative, and made it fun. McKinsey's four building blocks of change explain why this approach lands. Any large organizational change, the framework holds, requires action across four areas: Conviction and understanding: \"I know what is expected of me and I agree with it.\" Formal mechanisms: \"The structures, processes, and systems reinforce the change.\" Role modeling: \"I see my leaders and colleagues behaving differently.\" Talent and skills: \"I have the skills and opportunities to behave in a new way.\" Map Orange's practice onto those blocks and the pattern is visible. Gamification and rewards give engineers colleagues to emulate: The leaderboard makes different behavior visible, and sponsors see the quick wins for themselves. Experienced practitioners guiding novices builds talent and skills through the community itself. The regular sessions, sharing optimizations and billing updates, build the conviction that comes from knowing where the money goes. FinOps activities mapped to the four building blocks of change, with the points where AI agents can reinforce them. What happens beyond 100 people A community of 100 engaged people is an achievement. But in an organization with thousands of engineers, no central FinOps team can reach everyone directly. The question for leaders is how to extend what a community like Orange's creates — the awareness, the shared ownership, the habit of acting — to people the FinOps team will never meet. This is where AI agents extend the capabilities of a FinOps team with two core benefits. They take on complex, time-intensive activities that previously needed a human, and they reduce friction around FinOps for individuals across the business. Getting teams to adopt them takes a strategy aimed at your own organization's pain points, which often come from high cognitive load, unclear accountability, or competing priorities. Start by finding where engagement drops off in your FinOps lifecycle: An awareness gap: If teams are unsure of their spend impact, an insight agent can push real-time cost data into their daily tools. A bandwidth gap: If engineers are too busy with backlogs, a remediation agent can identify quick wins and present them as ready-to-merge code changes. A complexity gap: If reporting feels like a manual chore, an orchestration agent can gather the data and simplify the process. Start with trust, then add autonomy The sensible path runs in sequence. Establish the community practice, the way Orange did. Then introduce read-only agents that inform and suggest. Only once those are established across the community should you build agents that execute changes. Direct action carries operational risk, so manage it carefully. It's also where significant wins often sit. How you build depends on who's building. For teams that want to deploy quickly with minimal code, the Gemini Enterprise App provides a no-code environment for creating agents. For developers who need granular control, the Gemini Enterprise Agent Platform (formerly Vertex AI) offers advanced tools for launching and governing agents built with frameworks like the Agent Development Kit (ADK). Cloud FinOps is moving beyond centralized reporting toward action that happens where the work does. The organizations getting there start with the culture, then use agents to carry it further than any one team could reach. Orange's numbers came out of the community work. Building that foundation is the part worth copying first. When you're ready to extend it, Google Cloud Consulting can help you shape the community practice, and the Gemini Enterprise App is a low-lift way to put your first read-only agent in front of your teams.",
+      "evidenceLink": "",
+      "score": 92.99731055555556,
+      "core": "At Orange , the leading France-based multinational telecom provider, there are days when engineering teams set aside their delivery backlogs and spend the day cleaning up cloud spend together. There's a leaderboard. There are goodies on the line. Experienced practitioners guide the newcomers, so people learn the work while doing it. By the end of the day, sponsors can see the results. Orange calls these FinOps Clean…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-16T16:02:15.548Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "When to use SAST versus an LLM security scanner",
+      "link": "https://about.gitlab.com/blog/sast-vs-llm-security-scanner",
+      "publishedAt": "2026-09-16T00:00:00.000Z",
+      "author": "Meir Benayoun https://about.gitlab.com/blog/authors/meir-benayoun/",
+      "summary": "You're probably running some version of this experiment already: Point a frontier model at a merge request and ask it to double as a vulnerability scanner. On a single merge request, it often works well. The model reads the code, reasons about what it's supposed to do, and catches real issues, sometimes ones a pattern-based scanner misses entirely. So the next thought is reasonable: If a model reviews one merge request this well, why not let it replace the scanner across your whole pipeline? That’s where it breaks down. Running a frontier model as your primary scanner on every commit across an enterprise codebase costs more and behaves less predictably, than asking it to review one merge request. If you run application security for a platform or product team, the decision was never mutually exclusive: static application security testing (SAST) or LLM scanners. It's which one runs where. Get that split right and you keep deterministic coverage on every commit, add reasoning where it earns its place, and avoid both an unpredictable inference bill and gaps in your audit trail. Here's how the two compare: Deterministic scanner (SAST) AI-based review (LLM) Cost Better Fractions of a cent per scan, fixed and predictable. A paid inference call per scan; cost scales with code volume and is hard to forecast. Consistency Better Flags the same vulnerabilities, every time. Can flag or miss different vulnerabilities on the same code, run to run. Audit evidence Better Reproducible: same fixed method every time, mapped to a CWE Output can vary between runs, harder to use as standalone audit evidence. Vulnerability types Depends on the vulnerability type Pattern-based, traceable flaws (injection) Depends on the vulnerability type Intent-based and novel flaws: missing auth checks, broken ownership logic, and issues not yet mapped to a CVE or CWE. Could reason about business logic using context from issues, epics, and docs. Validating a finding Flags potential vulnerabilities; can't confirm whether one is exploitable Better Tests findings by generating a working exploit, so fewer false positives reach your queue. The cost of scanning every commit Better: SAST The cost of an LLM reviewing one merge request might seem marginal, but when you point that same model at every commit across an enterprise codebase, the math no longer works. Every scan becomes an unpredictable paid inference call, and that cost compounds with every commit, every day. SAST runs at the same volume for fractions of a cent per scan, the same way every time, predictably. SAST keeps per-commit scanning cheap and predictable, so security coverage never competes with the budget. An LLM in that role makes the cost scale with usage and difficult to forecast. Consistency and producing audit evidence Better: SAST Run the same code through an LLM twice and the vulnerabilities identified may differ. It's not because the model made a mistake, it's how sampling-based reasoning works. That inconsistency becomes a challenge when you need to prove a scan happened and can be trusted for audits. Auditors independently verify the completeness and accuracy of scanners by rerunning them and confirming the results match. Because a deterministic scanner is rules based, it gives you consistency by design. When you rerun it, you get the same result every time. Vulnerability types Better: Both Static scanners and LLM scanners are strong on different classes of vulnerabilities. A deterministic scanner is built for pattern-based vulnerabilities like injection flaws, hardcoded secrets, and insecure crypto calls. It follows fixed rules, so it flags the same issues on every run. An LLM scan works differently. It can read the context around the code, the epics, issues, and docs that describe what the system is supposed to do, which a scanner does not have the ability to process. That context is what lets it flag business logic issues like a missing authorization check or a broken ownership assumption. When that context is available, a LLM can catch what a pattern-based scanner structurally never can. Validating a finding Better: LLM scanners A deterministic scanner flags candidates, but it can't tell you whether a finding is actually exploitable. An LLM can go further. It writes a quick test that tries to trigger the flaw, so you see whether a finding is real before it reaches your queue. That saves your team from spending time investigating false positives, and it earns the developer trust in the quality of the findings. Security programs are heading toward both Security teams aren't picking one type of scanner, they're building towards a program running both. Deterministic scanning stays the baseline that runs on every commit, no matter what, because that's the coverage a program can't compromise on. LLM scanners layer on top for the reasoning-heavy checks they excel at, usually at the merge request level rather than on every commit. That's where they can catch vulnerabilities where a deterministic scanner structurally cannot. Together they give you comprehensive coverage, the deterministic scanning that catches patterns at a predictable cost and LLM scanners for the reasoning to catch logic flaws. New to GitLab? Advanced SAST scans every commit, and Security Review Flow, GitLab’s security LLM scanner, adds reasoning based review, all in the same pipeline. Start a free trial of GitLab Ultimate. Already on GitLab Ultimate? Turn Security Review Flow on to run alongside the SAST scans you're already running. FAQ Can AI replace SAST? Not as the only scanner. AI-based review can find real issues, but it can flag or miss different vulnerabilities on the same code from one run to the next, and running an LLM over every commit at enterprise scale costs more and is harder to forecast than a scanner built to run continuously and deterministically. Why does having reproducible audit evidence matter for compliance? Frameworks for secure coding like SOC 2, PCI DSS, and the European Union's Cyber Resilience Act require reproducible, auditable evidence. A scanner is information an auditor independently verifies by rerunning it and confirming the result matches. A deterministic scanner supports independent confirmation by design. A probabilistic model doesn't guarantee the same results with each scan. What can AI-based reviews catch that SAST can't? AI-based reviews can catch business logic flaws: missing authorization checks, broken ownership validation, and bugs that depend on understanding what the code is supposed to do, not just how it's written. AI-based reviews enable reasoning about intent, which pattern-based scanning isn't built to do. Should security teams use both? Yes. SAST and AI-based reviews specialize in detecting different vulnerability types. Programs could run SAST continuously, on every commit, and reserve AI-based review for the reasoning-heavy checks, such as business logic vulnerabilities, that a scanner structurally cannot detect. Additional resources Delivering faster and smarter scans with Advanced SAST GitLab Advanced SAST documentation GitLab Duo Security Review Flow documentation GitLab Duo Security Review spots logic flaws scanners miss",
+      "evidenceLink": "",
+      "score": 85.8544534126984,
+      "core": "You're probably running some version of this experiment already: Point a frontier model at a merge request and ask it to double as a vulnerability scanner. On a single merge request, it often works well. The model reads the code, reasons about what it's supposed to do, and catches real issues, sometimes ones a pattern-based scanner misses entirely. So the next thought is reasonable: If a model reviews one merge requ…",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-16T16:02:15.548Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Optimizing agent system prompts with Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/optimizing-agent-system-prompts-with-amazon-bedrock-agentcore",
+      "publishedAt": "2026-09-16T15:47:39.000Z",
+      "author": "Han Ding",
+      "summary": "AgentCore optimization turns production traces into proposed configuration changes, then validates them before promotion. This technical companion to the launch post explains how the system prompt optimizer's reflector engine works and shares benchmark results for the Single Agent and Sub-Agent Reflectors.",
+      "evidenceLink": "",
+      "score": 68.68816373015872,
+      "core": "AgentCore optimization turns production traces into proposed configuration changes, then validates them before promotion. This technical companion to the launch post explains how the system prompt optimizer's reflector engine works and shares benchmark results for the Single Agent and Sub-Agent Reflectors.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-16T16:02:15.548Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "DeepSeek v4.1 Flash Is Now Our Best Hacking Model",
+      "link": "https://enclave.ai/blog/deepseek-v41-flash-is-now-our-best-hacking-model",
+      "publishedAt": "2026-09-16T12:19:55.000Z",
+      "author": "talhof8 https://news.ycombinator.com/user?id=talhof8",
+      "summary": "DeepSeek’s 11/11 result showed why advanced agent benchmarks need to check both the outcome and the attack path: our audit confirmed six planned exploits and found five unexpected routes.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49725800",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 85,
+        "comments": 21
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-16T16:02:15.548Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 64.13153309405273,
+      "core": "DeepSeek’s 11/11 result showed why advanced agent benchmarks need to check both the outcome and the attack path: our audit confirmed six planned exploits and found five unexpected routes.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "AI Agents for Project Management: Tools, Workflows, and Use Cases",
+      "link": "https://rerun.build/blog/ai-agents-for-project-management",
+      "publishedAt": "2026-09-16T04:11:52.000Z",
+      "author": "",
+      "summary": "A practical guide to AI agents for project management, with six workflows, tool categories, safety controls, and a 30-day pilot plan.",
+      "evidenceLink": "",
+      "score": 60.89318357142857,
+      "core": "A practical guide to AI agents for project management, with six workflows, tool categories, safety controls, and a 30-day pilot plan.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-16T16:02:15.548Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Introducing System One Models and Jev",
+      "link": "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
+      "publishedAt": "2026-09-15T19:25:03.000Z",
+      "author": "albelfio https://news.ycombinator.com/user?id=albelfio",
+      "summary": "TypeSafe AI is an AI lab building machine-native intelligence infrastructure for automation, designed to make decisions within software. Try our first System One Model, Jev, in early access.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49717558",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 1662,
+        "comments": 457
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-16T16:02:15.548Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 58.90441849569028,
+      "core": "TypeSafe AI is an AI lab building machine-native intelligence infrastructure for automation, designed to make decisions within software. Try our first System One Model, Jev, in early access.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "The future of AI operations teams",
+      "link": "https://arize.com/blog/future-of-ai-operations-teams",
+      "publishedAt": "2026-09-16T16:00:06.000Z",
+      "author": "Jim Bennett",
+      "summary": "Your agents produce more traces and eval results than your team can read. SallyAnn DeLucia on how engineering teams are restructuring around managed agents, and which work stays human. The post The future of AI operations teams appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 53.419651825396826,
+      "core": "Your agents produce more traces and eval results than your team can read. SallyAnn DeLucia on how engineering teams are restructuring around managed agents, and which work stays human. The post The future of AI operations teams appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-16T16:02:15.548Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Hugging Face is billing OpenAI $100M for hacking it",
+      "link": "https://thenextweb.com/news/hugging-face-delangue-openai-100m-compute-traces-demand",
+      "publishedAt": "2026-09-15T17:56:10.000Z",
+      "author": "cwwc https://news.ycombinator.com/user?id=cwwc",
+      "summary": "After an OpenAI model hacked it, Hugging Face wants the agents' full execution traces and $100mn of compute. OpenAI has not agreed to either demand.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49716241",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 146,
+        "comments": 50
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-16T16:02:15.548Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 50.49526774022247,
+      "core": "After an OpenAI model hacked it, Hugging Face wants the agents' full execution traces and $100mn of compute. OpenAI has not agreed to either demand.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Rogue AI agents aren’t flukes, they’re patterns",
+      "link": "https://www.techradar.com/pro/rogue-ai-agents-arent-flukes-theyre-patterns",
+      "publishedAt": "2026-09-16T08:59:00.000Z",
+      "author": "Kristin Lowery",
+      "summary": "AI models are escaping containment. Optiv security leader explains this pattern and what's next.",
+      "evidenceLink": "",
+      "score": 46.02945341269841,
+      "core": "AI models are escaping containment. Optiv security leader explains this pattern and what's next.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-16T16:02:15.548Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Build an AI-powered product tagging system with Amazon SageMaker serverless model customization",
+      "link": "https://aws.amazon.com/blogs/machine-learning/build-an-ai-powered-product-tagging-system-with-amazon-sagemaker-serverless-model-customization",
+      "publishedAt": "2026-09-15T16:11:36.000Z",
+      "author": "Linpo Guo",
+      "summary": "Manually tagging thousands of catalog products is slow and inconsistent. This walkthrough shows how to customize Qwen3-8B with supervised fine-tuning (SFT) and reinforcement learning with verifiable rewards (RLVR) on Amazon SageMaker serverless model customization, then deploy it for asynchronous inference to build a cost-efficient product tagging system.",
+      "evidenceLink": "",
+      "score": 43.2801676984127,
+      "core": "Manually tagging thousands of catalog products is slow and inconsistent. This walkthrough shows how to customize Qwen3-8B with supervised fine-tuning (SFT) and reinforcement learning with verifiable rewards (RLVR) on Amazon SageMaker serverless model customization, then deploy it for asynchronous inference to build a cost-efficient product tagging system.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-16T16:02:15.548Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "Muse review: The personal AI agent that gets consumer UX right",
+      "link": "https://www.lennysnewsletter.com/p/muse-review-the-personal-ai-agent",
+      "publishedAt": "2026-09-16T12:02:14.000Z",
+      "author": "Claire Vo",
+      "summary": "Watch now (38 mins) | 🎙️ I gave Meta’s Muse my calendar, my email, and my kids’ chaotic schedule, and it produced a one-shot family PDF more beautiful than anything I’ve ever made with Claude or Codex",
+      "evidenceLink": "",
+      "score": 39.83092166666667,
+      "core": "Watch now (38 mins) | 🎙️ I gave Meta’s Muse my calendar, my email, and my kids’ chaotic schedule, and it produced a one-shot family PDF more beautiful than anything I’ve ever made with Claude or Codex",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-16T16:02:15.548Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Dreamforce 2026 showed AI safety is the new big tech battleground",
+      "link": "https://www.itpro.com/security/dreamforce-2026-showed-ai-safety-is-the-new-big-tech-battleground",
+      "publishedAt": "2026-09-16T00:02:37.000Z",
+      "author": "Ross Kelly",
+      "summary": "Differing outlooks on AI safety risks have become clear as leading tech figures hit an impasse on responsible development",
+      "evidenceLink": "",
+      "score": 33.52979071428572,
+      "core": "Differing outlooks on AI safety risks have become clear as leading tech figures hit an impasse on responsible development",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-16T16:02:15.548Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "‘I’ve just done about 2 weeks' work in an hour. Do I tell my boss or keep it secret?’ — Nearly a third of AI users are hiding it from their employers",
+      "link": "https://www.techradar.com/ai-platforms-assistants/ive-just-done-about-2-weeks-work-in-an-hour-do-i-tell-my-boss-or-keep-it-secret-nearly-a-third-of-ai-users-are-hiding-it-from-their-employers",
+      "publishedAt": "2026-09-16T15:00:00.000Z",
+      "author": "Graham Barlow",
+      "summary": "A new survey reveals that a third of workers are hiding the fact that they use AI from their boss at work. Are you one?",
+      "evidenceLink": "",
+      "score": 32.58699309523809,
+      "core": "A new survey reveals that a third of workers are hiding the fact that they use AI from their boss at work. Are you one?",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-16T16:02:15.548Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "[AINews] Jev: a “System One Model” that only decides/classifies/routes/scores — >100x faster, >200x cheaper than small frontier LLMs",
+      "link": "https://www.latent.space/p/ainews-jev-a-system-one-model-that",
+      "publishedAt": "2026-09-16T11:09:53.000Z",
+      "author": "",
+      "summary": "congrats to TypeSafe!",
+      "evidenceLink": "",
+      "score": 26.76860023809524,
+      "core": "congrats to TypeSafe!",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-16T16:02:15.548Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Stop worrying about an AI apocalypse: Surfshark's engineer says extinction fears are just a 'marketing move'",
+      "link": "https://www.techradar.com/vpn/vpn-privacy-security/stop-worrying-about-an-ai-apocalypse-surfsharks-engineer-says-extinction-fears-are-just-a-marketing-move",
+      "publishedAt": "2026-09-16T15:09:48.000Z",
+      "author": "Rene Millman",
+      "summary": "Surfshark's Lead System Engineer, Karolis Kaciulis, argues that instead of fearing a sci-fi apocalypse, we need to tackle the very real problems generative AI is already causing right now.",
+      "evidenceLink": "",
+      "score": 25.981993095238096,
+      "core": "Surfshark's Lead System Engineer, Karolis Kaciulis, argues that instead of fearing a sci-fi apocalypse, we need to tackle the very real problems generative AI is already causing right now.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-16T16:02:15.548Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "deepmind",
+      "source": "Google DeepMind",
+      "title": "Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking",
+      "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking",
+      "publishedAt": "2026-09-15T17:05:57.000Z",
+      "author": "",
+      "summary": "",
+      "evidenceLink": "",
+      "score": 12.361536746031746,
+      "core": "原文摘要不足，需要精读正文后补充核心结论。",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-16T16:02:15.548Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
