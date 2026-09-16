@@ -3582,8 +3582,21 @@ function testAihotOpinionSignalsStayDeprioritized() {
   );
 }
 
+function testEmbeddedVersionReleaseStaysWeak() {
+  const item = {product: "openai/codex rusty-v8-v152.2.0", source: "github", did: "发布 rusty-v8-v152.2.0。", link: "https://github.com/openai/codex/releases/tag/rusty-v8-v152.2.0", evidence: "GitHub Release", type: "老产品更新"};
+  assert.equal(priorityScore(item), priorityScore({...item, qualityLabel: "weak_keep"}));
+}
+
 function testCurrentAihotNonProductSignalsStayDeprioritized() {
   const signals = [
+    { product: "PS5 Linux 负责人退出项目", did: "AI 编程社区争议。" },
+    { product: "Microsoft 批评 Anthropic 赋予模型意识", did: "Claude 宪法争论。" },
+    { product: "Cohere 签署最终协议完成合并", did: "两家公司合并。" },
+    { product: "OpenAI 筹备 Codex Replay 功能", did: "可选取历史线程执行任务。" },
+    { product: "Krea Agent 工作流拆解", did: "第三方使用心得。" },
+    { product: "华为发布智能世界 2035 报告", did: "预测 Token 消耗。" },
+    { product: "Google 发布 Fuse：评估 LLM 社交推理", did: "研究框架与数据集开源。" },
+
     {
       product: "Our Agents， Ourselves",
       did: "🔗 阅读原文 via AIHOT · https://aihot.virxact.com/items/current-non-product"
@@ -5052,6 +5065,7 @@ const tests = [
   ["AIHOT policy news stays deprioritized across producer and consumer", testAihotPolicyNewsStaysDeprioritizedAcrossProducerAndConsumer],
   ["Entertainment novelty signals stay deprioritized", testEntertainmentNoveltySignalsStayDeprioritized],
   ["AIHOT opinion signals stay deprioritized", testAihotOpinionSignalsStayDeprioritized],
+  ["Embedded version release stays weak", testEmbeddedVersionReleaseStaysWeak],
   ["Current AIHOT non-product signals stay deprioritized", testCurrentAihotNonProductSignalsStayDeprioritized],
   ["AIHOT product metrics opinion stays deprioritized", testAihotProductMetricsOpinionStaysDeprioritized],
   ["Report why copy specializes current HN agent signals", testReportWhyCopySpecializesCurrentHnAgentSignals],

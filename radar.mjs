@@ -389,6 +389,7 @@ function isAihotNonProductSignal(item) {
   const source = cleanKey(item.source).toLowerCase();
   if (source !== "aihot") return false;
   const text = `${item.product} ${item.did} ${item.why} ${item.evidence}`.toLowerCase();
+  if (/退出(?:项目|开发|PS5|ps5)|(?:批评|警告).{0,80}(?:意识|道德病人|模型福利|宪法)|签署最终协议.{0,12}合并|筹备.{0,24}功能|工作流.{0,8}拆解|(?:发布|推出).{0,20}智能世界.{0,10}报告|C 端.{0,12}机会|社交推理|低成本低延迟AI模型玩Doom/i.test(`${item.product}`)) return true;
   const actionText = `${item.product} ${item.did} ${item.evidence}`.toLowerCase();
   const hasProductAction = /发布|推出|上线|更新|开源|release|released|launch|launched|introducing|now available/i.test(actionText);
   const hasProductSurface = /产品|工具|应用|app|api|sdk|agent|智能体|助手|工作流|平台|runtime|browser|插件|扩展/i.test(actionText);
@@ -2509,7 +2510,7 @@ function isLowSignalGitHubPackageRelease(item) {
   const releaseText = `${item.product || ""} ${did} ${item.link || ""}`.toLowerCase();
   const releaseTitle = `${item.product || ""}`.toLowerCase();
   const isScopedPackageVersion = /@[a-z0-9_.-]+\/[a-z0-9_.-]+@?\d+\.\d+\.\d+\b/i.test(releaseText);
-  const hasVersionInTitle = /(?:^|[\s@])v?\d+\.\d+\.\d+(?:[-.](?:alpha|beta|rc)[.-]?\d+)?\b/i.test(releaseTitle);
+  const hasVersionInTitle = /(?:^|[\s@]|-v)v?\d+\.\d+\.\d+(?:[-.](?:alpha|beta|rc)[.-]?\d+)?\b/i.test(releaseTitle);
   const onlyVersionAnnouncement = /^发布\s+[^。]{1,140}。$/.test(did);
   const releaseTag = did.match(/^发布\s+([^。]{1,140})。$/)?.[1] || "";
   const hasOnlyChannelTag = /^(stable|beta|alpha|latest|nightly|canary)$/i.test(releaseTag);
