@@ -44,6 +44,7 @@ import { buildSiteData, parseReportMarkdown, renderSiteHtml } from "./build-site
 import { parseKnowledgeReport } from "./build-knowledge-page.mjs";
 import {
   parseFeed,
+  probePublicBlog,
   isAiRelevant,
   knowledgeTopicKey,
   matchTopConference,
@@ -1999,7 +2000,13 @@ function testShowHnNoveltyAndComplaintSignalsStayWeak() {
     "Come prove the Berge Fulkerson conjecture with a swarm of agents",
     "How LLMs work, explained through music, football or cricket analogies",
     "Vibe Logic Programming Language",
-    "Loss. a tiny satire about AI progress"
+    "Loss. a tiny satire about AI progress",
+    "What sandboxing an AI coding agent in a VM costs",
+    "A Coding Agent from Scratch",
+    "I vibe-coded a platformer you play by physically turning and jumping",
+    "Learn Claude Code – Interactive Mindmap",
+    "Smart Mouth Billy Bass – another fishy LLM assistant",
+    "Share your AI Setup, Learn from others"
   ];
   for (const title of titles) {
     const item = {
@@ -3589,6 +3596,11 @@ function testEmbeddedVersionReleaseStaysWeak() {
 
 function testCurrentAihotNonProductSignalsStayDeprioritized() {
   const signals = [
+    { product: "圆谷公司谈AI重塑内容创作", did: "欢迎参加大会，将分享观点。" },
+    { product: "OpenRouter 对话 PrimeIntellect 谈开放模型", did: "播客讨论模型选择与经济学。" },
+    { product: "SemiAnalysis：智能体流量已占全部推理流量70%以上", did: "总结 KV-cache 负载特征。" },
+    { product: "OpenAI 发布模型失当报告框架", did: "披露六份模型行为报告。" },
+    { product: "Andrew Yang 称 OpenAI 需合成互联网训练智能体", did: "援引未具名人士谈训练环境。" },
     { product: "PS5 Linux 负责人退出项目", did: "AI 编程社区争议。" },
     { product: "Microsoft 批评 Anthropic 赋予模型意识", did: "Claude 宪法争论。" },
     { product: "Cohere 签署最终协议完成合并", did: "两家公司合并。" },
@@ -4333,6 +4345,18 @@ async function testHckerNewsKnowledgeFixture() {
     <link rel="alternate" href="https://arxiv.org/abs/2602.16763"/>
     <content type="html">&lt;p&gt;102 points by doppp | 100 comments&lt;/p&gt;</content>
   </entry>
+  <entry>
+    <title>OpenSpec – A configurable AI spec framework</title>
+    <updated>2026-08-04T16:10:39Z</updated>
+    <link rel="alternate" href="https://openspec.dev/"/>
+    <content type="html">&lt;p&gt;102 points by author | 100 comments&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>AI Safety Is Mostly a Sex Cult</title>
+    <updated>2026-08-04T16:10:39Z</updated>
+    <link rel="alternate" href="https://skywriter.blue/@example/thread"/>
+    <content type="html">&lt;p&gt;102 points by author | 100 comments&lt;/p&gt;</content>
+  </entry>
 </feed>`;
   const parsed = parseFeed(xml, { id: "hcker_news_ai_blogs", label: "Hacker News · hcker.news" });
   const originalFetch = globalThis.fetch;
@@ -4357,6 +4381,20 @@ async function testHckerNewsKnowledgeFixture() {
     assert.deepEqual(items[0].hnMetrics, { points: 241, comments: 200 });
     assert.equal(items[0].access.mode, "public");
     assert.match(items[0].core, /software engineering/);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+}
+
+async function testKnowledgeAccessRejectsHttpBlocking() {
+  const originalFetch = globalThis.fetch;
+  try {
+    for (const status of [403, 429]) {
+      globalThis.fetch = async () => new Response("blocked", { status });
+      const result = await probePublicBlog({ link: "https://example.com/ai-article" }, {}, "2026-09-18T00:00:00Z");
+      assert.equal(result.ok, false, `HTTP ${status} cannot prove public article access`);
+      assert.equal(result.reason, `HTTP ${status}`);
+    }
   } finally {
     globalThis.fetch = originalFetch;
   }
@@ -4474,6 +4512,11 @@ function testKnowledgePaperAndAuditFixture() {
   assert.equal(audit.ok, true);
   assert.equal(audit.blogCount, 16);
   assert.equal(audit.paperCount, 4);
+  const botLimitedCandidates = structuredClone(candidates);
+  botLimitedCandidates.items[0].access.evidence = "public_canonical_bot_limited";
+  const botLimitedAudit = auditKnowledge({ report, health, candidates: botLimitedCandidates, siteHtml, minCount: 18 });
+  assert.equal(botLimitedAudit.ok, false, "a bot-blocked URL without successful access verification must fail acceptance");
+  assert.ok(botLimitedAudit.failures.some((item) => item.code === "knowledge_blog_access_unverified"));
 
   const shortageReport = {
     ...report,
@@ -4513,6 +4556,14 @@ function testKnowledgeStrongAiRelevanceRejectsIncidentalMentions() {
     requireStrongAiRelevance: true,
     requireKnowledgeDepth: true
   };
+  assert.equal(isAiRelevant({ title: "Blog — Nari Labs", link: "https://narilabs.com/blog", summary: "Research and engineering notes on realtime multimodal AI inference." }, source), false,
+    "a blog directory is a discovery entry point, not a dated article");
+  assert.equal(isAiRelevant({ title: "AI inference engineering", link: "https://example.com/blog/ai-inference", summary: "AI inference benchmark and latency analysis." }, source), true,
+    "individual engineering articles must remain eligible");
+  assert.equal(isAiRelevant({ title: "Vectra AI launches Ascent partner program to address AI-driven attacks", summary: "Co-selling, co-marketing and partner service delivery." }, source), false,
+    "a commercial partner-program launch must not occupy an engineering reading slot");
+  assert.equal(isAiRelevant({ title: "Microsoft’s commitment for AI in education", summary: "AI can personalize learning and expand access." }, source), false,
+    "a general corporate commitment without mechanisms must not fill Knowledge slots");
   assert.equal(
     isAiRelevant(
       {
@@ -5083,6 +5134,7 @@ const tests = [
   ["Knowledge feed parser fixture", testKnowledgeFeedParserFixture],
   ["Knowledge Blog backfill balances sources", testKnowledgeBlogBackfillBalancesSources],
   ["hcker.news Knowledge filtering fixture", testHckerNewsKnowledgeFixture],
+  ["Knowledge access rejects HTTP blocking", testKnowledgeAccessRejectsHttpBlocking],
   ["Gmail newsletter normalization fixture", testGmailNewsletterFixture],
   ["Knowledge strong AI relevance rejects incidental mentions", testKnowledgeStrongAiRelevanceRejectsIncidentalMentions],
   ["Knowledge topic key collapses versioned announcements", testKnowledgeTopicKeyCollapsesVersionedAnnouncements],

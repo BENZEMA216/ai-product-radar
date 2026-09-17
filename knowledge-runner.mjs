@@ -172,6 +172,8 @@ const HCKER_NON_BLOG_HOSTS = [
   "gitlab.com",
   "x.com",
   "twitter.com",
+  "bsky.app",
+  "skywriter.blue",
   "youtube.com",
   "youtu.be",
   "news.ycombinator.com",
@@ -318,6 +320,7 @@ function hckerExternalBlogLink(value) {
     const host = url.hostname.toLowerCase();
     if (!["http:", "https:"].includes(url.protocol)) return false;
     if (HCKER_NON_BLOG_HOSTS.some((blocked) => host === blocked || host.endsWith(`.${blocked}`))) return false;
+    if (url.pathname === "/") return false;
     if (/\.pdf$/i.test(url.pathname)) return false;
     return true;
   } catch {
@@ -472,6 +475,13 @@ function strongAiEvidence(item) {
 export function isAiRelevant(item, source) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
   const title = String(item.title || "").toLowerCase();
+  if (/\blaunch(?:es|ing)?\b.{0,70}\bpartner program\b|^microsoft[’']s commitment for ai in education$/i.test(title)) return false;
+  if (item.link) {
+    try {
+      const path = new URL(item.link).pathname.replace(/\/+$/, "");
+      if (/^\/(?:blog|blogs|articles|engineering|research)$/i.test(path)) return false;
+    } catch { /* URL validity is checked by the access gate. */ }
+  }
   if (/cyber resilience act.{0,40}(?:reporting|deadline)/i.test(title) && !AI_ANCHOR_PATTERNS.some((pattern) => pattern.test(title))) {
     return false;
   }
@@ -940,7 +950,7 @@ function blockedBlogPage(html) {
   ].some((marker) => text.includes(marker));
 }
 
-async function probePublicBlog(item, source, checkedAt) {
+export async function probePublicBlog(item, source, checkedAt) {
   try {
     const response = await fetch(item.link, {
       redirect: "follow",
@@ -965,20 +975,6 @@ async function probePublicBlog(item, source, checkedAt) {
             mode: "public",
             checkedAt,
             evidence: "live_http"
-          }
-        }
-      };
-    }
-    if ([403, 429].includes(response.status) && source.accessPolicy !== "gmail_subscription") {
-      return {
-        ok: true,
-        item: {
-          ...item,
-          access: {
-            verified: true,
-            mode: "public",
-            checkedAt,
-            evidence: "public_canonical_bot_limited"
           }
         }
       };

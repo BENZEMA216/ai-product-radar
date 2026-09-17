@@ -78,7 +78,7 @@ export function auditKnowledge({ report, health, candidates, siteHtml, minCount 
     .filter((item) => item.kind === "Blog")
     .filter((item) => {
       const access = candidateByLink.get(item.link)?.access;
-      return !access?.verified || !["public", "gmail_subscription"].includes(access.mode);
+      return !access?.verified || !["public", "gmail_subscription"].includes(access.mode) || access.evidence === "public_canonical_bot_limited";
     })
     .map((item) => item.title);
   if (blogAccessFailures.length) {

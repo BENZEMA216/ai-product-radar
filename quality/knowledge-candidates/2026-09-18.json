@@ -1,0 +1,406 @@
+{
+  "generatedAt": "2026-09-17T16:06:31.763Z",
+  "date": "2026-09-18",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "TypeSafe AI's Jev now available on AI Gateway",
+      "link": "https://vercel.com/changelog/typesafe-ai-jev-now-available-on-ai-gateway",
+      "publishedAt": "2026-09-16T00:00:00.000Z",
+      "author": "Rohan Taneja",
+      "summary": "Jev from TypeSafe AI is now available on AI Gateway . Jev is a probabilistic decision model for software: state goes in, typed Choice, Score, and Boolean answers come out. Regular language models generate text one token at a time, which the application then parses and validates. Jev evaluates all declared questions in parallel and returns typed answers plus probabilities directly. That removes unnecessary text generation and makes it straightforward to automate clear cases while routing uncertain ones to review. TypeSafe reports Jev was up to 193.6x faster and 444.6x cheaper than LLMs on its workflow evaluations. Example use cases include: Choosing the next tool or subagent in an agent loop Deciding whether to continue, retry, ask the user, or stop Scoring urgency or risk before an action Verifying model outputs and enforcing guardrails. AI SDK 7 exposes Jev through the experimental evaluate API . Choice selects an option, Score grades an ordered rubric, and Boolean estimates the probability of true . Install the current AI SDK (AI SDK 7.0.105 onwards supports the evaluate API): Each evaluation specifies: model : the evaluation model to call, state : the shared string, object, or array to evaluate, and questions : a map of named decisions to make about that state. Call the model with typesafe-ai/jev . This example turns one support case into a queue, priority, and refund-review decision, with uncertain routing sent for manual review: The result preserves question IDs and Choice keys. TypeSafe reports separate Choice and Score confidence in result.providerMetadata.typesafe.confidence . Calibrate probabilities and confidence against labeled examples from your workflow. Jev supports Zero Data Retention and No Training , enabled per request in the example. Evaluation calls also appear in logs and custom reporting , count toward budgets , and accept other Gateway provider options in the same providerOptions.gateway object. Read the documentation on evaluation models on AI Gateway for more details. Read more",
+      "evidenceLink": "",
+      "score": 69.13508406746033,
+      "core": "Jev from TypeSafe AI is now available on AI Gateway . Jev is a probabilistic decision model for software: state goes in, typed Choice, Score, and Boolean answers come out. Regular language models generate text one token at a time, which the application then parses and validates. Jev evaluates all declared questions in parallel and returns typed answers plus probabilities directly. That removes unnecessary text gener…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-17T16:06:31.763Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Improving HCLS AI reasoning with open-source agent skills",
+      "link": "https://aws.amazon.com/blogs/machine-learning/improving-hcls-ai-reasoning-with-open-source-agent-skills",
+      "publishedAt": "2026-09-16T19:00:00.000Z",
+      "author": "Michael Hsieh",
+      "summary": "AI agents on foundation models often misapply healthcare and life sciences decision frameworks, citing the right guideline but applying it incorrectly. This post shares 38 open-source agent skills across 11 HCLS domains that close this gap, with installation steps, three worked use cases, and a 410-prompt evaluation showing a 70-86% win rate.",
+      "evidenceLink": "",
+      "score": 68.40333803571428,
+      "core": "AI agents on foundation models often misapply healthcare and life sciences decision frameworks, citing the right guideline but applying it incorrectly. This post shares 38 open-source agent skills across 11 HCLS domains that close this gap, with installation steps, three worked use cases, and a 410-prompt evaluation showing a 70-86% win rate.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-17T16:06:31.763Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How MRH Trowe enabled secure self-service AI agents in financial services",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-mrh-trowe-enabled-secure-self-service-ai-agents-in-financial-services",
+      "publishedAt": "2026-09-17T15:36:42.000Z",
+      "author": "Marouane El Bostahi",
+      "summary": "Learn how MRH Trowe, one of Germany's leading commercial and industrial insurance brokers, gave about 400 employees secure, self-service access to AI agents in its first month of production - using Strands Agents, Amazon Bedrock AgentCore, and LibreChat to meet the security, data residency, and compliance requirements of the German financial sector.",
+      "evidenceLink": "",
+      "score": 63.914488829365084,
+      "core": "Learn how MRH Trowe, one of Germany's leading commercial and industrial insurance brokers, gave about 400 employees secure, self-service access to AI agents in its first month of production - using Strands Agents, Amazon Bedrock AgentCore, and LibreChat to meet the security, data residency, and compliance requirements of the German financial sector.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-17T16:06:31.763Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "TensorRT Edge-LLM Completes the MLPerf Edge Agentic Benchmark 6.4x Faster on Jetson AGX Thor",
+      "link": "https://developer.nvidia.com/blog/tensorrt-edge-llm-completes-the-mlperf-edge-agentic-benchmark-6-4x-faster-on-jetson-agx-thor",
+      "publishedAt": "2026-09-16T20:37:07.000Z",
+      "author": "Elizabeth Goodman",
+      "summary": "AI agents are moving from cloud data centers to vehicles, robots, and other edge devices. Unlike a chatbot that answers a single prompt, an agent works through...",
+      "evidenceLink": "",
+      "score": 56.50784200396826,
+      "core": "AI agents are moving from cloud data centers to vehicles, robots, and other edge devices. Unlike a chatbot that answers a single prompt, an agent works through...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-17T16:06:31.763Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "salesforce_engineering",
+      "source": "Salesforce Engineering",
+      "title": "How Data 360 Builds Trusted Context: The Enduring Layer for Enterprise AI",
+      "link": "https://engineering.salesforce.com/how-data-360-builds-trusted-context-the-enduring-layer-for-enterprise-ai",
+      "publishedAt": "2026-09-16T17:23:42.000Z",
+      "author": "Scott Nyberg",
+      "summary": "By Raveendrnathan Loganathan and Tobias Muehlbauer. How do you compile the smallest sufficient body of current, relevant, and authorized evidence for every agent turn but without loading the entire enterprise data estate into every prompt? That is the context problem at the center of enterprise AI. Putting everything into every prompt consumes tokens, increases latency […] The post How Data 360 Builds Trusted Context: The Enduring Layer for Enterprise AI appeared first on Salesforce Engineering Blog .",
+      "evidenceLink": "",
+      "score": 56.18869517857143,
+      "core": "By Raveendrnathan Loganathan and Tobias Muehlbauer. How do you compile the smallest sufficient body of current, relevant, and authorized evidence for every agent turn but without loading the entire enterprise data estate into every prompt? That is the context problem at the center of enterprise AI. Putting everything into every prompt consumes tokens, increases latency […] The post How Data 360 Builds Trusted Contex…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-17T16:06:31.763Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "A shared agentic platform for Wood Mackenzie, on Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/a-shared-agentic-platform-for-wood-mackenzie-on-amazon-bedrock-agentcore",
+      "publishedAt": "2026-09-17T15:41:03.000Z",
+      "author": "Shridhar Navanageri",
+      "summary": "Wood Mackenzie built APEX, a shared agentic AI platform on Amazon Bedrock AgentCore so every team can ship production agents without rebuilding runtime, identity, observability, and guardrails from scratch. Learn why they chose AgentCore, how APEX Studio operates it, and where multi-agent systems go next.",
+      "evidenceLink": "",
+      "score": 54.66966740079366,
+      "core": "Wood Mackenzie built APEX, a shared agentic AI platform on Amazon Bedrock AgentCore so every team can ship production agents without rebuilding runtime, identity, observability, and guardrails from scratch. Learn why they chose AgentCore, how APEX Studio operates it, and where multi-agent systems go next.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-17T16:06:31.763Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pragmatic_engineer",
+      "source": "The Pragmatic Engineer",
+      "title": "AI Skills with Matt Pocock",
+      "link": "https://newsletter.pragmaticengineer.com/p/ai-skills-with-matt-pocock",
+      "publishedAt": "2026-09-17T11:29:00.000Z",
+      "author": "Gergely Orosz",
+      "summary": "Matt Pocock explains how he uses AI coding skills and agents to plan and build software, and why engineering fundamentals matter more than ever.",
+      "evidenceLink": "",
+      "score": 52.46960787698413,
+      "core": "Matt Pocock explains how he uses AI coding skills and agents to plan and build software, and why engineering fundamentals matter more than ever.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-17T16:06:31.763Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Getting ready for production AI – Part 2: How to turn enterprise data into AI-ready pipelines",
+      "link": "https://www.itpro.com/technology/artificial-intelligence/getting-ready-for-production-ai-part-2-how-to-turn-enterprise-data-into-ai-ready-pipelines",
+      "publishedAt": "2026-09-16T17:23:14.000Z",
+      "author": "ITPro",
+      "summary": "Production AI depends on data pipelines that stay current, governed, and ready for retrieval.",
+      "evidenceLink": "",
+      "score": 48.89369517857143,
+      "core": "Production AI depends on data pipelines that stay current, governed, and ready for retrieval.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-17T16:06:31.763Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "How to Use AI Agents to Prepare 3D Scenes for Simulation",
+      "link": "https://developer.nvidia.com/blog/how-to-use-ai-agents-to-prepare-3d-scenes-for-simulation",
+      "publishedAt": "2026-09-16T23:20:33.000Z",
+      "author": "Tanya Lenz",
+      "summary": "Agentic AI workflows can be used to prepare and validate digital twins for physical AI systems. Agents can inspect 3D scenes, author simulation-relevant data in...",
+      "evidenceLink": "",
+      "score": 48.707961051587304,
+      "core": "Agentic AI workflows can be used to prepare and validate digital twins for physical AI systems. Agents can inspect 3D scenes, author simulation-relevant data in...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-17T16:06:31.763Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_ai_engineering",
+      "source": "GitHub Blog",
+      "title": "Migrating the GitHub Copilot runtime to Rust, using Copilot",
+      "link": "https://github.blog/ai-and-ml/generative-ai/migrating-the-github-copilot-runtime-to-rust-using-copilot",
+      "publishedAt": "2026-09-17T00:26:43.000Z",
+      "author": "Stephen Toub",
+      "summary": "A rewrite this size wasn't affordable before agents. Here's what porting the Copilot agent runtime to 800,000 lines of production Rust actually took. The post Migrating the GitHub Copilot runtime to Rust, using Copilot appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 48.292286448412696,
+      "core": "A rewrite this size wasn't affordable before agents. Here's what porting the Copilot agent runtime to 800,000 lines of production Rust actually took. The post Migrating the GitHub Copilot runtime to Rust, using Copilot appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-17T16:06:31.763Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Enhancing industrial safety AI with synthetic data on Amazon SageMaker AI",
+      "link": "https://aws.amazon.com/blogs/machine-learning/enhancing-industrial-safety-ai-with-synthetic-data-on-amazon-sagemaker-ai",
+      "publishedAt": "2026-09-17T15:28:08.000Z",
+      "author": "Dimitri Voytan",
+      "summary": "Learn how to build a synthetic data augmentation pipeline on Amazon SageMaker AI and Amazon Rekognition that generates photo-realistic, auto-labeled training images for industrial safety AI. This approach improved person detection by up to 160% without manual annotation or hazardous data collection near heavy machinery.",
+      "evidenceLink": "",
+      "score": 46.73762375,
+      "core": "Learn how to build a synthetic data augmentation pipeline on Amazon SageMaker AI and Amazon Rekognition that generates photo-realistic, auto-labeled training images for industrial safety AI. This approach improved person detection by up to 160% without manual annotation or hazardous data collection near heavy machinery.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-17T16:06:31.763Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Spain says it has seen first AI agent hack",
+      "link": "https://www.itpro.com/security/cyber-attacks/spain-says-it-has-seen-first-ai-agent-hack",
+      "publishedAt": "2026-09-17T11:24:43.000Z",
+      "author": "Nicole Kobie",
+      "summary": "Spanish data authorities warns organisations to step up their security as AI attacks were no longer a \"theoretical risk\"",
+      "evidenceLink": "",
+      "score": 46.33117533730159,
+      "core": "Spanish data authorities warns organisations to step up their security as AI attacks were no longer a \"theoretical risk\"",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-17T16:06:31.763Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "OpenAI reveals six more rogue AI incidents",
+      "link": "https://www.itpro.com/technology/artificial-intelligence/openai-reveals-six-more-rogue-ai-incidents",
+      "publishedAt": "2026-09-17T09:34:52.000Z",
+      "author": "Nicole Kobie",
+      "summary": "AI developer unveils plans for misalignment disclosure framework alongside six more incidents",
+      "evidenceLink": "",
+      "score": 46.05040152777778,
+      "core": "AI developer unveils plans for misalignment disclosure framework alongside six more incidents",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-17T16:06:31.763Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "mozilla_ai",
+      "source": "Mozilla.ai",
+      "title": "Benchmarking Local LLM Servers: llama.cpp, llamafile, LM Studio, and Ollama",
+      "link": "https://blog.mozilla.ai/benchmarking-local-llm-servers-llama-cpp-llamafile-lm-studio-and-ollama",
+      "publishedAt": "2026-09-17T11:32:08.000Z",
+      "author": "Davide Eynard",
+      "summary": "Benchmarking Local LLM Servers evaluates llama.cpp, llamafile, LM Studio, and Ollama across Mac, Linux, and Steam Deck. The study reveals build flags and configurations drive up to 63% performance gains, whereas underlying engines perform similarly due to a shared llama.cpp core.",
+      "evidenceLink": "",
+      "score": 45.228893591269845,
+      "core": "Benchmarking Local LLM Servers evaluates llama.cpp, llamafile, LM Studio, and Ollama across Mac, Linux, and Steam Deck. The study reveals build flags and configurations drive up to 63% performance gains, whereas underlying engines perform similarly due to a shared llama.cpp core.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-17T16:06:31.763Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "AI Agents for Procurement: Automating Sourcing, Vendor Analysis and Purchase Orders",
+      "link": "https://rerun.build/blog/ai-agents-for-procurement",
+      "publishedAt": "2026-09-17T04:15:05.000Z",
+      "author": "",
+      "summary": "A practical guide to using AI agents for supplier sourcing, vendor analysis, RFQs and purchase orders with bounded autonomy and human approval.",
+      "evidenceLink": "",
+      "score": 44.947484861111114,
+      "core": "A practical guide to using AI agents for supplier sourcing, vendor analysis, RFQs and purchase orders with bounded autonomy and human approval.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-17T16:06:31.763Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Translating CUDA Tile Operations from Python to Rust Using Agentic AI",
+      "link": "https://developer.nvidia.com/blog/translating-cuda-tile-operations-from-python-to-rust-using-agentic-ai",
+      "publishedAt": "2026-09-16T16:28:59.000Z",
+      "author": "Tanya Lenz",
+      "summary": "cuTile Rust (cutile-rs) is a tile-based system for safe, idiomatic GPU kernel authoring in the Rust programming language. Extending the Rust ownership model to...",
+      "evidenceLink": "",
+      "score": 41.21244517857143,
+      "core": "cuTile Rust (cutile-rs) is a tile-based system for safe, idiomatic GPU kernel authoring in the Rust programming language. Extending the Rust ownership model to...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-17T16:06:31.763Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "When scanners miss the attack: how Cloudflare Client-Side Security protects storefronts",
+      "link": "https://blog.cloudflare.com/client-side-security-finds-4-malicious-campaigns",
+      "publishedAt": "2026-09-16T20:06:17.000Z",
+      "author": "Juan Miguel Cejuela",
+      "summary": "A modern storefront can look healthy while malicious JavaScript quietly siphons revenue, hijacks clicks, or rewrites analytics. See how Cloudflare's machine learning models surface evasive client-side attacks for analyst investigation.",
+      "evidenceLink": "",
+      "score": 36.87669121031746,
+      "core": "A modern storefront can look healthy while malicious JavaScript quietly siphons revenue, hijacks clicks, or rewrites analytics. See how Cloudflare's machine learning models surface evasive client-side attacks for analyst investigation.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-17T16:06:31.763Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "spotify_engineering",
+      "source": "Spotify Engineering",
+      "title": "AI Changed How Spotify Builds. What We Learned (and Fixed) About Quality at Higher Velocity",
+      "link": "https://engineering.atspotify.com/2026/9/ai-changed-how-spotify-builds-what-we-learned-and-fixed-about-quality-at-higher-velocity",
+      "publishedAt": "2026-09-16T19:13:53.000Z",
+      "author": "Spotify Engineering",
+      "summary": "Quality and reliability have always been a point of pride for Spotify. We run an extraordinarily complex... The post AI Changed How Spotify Builds. What We Learned (and Fixed) About Quality at Higher Velocity appeared first on Spotify Engineering .",
+      "evidenceLink": "",
+      "score": 28.88653248015873,
+      "core": "Quality and reliability have always been a point of pride for Spotify. We run an extraordinarily complex... The post AI Changed How Spotify Builds. What We Learned (and Fixed) About Quality at Higher Velocity appeared first on Spotify Engineering .",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-17T16:06:31.763Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "When AI sounds certain, ask why",
+      "link": "https://www.techradar.com/pro/when-ai-sounds-certain-ask-why",
+      "publishedAt": "2026-09-17T13:19:46.000Z",
+      "author": "Thor Olof Philogène",
+      "summary": "When AI sounds certain, ask why. Convincing answers can be dangerous when they can’t be explained.",
+      "evidenceLink": "",
+      "score": 25.345917400793653,
+      "core": "When AI sounds certain, ask why. Convincing answers can be dangerous when they can’t be explained.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-17T16:06:31.763Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "qdrant_retrieval_engineering",
+      "source": "Qdrant Retrieval Engineering",
+      "title": "Hyperbolic Embeddings in Qdrant",
+      "link": "https://qdrant.tech/articles/hyperbolic-embeddings-qdrant",
+      "publishedAt": "2026-09-08T00:00:00.000Z",
+      "author": "info@qdrant.tech (Andrey Vasnetsov)",
+      "summary": "We choose embedding models, dimensions, and indexes. The geometry usually comes with the package. But why use a flat space, and what else could we choose? What Is a Manifold, and Where Do Our Vectors Live? A manifold is the space our embeddings live in. For embeddings, we care about the geometry we give that space. It determines how we measure distance, what the shortest path looks like, and how much room there is as we move outward.",
+      "evidenceLink": "",
+      "score": 20.427777777777777,
+      "core": "We choose embedding models, dimensions, and indexes. The geometry usually comes with the package. But why use a flat space, and what else could we choose? What Is a Manifold, and Where Do Our Vectors Live? A manifold is the space our embeddings live in. For embeddings, we care about the geometry we give that space. It determines how we measure distance, what the shortest path looks like, and how much room there is a…",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-17T16:06:31.763Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

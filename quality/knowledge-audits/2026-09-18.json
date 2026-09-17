@@ -1,0 +1,157 @@
+{
+  "generatedAt": "2026-09-17T16:09:45.957Z",
+  "report": "2026-09-18.md",
+  "health": "quality/knowledge-source-health/2026-09-18.json",
+  "candidates": "quality/knowledge-candidates/2026-09-18.json",
+  "site": "docs/index.html",
+  "ok": true,
+  "date": "2026-09-18",
+  "rows": 20,
+  "blogCount": 20,
+  "paperCount": 0,
+  "blogAccessVerifiedCount": 20,
+  "topConferencePaperCount": 0,
+  "sourceCount": 71,
+  "candidatePool": {
+    "historicalLinkCount": 993,
+    "blogFetchedCount": 284,
+    "blogAccessCheckedCount": 52,
+    "blogAccessVerifiedCount": 34,
+    "blogAccessRejectedCount": 18,
+    "blogAccessRejected": [
+      {
+        "sourceId": "openai_news",
+        "title": "Our framework for reporting model misalignment",
+        "link": "https://openai.com/index/model-misalignment-reporting-framework",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "How workers are unlocking new ways of working",
+        "link": "https://openai.com/index/unlocking-new-ways-of-working",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "aws_machine_learning",
+        "title": "Monitoring production agent lifecycle with AWS DevOps Agent and AgentCore Evaluations",
+        "link": "https://aws.amazon.com/blogs/machine-learning/monitoring-production-agent-lifecycle-with-aws-devops-agent-and-agentcore-evaluations",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "interconnects",
+        "title": "Latest open artifacts (#24): Motif-3, GLM-5.3, Hy4-preview and open model licenses",
+        "link": "https://www.interconnects.ai/p/latest-open-artifacts-24-motif-3",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "How we built Grok Bot in a month | Roman Ugarte (SpaceXAI)",
+        "link": "https://www.lennysnewsletter.com/p/how-we-built-grok-bot-in-a-month",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "How to turn your AI into a world-class designer",
+        "link": "https://www.lennysnewsletter.com/p/how-to-turn-your-ai-into-a-world",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "AI’s third era: the rise of persistent AI coworkers | Tara Seshan (Product Lead ChatGPT Work)",
+        "link": "https://www.lennysnewsletter.com/p/ais-third-era-the-rise-of-persistent",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "🧠 Community Wisdom: Driving AI adoption when habits are the bottleneck, leveling up from APM to a mid-level PM role, converting a wave of new users to subscription, and more",
+        "link": "https://www.lennysnewsletter.com/p/community-wisdom-driving-ai-adoption",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "🧠 Community Wisdom: AI basketball coaching, Jira vs. Linear, building a business case for platform teams, favorite AI use cases, and more",
+        "link": "https://www.lennysnewsletter.com/p/community-wisdom-ai-basketball-coaching",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "Why companies are becoming a series of loops | Anish Acharya (a16z)",
+        "link": "https://www.lennysnewsletter.com/p/why-companies-are-becoming-a-series",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Inside OpenAI’s agentic software factory",
+        "link": "https://newsletter.pragmaticengineer.com/p/openai-software-factory",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Why Ramp built its own in-house coding agent, Inspect",
+        "link": "https://newsletter.pragmaticengineer.com/p/why-ramp-built-inspect",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "What is happening with code reviews?",
+        "link": "https://newsletter.pragmaticengineer.com/p/what-is-happening-with-code-reviews",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: tech companies move to open AI models",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-tech-companies-move-to",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse #191: a new trend of CPU shortages",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-191-a-new-trend-of-cpu",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: Meta wanted to reduce teams by 60% because of AI",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-meta-wanted-to-reduce-teams",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: We need to talk about migrations with AI",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-we-need-to-talk-about-migrations",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Headed for the Exit: the Great Engineering Leader Career Break",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-great-engineering-leader-career-break",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      }
+    ],
+    "blogCanonicalRedirectHistoricalDedupCount": 13,
+    "paperFetchedCount": 0,
+    "paperTopConferenceVerifiedCount": 0,
+    "blogAfterHistoricalDedupCount": 21,
+    "paperAfterHistoricalDedupCount": 0,
+    "eligibleAfterHistoricalDedupCount": 21,
+    "maxPerBlogSource": 2,
+    "selectedBlogSourceCounts": {
+      "aws_machine_learning": 4,
+      "cloudflare_ai": 1,
+      "github_ai_engineering": 1,
+      "itpro_ai": 3,
+      "mozilla_ai": 1,
+      "nvidia_developer": 3,
+      "pragmatic_engineer": 1,
+      "qdrant_retrieval_engineering": 1,
+      "rerun_agent_engineering": 1,
+      "salesforce_engineering": 1,
+      "spotify_engineering": 1,
+      "techradar_pro_ai": 1,
+      "vercel_ai": 1
+    },
+    "sourceCapRelaxed": true,
+    "shortfallReason": "顶会元数据核验后论文仅 0 篇，空缺优先用已验证可访问的 Blog 补位，不用普通 arXiv 论文凑数；未用旧文或低质量内容补位。"
+  },
+  "failures": []
+}

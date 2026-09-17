@@ -1,0 +1,249 @@
+{
+  "date": "2026-09-18",
+  "generatedAt": "2026-09-17T16:04:55.286Z",
+  "reportPath": "reports/2026-09-18-0004-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 35,
+    "top20Sources": [
+      "Product Hunt",
+      "YC Launch",
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 17,
+      "keptCount": 7,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-09-16；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 17 条，AI 相关候选 7 条；实际 fallback：hunted_space。；历史去重后最终发布 7 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 2,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 24,
+      "keptCount": 10,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 7,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 16,
+      "keptCount": 16,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Appwrite 2.0",
+      "productKey": "https://www.producthunt.com/products/appwrite",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把云后端同时面向开发者与 Agent，是基础设施争夺开发入口的信号；要看 Agent 接入与传统开发的体验差异。"
+    },
+    {
+      "rank": 2,
+      "product": "Weave Router 2.0",
+      "productKey": "https://www.producthunt.com/products/weave",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "路由显式考虑已有订阅，切中多编码 Agent 用户的费用约束；判断重点是切换成本与订阅权益如何参与分配。"
+    },
+    {
+      "rank": 3,
+      "product": "Papaya",
+      "productKey": "https://www.ycombinator.com/launches/u2g-papaya-continuous-optimization-for-your-ai-agents",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把质量、成本和延迟一起纳入持续优化，定位比单点评测更接近 Agent 运维；需核验自动修复的权限与回滚边界。"
+    },
+    {
+      "rank": 4,
+      "product": "ZeroClick",
+      "productKey": "https://www.producthunt.com/products/zeroclick",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "面向 Agent 卖产品，改变的是商家的获客对象；值得追问商品如何被发现、理解并进入 Agent 的购买决策。"
+    },
+    {
+      "rank": 5,
+      "product": "Gemini 3.8 & 3.8 Live Extended Thinking",
+      "productKey": "https://www.producthunt.com/products/gemini-3-8-3-8-live-extended-thinking",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "音频模型与扩展思考并列呈现，可观察语音交互如何兼顾即时响应和复杂判断；日榜描述尚不足以证明实际延迟。"
+    },
+    {
+      "rank": 6,
+      "product": "Nexus-Arc – pay-per-call and job escrow for AI agents on Arc",
+      "productKey": "https://nexus-arc.pryx.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "按调用付费与任务托管把 Agent 交易拆成计费和交付两层；要看失败退款、履约确认及资金控制如何定义。"
+    },
+    {
+      "rank": 7,
+      "product": "AntFlow AI: Agentic AI Framework for Spec-Driven Development",
+      "productKey": "https://geekyants.com/antflow-ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "以规格驱动开发约束 Agent 执行，切中需求表达与代码交付之间的断层；重点核验规格变更如何传递到实现。"
+    },
+    {
+      "rank": 8,
+      "product": "SyntaxCue – local-first AI interview copilot (whisper.cpp and BYOK)",
+      "productKey": "https://syntaxcue.com/how-syntaxcue-captures-system-audio",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "本地优先、语音识别与自带密钥形成清晰部署取舍；面试辅助场景需明确录音授权、数据流向和使用边界。"
+    },
+    {
+      "rank": 9,
+      "product": "Thread",
+      "productKey": "https://www.producthunt.com/products/thread-ai-journal-memory",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把日记中的想法连接起来，价值取决于能否形成可回访的认知线索；不能仅凭 AI 日记定位判断长期留存。"
+    },
+    {
+      "rank": 10,
+      "product": "Jottoo",
+      "productKey": "https://www.producthunt.com/products/jottoo",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "会议纪要直接落到可追踪任务，比只生成摘要更接近工作闭环；应核验责任人、期限和后续完成状态如何维护。"
+    },
+    {
+      "rank": 11,
+      "product": "Nanograb",
+      "productKey": "https://www.ycombinator.com/launches/u7k-nanograb-deliver-mrna-to-any-cell-with-ai",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "NGX1 将 AI 用于靶向脂质纳米颗粒设计，是明确的专业研发场景；发布证据不能替代递送效果和实验验证。"
+    },
+    {
+      "rank": 12,
+      "product": "Convo",
+      "productKey": "https://www.producthunt.com/products/convo-7",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "销售人群定位清楚，但 copilot 描述仍宽；需看它介入哪一步销售动作，以及输出能否接到下一步跟进。"
+    },
+    {
+      "rank": 13,
+      "product": "TabMail. Open-source AI email for Thunderbird and iPhone",
+      "productKey": "https://tabmail.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "围绕现有邮件客户端提供 AI，入口比独立聊天窗口更贴近工作；开源定位还需与邮件数据权限和跨端一致性一起考察。"
+    },
+    {
+      "rank": 14,
+      "product": "Facefork – A tree interface to AI edit photos for fun",
+      "productKey": "https://facefork.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "树状界面让照片编辑分支可见，交互启发在于保留探索路径；娱乐定位使其持续使用需求仍需验证。"
+    },
+    {
+      "rank": 15,
+      "product": "ChatGPT converts guitar tabs, GuitarEasy plays it, you practise",
+      "productKey": "https://guitareasy.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "将曲谱转换、播放与练习串起来，呈现垂直学习流程；要分清外部 ChatGPT 步骤和应用自身能力的边界。"
+    },
+    {
+      "rank": 16,
+      "product": "Ivx/AI Chat, AI client that doesn't track you (with a better GUI imo)",
+      "productKey": "https://ai.ivx.run",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "以不追踪和界面体验切入聊天客户端，差异化主要依赖信任；标题主张需要具体数据处理与隐私设置佐证。"
+    }
+  ]
+}

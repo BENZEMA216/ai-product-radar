@@ -104,7 +104,7 @@ function isWeakShowHnDemo({ source, product, did, why }) {
   if (!isHn || !isShowHn) return false;
   if (/\b(?:raises?|raised|funding|fundraise|seed round|series [a-z])\b|融资|募资/i.test(text)) return true;
   if (
-    /\benergy drink\b|\bmake fun of (?:other )?ai\b|\bchatgpt work isn['’]t working\b|\bevery spot is instantly ai-generated\b|\btiny satire about ai progress\b/i.test(
+    /\benergy drink\b|\bmake fun of (?:other )?ai\b|\bchatgpt work isn['’]t working\b|\bevery spot is instantly ai-generated\b|\btiny satire about ai progress\b|\bsmart mouth billy bass\b|\bshare your ai setup\b/i.test(
       text
     )
   ) {
@@ -129,7 +129,7 @@ function isShowHnNonProductObservation({ source, product, did, why }) {
   return (
     isHn &&
     text.includes("show hn:") &&
-    /\b(?:index|database) of (?:coding )?agent incidents?\b|\bbuilt this research\b|\bhides? youtube ai-labeled videos\b|\bsleeper agents? in robot dogs\b|\bwhat engineers? must own in the ai era\b|\bcatalog of apps built out of spite\b|\bmoltbook but for math\b|\bfeature-length sci-fi thriller about ai, made with ai\b|\bremoved the ai auto-organizing i built my first app around\b|\b(?:ai-powered\s+)?word guessing game\b|\bprove the .{0,48} conjecture with (?:a )?swarm of agents\b|\bllms? work,? explained through .{0,80} analogies\b|\bvibe logic programming language\b|\btiny satire about ai progress\b/i.test(text)
+    /\b(?:index|database) of (?:coding )?agent incidents?\b|\bbuilt this research\b|\bhides? youtube ai-labeled videos\b|\bsleeper agents? in robot dogs\b|\bwhat engineers? must own in the ai era\b|\bcatalog of apps built out of spite\b|\bmoltbook but for math\b|\bfeature-length sci-fi thriller about ai, made with ai\b|\bremoved the ai auto-organizing i built my first app around\b|\b(?:ai-powered\s+)?word guessing game\b|\bprove the .{0,48} conjecture with (?:a )?swarm of agents\b|\bllms? work,? explained through .{0,80} analogies\b|\bvibe logic programming language\b|\btiny satire about ai progress\b|\bwhat sandboxing an ai coding agent in a vm costs\b|\ba coding agent from scratch\b|\bi vibe-coded a platformer\b|\blearn claude code.{0,12}interactive mindmap\b/i.test(text)
   );
 }
 
@@ -177,7 +177,7 @@ function isAihotRoundupSignal({ source, product, did, why }) {
 function isAihotNonProductSignal({ source, product, did, why, evidence }) {
   if (source !== "AIHOT" && source !== "XHS Dealflow") return false;
   const text = `${source} ${product} ${did} ${why} ${evidence}`.toLowerCase();
-  if (/退出(?:项目|开发|PS5|ps5)|(?:批评|警告).{0,80}(?:意识|道德病人|模型福利|宪法)|签署最终协议.{0,12}合并|筹备.{0,24}功能|工作流.{0,8}拆解|(?:发布|推出).{0,20}智能世界.{0,10}报告|C 端.{0,12}机会|社交推理|低成本低延迟AI模型玩Doom/i.test(`${product}`)) return true;
+  if (/退出(?:项目|开发|PS5|ps5)|(?:批评|警告).{0,80}(?:意识|道德病人|模型福利|宪法)|签署最终协议.{0,12}合并|筹备.{0,24}功能|工作流.{0,8}拆解|(?:发布|推出).{0,20}智能世界.{0,10}报告|C 端.{0,12}机会|社交推理|低成本低延迟AI模型玩Doom|谈AI重塑内容创作|对话.{0,32}谈开放模型|智能体流量已占|模型失当报告框架|需合成互联网训练智能体/i.test(`${product}`)) return true;
   const actionText = `${product} ${did} ${evidence}`.toLowerCase();
   const hasProductAction = /发布|推出|上线|更新|开源|release|released|launch|launched|introducing|now available/i.test(actionText);
   const hasProductSurface = /产品|工具|应用|app|api|sdk|agent|智能体|助手|工作流|平台|runtime|browser|插件|扩展/i.test(actionText);
