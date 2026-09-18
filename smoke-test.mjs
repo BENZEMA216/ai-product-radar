@@ -6,6 +6,8 @@ import { tmpdir } from "node:os";
 import { basename, join } from "node:path";
 import {
   fetchProductHuntDate,
+  fetchHuggingFaceJson,
+  huggingFaceFetchStatus,
   filterPreviouslyReportedProductHunt,
   annotateProductHuntReportFilterHealth,
   parseOrangeBotProductHuntHtml,
@@ -5005,7 +5007,51 @@ function testCliOutput() {
   assert.ok(json.count >= 8, `CLI should return >=8 candidates, got ${json.count}`);
 }
 
+async function testHuggingFaceTransportFallback() {
+  assert.equal(huggingFaceFetchStatus(Object.assign([], { fetchErrors: ["offline"], transports: [] })), "unavailable");
+  assert.equal(huggingFaceFetchStatus(Object.assign([], { fetchErrors: ["models offline"], transports: ["Space:node"] })), "partial");
+  assert.equal(huggingFaceFetchStatus(Object.assign([], { fetchErrors: [], transports: ["Space:curl", "Model:curl"] })), "fallback");
+  assert.equal(huggingFaceFetchStatus(Object.assign([], { fetchErrors: [], transports: ["Space:node", "Model:node"] })), "empty");
+  const url = "https://huggingface.co/api/models";
+  let called = false;
+  const result = await fetchHuggingFaceJson(url, {
+    fetchJson: async () => { throw new Error("connect timeout"); },
+    execFileSync: (command, args, options) => {
+      called = true;
+      assert.equal(command, "curl");
+      assert.equal(args.at(-1), url);
+      assert.equal(options.timeout, 25000);
+      return JSON.stringify([{ id: "test/model" }]);
+    }
+  });
+  assert.ok(called);
+  assert.equal(result.transport, "curl");
+  assert.equal(result.items[0].id, "test/model");
+  await assert.rejects(fetchHuggingFaceJson(url, {
+    fetchJson: async () => { throw new Error("node offline"); },
+    execFileSync: () => { throw new Error("curl offline"); }
+  }), /curl offline/);
+  const primary = await fetchHuggingFaceJson(url, {
+    fetchJson: async () => [],
+    execFileSync: () => { throw new Error("must not call fallback"); }
+  });
+  assert.equal(primary.transport, "node");
+  let staleAttempts = 0;
+  const stale = await fetchHuggingFaceJson(url, {
+    curlEnv: { HTTPS_PROXY: "http://127.0.0.1:1" },
+    fetchJson: async () => { throw new Error("node offline"); },
+    execFileSync: (_command, _args, options) => {
+      staleAttempts += 1;
+      if (options.env.HTTPS_PROXY) throw new Error("stale proxy");
+      return "[]";
+    }
+  });
+  assert.equal(staleAttempts, 2);
+  assert.equal(stale.transport, "curl");
+}
+
 const tests = [
+  ["Hugging Face transport fallback and failure", testHuggingFaceTransportFallback],
   ["Automation safety helpers", testAutomationSafetyHelpers],
   ["Publish helpers", testPublishHelpers],
   ["Daily runner fatal errors honor report dir", testDailyRunnerFatalErrorHonorsReportDir],

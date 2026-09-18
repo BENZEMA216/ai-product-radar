@@ -1,0 +1,204 @@
+{
+  "generatedAt": "2026-09-18T16:19:42.253Z",
+  "report": "2026-09-19.md",
+  "health": "quality/knowledge-source-health/2026-09-19.json",
+  "candidates": "quality/knowledge-candidates/2026-09-19.json",
+  "site": "docs/index.html",
+  "ok": true,
+  "date": "2026-09-19",
+  "rows": 20,
+  "blogCount": 20,
+  "paperCount": 0,
+  "blogAccessVerifiedCount": 20,
+  "topConferencePaperCount": 0,
+  "sourceCount": 72,
+  "candidatePool": {
+    "historicalLinkCount": 1013,
+    "blogFetchedCount": 290,
+    "blogAccessCheckedCount": 54,
+    "blogAccessVerifiedCount": 28,
+    "blogAccessRejectedCount": 26,
+    "blogAccessRejected": [
+      {
+        "sourceId": "openai_news",
+        "title": "Our framework for reporting model misalignment",
+        "link": "https://openai.com/index/model-misalignment-reporting-framework",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "How workers are unlocking new ways of working",
+        "link": "https://openai.com/index/unlocking-new-ways-of-working",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "deepmind",
+        "title": "Intelligent transcription with Gemini 3.5 Transcribe",
+        "link": "https://deepmind.google/blog/intelligent-transcription-with-gemini-3-5-transcribe",
+        "reason": "fetch failed"
+      },
+      {
+        "sourceId": "deepmind",
+        "title": "Proactive cyber defense for governments and enterprises",
+        "link": "https://deepmind.google/blog/proactive-cyber-defense-for-governments-and-enterprises",
+        "reason": "fetch failed"
+      },
+      {
+        "sourceId": "deepmind",
+        "title": "Gemini Omni 1.1 Flash lets you build with more control",
+        "link": "https://deepmind.google/blog/gemini-omni-1-1-flash-lets-you-build-with-more-control",
+        "reason": "fetch failed"
+      },
+      {
+        "sourceId": "deepmind",
+        "title": "Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking",
+        "link": "https://deepmind.google/blog/introducing-gemini-3-8-live-and-3-8-live-extended-thinking",
+        "reason": "The operation was aborted due to timeout"
+      },
+      {
+        "sourceId": "deepmind",
+        "title": "Introducing WeatherNext 3, our most advanced and accurate global weather AI model",
+        "link": "https://deepmind.google/blog/introducing-weathernext-3-our-most-advanced-and-accurate-global-weather-ai-model",
+        "reason": "fetch failed"
+      },
+      {
+        "sourceId": "deepmind",
+        "title": "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber",
+        "link": "https://deepmind.google/blog/introducing-gemini-3-8-flash-and-38-flash-cyber",
+        "reason": "fetch failed"
+      },
+      {
+        "sourceId": "interconnects",
+        "title": "Latest open artifacts (#24): Motif-3, GLM-5.3, Hy4-preview and open model licenses",
+        "link": "https://www.interconnects.ai/p/latest-open-artifacts-24-motif-3",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "How we built Grok Bot in a month | Roman Ugarte (SpaceXAI)",
+        "link": "https://www.lennysnewsletter.com/p/how-we-built-grok-bot-in-a-month",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "How to turn your AI into a world-class designer",
+        "link": "https://www.lennysnewsletter.com/p/how-to-turn-your-ai-into-a-world",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "AI’s third era: the rise of persistent AI coworkers | Tara Seshan (Product Lead ChatGPT Work)",
+        "link": "https://www.lennysnewsletter.com/p/ais-third-era-the-rise-of-persistent",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "🧠 Community Wisdom: Driving AI adoption when habits are the bottleneck, leveling up from APM to a mid-level PM role, converting a wave of new users to subscription, and more",
+        "link": "https://www.lennysnewsletter.com/p/community-wisdom-driving-ai-adoption",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "🧠 Community Wisdom: AI basketball coaching, Jira vs. Linear, building a business case for platform teams, favorite AI use cases, and more",
+        "link": "https://www.lennysnewsletter.com/p/community-wisdom-ai-basketball-coaching",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "Why companies are becoming a series of loops | Anish Acharya (a16z)",
+        "link": "https://www.lennysnewsletter.com/p/why-companies-are-becoming-a-series",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Inside OpenAI’s agentic software factory",
+        "link": "https://newsletter.pragmaticengineer.com/p/openai-software-factory",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Why Ramp built its own in-house coding agent, Inspect",
+        "link": "https://newsletter.pragmaticengineer.com/p/why-ramp-built-inspect",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "What is happening with code reviews?",
+        "link": "https://newsletter.pragmaticengineer.com/p/what-is-happening-with-code-reviews",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: tech companies move to open AI models",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-tech-companies-move-to",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: Meta wanted to reduce teams by 60% because of AI",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-meta-wanted-to-reduce-teams",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse #191: a new trend of CPU shortages",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-191-a-new-trend-of-cpu",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: We need to talk about migrations with AI",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-we-need-to-talk-about-migrations",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "gitlab_ai_engineering",
+        "title": "See who spent your AI credits and set fair caps per team",
+        "link": "https://about.gitlab.com/blog/new-usage-caps-2026",
+        "reason": "fetch failed"
+      },
+      {
+        "sourceId": "gitlab_ai_engineering",
+        "title": "Optimize your team's price-performance with hosted open weight models",
+        "link": "https://about.gitlab.com/blog/optimize-with-open-weight-models",
+        "reason": "fetch failed"
+      },
+      {
+        "sourceId": "gitlab_ai_engineering",
+        "title": "New MCP tools help platform teams scale automation safely",
+        "link": "https://about.gitlab.com/blog/new-mcp-tools-for-automation",
+        "reason": "fetch failed"
+      },
+      {
+        "sourceId": "gitlab_ai_engineering",
+        "title": "GitLab Duo CLI takes a task from goal to done",
+        "link": "https://about.gitlab.com/blog/gitlab-duo-cli-drives-automation",
+        "reason": "fetch failed"
+      }
+    ],
+    "blogCanonicalRedirectHistoricalDedupCount": 6,
+    "paperFetchedCount": 4,
+    "paperTopConferenceVerifiedCount": 4,
+    "blogAfterHistoricalDedupCount": 22,
+    "paperAfterHistoricalDedupCount": 0,
+    "eligibleAfterHistoricalDedupCount": 22,
+    "maxPerBlogSource": 2,
+    "selectedBlogSourceCounts": {
+      "anthropic": 1,
+      "arize_ai_engineering": 1,
+      "aws_machine_learning": 3,
+      "coder_ai_engineering": 1,
+      "databricks_engineering": 1,
+      "hcker_news_ai_blogs": 1,
+      "itpro_ai": 2,
+      "langchain_engineering": 2,
+      "neon_ai_engineering": 1,
+      "rerun_agent_engineering": 2,
+      "techradar_pro_ai": 2,
+      "vercel_ai": 3
+    },
+    "sourceCapRelaxed": true,
+    "shortfallReason": "顶会元数据核验后论文仅 0 篇，空缺优先用已验证可访问的 Blog 补位，不用普通 arXiv 论文凑数；未用旧文或低质量内容补位。"
+  },
+  "failures": []
+}

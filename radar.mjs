@@ -41,6 +41,9 @@ function disableLocalProxyEnv() {
   }
 }
 
+// Retain the caller's transport only for the bounded HF curl fallback.
+// A stale proxy must still be able to fall back to the sanitized environment.
+const HF_CURL_ENV = { ...process.env };
 disableLocalProxyEnv();
 
 const AI_KEYWORDS = [
@@ -1730,15 +1733,46 @@ async function fetchGitHubReleases(start, end) {
   return uniqueBy(out, (item) => item.link);
 }
 
+export function huggingFaceFetchStatus(items) {
+  if (items.fetchErrors?.length) return items.transports?.length ? "partial" : "unavailable";
+  if (items.transports?.some((value) => value.endsWith(":curl"))) return "fallback";
+  return items.length ? "ok" : "empty";
+}
+
+export async function fetchHuggingFaceJson(url, options = {}) {
+  try {
+    return { items: await (options.fetchJson || fetchJson)(url, { attempts: 2, timeoutMs: 15000 }), transport: "node" };
+  } catch (error) {
+    const curl = (env) => (options.execFileSync || execFileSync)("curl", ["-fsSL", "--connect-timeout", "10", "--max-time", "20", url], {
+      encoding: "utf8", timeout: 25000, maxBuffer: 10 * 1024 * 1024, env
+    });
+    const curlEnv = options.curlEnv || HF_CURL_ENV;
+    let stdout;
+    try {
+      stdout = curl(curlEnv);
+    } catch (curlError) {
+      const cleanEnv = sanitizeLocalProxyEnv(curlEnv);
+      if (Object.keys(curlEnv).length === Object.keys(cleanEnv).length) throw curlError;
+      stdout = curl(cleanEnv);
+    }
+    return { items: JSON.parse(stdout), transport: "curl", nodeError: clean(error.message) };
+  }
+}
+
 async function fetchHuggingFace(start, end) {
   const endpoints = [
     ["Space", "https://huggingface.co/api/spaces?sort=lastModified&direction=-1&limit=60"],
     ["Model", "https://huggingface.co/api/models?sort=lastModified&direction=-1&limit=60"]
   ];
   const out = [];
+  out.fetchErrors = [];
+  out.transports = [];
   for (const [kind, url] of endpoints) {
     try {
-      const items = await fetchJson(url, { attempts: 3, timeoutMs: 20000 });
+      const result = await fetchHuggingFaceJson(url);
+      const items = result.items;
+      if (!Array.isArray(items)) throw new Error("HF response is not an array");
+      out.transports.push(`${kind}:${result.transport}`);
       for (const item of Array.isArray(items) ? items : []) {
         const ts = item.createdAt || item.lastModified;
         const modified = item.lastModified || item.createdAt;
@@ -1766,11 +1800,14 @@ async function fetchHuggingFace(start, end) {
           observedAt
         });
       }
-    } catch {
-      // Keep Hugging Face best-effort; source health is covered by smoke tests.
+    } catch (error) {
+      out.fetchErrors.push(`${kind}: ${clean(error.message)}`);
     }
   }
-  return uniqueBy(out.slice(0, 20), (item) => item.link);
+  const selected = uniqueBy(out.slice(0, 20), (item) => item.link);
+  selected.fetchErrors = out.fetchErrors;
+  selected.transports = out.transports;
+  return selected;
 }
 
 function includesAny(text, terms) {
@@ -3120,12 +3157,12 @@ function buildSourceHealth({ rawGroups, candidates, phDateKeys }) {
       note: sourceSkipped("github") ? "RADAR_SKIP_GITHUB 已设置，GitHub Release 本次跳过。" : "GitHub 默认只收固定 watchlist 的 Release。"
     }),
     huggingface: sourceHealthEntry({
-      status: sourceSkipped("huggingface") ? "skipped" : rawGroups.hf.length ? "ok" : "empty",
+      status: sourceSkipped("huggingface") ? "skipped" : huggingFaceFetchStatus(rawGroups.hf),
       rawCount: rawGroups.hf.length,
       keptCount: countKept("huggingface"),
       note: sourceSkipped("huggingface")
         ? "RADAR_SKIP_HF/RADAR_SKIP_HUGGINGFACE 已设置，Hugging Face 本次跳过。"
-        : "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。"
+        : `Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：${(rawGroups.hf.transports || []).join(", ") || "未记录"}；${(rawGroups.hf.fetchErrors || []).join("; ") || "API 已读取，候选按时间窗口过滤"}`
     }),
     aihot: sourceHealthEntry({
       status: sourceSkipped("aihot") ? "skipped" : rawGroups.aihot.length ? "ok" : "empty",

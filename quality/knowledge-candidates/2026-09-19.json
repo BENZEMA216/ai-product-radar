@@ -1,0 +1,410 @@
+{
+  "generatedAt": "2026-09-18T16:03:02.688Z",
+  "date": "2026-09-19",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "GLM 5.3 FlashX now available on AI Gateway",
+      "link": "https://vercel.com/changelog/glm-5-3-flashx-now-available-on-ai-gateway",
+      "publishedAt": "2026-09-18T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "GLM 5.3 FlashX is now available on AI Gateway. GLM 5.3 FlashX is a high-speed serving option for Z.ai's multimodal coding model, delivering inference at ~200 tokens per second for faster streamed responses. The higher serving speed is useful for coding agents, tool loops, and interactive applications where users wait on generated output. Use zai/glm-5.3-flashx across API formats and in coding agents: To use it in a coding agent, see the coding agents guide , then run vercel ai-gateway setup to create a key and configure your supported agents. Select zai/glm-5.3-flashx inside the agent. AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. Try GLM-5.3-FlashX in the model playground , or view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 76.05351809523809,
+      "core": "GLM 5.3 FlashX is now available on AI Gateway. GLM 5.3 FlashX is a high-speed serving option for Z.ai's multimodal coding model, delivering inference at ~200 tokens per second for faster streamed responses. The higher serving speed is useful for coding agents, tool loops, and interactive applications where users wait on generated output. Use zai/glm-5.3-flashx across API formats and in coding agents: To use it in a …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-18T16:03:02.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Bonsai 2 27B: Near-Lossless Compression in a 9x Smaller Footprint",
+      "link": "https://prismml.com/news/bonsai-2-27b",
+      "publishedAt": "2026-09-17T21:13:31.000Z",
+      "author": "JonSchneider https://news.ycombinator.com/user?id=JonSchneider",
+      "summary": "Ternary Bonsai 2 27B retains 98.2% of Qwen3.8 27B benchmark performance in a 5.9GB footprint, with multimodal and agentic capabilities.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49746618",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 523,
+        "comments": 172
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-18T16:03:02.688Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 73.47807229196987,
+      "core": "Ternary Bonsai 2 27B retains 98.2% of Qwen3.8 27B benchmark performance in a 5.9GB footprint, with multimodal and agentic capabilities.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Deploy Hugging Face models on Amazon SageMaker AI with coding agents",
+      "link": "https://aws.amazon.com/blogs/machine-learning/deploy-hugging-face-models-on-amazon-sagemaker-ai-with-coding-agents",
+      "publishedAt": "2026-09-18T15:25:23.000Z",
+      "author": "Dario Salvati",
+      "summary": "Deploy production-ready Hugging Face models on Amazon SageMaker AI using six open-source agent skills. Point a coding agent at a model and get back a real-time endpoint with the right serving container, autoscaling, Amazon CloudWatch alarms, and a verified teardown path.",
+      "evidenceLink": "",
+      "score": 68.46072047619049,
+      "core": "Deploy production-ready Hugging Face models on Amazon SageMaker AI using six open-source agent skills. Point a coding agent at a model and get back a real-time endpoint with the right serving container, autoscaling, Amazon CloudWatch alarms, and a verified teardown path.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-18T16:03:02.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Run Terminal-Bench and other Harbor evals on Vercel Sandbox",
+      "link": "https://vercel.com/changelog/run-terminal-bench-and-other-harbor-evals-on-vercel-sandbox",
+      "publishedAt": "2026-09-17T19:00:00.000Z",
+      "author": "Elisabeth Rülke",
+      "summary": "You can now run Harbor evals on Vercel Sandbox. Harbor is the open-source harness behind Terminal-Bench , whose registry includes many other benchmarks such as SWE-bench, tau3-bench and OSWorld. Pass --env vercel to harbor run and each trial executes in its own isolated Firecracker microVM, so you can parallelize far beyond what your local machine is capable of. A task's network policy is enforced at the sandbox firewall, outside the VM. Optional credential injection attaches secrets to matching outbound requests at that firewall, so they never enter the sandbox. Paired with AI Gateway , one AI_GATEWAY_API_KEY reaches hundreds of models from multiple providers, and benchmarking another model is the same command with a different --model : Swap --model to vercel_ai_gateway/openai/gpt-5.6-luna to run the same benchmark against an OpenAI model. Requires Harbor 0.22.0 or later. Follow the step-by-step guide for setup, configuration, and troubleshooting. Learn more in the Sandbox documentation . Read more",
+      "evidenceLink": "",
+      "score": 63.12970857142857,
+      "core": "You can now run Harbor evals on Vercel Sandbox. Harbor is the open-source harness behind Terminal-Bench , whose registry includes many other benchmarks such as SWE-bench, tau3-bench and OSWorld. Pass --env vercel to harbor run and each trial executes in its own isolated Firecracker microVM, so you can parallelize far beyond what your local machine is capable of. A task's network policy is enforced at the sandbox fir…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-18T16:03:02.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "How to find and debug agent failures your evals are missing",
+      "link": "https://arize.com/blog/how-to-find-and-debug-agent-failures-your-evals-are-missing",
+      "publishedAt": "2026-09-17T16:43:03.000Z",
+      "author": "Aaron Winston",
+      "summary": "Evals measure failures you know how to name. Arize Signal continuously reviews production traces to find recurring trajectory failures you do not, then turns them into evidence for tests and fixes. The post How to find and debug agent failures your evals are missing appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 62.97222841269841,
+      "core": "Evals measure failures you know how to name. Arize Signal continuously reviews production traces to find recurring trajectory failures you do not, then turns them into evidence for tests and fixes. The post How to find and debug agent failures your evals are missing appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-18T16:03:02.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "Context Engineering for AI Agents: Patterns, Tools, and Best Practices",
+      "link": "https://rerun.build/blog/context-engineering-ai-agents",
+      "publishedAt": "2026-09-18T04:14:45.000Z",
+      "author": "",
+      "summary": "Learn how to engineer the instructions, state, retrieval, memory, tools, and evaluation that reliable AI agents need at runtime.",
+      "evidenceLink": "",
+      "score": 62.86790301587301,
+      "core": "Learn how to engineer the instructions, state, retrieval, memory, tools, and evaluation that reliable AI agents need at runtime.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-18T16:03:02.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Migrating multi-model AI agents to Amazon Bedrock AgentCore runtime",
+      "link": "https://aws.amazon.com/blogs/machine-learning/migrating-multi-model-ai-agents-to-amazon-bedrock-agentcore-runtime",
+      "publishedAt": "2026-09-18T15:38:53.000Z",
+      "author": "Sanhita Sarkar",
+      "summary": "Migrate a multi-model healthcare AI agent from self-managed Amazon ECS with AWS Fargate to Amazon Bedrock AgentCore runtime, preserving triple-model orchestration and vector-enhanced knowledge retrieval while reducing infrastructure management. The framework-agnostic pattern applies across healthcare, financial services, and manufacturing.",
+      "evidenceLink": "",
+      "score": 61.865680793650796,
+      "core": "Migrate a multi-model healthcare AI agent from self-managed Amazon ECS with AWS Fargate to Amazon Bedrock AgentCore runtime, preserving triple-model orchestration and vector-enhanced knowledge retrieval while reducing infrastructure management. The framework-agnostic pattern applies across healthcare, financial services, and manufacturing.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-18T16:03:02.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Open-weight models take 56% of token volume, Astra doubles Fable 5.1 spend",
+      "link": "https://vercel.com/blog/ai-gateway-production-index-september-2026",
+      "publishedAt": "2026-09-17T07:00:00.000Z",
+      "author": "Amelia Charles",
+      "summary": "AI Gateway Production Index — September 2026 Every month, AI Gateway routes tens of trillions of tokens between production applications and AI labs. That traffic gives us a view of what AI usage actually looks like in today's enterprise, and we publish it here monthly. See the Production Index reports from June , July , and August . September 2026 summary The September index reports on AI Gateway data collected through August 2026. Open-weight models ran the majority of gateway tokens for the first time, up from 7% in December to 56% in August. The average token costs less than half what it did five months ago. Price per token fell 23.2% in August, the third straight monthly drop, and the median team paid 7.6% less. Fable 5, Anthropic's most capable model, lost two-thirds of its share of gateway spend in one month. Opus 5, at half the price, tripled its share. Anthropic kept 64% of all spend. Gemini 3 Flash has lost 95% of its share of gateway tokens since May, and more than three-quarters of the volume it lost went to models from other labs. Special report: OpenAI launches Astra on September 3 GPT-6 Astra took a third of OpenAI's spend within two days of launch and twice Fable 5.1's share of gateway spend. Introduced two days apart at the same price, Astra took 7.7% of all gateway spend in its first twelve days, while Fable 5.1 took 3.7%. Open-weight models take a majority of token volume for the first time In August, open-weight models ran 56% of all tokens on AI Gateway, marking the first month they took the majority of volume. In December 2025, they processed fewer than one in ten tokens, and only eight months later, they ran more token volume than all closed-weight models combined. Though the frontier kept the majority of spend, open-weight dollar share is accelerating. As open-weight models become more capable, customers are moving more production workloads over to them. Growth in open-weight model adoption helped push the average price per token across the gateway down 23.2% in August, its third consecutive monthly drop and the steepest since April. Among teams running more than ten million tokens in both months, the median team paid 7.6% less per token, more than double July's 2.9% decline. Teams can now get more inference from the same budget and reserve frontier models only for the tasks that justify the premium. Frontier plateaus as Fable spend goes to Opus 5 Production workloads that justify a frontier model don't always need the most expensive one. They need one that’s good enough. Fable is the most capable model Anthropic sells. Opus is the tier below it and costs roughly half of Fable’s price per token. When the US export control on Fable 5 was lifted and its access restored on July 1, its gateway spend share surged to 13.2%. At the end of that same month, Opus 5 came online. In August, Fable 5’s share of gateway spend fell to 4.9%, and Opus 5's share rose to 22.5%. Nine in ten of the teams that ran Fable cut their usage, and more of them moved their workloads to Opus 5 than any other model. Fable’s extra capability wasn’t worth double the price. Teams left Fable, Anthropic's most expensive and capable model, but the lab retained the lion’s share of gateway spend because those workloads stepped down to Opus 5, not a different lab. Anthropic has taken at least 61 cents of every dollar spent through AI Gateway every month since December, and 64 cents in August. Its models have held the top two spots by spend every month since December, even as the models in those spots changed. Customer loyalty follows the model profile, not the lab Lab loyalty doesn’t follow brand, it follows model profile, and consistency wins. When a new model preserves what users valued in its predecessor, the lab retains its customers. When it doesn’t, those customers fill the need through other providers. When Claude Opus 5 launched, it gained almost twice what Fable lost, because it handled the same workloads at half the price. And within five days of Z.ai launching GLM-5.3-Flash, it was running three times GLM-5.2's daily volume. Google struggled to retain customers with its new models. Because the new offerings didn’t provide a relative advantage on capability or price, a majority of Gemini 3 Flash’s workloads moved to OpenAI, Anthropic, and DeepSeek. About half of the volume that left Gemini 3 Flash went to cheaper models, led by GPT-5.6 Luna, which costs less than half as much per token. Most of the other half went to higher-priced models, led by Claude Opus 5 and Sonnet 5, which cost roughly nine and three times as much as Gemini 3 Flash, respectively. The flight to better-fit models meant that over the same period, Google’s share of gateway token volume fell from 30% to 5%, with Gemini 3 Flash accounting for 22 of the 25 percentage points lost. Special report: Astra took a third of OpenAI spend within 48 hours and outpaced Fable 5.1 two to one at launch GPT-6 Astra launched on the AI Gateway on September 3 at the same price as Fable 5.1 and two and a half times the price of GPT-5.6 Sol. Two days later, it accounted for one in every three dollars spent on OpenAI models through the gateway. Its share of spend has held, hovering between 28% and 39% since. Within OpenAI’s model lineup, Astra and Sol processed 27% of OpenAI’s tokens but accounted for 71% of its spending from September 4 through 16. Luna and Nano processed more than twice as many tokens for about one-ninth as much spending. Anthropic launched Fable 5.1 on September 1, two days before Astra. Over each model's first twelve days on the gateway, Astra took 7.7% of all gateway spend, more than twice Fable 5.1's share of 3.7%, and was used by twice as many teams. OpenAI’s cheaper models carry its volume, while Astra’s early lead over Fable shows it can also attract teams at the highest price point. Together, they let OpenAI compete with other frontier labs for both scale and premium spend. Stay tuned for more in next month's report. Also in August’s data Google's Nano Banana took the lead in image spend for the first time , at 50% to GPT Image's 44%, even as GPT Image took back the lead in images generated, 46% to 39%. Google's Veo rose to second in video spend, at 20%, up from 15% in July. Seedance remained in first on both videos generated and video spend. The share of videos generated by xAI’s Grok Imagine has more than halved since June, from 42% to 31% to 19%. Previous AI Gateway Production Index reports May 2026 June 2026 July 2026 August 2026 About this report This report uses anonymized, aggregate traffic routed through Vercel AI Gateway through August 2026. A few notes on measurement: Token volume includes input, output, reasoning, cached-input, and cache-creation tokens. Spending is estimated using labs’ published list prices; actual bills may differ. Average price per token is estimated spending divided by token volume. Statements about where volume moved compare changes among the same teams. They do not trace individual tokens between models. Open-weight classifications follow the current AI Gateway model list, which is broader than the definition used in earlier reports. All figures use the most recent data available; prior months may be revised as methodology is updated. Read more",
+      "evidenceLink": "",
+      "score": 60.63923238095238,
+      "core": "AI Gateway Production Index — September 2026 Every month, AI Gateway routes tens of trillions of tokens between production applications and AI labs. That traffic gives us a view of what AI usage actually looks like in today's enterprise, and we publish it here monthly. See the Production Index reports from June , July , and August . September 2026 summary The September index reports on AI Gateway data collected thro…",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-18T16:03:02.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "neon_ai_engineering",
+      "source": "Neon Blog",
+      "title": "The Neon backend is GA: a complete set of primitives so agents can build",
+      "link": "https://neon.com/blog/neon-backend-is-ga",
+      "publishedAt": "2026-09-17T12:00:00.000Z",
+      "author": "Bryan Clark",
+      "summary": "Neon is now a complete suite of backend primitives built around the database and rooted on the lakebase architecture: Lakebase Postgres, Object Storage, Functions, Managed Better Auth, and AI Gateway. All tools are GA and ready for production. Tell your agent to deploy them.",
+      "evidenceLink": "",
+      "score": 51.52415301587302,
+      "core": "Neon is now a complete suite of backend primitives built around the database and rooted on the lakebase architecture: Lakebase Postgres, Object Storage, Functions, Managed Better Auth, and AI Gateway. All tools are GA and ready for production. Tell your agent to deploy them.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-18T16:03:02.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "databricks_engineering",
+      "source": "Databricks Blog",
+      "title": "Database for AI Agents: 5 Evaluation Criteria",
+      "link": "https://www.databricks.com/blog/database-for-ai-agents",
+      "publishedAt": "2026-09-17T17:27:40.000Z",
+      "author": "",
+      "summary": "The five criteria for evaluating a database for AI agents are branch isolation, serverless...",
+      "evidenceLink": "",
+      "score": 50.903121269841265,
+      "core": "The five criteria for evaluating a database for AI agents are branch isolation, serverless...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-18T16:03:02.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "How Claude is uplifting biomolecular modeling",
+      "link": "https://www.anthropic.com/research/claude-uplifts-biomolecular-modeling",
+      "publishedAt": "2026-09-17T23:55:18.000Z",
+      "author": "",
+      "summary": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-18T16:03:02.688Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 48.54792285714286,
+      "core": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "What Is Jev? A Guide to TypeSafe AI’s System One Model",
+      "link": "https://www.langchain.com/blog/building-a-harness-with-jev",
+      "publishedAt": "2026-09-18T01:47:48.000Z",
+      "author": "",
+      "summary": "What is Jev? Learn how TypeSafe AI’s System One model makes fast, structured decisions, where it fits in the agent loop, and how to use Jev with LangChain",
+      "evidenceLink": "",
+      "score": 45.837406984126986,
+      "core": "What is Jev? Learn how TypeSafe AI’s System One model makes fast, structured decisions, where it fits in the agent loop, and how to use Jev with LangChain",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-18T16:03:02.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "coder_ai_engineering",
+      "source": "Coder",
+      "title": "Trusting the Model is Not an AI Security Strategy",
+      "link": "https://coder.com/blog/trusting-the-model-is-not-an-ai-security-strategy",
+      "publishedAt": "2026-09-18T14:26:05.000Z",
+      "author": "Chris Kent",
+      "summary": "Model safety and deployment safety are two different disciplines with two different owners. Here is what enterprises are responsible for, and what it takes to hold it.",
+      "evidenceLink": "",
+      "score": 43.81234746031746,
+      "core": "Model safety and deployment safety are two different disciplines with two different owners. Here is what enterprises are responsible for, and what it takes to hold it.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-18T16:03:02.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "10 Best AI Agent Platforms in 2026: Compared and Ranked",
+      "link": "https://rerun.build/blog/best-ai-agent-platform",
+      "publishedAt": "2026-09-18T13:17:40.000Z",
+      "author": "",
+      "summary": "Most AI agent platform roundups compare frameworks, builders and runtimes as if they were the same purchase. We scored ten on one question: can it safely run real work after the demo?",
+      "evidenceLink": "",
+      "score": 41.819787936507936,
+      "core": "Most AI agent platform roundups compare frameworks, builders and runtimes as if they were the same purchase. We scored ten on one question: can it safely run real work after the demo?",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-18T16:03:02.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Building an Agent Harness for Life Sciences: Introducing Deep Life Sci",
+      "link": "https://www.langchain.com/blog/agent-harness-life-sciences",
+      "publishedAt": "2026-09-17T17:40:45.000Z",
+      "author": "",
+      "summary": "Deep Life Sci is LangChain's open source agentic assistant for clinical and lab scientists. It pulls from 600K+ ClinicalTrials.gov studies, 29M PubMed abstracts, and 12M PubMed Central full-text articles, with sandboxed sub-agents for real data analysis.",
+      "evidenceLink": "",
+      "score": 41.81314111111111,
+      "core": "Deep Life Sci is LangChain's open source agentic assistant for clinical and lab scientists. It pulls from 600K+ ClinicalTrials.gov studies, 29M PubMed abstracts, and 12M PubMed Central full-text articles, with sandboxed sub-agents for real data analysis.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-18T16:03:02.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Apple launches 'privacy-first' AI upgrade to Siri – but it won't be available in the EU",
+      "link": "https://www.itpro.com/software/apple/apple-launches-privacy-first-ai-upgrade-to-siri-but-it-wont-be-available-in-the-eu",
+      "publishedAt": "2026-09-18T11:41:55.000Z",
+      "author": "Ana Martins",
+      "summary": "The long-awaited Siri AI is here, and Apple says it's making sure to protect users' privacy and security amid an ongoing \"standoff\" with the EU",
+      "evidenceLink": "",
+      "score": 41.483577619047615,
+      "core": "The long-awaited Siri AI is here, and Apple says it's making sure to protect users' privacy and security amid an ongoing \"standoff\" with the EU",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-18T16:03:02.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Reduce time-to-hire for quality candidates with AI-powered Amazon Connect Talent",
+      "link": "https://aws.amazon.com/blogs/machine-learning/reduce-time-to-hire-for-quality-candidates-with-ai-powered-amazon-connect-talent",
+      "publishedAt": "2026-09-17T17:55:20.000Z",
+      "author": "Ayesha Borker",
+      "summary": "Amazon Connect Talent is an AI hiring solution built for talent acquisition leaders managing scaled hiring. It delivers AI-led interviews, data-driven assessments, and consistent evaluation, helping recruiters identify strong candidates more efficiently while providing applicants with a flexible interview experience. Informed by decades of Amazon's hiring science, Amazon Connect Talent provides transparency for every assessment, interview, and candidate score, enabling recruiters to stay in control of final hiring decisions.",
+      "evidenceLink": "",
+      "score": 41.36383555555555,
+      "core": "Amazon Connect Talent is an AI hiring solution built for talent acquisition leaders managing scaled hiring. It delivers AI-led interviews, data-driven assessments, and consistent evaluation, helping recruiters identify strong candidates more efficiently while providing applicants with a flexible interview experience. Informed by decades of Amazon's hiring science, Amazon Connect Talent provides transparency for ever…",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-18T16:03:02.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "White hat hackers just breached OpenAI using Anthropic's Claude in less than 72 hours — and it is a case study in just how fast AI is advancing",
+      "link": "https://www.techradar.com/pro/security/white-hat-hackers-just-breached-openai-using-anthropics-claude-in-less-than-72-hours-and-it-is-a-case-study-in-just-how-fast-ai-is-advancing",
+      "publishedAt": "2026-09-18T10:49:48.000Z",
+      "author": "Benedict Collins",
+      "summary": "The researchers struggled to abuse the exploit with an AI agent on Opus 4.8, but the release of Opus 5 changed everything.",
+      "evidenceLink": "",
+      "score": 41.3048673015873,
+      "core": "The researchers struggled to abuse the exploit with an AI agent on Opus 4.8, but the release of Opus 5 changed everything.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-18T16:03:02.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Dreamforce 2026 and the dangers of AI",
+      "link": "https://www.itpro.com/technology/artificial-intelligence/dreamforce-2026-and-the-dangers-of-ai",
+      "publishedAt": "2026-09-18T08:24:34.000Z",
+      "author": "ITPro",
+      "summary": "Ross Kelly joins us from San Francisco to talk AI safety, Claudforce, Koa, and all things Dreamforce",
+      "evidenceLink": "",
+      "score": 34.009748253968255,
+      "core": "Ross Kelly joins us from San Francisco to talk AI safety, Claudforce, Koa, and all things Dreamforce",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-18T16:03:02.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Google, Nvidia, and Emerald AI launch Alliance to advance data centers that dynamically adjust electricity use based on grid conditions",
+      "link": "https://www.techradar.com/pro/google-nvidia-and-emerald-ai-launch-alliance-to-advance-data-centers-that-dynamically-adjust-electricity-use-based-on-grid-conditions",
+      "publishedAt": "2026-09-18T13:00:00.000Z",
+      "author": "Craig Hale",
+      "summary": "The AI Energy Management Alliance wants to lay the framework for how future data centers can use energy more sympathetically with the grid.",
+      "evidenceLink": "",
+      "score": 25.554311746031747,
+      "core": "The AI Energy Management Alliance wants to lay the framework for how future data centers can use energy more sympathetically with the grid.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-18T16:03:02.688Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

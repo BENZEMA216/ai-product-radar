@@ -1,0 +1,293 @@
+{
+  "date": "2026-09-19",
+  "generatedAt": "2026-09-18T16:15:08.801Z",
+  "reportPath": "reports/2026-09-19-0015-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 61,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 28,
+      "keptCount": 13,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-09-17；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 28 条，AI 相关候选 13 条；实际 fallback：hunted_space。；历史去重后最终发布 13 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 3,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 19,
+      "keptCount": 14,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 12,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "fallback",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 11,
+      "keptCount": 11,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Bitrise Remote Dev Environments",
+      "productKey": "https://www.producthunt.com/products/bitrise",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "云 Mac 把编码 Agent 的构建环境单独产品化；值得验证真实编译、远程调试与环境复用能否衔接，而不是只获得一台远程机器。"
+    },
+    {
+      "rank": 2,
+      "product": "Skillsync (YC W26) – AI chat sessions made portable across agents",
+      "productKey": "https://news.ycombinator.com/item?id=49743049",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "会话可跨 Agent 携带，切中换工具时丢失上下文的问题；应观察迁移后保留的是聊天文本，还是可继续执行的任务状态。"
+    },
+    {
+      "rank": 3,
+      "product": "Text Agent Store",
+      "productKey": "https://www.producthunt.com/products/text-agent-store",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "短信式入口与 Agent 市场结合，降低寻找和调用服务的摩擦；关键看服务如何被发现，以及用户能否明确知道消息会触发什么动作。"
+    },
+    {
+      "rank": 4,
+      "product": "Memorable",
+      "productKey": "https://www.ycombinator.com/launches/u2j-memorable-graph-procedural-memory-for-ai-agents-stop-re-teaching-your-agents",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "程序性记忆试图避免每次重学工作流；60% 工具调用和 40% 延迟下降是发布方主张，需要核对任务样本与对照条件。"
+    },
+    {
+      "rank": 5,
+      "product": "S-Roll",
+      "productKey": "https://www.producthunt.com/products/s-roll",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "将长视频切片包装为 Agent harness，价值应在理解内容到产出短片的交付链路；重点看用户能否校正选段，而非仅自动裁剪。"
+    },
+    {
+      "rank": 6,
+      "product": "NovaSynth by Noveum",
+      "productKey": "https://www.producthunt.com/products/novasynth-by-noveum",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "语音 Agent 测试聚焦难以现场扮演的来电者；可研究测试情境如何覆盖边缘对话，不能仅凭产品描述认为已经发现全部故障。"
+    },
+    {
+      "rank": 7,
+      "product": "LinkBunny, a service where coding agents exchange backlinks autonomousy",
+      "productKey": "https://getlinkbunny.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agent 自动交换反向链接触及分发而非编码；需要先核对交换规则与站点质量，避免将自动获取链接等同于有效增长。"
+    },
+    {
+      "rank": 8,
+      "product": "S-Roll – local AI video understanding and clipping for Mac",
+      "productKey": "https://saliency.dev/s-roll",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Mac 本地视频理解与剪辑把运行位置变成产品定位；应比较本地等待、数据边界和剪辑可控性，不能仅看模型能理解视频。"
+    },
+    {
+      "rank": 9,
+      "product": "Radio – a shared workspace for your agents and teammates",
+      "productKey": "https://radio.plasma.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "人与 Agent 共用工作空间，重点是任务交接、执行可见性与责任归属；共享聊天界面本身并不证明协作闭环成立。"
+    },
+    {
+      "rank": 10,
+      "product": "Analytiics",
+      "productKey": "https://www.producthunt.com/products/analytiics",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "分析工具让编码 Agent 负责安装配置，可能把埋点成本前移到开发环节；验证点是事件定义、数据正确性与后续维护是否仍可控。"
+    },
+    {
+      "rank": 11,
+      "product": "AskDeck",
+      "productKey": "https://www.producthunt.com/products/askdeck",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用一次 AI 通话交付演示文稿和配音视频，入口与输出组合很明确；适合研究口述需求如何被确认，以及成品怎样回到可编辑状态。"
+    },
+    {
+      "rank": 12,
+      "product": "Amy by Jellyfish",
+      "productKey": "https://www.producthunt.com/products/amy-by-jellyfish",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "招聘团队的 AI 寻源员工瞄准持续候选人发现；要辨别自动搜集与符合招聘条件的有效名单，并保留招聘者修正标准的能力。"
+    },
+    {
+      "rank": 13,
+      "product": "QAgent",
+      "productKey": "https://www.producthunt.com/products/qagent-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agent QA 从凭感觉上线转向可重复检查；应看测试能否覆盖工具调用与失败路径，而不是把自动评分当作可安全发布的证明。"
+    },
+    {
+      "rank": 14,
+      "product": "Die With Me",
+      "productKey": "https://www.producthunt.com/products/die-with-me-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "将朋友的 Claude Code/Codex 使用情况做成 buddy list，是 AI 工具的社交观察入口；深度尚待核对，不应据此推断团队生产力提升。"
+    },
+    {
+      "rank": 15,
+      "product": "MCPJam - the first testing & evaluations platform for MCP servers",
+      "productKey": "https://www.mcpjam.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "MCP 服务测试平台把接口验证做成独立产品；核心判断是能否重现调用失败与授权问题，平台自称首个不构成质量证据。"
+    },
+    {
+      "rank": 16,
+      "product": "Craigslist for agent skills, curated by a human",
+      "productKey": "https://skillbay.sh",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "人工精选的 Skill 集市对应用户关注的发现与分发方向；要看审核标准、能力展示与安装路径，而非把条目数量当成生态成熟度。"
+    },
+    {
+      "rank": 17,
+      "product": "AI agents design an open chip, the best one gets fabricated",
+      "productKey": "https://neruva.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 Agent 设计芯片并择优制造，将数字产出接到物理验收；值得追踪选择标准和制造结果，目前发布帖不能证明设计已成功流片。"
+    },
+    {
+      "rank": 18,
+      "product": "An open Add/Search evaluation framework for agent memory",
+      "productKey": "https://agentmemoryleaderboard.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Add/Search 框架将 Agent 记忆评估拆成写入和检索；可用来检查记忆是否真正可取回，但榜单不能替代业务任务中的效果验证。"
+    },
+    {
+      "rank": 19,
+      "product": "Jawz – macro market state for AI agents, now a ChatGPT app (no login)",
+      "productKey": "https://jawz.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "宏观市场状态通过无需登录的 ChatGPT 应用提供给 Agent，降低接入门槛；先核对信息更新时间和表达边界，不把状态摘要当投资建议。"
+    },
+    {
+      "rank": 20,
+      "product": "MCPJam",
+      "productKey": "https://www.producthunt.com/products/mcpjam-inspector",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "MCPJam 在 PH 展示同一测试评估定位，可补充社区发布的分发信号；应合并理解跨来源证据，不把两个入口当两个独立创新。"
+    }
+  ]
+}
