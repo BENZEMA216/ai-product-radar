@@ -852,6 +852,46 @@
       "requireAiRelevance": false,
       "requireStrongAiRelevance": false,
       "requireKnowledgeDepth": false
+    },
+    {
+      "id": "anthropic_news_institute",
+      "label": "Anthropic News & Institute",
+      "type": "sitemap",
+      "url": "https://www.anthropic.com/sitemap.xml",
+      "home": "https://www.anthropic.com/news",
+      "pathPrefixes": [
+        "/news/",
+        "/institute/"
+      ],
+      "weight": 16,
+      "maxItems": 16,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "figma_ai_design",
+      "label": "Figma Blog",
+      "type": "feed",
+      "url": "https://www.figma.com/blog/feed/atom.xml",
+      "home": "https://www.figma.com/blog/ai/",
+      "weight": 15,
+      "maxItems": 24,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "figma_ai_release_notes",
+      "label": "Figma Release Notes",
+      "type": "feed",
+      "url": "https://www.figma.com/release-notes/feed/atom.xml",
+      "home": "https://www.figma.com/release-notes/",
+      "weight": 13,
+      "maxItems": 24,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
     }
   ],
   "paperSource": {

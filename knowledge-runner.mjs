@@ -491,6 +491,9 @@ export function isAiRelevant(item, source) {
   if (/\b(?:announc(?:e|ing)|rais(?:e|es|ed|ing))\b[^\n]{0,80}(?:\b(?:pre-?seed|seed round|series [a-z]|funding round)\b|\$\d+(?:\.\d+)?[mb]\b(?:\s+round)?)/i.test(title)) {
     return false;
   }
+  if (/\bbacker\b/i.test(title) && /\$\d+(?:\.\d+)?\s*(?:million|billion|[mb])\b[^\n]{0,80}\bfunding round\b/i.test(text)) {
+    return false;
+  }
   if (source.requireAiRelevance && !includesAny(text, AI_TERMS)) return false;
   if (source.requireStrongAiRelevance && !strongAiEvidence(item)) return false;
   if (source.requireKnowledgeDepth && !includesAny(text, KNOWLEDGE_TERMS)) return false;

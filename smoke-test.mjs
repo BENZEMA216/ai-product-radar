@@ -4680,6 +4680,17 @@ function testKnowledgeStrongAiRelevanceRejectsIncidentalMentions() {
   assert.equal(
     isAiRelevant(
       {
+        title: "AI chip startup enlists Samsung as backer",
+        summary: "Samsung joined the startup's $231 million funding round while it develops an inference chip."
+      },
+      source
+    ),
+    false,
+    "backer headlines whose only evidence is a disclosed funding round must not occupy Knowledge Radar slots"
+  );
+  assert.equal(
+    isAiRelevant(
+      {
         title: "An Alien Mind",
         summary: "A researcher reflects on increasingly capable AI and the challenge of keeping it aligned, calling for stronger safeguards and international coordination."
       },
