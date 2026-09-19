@@ -1,0 +1,292 @@
+{
+  "date": "2026-09-20",
+  "generatedAt": "2026-09-19T16:13:37.504Z",
+  "reportPath": "reports/2026-09-20-0013-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 81,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 91,
+      "keptCount": 36,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-09-18；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 91 条，AI 相关候选 36 条；实际 fallback：hunted_space。；历史去重移除 2 条已报道或已处理日榜 Product Hunt 信号，最终发布 34 条。"
+    },
+    "yc_launch": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "YC Launch 本窗口无候选或来源为空。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 11,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 17,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "fallback",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 16,
+      "keptCount": 16,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "M9R",
+      "productKey": "https://www.producthunt.com/products/m9r",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "M9R 把多个 coding agent 与团队成员放进同一协作空间，值得验证并行任务的可见性、冲突处理和交接是否优于分散终端。"
+    },
+    {
+      "rank": 2,
+      "product": "ContextsBase - Backlog for Coding Agents",
+      "productKey": "https://www.producthunt.com/products/contextsbase",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ContextsBase 把零散对话提示转成 agent 可执行 backlog，关键看需求状态、上下文版本和完成验收能否形成闭环。"
+    },
+    {
+      "rank": 3,
+      "product": "Lodestar – Read, respond and manage coding agents more naturally",
+      "productKey": "https://www.try-lodestar.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Lodestar 聚焦读取、回复和管理 coding agent，值得观察它能否把人工介入做成低打断、可追踪的控制面。"
+    },
+    {
+      "rank": 4,
+      "product": "ProductBridge",
+      "productKey": "https://www.producthunt.com/products/productbridge",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ProductBridge 将客服与反馈交给同一 agent，产品价值取决于问题闭环、反馈归因和人工接管是否真正连通。"
+    },
+    {
+      "rank": 5,
+      "product": "Eggshell",
+      "productKey": "https://www.producthunt.com/products/eggshell-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Eggshell 用本地记忆复用 agent 工作并减少 token，值得看记忆检索质量、隐私边界和错误上下文淘汰机制。"
+    },
+    {
+      "rank": 6,
+      "product": "Agentgit – a Git host for AI agents, no account, no token, no key",
+      "productKey": "https://agentgit.co",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agentgit 让 agent 无账号、token 或密钥即可使用 Git 托管，值得验证低摩擦接入是否仍保留身份、权限与审计边界。"
+    },
+    {
+      "rank": 7,
+      "product": "Wcagent let use your ChatGPT subscription for coding",
+      "productKey": "https://wcagent.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Wcagent 试图让编码工具复用 ChatGPT 订阅，值得关注授权合规、费用边界以及与官方 API 工作流的差异。"
+    },
+    {
+      "rank": 8,
+      "product": "Verity Score",
+      "productKey": "https://www.producthunt.com/products/verity-score-geo-ai-visibility",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Verity Score 追踪 AI 如何描述商店并给出修正动作，值得看可见性诊断能否落到内容与转化改进，而非只报排名。"
+    },
+    {
+      "rank": 9,
+      "product": "claudebill",
+      "productKey": "https://www.producthunt.com/products/claudebill",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "claudebill 把 Claude Code 会话成本拆到可见层，适合验证团队能否按任务、会话和产出定位真实费用异常。"
+    },
+    {
+      "rank": 10,
+      "product": "Toone",
+      "productKey": "https://www.producthunt.com/products/toone",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Toone 主打可靠的 agent 工作流与例程，判断重点是重试、状态持久化和失败恢复是否足以支撑长期自动化。"
+    },
+    {
+      "rank": 11,
+      "product": "OnPanda – Steer LLMs and agents at the token level",
+      "productKey": "https://onpanda.diyer22.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "OnPanda 在 token 层控制模型与 agent，值得看这种细粒度干预能否提升确定性，同时不把开发门槛推得过高。"
+    },
+    {
+      "rank": 12,
+      "product": "Htmldoc – A pastebin that renders the HTML your coding agent writes",
+      "productKey": "https://htmldoc.space",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Htmldoc 让 coding agent 生成的 HTML 立即可查看，价值在于缩短预览与反馈链路，而不是再造一个普通 pastebin。"
+    },
+    {
+      "rank": 13,
+      "product": "Sider Omni Sidebar",
+      "productKey": "https://www.producthunt.com/products/sider-omni",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Sider Omni 把 agent 侧栏覆盖到每个 Mac 应用，值得观察跨应用上下文获取、权限提示和任务连续性如何设计。"
+    },
+    {
+      "rank": 14,
+      "product": "We've built an AI UGC video creator,free for one month",
+      "productKey": "https://kuvu.ai/marketing/ai-ugc",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这款 UGC 视频工具用一个月免费降低试用门槛，关键看素材一致性、品牌控制和批量生产能否形成营销闭环。"
+    },
+    {
+      "rank": 15,
+      "product": "AgentMeasure – healthchecks and settlement statements for AI bills",
+      "productKey": "https://github.com/roy-tong/agentmeasure",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AgentMeasure 为 AI 账单提供健康检查与结算单，适合验证成本异常能否被归因到模型、agent 和具体任务。"
+    },
+    {
+      "rank": 16,
+      "product": "AINA",
+      "productKey": "https://www.producthunt.com/products/aina",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AINA 用 AI 教练寻找求职盲点，值得看它是否基于真实申请反馈给出可执行建议，而非泛化式鼓励。"
+    },
+    {
+      "rank": 17,
+      "product": "Ami AI",
+      "productKey": "https://www.producthunt.com/products/ami-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Ami AI 用“Lovable for 获客”定位生成式增长工具，关键是从搭建活动到获取客户是否有可量化闭环。"
+    },
+    {
+      "rank": 18,
+      "product": "Holon",
+      "productKey": "https://www.producthunt.com/products/holon-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Holon 强调 agent 不只建议而是持续执行，值得核对它能承担哪些动作、何时回报以及失败后如何收口。"
+    },
+    {
+      "rank": 19,
+      "product": "AEXGrid",
+      "productKey": "https://www.producthunt.com/products/aexgrid",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AEXGrid 提供远程协调多个 agent 的入口，值得观察移动端控制、任务状态同步和高风险动作确认机制。"
+    },
+    {
+      "rank": 20,
+      "product": "Unfetch.com",
+      "productKey": "https://www.producthunt.com/products/unfetch-com",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Unfetch 让 ChatGPT 与 Claude 管理广告，产品价值取决于预算护栏、素材迭代和投放结果归因是否完整。"
+    }
+  ]
+}

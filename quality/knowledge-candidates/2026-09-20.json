@@ -1,0 +1,392 @@
+{
+  "generatedAt": "2026-09-19T16:25:15.021Z",
+  "date": "2026-09-20",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Jev is the fastest-adopted model in AI Gateway history",
+      "link": "https://vercel.com/blog/ai-gateway-jev-model-launch",
+      "publishedAt": "2026-09-18T07:00:00.000Z",
+      "author": "Amelia Charles",
+      "summary": "Within 24 hours of launching on AI Gateway, Jev from TypeSafe AI reached more than twice as many paid teams as any previous model launch, making it the fastest-adopted model in gateway history. Jev passed every other comparison model in its first twelve hours and continued to widen its lead for the rest of the day. By hour 24, it was being used by nearly 13% of paid teams. That’s 2x as many as the GPT-5.6 family and over 6x as many as Fable 5.1. Jev’s launch shows how quickly a specialized model can find a place in production. Its first-day adoption was unmatched among recent launches; the next test is whether that early adoption lasts. About Jev Jev was introduced on September 15 as a probabilistic decision model built for making structured decisions inside software. An application sends it context and a set of questions. Jev evaluates those questions in parallel and returns typed choices, scores, or true-or-false answers, along with probabilities. Unlike the text produced by a general-purpose language model, Jev’s answers come in a format the code can use directly. Developers can use it to: choose an agent’s next tool or subagent decide whether a workflow should continue, retry, ask the user, or stop score urgency or risk before taking an action verify model outputs, enforce guardrails, or send uncertain cases for human review In its own workflow evaluations, TypeSafe AI reports that Jev was up to 194 times faster and 445 times cheaper than language models. See the September AI Gateway Production Index for more model usage data or try Jev through AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 87.61279720238096,
+      "core": "Within 24 hours of launching on AI Gateway, Jev from TypeSafe AI reached more than twice as many paid teams as any previous model launch, making it the fastest-adopted model in gateway history. Jev passed every other comparison model in its first twelve hours and continued to widen its lead for the rest of the day. By hour 24, it was being used by nearly 13% of paid teams. That’s 2x as many as the GPT-5.6 family and…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-19T16:25:15.021Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "together_ai_engineering",
+      "source": "Together AI",
+      "title": "How a global fintech scaled coding agent traffic with Dedicated Model Inference",
+      "link": "https://www.together.ai/blog/global-fintech-scales-coding-agent-traffic-with-dedicated-model-inference",
+      "publishedAt": "2026-09-18T00:00:00.000Z",
+      "author": "",
+      "summary": "Inside a global bank's shift to self-serve dedicated inference: how Together's DMI gave engineering teams direct control over scaling, models, and testing.",
+      "evidenceLink": "",
+      "score": 61.97390831349207,
+      "core": "Inside a global bank's shift to self-serve dedicated inference: how Together's DMI gave engineering teams direct control over scaling, models, and testing.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-19T16:25:15.021Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "figma_ai_design",
+      "source": "Figma Blog",
+      "title": "How Coinbase used Code Connect to guide agents and shrink token costs",
+      "link": "https://www.figma.com/blog/how-coinbase-used-code-connect-to-shrink-token-costs",
+      "publishedAt": "2026-09-02T20:28:00.000Z",
+      "author": "",
+      "summary": "The Coinbase Design System team put Code Connect to the test against coding agents—and found that it boosted design system adherence while cutting token costs by an average of 22.5%.",
+      "evidenceLink": "",
+      "score": 61.01111111111111,
+      "core": "The Coinbase Design System team put Code Connect to the test against coding agents—and found that it boosted design system adherence while cutting token costs by an average of 22.5%.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-19T16:25:15.021Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "How OpenAI Used Its Own LLMs to Design Its Jalapeño Chip",
+      "link": "https://spectrum.ieee.org/llms-for-chip-design",
+      "publishedAt": "2026-09-18T23:04:17.000Z",
+      "author": "maxall4 https://news.ycombinator.com/user?id=maxall4",
+      "summary": "OpenAI's Jalapeño shows how LLMs for chip design slash latency and power, enabling smaller teams to deliver high-performance AI accelerators faster.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49761432",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 172,
+        "comments": 120
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-19T16:25:15.021Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 56.9387770300864,
+      "core": "OpenAI's Jalapeño shows how LLMs for chip design slash latency and power, enabling smaller teams to deliver high-performance AI accelerators faster.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "Best no-code AI agent builders in 2026 - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/best-no-code-ai-agent-builders-2026",
+      "publishedAt": "2026-09-17T00:00:00.000Z",
+      "author": "",
+      "summary": "Compare the best no-code AI agent builders in 2026. See how Sim AI, Lindy, Relevance AI, Stack AI, Gumloop, and Bardeen differ across assistants, multi-agent teams, enterprise workflows, and web automation, and where evaluation and observability fit in.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-19T16:25:15.021Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 55.8040670436508,
+      "core": "Compare the best no-code AI agent builders in 2026. See how Sim AI, Lindy, Relevance AI, Stack AI, Gumloop, and Bardeen differ across assistants, multi-agent teams, enterprise workflows, and web automation, and where evaluation and observability fit in.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "figma_ai_design",
+      "source": "Figma Blog",
+      "title": "Workflow lab: Moving between design and code with agents",
+      "link": "https://www.figma.com/blog/workflow-lab-moving-between-design-and-code-with-agents",
+      "publishedAt": "2026-08-26T22:00:00.000Z",
+      "author": "",
+      "summary": "Coding agents are reshaping how developers build, but they’re only as good as the input they’re given. This workflow explores how context keeps code and canvas in sync.",
+      "evidenceLink": "",
+      "score": 54.93333333333333,
+      "core": "Coding agents are reshaping how developers build, but they’re only as good as the input they’re given. This workflow explores how context keeps code and canvas in sync.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-19T16:25:15.021Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "figma_ai_design",
+      "source": "Figma Blog",
+      "title": "Sightlines issue no.2: What leaders need to know about building agents",
+      "link": "https://www.figma.com/blog/sightlines-issue-no2",
+      "publishedAt": "2026-08-20T19:36:00.000Z",
+      "author": "",
+      "summary": "Agentic products pose a unique set of design challenges. How do you build a tool that’s powerful and knowledgeable enough to be a true partner, while keeping trust and security at the core? Here’s what we’ve heard from leaders.",
+      "evidenceLink": "",
+      "score": 52.26111111111111,
+      "core": "Agentic products pose a unique set of design challenges. How do you build a tool that’s powerful and knowledgeable enough to be a true partner, while keeping trust and security at the core? Here’s what we’ve heard from leaders.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-19T16:25:15.021Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Benchmarking LLM Inference at Scale with AIPerf",
+      "link": "https://developer.nvidia.com/blog/benchmarking-llm-inference-at-scale-with-aiperf",
+      "publishedAt": "2026-09-18T19:04:41.000Z",
+      "author": "Elizabeth Goodman",
+      "summary": "You’re deploying a model on a system. It starts up, prompts are getting responses. Now the hard question: Is this fast? Your instincts might lead you to send...",
+      "evidenceLink": "",
+      "score": 49.36440434523809,
+      "core": "You’re deploying a model on a system. It starts up, prompts are getting responses. Now the hard question: Is this fast? Your instincts might lead you to send...",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-19T16:25:15.021Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "TypeSafe’s Jev: Can decision models replace LLM judges?",
+      "link": "https://arize.com/blog/typesafe-jev-llm-judge",
+      "publishedAt": "2026-09-18T21:07:23.000Z",
+      "author": "Laurie Voss",
+      "summary": "TypeSafe’s Jev classifies, scores, and routes without generating text — up to hundreds of times cheaper than an LLM judge. What that changes for evals, confidence routing, and application architecture. The post TypeSafe’s Jev: Can decision models replace LLM judges? appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 44.26047577380952,
+      "core": "TypeSafe’s Jev classifies, scores, and routes without generating text — up to hundreds of times cheaper than an LLM judge. What that changes for evals, confidence routing, and application architecture. The post TypeSafe’s Jev: Can decision models replace LLM judges? appeared first on Arize AI .",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-19T16:25:15.021Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic_news_institute",
+      "source": "Anthropic News & Institute",
+      "title": "Partnering with Accenture on embedded evaluation",
+      "link": "https://www.anthropic.com/news/accenture-embedded-evaluation",
+      "publishedAt": "2026-09-18T20:02:00.000Z",
+      "author": "",
+      "summary": "We’re partnering with Accenture on independent evaluation of frontier AI—part of our recent commitment to embed evaluators at Anthropic. Both we and Accenture expect to invest at least $1 billion to build capacity in this area over the next five years.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-19T16:25:15.021Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 41.943749583333336,
+      "core": "We’re partnering with Accenture on independent evaluation of frontier AI—part of our recent commitment to embed evaluators at Anthropic. Both we and Accenture expect to invest at least $1 billion to build capacity in this area over the next five years.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Alibaba open-sources AI model that can detect cancer and nearly 150 conditions",
+      "link": "https://www.scmp.com/tech/big-tech/article/3368055/alibaba-open-sources-medical-ai-model-can-detect-cancer-and-nearly-150-conditions",
+      "publishedAt": "2026-09-18T23:54:42.000Z",
+      "author": "yogthos https://news.ycombinator.com/user?id=yogthos",
+      "summary": "Tested on nearly 40,000 real-world exams, the model outperformed most radiologists, according to a new study published in Science.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49761840",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 139,
+        "comments": 18
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-19T16:25:15.021Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 41.83114299537621,
+      "core": "Tested on nearly 40,000 real-world exams, the model outperformed most radiologists, according to a new study published in Science.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "AI Agent APIs: How to Connect, Control, and Run Agents Programmatically",
+      "link": "https://rerun.build/blog/ai-agent-api",
+      "publishedAt": "2026-09-19T04:17:19.000Z",
+      "author": "",
+      "summary": "A practical, vendor-neutral guide to the API contract behind controllable agent runs, including lifecycle state, events, approvals, cancellation, observability, and auditability.",
+      "evidenceLink": "",
+      "score": 41.12230117063492,
+      "core": "A practical, vendor-neutral guide to the API contract behind controllable agent runs, including lifecycle state, events, approvals, cancellation, observability, and auditability.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-19T16:25:15.021Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic_news_institute",
+      "source": "Anthropic News & Institute",
+      "title": "Measurements for understanding the pace of AI development inside frontier labs",
+      "link": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+      "publishedAt": "2026-09-19T16:20:35.950Z",
+      "author": "",
+      "summary": "Today, the world can’t see what’s going on inside AI labs. Anthropic is proposing new metrics that would give the public visibility into frontier AI development.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-19T16:25:15.021Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 36.888907321428576,
+      "core": "Today, the world can’t see what’s going on inside AI labs. Anthropic is proposing new metrics that would give the public visibility into frontier AI development.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "figma_ai_design",
+      "source": "Figma Blog",
+      "title": "Behind the build: Generative plugins and shaders at Figma",
+      "link": "https://www.figma.com/blog/how-we-built-generative-plugins-and-shaders",
+      "publishedAt": "2026-09-01T14:39:43.296Z",
+      "author": "",
+      "summary": "Starting today, you’ll have more creative control over generative plugins and shaders, and a way to share what you’ve made with the community. Product Designer Rogie King tells the story of how we got here.",
+      "evidenceLink": "",
+      "score": 31.144444444444446,
+      "core": "Starting today, you’ll have more creative control over generative plugins and shaders, and a way to share what you’ve made with the community. Product Designer Rogie King tells the story of how we got here.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-19T16:25:15.021Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "figma_ai_design",
+      "source": "Figma Blog",
+      "title": "How do you actually measure the impact of AI on design?",
+      "link": "https://www.figma.com/blog/measuring-the-impact-of-ai",
+      "publishedAt": "2026-08-28T19:30:00.000Z",
+      "author": "",
+      "summary": "In 2024, we kicked off a study to understand how AI would reshape design and product development. Now, AI is helping us run it.",
+      "evidenceLink": "",
+      "score": 30.705555555555556,
+      "core": "In 2024, we kicked off a study to understand how AI would reshape design and product development. Now, AI is helping us run it.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-19T16:25:15.021Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Seagate finds 'AI is increasing the value of data' but warns that 43% of businesses lack proper data storage infrastructure — 99% expect AI storage (and storage costs) to explode",
+      "link": "https://www.techradar.com/pro/seagate-finds-ai-is-increasing-the-value-of-data-but-warns-that-43-of-businesses-lack-proper-data-storage-infrastructure-99-expect-ai-storage-and-storage-costs-to-explode",
+      "publishedAt": "2026-09-18T18:05:00.000Z",
+      "author": "Efosa Udinmwen",
+      "summary": "Seagate’s survey finds AI increasing storage requirements sharply, while many organizations remain unprepared for infrastructure, sustainability and data-management demands.",
+      "evidenceLink": "",
+      "score": 30.36557498015873,
+      "core": "Seagate’s survey finds AI increasing storage requirements sharply, while many organizations remain unprepared for infrastructure, sustainability and data-management demands.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-19T16:25:15.021Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Getting ready for production AI – Part 1: 6 steps to better enterprise data",
+      "link": "https://www.itpro.com/technology/artificial-intelligence/getting-ready-for-production-ai-part-1-6-steps-to-better-enterprise-data",
+      "publishedAt": "2026-09-16T17:19:06.000Z",
+      "author": "ITPro",
+      "summary": "As AI experimentation breaks into full-scale production, the challenge is no longer simply choosing a model or buying more GPUs. IT teams need enterprise data to be usable, governed, and accessible across the AI lifecycle.To address this, the Dell AI Data Platform brings storage engines, data engines, and orchestration together to turn enterprise data into AI outcomes.",
+      "evidenceLink": "",
+      "score": 28.982360694444445,
+      "core": "As AI experimentation breaks into full-scale production, the challenge is no longer simply choosing a model or buying more GPUs. IT teams need enterprise data to be usable, governed, and accessible across the AI lifecycle.To address this, the Dell AI Data Platform brings storage engines, data engines, and orchestration together to turn enterprise data into AI outcomes.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-19T16:25:15.021Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic_news_institute",
+      "source": "Anthropic News & Institute",
+      "title": "Developing nuclear safeguards for AI through public-private partnership",
+      "link": "https://www.anthropic.com/news/developing-nuclear-safeguards-for-ai-through-public-private-partnership",
+      "publishedAt": "2026-09-10T20:11:55.000Z",
+      "author": "",
+      "summary": "With the NNSA and DOE national labs, we co-developed a classifier that distinguishes concerning from benign nuclear conversations with 96% accuracy.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-19T16:25:15.021Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 24.822222222222223,
+      "core": "With the NNSA and DOE national labs, we co-developed a classifier that distinguishes concerning from benign nuclear conversations with 96% accuracy.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "interconnects",
+      "source": "Interconnects",
+      "title": "Why I still haven’t bought into true RSI",
+      "link": "https://www.interconnects.ai/p/where-i-stand-on-rsi",
+      "publishedAt": "2026-09-19T15:42:20.000Z",
+      "author": "Nathan Lambert",
+      "summary": "An “AI moderate’s” view on recent events and the trajectory of frontier models.",
+      "evidenceLink": "",
+      "score": 24.387797202380952,
+      "core": "An “AI moderate’s” view on recent events and the trajectory of frontier models.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-19T16:25:15.021Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
