@@ -3608,6 +3608,7 @@ function testCurrentAihotNonProductSignalsStayDeprioritized() {
     { product: "Cohere 签署最终协议完成合并", did: "两家公司合并。" },
     { product: "OpenAI 筹备 Codex Replay 功能", did: "可选取历史线程执行任务。" },
     { product: "Krea Agent 工作流拆解", did: "第三方使用心得。" },
+    { product: "Every 分享 Astra 视觉特效实战与 AI 写作心得", did: "文章介绍创意工作室案例并整理多条 AI 写作心得。" },
     { product: "华为发布智能世界 2035 报告", did: "预测 Token 消耗。" },
     { product: "Google 发布 Fuse：评估 LLM 社交推理", did: "研究框架与数据集开源。" },
 
@@ -4397,6 +4398,25 @@ async function testKnowledgeAccessRejectsHttpBlocking() {
       assert.equal(result.ok, false, `HTTP ${status} cannot prove public article access`);
       assert.equal(result.reason, `HTTP ${status}`);
     }
+
+    const fallback = await probePublicBlog(
+      { link: "https://example.com/ai-article" },
+      {},
+      "2026-09-18T00:00:00Z",
+      {
+        fetchImpl: async () => {
+          throw new Error("fetch failed");
+        },
+        curlImpl: () => ({
+          effectiveUrl: "https://example.com/ai-article?utm_source=redirect",
+          html: "<html><body><main>This public AI engineering article contains enough substantive material to verify access, mechanisms, evaluation details, deployment tradeoffs, and reusable implementation guidance for production teams.</main></body></html>"
+        })
+      }
+    );
+    assert.equal(fallback.ok, true, "curl fallback should recover a public page after a fetch transport failure");
+    assert.equal(fallback.item.access.mode, "public");
+    assert.equal(fallback.item.access.evidence, "live_http_curl_fallback");
+    assert.equal(fallback.item.link, "https://example.com/ai-article");
   } finally {
     globalThis.fetch = originalFetch;
   }
@@ -4562,8 +4582,12 @@ function testKnowledgeStrongAiRelevanceRejectsIncidentalMentions() {
     "a blog directory is a discovery entry point, not a dated article");
   assert.equal(isAiRelevant({ title: "AI inference engineering", link: "https://example.com/blog/ai-inference", summary: "AI inference benchmark and latency analysis." }, source), true,
     "individual engineering articles must remain eligible");
+  assert.equal(isAiRelevant({ title: "Copilot code review: An improved review experience", link: "https://example.com/blog/copilot-review", summary: "The review workflow adds repository context, inline evidence, and developer feedback controls." }, { ...source, requireKnowledgeDepth: false }), true,
+    "Copilot is an explicit AI product anchor, not an incidental substring");
   assert.equal(isAiRelevant({ title: "Vectra AI launches Ascent partner program to address AI-driven attacks", summary: "Co-selling, co-marketing and partner service delivery." }, source), false,
     "a commercial partner-program launch must not occupy an engineering reading slot");
+  assert.equal(isAiRelevant({ title: "New experts join Google's AI & Economy team", summary: "We are expanding the team with academic advisors and internal researchers." }, source), false,
+    "a staffing announcement must not occupy a Knowledge Radar slot");
   assert.equal(isAiRelevant({ title: "Microsoft’s commitment for AI in education", summary: "AI can personalize learning and expand access." }, source), false,
     "a general corporate commitment without mechanisms must not fill Knowledge slots");
   assert.equal(

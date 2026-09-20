@@ -15,6 +15,7 @@ const AI_TERMS = [
   "agent",
   "agents",
   "agentic",
+  "copilot",
   "ai ",
   "artificial intelligence",
   "llm",
@@ -46,6 +47,7 @@ const AI_TERMS = [
 const STRONG_AI_PATTERNS = [
   /\bagents?\b/i,
   /\bagentic\b/i,
+  /\bcopilot\b/i,
   /\bai\b/i,
   /\bllms?\b/i,
   /language models?/i,
@@ -69,6 +71,7 @@ const STRONG_AI_PATTERNS = [
 const AI_ANCHOR_PATTERNS = [
   /\bagents?\b/i,
   /\bagentic\b/i,
+  /\bcopilot\b/i,
   /\bai\b/i,
   /\bllms?\b/i,
   /language models?/i,
@@ -476,6 +479,7 @@ export function isAiRelevant(item, source) {
   const text = `${item.title} ${item.summary}`.toLowerCase();
   const title = String(item.title || "").toLowerCase();
   if (/\blaunch(?:es|ing)?\b.{0,70}\bpartner program\b|^microsoft[’']s commitment for ai in education$/i.test(title)) return false;
+  if (/^(?:new )?experts? join .+ team$/i.test(title)) return false;
   if (item.link) {
     try {
       const path = new URL(item.link).pathname.replace(/\/+$/, "");
@@ -953,9 +957,43 @@ function blockedBlogPage(html) {
   ].some((marker) => text.includes(marker));
 }
 
-export async function probePublicBlog(item, source, checkedAt) {
+function curlPublicBlog(url, timeoutMs = 15000) {
+  const marker = "\n__RADAR_EFFECTIVE_URL__:";
+  const output = execFileSync(
+    "curl",
+    [
+      "-fsSL",
+      "--connect-timeout",
+      String(Math.max(1, Math.ceil(timeoutMs / 1000))),
+      "--max-time",
+      String(Math.max(1, Math.ceil(timeoutMs / 1000))),
+      "-A",
+      "Mozilla/5.0 (compatible; ai-product-radar/0.1; +https://github.com/BENZEMA216/ai-product-radar)",
+      "-H",
+      "Accept: text/html,application/xhtml+xml",
+      "-w",
+      `${marker}%{url_effective}\n`,
+      url
+    ],
+    {
+      encoding: "utf8",
+      maxBuffer: 20 * 1024 * 1024,
+      timeout: timeoutMs + 5000
+    }
+  );
+  const markerIndex = output.lastIndexOf(marker);
+  if (markerIndex < 0) return { html: output, effectiveUrl: url };
+  return {
+    html: output.slice(0, markerIndex),
+    effectiveUrl: output.slice(markerIndex + marker.length).trim() || url
+  };
+}
+
+export async function probePublicBlog(item, source, checkedAt, dependencies = {}) {
+  const fetchImpl = dependencies.fetchImpl || fetch;
+  const curlImpl = dependencies.curlImpl || curlPublicBlog;
   try {
-    const response = await fetch(item.link, {
+    const response = await fetchImpl(item.link, {
       redirect: "follow",
       headers: {
         "user-agent": "Mozilla/5.0 (compatible; ai-product-radar/0.1; +https://github.com/BENZEMA216/ai-product-radar)",
@@ -984,7 +1022,29 @@ export async function probePublicBlog(item, source, checkedAt) {
     }
     return { ok: false, reason: `HTTP ${response.status}` };
   } catch (error) {
-    return { ok: false, reason: String(error?.message || error).slice(0, 180) };
+    try {
+      const { html, effectiveUrl } = curlImpl(item.link, 15000);
+      if (blockedBlogPage(html)) {
+        return { ok: false, reason: "页面返回登录、付费墙或反爬拦截内容" };
+      }
+      return {
+        ok: true,
+        item: {
+          ...item,
+          link: canonicalizeUrl(effectiveUrl || item.link),
+          access: {
+            verified: true,
+            mode: "public",
+            checkedAt,
+            evidence: "live_http_curl_fallback"
+          }
+        }
+      };
+    } catch (curlError) {
+      const fetchReason = String(error?.message || error).slice(0, 90);
+      const curlReason = String(curlError?.message || curlError).slice(0, 90);
+      return { ok: false, reason: `${fetchReason}; curl fallback: ${curlReason}`.slice(0, 180) };
+    }
   }
 }
 

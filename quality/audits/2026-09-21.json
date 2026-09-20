@@ -1,0 +1,193 @@
+{
+  "date": "2026-09-21",
+  "generatedAt": "2026-09-20T16:26:15.837Z",
+  "reportPath": "reports/2026-09-21-0026-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 49,
+    "top20Sources": [
+      "HN Algolia",
+      "Product Hunt"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 1,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 13,
+      "keptCount": 4,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-09-19；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 13 条，AI 相关候选 4 条；实际 fallback：hunted_space。；历史去重后最终发布 4 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "YC Launch 本窗口无候选或来源为空。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 11,
+      "keptCount": 7,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "fallback",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 18,
+      "keptCount": 18,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "ColliePWA, a self-hosted mobile terminal for coding agents, with alerts",
+      "productKey": "https://colliepwa.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 coding agent 的远程终端、移动端访问和异步告警放进同一套自托管入口，值得验证开发者离开电脑后能否安全接管长任务。"
+    },
+    {
+      "rank": 2,
+      "product": "Bolt Forge",
+      "productKey": "https://www.producthunt.com/products/bolt-new",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用开源模型与“50 倍用量”主张重做 Bolt 的 agent 经济性，关键是成本下降是否真的转化为更长、更稳定的生成任务。"
+    },
+    {
+      "rank": 3,
+      "product": "VoiceCap",
+      "productKey": "https://www.producthunt.com/products/voicecap",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把会议记录定位到多语言场景，产品判断点是转写、说话人识别和会后整理能否在非英语团队里保持可用。"
+    },
+    {
+      "rank": 4,
+      "product": "Ruby UTCP",
+      "productKey": "https://www.producthunt.com/products/utcp",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它试图以 Ruby 实现一套更可扩展、更安全的 MCP 替代方案，值得关注工具调用互操作是否会从单一协议走向多实现竞争。"
+    },
+    {
+      "rank": 5,
+      "product": "Doneit 3.2",
+      "productKey": "https://www.producthunt.com/products/doneit",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把重新设计的 Assist 与 Siri AI 接入任务管理器，值得观察语音入口能否真正减少记录和推进待办的操作成本。"
+    },
+    {
+      "rank": 6,
+      "product": "The Smallest LLM",
+      "productKey": "https://gist.github.com/skorotkiewicz/dedc3b5a857be7d0f2b378334721713c",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这个极小 LLM 展示的是模型规模下限与可解释实现，更适合作为模型教学和边缘推理参考，而非成熟产品信号。"
+    },
+    {
+      "rank": 7,
+      "product": "Website Auditor –> Test your brand's AI visibility, get growth plan",
+      "productKey": "https://website-auditor.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把品牌在 AI 答案中的可见度检测连接到增长计划，值得检验审计结果能否给出可执行、可复测的内容动作。"
+    },
+    {
+      "rank": 8,
+      "product": "ChatGPT to Word – export a thread to a readable .docx",
+      "productKey": "https://chatgpt2word.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它解决 ChatGPT 对话导出为可读 Word 文档这一明确摩擦点，价值取决于长对话结构、引用和格式保真度。"
+    },
+    {
+      "rank": 9,
+      "product": "I created an open source locally usable full fledged AI platform",
+      "productKey": "https://github.com/theguysudo/enzo",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ENZO 主张提供可本地使用的完整开源 AI 平台，值得核验安装闭环、模块边界和 GitHub 采用度，现有 HN 描述仍偏自述。"
+    },
+    {
+      "rank": 10,
+      "product": "OpensourceDB Tamper-evident,checksum-backed decision and session replay",
+      "productKey": "https://github.com/zizka-ai-sl/zizkadb",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 agent 决策与会话回放做成防篡改、校验和支撑的数据层，值得看审计证据能否覆盖重放、责任追踪和异常恢复。"
+    },
+    {
+      "rank": 11,
+      "product": "I got Claude Code and Codex to argue about my code",
+      "productKey": "https://github.com/chen-985211/cleancode",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它让 Claude Code 与 Codex 对同一代码展开争论，产品启发在多 agent 互审；需要看是否有结构化裁决，而非增加噪声。"
+    }
+  ]
+}
