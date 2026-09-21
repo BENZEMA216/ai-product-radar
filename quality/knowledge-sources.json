@@ -928,6 +928,31 @@
       "requireAiRelevance": true,
       "requireStrongAiRelevance": true,
       "requireKnowledgeDepth": true
+    },
+    {
+      "id": "red_hat_ai_engineering",
+      "label": "Red Hat Developer · AI",
+      "type": "feed",
+      "url": "https://developers.redhat.com/blog/feed",
+      "home": "https://developers.redhat.com/topics/ai-ml/all",
+      "weight": 14,
+      "maxItems": 30,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "cursor_engineering",
+      "label": "Cursor Blog",
+      "type": "sitemap",
+      "url": "https://cursor.com/sitemap.xml",
+      "home": "https://cursor.com/blog",
+      "pathPrefixes": ["/blog/"],
+      "weight": 15,
+      "maxItems": 24,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
     }
   ],
   "paperSource": {

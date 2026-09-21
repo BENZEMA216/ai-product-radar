@@ -3598,6 +3598,7 @@ function testEmbeddedVersionReleaseStaysWeak() {
 
 function testCurrentAihotNonProductSignalsStayDeprioritized() {
   const signals = [
+    { product: "Eric Schmidt 谈 AI 竞赛与暂停", did: "访谈讨论美国是否会暂停 AI 竞赛。" },
     { product: "圆谷公司谈AI重塑内容创作", did: "欢迎参加大会，将分享观点。" },
     { product: "OpenRouter 对话 PrimeIntellect 谈开放模型", did: "播客讨论模型选择与经济学。" },
     { product: "SemiAnalysis：智能体流量已占全部推理流量70%以上", did: "总结 KV-cache 负载特征。" },
@@ -4738,6 +4739,20 @@ function testSitemapCanDeriveMissingLastmodFromArticleMetadata() {
   assert.equal(record.publishedAt, "");
   assert.equal(
     sitemapPagePublishedAt('<meta property="article:published_time" content="2026-09-14T00:00:00+09:00">'),
+    "2026-09-13T15:00:00.000Z"
+  );
+  assert.equal(
+    sitemapPagePublishedAt(
+      '<script type="application/ld+json">{"datePublished":"2026-07-30T12:00:00.000Z"}</script>',
+      "2026-09-21T15:46:22.397Z"
+    ),
+    "2026-07-30T12:00:00.000Z"
+  );
+  assert.equal(
+    sitemapPagePublishedAt(
+      '<meta property="article:published_time" content="2026-09-14T00:00:00+09:00">',
+      "2026-09-21T00:00:00.000Z"
+    ),
     "2026-09-13T15:00:00.000Z"
   );
 }

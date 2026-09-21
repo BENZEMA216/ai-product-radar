@@ -588,7 +588,11 @@ export function sitemapRecords(xml) {
 }
 
 export function sitemapPagePublishedAt(html, fallback = "") {
-  return fallback || isoDate(metaValue(html, ["article:published_time", "published_time", "datePublished"]));
+  const metaPublishedAt = isoDate(metaValue(html, ["article:published_time", "published_time", "datePublished"]));
+  const jsonLdPublishedAt = isoDate(
+    decodeXml(String(html || "").match(/["']datePublished["']\s*:\s*["']([^"']+)["']/i)?.[1] || "")
+  );
+  return metaPublishedAt || jsonLdPublishedAt || fallback;
 }
 
 function sitemapPathAllowed(link, source) {
