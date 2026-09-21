@@ -1,0 +1,424 @@
+{
+  "generatedAt": "2026-09-21T16:31:17.688Z",
+  "date": "2026-09-22",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Trying the software factory pattern",
+      "link": "https://lethain.com/software-factory-experiment",
+      "publishedAt": "2026-09-20T17:27:11.000Z",
+      "author": "gpi https://news.ycombinator.com/user?id=gpi",
+      "summary": "One of the interesting challenges of the AI ecosystem in 2026 is that new, effective patterns emerge faster than I can adopt them. I&rsquo;ll find a handful, get back to work, and realize a month later that I&rsquo;d missed four or five more. The adoption cycle for Imprint this year has been something like: January: get every engineer onto Claude Code every single day March: ok, let&rsquo;s also get everyone else onto Claude Code or Claude Cowork every single day April: local development is bottlenecked on checkout and worktree model, instead create ~10 local workspaces which each have an independent checkout of every repository, and operate at the workspace level, not at the repository level, so it can generate cross-repository pull requests across frontend, backend, infrastructure and data monorepos June: oh boy, agent-driven development is heavily constrained by lack of a common task management system with higher visibility and less permission complexity than Jira, so let&rsquo;s migrate the entire company over to Linear and hard stop on Jira July: yikes, now we have visibility into all these tickets, many of them are trivial but managing them through local development isn&rsquo;t scaling, let&rsquo;s roll out an orchestrated harness which internally we call &ldquo;Agent Fleet&rdquo;, along the lines of Stripe&rsquo;s Minions The most recent question for me has been figuring out how to adopt the software factory pattern. (After some light research, the specific AI-context origin of this term is slightly messy to attribute, but I think it might be Justin McCarthy in February 2026&rsquo;s Software Factories And The Agentic Moment.)",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49777913",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 86,
+        "comments": 44
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-21T16:31:17.688Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 89.35626954461203,
+      "core": "One of the interesting challenges of the AI ecosystem in 2026 is that new, effective patterns emerge faster than I can adopt them. I&rsquo;ll find a handful, get back to work, and realize a month later that I&rsquo;d missed four or five more. The adoption cycle for Imprint this year has been something like: January: get every engineer onto Claude Code every single day March: ok, let&rsquo;s also get everyone else on…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Grok 4.7 now available and 40% off on AI Gateway, fx, and eve",
+      "link": "https://vercel.com/changelog/grok-4-7-now-available-and-40-off-on-ai-gateway-fx-eve",
+      "publishedAt": "2026-09-21T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "Grok 4.7 from SpaceXAI is now available on AI Gateway and 40% off through September 27. The discount applies automatically when you call spacexai/grok-4.7 . Grok 4.7 has a 500K token context window and supports low, medium, high, and xhigh reasoning levels, giving you control over the tradeoff between latency and depth. Use spacexai/grok-4.7 everywhere you call the model. The same ID works with the AI SDK , the OpenAI-compatible Chat Completions API , and coding agents connected to AI Gateway: To use Grok 4.7 in a coding agent, install the latest Vercel CLI and run setup: Then select spacexai/grok-4.7 in fx , Cursor, Codex, Amp, OpenCode, or another supported agent. See the coding agents guide for agent-specific instructions. To create a new eve agent with Grok 4.7 and xhigh reasoning, pass the same model ID to the initializer: Grok 4.7 supports Zero Data Retention and disallow prompt training . Requests appear in AI Gateway logs , custom reporting, and budgets alongside your other models. AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. Try Grok 4.7 in the model playground , or view all language models or check out more promotions on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 76.81988714285714,
+      "core": "Grok 4.7 from SpaceXAI is now available on AI Gateway and 40% off through September 27. The discount applies automatically when you call spacexai/grok-4.7 . Grok 4.7 has a 500K token context window and supports low, medium, high, and xhigh reasoning levels, giving you control over the tradeoff between latency and depth. Use spacexai/grok-4.7 everywhere you call the model. The same ID works with the AI SDK , the Open…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-21T16:31:17.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "Grok 4.7 is now available in GitHub Copilot",
+      "link": "https://github.blog/changelog/2026-09-21-grok-4-7-is-now-available-in-github-copilot",
+      "publishedAt": "2026-09-21T14:54:12.000Z",
+      "author": "Allison",
+      "summary": "Grok 4.7, xAI’s latest reasoning model, is now rolling out in GitHub Copilot. Building on Grok 4.6, it is designed for agentic coding and complex, multistep workflows. This model is… The post Grok 4.7 is now available in GitHub Copilot appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 67.38996650793652,
+      "core": "Grok 4.7, xAI’s latest reasoning model, is now rolling out in GitHub Copilot. Building on Grok 4.6, it is designed for agentic coding and complex, multistep workflows. This model is… The post Grok 4.7 is now available in GitHub Copilot appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-21T16:31:17.688Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "RoleCDE: Benchmarking and Mitigating Role-Alignment Trade-offs in Role-Playing Agents",
+      "link": "https://arxiv.org/abs/2606.01552",
+      "evidenceLink": "https://www.semanticscholar.org/paper/90cd3c941d332a1e3fd290605818b864c95d6b57",
+      "publishedAt": "2026-06-01T00:00:00.000Z",
+      "submittedAt": "2026-06-01T00:00:00.000Z",
+      "author": "Huayi Lai, Shichao Song, Simin Niu, Hanyu Wang, Jiawei Yang",
+      "summary": "Role-playing agents(RPAs) are widely used to steer large language models(LLMs) toward role-consistent behavior, yet existing benchmarks mainly evaluate surface-level fidelity and offer limited insight into decision making under role-alignment value conflicts. To address this gap, we introduce RoleCDE, the first benchmark designed to evaluate RPAs under structured conflicts between role-specific values and alignment-oriented constraints. RoleCDE formulates role-aware decision making as cognitive dilemma scenarios, jointly evaluating role-scenario grounding, value conflict resolution, and decision tendencies. The benchmark is constructed at scale, covering approximately 8k diverse role profiles and scenarios and nearly 24k dilemma instances across three difficulty levels and eight role categories. Evaluation of several mainstream LLMs reveals a\"Role Value Decoupling\"phenomenon, where agents systematically default to alignment-and morality-consistent decisions rather than role-specific values when the two conflict, even under explicit role conditioning. This behavior is largely invariant to dilemma difficulty but varies substantially across role categories. We further show that RoleCDE-based fine-tuning effectively mitigates this decoupling by improving value trade-off reasoning, while preserving general role-playing fidelity and general reasoning performance. Code is available at: https://github.com/rabbitrose/RoleCDE.",
+      "citationCount": 2,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 63.90848501887865,
+      "core": "Role-playing agents(RPAs) are widely used to steer large language models(LLMs) toward role-consistent behavior, yet existing benchmarks mainly evaluate surface-level fidelity and offer limited insight into decision making under role-alignment value conflicts. To address this gap, we introduce RoleCDE, the first benchmark designed to evaluate RPAs under structured conflicts between role-specific values and alignment-…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "MIThinker: A Plug-and-Play Policy-Optimized Thinker For Motivational Interviewing Counseling",
+      "link": "https://arxiv.org/abs/2606.29265",
+      "evidenceLink": "https://www.semanticscholar.org/paper/b6f49f8eb2940c75ceeb65715a8ae349707b73b9",
+      "publishedAt": "2026-06-28T00:00:00.000Z",
+      "submittedAt": "2026-06-28T00:00:00.000Z",
+      "author": "Yizhe Yang, P. Achananuparp, He-Yan Huang, Jing Jiang, Ee-Peng Lim",
+      "summary": "Reasoning large language models (LLMs) have recently made much progress in complex problem-solving, leveraging internal reasoning (or thought) to guide their solution generation. However, existing LLM-based counseling agents, including those using Motivational Interviewing (MI), generate responses without explicitly aligning thoughts with counseling techniques, limiting their effectiveness. We propose MIThinker, a lightweight thinking model that generates therapeutic thoughts to guide MI counseling agents in strategy selection and response generation. To overcome the lack of annotated thought data, we introduce AugR1-MI, an automated pipeline that reverse-engineers counselor's thoughts from observed responses. Through two-stage training combining supervised fine-tuning and reinforcement learning, MIThinker demonstrates improved theory-of-mind assessment and strategy alignment. Comprehensive evaluations show that MindfulMI, our agent leveraging MIThinker, achieves MI competency comparable to state-of-the-art systems with an order of magnitude less computation.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 61,
+      "core": "Reasoning large language models (LLMs) have recently made much progress in complex problem-solving, leveraging internal reasoning (or thought) to guide their solution generation. However, existing LLM-based counseling agents, including those using Motivational Interviewing (MI), generate responses without explicitly aligning thoughts with counseling techniques, limiting their effectiveness. We propose MIThinker, a l…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "What is LLM testing? How AI testing works - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/what-is-llm-testing",
+      "publishedAt": "2026-09-19T16:00:00.000Z",
+      "author": "",
+      "summary": "Learn the seven layers of an LLM testing stack, from unit and integration checks through behavioral evaluation, regression, performance, and security testing, and how they connect into a release workflow.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-21T16:31:17.688Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 57.66750619047619,
+      "core": "Learn the seven layers of an LLM testing stack, from unit and integration checks through behavioral evaluation, regression, performance, and security testing, and how they connect into a release workflow.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How Benchling secured multi-tenant AI agents with Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-benchling-secured-multi-tenant-ai-agents-with-amazon-bedrock-agentcore",
+      "publishedAt": "2026-09-21T16:27:34.000Z",
+      "author": "Jeremy Stashewsky",
+      "summary": "Learn how Benchling built a defense-in-depth security architecture to run untrusted, AI agent-generated scientific code across thousands of life sciences tenants using Amazon Bedrock AgentCore Code Interpreter in VPC mode, combined with Amazon Route 53 Resolver DNS Firewall and VPC endpoint policies to block data exfiltration, including through DNS.",
+      "evidenceLink": "",
+      "score": 56.94556174603175,
+      "core": "Learn how Benchling built a defense-in-depth security architecture to run untrusted, AI agent-generated scientific code across thousands of life sciences tenants using Amazon Bedrock AgentCore Code Interpreter in VPC mode, combined with Amazon Route 53 Resolver DNS Firewall and VPC endpoint policies to block data exfiltration, including through DNS.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-21T16:31:17.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "The Web Conference",
+      "title": "The More You Say, the More You Risk: Ethical Concerns in Large Language Model Reasoning Frameworks",
+      "link": "https://doi.org/10.1145/3774905.3795475",
+      "evidenceLink": "https://www.semanticscholar.org/paper/492fa7e61531600816af0700c472abebd92ae8ee",
+      "publishedAt": "2026-05-28T00:00:00.000Z",
+      "submittedAt": "2026-05-28T00:00:00.000Z",
+      "author": "Jinman Zhao, Linbo Cao, Xueyan Zhang, Ken Shi, Yining Wang",
+      "summary": "The reasoning abilities of Large Language Models (LLMs) have been a key research focus. Various prompt-based frameworks have been proposed to enhance reasoning, including Chain-of-Thought, Self-Reflection, and Multi-Agent Debating. This paper investigates the fairness risks associated with these reasoning techniques. We evaluate multiple LLMs on several fairness and stereotype benchmarks and demonstrate that while these techniques improve reasoning capabilities, they also raise safety concerns. Our experiments show that all the aforementioned prompting frameworks can undermine model alignment, and this holds true across different languages.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "WWW",
+        "venueLabel": "The Web Conference",
+        "venueName": "The Web Conference",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 55,
+      "core": "The reasoning abilities of Large Language Models (LLMs) have been a key research focus. Various prompt-based frameworks have been proposed to enhance reasoning, including Chain-of-Thought, Self-Reflection, and Multi-Agent Debating. This paper investigates the fairness risks associated with these reasoning techniques. We evaluate multiple LLMs on several fairness and stereotype benchmarks and demonstrate that while t…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "The Web Conference",
+      "title": "Conversational Search: From Fundamentals to Frontiers in the Age of Agents",
+      "link": "https://doi.org/10.1145/3774905.3793917",
+      "evidenceLink": "https://www.semanticscholar.org/paper/2dcdd58ded6a3624345acc2a7980b6bf5af8bb78",
+      "publishedAt": "2026-05-28T00:00:00.000Z",
+      "submittedAt": "2026-05-28T00:00:00.000Z",
+      "author": "Chuan Meng, Fengran Mo, Mohammad Aliannejadi, Jeffrey Dalton, Jian-Yun Nie",
+      "summary": "Conversational search enables multi-turn interactions between users and systems to fulfill users' complex information needs. During this interaction, the system should understand the users' search intent within the conversational context and then return the relevant information through a flexible, dialogue-based interface. Large language models (LLMs) with capacities of instruction following, content generation, and reasoning, attract significant attention and advancements, providing new opportunities and challenges for building up conversational search systems. More recently, LLMs have begun to drive search systems towards agentic paradigms, acting as autonomous entities that can plan strategies, execute dynamic retrieval, and support a wide range of autonomous behaviours. This tutorial aims to connect fundamentals with recent agentic paradigms in conversational search. It is designed for students, researchers, and practitioners from both academia and industry. Participants will gain a comprehensive understanding of both the fundamental principles and the latest developments enabled by LLMs, equipping them with the knowledge to contribute to the next generation of conversational search systems.",
+      "citationCount": 2,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "WWW",
+        "venueLabel": "The Web Conference",
+        "venueName": "The Web Conference",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 54.90848501887865,
+      "core": "Conversational search enables multi-turn interactions between users and systems to fulfill users' complex information needs. During this interaction, the system should understand the users' search intent within the conversational context and then return the relevant information through a flexible, dialogue-based interface. Large language models (LLMs) with capacities of instruction following, content generation, and…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "red_hat_ai_engineering",
+      "source": "Red Hat Developer · AI",
+      "title": "AI threat modeling shouldn't be a bottleneck, so we open sourced ours",
+      "link": "https://developers.redhat.com/articles/2026/09/21/ai-threat-modeling-shouldnt-be-a-bottleneck-so-we-open-sourced-ours",
+      "publishedAt": "2026-09-21T13:17:20.000Z",
+      "author": "Katie Mulliken, Jon Weiser, Judy Kelly",
+      "summary": "More code is shipping faster than ever. AI is writing a growing share of it, and AI-powered scanners are finding more issues in it than any human team can review by hand. That problem existed before AI. Security teams have never scaled linearly with engineering headcount and AI code generation has dramatically accelerated that imbalance. The security team's review calendar is a queue that keeps growing, so we built a way for engineers to threat model their own code without waiting in that queue. The post AI threat modeling shouldn't be a bottleneck, so we open sourced ours appeared first on Red Hat Developer .",
+      "evidenceLink": "",
+      "score": 54.19687126984127,
+      "core": "More code is shipping faster than ever. AI is writing a growing share of it, and AI-powered scanners are finding more issues in it than any human team can review by hand. That problem existed before AI. Security teams have never scaled linearly with engineering headcount and AI code generation has dramatically accelerated that imbalance. The security team's review calendar is a queue that keeps growing, so we built …",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-21T16:31:17.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "What is context engineering? A practical guide for LLM applications - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/what-is-context-engineering",
+      "publishedAt": "2026-09-19T16:00:00.000Z",
+      "author": "",
+      "summary": "Learn how context engineering controls what a model receives on every request: selection, ordering, compression, freshness, and token budgeting, plus how to evaluate context quality before and after release.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-21T16:31:17.688Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 49.684172857142855,
+      "core": "Learn how context engineering controls what a model receives on every request: selection, ordering, compression, freshness, and token budgeting, plus how to evaluate context quality before and after release.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Anthropic moves fast on AI safety concerns with Accenture “embedded evaluator” partnership",
+      "link": "https://www.itpro.com/technology/artificial-intelligence/anthropic-moves-fast-on-ai-safety-concerns-with-accenture-embedded-evaluator-partnership",
+      "publishedAt": "2026-09-21T10:40:57.000Z",
+      "author": "Ross Kelly",
+      "summary": "The deal will see AI specialists embedded at Anthropic to monitor development practices",
+      "evidenceLink": "",
+      "score": 44.066256190476196,
+      "core": "The deal will see AI specialists embedded at Anthropic to monitor development practices",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-21T16:31:17.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Python Workers are now generally available",
+      "link": "https://blog.cloudflare.com/python-workers-ga",
+      "publishedAt": "2026-09-21T13:00:00.000Z",
+      "author": "Gyeongjae Choi",
+      "summary": "Python Workers allow developers to run Python web frameworks and AI orchestration libraries natively in the Cloudflare Workers runtime. You can seamlessly integrate with Cloudflare's ecosystem including D1, R2, and Workers AI without writing any JavaScript glue code.",
+      "evidenceLink": "",
+      "score": 41.231791904761906,
+      "core": "Python Workers allow developers to run Python web frameworks and AI orchestration libraries natively in the Cloudflare Workers runtime. You can seamlessly integrate with Cloudflare's ecosystem including D1, R2, and Workers AI without writing any JavaScript glue code.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-21T16:31:17.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "AI has crossed a cybersecurity redline – now what?",
+      "link": "https://www.techradar.com/pro/ai-has-crossed-a-cybersecurity-redline-now-what",
+      "publishedAt": "2026-09-21T08:15:54.000Z",
+      "author": "James Griffiths",
+      "summary": "As AI systems grow more autonomous, organizations must rethink cybersecurity, governance and resilience.",
+      "evidenceLink": "",
+      "score": 37.98802206349206,
+      "core": "As AI systems grow more autonomous, organizations must rethink cybersecurity, governance and resilience.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-21T16:31:17.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Google’s Gemini hacked three companies during Irregular AI ‘capture-the-flag’ testing — agents broke containment and guessed passwords to hack computer systems",
+      "link": "https://www.techradar.com/pro/security/googles-gemini-hacked-three-companies-during-irregular-ai-capture-the-flag-testing-agents-broke-containment-and-guessed-passwords-to-hack-computer-systems",
+      "publishedAt": "2026-09-21T10:07:24.000Z",
+      "author": "Benedict Collins",
+      "summary": "Google says AI agents broke out of a testing environment and hacked three third-party companies.",
+      "evidenceLink": "",
+      "score": 37.07631571428571,
+      "core": "Google says AI agents broke out of a testing environment and hacked three third-party companies.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-21T16:31:17.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "How to Start an AI Automation Agency in 2026: Services, Tools, and Pricing",
+      "link": "https://rerun.build/blog/how-to-start-ai-automation-agency",
+      "publishedAt": "2026-09-21T04:16:19.000Z",
+      "author": "",
+      "summary": "A practical guide to choosing a niche, packaging services, pricing projects, winning clients, and operating AI automations safely after launch.",
+      "evidenceLink": "",
+      "score": 35.919470476190476,
+      "core": "A practical guide to choosing a niche, packaging services, pricing projects, winning clients, and operating AI automations safely after launch.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-21T16:31:17.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "What is a unified LLM API? One interface for every model - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/what-is-a-unified-llm-api",
+      "publishedAt": "2026-09-19T16:00:00.000Z",
+      "author": "",
+      "summary": "Learn how a unified LLM API works, what it normalizes across providers, where compatibility breaks, and how to validate a model change before it reaches production.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-21T16:31:17.688Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 34.44528396825397,
+      "core": "Learn how a unified LLM API works, what it normalizes across providers, where compatibility breaks, and how to validate a model change before it reaches production.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "How Warp ships 2,000 PRs a month with AI factories | Zach Lloyd (CEO, Warp)",
+      "link": "https://www.lennysnewsletter.com/p/how-warp-ships-2000-prs-a-month-with",
+      "publishedAt": "2026-09-21T12:04:11.000Z",
+      "author": "Claire Vo",
+      "summary": "Watch now (47 mins) | 🎙️ Warp CEO Zach Lloyd shows how his team turns requests from Slack, Linear, and GitHub into tracked, tested pull requests, then measures and improves its cloud-based AI software factory over time",
+      "evidenceLink": "",
+      "score": 27.898676825396823,
+      "core": "Watch now (47 mins) | 🎙️ Warp CEO Zach Lloyd shows how his team turns requests from Slack, Linear, and GitHub into tracked, tested pull requests, then measures and improves its cloud-based AI software factory over time",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-21T16:31:17.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "🎙️ How I AI: Meta’s Muse review + How Warp ships 2,000 PRs a month with AI factories",
+      "link": "https://www.lennysnewsletter.com/p/how-i-ai-metas-muse-review-how-warp",
+      "publishedAt": "2026-09-21T15:03:51.000Z",
+      "author": "Lenny Rachitsky",
+      "summary": "Your weekly listens from How I AI, part of the Lenny’s Podcast Network",
+      "evidenceLink": "",
+      "score": 27.284787936507936,
+      "core": "Your weekly listens from How I AI, part of the Lenny’s Podcast Network",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-21T16:31:17.688Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "interconnects",
+      "source": "Interconnects",
+      "title": "The current balance of power in open models",
+      "link": "https://www.interconnects.ai/p/the-current-balance-of-power-in-open",
+      "publishedAt": "2026-09-21T11:56:56.000Z",
+      "author": "Nathan Lambert",
+      "summary": "The expanded form of a testimony I prepared for Congress.",
+      "evidenceLink": "",
+      "score": 23.990045873015873,
+      "core": "The expanded form of a testimony I prepared for Congress.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-21T16:31:17.688Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
