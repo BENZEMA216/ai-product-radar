@@ -1,0 +1,293 @@
+{
+  "date": "2026-09-23",
+  "generatedAt": "2026-09-22T16:01:58.793Z",
+  "reportPath": "reports/2026-09-23-0001-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 66,
+    "top20Sources": [
+      "HN Algolia",
+      "Product Hunt",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 27,
+      "keptCount": 14,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-09-21；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 27 条，AI 相关候选 14 条；实际 fallback：hunted_space。；历史去重后最终发布 14 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 2,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 25,
+      "keptCount": 15,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 27,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "fallback",
+      "rawCount": 17,
+      "keptCount": 17,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 18,
+      "keptCount": 18,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Foremerge – Catch intent conflicts between parallel coding agents",
+      "productKey": "https://github.com/naw103/foremerge",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "并行编码智能体可能分别改对局部、合并时却违背共同意图；Foremerge 值得看的是它能否在冲突进入代码前给出可操作提醒。"
+    },
+    {
+      "rank": 2,
+      "product": "Superset Mobile",
+      "productKey": "https://www.producthunt.com/products/superset-5",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把编码智能体延伸到手机，检验用户是否需要随时查看和接续任务；关键是移动端能完成哪些具体操作。"
+    },
+    {
+      "rank": 3,
+      "product": "Brig – A MicroVM sandbox for AI coding agents on Mac and Linux",
+      "productKey": "https://news.ycombinator.com/item?id=49802729",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用 MicroVM 隔离编码智能体的执行环境，回应本机运行代理的安全顾虑；要看隔离边界和开发体验能否兼顾。"
+    },
+    {
+      "rank": 4,
+      "product": "Vigil - Keeps your Mac awake while your coding agents work",
+      "productKey": "https://vigilmac.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 Mac 在编码智能体执行期间保持唤醒，解决长任务中断的小问题；价值取决于它是否比系统设置更省心。"
+    },
+    {
+      "rank": 5,
+      "product": "Arcjet",
+      "productKey": "https://www.producthunt.com/products/arcjet",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把运行时防护放在开发者正在构建的 AI 智能体上；值得看它如何定义可观察、可阻止的危险行为。"
+    },
+    {
+      "rank": 6,
+      "product": "Coverage Cat",
+      "productKey": "https://www.ycombinator.com/launches/ues-shop-for-umbrella-insurance-via-your-personal-agent-muse-instinct-openclaw-hermes-etc",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把个人智能体接入伞险购买流程，借 API/MCP 承接明确交易任务；保险报价与责任边界是验证重点。"
+    },
+    {
+      "rank": 7,
+      "product": "Kado – Search to Allow Personal Agents to Find Agent Apps",
+      "productKey": "https://kado.so",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让个人智能体搜索可调用的 agent 应用，瞄准工具发现入口；重点看搜索结果如何描述能力与权限。"
+    },
+    {
+      "rank": 8,
+      "product": "PostSider",
+      "productKey": "https://www.producthunt.com/products/postsider",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把人和智能体放进同一社媒排程流程；值得看审批、发布责任与自动化程度如何分配。"
+    },
+    {
+      "rank": 9,
+      "product": "Z8Log – Structured logging your AI coding agent can query",
+      "productKey": "https://z8log.com/welcome",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让编码智能体查询结构化日志，把故障定位数据变成可用上下文；关键看查询权限和定位效率。"
+    },
+    {
+      "rank": 10,
+      "product": "Owl24.dev – Hand a production error to your coding agent, get a PR back",
+      "productKey": "https://owl24.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把生产错误交给编码智能体并返回 PR，形成清晰的修复闭环；值得核查错误上下文如何传递和人工审核位置。"
+    },
+    {
+      "rank": 11,
+      "product": "Jev",
+      "productKey": "https://www.producthunt.com/products/jev-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "为软件自动化提供结构化 AI 决策接口；值得看它如何把模型输出约束成程序可处理的结果。"
+    },
+    {
+      "rank": 12,
+      "product": "SwarmSay – a public message board and post office for AI agents",
+      "productKey": "https://swarmsay.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "为智能体提供公开留言板和邮局式通信入口；观察身份、投递与垃圾信息治理是否足以支撑真实协作。"
+    },
+    {
+      "rank": 13,
+      "product": "Hyrax AI",
+      "productKey": "https://www.producthunt.com/products/tristan-benozer",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "以整个代码库的架构理解为卖点，区别于单文件补全；核心是能否给出可追溯的结构建议。"
+    },
+    {
+      "rank": 14,
+      "product": "I added MCP support to Founder.best for agentic product discovery",
+      "productKey": "https://www.founder.best",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "给产品发现服务加入 MCP，意味着智能体可直接调用发现能力；要看工具接口提供了哪些可验证的产品数据。"
+    },
+    {
+      "rank": 15,
+      "product": "CC",
+      "productKey": "https://www.producthunt.com/products/google-labs",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把家庭协同交给共享智能体，场景不同于个人助手；重点看多人权限、任务归属和状态同步。"
+    },
+    {
+      "rank": 16,
+      "product": "Google Flow for iOS & Android",
+      "productKey": "https://www.producthunt.com/products/google",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 Google 的 AI 创作工作室搬到移动端，值得观察移动拍摄、编辑与桌面创作之间的接续方式。"
+    },
+    {
+      "rank": 17,
+      "product": "Inspect URL Endpoints for A2A, ARD and MCP Misconfigurations",
+      "productKey": "https://contextiq.trango-compute.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "检查 A2A、ARD 和 MCP 端点配置，抓住智能体协议落地后的安全检查需求；看检测结果是否能指导修复。"
+    },
+    {
+      "rank": 18,
+      "product": "Piary – Rethinking the human-agent interface beyond chat",
+      "productKey": "https://piary.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "尝试超越聊天窗口设计人机协作界面；值得看它用什么结构表达任务、状态和控制权。"
+    },
+    {
+      "rank": 19,
+      "product": "AI Creative Insights by Decode",
+      "productKey": "https://www.producthunt.com/products/decode-by-entropik",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "在广告投放前预测素材胜负，把 AI 用于预算决策；关键看预测证据和实际投放结果如何闭环。"
+    },
+    {
+      "rank": 20,
+      "product": "DeepMark",
+      "productKey": "https://www.ycombinator.com/launches/uej-deepmark-reinventing-trust-in-voice",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把实时水印嵌进 AI 语音并声称可穿过电话链路，切中语音真实性验证；应重点核查跨链路鲁棒性。"
+    }
+  ]
+}

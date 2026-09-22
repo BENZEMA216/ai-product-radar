@@ -1,0 +1,401 @@
+{
+  "generatedAt": "2026-09-22T16:04:58.491Z",
+  "date": "2026-09-23",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "MiMo V2.6 models now available on AI Gateway",
+      "link": "https://vercel.com/changelog/mimo-v2-6-models-now-available-on-ai-gateway",
+      "publishedAt": "2026-09-21T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "MiMo V2.6 Pro , MiMo V2.6 Flash , and MiMo V2.6 Pro UltraSpeed from Xiaomi are now available on AI Gateway . MiMo V2.6 combines coding, reasoning, and tool use with native text, image, audio, and video understanding. Its 1M token context supports long repositories, tool traces, and multi-session agent work, with structured outputs and up to 128K output tokens. Choose a model based on the workload: xiaomi/mimo-v2.6-pro is the larger sparse mixture-of-experts checkpoint, with 1.02T total parameters and 42B activated per token, for complex software engineering and long-running agent work. xiaomi/mimo-v2.6-flash uses 309B total parameters and activates 15B per token, making it the more efficient option for multimodal automation and everyday agent workflows. xiaomi/mimo-v2.6-pro-ultraspeed serves Pro at up to 20 times its output speed for interactive and latency-sensitive workflows, with the same capabilities. To use MiMo V2.6 in a coding agent , install the latest Vercel CLI and run: Then select xiaomi/mimo-v2.6-pro , xiaomi/mimo-v2.6-flash , or xiaomi/mimo-v2.6-pro-ultraspeed in your agent. Try MiMo V2.6 Pro , Flash , or Pro UltraSpeed in the model playground. AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , budgets for API keys , routing rules , and more. Read more",
+      "evidenceLink": "",
+      "score": 84.13693470238096,
+      "core": "MiMo V2.6 Pro , MiMo V2.6 Flash , and MiMo V2.6 Pro UltraSpeed from Xiaomi are now available on AI Gateway . MiMo V2.6 combines coding, reasoning, and tool use with native text, image, audio, and video understanding. Its 1M token context supports long repositories, tool traces, and multi-session agent work, with structured outputs and up to 128K output tokens. Choose a model based on the workload: xiaomi/mimo-v2.6-p…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-22T16:04:58.491Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "simon_willison",
+      "source": "Simon Willison",
+      "title": "Jev introduces a new shape of LLM - System One, aka Decision Models",
+      "link": "https://simonwillison.net/2026/Sep/21/jev",
+      "publishedAt": "2026-09-21T23:09:20.000Z",
+      "author": "",
+      "summary": "Last week TypeSafe AI unveiled Jev , their first example of a new category of model that they are calling \"System One models\" (I'm with Maggie Appleton, I think \"decision models\" is a better name for these). Jev is an interesting variant on the usual LLM format: it still accepts text inputs, but instead of text output it returns floating point numbers corresponding to categories, yes/no questions, ratings, and associated confidence scores. TypeSafe describe Jev like this: Think of Jev as a frontier-intelligence function call: unstructured state in, typed probabilistic decisions out. It's also very fast, and really cheap . Regular LLMs are priced in terms of input and output tokens, with output generally charged at significantly higher rates. Jev charges only for input - output is free - and the input price of their first model is $0.042 per million tokens - cheaper even than OpenAI's GPT-5 Nano ($0.05/million). Jev lets you ask questions about text or semi-structured data. You compose a \"state\" object containing a string, array of strings, or set of name-value pairs - this might describe an article, or a customer, or any other kind of record. You then send that to their API with one or more questions, and get a reply back for each. You can ask three kinds of questions: Yes/No questions, which Jev calls \"Noul\" questions - their CEO confirmed on Hacker News that this is short for Bernoulli, from the Bernoulli distribution . You pose a statement and get back a floating point number between 0 and 1 for how confident the model is that the statement is true. Choice questions, where the model picks one from a set of provided options - actually a confidence score plus a probability distribution across all of the options. Score questions, where you provide sequence of numeric levels with descriptions and it provides a floating point score somewhere along that range. The Jev API can accept a single document (\"state\") and as many questions as you can cram into the context window. Questions are evaluated in parallel, so sending many questions should take a similar time to sending just one. I think the decision model framing is useful for understanding where to use Jev. It's great for anything that can be expressed as a classification task - think spam detection, suggesting labels, prioritization and ranking. I've also been experimenting with it for search reranking, where you fetch 100 likely matches using an inexpensive algorithm like BM25, then have Jev score those 100 candidates for relevance against the original query. Black boxes are back in fashion Something I've found a little uncomfortable about Jev is how it very much represents a regression even further towards black box machine learning systems. LLMs are black boxes already - you can ask them to justify their decisions, but you can't guarantee that what they say is useful or accurate. Jev doesn't even give you that: put in all the text you want, the only thing you're going to get back is a floating point number. If Jev marks something as spam, which content signals tipped it off? This also means that concerns about bias should be front and center. I really hope nobody uses Jev to rank job applicants - that floating point number could conceal all manner of unseen bias baked into the models, and experimentally picking that bias apart is going to be a tricky business. (I tried one experiment where I had Jev score every city in the San Francisco Bay Area on a yes/no answer to whether they were a \"Good city?\" - it rated Cupertino top and East Palo Alto bottom. Huh.) In practice, this all means that evals and structured experiments are even more important than they are for regular LLM projects. Thankfully, Jev is so cheap that running hundreds or even thousands of experimental prompts through it costs just a few cents. Unconventional uses for Jev It's been really fun watching the wider community come up with potential use-cases for Jev over the past few days. Here are some creative ones that caught my eye: jevchat by Kyle Pena turns Jev into a (terrible) chat model. \"At every step it asks Jev one question: Given the user's question and the reply written so far, which symbol comes next?\". ericpruitt on Hacker News : \"It's the digital equivalent of Morty speaking with the death crystal\". jev-leftpad by Fatih Kadir Akın implements left-pad with the prompt \"How many spaces are needed before value to reach targetLength?\" and a choice query allowing options from \"0 spaces are needed\" to \"10 spaces are needed\". jev-2048 by Andy Gayton uses Jev to play the 2048 sliding puzzle game . Open weight recreations There's also been a flurry of projects attempting to create a model like Jev using on top of open weight models. Kev is one interesting example, using Qwen 3.5 to produce 0.8B, 4B, and 9B models. Here's the accompanying Hacker News thread , where someone linked to a JevBench benchmark that has already cropped up to compare \"Jev-class decision models\". Given Jev was released just under a week ago, the amount of activity around it is extremely impressive. You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
+      "evidenceLink": "",
+      "score": 80.79090295634921,
+      "core": "Last week TypeSafe AI unveiled Jev , their first example of a new category of model that they are calling \"System One models\" (I'm with Maggie Appleton, I think \"decision models\" is a better name for these). Jev is an interesting variant on the usual LLM format: it still accepts text inputs, but instead of text output it returns floating point numbers corresponding to categories, yes/no questions, ratings, and assoc…",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-22T16:04:58.491Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "AI Gateway now supports TypeSafe clients and an HTTP API for Jev",
+      "link": "https://vercel.com/changelog/ai-gateway-now-supports-typesafe-clients-and-http-api-for-jev",
+      "publishedAt": "2026-09-21T00:00:00.000Z",
+      "author": "Rohan Taneja",
+      "summary": "You can now call Jev from TypeSafe AI through AI Gateway using an existing TypeSafe client or the HTTP API, in addition to the AI SDK. TypeSafe client: Point an existing TypeSafe client at AI Gateway without changing its evaluation calls. HTTP API: Call Jev directly from any language or framework. AI SDK: Call Jev from a TypeScript application using AI SDK. Jev is a probabilistic decision model for software. State goes in, and typed answers come out with probabilities attached, so there's no generated text to parse. Requests are billed through AI Gateway on all three paths, so they appear alongside your other model calls in usage and observability. Migrate an existing TypeSafe client Change the base URL and API key. Your systemOne calls, noul questions, and response shapes stay exactly as they are. Start a new integration New integrations name the model as typesafe-ai/jev and ask one of three question types: boolean returns a probability from 0 to 1, choice picks one option from a set you name, and score rates against a scale you define. This example asks whether an agent should keep working after fixing a bug and passing its tests. With the HTTP API, POST to /v1/evaluate : With the AI SDK, run the same evaluation through evaluate : You can also use Jev through eve , a framework for building and deploying agents with sandboxed compute, human approvals, and evaluations already built in. eve uses Jev as the default evaluation model for automatic model selection, typed evaluations, and automated tool approvals. See the TypeSafe-compatible API guide to migrate a client, or the evaluation guide for the HTTP API or AI SDK. Read more",
+      "evidenceLink": "",
+      "score": 68.13693470238096,
+      "core": "You can now call Jev from TypeSafe AI through AI Gateway using an existing TypeSafe client or the HTTP API, in addition to the AI SDK. TypeSafe client: Point an existing TypeSafe client at AI Gateway without changing its evaluation calls. HTTP API: Call Jev directly from any language or framework. AI SDK: Call Jev from a TypeScript application using AI SDK. Jev is a probabilistic decision model for software. State g…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-22T16:04:58.491Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "AI coding has made CI a bottleneck, so we reworked ours to keep up",
+      "link": "https://linear.app/now/ci-bottleneck-reworked",
+      "publishedAt": "2026-09-21T19:23:33.000Z",
+      "author": "julian_digital https://news.ycombinator.com/user?id=julian_digital",
+      "summary": "We cut PR wait time and running costs by rethinking CI as a system, from the infrastructure underneath it to how work gets scheduled and tests get parallelized.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49792067",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 292,
+        "comments": 357
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-22T16:04:58.491Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 59.853106317756705,
+      "core": "We cut PR wait time and running costs by rethinking CI as a system, from the infrastructure underneath it to how work gets scheduled and tests get parallelized.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "New in Arize AX: first-class sessions, Agent-as-a-Judge, and vision evals",
+      "link": "https://arize.com/blog/new-in-arize-ax-september-2026-updates",
+      "publishedAt": "2026-09-22T14:00:21.000Z",
+      "author": "Fuad Ali",
+      "summary": "Sessions are now a first-class unit of work in Arize AX. Annotate a whole conversation, queue it for review, and ask Alyx to filter for it — plus Agent-as-a-Judge on every plan, vision judges, faster datasets, and everything else that shipped between August 6 and September 18, 2026. The post New in Arize AX: first-class sessions, Agent-as-a-Judge, and vision evals appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 54.04608152777777,
+      "core": "Sessions are now a first-class unit of work in Arize AX. Annotate a whole conversation, queue it for review, and ask Alyx to filter for it — plus Agent-as-a-Judge on every plan, vision judges, faster datasets, and everything else that shipped between August 6 and September 18, 2026. The post New in Arize AX: first-class sessions, Agent-as-a-Judge, and vision evals appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-22T16:04:58.491Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_agent_framework",
+      "source": "Microsoft Agent Framework",
+      "title": "Foundry hosted agent isolation with Microsoft Agent Framework",
+      "link": "https://devblogs.microsoft.com/agent-framework/foundry-hosted-agent-isolation-with-microsoft-agent-framework",
+      "publishedAt": "2026-09-22T10:14:52.000Z",
+      "author": "Roger Barreto, Tao Chen",
+      "summary": "Foundry hosted agent isolation exposes two independent controls. User isolation identifies whose data may be used. At the same time, Foundry hosted session isolation identifies where code and files continue to live. For each control, Foundry can resolve the value or the application can provide it. Therefore, the available choices support direct callers, trusted middle […] The post Foundry hosted agent isolation with Microsoft Agent Framework appeared first on Microsoft Agent Framework .",
+      "evidenceLink": "",
+      "score": 53.31098232142857,
+      "core": "Foundry hosted agent isolation exposes two independent controls. User isolation identifies whose data may be used. At the same time, Foundry hosted session isolation identifies where code and files continue to live. For each control, Foundry can resolve the value or the application can provide it. Therefore, the available choices support direct callers, trusted middle […] The post Foundry hosted agent isolation with…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-22T16:04:58.491Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "sentry_ai_engineering",
+      "source": "Sentry Engineering",
+      "title": "Building Sentry's Laravel AI Integration",
+      "link": "https://blog.sentry.io/sentry-laravel-ai-integration",
+      "publishedAt": "2026-09-21T09:00:00.000Z",
+      "author": "",
+      "summary": "How we built zero-config Agent Tracing for Laravel AI, from AI code review to matching LLM calls with HTTP requests.",
+      "evidenceLink": "",
+      "score": 52.42423628968254,
+      "core": "How we built zero-config Agent Tracing for Laravel AI, from AI code review to matching LLM calls with HTTP requests.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-22T16:04:58.491Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "MiMo-v2.6-Pro: Intelligence, Performance and Price Analysis",
+      "link": "https://artificialanalysis.ai/models/mimo-v2-6-pro",
+      "publishedAt": "2026-09-22T04:02:09.000Z",
+      "author": "theanonymousone https://news.ycombinator.com/user?id=theanonymousone",
+      "summary": "Analysis of Xiaomi&#x27;s MiMo-V2.6-Pro and comparison to other AI models across key metrics including quality, price, performance (tokens per second & time to first token), context window & more.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49796660",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 130,
+        "comments": 54
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-22T16:04:58.491Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 51.29546497234668,
+      "core": "Analysis of Xiaomi&#x27;s MiMo-V2.6-Pro and comparison to other AI models across key metrics including quality, price, performance (tokens per second & time to first token), context window & more.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How Trane gets building insights 60x faster with Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-trane-gets-building-insights-60x-faster-with-amazon-bedrock-agentcore",
+      "publishedAt": "2026-09-22T15:30:34.000Z",
+      "author": "Senthil Chinnaiyan",
+      "summary": "In about four weeks, Trane Technologies built an AI-powered agentic solution on Amazon Bedrock AgentCore that reduced a 20-minute, multi-screen building diagnostic workflow to a 20-second natural language interaction, a 60x improvement in time-to-insight. This post shares the architectural approach and key design decisions behind the solution.",
+      "evidenceLink": "",
+      "score": 50.87570454365079,
+      "core": "In about four weeks, Trane Technologies built an AI-powered agentic solution on Amazon Bedrock AgentCore that reduced a 20-minute, multi-screen building diagnostic workflow to a 20-second natural language interaction, a 60x improvement in time-to-insight. This post shares the architectural approach and key design decisions behind the solution.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-22T16:04:58.491Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How Reactiv automates mobile commerce 80% faster with Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-reactiv-automates-mobile-commerce-80-faster-with-amazon-bedrock-agentcore",
+      "publishedAt": "2026-09-22T15:46:07.000Z",
+      "author": "Adam Gibicar",
+      "summary": "Reactiv used Amazon Bedrock AgentCore to build a multi-agent AI Scheduler that autonomously refreshes Shopify merchants' mobile apps on a schedule, reducing merchant configuration time by 80% and getting to production 33% faster.",
+      "evidenceLink": "",
+      "score": 50.24977200396826,
+      "core": "Reactiv used Amazon Bedrock AgentCore to build a multi-agent AI Scheduler that autonomously refreshes Shopify merchants' mobile apps on a schedule, reducing merchant configuration time by 80% and getting to production 33% faster.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-22T16:04:58.491Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Introducing Worker Previews: isolated preview environments for every change your agent makes",
+      "link": "https://blog.cloudflare.com/worker-previews",
+      "publishedAt": "2026-09-22T13:00:00.000Z",
+      "author": "Yomna Shousha",
+      "summary": "Worker Previews gives every branch its own URL, configuration, state, and observability, so you and your agents can test changes in parallel without affecting production.",
+      "evidenceLink": "",
+      "score": 47.72423628968254,
+      "core": "Worker Previews gives every branch its own URL, configuration, state, and observability, so you and your agents can test changes in parallel without affecting production.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-22T16:04:58.491Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Right-size generative AI endpoints with concurrency sweeps on Amazon SageMaker AI",
+      "link": "https://aws.amazon.com/blogs/machine-learning/right-size-generative-ai-endpoints-with-concurrency-sweeps-on-amazon-sagemaker-ai",
+      "publishedAt": "2026-09-22T15:35:53.000Z",
+      "author": "Mona Mona",
+      "summary": "Concurrency sweeps help you right-size a generative AI endpoint on Amazon SageMaker AI by systematically benchmarking it at increasing load levels. This post walks through deploying a model, running automated concurrency sweeps with the CreateAIBenchmarkJob API, and using the results to make data-driven capacity decisions about fleet size.",
+      "evidenceLink": "",
+      "score": 45.85981168650794,
+      "core": "Concurrency sweeps help you right-size a generative AI endpoint on Amazon SageMaker AI by systematically benchmarking it at increasing load levels. This post walks through deploying a model, running automated concurrency sweeps with the CreateAIBenchmarkJob API, and using the results to make data-driven capacity decisions about fleet size.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-22T16:04:58.491Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Transformers Explained Visually",
+      "link": "https://poloclub.github.io/transformer-explainer",
+      "publishedAt": "2026-09-21T19:43:49.000Z",
+      "author": "aray07 https://news.ycombinator.com/user?id=aray07",
+      "summary": "An interactive visualization tool showing you how transformer models work in large language models (LLM) like GPT.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49792342",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 552,
+        "comments": 81
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-22T16:04:58.491Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 45.72082695256077,
+      "core": "An interactive visualization tool showing you how transformer models work in large language models (LLM) like GPT.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "Jev: System One models for Prod, not God — with Diogo Almeida, CEO, TypeSafe AI",
+      "link": "https://www.latent.space/p/jev",
+      "publishedAt": "2026-09-21T22:13:49.000Z",
+      "author": "",
+      "summary": "The definitive Jev podcast with its lead creator.",
+      "evidenceLink": "",
+      "score": 25.997033908730156,
+      "core": "The definitive Jev podcast with its lead creator.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-22T16:04:58.491Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Workers are being told to use AI, but not why to use it",
+      "link": "https://www.itpro.com/business/business-strategy/the-most-useful-thing-a-leader-can-do-right-now-is-admit-the-plan-is-unfinished-workers-are-being-told-to-use-ai-but-not-why-to-use-it-heres-why-that-matters",
+      "publishedAt": "2026-09-22T12:39:55.000Z",
+      "author": "Nicole Kobie",
+      "summary": "A Culture Amp survey shows workers are eager for AI tools, but they'd like to know the business goal of the technology",
+      "evidenceLink": "",
+      "score": 25.41143867063492,
+      "core": "A Culture Amp survey shows workers are eager for AI tools, but they'd like to know the business goal of the technology",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-22T16:04:58.491Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "AI skills investment could boost the UK economy by £80 billion",
+      "link": "https://www.itpro.com/business/careers-and-training/ai-skills-investment-could-boost-the-uk-economy-by-gbp80-billion-but-theres-still-a-long-way-to-go-before-firms-can-capitalize-on-the-technology",
+      "publishedAt": "2026-09-22T10:07:33.000Z",
+      "author": "Emma Woollacott",
+      "summary": "Researchers are calling for a Skills Tax Credit to incentivize employers",
+      "evidenceLink": "",
+      "score": 24.974494226190473,
+      "core": "Researchers are calling for a Skills Tax Credit to incentivize employers",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-22T16:04:58.491Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "This NATO-backed drone AI picked its own target and struck it, but relied on a human-drawn map to do so",
+      "link": "https://www.techradar.com/pro/this-nato-backed-drone-ai-picked-its-own-target-and-struck-it-but-relied-on-a-human-drawn-map-to-do-so",
+      "publishedAt": "2026-09-21T21:05:00.000Z",
+      "author": "Rahim Amir",
+      "summary": "Humans assigned the drone with its mission, but no one has explained whether it can be stopped if its links are jammed.",
+      "evidenceLink": "",
+      "score": 24.303998194444446,
+      "core": "Humans assigned the drone with its mission, but no one has explained whether it can be stopped if its links are jammed.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-22T16:04:58.491Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "interconnects",
+      "source": "Interconnects",
+      "title": "Debating RSI, the US-China Gap, and Jaggedness with JS Denain of Epoch AI",
+      "link": "https://www.interconnects.ai/p/debating-rsi-the-us-china-gap-and",
+      "publishedAt": "2026-09-22T13:37:45.000Z",
+      "author": "Nathan Lambert",
+      "summary": "Podcast #19",
+      "evidenceLink": "",
+      "score": 23.88584343253968,
+      "core": "Podcast #19",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-22T16:04:58.491Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "databricks_engineering",
+      "source": "Databricks Blog",
+      "title": "What is AI analytics? Why it only works on governed data",
+      "link": "https://www.databricks.com/blog/what-ai-analytics-why-it-only-works-governed-data",
+      "publishedAt": "2026-09-15T16:45:03.000Z",
+      "author": "",
+      "summary": "AI analytics is the practice of applying artificial intelligence and machine learning to data analysis...",
+      "evidenceLink": "",
+      "score": 18.631041845238094,
+      "core": "AI analytics is the practice of applying artificial intelligence and machine learning to data analysis...",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-22T16:04:58.491Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
