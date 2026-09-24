@@ -1,0 +1,177 @@
+{
+  "generatedAt": "2026-09-24T16:09:41.005Z",
+  "report": "2026-09-25.md",
+  "health": "quality/knowledge-source-health/2026-09-25.json",
+  "candidates": "quality/knowledge-candidates/2026-09-25.json",
+  "site": "docs/index.html",
+  "ok": true,
+  "date": "2026-09-25",
+  "rows": 20,
+  "blogCount": 19,
+  "paperCount": 1,
+  "blogAccessVerifiedCount": 19,
+  "topConferencePaperCount": 1,
+  "sourceCount": 77,
+  "candidatePool": {
+    "historicalLinkCount": 1070,
+    "blogFetchedCount": 308,
+    "blogAccessCheckedCount": 105,
+    "blogAccessVerifiedCount": 84,
+    "blogAccessRejectedCount": 21,
+    "blogAccessRejected": [
+      {
+        "sourceId": "openai_news",
+        "title": "Building standards for the next phase of AI",
+        "link": "https://openai.com/index/building-standards-next-phase-ai",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "Parallel cut research time and cost in half with GPT‑6 Astra",
+        "link": "https://openai.com/index/parallel-cuts-time-and-cost-with-astra",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "Priorities and principles for effective third party assessments",
+        "link": "https://openai.com/index/priorities-principles-third-party-assessments",
+        "reason": "fetch failed; curl fallback: Command failed: curl -fsSL --connect-timeout 15 --max-time 15 -A Mozilla/5.0 (compatible; "
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "Airbnb widens access to GPT-6 Astra and OpenAI frontier models",
+        "link": "https://openai.com/index/airbnb-gpt-6-astra",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "Sam Altman’s remarks at the United Nations Security Council",
+        "link": "https://openai.com/index/sam-altman-un-security-council-remarks",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "Introducing MentalHealthBench",
+        "link": "https://openai.com/index/introducing-mentalhealthbench",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "Our framework for reporting model misalignment",
+        "link": "https://openai.com/index/model-misalignment-reporting-framework",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "Hex turns complex analysis into visual reports with GPT‑6 Astra",
+        "link": "https://openai.com/index/hex-gpt-6-astra",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "interconnects",
+        "title": "Latest open artifacts (#24): Motif-3, GLM-5.3, Hy4-preview and open model licenses",
+        "link": "https://www.interconnects.ai/p/latest-open-artifacts-24-motif-3",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "Advanced evals: How to find (and fix) hidden AI failures in your product",
+        "link": "https://www.lennysnewsletter.com/p/advanced-evals-how-to-find-and-fix",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "How we built Grok Bot in a month | Roman Ugarte (SpaceXAI)",
+        "link": "https://www.lennysnewsletter.com/p/how-we-built-grok-bot-in-a-month",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "How to turn your AI into a world-class designer",
+        "link": "https://www.lennysnewsletter.com/p/how-to-turn-your-ai-into-a-world",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "🧠 Community Wisdom: Driving AI adoption when habits are the bottleneck, leveling up from APM to a mid-level PM role, converting a wave of new users to subscription, and more",
+        "link": "https://www.lennysnewsletter.com/p/community-wisdom-driving-ai-adoption",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "Why companies are becoming a series of loops | Anish Acharya (a16z)",
+        "link": "https://www.lennysnewsletter.com/p/why-companies-are-becoming-a-series",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "🧠 Community Wisdom: AI basketball coaching, Jira vs. Linear, building a business case for platform teams, favorite AI use cases, and more",
+        "link": "https://www.lennysnewsletter.com/p/community-wisdom-ai-basketball-coaching",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "How will AI change operating systems? Part 2: Windows",
+        "link": "https://newsletter.pragmaticengineer.com/p/windows-and-ai",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Inside OpenAI’s agentic software factory",
+        "link": "https://newsletter.pragmaticengineer.com/p/openai-software-factory",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "What is happening with code reviews?",
+        "link": "https://newsletter.pragmaticengineer.com/p/what-is-happening-with-code-reviews",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: tech companies move to open AI models",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-tech-companies-move-to",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: Meta wanted to reduce teams by 60% because of AI",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-meta-wanted-to-reduce-teams",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse #191: a new trend of CPU shortages",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-191-a-new-trend-of-cpu",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      }
+    ],
+    "blogCanonicalRedirectHistoricalDedupCount": 11,
+    "paperFetchedCount": 60,
+    "paperTopConferenceVerifiedCount": 60,
+    "blogAfterHistoricalDedupCount": 73,
+    "paperAfterHistoricalDedupCount": 1,
+    "eligibleAfterHistoricalDedupCount": 74,
+    "maxPerBlogSource": 2,
+    "selectedBlogSourceCounts": {
+      "aws_machine_learning": 1,
+      "braintrust_ai_engineering": 1,
+      "gitlab_ai_engineering": 1,
+      "google_cloud_ai": 2,
+      "hcker_news_ai_blogs": 2,
+      "langchain_engineering": 1,
+      "latent_space": 1,
+      "lennys_newsletter": 1,
+      "microsoft_agent_framework": 1,
+      "modal_engineering": 1,
+      "pragmatic_engineer": 1,
+      "salesforce_engineering": 1,
+      "simon_willison": 2,
+      "vercel_ai": 2,
+      "weaviate_engineering": 1
+    },
+    "sourceCapRelaxed": false,
+    "shortfallReason": "顶会元数据核验后论文仅 1 篇，空缺优先用已验证可访问的 Blog 补位，不用普通 arXiv 论文凑数；未用旧文或低质量内容补位。"
+  },
+  "failures": []
+}

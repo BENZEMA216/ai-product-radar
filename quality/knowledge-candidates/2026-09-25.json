@@ -1,0 +1,419 @@
+{
+  "generatedAt": "2026-09-24T16:07:38.846Z",
+  "date": "2026-09-25",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Power your agents: Gemini 3.8 Live with Live Avatar is now generally available",
+      "link": "https://cloud.google.com/blog/products/ai-machine-learning/gemini-3-8-live-with-live-avatar-is-now-generally-available",
+      "publishedAt": "2026-09-24T15:00:00.000Z",
+      "author": "Fabien Blanc-paques Group Product Manager, Gemini Live",
+      "summary": "Following our announcement of Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking last week, we are thrilled to share that Gemini 3.8 Live with Live Avatar is now generally available in Gemini Enterprise . First previewed at Google Cloud Next 2026 , the technology is now officially ready for enterprise production. As enterprise voice AI evolves beyond basic speed and cost metrics, our priority has shifted to making each interaction even higher quality. Gemini 3.8 Live already delivers a native speech-to-speech foundation for fluid, responsive dialogue. The Live Avatar feature brings an interactive visual presence to conversational video agents across web, mobile, and interactive kiosks. Together, you’ll have access to: Video avatars: Conversational video with the Live Avatar feature can generate video avatars with synchronized lip-syncing. Note: Custom avatar feature is available via allowlist only. Fluid dialogue: Native speech-to-speech means more natural interruption recovery without dropping conversation context or backend transactions. Easy execution of API, CRM, or ERP calls: With asynchronous tool calling, you can execute calls in the background while the agent continues speaking, which removes dead air. Automatically detect and transition across 97 supported languages: Multilingual switching makes it easy to detect and transition between languages mid-conversation, and without manual toggles. Make it easy for agents to see what your user sees: Live visual understanding can process live camera feeds and screen shares alongside audio, all at the same time. Though Gemini 3.8 Live Extended Thinking remains in private preview, Gemini 3.8 Live with Live Avatar is now available with US and EU endpoints, with provisioned throughput, enterprise compliance, and strict data governance. Try the model and its features in Gemini Enterprise , and start building now with API . Trust and transparency at its core To safeguard identity and prevent misuse, customers can deploy from a library of curated, pre-built avatars, while custom avatar creation is gated behind a strict enterprise allowlisting and verification process. Furthermore, all generated audio and video streams carry imperceptible SynthID watermarks, ensuring AI-generated content remains transparent and verifiable. Three demos of Gemini 3.8 Live with Live Avatar in action #1: Interactive custom avatar Gemini 3.8 Live with Live Avatar Create an interactive custom avatar in a step-by-step process Watch how Gemini 3.8 Live makes it possible to build a custom avatar by adding system instructions, uploading a single reference photo and audio file sample. Demo #2: Live video understanding in a voice-first claims intake Gemini 3.8 Live demo for insurance claim agent Streamline claims intake with live video understanding using Gemini 3.8 Live In this demo, you’ll see a common use case come to life using Gemini 3.8 Live: an intake agent. In this scenario, we chose an insurance claims agent. You talk and show the damage on camera, and the claim notebook fills itself in as you go. In the background, an ADK agent team checks the policy, applies the intake rules, and builds the adjuster packet. To dive deeper, check out the open-source code . #3: A real-time voice AI agent with Google ADK and Gemini Live API Build a real-time voice AI agent with Google ADK and Gemini Live API Build a live voice agent using Google ADK and Gemini Live API See how developers can use Agent Development Kit (ADK) to define agents, manage runners and session memory, and stream real-time audio directly to the Gemini Live API without a traditional speech-to-text pipeline. How our customers are innovating with Gemini 3.8 Live with Live Avatar Cox Automotive built an AI-powered shopping assistant for Autotrader that uses live screen-highlighting and tool-calling capabilities to guide car shoppers through vehicle search, comparison, and financing — in real time, through natural conversation. “Shoppers increasingly expect to describe what they need in their own words rather than work through filters and menus. Autotrader’s new conversational AI Avatar brings that experience to vehicle discovery by matching natural conversation to the right inventory. It is another step toward our vision of connected intelligence, where every consumer interaction draws on the full depth of Cox Automotive data.” — Marianne Johnson, EVP and Chief Product Officer, Cox Automotive. Autotrader AI-powered shopping assistant | Gemini 3.8 Live with Live Avatar “We're building a personal AI that knows you, speaks your language, and is always on your side. Today, it handles over a million live calls daily across nine Indian languages. Gemini 3.8 Live improved interruption handling, multilingual conversations, and tool-call reliability. This AI doesn't just answer calls; it gets things done for you.” — Akhilesh Damaraju, CEO, Equal AI. “We're excited that Gemini 3.8 Live and Agentforce are coming together to reimagine what's possible in intelligent service. This collaboration between Salesforce AI Research and Google combines real-time, multimodal capabilities with agentic AI to explore new ways to create richer, more intuitive customer experiences from first contact to resolution.\" — Bob Van Osten, VP of Product for Agentforce, Salesforce. Salesforce&#x27;s Agentforce and Gemini 3.8 Live “Our team has been very impressed with Gemini 3.8 Live throughout testing and benchmarking! The updates made to Voice Activity Detection and the improvements to overall latency are huge steps forward and further our ability to deliver the highest quality AI Assistant on the SPECS platform.” — Eric Walsh, Software Engineer, Specs. Start building today Gemini 3.8 Live with Live Avatar are available now for enterprise customers: Try the model in Gemini Enterprise Access the Gemini Live API documentation for integration guides Review pricing on our pricing page Skill for building real-time, bidirectional streaming apps with the Gemini Live If your application requires specialized, modular audio capabilities, explore our other audio models: Gemini 3.5 Transcribe Gemini 3.5 Live Translate Gemini 3.8 Flash-Lite TTS and Gemini 3.8 Flash TTS Reach out to your Google Cloud sales representative to activate provisioned throughput, discuss customized deployment architectures and allowlisting for custom avatar.",
+      "evidenceLink": "",
+      "score": 106.91946734126984,
+      "core": "Following our announcement of Gemini 3.8 Live and Gemini 3.8 Live Extended Thinking last week, we are thrilled to share that Gemini 3.8 Live with Live Avatar is now generally available in Gemini Enterprise . First previewed at Google Cloud Next 2026 , the technology is now officially ready for enterprise production. As enterprise voice AI evolves beyond basic speed and cost metrics, our priority has shifted to makin…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-24T16:07:38.846Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "The three things today's hottest startups are looking for in their AI stack",
+      "link": "https://cloud.google.com/blog/topics/startups/the-three-things-todays-hottest-startups-are-looking-for-in-their-ai-stack",
+      "publishedAt": "2026-09-24T13:00:00.000Z",
+      "author": "Darren Mowry VP, Global Startups and Investor Ecosystem, Google",
+      "summary": "Google Cloud has become the platform of choice for startups building AI. Our uniquely complete stack — including a choice of first- and third-party compute and models ; our platform for building and managing agents; and our products for securing AI workloads — has emerged as the single most important driver of this growth and it is powering AI development for many of the most exciting and innovative startups in the world. As a result, startups are choosing to build and run on Google Cloud at a higher rate than they were three years ago, at the start of the AI era. Given how quickly the technology industry moves in the AI era, the choices startups make can be notable. As we’ve worked together and watch many of these leaders scale, we’ve observed a few important trends emerging over the past several months. We expect these decisions will continue to shape the choices startups make about the platforms and technology they use: Gemini Enterprise , which includes our tools for managing TPU and GPU clusters, services for building and managing agents, and APIs to access both first- and third-party models, is growing significantly with startups. And when startups use Gemini Enterprise, they also tend to use our “core cloud” services like Storage, BigQuery, or GKE. Gemini models — as well as several of the third-party models available through Gemini Enterprise — are providing very strong price-performance for startups. These customers are increasingly deploying both our frontier models and “workhorse” models as their AI to power workloads as diverse as scientific research, generative media creation, and financial analysis. Access to compute on GPUs and TPUs is critical for AI and the ability to choose one — or both — is unique to Google Cloud. But importantly, startups almost always use additional products from our stack alongside these chips, like models, tools for building agents, or services like BigQuery or GKE. These additional technologies illustrate how the needs of startups are rarely singular, and just how much value they find in having ready access to a strong suite of second-, third-, and fourth-level technologies beyond just compute. We can see the demand for these technologies first-hand in some of the recent deals we have struck in the past 60 days with a number of leading startups across sectors: Artificial Agency , a startup focused on generative behavior in games, is running critical AI workloads and research on Google Cloud, where it is using NVIDIA GPUs for model training and inference, as well as Gemini models and Cloud Storage. Arya Health is building the AI workforce for healthcare, deploying agentic AI to perform the non-clinical administrative work that limits providers’ ability to deliver and expand care. Arya’s AI agents work across scheduling, intake, recruiting, onboarding, compliance, after-hours operations, and other critical workflows, interacting through voice, text, email, and providers’ existing systems. Arya uses a range of Gemini models across its agentic infrastructure, including Gemini 2.5 Pro, 3.1 Flash, and 3.5 Flash Lite, selecting models based on the reasoning, speed, and cost requirements of each workflow. Casco is a cybersecurity startup whose autonomous agent swarms execute sophisticated, multi-step attacks to uncover vulnerabilities across enterprise applications, cloud environments, and infrastructure. Its architecture combines advanced reasoning models for complex, long-running tasks with fast models such as Gemini 3.5 Flash for focused subagent work. Google Cloud’s model portfolio and infrastructure, including Provisioned Throughput, help Casco match each workload with the right combination of intelligence, speed, and capacity. CodeRabbit has been a pioneer in independent AI code review and has expanded that layer into Agentic Change Management, the control plane for agentic software development. They use our Cloud Run and Storage products to underpin their application, and are now beginning to leverage Gemini 3.1 Pro and other Gemini models to power use cases like analyzing how a single code change impacts an entire project, writing clear and contextual review comments to explain logic bugs, and instantly generating one-click fixes for developers. Comfy offers a platform for creatives to build brand-consistent content and media with generative AI. They are utilizing a mix of NVIDIA systems and Google media generation models, like Veo and Nano Banana, in their platform. MicroAGI , a German AI robotics startup, recently announced they would access NVIDIA Blackwell systems for model training through Google Cloud. They will also use Gemini Enterprise Agent Platform and AI models on Google Cloud to help robotics process multimodal information like video. Ineffable Intelligence , the London-based superintelligence startup, recently announced a partnership with Google Cloud to access NVIDIA Vera Rubin systems as well as high-efficiency AI networking and storage. PEAR Health Labs built and runs its AI health and fitness companion and agentic health platform entirely on Google Cloud, using our Gemini 3.5 Flash model as well as our data cloud products. Roboforce is a physical AI company building scalable robots for industrial environments. They recently signed a new agreement with Google Cloud to utilize our GPU-powered VMs, which will be used to train and serve their custom and post-trained physical AI models. xFigura offers a platform that gives architecture teams a single, secure canvas that brings generative models into one place for AI-driven design. Built on Google Cloud, xFigura uses models like Nano Banana and Omni to help designers generate and refine concepts in plain language, with authorship staying with the architect. SciFin is a startup that helps revenue teams uncover \"revenue reality\" by converging fragmented sales context across CRM systems, documents, emails, and other sources. They are utilizing Gemini models, infrastructure, and Gemini Enterprise to build and run their platform. These new and expanding customers represent some of the most exciting names in AI and are demonstrative of the type of successes that startups are having with Google Cloud’s uniquely complete stack for building AI. To learn more about Google Cloud’s work with leading AI startups, or to get started building with us, visit here .",
+      "evidenceLink": "",
+      "score": 105.7766101984127,
+      "core": "Google Cloud has become the platform of choice for startups building AI. Our uniquely complete stack — including a choice of first- and third-party compute and models ; our platform for building and managing agents; and our products for securing AI workloads — has emerged as the single most important driver of this growth and it is powering AI development for many of the most exciting and innovative startups in the …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-24T16:07:38.846Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "How GitLab reduced code-per-agentic-flow ratio by 45%",
+      "link": "https://about.gitlab.com/blog/how-gitlab-reduced-code-per-agentic-flow-ratio",
+      "publishedAt": "2026-09-22T00:00:00.000Z",
+      "author": "Mikolaj Wawrzyniak https://about.gitlab.com/blog/authors/mikolaj-wawrzyniak/",
+      "summary": "GitLab Duo Agent Platform orchestrates and automates complex tasks through agentic flows. A key part of the platform is the Flow Registry, a declarative configuration framework, built from reusable components, that compiles YAML into fully functional LangGraph flows. By using Flow Registry, agent builders — both our GitLab engineers and our customers can use declarative YAML configurations instead of repetitive, ad-hoc Python implementations. Flow Registry turns bespoke state management and agent wiring duplicated across agents into a set of reusable components and primitives available to agent builders. Using Flow Registry has reduced our own code-per-agentic-flow by 45%. What is this translating to? Faster iteration speed due to a declaration framework with reusable components and primitives. Increased reliability because one-off implementation mistakes and boilerplate bugs are handled on a component level. Lower maintenance cost because platform improvements are made once, but benefit all agents. Backward compatibility for our functionalities , for both our GitLab-authored foundational flows and also customers’ custom flows, because of the abstraction layer. All of these benefits are available to customers orchestrating and building agents on GitLab Duo Agent Platform. In this article, we share the architectural principles and lessons from this effort and how to apply them in your environment. LangGraph as the foundation for GitLab Duo Agent Platform After releasing GitLab Duo Code Suggestions and Duo Chat, we dug into a then-novel technology, autonomous agents. We researched available AI frameworks and selected LangGraph, an agent runtime and low-level orchestration framework from LangChain, as the foundation for GitLab Duo Agent Platform. LangGraph's rich feature set, which includes a broad range of model adapters, durable execution, and traceability, combined with an excellent level of engineering autonomy, brought all the necessary building blocks we looked for to start GitLab Duo Agent Platform development. During the initial months, GitLab engineers, empowered by LangGraph, swiftly built the foundations of Duo Agent Platform, and before long the team shipped four agentic flows: Software Development Flow Duo Agentic Chat Convert to GitLab CI/CD Flow Developer Flow We also quickly realized a critical gap that low-level frameworks such as LangGraph do not address: a lack of structure to support consistent development at scale. With just four flows present, and a small engineering team working on GitLab Duo Agent Platform at that time, the codebase was growing rapidly. Every flow was implemented as an ad-hoc directed graph, turning into a web of interconnected nodes and edges. The early Duo Agent Platform codebase had no reusability, no composability, and little in the way of shared standards . It became very difficult to develop new features, and any horizontal platform-wide change seemed like an impossible task. With every flow taking at least 450 lines of ad-hoc Python code and looking like this example , the team's velocity slowed down as engineers struggled to introduce changes, overwhelmed by complexity and coupling. The graph's complexity spilled into the test suite, as well. Each test case depended on an execution propagating through a whole graph, which changed tests from a quality assurance safety net into a boogeyman that nobody wanted to look at. It became clear to us that graphs used as an atomic building block at this low abstraction level are not a good match for a platform implementation. To support the scale we envisioned, it was necessary to introduce smaller units, that break down the complexity and reduce cognitive load put on platform engineers maintaining the project. Furthermore, graphs with low-level nodes managing model API calls or executing function calls produced by said models, were not the right abstraction for AI engineers either, as they are more accustomed to terms like agents and agent orchestration. Looking for a way out of that maze, we decided to separate those two concerns — AI engineering from platform development — with the introduction of a new layer of abstraction. To do so, we reviewed existing graphs and identified and extracted repeated structures (for example, cycles going between large language model ( LLM ) calls and tool execution, implementing agent loops). The refactor brought some relief, as the most complex files had been broken down into smaller pieces that formed the new abstraction layer. However, the platform was still far from a scalable state. The extracted graph pieces unfortunately operated with their own state structures, tightly coupled with the flow from which they originated. This prevented us from reusing extracted entities between different flows, and we were concerned that at that point every new flow would be more likely to create its own set of pieces, rather than be composed from ones that already existed. The system was neither collaborative nor efficient, and it was not sustainable in that state for a longer period of time. That realization made it apparent — we had to put more effort in, continue to evolve the architecture, and provide clear development guidelines. At that time we already knew that Duo Agent Platform flows wouldn't be exclusively built by other product teams, but that a wider GitLab community would be invited to contribute as well. Abstracting LangGraph details behind the new Flow Registry framework Equipped with the past experience, and inspired by ambitious goals, my teammate Alexander Chueshev and I went back to the drawing board, and rethought the system. We set out to introduce a solution that is highly collaborative, composable, and optimized for AI development efficiency. We wanted this new iteration to hide low-level LangGraph implementation details, and to stop bothering developers with nodes or edges. The system ought to speak their language — the language of AI engineering — with agents being a central component. It was clear to us that AI development reasons in terms of agents, rather than nodes that invoke models, execute tools, etc. Drawing lessons from the past iteration, we decided to base the new framework on three pillars: Components Routers Shared state structure We were convinced that if we were able to design them well, the new framework would be flexible enough to support any AI flow that users might want to build. Pillar 1. AI engineering primitives as components Components are the central and most important pillar of Flow Registry. They model common primitives such as agents, human-in-the-loop checkpoints, and fixed-logic steps. This pillar lifts the abstraction level to match terminology used within the AI engineering domain. Thanks to components agent builders no longer need to reimplement those primitives from scratch, but can declare them with YAML snippets that look like this example: - type : AgentComponent name : \"developer_agent\" prompt_id : \"developer_agent_prompt\" inputs : - from : \"context:goal\" as : \"goal\" - from : \"context:project_id\" as : \"project_id\" toolset : - \"read_file\" - \"find_files\" - \"edit_file\" - \"run_command\" - \"create_merge_request\" Under the hood, the AgentComponent is still a piece of a LangGraph’s graph, whose simplified structure is shown in the diagram below. However, now its implementation complexity is hidden from agent builders, who operate with a more familiar primitive. The same architectural boundaries also benefit framework maintainers, giving them more freedom to modify and extend the underlying implementation, with changes propagating to flows transparently. from shared state)) --> LLMCall End --> output((outputs to shared state)) %% Prompts Prompt[\"You are expert software engineer ...\"] --> LLMCall subgraph Prompts direction TB style Prompts stroke-dasharray: 4 4, stroke:#3CB371 Prompt end %% LLM and internal component LLMCall --> End LLMCall --> RunTools RunTools --> LLMCall subgraph Component direction LR LLMCall[LLM Call] RunTools[Run Tools] End[END] end %% Tools EditFile --> RunTools ReadFile --> RunTools subgraph Tools direction LR style Tools stroke-dasharray: 4 4, stroke:#1E90FF EditFile[Edit file] ReadFile[Read file] end \" language=\"mermaid\" meta=\"\" style=\"\"> flowchart LR %% External input/output input((inputs from shared state)) --> LLMCall End --> output((outputs to shared state)) %% Prompts Prompt[\"You are expert software engineer ...\"] --> LLMCall subgraph Prompts direction TB style Prompts stroke-dasharray: 4 4, stroke:#3CB371 Prompt end %% LLM and internal component LLMCall --> End LLMCall --> RunTools RunTools --> LLMCall subgraph Component direction LR LLMCall[LLM Call] RunTools[Run Tools] End[END] end %% Tools EditFile --> RunTools ReadFile --> RunTools subgraph Tools direction LR style Tools stroke-dasharray: 4 4, stroke:#1E90FF EditFile[Edit file] ReadFile[Read file] end The agent as a component, with the ability to delegate work to subagents, is already a powerful base delivered by Pillar 1 alone. Many contemporary agent platforms consider it a complete and sufficient offering. However, GitLab has larger ambitions for Duo Agent Platform, which Flow Registry realizes with the next two pillars. Pillar 2. Routers to orchestrate components into flows Flow Registry Routers enable agent builders to orchestrate multiple specialized agents , or even agentic teams, into a flow to model highly complex business, or software development processes. Even though the largest contemporary models are powerful enough to drive complex assignments on their own, a recent rise in popularity of subagent architecture shows that there are many benefits of assembling multiple agents to collaborate over a single task. To demonstrate a practical example , let’s take a look at GitLab’s foundational flow: Fix pipeline . This flow is configured with an automated trigger to triage, and fix failing CI pipelines. Because CI pipelines can be very complex, not every failure requires any code change to be resolved, for example sometimes a dependency service might be not responsive, and a plain retry is enough to fix a failure. To acknowledge that dual approach, the flow branches early based on an agent that acts as a judge’s decision. The judge agent's ruling on whether a failure is actionable is then used by Flow Registry Routers to navigate flow execution into the correct branch. routers : - from : \"fix_pipeline_context\" condition : input : \"context:fix_pipeline_context.final_answer.decision\" routes : \"add_comment\" : \"fix_pipeline_add_comment\" \"create_plan\" : \"fix_pipeline_checkout_existing_branch\" \"direct_code_suggestions\" : \"fix_pipeline_code_suggestions\" \"no_action\" : \"end\" \"default_route\" : \"end\" It is true that state-of-the-art models should be able to make similar decisions and act on them simultaneously. However, thanks to multi-agent architecture, agent builders can capitalize on the following benefits: Smaller, cheaper models can replace the largest and most expensive ones — a compounding cost advantage for high-frequency automated flows running hundreds of times per day. Security posture improves through role separation — read and write capabilities can be split across distinct agents. Process guardrails can be enforced when the workflow is known upfront, reducing reliance on model judgment for structured tasks. Pillar 2 gives agent builders a choice: Use a simple flow architecture with powerful models, or offload complexity from models prompts into explicit flow structure — catering to a broad range of possible use cases, cost targets, and risk profiles. Pillar 3. Shared state structure The third and final pillar of Flow Registry is a shared state structure that acts as a communication protocol between components. Without it, the previous two pillars could not function, because components would lack a reliable way to communicate. Referring back to the Fix pipeline example: The judge agent's ruling would be of little value if it could not be reliably forwarded to a Flow Registry Router. More broadly, data produced by one agent is often required by subsequent ones, making a well-defined communication contract essential. Flow Registry state structure includes a special catchall attribute called context , which behaves like a nested key-value store (or a JSON object) granting components a versatile storage space. To further complement context attribute flexibility, Flow Registry introduced a dot-notation declarative access to context , a convention familiar from other domains (such as GitLab CI Functions ), where access to shared key-value storage must be expressed within static configurations. To complete the third pillar, convention is required: Flow Registry supports flexible read operations from shared state via said dot-notation, however all writes follow strict rules, providing a set of stable, predictable outputs on which agent builders can rely. To see that in practice, let’s take a look again at a piece of Flow Registry config for another foundational flow: Code review . # … # Step 5: Fetch lightweight MR metadata (file paths + custom instructions) - name : \"fetch_mr_metadata\" type : DeterministicStepComponent tool_name : \"build_review_merge_request_context\" # …. # Step 6: Transform prescan results into structured JSON for review consumption - name : \"analyze_prescan_results\" type : AgentComponent prompt_id : \"analyze_prescan_codebase_results\" prompt_version : \"^1.0.0\" inputs : - from : \"context:fetch_mr_metadata.tool_responses\" as : \"mr_context\" - from : \"context:prescan_codebase.tool_responses\" as : \"prescan_tool_responses\" optional : True toolset : [] ui_log_events : - \"on_agent_final_answer\" # ….. routers : # …. - from : \"fetch_mr_metadata\" to : \"analyze_prescan_results\" Code Review’s agent analyze_prescan_results requires data pulled by a preceding fixed step action fetch_mr_metadata, that dependency is expressed via inputs declared for analyze_prescan_results agent inputs : - from : \"context:fetch_mr_metadata.tool_responses\" as : \"mr_context\" Here, dot-notation and strict output conventions work in tandem, giving agent builders a stable and predictable protocol for moving data between components within a flow. From Python to YAML Even though Flow Registry uses declarative YAML configurations, we started the design and rearchitecture in Python, and deferred any declarative configuration API to future iterations. However, once all three Flow Registry pillars came together within a single Python block, it became obvious to us that converting those declarations into a YAML config was just a step away, so we took it. That change completely decoupled the Flow Registry framework from Python and LangGraph, offering a high-level abstraction syntax for declarative AI flow creation. It established a clean boundary between the platform still implemented on LangGraph foundations, and the external framework's declarative interface, which enabled AI engineers to operate with concepts more familiar to them. Introduction of Flow Registry framework as a basis for GitLab Duo Agent Platform propelled the whole system from vanilla LangGraph per-use-case implementations into declarative YAML configs like this one behind GitLab Duo Developer Flow , which is currently operating in production. With the platform decoupled from the framework API designed for AI engineers, the underlying Python codebase becomes shareable across all flows, and any improvements introduced to the engine itself are brought to all flows, further emphasizing the efficiency gains from the clear separation. In addition, the per-flow code cost drops with every new flow added. At the time of writing, the ratio of Python source code per flow has been reduced by 45% in favor of Flow Registry — and it will keep improving with every new flow being built. Finally, AI engineers and domain experts are no longer required to understand any of the underlying platform implementation details, nor do they need to implement any repetitive boilerplate Python code that would require its own test suite and maintenance. This was proven by almost 7,000 developers who signed up for the GitLab AI Hackathon earlier this year and submitted 600+ agents and flows. Key learnings A key observation we made is that modern AI engineering is still a very young branch of software development, in which common architectural patterns and paradigms haven’t fully been formed yet. However, it does not mean that already established good software engineering practices can’t be applied to AI engineering. In fact, as Flow Registry's story shows, reaching back to existing software engineering paradigms and practices, such as identifying repeated code, extracting it into named entities with clear roles within a system, and forming abstraction layers from them, can yield powerful results. Beyond that, we would also like to share a few other takeaways that apply broadly to any team building agentic systems, while others are practical starting points for teams working with low-level frameworks like LangGraph. General principles Some contemporary agentic frameworks, despite being very powerful, operate at too low a level of abstraction for AI engineering needs, conflating platform concerns with agent development. Separation of the execution platform from AI engineering enables experts in each domain to operate with more confidence and speed. Practical starting points for low-level framework users Separation of AI flows from platform implementation can be started by extracting repeated structures from existing AI flows — agentic loops are a good place to start. A flexible shared data model can be achieved thanks to a key-value-store-like attribute introduced to the model, following patterns established by other orchestration frameworks even outside of the AI domain. Try Flow Registry To get a feel for how it all works in practice, visit the AI Catalog where GitLab exposes the resulting Flow Registry orchestration framework for anyone to build custom flows . You can also try GitLab Duo Agent Platform for free .",
+      "evidenceLink": "",
+      "score": 94.41946734126984,
+      "core": "GitLab Duo Agent Platform orchestrates and automates complex tasks through agentic flows. A key part of the platform is the Flow Registry, a declarative configuration framework, built from reusable components, that compiles YAML into fully functional LangGraph flows. By using Flow Registry, agent builders — both our GitLab engineers and our customers can use declarative YAML configurations instead of repetitive, ad-…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-24T16:07:38.846Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "MiMo V2.6 models now available on AI Gateway",
+      "link": "https://vercel.com/changelog/mimo-v2-6-models-now-available-on-ai-gateway",
+      "publishedAt": "2026-09-21T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "MiMo V2.6 Pro , MiMo V2.6 Flash , and MiMo V2.6 Pro UltraSpeed from Xiaomi are now available on AI Gateway . MiMo V2.6 combines coding, reasoning, and tool use with native text, image, audio, and video understanding. Its 1M token context supports long repositories, tool traces, and multi-session agent work, with structured outputs and up to 128K output tokens. Choose a model based on the workload: xiaomi/mimo-v2.6-pro is the larger sparse mixture-of-experts checkpoint, with 1.02T total parameters and 42B activated per token, for complex software engineering and long-running agent work. xiaomi/mimo-v2.6-flash uses 309B total parameters and activates 15B per token, making it the more efficient option for multimodal automation and everyday agent workflows. xiaomi/mimo-v2.6-pro-ultraspeed serves Pro at up to 20 times its output speed for interactive and latency-sensitive workflows, with the same capabilities. To use MiMo V2.6 in a coding agent , install the latest Vercel CLI and run: Then select xiaomi/mimo-v2.6-pro , xiaomi/mimo-v2.6-flash , or xiaomi/mimo-v2.6-pro-ultraspeed in your agent. Try MiMo V2.6 Pro , Flash , or Pro UltraSpeed in the model playground. AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , budgets for API keys , routing rules , and more. Read more",
+      "evidenceLink": "",
+      "score": 80.70518162698413,
+      "core": "MiMo V2.6 Pro , MiMo V2.6 Flash , and MiMo V2.6 Pro UltraSpeed from Xiaomi are now available on AI Gateway . MiMo V2.6 combines coding, reasoning, and tool use with native text, image, audio, and video understanding. Its 1M token context supports long repositories, tool traces, and multi-session agent work, with structured outputs and up to 128K output tokens. Choose a model based on the workload: xiaomi/mimo-v2.6-p…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-24T16:07:38.846Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "simon_willison",
+      "source": "Simon Willison",
+      "title": "Jev introduces a new shape of LLM - System One, aka Decision Models",
+      "link": "https://simonwillison.net/2026/Sep/21/jev",
+      "publishedAt": "2026-09-21T23:09:20.000Z",
+      "author": "",
+      "summary": "Last week TypeSafe AI unveiled Jev , their first example of a new category of model that they are calling \"System One models\" (I'm with Maggie Appleton, I think \"decision models\" is a better name for these). Jev is an interesting variant on the usual LLM format: it still accepts text inputs, but instead of text output it returns floating point numbers corresponding to categories, yes/no questions, ratings, and associated confidence scores. TypeSafe describe Jev like this: Think of Jev as a frontier-intelligence function call: unstructured state in, typed probabilistic decisions out. It's also very fast, and really cheap . Regular LLMs are priced in terms of input and output tokens, with output generally charged at significantly higher rates. Jev charges only for input - output is free - and the input price of their first model is $0.042 per million tokens - cheaper even than OpenAI's GPT-5 Nano ($0.05/million). Jev lets you ask questions about text or semi-structured data. You compose a \"state\" object containing a string, array of strings, or set of name-value pairs - this might describe an article, or a customer, or any other kind of record. You then send that to their API with one or more questions, and get a reply back for each. You can ask three kinds of questions: Yes/No questions, which Jev calls \"Noul\" questions - their CEO confirmed on Hacker News that this is short for Bernoulli, from the Bernoulli distribution . You pose a statement and get back a floating point number between 0 and 1 for how confident the model is that the statement is true. Choice questions, where the model picks one from a set of provided options - actually a confidence score plus a probability distribution across all of the options. Score questions, where you provide sequence of numeric levels with descriptions and it provides a floating point score somewhere along that range. The Jev API can accept a single document (\"state\") and as many questions as you can cram into the context window. Questions are evaluated in parallel, so sending many questions should take a similar time to sending just one. The Jev 1.13 jaggedness documentation offers useful guidance as to Jev's strengths and weaknesses. It's currently not great with numbers, dates, or \"adversarial content\". I think the decision model framing is useful for understanding where to use Jev. It's great for anything that can be expressed as a classification task - think spam detection, suggesting labels, prioritization and ranking. I've also been experimenting with it for search reranking, where you fetch 100 likely matches using an inexpensive algorithm like BM25, then have Jev score those 100 candidates for relevance against the original query. Black boxes are back in fashion Something I've found a little uncomfortable about Jev is how it very much represents a regression even further towards black box machine learning systems. LLMs are black boxes already - you can ask them to justify their decisions, but you can't guarantee that what they say is useful or accurate. Jev doesn't even give you that: put in all the text you want, the only thing you're going to get back is a floating point number. If Jev marks something as spam, which content signals tipped it off? This also means that concerns about bias should be front and center. I really hope nobody uses Jev to rank job applicants - that floating point number could conceal all manner of unseen bias baked into the models, and experimentally picking that bias apart is going to be a tricky business. (I tried one experiment where I had Jev score every city in the San Francisco Bay Area on a yes/no answer to whether they were a \"Good city?\" - it rated Cupertino top and East Palo Alto bottom. Huh.) In practice, this all means that evals and structured experiments are even more important than they are for regular LLM projects. Thankfully, Jev is so cheap that running hundreds or even thousands of experimental prompts through it costs just a few cents. Unconventional uses for Jev It's been really fun watching the wider community come up with potential use-cases for Jev over the past few days. Here are some creative ones that caught my eye: jevchat by Kyle Pena turns Jev into a (terrible) chat model. \"At every step it asks Jev one question: Given the user's question and the reply written so far, which symbol comes next?\". ericpruitt on Hacker News : \"It's the digital equivalent of Morty speaking with the death crystal\". jev-leftpad by Fatih Kadir Akın implements left-pad with the prompt \"How many spaces are needed before value to reach targetLength?\" and a choice query allowing options from \"0 spaces are needed\" to \"10 spaces are needed\". jev-2048 by Andy Gayton uses Jev to play the 2048 sliding puzzle game . Open weight recreations There's also been a flurry of projects attempting to create a model like Jev using on top of open weight models. Kev is one interesting example, using Qwen 3.5 to produce 0.8B, 4B, and 9B models. Here's the accompanying Hacker News thread , where someone linked to a JevBench benchmark that has already cropped up to compare \"Jev-class decision models\". Given Jev was released just under a week ago, the amount of activity around it is extremely impressive. Using Jev from LLM Update 22nd September 2026 : I released llm-typesafe , a plugin that adds support for Jev to my LLM CLI tool and Python library. Basic usage looks like this: llm -m jev ' Please refund my last payment. ' \\ -s ' Does this message explicitly request a refund? ' See the README for examples of other query types. You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
+      "evidenceLink": "",
+      "score": 77.35914988095237,
+      "core": "Last week TypeSafe AI unveiled Jev , their first example of a new category of model that they are calling \"System One models\" (I'm with Maggie Appleton, I think \"decision models\" is a better name for these). Jev is an interesting variant on the usual LLM format: it still accepts text inputs, but instead of text output it returns floating point numbers corresponding to categories, yes/no questions, ratings, and assoc…",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-24T16:07:38.846Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Claude Opus 5.5 now available on AI Gateway",
+      "link": "https://vercel.com/changelog/claude-opus-5-5-now-available-on-ai-gateway",
+      "publishedAt": "2026-09-22T00:00:00.000Z",
+      "author": "Rohan Taneja",
+      "summary": "Claude Opus 5.5 from Anthropic is now available on AI Gateway . It is a step-change improvement over Opus 5 , with its biggest gains in agentic coding, long-running agent tasks, and knowledge work. Anthropic cites that Opus 5.5 performs at the level of Fable 5.1, but ~30% faster and ~40% cheaper than Opus 5 per task. Opus 5.5 is also a better collaborator over long runs. It reports back in plain language on what it did, what it found, and what it needs next, making it easier to supervise work that spans many steps or takes place over a longer period. Opus 5.5 includes two API changes that can turn previously valid requests into HTTP 400 errors: Thinking is always adaptive. Requests that disable thinking or set a fixed thinking budget are rejected. The model decides how much to think for each request. Use effort and prompting to steer its thinking behavior. Forced tool use is retired. Requests cannot require a tool call or force a specific tool. Prompt the model toward the tool, then catch and retry misses in your harness. If you previously forced a tool call to return JSON, use structured outputs instead. Use anthropic/claude-opus-5.5 across the AI SDK , OpenAI-compatible Chat Completions API , Anthropic Messages API , and coding agents connected to AI Gateway. You can also enable fast mode with the gateway speed option r anthropic/claude-opus-5.5-fast . The model has a 1M-token context window, returns up to 128K tokens, and has a June 2026 knowledge cutoff. Regional inference and Zero Data Retention Regional inference and Zero Data Retention are opt-in request controls. This example pins inference to the US and ZDR: Use Opus 5.5 in coding agents Install the latest Vercel CLI and connect your supported coding agents to AI Gateway: Then select anthropic/claude-opus-5.5 in the agent. In Claude Code , use /fast to toggle fast mode for the session. See the coding agents guide for other agent-specific instructions. AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. Try Claude Opus 5.5 in the model playground , or view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 73.41946734126984,
+      "core": "Claude Opus 5.5 from Anthropic is now available on AI Gateway . It is a step-change improvement over Opus 5 , with its biggest gains in agentic coding, long-running agent tasks, and knowledge work. Anthropic cites that Opus 5.5 performs at the level of Fable 5.1, but ~30% faster and ~40% cheaper than Opus 5 per task. Opus 5.5 is also a better collaborator over long runs. It reports back in plain language on what it …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-24T16:07:38.846Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "simon_willison",
+      "source": "Simon Willison",
+      "title": "Claude Opus 5.5, GPT-6 Sol, GPT-6 Luna, and a new price war",
+      "link": "https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna",
+      "publishedAt": "2026-09-22T23:46:41.000Z",
+      "author": "",
+      "summary": "Yesterday was Grok 4.7 ( pelicans ) and MiMo v2.6 Flash/Pro ( more pelicans ). Today Anthropic released Claude Opus 5.5 , and around an hour later OpenAI released GPT-6 Sol and GPT-6 Luna . It's going to take a while to get a good read on all of these new models, but here are my impressions so far. GPT-6 Sol and Luna are half the price of their GPT-5.6 equivalents GPT-5.6 Luna was already my favorite model for building applications against, because it combined excellent performance with being really cheap . Somehow GPT-6 Luna is half the price of that again - and GPT-6 Sol had a similar reduction compared to GPT-5.6 Sol. Here's what the pricing landscape looks like today: Model Input Cached input Output GPT-6 Luna $0.10/M $0.01/M $0.50/M GPT-5.6 Luna $0.20/M $0.02/M $1.20/M Grok 4.7 $2/M $0.50/M $6/M GPT-6 Sol $2/M $0.20/M $10/M GPT-5.6 Terra $2/M $0.20/M $12/M Claude Opus 5.5 $4/M $0.20/M $20/M GPT-5.6 Sol $4/M $0.40/M $20/M Claude Fable 5.1 $10/M $0.25/M $50/M GPT-6 Astra $10/M $1/M $50/M Note that GPT-5.6 has a scheduled 25% price increase for November, so GPT-6 is half the price of the promotional pricing for those models. (With GPT-5.6 Terra priced the same as GPT-6 Sol, any remaining reasons to use Terra just evaporated.) It's hard to overstate how competitive this pricing is. Grok 4.7 priced itself at $2/$6, less than half the price of GPT-5.6 Sol, but is now equally priced to GPT-6 Sol on input and closer on output. At $0.10/$0.50 GPT-6 Luna is one of the cheapest models OpenAI have ever released, beaten only by the far weaker GPT-4.1 Nano ($0.10/$0.40, April 2025) and GPT-5 Nano ($0.05/$0.40, August 2025). I rendered pelicans for GPT-6 Luna and for GPT-6 Sol , then I combined them all together in this comparison grid along with the GPT-5.6 pelicans. I like how you can instantly see that the 5.6 family chose bolder, brighter colors, while the 6 family is a lot more muted. I still think GPT-6 Astra on max produced the best pelican. Claude Opus 5.5 got a price cut too Opus 5.5 looks like it addresses the biggest complaints people had about Opus in terms of its communication style. Thariq Shihipar : Opus 5.5 is the result of your feedback. It communicates clearly, it's cheaper per token than Opus 5.0 with the intelligence of Fable 5.1 it's very token efficient and works across every effort level. It's also meant to be better at Blender . I'm looking forward to putting it through its paces there. Opus 4.5, 4.6, 4.7, 4.8, and 5 all shared the same price: $5/million tokens for input and $25/million for output. 5.5 is a 20% reduction - $4/million and $20/million. The price for cache reads fell 60%. That's significant for longer agentic conversations, where 90%+ of input tokens are processed at cached token prices. The new price for Opus 5.5 is the same as the price for GPT-5.6 Sol, but that was before OpenAI dropped their Sol prices by half. GPT-6 Astra and Claude Fable 5.1 are both priced at $10/million input and $50/million output. The price war currently affects the next tier of models below that. Anthropic say that Sonnet 5.5 and Haiku 5.5 are coming soon. It's going to be interesting to see if Haiku can regain its price competitiveness at the lower end, given current Haiku 4.5 is $1/$5 while the latest GPT-6 Luna is one tenth of that price at $0.10/$0.50. Claude Opus 5.5 max over-thinks to the point of breaking In a first for my \" Generate an SVG of a pelican riding a bicycle \" test, Claude Opus 5.5 at \"max\" thinking level failed to return a response! It started by calling this \"a classic test request\", and then thought really, really hard about what it was doing: This is a classic test request, so I want to plan out a well-composed pelican with its distinctive beak and pouch riding a bicycle with proper wheels, frame, and pedals, set against a simple sky and ground backdrop. [...] Verifying the shin length checks out at roughly 95.2, close enough. Now I'm working out the near leg path from hip to knee to ankle, then sketching the foot shape resting on the pedal — outlining the heel, toe tips, and sole contour with a path using lines and curves to sit naturally on the pedal surface around y=478-494. [...] I like the fish sticking prominently out of the basket with the pelican eyeing it as a fun detail worth keeping. I'm also confirming the eye placement near the bill base matches typical pelican anatomy, and considering giving it a slightly happier expression. [...] The far leg reads correctly as passing behind the frame, so I'm moving on to check the chainring teeth and confirm layer ordering—the far crank arm should be mostly hidden by the seat tube and chainring. I'm settling on the final SVG's width and height attributes alongside the viewBox to ensure proper scaling, noting there's no text so no font-family is needed. [...] I was so excited to see this pelican... but then it stopped . Opus 5.5 has a 128,000 maximum output token limit (as do the other Claude models), and it hit that while it was still reasoning about the SVG! I tried a second time and got the same result. This makes me suspect that \"max\" is effectively useless - if it over-thinks to breaking point on a stupid SVG prompt I don't trust it not to do the same for more interesting work. (Those two failures each cost me $2.56 and took nearly 20 minutes.) Fable 5.1 on \"max\" didn't over-think and did give me the best pelican I've seen from any Anthropic model. Here are the Opus 5.5 pelicans , excluding 5.5 max. I also built this comparison grid comparing them with pelicans by Opus 5, Fable 5.1, and Sonnet 5: Comparing different model vendors by how well they draw a pelican riding a bicycle may not make much sense now (if it ever did), but I'm still finding value in using them for comparisons of the same model families at different reasoning levels. I'm now using GPT-6 Sol and Claude Opus 5.5 as my default models in Codex and Claude Code. I've upgraded the Datasette Agent demo at agent.datasette.io to use GPT-6 Luna, and it seems to be fast and competent at both SQL queries and building HTML and JavaScript for Datasette Apps . You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
+      "evidenceLink": "",
+      "score": 73.11789988095238,
+      "core": "Yesterday was Grok 4.7 ( pelicans ) and MiMo v2.6 Flash/Pro ( more pelicans ). Today Anthropic released Claude Opus 5.5 , and around an hour later OpenAI released GPT-6 Sol and GPT-6 Luna . It's going to take a while to get a good read on all of these new models, but here are my impressions so far. GPT-6 Sol and Luna are half the price of their GPT-5.6 equivalents GPT-5.6 Luna was already my favorite model for build…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-24T16:07:38.846Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "Opus 5.5 vs. GPT-6 Sol: which model won my blind taste test?",
+      "link": "https://www.lennysnewsletter.com/p/opus-55-vs-gpt-6-sol-which-model",
+      "publishedAt": "2026-09-22T23:12:49.000Z",
+      "author": "Claire Vo",
+      "summary": "Watch now (39 mins) | 🎙️ I ran blind evaluations across writing, frontend prototypes, long-running agentic tasks, SVGs, coding, and video editing, then put Opus 5.5 through Barbie Bench",
+      "evidenceLink": "",
+      "score": 64.11091575396826,
+      "core": "Watch now (39 mins) | 🎙️ I ran blind evaluations across writing, frontend prototypes, long-running agentic tasks, SVGs, coding, and video editing, then put Opus 5.5 through Barbie Bench",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-24T16:07:38.846Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Claude discovers a novel enzyme system with CRISPR-like repeats",
+      "link": "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system",
+      "publishedAt": "2026-09-23T18:06:47.000Z",
+      "author": "raahelb https://news.ycombinator.com/user?id=raahelb",
+      "summary": "In early results from our new life sciences research lab, Claude agents found an enzyme system whose function is still unknown.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49820134",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 740,
+        "comments": 740
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-24T16:07:38.846Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 63.87273470960945,
+      "core": "In early results from our new life sciences research lab, Claude agents found an enzyme system whose function is still unknown.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "salesforce_engineering",
+      "source": "Salesforce Engineering",
+      "title": "AI Agent Observability: Making Silent Production Failures Visible and Actionable",
+      "link": "https://engineering.salesforce.com/ai-agent-observability-making-silent-production-failures-visible-and-actionable",
+      "publishedAt": "2026-09-22T18:05:16.000Z",
+      "author": "Scott Nyberg",
+      "summary": "By Archana Kumari, Yushu Yao, and Priya Lal. In our Engineering Energizers Q&A series, we highlight the engineering minds driving innovation across Salesforce. Today, we spotlight Archana Kumari, Director of Software Engineering, whose team built Agentforce Health Monitoring (AHM). AHM is designed to help agent builders and operations managers detect production-agent availability problems, investigate incidents, […] The post AI Agent Observability: Making Silent Production Failures Visible and Actionable appeared first on Salesforce Engineering Blog .",
+      "evidenceLink": "",
+      "score": 63.80589591269841,
+      "core": "By Archana Kumari, Yushu Yao, and Priya Lal. In our Engineering Energizers Q&A series, we highlight the engineering minds driving innovation across Salesforce. Today, we spotlight Archana Kumari, Director of Software Engineering, whose team built Agentforce Health Monitoring (AHM). AHM is designed to help agent builders and operations managers detect production-agent availability problems, investigate incidents, […]…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-24T16:07:38.846Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_agent_framework",
+      "source": "Microsoft Agent Framework",
+      "title": "What’s new in Microsoft Agent Framework: Interactive experiences, memory, and resilient execution",
+      "link": "https://devblogs.microsoft.com/agent-framework/interactive-experiences-memory-and-resilient-execution",
+      "publishedAt": "2026-09-24T15:00:14.000Z",
+      "author": "Dan Taylor",
+      "summary": "An agent that answers a question is a starting point. An agent that completes useful work needs more: an interface users can interact with, memory beyond the current conversation, an appropriate environment for executing code, and a way to recover when work is interrupted. Recent Microsoft Agent Framework updates address those needs across .NET and […] The post What’s new in Microsoft Agent Framework: Interactive experiences, memory, and resilient execution appeared first on Microsoft Agent Framework .",
+      "evidenceLink": "",
+      "score": 61.73641178571429,
+      "core": "An agent that answers a question is a starting point. An agent that completes useful work needs more: an interface users can interact with, memory beyond the current conversation, an appropriate environment for executing code, and a way to recover when work is interrupted. Recent Microsoft Agent Framework updates address those needs across .NET and […] The post What’s new in Microsoft Agent Framework: Interactive ex…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-24T16:07:38.846Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Once Claude can measure something, it can make it faster",
+      "link": "https://claude.dev/blog/how-we-made-claude-ai-faster",
+      "publishedAt": "2026-09-23T19:23:40.000Z",
+      "author": "matthieu_bl https://news.ycombinator.com/user?id=matthieu_bl",
+      "summary": "Inside our performance sprint: the benchmarks Claude built, the loop each Slack thread ran, and the guardrails that let us ship 3,000 changes safely.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49821196",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 216,
+        "comments": 147
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-24T16:07:38.846Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 58.36967039368336,
+      "core": "Inside our performance sprint: the benchmarks Claude built, the loop each Slack thread ran, and the guardrails that let us ship 3,000 changes safely.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Managed Deep Agents delivers a better user experience for agents in production",
+      "link": "https://www.langchain.com/blog/langsmith-managed-deep-agents-whats-new",
+      "publishedAt": "2026-09-24T15:43:05.000Z",
+      "author": "",
+      "summary": "Managed Deep Agents is the simplest way to build, deploy, and run agents in production. The 0.8 release adds support for user-owned credentials, user-level memory, HTTP channels, file transfer in Slack and a pre-built tool for web search.",
+      "evidenceLink": "",
+      "score": 58.29297924603175,
+      "core": "Managed Deep Agents is the simplest way to build, deploy, and run agents in production. The 0.8 release adds support for user-owned credentials, user-level memory, HTTP channels, file transfer in Slack and a pre-built tool for web search.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-24T16:07:38.846Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "weaviate_engineering",
+      "source": "Weaviate Blog",
+      "title": "Agent Memory with Engram: A Practical Guide",
+      "link": "https://weaviate.io/blog/engram-memory-practical-guide",
+      "publishedAt": "2026-09-22T00:00:00.000Z",
+      "author": "",
+      "summary": "Learn how to use Engram effectively, from writing topic descriptions that control extraction to choosing bounded topics and scopes, selecting a retrieval mode, and placing memories in your prompt without hurting prompt-cache efficiency.",
+      "evidenceLink": "",
+      "score": 56.73057845238095,
+      "core": "Learn how to use Engram effectively, from writing topic descriptions that control extraction to choosing bounded topics and scopes, selecting a retrieval mode, and placing memories in your prompt without hurting prompt-cache efficiency.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-24T16:07:38.846Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Evaluate skill-equipped agents with Strands Evals and Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/evaluate-skill-equipped-agents-with-strands-evals-and-amazon-bedrock-agentcore",
+      "publishedAt": "2026-09-22T17:18:13.000Z",
+      "author": "Sangmin Woo",
+      "summary": "Skills let you encode domain-specific procedures as reusable, portable instructions for agents, but a fluent answer doesn't prove the agent picked the right skill or followed it. Learn how to measure skill selection and instruction following with Strands Evals and Amazon Bedrock AgentCore Evaluations.",
+      "evidenceLink": "",
+      "score": 54.333217341269844,
+      "core": "Skills let you encode domain-specific procedures as reusable, portable instructions for agents, but a fluent answer doesn't prove the agent picked the right skill or followed it. Learn how to measure skill selection and instruction following with Strands Evals and Amazon Bedrock AgentCore Evaluations.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-24T16:07:38.846Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pragmatic_engineer",
+      "source": "The Pragmatic Engineer",
+      "title": "Design Engineering with Maggie Appleton",
+      "link": "https://newsletter.pragmaticengineer.com/p/design-engineering-with-maggie-appleton",
+      "publishedAt": "2026-09-23T17:07:22.000Z",
+      "author": "Gergely Orosz",
+      "summary": "Maggie Appleton on what engineers can learn from designers, working with AI agents, and why human judgment still matters.",
+      "evidenceLink": "",
+      "score": 54.02903083333334,
+      "core": "Maggie Appleton on what engineers can learn from designers, working with AI agents, and why human judgment still matters.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-24T16:07:38.846Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "What is LLM testing? How AI testing works - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/what-is-llm-testing",
+      "publishedAt": "2026-09-20T00:00:00.000Z",
+      "author": "",
+      "summary": "Learn the seven layers of an LLM testing stack, from unit and integration checks through behavioral evaluation, regression, performance, and security testing, and how they connect into a release workflow.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-24T16:07:38.846Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 53.124229246031746,
+      "core": "Learn the seven layers of an LLM testing stack, from unit and integration checks through behavioral evaluation, regression, performance, and security testing, and how they connect into a release workflow.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "modal_engineering",
+      "source": "Modal Engineering",
+      "title": "How to serve trillions of tokens for trillion-parameter coding agents",
+      "link": "https://modal.com/blog/trillion-tokens-trillion-parameters",
+      "publishedAt": "2026-09-23T00:00:00.000Z",
+      "author": "",
+      "summary": "Learn how we optimized performance and efficiency serving the workload that is changing software engineering forever — and you can too.",
+      "evidenceLink": "",
+      "score": 51.88375305555556,
+      "core": "Learn how we optimized performance and efficiency serving the workload that is changing software engineering forever — and you can too.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-24T16:07:38.846Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "🔬Bio-security is an AI Arms Race - Eric Nguyen (CEO, Radical Numerics)",
+      "link": "https://www.latent.space/p/bio-security-is-an-ai-arms-race-eric",
+      "publishedAt": "2026-09-23T13:27:18.000Z",
+      "author": "RJ Honicky",
+      "summary": "Radical Numerics is using biological chain-of-thought and multimodal perception to keep up with the bio-defense arms race, design new genomes and gain insights into biology itself.",
+      "evidenceLink": "",
+      "score": 51.09482448412699,
+      "core": "Radical Numerics is using biological chain-of-thought and multimodal perception to keep up with the bio-defense arms race, design new genomes and gain insights into biology itself.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-24T16:07:38.846Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ACL",
+      "title": "CTRL: Control-Based Time Series Forecasting with LLM-Guided Residual Learning",
+      "link": "https://arxiv.org/abs/2609.23257",
+      "evidenceLink": "https://www.semanticscholar.org/paper/2ee9e3e7191e19e8241dbbd4e0ee915da3b5ee68",
+      "publishedAt": "2026-09-20T00:00:00.000Z",
+      "submittedAt": "2026-09-20T00:00:00.000Z",
+      "author": "Minkyoung Kim, D. Ji, Yo-Han Lee, Beomsoo Kim, Beakcheol Jang",
+      "summary": "Time series forecasting underpins critical decision-making across diverse domains. While large language models (LLMs) offer promising reasoning capabilities, existing LLM-based time series forecasting approaches either reduce them to numerical predictors that bypass their strengths, or allow direct forecast generation that destabilizes predictions in non-stationary settings. We introduce CTRL, a framework that decouples semantic reasoning from quantitative prediction. A frozen backbone generates base forecasts, while specialized LLM agents function as controllers that analyze backbone prediction errors through decomposed trend, seasonal, and irregular components, grounding reasoning in interpretable temporal structure. Each agent outputs compact control signals that a lightweight residual decoder translates into forecast corrections. CTRL incorporates label-free test-time adaptation that detects distribution shift from input statistics alone and readapts control signals with only 3-24 LLM calls via caching. CTRL is explicitly designed to improve robustness under non-stationary temporal dynamics and distribution shift, while remaining competitive on highly stationary time series where adaptive correction provides limited additional benefit.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ACL",
+        "venueLabel": "ACL",
+        "venueName": "Annual Meeting of the Association for Computational Linguistics",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 46.99089591269841,
+      "core": "Time series forecasting underpins critical decision-making across diverse domains. While large language models (LLMs) offer promising reasoning capabilities, existing LLM-based time series forecasting approaches either reduce them to numerical predictors that bypass their strengths, or allow direct forecast generation that destabilizes predictions in non-stationary settings. We introduce CTRL, a framework that decou…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    }
+  ]
+}
