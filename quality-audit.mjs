@@ -28,7 +28,10 @@ const HARD_NEGATIVE_PATTERNS = [
   /\bai\s+baby\s+generator\b/i,
   /\b(?:future|your)\s+baby\b/i,
   /\bcrushy\b/i,
-  /\bdating,\s*reinvented\b/i
+  /\bdating,\s*reinvented\b/i,
+  /\bkernel-level preemption for autonomous ai agents\b/i,
+  /\blayered gradient wave backgrounds using three\.js and shaders\b/i,
+  /\bseason your claude code chats with sitcom replies\b/i
 ];
 const KNOWN_TEMPLATE_WHY = [
   "agent 化包装体现产品从工具到可执行工作流的迁移。",
