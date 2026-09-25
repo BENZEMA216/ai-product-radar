@@ -1,0 +1,405 @@
+{
+  "generatedAt": "2026-09-25T16:06:35.468Z",
+  "date": "2026-09-26",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "How growing Latin American midsize businesses are building in the AI era",
+      "link": "https://cloud.google.com/blog/topics/customers/how-midsize-latam-companies-build-with-ai",
+      "publishedAt": "2026-09-24T14:30:00.000Z",
+      "author": "Andre Alves Director, SMB Sales LATAM",
+      "summary": "Latin America’s small and medium-sized businesses are the heartbeat of the region's economy — accounting for more than 60% of total employment in the region, according to United Nations estimates. And just like their enterprise peers, everywhere you look, ambitious teams are moving fast to embrace AI. Many have already transitioned from experimenting with generative tools and agentic workflows to using them every day to work smarter, save time, and deliver exceptional customer experiences. These growing businesses are particularly focused on maximizing the benefit they get from their investments in AI, whether that’s using a fast, low-cost model to summarize daily emails or deploying an advanced model for complex data analysis, teams can match the right AI capability to their exact task and budget. It’s this range of options, and a familiarity with the broader suite of Google business, media, and advertising tools that has led many SMBs to choose Google Cloud, and Gemini Enterprise in particular, as their AI platform of choice. By doing so, they’re able to build custom AI agents, streamline daily tasks and paperwork, and offer customers instant support with the speed and reach needed to compete on a global scale. With our unique front row seat, we’ve seen the benefit SMBs are getting from leveraging Gemini Enterprise, not only for generative AI, but as a catalyst for adopting other essential cloud tools like Google Kubernetes Engine and BigQuery for complete end-to-end modernization. The number of Latin American-based small and medium businesses using Google Cloud AI tools has grown 8x year-over-year and the number of Brazil based small and medium businesses using Google Cloud AI tools has grown 9x year-over-year. This rapid adoption spans our Gemini models, Gemini Enterprise, and core Cloud infrastructure , and are helping businesses to: Roll out better customer support systems to help escalate and resolve customer support calls more quickly. Automate repetitive actions in areas like payroll and accounting. Help more employees understand and leverage data at work — even those not trained as data analysts. Rapidly create and implement new designs for marketing collateral. Help more people build their own AI agents to help them in their everyday jobs. As we head into today’s Google Cloud Summit in Brazil , we were proud to showcase nearly 20 of our newest Latin American SMB customers using Google AI to reduce busywork, serve their customers faster, and grow their businesses. Announcing new Latin American customers putting Google AI to work AdGoat , an Argentina-based adtech company processing more than 10 billion annual ad requests across more than 100 global websites. It uses Cloud Run , the Gemini API , and Gemini Enterprise to automate content analysis, ad bidding, and audience targeting to help e-commerce brands drive higher campaign returns. Angelus , a Brazilian dental and healthcare manufacturing company, uses Gemini Enterprise to streamline project management across its research and development department. This enables its teams to automatically pull technical project data into pre-approved templates aligned with the company’s brand identity and regulatory requirements. BunkerDB , a marketing science company operating across Latin America, uses Gemini Enterprise, Cloud Run, and Cloud Storage to power an AI platform that organizes marketing assets, checks brand compliance, generates or adapts multimodal content, and predicts ad performance before launch. All of this helps it reduce creative turnaround times from weeks to hours and cut cost per lead by up to 25%. Caffeine Army , a Brazilian wellness and high-performance company that connects people with solutions in nutrition, sports, and well-being, deployed BigQuery and Gemini Enterprise on Google Cloud to unify customer purchase insights, enabling faster creative campaign turnarounds and boosting team productivity across the organization. Convert , a Brazilian marketing and analytics provider, uses Looker , BigQuery, and Cloud Run to power five specialized AI agents that answer complex business questions in natural language, speeding up report deliveries by 65% and reducing operational costs by 32%. Growth Digital , a Google Ad sales rep operating across 13 Latin American countries, used BigQuery and Gemini Enterprise to build over 113 AI agents, enabling teams to build proposals 5x faster, cut campaign reporting time by 80%, and reduce financial error rates to under 0.01%. GrupoTusMaquinas.com , an equipment management platform based in Chile, deployed Google Cloud AI tools and Gemini models to create digital tracking profiles for trucks and machinery, allowing businesses to query fleet status in plain language and manage vehicles regardless of brand or location. HealthAtom , a healthcare technology company, uses the Gemini API, Firestore , and Cloud Functions to power AI assistants across its clinical platforms, automating appointment scheduling and medical record reviews while supporting 80 million annual patient interactions. KLog.co , a Chilean logistics technology company digitizing freight forwarding across Latin America, uses Gemini Enterprise, BigQuery, and Google Workspace to automate cargo tracking and shipping paperwork, cutting manual data entry errors by over 90% and increasing document processing capacity tenfold. NEEOH , a leading Brazilian out-of-home advertising communication platform, uses Gemini Enterprise to standardize secure AI usage across its organization, enabling teams to generate campaign copy and build pitch proposals faster while keeping corporate client data secure. Luxia Agro , an Argentinian foreign trade supplier of crop protection products, uses Gemini 3.5 Flash and Gemini Enterprise to automatically pull key details from complicated shipping emails and update their central business systems. This allows it to automate 80% of foreign trade operations and cut manual processing errors in half. Macal , a Chilean auction company, uses the Gemini Enterprise, Cloud Run, BigQuery, and Security Command Center to automatically verify property records and modernize its technology systems, cutting software development times from weeks to days and lowering infrastructure costs by up to 30%. Ninecon , a Brazilian tech consulting firm, deployed Gemini Enterprise to integrate AI directly into employee workflows, allowing managers to track usage patterns and optimize project turnaround times with real-time insights. Nova Gestões , a customer service and operations provider in Brazil, uses Cloud Speech-to-Text and Gemini Enterprise to translate and analyze 100% of customer calls in real time, reducing post-call manual data entry and boosting team productivity by 30%. Romi , a Brazilian industrial machinery manufacturer, uses the Gemini API and Gemini Enterprise to power an interactive chat assistant directly on CNC machine HMI (human machine iInterface), giving factory operators instant answers grounded in official manuals and generating QR codes for step-by-step instructional videos. Supermercados El Dorado , a leading supermarket chain in Uruguay, leverages Google Compute Engine and Gemini Enterprise to modernize legacy testing infrastructure and connect custom AI agents within their daily workflows, boosting team productivity across departments. Tryvia , a Brazilian IT and business solutions provider, uses Google Cloud, Looker, and Gemini Enterprise to move off legacy physical servers, giving teams real-time reporting dashboards and AI tools that speed up software development and daily tasks. Via Cristais , a major highway operator in Brazil, leverages Google Contact Center as a Service to speed up emergency routing for highway accidents, reducing caller wait times, improving driver satisfaction, and mitigating the impact of call center staff turnover. WeSpeak , an AI conversational platform for the hospitality industry in Latin America, uses Cloud Run, Gemini Pro , and Gemini Flash to automate end-to-end guest interactions across messaging channels like WhatsApp and Instagram. This has helped it achieve an 85% resolution rate and a 2x increase in overall sales volume for hotel clients. Helping your team build AI skills To help growing teams get the absolute most out of AI, we’ve created easy, no-cost learning programs that anyone can use: Programs for small and medium businesses: Explore beginner-friendly training paths or join specialized programs to learn how to build custom AI assistants for your day-to-day work. Google skills for organizations: Access thousands of free, on-demand AI courses and hands-on practice labs designed by experts at Google Cloud and Google DeepMind. Get certified: Help your staff gain industry-recognized AI certificates through guided courses, expert mentoring, and skill badges. By offering easy-to-use tools and free training — from everyday office apps in Workspace to advanced AI on Google Cloud — Google is here to help Latin American businesses thrive today and in the future.",
+      "evidenceLink": "",
+      "score": 88.17072484126984,
+      "core": "Latin America’s small and medium-sized businesses are the heartbeat of the region's economy — accounting for more than 60% of total employment in the region, according to United Nations estimates. And just like their enterprise peers, everywhere you look, ambitious teams are moving fast to embrace AI. Many have already transitioned from experimenting with generative tools and agentic workflows to using them every da…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-25T16:06:35.468Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "How Klaviyo shipped 356 internal apps in two weeks on Vercel",
+      "link": "https://vercel.com/customers/how-klaviyo-shipped-356-internal-apps-in-two-weeks-on-vercel",
+      "publishedAt": "2026-09-24T04:00:00.000Z",
+      "author": "Susan Aziz",
+      "summary": "Klaviyo on Vercel Built a platform for shipping internal apps 512 builders and 356 live apps in two weeks Every app ships SSO-gated and private by default Builders go from idea to live app in 3 minutes Klaviyo is a B2C CRM for more than 200,000 brands. It brings marketing, service, agents, and data together in one platform so brands can deliver customer experiences at scale. Klaviyo built a platform on Vercel for shipping internal apps, then opened it to every employee through a citizen developer program. In the first two weeks of the program, 512 of Klaviyo’s more than 2,000 employees deployed 356 apps on Vercel. Of those, 196 were full-stack apps with their own databases. The teams that are now shipping software include legal, marketing, and HR. \"The next big thing at Klaviyo could be in a marketer's laptop,\" says Sr. Lead AI Architect Mohamed Ali. Guardrails instead of walls Opening deployment to a couple thousand new builders made security the first conversation. The obvious way to keep them safe is to broadly restrict what they can do. Klaviyo went the other way. Employees aren't just building microsites; they are shipping full-stack apps on top of Klaviyo's own databases, and none of it touches the public network. Every builder is managed through Klaviyo's identity provider, which Vercel made possible through Enterprise Managed Users . Implementing safeguards across the stack Secure Compute gives Vercel deployments a private network path into Klaviyo's own infrastructure. Apps built in the program read from and write to Klaviyo's databases without any traffic crossing the public internet. That's what made bring-your-own-database work for Klaviyo. On top of that connection, Vercel Passport and Klaviyo’s identity provider give every app the same access defaults, with nothing for the builder to configure: Apps are private and SSO-gated through Okta Sensitive environment variables are set at the team level, out of builders' hands Klaviyo's hardened GitHub security is inherited by every project Wiz scans every project, and findings feed Klaviyo's SIEM Public deployment is granted case-by-case, so sales can share microsites with prospects, while internal tools stay private How Klaviyo's app platform turns an idea into an app Klaviyo wanted anyone with an idea to be able to describe it in plain language, from Slack, Claude, or Cursor, and get back a working app. They designed K:Forge, an in-house pipeline built on the Vercel SDK , to handle everything in between. K:Forge creates a GitHub repo, deploys the app on Vercel, connects data through Secure Compute, and applies every security default. The output is a live, SSO-gated app, and the builder never touches infrastructure. Changes work the same way: mid-thread in Slack, someone can tell K:Forge what should be different, then it makes the change and redeploys. Klaviyo built the pipeline and deliberately didn't build the layer under it. CDN behavior, preview environments, analytics, global scale: all of it is R&D Vercel had already done, so builders and engineers at Klaviyo don't have to think about it. For bigger builds, citizen developers take an app about 80% of the way, and Klaviyo's platform team steps in for the last 20%, for fine-tuning and safety review. The platform team went from being the bottleneck to being the finishing touch. \"We don't worry about scale,\" Mohamed says. \"If 100,000 people hit an app, Vercel already solved that.\" What people at Klaviyo are building Employees build everything from microsites that rework a sales process to full-stack apps for problems too niche for any vendor tool. For K:BOS, Klaviyo's flagship event, the team skipped off-the-shelf registration tooling and built its own. Engineering barely touched it. Klaviyo was one of the first customers of Vercel for Enterprise Apps and Agents . The platform gave the company a way to let anyone build full-stack apps, with security handled by default. What's next Klaviyo sets a high bar for AI fluency. One in five employees has shipped an app so far, and Mohamed intends to get even more people building. The team is also going deeper into Vercel, with MCP and AI Gateway. About Klaviyo : Klaviyo is an autonomous B2C CRM that powers more valuable customer experiences. We unify a flexible, scalable data platform, intelligence that gets smarter with every interaction, and action across Marketing and Service to help businesses turn real-time customer data into personalization at scale. Read more",
+      "evidenceLink": "",
+      "score": 82.42072484126984,
+      "core": "Klaviyo on Vercel Built a platform for shipping internal apps 512 builders and 356 live apps in two weeks Every app ships SSO-gated and private by default Builders go from idea to live app in 3 minutes Klaviyo is a B2C CRM for more than 200,000 brands. It brings marketing, service, agents, and data together in one platform so brands can deliver customer experiences at scale. Klaviyo built a platform on Vercel for sh…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-25T16:06:35.468Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Best practices guide for customizing Gemini models via Reinforcement Learning (RL)",
+      "link": "https://cloud.google.com/blog/topics/developers-practitioners/best-practices-guide-for-customizing-gemini-models",
+      "publishedAt": "2026-09-25T16:00:00.000Z",
+      "author": "Jiaqi Pan Senior Software Engineer, Google",
+      "summary": "Reinforcement learning (RL) has been a keystone of modern LLM post-training, but it demands large training clusters and access to model internals that external customers can't have with proprietary models like Gemini. So here at Google Cloud, we packaged it into a managed RL fine-tuning service (RLFT service) — you bring prompts and a reward function; we handle the infrastructure and the proprietary model internals. Now, you can adapt Gemini with the service — teaching the model from a reward signal you define, rather than from a fixed set of labeled answers. This unlocks a class of problems that supervised fine-tuning (SFT) struggles with: tasks that are hard to demonstrate but easy to score. In this guide, we will walk through practical best practices for using RL fine-tuning service. We'll start with a short tour of the RL training loop, how to decide if and when to use RL, and introduce how to get the most value from this approach. What is RLFT? RLFT adapts Gemini from a reward signal you define rather than labeled answers. Instead of authoring a large set of gold examples, you write one program that scores a response and the service improves the model against it — unlocking tasks that are hard to demonstrate but easy to verify : you can't hand-write the ideal SQL for every schema, but you can run the query and check the result. At each training step the service generates multiple candidate responses to your prompts, scores them with your reward, and improves the model so that higher-scoring responses become more likely while it stays close to the original Gemini. The reinforcement learning that makes this work is fully managed — you never configure it. The one thing you own, and the thing that most determines your results, is the reward. Three properties define what RLFT can and can't do: It learns from the model's own outputs: It refines what the model already produces rather than copying an external target, so it tends to disturb unrelated capabilities less than SFT. It rewards outcomes, not paths: Any response that reaches a good result earns reward, which fits open-ended tasks with many valid solutions. It amplifies existing competence: It makes occasional success reliable , but it can't teach a skill the model never demonstrates. When to use RLFT Prompting and SFT handle most adaptation; exhaust them first. RLFT earns its keep when you can grade a response but can't cheaply author it , when SFT has plateaued on the metric that matters (faithfulness, schema validity, tone), or when the task has many equally valid answers a single reference target would wrongly penalize. SFT and RLFT are complementary, not competing: Direct RLFT when the base model already succeeds part of the time — enough for the reward to tell better answers from worse ones. Two-stage SFT → RLFT when you have SFT data or the base success rate is too low for RL to gain traction. Use SFT as a short, cheap warm start — kept light, since over-fitting the demonstrations leaves less room for RL to improve — then continue into RL via Continuous Tuning , which initializes RL from the SFT checkpoint. Across early adopters, these patterns show where RLFT delivers the most value — each scoring an outcome the business cares about but could never cheaply demonstrate. Use cases for RLFT AI-powered NPCs in games What: In-character, on-brand dialogue held across long, multilingual, multi-turn conversations. Problem: Off-the-shelf models break immersion — wrong language, hallucinated items, ignored players, repetitive loops. Objective and reward: A Gemini autorater (LLM-as-a-judge) scores each turn on persona, flow, and game-state syntax, penalizing format and language errors. Results: Loops and language drift disappeared and state syntax held, making shippable in-game characters viable at scale. Structured entity extraction What: Pulling a set of items from unstructured documents, such as supplier invoices and shipping manifests, into structured records automatically . Problem: The long tail where SFT plateaus — missing required fields (recall) or inventing ones that aren't there (precision). Objective and reward: A rule-based precision/recall reward forces every field to be grounded in the source text, not imitated from one gold answer. Results: Field-level accuracy rose on noisy real-world documents where tuning had stalled, turning a manual review step into an automated one. Content moderation What: Applying intricate policies and decision trees at scale. Problem: Models hallucinate false positives or reward-hack with invalid formats to dodge evaluation. Objective and reward: A Cloud Run reward pairs format validation with a deterministic grader to enforce multi-step policy adherence. Results: The model handled complex exemption carve-outs, sharply cut false positives, and stopped reward hacking — reducing the human-escalation volume that makes moderation expensive. Code measured by execution What: SQL or API calls graded on whether they actually run against customer data. Problem: SFT mimics one reference query and breaks on unseen proprietary schemas. Objective &amp; Reward: A code-execution reward runs the code in a secure sandbox and pays out only if it compiles, executes, and returns the correct result. Results: The model produced first-attempt executable queries at closed-frontier quality and lower inference cost, letting non-technical users query proprietary data in natural language. Presentation slide generation via HTML What: Multi-slide decks authored as HTML/CSS. Problem: Training on text alone is blind to visual quality — overflows, clipped elements, and inconsistent styling slip through unnoticed. Objective &amp; Reward: A code-execution reward renders the slides and scores visual design, layout integrity, structural completeness, and rubric adherence. Results: The model emitted modular, well-styled decks with cohesive themes and no layout overflow. Where to start? A dataset. A diverse set of prompts with a held-out validation split is enough for a first run — confirm the loop converges and reward moves the right way, then scale. Keep train and eval strictly separated; a contaminated eval hides overfitting. A reward function. Your task specification as code or configs, and the dominant driver of quality. A good reward correlates with human preference, is robust to malformed output (catch the failed parse and return a clearly negative score rather than crashing), and resists reward hacking — ensemble judges, penalize length, floor degenerate outputs, and prefer a verifiable check over a model's opinion. Validate it offline before launch. The service handles the rest; start from the defaults, watch reward and eval curves in the console, and take the checkpoint where validation reward saturates rather than the last step. Get started today What will you build? The tools are ready and waiting. Documentation: Reinforcement Learning Fine-Tuning",
+      "evidenceLink": "",
+      "score": 74.99215341269841,
+      "core": "Reinforcement learning (RL) has been a keystone of modern LLM post-training, but it demands large training clusters and access to model internals that external customers can't have with proprietary models like Gemini. So here at Google Cloud, we packaged it into a managed RL fine-tuning service (RLFT service) — you bring prompts and a reward function; we handle the infrastructure and the proprietary model internals.…",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-25T16:06:35.468Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Speaker-labeled transcription with WhisperX on SageMaker AI",
+      "link": "https://aws.amazon.com/blogs/machine-learning/speaker-labeled-transcription-with-whisperx-on-sagemaker-ai",
+      "publishedAt": "2026-09-24T16:20:12.000Z",
+      "author": "Ayush Sharma",
+      "summary": "The AWS WhisperX Deep Learning Container packages Whisper, wav2vec2 forced alignment, and speaker diarization into a GPU-ready image. Learn how to deploy it to Amazon SageMaker AI real-time and asynchronous endpoints for word-level, speaker-labeled transcription, plus the production details that matter: the GPU AMI pin, scaling, and cost controls.",
+      "evidenceLink": "",
+      "score": 60.2408042063492,
+      "core": "The AWS WhisperX Deep Learning Container packages Whisper, wav2vec2 forced alignment, and speaker diarization into a GPU-ready image. Learn how to deploy it to Amazon SageMaker AI real-time and asynchronous endpoints for word-level, speaker-labeled transcription, plus the production details that matter: the GPU AMI pin, scaling, and cost controls.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-25T16:06:35.468Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Agents can now set up your website’s security with Turnstile Spin",
+      "link": "https://blog.cloudflare.com/turnstile-spin",
+      "publishedAt": "2026-09-25T13:00:00.000Z",
+      "author": "Jules Lemee",
+      "summary": "Misconfiguring Turnstile by skipping backend validation leaves sites exposed to bots. Turnstile Spin fixes incomplete setups by using your preferred AI coding agent to wire up server-side verification.",
+      "evidenceLink": "",
+      "score": 57.894534365079366,
+      "core": "Misconfiguring Turnstile by skipping backend validation leaves sites exposed to bots. Turnstile Spin fixes incomplete setups by using your preferred AI coding agent to wire up server-side verification.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-25T16:06:35.468Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "GLM-5.3 is 50% off through DigitalOcean on AI Gateway",
+      "link": "https://vercel.com/changelog/glm-5-3-is-50-off-through-digitalocean-on-ai-gateway",
+      "publishedAt": "2026-09-02T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "GLM-5.3 is 50% off on AI Gateway through Tuesday, September 8, in partnership with DigitalOcean. How to use the model during the offer period Using the promo name ( zai/glm-5.3-promo-50 ) gets the discounted rate. It routes only to DigitalOcean, with no fallback to another provider, and it stops serving when the offer ends. Using the standard name (i.e., zai/glm-5.3 ) with provider options to sort DigitalOcean as the preferred provider keeps working after September 8 and routes across every provider that serves the model, at their usual rates. Because the promo name goes away when the offer ends, treat it as something you switch on for the window rather than hardcode. To keep the standard name in your code instead, pin the provider with order: ['digitalocean'] under providerOptions.gateway , which prefers DigitalOcean and falls back to the others if it cannot serve the request. GLM-5.3 takes text input, with a 1M token context window and a maximum output of 128K tokens. Discounted requests appear in your spend dashboard and carry a trace like any other request. Try GLM-5.3 in the model playground. To use it in a coding agent, see the coding agents guide , then run vercel ai-gateway coding-agents setup to connect agents like Claude Code, Codex, OpenCode, Cursor, Pi, and more and select zai/glm-5.3-promo-50 inside the agent. You can view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 56.84444444444444,
+      "core": "GLM-5.3 is 50% off on AI Gateway through Tuesday, September 8, in partnership with DigitalOcean. How to use the model during the offer period Using the promo name ( zai/glm-5.3-promo-50 ) gets the discounted rate. It routes only to DigitalOcean, with no fallback to another provider, and it stops serving when the offer ends. Using the standard name (i.e., zai/glm-5.3 ) with provider options to sort DigitalOcean as th…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-25T16:06:35.468Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_ai_engineering",
+      "source": "GitHub Blog",
+      "title": "AI-powered fuzzing with the GitHub Security Lab Taskflow Agent",
+      "link": "https://github.blog/security/application-security/ai-powered-fuzzing-with-the-github-security-lab-taskflow-agent",
+      "publishedAt": "2026-09-24T18:26:12.000Z",
+      "author": "Antonio Morales",
+      "summary": "In this blog post, I explain how to use the new fuzzing taskflow based on the GitHub Security Lab Taskflow Agent AI framework. The post AI-powered fuzzing with the GitHub Security Lab Taskflow Agent appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 53.751915317460316,
+      "core": "In this blog post, I explain how to use the new fuzzing taskflow based on the GitHub Security Lab Taskflow Agent AI framework. The post AI-powered fuzzing with the GitHub Security Lab Taskflow Agent appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-25T16:06:35.468Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentailor",
+      "source": "Agentailor",
+      "title": "How to Add Agent Skills Support to a Custom Agent Harness",
+      "link": "https://blog.agentailor.com/posts/how-to-add-skills-to-a-custom-agent",
+      "publishedAt": "2026-09-25T00:00:00.000Z",
+      "author": "undefined (Ali Ibrahim)",
+      "summary": "Add Agent Skills support to your custom AI agent: SKILL.md discovery, progressive disclosure, tool loading, and evals, with TypeScript and Python examples.",
+      "evidenceLink": "",
+      "score": 50.71040738095238,
+      "core": "Add Agent Skills support to your custom AI agent: SKILL.md discovery, progressive disclosure, tool loading, and evals, with TypeScript and Python examples.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-25T16:06:35.468Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "databricks_engineering",
+      "source": "Databricks Blog",
+      "title": "How I built agent-based security reviews on Databricks",
+      "link": "https://www.databricks.com/blog/how-i-built-agent-based-security-reviews-databricks",
+      "publishedAt": "2026-09-24T02:00:00.000Z",
+      "author": "",
+      "summary": "We already had automation in parts of our security review process. It was useful,...",
+      "evidenceLink": "",
+      "score": 48.74453436507937,
+      "core": "We already had automation in parts of our security review process. It was useful,...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-25T16:06:35.468Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Enabling Private High-Performance Production AI Inference with NVIDIA Confidential Computing",
+      "link": "https://developer.nvidia.com/blog/enabling-private-high-performance-production-ai-inference-with-nvidia-confidential-computing",
+      "publishedAt": "2026-09-22T17:27:41.000Z",
+      "author": "Tanya Lenz",
+      "summary": "As large language model (LLM) inference increasingly processes sensitive information and proprietary model context across personal, enterprise, and regulated...",
+      "evidenceLink": "",
+      "score": 46.842570079365075,
+      "core": "As large language model (LLM) inference increasingly processes sensitive information and proprietary model context across personal, enterprise, and regulated...",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-25T16:06:35.468Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Agentic conversational video intelligence built on AWS",
+      "link": "https://aws.amazon.com/blogs/machine-learning/agentic-conversational-video-intelligence-built-on-aws",
+      "publishedAt": "2026-09-23T18:21:54.000Z",
+      "author": "Michael Li",
+      "summary": "Learn how to build a conversational video intelligence solution on AWS using an agentic architecture. A single Strands Agents SDK agent orchestrates Amazon Bedrock, Amazon Rekognition, and Amazon Transcribe at runtime, deciding which service to call so you can ask natural language questions about your videos and get answers in seconds.",
+      "evidenceLink": "",
+      "score": 45.60473277777778,
+      "core": "Learn how to build a conversational video intelligence solution on AWS using an agentic architecture. A single Strands Agents SDK agent orchestrates Amazon Bedrock, Amazon Rekognition, and Amazon Transcribe at runtime, deciding which service to call so you can ask natural language questions about your videos and get answers in seconds.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-25T16:06:35.468Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "Jev vs. LLM-as-a-Judge: Accuracy and cost benchmarks",
+      "link": "https://arize.com/blog/jev-as-a-judge",
+      "publishedAt": "2026-09-23T22:55:29.000Z",
+      "author": "Laurie Voss",
+      "summary": "We benchmarked Jev against Claude Opus 5 and GPT-5.6 Terra on accuracy, cost, and latency. Learn how threshold tuning changes hallucination detection. The post Jev vs. LLM-as-a-Judge: Accuracy and cost benchmarks appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 44.39709388888889,
+      "core": "We benchmarked Jev against Claude Opus 5 and GPT-5.6 Terra on accuracy, cost, and latency. Learn how threshold tuning changes hallucination detection. The post Jev vs. LLM-as-a-Judge: Accuracy and cost benchmarks appeared first on Arize AI .",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-25T16:06:35.468Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "The Reliability Layer for Healthcare AI: Common LangSmith Use Cases",
+      "link": "https://www.langchain.com/blog/reliability-healthcare-ai-langsmith-use-cases",
+      "publishedAt": "2026-09-22T20:12:19.000Z",
+      "author": "",
+      "summary": "See how LangSmith helps healthcare AI teams turn clinical review into reusable evaluators, datasets, and release gates for safer AI in production.",
+      "evidenceLink": "",
+      "score": 42.96078436507936,
+      "core": "See how LangSmith helps healthcare AI teams turn clinical review into reusable evaluators, datasets, and release gates for safer AI in production.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-25T16:06:35.468Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_research",
+      "source": "Microsoft Research",
+      "title": "Offloaded inference for real-world physical AI robotics",
+      "link": "https://www.microsoft.com/en-us/research/blog/offloaded-inference-for-real-world-physical-ai-robotics",
+      "publishedAt": "2026-09-23T16:01:36.000Z",
+      "author": "Ganesh Ananthanarayanan, Matthew Balkwill, Xenofon Foukas, Sanjeev Mehrotra, Bozidar Radunovic, Connor Settle, Ankit Verma, David White, Shawn Cicoria, Mark Martin, Rachel Johnson, Mayur Patel",
+      "summary": "Robots are getting smarter, but how can their hardware match that growth? New Microsoft Research findings show that moving AI inference beyond the robot can improve task success, boost efficiency, and support more advanced physical AI workloads. The post Offloaded inference for real-world physical AI robotics appeared first on Microsoft Research .",
+      "evidenceLink": "",
+      "score": 40.504375634920635,
+      "core": "Robots are getting smarter, but how can their hardware match that growth? New Microsoft Research findings show that moving AI inference beyond the robot can improve task success, boost efficiency, and support more advanced physical AI workloads. The post Offloaded inference for real-world physical AI robotics appeared first on Microsoft Research .",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-25T16:06:35.468Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "elastic_search_labs",
+      "source": "Elastic Search Labs",
+      "title": "Ask Elastic Agent Builder why it's slow: Natural-language trace analysis",
+      "link": "https://www.elastic.co/search-labs/blog/agent-performance-trace-analysis-agent-builder",
+      "publishedAt": "2026-09-24T00:00:00.000Z",
+      "author": "Meghan Murphy",
+      "summary": "Four agent performance questions your Agent Builder traces can answer, covering token spend by model, tool error rates, slow conversation turns, and recent prompts. The ES|QL for each is here, including the type cast SUM() needs.",
+      "evidenceLink": "",
+      "score": 40.40723277777778,
+      "core": "Four agent performance questions your Agent Builder traces can answer, covering token spend by model, tool error rates, slow conversation turns, and recent prompts. The ES|QL for each is here, including the type cast SUM() needs.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-25T16:06:35.468Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "OpenTelemetry in the GitHub Copilot app",
+      "link": "https://github.blog/changelog/2026-09-22-opentelemetry-in-the-github-copilot-app",
+      "publishedAt": "2026-09-23T02:14:54.000Z",
+      "author": "Allison",
+      "summary": "Understand how Copilot agents perform and interact with models and tools. The GitHub Copilot app now supports OpenTelemetry (OTel) configuration through enterprise-managed settings. OTel is an open source observability framework.… The post OpenTelemetry in the GitHub Copilot app appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 40.33132007936508,
+      "core": "Understand how Copilot agents perform and interact with models and tools. The GitHub Copilot app now supports OpenTelemetry (OTel) configuration through enterprise-managed settings. OTel is an open source observability framework.… The post OpenTelemetry in the GitHub Copilot app appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-25T16:06:35.468Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "UK firms sharpen AI governance focus",
+      "link": "https://www.itpro.com/technology/artificial-intelligence/uk-firms-sharpen-ai-governance-focus",
+      "publishedAt": "2026-09-24T10:56:13.000Z",
+      "author": "Ross Kelly",
+      "summary": "Rising adoption rates cause surge in governance and security-related investments",
+      "evidenceLink": "",
+      "score": 39.36066531746032,
+      "core": "Rising adoption rates cause surge in governance and security-related investments",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-25T16:06:35.468Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Project Swap: What happens when agents trade for us?",
+      "link": "https://www.anthropic.com/research/project-swap",
+      "publishedAt": "2026-09-24T20:21:47.000Z",
+      "author": "",
+      "summary": "To see what works and what breaks when agents are sent into a market, we made a miniature market of Claudes.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-25T16:06:35.468Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 39.18951452380953,
+      "core": "To see what works and what breaks when agents are sent into a market, we made a miniature market of Claudes.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "sierra_engineering",
+      "source": "Sierra Blog",
+      "title": "Your agent, laid bare",
+      "link": "https://sierra.ai/blog/your-agent-laid-bare-and-why-it-matters",
+      "publishedAt": "2026-09-22T18:26:15.000Z",
+      "author": "Mike Ottavi-Brannon",
+      "summary": "For decades, enterprise software was a black box — hard for companies to understand, implement, adapt, and integrate, or even replace. With Sierra, nothing is hidden. It’s easy to build an agent, understand the actions it takes, integrate it with existing systems, and make changes directly.",
+      "evidenceLink": "",
+      "score": 38.64007007936508,
+      "core": "For decades, enterprise software was a black box — hard for companies to understand, implement, adapt, and integrate, or even replace. With Sierra, nothing is hidden. It’s easy to build an agent, understand the actions it takes, integrate it with existing systems, and make changes directly.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-25T16:06:35.468Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "meta_engineering",
+      "source": "Meta Engineering",
+      "title": "Bringing Private Processing to Meta AI Glasses",
+      "link": "https://engineering.fb.com/2026/09/23/security/private-processing-meta-ai-glasses",
+      "publishedAt": "2026-09-24T00:00:00.000Z",
+      "author": "",
+      "summary": "We believe glasses are the best form factor for having AI help throughout your day. They can understand your personal context better than other kinds of devices and keep you present without picking up a mobile phone. Most of the time, glasses are helping you see well, protecting your eyes and complementing your look, and [...] Read More... The post Bringing Private Processing to Meta AI Glasses appeared first on Engineering at Meta .",
+      "evidenceLink": "",
+      "score": 36.56278833333333,
+      "core": "We believe glasses are the best form factor for having AI help throughout your day. They can understand your personal context better than other kinds of devices and keep you present without picking up a mobile phone. Most of the time, glasses are helping you see well, protecting your eyes and complementing your look, and [...] Read More... The post Bringing Private Processing to Meta AI Glasses appeared first on Eng…",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-25T16:06:35.468Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
