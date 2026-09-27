@@ -1,0 +1,171 @@
+{
+  "date": "2026-09-28",
+  "generatedAt": "2026-09-27T16:09:24.657Z",
+  "reportPath": "reports/2026-09-28-0009-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 37,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 3,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 11,
+      "keptCount": 4,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-09-26；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 11 条，AI 相关候选 4 条；实际 fallback：hunted_space。；历史去重后最终发布 4 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "YC Launch 本窗口无候选或来源为空。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 6,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 17,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:node, Model:node；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 7,
+      "keptCount": 7,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Eclatira",
+      "productKey": "https://www.producthunt.com/products/eclatira",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把视频交互 agent 做成可接入现有技术栈的组件，产品判断重点是接入成本，以及视频对话能否比文字入口更有效地完成任务。"
+    },
+    {
+      "rank": 2,
+      "product": "Hemory",
+      "productKey": "https://www.producthunt.com/products/hemory",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“持续监听并可搜索”把 agent 记忆从会话内功能变成长期资料层；值得核对的是检索准确性、授权边界和用户能否控制被记住的内容。"
+    },
+    {
+      "rank": 3,
+      "product": "Chit",
+      "productKey": "https://www.producthunt.com/products/chit-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 Claude Code 的一天压缩成可打印“收据”，值得看这种物理化复盘能否帮助开发者理解 agent 做过什么，而不只是制造一件新奇周边。"
+    },
+    {
+      "rank": 4,
+      "product": "TinyAIArena watch AI agents battle it out",
+      "productKey": "https://tinyaiarena.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "多 agent 对战提供了直观的能力比较入口，但当前描述更像观赏型 demo；只有比赛规则和结果能沉淀为可复用评测时，才具备持续产品价值。"
+    },
+    {
+      "rank": 5,
+      "product": "AI agent running cost calculator (and when a SaaS platform is cheaper)",
+      "productKey": "https://broutonlab.com/calculators/how-much-does-an-ai-agent-cost",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这个计算器把自建 agent 的运行成本与 SaaS 采购放在同一决策面上，适合观察哪些成本变量会真正改变买还是建的判断。"
+    },
+    {
+      "rank": 6,
+      "product": "PeerTalk.ai - Let your agent talk to a friend's agent",
+      "productKey": "https://peertalk.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把跨用户 agent 通信做成明确场景，值得看身份确认、授权和上下文披露如何设计，否则“让两个 agent 对话”很难形成可信协作。"
+    },
+    {
+      "rank": 7,
+      "product": "GoodSocials",
+      "productKey": "https://www.producthunt.com/products/goodsocials",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用“只做真实内容”区分常见的 LinkedIn 自动发帖工具，判断重点是产品怎样约束素材来源、审批与发布频率，而不是生成量。"
+    },
+    {
+      "rank": 8,
+      "product": "An MCP-enabled cross between Twitter X Bumble BFF X ChatGPT",
+      "productKey": "https://druggie.org/log/join/d84c1ae8566b861b8000050de79a3776",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把社交匹配、对话与 MCP 组合成跨用户 agent 场景，值得先核对身份、授权和滥用防护；当前标题式拼接还不足以证明稳定产品价值。"
+    },
+    {
+      "rank": 9,
+      "product": "Rig, a small operating system for your agent",
+      "productKey": "https://tryrig.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“agent 操作系统”的定位意味着它想承接任务、工具与状态管理；值得看它是否形成统一控制面，而不是给单个 agent 再包一层界面。"
+    }
+  ]
+}

@@ -1,0 +1,406 @@
+{
+  "generatedAt": "2026-09-27T16:14:07.433Z",
+  "date": "2026-09-28",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "n8n_ai_engineering",
+      "source": "n8n Blog",
+      "title": "Long-running agents beyond prompt engineering",
+      "link": "https://blog.n8n.io/long-running-agents-beyond-prompt-engineering",
+      "publishedAt": "2026-08-31T14:01:21.000Z",
+      "author": "Andrew Green",
+      "summary": "Y'all relying too much on prompting your way through agent design. Call it context engineering or god damn loop engineering, you still ask the LLM to make sure it only generates factual information and that it reviews information itself. The more you use an LLM to evaluate itself",
+      "evidenceLink": "",
+      "score": 61.55555555555556,
+      "core": "Y'all relying too much on prompting your way through agent design. Call it context engineering or god damn loop engineering, you still ask the LLM to make sure it only generates factual information and that it reviews information itself. The more you use an LLM to evaluate itself",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-27T16:14:07.433Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "n8n_ai_engineering",
+      "source": "n8n Blog",
+      "title": "Reflection Pattern: AI Agents Self-Correct in Production",
+      "link": "https://blog.n8n.io/reflection-pattern-ai-agents-self-correct-in-production",
+      "publishedAt": "2026-09-11T19:19:26.000Z",
+      "author": "Yulia Dmitrievna",
+      "summary": "Reflection pattern for LLMs: a self-critique loop that improves correctness, clarity, and reliability with measurable quality gates, ROI, and safety controls",
+      "evidenceLink": "",
+      "score": 51.87222222222222,
+      "core": "Reflection pattern for LLMs: a self-critique loop that improves correctness, clarity, and reliability with measurable quality gates, ROI, and safety controls",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-27T16:14:07.433Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "fiddler_ai_evaluation",
+      "source": "Fiddler AI Blog",
+      "title": "What Is Agent Evaluation?",
+      "link": "https://www.fiddler.ai/blog/what-is-agent-evaluation",
+      "publishedAt": "2026-09-14T07:00:00.000Z",
+      "author": "",
+      "summary": "Learn agent evaluation with tasks, success criteria, graders, and trials. Score outcomes and trajectories so offline gates match production.",
+      "evidenceLink": "",
+      "score": 51.77777777777778,
+      "core": "Learn agent evaluation with tasks, success criteria, graders, and trials. Score outcomes and trajectories so offline gates match production.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-27T16:14:07.433Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "n8n_ai_engineering",
+      "source": "n8n Blog",
+      "title": "AI Agent Reliability: Debug, Evaluate, and Monitor in Production",
+      "link": "https://blog.n8n.io/ai-agent-reliability-debug-evaluate-and-monitor-in-production",
+      "publishedAt": "2026-09-08T09:51:39.000Z",
+      "author": "Yulia Dmitrievna",
+      "summary": "Run AI agents reliably in production. Learn how to debug failures, evaluate performance, track key metrics, add guardrails, and monitor agent behavior with n8n.",
+      "evidenceLink": "",
+      "score": 48.888888888888886,
+      "core": "Run AI agents reliably in production. Learn how to debug failures, evaluate performance, track key metrics, add guardrails, and monitor agent behavior with n8n.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-27T16:14:07.433Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "Claude Agent SDK: How to Build Production AI Agents",
+      "link": "https://rerun.build/blog/claude-agent-sdk",
+      "publishedAt": "2026-09-27T04:13:18.000Z",
+      "author": "",
+      "summary": "Learn how to take the Claude Agent SDK from prototype to production with sandboxing, durable sessions, permissions, observability, approvals, and recovery.",
+      "evidenceLink": "",
+      "score": 48.00298744047619,
+      "core": "Learn how to take the Claude Agent SDK from prototype to production with sandboxing, durable sessions, permissions, observability, approvals, and recovery.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-27T16:14:07.433Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "fiddler_ai_evaluation",
+      "source": "Fiddler AI Blog",
+      "title": "How to Run Human-in-the-Loop Evaluation for Large Language Model (LLM) Apps",
+      "link": "https://www.fiddler.ai/blog/human-in-the-loop-evaluation-llm-apps",
+      "publishedAt": "2026-09-18T07:00:00.000Z",
+      "author": "",
+      "summary": "Learn how to run human-in-the-loop evaluation for LLM apps: design rubrics, sample production traces, calibrate judges, and close the loop into monitoring.",
+      "evidenceLink": "",
+      "score": 43.861111111111114,
+      "core": "Learn how to run human-in-the-loop evaluation for LLM apps: design rubrics, sample production traces, calibrate judges, and close the loop into monitoring.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-27T16:14:07.433Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "fiddler_ai_evaluation",
+      "source": "Fiddler AI Blog",
+      "title": "What Is LLM Evaluation and How Does It Work?",
+      "link": "https://www.fiddler.ai/blog/what-is-llm-evaluation",
+      "publishedAt": "2026-09-01T00:00:00.000Z",
+      "author": "",
+      "summary": "LLM evaluation measures how models and LLM systems perform in production. Learn how it works, key metrics, LLM-as-a-Judge, and best practices.",
+      "evidenceLink": "",
+      "score": 43.78888888888889,
+      "core": "LLM evaluation measures how models and LLM systems perform in production. Learn how it works, key metrics, LLM-as-a-Judge, and best practices.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-27T16:14:07.433Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "fiddler_ai_evaluation",
+      "source": "Fiddler AI Blog",
+      "title": "What Is Prompt Evaluation?",
+      "link": "https://www.fiddler.ai/blog/prompt-evaluation-metrics-judges",
+      "publishedAt": "2026-09-09T07:00:00.000Z",
+      "author": "",
+      "summary": "Learn what prompt evaluation is and how to test prompts with deterministic metrics, LLM-as-a-Judge rubrics, judge alignment, and regression gates.",
+      "evidenceLink": "",
+      "score": 41.81111111111111,
+      "core": "Learn what prompt evaluation is and how to test prompts with deterministic metrics, LLM-as-a-Judge rubrics, judge alignment, and regression gates.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-27T16:14:07.433Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Over half of UK firms say an AI agent has gone rogue on them — and affected their business or their customers",
+      "link": "https://www.techradar.com/pro/over-half-of-uk-firms-say-an-ai-agent-has-gone-rogue-on-them-and-affected-their-business-or-their-customers",
+      "publishedAt": "2026-09-27T06:00:00.000Z",
+      "author": "Christian Cawley",
+      "summary": "Businesses are struggling to effectively control their AI agents, with over half of British companies admitting to at least one breach of business policy by an automated system.",
+      "evidenceLink": "",
+      "score": 37.25223347222222,
+      "core": "Businesses are struggling to effectively control their AI agents, with over half of British companies admitting to at least one breach of business policy by an automated system.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-27T16:14:07.433Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "n8n_ai_engineering",
+      "source": "n8n Blog",
+      "title": "Prompt Testing Frameworks for Production AI Workflows",
+      "link": "https://blog.n8n.io/prompt-testing-frameworks",
+      "publishedAt": "2026-09-21T17:28:51.000Z",
+      "author": "n8n team",
+      "summary": "Still guessing if your prompts work? Learn how to build a systematic prompt testing framework that catches regressions before they reach production.",
+      "evidenceLink": "",
+      "score": 36.625467599206345,
+      "core": "Still guessing if your prompts work? Learn how to build a systematic prompt testing framework that catches regressions before they reach production.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-27T16:14:07.433Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "n8n_ai_engineering",
+      "source": "n8n Blog",
+      "title": "Reducing AI Workflow Latency: Patterns That Actually Work",
+      "link": "https://blog.n8n.io/reducing-ai-workflow-latency",
+      "publishedAt": "2026-09-19T02:23:59.000Z",
+      "author": "Yulia Dmitrievna",
+      "summary": "Learn how to reduce AI workflow latency with production patterns for latency optimization: model routing, caching, parallel execution, timeouts, and budgets.",
+      "evidenceLink": "",
+      "score": 32.87222222222222,
+      "core": "Learn how to reduce AI workflow latency with production patterns for latency optimization: model routing, caching, parallel execution, timeouts, and budgets.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-27T16:14:07.433Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "zapier_ai_automation",
+      "source": "Zapier Blog",
+      "title": "What is Jev? TypeSafe AI's System One model",
+      "link": "https://zapier.com/blog/jev",
+      "publishedAt": "2026-09-24T04:00:00.000Z",
+      "author": "Miguel Rebelo",
+      "summary": "When you ask an LLM to give you a confidence score for any decision it makes, you get vibes. I've built tools where the model said it had 95% confidence in a response, and then promptly changed its tune when I asked again 30 seconds later. This makes it hard to control hallucinations or imprecision, and it's a big barrier to fully automating segments of workflows, such as a complex customer support routing system. And then Jev hit the scene. It's a decision-making AI model that's not an LLM, can",
+      "evidenceLink": "",
+      "score": 31.760963630952382,
+      "core": "When you ask an LLM to give you a confidence score for any decision it makes, you get vibes. I've built tools where the model said it had 95% confidence in a response, and then promptly changed its tune when I asked again 30 seconds later. This makes it hard to control hallucinations or imprecision, and it's a big barrier to fully automating segments of workflows, such as a complex customer support routing system. A…",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-27T16:14:07.433Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Google is launching its AI chips into space — Project Suncatcher MVP sports four TPUs and will be delivered by a SpaceX rocket",
+      "link": "https://www.techradar.com/pro/google-is-launching-its-ai-chips-into-space-project-suncatcher-mvp-sports-four-tpus-and-will-be-delivered-by-a-spacex-rocket",
+      "publishedAt": "2026-09-27T00:05:00.000Z",
+      "author": "Efosa Udinmwen",
+      "summary": "Google will launch an experimental satellite carrying four TPUs to test whether AI hardware can withstand space before scaling orbital infrastructure.",
+      "evidenceLink": "",
+      "score": 30.679614424603173,
+      "core": "Google will launch an experimental satellite carrying four TPUs to test whether AI hardware can withstand space before scaling orbital infrastructure.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-27T16:14:07.433Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "zapier_ai_automation",
+      "source": "Zapier Blog",
+      "title": "Which AI models can you automate on Zapier? (OpenAI, Anthropic, Google, Moonshot AI, Z.ai, and more)",
+      "link": "https://zapier.com/blog/ai-models-on-zapier",
+      "publishedAt": "2026-09-23T05:00:00.000Z",
+      "author": "Nicole Replogle",
+      "summary": "Staying up to date on the latest AI models is like trying to keep my house vacuumed in the height of my dog's shedding season (a losing battle). New AI models drop practically every week, and it's not exactly obvious which ones deserve a spot in your workflows. This guide is your cheat sheet, with every model you can automate on Zapier right now, sorted by provider. If you just want to cut to the chase and find out which model you should be using for which task, that's what AutomationBench is fo",
+      "evidenceLink": "",
+      "score": 30.11810648809524,
+      "core": "Staying up to date on the latest AI models is like trying to keep my house vacuumed in the height of my dog's shedding season (a losing battle). New AI models drop practically every week, and it's not exactly obvious which ones deserve a spot in your workflows. This guide is your cheat sheet, with every model you can automate on Zapier right now, sorted by provider. If you just want to cut to the chase and find out …",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-27T16:14:07.433Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "zapier_ai_automation",
+      "source": "Zapier Blog",
+      "title": "AI in HR: Benefits, types, and 7 use cases worth running",
+      "link": "https://zapier.com/blog/ai-in-hr",
+      "publishedAt": "2026-09-22T04:00:00.000Z",
+      "author": "Emily Mabie",
+      "summary": "I spent the first stretch of my career in learning and development, which mostly involved building training programs, writing curriculum, and trying to get people to finish a course they signed up for in a moment of optimism. These days I'm Zapier's AI Innovation Lead for People. I spend most of my week building systems that do the copy-paste work my team and I used to do by hand, and showing customers how their HR team can do that, too. That's all to say, at this point, I'm an expert on AI in",
+      "evidenceLink": "",
+      "score": 27.32128109126984,
+      "core": "I spent the first stretch of my career in learning and development, which mostly involved building training programs, writing curriculum, and trying to get people to finish a course they signed up for in a moment of optimism. These days I'm Zapier's AI Innovation Lead for People. I spend most of my week building systems that do the copy-paste work my team and I used to do by hand, and showing customers how their HR …",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-27T16:14:07.433Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "zapier_ai_automation",
+      "source": "Zapier Blog",
+      "title": "How Doug Hamilton turned an AI tracker into a team of builders",
+      "link": "https://zapier.com/blog/klaviyo-ai-tech-stack-tracker",
+      "publishedAt": "2026-09-23T00:00:00.000Z",
+      "author": "Rob Ayre",
+      "summary": "Doug Hamilton built an AI Tech Stack Tracker, an automated intelligence system that helps Klaviyo&#x2019;s Talent Acquisition team keep up with fast-moving AI tools and turn updates into action. Every hour, the tracker polls more than a dozen AI tools directly. Claude translates raw changelogs into plain-language relevance for recruiting work, then a weekly digest delivers updates based on what each teammate cares about. A &#x201C;Try it out&#x201D; feature sends a personalized, role-specific guide to Slack. A &#x201C;Shar",
+      "evidenceLink": "",
+      "score": 26.916519186507937,
+      "core": "Doug Hamilton built an AI Tech Stack Tracker, an automated intelligence system that helps Klaviyo&#x2019;s Talent Acquisition team keep up with fast-moving AI tools and turn updates into action. Every hour, the tracker polls more than a dozen AI tools directly. Claude translates raw changelogs into plain-language relevance for recruiting work, then a weekly digest delivers updates based on what each teammate cares a…",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-27T16:14:07.433Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Nearly half of CISOs have been hit by AI deepfake voice calls",
+      "link": "https://www.itpro.com/security/cyber-crime/nearly-half-of-cisos-have-been-hit-by-ai-deepfake-voice-calls-heres-how-to-spot-the-tell-tale-signs-youre-being-scammed",
+      "publishedAt": "2026-09-25T08:14:03.000Z",
+      "author": "Nicole Kobie",
+      "summary": "Gartner has urged CISOs to remain vigilant for voice and video social engineering attacks",
+      "evidenceLink": "",
+      "score": 26.49435648809524,
+      "core": "Gartner has urged CISOs to remain vigilant for voice and video social engineering attacks",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-27T16:14:07.433Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "GitHub Copilot weekly releases — September 21",
+      "link": "https://github.blog/changelog/2026-09-25-github-copilot-weekly-releases-september-21",
+      "publishedAt": "2026-09-25T16:42:48.000Z",
+      "author": "Allison",
+      "summary": "This week’s releases add new models to Copilot, local sandboxing in the Copilot app, and updates to Copilot in Slack, Microsoft Teams, JetBrains, and VS Code. GitHub Copilot Claude Opus… The post GitHub Copilot weekly releases — September 21 appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 25.144455694444442,
+      "core": "This week’s releases add new models to Copilot, local sandboxing in the Copilot app, and updates to Copilot in Slack, Microsoft Teams, JetBrains, and VS Code. GitHub Copilot Claude Opus… The post GitHub Copilot weekly releases — September 21 appeared first on The GitHub Blog .",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-27T16:14:07.433Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "Default Enablement of Copilot features for Copilot Business and Enterprise",
+      "link": "https://github.blog/changelog/2026-09-24-default-enablement-of-copilot-features-for-copilot-business-and-enterprise",
+      "publishedAt": "2026-09-25T03:13:23.000Z",
+      "author": "Allison",
+      "summary": "We’re introducing a new global default policy for generally available GitHub Copilot features and supported client capabilities in enterprise and organization Copilot settings. For the next 28 days, you can… The post Default Enablement of Copilot features for Copilot Business and Enterprise appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 12.458642202380954,
+      "core": "We’re introducing a new global default policy for generally available GitHub Copilot features and supported client capabilities in enterprise and organization Copilot settings. For the next 28 days, you can… The post Default Enablement of Copilot features for Copilot Business and Enterprise appeared first on The GitHub Blog .",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-27T16:14:07.433Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "deepmind",
+      "source": "Google DeepMind",
+      "title": "Introducing Gemini 3.8 Live with Live Avatar",
+      "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-with-live-avatar",
+      "publishedAt": "2026-09-24T16:20:39.000Z",
+      "author": "",
+      "summary": "",
+      "evidenceLink": "",
+      "score": 8.864912043650794,
+      "core": "原文摘要不足，需要精读正文后补充核心结论。",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-27T16:14:07.433Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
