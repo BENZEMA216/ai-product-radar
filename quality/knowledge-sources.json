@@ -953,6 +953,66 @@
       "requireAiRelevance": true,
       "requireStrongAiRelevance": true,
       "requireKnowledgeDepth": true
+    },
+    {
+      "id": "n8n_ai_engineering",
+      "label": "n8n Blog",
+      "type": "feed",
+      "url": "https://blog.n8n.io/rss/",
+      "home": "https://blog.n8n.io/",
+      "weight": 15,
+      "maxItems": 24,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "intercom_ai_engineering",
+      "label": "Intercom Blog",
+      "type": "feed",
+      "url": "https://www.intercom.com/blog/feed/",
+      "home": "https://www.intercom.com/blog/",
+      "weight": 14,
+      "maxItems": 24,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "zapier_ai_automation",
+      "label": "Zapier Blog",
+      "type": "feed",
+      "url": "https://zapier.com/blog/feeds/latest/",
+      "home": "https://zapier.com/blog/ai/",
+      "weight": 12,
+      "maxItems": 30,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "langflow_product_engineering",
+      "label": "Langflow Blog",
+      "type": "feed",
+      "url": "https://blog.langflow.org/rss/",
+      "home": "https://blog.langflow.org/",
+      "weight": 14,
+      "maxItems": 24,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "fiddler_ai_evaluation",
+      "label": "Fiddler AI Blog",
+      "type": "feed",
+      "url": "https://www.fiddler.ai/blog/rss.xml",
+      "home": "https://www.fiddler.ai/blog",
+      "weight": 14,
+      "maxItems": 24,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
     }
   ],
   "paperSource": {
