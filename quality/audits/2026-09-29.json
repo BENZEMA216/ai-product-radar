@@ -1,0 +1,293 @@
+{
+  "date": "2026-09-29",
+  "generatedAt": "2026-09-28T16:03:14.499Z",
+  "reportPath": "reports/2026-09-29-0003-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 64,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 18,
+      "keptCount": 9,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-09-27；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 18 条，AI 相关候选 9 条；实际 fallback：hunted_space。；fallback 低覆盖时扩展检查 2026-09-26，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重移除 1 条已报道或已处理日榜 Product Hunt 信号，最终发布 8 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 6,
+      "keptCount": 6,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 23,
+      "keptCount": 15,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 7,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:node, Model:node；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 15,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Harmony",
+      "productKey": "https://www.producthunt.com/products/harmony-it",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Harmony 把 IT/HR 工单处理嵌入 Slack 和 Teams，值得观察它能否在不增加新入口的情况下缩短内部支持闭环。"
+    },
+    {
+      "rank": 2,
+      "product": "Eclatira",
+      "productKey": "https://www.producthunt.com/products/eclatira",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Eclatira 主打可接入现有技术栈的对话式视频 agent，关键在于视频交互是否能成为可复用组件，而非一次性展示。"
+    },
+    {
+      "rank": 3,
+      "product": "Hemory",
+      "productKey": "https://www.producthunt.com/products/hemory",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Hemory 将持续监听转成可检索的 agent 记忆，值得看它如何处理召回边界、隐私和长期上下文的可控性。"
+    },
+    {
+      "rank": 4,
+      "product": "OpenAPPA – open-source deterministic guardrails that don't break agents",
+      "productKey": "https://www.openappa.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "OpenAPPA 用确定性护栏约束 agent，产品判断点是它能否在保证规则可审计的同时避免破坏任务完成率。"
+    },
+    {
+      "rank": 5,
+      "product": "Cuey",
+      "productKey": "https://www.producthunt.com/products/cuey-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Cuey 把 ChatGPT、Claude 与 Gemini 的回答放到同一标签页比较，适合观察多模型选择是否能从手工切换变成稳定决策流程。"
+    },
+    {
+      "rank": 6,
+      "product": "Chit",
+      "productKey": "https://www.producthunt.com/products/chit-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Chit 把 Claude Code 的每日活动打印成实体回执，价值在于用低干扰方式让开发者回看 agent 实际做过什么。"
+    },
+    {
+      "rank": 7,
+      "product": "Momentic",
+      "productKey": "https://www.ycombinator.com/launches/uuj-momentic-mo-the-ai-qa-engineer-that-finds-bugs-before-your-users-do",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Momentic 让 AI QA 直接产出复现步骤、日志和视频，值得看测试从发现问题到交付可行动证据能否形成闭环。"
+    },
+    {
+      "rank": 8,
+      "product": "Invertix",
+      "productKey": "https://www.ycombinator.com/launches/uc8-invertix-energy-superintelligence",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Invertix 把 agent 用于能源基础设施与数据中心运营，关键是它能否在高风险场景中把建议转成可验证、可审批的操作。"
+    },
+    {
+      "rank": 9,
+      "product": "Algebrix Identity – B2B SaaS IAM for Users, Services, and AI Agents",
+      "productKey": "https://identity.algebrix.co",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Algebrix 把用户、服务和 AI agent 统一纳入 IAM，值得关注 agent 身份、权限与审计是否会成为企业采用的基础层。"
+    },
+    {
+      "rank": 10,
+      "product": "Volaren Inc.",
+      "productKey": "https://www.ycombinator.com/launches/udj-volaren-research-operating-system-for-small-teams-and-active-retail-investors",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Volaren 让用户用自然语言提出投资假设，再由 AI 研究、构建并回测；重点应看证据链和回测约束是否足以支持判断。"
+    },
+    {
+      "rank": 11,
+      "product": "Omnesis – A private knowledge layer for ChatGPT and other agents",
+      "productKey": "https://omnesis.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Omnesis 为 ChatGPT 等 agent 提供私有知识层，值得观察它如何在跨 agent 复用上下文时保持数据隔离与可撤回性。"
+    },
+    {
+      "rank": 12,
+      "product": "Vespper (YC F24) – Docx MCP",
+      "productKey": "https://www.vespper.com/blog/launching-vespper-docx-mcp",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Vespper 把 DOCX 操作做成 MCP 能力，切中了企业文档自动化的常见断点，关键看格式保真和复杂文档编辑的可靠性。"
+    },
+    {
+      "rank": 13,
+      "product": "Masterpiece",
+      "productKey": "https://www.ycombinator.com/launches/up2-masterpiece-invoice-backed-loans-for-data-companies-selling-to-the-frontier-labs",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Masterpiece 用发票融资服务向前沿实验室供数的数据公司，值得看 AI 产业链的现金流痛点能否形成新的垂直金融产品。"
+    },
+    {
+      "rank": 14,
+      "product": "An MCP-enabled cross between Twitter X Bumble BFF X ChatGPT",
+      "productKey": "https://druggie.org/log/join/d84c1ae8566b861b8000050de79a3776",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这个 MCP 社交应用把内容流、交友与 ChatGPT 组合在一起，但现有证据只有发布标题，需先验证核心关系链和留存场景。"
+    },
+    {
+      "rank": 15,
+      "product": "GoodSocials",
+      "productKey": "https://www.producthunt.com/products/goodsocials",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "GoodSocials 聚焦 LinkedIn 内容运营并强调真实性，值得看它能否把选题、撰写和发布做成可控工作流，而不是批量生成帖子。"
+    },
+    {
+      "rank": 16,
+      "product": "Agent Cat – Claude Code, Codex and Gemini limits in your menu bar",
+      "productKey": "https://agentcat.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agent Cat 在菜单栏汇总 Claude Code、Codex 与 Gemini 的额度，反映多 coding agent 用户开始需要统一的用量可见性。"
+    },
+    {
+      "rank": 17,
+      "product": "Agentic Engineered Social Connections and Travel App",
+      "productKey": "https://www.viamour.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这款产品把社交连接和旅行放进 agent 场景，但标题不足以说明具体机制，优先验证它是否真正减少匹配与行程协作成本。"
+    },
+    {
+      "rank": 18,
+      "product": "Caspian – Desktop app to build and launch small vibe-coded projects",
+      "productKey": "https://caspian.md",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Caspian 把小型 vibe-coded 项目的构建与发布放进桌面应用，值得看非工程用户能否在一个界面内走完从想法到上线。"
+    },
+    {
+      "rank": 19,
+      "product": "Superhuman Go",
+      "productKey": "https://www.producthunt.com/products/superhuman-go",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Superhuman Go 强调在用户现有工作界面中提供助手，关键看它能否跨应用保持上下文并减少频繁切换。"
+    },
+    {
+      "rank": 20,
+      "product": "Humalike x GTA RP",
+      "productKey": "https://www.producthunt.com/products/humalike-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Humalike 让 GTA RP 中的 NPC 对话、记忆并自主行动，适合观察长期记忆和行为一致性如何改变游戏角色体验。"
+    }
+  ]
+}
