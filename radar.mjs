@@ -441,8 +441,17 @@ function cleanKey(text) {
   return String(text || "").replace(/\s+/g, " ").trim();
 }
 
-function normalizeProductKey(value) {
+export function normalizeExternalUrl(value) {
   const raw = cleanKey(value);
+  if (!raw) return "";
+  const nestedMarkdown = raw.match(/^(?:https?:\/\/[^\s\]]+)\]\(((?:https?:\/\/)[^)\s]+)\)$/i);
+  if (nestedMarkdown) return nestedMarkdown[1];
+  const markdownLink = raw.match(/^\[[^\]]*\]\(((?:https?:\/\/)[^)\s]+)\)$/i);
+  return markdownLink ? markdownLink[1] : raw;
+}
+
+function normalizeProductKey(value) {
+  const raw = normalizeExternalUrl(value);
   if (!raw) return "";
   try {
     const url = new URL(raw);
@@ -1517,7 +1526,7 @@ async function fetchHackerNews(start, end) {
       const json = await fetchJson(url, { attempts: 3, timeoutMs: 15000 });
       for (const hit of json.hits || []) {
         const title = hit.title || hit.story_title || "";
-        const targetUrl = hit.url || `https://news.ycombinator.com/item?id=${hit.objectID}`;
+        const targetUrl = normalizeExternalUrl(hit.url) || `https://news.ycombinator.com/item?id=${hit.objectID}`;
         const text = `${title} ${targetUrl}`;
         const looksLaunch = /^show hn:/i.test(title) || /^launch hn:/i.test(title);
         if (!looksLaunch || !isRelevant(text) || !withinWindow(hit.created_at, start, end)) continue;
@@ -1597,7 +1606,7 @@ function ghApi(path) {
 export function githubRepoKeyFromUrl(value) {
   let url;
   try {
-    url = new URL(String(value || ""));
+    url = new URL(normalizeExternalUrl(value));
   } catch {
     return "";
   }
@@ -2483,7 +2492,7 @@ function isShowHnNonProductObservation(item, text) {
   return (
     isHn &&
     isShowHn &&
-    /\b(?:index|database) of (?:coding )?agent incidents?\b|\bbuilt this research\b|\bhides? youtube ai-labeled videos\b|\bsleeper agents? in robot dogs\b|\bwhat engineers? must own in the ai era\b|\bcatalog of apps built out of spite\b|\bmoltbook but for math\b|\bfeature-length sci-fi thriller about ai, made with ai\b|\bremoved the ai auto-organizing i built my first app around\b|\b(?:ai-powered\s+)?word guessing game\b|\bprove the .{0,48} conjecture with (?:a )?swarm of agents\b|\bllms? work,? explained through .{0,80} analogies\b|\bvibe logic programming language\b|\btiny satire about ai progress\b|\bwhat sandboxing an ai coding agent in a vm costs\b|\ba coding agent from scratch\b|\bi vibe-coded a platformer\b|\blearn claude code.{0,12}interactive mindmap\b|\bdetailed guide to agent memory\b|\ba black hole in your browser\b|\barxiv\.org\/abs\/\b|\bkernel-level preemption for autonomous ai agents\b|\blayered gradient wave backgrounds using three\.js and shaders\b|\bseason your claude code chats with sitcom replies\b/i.test(text)
+    /\b(?:index|database) of (?:coding )?agent incidents?\b|\bbuilt this research\b|\bhides? youtube ai-labeled videos\b|\bsleeper agents? in robot dogs\b|\bwhat engineers? must own in the ai era\b|\bcatalog of apps built out of spite\b|\bmoltbook but for math\b|\bfeature-length sci-fi thriller about ai, made with ai\b|\bremoved the ai auto-organizing i built my first app around\b|\b(?:ai-powered\s+)?word guessing game\b|\bprove the .{0,48} conjecture with (?:a )?swarm of agents\b|\bllms? work,? explained through .{0,80} analogies\b|\bvibe logic programming language\b|\btiny satire about ai progress\b|\bwhat sandboxing an ai coding agent in a vm costs\b|\ba coding agent from scratch\b|\bi vibe-coded a platformer\b|\blearn claude code.{0,12}interactive mindmap\b|\bdetailed guide to agent memory\b|\ba black hole in your browser\b|\bneedle in the hay in the style of claude monet\b|\bfinds bugs with no llm and no tests written\b|\barxiv\.org\/abs\/\b|\bkernel-level preemption for autonomous ai agents\b|\blayered gradient wave backgrounds using three\.js and shaders\b|\bseason your claude code chats with sitcom replies\b/i.test(text)
   );
 }
 

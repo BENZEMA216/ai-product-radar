@@ -27,6 +27,7 @@ import {
   isRelevant,
   isDealflowEnabled,
   githubRepoKeyFromUrl,
+  normalizeExternalUrl,
   priorityScore,
   qualityLabelForItem,
   previousProductHuntHistory,
@@ -2009,6 +2010,8 @@ function testShowHnNoveltyAndComplaintSignalsStayWeak() {
     "Learn Claude Code – Interactive Mindmap",
     "Detailed Guide to Agent Memory",
     "Gigantua – A Black Hole in your Browser",
+    "Needle in the hay in the style of Claude Monet",
+    "Assay – a QA CLI that finds bugs with no LLM and no tests written",
     "Smart Mouth Billy Bass – another fishy LLM assistant",
     "Share your AI Setup, Learn from others",
     "Hard Stop: Kernel-level preemption for autonomous AI agents https://arxiv.org/abs/2609.29808",
@@ -2403,8 +2406,16 @@ function testQualityMemoryBoostsPositiveGoldens() {
 
 function testGithubRepoMetricsMapIntoCandidates() {
   assert.equal(
+    normalizeExternalUrl("https://github.com/cordum-io/cordum](https://github.com/cordum-io/cordum)"),
+    "https://github.com/cordum-io/cordum"
+  );
+  assert.equal(
     githubRepoKeyFromUrl("https://github.com/OpenAI/Codex/releases/tag/v1.0.0"),
     "openai/codex"
+  );
+  assert.equal(
+    githubRepoKeyFromUrl("https://github.com/cordum-io/cordum](https://github.com/cordum-io/cordum)"),
+    "cordum-io/cordum"
   );
   const [candidate] = applyGithubRepoMetrics(
     [
@@ -4717,6 +4728,17 @@ function testKnowledgeStrongAiRelevanceRejectsIncidentalMentions() {
     ),
     false,
     "backer headlines whose only evidence is a disclosed funding round must not occupy Knowledge Radar slots"
+  );
+  assert.equal(
+    isAiRelevant(
+      {
+        title: "AMD buys World Labs for $8.2B, as Atlas solves sparse reconstruction",
+        summary: "Congrats team!"
+      },
+      source
+    ),
+    false,
+    "acquisition headlines with no substantive summary must not occupy Knowledge Radar slots"
   );
   assert.equal(
     isAiRelevant(

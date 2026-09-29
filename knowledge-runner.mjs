@@ -498,6 +498,9 @@ export function isAiRelevant(item, source) {
   if (/\bbacker\b/i.test(title) && /\$\d+(?:\.\d+)?\s*(?:million|billion|[mb])\b[^\n]{0,80}\bfunding round\b/i.test(text)) {
     return false;
   }
+  if (/\b(?:buys?|acquires?|acquisition)\b[^\n]{0,60}\$\d+(?:\.\d+)?\s*(?:million|billion|[mb])\b/i.test(title) && /^(?:congrats(?:ulations)?(?: team)?[!.]?|.{0,40})$/i.test(String(item.summary || "").trim())) {
+    return false;
+  }
   if (source.requireAiRelevance && !includesAny(text, AI_TERMS)) return false;
   if (source.requireStrongAiRelevance && !strongAiEvidence(item)) return false;
   if (source.requireKnowledgeDepth && !includesAny(text, KNOWLEDGE_TERMS)) return false;
