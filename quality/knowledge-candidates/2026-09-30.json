@@ -1,0 +1,416 @@
+{
+  "generatedAt": "2026-09-29T16:13:17.919Z",
+  "date": "2026-09-30",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Why your startup needs open models alongside frontier APIs",
+      "link": "https://cloud.google.com/blog/topics/startups/why-your-startup-needs-open-models-alongside-frontier-apis",
+      "publishedAt": "2026-09-28T16:00:00.000Z",
+      "author": "Darren Mowry VP, Global Startups and Investor Ecosystem, Google",
+      "summary": "Every week, I talk with founders who are building at an unbelievable pace. Teams are moving from inception to product-market fit faster than ever, with foundation models wired deeply into their core product workflows. Yet as startup architectures mature, a clear divide has emerged between teams struggling with margins and those scaling sustainably. The most effective engineering teams have abandoned the one-size-fits-all model strategy. In the early days of LLMs the default architecture was simple: send every interaction to the largest model available. But as applications move into production, serving millions of people and running autonomous multi-agent workflows, relying on a single frontier model starts to strain in three places: Latency penalties: Relying entirely on cloud round trips makes it difficult to deliver the sub-second responsiveness that interactive mobile and desktop apps require. Infrastructure overhead: Self-hosting large open models with more than 70 billion parameters forces early-stage teams to act like infrastructure providers, pulling senior engineers on cluster provisioning and multi-GPU orchestration. Margin erosion: Sending high-frequency, structured tasks (like intent routing, JSON extraction, or status validation) to general-purpose frontier endpoints spends capital that could be funding product differentiation. Great engineering teams pick the right tool for each job. Most production requests don’t require a frontier generalist, and routing every call to one can actually slow your product down. Instead, the winning pattern is a compound AI stack: pairing frontier models for complex synthesis with compact, open-weight models that you can tune, control, and run anywhere. It’s for these reasons that an open model like Gemma belongs in your model lineup. With more than one billion downloads across the developer community , Gemma 4 is our most capable open model family to date, using the same foundational research and technology behind the Gemini models. Built under one roof Gemma is built by Google DeepMind using the same foundational research and architecture advances behind the Gemini models. Because they share common DNA and developer tooling, your team can prototype in Google AI Studio and design hybrid architectures where Gemini and Gemma work together. Released under a commercially permissive Apache 2.0 license , Gemma 4 is engineered for parameter and token efficiency . Rather than forcing a single model architecture onto every hardware target, Gemma 4 spans five sizes across four specialized architectures: compact E2B and E4B models with native audio and vision for mobile and edge devices; an encoder-free 12B Unified multimodal model; a 26B A4B Mixture-of-Experts (MoE) model that activates only 4B parameters per token for high-throughput serving; and a dense 31B model that fits on a single GPU for maximum reasoning quality and fine-tuning. Every model includes configurable thinking modes, native function calling, up to 256K context, and built-in Multi-Token Prediction (MTP) draft models for speculative decoding. Real proof: How startups are winning with Gemma Founders are using Gemma to solve urgent problems around unit economics, output accuracy, and responsiveness. Flipping the architecture: Cue is a voice-activated desktop assistant that runs natively on a user's machine to automate everyday tasks. They integrated Gemma 4 E4B via Ollama on local hardware to handle real-time transcript formatting. While they originally planned for Gemma to be a weak offline fallback, benchmarking proved it was so fast and precise that they made it their default engine—driving a 44% latency drop (from 876 ms to 488 ms). True edge independence: Mobile development studio HubX built BetterSpeak , a voice-based interactive mobile English-learning tutor that simulates immersive, real-time voice conversations. To bypass cellular network lag and avoid charging users expensive subscription fees to cover cloud hosting, they packaged a 4-bit quantized Gemma 4 E2B model (~2.9 GB) natively on-device. The result is an offline, speech-to-speech mobile tutor that costs them $0 in server bills. Scientific discovery and air-gapped security : K-Dense has built Faraday , an AI-powered scientific collaborator optimized end-to-end across hardware, software, and sensor suites, powered by Gemma 4 together with K-Dense's Scientific Agent Skills. Faraday runs fully air-gapped, making it suitable for secure, proprietary scientific work in pharma and biotech. Deployed on an NVIDIA DGX Spark, Gemma 4 can also be fine-tuned locally on a user's own proprietary datasets. Unlocking infinite gameplay and retention: Gaming company Latitude integrated Gemma across their AI-native game products. By swapping in Gemma for AI Dungeon , they significantly improved player retention, while their new AI RPG platform Voyage leverages Gemma to deliver high intelligence at a cost that enables unlimited user gameplay with ultra-fast latency. Four workloads where Gemma wins for startups If you’re evaluating where Gemma fits into your stack today, start with these four jobs: 1. Edge and local execution (low latency, true privacy) If you’re building mobile apps, developer desktop tools, robotics, or offline-first experiences, every cloud round-trip adds latency that people can feel. Gemma can run directly on laptops (including Apple silicon), smartphones, and local appliances. Your users get immediate feedback, and sensitive data never has to leave their device. You can handle many local interactions on-device for zero incremental cost, and keep a bridge to frontier models in the cloud for the requests that need it. When a local workflow calls for large-scale multimodal reasoning, long-context data synthesis, or complex planning, your application can route that specific request to Gemini. 2. High-throughput triage and agent routing In multi-agent architectures, agents spend a surprising amount of tokens on simple tasks like checking statuses, classifying intent, and routing tickets. With Gemma as your front-line gatekeeper, those high-volume background tasks run on a compact model and your team can save frontier reasoning for the requests where it creates product value. 3. Task-specific fine-tuning for real moats Adapting a model to your proprietary data is one way to build a competitive moat. Because Gemma gives you full access to model weights and has a compact memory footprint, your team can run parameter-efficient fine-tuning (LoRA or QLoRA) on a single GPU in hours rather than days. 4. Turnkey vertical starting lines DeepMind releases domain-specific variants of Gemma, so you don’t have to start from scratch. One example is MedGemma . MedGemma scores 87.7% on the MedQA benchmark, matching the clinical accuracy of frontier models at roughly one-tenth the inference cost. In a blind clinical study, board-certified radiologists judged that 81% of chest X-ray reports generated by the lightweight MedGemma 1.5 4B were accurate enough to result in equivalent patient management compared to reports written by human experts. Beyond healthcare, biotech startups use C2S Scale to model virtual cellular responses and accelerate oncology research. Meanwhile, DataGemma cross-references more than 240 billion public data points to help reduce numerical hallucinations. If you’re operating in a specialized market, starting with a model that already speaks your industry's language can save you engineering time and compute budget. Deploy wherever your business lives Gemma is designed to fit into your existing engineering stack without lock-in: Apache 2.0 licensing : Gemma 4 ships under the Apache 2.0 license, giving startups the freedom to fine-tune, quantize, redistribute, and deploy commercial products on-premises or at the edge with full ownership of their custom weights. Day-zero open tooling : Run and fine-tune Gemma with the tools your engineers already use, including vLLM, Ollama, llama.cpp, LM Studio, MLX, Unsloth, Hugging Face, Kaggle, Keras, PyTorch, JAX, and LiteRT-LM. Serverless and managed cloud deployment : Prototype immediately in Google AI Studio , scale to zero on serverless GPUs with Cloud Run, or deploy dedicated endpoints from Model Garden on Gemini Enterprise Agent Platform when traffic surges and you don’t want to manage GPU clusters. Enterprise-ready safety : Gemma undergoes rigorous pre-release safety evaluations, data filtering, and red-teaming, and pairs with ShieldGemma 2 to help you meet enterprise compliance requirements. Build with Gemma: What to do this week Great technical architecture isn't about finding one model to do everything. It’s about assembling the right tool for each job so you can move faster, protect your runway, and ship a superior product. Here’s my challenge to your engineering team this week: Audit your model calls: Look at your logging dashboard and identify three high-volume, deterministic tasks (such as intent classification, JSON validation, or summarization) currently running on your most expensive models. Benchmark Gemma: Run a quick test with a compact Gemma model locally or on a single endpoint. Measure the latency and calculate what happens to your gross margins when that workload runs with lower inference cost. Redirect your runway: Take the capital and engineering hours you save on compute and invest them back into your core differentiators. You can download the Gemma weights directly or deploy them through Model Garden. If you need compute credits and technical architecture reviews to get up and running, the Google for Startups team is ready to help you build - learn more .",
+      "evidenceLink": "",
+      "score": 114.26988255952381,
+      "core": "Every week, I talk with founders who are building at an unbelievable pace. Teams are moving from inception to product-market fit faster than ever, with foundation models wired deeply into their core product workflows. Yet as startup architectures mature, a clear divide has emerged between teams struggling with margins and those scaling sustainably. The most effective engineering teams have abandoned the one-size-fit…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-29T16:13:17.919Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Nvidia launches new AI safety program designed at stopping models escaping their sandboxes",
+      "link": "https://www.techradar.com/pro/nvidia-launches-new-ai-safety-program-designed-at-stopping-models-escaping-their-sandboxes",
+      "publishedAt": "2026-09-29T14:20:00.000Z",
+      "author": "Craig Hale",
+      "summary": "Nvidia admits telling agents not to do something isn't enough – so it's implementing software and hardware safeguards.",
+      "evidenceLink": "",
+      "score": 65.52067621031746,
+      "core": "Nvidia admits telling agents not to do something isn't enough – so it's implementing software and hardware safeguards.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-29T16:13:17.919Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "MicroLLM Lab – Try 7 tiny LLM's in the browser",
+      "link": "https://stateofutopia.com/experiments/microllmlab",
+      "publishedAt": "2026-09-28T18:58:53.000Z",
+      "author": "logicallee https://news.ycombinator.com/user?id=logicallee",
+      "summary": "Run Q4 small language models entirely in the browser with WebGPU. Chat, benchmark, and compare PetitGPT, SmolLM2, and friends on-device.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49882781",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 266,
+        "comments": 98
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-29T16:13:17.919Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 54.36222116030369,
+      "core": "Run Q4 small language models entirely in the browser with WebGPU. Chat, benchmark, and compare PetitGPT, SmolLM2, and friends on-device.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_research",
+      "source": "Microsoft Research",
+      "title": "Introducing Quine: An AI research system designed for the complexity of biology",
+      "link": "https://www.microsoft.com/en-us/research/blog/introducing-quine-an-ai-research-system-designed-for-the-complexity-of-biology",
+      "publishedAt": "2026-09-29T14:00:02.000Z",
+      "author": "Nicolo Fusi, Jonathan M. Carlson",
+      "summary": "Biology doesn't operate in silos, and neither should the AI representation of it. Quine is an early-stage research effort to create a multimodal world model of biology. By connecting insights across biological scales and modalities, Quine helps scientists computationally search a space far larger than intuition allows and prioritize hypotheses before they reach the lab. Experimental results provide important feedback, helping researchers sharpen future research directions. The post Introducing Quine: An AI research system designed for the complexity of biology appeared first on Microsoft Research .",
+      "evidenceLink": "",
+      "score": 54.20246192460318,
+      "core": "Biology doesn't operate in silos, and neither should the AI representation of it. Quine is an early-stage research effort to create a multimodal world model of biology. By connecting insights across biological scales and modalities, Quine helps scientists computationally search a space far larger than intuition allows and prioritize hypotheses before they reach the lab. Experimental results provide important feedbac…",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-29T16:13:17.919Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_ai_engineering",
+      "source": "GitHub Blog",
+      "title": "How we found 24 Android vulnerabilities using our open source AI security agent",
+      "link": "https://github.blog/security/how-we-found-24-android-vulnerabilities-using-our-open-source-ai-security-agent",
+      "publishedAt": "2026-09-28T19:00:00.000Z",
+      "author": "Kevin Stubbings",
+      "summary": "A look at the targeted AI taskflows behind these findings, the critical Android bugs they uncovered, and how to run the same open-source agent on your own app. The post How we found 24 Android vulnerabilities using our open source AI security agent appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 54.0619460515873,
+      "core": "A look at the targeted AI taskflows behind these findings, the critical Android bugs they uncovered, and how to run the same open-source agent on your own app. The post How we found 24 Android vulnerabilities using our open source AI security agent appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-29T16:13:17.919Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "OpenAI won't release next Astra model over safety worries",
+      "link": "https://www.itpro.com/technology/artificial-intelligence/openai-wont-release-next-astra-model-over-safety-worries",
+      "publishedAt": "2026-09-29T10:11:15.000Z",
+      "author": "Nicole Kobie",
+      "summary": "AI developer says new agent didn't stay within the scope of tasks",
+      "evidenceLink": "",
+      "score": 53.93010081349207,
+      "core": "AI developer says new agent didn't stay within the scope of tasks",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-29T16:13:17.919Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Adaptive application security for the AI era: how Cloudflare connects code, traffic, and intelligence to stop attacks",
+      "link": "https://blog.cloudflare.com/ai-era-framework",
+      "publishedAt": "2026-09-29T13:00:00.000Z",
+      "author": "Daniele Molteni",
+      "summary": "Cloudflare introduces an adaptive security framework connecting risk discovery, agent governance, runtime protection, and AI-powered response in a continuous learning loop.",
+      "evidenceLink": "",
+      "score": 53.72543811507936,
+      "core": "Cloudflare introduces an adaptive security framework connecting risk discovery, agent governance, runtime protection, and AI-powered response in a continuous learning loop.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-29T16:13:17.919Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "salesforce_engineering",
+      "source": "Salesforce Engineering",
+      "title": "Engineering Multi-Agent AI Teams That Build and Test Themselves",
+      "link": "https://engineering.salesforce.com/engineering-multi-agent-ai-teams-that-build-and-test-themselves",
+      "publishedAt": "2026-09-28T18:53:47.000Z",
+      "author": "Scott Nyberg",
+      "summary": "By Sohini Arya and Manish Kumar Jha. In our Engineering Energizers Q&A series, we highlight the engineering minds driving innovation across Salesforce. Today, we spotlight Sohini Arya, AI Delivery Lead for Marketing Cloud, whose team pursued an audacious goal: build AI agents that could design, verify, test, and repair teams of other agents, even though […] The post Engineering Multi-Agent AI Teams That Build and Test Themselves appeared first on Salesforce Engineering Blog .",
+      "evidenceLink": "",
+      "score": 53.14343414682539,
+      "core": "By Sohini Arya and Manish Kumar Jha. In our Engineering Energizers Q&A series, we highlight the engineering minds driving innovation across Salesforce. Today, we spotlight Sohini Arya, AI Delivery Lead for Marketing Cloud, whose team pursued an audacious goal: build AI agents that could design, verify, test, and repair teams of other agents, even though […] The post Engineering Multi-Agent AI Teams That Build and Te…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-29T16:13:17.919Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "OpenAI still doesn't seem to have a handle on all of its rogue AI activity",
+      "link": "https://techcrunch.com/2026/09/28/openai-still-doesnt-seem-to-have-a-handle-on-all-of-its-rogue-ai-activity",
+      "publishedAt": "2026-09-28T17:33:34.000Z",
+      "author": "mikelgan https://news.ycombinator.com/user?id=mikelgan",
+      "summary": "On Friday, OpenAI published a new site devoted to “misalignment reports” and the breadth of the incidents is alarming.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49881484",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 106,
+        "comments": 110
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-29T16:13:17.919Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 51.27439184996762,
+      "core": "On Friday, OpenAI published a new site devoted to “misalignment reports” and the breadth of the incidents is alarming.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "Evaluate production traces with Jev-as-a-Judge directly in Arize AX",
+      "link": "https://arize.com/blog/arize-ax-jev-as-a-judge",
+      "publishedAt": "2026-09-28T21:00:35.000Z",
+      "author": "Chris Cooning",
+      "summary": "Arize AX now integrates directly with TypeSafe AI, bringing native Jev-as-a-Judge evaluations into the Arize evaluation workflow. The post Evaluate production traces with Jev-as-a-Judge directly in Arize AX appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 50.93327541666667,
+      "core": "Arize AX now integrates directly with TypeSafe AI, bringing native Jev-as-a-Judge evaluations into the Arize evaluation workflow. The post Evaluate production traces with Jev-as-a-Judge directly in Arize AX appeared first on Arize AI .",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-29T16:13:17.919Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "red_hat_ai_engineering",
+      "source": "Red Hat Developer · AI",
+      "title": "Red team your AI model with garak",
+      "link": "https://developers.redhat.com/articles/2026/09/29/red-team-your-ai-model-garak",
+      "publishedAt": "2026-09-29T13:01:46.000Z",
+      "author": "Anika Aracan",
+      "summary": "Your team just shipped an internal chatbot built on an open-weight model. It works great! It answers all of your questions, summarizes documents, and helps onboard new hires with scary efficiency. But then your security team asks, “Has anyone tested whether this thing can be jailbroken?” Jailbroken? What's that?&nbsp; The post Red team your AI model with garak appeared first on Red Hat Developer .",
+      "evidenceLink": "",
+      "score": 48.99420795634921,
+      "core": "Your team just shipped an internal chatbot built on an open-weight model. It works great! It answers all of your questions, summarizes documents, and helps onboard new hires with scary efficiency. But then your security team asks, “Has anyone tested whether this thing can be jailbroken?” Jailbroken? What's that? The post Red team your AI model with garak appeared first on Red Hat Developer .",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-29T16:13:17.919Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "red_hat_ai_engineering",
+      "source": "Red Hat Developer · AI",
+      "title": "Distributed training on OpenShift AI 3.4 with Kubeflow Trainer v2",
+      "link": "https://developers.redhat.com/articles/2026/09/29/distributed-training-openshift-ai-34-kubeflow-trainer-v2",
+      "publishedAt": "2026-09-29T13:01:47.000Z",
+      "author": "Linoy Bitan",
+      "summary": "Until recently, running distributed training on Kubernetes meant picking a framework-specific custom resource definition (CRD): PyTorchJob for PyTorch, TFJob for TensorFlow, MPIJob for Message Passing Interface (MPI). Each had different semantics, different failure behavior, and different ways of configuring the same fundamentals: how many nodes, how they find each other, and what happens when something breaks. The post Distributed training on OpenShift AI 3.4 with Kubeflow Trainer v2 appeared first on Red Hat Developer .",
+      "evidenceLink": "",
+      "score": 46.6997833531746,
+      "core": "Until recently, running distributed training on Kubernetes meant picking a framework-specific custom resource definition (CRD): PyTorchJob for PyTorch, TFJob for TensorFlow, MPIJob for Message Passing Interface (MPI). Each had different semantics, different failure behavior, and different ways of configuring the same fundamentals: how many nodes, how they find each other, and what happens when something breaks. The …",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-29T16:13:17.919Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "neon_ai_engineering",
+      "source": "Neon Blog",
+      "title": "Inside Skydive: building virtual coworkers, powered by Neon",
+      "link": "https://neon.com/blog/inside-skydive-building-virtual-coworkers-powered-by-neon",
+      "publishedAt": "2026-09-29T12:00:00.000Z",
+      "author": "Carlota Soto",
+      "summary": "Skydive is a platform that lets teams build AI coworkers that do real work. When a Skydive agent needs a durable state, it deploys an isolated Neon backend mid-task, with no human in the path, and it takes it around a second.",
+      "evidenceLink": "",
+      "score": 41.94845398809524,
+      "core": "Skydive is a platform that lets teams build AI coworkers that do real work. When a Skydive agent needs a durable state, it deploys an isolated Neon backend mid-task, with no human in the path, and it takes it around a second.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-29T16:13:17.919Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "dropbox_engineering",
+      "source": "Dropbox Tech",
+      "title": "Evolving our calendar assistant Reclaim to be AI-native without starting over",
+      "link": "https://dropbox.tech/machine-learning/evolving-calendar-assistant-reclaim-to-be-ai-native",
+      "publishedAt": "2026-09-29T13:00:00.000Z",
+      "author": "Greg Unrein,Josh Jensen,Christopher Wildman",
+      "summary": "How we redesigned Reclaim for AI and natural-language requests while preserving the scheduling experience people rely on.",
+      "evidenceLink": "",
+      "score": 41.44210478174603,
+      "core": "How we redesigned Reclaim for AI and natural-language requests while preserving the scheduling experience people rely on.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-29T16:13:17.919Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "databricks_engineering",
+      "source": "Databricks Blog",
+      "title": "Lakebase Search: State-of-the-art full text and vector search for Postgres",
+      "link": "https://www.databricks.com/blog/lakebase-search-state-art-full-text-and-vector-search-postgres",
+      "publishedAt": "2026-09-28T20:04:33.000Z",
+      "author": "",
+      "summary": "Traditional OLTP systems weren't built for the search demands of AI agents. They...",
+      "evidenceLink": "",
+      "score": 41.02212462301587,
+      "core": "Traditional OLTP systems weren't built for the search demands of AI agents. They...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-29T16:13:17.919Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "OpenAI pulls new AI model release following widespread security worries",
+      "link": "https://www.techradar.com/pro/openai-pulls-new-ai-model-release-following-widespread-security-worries",
+      "publishedAt": "2026-09-29T16:05:00.000Z",
+      "author": "Craig Hale",
+      "summary": "OpenAI had been planning on releasing GPT-6.1 Astra within weeks, but its launch has now been paused due to safety concerns.",
+      "evidenceLink": "",
+      "score": 38.67900954365079,
+      "core": "OpenAI had been planning on releasing GPT-6.1 Astra within weeks, but its launch has now been paused due to safety concerns.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-29T16:13:17.919Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "sentry_ai_engineering",
+      "source": "Sentry Engineering",
+      "title": "Big improvements to Seer Agent",
+      "link": "https://blog.sentry.io/big-improvements-to-seer-agent",
+      "publishedAt": "2026-09-29T07:00:00.000Z",
+      "author": "",
+      "summary": "Seer Agent can now write to your Sentry projects and pull in infrastructure data from Datadog and Google Cloud Platform — turning it from a debugging rubber duck into a full-time assistant.",
+      "evidenceLink": "",
+      "score": 38.391311130952374,
+      "core": "Seer Agent can now write to your Sentry projects and pull in infrastructure data from Datadog and Google Cloud Platform — turning it from a debugging rubber duck into a full-time assistant.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-29T16:13:17.919Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Enforce positive security with Cloudflare Application Profiles",
+      "link": "https://blog.cloudflare.com/application-profiles",
+      "publishedAt": "2026-09-29T13:00:00.000Z",
+      "author": "Daniele Molteni",
+      "summary": "Cloudflare learns the structure of your HTTP requests and identifies deviations. You can add a positive security layer that helps reduce attack surface as AI makes it easier for attackers to generate and vary payloads.",
+      "evidenceLink": "",
+      "score": 37.980993670634916,
+      "core": "Cloudflare learns the structure of your HTTP requests and identifies deviations. You can add a positive security layer that helps reduce attack surface as AI makes it easier for attackers to generate and vary payloads.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-29T16:13:17.919Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "Claude Sonnet 5.5 in GitHub Copilot",
+      "link": "https://github.blog/changelog/2026-09-28-claude-sonnet-5-5-in-github-copilot",
+      "publishedAt": "2026-09-28T18:03:57.000Z",
+      "author": "Allison",
+      "summary": "Claude Sonnet 5.5, Anthropic’s newest Sonnet model, is now generally available in GitHub Copilot. It is designed for well-scoped everyday work like building features and fixing bugs. In our early… The post Claude Sonnet 5.5 in GitHub Copilot appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 37.956330972222226,
+      "core": "Claude Sonnet 5.5, Anthropic’s newest Sonnet model, is now generally available in GitHub Copilot. It is designed for well-scoped everyday work like building features and fixing bugs. In our early… The post Claude Sonnet 5.5 in GitHub Copilot appeared first on The GitHub Blog .",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-29T16:13:17.919Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "zapier_ai_automation",
+      "source": "Zapier Blog",
+      "title": "The best large language models (LLMs) in 2026",
+      "link": "https://zapier.com/blog/best-llm",
+      "publishedAt": "2026-09-29T04:00:00.000Z",
+      "author": "Harry Guinness",
+      "summary": "Large language models (LLMs) are what most people think of when they think of AI. They're what you're interacting with in ChatGPT and Claude, they write the code generated by Claude Code and Codex, and they power other AI features like Google's AI answers and Apple Intelligence. If something has a chatbot, some kind of text generator or text summarization built in, or writes code or automates your computer, it almost certainly uses an LLM. LLMs have been studied in research labs since the late 2",
+      "evidenceLink": "",
+      "score": 29.904803194444447,
+      "core": "Large language models (LLMs) are what most people think of when they think of AI. They're what you're interacting with in ChatGPT and Claude, they write the code generated by Claude Code and Codex, and they power other AI features like Google's AI answers and Apple Intelligence. If something has a chatbot, some kind of text generator or text summarization built in, or writes code or automates your computer, it almos…",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-29T16:13:17.919Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
