@@ -1,0 +1,293 @@
+{
+  "date": "2026-10-01",
+  "generatedAt": "2026-09-30T16:02:33.557Z",
+  "reportPath": "reports/2026-10-01-0002-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 71,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 33,
+      "keptCount": 16,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-09-29；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 33 条，AI 相关候选 16 条；实际 fallback：hunted_space。；历史去重后最终发布 16 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 3,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 30,
+      "keptCount": 15,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 7,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:node, Model:node；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 17,
+      "keptCount": 17,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Arsaze",
+      "productKey": "https://www.producthunt.com/products/arsaze-ai-native-video-editor",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 Claude、ChatGPT、Gemini 接进真实视频时间线，值得验证自然语言剪辑能否保留专业编辑所需的精确控制。"
+    },
+    {
+      "rank": 2,
+      "product": "LUCI Desktop",
+      "productKey": "https://www.producthunt.com/products/luci-desktop",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它让桌面 agent 记住用户看过的内容，产品关键在于记忆带来的连续性是否足以抵消本地隐私与资源成本。"
+    },
+    {
+      "rank": 3,
+      "product": "Relay – a harness for AI coding agents that recover and verify",
+      "productKey": "https://relayevals.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把恢复与验证做成 coding agent 的执行护栏，适合观察失败后自愈能否从评测概念变成稳定工程能力。"
+    },
+    {
+      "rank": 4,
+      "product": "Groundtrack – Continual learning for coding agents",
+      "productKey": "https://groundtrack.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它尝试让 coding agent 从持续使用中学习，核心要看经验是否可迁移、可撤销，并真正减少重复纠错。"
+    },
+    {
+      "rank": 5,
+      "product": "Semos.ai Manager Agents",
+      "productKey": "https://www.producthunt.com/products/semos-ai-manager-agents",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它专为管理者设计 agent，值得看管理任务能否被拆成有授权边界、可追责的交付流程。"
+    },
+    {
+      "rank": 6,
+      "product": "Claude Sonnet 5.5",
+      "productKey": "https://www.producthunt.com/products/claude",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这是 Claude 5.5 系列第二款模型，产品侧应关注速度、成本和能力组合是否足以推动现有 Claude 工作流迁移。"
+    },
+    {
+      "rank": 7,
+      "product": "iFixAi",
+      "productKey": "https://www.producthunt.com/products/ifixai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它独立审计 agent 的失配风险，价值取决于能否给出可复现证据与可执行修复，而非只输出风险标签。"
+    },
+    {
+      "rank": 8,
+      "product": "HABU",
+      "productKey": "https://www.ycombinator.com/launches/uum-habu-the-ai-native-real-estate-developer",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把地产开发全流程作为 AI 原生切口，并声称缩短工期与降低成本，适合追踪结果责任如何落到真实项目。"
+    },
+    {
+      "rank": 9,
+      "product": "Hopscotch AI",
+      "productKey": "https://www.producthunt.com/products/hopscotch-7",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用单一 API 聚合 500 多个模型，判断重点是路由、账单和故障切换能否显著降低多模型接入成本。"
+    },
+    {
+      "rank": 10,
+      "product": "Agent 37",
+      "productKey": "https://www.ycombinator.com/launches/utg-agent37-host-any-agent-harness",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把任意 agent harness 托管进沙箱，并用计算成本作为卖点，适合检验隔离强度与成本优势能否同时成立。"
+    },
+    {
+      "rank": 11,
+      "product": "How we made web agents 3x faster by building the missing memory layer",
+      "productKey": "https://blog.reduck.ai/browser-action-memory-layer-for-faster-agents",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用动作记忆层加速 web agent，值得看三倍速度提升是否来自可复用经验，且不会放大错误动作。"
+    },
+    {
+      "rank": 12,
+      "product": "Hosted MCP Server for Google Search Console",
+      "productKey": "https://askwatch.ai/free-tools/google-search-console-mcp",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 Search Console 做成托管 MCP 服务，切中了 SEO agent 的数据接入摩擦，关键是权限、安全与数据完整性。"
+    },
+    {
+      "rank": 13,
+      "product": "Giving voice agents a voice that adapts to context",
+      "productKey": "https://gradium.ai/demos/voice-design-demo",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它让语音 agent 随上下文调整声音，产品价值在于语气变化能否改善任务沟通，而不是停留在声音演示。"
+    },
+    {
+      "rank": 14,
+      "product": "Timeless Code",
+      "productKey": "https://www.producthunt.com/products/timeos",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把会议记录器直接装进 Claude Code，值得看会议上下文能否自然转成开发任务，而非另造一个笔记孤岛。"
+    },
+    {
+      "rank": 15,
+      "product": "SFML – A markup language for software factories, Terraform for agents",
+      "productKey": "https://sfml.craftmill.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用类似 Terraform 的声明语言描述 agent 软件工厂，适合观察复杂编排能否获得可版本化、可审计的配置层。"
+    },
+    {
+      "rank": 16,
+      "product": "Llestia – an economic marketplace where AI agents hire each other",
+      "productKey": "https://llestia.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它构建 agent 互相雇佣的经济市场，值得验证需求撮合、结算与责任归属能否超越概念展示。"
+    },
+    {
+      "rank": 17,
+      "product": "Jotform Sign for ChatGPT and Claude",
+      "productKey": "https://www.producthunt.com/products/jotform",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它让用户在 ChatGPT 与 Claude 内创建、发送和签署文件，关键看签署合规与身份确认是否适配对话入口。"
+    },
+    {
+      "rank": 18,
+      "product": "Iris",
+      "productKey": "https://www.producthunt.com/products/ihermes",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把企业运营包装成一组 agent，判断重点是跨系统执行、人工审批与异常回退能否形成可控闭环。"
+    },
+    {
+      "rank": 19,
+      "product": "Codex Remote",
+      "productKey": "https://www.producthunt.com/products/codex-remote",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 Codex 或 Claude Code 部署到用户自己的云主机，值得看远程持续运行与数据控制是否兼顾易用性。"
+    },
+    {
+      "rank": 20,
+      "product": "Imejis.io",
+      "productKey": "https://www.producthunt.com/products/imejis-io",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它给营销 agent 配置设计工作室，适合检验品牌约束、素材版本和批量生成能否被统一管理。"
+    }
+  ]
+}

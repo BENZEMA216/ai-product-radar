@@ -1,0 +1,405 @@
+{
+  "generatedAt": "2026-09-30T16:07:51.899Z",
+  "date": "2026-10-01",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "GitLab and Claude Code: Fast, compliant AI",
+      "link": "https://about.gitlab.com/blog/gitlab-and-claude-code-fast-compliant-ai",
+      "publishedAt": "2026-09-29T00:00:00.000Z",
+      "author": "Elisabeth Burrows https://about.gitlab.com/blog/authors/elisabeth-burrows/",
+      "summary": "Government agencies are feeling twin pressures: While the U.S. Office of Management and Budget (OMB) is urging you to deploy AI faster, the U.S. Government Accountability Office (GAO) wants guardrails in place before that happens. To accelerate AI coding, many agencies are turning to AI coding assistants like Anthropic's Claude Code. But what about guardrails? GitLab Duo Agent Platform can govern your entire software development lifecycle, regardless of which model creates your code. The need for speed with control To realize the full potential of AI, government agencies need to eliminate the friction that currently exists. For instance, OMB points to outdated compliance processes as one of the biggest obstacles to deploying advanced AI-powered cyber defenses, while GAO says a lack of safeguards is a limiting factor to greater AI adoption. Agencies utilizing coding assistants might be solving the speed issue, but without a governance strategy, they lack true compliance. Writing code has never been cheaper or faster, but knowing what's in that code before production is another matter. A governed workflow In February 2026, the NIST Center for AI Standards and Innovation launched the first federal program dedicated to agentic AI security standards, giving agencies a formal reference for how agents should be authenticated, authorized, and audit-logged. Meeting that bar takes more than connecting Claude Code to GitLab. An integration passes data between two tools. It doesn't create a shared context model, a policy engine, or a single audit trail. GitLab Duo Agent Platform , AI orchestration across the software development lifecycle, starts with context already built in. It holds the project, the issues, the merge requests, the pipelines, and the vulnerability history — the full picture a standalone coding agent simply doesn't have. Every action Duo Agent Platform takes is scoped, logged, and reviewable inside the platform your agency already runs. Foundational flows fire automatically on software development lifecycle events, run on the GitLab Runners your agency operates, and tie an audit trail to every merge request, with no script for your team to build or maintain. It's one governance plane across every tool your team runs. That governance also isn't tied to any single model. AI models and providers are a replaceable component of GitLab's architecture, not an inseparable one, so your agency keeps the ability to authorize, restrict, or swap out which model is doing the writing without rebuilding the workflow around it. Claude Code is a strong example of a model that plugs into that architecture well. A change is only as useful as what happens after it's written: Can it be safely understood in the context of your delivery system, acted on correctly, documented with the right evidence, and handed back into the workflow your team already governs? Which tool wrote better code doesn't answer that. Running Claude Code as the coding interface inside GitLab Duo Agent Platform, rather than as a separate, disconnected tool, is how agencies get both Claude's coding experience and GitLab's governed execution in the same system of record. Claude Code's prompting skill carries over whether a developer is working standalone or inside Duo Agent Platform. What changes is where that code goes after it's written, not how a developer writes it. Where agentic coding strains team workflows The friction isn't only technical. As agents write more first drafts solo instead of with a teammate, teams are hitting a gap they haven't solved: how review and shared context work when the team wasn't in the room while the code was written. That gap is particularly evident in the government, where not every developer holds the clearance needed to review code on classified or sensitive systems and hiring more reviewers is a security determination that can take months. GitLab’s own research shows that more than three-quarters of developers say they're writing and committing code faster with AI , yet overall software delivery hasn't sped up at the same rate because the bottleneck moved downstream to review, testing, and collaboration. LinearB's 2026 Software Engineering Benchmarks Report found agentic AI merge requests take 5.3 times longer for a reviewer to pick up than unassisted ones. In an agency running lean on reviewers, that lag compounds rather than just adds up. That's a governance problem as much as a workflow one. A merge request gate that enforces review, scans, and approvals regardless of which tool generated the change means a team's process for absorbing agent output doesn't have to be reinvented every time the coding tool changes. Network-restricted deployment vs. AI model choice Flexibility matters most once you leave the browser and consider where the model runs. Federal environments face this same tension: running without any external network path isn't the same as controlling which model does the work. GitLab Duo Agent Platform Self-Hosted runs entirely on infrastructure an agency controls, covering data residency mandates, air-gapped networks, or policies that bar sending code to third-party APIs. GitLab has continued to expand model support , so agencies aren't forced into using the same model for every job, big or small. Those same models can also run on GPU-enabled virtual machines in a private cloud, for teams that want self-managed inference without the hardware costs. As of August 2026, GitLab Dedicated for Government customers can deploy the AI Gateway for Duo Agent Platform inside their own single-tenant environment and connect the model provider of their choice, including Amazon Bedrock. Inference stays in their chosen region, under the same SLA, encryption, and change-control model an agency already uses for their workflows. Get started with GitLab Duo Agent Platform Claude Code and GitLab Duo Agent Platform aren't a trade-off. They're built to work in tandem. The developers who use Claude Code well should keep using it, the same way, without a new tool getting in the way of how they work. What GitLab Duo Agent Platform adds is a governed merge request gate every change passes through before it ships, regardless of which model or tool wrote it. Your agency shouldn't have to choose between speed and control. See how GitLab Duo Agent Platform delivers both. Try Duo Agent Platform today. Read more Claude Code and GitLab: Three workflows that ship Secure every commit to production with Claude and GitLab GitLab Duo Agent Platform with Claude accelerates development",
+      "evidenceLink": "",
+      "score": 106.13349406746032,
+      "core": "Government agencies are feeling twin pressures: While the U.S. Office of Management and Budget (OMB) is urging you to deploy AI faster, the U.S. Government Accountability Office (GAO) wants guardrails in place before that happens. To accelerate AI coding, many agencies are turning to AI coding assistants like Anthropic's Claude Code. But what about guardrails? GitLab Duo Agent Platform can govern your entire softwar…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-30T16:07:51.899Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Empower your agents with the Google Cloud CLI remote MCP server",
+      "link": "https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-cli-remote-mcp-server-in-preview",
+      "publishedAt": "2026-09-30T16:00:00.000Z",
+      "author": "Prosper Nwankpa Senior Engineering Manager, Google Cloud",
+      "summary": "Today, we’re expanding our ecosystem of managed remote MCP servers by introducing the Google Cloud CLI remote MCP server in preview. Powered by the popular gcloud and bq (BigQuery) command-line tools, this new server gives AI agents immediate, broad access to command-line operations for managing Google Cloud infrastructure and working with advanced BigQuery workflows securely and seamlessly. Why CLI matters for AI agents Agents are increasingly performing complex cloud operations, but standardizing how they interact with backend systems remains a challenge. The Google Cloud CLI remote MCP server bridges this gap by packaging the versatility of hundreds of gcloud and bq commands into one single MCP server. This results in two strong benefits for the agent: Higher-level abstractions: CLI commands package complex multi-step workflows, validation checks, and high-level operations into unified commands rather than requiring multi-step API orchestration. Leverages model training: LLMs are heavily pre-trained on public command-line documentation, syntaxes, and usage examples, making CLI invocation intuitive and highly accurate for models. The benefits of putting CLI behind remote MCP Managing cloud infrastructure with AI agents traditionally requires installing and maintaining Google Cloud CLI binaries inside agent execution environments. The Cloud CLI remote MCP server bridges CLI capabilities with MCP benefits by providing an isolated execution sandbox on Google Cloud infrastructure. This solves key infrastructure challenges: Simplified dependency and runtime management: For teams building custom agents, maintaining local CLI versions and dependencies across dev, test, and production environments creates operational overhead. Remote MCP eliminates local installations and runtime maintenance. Access for web-based agent endpoints: Web-hosted agent platforms and web interfaces (such as Gemini Enterprise and other hosted enterprise agent platforms) run in environments where users cannot control or install local packages. Remote MCP enables secure, managed access to Google Cloud CLI operations directly from these surfaces. Enterprise-grade security and governance Connecting an AI agent to your infrastructure requires strict, enterprise-ready safeguards. This remote server leverages Google Cloud's standard identity and governance frameworks to keep your environments secure: Zero ambient credentials: The server isolates execution in a network-restricted proxy boundary with no ambient credentials. Authentication and authorization are handled through Agent Identity , OAuth 2.0 , and Identity and Access Management (IAM) . Strict policy enforcement: Every command executed through the remote MCP server is run with the permissions of the authenticated caller identity. Both standard IAM permissions and organization policy service constraints are strictly enforced against downstream target resources. Advanced protection with Model Armor: To minimize the risks associated with AI tool calling, the Cloud CLI remote MCP server integrates with Model Armor . You can proactively screen LLM prompts and responses to protect against risks like prompt injection and malicious inputs. Cloud audit logging: The Cloud CLI remote MCP server can be configured to log every tool invocation to Audit Logs (Data Access logs under cloudcli.googleapis.com/mcp). Security teams can gain full visibility into caller identities, OAuth clients, and IAM authorization decisions (mcp.googleapis.com/tools.call) without exposing sensitive command payloads or personally identifiable information (PII). Connecting to the Google Cloud CLI Remote MCP Server Integrating cloud management into your agents no longer requires packaging Google Cloud CLI binaries, managing local execution runtimes, or maintaining dependencies inside agent container images. Because the Google Cloud CLI remote MCP server implements the standard Model Context Protocol, any MCP-compatible agent platform or orchestration runtime can connect immediately via standard configuration: code_block )])]> Your agent immediately gains access to execute gcloud and bq commands in a secure, network-isolated cloud sandbox. Authentication is handled via keyless Agent Identity for hosted Google Cloud platforms, or standard OAuth 2.0 for external runtimes. For authentication options, see the MCP Authentication Guide . Bringing infrastructure management to agents The Cloud CLI remote MCP server exposes two powerful tools, run_gcloud_command and run_bq_command , giving your AI agents broad, immediate access to Google Cloud operations through natural language. Managing cloud infrastructure with run_gcloud_command With run_gcloud_command , agents can execute the full breadth of gcloud operations to manage, diagnose, and secure your Google Cloud environment. An example follows: Observability and incident diagnostics : An agent streamlines incident diagnostics by automating command execution and reducing context-switching across tools. Extending BigQuery operations with the run_bq_command tool While the BigQuery MCP server already helps organizations analyze and explore data using AI agents, with the introduction of run_bq_command , agents can now tackle advanced BigQuery tasks such as resource allocation, job monitoring, and task scheduling by unlocking the full scope of bq CLI functionality. Key capabilities include: Automating scheduled queries : An agent utilizes BigQuery Data Transfer Service configurations to schedule queries automatically. Job and resource management : Gain deep insight into query execution details, including processed data volume, slot usage, and execution plans, as well as managing reservations. Access and permissions control: Data administrators and owners can inspect and update table permissions directly through the agent. Pricing and availability The Google Cloud CLI MCP server is available today in public preview. There is no additional charge to use the MCP server itself. You pay only for the GCP resources you create and any applicable data transfer costs. To get started , enable the Cloud CLI Execution API (` cloudcli.googleapis.com `) in your Google Cloud project, grant the required MCP Tool User (` roles/mcp.toolUser `) IAM role to your agent or user identity, and configure your MCP client to connect to `cloudcli.googleapis.com/mcp`. Use the Google Cloud CLI Remote MCP Server Guide Google Cloud CLI MCP Reference Google Cloud Remote MCP Servers Overview Full List of Google OneMCP Servers Set up authentication to Google and Google Cloud MCP servers Gemini Enterprise Agent Platform &amp; Agent Identity Overview Automate Google Cloud with Cloud CLI Remote MCP Server",
+      "evidenceLink": "",
+      "score": 92.99063692460317,
+      "core": "Today, we’re expanding our ecosystem of managed remote MCP servers by introducing the Google Cloud CLI remote MCP server in preview. Powered by the popular gcloud and bq (BigQuery) command-line tools, this new server gives AI agents immediate, broad access to command-line operations for managing Google Cloud infrastructure and working with advanced BigQuery workflows securely and seamlessly. Why CLI matters for AI a…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-30T16:07:51.899Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "What everyone was talking about at WeAreDevelopers World Congress North America",
+      "link": "https://arize.com/blog/wearedevelopers-north-america-ai-agents-2026",
+      "publishedAt": "2026-09-29T23:02:22.000Z",
+      "author": "Laurie Voss",
+      "summary": "After 237 talks across eight stages, code review emerged as the bottleneck for AI-generated code. Here are the production eval, sandbox, context, and agent experience themes that kept showing up. The post What everyone was talking about at WeAreDevelopers World Congress North America appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 75.51805755952381,
+      "core": "After 237 talks across eight stages, code review emerged as the bottleneck for AI-generated code. Here are the production eval, sandbox, context, and agent experience themes that kept showing up. The post What everyone was talking about at WeAreDevelopers World Congress North America appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-30T16:07:51.899Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "GPT-6.1 Sol now available on AI Gateway",
+      "link": "https://vercel.com/changelog/gpt-6-1-sol-now-available-on-ai-gateway",
+      "publishedAt": "2026-09-29T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "GPT-6.1 Sol from OpenAI is now available on AI Gateway. It improves on GPT-6 Sol for coding, computer use, and professional work, including reading complex documents and carrying out multi-step workflows. The model is suited to agents that need to debug code, work through business tasks, or extract answers from PDFs with tables and charts. It also improves factual accuracy on difficult questions. Its standard input and output pricing is lower than GPT-6 Astra's, while cheaper cached input makes it useful for requests that reuse a long shared context. Use openai/gpt-6.1-sol as the model name with the AI SDK , OpenAI-compatible Chat Completions API , or Responses API . You can also select it in coding agents connected to AI Gateway: To use the model in coding agents like Codex, Cursor, and more, install the latest Vercel CLI and run setup: Then select openai/gpt-6.1-sol in the agent. See the coding agents guide for details. Try GPT-6.1 Sol in the playground and learn more about the GPT-6 model family . Read more",
+      "evidenceLink": "",
+      "score": 66.82793851190476,
+      "core": "GPT-6.1 Sol from OpenAI is now available on AI Gateway. It improves on GPT-6 Sol for coding, computer use, and professional work, including reading complex documents and carrying out multi-step workflows. The model is suited to agents that need to debug code, work through business tasks, or extract answers from PDFs with tables and charts. It also improves factual accuracy on difficult questions. Its standard input …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-30T16:07:51.899Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Detect and send production issues straight to your agent",
+      "link": "https://blog.cloudflare.com/real-time-issue-detection",
+      "publishedAt": "2026-09-30T13:00:00.000Z",
+      "author": "Thomas Ankcorn",
+      "summary": "You can now use built-in error monitoring in Cloudflare Workers to group production failures and send stack traces, logs, traces, and application context directly to a coding agent to investigate further and open a pull request.",
+      "evidenceLink": "",
+      "score": 64.04301787698412,
+      "core": "You can now use built-in error monitoring in Cloudflare Workers to group production failures and send stack traces, logs, traces, and application context directly to a coding agent to investigate further and open a pull request.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-30T16:07:51.899Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "fiddler_ai_evaluation",
+      "source": "Fiddler AI Blog",
+      "title": "Testing Jev for Coding Agent Evals: Comparing Speed, Cost, and Rationale",
+      "link": "https://www.fiddler.ai/blog/testing-jev-for-coding-agent-evals",
+      "publishedAt": "2026-09-28T00:00:00.000Z",
+      "author": "",
+      "summary": "Compare Jev with Gemini 3.5 Flash-Lite and GPT-5.4 nano on 31 coding-agent commands: comparing risk ratings, response times, costs, rationale, and rating stability.",
+      "evidenceLink": "",
+      "score": 62.330319464285715,
+      "core": "Compare Jev with Gemini 3.5 Flash-Lite and GPT-5.4 nano on 31 coding-agent commands: comparing risk ratings, response times, costs, rationale, and rating stability.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-30T16:07:51.899Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "Building production-ready AI agents with Atlas Agent Engine and Arize AX",
+      "link": "https://arize.com/blog/using-arize-ax-with-mongodb-atlas-agent-engine",
+      "publishedAt": "2026-09-30T15:00:55.000Z",
+      "author": "Richard Young",
+      "summary": "Agents built and deployed on MongoDB’s Atlas Agent Engine can export OpenTelemetry traces to Arize AX, where teams can inspect each run, evaluate both the outcome and execution path, and test fixes before redeploying. The post Building production-ready AI agents with Atlas Agent Engine and Arize AX appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 60.742521845238095,
+      "core": "Agents built and deployed on MongoDB’s Atlas Agent Engine can export OpenTelemetry traces to Arize AX, where teams can inspect each run, evaluate both the outcome and execution path, and test fixes before redeploying. The post Building production-ready AI agents with Atlas Agent Engine and Arize AX appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-30T16:07:51.899Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "red_hat_ai_engineering",
+      "source": "Red Hat Developer · AI",
+      "title": "Backdoors in LLMs: Why model scanning isn't enough",
+      "link": "https://developers.redhat.com/articles/2026/09/30/backdoors-in-llms-why-model-scanning-isn-t-enough",
+      "publishedAt": "2026-09-30T13:01:37.000Z",
+      "author": "Uri Shaket",
+      "summary": "You pull a model from Hugging Face. Maybe you merge in a LoRA. You run benchmarks, spot-check a few completions, and ship it. That workflow assumes the model you tested is the one you'll get in production. The post Backdoors in LLMs: Why model scanning isn't enough appeared first on Red Hat Developer .",
+      "evidenceLink": "",
+      "score": 60.461609146825396,
+      "core": "You pull a model from Hugging Face. Maybe you merge in a LoRA. You run benchmarks, spot-check a few completions, and ship it. That workflow assumes the model you tested is the one you'll get in production. The post Backdoors in LLMs: Why model scanning isn't enough appeared first on Red Hat Developer .",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-30T16:07:51.899Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "AI Native by Design: Lessons Learned from Building NVIDIA TensorRT Model Connect",
+      "link": "https://developer.nvidia.com/blog/ai-native-by-design-lessons-learned-from-building-nvidia-tensorrt-model-connect",
+      "publishedAt": "2026-09-29T19:10:51.000Z",
+      "author": "Tanya Lenz",
+      "summary": "Parallel work, model-family isolation, reversible changes, and GPU-backed validation shaped an open source project designed around coding agents NVIDIA TensorRT...",
+      "evidenceLink": "",
+      "score": 60.4091091468254,
+      "core": "Parallel work, model-family isolation, reversible changes, and GPU-backed validation shaped an open source project designed around coding agents NVIDIA TensorRT...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-30T16:07:51.899Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Lower the Cost of Building and Running Visual AI Agents with NVIDIA VSS Blueprint 3.3",
+      "link": "https://developer.nvidia.com/blog/lower-the-cost-of-building-and-running-visual-ai-agents-with-nvidia-vss-blueprint-3-3",
+      "publishedAt": "2026-09-29T18:35:09.000Z",
+      "author": "Elizabeth Goodman",
+      "summary": "Vision-language models have made it possible to build visual AI agents that understand video at production scale. The harder problem is turning that capability...",
+      "evidenceLink": "",
+      "score": 59.361053591269844,
+      "core": "Vision-language models have made it possible to build visual AI agents that understand video at production scale. The harder problem is turning that capability...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-30T16:07:51.899Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "Jev: 8 real use cases for the fastest, cheapest model I’ve ever used | John Lindquist",
+      "link": "https://www.lennysnewsletter.com/p/jev-8-real-use-cases-for-the-fastest",
+      "publishedAt": "2026-09-30T12:04:27.000Z",
+      "author": "Claire Vo",
+      "summary": "Watch now (46 mins) | 🎙️ Educator and developer John Lindquist shares eight Jev demos, from live voice classification and deduplication to agent routing, showing how low costs make once-impractical ideas worth trying",
+      "evidenceLink": "",
+      "score": 58.91577581349206,
+      "core": "Watch now (46 mins) | 🎙️ Educator and developer John Lindquist shares eight Jev demos, from live voice classification and deduplication to agent routing, showing how low costs make once-impractical ideas worth trying",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-30T16:07:51.899Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Build a multi-agent music production pipeline on Amazon Bedrock AgentCore Runtime Instances",
+      "link": "https://aws.amazon.com/blogs/machine-learning/build-a-multi-agent-music-production-pipeline-on-amazon-bedrock-agentcore-runtime-instances",
+      "publishedAt": "2026-09-30T15:21:57.000Z",
+      "author": "Evandro Franco",
+      "summary": "Amazon Bedrock AgentCore Runtime Instances gives multi-agent workflows AWS managed EC2 infrastructure with GPUs, persistent volumes, and multi-day sessions. In this post, we deploy a three-agent music production pipeline where the agents colocate on one GPU instance, share a filesystem, and hand work to each other to produce a finished track.",
+      "evidenceLink": "",
+      "score": 54.85645041666667,
+      "core": "Amazon Bedrock AgentCore Runtime Instances gives multi-agent workflows AWS managed EC2 infrastructure with GPUs, persistent volumes, and multi-day sessions. In this post, we deploy a three-agent music production pipeline where the agents colocate on one GPU instance, share a filesystem, and hand work to each other to produce a finished track.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-30T16:07:51.899Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "GPT-6.1 Sol in GitHub Copilot",
+      "link": "https://github.blog/changelog/2026-09-29-gpt-6-1-sol-in-github-copilot",
+      "publishedAt": "2026-09-29T17:02:27.000Z",
+      "author": "Allison",
+      "summary": "GPT-6.1 Sol, the latest model from OpenAI, is now generally available and rolling out in GitHub Copilot. You can use it for agentic coding and terminal workflows with strong multistep… The post GPT-6.1 Sol in GitHub Copilot appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 53.78958533730159,
+      "core": "GPT-6.1 Sol, the latest model from OpenAI, is now generally available and rolling out in GitHub Copilot. You can use it for agentic coding and terminal workflows with strong multistep… The post GPT-6.1 Sol in GitHub Copilot appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-30T16:07:51.899Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "AI Agents for Lead Generation: Automate Research, Qualification and Outreach",
+      "link": "https://rerun.build/blog/ai-agents-for-lead-generation",
+      "publishedAt": "2026-09-30T04:12:08.000Z",
+      "author": "",
+      "summary": "Learn how AI agents automate lead research, qualification, contextual outreach, CRM updates, and human escalation across one governed operating loop.",
+      "evidenceLink": "",
+      "score": 48.97571628968254,
+      "core": "Learn how AI agents automate lead research, qualification, contextual outreach, CRM updates, and human escalation across one governed operating loop.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-30T16:07:51.899Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "zapier_ai_automation",
+      "source": "Zapier Blog",
+      "title": "Meta AI Muse Spark: A guide to Meta's AI models",
+      "link": "https://zapier.com/blog/meta-ai-muse-spark",
+      "publishedAt": "2026-09-29T04:00:00.000Z",
+      "author": "Harry Guinness",
+      "summary": "Meta has shifted to a new flagship AI model called Muse Spark and sent the Llama \"herd\" of models to the farm upstate. It's a dramatic but understandable shift in AI strategy from the company that was once pioneering open models.&#xA0; Muse Spark is a multimodal reasoning model, and unlike the Llama models, it's a closed-weight proprietary model. You won't be able to download it from Hugging Face or run it on your own machine for any reason. There are several other AI products also under the Muse ban",
+      "evidenceLink": "",
+      "score": 48.22476390873016,
+      "core": "Meta has shifted to a new flagship AI model called Muse Spark and sent the Llama \"herd\" of models to the farm upstate. It's a dramatic but understandable shift in AI strategy from the company that was once pioneering open models.&#xA0; Muse Spark is a multimodal reasoning model, and unlike the Llama models, it's a closed-weight proprietary model. You won't be able to download it from Hugging Face or run it on your o…",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-30T16:07:51.899Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "What do you want from AI?",
+      "link": "https://www.anthropic.com/research/your-thoughts-on-ai",
+      "publishedAt": "2026-09-29T16:39:00.000Z",
+      "author": "",
+      "summary": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-30T16:07:51.899Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 48.02277978174604,
+      "core": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "From cloud adoption to cloud maturity: The new imperative for enterprise AI",
+      "link": "https://www.techradar.com/pro/from-cloud-adoption-to-cloud-maturity-the-new-imperative-for-enterprise-ai",
+      "publishedAt": "2026-09-30T08:43:45.000Z",
+      "author": "Charlie Li",
+      "summary": "Cloud adoption isn’t enough. AI success depends on modernization, governance, security and cloud maturity.",
+      "evidenceLink": "",
+      "score": 41.06018057539683,
+      "core": "Cloud adoption isn’t enough. AI success depends on modernization, governance, security and cloud maturity.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-30T16:07:51.899Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "NetApp Novus has AI factory bottlenecks in the crosshairs",
+      "link": "https://www.itpro.com/infrastructure/the-first-zettabyte-scale-file-system-on-the-planet-let-that-sink-in-netapp-novus-has-ai-factory-bottlenecks-in-the-crosshairs",
+      "publishedAt": "2026-09-29T21:30:13.000Z",
+      "author": "Ross Kelly",
+      "summary": "The new zettabyte-scale system aims to overhaul traditional storage architectures",
+      "evidenceLink": "",
+      "score": 28.11946628968254,
+      "core": "The new zettabyte-scale system aims to overhaul traditional storage architectures",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-30T16:07:51.899Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "simon_willison",
+      "source": "Simon Willison",
+      "title": "OpenAI DevDay 2026 live blog",
+      "link": "https://simonwillison.net/2026/Sep/29/openai-devday-2026-live-blog",
+      "publishedAt": "2026-09-29T15:55:13.000Z",
+      "author": "",
+      "summary": "I'm at OpenAI DevDay today, in Fort Mason, San Francisco. Same as last year I'll be live blogging the keynote and some other notes during the day. OpenAI gave me a free ticket and a seat in the \"creator\" area for the keynote. You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
+      "evidenceLink": "",
+      "score": 27.420656765873012,
+      "core": "I'm at OpenAI DevDay today, in Fort Mason, San Francisco. Same as last year I'll be live blogging the keynote and some other notes during the day. OpenAI gave me a free ticket and a seat in the \"creator\" area for the keynote. You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-30T16:07:51.899Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "deepmind",
+      "source": "Google DeepMind",
+      "title": "Introducing SynthID Bio",
+      "link": "https://deepmind.google/blog/introducing-synthid-bio",
+      "publishedAt": "2026-09-30T15:03:07.000Z",
+      "author": "",
+      "summary": "Proof of concept for watermarking AI-generated proteins while preserving biological function.",
+      "evidenceLink": "",
+      "score": 14.439585337301587,
+      "core": "Proof of concept for watermarking AI-generated proteins while preserving biological function.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-09-30T16:07:51.899Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
