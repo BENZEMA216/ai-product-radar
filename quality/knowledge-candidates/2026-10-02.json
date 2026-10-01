@@ -1,0 +1,415 @@
+{
+  "generatedAt": "2026-10-01T16:31:56.210Z",
+  "date": "2026-10-02",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Ling 3.1 Flash is now available on AI Gateway",
+      "link": "https://vercel.com/changelog/ling-3-1-flash-is-now-available-on-ai-gateway",
+      "publishedAt": "2026-09-30T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "Ling 3.1 Flash from InclusionAI is now available on AI Gateway. The model is free to use through October 13, 2026. Ling 3.1 Flash is a hybrid reasoning language model with 560B total parameters and 25B active per token. It has a 262K-token context window on AI Gateway. The model is designed for coding, multi-step analysis, and agents that use tools, including workflows involving long documents, code, and extended task histories. To try Ling 3.1 Flash, use inclusionai/ling-3.1-flash or inclusionai/ling-3.1-flash-free as the model name: The standard model ID is free during the promotion and begins billing when it ends. The -free model ID stops serving instead of billing when the free promotion ends. To use Ling 3.1 Flash in a coding agent, follow the AI Gateway coding agents guide and select inclusionai/ling-3.1-flash as the model. Try Ling 3.1 Flash in the AI Gateway model playground , or explore the model catalog . AI Gateway provides one API for calling models, tracking usage and cost, and configuring routing, retries, and failover. You can use an AI Gateway API key or bring your own provider key . Read more",
+      "evidenceLink": "",
+      "score": 81.36039265873016,
+      "core": "Ling 3.1 Flash from InclusionAI is now available on AI Gateway. The model is free to use through October 13, 2026. Ling 3.1 Flash is a hybrid reasoning language model with 560B total parameters and 25B active per token. It has a 262K-token context window on AI Gateway. The model is designed for coding, multi-step analysis, and agents that use tools, including workflows involving long documents, code, and extended ta…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-01T16:31:56.210Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "FTC is investigating OpenAI, Anthropic and other AI companies over product risks",
+      "link": "https://www.cnbc.com/2026/09/30/ftc-ai-probe-openai-anthropic.html",
+      "publishedAt": "2026-10-01T13:00:55.000Z",
+      "author": "dgellow https://news.ycombinator.com/user?id=dgellow",
+      "summary": "The probe adds to the mounting scrutiny that OpenAI and Anthropic have been facing over their safety practices following the Hugging Face hack.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49921050",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 127,
+        "comments": 75
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-01T16:31:56.210Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 59.84090699311839,
+      "core": "The probe adds to the mounting scrutiny that OpenAI and Anthropic have been facing over their safety practices following the Hugging Face hack.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "How we built long-term memory for Alyx: why we chose a file over a knowledge graph",
+      "link": "https://arize.com/blog/alyx-agent-long-term-memory-architecture",
+      "publishedAt": "2026-10-01T14:02:15.000Z",
+      "author": "Priyan Jindal",
+      "summary": "How we built long-term memory for Alyx: why we chose one 8,000-character file over retrieval and knowledge graphs, and how we tested it. The post How we built long-term memory for Alyx: why we chose a file over a knowledge graph appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 53.24957916666666,
+      "core": "How we built long-term memory for Alyx: why we chose one 8,000-character file over retrieval and knowledge graphs, and how we tested it. The post How we built long-term memory for Alyx: why we chose a file over a knowledge graph appeared first on Arize AI .",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-01T16:31:56.210Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How uniopen customized Amazon Nova to their retail moderation policies for production deployment",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-uniopen-customized-amazon-nova-to-their-retail-moderation-policies-for-production-deployment",
+      "publishedAt": "2026-10-01T15:33:01.000Z",
+      "author": "Felix Chin, Jia-You Lin",
+      "summary": "See how uniopen, a retail platform from Taiwan's Uni-President Enterprises Group, adapted Amazon Nova 2 Lite to its content-moderation policies using supervised fine-tuning in Amazon SageMaker AI and prompt optimization. Business-relevant evaluation and release gates kept quality in check.",
+      "evidenceLink": "",
+      "score": 52.54096805555556,
+      "core": "See how uniopen, a retail platform from Taiwan's Uni-President Enterprises Group, adapted Amazon Nova 2 Lite to its content-moderation policies using supervised fine-tuning in Amazon SageMaker AI and prompt optimization. Business-relevant evaluation and release gates kept quality in check.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-01T16:31:56.210Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "NVIDIA proposes an AI agent kill switch in silicon after a year of sandbox escapes",
+      "link": "https://arize.com/blog/nvidia-ai-agent-kill-switch",
+      "publishedAt": "2026-09-30T18:46:17.000Z",
+      "author": "Jim Bennett",
+      "summary": "This year agents at OpenAI, Anthropic, and Google escaped environments meant to contain them. What decided severity was time-to-detect and time-to-kill, from 12 minutes to seven months. NVIDIA's Open Agent Safety Platform puts a kill switch in hardware the agent can't reach. The post NVIDIA proposes an AI agent kill switch in silicon after a year of sandbox escapes appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 51.645650595238095,
+      "core": "This year agents at OpenAI, Anthropic, and Google escaped environments meant to contain them. What decided severity was time-to-detect and time-to-kill, from 12 minutes to seven months. NVIDIA's Open Agent Safety Platform puts a kill switch in hardware the agent can't reach. The post NVIDIA proposes an AI agent kill switch in silicon after a year of sandbox escapes appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-01T16:31:56.210Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Gemini 4 Argon (High): Intelligence, Performance and Price Analysis",
+      "link": "https://artificialanalysis.ai/models/gemini-4-argon",
+      "publishedAt": "2026-09-30T20:50:28.000Z",
+      "author": "theanonymousone https://news.ycombinator.com/user?id=theanonymousone",
+      "summary": "Analysis of Google&#x27;s Gemini 4 Argon (High) and comparison to other AI models across key metrics including quality, price, performance (tokens per second & time to first token), context window & more.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49914236",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 109,
+        "comments": 60
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-01T16:31:56.210Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 50.504444325971384,
+      "core": "Analysis of Google&#x27;s Gemini 4 Argon (High) and comparison to other AI models across key metrics including quality, price, performance (tokens per second & time to first token), context window & more.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "If an AI agent is attesting your controls, who’s attesting the agent?",
+      "link": "https://www.techradar.com/pro/if-an-ai-agent-is-attesting-your-controls-whos-attesting-the-agent",
+      "publishedAt": "2026-10-01T13:51:03.000Z",
+      "author": "Khushboo Kashyap",
+      "summary": "As AI transforms security, organizations must replace static compliance theatre with continuous, explainable, human-supervised trust.",
+      "evidenceLink": "",
+      "score": 46.547356944444445,
+      "core": "As AI transforms security, organizations must replace static compliance theatre with continuous, explainable, human-supervised trust.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-01T16:31:56.210Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "coder_ai_engineering",
+      "source": "Coder",
+      "title": "How to Give Coder Agents Your Company's Institutional Knowledge",
+      "link": "https://coder.com/blog/institutional-knowledge-coder-agents",
+      "publishedAt": "2026-09-30T22:27:48.000Z",
+      "author": "Matyas Danter",
+      "summary": "Give Coder Agents your company's standards, template routing, and internal knowledge. Read our four-layer guide to Coder Agents, from system prompt to MCP.",
+      "evidenceLink": "",
+      "score": 45.57047202380953,
+      "core": "Give Coder Agents your company's standards, template routing, and internal knowledge. Read our four-layer guide to Coder Agents, from system prompt to MCP.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-01T16:31:56.210Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Ping Identity launches trio of agents on Google Marketplace",
+      "link": "https://www.itpro.com/cloud/cloud-security/ping-identity-launches-trio-of-agents-on-google-marketplace",
+      "publishedAt": "2026-10-01T09:41:03.000Z",
+      "author": "Daniel Todd",
+      "summary": "The agents are designed to enable identity administration capabilities directly within Google Cloud Gemini Enterprise",
+      "evidenceLink": "",
+      "score": 44.160849007936505,
+      "core": "The agents are designed to enable identity administration capabilities directly within Google Cloud Gemini Enterprise",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-01T16:31:56.210Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Prompt engineering by Quick component: Patterns and pitfalls",
+      "link": "https://aws.amazon.com/blogs/machine-learning/prompt-engineering-by-quick-component-patterns-and-pitfalls",
+      "publishedAt": "2026-09-29T16:27:33.000Z",
+      "author": "Daiquan Nkere",
+      "summary": "Part 2 of our Amazon Quick prompt engineering series goes component by component. Learn the prompt patterns that get the best results from Amazon Quick Research, Quick Flows, Quick Sight, chat agents, and action integrations, plus the common pitfalls to avoid.",
+      "evidenceLink": "",
+      "score": 44.01065059523809,
+      "core": "Part 2 of our Amazon Quick prompt engineering series goes component by component. Learn the prompt patterns that get the best results from Amazon Quick Research, Quick Flows, Quick Sight, chat agents, and action integrations, plus the common pitfalls to avoid.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-01T16:31:56.210Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Why AI hardware needs privacy built in from the start",
+      "link": "https://www.techradar.com/pro/why-ai-hardware-needs-privacy-built-in-from-the-start",
+      "publishedAt": "2026-10-01T14:31:43.000Z",
+      "author": "Will Wang",
+      "summary": "Why lasting consumer technology depends on treating privacy as a design constraint, not an afterthought.",
+      "evidenceLink": "",
+      "score": 41.43465853174603,
+      "core": "Why lasting consumer technology depends on treating privacy as a design constraint, not an afterthought.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-01T16:31:56.210Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Cloudflare OS: your company’s agent workspace, managed for you",
+      "link": "https://blog.cloudflare.com/managed-cloudflare-os",
+      "publishedAt": "2026-10-01T13:00:00.000Z",
+      "author": "Phillip Jones",
+      "summary": "Cloudflare OS gives everyone in your organization an agent workspace that knows how your company works and connects to its data and systems. We’re opening the waitlist for fully managed deployments that you’ll be able to launch in a few clicks.",
+      "evidenceLink": "",
+      "score": 41.103249801587296,
+      "core": "Cloudflare OS gives everyone in your organization an agent workspace that knows how your company works and connects to its data and systems. We’re opening the waitlist for fully managed deployments that you’ll be able to launch in a few clicks.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-01T16:31:56.210Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Introducing Clef: our open-source decision models, and new RL fine-tuning platform",
+      "link": "https://blog.cloudflare.com/clef-decision-models",
+      "publishedAt": "2026-10-01T15:34:02.000Z",
+      "author": "Michelle Chen",
+      "summary": "We are introducing Clef and Clef-flash, open-source decision models hosted on Workers AI for high-speed classification and agentic workflows. Also launching: a new reinforcement learning platform that allows developers to fine-tune decision models using their own data.",
+      "evidenceLink": "",
+      "score": 40.425511706349205,
+      "core": "We are introducing Clef and Clef-flash, open-source decision models hosted on Workers AI for high-speed classification and agentic workflows. Also launching: a new reinforcement learning platform that allows developers to fine-tune decision models using their own data.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-01T16:31:56.210Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "red_hat_ai_engineering",
+      "source": "Red Hat Developer · AI",
+      "title": "How we cut CI failure triage from hours to minutes using AI",
+      "link": "https://developers.redhat.com/articles/2026/09/29/how-we-cut-ci-failure-triage-from-hours-to-minutes-using-ai",
+      "publishedAt": "2026-09-29T13:01:43.000Z",
+      "author": "Vikash Shaw, Andre Lustosa",
+      "summary": "80 failed jobs, each with a trace log reaching 50,000 lines. That was a typical Monday morning for our platform team after a nightly build across multiple GPU and CPU architectures, where a single missing dependency could paint the entire dashboard red. The post How we cut CI failure triage from hours to minutes using AI appeared first on Red Hat Developer .",
+      "evidenceLink": "",
+      "score": 40.32116646825396,
+      "core": "80 failed jobs, each with a trace log reaching 50,000 lines. That was a typical Monday morning for our platform team after a nightly build across multiple GPU and CPU architectures, where a single missing dependency could paint the entire dashboard red. The post How we cut CI failure triage from hours to minutes using AI appeared first on Red Hat Developer .",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-01T16:31:56.210Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "fiddler_ai_evaluation",
+      "source": "Fiddler AI Blog",
+      "title": "AI Governance in Healthcare for Agentic Systems",
+      "link": "https://www.fiddler.ai/blog/ai-governance-in-healthcare",
+      "publishedAt": "2026-09-29T00:00:00.000Z",
+      "author": "",
+      "summary": "AI governance in healthcare for agents: build a registry, enforce PHI limits and AI Guardrails, set human gates, and keep audit-ready monitoring.",
+      "evidenceLink": "",
+      "score": 38.196106944444445,
+      "core": "AI governance in healthcare for agents: build a registry, enforce PHI limits and AI Guardrails, set human gates, and keep audit-ready monitoring.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-01T16:31:56.210Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Can we predict the jobs robots will do?",
+      "link": "https://www.anthropic.com/research/what-work-can-robots-do",
+      "publishedAt": "2026-09-30T16:01:00.000Z",
+      "author": "",
+      "summary": "What work can robots do? Anthropic&#x27;s robot exposure index finds robots can do 3/4 of US physical job tasks, but are cost-competitive for only 0.3%.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-01T16:31:56.210Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 38.09332916666666,
+      "core": "What work can robots do? Anthropic&#x27;s robot exposure index finds robots can do 3/4 of US physical job tasks, but are cost-competitive for only 0.3%.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "zapier_ai_automation",
+      "source": "Zapier Blog",
+      "title": "What is AI orchestration? A guide to intelligent systems",
+      "link": "https://zapier.com/blog/ai-orchestration",
+      "publishedAt": "2026-09-30T04:00:00.000Z",
+      "author": "Allisa Boulette",
+      "summary": "My house has a graveyard. It's not in the backyard&#x2014;it's a drawer in the entertainment center, and it's filled with remote controls. There's one for the sound bar, one for a Blu-ray player (RIP), two for gaming systems I don't use, and one that might control a ceiling fan in someone else's house for all I know. Each was once a technological marvel, but now they're an assemblage of expensive, plastic failures, incapable of performing the one task I need: turning on the dang TV. This drawer of lies",
+      "evidenceLink": "",
+      "score": 32.20721805555556,
+      "core": "My house has a graveyard. It's not in the backyard&#x2014;it's a drawer in the entertainment center, and it's filled with remote controls. There's one for the sound bar, one for a Blu-ray player (RIP), two for gaming systems I don't use, and one that might control a ceiling fan in someone else's house for all I know. Each was once a technological marvel, but now they're an assemblage of expensive, plastic failures, …",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-01T16:31:56.210Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pragmatic_engineer",
+      "source": "The Pragmatic Engineer",
+      "title": "Distributed databases with Peter Mattis",
+      "link": "https://newsletter.pragmaticengineer.com/p/distributed-databases-with-peter",
+      "publishedAt": "2026-09-30T16:30:05.000Z",
+      "author": "Gergely Orosz",
+      "summary": "Cockroach Labs co-founder Peter Mattis discusses building reliable distributed systems and how AI helps him write more code without sacrificing quality.",
+      "evidenceLink": "",
+      "score": 31.127952182539683,
+      "core": "Cockroach Labs co-founder Peter Mattis discusses building reliable distributed systems and how AI helps him write more code without sacrificing quality.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-01T16:31:56.210Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "HydraFusion in VS Code and the GitHub Copilot app",
+      "link": "https://github.blog/changelog/2026-09-30-hydrafusion-in-vs-code-and-the-github-copilot-app",
+      "publishedAt": "2026-09-30T14:31:19.000Z",
+      "author": "Allison",
+      "summary": "The HydraFusion research preview is now available in Visual Studio Code and the GitHub Copilot app, expanding beyond Copilot CLI. HydraFusion appears in the model picker, but rather than being… The post HydraFusion in VS Code and the GitHub Copilot app appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 30.74211884920635,
+      "core": "The HydraFusion research preview is now available in Visual Studio Code and the GitHub Copilot app, expanding beyond Copilot CLI. HydraFusion appears in the model picker, but rather than being… The post HydraFusion in VS Code and the GitHub Copilot app appeared first on The GitHub Blog .",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-01T16:31:56.210Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "salesforce_engineering",
+      "source": "Salesforce Engineering",
+      "title": "How Deterministic Controls Turn AI Output Into Reliable Prompt Templates",
+      "link": "https://engineering.salesforce.com/how-deterministic-controls-turn-ai-output-into-reliable-prompt-templates",
+      "publishedAt": "2026-09-30T13:38:41.000Z",
+      "author": "Scott Nyberg",
+      "summary": "By Vaibhav Raizada, Kumar Kasimala, and Ashish Gite. In our Engineering Energizers Q&A series, we highlight the engineering minds driving innovation across Salesforce. Today, we spotlight Vaibhav Raizada, a senior software engineer at Salesforce, whose team faced a high-stakes AI engineering contradiction while building Assistive Authoring for Salesforce Prompt Builder: transforming open-ended instructions into complete, […] The post How Deterministic Controls Turn AI Output Into Reliable Prompt Templates appeared first on Salesforce Engineering Blog .",
+      "evidenceLink": "",
+      "score": 30.17946011904762,
+      "core": "By Vaibhav Raizada, Kumar Kasimala, and Ashish Gite. In our Engineering Energizers Q&A series, we highlight the engineering minds driving innovation across Salesforce. Today, we spotlight Vaibhav Raizada, a senior software engineer at Salesforce, whose team faced a high-stakes AI engineering contradiction while building Assistive Authoring for Salesforce Prompt Builder: transforming open-ended instructions into comp…",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-01T16:31:56.210Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

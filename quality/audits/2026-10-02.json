@@ -1,0 +1,293 @@
+{
+  "date": "2026-10-02",
+  "generatedAt": "2026-10-01T16:05:42.210Z",
+  "reportPath": "reports/2026-10-02-0005-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 74,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 40,
+      "keptCount": 21,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-09-30；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 40 条，AI 相关候选 21 条；实际 fallback：hunted_space。；历史去重移除 1 条已报道或已处理日榜 Product Hunt 信号，最终发布 20 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 3,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 25,
+      "keptCount": 19,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:node, Model:node；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 12,
+      "keptCount": 12,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "m’kay",
+      "productKey": "https://www.producthunt.com/products/m-kay",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把多个编码 agent 统一到手机语音入口，值得验证移动端接管长任务时，用户能否看清状态并安全下指令。"
+    },
+    {
+      "rank": 2,
+      "product": "GitBot",
+      "productKey": "https://www.producthunt.com/products/gitbot-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "GitBot 不要求团队更换现有编码 agent，而是在其上搭 bot；关键看复用原工具能否真正降低集成与迁移成本。"
+    },
+    {
+      "rank": 3,
+      "product": "CrawlRaven MCP",
+      "productKey": "https://www.producthunt.com/products/crawlraven-mcp",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用 MCP 把 SEO 执行直接交给 AI agent，产品判断点是能否把抓取、分析到改动变成可追踪的闭环。"
+    },
+    {
+      "rank": 4,
+      "product": "RxFilmStudio",
+      "productKey": "https://www.producthunt.com/products/rxfilmstudio",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把产品视频的创作与编辑合并为 agent 任务，值得看输入产品素材后能否稳定产出可发布版本，而非只生成片段。"
+    },
+    {
+      "rank": 5,
+      "product": "Campfire",
+      "productKey": "https://www.producthunt.com/products/campfire-12",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Campfire 将人和编码 agent 放进同一工作区，最值得验证的是上下文、权限与任务归属能否被团队共同理解。"
+    },
+    {
+      "rank": 6,
+      "product": "Ciao – Control coding agents from your phone",
+      "productKey": "https://apps.apple.com/us/app/ciaooo-claude-code-codex/id6793695487",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Ciao 把 Claude Code/Codex 的远程控制做成手机 App，关键看离开电脑后的审批、中断和恢复是否足够可靠。"
+    },
+    {
+      "rank": 7,
+      "product": "Evlat",
+      "productKey": "https://www.producthunt.com/products/evlat",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Evlat 解决多 agent 并行时“哪个正在等人”的监控问题，值得看这类等待队列能否显著减少开发者切换成本。"
+    },
+    {
+      "rank": 8,
+      "product": "Flocker Agent Profiles",
+      "productKey": "https://www.producthunt.com/products/flocker-agent-profiles",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用档案页呈现 agent 的能力与活动，本质是给 agent 协作网络做可发现层；需看身份、信誉和能力是否可验证。"
+    },
+    {
+      "rank": 9,
+      "product": "Automat",
+      "productKey": "https://www.ycombinator.com/launches/uyu-ace-from-automat-it-s-instinct-but-for-work",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Ace 同时拥有电脑、电话、收件箱和账号，并以交付结果而非汇报状态为卖点；这是“数字员工”能否被验收的具体实验。"
+    },
+    {
+      "rank": 10,
+      "product": "Jamb AI - Voice Agents for Group Calls",
+      "productKey": "https://twitter.com/sharat_sc/status/2100638882341486961",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Jamb 让语音 agent 直接进入群组通话，产品风险不是转写，而是多人场景中何时发言、代表谁和如何避免干扰。"
+    },
+    {
+      "rank": 11,
+      "product": "Rinkata",
+      "productKey": "https://www.producthunt.com/products/rinkata",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Rinkata 试图让人类团队与 AI agent 共用同一事实库，值得看更新责任、冲突处理和 agent 读权限是否设计清楚。"
+    },
+    {
+      "rank": 12,
+      "product": "getcta.store",
+      "productKey": "https://www.producthunt.com/products/getcta-store",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 AI 提词器藏在 MacBook 刘海下方，是对演示时视线与屏幕空间的微交互优化；需看内容提示能否真正跟上讲述节奏。"
+    },
+    {
+      "rank": 13,
+      "product": "Overpath",
+      "productKey": "https://www.producthunt.com/products/overpath-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Overpath 将 AI 队友限定在收入执行，比泛助手更容易验收；应关注它是否对线索、跟进与结果归因建立了连续流程。"
+    },
+    {
+      "rank": 14,
+      "product": "Miniagent – Free coding agent, no installation required",
+      "productKey": "https://miniagent.sh",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Miniagent 用免安装和免费降低编码 agent 首次体验门槛，值得验证这种轻入口能否承载真实仓库、权限和持久任务。"
+    },
+    {
+      "rank": 15,
+      "product": "Kyno – Direction as a first-class primitive for AI agents",
+      "productKey": "https://cizambra.github.io/kyno",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Kyno 把“方向”提升为 agent 的一等原语，值得看它能否比单次 prompt 更好地保持长任务目标并允许人途中校准。"
+    },
+    {
+      "rank": 16,
+      "product": "BananaSplit CLI – manage personal and group expenses with AI agents",
+      "productKey": "https://bananasplit.net/en/agents",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "BananaSplit 让 agent 通过 CLI 管理个人与群组支出，重点不是自然语言记账，而是共同账务的确认、追溯和错误撤回。"
+    },
+    {
+      "rank": 17,
+      "product": "Overboard – Mac agent orchestrator with ship captains that spawn agents",
+      "productKey": "https://web-production-4f6f5.up.railway.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Overboard 用“船长生成船员”组织 Mac 上的多 agent，值得看这层角色抽象是否真能简化分工、失败处理与成本控制。"
+    },
+    {
+      "rank": 18,
+      "product": "Zumbo",
+      "productKey": "https://www.producthunt.com/products/zumbo",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Zumbo 以开源、本地 STT 和 Mac 为组合卖点，对产品经理的启发是：语音输入的信任可能来自数据不出设备，而非模型更大。"
+    },
+    {
+      "rank": 19,
+      "product": "Macaly Cloud",
+      "productKey": "https://www.producthunt.com/products/macaly",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Macaly Cloud 让用户借 Claude 或 ChatGPT 直接搭建并发布网站，关键看“生成”到“上线”之间的域名、预览、回滚和维护是否被补齐。"
+    },
+    {
+      "rank": 20,
+      "product": "I built a directory to set up ChatGPT's always-on agents in one paste",
+      "productKey": "https://dotbotdirectory.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这个目录用一次粘贴降低 ChatGPT 常驻 agent 的配置成本，价值在于能否把配置变成可理解、可信任、可更新的分发单元。"
+    }
+  ]
+}
