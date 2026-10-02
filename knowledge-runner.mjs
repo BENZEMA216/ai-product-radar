@@ -598,9 +598,12 @@ export function sitemapPagePublishedAt(html, fallback = "") {
   return metaPublishedAt || jsonLdPublishedAt || fallback;
 }
 
-function sitemapPathAllowed(link, source) {
+export function sitemapPathAllowed(link, source) {
   try {
     const path = new URL(link).pathname;
+    if (/\/(?:blog\/)?(?:category|categories|tag|tags|author|authors)(?:\/|$)/i.test(path)) return false;
+    const homePath = source.home ? new URL(source.home).pathname.replace(/\/+$/, "") : "";
+    if (homePath && path.replace(/\/+$/, "") === homePath) return false;
     const included = (source.pathPrefixes || []).some((prefix) => path.startsWith(prefix));
     const excluded = (source.excludePaths || []).some((prefix) => path.startsWith(prefix));
     return included && !excluded;

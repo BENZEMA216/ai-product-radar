@@ -401,7 +401,7 @@ function isAihotNonProductSignal(item) {
   const explicitNonProduct = /不是产品发布|不是新的产品动作|政策|舆论|新闻|将至|很快推出|最终希望推出/.test(text);
   const explicitObservation = /研究|论文|基准|评测|建议定期|建议开发者|实测|作者用|转发|警告|承认|事故|灌水|失控|集群|模拟科学会议|手术|临床应用|实用提示词|转发.{0,30}提示词|今日风格|有望.{0,24}(?:占|达到).{0,24}%|派对|心跳程序|测试自身|事件报告机制|模型疲劳|类比解读|奇观类比|预警并协助|捣毁|抓捕|rogue|swarm/i.test(text);
   const hardObservation =
-    /承认|事故|灌水|失控|事件报告机制|模型疲劳|类比解读|奇观类比|预警并协助|捣毁|抓捕|rogue|swarm|小型聚会|(?:办|举办).{0,20}聚会|将.{0,20}探讨|分享.{0,32}(?:格局|前景|看法|观点|心得)|日常.{0,20}混用|感叹|粗略测算|往事回顾|个人演示|代码尚未.{0,16}(?:上传|公开|开源)|长文.{0,24}(?:提出|认为|断言)|(?:模型|ai).{0,16}(?:更安全|瓶颈在算力|不会赚钱|封禁)|将安全作为发布前提|易用性设计|功能出自我的构想|训练营|千禧年难题|(?:用|使用).{0,40}(?:做出|开发出).{0,30}游戏/i.test(
+    /承认|事故|灌水|失控|事件报告机制|模型疲劳|类比解读|奇观类比|预警并协助|捣毁|抓捕|rogue|swarm|小型聚会|(?:办|举办).{0,20}聚会|将.{0,20}探讨|分享.{0,32}(?:格局|前景|看法|观点|心得)|日常.{0,20}混用|感叹|粗略测算|往事回顾|个人演示|代码尚未.{0,16}(?:上传|公开|开源)|长文.{0,24}(?:提出|认为|断言)|(?:模型|ai).{0,16}(?:更安全|瓶颈在算力|不会赚钱|封禁)|将安全作为发布前提|易用性设计|功能出自我的构想|训练营|千禧年难题|(?:用|使用).{0,40}(?:做出|开发出).{0,30}游戏|晋升(?:路径|标准)|(?:峰会|summit).{0,32}(?:回归|合作伙伴|举办)|(?:因|由于).{0,24}(?:成本|内存).{0,24}(?:涨价|价格上调)|(?:涨价|价格上调).{0,36}(?:成本|供应链)|(?:cto|ceo).{0,20}(?:谈|访谈)|接受.{0,24}采访|(?:即将|将于).{0,24}(?:登陆|上线)/i.test(
       text
     ) || /谈.{0,24}(?:ai\s*)?(?:竞赛|暂停)/i.test(text);
   const nonProductObservation =
@@ -1351,7 +1351,7 @@ export function parseYcLaunchesPayload(payload, start, end) {
 
 export function productHuntEvidenceDateKey(item) {
   if (!isProductHuntCandidate(item)) return "";
-  const evidenceMatch = String(item?.evidence || "").match(/\bProduct Hunt(?: API)?\s+(\d{4}-\d{2}-\d{2})\b/i);
+  const evidenceMatch = String(item?.evidence || "").match(/\bProduct Hunt(?: API| fallback)?\s+(\d{4}-\d{2}-\d{2})\b/i);
   if (evidenceMatch) return evidenceMatch[1];
   const observedMatch = String(item?.observedAt || "").match(/^(\d{4}-\d{2}-\d{2})\b/);
   return observedMatch?.[1] || "";
@@ -1466,7 +1466,7 @@ function applyHistoryFilterToResult(result, reportDir = REPORT_DIR) {
 
 function isProductHuntCandidate(item) {
   const source = clean(item?.source).toLowerCase();
-  return source === "producthunt" || source === "product hunt";
+  return source === "producthunt" || source === "product hunt" || source === "product hunt fallback";
 }
 
 export function annotateProductHuntReportFilterHealth(sourceHealth, beforeCandidates = [], afterCandidates = []) {

@@ -1,0 +1,293 @@
+{
+  "date": "2026-10-03",
+  "generatedAt": "2026-10-02T16:14:06.693Z",
+  "reportPath": "reports/2026-10-03-0014-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 59,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 39,
+      "keptCount": 16,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-01；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 39 条，AI 相关候选 16 条；实际 fallback：hunted_space。；历史去重移除 1 条已报道或已处理日榜 Product Hunt 信号，最终发布 15 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 3,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 14,
+      "keptCount": 6,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 10,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:node, Model:node；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 15,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Firetower",
+      "productKey": "https://www.producthunt.com/products/firetower",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 coding agent 部署到自有服务器又保留远程调用，核心看点是团队能否在控制基础设施的同时降低多环境运维成本。"
+    },
+    {
+      "rank": 2,
+      "product": "Monospace from Directus",
+      "productKey": "https://www.producthunt.com/products/directus",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把应用、人和 agent 共用的 API 放进治理层，值得看权限、审计和接口变更能否被统一管理。"
+    },
+    {
+      "rank": 3,
+      "product": "Yokka – Simple project management for coding agents",
+      "productKey": "https://yokka.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "专为 coding agent 做项目管理，关键不是再造看板，而是能否清楚呈现代理进度、阻塞与人工接管点。"
+    },
+    {
+      "rank": 4,
+      "product": "Spens sandboxed, observable coding agents",
+      "productKey": "https://spens.refwd.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 coding agent 的沙箱与可观测性同时产品化，适合评估安全隔离、运行追踪和故障复盘能否成为默认能力。"
+    },
+    {
+      "rank": 5,
+      "product": "Polylane",
+      "productKey": "https://www.producthunt.com/products/polylane",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "承诺在无人值守时修复生产问题，产品价值取决于它如何界定可自动处理的故障、审批边界和回滚路径。"
+    },
+    {
+      "rank": 6,
+      "product": "Dots by OpenAI",
+      "productKey": "https://www.producthunt.com/products/dots-by-openai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“始终在线、处理一切”的定位很宽，最值得核对的是它先落在哪类持续任务，以及如何让用户理解代理正在做什么。"
+    },
+    {
+      "rank": 7,
+      "product": "OpenCompanion",
+      "productKey": "https://www.producthunt.com/products/opencompanion",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把多个 AI coding CLI 的启动、观察与回复收进桌面端，直接瞄准多代理并行时的状态切换和通知碎片化。"
+    },
+    {
+      "rank": 8,
+      "product": "Omnia Agent",
+      "productKey": "https://www.producthunt.com/products/omnia-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 GEO 工作宣称为 95% 可由 agent 完成，值得拆解它覆盖了哪些步骤，以及结果如何被人工验证和交付。"
+    },
+    {
+      "rank": 9,
+      "product": "Vitra.ai",
+      "productKey": "https://www.producthunt.com/products/vitra-ai-agentic-content-platform",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "将内容生产与本地化放进同一套 agent 平台，重点看品牌一致性、语言审核和批量发布是否形成闭环。"
+    },
+    {
+      "rank": 10,
+      "product": "Hotel Lobby AI Video Generator – Two Photos to Rap Duet",
+      "productKey": "https://hotellobbygenerator.net",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“两张照片生成说唱对唱”把输入和结果压得很具体，适合观察这类窄场景视频工具靠分享传播还是能形成复用需求。"
+    },
+    {
+      "rank": 11,
+      "product": "Venta AI",
+      "productKey": "https://www.ycombinator.com/launches/ugi-venta-ai-reengage-turn-your-dead-leads-into-pipeline",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它不是泛化销售助手，而是从 4 万个沉睡线索中判断谁会买、为何此刻购买、该说什么，业务结果与价值主张都很清楚。"
+    },
+    {
+      "rank": 12,
+      "product": "ShareCube",
+      "productKey": "https://www.producthunt.com/products/sharecube",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让团队对 agent 产物的具体行直接反馈，值得看反馈能否沉淀成下一轮修改上下文，而不只是一次评论。"
+    },
+    {
+      "rank": 13,
+      "product": "Yedric.ai",
+      "productKey": "https://www.producthunt.com/products/yedric-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "允许用户用自然语言直接控制 SaaS，真正的产品门槛在权限约束、错误恢复和操作确认，而不只是生成指令。"
+    },
+    {
+      "rank": 14,
+      "product": "Semitexa",
+      "productKey": "https://www.producthunt.com/products/semitexa",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 AI agent 能直接检查 PHP 框架内部状态，值得看这种“为代理可读”设计是否降低调试成本并改善旧技术栈维护。"
+    },
+    {
+      "rank": 15,
+      "product": "JevGPT",
+      "productKey": "https://www.producthunt.com/products/jevgpt",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“模型不会写作”的反常限制是明确差异化，需看这种约束能否转化成稳定用途，而不是只形成首日噱头。"
+    },
+    {
+      "rank": 16,
+      "product": "Breadcrumb, record everything on your mac + context manager for AI",
+      "productKey": "https://innerloop.works/breadcrumb",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "持续记录 Mac 活动再供 AI 调用能减少上下文搬运，但采用关键会落在采集范围、隐私控制和可删除性。"
+    },
+    {
+      "rank": 17,
+      "product": "Vorker",
+      "productKey": "https://www.producthunt.com/products/vorker-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“替小企业经营业务”的范围很大，重点应核对它首先托管哪几个高频流程，以及交付结果是否可验收。"
+    },
+    {
+      "rank": 18,
+      "product": "UTTER IN",
+      "productKey": "https://www.producthunt.com/products/utter-in",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用一次语音输入让助手继续规划，值得看它如何把模糊口述变成可确认的步骤，而不是未经校验地自动执行。"
+    },
+    {
+      "rank": 19,
+      "product": "Stardrift for iOS",
+      "productKey": "https://www.producthunt.com/products/stardrift-for-ios",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "随身旅行助手的价值不在生成行程文案，而在移动场景下能否持续理解变更并给出可执行安排。"
+    },
+    {
+      "rank": 20,
+      "product": "I got sick of sequencers and CRMs, so I built this",
+      "productKey": "https://withember.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "标题来自对销售序列工具和 CRM 的直接不满，产品判断要回到它究竟替代了哪段工作流，以及为何比现有系统更轻。"
+    }
+  ]
+}

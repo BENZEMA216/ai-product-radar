@@ -55,6 +55,7 @@ import {
   normalizeGmailNewsletterItems,
   normalizeHckerNewsItems,
   sitemapPagePublishedAt,
+  sitemapPathAllowed,
   sitemapRecords,
   selectItems
 } from "./knowledge-runner.mjs";
@@ -651,6 +652,7 @@ function testProductHuntHistoryReadsProcessedDailyDates() {
       `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
 |---|---|---|---|---|---|
 | VC Boom | [链接](https://www.producthunt.com/products/vc-boom) | 新产品 | Score your deck | B2B 融资 agent。 | [Product Hunt 2026-06-09](https://www.producthunt.com/leaderboard/daily/2026/6/9/all) |
+| Fallback Launch | [链接](https://www.producthunt.com/products/fallback-launch) | 新产品 | Agent launch | fallback 覆盖。 | [Product Hunt fallback 2026-06-08](https://www.hunted.space/history#post-2026-06-08) |
 | AgentMeter | [链接](https://news.ycombinator.com/item?id=1) | 新产品 | HN 发布帖 | 成本控制台。 | [HN Algolia 2026-06-10T12:00:00Z](https://news.ycombinator.com/item?id=1) |
 `,
       "utf8"
@@ -659,6 +661,8 @@ function testProductHuntHistoryReadsProcessedDailyDates() {
     const history = previousProductHuntHistory(reportDir, join(reportDir, "2026-06-11-0800-cst.md"));
     assert.equal(history.links.has("https://www.producthunt.com/products/vc-boom"), true);
     assert.equal(history.dateKeys.has("2026-06-09"), true);
+    assert.equal(history.links.has("https://www.producthunt.com/products/fallback-launch"), true);
+    assert.equal(history.dateKeys.has("2026-06-08"), true);
 
     const filtered = filterPreviouslyReportedProductHunt(
       [
@@ -3755,6 +3759,26 @@ function testCurrentAihotNonProductSignalsStayDeprioritized() {
     {
       product: "工程师用 Meta Quest 3 联动 3D 打印机",
       did: "软件工程师汉克演示设备联动方案，代码尚未上传 GitHub。"
+    },
+    {
+      product: "AI 正在改写开发者晋升路径，GitHub 给出三条突围建议",
+      did: "文章给出开发者晋升建议，并提到用第二个模型评审 AI 输出。"
+    },
+    {
+      product: "AI Security Summit 第二届回归，Snyk 继续任创始合作伙伴",
+      did: "行业峰会回归，往届合作伙伴继续参与。"
+    },
+    {
+      product: "Nvidia Shield TV Pro 因 AI 拉高内存成本涨价 100 美元",
+      did: "旧电视盒子因内存与供应链成本上升而价格上调。"
+    },
+    {
+      product: "Airbnb CTO 谈 AI 原生化转型",
+      did: "Airbnb CTO 接受播客采访，讨论内部工程效率。"
+    },
+    {
+      product: "Meta 宣布 AI 智能体 Muse 将登陆智能眼镜平台",
+      did: "Meta 表示 Muse 将于近期登陆智能眼镜，尚未上线。"
     }
   ];
   for (const signal of signals) {
@@ -4756,6 +4780,14 @@ function testKnowledgeStrongAiRelevanceRejectsIncidentalMentions() {
   );
 }
 
+function testKnowledgeSitemapRejectsDirectoryPages() {
+  const source = { home: "https://www.baseten.co/blog/", pathPrefixes: ["/blog/"] };
+  assert.equal(sitemapPathAllowed("https://www.baseten.co/blog/category/research", source), false);
+  assert.equal(sitemapPathAllowed("https://www.baseten.co/blog/tag/inference", source), false);
+  assert.equal(sitemapPathAllowed("https://www.baseten.co/blog/", source), false);
+  assert.equal(sitemapPathAllowed("https://www.baseten.co/blog/production-inference-guide", source), true);
+}
+
 function testKnowledgeTopicKeyCollapsesVersionedAnnouncements() {
   assert.equal(
     knowledgeTopicKey({ sourceId: "vercel_ai", title: "Introducing Agent Plugins" }),
@@ -5263,6 +5295,7 @@ const tests = [
   ["Knowledge access rejects HTTP blocking", testKnowledgeAccessRejectsHttpBlocking],
   ["Gmail newsletter normalization fixture", testGmailNewsletterFixture],
   ["Knowledge strong AI relevance rejects incidental mentions", testKnowledgeStrongAiRelevanceRejectsIncidentalMentions],
+  ["Knowledge sitemap rejects directory pages", testKnowledgeSitemapRejectsDirectoryPages],
   ["Knowledge topic key collapses versioned announcements", testKnowledgeTopicKeyCollapsesVersionedAnnouncements],
   ["Knowledge sitemap derives missing lastmod from article metadata", testSitemapCanDeriveMissingLastmodFromArticleMetadata],
   ["Knowledge paper mapping and audit fixture", testKnowledgePaperAndAuditFixture],

@@ -1,0 +1,405 @@
+{
+  "generatedAt": "2026-10-02T16:20:09.844Z",
+  "date": "2026-10-03",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "DeepSeek-Reasonix: How a poisoned config can hijack an AI coding agent",
+      "link": "https://about.gitlab.com/blog/deepseek-reasonix-vulnerability-discovered",
+      "publishedAt": "2026-10-02T00:00:00.000Z",
+      "author": "Abisheik Magesh https://about.gitlab.com/blog/authors/abisheik-magesh/",
+      "summary": "GitLab's Threat Research Group discovered a command execution vulnerability ( GHSA-grg2-7gc6-36m6 , CVE-2026-102437 ) in DeepSeek-Reasonix Studio, a desktop git client designed for developers pairing with AI coding assistants. The flaw, called ConfigPoisoning, could allow attacker-supplied code to execute when a developer views a file's diff. To address this vulnerability, you should update to DeepSeek-Reasonix Studio 2.21.0 or DeepSeek Reasonix npm 1.39.3. This is not an isolated DeepSeek-Reasonix bug. GitLab's Threat Research Group found that multiple widely used coding agents are susceptible to the same class of vulnerabilities, which allow attacker-controlled commands to run from a repository's own .git/config and .gitattributes files. DeepSeek-Reasonix is the first case we're disclosing in full. Note : Git repositories hosted on GitLab are not affected by this vulnerability, as cloning a repository over HTTPS or SSH does not transfer local configuration files. TL;DR Critical vulnerability. GitLab's Threat Research Group found a critical command execution vulnerability in DeepSeek-Reasonix Studio, a desktop git client for AI-assisted development, that could run attacker-controlled code when a developer views a file's diff under specific repository configuration conditions. The root cause. DeepSeek-Reasonix's own git wrapper hardens several git config keys against command injection, but its own code comment names one gap it hadn't closed: filter. .clean , which git selects per file through .gitattributes rather than through a fixed config key. Immediate recommendations. Update to DeepSeek-Reasonix Studio 2.21.0 or DeepSeek Reasonix npm 1.39.3. If you build tools that shell out to git, don't just patch the one vulnerable key. Override every relevant key on every call, or avoid invoking git's filter and textconv machinery, which are the hooks git uses to transform file content before committing or diffing, altogether. Why coding agents are a different kind of attack surface Coding agents run git against any directory a developer opens. They inherit .git/config and .gitattributes from whoever wrote the repo, not from the developer who opens it. Several git configuration keys, among them core.fsmonitor, core.hooksPath , diff.external , and filter. .clean , run a named command as part of ordinary git operations. Plain git clients already carry advisories for this. Because every coding agent wraps git its own way, each one tends to close only the primitive that caused its own last incident. DeepSeek-Reasonix's internal/gitcmd closed four of these primitives on every invocation. Its own code comment named the one it hadn't closed. How the vulnerability works internal/gitcmd neutralizes core.fsmonitor and maintenance.auto on every call, and adds --no-ext-diff and --no-textconv on diffs. It never touches filter. .clean . That key isn't picked from a fixed list. .gitattributes selects it per file, so no deny-list can close it the way the others were closed. Here's the real call, from desktop/workspace_changes.go : args := []string{\"-C\", base, \"diff\", \"--no-ext-diff\", \"--no-textconv\", \"--relative\", \"HEAD\", \"--\", filepath.FromSlash(rel)} The clean filter still runs here. It produces the comparison blob the diff needs, and that step never passes through the flags above. Full call chain Here's the full chain, step by step: The setup. secret.bin carries a .gitattributes entry assigning it to a filter driver named pwn , and the repository's .git/config defines that driver's clean command as a script of the attacker's choosing. The diff view opens. A developer opens the file's diff in DeepSeek-Reasonix's desktop app, an ordinary action for any file with an uncommitted change. DeepSeek-Reasonix runs its hardened command. desktop/workspace_changes.go issues git -c core.fsmonitor=false -c maintenance.auto=false -C diff --no-ext-diff --no-textconv -- secret.bin , with every existing hardening flag in place. The clean filter runs anyway. Git invokes filter.pwn.clean to build the comparison blob, a step none of those flags touch. The attacker's command executes, once for each side of the diff. Replaying the hardened command ran the payload twice: diff builds a clean-filtered blob for each side of the comparison, so the filter fires once per side. git status only checks which files changed, so it never builds that blob and leaves the filter untouched. That isolates the bug to diff rendering, matching DeepSeek-Reasonix's actual code path. Scope .gitattributes survives a clone. .git/config doesn't. Delivery needs an archive, a synced folder, a CI cache, or a devcontainer build. We confirmed this at commit ea28602 and the tagged pre-release studio-v2.9.0 . It affects both the desktop app and the npm package. But there's a more direct vector specific to agentic tooling. A rogue, compromised, or prompt-injected coding agent already running on the developer's machine has the developer's own filesystem access. It can write the poisoned .git/config straight into a repository that was cloned completely normally. No archive, synced folder, or CI cache is required. Why new tools inherit old bugs None of this is unique to DeepSeek-Reasonix. Repository configuration gets treated as part of the tool. Coding agents read .git/config or .gitattributes as if they were the tool’s own settings, when it’s the repository’s author who controls them. That distinction is easy to miss, since the files sit right next to the code and look like they belong to it. We've seen this trust failure before, in a different file. Earlier this year, GitLab's Threat Research Group found the same pattern in Serena , another AI coding tool. It ran attacker code from a project's own configuration file, .serena/project.yml , when a developer opened the repository. In both cases, the tool trusted a file the repository author controlled, and we expect to find the same mistake in other agentic tools. How this impacts you If you use DeepSeek-Reasonix Update to Studio 2.21.0 or DeepSeek Reasonix npm 1.39.3. On older versions, avoid diffing any repo you didn't obtain through a direct clone yourself. If you build git-wrapping tools These recommendations apply to any tool that shells out to git against a directory it doesn't control. Read blobs with git cat-file or git show , and diff in-process , when you only need byte-level content. If you must shell out, override every relevant key on every call. That means core.fsmonitor , core.pager , core.editor , core.hooksPath , diff.external , core.sshCommand , and filter. .clean or smudge for every driver name across .gitattributes , .git/info/attributes , and global or system files. One flag doesn't cover another. --no-ext-diff affects diff.external . It does nothing for core.sshCommand . Don't assume the poisoned config has to arrive with the repository. Another agent, extension, or process running with the developer's own permissions can write it straight into an already-cloned repo. Test against a deliberately hostile config pair before you ship. If you lead a security team A tool that shells out to git on a developer's machine runs with that developer's full access. Ask vendors how they neutralize repository-local configuration, not just how they handle an untrusted remote. Disclosure timeline Date Event 2026-08-27 Advisory opened with esengine 2026-09-29 esengine opens a temporary private fork and accepts the report 2026-09-30 Fix shipped (Studio 2.21.0 / npm 1.39.3); advisory published ( GHSA-grg2-7gc6-36m6 ) 2026-09-30 CVE-2026-102437 assigned Thanks to the DeepSeek-Reasonix maintainers for accepting the report and shipping a fix. How GitLab can help GitLab Duo Agent Platform Security Analyst Agent can help you check your codebase for this same pattern. Begin your investigation by asking the agent: \"Does this code shell out to git against a directory it doesn't control, and does it neutralize `core.hooksPath, filter.*.clean`, and `diff.external` before running?\" The agent then will evaluate the potential impact on your environment. Looking ahead DeepSeek-Reasonix's history is a good reminder that even a well-documented, honest gap in security can still ship, simply because knowing about a risk and closing it aren't always the same thing . The same pattern is present in several other widely used agent tools, currently under coordinated disclosure. We'll publish details on each once a fix is available. Explore more security research from the GitLab Threat Research Group.",
+      "evidenceLink": "",
+      "score": 93.83313801587302,
+      "core": "GitLab's Threat Research Group discovered a command execution vulnerability ( GHSA-grg2-7gc6-36m6 , CVE-2026-102437 ) in DeepSeek-Reasonix Studio, a desktop git client designed for developers pairing with AI coding assistants. The flaw, called ConfigPoisoning, could allow attacker-supplied code to execute when a developer views a file's diff. To address this vulnerability, you should update to DeepSeek-Reasonix Stud…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-02T16:20:09.844Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Microsoft AI models are now available on AI Gateway",
+      "link": "https://vercel.com/changelog/microsoft-ai-models-are-now-available-on-ai-gateway",
+      "publishedAt": "2026-10-01T00:00:00.000Z",
+      "author": "Kevin Dawkins",
+      "summary": "Vercel and Microsoft AI (MAI) have partnered to make MAI models available on AI Gateway. AI Gateway is one of a limited number of platforms offering access to MAI models. MAI's focus on security and zero data retention (ZDR) align with Vercel's goal of giving AI Gateway users control over their data and transparency in how it is used for training. MAI models on AI Gateway MAI's latest audio models are now supported on AI Gateway. MAI-Voice-2.1 and MAI-Voice-2.1-Flash generate speech, while MAI-Transcribe-2 Streaming returns transcript updates as audio arrives. MAI-Voice-2.1 ( microsoft/mai-voice-2.1 ) generates expressive speech in 23 languages and keeps a consistent speaker across longer passages. Use it for narration, audiobooks, podcasts, and lessons where delivery matters from start to finish. MAI-Voice-2.1-Flash ( microsoft/mai-voice-2.1-flash ) brings the same multilingual speech generation to lower-latency interactions. It is suited to voice agents, assistants, and spoken replies that need to arrive quickly. MAI-Transcribe-2 Streaming ( microsoft/mai-transcribe-2-streaming ) returns partial transcripts while audio is still arriving. Applications can show live captions or follow a conversation as it happens, without waiting for the full recording. AI Gateway bills these models at their listed rates, with no platform fee or markup on inference. Get started Use generateSpeech in AI SDK 7 with MAI-Voice-2.1-Flash to create a spoken response. The voice name selects Microsoft's Harper voice with the Flash model: For longer audio such as narration, use microsoft/mai-voice-2.1 . Transcribe live audio streamTranscribe takes a stream of audio chunks and returns transcript updates as the audio arrives. This example assumes microphoneStream is a ReadableStream of 16 kHz, 16-bit PCM audio: Partial transcripts can change as more audio arrives, so replace the displayed text when a new partial arrives. Additional resources Explore MAI-Voice-2.1-Flash for speech generation and MAI-Transcribe-2 Streaming for live transcription. See the MAI model page for the full family, or follow the speech quickstart to get started. AI Gateway provides one API for calling models, tracking usage and cost, and viewing request traces. It also supports routing, retries, and failover across available providers. Read more",
+      "evidenceLink": "",
+      "score": 77.11885230158731,
+      "core": "Vercel and Microsoft AI (MAI) have partnered to make MAI models available on AI Gateway. AI Gateway is one of a limited number of platforms offering access to MAI models. MAI's focus on security and zero data retention (ZDR) align with Vercel's goal of giving AI Gateway users control over their data and transparency in how it is used for training. MAI models on AI Gateway MAI's latest audio models are now supported …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-02T16:20:09.844Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Laya decision model now available on AI Gateway, free through October 31",
+      "link": "https://vercel.com/changelog/laya-decision-model-now-available-on-ai-gateway-free-through-october-31",
+      "publishedAt": "2026-10-01T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "Laya from Convai Innovations is free to use on AI Gateway for 1 month through October 31, 2026 via Boundless . Laya is an evaluation/decision model that evaluates shared context against yes/no, choice, or scoring questions and returns structured answers with probabilities. For example, use it to: Triage support requests: Detect a refund request and route it to the billing team. Route agent work: Choose which tool or workflow should handle a request. Check guardrails: Flag a request or response for review when it may violate a policy. Score against a rubric: Rate a ticket's urgency or an answer's quality on a defined scale. You can call Laya through the AI SDK evaluation API , the native HTTP API , or the TypeSafe-compatible API with convaiinnovations/laya or convaiinnovations/laya-free : Through October 31, 2026, both convaiinnovations/laya and convaiinnovations/laya-free are free when served by Boundless . The -free ID routes to Boundless and stops serving after the promotion; the standard ID begins billing then. Read the documentation on evaluation models on AI Gateway for more details, or explore the model catalog . AI Gateway provides one API for calling models, tracking usage and cost, and configuring routing, retries, and failover. You can use an AI Gateway API key or bring your own provider key . Read more",
+      "evidenceLink": "",
+      "score": 76.52996341269842,
+      "core": "Laya from Convai Innovations is free to use on AI Gateway for 1 month through October 31, 2026 via Boundless . Laya is an evaluation/decision model that evaluates shared context against yes/no, choice, or scoring questions and returns structured answers with probabilities. For example, use it to: Triage support requests: Detect a refund request and route it to the billing team. Route agent work: Choose which tool or…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-02T16:20:09.844Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "red_hat_ai_engineering",
+      "source": "Red Hat Developer · AI",
+      "title": "Benchmarking AI decision models against traditional guardrails",
+      "link": "https://developers.redhat.com/articles/2026/10/02/benchmarking-ai-decision-models-against-traditional-guardrails",
+      "publishedAt": "2026-10-02T13:01:51.000Z",
+      "author": "Dr. Rob Geada, Dr. Mac Misiura, Shelton Cyril",
+      "summary": "As enterprise generative AI applications move to production, platform engineers face a key challenge: balancing the flexibility of LLM-as-a-judge guardrails with the reliability and portability of traditional classifiers that require custom training data. The recent emergence of \"decision models\"—highlighted by TypeSafe AI's recent announcement of Jev and \"System One\" models—promises a flexible middle ground by producing fixed \"decisions\" given a state and a list of questions rather than generating text. The post Benchmarking AI decision models against traditional guardrails appeared first on Red Hat Developer .",
+      "evidenceLink": "",
+      "score": 72.20280071428571,
+      "core": "As enterprise generative AI applications move to production, platform engineers face a key challenge: balancing the flexibility of LLM-as-a-judge guardrails with the reliability and portability of traditional classifiers that require custom training data. The recent emergence of \"decision models\"—highlighted by TypeSafe AI's recent announcement of Jev and \"System One\" models—promises a flexible middle ground by prod…",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-02T16:20:09.844Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "Claude’s hillclimb loop for AI agents: start with production traces",
+      "link": "https://arize.com/blog/claude-hillclimb-production-traces",
+      "publishedAt": "2026-10-02T13:30:59.000Z",
+      "author": "Jim Bennett",
+      "summary": "Anthropic's Claude hillclimb loop designs evals and improves agents one change at a time. Here's how to run that loop against production traces in Arize AX. The post Claude’s hillclimb loop for AI agents: start with production traces appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 68.25414992063492,
+      "core": "Anthropic's Claude hillclimb loop designs evals and improves agents one change at a time. Here's how to run that loop against production traces in Arize AX. The post Claude’s hillclimb loop for AI agents: start with production traces appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-02T16:20:09.844Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Build agent memory with NVIDIA NeMo Agent Toolkit and Amazon S3 Vectors",
+      "link": "https://aws.amazon.com/blogs/machine-learning/build-agent-memory-with-nvidia-nemo-agent-toolkit-and-amazon-s3-vectors",
+      "publishedAt": "2026-10-01T17:34:56.000Z",
+      "author": "Venkata Sistla",
+      "summary": "Learn how to use Amazon S3 Vectors as the persistent memory layer within the NVIDIA NeMo Agent Toolkit (NAT), deployed on Amazon Elastic Kubernetes Service (Amazon EKS). This post shows how NAT's memory subsystem works and how to implement Amazon S3 Vectors as a custom memory provider, using a multi-agent investment research use case.",
+      "evidenceLink": "",
+      "score": 54.241391984126984,
+      "core": "Learn how to use Amazon S3 Vectors as the persistent memory layer within the NVIDIA NeMo Agent Toolkit (NAT), deployed on Amazon Elastic Kubernetes Service (Amazon EKS). This post shows how NAT's memory subsystem works and how to implement Amazon S3 Vectors as a custom memory provider, using a multi-agent investment research use case.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-02T16:20:09.844Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "shopify_engineering",
+      "source": "Shopify Engineering",
+      "title": "ShopGym: Realistic, reproducible sandboxes for shopping agents",
+      "link": "https://shopify.engineering/shopgym",
+      "publishedAt": "2026-10-01T16:23:24.000Z",
+      "author": "",
+      "summary": "ShopGym creates realistic online stores and generates shopping tasks based on each store’s products and features. Developers can then repeatedly test shopping agents under consistent conditions.",
+      "evidenceLink": "",
+      "score": 52.36734436507936,
+      "core": "ShopGym creates realistic online stores and generates shopping tasks based on each store’s products and features. Developers can then repeatedly test shopping agents under consistent conditions.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-02T16:20:09.844Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Building ambient agents with Amazon Bedrock AgentCore: From event-driven signals to human-in-the-loop workflows",
+      "link": "https://aws.amazon.com/blogs/machine-learning/building-ambient-agents-with-amazon-bedrock-agentcore-from-event-driven-signals-to-human-in-the-loop-workflows",
+      "publishedAt": "2026-10-01T16:40:24.000Z",
+      "author": "Juan Albarran",
+      "summary": "Ambient agents respond to events such as an Amazon S3 upload, a schedule, or an alert instead of waiting for a chat prompt. This post walks through building framework-agnostic ambient agents on Amazon Bedrock AgentCore using Amazon SQS, AWS Lambda, and Amazon DynamoDB, with a single ask_human tool and a Jobs page for human-in-the-loop review.",
+      "evidenceLink": "",
+      "score": 49.220915793650796,
+      "core": "Ambient agents respond to events such as an Amazon S3 upload, a schedule, or an alert instead of waiting for a chat prompt. This post walks through building framework-agnostic ambient agents on Amazon Bedrock AgentCore using Amazon SQS, AWS Lambda, and Amazon DynamoDB, with a single ask_human tool and a Jobs page for human-in-the-loop review.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-02T16:20:09.844Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Follow the thread: a new dashboard to investigate account abuse",
+      "link": "https://blog.cloudflare.com/account-abuse-protection-dashboard",
+      "publishedAt": "2026-10-02T13:00:00.000Z",
+      "author": "Nicole Justus",
+      "summary": "Fraudsters are increasingly using AI to bypass stateless security checks. Cloudflare's new Account Abuse Protection dashboard uses stateful analysis and edge-generated Hashed User IDs to help teams investigate and block account abuse.",
+      "evidenceLink": "",
+      "score": 49.06170944444444,
+      "core": "Fraudsters are increasingly using AI to bypass stateless security checks. Cloudflare's new Account Abuse Protection dashboard uses stateful analysis and edge-generated Hashed User IDs to help teams investigate and block account abuse.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-02T16:20:09.844Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "sentry_ai_engineering",
+      "source": "Sentry Engineering",
+      "title": "Seer, the Sentry MCP and CLI, or your own coding agent: where each one fits",
+      "link": "https://blog.sentry.io/seer-mcp-cli-or-coding-agent",
+      "publishedAt": "2026-10-02T00:00:00.000Z",
+      "author": "",
+      "summary": "Seer, the Sentry agent plugin, the CLI, and coding agents aren't competing options. Here's what each one does that the others don't.",
+      "evidenceLink": "",
+      "score": 45.56647134920635,
+      "core": "Seer, the Sentry agent plugin, the CLI, and coding agents aren't competing options. Here's what each one does that the others don't.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-02T16:20:09.844Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_azure_ai",
+      "source": "Microsoft Azure Blog",
+      "title": "GPT-6 Astra, Sol, and Luna: For production agents in Microsoft Foundry",
+      "link": "https://azure.microsoft.com/en-us/blog/gpt-6-astra-sol-and-luna-for-production-agents-in-microsoft-foundry",
+      "publishedAt": "2026-09-22T18:30:00.000Z",
+      "author": "Naomi Moneypenny",
+      "summary": "Explore GPT-6 Astra, Sol, and GPT-6 Luna in Microsoft Foundry, with scalable model options for production AI agents, complex workflows, and high-volume tasks. The post GPT-6 Astra, Sol, and Luna: For production agents in Microsoft Foundry appeared first on Microsoft Azure Blog .",
+      "evidenceLink": "",
+      "score": 38.55,
+      "core": "Explore GPT-6 Astra, Sol, and GPT-6 Luna in Microsoft Foundry, with scalable model options for production AI agents, complex workflows, and high-volume tasks. The post GPT-6 Astra, Sol, and Luna: For production agents in Microsoft Foundry appeared first on Microsoft Azure Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-02T16:20:09.844Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_azure_ai",
+      "source": "Microsoft Azure Blog",
+      "title": "Designing agent-first platforms: What changes when agents do the work",
+      "link": "https://azure.microsoft.com/en-us/blog/designing-agent-first-platforms-what-changes-when-agents-do-the-work",
+      "publishedAt": "2026-09-23T15:00:00.000Z",
+      "author": "Mike Hulme",
+      "summary": "The organizations pulling ahead are not simply adding AI to what they already have. They are designing for a different kind of software. The post Designing agent-first platforms: What changes when agents do the work appeared first on Microsoft Azure Blog .",
+      "evidenceLink": "",
+      "score": 38.422222222222224,
+      "core": "The organizations pulling ahead are not simply adding AI to what they already have. They are designing for a different kind of software. The post Designing agent-first platforms: What changes when agents do the work appeared first on Microsoft Azure Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-02T16:20:09.844Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Meta Muse has already broken a record: it beats all competitors in data collection, Surfshark warns",
+      "link": "https://www.techradar.com/vpn/vpn-services/meta-muse-has-already-broken-a-record-it-beats-all-competitors-in-data-collection-surfshark-warns",
+      "publishedAt": "2026-10-02T09:47:06.000Z",
+      "author": "Silvia Iacovcich",
+      "summary": "Surfshark’s latest research found that Meta's newly launched AI agent is already leading the rankings as the most data-hungry chatbot.",
+      "evidenceLink": "",
+      "score": 37.27651103174603,
+      "core": "Surfshark’s latest research found that Meta's newly launched AI agent is already leading the rankings as the most data-hungry chatbot.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-02T16:20:09.844Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "One year later: Sovereign AI and the fight for choice",
+      "link": "https://blog.cloudflare.com/sovereign-ai-choice-one-year-later",
+      "publishedAt": "2026-10-01T13:04:19.000Z",
+      "author": "Carly Ramsey",
+      "summary": "AI sovereignty is not a zero-sum game, but many governments now believe it is. Cloudflare's answer: more local open-source models, model-agnostic security tools, and a commitment to giving nations genuine choice.",
+      "evidenceLink": "",
+      "score": 36.2303403968254,
+      "core": "AI sovereignty is not a zero-sum game, but many governments now believe it is. Cloudflare's answer: more local open-source models, model-agnostic security tools, and a commitment to giving nations genuine choice.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-02T16:20:09.844Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Build Local AI Apps with C++ and NVIDIA TensorRT RTX Samples",
+      "link": "https://developer.nvidia.com/blog/build-local-ai-apps-with-c-and-nvidia-tensorrt-rtx-samples",
+      "publishedAt": "2026-10-01T17:59:27.000Z",
+      "author": "Luca Spindler",
+      "summary": "Adding AI models to local applications requires a portable model format, a reliable runtime, and acceleration that works across target systems. Do Inference Now...",
+      "evidenceLink": "",
+      "score": 35.309467380952384,
+      "core": "Adding AI models to local applications requires a portable model format, a reliable runtime, and acceleration that works across target systems. Do Inference Now...",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-02T16:20:09.844Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "Inside-Out AI: Rebuilding Airbnb Behind the Scenes and Across the Guest Experience",
+      "link": "https://www.latent.space/p/airbnb",
+      "publishedAt": "2026-10-02T14:04:49.000Z",
+      "author": "Richard MacManus",
+      "summary": "After leading Meta’s Llama models, Ahmad Al-Dahle is now transforming Airbnb with AI — from how its teams develop products to how it serves guests.",
+      "evidenceLink": "",
+      "score": 34.65553880952381,
+      "core": "After leading Meta’s Llama models, Ahmad Al-Dahle is now transforming Airbnb with AI — from how its teams develop products to how it serves guests.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-02T16:20:09.844Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "GLM-5.3 and the spread of advanced cyber capabilities",
+      "link": "https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities",
+      "publishedAt": "2026-09-29T15:46:00.000Z",
+      "author": "",
+      "summary": "GLM-5.3 can autonomously build end-to-end cyber exploits, but unlike other frontier models, it was released without meaningful safeguards to limit misuse.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-02T16:20:09.844Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 31.672026904761903,
+      "core": "GLM-5.3 can autonomously build end-to-end cyber exploits, but unlike other frontier models, it was released without meaningful safeguards to limit misuse.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "GitHub Copilot in VS Code, September 2026 releases",
+      "link": "https://github.blog/changelog/2026-10-01-github-copilot-in-vs-code-september-2026-releases",
+      "publishedAt": "2026-10-01T19:09:10.000Z",
+      "author": "Allison",
+      "summary": "This changelog covers VS Code v1.136 through v1.140, shipped throughout September 2026. September’s releases streamline agent-driven development from implementation through pull request merge. Automations handle repeatable tasks, agent merge helps… The post GitHub Copilot in VS Code, September 2026 releases appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 27.398018968253965,
+      "core": "This changelog covers VS Code v1.136 through v1.140, shipped throughout September 2026. September’s releases streamline agent-driven development from implementation through pull request merge. Automations handle repeatable tasks, agent merge helps… The post GitHub Copilot in VS Code, September 2026 releases appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-02T16:20:09.844Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "OpenAI Dev Day 2026: The releases that actually matter",
+      "link": "https://www.lennysnewsletter.com/p/openai-dev-day-2026-the-releases",
+      "publishedAt": "2026-09-30T14:45:15.000Z",
+      "author": "Claire Vo",
+      "summary": "Watch now (24 mins) | 🎙️ Claire tests OpenAI’s DevDay releases, from Dots, Spaces, and Sites to AI-picked thumbnails and a $97 game, and shares what’s worth trying first",
+      "evidenceLink": "",
+      "score": 24.402880079365076,
+      "core": "Watch now (24 mins) | 🎙️ Claire tests OpenAI’s DevDay releases, from Dots, Spaces, and Sites to AI-picked thumbnails and a $97 game, and shares what’s worth trying first",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-02T16:20:09.844Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "deepmind",
+      "source": "Google DeepMind",
+      "title": "Gemini 4 Argon: our next era of frontier intelligence",
+      "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon",
+      "publishedAt": "2026-09-30T20:01:45.000Z",
+      "author": "",
+      "summary": "",
+      "evidenceLink": "",
+      "score": 22.83522134920635,
+      "core": "原文摘要不足，需要精读正文后补充核心结论。",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-02T16:20:09.844Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
