@@ -1,0 +1,402 @@
+{
+  "generatedAt": "2026-10-03T16:16:34.943Z",
+  "date": "2026-10-04",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "fiddler_ai_evaluation",
+      "source": "Fiddler AI Blog",
+      "title": "What Is AI Evaluation? Methods and Metrics for LLM and Agent Systems",
+      "link": "https://www.fiddler.ai/blog/ai-evaluation-methods-metrics-llm-agents",
+      "publishedAt": "2026-10-02T07:00:00.000Z",
+      "author": "",
+      "summary": "Learn AI evaluation frameworks for scoring LLM and agent quality, safety, and performance across offline and production environments.",
+      "evidenceLink": "",
+      "score": 78.36200509920636,
+      "core": "Learn AI evaluation frameworks for scoring LLM and agent quality, safety, and performance across offline and production environments.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-03T16:16:34.943Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Jev for Python engineers",
+      "link": "https://vercel.com/blog/jev-for-python-engineers",
+      "publishedAt": "2026-10-02T07:00:00.000Z",
+      "author": "Yury Selivanov",
+      "summary": "It's simply impossible to not hear about Jev. Seemingly everyone is tinkering with it in some way, from using it to make trading decisions (what could possibly go wrong?) to generating UIs with it (maybe we're onto something here!) . Jev is a new kind of AI model. You feed it data and ask it a set of multiple-choice questions, and it responds with its answers and how confident it is in each. Just like with any other model, Jev can and will make mistakes, but it will make them fast. ​ ​The bottom line is: Jev is built for making narrow decisions. Whether it's accurate enough for your use cases is something you'll need to test. The job of the Python team at Vercel is to make it easy for Python devs to tinker with Jev, among a few other things. So please welcome the latest release of the AI SDK for Python . Install it with uv add ai to use the new experimental evaluate() API, which talks directly to Jev's nervous system. Then create an AI Gateway key , set AI_GATEWAY_API_KEY , and try this complete example: Now, I'd like to explain what Jev is and how to make it work for you using a couple of examples. One is good and one is dumb. Ask Jev which is which. Let's have some fun! Jev ELI5 Jev is a universal classifier. Classifiers are the classic primitive of good old machine learning. Say you want a spam filter. You train a classifier on lots of emails, each labeled as spam or not spam, and it learns to tell whether a freshly incoming email looks like spam. Problem is, for every new classification task you'd have to collect and label new data, and then train a new classifier on it to tune its weights for that task. But you know what else has weights? Large language models! So the team behind Jev figured out how to turn an LLM into a classifier that you don't need to train for a specific domain, because it's already trained on a broad slice of human knowledge. And while it started as an LLM, Jev still behaves like a classifier. It's cheap and fast, and it returns structured JSON instead of generating text. Its answers conform to the types and choices you define in your questions. The API Jev's official API couldn't be simpler, and to keep it that way, we implemented it in the Python AI SDK pretty much verbatim. There's just one function, evaluate() , and a few supporting types. The function takes a model, state (can be a simple string or complex JSON), and a mapping of questions. A question is an instance of either ChoiceQuestion (choose one answer), ScoreQuestion (rate the state on a scale you define), or NoulQuestion (estimate the probability that a statement is true). For the complete API reference, refer your agent to the docs . By now, we should have a good idea of what Jev is and how to use it. Time to see what we can build with it! Example 1: Python or English? This is a sensible example of using Jev: quite literally as a classifier. About a year ago I had an idea to make the Python REPL agentic. I wanted it to have a great UX and thought it would be pretty cool if the REPL could tell whether I'm typing English or Python without me explicitly switching between chat and code. I needed a classifier, so I spent two days training my own on a random selection of Python code and English text. After a lot of sweat and dumb Opus 4.1 tokens, I concluded I'm not good enough to make a reliable classifier for Python vs. English. The UI felt jittery: typing if i highlighted it as Python, if i i switched it to English, and if i is flipped it back to Python. What seemed like a very simple problem turned out to be a really hard one. Let's see how Jev does: These are actual traces of Jev responses to \"does this look like English or Python to you?\" The code behind them isn't particularly interesting; it's basically the opening code snippet of this post with a different question. What's more interesting is whether Jev could solve my REPL problem. And while it does seem to fare much better than my hand-rolled classifier did, it still has gaps. For example, \"what's\" + \" up looks like English to Jev, while it's quite obvious to me that it's a partially typed Python expression. Example 2: Jev writes Python code How about we regress and make Jev generate text like an LLM? Jev can't write, so one way to get it to type is to have it go letter by letter. At each step, it picks the next character from a set of letters, punctuation, and whitespace. Another way would be to pick one word at a time from a vocabulary of some N English words. When I saw that, I immediately knew I had to test how good Jev is at writing Python code. My first attempt used the \"letters + Python keywords + whitespace\" method, but I quickly realized Jev could barely type an if statement that way. The only way to get anything sensible out of it was to make it generate an abstract syntax tree (AST) of the program instead. The idea: Take the user's prompt and use an LLM (GPT-5.6 in this case) to expand it into a concrete set of instructions for Jev. I found that without a detailed \"plan\", Jev struggles to implement even elementary tasks. Make Jev build a Python AST through a series of choices. At each step, show it the current program, mark the field being filled, and offer the possible next nodes, like a function call, an arithmetic operation, or a variable. Each option comes with a preview of the code it would produce. Apply each choice to the tree and render it back into Python. The host code handles punctuation and indentation; Jev decides the program's overall structure and contents. Repeat until Jev finishes the tree. I did get Jev to generate syntactically valid (yet still mostly incorrect) Python code using this approach. But as you can see, making classifiers do the job of an LLM is quite challenging. The source code is on GitHub if you think you can do better. Try Jev Neither experiment worked quite as I'd hoped, but I'm still excited about Jev. We're only beginning to explore what this new class of models can do! Try it today with the AI SDK for Python and let us know what you build. All you need is uv add ai and an AI Gateway key . Here's a ready to copy/paste prompt for your coding agent: Read more",
+      "evidenceLink": "",
+      "score": 77.62311621031746,
+      "core": "It's simply impossible to not hear about Jev. Seemingly everyone is tinkering with it in some way, from using it to make trading decisions (what could possibly go wrong?) to generating UIs with it (maybe we're onto something here!) . Jev is a new kind of AI model. You feed it data and ask it a set of multiple-choice questions, and it responds with its answers and how confident it is in each. Just like with any other…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-03T16:16:34.943Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "Prompt caching benchmark: high cache reuse doesn’t always mean lower cost",
+      "link": "https://arize.com/blog/prompt-caching-benchmark",
+      "publishedAt": "2026-10-02T18:01:39.000Z",
+      "author": "Nancy Chauhan",
+      "summary": "We benchmarked prompt caching across DeepSeek, GLM, GPT, and Claude using Harbor evals and Phoenix traces, so we could compare cache reuse, estimated cost, and latency on the same multi-turn shopping assistant agent. The post Prompt caching benchmark: high cache reuse doesn’t always mean lower cost appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 62.23301700396826,
+      "core": "We benchmarked prompt caching across DeepSeek, GLM, GPT, and Claude using Harbor evals and Phoenix traces, so we could compare cache reuse, estimated cost, and latency on the same multi-turn shopping assistant agent. The post Prompt caching benchmark: high cache reuse doesn’t always mean lower cost appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-03T16:16:34.943Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentailor",
+      "source": "Agentailor",
+      "title": "Before You Add WebMCP: the Security Problem Nobody's Selling You",
+      "link": "https://blog.agentailor.com/posts/before-you-add-webmcp",
+      "publishedAt": "2026-10-03T00:00:00.000Z",
+      "author": "undefined (Ali Ibrahim)",
+      "summary": "WebMCP lets a web page hand tools to AI agents, and most coverage sells it as your website becoming an API. The spec, WebKit, and even ChatGPT say something the pitch leaves out: an agent cannot verify what a page tool does, and it runs with your users logged-in session. I shipped both sides of WebMCP on Agentailor, red-teamed them, and deleted one. Here is what that taught me.",
+      "evidenceLink": "",
+      "score": 57.948513035714285,
+      "core": "WebMCP lets a web page hand tools to AI agents, and most coverage sells it as your website becoming an API. The spec, WebKit, and even ChatGPT say something the pitch leaves out: an agent cannot verify what a page tool does, and it runs with your users logged-in session. I shipped both sides of WebMCP on Agentailor, red-teamed them, and deleted one. Here is what that taught me.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-03T16:16:34.943Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "fiddler_ai_evaluation",
+      "source": "Fiddler AI Blog",
+      "title": "How AI in Cybersecurity Changes Security Workflows",
+      "link": "https://www.fiddler.ai/blog/ai-in-cybersecurity-workflows",
+      "publishedAt": "2026-10-02T07:00:00.000Z",
+      "author": "",
+      "summary": "See how AI in cybersecurity rewires SOC workflows from triage to response, and how to govern agents with runtime policy and observability.",
+      "evidenceLink": "",
+      "score": 56.38978287698413,
+      "core": "See how AI in cybersecurity rewires SOC workflows from triage to response, and how to govern agents with runtime policy and observability.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-03T16:16:34.943Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "LLM trace storage: how to store and search production agent runs - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/llm-trace-storage",
+      "publishedAt": "2026-10-01T16:00:00.000Z",
+      "author": "",
+      "summary": "Learn how to store complete LLM traces, search production agent runs, handle large payloads, and evaluate retention, export, and access controls.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-03T16:16:34.943Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 56.35724319444445,
+      "core": "Learn how to store complete LLM traces, search production agent runs, handle large payloads, and evaluate retention, export, and access controls.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "How to test AI features in a Lovable app before deploying changes - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/how-to-test-ai-features-in-a-lovable-app-before-deploying-changes",
+      "publishedAt": "2026-10-01T16:00:00.000Z",
+      "author": "",
+      "summary": "Test Lovable AI prompt and model changes with candidate Edge Functions, Braintrust datasets, scorers, remote evals, and production baseline comparisons.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-03T16:16:34.943Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 48.396132083333335,
+      "core": "Test Lovable AI prompt and model changes with candidate Edge Functions, Braintrust datasets, scorers, remote evals, and production baseline comparisons.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "How to trace what your AI agent actually did - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/how-to-trace-what-your-ai-agent-actually-did",
+      "publishedAt": "2026-10-01T16:00:00.000Z",
+      "author": "",
+      "summary": "Investigate AI agent actions with searchable traces. Inspect tool calls and results, verify external outcomes, and find recurring behavior across production runs.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-03T16:16:34.943Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 46.45168763888889,
+      "core": "Investigate AI agent actions with searchable traces. Inspect tool calls and results, verify external outcomes, and find recurring behavior across production runs.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "This popular AI agent could be hacked by a single email — with potentially disastrous consequences",
+      "link": "https://www.techradar.com/pro/security/this-popular-ai-agent-could-be-hacked-by-a-single-email-with-potentially-disastrous-consequences",
+      "publishedAt": "2026-10-02T17:05:00.000Z",
+      "author": "Sead Fadilpašić",
+      "summary": "Researchers found a way around Manus' guardrails and got it to execute a simple email prompt injection attack.",
+      "evidenceLink": "",
+      "score": 44.95446541666667,
+      "core": "Researchers found a way around Manus' guardrails and got it to execute a simple email prompt injection attack.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-03T16:16:34.943Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "Selected models in GitHub Copilot deprecated",
+      "link": "https://github.blog/changelog/2026-10-02-selected-models-in-github-copilot-deprecated",
+      "publishedAt": "2026-10-02T18:24:19.000Z",
+      "author": "Allison",
+      "summary": "As of today, October 2, 2026, we have deprecated the following models across all GitHub Copilot experiences (including Copilot Chat, inline edits, ask and agent modes, and code completions). Model… The post Selected models in GitHub Copilot deprecated appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 39.0322233531746,
+      "core": "As of today, October 2, 2026, we have deprecated the following models across all GitHub Copilot experiences (including Copilot Chat, inline edits, ask and agent modes, and code completions). Model… The post Selected models in GitHub Copilot deprecated appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-03T16:16:34.943Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Prompt engineering fundamentals for Amazon Quick",
+      "link": "https://aws.amazon.com/blogs/machine-learning/prompt-engineering-fundamentals-for-amazon-quick",
+      "publishedAt": "2026-09-29T16:27:57.000Z",
+      "author": "Daiquan Nkere",
+      "summary": "Prompt engineering in Amazon Quick shapes how accurately its AI-powered features respond to your requests. Part 1 of a two-part series covers the foundational principles and reusable frameworks (specificity, context-setting, few-shot examples, and the CRISPE framework) for consistent, high-quality results across Amazon Quick.",
+      "evidenceLink": "",
+      "score": 36.97305668650794,
+      "core": "Prompt engineering in Amazon Quick shapes how accurately its AI-powered features respond to your requests. Part 1 of a two-part series covers the foundational principles and reusable frameworks (specificity, context-setting, few-shot examples, and the CRISPE framework) for consistent, high-quality results across Amazon Quick.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-03T16:16:34.943Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_azure_ai",
+      "source": "Microsoft Azure Blog",
+      "title": "Ship agents faster with expanded model choice, voice agents, and continuous optimization",
+      "link": "https://azure.microsoft.com/en-us/blog/ship-agents-faster-with-expanded-model-choice-voice-agents-and-continuous-optimization",
+      "publishedAt": "2026-09-24T18:00:00.000Z",
+      "author": "Tina Schuchman",
+      "summary": "The best model for your business will keep changing. Adopting it should move your business forward, not send your team back to rebuild the architecture around it. The post Ship agents faster with expanded model choice, voice agents, and continuous optimization appeared first on Microsoft Azure Blog .",
+      "evidenceLink": "",
+      "score": 36.672222222222224,
+      "core": "The best model for your business will keep changing. Adopting it should move your business forward, not send your team back to rebuild the architecture around it. The post Ship agents faster with expanded model choice, voice agents, and continuous optimization appeared first on Microsoft Azure Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-03T16:16:34.943Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "Copilot code review: API support and new default effort level",
+      "link": "https://github.blog/changelog/2026-10-02-copilot-code-review-api-support-and-new-default-effort-level",
+      "publishedAt": "2026-10-02T19:13:50.000Z",
+      "author": "Allison",
+      "summary": "You can now request a GitHub Copilot code review through the REST and GraphQL APIs and set the review effort level for each request. Balanced is also now the default… The post Copilot code review: API support and new default effort level appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 35.01339398809524,
+      "core": "You can now request a GitHub Copilot code review through the REST and GraphQL APIs and set the review effort level for each request. Balanced is also now the default… The post Copilot code review: API support and new default effort level appeared first on The GitHub Blog .",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-03T16:16:34.943Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "We want you to build the next Git platform on Cloudflare",
+      "link": "https://blog.cloudflare.com/next-git-platform-on-cloudflare",
+      "publishedAt": "2026-10-01T13:00:00.000Z",
+      "author": "Dina Kozlov",
+      "summary": "Cloudflare is hosting a competition to see who will build the next Git platform for an era of AI agents. Artifacts is in open beta, with Workers bindings, data jurisdiction controls, and event subscriptions for repository changes.",
+      "evidenceLink": "",
+      "score": 33.61517970238095,
+      "core": "Cloudflare is hosting a competition to see who will build the next Git platform for an era of AI agents. Artifacts is in open beta, with Workers bindings, data jurisdiction controls, and event subscriptions for repository changes.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-03T16:16:34.943Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Introducing Web Search API via AI Gateway",
+      "link": "https://blog.cloudflare.com/introducing-web-search-api",
+      "publishedAt": "2026-10-02T13:28:10.000Z",
+      "author": "Michelle Chen",
+      "summary": "Cloudflare AI Gateway now supports native web search API integration in partnership with Ceramic.ai, Exa, and Linkup. Developers can now inject real-time web context into model inference calls via AI Gateway, REST APIs, or Workers bindings.",
+      "evidenceLink": "",
+      "score": 33.41855271825397,
+      "core": "Cloudflare AI Gateway now supports native web search API integration in partnership with Ceramic.ai, Exa, and Linkup. Developers can now inject real-time web context into model inference calls via AI Gateway, REST APIs, or Workers bindings.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-03T16:16:34.943Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "AI Search is now generally available",
+      "link": "https://blog.cloudflare.com/ai-search-ga",
+      "publishedAt": "2026-10-01T13:00:00.000Z",
+      "author": "Gabriel Massadas",
+      "summary": "AI Search is now generally available. It embeds image pixels directly for visual search, runs optical character recognition on scanned PDFs, accepts files up to 10 MiB, and works with any chat model. Here's what's new and how pricing works.",
+      "evidenceLink": "",
+      "score": 28.670735257936506,
+      "core": "AI Search is now generally available. It embeds image pixels directly for visual search, runs optical character recognition on scanned PDFs, accepts files up to 10 MiB, and works with any chat model. Here's what's new and how pricing works.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-03T16:16:34.943Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "neon_ai_engineering",
+      "source": "Neon Blog",
+      "title": "Generate embeddings with Neon AI Gateway",
+      "link": "https://neon.com/blog/generate-embeddings-with-neon-ai-gateway",
+      "publishedAt": "2026-10-02T12:00:00.000Z",
+      "author": "Carlota Soto",
+      "summary": "Neon AI Gateway now serves embedding models on the same OpenAI-compatible endpoint and with the same credential you already use for chat. Generate vectors, store them in Lakebase Postgres, and query them with Lakebase Search, all inside one Neon branch.",
+      "evidenceLink": "",
+      "score": 28.38581462301587,
+      "core": "Neon AI Gateway now serves embedding models on the same OpenAI-compatible endpoint and with the same credential you already use for chat. Generate vectors, store them in Lakebase Postgres, and query them with Lakebase Search, all inside one Neon branch.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-03T16:16:34.943Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Deploying an HSTU Generative Recommender with NVIDIA Dynamo-Triton",
+      "link": "https://developer.nvidia.com/blog/deploying-an-hstu-generative-recommender-with-nvidia-dynamo-triton",
+      "publishedAt": "2026-09-30T20:54:59.000Z",
+      "author": "Tanya Lenz",
+      "summary": "Generative recommender (GR) systems are emerging as a powerful new approach for large-scale personalization. Instead of treating recommendation as a set of...",
+      "evidenceLink": "",
+      "score": 26.066350337301586,
+      "core": "Generative recommender (GR) systems are emerging as a powerful new approach for large-scale personalization. Instead of treating recommendation as a set of...",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-03T16:16:34.943Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Claude-shaped science",
+      "link": "https://www.anthropic.com/research/claude-shaped-science",
+      "publishedAt": "2026-10-01T14:02:00.000Z",
+      "author": "",
+      "summary": "Matthew Schwartz describes what happened when he stopped fighting Claude and allowed Claude to find “Claude-shaped” problems. This led him to build BootLoops, a toolkit for exact calculations in quantitative science, which he has been applying across scientific fields alongside experts.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-03T16:16:34.943Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 26.005655892857146,
+      "core": "Matthew Schwartz describes what happened when he stopped fighting Claude and allowed Claude to find “Claude-shaped” problems. This led him to build BootLoops, a toolkit for exact calculations in quantitative science, which he has been applying across scientific fields alongside experts.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "GitHub Copilot can now interact with desktop apps with computer use",
+      "link": "https://github.blog/changelog/2026-10-01-github-copilot-can-now-interact-with-desktop-apps",
+      "publishedAt": "2026-10-01T19:11:26.000Z",
+      "author": "Allison",
+      "summary": "Computer use is now available in public preview in GitHub Copilot CLI and the GitHub Copilot app on macOS and Windows. Copilot can interact with desktop applications on your behalf… The post GitHub Copilot can now interact with desktop apps with computer use appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 25.412917797619052,
+      "core": "Computer use is now available in public preview in GitHub Copilot CLI and the GitHub Copilot app on macOS and Windows. Copilot can interact with desktop applications on your behalf… The post GitHub Copilot can now interact with desktop apps with computer use appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-03T16:16:34.943Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

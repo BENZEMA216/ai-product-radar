@@ -1,0 +1,203 @@
+{
+  "date": "2026-10-04",
+  "generatedAt": "2026-10-03T16:03:19.673Z",
+  "reportPath": "reports/2026-10-04-0003-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 52,
+    "top20Sources": [
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 39,
+      "keptCount": 16,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-02；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 39 条，AI 相关候选 16 条；实际 fallback：hunted_space。；fallback 低覆盖时扩展检查 2026-10-01，用于弥补 Jina/OrangeBot 缓存漏抓，历史去重会过滤已报道项。；历史去重移除 16 条已报道或已处理日榜 Product Hunt 信号，最终发布 0 条。"
+    },
+    "yc_launch": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "YC Launch 本窗口无候选或来源为空。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 23,
+      "keptCount": 14,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:node, Model:node；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 18,
+      "keptCount": 18,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Offrun – manage every coding agent from one workspace",
+      "productKey": "https://offrun.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把分散的 coding agent 汇进单一工作台，真正要验证的是跨任务切换、状态追踪和人工接管能否比多个终端更省心。"
+    },
+    {
+      "rank": 2,
+      "product": "Pi pod – run your pi coding agent in sandboxes on your own server",
+      "productKey": "https://pipod.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 Pi coding agent 放进自托管沙箱，价值点在隔离执行与部署控制；应重点看环境复现、权限边界和并发任务体验。"
+    },
+    {
+      "rank": 3,
+      "product": "UsageAtlas(OSS), All your AI coding usage insights. One beautiful view",
+      "productKey": "https://usageatlas.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它试图把多种 AI coding 使用量做成统一视图，适合检验团队是否愿意用可观测数据管理模型成本、工具采用和工程效率。"
+    },
+    {
+      "rank": 4,
+      "product": "Google Maps Scraper MCP",
+      "productKey": "https://gmapscrawl.com/google-maps-scraper-mcp",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 Google Maps 抓取封装成 MCP 工具，值得观察数据获取能否从一次性脚本变成 agent 可稳定调用、可治理的能力。"
+    },
+    {
+      "rank": 5,
+      "product": "Beautiful form back end for AI agents – Nisuform",
+      "productKey": "https://nisuform.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它为 agent 提供表单后端，切入的是机器执行与人类补充信息之间的交接；关键在字段校验、回调和失败恢复是否完整。"
+    },
+    {
+      "rank": 6,
+      "product": "Asked Opus for a video about AI labs and it spit out this weird thing",
+      "productKey": "https://www.youtube.com/watch?v=nwwduxhqwes",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这只是一次由 Opus 生成视频的展示，能证明生成效果却尚未证明产品闭环；更适合作为低优先级的多模态能力样本。"
+    },
+    {
+      "rank": 7,
+      "product": "Television – an open source GUI for your agent harness",
+      "productKey": "https://television.run",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它给 agent harness 增加开源 GUI，价值在把运行过程、工具调用和异常状态显性化；需要看界面是否真的降低调试成本。"
+    },
+    {
+      "rank": 8,
+      "product": "80s Choplifter game ported to Vision Pro as an agent eval (WIP)",
+      "productKey": "https://www.bounds.dev/posts/rescue82-making-a-choplifter-style-game-for-apple-vision-pro",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 Vision Pro 游戏当 agent 评测环境有实验启发，但仍是 WIP；应先看任务定义和评分是否可复现，而不是把 demo 当产品。"
+    },
+    {
+      "rank": 9,
+      "product": "Agentlytics – cookieless analytics your AI agent can read and act on",
+      "productKey": "https://measuremy.site",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它让 agent 直接读取并行动于无 Cookie 分析数据，值得看分析产品能否从报表工具变成闭环执行入口，以及权限如何约束。"
+    },
+    {
+      "rank": 10,
+      "product": "Made an open-source Lego AI generator",
+      "productKey": "https://github.com/anteloc/ldraw-nova",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "开源 Lego 生成器把生成结果落到可编辑的积木表示，差异点不在生成图片，而在能否输出可搭建、可继续修改的结构。"
+    },
+    {
+      "rank": 11,
+      "product": "Claude Scrolls TikToks for Me",
+      "productKey": "https://tryrevline.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 Claude 自动刷 TikTok 展示了消费内容代理的极端自动化场景，但需警惕一次性噱头；关键是用户控制和平台约束。"
+    },
+    {
+      "rank": 12,
+      "product": "FB Post Generator",
+      "productKey": "https://gemini.google.com/share/1a34bce7137f",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这是共享的 FB 帖子生成器，当前证据只说明可试用，尚无工作流深度或采用信号，适合留作低优先级模板化生成样本。"
+    }
+  ]
+}
