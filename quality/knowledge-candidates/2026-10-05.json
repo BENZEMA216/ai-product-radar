@@ -1,0 +1,370 @@
+{
+  "generatedAt": "2026-10-04T16:20:35.868Z",
+  "date": "2026-10-05",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "simon_willison",
+      "source": "Simon Willison",
+      "title": "We're going to need default hard budget caps on pretty much everything",
+      "link": "https://simonwillison.net/2026/Oct/3/default-hard-budget-caps",
+      "publishedAt": "2026-10-03T23:34:02.000Z",
+      "author": "",
+      "summary": "Here's a product feature which the world is going to need a whole lot more of over the coming months and years: default hard budget caps . I'm talking about the feature of pay-by-usage services and APIs that lets you say \"after $X/month, cut this thing off and return errors\". These need to be hard limits. Soft caps, \"after $X/month, send me a warning email\", will not cut it. Coding agents, and personal agents (coding agents wrapped in a less threatening UI), greatly reduce the friction of spinning up code that can do useful things. Sometimes those things cost money - calls to paid APIs, or hosted web applications, or systems that can bill for additional storage and compute. Nobody wants to wake up to an email sent at midnight warning about a budget limit and find that, while they slept, their rogue service had consumed several hundred (or several thousand) more dollars of usage. An argument against this is that businesses don't want their hosted applications to start throwing errors because some budget was exceeded. I expect that most businesses and individuals would prefer errors to a surprise $10,000+ bill. I think hard budget caps need to be the default. If someone wants to live dangerously they should be able to do that, but it needs to be on an opt-in basis. Have a nice, clear checkbox somewhere prominent: Remove the budget cap. My application will not be shut down if I exceed the configured budget limit, and I will be responsible for subsequent charges. The service I most want to see this from is AWS. I've heard plenty of stories from people who refuse to use AWS for personal projects out of (justified) fear that a runaway service might bankrupt them. I've also heard stories from people who didn't anticipate this and ended up seriously burned. ... and it turns out AWS finally launched spending limits a few weeks ago! From their announcement New AWS experience helps builders get started and ship faster on 16th September: When you're ready to upgrade to a paid plan, you can set a monthly spend limit for your project based on your usage patterns so that you stay within your budget. If a project's usage reaches its spend limit, your project is paused for that month. See also Create a spend limit in AWS Settings , though that page warns that \"We're currently releasing our new experience to a limited number of customers.\" Here's hoping that hits general availability for existing accounts soon. Google Cloud launched a similar feature in July, called Spend Caps, which lets you \"set a monthly financial cap on specific services within a project\". Looks like this is becoming a trend! In an ideal world, our agents could help with this. It would be great if agents started biasing towards recommending providers with hard budget caps, and warning new and inexperienced builders against deploying applications using uncapped services that might get them into trouble. You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
+      "evidenceLink": "",
+      "score": 70.80170896825396,
+      "core": "Here's a product feature which the world is going to need a whole lot more of over the coming months and years: default hard budget caps . I'm talking about the feature of pay-by-usage services and APIs that lets you say \"after $X/month, cut this thing off and return errors\". These need to be hard limits. Soft caps, \"after $X/month, send me a warning email\", will not cut it. Coding agents, and personal agents (codin…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-04T16:20:35.868Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "OpenAI safety leader quits, warning AI company's culture is 'broken'",
+      "link": "https://www.theguardian.com/technology/2026/oct/03/openai-safety-leader-quits-warning-ai-companys-culture-is-broken",
+      "publishedAt": "2026-10-03T22:18:13.000Z",
+      "author": "jethronethro https://news.ycombinator.com/user?id=jethronethro",
+      "summary": "David Robinson joins other insiders in urging industry to take more care over rapidly developing technology",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49948332",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 265,
+        "comments": 3
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-04T16:20:35.868Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 54.634423642001735,
+      "core": "David Robinson joins other insiders in urging industry to take more care over rapidly developing technology",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "GPT-6 Sol and Luna now available on AI Gateway",
+      "link": "https://vercel.com/changelog/gpt-6-sol-and-luna-now-available-on-ai-gateway",
+      "publishedAt": "2026-09-22T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "GPT-6 Sol and GPT-6 Luna from OpenAI are now available on AI Gateway . Both models bring GPT-6 improvements to coding, computer use, and professional work at a lower price than GPT-6 Astra . GPT-6 Sol ( openai/gpt-6-sol ) is designed for complex coding and agent workflows that require sustained investigation. GPT-6 Luna ( openai/gpt-6-luna ) is the lower-cost option for running focused agentic workflows, coding tasks, and other repeatable work at high volume. Compared with their GPT-5.6 counterparts, both models improve factual reliability, communicate more directly with less jargon, and are less likely to make misleading claims about completed coding work. To use either model, pass its model ID. The examples below use GPT-6 Sol: Try GPT-6 Sol or GPT-6 Luna in the model playground, or compare the two models . Read more",
+      "evidenceLink": "",
+      "score": 54.611111111111114,
+      "core": "GPT-6 Sol and GPT-6 Luna from OpenAI are now available on AI Gateway . Both models bring GPT-6 improvements to coding, computer use, and professional work at a lower price than GPT-6 Astra . GPT-6 Sol ( openai/gpt-6-sol ) is designed for complex coding and agent workflows that require sustained investigation. GPT-6 Luna ( openai/gpt-6-luna ) is the lower-cost option for running focused agentic workflows, coding task…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-04T16:20:35.868Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Towards safety cases for frontier AI training",
+      "link": "https://openai.com/index/towards-safety-cases-for-frontier-ai-training",
+      "publishedAt": "2026-09-28T19:00:00.000Z",
+      "author": "",
+      "summary": "Our early guidelines for safety cases in frontier AI training cover technical safeguards, operational practices, and investigating misalignment incidents",
+      "evidenceLink": "",
+      "score": 47.75405023809524,
+      "core": "Our early guidelines for safety cases in frontier AI training cover technical safeguards, operational practices, and investigating misalignment incidents",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-04T16:20:35.868Z",
+        "evidence": "public_reader_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "A model guide for the GPT-6 family",
+      "link": "https://openai.com/index/practical-guide-building-gpt-6",
+      "publishedAt": "2026-10-02T16:15:00.000Z",
+      "author": "",
+      "summary": "Learn how startups can choose GPT-6 models, tune reasoning effort, improve prompts and skills, coordinate tools, and prepare workflows for production.",
+      "evidenceLink": "",
+      "score": 46.39809785714286,
+      "core": "Learn how startups can choose GPT-6 models, tune reasoning effort, improve prompts and skills, coordinate tools, and prepare workflows for production.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-04T16:20:35.868Z",
+        "evidence": "public_reader_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "How to analyze AI conversations at scale: from raw transcripts to product insights - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/how-to-analyze-ai-conversations-at-scale",
+      "publishedAt": "2026-10-01T16:00:00.000Z",
+      "author": "",
+      "summary": "Turn AI conversations into product evidence with structured metadata, classification, clustering, human review, and evaluation datasets.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-04T16:20:35.868Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 42.58817722222222,
+      "core": "Turn AI conversations into product evidence with structured metadata, classification, clustering, human review, and evaluation datasets.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Building standards for the next phase of AI",
+      "link": "https://openai.com/index/building-standards-next-phase-ai",
+      "publishedAt": "2026-09-21T10:00:00.000Z",
+      "author": "",
+      "summary": "OpenAI outlines a path to shared global AI standards, calling for coordinated evaluation, reporting, and governance to improve safety.",
+      "evidenceLink": "",
+      "score": 41.74444444444445,
+      "core": "OpenAI outlines a path to shared global AI standards, calling for coordinated evaluation, reporting, and governance to improve safety.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-04T16:20:35.868Z",
+        "evidence": "public_reader_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Parallel cut research time and cost in half with GPT‑6 Astra",
+      "link": "https://openai.com/index/parallel-cuts-time-and-cost-with-astra",
+      "publishedAt": "2026-09-22T12:00:00.000Z",
+      "author": "",
+      "summary": "GPT‑6 Astra allowed Parallel’s agents to research and synthesize labor-market data in half the time and at half the cost vs. prior models.",
+      "evidenceLink": "",
+      "score": 36.766666666666666,
+      "core": "GPT‑6 Astra allowed Parallel’s agents to research and synthesize labor-market data in half the time and at half the cost vs. prior models.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-04T16:20:35.868Z",
+        "evidence": "public_reader_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Priorities and principles for effective third party assessments",
+      "link": "https://openai.com/index/priorities-principles-third-party-assessments",
+      "publishedAt": "2026-09-22T00:00:00.000Z",
+      "author": "",
+      "summary": "OpenAI outlines priorities and principles for rigorous, secure, and independent third-party AI safety assessments of frontier models and safeguards.",
+      "evidenceLink": "",
+      "score": 35.82222222222222,
+      "core": "OpenAI outlines priorities and principles for rigorous, secure, and independent third-party AI safety assessments of frontier models and safeguards.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-04T16:20:35.868Z",
+        "evidence": "public_reader_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Airbnb widens access to GPT-6 Astra and OpenAI frontier models",
+      "link": "https://openai.com/index/airbnb-gpt-6-astra",
+      "publishedAt": "2026-09-23T01:00:00.000Z",
+      "author": "",
+      "summary": "Learn how Airbnb is expanding access to GPT-6 Astra and OpenAI frontier models to help engineering teams solve bugs, design systems, and ship faster.",
+      "evidenceLink": "",
+      "score": 33.827777777777776,
+      "core": "Learn how Airbnb is expanding access to GPT-6 Astra and OpenAI frontier models to help engineering teams solve bugs, design systems, and ship faster.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-04T16:20:35.868Z",
+        "evidence": "public_reader_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Chatham scales its capital markets expertise with OpenAI",
+      "link": "https://openai.com/index/chatham-financial",
+      "publishedAt": "2026-10-02T00:00:00.000Z",
+      "author": "",
+      "summary": "Chatham Financial uses Codex and GPT-5.6 to build technology and redesign workflows, cutting trade validation from 30 minutes to under 4.",
+      "evidenceLink": "",
+      "score": 33.16516134920635,
+      "core": "Chatham Financial uses Codex and GPT-5.6 to build technology and redesign workflows, cutting trade validation from 30 minutes to under 4.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-04T16:20:35.868Z",
+        "evidence": "public_reader_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Free and Plus Google AI users are losing access to some Gemini models",
+      "link": "https://www.techradar.com/ai-platforms-assistants/gemini/if-youre-on-the-free-or-plus-tiers-for-google-ai-youre-about-to-lose-access-to-some-gemini-models-heres-whats-changing",
+      "publishedAt": "2026-10-04T13:30:00.000Z",
+      "author": "David Nield",
+      "summary": "If you want access to the best models inside Gemini, you're going to have to start paying for them.",
+      "evidenceLink": "",
+      "score": 32.34690738095238,
+      "core": "If you want access to the best models inside Gemini, you're going to have to start paying for them.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-04T16:20:35.868Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Our framework for reporting model misalignment",
+      "link": "https://openai.com/index/model-misalignment-reporting-framework",
+      "publishedAt": "2026-09-16T17:00:00.000Z",
+      "author": "",
+      "summary": "OpenAI shares a framework for tracking, investigating, and disclosing model misalignment, alongside six reports of unexpected or concerning model behavior.",
+      "evidenceLink": "",
+      "score": 31.86111111111111,
+      "core": "OpenAI shares a framework for tracking, investigating, and disclosing model misalignment, alongside six reports of unexpected or concerning model behavior.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-04T16:20:35.868Z",
+        "evidence": "public_reader_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Sam Altman’s remarks at the United Nations Security Council",
+      "link": "https://openai.com/index/sam-altman-un-security-council-remarks",
+      "publishedAt": "2026-09-23T12:00:00.000Z",
+      "author": "",
+      "summary": "OpenAI CEO Sam Altman discusses AI safety, human control, and international cooperation in remarks to the United Nations Security Council.",
+      "evidenceLink": "",
+      "score": 31.766666666666666,
+      "core": "OpenAI CEO Sam Altman discusses AI safety, human control, and international cooperation in remarks to the United Nations Security Council.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-04T16:20:35.868Z",
+        "evidence": "public_reader_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "DevDay 2026 Recap",
+      "link": "https://openai.com/index/devday-2026-recap",
+      "publishedAt": "2026-09-29T10:00:00.000Z",
+      "author": "",
+      "summary": "Explore more than 20 announcements from OpenAI DevDay 2026, including GPT-6 Astra, ChatGPT, Codex, APIs, security, and new tools for builders.",
+      "evidenceLink": "",
+      "score": 30.7643676984127,
+      "core": "Explore more than 20 announcements from OpenAI DevDay 2026, including GPT-6 Astra, ChatGPT, Codex, APIs, security, and new tools for builders.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-04T16:20:35.868Z",
+        "evidence": "public_reader_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Hex turns complex analysis into visual reports with GPT‑6 Astra",
+      "link": "https://openai.com/index/hex-gpt-6-astra",
+      "publishedAt": "2026-09-16T12:00:00.000Z",
+      "author": "",
+      "summary": "GPT-6 Astra helps Hex’s data agents turn answers into interactive visualizations that employees are proud to share.",
+      "evidenceLink": "",
+      "score": 30.63888888888889,
+      "core": "GPT-6 Astra helps Hex’s data agents turn answers into interactive visualizations that employees are proud to share.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-04T16:20:35.868Z",
+        "evidence": "public_reader_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "How we will do better for Australia",
+      "link": "https://openai.com/index/how-we-will-do-better-for-australia",
+      "publishedAt": "2026-09-28T19:00:00.000Z",
+      "author": "",
+      "summary": "OpenAI apologises for incidents involving Australian government websites and outlines stronger safeguards and support to strengthen Australia’s cyber defences.",
+      "evidenceLink": "",
+      "score": 28.78738357142857,
+      "core": "OpenAI apologises for incidents involving Australian government websites and outlines stronger safeguards and support to strengthen Australia’s cyber defences.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-04T16:20:35.868Z",
+        "evidence": "public_reader_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Introducing MentalHealthBench",
+      "link": "https://openai.com/index/introducing-mentalhealthbench",
+      "publishedAt": "2026-09-23T10:00:00.000Z",
+      "author": "",
+      "summary": "MentalHealthBench is an expert-informed benchmark for evaluating helpful and safe AI responses across realistic mental health conversations.",
+      "evidenceLink": "",
+      "score": 28.77777777777778,
+      "core": "MentalHealthBench is an expert-informed benchmark for evaluating helpful and safe AI responses across realistic mental health conversations.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-04T16:20:35.868Z",
+        "evidence": "public_reader_fallback"
+      }
+    }
+  ]
+}

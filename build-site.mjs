@@ -71,7 +71,7 @@ function evidenceSource(value) {
     .trim();
   // API and public-board fallbacks are transport details for the same source.
   // Keep the detail in the evidence label while normalizing source accounting.
-  if (/^Product Hunt(?: API| fallback)?$/i.test(source)) return "Product Hunt";
+  if (/^Product Hunt(?: API| fallback| official leaderboard)?$/i.test(source)) return "Product Hunt";
   return source;
 }
 

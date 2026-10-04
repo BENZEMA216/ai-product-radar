@@ -1126,6 +1126,21 @@ async function fetchProductHuntDateDiagnostics(dateKey) {
   const rejectPatterns = [/upstream connect error/i, /just a moment/i, /enable javascript/i, /captcha/i];
   const results = [];
   const errors = [];
+  try {
+    const html = await fetchText(sourceUrl, {
+      attempts: 2,
+      timeoutMs: 25000,
+      accept: "text/html,application/xhtml+xml",
+      rejectEmpty: true,
+      minLength: 1000,
+      rejectPatterns: [/upstream connect error/i, /<title>\s*just a moment/i]
+    });
+    const diagnostics = parseProductHuntOfficialHtmlDiagnostics(html, dateKey, sourceUrl);
+    results.push(diagnostics);
+    if (diagnostics.rawCount >= PRODUCT_HUNT_FALLBACK_MIN_RAW_COUNT) return diagnostics;
+  } catch (error) {
+    errors.push(`Product Hunt HTML: ${clean(error.message)}`);
+  }
   for (const [index, url] of readerUrlVariants(sourceUrl).entries()) {
     try {
       const markdown = await fetchText(url, {
@@ -1160,6 +1175,52 @@ async function fetchProductHuntDateDiagnostics(dateKey) {
     errors.push(`Hunted.Space: ${clean(error.message)}`);
   }
   return { items: [], rawCount: 0, sourceKind: "unavailable", error: errors.join("; ") };
+}
+
+function decodeEmbeddedJsonString(value) {
+  try {
+    return JSON.parse(`"${value}"`);
+  } catch {
+    return value.replace(/\\u0026/g, "&").replace(/\\"/g, '"').replace(/\\\\/g, "\\");
+  }
+}
+
+export function parseProductHuntOfficialHtmlDiagnostics(html, dateKey, sourceUrl) {
+  const text = String(html || "");
+  const candidates = [];
+  const rawRows = [];
+  const pattern =
+    /"__typename":"Post","id":"([^"]+)"[\s\S]{0,1200}?"name":"((?:\\.|[^"\\])*)","slug":"((?:\\.|[^"\\])*)","tagline":"((?:\\.|[^"\\])*)"[\s\S]{0,1200}?"product":\{"__typename":"Product","id":"[^"]+","slug":"((?:\\.|[^"\\])*)"[\s\S]{0,1800}?"featuredAt":"([^"]+)"[\s\S]{0,900}?"latestScore":(\d+)[\s\S]{0,700}?"dailyRank":"?(\d+)"?/g;
+  let match;
+  while ((match = pattern.exec(text)) !== null) {
+    const [, postId, encodedName, , encodedTagline, encodedProductSlug, featuredAt, latestScore, dailyRank] = match;
+    const rawName = clean(decodeEmbeddedJsonString(encodedName));
+    const rawDescription = clean(decodeEmbeddedJsonString(encodedTagline));
+    const productSlug = clean(decodeEmbeddedJsonString(encodedProductSlug));
+    const sourceRank = Number(dailyRank);
+    if (!rawName || !productSlug || !Number.isFinite(sourceRank)) continue;
+    const link = `https://www.producthunt.com/products/${productSlug}`;
+    rawRows.push(`${postId}:${link}`);
+    const candidate = productHuntCandidate({
+      rawName,
+      link,
+      rawDescription,
+      dateKey,
+      evidenceUrl: sourceUrl,
+      evidenceLabel: `Product Hunt official leaderboard ${dateKey}`,
+      raw: match[0],
+      sourceRank,
+      metrics: { phVotes: Number(latestScore) },
+      observedAt: featuredAt || dateKey,
+      sourceApi: "producthunt_official_html"
+    });
+    if (candidate) candidates.push(candidate);
+  }
+  return {
+    items: uniqueBy(candidates, (item) => item.link),
+    rawCount: new Set(rawRows).size,
+    sourceKind: "official_html"
+  };
 }
 
 export function parseHuntedSpaceProductHuntDiagnostics(html, dateKey) {

@@ -14,6 +14,7 @@ import {
   parseProductHuntApiDiagnostics,
   parseProductHuntApiPosts,
   parseProductHuntSnapshotDiagnostics,
+  parseProductHuntOfficialHtmlDiagnostics,
   parseProductHuntMarkdownDiagnostics,
   parseProductHuntMarkdown,
   parseAihotDailyMarkdown,
@@ -888,6 +889,14 @@ function testSiteBuilderHelpers() {
   assert.doesNotMatch(multiHtml, /<optgroup/);
 }
 
+function testSiteBuilderNormalizesOfficialProductHuntLeaderboardSource() {
+  const report = `| 产品名 | 链接 | 新产品还是老产品更新 | 做了什么 | 为什么值得看 | 证据来源 |
+|---|---|---|---|---|---|
+| Cubicle | [链接](https://www.producthunt.com/products/cubicle-2) | 新产品 | Agent office | 值得核验。 | [Product Hunt official leaderboard 2026-10-03](https://www.producthunt.com/leaderboard/daily/2026/10/3/all) |`;
+  const [item] = parseReportMarkdown(report, "reports/2026-10-05-0038-cst.md");
+  assert.equal(item.source, "Product Hunt");
+}
+
 function testSiteBuilderLimitsInitialPriorityView() {
   const rows = Array.from(
     { length: 25 },
@@ -1592,6 +1601,21 @@ function testProductHuntOfficialSnapshotParserFixture() {
   );
   assert.equal(invalid.rawCount, 0);
   assert.equal(invalid.sourceKind, "official_snapshot_invalid");
+}
+
+function testProductHuntOfficialHtmlParserFixture() {
+  const html = `<script>{"__typename":"Post","id":"p1","promotedPillImageUrl":null,"name":"Agent Desk","slug":"agent-desk-launch","tagline":"A governed workspace for AI agents","hideVotesCount":false,"redirectToProduct":null,"product":{"__typename":"Product","id":"prod1","slug":"agent-desk","isSubscribed":false},"featuredComment":null,"thumbnailImageUuid":"x.png","featuredAt":"2026-10-03T00:01:00-07:00","scheduledAt":"2026-10-03T00:01:00-07:00","createdAt":"2026-10-03T00:01:00-07:00","latestScore":311,"shortenedUrl":"/r/p/p1","dailyRank":"1","weeklyRank":"2"},{"__typename":"Post","id":"p2","promotedPillImageUrl":null,"name":"Plain Calendar","slug":"plain-calendar","tagline":"A simple paper calendar","hideVotesCount":false,"redirectToProduct":null,"product":{"__typename":"Product","id":"prod2","slug":"plain-calendar","isSubscribed":false},"featuredComment":null,"thumbnailImageUuid":"y.png","featuredAt":"2026-10-03T00:01:00-07:00","scheduledAt":"2026-10-03T00:01:00-07:00","createdAt":"2026-10-03T00:01:00-07:00","latestScore":120,"shortenedUrl":"/r/p/p2","dailyRank":"2","weeklyRank":"3"}</script>`;
+  const diagnostics = parseProductHuntOfficialHtmlDiagnostics(
+    html,
+    "2026-10-03",
+    "https://www.producthunt.com/leaderboard/daily/2026/10/3/all"
+  );
+  assert.equal(diagnostics.rawCount, 2);
+  assert.equal(diagnostics.sourceKind, "official_html");
+  assert.equal(diagnostics.items.length, 1);
+  assert.equal(diagnostics.items[0].link, "https://www.producthunt.com/products/agent-desk");
+  assert.equal(diagnostics.items[0].sourceRank, 1);
+  assert.equal(diagnostics.items[0].metrics.phVotes, 311);
 }
 
 async function testProductHuntUsesApiWhenTokenConfigured() {
@@ -4461,6 +4485,26 @@ async function testKnowledgeAccessRejectsHttpBlocking() {
     assert.equal(fallback.item.access.mode, "public");
     assert.equal(fallback.item.access.evidence, "live_http_curl_fallback");
     assert.equal(fallback.item.link, "https://example.com/ai-article");
+
+    const publicReaderFallback = await probePublicBlog(
+      { link: "https://openai.com/index/public-ai-article" },
+      { allowPublicReaderFallback: true },
+      "2026-09-18T00:00:00Z",
+      {
+        fetchImpl: async () => new Response("blocked", { status: 403 }),
+        readerFetchImpl: async (url) => {
+          assert.equal(String(url), "https://r.jina.ai/http://https://openai.com/index/public-ai-article");
+          return new Response(
+            `Title: Public AI article\n\nURL Source: https://openai.com/index/public-ai-article\n\n${"Substantive public engineering evidence. ".repeat(20)}`,
+            { status: 200 }
+          );
+        }
+      }
+    );
+    assert.equal(publicReaderFallback.ok, true);
+    assert.equal(publicReaderFallback.item.access.mode, "public");
+    assert.equal(publicReaderFallback.item.access.evidence, "public_reader_fallback");
+    assert.equal(publicReaderFallback.item.link, "https://openai.com/index/public-ai-article");
   } finally {
     globalThis.fetch = originalFetch;
   }
@@ -5185,6 +5229,7 @@ const tests = [
   ["Product Hunt history filter annotates source health", testProductHuntHistoryFilterAnnotatesSourceHealth],
   ["Product Hunt history filter annotates all duplicates", testProductHuntHistoryFilterAnnotatesAllDuplicates],
   ["Site builder helpers", testSiteBuilderHelpers],
+  ["Site builder normalizes official Product Hunt leaderboard source", testSiteBuilderNormalizesOfficialProductHuntLeaderboardSource],
   ["Site builder limits initial priority view", testSiteBuilderLimitsInitialPriorityView],
   ["Site builder includes source health", testSiteBuilderIncludesSourceHealth],
   ["Pages static publish bypasses Jekyll", testPagesStaticPublishBypassesJekyll],
@@ -5211,6 +5256,7 @@ const tests = [
   ["Product Hunt API parser fixture", testProductHuntApiParserFixture],
   ["Product Hunt API diagnostics counts raw posts", testProductHuntApiDiagnosticsCountsRawPosts],
   ["Product Hunt official snapshot parser fixture", testProductHuntOfficialSnapshotParserFixture],
+  ["Product Hunt official HTML parser fixture", testProductHuntOfficialHtmlParserFixture],
   ["Product Hunt uses API when token configured", testProductHuntUsesApiWhenTokenConfigured],
   ["Product Hunt fallback tries alternate readers when coverage low", testProductHuntFallbackTriesAlternateReadersWhenCoverageLow],
   ["Product Hunt why copy uses product context", testProductHuntWhyCopyUsesProductContext],

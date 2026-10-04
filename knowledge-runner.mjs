@@ -1002,6 +1002,41 @@ function curlPublicBlog(url, timeoutMs = 15000) {
 export async function probePublicBlog(item, source, checkedAt, dependencies = {}) {
   const fetchImpl = dependencies.fetchImpl || fetch;
   const curlImpl = dependencies.curlImpl || curlPublicBlog;
+  const readerFetchImpl = dependencies.readerFetchImpl || fetch;
+  const tryPublicReaderFallback = async () => {
+    if (!source?.allowPublicReaderFallback) return null;
+    const readerUrl = `https://r.jina.ai/http://${item.link}`;
+    try {
+      const response = await readerFetchImpl(readerUrl, {
+        redirect: "follow",
+        headers: {
+          "user-agent": "Mozilla/5.0 (compatible; ai-product-radar/0.1; +https://github.com/BENZEMA216/ai-product-radar)",
+          accept: "text/plain,text/markdown"
+        },
+        signal: AbortSignal.timeout(20000)
+      });
+      if (!response.ok) return null;
+      const text = await response.text();
+      const canonical = canonicalizeUrl(item.link);
+      const sourceMarker = `URL Source: ${canonical}`;
+      if (text.length < 500 || !text.includes(sourceMarker) || blockedBlogPage(text)) return null;
+      return {
+        ok: true,
+        item: {
+          ...item,
+          link: canonical,
+          access: {
+            verified: true,
+            mode: "public",
+            checkedAt,
+            evidence: "public_reader_fallback"
+          }
+        }
+      };
+    } catch {
+      return null;
+    }
+  };
   try {
     const response = await fetchImpl(item.link, {
       redirect: "follow",
@@ -1030,7 +1065,8 @@ export async function probePublicBlog(item, source, checkedAt, dependencies = {}
         }
       };
     }
-    return { ok: false, reason: `HTTP ${response.status}` };
+    const readerFallback = await tryPublicReaderFallback();
+    return readerFallback || { ok: false, reason: `HTTP ${response.status}` };
   } catch (error) {
     try {
       const { html, effectiveUrl } = curlImpl(item.link, 15000);
@@ -1051,6 +1087,8 @@ export async function probePublicBlog(item, source, checkedAt, dependencies = {}
         }
       };
     } catch (curlError) {
+      const readerFallback = await tryPublicReaderFallback();
+      if (readerFallback) return readerFallback;
       const fetchReason = String(error?.message || error).slice(0, 90);
       const curlReason = String(curlError?.message || curlError).slice(0, 90);
       return { ok: false, reason: `${fetchReason}; curl fallback: ${curlReason}`.slice(0, 180) };

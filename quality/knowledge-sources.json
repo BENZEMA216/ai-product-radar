@@ -23,6 +23,7 @@
       "type": "feed",
       "url": "https://openai.com/news/rss.xml",
       "home": "https://openai.com/news/research/",
+      "allowPublicReaderFallback": true,
       "weight": 14,
       "maxItems": 20,
       "requireKnowledgeDepth": true
