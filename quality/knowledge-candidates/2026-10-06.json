@@ -1,0 +1,401 @@
+{
+  "generatedAt": "2026-10-05T16:40:56.687Z",
+  "date": "2026-10-06",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "github_ai_engineering",
+      "source": "GitHub Blog",
+      "title": "ReviewBench: An open benchmark for AI code review",
+      "link": "https://github.blog/ai-and-ml/github-copilot/reviewbench-an-open-benchmark-for-ai-code-review",
+      "publishedAt": "2026-10-05T15:59:40.000Z",
+      "author": "Michelle Zhou",
+      "summary": "We’re launching ReviewBench, a benchmark for code review agents built on representative GitHub pull requests, multi-source ground truth, calibrated evaluation, and production-aligned metrics. The post ReviewBench: An open benchmark for AI code review appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 75.53974827380952,
+      "core": "We’re launching ReviewBench, a benchmark for code review agents built on representative GitHub pull requests, multi-source ground truth, calibrated evaluation, and production-aligned metrics. The post ReviewBench: An open benchmark for AI code review appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-05T16:40:56.687Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "red_hat_ai_engineering",
+      "source": "Red Hat Developer · AI",
+      "title": "Add NeMo Guardrails to a LangGraph agent on OpenShift AI",
+      "link": "https://developers.redhat.com/articles/2026/10/05/add-nemo-guardrails-langgraph-agent-openshift-ai",
+      "publishedAt": "2026-10-05T13:01:54.000Z",
+      "author": "Tarun Etikala",
+      "summary": "Your LangGraph agent can call tools, follow a system prompt, and answer domain questions. That's not the same as being safe to put in front of users. Without guardrails, a banking customer service agent might explain how to commit check fraud, reply to profanity, or happily help you bake a chocolate cake. The post Add NeMo Guardrails to a LangGraph agent on OpenShift AI appeared first on Red Hat Developer .",
+      "evidenceLink": "",
+      "score": 59.01701017857143,
+      "core": "Your LangGraph agent can call tools, follow a system prompt, and answer domain questions. That's not the same as being safe to put in front of users. Without guardrails, a banking customer service agent might explain how to commit check fraud, reply to profanity, or happily help you bake a chocolate cake. The post Add NeMo Guardrails to a LangGraph agent on OpenShift AI appeared first on Red Hat Developer .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-05T16:40:56.687Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cohere_blog",
+      "source": "Cohere Blog",
+      "title": "North 2: Enterprise AI Without Compromises",
+      "link": "https://cohere.com/blog/introducing-north-2",
+      "publishedAt": "2026-10-05T13:04:00.000Z",
+      "author": "",
+      "summary": "North 2 is Cohere’s biggest upgrade yet, unifying enterprise‑grade security, intelligence, cost governance, and full‑stack control into a single agentic AI platform that runs wherever your data lives.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-05T16:40:56.687Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 58.852843511904766,
+      "core": "North 2 is Cohere’s biggest upgrade yet, unifying enterprise‑grade security, intelligence, cost governance, and full‑stack control into a single agentic AI platform that runs wherever your data lives.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Evaluating multi-agent systems for explainability and helpfulness with Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/evaluating-multi-agent-systems-for-explainability-and-helpfulness-with-amazon-bedrock-agentcore",
+      "publishedAt": "2026-10-05T15:50:01.000Z",
+      "author": "Kanishk Mahajan",
+      "summary": "Multi-agent systems need deeper guarantees than fluent responses: they must select the right tools, respect constraints, and explain their decisions. Learn how to build a Strands-based multi-agent supply chain decisioning system and evaluate it with Amazon Bedrock AgentCore Evaluations using built-in, custom, and explainability evaluators.",
+      "evidenceLink": "",
+      "score": 57.833815734126986,
+      "core": "Multi-agent systems need deeper guarantees than fluent responses: they must select the right tools, respect constraints, and explain their decisions. Learn how to build a Strands-based multi-agent supply chain decisioning system and evaluate it with Amazon Bedrock AgentCore Evaluations using built-in, custom, and explainability evaluators.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-05T16:40:56.687Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Everything we launched during Birthday Week 2026",
+      "link": "https://blog.cloudflare.com/birthday-week-2026-wrap-up",
+      "publishedAt": "2026-10-05T13:00:00.000Z",
+      "author": "Carlos Armada",
+      "summary": "We celebrated our 16th birthday with 46 announcements across open source, post-quantum security, AI agents, and developer platform upgrades. Here’s a day-by-day roundup of everything we shipped.",
+      "evidenceLink": "",
+      "score": 57.81474827380952,
+      "core": "We celebrated our 16th birthday with 46 announcements across open source, post-quantum security, AI agents, and developer platform upgrades. Here’s a day-by-day roundup of everything we shipped.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-05T16:40:56.687Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "How we benchmark AI agents and tools with Harbor and Arize Phoenix",
+      "link": "https://arize.com/blog/ai-agent-benchmarking-harbor-arize-phoenix",
+      "publishedAt": "2026-10-05T14:19:10.000Z",
+      "author": "Elizabeth Hutton",
+      "summary": "See how Arize uses Harbor and Phoenix to benchmark AI agents, MCP servers, skills, and CLIs in reproducible sandboxes, then inspect traces and annotations. The post How we benchmark AI agents and tools with Harbor and Arize Phoenix appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 57.27566097222222,
+      "core": "See how Arize uses Harbor and Phoenix to benchmark AI agents, MCP servers, skills, and CLIs in reproducible sandboxes, then inspect traces and annotations. The post How we benchmark AI agents and tools with Harbor and Arize Phoenix appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-05T16:40:56.687Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "Subagents Explained: How AI Agents Delegate Work to Other Agents",
+      "link": "https://rerun.build/blog/subagents",
+      "publishedAt": "2026-10-05T04:13:16.000Z",
+      "author": "",
+      "summary": "Learn what subagents are, how AI agents delegate tasks, and when multi-agent workflows outperform a single agent, with architecture patterns, risks, and design guidance.",
+      "evidenceLink": "",
+      "score": 56.04879589285714,
+      "core": "Learn what subagents are, how AI agents delegate tasks, and when multi-agent workflows outperform a single agent, with architecture patterns, risks, and design guidance.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-05T16:40:56.687Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Why agentic AI demands a new approach to enterprise security",
+      "link": "https://www.techradar.com/pro/why-agentic-ai-demands-a-new-approach-to-enterprise-security",
+      "publishedAt": "2026-10-05T09:54:08.000Z",
+      "author": "Matt Cooke",
+      "summary": "Autonomous AI agents are transforming enterprise workflows, creating new security risks around data, intent, access and accountability.",
+      "evidenceLink": "",
+      "score": 53.2657006547619,
+      "core": "Autonomous AI agents are transforming enterprise workflows, creating new security risks around data, intent, access and accountability.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-05T16:40:56.687Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "detent_agent_engineering",
+      "source": "DETENT Agent Engineering",
+      "title": "Prompt Engineering Is No Longer the Bottleneck. Verification Is.",
+      "link": "https://detent-ai.com/en/blog/prompt-engineering-non-e-il-collo-di-bottiglia",
+      "publishedAt": "2026-10-05T00:00:00.000Z",
+      "author": "",
+      "summary": "Prompt engineering is the craft of phrasing instructions for a model. With coding agents the breaking point has moved downstream: to how work is verified and what is left once the session ends.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-05T16:40:56.687Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 48.88062128968254,
+      "core": "Prompt engineering is the craft of phrasing instructions for a model. With coding agents the breaking point has moved downstream: to how work is verified and what is left once the session ends.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentconn_engineering",
+      "source": "AgentConn Field Reports",
+      "title": "Agents Don't Need Memory, They Need Docs",
+      "link": "https://agentconn.com/blog/agents-need-documentation-not-memory",
+      "publishedAt": "2026-10-04T00:00:00.000Z",
+      "author": "AgentConn Team",
+      "summary": "claude-mem hits 96K stars the same day HN debates why agents need docs, not memory. The real architecture lesson for builders.",
+      "evidenceLink": "",
+      "score": 45.79411335317461,
+      "core": "claude-mem hits 96K stars the same day HN debates why agents need docs, not memory. The real architecture lesson for builders.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-05T16:40:56.687Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "One year later: the power of 1.1.1.1 interns",
+      "link": "https://blog.cloudflare.com/one-year-later-1111-interns",
+      "publishedAt": "2026-10-05T13:00:00.000Z",
+      "author": "Kelly Russell",
+      "summary": "A year after announcing our goal to hire 1,111 interns, more than 750 early-career builders have shipped real products across 48 teams at Cloudflare. From Birthday Week launches to post-quantum security, our interns prove that AI amplifies human potential instead of replacing it.",
+      "evidenceLink": "",
+      "score": 45.2925260515873,
+      "core": "A year after announcing our goal to hire 1,111 interns, more than 750 early-career builders have shipped real products across 48 teams at Cloudflare. From Birthday Week launches to post-quantum security, our interns prove that AI amplifies human potential instead of replacing it.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-05T16:40:56.687Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pydantic_ai_engineering",
+      "source": "Pydantic AI Engineering",
+      "title": "AI agent observability: the production layer you need",
+      "link": "https://pydantic.dev/articles/agent-observability-layer",
+      "publishedAt": "2026-10-01T09:00:00.000Z",
+      "author": "",
+      "summary": "Why traditional APM misses agent failures, what an agent observability layer must capture, and how to get full-stack tracing with Pydantic Logfire.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-05T16:40:56.687Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 44.410780019841276,
+      "core": "Why traditional APM misses agent failures, what an agent observability layer must capture, and how to get full-stack tracing with Pydantic Logfire.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentconn_engineering",
+      "source": "AgentConn Field Reports",
+      "title": "Jev by TypeSafe: A New Agent Layer, If Calibration Holds",
+      "link": "https://agentconn.com/blog/jev-typesafe-new-agent-layer-if-calibration-holds",
+      "publishedAt": "2026-09-21T00:00:00.000Z",
+      "author": "AgentConn Team",
+      "summary": "TypeSafe's Jev returns typed decisions, not text. A deep dive on RLCD, the benchmark spread, and the calibration proof it still owes agent builders.",
+      "evidenceLink": "",
+      "score": 38.82222222222222,
+      "core": "TypeSafe's Jev returns typed decisions, not text. A deep dive on RLCD, the benchmark spread, and the calibration proof it still owes agent builders.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-05T16:40:56.687Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "detent_agent_engineering",
+      "source": "DETENT Agent Engineering",
+      "title": "AI Software Development: Why Writing the Code Was Never the Hard Part",
+      "link": "https://detent-ai.com/en/blog/ai-software-development",
+      "publishedAt": "2026-09-20T00:00:00.000Z",
+      "author": "",
+      "summary": "AI software development gets judged by how much code an agent produces. That was never the bottleneck: analysis, context, verification, and acceptance are the four steps that didn&#x27;t get automated, and that&#x27;s where the effort moved.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-05T16:40:56.687Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 38.33888888888889,
+      "core": "AI software development gets judged by how much code an agent produces. That was never the bottleneck: analysis, context, verification, and acceptance are the four steps that didn&#x27;t get automated, and that&#x27;s where the effort moved.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentconn_engineering",
+      "source": "AgentConn Field Reports",
+      "title": "Nvidia OpenShell Ships the Agent Kill Switch",
+      "link": "https://agentconn.com/blog/nvidia-openshell-agent-sandbox-safety-infrastructure",
+      "publishedAt": "2026-09-29T00:00:00.000Z",
+      "author": "AgentConn Team",
+      "summary": "Nvidia's OpenShell sandboxes agents at the kernel level. What it means when your GPU vendor defines safety.",
+      "evidenceLink": "",
+      "score": 38.11712922619048,
+      "core": "Nvidia's OpenShell sandboxes agents at the kernel level. What it means when your GPU vendor defines safety.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-05T16:40:56.687Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "OpenAI sent an oddly casual apology after its AI accessed Australian government systems",
+      "link": "https://www.techradar.com/ai-platforms-assistants/openai-sends-staggeringly-casual-email-to-australian-government-wishing-it-the-best-after-ai-agents-hack-its-health-insurance-website",
+      "publishedAt": "2026-10-05T09:57:55.000Z",
+      "author": "Eric Hal Schwartz",
+      "summary": "OpenAI’s breezy email about an AI agent accessing a government system looks even stranger as the full scale of the incident, and the delay in disclosing it, become clear.",
+      "evidenceLink": "",
+      "score": 37.464649067460314,
+      "core": "OpenAI’s breezy email about an AI agent accessing a government system looks even stranger as the full scale of the incident, and the delay in disclosing it, become clear.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-05T16:40:56.687Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pydantic_ai_engineering",
+      "source": "Pydantic AI Engineering",
+      "title": "Cheap AI scoring with Jev and Pydantic Evals",
+      "link": "https://pydantic.dev/articles/jev-evals",
+      "publishedAt": "2026-09-23T16:00:00.000Z",
+      "author": "",
+      "summary": "Build a Jev evaluator with categorical and numeric scores. Run it with Pydantic Evals and compare high-volume scoring costs in Logfire and Braintrust.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-05T16:40:56.687Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 36.833333333333336,
+      "core": "Build a Jev evaluator with categorical and numeric scores. Run it with Pydantic Evals and compare high-volume scoring costs in Logfire and Braintrust.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "How OpenAI uses ChatGPT Sites (live at DevDay!) | Kath Korevec (Product Lead)",
+      "link": "https://www.lennysnewsletter.com/p/how-openai-uses-chatgpt-sites-live",
+      "publishedAt": "2026-10-05T12:04:54.000Z",
+      "author": "Claire Vo",
+      "summary": "Watch now (36 mins) | 🎙️ Kath Korevec demos ChatGPT Sites live at OpenAI DevDay, showing how to turn Slack, Notion, and calendar data into internal tools that adapt to each person on your team",
+      "evidenceLink": "",
+      "score": 34.743597480158726,
+      "core": "Watch now (36 mins) | 🎙️ Kath Korevec demos ChatGPT Sites live at OpenAI DevDay, showing how to turn Slack, Notion, and calendar data into internal tools that adapt to each person on your team",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-05T16:40:56.687Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Our approach to EU text provenance rules",
+      "link": "https://openai.com/index/eu-text-provenance",
+      "publishedAt": "2026-10-05T15:00:00.000Z",
+      "author": "",
+      "summary": "How OpenAI is approaching text watermarking under EU rules. Learn where watermarks apply, how detection works, and why access starts with researchers.",
+      "evidenceLink": "",
+      "score": 30.713160972222223,
+      "core": "How OpenAI is approaching text watermarking under EU rules. Learn where watermarks apply, how detection works, and why access starts with researchers.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-05T16:40:56.687Z",
+        "evidence": "public_reader_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "🎙️ How I AI: 8 real Jev use cases + How OpenAI uses ChatGPT Sites (live at DevDay!) + Claire’s DevDay recap",
+      "link": "https://www.lennysnewsletter.com/p/how-i-ai-8-real-jev-use-cases-how",
+      "publishedAt": "2026-10-05T15:03:24.000Z",
+      "author": "Lenny Rachitsky",
+      "summary": "Your weekly listens from How I AI, part of the Lenny’s Podcast Network",
+      "evidenceLink": "",
+      "score": 27.2727641468254,
+      "core": "Your weekly listens from How I AI, part of the Lenny’s Podcast Network",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-05T16:40:56.687Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
