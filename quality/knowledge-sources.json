@@ -943,6 +943,44 @@
       "requireKnowledgeDepth": true
     },
     {
+      "id": "pydantic_ai_engineering",
+      "label": "Pydantic AI Engineering",
+      "type": "sitemap",
+      "url": "https://pydantic.dev/sitemap.xml",
+      "home": "https://pydantic.dev/articles",
+      "pathPrefixes": ["/articles/"],
+      "weight": 16,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "detent_agent_engineering",
+      "label": "DETENT Agent Engineering",
+      "type": "sitemap",
+      "url": "https://detent-ai.com/sitemap.xml",
+      "home": "https://detent-ai.com/en/blog",
+      "pathPrefixes": ["/en/blog/"],
+      "weight": 13,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "agentconn_engineering",
+      "label": "AgentConn Field Reports",
+      "type": "feed",
+      "url": "https://agentconn.com/rss.xml",
+      "home": "https://agentconn.com/blog/",
+      "weight": 12,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
       "id": "cursor_engineering",
       "label": "Cursor Blog",
       "type": "sitemap",
