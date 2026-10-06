@@ -1,0 +1,135 @@
+{
+  "generatedAt": "2026-10-06T16:36:30.665Z",
+  "report": "2026-10-07.md",
+  "health": "quality/knowledge-source-health/2026-10-07.json",
+  "candidates": "quality/knowledge-candidates/2026-10-07.json",
+  "site": "docs/index.html",
+  "ok": true,
+  "date": "2026-10-07",
+  "rows": 20,
+  "blogCount": 20,
+  "paperCount": 0,
+  "blogAccessVerifiedCount": 20,
+  "topConferencePaperCount": 0,
+  "sourceCount": 87,
+  "candidatePool": {
+    "historicalLinkCount": 1339,
+    "blogFetchedCount": 292,
+    "blogAccessCheckedCount": 48,
+    "blogAccessVerifiedCount": 34,
+    "blogAccessRejectedCount": 14,
+    "blogAccessRejected": [
+      {
+        "sourceId": "interconnects",
+        "title": "Latest open artifacts (#24): Motif-3, GLM-5.3, Hy4-preview and open model licenses",
+        "link": "https://www.interconnects.ai/p/latest-open-artifacts-24-motif-3",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "Advanced evals: How to find (and fix) hidden AI failures in your product",
+        "link": "https://www.lennysnewsletter.com/p/advanced-evals-how-to-find-and-fix",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "OpenAI’s Head of ChatGPT: We’re entering a new era of AI (again) | Tibo Sottiaux",
+        "link": "https://www.lennysnewsletter.com/p/openais-head-of-chatgpt-were-entering",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "🧠 Community Wisdom: Getting value from personal AI agents without handing over your inbox, the ego threat of going from IC to manager, uncommon perks to negotiate for, and more",
+        "link": "https://www.lennysnewsletter.com/p/community-wisdom-getting-value-from",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "The grief, loneliness, and burnout sweeping through the tech industry right now | Molly Graham",
+        "link": "https://www.lennysnewsletter.com/p/the-grief-loneliness-and-burnout",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "🧠 Community Wisdom: AI doomerism, speeding up discovery in a big org, verifying engineering answers as a new PM, where analytics adds the most value, and more",
+        "link": "https://www.lennysnewsletter.com/p/community-wisdom-ai-doomerism-speeding",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Inside OpenAI’s agentic software factory",
+        "link": "https://newsletter.pragmaticengineer.com/p/openai-software-factory",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "How will AI change operating systems? Part 2: Windows",
+        "link": "https://newsletter.pragmaticengineer.com/p/windows-and-ai",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: RoR creator sparks new “death of coding by hand” debate",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-end-of-coding-by-hand",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "What is happening with code reviews?",
+        "link": "https://newsletter.pragmaticengineer.com/p/what-is-happening-with-code-reviews",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse #191: a new trend of CPU shortages",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-191-a-new-trend-of-cpu",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: Firebase’s global outage & poor response",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-firebases-global-outage",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Why has Shopify dropped React Native?",
+        "link": "https://newsletter.pragmaticengineer.com/p/shopify-native-mobile",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "wandb_ai_engineering",
+        "title": "RAG pipeline tutorial: Common pitfalls (and how to fix them)",
+        "link": "https://wandb.ai/ai-team-articles/llm-evaluation/reports/RAG-pipeline-tutorial-Common-pitfalls-and-how-to-fix-them---VmlldzoxNzE2MTA0OA",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      }
+    ],
+    "blogCanonicalRedirectHistoricalDedupCount": 8,
+    "paperFetchedCount": 36,
+    "paperTopConferenceVerifiedCount": 36,
+    "blogAfterHistoricalDedupCount": 26,
+    "paperAfterHistoricalDedupCount": 0,
+    "eligibleAfterHistoricalDedupCount": 26,
+    "maxPerBlogSource": 2,
+    "selectedBlogSourceCounts": {
+      "agentconn_engineering": 1,
+      "aws_machine_learning": 2,
+      "detent_agent_engineering": 2,
+      "figma_ai_design": 2,
+      "figma_ai_release_notes": 1,
+      "github_copilot_changelog": 1,
+      "gitlab_ai_engineering": 2,
+      "google_research": 1,
+      "hcker_news_ai_blogs": 2,
+      "interconnects": 1,
+      "pydantic_ai_engineering": 1,
+      "red_hat_ai_engineering": 1,
+      "rerun_agent_engineering": 1,
+      "salesforce_engineering": 1,
+      "vercel_ai": 1
+    },
+    "sourceCapRelaxed": false,
+    "shortfallReason": "顶会元数据核验后论文仅 0 篇，空缺优先用已验证可访问的 Blog 补位，不用普通 arXiv 论文凑数；未用旧文或低质量内容补位。"
+  },
+  "failures": []
+}

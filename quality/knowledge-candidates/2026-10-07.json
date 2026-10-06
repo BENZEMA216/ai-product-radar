@@ -1,0 +1,413 @@
+{
+  "generatedAt": "2026-10-06T16:18:13.088Z",
+  "date": "2026-10-07",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "GitLab Transcend: Speed you can trust, all the way to production",
+      "link": "https://about.gitlab.com/blog/transcend-india-announcements",
+      "publishedAt": "2026-10-06T00:00:00.000Z",
+      "author": "Manav Khurana https://about.gitlab.com/blog/authors/manav-khurana/",
+      "summary": "At Transcend, we made over a dozen announcements across all four layers of our architecture for agentic software engineering: agent orchestration, data and context, DevOps workflows, and governance and security. Watch the replay , or read on for what shipped and how to turn on the new capabilities. At a glance What we launched Release status What it does Goal-driven flows ( /goal ) GA this month Carry a change through review, tests, scans, and approvals without waiting between stages of the software lifecycle. Custom Flows GA Chain agents together to match the process your teams already follow for software delivery. GitLab for Slack GA this month Start an agentic flow from the channels where your teams already work. MCP Server GA this month Securely connect AI tools and applications into GitLab workflows under the same policy. Open weight models GA Get comparable performance on lower-cost workloads with GitLab-hosted GLM 5.3, Kimi K3, and MiniMax 3 models. GitLab Orbit GA next month Give your agents the right knowledge requiring 45x fewer retries with a context graph of your software lifecycle. Duo Agent Platform Impact Analytics Early access Measure the cost and impact of your AI investment, by team, task, and model. Credit and usage controls GA Set caps at the subscription, group, and user level and get alerts on AI spend. GitLab Artifact Central Beta Give every package and container one governed home, next to source and CI. GitLab Dependency Firewall Early access Set rules that block, quarantine, or warn on risky packages before they reach your build. GitLab Secrets Manager GA this month Scope build-time secrets to the job and revoke them with one click. GitLab Security Standard Available today Harden your software factory in five stages and let your agents earn autonomy. New flows with Claude Mythos 5 and 5.1 GA next month Find and remediate vulnerabilities on GitLab Duo Agent Platform with new security flows. Agent orchestration across the software lifecycle Today, each step in your agentic workflow still waits for a person to approve it before the next one starts. Goal-driven flows take a stated objective and run it end to end, through review, tests, security scans, and approvals from the Duo CLI, headless mode, or Agentic Chat. Custom Flows let you chain agents together to match the process your team already follows. GitLab for Slack starts a flow from the channel where the conversation is already happening. The MCP Server enables external AI applications and coding agents to securely access your GitLab instance under the same policy your own agents follow. GitLab-hosted open-weight models , including GLM 5.3, Kimi 3, and MiniMax 3, give you a lower-cost option when a workload doesn't need a frontier model. At similar task-completion rates, some open weight pairings deliver up to 8x more model calls per GitLab Credit than their frontier counterparts. Data and context to power human and agent reasoning Every agent task starts by re-deriving the same context, which drives up retries and token use. And without coherent visibility into AI costs and ROI, there's no way to tell whether your investment is paying off. GitLab Orbit , the context graph of your entire software lifecycle increases agent accuracy with up to 45x fewer retries, effectively reducing cost for agentic workflows with up to 4.5x fewer token use. During its beta period, Orbit has been used by more than 3,500 organizations, running over 280,000 queries. Duo Agent Platform Impact Analytics shows the cost and impact of your AI investment by team, task, and model. Credit and usage controls let you set caps at the subscription, group, or user level, with alerts at 50%, 80%, and 100% of spend, and an automatic pause once you hit the cap you set. DevOps infrastructure at agent scale Most of what ships isn't code your team wrote, it's assembled from open source packages, base images, and libraries pulled in from everywhere. When every team runs its own registry, there's no single place to confirm what you actually published or shipped. Back in June, during Transcend London, we introduced our next-gen source code management solution helping you achieve machine scale with your coding agents. The next machine-scale problem goes to the step after code, when you’re creating a build. GitLab Artifact Central replaces a separate registry per team with one place to publish and pull from, built next to your source code and CI pipelines. It publishes and pulls Maven, npm, and Docker, and OCI packages directly from CI pipelines, with PyPI and NuGet coming at GA. Artifact Central uses the same identity and permissions as your source code, with virtual repos, native CI/CD authentication, and full build provenance. Early results show roughly 50% lower total cost of ownership compared to alternative tooling. Governance and security with centralized enforcement Agents pull in package components to your build at machine speed, making it impossible to manually secure what you ship. When that gap exists, you risk shipping security vulnerabilities into production rather than catching them before they impact customers, and you have to answer for it. GitLab Dependency Firewall , now in early access, sets rules on package age, vulnerability severity, malicious package detection, and license compliance, with actions to block, quarantine, or warn, enforced on the registries you already use. It works directly with GitLab Artifact Central, and is compatible with JFrog Artifactory and Sonatype Nexus Repository. With a greater number of builds, another risk emerges: agents inheriting build-time secrets from local dev environments that nobody secured, and using them across CI pipelines. GitLab Secrets Manager gives each build-time secret one home, scoped to the job that needs it, with one-click revocation for a leaked credential and up to 50% savings compared to hosting a separate vault. The same AI models that let agents write and ship code at machine speed also make existing weaknesses faster and cheaper to discover, connect, and exploit. The GitLab Security Standard lays out five stages for assessing and hardening your agentic software development: authorizing every actor's access, isolating workspaces and their inputs, verifying the checks that judge the work, releasing exactly what was verified, and responding fast when something looks wrong, all built on a foundation of policy, audit, and ownership. Read the full standard for the complete breakdown. Coming soon, Anthropic’s Claude Mythos 5 and 5.1 will power new GitLab Duo Agent Platform security flows, helping organizations with approved environments find and fix vulnerabilities faster than attackers can discover and exploit them. How to buy with GitLab Flex Agentic software engineering makes headcount, credit burn, and new capabilities hard to predict six months out. GitLab Flex is one annual commitment that covers new GitLab capabilities as they ship, without re-procurement. It lets teams reshape seat and AI spend via GitLab Credits on a monthly basis as their needs change. Where to start Turn on GitLab Duo Agent Platform : Existing customers start today with credits already in their subscription, and every new GitLab trial includes 30-day access. To increase the efficiency of your agents, turn on GitLab Orbit beta for GitLab.com. Adopt the GitLab Security Standard : GitLab Ultimate is available as a free trial. A Secrets Manager trial is available to Ultimate and Premium customers. GitLab Artifact Central is open in beta, and you can request early access to Dependency Firewall . Get more from every dollar with GitLab Flex : One annual commitment for new GitLab innovations without re-procurement - with the ability to reshape your spend for seats and GitLab Credits month to month. If you're migrating from GitHub , do it on your own terms with dedicated migration tools, custom migration services, and an exclusive offer to get one year of free GitLab free when signing up for a three-year contract. And if you're ready to start building, join \" Life after code: the path to production at the speed of imagination ,\" our three-week hackathon in partnership with Anthropic and Google Cloud. Wherever you start, you're choosing the same destination: the foundation for a governed software factory where agents accelerate the work and every change stays trusted. We can’t wait to see what you build next.",
+      "evidenceLink": "",
+      "score": 97.83545460317461,
+      "core": "At Transcend, we made over a dozen announcements across all four layers of our architecture for agentic software engineering: agent orchestration, data and context, DevOps workflows, and governance and security. Watch the replay , or read on for what shipped and how to turn on the new capabilities. At a glance What we launched Release status What it does Goal-driven flows ( /goal ) GA this month Carry a change throu…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-06T16:18:13.088Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "Dependency Firewall: Block risky packages before the build",
+      "link": "https://about.gitlab.com/blog/transcend-dependency-firewall",
+      "publishedAt": "2026-10-06T00:00:00.000Z",
+      "author": "Alisa Ho https://about.gitlab.com/blog/authors/alisa-ho/",
+      "summary": "Malicious packages could turn up in the public registries your builds depend on. Increasingly, the developer is not the one choosing what gets pulled in because AI coding agents now add open source dependencies on their own, often without anyone reviewing or even seeing what landed in the build. That combination means a malicious or vulnerable package can enter your build without anyone deciding to allow it. Once it is in, its code may run inside your build with the same access your pipeline has, and it can then reach any system your development pipelines touch. GitLab Dependency Firewall , introduced today at Transcend in early access, can block packages that match your policy, including malicious, vulnerable, and non-compliant packages, before they reach your build. Chasing down exposures for remediation goes from weeks to minutes with built-in governance. Developers and their agents can keep pulling the dependencies they need without waiting on a manual security review, and packages that satisfy your policy requirements become part of your official build. Watch the replay of our Transcend event to see demos of new platform capabilities and explore what it takes to carry the speed of agentic AI across the full software lifecycle. Block malicious packages without breaking your build Without a policy at the point of install, a bad package goes into the build first and gets caught later. Software composition analysis (SCA) scans what you've already pulled in, so by the time it flags a malicious package, a high-severity vulnerability, or a license your legal team won't accept, the dependency is installed and may have shipped in an artifact. Tracing where it went, pulling it out, and rebuilding turns a routine pipeline run into unplanned work for your engineering team. With Dependency Firewall, you decide what's allowed into your builds before it's installed, by defining policies for: Malicious status — packages flagged in GitLab's malware advisory database Vulnerability severity — the severity you set (critical, high, medium, or low) and the number of findings you allow at that level, including zero License type — the licenses you allow or deny, listed by full name, and how to handle packages whose license can't be determined Package age — the minimum age a package must reach before it can enter a build, so a version published minutes ago can't go straight in before anyone has vetted it Rolling out enforcement does not have to put delivery at risk. Start in warn mode, where the firewall records what a policy would catch, but lets the build continue. It leaves an audit event, a dashboard entry, and a line in the CI summary, so you can analyze whether or not to block the build. Once you trust the policies, switch to block mode, which stops the pipeline on a match and gives the reason. When someone has a real need to get an approved package through, a logged bypass lets a designated user or token proceed, on the record. Set policy once, or tailor it by team A firewall that enforces only at the registry gives everyone the same policy, but that rarely fits how teams actually work. A payments service and an internal prototype carry very different risk profiles, and a single registry-wide rule set cannot hold one to a higher bar than the other. With Dependency Firewall, you set one policy at the top-level group and every project beneath it inherits the same rules. When a team needs something different, you can set a policy for that group or project. You can enforce it at the registry level and govern the whole organization from one platform, without giving up the ability to tighten the rules where the risk is higher. Rules live as code in a security policy project, so they are reviewed and changed through a merge request like the rest of your configuration. They inherit from the top-level group down to each project, and where rules overlap the strictest one applies. A critical service can be held above the organization's baseline, and no project drops below it. Check a package before you pull it in A developer, or an agent working on their behalf, usually finds out a package is not allowed only when the pipeline fails. That costs a build cycle and breaks concentration, right when the work is moving. You get the answer from GitLab Dependency Firewall before you add a dependency, in the place you already work, allowing you to pick a package that passes the first time. Using GitLab CLI within the terminal or within a script, a command line check can identify if a package will pass or be blocked by your policy, without requiring developers to open a separate console. It covers common package managers such as npm, pip, Poetry, Maven, Gradle, and Bundler, with more coming soon. See and prove every decision A security leader has to be able to prove what a control is doing during an audit. A control that blocks quietly, with no record, does not answer the auditor’s question and does not build trust with the teams it governs. You get one view of what the firewall has allowed, warned against, and blocked, with an immutable record of each decision you can hand to an auditor. A Dependency Firewall dashboard shows activity and outcomes across the projects in scope. Every warn, block, and bypass writes an audit event that records the rule that matched, the policy behind it, and the package involved. Get early access to GitLab Dependency Firewall You can stop malicious, vulnerable, and non-compliant packages before they reach a build. It is compatible with GitLab Artifact Central and external registries from Sonatype Nexus Repository and JFrog Artifactory, and does not require standing up a separate tool next to your GitLab deployment. Dependency Firewall is now in early access for GitLab.com and GitLab Self-Managed customers in the Premium or Ultimate tier. Request early access today!",
+      "evidenceLink": "",
+      "score": 89.83545460317461,
+      "core": "Malicious packages could turn up in the public registries your builds depend on. Increasingly, the developer is not the one choosing what gets pulled in because AI coding agents now add open source dependencies on their own, often without anyone reviewing or even seeing what landed in the build. That combination means a malicious or vulnerable package can enter your build without anyone deciding to allow it. Once it…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-06T16:18:13.088Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Mistral Large 4 now available on AI Gateway",
+      "link": "https://vercel.com/changelog/mistral-large-4-now-available-on-ai-gateway",
+      "publishedAt": "2026-10-06T00:00:00.000Z",
+      "author": "Jerilyn Zheng",
+      "summary": "Mistral Large 4 is now available on AI Gateway. The open-weight, natively multimodal model combines reasoning with text and image understanding. It is useful for cyber defense, manufacturing, and finance workflows. You can access the model through AI Gateway with one API key, without creating a separate Mistral account. Use Mistral Large 4 ( mistral/mistral-large-4 ) with the AI SDK , OpenAI-compatible Chat Completions API , Responses API , or Anthropic Messages API . You can also select it in a coding agent connected to AI Gateway. For coding agents, run npx vercel ai-gateway setup and select mistral/mistral-large-4 in your agent's model settings. Try Mistral Large 4 in the model playground , or explore the model catalog . AI Gateway provides one API for calling models, tracking usage and cost, and configuring routing, retries, and failover. You can use an AI Gateway API key or bring your own provider key . Read more",
+      "evidenceLink": "",
+      "score": 79.00767682539683,
+      "core": "Mistral Large 4 is now available on AI Gateway. The open-weight, natively multimodal model combines reasoning with text and image understanding. It is useful for cyber defense, manufacturing, and finance workflows. You can access the model through AI Gateway with one API key, without creating a separate Mistral account. Use Mistral Large 4 ( mistral/mistral-large-4 ) with the AI SDK , OpenAI-compatible Chat Completi…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-06T16:18:13.088Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Opus 5.5 agents discover two room-temperature magnetic semiconductor candidates",
+      "link": "https://www.vals.ai/blogs/room-temperature-magnetic-semiconductors",
+      "publishedAt": "2026-10-05T21:00:21.000Z",
+      "author": "outlier99 https://news.ycombinator.com/user?id=outlier99",
+      "summary": "We are sharing two candidate magnets for next-generation computer memory, found by a team of Claude Opus 5.5 agents. Both are predicted to have zero net magnetism yet still sort electrons by spin: one a new compound we designed, the other a material first made in 1999. We",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49970667",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 428,
+        "comments": 294
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-06T16:18:13.088Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 74.23462715954662,
+      "core": "We are sharing two candidate magnets for next-generation computer memory, found by a team of Claude Opus 5.5 agents. Both are predicted to have zero net magnetism yet still sort electrons by spin: one a new compound we designed, the other a material first made in 1999. We",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "salesforce_engineering",
+      "source": "Salesforce Engineering",
+      "title": "AI Agents Need Memory: Building Persistent Memory for Agentforce",
+      "link": "https://engineering.salesforce.com/ai-agents-need-memory-building-persistent-memory-for-agentforce",
+      "publishedAt": "2026-10-05T18:04:20.000Z",
+      "author": "Scott Nyberg",
+      "summary": "By Roopang Chauhan, Sundar Vedula, Peng-Wen Chen, and Nikhil Bojja. In our Engineering Energizers Q&A series, we highlight the engineering minds driving innovation across Salesforce. Today, we spotlight Roopang Chauhan, a software engineering architect on the Agentforce team, who helped architect Agentforce Memory, a capability designed to eliminate one of enterprise AI’s biggest limitations: stateless […] The post AI Agents Need Memory: Building Persistent Memory for Agentforce appeared first on Salesforce Engineering Blog .",
+      "evidenceLink": "",
+      "score": 69.36204190476191,
+      "core": "By Roopang Chauhan, Sundar Vedula, Peng-Wen Chen, and Nikhil Bojja. In our Engineering Energizers Q&A series, we highlight the engineering minds driving innovation across Salesforce. Today, we spotlight Roopang Chauhan, a software engineering architect on the Agentforce team, who helped architect Agentforce Memory, a capability designed to eliminate one of enterprise AI’s biggest limitations: stateless […] The post …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-06T16:18:13.088Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "New agent skill: Amazon SageMaker optimized generative AI inference for your coding agent",
+      "link": "https://aws.amazon.com/blogs/machine-learning/new-agent-skill-amazon-sagemaker-optimized-generative-ai-inference-for-your-coding-agent",
+      "publishedAt": "2026-10-05T17:23:19.000Z",
+      "author": "Mona Mona",
+      "summary": "Amazon SageMaker optimized generative AI inference introduces the aws-ai-ml skill through the Agent Toolkit for AWS, giving coding agents like Kiro, Claude Code, and Codex deep expertise in inference optimization and benchmarking. Describe what you want, and your agent generates executable SageMaker Python SDK v3 code to benchmark, recommend, and compare deployments.",
+      "evidenceLink": "",
+      "score": 66.41321253968253,
+      "core": "Amazon SageMaker optimized generative AI inference introduces the aws-ai-ml skill through the Agent Toolkit for AWS, giving coding agents like Kiro, Claude Code, and Codex deep expertise in inference optimization and benchmarking. Describe what you want, and your agent generates executable SageMaker Python SDK v3 code to benchmark, recommend, and compare deployments.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-06T16:18:13.088Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "figma_ai_release_notes",
+      "source": "Figma Release Notes",
+      "title": "The Figma agent is generally available",
+      "link": "https://www.figma.com/release-notes/?title=the-figma-agent-is-generally-available",
+      "publishedAt": "2026-10-06T00:00:00.000Z",
+      "author": "",
+      "summary": "The Figma agent is exiting beta with improved latency, improved multiplayer performance, better access to Figma context, and a new tools to guide the agent's use of design libraries.",
+      "evidenceLink": "",
+      "score": 65.84656571428572,
+      "core": "The Figma agent is exiting beta with improved latency, improved multiplayer performance, better access to Figma context, and a new tools to guide the agent's use of design libraries.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-06T16:18:13.088Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Introducing GLM 5.3 on Amazon Bedrock",
+      "link": "https://aws.amazon.com/blogs/machine-learning/introducing-glm-5-3-on-amazon-bedrock",
+      "publishedAt": "2026-10-05T23:25:17.000Z",
+      "author": "Alex Thewsey",
+      "summary": "GLM 5.3 from Z.ai is now available on Amazon Bedrock: a 753B-parameter mixture-of-experts model built for coding and long-horizon agentic tasks. Learn how to invoke it with the OpenAI-compatible APIs, cut cost and latency with prompt caching, and run an authorized security test with the open-source Strix agent.",
+      "evidenceLink": "",
+      "score": 65.52745857142857,
+      "core": "GLM 5.3 from Z.ai is now available on Amazon Bedrock: a 753B-parameter mixture-of-experts model built for coding and long-horizon agentic tasks. Learn how to invoke it with the OpenAI-compatible APIs, cut cost and latency with prompt caching, and run an authorized security test with the open-source Strix agent.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-06T16:18:13.088Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "red_hat_ai_engineering",
+      "source": "Red Hat Developer · AI",
+      "title": "Rossoctl for agent discoverability, security, and observability on Kubernetes",
+      "link": "https://developers.redhat.com/articles/2026/10/06/rossoctl-for-agent-discoverability-security-and-observability-on-kubernetes",
+      "publishedAt": "2026-10-06T13:01:21.000Z",
+      "author": "Shri Charan",
+      "summary": "Imagine deploying a pair of agents to Red&nbsp;Hat&nbsp;OpenShift and watching them thrive. But fast-forward 6 months and you find your environment cluttered with 40 of them, their purposes largely unknown. Redundant agents emerge across namespaces, duplicating work. Meanwhile, a security review uncovers agents utilizing static API keys over insecure HTTP. When an agent falters, the lack of tracing makes it impossible to distinguish between model hallucinations, tool errors, or downstream failures. The post Rossoctl for agent discoverability, security, and observability on Kubernetes appeared first on Red Hat Developer .",
+      "evidenceLink": "",
+      "score": 62.25452206349206,
+      "core": "Imagine deploying a pair of agents to Red Hat OpenShift and watching them thrive. But fast-forward 6 months and you find your environment cluttered with 40 of them, their purposes largely unknown. Redundant agents emerge across namespaces, duplicating work. Meanwhile, a security review uncovers agents utilizing static API keys over insecure HTTP. When an agent falters, the lack of tracing makes it impossible to dist…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-06T16:18:13.088Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_research",
+      "source": "Google Research",
+      "title": "Open and Emergent Problems in Agentic Privacy and Security: A Contextual Angle",
+      "link": "https://research.google/blog/open-and-emergent-problems-in-agentic-privacy-and-security-a-contextual-angle",
+      "publishedAt": "2026-10-05T21:08:00.000Z",
+      "author": "",
+      "summary": "Generative AI",
+      "evidenceLink": "",
+      "score": 58.702914920634925,
+      "core": "Generative AI",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-06T16:18:13.088Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "figma_ai_design",
+      "source": "Figma Blog",
+      "title": "Workflow lab: Staying in the flow with Figma’s agent",
+      "link": "https://www.figma.com/blog/workflow-lab-staying-in-the-flow-with-the-figma-agent",
+      "publishedAt": "2026-10-06T14:00:00.000Z",
+      "author": "",
+      "summary": "Knowing what work to hand to an agent is a skill of its own. This workflow shows how a designer shapes a new temporary-access feature while the Figma agent handles the library updates, crit feedback, and a first draft of a design system spec.",
+      "evidenceLink": "",
+      "score": 55.179899047619045,
+      "core": "Knowing what work to hand to an agent is a skill of its own. This workflow shows how a designer shapes a new temporary-access feature while the Figma agent handles the library updates, crit feedback, and a first draft of a design system spec.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-06T16:18:13.088Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "figma_ai_design",
+      "source": "Figma Blog",
+      "title": "How to lighten design system upkeep with the Figma agent",
+      "link": "https://www.figma.com/blog/figma-agent-and-design-systems",
+      "publishedAt": "2026-10-06T14:00:00.000Z",
+      "author": "",
+      "summary": "Figma’s agent can take on repetitive work across your design system, from maintaining your library to automating how designs adhere to it. Here, we share a few ways to put the Figma agent to work.",
+      "evidenceLink": "",
+      "score": 54.92434349206349,
+      "core": "Figma’s agent can take on repetitive work across your design system, from maintaining your library to automating how designs adhere to it. Here, we share a few ways to put the Figma agent to work.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-06T16:18:13.088Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Mistral Large 4",
+      "link": "https://docs.mistral.ai/models/mistral-large-4-0",
+      "publishedAt": "2026-10-06T13:15:49.000Z",
+      "author": "Philpax https://news.ycombinator.com/user?id=Philpax",
+      "summary": "Mistral Large 4 is a state-of-the-art, open-weight, general-purpose multimodal model with a granular Mixture-of-Experts architecture. It features 49B active parameters and 1.05T total parameters, and a 1.6B vision encoder.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=49977979",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 792,
+        "comments": 460
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-06T16:18:13.088Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 54.34359058093803,
+      "core": "Mistral Large 4 is a state-of-the-art, open-weight, general-purpose multimodal model with a granular Mixture-of-Experts architecture. It features 49B active parameters and 1.05T total parameters, and a 1.6B vision encoder.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "AI Research Agents: How They Search, Analyze, and Synthesize Information",
+      "link": "https://rerun.build/blog/ai-research-agent",
+      "publishedAt": "2026-10-06T04:14:19.000Z",
+      "author": "",
+      "summary": "Learn how AI research agents plan searches, evaluate evidence, synthesize findings, and produce cited reports with human review.",
+      "evidenceLink": "",
+      "score": 50.84932365079365,
+      "core": "Learn how AI research agents plan searches, evaluate evidence, synthesize findings, and produce cited reports with human review.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-06T16:18:13.088Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pydantic_ai_engineering",
+      "source": "Pydantic AI Engineering",
+      "title": "Pydantic AI vs Claude Agent SDK: Who owns the agent?",
+      "link": "https://pydantic.dev/articles/pydantic-ai-vs-claude-agent-sdk",
+      "publishedAt": "2026-10-05T09:00:00.000Z",
+      "author": "",
+      "summary": "Compare Pydantic AI and Claude Agent SDK through control, inspectability, behavioral contracts, and explicit application architecture.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-06T16:18:13.088Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 42.508470476190475,
+      "core": "Compare Pydantic AI and Claude Agent SDK through control, inspectability, behavioral contracts, and explicit application architecture.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "Code scanning AI Scan enablement status in security overview",
+      "link": "https://github.blog/changelog/2026-10-06-code-scanning-ai-scan-enablement-status-in-security-overview",
+      "publishedAt": "2026-10-06T10:23:38.000Z",
+      "author": "Allison",
+      "summary": "Organization and enterprise administrators can now see AI Scan for pull requests enablement status in the security overview coverage view. The code scanning summary shows enabled and not enabled repository… The post Code scanning AI Scan enablement status in security overview appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 41.31120857142857,
+      "core": "Organization and enterprise administrators can now see AI Scan for pull requests enablement status in the security overview coverage view. The code scanning summary shows enabled and not enabled repository… The post Code scanning AI Scan enablement status in security overview appeared first on The GitHub Blog .",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-06T16:18:13.088Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "detent_agent_engineering",
+      "source": "DETENT Agent Engineering",
+      "title": "Agentic Engineering Is a Job, Not a Tool Choice",
+      "link": "https://detent-ai.com/en/blog/agentic-engineering",
+      "publishedAt": "2026-09-24T00:00:00.000Z",
+      "author": "",
+      "summary": "Agentic engineering is what a software engineer&#x27;s day looks like once a coding agent does the typing: the skills that moved to the centre, and what still has to stay human.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-06T16:18:13.088Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 37.983333333333334,
+      "core": "Agentic engineering is what a software engineer&#x27;s day looks like once a coding agent does the typing: the skills that moved to the centre, and what still has to stay human.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentconn_engineering",
+      "source": "AgentConn Field Reports",
+      "title": "Claude Code Mods Just Turned Agents Into a Platform",
+      "link": "https://agentconn.com/blog/claude-code-mods-app-store-moment-2026",
+      "publishedAt": "2026-10-03T00:00:00.000Z",
+      "author": "AgentConn Team",
+      "summary": "10 of 15 GitHub Trending repos are agent skills. Boris Cherny's launch tweet hit 833K views. The ecosystem shift is real.",
+      "evidenceLink": "",
+      "score": 34.36481968253968,
+      "core": "10 of 15 GitHub Trending repos are agent skills. Boris Cherny's launch tweet hit 833K views. The ecosystem shift is real.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-06T16:18:13.088Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "detent_agent_engineering",
+      "source": "DETENT Agent Engineering",
+      "title": "AI Software Engineering: What the Discipline Looks Like When Typing Is Free",
+      "link": "https://detent-ai.com/en/blog/ai-software-engineering",
+      "publishedAt": "2026-09-26T00:00:00.000Z",
+      "author": "",
+      "summary": "AI software engineering names the whole discipline, not one engineer&#x27;s day. The practices built to manage the cost of writing code and the ones built to manage its risk are recalibrating in opposite directions.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-06T16:18:13.088Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 32.19444444444444,
+      "core": "AI software engineering names the whole discipline, not one engineer&#x27;s day. The practices built to manage the cost of writing code and the ones built to manage its risk are recalibrating in opposite directions.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "interconnects",
+      "source": "Interconnects",
+      "title": "The Cyber Risk Discourse is Broken",
+      "link": "https://www.interconnects.ai/p/the-cyber-risk-discourse-is-broken",
+      "publishedAt": "2026-10-06T14:22:41.000Z",
+      "author": "Nathan Lambert",
+      "summary": "Open-weights, ideology, and acknowledging trade-offs.",
+      "evidenceLink": "",
+      "score": 24.156903015873016,
+      "core": "Open-weights, ideology, and acknowledging trade-offs.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-06T16:18:13.088Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
