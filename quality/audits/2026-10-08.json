@@ -1,0 +1,293 @@
+{
+  "date": "2026-10-08",
+  "generatedAt": "2026-10-07T16:05:12.349Z",
+  "reportPath": "reports/2026-10-08-0005-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 68,
+    "top20Sources": [
+      "YC Launch",
+      "HN Algolia",
+      "Product Hunt"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 16,
+      "keptCount": 10,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-06；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 16 条，AI 相关候选 10 条；历史去重移除 1 条已报道或已处理日榜 Product Hunt 信号，最终发布 9 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 4,
+      "keptCount": 4,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 37,
+      "keptCount": 19,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 17,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:node, Model:node；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 16,
+      "keptCount": 16,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Linc.",
+      "productKey": "https://www.ycombinator.com/launches/v7b-linc-the-discovery-layer-for-enterprise-ai",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Linc 把企业里口头传承的流程与规则先结构化，再定位适合部署 agent 的环节；值得看它能否把“AI 转型咨询”变成可持续的软件工作流。"
+    },
+    {
+      "rank": 2,
+      "product": "Luke – Voice planning for coding agents",
+      "productKey": "https://tryluke.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Luke 用语音完成 coding agent 的任务规划，判断重点是它能否在动手编码前形成可编辑、可确认的计划，而不只是把键盘输入换成口述。"
+    },
+    {
+      "rank": 3,
+      "product": "Rill Browser",
+      "productKey": "https://www.producthunt.com/products/rill-3",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Rill Browser 让 Claude Code 与 Codex 常驻浏览器侧边协作，值得观察网页上下文、执行反馈与人工接管是否被收进同一个操作面。"
+    },
+    {
+      "rank": 4,
+      "product": "NanoMuse – An open-source AI agent for your phone and computer",
+      "productKey": "https://github.com/nano-muse/nanomuse",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "NanoMuse 同时覆盖手机与电脑且开源，产品价值取决于跨设备任务能否连续执行，以及权限、同步和本地数据边界是否清楚。"
+    },
+    {
+      "rank": 5,
+      "product": "Codync – Free, open-source Grok Bot alternative for any coding agent",
+      "productKey": "https://github.com/leepokai/codync",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Codync 试图把任意 coding agent 接成 Grok Bot 式入口，值得看它是否真正降低多 agent 接入成本，而不是只增加一层消息转发。"
+    },
+    {
+      "rank": 6,
+      "product": "Puppet Master – Manage coding agents at scale",
+      "productKey": "https://puppet-master.xyz",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Puppet Master 瞄准 coding agents 的规模化管理，关键是并发任务的分派、状态可见性和失败恢复能否支持团队使用。"
+    },
+    {
+      "rank": 7,
+      "product": "Fuse AI",
+      "productKey": "https://www.producthunt.com/products/fuseai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Fuse AI 用一套 SDK 与 MCP 组合自定义 GTM 工具栈，值得看销售数据、动作执行和 agent 编排能否形成端到端闭环。"
+    },
+    {
+      "rank": 8,
+      "product": "AUDR by Chargebee",
+      "productKey": "https://www.producthunt.com/products/chargebee",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AUDR 把 agent 每次运行的成本记录做成开放标准；若能跨模型和工具统一归因，会直接改善 agent 产品的预算、定价与毛利判断。"
+    },
+    {
+      "rank": 9,
+      "product": "Searchable AI agents built with a JSONC DSL",
+      "productKey": "https://pypi.org/project/search2o",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "search2o 用 JSONC DSL 定义可搜索 agent，值得观察声明式配置能否同时降低检索接入门槛并保留结果可追溯性。"
+    },
+    {
+      "rank": 10,
+      "product": "ruOS",
+      "productKey": "https://www.producthunt.com/products/ruos",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ruOS 把 agent 的工作环境做成云桌面，核心验证是长任务能否稳定运行、用户能否随时检查过程并安全接管。"
+    },
+    {
+      "rank": 11,
+      "product": "iphone-use",
+      "productKey": "https://www.producthunt.com/products/iphone-use",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "iphone-use 让 agent 操作没有 API 的真实 iPhone 应用，打开了移动端端到端自动化，但可靠性、授权和误操作恢复是决定可用性的门槛。"
+    },
+    {
+      "rank": 12,
+      "product": "Delegator – Stop juggling coding-agent sessions",
+      "productKey": "https://alcubi.ai/delegator",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Delegator 面向同时运行多个 coding-agent 会话的混乱，值得看它能否把任务、分支、进度和人工决策集中到一个可审计界面。"
+    },
+    {
+      "rank": 13,
+      "product": "Leaks.md – anonymous, encrypted whistleblowing for AI agents",
+      "productKey": "https://leaks.md",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Leaks.md 将匿名加密举报机制提供给 AI agents，概念新颖，但必须先验证真实使用主体、滥用防护与责任归属，不能只看加密叙事。"
+    },
+    {
+      "rank": 14,
+      "product": "The Last SaaS – An open source headless SaaS for agents and assistants",
+      "productKey": "https://thelastsaas.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "The Last SaaS 提供面向 agents 与 assistants 的无头 SaaS 底座，值得看账户、权限、计费等通用能力是否真能减少 agent 产品重复建设。"
+    },
+    {
+      "rank": 15,
+      "product": "Engineering judgment in AI-assisted development [video]",
+      "productKey": "https://www.youtube.com/watch?v=omd9r_8o6uy",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这段关于 AI 辅助开发判断力的视频属于方法讨论而非明确产品发布；它的价值在于提醒团队保留评审责任，不应仅凭 Show HN 排到产品前列。"
+    },
+    {
+      "rank": 16,
+      "product": "ARSA AI Box – on-prem video analytics for existing IP cameras",
+      "productKey": "https://demo-dashboard.arsa.technology/bsg/auth/login",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ARSA AI Box 把现有 IP 摄像头升级为本地视频分析设备，值得看无需换硬件的部署优势能否抵消安装、模型维护和隐私合规成本。"
+    },
+    {
+      "rank": 17,
+      "product": "Extrovert",
+      "productKey": "https://www.producthunt.com/products/extrovert",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Extrovert 让 agent 执行 LinkedIn 外联，关键不是生成文案，而是名单选择、节奏控制、回复处理和平台合规能否组成可控流程。"
+    },
+    {
+      "rank": 18,
+      "product": "OrgComputers",
+      "productKey": "https://www.producthunt.com/products/orgcomputers",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "OrgComputers 把 AI agents 的运行空间包装成工作区，值得观察它如何组织文件、工具、权限与多任务状态，而不是只提供另一个聊天入口。"
+    },
+    {
+      "rank": 19,
+      "product": "Zetteldesk – An MCP server that prints and mails letters",
+      "productKey": "https://zetteldesk.com/en",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Zetteldesk 用 MCP 把打印和邮寄这种线下动作开放给 agent，展示了数字工作流连接物理履约的窄而具体接口。"
+    },
+    {
+      "rank": 20,
+      "product": "Collar",
+      "productKey": "https://www.ycombinator.com/launches/ugg-collar-the-ai-for-public-company-investor-relations",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Collar 覆盖上市公司投资者匹配、财报准备和现场问答，值得看经批准信息约束能否让高风险 IR 场景既提效又保持合规。"
+    }
+  ]
+}

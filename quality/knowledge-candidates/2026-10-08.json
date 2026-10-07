@@ -1,0 +1,405 @@
+{
+  "generatedAt": "2026-10-07T16:13:53.877Z",
+  "date": "2026-10-08",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "Every artifact your teams ship, assembled right the first time",
+      "link": "https://about.gitlab.com/blog/transcend-artifact-central",
+      "publishedAt": "2026-10-06T00:00:00.000Z",
+      "author": "Corinne Dent https://about.gitlab.com/blog/authors/corinne-dent/",
+      "summary": "Every software build is assembled from open source packages, base images, and libraries, with your code on top. When one of those components is missing or has drifted, the build fails. At agent speed, those failures multiply, and no team can clear them as manual exceptions. Project-by-project registry sprawl makes it worse because retention rules, storage limits, and publish access all live separately inside each project. Project-level design works when a person sets up each registry by hand, but breaks down when agents are running continuously across hundreds of projects. At GitLab Transcend today, we announced GitLab Artifact Central: one organization-level registry that replaces hundreds of project-level ones, so every pull or publish by a human or an agent runs through the same governed door, enabling platform teams to assemble the right software the first time. Here is more on why we developed Artifact Central, and how it can help your team. Set policy once, enforce everywhere In GitLab, retention rules, storage limits, and who can publish all live inside each project’s free package and container registry, configured on its own. GitLab Artifact Central moves that job up one level. Teams assign retention rules, quota settings, and access policies once at the organization level, instead of recreating them in every project underneath it. Every repository is closed by default: Being a member of the organization is the gate, not the grant. Organization membership alone doesn't unlock a single repository until a role grants it. We’ve built four roles specifically for artifacts: Admin, Manager, Contributor, and Viewer. These roles are kept separate from GitLab's existing project roles, so granting someone access to a repository never touches their privileges anywhere else. One URL for publishing, proxying, or both Instead of navigating an internal wiki page explaining what is where, developers point to one URL for everything. GitLab Artifact Central does this through three repository types: Hosted — The private packages and images your teams build and publish. Remote — A proxy in front of an external source, like Docker Hub or Maven Central, with the connection tested before anything depends on it. Virtual — A single endpoint that brings hosted and remote repositories together. GitLab checks the hosted repository first, then falls back to the remote source. The first external pull is cached, so subsequent pulls come directly from GitLab without another trip to the internet. Virtual repositories matter most for teams comparing GitLab with other artifact management solutions. They give developers the familiar single-endpoint experience without requiring them to think about where an artifact lives. Whether it was built internally or pulled from an external registry, developers request it the same way. During the beta period, Artifact Central supports Maven, npm, Docker, and OCI, with more formats to follow. Trace anything back, automatically Here's the part that's hard to replicate outside GitLab. Every artifact that publishes through GitLab Artifact Central carries its build provenance automatically: which pipeline built it, which branch and commit it came from, who triggered the job. Since it is the same platform that ran the build, the registry already knows. Authentication works the same way. Publishing and pulling use CI_JOB_TOKEN , the identity your pipelines already have, for people and agents alike. An agent publishing or pulling through CI pipelines uses that exact same job token, not a bolted-on service account with separate permissions to maintain. With a standalone registry, tracing an artifact back to its source means separately correlating IDs across your CI system and your registry – using a script someone owns and maintains. With Artifact Central, the pipeline, branch, commit, and job are already attached to the artifact itself. Answer 'what did we publish?' in seconds Artifact Central lives in the same platform as your code, merge requests, and pipelines, so artifacts published from CI carry their build provenance: the pipeline that built them, the commit, and who published them. Next, we plan to connect that across your organization through GitLab Orbit , so \"which of my running services are affected by this vulnerability?\" becomes one question with one answer, instead of a manual search across four or five tools. Pair Artifact Central with Dependency Firewall GitLab Dependency Firewall , a separate GitLab product now in early access for Premium and Ultimate customers, works out of the box with Artifact Central. With Dependency Firewall, you can stop risky packages before they ever reach a build. You add its check to each pipeline using the glab CLI, so coverage is pipeline by pipeline, no matter which package manager your teams use. Next, we plan to enable tighter integration between the two capabilities, so that one policy for your whole organization blocks risky packages by vulnerability, license, or package age the moment they're pulled. Two benefits of the same registry Here's what that looks like from two different desks: a developer shipping code, and the platform team making sure the whole thing holds together. A developer publishing from CI. Your pipeline publishes a Maven artifact using the job token it already has without any new secrets to manage. If that same developer needs an internal package alongside something from Maven Central, they point at one virtual repo URL and let GitLab Artifact Central sort out where each one actually lives. A platform team setting policy once. Instead of configuring rules across 100s of separate projects, an admin sets storage quotas and repository access rules at the organization level, one time — and every repository underneath inherits it. When someone asks how much the company is storing, and where, there's one dashboard with the answer. Migrating your artifacts Most companies aren't starting from zero, and switching cold from an existing registry isn't realistic. With GitLab Artifact Central, you can add your existing repos as remotes behind a virtual repo, so developers point at one URL and artifacts move over only when a build actually asks for one. There is no need for bulk copies, weekend migration windows, or moving petabytes of data across your network. Your old registry remains the system of record. When you're ready, you convert that remote to a hosted repo on Artifact Central. Your migration is safer and gradual. Try Artifact Central, free in beta GitLab Artifact Central is available today in beta for GitLab.com, with availability on GitLab Self-Managed planned for later this month. There's no billing during the beta, and nothing to purchase. We're tracking usage to shape pricing ahead of general availability, and we'll share details then. Help us continue to build GitLab Artifact Central None of this would be where it is without our design partners, who've been running Artifact Central with real workflows for weeks. Their feedback already shaped what's shipping today, and your feedback will shape what comes next. No invitation is required to participate in the beta of Artifact Central, just sign up on our website and a member of our team will be in touch to help enable it for your account. If you don’t have a GitLab account yet, you can also sign up for the beta, and a member of our team will reach out. We can't wait to see what you build. Watch the replay of our Transcend event to see demos of new platform capabilities and explore what it takes to carry the speed of agentic AI across the full software lifecycle.",
+      "evidenceLink": "",
+      "score": 69.12631196428572,
+      "core": "Every software build is assembled from open source packages, base images, and libraries, with your code on top. When one of those components is missing or has drifted, the build fails. At agent speed, those failures multiply, and no team can clear them as manual exceptions. Project-by-project registry sprawl makes it worse because retention rules, storage limits, and publish access all live separately inside each pr…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-07T16:13:53.877Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_research",
+      "source": "Microsoft Research",
+      "title": "Agent Lightning v1.0: A 3,500-Line Lightweight Agentic RL Framework for Training Agents with Real Harnesses",
+      "link": "https://www.microsoft.com/en-us/research/blog/agent-lightning-v1-0-a-3500-line-lightweight-agentic-rl-framework-for-training-agents-with-real-harnesses",
+      "publishedAt": "2026-10-07T16:00:00.000Z",
+      "author": "Zhiyuan He, Yuqing Yang",
+      "summary": "Training AI agents with reinforcement learning can be challenging because their tools, context, and decision-making are managed by complex frameworks. Agent Lightning connects existing agents to RL training, making it easier to improve them without rebuilding them. The post Agent Lightning v1.0: A 3,500-Line Lightweight Agentic RL Framework for Training Agents with Real Harnesses appeared first on Microsoft Research .",
+      "evidenceLink": "",
+      "score": 63.32234371031746,
+      "core": "Training AI agents with reinforcement learning can be challenging because their tools, context, and decision-making are managed by complex frameworks. Agent Lightning connects existing agents to RL training, making it easier to improve them without rebuilding them. The post Agent Lightning v1.0: A 3,500-Line Lightweight Agentic RL Framework for Training Agents with Real Harnesses appeared first on Microsoft Research…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-07T16:13:53.877Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "fiddler_ai_evaluation",
+      "source": "Fiddler AI Blog",
+      "title": "Developing Reliable AI Agents with a Continuous Evaluation Loop",
+      "link": "https://www.fiddler.ai/blog/reliable-ai-agents-continuous-evaluation-loop",
+      "publishedAt": "2026-10-06T07:00:00.000Z",
+      "author": "",
+      "summary": "Learn how to build a continuous evaluation loop for AI agents with golden datasets, human review, controlled experiments, production monitoring, and feedback.",
+      "evidenceLink": "",
+      "score": 61.50408974206349,
+      "core": "Learn how to build a continuous evaluation loop for AI agents with golden datasets, human review, controlled experiments, production monitoring, and feedback.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-07T16:13:53.877Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How Cornerstone OnDemand cut database diagnosis by 78% with Amazon Bedrock",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-cornerstone-ondemand-cut-database-diagnosis-by-78-with-amazon-bedrock",
+      "publishedAt": "2026-10-07T15:38:28.000Z",
+      "author": "Derek Ziehl",
+      "summary": "Cornerstone OnDemand built Orion AI, a multi-agent system on Amazon Bedrock and Strands Agents, to turn database operations from reactive firefighting into proactive automation. A three-person team cut database diagnosis from 45 minutes to 10, a 78% reduction, in six months. See the design decisions other teams can reuse.",
+      "evidenceLink": "",
+      "score": 54.752264345238096,
+      "core": "Cornerstone OnDemand built Orion AI, a multi-agent system on Amazon Bedrock and Strands Agents, to turn database operations from reactive firefighting into proactive automation. A three-person team cut database diagnosis from 45 minutes to 10, a 78% reduction, in six months. See the design decisions other teams can reuse.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-07T16:13:53.877Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Beyond hours saved: Building the business case for agentic automation",
+      "link": "https://aws.amazon.com/blogs/machine-learning/beyond-hours-saved-building-the-business-case-for-agentic-automation",
+      "publishedAt": "2026-10-07T15:50:00.000Z",
+      "author": "Manish Ballal",
+      "summary": "The RPA-era ROI model misses most of the value agentic automation creates. This post gives AI center of excellence leaders a framework to size the full value of agents across time savings, exception handling, decision quality, and maintenance economics, and to prioritize which workflows to automate first.",
+      "evidenceLink": "",
+      "score": 54.67155005952381,
+      "core": "The RPA-era ROI model misses most of the value agentic automation creates. This post gives AI center of excellence leaders a framework to size the full value of agents across time savings, exception handling, decision quality, and maintenance economics, and to prioritize which workflows to automate first.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-07T16:13:53.877Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "What to expect with HPE’s new ProLiant Gen13 servers",
+      "link": "https://www.itpro.com/infrastructure/servers-and-storage/what-to-expect-with-hpes-new-proliant-gen13-servers",
+      "publishedAt": "2026-10-07T14:24:15.000Z",
+      "author": "Emma Woollacott",
+      "summary": "Four new HPE ProLiant Gen13 Servers are designed for enterprise inference and agentic AI",
+      "evidenceLink": "",
+      "score": 50.35835561507936,
+      "core": "Four new HPE ProLiant Gen13 Servers are designed for enterprise inference and agentic AI",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-07T16:13:53.877Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "zapier_ai_automation",
+      "source": "Zapier Blog",
+      "title": "How to use Gemini: A detailed beginner's guide",
+      "link": "https://zapier.com/blog/how-to-use-google-gemini",
+      "publishedAt": "2026-10-07T04:00:00.000Z",
+      "author": "Jessica Lau",
+      "summary": "Gemini, Google's AI chatbot, offers all the same features you'd expect from any AI chatbot: it can browse the web, conduct in-depth research, analyze and visualize data, generate AI images and videos&#x2014;you name it, it can do it.&#xA0; But, for my money, the best thing about Gemini is that it integrates deeply with other Google products. Want to search your Gmail file jungle with one prompt? Or summarize files inside your Google Drive? You can do it all without leaving your Gemini chat.&#xA0; Here's everyth",
+      "evidenceLink": "",
+      "score": 49.99297863095238,
+      "core": "Gemini, Google's AI chatbot, offers all the same features you'd expect from any AI chatbot: it can browse the web, conduct in-depth research, analyze and visualize data, generate AI images and videos&#x2014;you name it, it can do it.&#xA0; But, for my money, the best thing about Gemini is that it integrates deeply with other Google products. Want to search your Gmail file jungle with one prompt? Or summarize files i…",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-07T16:13:53.877Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "figma_ai_design",
+      "source": "Figma Blog",
+      "title": "3 ways product designers use the Figma agent for craft, speed, and creative expression",
+      "link": "https://www.figma.com/blog/3-ways-product-designers-use-the-figma-agent",
+      "publishedAt": "2026-10-06T14:00:00.000Z",
+      "author": "",
+      "summary": "Here’s how teams at Uber, Granola, and Atlassian support high-quality, fast-moving work with the Figma agent, now generally available.",
+      "evidenceLink": "",
+      "score": 48.87075640873016,
+      "core": "Here’s how teams at Uber, Granola, and Atlassian support high-quality, fast-moving work with the Figma agent, now generally available.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-07T16:13:53.877Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "zapier_ai_automation",
+      "source": "Zapier Blog",
+      "title": "Zapier Agents is now AI by Zapier",
+      "link": "https://zapier.com/blog/zapier-agents-is-now-ai-by-zapier",
+      "publishedAt": "2026-10-06T04:00:00.000Z",
+      "author": "Ruchira Kulkarni",
+      "summary": "Every capability that made Zapier Agents powerful&#x2014;tool calling, reasoning, autonomous action&#x2014;now lives inside a single AI step in the Zap editor, using AI by Zapier. Here, I'll map each Zapier Agents feature to its equivalent in AI by Zapier, so if you're coming from Zapier Agents, you know exactly where to click. What's changed between Zapier Agents and AI by Zapier Zapier Agents consisted of four things: a prompt, a set of tools, a trigger, and permission to act. That bundle worked, but it sat",
+      "evidenceLink": "",
+      "score": 48.26758180555555,
+      "core": "Every capability that made Zapier Agents powerful&#x2014;tool calling, reasoning, autonomous action&#x2014;now lives inside a single AI step in the Zap editor, using AI by Zapier. Here, I'll map each Zapier Agents feature to its equivalent in AI by Zapier, so if you're coming from Zapier Agents, you know exactly where to click. What's changed between Zapier Agents and AI by Zapier Zapier Agents consisted of four thi…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-07T16:13:53.877Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentconn_engineering",
+      "source": "AgentConn Field Reports",
+      "title": "Your Verifier Is a Confident Liar",
+      "link": "https://agentconn.com/blog/your-verifier-is-a-confident-liar",
+      "publishedAt": "2026-10-06T00:00:00.000Z",
+      "author": "AgentConn Team",
+      "summary": "Browserbase showed agent evals inflate success from 38% to 74%. Three testing patterns that catch what LLM judges miss.",
+      "evidenceLink": "",
+      "score": 47.78742307539682,
+      "core": "Browserbase showed agent evals inflate success from 38% to 74%. Three testing patterns that catch what LLM judges miss.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-07T16:13:53.877Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "red_hat_ai_engineering",
+      "source": "Red Hat Developer · AI",
+      "title": "How IdeaBot drives AI innovation workflows on OpenShift",
+      "link": "https://developers.redhat.com/articles/2026/10/07/how-ideabot-drives-ai-innovation-workflows-openshift",
+      "publishedAt": "2026-10-07T13:17:03.000Z",
+      "author": "Tom Coufal",
+      "summary": "Innovation is a core value of Red Hat's emerging technologies team. Beyond simply developing brilliant ideas, we work to align them within Red Hat's portfolio—ensuring every concept addresses a genuine need and fits purposefully into our broader ecosystem. The post How IdeaBot drives AI innovation workflows on OpenShift appeared first on Red Hat Developer .",
+      "evidenceLink": "",
+      "score": 46.78391117063492,
+      "core": "Innovation is a core value of Red Hat's emerging technologies team. Beyond simply developing brilliant ideas, we work to align them within Red Hat's portfolio—ensuring every concept addresses a genuine need and fits purposefully into our broader ecosystem. The post How IdeaBot drives AI innovation workflows on OpenShift appeared first on Red Hat Developer .",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-07T16:13:53.877Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "AI agents don’t create new risk. They inherit it",
+      "link": "https://www.techradar.com/pro/ai-agents-dont-create-new-risk-they-inherit-it",
+      "publishedAt": "2026-10-07T09:59:22.000Z",
+      "author": "Adenike Cosgrove",
+      "summary": "AI agents aren't creating new cyber threats, they're exposing and accelerating existing security weaknesses.",
+      "evidenceLink": "",
+      "score": 46.15412942460318,
+      "core": "AI agents aren't creating new cyber threats, they're exposing and accelerating existing security weaknesses.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-07T16:13:53.877Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "How Jump Trading is scaling quant research with ChatGPT",
+      "link": "https://openai.com/index/jump-trading",
+      "publishedAt": "2026-10-06T12:00:00.000Z",
+      "author": "",
+      "summary": "Jump Trading uses OpenAI to expand quantitative research. See how longer-running AI workflows combine multiple data sources with human review.",
+      "evidenceLink": "",
+      "score": 45.772343710317465,
+      "core": "Jump Trading uses OpenAI to expand quantitative research. See how longer-running AI workflows combine multiple data sources with human review.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-07T16:13:53.877Z",
+        "evidence": "public_reader_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "together_ai_engineering",
+      "source": "Together AI",
+      "title": "Expanding our enterprise inference capacity with IBM Cloud and NVIDIA",
+      "link": "https://www.together.ai/blog/expanding-our-enterprise-inference-capacity-with-ibm-cloud-and-nvidia",
+      "publishedAt": "2026-10-06T00:00:00.000Z",
+      "author": "",
+      "summary": "Enterprises can now run open models at production scale on a dedicated B300 inference cluster, built by Together AI, IBM Cloud, and NVIDIA",
+      "evidenceLink": "",
+      "score": 40.89297863095238,
+      "core": "Enterprises can now run open models at production scale on a dedicated B300 inference cluster, built by Together AI, IBM Cloud, and NVIDIA",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-07T16:13:53.877Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "Update your IDE to restore agent activity in Copilot usage metrics",
+      "link": "https://github.blog/changelog/2026-10-06-update-your-ide-to-restore-agent-activity-in-copilot-usage-metrics",
+      "publishedAt": "2026-10-06T23:43:00.000Z",
+      "author": "Allison",
+      "summary": "If your Copilot usage metrics have shown agent activity or agent lines of code falling while Copilot usage kept growing, we’ve found the cause, and a fix is rolling out… The post Update your IDE to restore agent activity in Copilot usage metrics appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 39.381470694444445,
+      "core": "If your Copilot usage metrics have shown agent activity or agent lines of code falling while Copilot usage kept growing, we’ve found the cause, and a fix is rolling out… The post Update your IDE to restore agent activity in Copilot usage metrics appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-07T16:13:53.877Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "'Working with AI isn't single player any more — it's multiplayer': Atlassian CEO Mike Cannon-Brookes lays out what your business needs in the agentic AI age, and why agents won't replace your human workers anytime soon",
+      "link": "https://www.techradar.com/pro/working-with-ai-isnt-single-player-any-more-its-multiplayer-atlassian-ceo-mike-cannon-brookes-lays-out-what-your-business-needs-in-the-agentic-ai-age-and-why-agents-wont-replace-your-human-workers-anytime-soon",
+      "publishedAt": "2026-10-07T09:26:51.000Z",
+      "author": "Mike Moore",
+      "summary": "Atlassian CEO Mike Cannon-Brookes explains how its platform can be your company's central nervous system.",
+      "evidenceLink": "",
+      "score": 37.0987524404762,
+      "core": "Atlassian CEO Mike Cannon-Brookes explains how its platform can be your company's central nervous system.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-07T16:13:53.877Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pragmatic_engineer",
+      "source": "The Pragmatic Engineer",
+      "title": "The state of the tech industry in 2026",
+      "link": "https://newsletter.pragmaticengineer.com/p/the-state-of-the-tech-industry-in",
+      "publishedAt": "2026-10-06T16:25:03.000Z",
+      "author": "Gergely Orosz",
+      "summary": "A look into what has changed, what’s still the same – and what’s broken – in the tech industry. The full video and the summary of my keynote at LDX3 New York",
+      "evidenceLink": "",
+      "score": 32.17121275793651,
+      "core": "A look into what has changed, what’s still the same – and what’s broken – in the tech industry. The full video and the summary of my keynote at LDX3 New York",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-07T16:13:53.877Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Meet Le Chonk: Everything you need to know about Mistral's new open-weight AI model",
+      "link": "https://www.itpro.com/technology/artificial-intelligence/meet-le-chonk-everything-you-need-to-know-about-mistrals-new-open-weight-ai-model",
+      "publishedAt": "2026-10-07T10:04:19.000Z",
+      "author": "Nicole Kobie",
+      "summary": "Mistral claims its latest foundation AI model is the best open weight design outside China",
+      "evidenceLink": "",
+      "score": 32.06002228174603,
+      "core": "Mistral claims its latest foundation AI model is the best open weight design outside China",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-07T16:13:53.877Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "detent_agent_engineering",
+      "source": "DETENT Agent Engineering",
+      "title": "Your AI Governance Framework Covers Models and Data. Who Governs the Code?",
+      "link": "https://detent-ai.com/en/blog/ai-governance-framework-for-agent-written-code",
+      "publishedAt": "2026-09-19T00:00:00.000Z",
+      "author": "",
+      "summary": "AI governance frameworks answer which models are allowed and what data leaves the company. None of them answer who approved a specific agent-written change, or how you&#x27;d prove it later.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-07T16:13:53.877Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 30.055555555555557,
+      "core": "AI governance frameworks answer which models are allowed and what data leaves the company. None of them answer who approved a specific agent-written change, or how you&#x27;d prove it later.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "deepmind",
+      "source": "Google DeepMind",
+      "title": "EmbeddingGemma 2: an open, lightweight multimodal embedding model",
+      "link": "https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2",
+      "publishedAt": "2026-10-06T19:57:04.000Z",
+      "author": "",
+      "summary": "",
+      "evidenceLink": "",
+      "score": 29.55139132936508,
+      "core": "原文摘要不足，需要精读正文后补充核心结论。",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-07T16:13:53.877Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
