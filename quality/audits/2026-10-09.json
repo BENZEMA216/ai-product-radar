@@ -1,0 +1,293 @@
+{
+  "date": "2026-10-09",
+  "generatedAt": "2026-10-08T16:13:55.233Z",
+  "reportPath": "reports/2026-10-09-0013-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 56,
+    "top20Sources": [
+      "HN Algolia",
+      "Product Hunt",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 16,
+      "keptCount": 11,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-07；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 16 条，AI 相关候选 11 条；历史去重移除 2 条已报道或已处理日榜 Product Hunt 信号，最终发布 9 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 5,
+      "keptCount": 5,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 32,
+      "keptCount": 14,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 11,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:node, Model:node；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 8,
+      "keptCount": 8,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "ScreenCI – Tutorial videos as E2E tests, written by your coding agent",
+      "productKey": "https://screenci.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把教程视频同时当作可读说明和端到端测试规范，值得验证 coding agent 能否稳定复现视觉流程，并把失败定位到具体交互步骤。"
+    },
+    {
+      "rank": 2,
+      "product": "Velozity",
+      "productKey": "https://www.producthunt.com/products/velozity-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把团队成员与 agent 放进同一个多人 AI 办公空间，产品关键在任务归属、状态同步和人工接管是否比传统协作工具更清楚。"
+    },
+    {
+      "rank": 3,
+      "product": "IrisGo for Solopreneurs",
+      "productKey": "https://www.producthunt.com/products/irisgo-public-beta",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“演示一次后自动运行”试图把录制操作转成长期工作流，值得看它对页面变化、异常分支和独立创业者维护成本的处理。"
+    },
+    {
+      "rank": 4,
+      "product": "Coding Agent with Cost Saving Built-In",
+      "productKey": "https://www.wiyomi.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把成本控制直接写进 coding agent 定位，值得核对节省来自模型路由、缓存还是任务裁剪，以及是否牺牲代码质量和完成率。"
+    },
+    {
+      "rank": 5,
+      "product": "CoIsland – Bring dev alerts and coding agents into one Inbox",
+      "productKey": "https://coisland.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把开发告警与 coding agent 汇入同一收件箱，值得观察团队能否在一个入口完成分诊、委派、执行确认和责任交接。"
+    },
+    {
+      "rank": 6,
+      "product": "Databench by Alkera",
+      "productKey": "https://www.producthunt.com/products/alkera",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "开源协作式 agent 数据工作区瞄准数据团队，重点是能否让查询、分析假设与结果共享形成可追溯的多人闭环。"
+    },
+    {
+      "rank": 7,
+      "product": "Proofsource",
+      "productKey": "https://www.producthunt.com/products/proofsource",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它不只监测 AI 搜索可见度，还声称用 agent 修补缺口，值得验证从诊断到内容或站点改动的权限边界与效果归因。"
+    },
+    {
+      "rank": 8,
+      "product": "Supademo AI Demo Agent",
+      "productKey": "https://www.producthunt.com/products/supademo",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把产品演示包装成可自动讲解的销售 agent，值得看个性化路径、事实准确性和线索交接能否支撑真实售前流程。"
+    },
+    {
+      "rank": 9,
+      "product": "VoiceGremlin, a SaaS tool for automated tests against AI phone agents",
+      "productKey": "https://voicegremlin.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它为 AI 电话 agent 提供自动化测试，切中语音产品难以回归验证的问题；重点看是否覆盖中断、延迟、口音和任务完成等真实失败模式。"
+    },
+    {
+      "rank": 10,
+      "product": "Rhyven – A marketplace for agents",
+      "productKey": "https://rhyvenai.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "agent 市场的难点不在上架数量，而在能力验证、交易信任和交付责任；这条信号值得看它如何同时解决供需冷启动与质量担保。"
+    },
+    {
+      "rank": 11,
+      "product": "Mob.so – Browser-First Agent Messageboard",
+      "productKey": "https://mob.so",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "浏览器优先的 agent 留言板把异步消息作为协作协议，值得验证身份、线程上下文和任务状态能否支持跨 agent 协同。"
+    },
+    {
+      "rank": 12,
+      "product": "Figma Agent",
+      "productKey": "https://www.producthunt.com/products/figma",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把提示、编辑和原型制作留在画布内，值得观察 Figma 是否能用原生上下文把生成从一次性结果推进到可继续修改的设计流程。"
+    },
+    {
+      "rank": 13,
+      "product": "Abyss – ACP Agent Isolation with Middleware Support",
+      "productKey": "https://abyss.scurry.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ACP agent 隔离与中间件支持直指运行时安全，产品价值取决于它能否把权限、网络和工具调用策略做成可审计的默认边界。"
+    },
+    {
+      "rank": 14,
+      "product": "GenPage 3.0",
+      "productKey": "https://www.producthunt.com/products/genpage",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把落地页生成、个性化和优化放进同一循环，值得看优化目标是否连接真实转化数据，而非只批量生成页面变体。"
+    },
+    {
+      "rank": 15,
+      "product": "DevAlly AI Agent",
+      "productKey": "https://www.producthunt.com/products/devally",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用自然语言捕捉用户旅程有机会缩短需求到验收的距离，关键是能否产出可执行、可复测且与真实行为一致的流程资产。"
+    },
+    {
+      "rank": 16,
+      "product": "Quady3D – the AI 3D workflow I couldn't find, so I built it",
+      "productKey": "https://quady3d.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它试图补齐分散的 AI 3D 创作链路，值得看建模、材质与导出是否真正连成工作流，而不是把多个生成步骤放在同一界面。"
+    },
+    {
+      "rank": 17,
+      "product": "Rool",
+      "productKey": "https://www.producthunt.com/products/rool",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把文件、想法和 AI 组织成私有工作区，值得验证隐私承诺、跨资料检索和长期上下文维护是否形成明确差异化。"
+    },
+    {
+      "rank": 18,
+      "product": "Ask Claude about any UK company – no API key needed",
+      "productKey": "https://registrum.co.uk/mcp",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它通过 MCP 让 Claude 直接查询英国公司数据且免 API key，值得看权威数据映射、引用溯源和访问门槛如何影响 agent 工具采用。"
+    },
+    {
+      "rank": 19,
+      "product": "b12 Labs",
+      "productKey": "https://www.ycombinator.com/launches/vmw-b12-foundry-we-make-the-molecules-ai-designs",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 AI 设计的分子推进到实体化合物交付，展示了从数字推理到实验执行的垂直闭环；重点是交付周期、验证责任和服务边界。"
+    },
+    {
+      "rank": 20,
+      "product": "Veltha",
+      "productKey": "https://www.ycombinator.com/launches/u2x-veltha-ai-native-tpa-for-workers-comp",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它瞄准工伤赔付管理，并声称把理赔员六小时工作压缩到十分钟；值得核实自动化覆盖环节、人工复核点与结果质量。"
+    }
+  ]
+}

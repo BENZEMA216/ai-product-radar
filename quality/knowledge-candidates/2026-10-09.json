@@ -1,0 +1,411 @@
+{
+  "generatedAt": "2026-10-08T16:28:04.480Z",
+  "date": "2026-10-09",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Welcome to Gemini at Work 2026: Introducing the Gemini agent",
+      "link": "https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026",
+      "publishedAt": "2026-10-08T12:00:00.000Z",
+      "author": "Thomas Kurian CEO, Google Cloud",
+      "summary": "Editor’s note: This article is adapted from Thomas Kurian’s keynote address at Gemini at Work 2026. It includes a number of announcements: Gemini , a single, universal agent for work that answers your questions, handles your knowledge work, creates your images and media, and writes and runs code. Inline in Workspace , Gemini works directly inside Gmail, Drive, Docs, Slides, Sheets, Chat, and Calendar, carrying the same memory, skills, and controls it has everywhere else. New data and analytics skills that allow both technical teams and everyday business users to use plain-language questions to get to actionable operational insights in minutes. Industry-specific specialization with tools, skills, connectors and knowledge specific for financial services and legal teams. How we secure and govern agents through i dentity and policy management, authorization and permission controls, secure sandboxing, network gateways, and more. Leading cost controls through multi-model orchestration, Smart Routing, real-time spend caps, and more. Customer use cases that showcase the breadth and depth of our customers around the world. Bringing the best technology to all of you is what drives us at Google Cloud. In the last year, nearly 500 Google Cloud customers each processed more than one trillion tokens. Today, nearly 80% of all Google Cloud customers are using our AI products, and nearly 90% of the Fortune 100 use Gemini Enterprise. At that kind of scale, organizations have moved past experimentation and are running their business on it. Work now starts in the prompt window. To meet this moment, today we are excited to announce the Gemini agent: your new single, universal agent for work. It has all of your business context and can be used for everything from knowledge work to answering questions, and from content creation to coding, all from a single prompt box. It plans the work, uses skills and tools, connects to your systems, and brings back something finished — inside the documents, the inbox, and the developer environments you already work in. It chooses the best model for the job, has built-in cost controls, and most importantly, has the security, administration, and governance required by your company. The Gemini agent is your new single, universal agent for work. Introducing the Gemini agent Gemini answers your questions, handles your knowledge work, creates your images and media, and writes and runs code — all in a single agent and a single API. You give it objectives, not instructions. You delegate an outcome and come back to finished work. For an agent to do that, it has to be connected to your personal workflows, your systems of record, and your enterprise controls. Gemini can function as your personal assistant or as a team member, where it works on behalf of a group of people, like a project manager within a team, or on behalf of a specific role in an organization, like an analyst in your finance department. The agentic capabilities in Gemini are built around core architectural principles: Unified agent: Gemini is an agent that can answer your questions when you chat with it, work autonomously to complete objectives you assign it, and generate code — all from a single interface. You can assign it work, schedule tasks that need to be completed, or have it respond to events. Omnipresent access: Gemini can be accessed from any device including web, iOS and Android mobile devices, Windows and Mac desktops, and any channel (command line, Google Workspace, Microsoft 365, or Slack). It can also be integrated into third-party applications and surfaces and operates as a headless agent, meaning it does not need a dedicated user interface. Persistent execution: It runs in the cloud, meaning it maintains a single set of memories, context, and one personalization graph no matter what device or channel you access it on. You never have to re-brief it or wonder which machine you told it to do something on. Work that takes hours or days keeps running after you close your laptop, and it is still there when you come back. Multi-agent orchestration: Gemini doesn’t work alone. It can dynamically create a roster of sub-agents — temporary, job-specific agents, each with their own identity — to tackle multi-step tasks. Gemini can communicate with these sub-agents to coordinate workflows, including parallel and sequential steps that can run for hours or days. In addition, Gemini can act as a coworker agent — which is more like a team member, with a persistent, defined role and operational presence across days, sessions, and multiple changing responsibilities — and delegate and coordinate tasks. Coworker agents have dedicated identities including their own @agents. company.com emails, their own persistent storage, and only have access to the context that you or your team members provide. Deeply contextual: Gemini arrives already knowing your tools, data, and work history. Whether you ask it a question, assign it an objective, or have it generate code, Gemini learns from every interaction with you. The longer you collaborate with it, the better it understands you and how you work. Teams can create dedicated projects to further optimize the context, skills, and tools Gemini uses when it works with you. Model choice flexibility: Gemini is the agent, and the model underneath it is a separate choice. It runs each job on the model that fits best — orchestrating across our Gemini family of models and Claude models from Anthropic today, and other leading private and open models in the future — to deliver optimal quality and lower your costs. The best model for the task is not always the largest one. Matching the model to the work raises accuracy on the difficult jobs and lowers cost on the simple ones. And the leading model changes every few months, so keeping that choice open means your context, your skills, and your data stay put when it does. Top customers across industries were early testers and are already realizing its benefits: Premium sportswear brand On tested this new dynamic selection capability to accelerate its speed-to-market. This builds on the proven, large-scale multi-model strategies already used by leaders: Shopify blends frontier models for millions of merchants to unlock data and drive sales, and PayPal routes 10 million multi-model requests every week. Powering Gemini: Skills, tools, and context Gemini understands your business — everything from pricing to product portfolios to departmental norms — and all the institutional knowledge that makes your company unique. Three capabilities make that possible: tools that connect it to your systems, skills that teach it how your work gets done, and context that lets it remember. Tools and tools registry: Gemini can securely connect to the software your company already runs, including collaboration tools like Confluence, Microsoft Office, Teams, Slack, and Workspace; development tools like Git and Jira; enterprise platforms like Salesforce and ServiceNow; databases like BigQuery, Databricks, Postgres, and Snowflake; and files on your own desktop. It can also connect and work securely with any Model Context Protocol (MCP) server inside or outside your company network. It also offers an enterprise tools registry, so teams can build and publish tools for the rest of the company. Skills and skills registry: Skills are reusable sets of instructions, knowledge, or workflows stored as modular prompts that teach agents how to perform specific, multi-step tasks. Gemini ships with a robust global library of skills. Teams or departments can build and publish custom skills to a shared company registry, and you can build your own personal skills. Gemini chooses the right skills and tools to perform a task and continuously learns from each execution, improving its consistency, while saving token costs. Context and memory: Gemini learns from each question you ask it, each objective you assign it, the people you work with, and uses your personal context and your organization's context to personalize and improve the quality of its responses. It keeps four kinds of memory: session memory for the task in front of it, even when it runs for days; semantic memory, a structured knowledge base it builds as it reads documents, talks to people, and works with other agents; procedural memory for how a job gets done, including skills it writes for itself; and episodic memory of everything it has done before. Gemini onboards itself the way a new hire would, learning you, your tools, and your team before it starts. Customers seeing significant benefits from Gemini Enterprise include: BNP Paribas , a European leader in banking and financial services, is transforming Corporate &amp; Institutional Banking by deploying Gemini Enterprise into LLM@CIB, its internal generative AI assistant available to more than 65,000 employees, to streamline workflows like preparing credit memos and boosting the productivity of customer advisers while maintaining strict enterprise-grade security and data governance. Bradesco , one of Brazil’s largest banking and financial services conglomerates, is streamlining heavy operational workflows by deploying Gemini Enterprise for automated fiscal, accounting, and contractual analysis. The finance team has accelerated proposal reviews, service classification, and budgetary workflows, cutting document review time from 1 hour to 5 minutes while reducing risk inconsistencies by 60% and achieving over 10% in financial efficiencies. Merck is exploring new frontiers in molecular research with the potential to significantly compress discovery timelines while maintaining complete data privacy and security. Merck + Google Cloud: Using Gemini Enterprise to Accelerate Drug Discovery Orange Spain , a leading telecommunications operator in Spain, is speeding up its digital transformation by deploying more than 1,000 custom Gemini Enterprise agents. Employees across HR, IT, sales, and customer service have built custom agents to automate incident triage, analyze network issues, and retrieve corporate knowledge, boosting operational agility and response times while helping non-technical staff automate daily workflows with zero IT bottlenecks. Santee Cooper , South Carolina’s state-owned electric and water utility, is modernizing its financial planning and grid reliability by deploying a specialized AI model built on Gemini Enterprise. Financial planning teams and utility operators are automating complex financial scenario modeling and query execution using simple natural language and expect to boost modeling speed by up to 75% while mitigating market risk across a $10 billion grid expansion budget. SOMPO , a leading Japanese insurance provider, built over 10,000 custom AI agents across its 34,000 employees to automate tasks like document search and summarization for employee efficiency. Their engineering team used Gemini Enterprise to cut the development time for new models from one week to a single day, freeing up engineers for more important work. Ulta Beauty is helping guests shop 30,000 products by deploying the Ulta AI shopping assistant built with Gemini Enterprise. Online shoppers have translated conversational questions into personalized beauty recommendations, boosting digital sales conversion rates three-fold while skipping traditional search filters to buy the products they love instantly. Wesfarmers, the parent company of Australian retail giants Bunnings , Kmart , and Officeworks , is deploying agents across its portfolio. An internal agent at Bunnings saved staff half a million hours of administrative work, while shopping agents — that help customers discover products and build their carts — have increased conversion rates up to three times higher for Kmart and Officeworks. Organizations worldwide are driving measurable impact. Gemini in Google Workspace Gemini not only answers your questions, handles your knowledge work, and writes your code — it works directly inside Gmail, Drive, Docs, Slides, Sheets, Chat, and Calendar, carrying the same memory, skills, and controls it has everywhere else. It works inline: in the email thread, in the document, and in the chat space. Inside Workspace, Gemini works three ways: Personal assistance : Gemini works as your personal agent and arrives already knowing your calendar, your team, your projects, and how your documents relate to one another. It is briefed before you start. For example, you can ask Gemini to set up a meeting with the usual team of regional event leads next week, without supplying a single name or email address. Gemini determines who those people are from the membership of your chat space and the thread from your last event, checks their calendars, and starts an email thread to coordinate a time that works, even with external participants. It handles work that spans applications the same way: researching market trends, building a financial model in Sheets, then creating a deck that presents both, without you re-explaining the project at each step. Proactive delegation : Gemini uses this same intelligence to proactively suggest tasks you can delegate to it. For example, if your manager emails you asking for the latest project update as a slide deck, Workspace Intelligence recognizes that as a delegatable task and gives you a single-click option to pass it to Gemini. It applies the same reasoning to your inbox, surfacing the message that matters most rather than the one that arrived last, and explaining why. A member of your team : You can also use Gemini to create a coworker agent that works with your entire team. You simply describe the role you need, and Gemini creates it. The agent receives its own Workspace account, including an email address, calendar, Drive, and presence in your company directory. Your colleagues work with it the way they work with anyone else, by adding it to a Chat space or @mentioning it. For example, a marketing manager can ask an events coordinator agent in a chat group to draft a launch readiness document, which it posts back to the group when complete. The marketing manager could also tag the agent in a document comment, where it can suggest an edit in the Doc and reply in the comment thread, appearing under its own name in version history. A coworker agent acts under its own identity rather than yours, and it sees only what you share with it. Access follows the sharing and membership your team already uses, and no outside connector holds your data. Data analysis, data engineering and machine learning We are also giving Gemini skills built for specific domains, starting with data. Data and analytics represent a foundational domain where Gemini transforms business workflows, enabling organizations to move from plain-language questions to actionable operational insights in minutes. We are introducing purpose-built capabilities tailored to both technical teams and everyday business users: For Data and ML engineers: We are extending Gemini with machine learning skills and tools that back every data scientist and data engineer with a team of agents. Engineers describe the outcome they want in plain language, and Gemini generates PySpark code, provides notebooks to edit and test it, trains models, and troubleshoots and fixes pipeline issues on its own. For business users: Anyone in your organization can generate reliable, real-time operational reports simply by asking. Gemini uses operational reporting skills integrated with BigQuery and the Knowledge Catalog to construct and save the query. Once saved, teams can run reports on demand without incurring token costs, guaranteeing consistent, verified answers every time. Three Google Cloud capabilities keep those answers grounded: Knowledge Catalog: Gemini integrates directly with your Knowledge Catalog to map business definitions once so all agents use them. This deep understanding of your organization’s schemas and business rules for terms like “net margin” and “addressable market” dramatically improves accuracy. Whether your metrics live in Databricks, dbt, LookML, or SAP, Gemini reads them directly where they sit to ensure factual responses. Smart Storage : Ninety percent of enterprise data is unstructured — PDFs, images, scans, and audio recordings — which often remain \"dark\" and unreadable. Smart Storage changes this by enriching unstructured objects in place and writing context back directly onto the object itself. The intelligence stays where the bytes reside and inherits your existing security posture. Borderless Lakehouse: Organizations should not be forced to move or duplicate their data to use AI. Our borderless Lakehouse allows Gemini to query Amazon S3 and Azure Data Lake with no variable egress fees, read directly from Salesforce Data 360, SAP, ServiceNow, and Workday without copying data, and federate open Apache Iceberg tables across Databricks Unity, Snowflake Horizon, and AWS Glue. You can start by registering data sets that you discover in your lakehouse with the Knowledge Catalog, and then assign Gemini simple or complex analysis to perform. It identifies the necessary data sets from the Knowledge Catalog, generates the necessary SQL, Spark or Python code to calculate the results, and runs the code on our Managed Spark Service with Lightning Engine or in BigQuery. It can also generate charts and build dashboards in the tools your analysts already use. By grounding its data agents in the Knowledge Catalog, Bloomberg Media lifted its SQL query accuracy by 63% during initial development. As William Anderson, Bloomberg Media’s CTO, noted: “...by grounding our AI in a trusted institutional context, we ensure confidence in the accuracy and quality of every insight generated.” Additional customers are seeing tremendous value from our data solutions: Deutsche Telekom used BigQuery, Cloud Storage, and Knowledge Catalog to build a unified data lakehouse to overcome a fragmented and slow data infrastructure spread across 40+ legacy on-premise systems, allowing their teams to now move ten times faster while addressing European data sovereignty and security requirements. Etsy migrated three petabytes of data to a unified lakehouse. By using BigQuery and open-source Apache Iceberg, they can now perform critical data joins up to 60% faster, allowing them to train models on much larger datasets and better connect buyers with the perfect items. Snap connected its Prism agent directly to its storage archives, cutting technical diagnostic troubleshooting times down from 30 minutes to just 30 seconds. Industry-specific specializations Every industry runs on knowledge a general model does not have. We are specializing Gemini for individual industries, with the skills, tools, and knowledge specific to each one. It is now in preview for Financial Services and Legal, and coming soon to Government, Healthcare, and Retail. Financial Services: Gemini for Financial Services automates what is usually pieced together across many workstreams: investment research, credit analysis, and risk modeling. It draws on trusted financial data from FactSet, LSEG, SEC filings, and your own proprietary repositories. Built with more than 50 foundational skills and designed to satisfy rigorous compliance, it shows its reasoning through confidence scores, explicit methodologies, full data lineage for easy auditing, and source citations you can check. Gemini for Financial Services is already being used by global financial institutions like CME Group and Deutsche Bank . Legal: Gemini inherits matter-level permissions and ethical walls directly from document management platforms like NetDocuments and iManage. Partners like Harvey automate complex legal work while meeting the firm's confidentiality standards, while Onit streamlines contract lifecycle management without exposing privilege. Cooley is building a confidential information redaction agent on Gemini Enterprise for Legal that automates redactions, including personally identifiable information and confidential material, before legal filings go public. In high-stakes litigation, this can cut days of document review while maintaining the firm's rigorous standards for client confidentiality. In addition, we’ve seen our ecosystem and customers create new vertical applications as well. For example, Deloitte has created a multi-agentic solution to help organizations identify the highest-value opportunities for AI applications for their business. Their Agentic AI blueprint develops operational heat maps to pinpoint areas ready for agentic redesign, accelerating the deployment of custom agentic workflows and achieving up to a 3x faster path to measurable business impact. Securing and governing agents Two factors determine whether an enterprise agent program succeeds or stalls: whether you can govern it, and whether you can afford it. When deploying autonomous agents across an organization, governance comes down to answering four fundamental questions: Who is the agent, and what identity does it have? What is it allowed to do or what permissions is it granted? What did it do and where can I see what it did? What should it never touch? Identity, policy, and observability answer the first three. The fourth is Agent Gateway. Identity: Every agent gets its own identity, cryptographically attested and governed like an employee, with least-privilege permissions. That identity is stamped into the logs that capture its work, and into any virtual machine spun up to run code on its behalf. Authorization and permissions: You give each agent fine-grained, role-based access permissions, approved by your organization’s security administrators. When the Gemini agent connects to an external system, its identity is mapped and propagated through industry standards such as OAuth. Auditing: In addition, every action Gemini takes is written to an audit trail and attributed to the agent rather than to a person. Since the identity travels into any virtual machine the agent spins up to run code, you can monitor those logs with our observability tools in real time and catch anomalous behavior before it matters. Policy management and control: Gemini gives you identity, discovery, governance, and security by default. All Gemini agents execute tasks safely inside an Agent Sandbox with its own network boundary. All traffic — in, out, and between agents — passes through Agent Gateway, an AI network firewall enforcing your organization’s policies in real time. You write the policy once, such as: “agents may not open documents classified Need to Know.” Gemini applies it to every agent in your company instead of checking one agent at a time. Leading cost controls and spending options While per-token prices have dropped 98% since 2024, enterprise AI volume has exploded. Running every simple loop through a premium model quickly breaks corporate budgets. We announced new flexible spending options recently and are adding to those today: Multi-model orchestration: As mentioned earlier, Gemini allows you to choose the right model for the job, and even combine different models for specific tasks in larger projects to deliver optimal quality and lower your cost. Smart routing: Our routing tool automatically triages enterprise workloads so each one runs on the model that delivers maximum performance at the lowest possible cost. Real-time spend caps: You can set a hard limit on a project's AI spend in the Cloud Billing Console, and Gemini enforces it. Gemini monitors token usage and sandbox costs, and if a spend cap is triggered, that project's agent pauses, and you can choose to resume work with a single click in the console. Because the tracking is per project, companies can charge AI costs back to specific departments. Infrastructure: 80% better price-performance All of this innovation — the agent, the data, the identity, and everything else — runs on our AI Infrastructure and our models. They are the reason the economics work. First, our AI infrastructure. We co-design the chips, the network, the data center, and the software that connects it all as one highly-optimized system — our AI Hypercomputer. This vertical integration delivers significantly better price-performance than the generic setups, and we are continuing to push the state of the art here. For example, our latest TPU 8i system delivers 80% better price-performance than the prior generation, making complex, high-value agent tasks both fast and highly affordable. On top of this silicon sit our models: Argon for frontier reasoning, Flash for speed and volume, Omni for generative media, and Gemma for lightweight, open-weights edge workloads. The edge capabilities are already real. NASA’s Jet Propulsion Laboratory is running Gemma directly on a satellite in orbit, a first for a vision-language model. JPL’s NAVI software analyzes Earth imagery on board the satellite and sends a summary with key information to ground operators. Supercharged by our ecosystem We remain committed to choice at every layer of the stack, ensuring you have the freedom to choose the best tech stack for your unique needs. Inside Gemini, you have a broad choice of third-party agents from leading SaaS providers as well as connectors that are ready to use. They are even easier to discover as collections in the new AI Solution Finder . Around Gemini, our services ecosystem continues to rapidly scale to meet enterprise demand. Together, in the last month alone, our global consulting partners have put more than a hundred thousand of their developers and consultants through Gemini hackathons. In addition, Accenture has made a significant investment by establishing a dedicated Gemini Enterprise Business Group to accelerate customer adoption and innovation. Several other partners have also expanded their commitments to support the growing demand for Gemini, including establishing specialized centers of excellence and training Gemini credentialed practitioners to help customers build and deploy production-grade agents faster. Gemini Enterprise in action: Global momentum Organizations worldwide are driving measurable impact across every major region: Europe and Middle East Arden University , a UK provider of flexible online and blended learning, is preparing students for the global job market by rolling out Gemini Enterprise. Over 30,000 students and staff will now have access to advanced Al tools to personalize their studies and gain essential skills for the workplace. Commerzbank , one of Germany’s largest private banks, is using Gemini Enterprise to automate document quality assurance, reducing manual work on document reviews from 20 hours to just one. They are expanding this with a multi-agent system for AI-driven QA. Lloyds Banking Group is scaling agentic AI across the bank. Envoy, a secure, Gemini-powered pipeline, has already onboarded nearly a thousand engineers building production-ready AI use cases. From fraud detection to commercial client onboarding, Envoy gives teams a reusable agent marketplace, a \"golden path\" for building agents, and a CI/CD pipeline — all wrapped in the guardrails and security a highly regulated bank demands. Lloyds Banking Group Built Envoy with Gemini Enterprise Nokia is tackling the complexity of modern telecom networks with an ecosystem of specialized agents built on Gemini Enterprise. This allows operators to fix issues before subscribers are impacted by automating troubleshooting and cutting issue resolution time by up to 80%. On , a premium sportswear brand, is scaling workforce productivity and efficiencies by deploying Gemini Enterprise to every employee to drive personal productivity and foster an AI-ready culture. Team members have launched no code agents that help with efficient knowledge extraction, executive reporting, market research, scheduling, onboarding and more. Ooredoo Qatar, the leading telecommunications provider in Qatar, is integrating Gemini Enterprise into their AI transformation strategy to drive advanced automation and intelligence. Its customer support, marketing, security, and field operations teams have deployed AI agents to optimize internal operations management, while accelerating rapid issue resolution and marketing campaigns to deliver around the clock, highly personalized, proactive customer experiences. Qatar University, the nation's premier institution of higher education, is transforming higher education operations and academic research by deploying Gemini Enterprise campus-wide. Thousands of faculty and staff are deploying more than 2,000 custom AI agents to modernize institutional workflows, automate complex administrative operations, and enhance academic productivity. Ryanair , Europe’s largest airline, is modernizing its collaborative operations and infrastructure by deploying Gemini Enterprise and Google Workspace to 35,000 employees. Flight crews, operations planners, and corporate staff will benefit from automated decision-making, optimized crew logistics, and enhanced corporate productivity, while a resilient dual-cloud strategy strengthens infrastructure resilience and supports the airline's target growth to 300 million passengers by 2034. Starling , one of the UK's top-rated digital banks, built its Scam Intelligence tool on Gemini Enterprise. It analyzes online marketplace ads for suspicious content and has quadrupled the rate at which customers cancel potentially fraudulent payments. Other major European customers include Berenberg in banking, Bouygues Telecom , the application building platform Lovable , and Siemens in automation. Asia Pacific Airwallex, the global financial platform processing over $200 billion annually, has deployed Gemini Enterprise across its infrastructure to resolve customer issues 10x faster, automate dispute handling to cut case time by 40%, and accelerate software time-to-market by over 95% while building specialized agentic finance workflows for automated treasury, payables, and payments. DBS Bank , Southeast Asia’s largest bank, is moving past pilots into enterprise production by deploying deterministic chains of 70 to 80 specialized agents on Google Cloud to synthesize complex financial, regulatory, and market intelligence for corporate credit memos, shifting relationship managers from manual research to high-value client advisory while keeping humans firmly in the loop. Hitachi is transforming global power and utilities by deploying agents directly to frontline workers via HMAX, Hitachi’s portfolio of AI-powered solutions. Field technicians have built agents for over 200 use cases — such as using image-recognition agents to verify photos of every tool and wire before and after a job — boosting productivity by up to 30% while keeping workers safer. NTT DOCOMO , Japan’s leading mobile operator, built data agents that reduced time-to-insight from two weeks to instant, which gave four hundred fifty thousand hours a year back to the business. Building on this success, they are now deploying Gemini Enterprise to drive their next wave of productivity. Tata Steel , a global steel manufacturing leader, successfully deployed more than 300 specialized AI agents in nine months to enhance manufacturing safety, optimize predictive supply chains, and cut customer complaint turnaround times by 50%. Zip , an Australia-based digital financial services company, is transforming its product-development lifecycle in the U.S. by deploying Gemini Enterprise to build an AI-Native Product Factory. Cross-functional teams will use this unified agentic environment to connect customer research, design, engineering, and compliance, boosting product development velocity and parallel experimentation while lowering the cost and complexity of bringing new financial products and experiences to market. Other APAC leaders include LG in electronics, Marubeni in trading, and TCS in technology services. Latin America Banco BV , a leader in the Brazilian financial sector, is using Gemini Enterprise to create personalized scripts for its customer relationship managers, accelerating client communications by 80%. The new AI platform allows the bank to quickly engage customers with tailored financing and investment opportunities. CNA/SENAR , Brazil’s national agriculture and livestock federation, is expanding access to critical agricultural information by deploying JoIA, a conversational AI assistant on WhatsApp built on Gemini Enterprise. 40,000 active users, with the potential to support 5 millions producers across the country, have accessed localized input pricing, weather forecasts, and financial health evaluations to facilitate in-field decision-making. Farmacias del Ahorro , one of Mexico’s leading drugstore and pharmacy retail chains, is accelerating corporate operational efficiency by deploying PotencIA, an internal program built on Gemini Enterprise. 1,000 corporate employees across IT, e-commerce, and marketing have adopted the tools for daily business workflows, boosting active user adoption to 95% while generating an estimated 140,000 hours in annual productivity gains. Globo , Latin America’s largest media company, is optimizing early-stage software planning by deploying PlanejaAI, an AI agent solution built on Gemini Enterprise. Product Owners, managers, and analysts have accelerated epic refinement and quarterly planning, boosting pre-development plan accuracy by 33% and slashing validation time from 20 minutes to 6 seconds while saving 127 hours in a single quarter. Grupo Bafar , a prominent Mexican food producer and consumer retail group, is accelerating national retail expansion by deploying Gemini Enterprise for automated contract management. Legal and retail operations teams have streamlined the preparation of operational annexes for store openings, boosting processing capacity tenfold while slashing contract preparation time from 140 to 17 minutes per branch. Laureate Education , a major higher education network serving nearly 500,000 students across Mexico and Peru, is transforming academic and administrative operations by deploying Gemini Enterprise and Gemini for Education. Faculty and staff have personalized learning paths, enhanced teacher support resources, and modernised campus administration, boosting student engagement and operational readiness while driving long-term career employability for graduates. Other LATAM leaders include iFood delivery services, Livelo in customer loyalty, SEBRAE in public services, and Yduqs in education. North America Albertsons , a leading U.S. food and drug retailer, is ensuring customers get the freshest produce with its patent-pending Intelligent Quality Control tool built with Gemini Enterprise. Distribution center inspectors are using computer vision and Gemini models to instantly evaluate fresh fruit and vegetable quality against company standards, boosting rating consistency across shifts and locations while speeding up inspections to get perishable food onto grocery shelves faster. Avid , a leading provider of media technology for film and television, is streamlining video post-production through browser-based editorial experiences and agentic creative workflows built with Gemini Enterprise. Editors and directors can use conversational content discovery, AI-assisted transcription, and intelligent media organization within their creative workflows — including within a Google Chrome browser — helping teams spend less time on manual administrative tasks and more time focused on storytelling. Constellation Energy Company , a leading energy supplier, will build Gemini Enterprise agentic workflows directly into its core operations. Power generation teams will have access to advanced AI capabilities to accelerate capacity delivery, optimize asset dispatch, and protect critical infrastructure. Honeywell Technologies Forge platform includes predictive maintenance capabilities built on Gemini Enterprise, such as contextualizing operational data at scale and providing proactive maintenance recommendations. This helps customers minimize costly, unplanned outages, protecting and extending the lifespan of their mission-critical equipment. Honeywell Technologies Helps Customers Prevent Unplanned Outages with Gemini Enterprise PayPal built its AI platform on the Gemini Enterprise to create new commerce tools, cutting the time it takes to deploy new models from weeks to just minutes. The Home Depot , the world’s largest home improvement retailer, is speeding up customer support and product discovery by deploying AI voice and digital assistants built on Gemini Enterprise. DIY shoppers and contractors calling stores or using Magic Apron have skipped rigid phone menus, searched local inventory with natural speech, and resolved inquiries in real time, boosting phone resolution speeds by four-fold (understanding customer needs in under 10 seconds) while allowing in-store associates more time to focus on face-to-face shoppers. The RealReal , the leading online marketplace for authenticated luxury resale, is transforming luxury consignment by deploying Ask TRR, a conversational shopping concierge built with Gemini Enterprise. Resale shoppers have navigated and searched a massive, shifting catalog using natural language instead of rigid filters, which will boost user engagement across all 45 million members while making it effortless to discover and secure rare, \"one-of-one\" luxury pieces before they sell out. Verizon is modernizing its customer and enterprise operations with Gemini Enterprise and agentic Data Cloud. The technology has helped resolve inbound customer calls and chats automatically, helped predict and resolve network anomalies, and automated marketing campaign orchestration, boosting customer satisfaction and automated resolution rates while unifying legacy data lakes into a single source of truth. Whenere , an immersive storytelling platform, is revolutionizing interactive 3D worldbuilding, starting with bringing Pride and Prejudice to Fortnite. To build the Netherfield estate, the team used Dreamlands , an agentic 3D worldbuilding platform built on Gemini Enterprise. With Gemini generating each new texture in about seven seconds for under ten cents, one artist created nearly 250 custom assets in a single day and completed a historically accurate estate in under a week, all while keeping full creative control. Leading hospital systems and healthcare services companies like Highmark Health and Seattle Children's rely on Gemini Enterprise to run secure administrative and clinical support workflows. In public sector, Gemini Enterprise is being used across the states of Arizona and Missouri, the State University of New York (SUNY), and the Chief Digital and Artificial Intelligence Office, which has put Gemini Enterprise in the hands of 3 million uniformed and non-uniformed members of the US armed services. They have built more than a hundred thousand custom agents to streamline everyday tasks. Small and midsize businesses including Aerotech , EDSpan Global ,, Pinch Creative , Quadrant Health Group , Salt Productions , Strategem, and more are using Gemini Enterprise to empower their teams with AI agents that can streamline their operations, automate administrative workloads, help find information, and even support customer engagement. In fact, usage of Google Cloud’s AI tools by these customers has grown more than 5x year over year. Other North American startups and innovators like Every Cure, Harvey , OpenEvidence, Recursion , and Replit are using Gemini Enterprise. Our commitments to you As you build the future on Gemini, we make three firm commitments: We take the friction out: A future-proof platform that runs anywhere, executes any task, supports your choice of models, and applies enterprise controls. We eliminate complexity: Google builds and integrates the entire stack: silicon, models, skills, tools, and security. What you build stays yours: Your people and your data do not need to move, and your proprietary inputs and outputs remain entirely your own. The technology is ready, our global partner ecosystem is scaling, and Gemini is ready to work for you.",
+      "evidenceLink": "",
+      "score": 115.6808634920635,
+      "core": "Editor’s note: This article is adapted from Thomas Kurian’s keynote address at Gemini at Work 2026. It includes a number of announcements: Gemini , a single, universal agent for work that answers your questions, handles your knowledge work, creates your images and media, and writes and runs code. Inline in Workspace , Gemini works directly inside Gmail, Drive, Docs, Slides, Sheets, Chat, and Calendar, carrying the s…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-08T16:28:04.480Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Claude Haiku 5.5 now available on AI Gateway",
+      "link": "https://vercel.com/changelog/claude-haiku-5-5-now-available-on-ai-gateway",
+      "publishedAt": "2026-10-07T00:00:00.000Z",
+      "author": "Rohan Taneja",
+      "summary": "Claude Haiku 5.5 from Anthropic is now available on AI Gateway . It is built for high-volume, cost-sensitive tasks such as summaries, context compaction, database queries, and classification, and works as a subagent alongside larger Claude models on coding work. It is also the fastest Claude model at standard speed, which suits live customer support and browser use. Test it as a direct upgrade wherever you use Claude Haiku 4.5 today. Haiku 5.5 is the first Haiku model with effort levels. It uses adaptive thinking and supports low , medium , high , xhigh , and max effort, which set how much the model thinks and how many tokens it uses. You can turn thinking off at low , medium , and high . At xhigh and max , thinking must stay on. Haiku 5.5 supports Zero Data Retention on AI Gateway. It ships with biology and cybersecurity safeguards, so it may decline some requests in those areas. Call it through the AI SDK , the Chat Completions , Responses , and Anthropic Messages APIs, or a coding agent connected to AI Gateway. Set effort with reasoning in the AI SDK or reasoning_effort in Chat Completions. Use anthropic/claude-haiku-5.5 as the model name: To use it in Claude Code, Codex, Cursor, and more, install the latest Vercel CLI and run setup: Then select anthropic/claude-haiku-5.5 in the agent. See the coding agents guide for details. Try Claude Haiku 5.5 in the model playground . AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. You can view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 96.10943492063492,
+      "core": "Claude Haiku 5.5 from Anthropic is now available on AI Gateway . It is built for high-volume, cost-sensitive tasks such as summaries, context compaction, database queries, and classification, and works as a subagent alongside larger Claude models on coding work. It is also the fastest Claude model at standard speed, which suits live customer support and browser use. Test it as a direct upgrade wherever you use Claud…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-08T16:28:04.480Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Step 5 Preview now available on AI Gateway",
+      "link": "https://vercel.com/changelog/step-5-preview-now-available-on-ai-gateway",
+      "publishedAt": "2026-10-08T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "Step 5 Preview , StepFun's flagship model, is now available on AI Gateway . It's built for agentic coding, professional knowledge work, and financial analysis, from building apps and debugging code to research and analytical reports. Step 5 Preview supports text and image input with a 1M-token context window, allowing you to work with large codebases, a stack of documents, or screenshots and charts in a single request. Use stepfun/step-5-preview as the model name: For other coding agents such as Claude Code, Codex, Cursor, and more, install the latest Vercel CLI and run setup: Then select stepfun/step-5-preview in the agent. See the coding agents guide for details. Try Step 5 Preview in the model playground . AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. You can view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 83.66816507936508,
+      "core": "Step 5 Preview , StepFun's flagship model, is now available on AI Gateway . It's built for agentic coding, professional knowledge work, and financial analysis, from building apps and debugging code to research and analytical reports. Step 5 Preview supports text and image input with a 1M-token context window, allowing you to work with large codebases, a stack of documents, or screenshots and charts in a single reque…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-08T16:28:04.480Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Innovation in Ireland: How Irish brands scale with Gemini Enterprise",
+      "link": "https://cloud.google.com/blog/topics/customers/ireland-innovation-companies-startups-governments-scale-with-gemini",
+      "publishedAt": "2026-10-08T12:00:00.000Z",
+      "author": "Sandeep Khanna Managing Director, Google Cloud U.K. & Ireland",
+      "summary": "In recent decades, Ireland has grown into a vibrant hub for global technology. As modernization accelerates, Irish organizations — spanning government agencies, established enterprise brands, and growing startups in AI and other areas — are all advancing their technical foundations. Today, leaders across the country are injecting agentic AI into every layer of their business and operational workflows. We are seeing organizations move from early prototypes to production-ready deployments using Gemini Enterprise . This progress supports Ireland's competitive position within the European market. According to a recent Implement Consulting Group report assessing Google’s local contribution , public and private leaders estimate between 40 billion to 45 billion euros of economic potential in global AI markets. This ambition aligns with broader government initiatives. Since assuming the presidency of the Council of the European Union for the second half of 2026, Ireland has steered higher-level technology and policy discussions, outlining a National Digital and AI Strategy to improve productivity and innovation across sectors. To support this strategy, we are focused on making these capabilities more accessible. Our local teams are collaborating with industry leaders to implement Gemini Enterprise which offers capabilities that range from conversational AI agents and natural language data analysis, to optimizing operations with agentic ecosystems. The economic impact is already taking shape. In 2025 alone, Google operations — including our AI and cloud services — added an estimated 10 billion euros to the Irish gross domestic product. And this momentum is shared: Organizations across Ireland are using Google Cloud to modernize infrastructure and put AI to work. Here are several ways Irish organizations are modernizing with Google Cloud and Gemini Enterprise: Ryanair supports millions of passengers through AI-backed operations Ryanair, Europe’s largest airline, is modernizing its collaborative operations and infrastructure by deploying Gemini Enterprise and Google Workspace for some 35,000 employees. Flight crews, operations planners, and corporate staff will benefit from streamlined decision-making, optimized crew logistics, and enhanced corporate productivity. At the same time, a dual-cloud strategy strengthens infrastructure resilience as the airline targets growth to 300 million passengers by 2034. Smyths Toys rethinks the customer experience with agentic support As one the world’s largest specialty toy retailers, Smyths Toys is reshaping its customer support with Google Cloud and Gemini Enterprise. By introducing an AI agent named Codie, the retailer has resolved more than 60% of its web inquiries and reduced holiday email backlogs. Customer care teams that previously handled up to 1,000 peak-season emails a day can now focus on the roughly 50 cases that need more complex judgment. The Irish Revenue Commissioners: Advancing public sector data Public sector agencies are also making strides in Ireland. The Irish Revenue Commissioners — responsible for taxes, customs, and keeping Ireland’s economy running smoothly — is working with Google Cloud to migrate from legacy on-premise systems to a unified AI-lakehouse architecture designed to break down data silos and establish a single source of truth. Strict data sovereignty controls safeguard taxpayer information while Gemini Enterprise powers agentic data analysis, helping Revenue deliver secure, responsive public services. Virgin Media Ireland: Accelerating workflows Supported by Liberty Global's partnership with Google Cloud, Virgin Media Ireland is moving AI from exploration to production. Through modern infrastructure and automation, the team now deploys workloads three times faster, is in the process of rolling out multiple AI agents, and is launching new customer services designed to drive business growth. Irish startups scaling with enterprise tools While established enterprises are modernizing legacy systems, Irish startups are building on modern technology from day one. Backed by a strong local tech ecosystem, these agile teams are creating services that compete on an international stage. Hexis: Scaling personalized sports nutrition Hexis builds technology solutions that help athletes refine their performance and recovery. By storing and processing that real-time biometric and behavioral data in Google Cloud, Hexis uses Gemini Enterprise to power natural language conversations that explain fueling adjustments to users throughout the day. Today, the platform supports 40% of the Tour de France peloton and half of Premier League clubs during the 2026–2027 season. Kitman Labs: Unifying performance analytics Founded in Dublin in 2012, Kitman Labs provides sports science and performance intelligence to more than 4,000 sporting organizations across 26 countries. By combining its intelligence platform with advanced analytics and Gemini Enterprise, Kitman Labs helps teams make data-informed decisions that support athlete health, lower injury risk, and extend player career longevity. Spryt: Automating healthcare coordination Spryt streamlines healthcare coordination across the U.K. and U.S., using AI built on Google Cloud and Gemini Enterprise to optimize patients’ experiences, reduce missed appointments, and cut administrative burden. The company collaborates with the NHS, operates in more than 70 US clinics, and has analyzed 224 million appointment records as part of a multiyear initiative with Mayo Clinic. IMPT: Automating carbon offsetting By connecting AI, blockchain, and Google Cloud, IMPT embeds verified carbon offsetting into everyday hotel bookings and online purchases. Following a 15-week migration to Google Cloud, IMPT supports 8 million listings across 195 countries. With Gemini Enterprise, the company’s lean team handles about 400 daily customer chats with a six-second median response time, allowing staff to focus on growing its business rather than managing systems. Transform ideas from planning to production As Ireland continues to expand as a global technology hub, local organizations are demonstrating how to translate AI potential into practical results. Explore our customer stories to see how other organizations are building with Google Cloud, or reach out to our team in Ireland to accelerate your journey.",
+      "evidenceLink": "",
+      "score": 75.6808634920635,
+      "core": "In recent decades, Ireland has grown into a vibrant hub for global technology. As modernization accelerates, Irish organizations — spanning government agencies, established enterprise brands, and growing startups in AI and other areas — are all advancing their technical foundations. Today, leaders across the country are injecting agentic AI into every layer of their business and operational workflows. We are seeing …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-08T16:28:04.480Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "simon_willison",
+      "source": "Simon Willison",
+      "title": "Claude Haiku 5.5",
+      "link": "https://simonwillison.net/2026/Oct/7/claude-haiku-5-5",
+      "publishedAt": "2026-10-07T20:56:21.000Z",
+      "author": "",
+      "summary": "As previously promised , here's Anthropic's new fast, low cost model: Introducing Claude Haiku 5.5 . The previous Haiku, 4.5, was very much showing its age. It came out almost a year ago , and was priced at $1/million input and $5/million output - relatively expensive even back then, and a full 10x the price of OpenAI's GPT-6 Luna , released last month. The new Haiku exactly matches the price of GPT-6 Luna - $0.10/$0.50 - up to 100,000 tokens. Beyond 100,000 tokens the price increases 5x to $0.50/$2.50. Luna itself has a price increase at 272,000 tokens but only to $0.20/$0.75. Haiku 5.5 also uses a new, less generous tokenizer. My Claude Token Counter tool shows that the same long prompt uses around 1.25x as many tokens with Haiku 5.5 compared to Haiku 4.5, so there's a hidden price increase there. If your workloads fit in 100,000 tokens, Haiku is the same price as Luna and reports higher benchmark scores. Above 100,000 tokens, Luna looks like a much better deal. The most recent release of llm-anthropic finally fixed it so I don't need to ship a new version of that plugin for every new model. I tested the new model like this: llm install -U llm-anthropic llm anthropic refresh llm -m claude-haiku-5.5 \"Generate an SVG of a pelican riding a bicycle\" -o thinking_effort low Pelicans Here are pelicans for low, medium, high, xhigh, and max . The new Haiku doesn't let you disable reasoning, and defaults to medium . I got a good bicycle frame for everything beyond low . The low effort pelican cost 0.0936 cents and took 7 seconds. This max effort pelican (with a reasoning trace that starts \"This is the classic pelican-on-bicycle SVG test...\") took 5 minutes 9 seconds to generate, but still only cost me 3.3826 cents : (Since the reasoning trace exhibits awareness of the benchmark, here's Generate an SVG of an armadillo in fishnet tights jaywalking on Mars (on xhigh) , and the same prompt against some other recent models . Background on that .) For comparison, here's the pelican I got a year ago from Haiku 4.5 (for 0.7583 cents - Haiku 4.5 did not support reasoning levels). It sucked at drawing pelicans: And a generous API credit scheme for subscribers In addition to Haiku 5.5, Anthropic announced today that they are halving the price of cache reads for Sonnet 5.5. They've also added API credits to subscription plans: Second, this week, we’ll roll out a new monthly API credit to all Max and Team subscribers for use on the Claude Platform . Max 5x users will get $100 in credits per month, Max 20x users will get $200, and Team subscribers will receive up to $500, pooled across their users. Claiming this is pleasantly easy: navigate to Settings -> Billing and select the API organization that should benefit from the credits every month: The API credits exactly match the cost of the subscription itself. This is really generous - it makes it much easier for subscribers to use the API. Anthropic also let you disable auto-reload for the API, with the consequence that \"API requests will stop when your balance runs out\" - exactly what you want if you're planning to burn through those API credits without risk of a nasty billing surprise . Note that the monthly credits do not roll over - use them or lose them. OpenAI still allow you to use your Codex subscription for personal API use, which works out as a better deal for heavy API users. This new credit scheme goes at least some way to overcoming that difference. You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
+      "evidenceLink": "",
+      "score": 68.60508968253968,
+      "core": "As previously promised , here's Anthropic's new fast, low cost model: Introducing Claude Haiku 5.5 . The previous Haiku, 4.5, was very much showing its age. It came out almost a year ago , and was priced at $1/million input and $5/million output - relatively expensive even back then, and a full 10x the price of OpenAI's GPT-6 Luna , released last month. The new Haiku exactly matches the price of GPT-6 Luna - $0.10/$…",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-08T16:28:04.480Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "zapier_ai_automation",
+      "source": "Zapier Blog",
+      "title": "Claude models: Fable vs. Opus vs. Sonnet vs. Haiku",
+      "link": "https://zapier.com/blog/claude-models",
+      "publishedAt": "2026-10-08T04:00:00.000Z",
+      "author": "Harry Guinness",
+      "summary": "Anthropic's Claude family has four primary models: Haiku, Sonnet, Opus, and Fable. (There's also Mythos, but the general public doesn't have access to that.) All four Claude models are incredibly capable. Even the smallest model, Haiku, is better than the best frontier models from two years ago. This makes teasing out the differences between them a challenge.&#xA0; Benchmarks are one tool to help. Zapier's AutomationBench, for example, tests AI agents on end-to-end workflow execution using real tools",
+      "evidenceLink": "",
+      "score": 58.91499047619048,
+      "core": "Anthropic's Claude family has four primary models: Haiku, Sonnet, Opus, and Fable. (There's also Mythos, but the general public doesn't have access to that.) All four Claude models are incredibly capable. Even the smallest model, Haiku, is better than the best frontier models from two years ago. This makes teasing out the differences between them a challenge.&#xA0; Benchmarks are one tool to help. Zapier's Automatio…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-08T16:28:04.480Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Building an evidence-grounded agentic security operations harness on Cloudflare",
+      "link": "https://blog.cloudflare.com/agentic-security-operations",
+      "publishedAt": "2026-10-07T16:30:36.000Z",
+      "author": "Deanna Tran",
+      "summary": "Cloudflare Managed Defense uses a team of specialized AI agents built on Workers and global network telemetry to analyze security alerts. By separating deterministic evidence collection from model inference, the system delivers grounded recommendations to Managed Defense Analysts.",
+      "evidenceLink": "",
+      "score": 58.84983174603175,
+      "core": "Cloudflare Managed Defense uses a team of specialized AI agents built on Workers and global network telemetry to analyze security alerts. By separating deterministic evidence collection from model inference, the system delivers grounded recommendations to Managed Defense Analysts.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-08T16:28:04.480Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "Decision model benchmark: Jev, Kev, Liquid d1, and more",
+      "link": "https://arize.com/blog/decision-model-benchmark",
+      "publishedAt": "2026-10-07T16:37:26.000Z",
+      "author": "Jim Bennett",
+      "summary": "On 15 September, TypeSafe released Jev, and within a few weeks about 10 companies had shipped something that works the same way. OpenAI, Liquid, Cloudflare, AWS and PostHog all launched one, and an open clone called Kev showed up on Hugging Face in between. If you build agents or run evals, you now have a... The post Decision model benchmark: Jev, Kev, Liquid d1, and more appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 56.53574444444444,
+      "core": "On 15 September, TypeSafe released Jev, and within a few weeks about 10 companies had shipped something that works the same way. OpenAI, Liquid, Cloudflare, AWS and PostHog all launched one, and an open clone called Kev showed up on Hugging Face in between. If you build agents or run evals, you now have a... The post Decision model benchmark: Jev, Kev, Liquid d1, and more appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-08T16:28:04.480Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "red_hat_ai_engineering",
+      "source": "Red Hat Developer · AI",
+      "title": "Migration toolkit for applications 8.3: Agentic code modernization, PVC mobility, and out-of-the-box generators",
+      "link": "https://developers.redhat.com/articles/2026/10/08/migration-toolkit-applications-8-3-agentic-code-modernization",
+      "publishedAt": "2026-10-08T13:01:43.000Z",
+      "author": "Syed M Shaaf, Ramon Roman Nissen",
+      "summary": "Red Hat's migration toolkit for applications 8.3 is now generally available, bringing agentic code modernization, direct storage mobility, and automated pipeline generation to OpenShift. Upgrading workloads to cloud-native architectures often means struggling with legacy code and complex stateful data transfers. Migration toolkit for applications 8.3 simplifies this process with automated multi-agent code transformation, live storage migrations, and pre-built deployment pipelines. The post Migration toolkit for applications 8.3: Agentic code modernization, PVC mobility, and out-of-the-box generators appeared first on Red Hat Developer .",
+      "evidenceLink": "",
+      "score": 53.33211349206349,
+      "core": "Red Hat's migration toolkit for applications 8.3 is now generally available, bringing agentic code modernization, direct storage mobility, and automated pipeline generation to OpenShift. Upgrading workloads to cloud-native architectures often means struggling with legacy code and complex stateful data transfers. Migration toolkit for applications 8.3 simplifies this process with automated multi-agent code transforma…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-08T16:28:04.480Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "I gave Opus 5.5 one prompt and six hours to visualize Invisible Cities",
+      "link": "https://quesma.com/blog/invisible-cities-one-shot",
+      "publishedAt": "2026-10-08T12:00:20.000Z",
+      "author": "stared https://news.ycombinator.com/user?id=stared",
+      "summary": "Claude Opus 5.5 vs GPT-6 Astra one-shot Invisible Cities by Italo Calvino in Three.js: AI design, UX, data visualization and explorable explanations.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50004790",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 216,
+        "comments": 120
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-08T16:28:04.480Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 52.35690750511364,
+      "core": "Claude Opus 5.5 vs GPT-6 Astra one-shot Invisible Cities by Italo Calvino in Three.js: AI design, UX, data visualization and explorable explanations.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "Claude Haiku 5.5 in GitHub Copilot",
+      "link": "https://github.blog/changelog/2026-10-07-claude-haiku-5-5-in-github-copilot",
+      "publishedAt": "2026-10-07T20:12:18.000Z",
+      "author": "Allison",
+      "summary": "Claude Haiku 5.5, Anthropic’s newest lightweight model, is now generally available in GitHub Copilot. It is designed for fast, high-volume work like subagents, quick edits, and terminal tasks. In early… The post Claude Haiku 5.5 in GitHub Copilot appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 50.11931587301588,
+      "core": "Claude Haiku 5.5, Anthropic’s newest lightweight model, is now generally available in GitHub Copilot. It is designed for fast, high-volume work like subagents, quick edits, and terminal tasks. In early… The post Claude Haiku 5.5 in GitHub Copilot appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-08T16:28:04.480Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "elastic_search_labs",
+      "source": "Elastic Search Labs",
+      "title": "How we’re building a context engine to cut agent token use by 71%",
+      "link": "https://www.elastic.co/search-labs/blog/context-engineering-for-agents",
+      "publishedAt": "2026-10-08T00:00:00.000Z",
+      "author": "Anish Mathur",
+      "summary": "With a context engine, the same agent and model answered in 64 seconds using 9 tool calls. The baseline took 213 seconds, 33 calls, and missed a key relationship entirely.",
+      "evidenceLink": "",
+      "score": 49.773720634920636,
+      "core": "With a context engine, the same agent and model answered in 64 seconds using 9 tool calls. The baseline took 213 seconds, 33 calls, and missed a key relationship entirely.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-08T16:28:04.480Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Automate remediation post AWS DevOps Agent investigation",
+      "link": "https://aws.amazon.com/blogs/machine-learning/automate-remediation-post-aws-devops-agent-investigation",
+      "publishedAt": "2026-10-07T15:46:49.000Z",
+      "author": "Michele Scarimbolo",
+      "summary": "AWS DevOps Agent can diagnose production incidents but is kept in observe-and-report mode so it does not change resources directly. This post shows how to use AWS Lambda Durable Functions, Amazon EventBridge, and Amazon Bedrock to turn its investigation summaries into pre-validated fixes an on-call engineer can approve with a single action.",
+      "evidenceLink": "",
+      "score": 49.13659761904761,
+      "core": "AWS DevOps Agent can diagnose production incidents but is kept in observe-and-report mode so it does not change resources directly. This post shows how to use AWS Lambda Durable Functions, Amazon EventBridge, and Amazon Bedrock to turn its investigation summaries into pre-validated fixes an on-call engineer can approve with a single action.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-08T16:28:04.480Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "Best Zapier Alternatives for AI Agent Automation in 2026",
+      "link": "https://rerun.build/blog/best-zapier-alternatives",
+      "publishedAt": "2026-10-08T04:14:51.000Z",
+      "author": "",
+      "summary": "Compare the best Zapier alternatives for workflows, AI agents, self-hosting, and recurring automation, with an honest guide to when you should keep Zapier.",
+      "evidenceLink": "",
+      "score": 47.98822460317461,
+      "core": "Compare the best Zapier alternatives for workflows, AI agents, self-hosting, and recurring automation, with an honest guide to when you should keep Zapier.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-08T16:28:04.480Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How Qlik built grounded, enterprise-scale AI with Amazon Bedrock",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-qlik-built-grounded-enterprise-scale-ai-with-amazon-bedrock",
+      "publishedAt": "2026-10-07T15:48:46.000Z",
+      "author": "Sunil Yerkola",
+      "summary": "Qlik built Qlik Answers on Amazon Bedrock to give its 40,000+ customers grounded, sourced answers across structured and unstructured enterprise data. Learn how a layered, multi-agent architecture with cross-Region inference and Amazon Bedrock Guardrails delivers trusted AI at global scale.",
+      "evidenceLink": "",
+      "score": 47.85003015873016,
+      "core": "Qlik built Qlik Answers on Amazon Bedrock to give its 40,000+ customers grounded, sourced answers across structured and unstructured enterprise data. Learn how a layered, multi-agent architecture with cross-Region inference and Amazon Bedrock Guardrails delivers trusted AI at global scale.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-08T16:28:04.480Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "qdrant_retrieval_engineering",
+      "source": "Qdrant Retrieval Engineering",
+      "title": "miniCOIL EN-ES: Sparse Neural Retrieval Across the Language Barrier",
+      "link": "https://qdrant.tech/articles/minicoil-en-es",
+      "publishedAt": "2026-10-08T07:00:00.000Z",
+      "author": "info@qdrant.tech (Andrey Vasnetsov)",
+      "summary": "Sparse neural retrieval finally started getting more and more attention ( SPARSEUP , MILCO , sparse encoders in Sentence Transformers &hellip;). Well, amazing, we like attention! Our miniCOIL v1 sparse neural retriever article ended with a promise: to keep working on this sparse neural retriever in-depth, improving the model&rsquo;s quality, and in-width, &ldquo;extending it to other dense encoders and to languages beyond English.&rdquo; Here is the next &ldquo;in-width&rdquo; step of the miniCOIL saga: to try and cross the language barrier, that is, make the model suitable for multilingual retrieval. It&rsquo;s a fun challenge, as sparse retrievers are hard to adapt to this scenario: exact matching in cross-lingual text search usually means translation.",
+      "evidenceLink": "",
+      "score": 47.56816507936508,
+      "core": "Sparse neural retrieval finally started getting more and more attention ( SPARSEUP , MILCO , sparse encoders in Sentence Transformers &hellip;). Well, amazing, we like attention! Our miniCOIL v1 sparse neural retriever article ended with a promise: to keep working on this sparse neural retriever in-depth, improving the model&rsquo;s quality, and in-width, &ldquo;extending it to other dense encoders and to languages …",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-08T16:28:04.480Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "fiddler_ai_evaluation",
+      "source": "Fiddler AI Blog",
+      "title": "Scaling Agents Starts With Seeing the Whole Fleet",
+      "link": "https://www.fiddler.ai/blog/monitor-ai-agent-fleet-behavior",
+      "publishedAt": "2026-10-07T16:00:00.000Z",
+      "author": "",
+      "summary": "Twelve hundred agents coordinated covertly and none alerted a human. See the four ordinary gaps that let it run, and why single traces can't detect a swarm.",
+      "evidenceLink": "",
+      "score": 47.11895873015873,
+      "core": "Twelve hundred agents coordinated covertly and none alerted a human. See the four ordinary gaps that let it run, and why single traces can't detect a swarm.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-08T16:28:04.480Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Hard drives were supposed to lose the storage war — but AI demand is now pushing their biggest suppliers years ahead",
+      "link": "https://www.techradar.com/pro/hard-drives-were-supposed-to-lose-the-storage-war-but-ai-demand-is-now-pushing-their-biggest-suppliers-years-ahead",
+      "publishedAt": "2026-10-08T00:05:00.000Z",
+      "author": "Efosa Udinmwen",
+      "summary": "Toshiba is expanding HDD production as AI drives demand for higher-capacity storage across data centers and cloud infrastructure.",
+      "evidenceLink": "",
+      "score": 31.54633968253968,
+      "core": "Toshiba is expanding HDD production as AI drives demand for higher-capacity storage across data centers and cloud infrastructure.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-08T16:28:04.480Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pragmatic_engineer",
+      "source": "The Pragmatic Engineer",
+      "title": "Building resilient systems with Sam Newman",
+      "link": "https://newsletter.pragmaticengineer.com/p/building-resilient-systems-with-sam",
+      "publishedAt": "2026-10-07T17:19:58.000Z",
+      "author": "Gergely Orosz",
+      "summary": "Sam Newman joins me to discuss when to use microservices, how to build resilient distributed systems, and how AI is changing software development.",
+      "evidenceLink": "",
+      "score": 31.158601587301586,
+      "core": "Sam Newman joins me to discuss when to use microservices, how to build resilient distributed systems, and how AI is changing software development.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-08T16:28:04.480Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_research",
+      "source": "Microsoft Research",
+      "title": "What AI gets wrong and what failure teaches us",
+      "link": "https://www.microsoft.com/en-us/research/podcast/what-ai-gets-wrong-and-what-failure-teaches-us",
+      "publishedAt": "2026-10-06T16:19:06.000Z",
+      "author": "Chad Atalla, Jennifer Neville",
+      "summary": "Jennifer Neville did not want to go into computer science—but that’s exactly where she landed. Neville discusses the starts and stops that led to her professional sweet spot and her work identifying “surprising failures” making it hard for AI to handle complexity. The post What AI gets wrong and what failure teaches us appeared first on Microsoft Research .",
+      "evidenceLink": "",
+      "score": 29.55518888888889,
+      "core": "Jennifer Neville did not want to go into computer science—but that’s exactly where she landed. Neville discusses the starts and stops that led to her professional sweet spot and her work identifying “surprising failures” making it hard for AI to handle complexity. The post What AI gets wrong and what failure teaches us appeared first on Microsoft Research .",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-08T16:28:04.480Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
