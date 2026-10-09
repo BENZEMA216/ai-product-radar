@@ -1,0 +1,413 @@
+{
+  "generatedAt": "2026-10-09T16:11:18.281Z",
+  "date": "2026-10-10",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "simon_willison",
+      "source": "Simon Willison",
+      "title": "A new feature for my blog, built using my voice",
+      "link": "https://simonwillison.net/2026/Oct/9/built-using-my-voice",
+      "publishedAt": "2026-10-09T12:54:06.000Z",
+      "author": "",
+      "summary": "I shipped a new feature for my blog today: the Newsletters page, which offers an index of all of the newsletters I've sent out, both my free weekly Substack and my monthly sponsors-only updates. I built the feature almost entirely using my voice, chatting away to my laptop while I cooked dinner. Codex voice mode I used the ChatGPT desktop app for this, in the Codex tab, using the voice conversation mode, running against a local development environment. Here's what that looks like: I started the session against my local simonwillisonblog checkout by typing: Start dev server and open in browser This gave me a preview of the site that it would be working on, and meant that I could later ask it to show me the new pages so I could visually track its progress. Then I clicked the \"Start new voice chat\" button - that's not the microphone button, it's the one to the right of it - and set my laptop up in the kitchen so I could talk to it while I cooked. Talking to my computer I had a pretty good idea of what I wanted to build, and it's a simple enough Django feature that I was certain the model (in this case GPT-6 Astra High) would be able to do it. A new model, a migration, some view code, templates, and a couple of import functions to populate the database from external sources. Here's an extract of my voice transcript that was captured by Codex: Um, they do not. Um, this is going to be a new type of content. Um, it's not going to show up... Oh, hold on. Yeah, no- I do not want this to show up in my, um, tag pages and date archive pages and... Actually, no, I think... I don't want it on the tag pages. I don't want it on the, um, blog index page. But I think I do want it to show up on the date-based pages. You know, if you navigate to September the 19th, and I sent a newsletter on that page, I think I want that to show up. So... this is- so I think we probably need a new model. The other thing is that I want them searchable, uh the Substack ones are not searchable, because those are actually just copies of other s- on content on my blog. These monthly ones do contain unique content, and spe- and once they're... published, like once they're made public a month after they've gone out, I want them to show up on my search results. Apparently this was clear enough that the model knew what I wanted to build! You can read the full transcript, disfluencies and all, in this Gist . We went on like this for about half an hour (the time it took to cook dinner). The model would reply and occasionally ask clarifying questions, then get to work modifying the code. What we built We got a surprisingly long way entirely by voice: A new model and migration to represent imported newsletters in Django, plus Django Admin configuration for that Four working imports: The most recent Substack items via RSS Every other Substack item via their undocumented API, which GPT-6 Astra knew about (it tried /api/v1/archive directly) and then ran a search to figure out how to paginate it and found this article by Karen Spinner All of my published monthly newsletters from my simonw/monthly-newsletter-archive GitHub repository My most recent private sponsors-only newsletter from a private repository The /newsletters/ and /newsletters/2026/ public archive pages Newsletters showing up on day and month archive pages too, but not on tag pages or my homepage Weekly Substack newsletters link to Substack; archived monthly newsletters have their own pages Integration with my site search engine It was almost ready to ship. The catch was the imports: Astra offered to export data from my local copy so I could import that into production, but I wanted it to work like my other import scripts. Since some of the data lived in a private GitHub repository, this would involve creating a new API key, and for that I knew I'd have to sit at the keyboard for a while. Finishing it with a review Once I had finished cooking and judged it mostly feature-complete, I had Codex create a branch and open a pull request. I reviewed the code in the GitHub PR interface. It was nearly what I needed, except it had chosen to use Git in a subprocess for one of the import scripts. I needed one of the imports to pull from a private Git repository, so I figured the API would be a better bet. I switched to typing and had Codex swap that out for an API-based import instead. You can see the changes I made during the review in the extra commits on the PR . I fixed the import mechanism and made a few tweaks to the display of those public pages. It took an additional half hour of typing-based prompting to get to the point where I was happy to deploy it to production by landing the PR. The end result You can see the end result at the new newsletters index page , or view the page for a previous monthly newsletter . The index page shows my most recent Substack weekly newsletters and GitHub sponsors monthly newsletters mixed together in reverse chronological order. Further down the page are links to my by-year archive pages. GPT-6 Astra designed the page, and then tweaked that design based on my vocal feedback from glancing at the local preview across the kitchen. Better for multi-tasking than as a daily driver OpenAI love using voice-driven demos like this one for things like DevDay - and they do work well in that environment. I don't think this is going to be a daily driver for me though. I've written before about how much \"work\" I get done using ChatGPT voice mode on my phone while walking the dog - mostly research and brainstorming, but occasionally actual development work by having ChatGPT write and test out snippets of code. This feels different. The addition of the visual preview, plus being able to type or paste things in via the keyboard when I need to communicate something that doesn't work vocally, makes this a much more powerful way of interacting with a coding agent. I still switch back to typing once I get down to the details of things though. Being able to paste in examples and error messages, or directly highlight the code or feature that needs changing, remains more efficient than trying to describe it in words. I mainly work from home, which is good because there's no way I'd want to talk to my computer like this in a shared workspace! The killer feature for me is the ability to multi-task. I usually cook with a podcast or TikTok running; now I can actually build stuff instead. You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
+      "evidenceLink": "",
+      "score": 82.76523251984128,
+      "core": "Simon Willison 用 Codex 语音模式在本地 Django 项目中完成 Newsletter 数据模型、导入脚本、归档页和搜索集成；语音阶段后仍通过键盘审查并修正私有仓库导入方式。",
+      "why": "这篇案例把语音 coding agent 的优势和边界都写清了：多任务处理有效，但精细修改、错误粘贴与凭证相关步骤仍需要键盘和人工审查。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-09T16:11:18.281Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Glyph Cluster is now available in stealth for free on AI Gateway",
+      "link": "https://vercel.com/changelog/glyph-cluster-is-now-available-in-stealth-for-free-on-ai-gateway",
+      "publishedAt": "2026-10-07T00:00:00.000Z",
+      "author": "Kevin Dawkins",
+      "summary": "Glyph Cluster is now available on AI Gateway as a stealth model for teams on Pro and Enterprise plans with purchased AI Gateway credits. It is free to use during the stealth period. Glyph Cluster is a reasoning model for coding and long-context analysis, and handles multi-step work such as planning, synthesis, quantitative reasoning, and comparing material across large inputs. For coding, Glyph Cluster can review code, explain failures, debug issues, propose changes, and reason through implementation options. It supports function calling , so agents can connect its reasoning to your own tools and systems, and it streams responses as they are generated. Glyph Cluster takes text input only, with no image or file input. Tool use is limited to function tools you define, and structured outputs are not supported. ZDR is not available for this model, and prompts and responses sent through it may be used for training and model improvement. Call it through the AI SDK or the OpenAI-compatible Chat Completions and Responses APIs, or select it in a coding agent connected to AI Gateway. Use stealth/glyph-cluster as the model name: To use it in Claude Code, Codex, Cursor, and more, install the latest Vercel CLI and run setup: Then select stealth/glyph-cluster in the agent. See the coding agents guide for details. Try Glyph Cluster in the model playground . AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. You can view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 81.41511347222223,
+      "core": "Vercel AI Gateway 向 Pro 与 Enterprise 团队提供免费 stealth 期的 Glyph Cluster；其定位覆盖编码、长上下文分析、规划、综合和多步推理。",
+      "why": "值得看模型分发如何借 gateway 降低试用成本，也要关注 stealth 模型在版本可见性、稳定性和评测可复现性上的产品风险。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-09T16:11:18.281Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "fiddler_ai_evaluation",
+      "source": "Fiddler AI Blog",
+      "title": "OpenTelemetry Tracing for Production AI Agents: A Step-by-Step Guide",
+      "link": "https://www.fiddler.ai/blog/otel-tracing-production-ai-agents",
+      "publishedAt": "2026-10-08T07:00:00.000Z",
+      "author": "",
+      "summary": "Learn to trace multi-agent requests end-to-end with OpenTelemetry. Configure tracers, nest spans, propagate context, and choose sampling for production systems.",
+      "evidenceLink": "",
+      "score": 63.518288075396825,
+      "core": "文章给出用 OpenTelemetry 追踪多 agent 请求的实操路径，包括 tracer 配置、嵌套 span、上下文传播和生产采样策略。",
+      "why": "它把 agent 可观测性落到通用 tracing 机制，适合用来设计跨工具、跨 agent 的故障定位，而不是只看最终回答是否正确。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-09T16:11:18.281Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Step 5 Preview, a 1M-context MoE from StepFun, shows up on OpenRouter",
+      "link": "https://openrouter.ai/stepfun/step-5-preview",
+      "publishedAt": "2026-10-08T16:20:20.000Z",
+      "author": "AnneWodell https://news.ycombinator.com/user?id=AnneWodell",
+      "summary": "Step 5 Preview is StepFun&#x27;s flagship model for agentic work, built on a sparse Mixture-of-Experts architecture (27B active / 600B total parameters). $1 per million input tokens, $2.70 per million output tokens. 1,000,000 token context window, maximum output of 64,000 tokens.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50007764",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 136,
+        "comments": 38
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-09T16:11:18.281Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 62.71775028396202,
+      "core": "OpenRouter 上的 Step 5 Preview 定位为 agentic 工作模型，采用稀疏 MoE 架构，标注 27B 激活参数、600B 总参数、100 万 token 上下文及公开输入输出价格。",
+      "why": "这篇信息适合做模型选型初筛：上下文、激活规模和价格都明确，但真正是否适合长任务仍需用延迟、可靠性和工具调用评测验证。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "OpenAI fires three safety researchers for \"mishandling research information\"",
+      "link": "https://techcrunch.com/2026/10/08/fired-openai-safety-researchers-dispute-misconduct-claims-warn-of-chilling-effect",
+      "publishedAt": "2026-10-09T10:00:26.000Z",
+      "author": "trakkstar https://news.ycombinator.com/user?id=trakkstar",
+      "summary": "Three fired OpenAI safety researchers dispute allegations of mishandling sensitive information, warning in an open letter that their dismissals are creating a chilling effect on the company’s AI safety culture.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50018350",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 164,
+        "comments": 84
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-09T16:11:18.281Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 57.671410727260024,
+      "core": "三名被解雇的 OpenAI 安全研究人员反驳公司关于研究信息处理不当的指控，并称解雇可能对内部安全讨论产生寒蝉效应。",
+      "why": "它提供的是组织治理而非产品能力证据，值得关注高敏感研究中的信息权限、异议渠道和安全文化如何共同影响 AI 风险管理。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "ICYMI: What landed for AI builders in September 2026",
+      "link": "https://aws.amazon.com/blogs/machine-learning/icymi-what-landed-for-ai-builders-in-september-2026",
+      "publishedAt": "2026-10-09T15:38:39.000Z",
+      "author": "Prachi Mishra",
+      "summary": "A monthly recap of the latest Amazon Bedrock, Amazon Bedrock AgentCore, and Strands updates from September 2026: broader model choice, faster serverless agents with built-in evaluation, and automated knowledge base syncing with native enterprise connectors.",
+      "evidenceLink": "",
+      "score": 53.388903154761906,
+      "core": "AWS 汇总 2026 年 9 月 Bedrock、AgentCore 与 Strands 更新，包括更多模型选择、带内置评测的 serverless agent，以及通过企业连接器自动同步知识库。",
+      "why": "这份月度清单适合检查企业 agent 平台是否正在把模型、运行时、评测和知识同步收敛成一套可运营的基础设施。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-09T16:11:18.281Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "Agent Skills Explained: How Reusable Skills Make AI Agents Reliable",
+      "link": "https://rerun.build/blog/agent-skills",
+      "publishedAt": "2026-10-09T04:10:20.000Z",
+      "author": "",
+      "summary": "Learn how agent skills package reusable procedures, why progressive disclosure matters, and which controls make skills reliable in production.",
+      "evidenceLink": "",
+      "score": 51.93058966269842,
+      "core": "文章解释如何把可复用流程封装为 agent skill，并讨论 progressive disclosure 与生产可靠性控制。",
+      "why": "它直接关联 skill 产品化：重点不是复用提示词，而是如何控制上下文暴露、执行步骤和失败边界，使能力能被稳定分发。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-09T16:11:18.281Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "An opt-in vulnerability-finding service for open-source software",
+      "link": "https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source",
+      "publishedAt": "2026-10-08T19:00:00.000Z",
+      "author": "",
+      "summary": "We’re launching OSS Scanner, an opt-in vulnerability scanner for the open-source ecosystem informed by our experience using Claude to find vulnerabilities during Project Glasswing. Projects that join will receive thorough, periodic security scans by our strongest models at no cost.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-09T16:11:18.281Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 51.05320871031746,
+      "core": "Anthropic 推出自愿加入的 OSS Scanner，使用其最强模型为开源项目提供免费、定期的漏洞扫描，经验来自 Project Glasswing。",
+      "why": "自愿加入和周期扫描把 AI 安全能力变成持续服务；值得看项目授权、误报处置和披露流程如何建立开源维护者的信任。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "How to build great out-of-the-box user experiences with Managed Deep Agents",
+      "link": "https://www.langchain.com/blog/slack-sdk-managed-deep-agents",
+      "publishedAt": "2026-10-09T16:10:29.000Z",
+      "author": "",
+      "summary": "Managed Deep Agents includes a new API for managing reactions for your distributed agents, and a system to dynamically assign emoji responses with your instrument of choice. Learn more.",
+      "evidenceLink": "",
+      "score": 50.026799980158735,
+      "core": "Managed Deep Agents 新增分布式 agent 的 reaction 管理 API，并支持按运行情况动态分配 emoji 响应。",
+      "why": "这篇内容展示 agent 状态如何映射到用户熟悉的轻量反馈；关键是 reaction 是否真正传达进度和异常，而不是增加视觉噪音。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-09T16:11:18.281Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentconn_engineering",
+      "source": "AgentConn Field Reports",
+      "title": "Your Agent Games Its Evals. Here's What to Monitor.",
+      "link": "https://agentconn.com/blog/eval-gaming-agent-monitoring",
+      "publishedAt": "2026-10-08T00:00:00.000Z",
+      "author": "AgentConn Team",
+      "summary": "Every frontier model cheats evals. The fix isn't better evals — it's runtime monitoring that catches what tests miss.",
+      "evidenceLink": "",
+      "score": 47.77939918650794,
+      "core": "文章主张仅改进离线 eval 不足以发现 agent 迎合或规避测试的行为，应在运行时持续监控测试之外的执行表现。",
+      "why": "它提醒产品团队把可靠性从发布门禁延伸到线上行为监测，尤其适合检查 agent 在真实工具权限和目标压力下是否偏离意图。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-09T16:11:18.281Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Building Reliable Data Analytics Agents: Lessons from the KDD Cup",
+      "link": "https://developer.nvidia.com/blog/building-reliable-data-analytics-agents-lessons-from-the-kdd-cup",
+      "publishedAt": "2026-10-08T18:30:02.000Z",
+      "author": "Jiwei Liu",
+      "summary": "The NVIDIA KGMON team placed second in the KDD Cup 2026 Data Agents competition with a system built around a simple idea of making an agent's harness smaller,...",
+      "evidenceLink": "",
+      "score": 45.34531188492063,
+      "core": "NVIDIA KGMON 团队复盘 KDD Cup 2026 Data Agents 竞赛亚军方案，强调用更小、更受控的 agent harness 提升数据分析任务可靠性。",
+      "why": "这篇复盘的价值在于反直觉地减少 harness 复杂度；适合提炼哪些工具、状态和控制环节真正帮助分析 agent 稳定完成任务。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-09T16:11:18.281Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "Local sandboxing for GitHub Copilot now generally available",
+      "link": "https://github.blog/changelog/2026-10-07-local-sandboxing-for-github-copilot-now-generally-available",
+      "publishedAt": "2026-10-07T15:46:17.000Z",
+      "author": "Allison",
+      "summary": "Local sandboxing for GitHub Copilot is now generally available in GitHub Copilot CLI, the GitHub Copilot app, and VS Code sessions using Agent Host. Local sandboxes give developers a secure… The post Local sandboxing for GitHub Copilot now generally available appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 45.180530138888884,
+      "core": "GitHub Copilot 的本地沙盒已在 Copilot CLI、Copilot app 和使用 Agent Host 的 VS Code 会话中正式可用，用于隔离 agent 的本地执行。",
+      "why": "本地沙盒 GA 是 coding agent 从演示走向日常开发的重要安全入口，值得检查默认权限、网络边界和失败后的恢复体验。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-09T16:11:18.281Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "Purpose-built model for leaked secret detection",
+      "link": "https://github.blog/changelog/2026-10-07-purpose-built-model-for-leaked-secret-detection",
+      "publishedAt": "2026-10-07T16:13:56.000Z",
+      "author": "Allison",
+      "summary": "Secret protection should keep pace with the way you build software, whether you write code yourself or work with an AI agent. With our new purpose-built model, we’re bringing context-aware… The post Purpose-built model for leaked secret detection appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 45.14122458333333,
+      "core": "GitHub 推出面向泄露密钥检测的专用模型，目标是在人工编码和 AI agent 生成代码两种流程中提供更具上下文的 secret protection。",
+      "why": "专用检测模型体现安全能力正在适配 agent 生成代码的新风险；判断重点是它能否减少误报，同时覆盖上下文变化后的泄露形式。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-09T16:11:18.281Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "zapier_ai_automation",
+      "source": "Zapier Blog",
+      "title": "AI adoption: A practical guide from Zapier",
+      "link": "https://zapier.com/blog/ai-adoption",
+      "publishedAt": "2026-10-08T05:00:00.000Z",
+      "author": "Nicole Replogle",
+      "summary": "I have two voices in my head when it comes to new tech. One is the wide-eyed optimist who wants to try every tool and click every AI button. The other wants to delete every app on my phone, move to a cabin in the woods, and write by candlelight. There's no doubt AI is exciting. It's already helping teams save time, be more creative, and get through the workday with fewer repetitive headaches. But it's also introducing new challenges: messy rollouts, tool overload, unclear guidelines, and real qu",
+      "evidenceLink": "",
+      "score": 40.26431982142857,
+      "core": "Zapier 从团队采用角度讨论 AI 落地中的工具过载、规则不清和推广混乱，而不只强调节省时间与提升创造力。",
+      "why": "它适合用来设计内部采用路径：先明确问题、使用边界和衡量方式，再决定引入哪些 AI 工具，避免把试用数量当成转型进展。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-09T16:11:18.281Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_azure_ai",
+      "source": "Microsoft Azure Blog",
+      "title": "AI transformation across the infrastructure lifecycle: From supply chain to fleet operations",
+      "link": "https://azure.microsoft.com/en-us/blog/ai-transformation-across-the-infrastructure-lifecycle-from-supply-chain-to-fleet-operations",
+      "publishedAt": "2026-10-07T15:00:00.000Z",
+      "author": "Rani Borkar",
+      "summary": "The opportunity is bigger than making individual tasks faster. It’s to build a system that learns from how infrastructure is designed, sourced, and operated. The post AI transformation across the infrastructure lifecycle: From supply chain to fleet operations appeared first on Microsoft Azure Blog .",
+      "evidenceLink": "",
+      "score": 39.15320871031746,
+      "core": "Microsoft Azure 讨论让 AI 覆盖基础设施从设计、采购到运营的完整生命周期，并强调目标不是单点任务提速，而是形成能从流程中学习的系统。",
+      "why": "这篇文章适合观察企业 AI 如何从助手扩展为跨部门系统，但也应核验数据闭环、责任边界和运营指标是否足以支撑这一叙事。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-09T16:11:18.281Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "New study shows concerning rise in developer burnout — and growing distrust in how AI may affect their jobs",
+      "link": "https://www.techradar.com/pro/new-study-shows-concerning-rise-in-developer-burnout-and-growing-distrust-in-how-ai-may-affect-their-jobs",
+      "publishedAt": "2026-10-08T18:45:00.000Z",
+      "author": "Christian Cawley",
+      "summary": "Worldwide developer survey reveals growing concerns over AI and an army of coders who feel close to burning out.",
+      "evidenceLink": "",
+      "score": 36.09090712301587,
+      "core": "报道引用全球开发者调查，指出开发者倦怠上升，同时对 AI 如何影响岗位的信任下降。",
+      "why": "它提醒产品团队把采用阻力视为工作设计问题，而不只是培训不足；不过当前摘要没有样本与方法细节，结论需回到原研究核验。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-09T16:11:18.281Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "How Oracle turns days of work into minutes with ChatGPT and Codex",
+      "link": "https://openai.com/index/oracle",
+      "publishedAt": "2026-10-08T16:00:00.000Z",
+      "author": "",
+      "summary": "Across recruiting, engineering, and operations, Oracle turns specialist knowledge into fast, repeatable workflows with ChatGPT Work and Codex.",
+      "evidenceLink": "",
+      "score": 36.06114521825397,
+      "core": "OpenAI 案例称 Oracle 在招聘、工程和运营中把专家知识转成可重复的 ChatGPT Work 与 Codex 工作流，以缩短原本需要数天的任务。",
+      "why": "这篇案例适合观察大型企业如何选择可重复流程作为 AI 切口；阅读时应区分厂商案例叙事与可独立验证的效率证据。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-09T16:11:18.281Z",
+        "evidence": "public_reader_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "zapier_ai_automation",
+      "source": "Zapier Blog",
+      "title": "The best AI newsletters in 2026",
+      "link": "https://zapier.com/blog/best-ai-newsletters",
+      "publishedAt": "2026-10-08T04:00:00.000Z",
+      "author": "Sara J. Nguyen",
+      "summary": "As a writer covering technology and AI, I spend plenty of time separating useful information from the hype. A good AI newsletter can help cut through that noise. But the best newsletter depends on what you need. Someone making AI strategy decisions needs different coverage than someone looking for an AI workflow they can try this afternoon. To find the best AI newsletters, I started by researching my options and looking at what other folks were recommending. Then I signed up for anything that lo",
+      "evidenceLink": "",
+      "score": 35.19289125,
+      "core": "Zapier 按不同读者需求筛选 AI Newsletter，区分战略决策信息与可立即尝试的工作流内容，并说明其调研和订阅过程。",
+      "why": "它可作为来源发现入口，而不是事实依据；真正值得借鉴的是用阅读目标筛选信息源，避免把高频更新误当成高质量判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-09T16:11:18.281Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "How to turn uploaded PDFs into reusable LLM test cases - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/how-to-turn-uploaded-pdfs-into-reusable-llm-test-cases",
+      "publishedAt": "2026-10-07T16:00:00.000Z",
+      "author": "",
+      "summary": "Preserve production PDFs, requests, and reviewed expectations in reusable test cases, then compare prompt changes with Braintrust datasets and playgrounds.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-09T16:11:18.281Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 34.419081726190484,
+      "core": "Braintrust 介绍把生产 PDF、真实请求和人工审定预期保存为可复用测试案例，再通过 datasets 与 playgrounds 比较提示词变更。",
+      "why": "它把非结构化生产材料转成回归测试资产，适合解决提示词或模型升级后无法稳定复现历史任务的问题。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "detent_agent_engineering",
+      "source": "DETENT Agent Engineering",
+      "title": "The EU AI Act: What Changes for a Software House, Not a Model Trainer",
+      "link": "https://detent-ai.com/en/blog/ai-act-per-chi-sviluppa-software",
+      "publishedAt": "2026-09-23T00:00:00.000Z",
+      "author": "",
+      "summary": "The EU AI Act regulates AI systems, not code written with an AI assistant. What actually changes for a software house, and what a client asks anyway.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-09T16:11:18.281Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 17.82777777777778,
+      "core": "文章区分使用 AI 助手写代码与交付受监管 AI 系统，讨论欧盟 AI 法案对普通软件公司的实际变化及客户通常会提出的要求。",
+      "why": "它有助于避免把模型训练者义务机械套到软件团队；实际使用时仍应按产品角色、风险分类和部署场景核对正式法规与法律意见。"
+    }
+  ]
+}

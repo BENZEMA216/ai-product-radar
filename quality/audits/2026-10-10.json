@@ -1,0 +1,293 @@
+{
+  "date": "2026-10-10",
+  "generatedAt": "2026-10-09T16:03:50.489Z",
+  "reportPath": "reports/2026-10-10-0003-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 62,
+    "top20Sources": [
+      "HN Algolia",
+      "YC Launch",
+      "Product Hunt"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 14,
+      "keptCount": 12,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-08；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 14 条，AI 相关候选 12 条；历史去重移除 1 条已报道或已处理日榜 Product Hunt 信号，最终发布 11 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 3,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 26,
+      "keptCount": 15,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 8,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:node, Model:node；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 13,
+      "keptCount": 13,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Rinkata, shared project context for teams using coding agents",
+      "productKey": "https://rinkata.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Rinkata 把多人团队与 coding agent 的共享上下文单独做成协作层，值得判断它能否减少重复解释和上下文漂移。"
+    },
+    {
+      "rank": 2,
+      "product": "Sona8",
+      "productKey": "https://www.ycombinator.com/launches/vmv-sona8-ai-voice-agents-surveying-employees-about-their-work",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Sona8 用语音 agent 访谈员工来补齐自动化所需的业务上下文，产品关键在于把口述经验转成可执行流程。"
+    },
+    {
+      "rank": 3,
+      "product": "OpenSwarm",
+      "productKey": "https://www.producthunt.com/products/openswarm-3",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "OpenSwarm 把多个 agent 放进用户现有工作环境，值得观察协同编排是否比单 agent 更容易形成持续使用。"
+    },
+    {
+      "rank": 4,
+      "product": "Claude Haiku 5.5",
+      "productKey": "https://www.producthunt.com/products/claude-haiku-5-5",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Claude Haiku 5.5 以速度和能力升级作为卖点，值得关注低延迟模型是否扩大实时 agent 和高频工作流的可行边界。"
+    },
+    {
+      "rank": 5,
+      "product": "Claude for Google Workspace",
+      "productKey": "https://www.producthunt.com/products/claude-for-google-workspace",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Claude 直接进入 Docs、Sheets 与 Slides，重点是它能否在原有办公入口中完成跨文档任务，而不只是增加侧边栏问答。"
+    },
+    {
+      "rank": 6,
+      "product": "Quivly AI",
+      "productKey": "https://www.ycombinator.com/launches/vn0-quivly-ai-agents-that-run-everything-after-the-sale-from-onboarding-to-renewal",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Quivly 把售后 onboarding 到续约串成 agent 工作流，值得看它如何用结果周期而非聊天能力定义产品价值。"
+    },
+    {
+      "rank": 7,
+      "product": "KloudMate 2.0",
+      "productKey": "https://www.producthunt.com/products/kloudmate",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "KloudMate 2.0 将全栈可观测与 agentic SRE-Ops 结合，判断重点是自动诊断能否可靠推进到可控的运维动作。"
+    },
+    {
+      "rank": 8,
+      "product": "CircleIt – Circle something on a web page, your coding agent fixes it",
+      "productKey": "https://circleit.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "CircleIt 用圈选页面元素触发 coding agent 修复，值得看这种视觉指令能否缩短非技术用户描述前端问题的路径。"
+    },
+    {
+      "rank": 9,
+      "product": "VendIQ – AI agent for vendor follow-ups and ops automation",
+      "productKey": "https://vendiq.rishailabs.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "VendIQ 聚焦供应商催办和运营跟进，场景有明确重复劳动，关键是 agent 能否处理状态变化与异常升级。"
+    },
+    {
+      "rank": 10,
+      "product": "APIblaze – Serverless MCP and API gateway with everything built in",
+      "productKey": "https://www.apiblaze.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "APIblaze 把 MCP 与 API gateway 合并成 serverless 入口，值得看它能否降低 agent 工具接入、权限和运行治理的复杂度。"
+    },
+    {
+      "rank": 11,
+      "product": "eBay sold listings APIs and MCP",
+      "productKey": "https://soldfetch.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "该产品把 eBay 已售数据同时封装为 API 与 MCP，值得观察垂直交易数据是否能直接成为 agent 的定价与研究工具。"
+    },
+    {
+      "rank": 12,
+      "product": "Agents can now create iOS Live Activities",
+      "productKey": "https://twitter.com/kunalabcdani/status/2108353343089152106",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 agent 创建 iOS Live Activities，提供了从后台任务到锁屏实时反馈的新交互出口，价值取决于状态更新是否可靠。"
+    },
+    {
+      "rank": 13,
+      "product": "NOVA CLI v1.0",
+      "productKey": "https://www.producthunt.com/products/nova-18",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "NOVA CLI 把 AI 开发者放进终端入口，值得比较它在代码执行、上下文保持和人工确认边界上的完成度。"
+    },
+    {
+      "rank": 14,
+      "product": "Senro – WebMCP Evals and Observability",
+      "productKey": "https://senro.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Senro 针对 WebMCP 做评测与可观测性，切中 agent 上线后难以复现失败的问题，关键是诊断结果能否指导修复。"
+    },
+    {
+      "rank": 15,
+      "product": "UserAlertX – let your AI agent text you (only you)",
+      "productKey": "https://useralertx.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "UserAlertX 给 agent 增加仅面向本人的短信通知，适合观察长任务如何用低干扰通道请求确认或报告完成。"
+    },
+    {
+      "rank": 16,
+      "product": "Coderblock",
+      "productKey": "https://www.producthunt.com/products/coderblock",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Coderblock 用 AI 团队构建全栈应用，值得看多 agent 分工是否带来可验证的交付提升，而不是角色包装。"
+    },
+    {
+      "rank": 17,
+      "product": "ClawCall",
+      "productKey": "https://www.producthunt.com/products/clawcall",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ClawCall 让 agent 拨号、等待并回报结果，把电话流程变成可委托任务，关键是转人工与结果证据是否清晰。"
+    },
+    {
+      "rank": 18,
+      "product": "I let Claude refactor my old game",
+      "productKey": "https://github.com/victorqribeiro/aimandshoot",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这是一次 Claude 重构旧游戏的个人演示，可用于观察真实改造过程，但缺少可复用产品形态，阅读优先级应较低。"
+    },
+    {
+      "rank": 19,
+      "product": "Hark",
+      "productKey": "https://www.producthunt.com/products/hark-3",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Hark 只以“提前处理生活事务”的泛化个人 AI 定位亮相，值得看的不是口号，而是它能否给出明确任务边界与可验证结果。"
+    },
+    {
+      "rank": 20,
+      "product": "Off the Record",
+      "productKey": "https://www.producthunt.com/products/off-the-record-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Off the Record 反向提供会议防转录能力，反映用户对默认录音和 AI 记录的控制需求，产品价值在于易用且可验证的隐私边界。"
+    }
+  ]
+}
