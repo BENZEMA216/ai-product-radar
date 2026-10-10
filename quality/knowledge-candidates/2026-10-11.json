@@ -1,0 +1,363 @@
+{
+  "generatedAt": "2026-10-10T16:17:03.641Z",
+  "date": "2026-10-11",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "How Rillet ships 3× faster with AI agents on Vercel",
+      "link": "https://vercel.com/customers/how-rillet-ships-3-faster-with-ai-agents-on-vercel",
+      "publishedAt": "2026-10-09T04:00:00.000Z",
+      "author": "Susan Aziz",
+      "summary": "Rillet on Vercel Tripled shipping rate in three months with eve agents deployed on Vercel Two-person team closed 800+ Linear tickets in its first 4 months Builder access via Enterprise Managed Users, SSO, and Directory Sync Ships customer-requested changes to production in as little as two hours Gives every builder access to models through AI Gateway Rillet is an AI-native enterprise resource planning (ERP) platform. Their AI agents do accounting work inside a real-time general ledger, with human approval and a full audit trail. Rillet serves more than 600 customers working toward a zero-day close, reducing the time needed to close their books at month-end. A product that helps customers close their books in near real time needs a team that can respond quickly to their requests. Anthony Liang heads Rillet’s two-person frontend team, formed only a few months ago, and leads the push to put agents to work across internal workflows, from shipping customer fixes to reviewing code. The team builds agents with eve and runs them on Vercel, using Vercel Connect to give them access to Slack and Linear, while AI Gateway routes their model requests. Standardizing every internal agent on eve Anthony had been building AI applications since the GPT-3.5 era and had evaluated nearly every agent framework on the market, from the major model providers' SDKs to the open-source ecosystem. Each gave him primitives for the model loop but left him to decide where instructions lived, how tools registered, and how an agent reached Slack and GitHub. Anthony could make those choices for his own agents, but he wanted conventions everyone at Rillet could follow, including people who had never touched TypeScript. An agent is a directory Anthony chose eve , Vercel's open-source agent framework for building, running, and scaling agents that keeps instructions, tools, and skills together in one directory. People who know what an agent should do can shape its behavior through markdown instructions and skills without writing code, while its tools live in TypeScript files whose names become the API. Once an agent is ready, it can move from a laptop to Vercel without changing how it behaves. Rillet manages all of these deployments in one company-controlled Vercel organization. Rillet uses Vercel Connect to give its agents access to Slack and Linear through reusable connections the team can attach to the projects that need them. Connect supplies short-lived tokens at runtime and handles refresh through its SDK, keeping long-lived provider secrets out of each application and giving builders fewer credentials to maintain. If a runtime token leaks, its expiration limits how long it can be used. Anthony's team built a Slack bot that picks up tickets and opens PRs, while others run agents for incident analysis and Linear board management. Shared conventions make that work easier to reuse, and agent building has spread beyond engineering. Running customer requests through agents, end to end Before, when a customer would ask for a change, and the request would scatter across a Linear ticket, a Slack thread, and a catch-up conversation with an engineer. By the time anyone had the full context, the fastest part of the job was writing the code. The person closest to the customer ships the fix Rillet's customer success team now opens a Chrome extension alongside the Rillet app, highlights what the customer is seeing, and describes the change. The extension's eve agent captures the context and, if the change is safe and well-scoped, hands it to a coding agent that writes the spec, makes the change, and opens a pull request assigned to Anthony. Agents also spin up a browser in a sandbox to test the change and attach screenshots as proof, while Anthony reviews the pull request and merges it. If he requests changes, the agent resumes its session and addresses them. Rillet's CEO recently posted that the company shipped more in the past few weeks than in the entire first half of 2026, on top of tripling its shipping rate over the prior three months. Rillet’s CPA team ships customer requests through its in-house agent, Nebula, within two hours of the ask. As one of their customers put it, Rillet has \"completely ruined my expectations\" for how quickly software vendors should make changes. Using AI Gateway to give every builder every model As more people at Rillet started building agents, connecting directly to Anthropic and OpenAI meant configuring access to each model provider separately. AI Gateway routes model requests to both through one integration, so builders can add an agent without setting up separate provider connections. The model is a string In eve, builders choose the model by setting a string in the agent’s configuration: Agents deployed on Vercel authenticate to AI Gateway automatically. Builders can try different models for a task by changing the model string, without changing the integration. Usage breakdowns show Anthony which models the team uses and what they cost, helping him track spending and choose models as more people build autonomous agents. Managing builder access through Enterprise Managed Users As more people are building agents, Rillet also needs to manage their access to Vercel. With Enterprise Managed Users , builders sign in through Google Workspace single sign-on using company-managed accounts rather than personal ones. Directory Sync adds and removes their access based on assignments in Rillet’s identity provider, so account administration follows the company’s directory. Rillet set up Enterprise Managed Users on its own and moved builders from personal to company-managed accounts in one transition, bringing their Vercel sign-in and account access under Rillet’s identity provider. What's next Anthony is building what Rillet thinks of as its agent factory, so bigger features can follow the same pipeline as small fixes. One agent writes PRDs and technical specs, while another connects to Rillet's Linear boards, Miro diagrams, and knowledge base to give other agents the context they need. With subagents and delegation built into eve, Anthony can add these specialized agents as directories within the same framework. For a company whose mission is collapsing month-long processes into zero days, building agents in eve and running them on Vercel brings that same focus on speed to its internal tooling. About Rillet: Rillet is the AI-native ERP built for the era of agentic finance. By combining a real-time general ledger, continuous close architecture, and AI agents in one system, Rillet enables humans and agents to run finance together with full context, controls, and auditability. Read more",
+      "evidenceLink": "",
+      "score": 97.40826109126985,
+      "core": "Rillet on Vercel Tripled shipping rate in three months with eve agents deployed on Vercel Two-person team closed 800+ Linear tickets in its first 4 months Builder access via Enterprise Managed Users, SSO, and Directory Sync Ships customer-requested changes to production in as little as two hours Gives every builder access to models through AI Gateway Rillet is an AI-native enterprise resource planning (ERP) platform…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-10T16:17:03.641Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "Alignment is a human-AI workflow: how Custom Views make agent review possible",
+      "link": "https://arize.com/blog/alignment-is-a-human-ai-workflow-custom-views",
+      "publishedAt": "2026-10-09T18:25:34.000Z",
+      "author": "Dheeraj Bandaru",
+      "summary": "Automated evals can score every agent session, but they do not automatically reflect what your team considers a good outcome. That takes human judgment. The post Alignment is a human-AI workflow: how Custom Views make agent review possible appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 71.92758648809524,
+      "core": "Automated evals can score every agent session, but they do not automatically reflect what your team considers a good outcome. That takes human judgment. The post Alignment is a human-AI workflow: how Custom Views make agent review possible appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-10T16:17:03.641Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Investigating unintended model actions in our evaluations and internal use",
+      "link": "https://www.anthropic.com/research/investigating-unintended-model-actions",
+      "publishedAt": "2026-10-09T16:09:00.000Z",
+      "author": "",
+      "summary": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-10T16:17:03.641Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 61.976118234126986,
+      "core": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "redis_ai_engineering",
+      "source": "Redis Blog",
+      "title": "How we built the Redis Docs MCP for agents",
+      "link": "https://redis.io/blog/how-we-built-the-redis-docs-mcp-for-agents",
+      "publishedAt": "2026-10-09T00:00:00.000Z",
+      "author": "Vishal Bala",
+      "summary": "Ask a coding agent how to configure eviction in Redis 8 and you'll usually get an answer. Less often than we'd like, that answer comes from authoritative docs. The agent either recalls something from pretraining, or it scrapes the rendered HTML off re...",
+      "evidenceLink": "",
+      "score": 57.53365791666667,
+      "core": "Ask a coding agent how to configure eviction in Redis 8 and you'll usually get an answer. Less often than we'd like, that answer comes from authoritative docs. The agent either recalls something from pretraining, or it scrapes the rendered HTML off re...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-10T16:17:03.641Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "sierra_engineering",
+      "source": "Sierra Blog",
+      "title": "Sharing a draft of Personal Agent Protocol",
+      "link": "https://sierra.ai/blog/poppy",
+      "publishedAt": "2026-10-09T19:56:06.000Z",
+      "author": "Bret Taylor, Clay Bavor",
+      "summary": "Today we’re publishing a draft of Personal Agent Protocol, known as Poppy, and announcing additional 35 design partners.",
+      "evidenceLink": "",
+      "score": 48.21314204365079,
+      "core": "Today we’re publishing a draft of Personal Agent Protocol, known as Poppy, and announcing additional 35 design partners.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-10T16:17:03.641Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "baseten_ai_engineering",
+      "source": "Baseten AI Engineering",
+      "title": "Project Beacon: Bringing safety signals to open models at scale",
+      "link": "https://www.baseten.co/blog/safe-open-models-baseten-goodfire",
+      "publishedAt": "2026-10-09T17:01:47.000Z",
+      "author": "",
+      "summary": "Baseten partners with Goodfire AI to bring safety controls to open model inference.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-10T16:17:03.641Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 43.80006664682539,
+      "core": "Baseten partners with Goodfire AI to bring safety controls to open model inference.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "GitHub Copilot weekly releases — October 5",
+      "link": "https://github.blog/changelog/2026-10-09-github-copilot-weekly-releases-october-5",
+      "publishedAt": "2026-10-09T22:58:23.000Z",
+      "author": "Allison",
+      "summary": "This week’s updates make Copilot easier to use across accounts and environments, with more control over what agents can access and how you manage their work. GitHub Copilot Claude Haiku… The post GitHub Copilot weekly releases — October 5 appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 39.28570156746032,
+      "core": "This week’s updates make Copilot easier to use across accounts and environments, with more control over what agents can access and how you manage their work. GitHub Copilot Claude Haiku… The post GitHub Copilot weekly releases — October 5 appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-10T16:17:03.641Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "Building AI for Reliable Execution: Lessons From Industrial Robotics",
+      "link": "https://www.latent.space/p/standard-bots",
+      "publishedAt": "2026-10-10T14:04:11.000Z",
+      "author": "Richard MacManus",
+      "summary": "Inside Standard Bots’ AI stack, pretrained models learn factory tasks from demonstrations and improve through corrections from real deployments.",
+      "evidenceLink": "",
+      "score": 36.641812678571426,
+      "core": "Inside Standard Bots’ AI stack, pretrained models learn factory tasks from demonstrations and improve through corrections from real deployments.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-10T16:17:03.641Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "Copilot code review: New organization billing options and controls",
+      "link": "https://github.blog/changelog/2026-10-08-copilot-code-review-new-organization-billing-options-and-controls",
+      "publishedAt": "2026-10-08T19:43:05.000Z",
+      "author": "Allison",
+      "summary": "This release adds new billing and license controls for Copilot code review admins: Billing: Organization owners can bill Copilot code reviews from members with a Copilot license to the organization’s… The post Copilot code review: New organization billing options and controls appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 33.55002696428571,
+      "core": "This release adds new billing and license controls for Copilot code review admins: Billing: Organization owners can bill Copilot code reviews from members with a Copilot license to the organization’s… The post Copilot code review: New organization billing options and controls appeared first on The GitHub Blog .",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-10T16:17:03.641Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "AI price gouging might have indirectly hit HP's notebook output as supplier reportedly halted shipment",
+      "link": "https://www.techradar.com/pro/ai-price-gouging-might-have-indirectly-hit-hps-notebook-output-as-supplier-reportedly-halted-shipment",
+      "publishedAt": "2026-10-10T00:05:00.000Z",
+      "author": "Rahim Amir",
+      "summary": "Quanta reportedly paused HP laptop production for a week in a price fight, betting its AI server boom could absorb the hit.",
+      "evidenceLink": "",
+      "score": 31.526118234126987,
+      "core": "Quanta reportedly paused HP laptop production for a week in a price fight, betting its AI server boom could absorb the hit.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-10T16:17:03.641Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "Discover local models in GitHub Copilot CLI",
+      "link": "https://github.blog/changelog/2026-10-07-discover-local-models-in-github-copilot-cli",
+      "publishedAt": "2026-10-07T15:46:13.000Z",
+      "author": "Allison",
+      "summary": "GitHub Copilot CLI makes it easier to choose a local model without leaving your existing workflow. Starting in CLI version 1.0.94-0, use /model to discover supported models from a running… The post Discover local models in GitHub Copilot CLI appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 30.359312678571428,
+      "core": "GitHub Copilot CLI makes it easier to choose a local model without leaving your existing workflow. Starting in CLI version 1.0.94-0, use /model to discover supported models from a running… The post Discover local models in GitHub Copilot CLI appeared first on The GitHub Blog .",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-10T16:17:03.641Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Introducing Clef-omni with full multimodality, plus a faster Clef and a cheaper Clef-flash",
+      "link": "https://blog.cloudflare.com/clef-faster-cheaper-multimodal",
+      "publishedAt": "2026-10-09T18:27:34.000Z",
+      "author": "Michelle Chen",
+      "summary": "We are expanding the Clef decision model family with Clef-omni, natively processing audio, video, images, and text in a single pipeline. We’ve also lowered Clef-flash pricing and boosted Clef inference speeds by up to 2.0x.",
+      "evidenceLink": "",
+      "score": 29.67996744047619,
+      "core": "We are expanding the Clef decision model family with Clef-omni, natively processing audio, video, images, and text in a single pipeline. We’ve also lowered Clef-flash pricing and boosted Clef inference speeds by up to 2.0x.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-10T16:17:03.641Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentconn_engineering",
+      "source": "AgentConn Field Reports",
+      "title": "Manage AI Employees, Don't Just Ship Agents",
+      "link": "https://agentconn.com/blog/stop-building-agents-manage-ai-employees-2026",
+      "publishedAt": "2026-09-13T00:00:00.000Z",
+      "author": "AgentConn Team",
+      "summary": "The agent-as-employee framework is real, but managed platforms want to be your agents' employer. Here's the portable alternative.",
+      "evidenceLink": "",
+      "score": 28.716666666666665,
+      "core": "The agent-as-employee framework is real, but managed platforms want to be your agents' employer. Here's the portable alternative.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-10T16:17:03.641Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Introducing the Australian Youth Safety Blueprint",
+      "link": "https://openai.com/index/australian-youth-safety-blueprint",
+      "publishedAt": "2026-09-18T12:00:00.000Z",
+      "author": "",
+      "summary": "OpenAI introduces the Australian Youth Safety Blueprint, a six-pillar roadmap for safer AI experiences that protect and empower young people.",
+      "evidenceLink": "",
+      "score": 27.783333333333335,
+      "core": "OpenAI introduces the Australian Youth Safety Blueprint, a six-pillar roadmap for safer AI experiences that protect and empower young people.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-10T16:17:03.641Z",
+        "evidence": "public_reader_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Basis completes a tax workbook 2x faster with GPT-6 Astra",
+      "link": "https://openai.com/index/basis-tax-workbook-with-astra",
+      "publishedAt": "2026-09-28T00:00:00.000Z",
+      "author": "",
+      "summary": "GPT-6 Astra completed a 50-tab tax workbook twice as fast as GPT-5.6 Sol, and its stronger understanding of user intent gives Basis more confidence in real-world use.",
+      "evidenceLink": "",
+      "score": 25.92222222222222,
+      "core": "GPT-6 Astra completed a 50-tab tax workbook twice as fast as GPT-5.6 Sol, and its stronger understanding of user intent gives Basis more confidence in real-world use.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-10T16:17:03.641Z",
+        "evidence": "public_reader_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Using Claude Science to produce the first complete map of the sky in UV light",
+      "link": "https://www.anthropic.com/research/the-missing-map-of-the-sky",
+      "publishedAt": "2026-10-08T20:59:00.000Z",
+      "author": "",
+      "summary": "Claude Science helped produce the first complete map of the sky in UV light",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-10T16:17:03.641Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 25.323737281746034,
+      "core": "Claude Science helped produce the first complete map of the sky in UV light",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Responsible AI governance: How AWS positions customers to align with ISO/IEC 42005:2025",
+      "link": "https://aws.amazon.com/blogs/machine-learning/responsible-ai-governance-how-aws-positions-customers-to-align-with-iso-iec-420052025",
+      "publishedAt": "2026-10-06T15:53:28.000Z",
+      "author": "Adam Powers",
+      "summary": "AWS invests in tools that help customers align with international standards for responsible AI governance. In this post, we explore the AI system impact assessment: what it is, how it improves enterprise-wide risk management, and how ISO/IEC 42005:2025 codifies best practices for conducting and documenting these assessments.",
+      "evidenceLink": "",
+      "score": 24.925880138888886,
+      "core": "AWS invests in tools that help customers align with international standards for responsible AI governance. In this post, we explore the AI system impact assessment: what it is, how it improves enterprise-wide risk management, and how ISO/IEC 42005:2025 codifies best practices for conducting and documenting these assessments.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-10T16:17:03.641Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Sharing AI progress in mathematics",
+      "link": "https://openai.com/index/sharing-ai-progress-in-mathematics",
+      "publishedAt": "2026-10-06T12:00:00.000Z",
+      "author": "",
+      "summary": "OpenAI publishes new results on open problems in mathematics from an internal frontier model and shares Lean proof formalizations and research details on GitHub.",
+      "evidenceLink": "",
+      "score": 23.731276964285716,
+      "core": "OpenAI publishes new results on open problems in mathematics from an internal frontier model and shares Lean proof formalizations and research details on GitHub.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-10T16:17:03.641Z",
+        "evidence": "public_reader_fallback"
+      }
+    }
+  ]
+}

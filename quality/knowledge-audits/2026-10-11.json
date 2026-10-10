@@ -1,0 +1,127 @@
+{
+  "generatedAt": "2026-10-10T16:27:01.071Z",
+  "report": "2026-10-11.md",
+  "health": "quality/knowledge-source-health/2026-10-11.json",
+  "candidates": "quality/knowledge-candidates/2026-10-11.json",
+  "site": "docs/index.html",
+  "ok": true,
+  "date": "2026-10-11",
+  "rows": 18,
+  "blogCount": 18,
+  "paperCount": 0,
+  "blogAccessVerifiedCount": 18,
+  "topConferencePaperCount": 0,
+  "sourceCount": 88,
+  "candidatePool": {
+    "historicalLinkCount": 1419,
+    "blogFetchedCount": 302,
+    "blogAccessCheckedCount": 40,
+    "blogAccessVerifiedCount": 27,
+    "blogAccessRejectedCount": 13,
+    "blogAccessRejected": [
+      {
+        "sourceId": "interconnects",
+        "title": "I expect rapid progress but not towards general superintelligence",
+        "link": "https://www.interconnects.ai/p/i-expect-rapid-progress-but-not-towards",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "Advanced evals: How to find (and fix) hidden AI failures in your product",
+        "link": "https://www.lennysnewsletter.com/p/advanced-evals-how-to-find-and-fix",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "OpenAI’s Head of ChatGPT: We’re entering a new era of AI (again) | Tibo Sottiaux",
+        "link": "https://www.lennysnewsletter.com/p/openais-head-of-chatgpt-were-entering",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "🧠 Community Wisdom: Getting value from personal AI agents without handing over your inbox, the ego threat of going from IC to manager, uncommon perks to negotiate for, and more",
+        "link": "https://www.lennysnewsletter.com/p/community-wisdom-getting-value-from",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "The grief, loneliness, and burnout sweeping through the tech industry right now | Molly Graham",
+        "link": "https://www.lennysnewsletter.com/p/the-grief-loneliness-and-burnout",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "🧠 Community Wisdom: AI doomerism, speeding up discovery in a big org, verifying engineering answers as a new PM, where analytics adds the most value, and more",
+        "link": "https://www.lennysnewsletter.com/p/community-wisdom-ai-doomerism-speeding",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Inside OpenAI’s agentic software factory",
+        "link": "https://newsletter.pragmaticengineer.com/p/openai-software-factory",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "How will AI change operating systems? Part 2: Windows",
+        "link": "https://newsletter.pragmaticengineer.com/p/windows-and-ai",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: RoR creator sparks new “death of coding by hand” debate",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-end-of-coding-by-hand",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: new trend of building “internal vibe-coding apps” at tech companies",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-new-trend-of-building-internal",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse #191: a new trend of CPU shortages",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-191-a-new-trend-of-cpu",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Why has Shopify dropped React Native?",
+        "link": "https://newsletter.pragmaticengineer.com/p/shopify-native-mobile",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: Firebase’s global outage & poor response",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-firebases-global-outage",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      }
+    ],
+    "blogCanonicalRedirectHistoricalDedupCount": 9,
+    "paperFetchedCount": 33,
+    "paperTopConferenceVerifiedCount": 33,
+    "blogAfterHistoricalDedupCount": 18,
+    "paperAfterHistoricalDedupCount": 0,
+    "eligibleAfterHistoricalDedupCount": 18,
+    "maxPerBlogSource": 2,
+    "selectedBlogSourceCounts": {
+      "agentconn_engineering": 1,
+      "anthropic": 2,
+      "arize_ai_engineering": 1,
+      "aws_machine_learning": 1,
+      "baseten_ai_engineering": 1,
+      "cloudflare_ai": 1,
+      "github_copilot_changelog": 3,
+      "latent_space": 1,
+      "openai_news": 3,
+      "redis_ai_engineering": 1,
+      "sierra_engineering": 1,
+      "techradar_pro_ai": 1,
+      "vercel_ai": 1
+    },
+    "sourceCapRelaxed": true,
+    "shortfallReason": "历史 canonical URL 去重后有效新内容不足，未达到总量目标；顶会元数据核验后论文仅 0 篇，空缺优先用已验证可访问的 Blog 补位，不用普通 arXiv 论文凑数；未用旧文或低质量内容补位。"
+  },
+  "failures": []
+}
