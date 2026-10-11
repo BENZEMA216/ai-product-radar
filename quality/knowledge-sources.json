@@ -351,12 +351,12 @@
       "id": "hcker_news_ai_blogs",
       "label": "Hacker News · hcker.news",
       "type": "hcker_news",
-      "url": "https://hcker.news/feeds/atom?period=day&limit=50&ai=include&content_type=external&min_score=80",
+      "url": "https://hcker.news/feeds/atom?period=week&limit=200&ai=include&content_type=external&min_score=10",
       "home": "https://hcker.news/?view=frontpage&ai=include",
       "weight": 13,
-      "minimumPoints": 80,
-      "probeItems": 20,
-      "maxItems": 4,
+      "minimumPoints": 10,
+      "probeItems": 200,
+      "maxItems": 80,
       "requireAiRelevance": true,
       "requireKnowledgeDepth": true
     },
@@ -461,7 +461,7 @@
       "url": "https://newsletter.pragmaticengineer.com/feed",
       "home": "https://newsletter.pragmaticengineer.com/",
       "weight": 16,
-      "maxItems": 30,
+      "maxItems": 200,
       "discoveredVia": "gmail",
       "accessPolicy": "gmail_subscription"
     },
@@ -1049,6 +1049,64 @@
       "home": "https://www.fiddler.ai/blog",
       "weight": 14,
       "maxItems": 24,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "linear_ai_changelog",
+      "label": "Linear Changelog",
+      "type": "sitemap",
+      "url": "https://linear.app/sitemap.xml",
+      "home": "https://linear.app/changelog",
+      "pathPrefixes": [
+        "/changelog/"
+      ],
+      "weight": 14,
+      "maxItems": 24,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "instacart_ai_updates",
+      "label": "Instacart AI Updates",
+      "type": "sitemap",
+      "url": "https://company.instacart.com/blog-sitemap.xml",
+      "home": "https://company.instacart.com/updates",
+      "pathPrefixes": [
+        "/updates/",
+        "/tech-innovation/"
+      ],
+      "weight": 13,
+      "maxItems": 30,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "amazon_science_blog",
+      "label": "Amazon Science Blog",
+      "type": "feed",
+      "url": "https://www.amazon.science/index.rss",
+      "home": "https://www.amazon.science/blog",
+      "weight": 15,
+      "maxItems": 20,
+      "requireAiRelevance": true,
+      "requireStrongAiRelevance": true,
+      "requireKnowledgeDepth": true
+    },
+    {
+      "id": "ibm_research_blog",
+      "label": "IBM Research Blog",
+      "type": "sitemap",
+      "url": "https://research.ibm.com/sitemap-0.xml",
+      "home": "https://research.ibm.com/blog",
+      "pathPrefixes": [
+        "/blog/"
+      ],
+      "weight": 15,
+      "maxItems": 30,
       "requireAiRelevance": true,
       "requireStrongAiRelevance": true,
       "requireKnowledgeDepth": true

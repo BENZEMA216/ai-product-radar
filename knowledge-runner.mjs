@@ -168,6 +168,7 @@ const HCKER_KNOWLEDGE_TERMS = [
 const HCKER_NON_BLOG_HOSTS = [
   "arxiv.org",
   "openreview.net",
+  "nature.com",
   "semanticscholar.org",
   "doi.org",
   "dl.acm.org",
