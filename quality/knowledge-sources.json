@@ -461,7 +461,7 @@
       "url": "https://newsletter.pragmaticengineer.com/feed",
       "home": "https://newsletter.pragmaticengineer.com/",
       "weight": 16,
-      "maxItems": 200,
+      "maxItems": 30,
       "discoveredVia": "gmail",
       "accessPolicy": "gmail_subscription"
     },
@@ -1079,7 +1079,7 @@
         "/tech-innovation/"
       ],
       "weight": 13,
-      "maxItems": 30,
+      "maxItems": 200,
       "requireAiRelevance": true,
       "requireStrongAiRelevance": true,
       "requireKnowledgeDepth": true
