@@ -1,0 +1,260 @@
+{
+  "date": "2026-10-12",
+  "generatedAt": "2026-10-11T16:01:20.684Z",
+  "reportPath": "reports/2026-10-12-0001-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 47,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "AIHOT"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 2,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 16,
+      "keptCount": 9,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-10；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 16 条，AI 相关候选 9 条；历史去重后最终发布 9 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "YC Launch 本窗口无候选或来源为空。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 8,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 18,
+      "keptCount": 18,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:node, Model:node；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 12,
+      "keptCount": 12,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Microsoft-Decision-1",
+      "productKey": "https://www.producthunt.com/products/microsoft-decision-1",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把“决策模型”直接放进 agent 与工作流，值得观察微软如何把推理能力收敛为可编排、可复用的业务决策组件。"
+    },
+    {
+      "rank": 2,
+      "product": "Hypervibe",
+      "productKey": "https://www.producthunt.com/products/hypervibe-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把多个编码 agent 放进一张无限画布，产品判断点在于可视化空间能否降低并行任务的切换与监督成本。"
+    },
+    {
+      "rank": 3,
+      "product": "A free coding agent that writes its own multi-agent workflows",
+      "productKey": "https://kolega.ai/code",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "核心差异是编码 agent 会自行生成多 agent 工作流；应重点验证这种自编排是否真能减少人工拆任务，而非增加不可控链路。"
+    },
+    {
+      "rank": 4,
+      "product": "I built a macOS screensaver that reacts to AI coding agents",
+      "productKey": "https://www.ascendaflow.com/waterline",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把编码 agent 状态映射成屏保反馈，交互点有趣但任务价值偏弱，更适合观察环境式状态提示而非独立产品需求。"
+    },
+    {
+      "rank": 5,
+      "product": "Claude Dashboards & Motion",
+      "productKey": "https://www.producthunt.com/products/claude-dashboards-motion",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它让 Claude 直接产出实时仪表盘和动态讲解，值得看对话生成能否覆盖“分析—展示—解释”的连续交付，而不只是生成静态图表。"
+    },
+    {
+      "rank": 6,
+      "product": "Littleguys – Claude Code, Codex and OpenClaw agents in your menu bar",
+      "productKey": "https://littleguys.hervalicio.us",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 Claude Code、Codex 和 OpenClaw 的运行状态集中到菜单栏，值得验证统一入口能否解决多 agent 监控，而非只提供可爱的状态展示。"
+    },
+    {
+      "rank": 7,
+      "product": "Lune",
+      "productKey": "https://www.producthunt.com/products/lune-research",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "面向科学 agent 的专用搜索把检索从人类界面转为机器调用基础设施，关键看结果可追溯性与科研语料覆盖是否足以支撑自动研究。"
+    },
+    {
+      "rank": 8,
+      "product": "GitGlow",
+      "productKey": "https://www.producthunt.com/products/gitglow-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把人写代码与 agent 改动放进同一发版前审查流程，值得看是否能清楚区分责任来源并降低 AI 生成代码的合并风险。"
+    },
+    {
+      "rank": 9,
+      "product": "An MCP server where AI agents confess, in their own name",
+      "productKey": "https://ai.confess.online",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这是把 MCP 用于 agent 自述的实验性玩法，能观察 agent 身份与内容归属如何呈现，但当前证据不足以说明有稳定工作流价值。"
+    },
+    {
+      "rank": 10,
+      "product": "Onepin",
+      "productKey": "https://www.producthunt.com/products/onepin",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把人名、价格和日期的准确读法作为配音质量切口，价值在于解决生成语音中可核验、频繁出现的业务错误，而非泛化追求声音自然度。"
+    },
+    {
+      "rank": 11,
+      "product": "Burning Bridges AI – Put yourself into a viral music-video clip",
+      "productKey": "https://burningbridgesai.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把用户嵌入热门音乐视频的玩法传播性强，但更像一次性消费 demo；应关注复用频率与版权边界，不能仅凭视觉效果高估产品深度。"
+    },
+    {
+      "rank": 12,
+      "product": "ReSO AI",
+      "productKey": "https://www.producthunt.com/products/reso",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它瞄准用户向 AI 提问时的品牌发现与推荐，值得跟踪“生成式搜索优化”是否能提供可归因的曝光改进，而不只是新的 SEO 话术。"
+    },
+    {
+      "rank": 13,
+      "product": "API Claws by Buda",
+      "productKey": "https://www.producthunt.com/products/buda-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用一个 API 提供可自我改进的 agent harness，产品关键不在“自我改进”表述，而在改进依据、回滚机制和效果评估是否可控。"
+    },
+    {
+      "rank": 14,
+      "product": "Maildun for Mac",
+      "productKey": "https://www.producthunt.com/products/maildun-for-mac",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把手工、AI 与 MCP 三种邮件设计方式放在同一 Mac 工具里，值得看品牌规范能否跨人工与 agent 流程保持一致。"
+    },
+    {
+      "rank": 15,
+      "product": "I'm a 14-year-old building my first startup, Titan",
+      "productKey": "https://titan-ai.co",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "当前证据只有创业者身份与 Show HN 发布，未说明 Titan 解决什么 AI 任务；可观察早期反馈，但不应因年龄故事替代产品判断。"
+    },
+    {
+      "rank": 16,
+      "product": "Flopper is a hardware explorer for AI infrastructure and beyond",
+      "productKey": "https://flopper.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它为 AI 基础设施提供硬件探索入口，价值在于能否把复杂规格转成工作负载选型，而不是再做一层参数目录。"
+    },
+    {
+      "rank": 17,
+      "product": "密歇根大学 AI 编程课 Applied Agentic Software Engineering 发布五个工程 Skills",
+      "productKey": "https://aihot.news/items/ty593915acghpin4qfytdll0t",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "课程把 agent 工程方法打包成五个可调用 Skill，值得看教学知识能否被标准化为开发流程资产；但目前证据只来自聚合摘要。"
+    }
+  ]
+}
