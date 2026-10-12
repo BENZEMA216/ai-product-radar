@@ -1,0 +1,421 @@
+{
+  "generatedAt": "2026-10-12T16:27:26.691Z",
+  "date": "2026-10-13",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Recursive self-improvement through collective intelligence",
+      "link": "https://pub.sakana.ai/mass",
+      "publishedAt": "2026-10-11T22:22:10.000Z",
+      "author": "hardmaru https://news.ycombinator.com/user?id=hardmaru",
+      "summary": "MASS studies recursive self-improvement when one language model solves tasks, designs workflows, evaluates results, and learns from multi-agent executions.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50048522",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 129,
+        "comments": 73
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-12T16:27:26.691Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 71.87729347480567,
+      "core": "MASS studies recursive self-improvement when one language model solves tasks, designs workflows, evaluates results, and learns from multi-agent executions.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "AI less regulated than milk, Microsoft president says in warning over safety",
+      "link": "https://www.theguardian.com/technology/2026/oct/12/ai-less-regulated-than-milk-microsoft-president-calls-for-tougher-rules",
+      "publishedAt": "2026-10-12T12:46:52.000Z",
+      "author": "nephihaha https://news.ycombinator.com/user?id=nephihaha",
+      "summary": "Brad Smith adds to calls for tougher rules for AI, including &#x2018;kill switches&#x2019; and legal obligation to victims of rogue agents",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50055654",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 34,
+        "comments": 33
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-12T16:27:26.691Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 61.28737164710573,
+      "core": "Brad Smith adds to calls for tougher rules for AI, including &#x2018;kill switches&#x2019; and legal obligation to victims of rogue agents",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Why aren't AI companies being charged for hacking?",
+      "link": "https://mortoray.com/why-arent-ai-companies-being-charged-for-hacking",
+      "publishedAt": "2026-10-12T14:52:37.000Z",
+      "author": "ingve https://news.ycombinator.com/user?id=ingve",
+      "summary": "AI companies claim their hacks were unpredictable accidents — but they follow foreseeably from deliberate design choices, and that establishes criminal intent.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50057278",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 246,
+        "comments": 226
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-12T16:27:26.691Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 53.445979119573465,
+      "core": "AI companies claim their hacks were unpredictable accidents — but they follow foreseeably from deliberate design choices, and that establishes criminal intent.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "How to test agent tool descriptions with Harbor and Phoenix",
+      "link": "https://arize.com/blog/how-to-test-agent-tool-descriptions-with-harbor-and-phoenix",
+      "publishedAt": "2026-10-12T14:30:47.000Z",
+      "author": "Nancy Chauhan",
+      "summary": "Build a reproducible benchmark, compare tool use across agents, and test whether a description change reduces unnecessary work while preserving outcomes. The post How to test agent tool descriptions with Harbor and Phoenix appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 53.25556168650794,
+      "core": "Build a reproducible benchmark, compare tool use across agents, and test whether a description change reduces unnecessary work while preserving outcomes. The post How to test agent tool descriptions with Harbor and Phoenix appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-12T16:27:26.691Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "How Meta designed Muse: an AI agent people actually want to talk to | Alex Cornell (Design Director)",
+      "link": "https://www.lennysnewsletter.com/p/how-meta-designed-muse-an-ai-agent",
+      "publishedAt": "2026-10-12T12:03:55.000Z",
+      "author": "Claire Vo",
+      "summary": "Listen now | 🎙️Alex Cornell explains how Muse serves your mom and an engineer with the same interface, and demos a SkyMall-style catalog, golf recaps, and a blog turned podcast",
+      "evidenceLink": "",
+      "score": 50.669609305555554,
+      "core": "Listen now | 🎙️Alex Cornell explains how Muse serves your mom and an engineer with the same interface, and demos a SkyMall-style catalog, golf recaps, and a blog turned podcast",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-10-12T16:27:26.691Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "databricks_engineering",
+      "source": "Databricks Blog",
+      "title": "From post-training to production: How TinyFish runs its web-native model on Databricks AI Runtime",
+      "link": "https://www.databricks.com/blog/post-training-production-how-tinyfish-runs-its-web-native-model-databricks-ai-runtime",
+      "publishedAt": "2026-10-09T16:32:01.000Z",
+      "author": "",
+      "summary": "TinyFish builds infrastructure for enterprises that need agents to work across the live web. Its Search, Fetch, Browser...",
+      "evidenceLink": "",
+      "score": 50.540363273809525,
+      "core": "TinyFish builds infrastructure for enterprises that need agents to work across the live web. Its Search, Fetch, Browser...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-12T16:27:26.691Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_research",
+      "source": "Microsoft Research",
+      "title": "Simulating student learning for better AI tutoring",
+      "link": "https://www.microsoft.com/en-us/research/blog/simulating-student-learning-for-better-ai-tutoring",
+      "publishedAt": "2026-10-12T16:00:00.000Z",
+      "author": "Ke Yang, Chenglong Wang, Michel Galley, Jeevana Priya Inala, ChengXiang Zhai, Jianfeng Gao",
+      "summary": "StudentSim is a research system for evaluating and improving AI tutoring tools before they are tested with learners. It models how individuals may engage with tutors, giving feedback to improve tutor performance across subjects like chess, writing, and mathematics. The post Simulating student learning for better AI tutoring appeared first on Microsoft Research .",
+      "evidenceLink": "",
+      "score": 46.989549781746035,
+      "core": "StudentSim is a research system for evaluating and improving AI tutoring tools before they are tested with learners. It models how individuals may engage with tutors, giving feedback to improve tutor performance across subjects like chess, writing, and mathematics. The post Simulating student learning for better AI tutoring appeared first on Microsoft Research .",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-12T16:27:26.691Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "The growing risk of SaaS sprawl requires a smarter approach to integration",
+      "link": "https://www.techradar.com/pro/the-growing-risk-of-saas-sprawl-requires-a-smarter-approach-to-integration",
+      "publishedAt": "2026-10-12T11:09:26.000Z",
+      "author": "Hasan Imam",
+      "summary": "How SaaS sprawl and AI agents are creating hidden security risks across enterprise environments.",
+      "evidenceLink": "",
+      "score": 46.154748194444444,
+      "core": "How SaaS sprawl and AI agents are creating hidden security risks across enterprise environments.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-12T16:27:26.691Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pragmatic_engineer",
+      "source": "The Pragmatic Engineer",
+      "title": "Inside OpenAI’s agentic software factory",
+      "link": "https://newsletter.pragmaticengineer.com/p/openai-software-factory",
+      "publishedAt": "2026-09-15T15:41:25.000Z",
+      "author": "Gergely Orosz",
+      "summary": "A deepdive into how Codex has “taken over” OpenAI, how the frontier lab builds its agentic software factory, and the engineering challenges of one billion users. Details from inside OpenAI",
+      "evidenceLink": "",
+      "score": 44.044444444444444,
+      "core": "A deepdive into how Codex has “taken over” OpenAI, how the frontier lab builds its agentic software factory, and the engineering challenges of one billion users. Details from inside OpenAI",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-10-12T16:27:26.691Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pragmatic_engineer",
+      "source": "The Pragmatic Engineer",
+      "title": "How will AI change operating systems? Part 2: Windows",
+      "link": "https://newsletter.pragmaticengineer.com/p/windows-and-ai",
+      "publishedAt": "2026-09-22T17:17:31.000Z",
+      "author": "Gergely Orosz",
+      "summary": "Deepdive into the Windows team’s efforts to make the OS “AI agent-friendly” and win back developers by going all-in on Linux on Windows, local models, GPUs, & more",
+      "evidenceLink": "",
+      "score": 40.90555555555556,
+      "core": "Deepdive into the Windows team’s efforts to make the OS “AI agent-friendly” and win back developers by going all-in on Linux on Windows, local models, GPUs, & more",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-10-12T16:27:26.691Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pragmatic_engineer",
+      "source": "The Pragmatic Engineer",
+      "title": "The Pulse: RoR creator sparks new “death of coding by hand” debate",
+      "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-end-of-coding-by-hand",
+      "publishedAt": "2026-09-24T16:44:27.000Z",
+      "author": "Gergely Orosz",
+      "summary": "37signals – the creator of Ruby on Rails (RoR) – moves over to agents generating nearly all its code. Also: Amazon and Meta struggle to hire engineers, code reviews will probably also go away and more",
+      "evidenceLink": "",
+      "score": 37.111111111111114,
+      "core": "37signals – the creator of Ruby on Rails (RoR) – moves over to agents generating nearly all its code. Also: Amazon and Meta struggle to hire engineers, code reviews will probably also go away and more",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-10-12T16:27:26.691Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "Advanced evals: How to find (and fix) hidden AI failures in your product",
+      "link": "https://www.lennysnewsletter.com/p/advanced-evals-how-to-find-and-fix",
+      "publishedAt": "2026-09-22T12:45:14.000Z",
+      "author": "Hamel Husain",
+      "summary": "Why you should never skip error discovery",
+      "evidenceLink": "",
+      "score": 36.227777777777774,
+      "core": "Why you should never skip error discovery",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-10-12T16:27:26.691Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Microsoft unveils Maia 300, its most powerful AI chip yet - and it might make using Teams, Copilot and Cowork much better at last",
+      "link": "https://www.techradar.com/pro/microsoft-unveils-maia-300-its-most-powerful-ai-chip-yet-and-it-might-make-using-teams-copilot-and-cowork-much-better-at-last",
+      "publishedAt": "2026-10-12T13:00:00.000Z",
+      "author": "Mike Moore",
+      "summary": "Maia 300 is designed for the next generation of AI workloads, offering greater efficiency and power.",
+      "evidenceLink": "",
+      "score": 32.30859740079365,
+      "core": "Maia 300 is designed for the next generation of AI workloads, offering greater efficiency and power.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-12T16:27:26.691Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pragmatic_engineer",
+      "source": "The Pragmatic Engineer",
+      "title": "The Pulse: new trend of building “internal vibe-coding apps” at tech companies",
+      "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-new-trend-of-building-internal",
+      "publishedAt": "2026-10-08T16:55:51.000Z",
+      "author": "Gergely Orosz",
+      "summary": "Also: do us engineers truly enjoy ‘hard problems’, or do we really just want to solve those which attract promotions, new open models launch in the EU and US, and more",
+      "evidenceLink": "",
+      "score": 30.104450575396825,
+      "core": "Also: do us engineers truly enjoy ‘hard problems’, or do we really just want to solve those which attract promotions, new open models launch in the EU and US, and more",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-10-12T16:27:26.691Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "OpenAI’s Head of ChatGPT: We’re entering a new era of AI (again) | Tibo Sottiaux",
+      "link": "https://www.lennysnewsletter.com/p/openais-head-of-chatgpt-were-entering",
+      "publishedAt": "2026-10-04T12:32:47.000Z",
+      "author": "Lenny Rachitsky",
+      "summary": "Listen now (37 mins) | Tibo Sottiaux on why Dots is OpenAI’s biggest bet, why agents will dominate internet traffic, and what builders are still getting wrong",
+      "evidenceLink": "",
+      "score": 27.877777777777776,
+      "core": "Listen now (37 mins) | Tibo Sottiaux on why Dots is OpenAI’s biggest bet, why agents will dominate internet traffic, and what builders are still getting wrong",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-10-12T16:27:26.691Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "🧠 Community Wisdom: Getting value from personal AI agents without handing over your inbox, the ego threat of going from IC to manager, uncommon perks to negotiate for, and more",
+      "link": "https://www.lennysnewsletter.com/p/community-wisdom-getting-value-from",
+      "publishedAt": "2026-10-03T17:00:49.000Z",
+      "author": "Kiyani",
+      "summary": "Community Wisdom 301",
+      "evidenceLink": "",
+      "score": 27.11111111111111,
+      "core": "Community Wisdom 301",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-10-12T16:27:26.691Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "Why every company now needs to think and operate like a lab team | Josh Woodward (Google Labs, Gemini, AI Studio)",
+      "link": "https://www.lennysnewsletter.com/p/why-every-company-now-needs-to-think",
+      "publishedAt": "2026-10-11T12:31:59.000Z",
+      "author": "Lenny Rachitsky",
+      "summary": "Listen now (62 mins) | Josh Woodward of Google Labs on where great ideas come from, knowing when to kill them, and building for a world where what’s possible changes every week",
+      "evidenceLink": "",
+      "score": 25.983180734126986,
+      "core": "Listen now (62 mins) | Josh Woodward of Google Labs on where great ideas come from, knowing when to kill them, and building for a world where what’s possible changes every week",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-10-12T16:27:26.691Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Filter, reshape, and redact logs before export with Transformers",
+      "link": "https://blog.cloudflare.com/transformers-on-logpush",
+      "publishedAt": "2026-10-12T14:44:59.000Z",
+      "author": "Rob Taylor",
+      "summary": "Logpush now supports Transformers, allowing teams to filter, redact, and reshape log streams using SQL before export. Powered by Apache DataFusion and Apache Arrow, Transformers apply those changes directly to log data before it reaches the destination.",
+      "evidenceLink": "",
+      "score": 25.28357755952381,
+      "core": "Logpush now supports Transformers, allowing teams to filter, redact, and reshape log streams using SQL before export. Powered by Apache DataFusion and Apache Arrow, Transformers apply those changes directly to log data before it reaches the destination.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-12T16:27:26.691Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "interconnects",
+      "source": "Interconnects",
+      "title": "I expect rapid progress but not towards general superintelligence",
+      "link": "https://www.interconnects.ai/p/i-expect-rapid-progress-but-not-towards",
+      "publishedAt": "2026-10-09T21:33:47.000Z",
+      "author": "Nathan Lambert",
+      "summary": "I’ve often been surprised when I hear from top researchers in industry that they think AI will be better than them at their job in a few years, and I didn’t really know why I doubted it.",
+      "evidenceLink": "",
+      "score": 24.255164861111112,
+      "core": "I’ve often been surprised when I hear from top researchers in industry that they think AI will be better than them at their job in a few years, and I didn’t really know why I doubted it.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "gmail_subscription",
+        "checkedAt": "2026-10-12T16:27:26.691Z",
+        "evidence": "sanitized_gmail_subscription_grant"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Powering the AI revolution: Inside the grid, thermal, and interconnect challenges limiting data center growth",
+      "link": "https://www.techradar.com/pro/powering-the-ai-revolution-inside-the-grid-thermal-and-interconnect-challenges-limiting-data-center-growth",
+      "publishedAt": "2026-10-11T17:20:00.000Z",
+      "author": "Stefan Ionescu",
+      "summary": "We take a deep dive into the electrical, thermal, and infrastructural bottlenecks affecting the next-generation computing revolution.",
+      "evidenceLink": "",
+      "score": 24.087168829365076,
+      "core": "We take a deep dive into the electrical, thermal, and infrastructural bottlenecks affecting the next-generation computing revolution.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-12T16:27:26.691Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

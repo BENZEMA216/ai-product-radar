@@ -1,0 +1,293 @@
+{
+  "date": "2026-10-13",
+  "generatedAt": "2026-10-12T16:03:22.928Z",
+  "reportPath": "reports/2026-10-13-0003-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 57,
+    "top20Sources": [
+      "HN Algolia",
+      "Product Hunt",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 27,
+      "keptCount": 9,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-11；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 27 条，AI 相关候选 9 条；实际 fallback：hunted_space。；历史去重移除 1 条已报道或已处理日榜 Product Hunt 信号，最终发布 8 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 3,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 22,
+      "keptCount": 14,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "fallback",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 12,
+      "keptCount": 12,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "An OpenAI-compatible API that coding agents sign up for themselves",
+      "productKey": "https://scaledthought.com/go/org-hn",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 coding agent 自助注册 OpenAI 兼容 API，把账号开通从人的前置配置变成 agent 可执行步骤；值得验证权限、计费与滥用控制能否随之自动化。"
+    },
+    {
+      "rank": 2,
+      "product": "HireKey",
+      "productKey": "https://www.producthunt.com/products/hirekey",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "HireKey 用招聘方视角辅助技术求职，产品价值取决于它能否把招聘判断转成可解释的岗位匹配建议，而不只是生成求职文案。"
+    },
+    {
+      "rank": 3,
+      "product": "E2E – Open-source agentic testing framework for web, iOS and Android",
+      "productKey": "https://github.com/tester-army/e2e",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "同一套 agentic 测试框架覆盖 Web、iOS 与 Android，击中了跨端 QA 的重复建设；应重点看任务复现稳定性和失败定位是否真的跨平台一致。"
+    },
+    {
+      "rank": 4,
+      "product": "Seodata.dev (1.1) Free search data for AI agents",
+      "productKey": "https://www.seodata.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把搜索数据直接做成 agent 可消费的免费接口，值得看的是数据新鲜度、引用可追溯性与限流机制，而非又一个搜索前端。"
+    },
+    {
+      "rank": 5,
+      "product": "Farol",
+      "productKey": "https://www.producthunt.com/products/farol-3",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Farol 把多 coding agent 的“谁需要人介入”集中到终端入口，产品判断点是它能否减少轮询与上下文切换，而不是再造一个 macOS 终端。"
+    },
+    {
+      "rank": 6,
+      "product": "Frontrunner",
+      "productKey": "https://www.ycombinator.com/launches/vxb-frontrunner-cursor-for-gtm",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“Cursor for GTM”把 agent 构建与运行压进增长团队工作台；值得观察它能否让非工程角色调试流程、衡量结果并持续迭代 agent。"
+    },
+    {
+      "rank": 7,
+      "product": "OpenScreen 2",
+      "productKey": "https://www.producthunt.com/products/openscreen-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "OpenScreen 2 把产品演示的录制与后期交给同一 agent，核心价值是缩短从原始操作到可分享 demo 的链路，并保持编辑意图可控。"
+    },
+    {
+      "rank": 8,
+      "product": "Beeuni – An AI-native computer for agents",
+      "productKey": "https://www.beeuni.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“为 agent 设计的电脑”把竞争焦点从单个模型移到执行环境；应先验证它提供了哪些原生权限、隔离和持续运行能力，而非只停留在概念包装。"
+    },
+    {
+      "rank": 9,
+      "product": "Mastershot – a free web-based video editor (WASM AI)",
+      "productKey": "https://mastershot.app/video-editor",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "浏览器内 WASM 与 AI 视频编辑的组合兼顾低门槛和本地计算潜力；关键看复杂时间线操作、素材隐私和导出性能能否同时成立。"
+    },
+    {
+      "rank": 10,
+      "product": "OpenCode server and TUI in a browser tab (Chrome desktop)",
+      "productKey": "https://kkrausse.github.io/browser-agent-toolkit",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 OpenCode 的 server 与 TUI 放进 Chrome 标签页，可能统一远程访问和浏览器工作流；真正门槛在本地权限暴露与会话安全。"
+    },
+    {
+      "rank": 11,
+      "product": "expand.ai",
+      "productKey": "https://www.ycombinator.com/launches/vc2-expand-fetch-reading-glasses-for-your-ai-agent",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Expand Fetch 同时返回 Markdown、隐藏 JSON 与可引用快照，针对 agent 读网页时的结构和证据缺失；产品差异要看动态页面覆盖与引用一致性。"
+    },
+    {
+      "rank": 12,
+      "product": "Trelium",
+      "productKey": "https://www.ycombinator.com/launches/vc0-paul-by-trelium",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Paul 先发现团队的重复劳动再建议自动化，切中了“用户不知道该自动化什么”的前置问题；应验证观察依据和机会排序是否透明。"
+    },
+    {
+      "rank": 13,
+      "product": "I built Airlock, to sandbox your AI agent and know what it's doing",
+      "productKey": "https://airlock.sorrel.systems",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Airlock 同时解决 agent 隔离与行为可见性，正对生产使用的信任缺口；应重点评估策略粒度、审计记录和异常处置是否闭环。"
+    },
+    {
+      "rank": 14,
+      "product": "Halo",
+      "productKey": "https://www.producthunt.com/products/halo-11",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Halo 把通知、听写与 agent 放进 Mac 刘海这一常驻入口，值得看它是否能用低打扰交互形成高频触发，而不是增加新的注意力负担。"
+    },
+    {
+      "rank": 15,
+      "product": "Ghost Core",
+      "productKey": "https://www.producthunt.com/products/ghost-core",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Ghost Core 以全端侧运行定义个人 AI 电脑，差异点在隐私和离线可用性；需要继续看硬件门槛与模型能力是否足以支撑日常任务。"
+    },
+    {
+      "rank": 16,
+      "product": "Pickle Sensei",
+      "productKey": "https://www.producthunt.com/products/pickle-sensei-dink-coach",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Pickle Sensei 把 AI 教练收窄到匹克球单人逐拍练习，场景和反馈单位都很具体；关键是动作识别能否给出可执行而非泛化建议。"
+    },
+    {
+      "rank": 17,
+      "product": "FloorGen",
+      "productKey": "https://www.producthunt.com/products/floorgen",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "FloorGen 同时接受手绘与自然语言生成户型，降低空间设计的起步成本；判断重点是尺寸约束和后续可编辑性，而非首张图是否漂亮。"
+    },
+    {
+      "rank": 18,
+      "product": "Tellcut – motion videos written as code by Claude, edited by chat",
+      "productKey": "https://tellcut.app/studio",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Tellcut 让 Claude 生成可编辑的动态视频代码，再用对话迭代，兼顾生成速度与结构化控制；值得看聊天修改是否能稳定落到局部元素。"
+    },
+    {
+      "rank": 19,
+      "product": "Organ – Autonomous AI executives that build and operate businesses",
+      "productKey": "https://organ.app/start",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“自主 AI 高管经营企业”承诺跨度极大，值得关注其任务拆分和责任边界；若没有可审计经营结果，就更像角色包装而非可托付产品。"
+    },
+    {
+      "rank": 20,
+      "product": "Agibot",
+      "productKey": "https://www.producthunt.com/products/agibot",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agibot 用“常驻 Mac、永久免费”降低个人 agent 试用门槛；后续应看后台资源占用、隐私承诺与长期商业模式能否相容。"
+    }
+  ]
+}
