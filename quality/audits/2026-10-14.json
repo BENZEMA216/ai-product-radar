@@ -1,0 +1,293 @@
+{
+  "date": "2026-10-14",
+  "generatedAt": "2026-10-13T16:05:06.228Z",
+  "reportPath": "reports/2026-10-14-0005-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 68,
+    "top20Sources": [
+      "HN Algolia",
+      "Product Hunt",
+      "AIHOT"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 19,
+      "keptCount": 14,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-12；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 19 条，AI 相关候选 14 条；实际 fallback：hunted_space。；历史去重后最终发布 14 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 1,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 25,
+      "keptCount": 16,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "fallback",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 17,
+      "keptCount": 17,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Agent37 (YC F26) – Low-cost agent sandboxes for running agents",
+      "productKey": "https://news.ycombinator.com/item?id=50059096",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agent37 把 agent 执行环境直接压到“低成本沙箱”这一基础设施瓶颈，值得验证它能否在隔离性、启动速度和单任务成本之间形成可复用方案。"
+    },
+    {
+      "rank": 2,
+      "product": "ngram 2.0",
+      "productKey": "https://www.producthunt.com/products/ngram",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ngram 2.0 同时覆盖讲解视频、录屏和 AI 数字人，产品判断点是它能否把脚本、演示与出镜合成收束成一条高频内容生产流程。"
+    },
+    {
+      "rank": 3,
+      "product": "Agor, multiplayer AI – stop running agents alone",
+      "productKey": "https://github.com/preset-io/agor",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agor 把单人运行 agent 改造成多人协作形态，值得看它如何处理共享状态、任务交接和人类介入，而不只是并排展示多个 agent。"
+    },
+    {
+      "rank": 4,
+      "product": "Manifold MCP",
+      "productKey": "https://www.producthunt.com/products/manifold-mcp",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Manifold MCP 将 SEO、AI 答案、社媒、广告和线索数据统一供 agent 调用，关键价值在于减少增长工作中跨工具取数与上下文拼接。"
+    },
+    {
+      "rank": 5,
+      "product": "guilds.run",
+      "productKey": "https://www.producthunt.com/products/guilds-run",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "guilds.run 直接承诺“可信的多 agent 工作流”，应重点看它是否提供可审计的编排、失败恢复和责任边界，而不只是增加 agent 数量。"
+    },
+    {
+      "rank": 6,
+      "product": "Hapsland – Realtime semantic advice on coding standards for the agents",
+      "productKey": "https://hapsland.dearlordylord.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Hapsland 把编码规范从静态文档变成 agent 编码时的实时语义反馈，值得看这种前置约束能否减少事后 review 和反复返工。"
+    },
+    {
+      "rank": 7,
+      "product": "MemorySync – Memory for AI Agents",
+      "productKey": "https://memorysync.io/try",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "MemorySync 聚焦 agent 记忆这一拥挤赛道，真正需要验证的是记忆写入、召回与隔离是否可控，而不是仅能跨会话保存内容。"
+    },
+    {
+      "rank": 8,
+      "product": "Hexis Cloud",
+      "productKey": "https://www.producthunt.com/products/bevel-software",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Hexis Cloud 试图给多个 AI agent 共用一套公司知识大脑，产品成败取决于知识更新、权限继承和答案溯源能否支撑团队级使用。"
+    },
+    {
+      "rank": 9,
+      "product": "BuildGist, plain-English notes on what your coding agent changed",
+      "productKey": "https://buildgist.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "BuildGist 把 coding agent 的代码改动翻译成自然语言记录，能否让非作者快速理解影响范围，是它比普通 git diff 更有价值的地方。"
+    },
+    {
+      "rank": 10,
+      "product": "Ret – An inbox and canvas for your Codex and Claude Code agents",
+      "productKey": "https://getret.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Ret 用收件箱和画布承接 Codex、Claude Code 的并行任务，值得观察它能否解决多 agent 排队、进度可视化和结果整合。"
+    },
+    {
+      "rank": 11,
+      "product": "Dropstone CLI",
+      "productKey": "https://www.producthunt.com/products/dropstone-cli",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Dropstone CLI 把“自我学习”放进终端 coding agent，关键要看学习内容是否可审计、可撤销，并能持续改善同类任务而非累积错误。"
+    },
+    {
+      "rank": 12,
+      "product": "Deep Recall – portable memory you own for Claude, ChatGPT and agents",
+      "productKey": "https://getdeeprecall.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Deep Recall 强调用户拥有且可携带的跨产品记忆，值得看它如何解决数据导入、隐私控制和不同助手间的语义兼容。"
+    },
+    {
+      "rank": 13,
+      "product": "Cube Forms",
+      "productKey": "https://www.producthunt.com/products/cube-forms",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Cube Forms 让表单可由 agent 直接填写，产品机会在于把人机表单转成机器可执行接口，同时保留校验、授权和追责机制。"
+    },
+    {
+      "rank": 14,
+      "product": "Autograph – a music notation editor you can drive with Claude over MCP",
+      "productKey": "https://autographmusic.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Autograph 将乐谱编辑器通过 MCP 暴露给 Claude，值得看专业创作工具如何把自然语言操作映射为可回退、可精修的结构化编辑。"
+    },
+    {
+      "rank": 15,
+      "product": "Milepost",
+      "productKey": "https://www.producthunt.com/products/milepost-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Milepost 把车辆行程日志接入 MCP，虽是窄场景，但可观察个人数据产品如何在本地记录与 agent 调用之间设置权限边界。"
+    },
+    {
+      "rank": 16,
+      "product": "ExcaliClaw",
+      "productKey": "https://www.producthunt.com/products/excaliclaw",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ExcaliClaw 让 agent 与用户共同绘制手绘图，重点不是生成一张图，而是自然语言修改能否保留布局意图并支持持续协作。"
+    },
+    {
+      "rank": 17,
+      "product": "SalesRep.com",
+      "productKey": "https://www.producthunt.com/products/salesrep-com",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "SalesRep.com 把实时价格、报价和跟进交给 AI 销售代表，值得验证它能否从回答问题走到带约束的报价与后续成交动作。"
+    },
+    {
+      "rank": 18,
+      "product": "Kudos 3.0",
+      "productKey": "https://www.producthunt.com/products/kudos-smart-wallet",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Kudos 3.0 用 AI 寻找用户遗漏的可追回资金，价值判断应看识别结果是否可解释、追回流程是否闭环，以及误报成本由谁承担。"
+    },
+    {
+      "rank": 19,
+      "product": "Consus (YC F24) – LLM gateway for companies handling sensitive data",
+      "productKey": "https://news.ycombinator.com/item?id=50073471",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Consus 面向敏感数据企业提供 LLM 网关，值得看它如何把模型切换、数据边界和合规审计做成采购可接受的控制层。"
+    },
+    {
+      "rank": 20,
+      "product": "Ramp Glass：为模型前置共享可编辑知识层",
+      "productKey": "https://aihot.news/items/thnnyp19fhlqr1rpcl7z28n3v",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 4,
+      "rankingIssue": null,
+      "reason": "Ramp Glass 把共享定义、Skills 和业务连接置于模型之前，核心看点是团队能否维护一份可编辑知识层，并在换模型时保留组织语境。"
+    }
+  ]
+}

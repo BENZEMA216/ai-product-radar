@@ -1,0 +1,409 @@
+{
+  "generatedAt": "2026-10-13T16:20:40.611Z",
+  "date": "2026-10-14",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "Make every AI credit count: See, cap, and reduce agent spend",
+      "link": "https://about.gitlab.com/blog/make-every-ai-credit-count",
+      "publishedAt": "2026-10-13T00:00:00.000Z",
+      "author": "Allie Holland https://about.gitlab.com/blog/authors/allie-holland/",
+      "summary": "Costs multiply with every task you hand to an agent. Each task consumes tokens and credits, and as agents spread across your teams and automations, consumption can grow faster than usage. If you run the platform, you own that growth, including which teams and workflows drive it and whether the usage ships work. At GitLab Transcend , we introduced the governed software factory , our architecture for agentic software engineering, and new capabilities in GitLab Duo Agent Platform that bring that growth under control. GitLab-managed open-weight models matched frontier-model task completion at a fraction of the cost in GitLab's benchmark, so you can align your model to the task to improve your team’s cost efficiency. GitLab Orbit gives agents lifecycle context so they retry less. Duo Agent Platform Impact Analytics and credit caps show where credits go and put a limit on them. Control costs in the governed software factory A usage total tells you what you consumed, and leaves hard questions open: how much routine work sat on an expensive model, how many agent runs were wasted retries, and which users and teams burned through the credits. When the dashboard only shows tokens, platform and engineering leaders end up debating a number neither side can stand behind. If you can't attribute the usage, set a limit, and cut the waste, you can’t optimize or justify your spend. Breaking that pattern starts with the architecture. The governed software factory is built in layers, and cost grows where those layers don't connect. Two of those layers matter most for cost. The first is agent orchestration, where open weight models put routine work on lower-cost models. The other is data and context, where Orbit, Duo Agent Platform Impact Analytics, and credit and usage controls give humans and agents the context to produce high-quality outcomes at the lowest possible cost. You can see the problem in a shadow software factory, where each stage has its own tool, with no shared policy or context between them. Agents spend tokens searching for context across systems that were never built to integrate. A governed software factory gives agents shared context, shared policy, and one place to measure what they cost. When every AI credit counts, you can: Spend fewer credits for the same work: Match models to the task at hand with open weight models, and ground agents in lifecycle context with GitLab Orbit so they retry less. Trace spend to its source: See credits by user, team, task, and model in Duo Agent Platform Impact Analytics and the GitLab Credits dashboard so you can point to what drove the growth. Set a ceiling before the next spike: Cap usage per user with credit caps, with overrides where needed, so agent loops stay inside the limits you set. Match the model to the task Agent cost starts with the price of each model call. GitLab Duo Agent Platform lets you pin a default per feature and control what your teams can use: your own model, self-hosted or from your provider, GitLab-managed frontier models, or GitLab-managed open-weight models , new in GitLab 19.4. Three open-weight models are now hosted in GitLab Duo Agent Platform: GLM 5.3, Kimi K3, and MiniMax M3. In GitLab's internal benchmark with Duo agents, GLM 5.3 matched Claude Opus 5's task completion at approximately one-fifth the cost, Kimi K3 matched Claude Fable 5.1 at one-third the cost, and MiniMax M3 matched GPT-5.5 at one-eighth the cost. Model choice is an admin setting. In your top-level group's GitLab Duo settings, open Model Selection , select Manage Models , and pin a model to each feature. For example, pin Kimi K3 to Agentic Chat and MiniMax M3 to agents and flows, so routine work does not default to a frontier model. Group Owners also choose which models their teams can use. Cut retries with the right context Model choice sets the price of each call, and retries multiply the number of calls. Gartner found that a team of 40 developers spent 23 times more on AI because agents kept retrying without the right rules and context. Agents retry when they lack context. Across a monorepo or several repositories, an agent spends its first stretch crawling files to work out what connects to what, and every retry resends the full context window. GitLab Orbit maps your code, work items, merge requests, pipelines, deployments, and security findings into a single graph that stays current as your teams ship. Agents in GitLab Duo Agent Platform query it natively. External agents like Claude Code and Codex connect through Model Context Protocol (MCP), and custom tooling connects through the REST API. Every agent sees exactly what its user can see in GitLab. With that context, an agent asks the graph and gets a precise answer faster and more efficiently. In GitLab testing , the same task in Claude Code needed up to 45x fewer retries with Orbit and, separately, used 4.5x fewer tokens to get the right context the first time. Orbit is in free beta on GitLab.com today and reaches general availability next month across all deployment options. Manage what you can measure Models and context lower the cost of each task. Impact data shows whether it worked. Duo Agent Platform Impact Analytics answers the two questions platform leaders ask: how much are we spending, and where is that spend concentrated? It breaks spend down by team, task, and model for the teams and date range you choose, and it shows how an open weight model stacks up against your current model mix, so you compare with data instead of guessing. The GitLab Credits dashboard adds detail below the team level, tracing usage to the user and session behind it. Visibility pairs with limits. Without a limit, the only lever left is asking everyone to use less. Credit and usage controls set caps at the subscription, group, or user level, with alerts at 50%, 80%, and 100% of spend and an automatic pause once usage reaches the cap. A flat per-user cap, such as 1,000 credits per user/per month, applies to every team member, and an individual override, such as 500 additional credits, gives an engineer who is experimenting room to work without asking for more. Per-user caps apply once a user has consumed their included credits, and only the capped user loses access to credit-consuming features, until the next billing period or until an administrator raises the cap. Duo Agent Platform Impact Analytics shows credit consumption alongside the work that reaches production, so you can see whether usage is turning into delivered work. See Duo Agent Platform Impact Analytics in action in this demo from our Transcend global event: Put agent cost control to work Start your agent cost control journey with the model. GitLab-managed open-weight models are generally available. In Model Selection pin GLM 5.3, Kimi K3, or MiniMax M3 to a routine workload, such as a flow that runs on every merge request. Next, cut retries. GitLab Orbit is in free beta on GitLab.com today. Turn it on for the group that runs the most agent sessions. Orbit reaches general availability next month across all deployment options. Then, measure and set limits. Duo Agent Platform Impact Analytics is in early access , so you can see spend by team, task, and model. Credit and usage controls are generally available. Set a per-user cap for GitLab Credits with overrides for your heavy users. After a few weeks, compare usage by team and model against the previous period. Design the foundation for your software factory with GitLab Duo Agent Platform . If you're new to GitLab, start a free trial of GitLab Duo Agent Platform. If you're on Premium or Ultimate, turn on GitLab Duo Agent Platform and use the GitLab Credits included with your subscription.",
+      "evidenceLink": "",
+      "score": 107.83252755952381,
+      "core": "GitLab 将 agent 成本拆成模型选择、上下文导致的重试、团队归因和用量上限，并介绍按用户、团队、任务与模型查看 credits、设置封顶的做法。",
+      "why": "这篇把“agent 太贵”转成可运营的单位经济问题，适合产品与平台团队借鉴：先把成本归因到任务和交付，再决定模型路由与额度策略。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-13T16:20:40.611Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Gemini 4 Argon available on Google Cloud, built to help solve your business’ hardest problems",
+      "link": "https://cloud.google.com/blog/products/ai-machine-learning/gemini-4-argon-available-on-google-cloud",
+      "publishedAt": "2026-10-13T16:00:00.000Z",
+      "author": "Michael Gerstenhaber VP, Product Management, Gemini, Google Cloud",
+      "summary": "Last week we announced that Gemini Enterprise has evolved to make it even simpler to get work done, and introduced the Gemini agent , your new universal agent for work. It's always on and ready to answer your questions. It will write code, complete longer and more complex tasks, or perform whatever you need to get the job done, all from a single prompt box. And model intelligence underpins it all. To enable a new frontier of work, we are making our new frontier model, Gemini 4 Argon , available on Google Cloud. We trained Argon to work with both depth and precision, which allows it to maintain context across long, multi-step tasks which are reinforced with strong domain expertise along the way. Whether your team is running complex software builds, handling detailed financial and legal work, or deploying cybersecurity tools like CodeMender , Argon helps your teams maintain focus from start to finish. Customers and partners using Gemini 4 Argon Four ways Argon changes how your business works 1. Hand off your hardest work Your teams already use Gemini for business to answer questions and draft content. With Argon, they can hand off the deep, multi-step work that used to take hours or days, and get back finished work they can use. Argon reads long documents that mix text, tables, charts and images, and turns them into one clear output grounded in those sources. It can pull findings from many sources into a single structured answer, analyze data over time, and write stronger legal, finance, and executive documents. On long tasks, it keeps going until the job is done. We trained Argon to respect system boundaries, report negative findings honestly, and pause for confirmation before taking irreversible steps, and it tells you when it couldn't find something or finish a task. Customers who tested Argon tell us it excels at turning huge, unstructured inputs into cohesive outputs. \"As software development becomes more agentic, teams need models that can support long-running, multi-step work across all stages of the development lifecycle. Gemini 4 Argon is designed to help organizations bring AI into development, security, and operations while keeping it within established enterprise workflows and controls.” – Stuart Moncada, VP, GitLab. 2. Precise, verifiable results on the work that drives your business In finance, legal, tax, and other regulated work, calculations and data extraction need to be precise, repeatable, and verifiable. For financial quantitative work, Argon can help automate multi-step ledger reconciliations, spreadsheet formulas, and variance analyses. It delivers high calculation integrity, citation fidelity, and formula accuracy across quantitative models. The proof is in the numbers: Argon leads on the Vals Index , which measures economic impact across finance, coding, legal, and tax work. In legal research, Argon can help legal teams review case law and regulatory filings to pull out verified citations and key precedents. It leads on domain-specific evaluations like Harvey's Legal Agent Benchmark for legal research and drafting, with strong citation fidelity and direct answers when helping teams evaluate complex legal precedents. \"Gemini 4 Argon shows how much progress Google has made on agentic legal reasoning. We saw substantial improvements over Gemini 3.1 Pro across our legal agent evaluations, particularly in corporate M&amp;A, data privacy and cybersecurity, and EC/VC. Accuracy also held up on long-document analysis, an encouraging result for lawyers working through detailed transactional matters.\" – Niko Grupen, Head of Applied Research, Harvey. “We collaborated with Google on NowAI-Bench to help shape Gemini 4 for key enterprise work. In early access, it delivered roughly 20% improved task success than Gemini 3.8 Flash, with standout gains in HR and customer service. On the ServiceNow AI Platform, our L1 Service Desk AI specialist brings Google’s most advanced intelligence, governed and secure, turning tasks into fully autonomous work.” - Nenshad Bardoliwalla, Senior Vice President, AI Products, ServiceNow. 3. Build and ship products faster Argon is built to handle complex, multi-step projects from start to finish. Our customers consistently ask for intelligence that can break down goals, track progress, and update multiple files at the same time. \"Gemini 4 Argon handles complex tasks reliably, from 3D games to rich animations. In Figma Make, it helps teams turn their most ambitious, multi-step ideas into impressive prototypes.” – Loredana Crisan, Chief Design Officer, Figma. To see how well Argon handles this, we put it to work on our own tools. The team behind our open-source Agent Development Kit (ADK) set out to reduce framework overhead and improve code performance while maintaining full compatibility with existing applications. Working autonomously overnight within automated testing guardrails, Argon surfaced optimizations, now live in google/adk-python, that cut in-memory session prep time by 40% in long sessions and speed up cold imports by 21%. To learn more, read the engineering deep dive here . Across Google, engineering teams using Argon in Google Antigravity have increased agentic code submissions by more than 35% while cutting code rollbacks by nearly a third. The Chrome team used Argon to finish an architectural refactor across hundreds of files in Chromium's 40 million-line codebase, completing months of work in weeks. Argon's improvements in spatial reasoning, mathematical precision and visual coding also make it faster to go from idea to working prototype. For more advanced algorithms, our code optimization and discovery agent AlphaEvolve uses Argon to deliver strong performance improvements across real-world enterprise workloads, including factory scheduling, logistics, game code speed-ups, and chip layout — as well as complex mathematical benchmarks and more . To learn how to best use Argon, check out the developer's guide . 4. Stronger defense for your code and business While Argon has cyber mitigations that block offensive tasks such as pentesting and exploitation, you can still take full advantage of Argon’s defensive capabilities using CodeMender to find and fix vulnerabilities, or use Argon with your own security harness. It ties for first place on CWE-Bench v1 with a top score of 68% for remediating security vulnerabilities. \"We are integrating Gemini 4 Argon into MarketingX for automated codebase security audits. In our evaluations, the model successfully identified 100% of top-priority vulnerabilities with 0% fabricated vulnerabilities across verified claims. This precision unlocks proactive, code-level security for our customers before deployment.” - Yunus Emre, Chief AI Officer of AI Lab, HubX. Security also means being able to trust Argon inside your own environment. Argon is our most resilient model yet against indirect prompt injections , where malicious instructions or context are used to hijack a model’s behavior. It leads the Gray Swan Indirect Prompt Injection benchmark, cutting attack success across 15 adaptive attempts to 0.7%. That matters when Argon reads email, documents and webpages that may contain hidden malicious instructions. We are also releasing Argon without cyber guardrails to a select set of trusted defenders, which allows for testing a full breadth of cybersecurity capabilities. Trusted defenders are vetted through our Fairwind Program , a limited access initiative that provides government, critical infrastructure, and cybersecurity partners exclusive, unmitigated access to advanced models. Enterprise customers and partners in our early access program are already seeing strong wins with Argon. Business leaders discuss how they are testing and building with Gemini 4 Argon. Leaders from Amplitude, Deloitte, and Rakuten share Gemini 4 Argon results Get started Starting today, Gemini 4 Argon is available in Gemini for business on the web, desktop, and mobile. Enterprise developers and builders can access Argon via API in Gemini platform under model ID gemini-4-argon , in Google AI Studio , and in Google Antigravity . Argon launches at an introductory rate of $2 per million input tokens and $10 per million output tokens through November 30, 2026, with cached input tokens priced at 95% off. After November 30, standard pricing of $4 per million input tokens and $20 per million output tokens will apply. Review the model card and developer guide for complete technical specifications, token limits, and migration instructions. Cyber defenders can join us at Security Summit to learn how to use Gemini 4 Argon to defend against machine-speed threats and automate remediation.",
+      "evidenceLink": "",
+      "score": 104.97538470238095,
+      "core": "Google Cloud 将 Gemini 4 Argon定位为企业复杂任务底座，并把编码、长任务执行与通用工作 agent 放在同一产品入口中。",
+      "why": "值得读它如何把模型能力包装成企业工作入口；判断重点是长任务交付、治理与现有 Cloud 工作流的结合，而不只是参数升级。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-13T16:20:40.611Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Gemini 4 Argon now available on AI Gateway",
+      "link": "https://vercel.com/changelog/gemini-4-argon-now-available-on-ai-gateway",
+      "publishedAt": "2026-10-13T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "Gemini 4 Argon from Google is now available on AI Gateway . Gemini 4 Argon is built for coding, agentic work, and complex reasoning. It has a 1M token context window, accepts text, image, PDF, and video input, and supports tool calling. On coding tasks, Gemini 4 Argon builds features, fixes bugs, and researches unfamiliar codebases, carrying longer tasks through multiple steps. The model also reads dense diagrams, spreadsheets, layout-heavy documents, and video, which suits tasks like a financial analysis spread across several spreadsheet tabs. Beyond code, it handles work in finance, health, and law, and hard problems in math and science. Gemini 4 Argon uses thinking levels ( low , medium , and high ) instead of thinking budgets. Call Gemini 4 Argon through the AI SDK , the Chat Completions , Responses , and Anthropic Messages APIs, or a coding agent connected to AI Gateway. Set the thinking level with reasoning in the AI SDK or reasoning_effort in Chat Completions, and see reasoning for the other controls. Use google/gemini-4-argon as the model name: To use it in Claude Code, Codex, Cursor, and more, install the latest Vercel CLI and run setup: Then select google/gemini-4-argon in the agent. See the coding agents guide for details. Try Gemini 4 Argon in the model playground . AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. You can view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 89.83252755952381,
+      "core": "Vercel AI Gateway 接入 Gemini 4 Argon，摘要强调 100 万 token 上下文、多模态输入、工具调用，以及跨多步完成编码与代码库研究任务。",
+      "why": "它提供了同一模型经第三方网关交付的产品视角，可用来评估模型接入速度、统一调用接口和长任务能力如何影响开发者选型。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-13T16:20:40.611Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "GitLab's agent orchestration eliminates the wait between development stages",
+      "link": "https://about.gitlab.com/blog/gitlab-agent-orchestration",
+      "publishedAt": "2026-10-13T00:00:00.000Z",
+      "author": "Elisabeth Burrows https://about.gitlab.com/blog/authors/elisabeth-burrows/",
+      "summary": "AI coding tools have changed how fast software gets written, but not how fast it ships. As code generation accelerates, the bottleneck moves downstream into verify, review, and ship. Those stages still run on human time. While agents write fixes in minutes, delivery slows on constant wait times and manual handoffs. Reviewer signoffs, pipeline alerts, scan triage, and step-by-step prompting are examples of obstacles DevOps teams face in maintaining on-time delivery. At GitLab Transcend , we announced new agent orchestration capabilities in GitLab Duo Agent Platform to eliminate that delay. Goal-driven flows take the outcome you define and run it end to end, through review, tests, security scans, and approvals from Duo CLI, headless mode, or Agentic Chat. GitLab for Slack starts work from the conversation where it was requested, like turning a thread into an issue or kicking off a flow to fix a failing pipeline. Custom Flows let you define your own multi-step sequences and start them from GitLab events like a mention, an assignment, or a pipeline. All three run under your identity, policy, and evidence chain. How agentic orchestration speeds up delivery Faster coding, process checklists, and single-chat coding agents all contribute to delays in software delivery. With agentic orchestration capabilities, you can accelerate each stage and reclaim time for your development team. Fewer handoffs. You name the goal, and the flow keeps working across review, tests, scans, and approvals instead of stopping between each step. Start work where the request already is. A Slack thread becomes an issue or a flow immediately from where you’re already discussing the work. Automate the process your team already follows. Custom Flows let you define your own multi-step sequences and start them from a mention, an assignment, or a pipeline. Stay in control. Flows run under the same identity, policy, and evidence chain as the rest of GitLab, so governance stays with the work. Foundational agents and flows already cover plan through analyze stages in the GitLab UI, your IDE, and Duo CLI, and you can enable more from the AI Catalog , bring in external agents, and connect tools through the MCP client and the MCP server . Goal-driven flows: Set your objective Goal-driven flows give agents the finish line instead of the next step. You describe the objective and what done looks like, and the flow keeps working until it gets there. Goal-driven flows automate handoffs, so review, tests, security scans, and approvals run as one connected sequence. You start one with the /goal command, for example: /goal Fix the checkout timeout. Continue until tests pass and CI is green. A separate model checks the work against your goal at each step, and you can stop or redirect a run at any point. You can start a goal-driven flow in Duo CLI, in headless mode with duo run --goal , and in Agentic Chat. GitLab for Slack: Start where the work gets discussed GitLab for Slack lets you start work in GitLab without leaving Slack. Mention @GitLab in any channel or thread and describe what you need, such as \"fix the failing pipeline,\" and a flow starts. Duo streams its progress back into the thread, so your team follows the work where the conversation is already happening. The flow runs under the same identity and policy as any other GitLab flow, so governance stays in GitLab. You can also use @GitLab to ask questions about your codebase or create an issue from the conversation. Custom Flows: Turn your process into a flow Custom Flows chain agents together to match the process your team already follows. You define a flow once, start it from GitLab events like a mention, an assignment, or a pipeline, and run it in CI/CD pipelines. A self-healing pipeline, for example, can analyze a failed test, generate a fix, commit it, and notify your team, with human-in-the-loop checkpoints at sensitive steps. Each flow runs under the same identity, policy, and evidence chain as every other flow, so governance stays in GitLab. Put agent orchestration to work To achieve the benefits of agent orchestration, start with goal-driven flows. The documentation for Duo CLI slash commands walks you through /goal . Goal-driven flows are available on GitLab.com, GitLab Self-Managed, and GitLab Dedicated, on the Premium and Ultimate tiers, and require GitLab 19.3 or later and Duo CLI 9.17.0 or later. Then extend that orchestration to your team's processes and channels with Custom Flows , which are generally available, and the MCP server and GitLab for Slack, which will be generally available later this month. To design the foundation for your software factory, check out GitLab Duo Agent Platform . New to GitLab? Start a free trial of GitLab Duo Agent Platform . Already on Premium or Ultimate? Turn on GitLab Duo Agent Platform and use the GitLab Credits included with your subscription.",
+      "evidenceLink": "",
+      "score": 75.83252755952381,
+      "core": "GitLab 认为代码生成提速后，瓶颈转移到验证、评审和发布，因而用 agent 编排连接流水线提醒、扫描分诊、人工签核与阶段交接。",
+      "why": "这篇适合用来重新画 coding agent 的端到端漏斗：真正可优化的不只是写代码时间，而是各阶段等待、审批与失败恢复。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-13T16:20:40.611Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Build long-horizon agents with Grok 4.7 on Amazon Bedrock",
+      "link": "https://aws.amazon.com/blogs/machine-learning/build-long-horizon-agents-with-grok-4-7-on-amazon-bedrock",
+      "publishedAt": "2026-10-13T15:52:20.000Z",
+      "author": "Suheel Farooq",
+      "summary": "Grok 4.7 is now available on Amazon Bedrock. In this post, we build a tool-calling agent on Grok 4.7 and evaluate it on three reasoning tasks at four reasoning effort levels, measuring correctness and token cost per completed task. We show how to tune the trade-off per request and monitor it in production.",
+      "evidenceLink": "",
+      "score": 74.67181327380952,
+      "core": "AWS 用 Grok 4.7 构建工具调用 agent，并在三类推理任务、四档推理强度下比较正确性与单次完成任务的 token 成本。",
+      "why": "它把“更强推理”落到逐请求调节的成本—正确率权衡，适合作为长任务 agent 评测和生产监控的具体参考。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-13T16:20:40.611Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Muse Wonder now available on AI Gateway",
+      "link": "https://vercel.com/changelog/muse-wonder-now-available-on-ai-gateway",
+      "publishedAt": "2026-10-12T00:00:00.000Z",
+      "author": "Jerilyn Zheng",
+      "summary": "Muse Wonder from Meta is now available on AI Gateway. The model is designed for coding, long-running agents, and computer use. It can plan multi-step tasks, delegate work to sub-agents, and recover from errors as work progresses. Muse Wonder has a 1M-token context window and supports text, image, and PDF input, tool calling, and structured output. Agents can work with code, screenshots, and documents in the same workflow. You can access the model through AI Gateway with one API key, without creating a separate Meta account. Set AI_GATEWAY_API_KEY in your environment, then use meta/muse-wonder-1.0 as the model name: For coding agents, run npx vercel ai-gateway setup and select meta/muse-wonder-1.0 in your agent's model settings. Try Muse Wonder in the model playground , or explore the model catalog . AI Gateway provides one API for calling models, tracking usage and cost, and configuring routing, retries, and failover. You can use an AI Gateway API key or bring your own provider key . Read more",
+      "evidenceLink": "",
+      "score": 72.71824184523808,
+      "core": "Vercel AI Gateway 接入 Muse Wonder；摘要称其支持长时运行、子 agent 委派、错误恢复、100 万 token 上下文、多模态输入、工具调用和结构化输出。",
+      "why": "值得关注的不是新增一个模型名，而是网关是否让多模态、委派与恢复能力以统一接口进入现有应用，降低模型切换成本。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-13T16:20:40.611Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "EU AI Act compliance for AI agents: a practical engineering guide",
+      "link": "https://arize.com/blog/eu-ai-act-compliance-ai-agents",
+      "publishedAt": "2026-10-13T16:00:15.000Z",
+      "author": "Jim Bennett",
+      "summary": "Learn how agent traces, human oversight, production evaluations, and log retention support EU AI Act compliance with a practical credit-assistant example. The post EU AI Act compliance for AI agents: a practical engineering guide appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 72.4090156547619,
+      "core": "Arize 用信贷助手案例说明 agent 合规工程，覆盖轨迹记录、人工监督、生产评测和日志留存如何支持 EU AI Act 要求。",
+      "why": "它把法规要求翻译为可落地的产品控制点，适合检查高风险 agent 在上线前是否具备审计、审批和事后追溯能力。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-13T16:20:40.611Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Natural language security queries at Orca Security using Amazon Bedrock",
+      "link": "https://aws.amazon.com/blogs/machine-learning/natural-language-security-queries-at-orca-security-using-amazon-bedrock",
+      "publishedAt": "2026-10-13T16:03:31.000Z",
+      "author": "Deniz Yilmaz",
+      "summary": "Orca Security built Discovery AI, a natural language query agent on Amazon Bedrock that converts plain-English questions into Sonar queries. The post shares the multi-stage architecture and the results: 90% lower query cost, 93% fewer input tokens, and 75% lower latency than the initial baseline.",
+      "evidenceLink": "",
+      "score": 62.62957121031746,
+      "core": "Orca Security 的 Discovery AI 将自然语言问题转为 Sonar 查询；文章给出多阶段架构，并报告相较初始基线降低查询成本、输入 token 与延迟。",
+      "why": "这是一例清晰的垂直 agent 优化路径：先限定查询语言，再用分阶段架构压缩成本和延迟，适合评估自然语言分析产品的工程边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-13T16:20:40.611Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Improving Deep Agents with harness engineering",
+      "link": "https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering",
+      "publishedAt": "2026-10-13T16:04:23.000Z",
+      "author": "",
+      "summary": "Harness engineering improved LangChain's coding agent from Top 30 to Top 5 on Terminal Bench using self-verification, tracing, and context optimization.",
+      "evidenceLink": "",
+      "score": 58.82504740079365,
+      "core": "LangChain 通过自校验、轨迹追踪和上下文优化改造 coding agent harness，并报告其 Terminal Bench 排名从 Top 30 提升到 Top 5。",
+      "why": "文章把性能提升归因于执行框架而非只换模型，适合提炼可复用的 agent 产品原则：让验证、观测和上下文管理成为默认能力。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-13T16:20:40.611Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "detent_agent_engineering",
+      "source": "DETENT Agent Engineering",
+      "title": "Privacy by Design When an Agent Writes Part of the Code",
+      "link": "https://detent-ai.com/en/blog/privacy-by-design-quando-il-codice-lo-scrive-un-agente",
+      "publishedAt": "2026-10-13T00:00:00.000Z",
+      "author": "",
+      "summary": "Privacy by design (GDPR Art. 25) means data decisions made early and provable later. What to ask the team, what to record and how to answer a customer when an agent wrote the code.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-13T16:20:40.611Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 56.83252755952381,
+      "core": "DETENT 讨论 agent 参与写代码时的隐私设计，围绕应向团队询问什么、记录哪些决策，以及日后如何向客户证明数据处理选择。",
+      "why": "它补上 coding agent 常被忽略的责任链：生成速度之外，产品还要保留可解释的设计决策与证据，才能应对客户和合规审查。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "simon_willison",
+      "source": "Simon Willison",
+      "title": "Hello Python 3.15, goodbye 3.10, and now I can use 3.11",
+      "link": "https://simonwillison.net/2026/Oct/12/python-3-15",
+      "publishedAt": "2026-10-12T18:15:38.000Z",
+      "author": "",
+      "summary": "Python 3.15 is here ! Here's the essential What's new in Python 3.15 guide, this year curated by 3.14 and 3.15 release manager Hugo van Kemenade. As someone who builds open source software that works in every supported Python version, I get to say goodbye to Python 3.10 and start embracing features from Python 3.11. First, some highlights from Python 3.15. Explicit lazy imports I'm most excited about Explicit lazy imports from PEP 810 . These let you import modules like so: lazy import json lazy from pathlib import Path The module will then be imported the first time those symbols are used in the code that follows. My LLM CLI tool implements plugins. I had to recommend manual lazy imports in the plugin author documentation, because simply installing plugins that used heavy dependencies such as sentence_transformers could add multiple seconds to every invocation of the llm command. Lazy imports directly address this startup cost. Unpacking in comprehensions The new [*sublist for sublist in lists] unpacking syntax is neat. Here's an illustration lifted from the documentation : lists = [[ 1 , 2 ], [ 3 , 4 ], [ 5 ]] [ * L for L in lists ] # [1, 2, 3, 4, 5] # equivalent to [x for L in lists for x in L] sets = [{ 1 , 2 }, { 2 , 3 }, { 3 , 4 }] { * s for s in sets } # {1, 2, 3, 4} # equivalent to {x for s in sets for x in s} dicts = [{ 'a' : 1 }, { 'b' : 2 }, { 'a' : 3 }] { ** d for d in dicts } # {'a': 3, 'b': 2} # equivalent to {k: v for d in dicts for k,v in d.items()} PEP 798: Unpacking in Comprehensions by Adam Hartz and Erik Demaine proposed this as an extension of the unpacking syntax from PEP 448 , which landed in Python 3.5 back in 2015. A sampling profiler Python's existing tracing profiler has been renamed from cProfile to profiling.tracing , and has been joined by an exciting new sampling profiler called Tachyon, aka profiling.sampling . Sampling profilers work by periodically capturing stack traces from running processes, then using those to calculate which functions have the most time spent inside of them. They're very low overhead and can provide a deep insight into running systems, without needing to instrument those systems first. I've previously used tools like py-spy for this. Now this capability is baked into the standard library. If you have the PID of an existing Python 3.15 process you can start gathering samples by running this (I had to use sudo on macOS): sudo uv run --python 3.15 python -m profiling.sampling attach 1234 Interact with the main program a bit, then hit Ctrl+C to stop gathering and see a report, which looks something like this: It can also produce flame graphs like this and heat maps like this , and can even output a format that can be viewed in the Firefox profiler UI. 3.15 isn't much faster than 3.14 Miguel Grinberg investigated How fast is Python 3.15? the other day against the 3.15.0rc3 release and found performance to be mostly the same as 3.14, with the exception of the experimental JIT. The JIT gave a 1.2x boost over the standard 3.15 interpreter (on a Fibonacci test), the first time Miguel observed a meaningful JIT performance increase. Miguel's explorations of 3.14 last year found significant boosts against Python 3.13 across many more categories. Upgrading to Python 3.15 with uv I used the following sequence of commands to get uv to use Python 3.15 on my Mac. First I had to upgrade uv itself to ensure it knew about the new release: uv self update Then I installed the stable 3.15 release: uv python install 3.15 And told uv that I wanted that to be the default for every uv run command, unless the project itself pinned a different version: uv python pin --global 3.15 Now the following reports 3.15 as the version: uv run python --version I already have a bunch of tools installed using uv tool install . I reinstalled them to use Python 3.15 like this: uv tool upgrade datasette --python 3.15 Then I can confirm the version like this: datasette --get /-/versions.json | jq Highlights from Python 3.11 The release of 3.15 means that Python 3.10 (released in 2021) is officially no longer supported . My policy for my main open source projects is to keep them working in every supported Python version. I can now drop 3.10 and start using features that were introduced in 3.11. Here's the What's new in Python 3.11 document. I finally get to rely on tomllib being available! Datasette makes extensive use of asyncio . 3.11 adds TaskGroup and timeout() , and several more new features. datetime.UTC is a new in 3.11 alias for datetime.timezone.utc . Python's SQLite support got some significant upgrades in 3.11, including: setlimit() and getlimit() expose a mechanism for setting SQLite runtime limits from Python. create_window_function() lets us create custom window functions in Python, as a class with step() , value() , inverse() , and finalize() methods. blobopen() provides an efficient mechanism for partial reads and writes of large BLOB binary values stored in a SQLite row. You can now call set_authorizer(None) to remove a SQLite authorizer. Datasette had a workaround for this! Plus a whole bunch of improvements to Python's typing system . I plan to land Python 3.11 improvements to a bunch of my projects over the next few weeks. Here's my first Datasette PR removing that set_authorizer(None) workaround. I've also updated my click-app , datasette-plugin , python-lib , and llm-plugin cookiecutter templates to test against Python 3.11 through Python 3.15. You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
+      "evidenceLink": "",
+      "score": 55.422567242063494,
+      "core": "Simon Willison 梳理 Python 3.15 发布与 3.10 结束支持带来的版本迁移，并特别关注现在可安全采用的 Python 3.11 特性与显式延迟导入。",
+      "why": "虽然不是 AI 专文，但它直接影响 AI 工具链的运行时基线；适合工程负责人判断依赖升级、兼容范围和新特性采用节奏。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-13T16:20:40.611Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "meta_engineering",
+      "source": "Meta Engineering",
+      "title": "Turning Opportunistic AI Inference Capacity Into Better Ads Recommendations",
+      "link": "https://engineering.fb.com/2026/10/12/ml-applications/turning-opportunistic-ai-inference-capacity-into-better-ads-recommendations",
+      "publishedAt": "2026-10-12T16:00:50.000Z",
+      "author": "",
+      "summary": "At Meta, we’ve built a system that enhances ads recommendations by leveraging idle inference capacity in our fleet. Two elasticity levers in the system allow ads recommendation work to expand across opportunistic capacity, without compromising baseline performance. This post describes how we designed and now operate the system at Meta’s scale and how it drives [...] Read More... The post Turning Opportunistic AI Inference Capacity Into Better Ads Recommendations appeared first on Engineering at Meta .",
+      "evidenceLink": "",
+      "score": 55.073202162698415,
+      "core": "Meta 介绍利用集群空闲推理容量增强广告推荐的系统，并通过两种弹性机制扩展额外推荐计算，同时保护基线性能。",
+      "why": "这篇展示如何把闲置算力变成产品收益而不扰动主链路，适合借鉴容量调度、降级保护和增量效果验证的设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-13T16:20:40.611Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "How Anthropic’s Dynamic Workflows Coordinate Claude Agents",
+      "link": "https://www.latent.space/p/claude-dynamic-workflows",
+      "publishedAt": "2026-10-12T18:18:17.000Z",
+      "author": "Richard MacManus",
+      "summary": "At AI Engineer New York, Anthropic drew on lessons from Unix and Linux to explain how agents can tackle bigger projects without overwhelming developers.",
+      "evidenceLink": "",
+      "score": 53.270166448412695,
+      "core": "Latent Space 转述 Anthropic 在 AI Engineer New York 分享的动态工作流经验，重点是借鉴 Unix/Linux 思路协调多个 Claude agent 处理更大项目。",
+      "why": "它适合用来理解多 agent 编排为何应建立在清晰接口和可组合工具上，而不是简单增加并行角色；同时要注意这是二手会议解读。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-13T16:20:40.611Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Character.ai Files for Bankruptcy",
+      "link": "https://www.theverge.com/ai-artificial-intelligence/1009802/character-ai-files-for-bankruptcy-disney",
+      "publishedAt": "2026-10-13T11:24:08.000Z",
+      "author": "yanis_t https://news.ycombinator.com/user?id=yanis_t",
+      "summary": "The chatbot startup is looking to sell its assets to Disney after years of legal challenges and safety concerns.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50069942",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 139,
+        "comments": 106
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-13T16:20:40.611Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 53.058601959952085,
+      "core": "文章称 Character.ai 在长期法律挑战与安全争议后申请破产，并寻求向 Disney 出售资产。",
+      "why": "这是消费级 AI 陪伴产品的反面案例，值得从安全义务、商业持续性和高风险用户关系三方面复盘，而不只是关注增长与留存。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Context Management for Deep Agents",
+      "link": "https://www.langchain.com/blog/context-management-for-deepagents",
+      "publishedAt": "2026-10-13T16:04:23.000Z",
+      "author": "",
+      "summary": "Learn how Deep Agents SDK manages context for long-running AI tasks through offloading, summarization, and filesystem abstraction to prevent context rot.",
+      "evidenceLink": "",
+      "score": 50.83060295634921,
+      "core": "LangChain 介绍 Deep Agents SDK 如何用上下文卸载、摘要和文件系统抽象支撑长时任务，并减少上下文随执行增长而劣化。",
+      "why": "上下文管理决定长任务 agent 能否持续工作；这篇提供可直接映射到产品架构的三类手段，适合用于设计记忆与任务状态层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-13T16:20:40.611Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "Agentic Workflows Explained: Patterns, Examples and When to Use Them",
+      "link": "https://rerun.build/blog/agentic-workflows",
+      "publishedAt": "2026-10-13T04:08:27.000Z",
+      "author": "",
+      "summary": "Agentic workflows sit between fixed automations and fully autonomous agents. Learn what they are, the patterns behind them, real examples, and a 5-question checklist for when to use one.",
+      "evidenceLink": "",
+      "score": 48.16163470238095,
+      "core": "Rerun 将 agentic workflow 放在固定自动化与完全自主 agent 之间，整理常见模式、案例，并给出判断是否适用的五问清单。",
+      "why": "它适合作为产品选型框架：先判断任务的不确定性和可验证性，再决定用工作流还是高自治 agent，避免为自治而自治。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-13T16:20:40.611Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Strengthening our defenses against distillation attacks",
+      "link": "https://www.anthropic.com/research/distillation-defenses",
+      "publishedAt": "2026-10-12T09:30:00.000Z",
+      "author": "",
+      "summary": "Illicit distillation allows model developers to copy frontier AI capabilities without creating proportionally robust safeguards. Here, we describe how we’ve reduced the rate of distillation by more than 90%.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-13T16:20:40.611Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 46.94681327380952,
+      "core": "Anthropic 讨论非法蒸馏如何复制前沿模型能力，并介绍其防护方法；文章称这些措施将蒸馏发生率降低超过 90%。",
+      "why": "这篇把模型防滥用从政策口号落到检测与防护机制，适合模型平台评估开放接口、异常使用识别和正常开发者体验之间的取舍。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentconn_engineering",
+      "source": "AgentConn Field Reports",
+      "title": "Your Agent Has a Lethal Trifecta Nobody Shipped a Fix For",
+      "link": "https://agentconn.com/blog/agent-security-lethal-trifecta",
+      "publishedAt": "2026-10-12T00:00:00.000Z",
+      "author": "AgentConn Team",
+      "summary": "92% of enterprises can't see their agent identities. The lethal trifecta explains why — and the security layer the industry skipped.",
+      "evidenceLink": "",
+      "score": 46.85157517857143,
+      "core": "AgentConn 用“致命三要素”描述 agent 身份不可见带来的安全风险，并主张行业缺少统一的 agent 身份与安全控制层。",
+      "why": "它提出了值得验证的产品缺口：当 agent 能访问数据并执行动作时，身份、授权和观测是否仍沿用人类账号模型；文中行业数据需另行核验。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-13T16:20:40.611Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "UK's AI minister promises greater safeguards in the face of advanced AI threats",
+      "link": "https://www.itpro.com/security/uks-ai-minister-promises-greater-safeguards-in-the-face-of-advanced-ai-threats",
+      "publishedAt": "2026-10-13T10:43:57.000Z",
+      "author": "Emma Woollacott",
+      "summary": "Frontier AI is \"a question of national security, also a question of democratic power\" - but do new pledges go far enough?",
+      "evidenceLink": "",
+      "score": 42.271356924603175,
+      "core": "ITPro 报道英国 AI 部长承诺加强对前沿 AI 风险的防护，并将其同时定义为国家安全与民主权力问题。",
+      "why": "这篇提供政策侧风险语言，适合产品团队理解监管者关注什么；但它是承诺与讨论，不应当作已落地规则或工程方案。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-13T16:20:40.611Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "Code scanning AI Scan metrics in security overview",
+      "link": "https://github.blog/changelog/2026-10-13-code-scanning-ai-scan-metrics-in-security-overview",
+      "publishedAt": "2026-10-13T12:03:17.000Z",
+      "author": "Allison",
+      "summary": "Organization and enterprise administrators can now observe the impact of AI Scan for pull requests in security overview. New metrics show how many AI Scan findings were generated, resolved, the… The post Code scanning AI Scan metrics in security overview appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 41.304690257936514,
+      "core": "GitHub 在组织与企业安全总览中加入 AI Scan 指标，可查看 pull request 扫描发现的数量及其解决情况。",
+      "why": "这项更新把 AI 安全扫描从单次提示变成可运营指标，适合观察管理员如何衡量覆盖、修复闭环与功能实际价值。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-13T16:20:40.611Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
