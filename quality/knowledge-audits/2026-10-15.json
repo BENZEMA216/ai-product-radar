@@ -1,0 +1,95 @@
+{
+  "generatedAt": "2026-10-14T16:24:16.144Z",
+  "report": "2026-10-15.md",
+  "health": "quality/knowledge-source-health/2026-10-15.json",
+  "candidates": "quality/knowledge-candidates/2026-10-15.json",
+  "site": "docs/index.html",
+  "ok": true,
+  "date": "2026-10-15",
+  "rows": 20,
+  "blogCount": 20,
+  "paperCount": 0,
+  "blogAccessVerifiedCount": 20,
+  "topConferencePaperCount": 0,
+  "sourceCount": 92,
+  "candidatePool": {
+    "historicalLinkCount": 1495,
+    "blogFetchedCount": 324,
+    "blogAccessCheckedCount": 47,
+    "blogAccessVerifiedCount": 40,
+    "blogAccessRejectedCount": 7,
+    "blogAccessRejected": [
+      {
+        "sourceId": "openai_news",
+        "title": "How Third Moment Research runs 10,000 agents for 36+ hours",
+        "link": "https://openai.com/index/third-moment-research",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "The EU’s next chapter in AI is agentic",
+        "link": "https://openai.com/index/the-eus-next-chapter-in-ai-is-agentic",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "Are you a Codex Original?",
+        "link": "https://openai.com/form/codex-originals",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "The grief, loneliness, and burnout sweeping through the tech industry right now | Molly Graham",
+        "link": "https://www.lennysnewsletter.com/p/the-grief-loneliness-and-burnout",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "🧠 Community Wisdom: AI doomerism, speeding up discovery in a big org, verifying engineering answers as a new PM, where analytics adds the most value, and more",
+        "link": "https://www.lennysnewsletter.com/p/community-wisdom-ai-doomerism-speeding",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Why has Shopify dropped React Native?",
+        "link": "https://newsletter.pragmaticengineer.com/p/shopify-native-mobile",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: Firebase’s global outage & poor response",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-firebases-global-outage",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      }
+    ],
+    "blogCanonicalRedirectHistoricalDedupCount": 3,
+    "paperFetchedCount": 0,
+    "paperTopConferenceVerifiedCount": 0,
+    "blogAfterHistoricalDedupCount": 37,
+    "paperAfterHistoricalDedupCount": 0,
+    "eligibleAfterHistoricalDedupCount": 37,
+    "maxPerBlogSource": 2,
+    "selectedBlogSourceCounts": {
+      "anthropic": 1,
+      "anthropic_news_institute": 1,
+      "arize_ai_engineering": 1,
+      "aws_machine_learning": 2,
+      "fiddler_ai_evaluation": 1,
+      "github_copilot_changelog": 1,
+      "gitlab_ai_engineering": 1,
+      "google_cloud_ai": 1,
+      "hcker_news_ai_blogs": 2,
+      "ibm_research_blog": 1,
+      "langchain_engineering": 2,
+      "lennys_newsletter": 1,
+      "meta_engineering": 1,
+      "n8n_ai_engineering": 1,
+      "nvidia_developer": 1,
+      "red_hat_ai_engineering": 1,
+      "techradar_pro_ai": 1
+    },
+    "sourceCapRelaxed": false,
+    "shortfallReason": "顶会元数据核验后论文仅 0 篇，空缺优先用已验证可访问的 Blog 补位，不用普通 arXiv 论文凑数；未用旧文或低质量内容补位。"
+  },
+  "failures": []
+}

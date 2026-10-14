@@ -1,0 +1,413 @@
+{
+  "generatedAt": "2026-10-14T16:13:59.308Z",
+  "date": "2026-10-15",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "Scaling Git for the agentic software factory",
+      "link": "https://about.gitlab.com/blog/scaling-git-for-the-agentic-software-factory",
+      "publishedAt": "2026-10-13T00:00:00.000Z",
+      "author": "Bill Staples https://about.gitlab.com/blog/authors/bill-staples/",
+      "summary": "AI agents are fundamentally changing the economics of software development. As the cost of producing code falls, the volume of changes moving through the software factory is accelerating beyond what infrastructure designed for human developers was built to handle. GitLab anticipated this shift and began developing next-generation source code management (SCM) to support thousands of concurrent agents working against large repositories. In June, we announced next-gen SCM at GitLab Transcend, joined on stage by Nick G. from Anthropic's source control team. We've continued collaborating on the technical challenges of agent-scale development, and in August we shared more of our architecture and early performance results. This week, Anthropic provided a compelling demonstration of why this work is so important. As daily merges to its monorepo grew from approximately 2,500 in May to more than 30,000 in September, its engineers built Scion, a specialized source control system designed for their environment. Anthropic's experience reinforces the architectural direction we've been pursuing. Scion is purpose-built for enormous monorepos where nearly all clients are agents that are always online. Anthropic acknowledges that its approach isn't a general-purpose replacement for Git and requires its own code review, search, and CI infrastructure. GitLab is building for the broader enterprise market: delivering agent-scale performance while preserving Git compatibility, infrastructure choice, and integration with the software development lifecycle. \"Scaling our monorepo for agentic development has changed how we think about Git server architecture. We see room to expand what Git servers can do for these workloads without departing from the overall Git model.\" — Nick G., Source Control, Anthropic Built on Git. Designed for agents. Traditional Git workflows require clients to download substantial repository data, even when an agent needs only a small portion. A single agent invocation can involve 5–10 GB of data transfer and more than 30 seconds of setup, just to answer one question. Multiply that overhead across thousands of agents and source control becomes a bottleneck. Most enterprises can't move source control onto new infrastructure just to scale it. Next-gen SCM preserves the Git protocol while modernizing the architecture underneath. Stateless compute scales horizontally against shared object storage, while agent-native interfaces let agents request the files and history they need without repeatedly cloning entire repositories. In early internal tests, workloads completed up to 50x faster, used up to 2x fewer tokens, and generated up to 1,000x less network traffic compared with conventional workflows. These are peak improvements under specific test conditions, and we're continuing to validate performance under sustained, concurrent load. The same architecture is designed to run on GitLab.com and on S3-compatible storage that customers control, including in air-gapped data centers. Repository data stays within the customer's infrastructure, preserving data sovereignty and existing investments while delivering the scalability agentic development demands. For a closer look at the architecture and what we're building, watch Mark and Kranthi's latest next-gen SCM update: Source control is only the first bottleneck Speeding up source control alone moves the bottleneck downstream. An agent that writes code in seconds creates little value if the resulting changes spend hours waiting for validation, security review, or deployment. Traditional merge queues and CI workflows face growing pressure when agents generate changes faster than validation can complete. We're seeing this pressure across GitLab.com. Over the past year, customers created 40% more CI/CD pipelines, while code pushes increased 50%. Agent-scale CI will need to validate more changes with less compute per change while preserving evidence of what was tested and verified. This is why next-gen SCM is part of GitLab's broader vision for a governed software factory . As agents accelerate software production, source control, context, orchestration, CI, security, and governance must evolve together. We're designing next-gen SCM to let thousands of agents work in parallel in isolated sessions, where unsuccessful experiments can be discarded without disrupting shared code. Successful changes can flow into GitLab's existing merge requests, pipelines, security checks, and governance controls on their path to production. GitLab Orbit is being developed to provide a context graph of the entire software lifecycle, while GitLab Duo Agent Platform orchestrates agent work across stages. We're also advancing capabilities to make agents accountable for their work, including attribution and authorization of agent actions, preserving the instructions and decisions behind code changes, and giving reviewers the context needed to focus human judgment where it matters. The goal is to reduce the time and total cost of moving software from intent to production, even as the number of agents and changes grows dramatically. We believe a governed software factory offers the best economics for agentic development: more software delivered at lower cost per change, with the security and control enterprises require. Advancing Git through open collaboration Git's open ecosystem has been foundational to modern software development, and we believe it will remain essential in the agentic era. GitLab has long been an active contributor to Git, and we'll continue working with the community to advance the standard that millions of developers and tools depend on. Our next-gen SCM architecture builds on that foundation, combining Git compatibility with a redesigned backend and agent-native interfaces designed to deliver the performance and scalability these new workloads demand. This approach preserves the investments customers have made in Git while allowing GitLab to innovate rapidly across the broader software lifecycle. Our differentiation is the governed software factory: bringing source control, context, orchestration, security, and governance together on one platform. What's next Next-gen SCM is in private beta, and we're working with customers to validate performance against their own repositories and workloads. As agents dramatically increase software production, the entire software factory must operate at machine scale. GitLab is building that foundation. Request early access to next-gen SCM and evaluate it against your own repositories. This blog post contains \"forward-looking statements\" within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934. Although we believe that the expectations reflected in these statements are reasonable, they are subject to known and unknown risks, uncertainties, assumptions and other factors that may cause actual results or outcomes to differ materially. Further information on these risks and other factors is included under the caption \"Risk Factors\" in our filings with the SEC. We do not undertake any obligation to update or revise these statements after the date of this blog post, except as required by law.",
+      "evidenceLink": "",
+      "score": 106.1262042063492,
+      "core": "AI agents are fundamentally changing the economics of software development. As the cost of producing code falls, the volume of changes moving through the software factory is accelerating beyond what infrastructure designed for human developers was built to handle. GitLab anticipated this shift and began developing next-generation source code management (SCM) to support thousands of concurrent agents working against …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-14T16:13:59.308Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Gemini 4 Argon for Robotics",
+      "link": "https://developers.googleblog.com/gemini-4-argon-for-robotics",
+      "publishedAt": "2026-10-13T16:55:47.000Z",
+      "author": "xnx https://news.ycombinator.com/user?id=xnx",
+      "summary": "Discover Gemini 4 Argon for robotics: leading the ERQA benchmark with physical reasoning, zero-shot control, Real2Sim, and agentic workflows.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50074869",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 226,
+        "comments": 53
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-14T16:13:59.308Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 85.36372021830996,
+      "core": "Discover Gemini 4 Argon for robotics: leading the ERQA benchmark with physical reasoning, zero-shot control, Real2Sim, and agentic workflows.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Predictable AI spend in BigQuery: Introducing cost management for generative AI functions",
+      "link": "https://cloud.google.com/blog/products/data-analytics/using-bigquerys-generative-ai-cost-management-features",
+      "publishedAt": "2026-10-14T16:00:00.000Z",
+      "author": "Tushar Jaiswal Software Engineer",
+      "summary": "The generative AI functions in BigQuery ( AI.GENERATE , AI.IF , AI.CLASSIFY , AI.SCORE , and more) bring large language models (LLMs) directly into your SQL, so a single query can classify millions of support tickets or score each product review for sentiment. However, because these functions are billed by the token, scaling them across massive datasets highlights the importance of managing your budget proactively. We recently announced the general availability (GA) of token-based cost management for BigQuery generative AI functions : daily quotas that let administrators set self-serve guardrails on AI token consumption, so teams can innovate while staying within your budget. In this blog, we provide an overview of cost management for BigQuery generative AI functions, walk through a few practical examples, and share resources to help you get started. Let’s jump in. Quotas for managing costs Four daily quotas, managed through the Google Cloud Identity and Access Management (IAM) quota system, provide controls at the project level and the per-user level. Per-user limits apply to each user within a project, not across your organization. Quota name Metric Scope Default value AI input tokens per day Input tokens used by the LLM Per day, per project 200 billion AI input tokens per day per user Input tokens used by the LLM Per day, per project, per user 150 billion AI output tokens per day Output and thinking tokens used by the LLM Per day, per project, per project 20 billion AI output tokens per day per user Output and thinking tokens used by the LLM Per day, per project, per user 15 billion Key details: The quotas are global. Usage is summed across all regions, so costs can't pile up unnoticed in a region you weren't watching. Output quotas include \"thinking\" tokens. Reasoning tokens count toward your output quota, just as they count toward your Gemini platform bill. Which functions are covered? The quotas apply to these BigQuery functions that perform LLM-backed generation: AI.GENERATE AI.GENERATE_TABLE AI.GENERATE_TEXT (and its alias ML.GENERATE_TEXT ) AI.CLASSIFY AI.IF AI.SCORE AI.AGG What's not covered: Embedding functions such as AI.GENERATE_EMBEDDING (also available as ML.GENERATE_EMBEDDING ) and AI.EMBED are not subject to these quotas, because they run on different, substantially cheaper models. Managing your quotas Administrators can view and adjust the quotas directly in the Google Cloud console as workloads change, with no support case required. Navigate to IAM &amp; Admin → Quotas &amp; System Limits . Filter by service and select BigQuery API . Sort by the Name column to bring the four AI quotas to the top. Locating the gen AI token quotas in IAM &amp; Admin → Quotas &amp; System Limits. 4. Find the quota, for example AI input tokens per day . 5. Open the three-dot menu and choose Edit quota . From there: To tighten cost control, lower a quota. This takes effect immediately with no approval needed. To support higher usage, request an increase from the same page. Many requests are auto-approved; larger increases may go through a quick review. Editing a gen AI token quota in IAM &amp; Admin → Quotas &amp; System Limits. You'll need the right permissions. You need one of: Owner , Editor, Quota Administrator ( roles/servicemanagement.quotaAdmin ), or Service Usage Admin ( roles/serviceusage.serviceUsageAdmin ). Prefer automation? You can also manage these quotas programmatically through the Cloud Quotas API , the gcloud CLI, and Terraform to apply consistent guardrails across projects. Monitoring usage Beyond setting limits, the Quotas &amp; System Limits page displays your historical token consumption so you can quickly detect spikes and right-size your budgets. Use these trends to see how new generative AI workloads and data pipelines affect your overall token usage. Daily project-level token usage for a gen AI token quota in IAM &amp; Admin → Quotas &amp; System Limits. Longer-term usage graph with selectable 7-day, 14-day, 30-day, and custom ranges. For a step-by-step walkthrough, see the BigQuery documentation on controlling costs with token quotas . Token quotas vs. billing spend caps Token quotas aren't the only cost guardrail in Google Cloud. Token quotas (this feature) are preventive and AI-specific . BigQuery tracks token usage during query execution and stops work close to the limit, with separate limits per project and per user. Cloud Billing spend caps operate on dollars at the project and service level and can automatically block usage when a threshold is reached. They're a broad, financial backstop rather than a precise usage control, and because enforcement is not instant, some overages are incurred. Use token quotas as your first line of defense for AI spend, and a spend cap as a project-wide safety net. How enforcement works Quotas are enforced by stopping work rather than letting a query run past your limit. A query is rejected up front with a QuotaExceeded error only if a quota it needs is already exhausted. Otherwise, it starts, and if a quota runs out mid-query, BigQuery stops sending new LLM calls: Functions that support max_error_ratio (such as AI.IF ) return partial results if unprocessed rows stay within the ratio, and otherwise fail. General-purpose functions (such as AI.GENERATE ) still succeed. Skipped rows have no generated value, and their status field contains the quota-exceeded error. For details, see quota enforcement behavior in the documentation. Sizing your input data: AI.COUNT_TOKENS To choose quota values, it helps to know how much text your workloads send to a model. The AI.COUNT_TOKENS function helps with this. AI.COUNT_TOKENS returns the number of tokens a model's tokenizer produces for a text string, without making a billable generation call. Run it over a column to measure your input data: code_block &#x27;gemini-3.1-flash-lite&#x27;).result) AS total_input_tokens\\r\\nFROM\\r\\n `my_project.my_dataset.product_reviews`;\"), (&#x27;language&#x27;, &#x27;&#x27;), (&#x27;caption&#x27;, )])]> The count is a lower bound on input tokens. It doesn't include output or thinking tokens, the instructions each AI function adds around your input, or non-text inputs such as images. Use it to: Gauge the input side of a workload before you launch it. Right-size your quotas together with a small sample run that measures actual input and output usage. Translate tokens into dollars using the published Gemini platform pricing for your model. From tokens to budget: a worked example Suppose you want to keep a project's daily AI spend around $100 with the Gemini 3.1 Flash-Lite model. As of today's published pricing (BigQuery processes in batch which provides a 50% discount): Input tokens: $0.125 per 1 million tokens Output tokens (response + reasoning): $0.75 per 1 million tokens If a small sample run shows an average 100:1 input-to-output token ratio , you can solve for a daily budget: code_block )])]> Solving gives about 754 million input tokens and 7.54 million output tokens per day. Set AI input tokens per day and AI output tokens per day to these values to hold the project near $100/day. If a project uses models with different prices, budget per model or blend the rates. Best practices for managing AI cost Start with per-user quotas. They stop one user or runaway experiment from draining the project's budget. Measure before you scale. Use AI.COUNT_TOKENS to size your input, then check a small sample run in the usage chart before setting limits. Mind the output side. Output tokens cost more. Where a function accepts max_output_tokens , set it to bound generation length. Monitor and iterate. Adjust limits as real usage and budgets change. Get started Token-based cost management is available now. To begin: Open IAM &amp; Admin → Quotas &amp; System Limits in the Google Cloud Console and filter by BigQuery API . Review the four AI-related token quotas and set limits that match your budget. Use AI.COUNT_TOKENS to size your input data. For the full details, see the documentation on controlling generative AI costs . With token-based guardrails in place, your teams can use generative AI in BigQuery with the cost predictability your organization needs.",
+      "evidenceLink": "",
+      "score": 76.98334706349206,
+      "core": "The generative AI functions in BigQuery ( AI.GENERATE , AI.IF , AI.CLASSIFY , AI.SCORE , and more) bring large language models (LLMs) directly into your SQL, so a single query can classify millions of support tickets or score each product review for sentiment. However, because these functions are billed by the token, scaling them across massive datasets highlights the importance of managing your budget proactively. …",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-14T16:13:59.308Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "Gemini 4 Argon in GitHub Copilot",
+      "link": "https://github.blog/changelog/2026-10-13-gemini-4-argon-in-github-copilot",
+      "publishedAt": "2026-10-13T18:39:56.000Z",
+      "author": "Allison",
+      "summary": "Gemini 4 Argon, Google’s newest frontier model, is now generally available in GitHub Copilot. It is designed for complex coding, agentic, and reasoning tasks. In early testing, Gemini 4 Argon… The post Gemini 4 Argon in GitHub Copilot appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 65.95945817460317,
+      "core": "Gemini 4 Argon, Google’s newest frontier model, is now generally available in GitHub Copilot. It is designed for complex coding, agentic, and reasoning tasks. In early testing, Gemini 4 Argon… The post Gemini 4 Argon in GitHub Copilot appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-14T16:13:59.308Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "red_hat_ai_engineering",
+      "source": "Red Hat Developer · AI",
+      "title": "vLLM vs. SGLang: Choosing the right inference engine for your workload",
+      "link": "https://developers.redhat.com/articles/2026/10/14/vllm-vs-sglang-choosing-the-right-inference-engine-for-your-workload",
+      "publishedAt": "2026-10-14T13:01:50.000Z",
+      "author": "Cedric Clyburn",
+      "summary": "Open models have gone from \"worth testing\" to powering the majority of AI applications and agents. On Vercel's AI Gateway, open weight models processed almost 80% of production tokens in September (Figure 1), up from less than 10% in December 2025. OpenRouter , a popular gateway for developers using LLMs, shows a similar climb in weekly token usage. The post vLLM vs. SGLang: Choosing the right inference engine for your workload appeared first on Red Hat Developer .",
+      "evidenceLink": "",
+      "score": 65.37679944444444,
+      "core": "Open models have gone from \"worth testing\" to powering the majority of AI applications and agents. On Vercel's AI Gateway, open weight models processed almost 80% of production tokens in September (Figure 1), up from less than 10% in December 2025. OpenRouter , a popular gateway for developers using LLMs, shows a similar climb in weekly token usage. The post vLLM vs. SGLang: Choosing the right inference engine for y…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-14T16:13:59.308Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How Tamnoon built AI-powered cloud security remediation with Amazon Bedrock",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-tamnoon-built-ai-powered-cloud-security-remediation-with-amazon-bedrock",
+      "publishedAt": "2026-10-14T13:53:33.000Z",
+      "author": "Ishara Premadasa",
+      "summary": "Learn how Tamnoon built Tami, an agentic cloud remediation orchestrator on Amazon Bedrock that autonomously investigates and safely remediates cloud security findings from CNAPP and cloud-native sources. The approach drove a 90%+ reduction in critical cloud exposure in 90 days with zero production issues.",
+      "evidenceLink": "",
+      "score": 63.532811349206355,
+      "core": "Learn how Tamnoon built Tami, an agentic cloud remediation orchestrator on Amazon Bedrock that autonomously investigates and safely remediates cloud security findings from CNAPP and cloud-native sources. The approach drove a 90%+ reduction in critical cloud exposure in 90 days with zero production issues.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-14T16:13:59.308Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "ibm_research_blog",
+      "source": "IBM Research Blog",
+      "title": "Scaling AI-driven chip design with open agent factories",
+      "link": "https://research.ibm.com/blog/open-agent-factories-and-distributed-inference-for-chip-design",
+      "publishedAt": "2026-10-13T12:00:00.000Z",
+      "author": "",
+      "summary": "Open models and llm-d enabled IBM Research to explore quantum error correction hardware at 11.5× lower inference cost than an all-proprietary configuration.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-14T16:13:59.308Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 62.85001373015873,
+      "core": "Open models and llm-d enabled IBM Research to explore quantum error correction hardware at 11.5× lower inference cost than an all-proprietary configuration.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "How Orange Business Built Live Intelligence with LangChain and LangSmith",
+      "link": "https://www.langchain.com/blog/how-orange-business-built-live-intelligence-on-langchain-and-langsmith",
+      "publishedAt": "2026-10-13T19:56:07.000Z",
+      "author": "",
+      "summary": "Learn how Orange Business used LangChain and LangSmith to build Live Intelligence, a governed AI platform for agents, evals, observability, and production scale.",
+      "evidenceLink": "",
+      "score": 62.44459706349207,
+      "core": "Learn how Orange Business used LangChain and LangSmith to build Live Intelligence, a governed AI platform for agents, evals, observability, and production scale.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-14T16:13:59.308Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic_news_institute",
+      "source": "Anthropic News & Institute",
+      "title": "Singapore office and government MOU | Anthropic",
+      "link": "https://www.anthropic.com/news/singapore-office-opening",
+      "publishedAt": "2026-10-14T08:30:00.000Z",
+      "author": "",
+      "summary": "Anthropic opens its fifth Asia-Pacific office in Singapore and signs an MOU with the government on AI safety, evaluation, and responsible adoption.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-14T16:13:59.308Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 62.26429944444445,
+      "core": "Anthropic opens its fifth Asia-Pacific office in Singapore and signs an MOU with the government on AI safety, evaluation, and responsible adoption.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Generate presentations with Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/generate-presentations-with-amazon-bedrock-agentcore",
+      "publishedAt": "2026-10-14T13:58:43.000Z",
+      "author": "Ian Lunsford",
+      "summary": "This post walks you through building an AI agent system with Amazon Bedrock AgentCore that automates PowerPoint presentation creation from enterprise documents. A supervisor agent, Retrieval Augmented Generation, and Amazon Bedrock Guardrails generate grounded presentations in under 90 seconds.",
+      "evidenceLink": "",
+      "score": 61.47785103174603,
+      "core": "This post walks you through building an AI agent system with Amazon Bedrock AgentCore that automates PowerPoint presentation creation from enterprise documents. A supervisor agent, Retrieval Augmented Generation, and Amazon Bedrock Guardrails generate grounded presentations in under 90 seconds.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-14T16:13:59.308Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Agent-first design: Bringing UX to the user",
+      "link": "https://www.qawolf.com/blog/agent-first-design-bringing-ux-to-the-user",
+      "publishedAt": "2026-10-12T17:55:42.000Z",
+      "author": "jonperl https://news.ycombinator.com/user?id=jonperl",
+      "summary": "Building for MCP pushed QA Wolf to replace app navigation with focused, task-oriented views. See how designing for coding agents simplified the whole product.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50060187",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 16,
+        "comments": 1
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-14T16:13:59.308Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 60.324596106155845,
+      "core": "Building for MCP pushed QA Wolf to replace app navigation with focused, task-oriented views. See how designing for coding agents simplified the whole product.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "n8n_ai_engineering",
+      "source": "n8n Blog",
+      "title": "Build n8n workflows with Gemini 4 Argon: MCP, the Assistant, and Agents",
+      "link": "https://blog.n8n.io/build-n8n-workflows-with-gemini-4-argon-mcp-the-assistant-and-agents",
+      "publishedAt": "2026-10-13T16:09:03.000Z",
+      "author": "Liam Hampton",
+      "summary": "Gemini 4 Argon just dropped, and n8n is one of the first companies to use and integrate the model. Check out how you can use it with your existing n8n workflows and how to build new ones. Here are the benchmarks Google published: Benchmarks reported by Google. Source: Gemini 4",
+      "evidenceLink": "",
+      "score": 59.81872404761905,
+      "core": "Gemini 4 Argon just dropped, and n8n is one of the first companies to use and integrate the model. Check out how you can use it with your existing n8n workflows and how to build new ones. Here are the benchmarks Google published: Benchmarks reported by Google. Source: Gemini 4",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-14T16:13:59.308Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "Meta’s new ‘Muse Wonder’ model: good for AI agents, bad for design",
+      "link": "https://www.lennysnewsletter.com/p/metas-new-muse-wonder-model-good",
+      "publishedAt": "2026-10-14T12:04:05.000Z",
+      "author": "Claire Vo",
+      "summary": "Watch now (24 mins) | 🎙️Meta launched Muse Wonder with claims of frontier agentic performance, so I ran it headlessly through Claude Code against nearly 20 tasks to find out if any of it is true",
+      "evidenceLink": "",
+      "score": 50.785827222222224,
+      "core": "Watch now (24 mins) | 🎙️Meta launched Muse Wonder with claims of frontier agentic performance, so I ran it headlessly through Claude Code against nearly 20 tasks to find out if any of it is true",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-14T16:13:59.308Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Optimizing Agent Reliability and Tool Calling Efficiency for Chip Design Using NVIDIA NeMo Gym",
+      "link": "https://developer.nvidia.com/blog/optimizing-agent-reliability-and-tool-calling-efficiency-for-chip-design-using-nvidia-nemo-gym",
+      "publishedAt": "2026-10-14T16:10:45.000Z",
+      "author": "Tanya Lenz",
+      "summary": "AI agents offer remarkable productivity gains in complex chip design workflows, but their tendency to generate plausible yet incorrect artifacts makes...",
+      "evidenceLink": "",
+      "score": 49.84614468253968,
+      "core": "AI agents offer remarkable productivity gains in complex chip design workflows, but their tendency to generate plausible yet incorrect artifacts makes...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-14T16:13:59.308Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Open SWE: An Open-Source Framework for Internal Coding Agents",
+      "link": "https://www.langchain.com/blog/open-swe-an-open-source-framework-for-internal-coding-agents",
+      "publishedAt": "2026-10-13T19:56:07.000Z",
+      "author": "",
+      "summary": "Built on Deep Agents and LangGraph, Open SWE provides the core architectural components for internal coding agents.",
+      "evidenceLink": "",
+      "score": 49.18904150793651,
+      "core": "Built on Deep Agents and LangGraph, Open SWE provides the core architectural components for internal coding agents.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-14T16:13:59.308Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "fiddler_ai_evaluation",
+      "source": "Fiddler AI Blog",
+      "title": "Introducing Dynamic Model Escalation: More Accurate AI Evals, No Trade-Offs To Make",
+      "link": "https://www.fiddler.ai/blog/dynamic-model-escalation-ai-evals",
+      "publishedAt": "2026-10-13T07:00:00.000Z",
+      "author": "",
+      "summary": "Fiddler Centor's Dynamic Model Escalation sends nuanced AI evaluation cases to a general-purpose model, without having to choose between eval coverage and cost increase.",
+      "evidenceLink": "",
+      "score": 48.5650930952381,
+      "core": "Fiddler Centor's Dynamic Model Escalation sends nuanced AI evaluation cases to a general-purpose model, without having to choose between eval coverage and cost increase.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-14T16:13:59.308Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Redesigning source control at Anthropic",
+      "link": "https://www.anthropic.com/engineering/redesigning-source-control",
+      "publishedAt": "2026-10-13T00:00:00.000Z",
+      "author": "",
+      "summary": "As our merges per day grew more than tenfold, source control became our biggest development bottleneck. Here, we share how we migrated to an in-house version control system in five months.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-14T16:13:59.308Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 45.17064865079365,
+      "core": "As our merges per day grew more than tenfold, source control became our biggest development bottleneck. Here, we share how we migrated to an in-house version control system in five months.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "meta_engineering",
+      "source": "Meta Engineering",
+      "title": "Meta’s Generative Ads Model (GEM): Scaling the Central Model and Compute Engine for Frontier Ads AI",
+      "link": "https://engineering.fb.com/2026/10/13/ml-applications/generative-ads-model-gem-scaling-frontier-ads-ai",
+      "publishedAt": "2026-10-13T16:01:00.000Z",
+      "author": "",
+      "summary": "Last year, we introduced GEM, the industry’s largest recommendation system (RecSys) foundation model. GEM established Meta’s first LLM-inspired paradigm for ads recommendation, driving major performance gains. Building on this foundation, our next goal is to further scale both compute and intelligence transfer with next-generation hardware, and expand this capability across Meta’s entire ads ecosystem. This [...] Read More... The post Meta’s Generative Ads Model (GEM): Scaling the Central Model and Compute Engine for Frontier Ads AI appeared first on Engineering at Meta .",
+      "evidenceLink": "",
+      "score": 44.481362936507935,
+      "core": "Last year, we introduced GEM, the industry’s largest recommendation system (RecSys) foundation model. GEM established Meta’s first LLM-inspired paradigm for ads recommendation, driving major performance gains. Building on this foundation, our next goal is to further scale both compute and intelligence transfer with next-generation hardware, and expand this capability across Meta’s entire ads ecosystem. This [...] Re…",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-14T16:13:59.308Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "Together AI integration: Evaluate open models and optimize evaluation costs in Arize AX",
+      "link": "https://arize.com/blog/together-ai-integration-arize-ax",
+      "publishedAt": "2026-10-12T18:27:10.000Z",
+      "author": "Chris Cooning",
+      "summary": "Evaluate open models with Together AI in Arize AX. Compare model performance, run LLM-as-a-Judge evaluations, and explore lower-cost alternatives. The post Together AI integration: Evaluate open models and optimize evaluation costs in Arize AX appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 44.241085158730165,
+      "core": "Evaluate open models with Together AI in Arize AX. Compare model performance, run LLM-as-a-Judge evaluations, and explore lower-cost alternatives. The post Together AI integration: Evaluate open models and optimize evaluation costs in Arize AX appeared first on Arize AI .",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-14T16:13:59.308Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Security flaws found in top open source AI gateway — LiteLLM vulnerabilties could affect millions of users",
+      "link": "https://www.techradar.com/pro/security/security-flaws-found-in-top-open-source-ai-gateway-litellm-vulnerabilties-could-affect-millions-of-users",
+      "publishedAt": "2026-10-14T15:05:00.000Z",
+      "author": "Sead Fadilpašić",
+      "summary": "A patch has been made available, so make sure to apply it before someone racks up a big AI bill.",
+      "evidenceLink": "",
+      "score": 41.4512042063492,
+      "core": "A patch has been made available, so make sure to apply it before someone racks up a big AI bill.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-14T16:13:59.308Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
