@@ -1,0 +1,293 @@
+{
+  "date": "2026-10-16",
+  "generatedAt": "2026-10-15T16:08:34.356Z",
+  "reportPath": "reports/2026-10-16-0008-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 88,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 48,
+      "keptCount": 23,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-14；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 48 条，AI 相关候选 23 条；实际 fallback：hunted_space。；历史去重后最终发布 23 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 6,
+      "keptCount": 6,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 24,
+      "keptCount": 15,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "fallback",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 24,
+      "keptCount": 24,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Tiden",
+      "productKey": "https://www.producthunt.com/products/tiden",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Tiden 把编码代理的意图核验单独做成产品层，值得观察它能否在执行前发现需求偏差，而不只是事后补救。"
+    },
+    {
+      "rank": 2,
+      "product": "Reason",
+      "productKey": "https://www.producthunt.com/products/dereference-the-100x-ide",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Reason 直接以成本效率定义编码代理差异化，关键是它能否用更少推理开销交付同等质量，而非只做价格口号。"
+    },
+    {
+      "rank": 3,
+      "product": "AxiomCode Graph, Reducing coding agent rework with formal methods",
+      "productKey": "https://github.com/axiomcodeai/axiomcodegraph",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AxiomCode Graph 用形式化方法减少编码代理返工，提供了把正确性约束前置到生成流程的产品思路。"
+    },
+    {
+      "rank": 4,
+      "product": "Exodus for Google Cloud Run",
+      "productKey": "https://www.producthunt.com/products/exodus-by-elim-io",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Exodus 把现有应用迁移到 Cloud Run 的复杂步骤交给编码代理，值得看部署改造能否被压缩成可控的一次性任务。"
+    },
+    {
+      "rank": 5,
+      "product": "GodHands",
+      "productKey": "https://www.ycombinator.com/launches/vn7-godhands-agents-that-learn-by-watching-your-best-people",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "GodHands 从团队真实操作中学习隐性流程，产品机会在于把未文档化的组织经验转成可复用代理能力。"
+    },
+    {
+      "rank": 6,
+      "product": "Gtree – Run several coding agents at once, see which one needs you",
+      "productKey": "https://gtree.dobbylab.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Gtree 面向多编码代理并行后的注意力调度问题，重点不是多开任务，而是能否准确提示人类该介入哪一个。"
+    },
+    {
+      "rank": 7,
+      "product": "daily.dev for agents",
+      "productKey": "https://www.producthunt.com/products/daily-dev",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "daily.dev for agents 把内容发现入口从人扩展到代理，值得观察代理消费信息时需要怎样的筛选、权限与反馈机制。"
+    },
+    {
+      "rank": 8,
+      "product": "Retriever AI",
+      "productKey": "https://www.producthunt.com/products/rtrvr-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Retriever AI 把找线索、外联和求职申请串成浏览器代理闭环，适合验证跨网站自动执行的成功率与风险控制。"
+    },
+    {
+      "rank": 9,
+      "product": "Praxis",
+      "productKey": "https://www.ycombinator.com/launches/vni-praxis-ai-agents-that-run-law-firm-operations-from-first-inquiry-to-paid-invoice",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Praxis 将律所运营覆盖到询盘、执行和收款，并保留律师逐步审批，体现高责任场景里代理与人类的清晰边界。"
+    },
+    {
+      "rank": 10,
+      "product": "Ghx – A caching proxy for GitHub CLI, built for AI agents",
+      "productKey": "https://brunoborges.github.io/ghx",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Ghx 用缓存代理降低 AI agent 调用 GitHub CLI 的成本与限流压力，值得看基础设施优化能否明显提升长任务稳定性。"
+    },
+    {
+      "rank": 11,
+      "product": "Acyclic",
+      "productKey": "https://www.producthunt.com/products/acyclic",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Acyclic 主打可快速启动的 agent swarm，判断价值要看并行协作是否带来真实吞吐提升，而不是增加编排复杂度。"
+    },
+    {
+      "rank": 12,
+      "product": "EditUI",
+      "productKey": "https://www.producthunt.com/products/editui",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "EditUI 把界面指点动作直接转成编码代理修改指令，提供了比文字描述更低摩擦的前端迭代入口。"
+    },
+    {
+      "rank": 13,
+      "product": "Octos, scheduled personal agents with cost caps and one-click export",
+      "productKey": "https://www.reddit.com/r/ai_agents/comments/1x6l8cx/openai_built_alwayson_personal_agents_we_spent_a",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Octos 同时给常驻个人代理加入定时、成本上限和一键导出，值得看它如何解决持续运行的预算与迁移控制。"
+    },
+    {
+      "rank": 14,
+      "product": "Face, a browser window over agents that keeps the plan in files",
+      "productKey": "https://face.kodel.com.br",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Face 用浏览器窗口承载代理、把计划保存在文件中，值得观察可见状态和可移植上下文能否降低黑箱感。"
+    },
+    {
+      "rank": 15,
+      "product": "KorrAI",
+      "productKey": "https://www.ycombinator.com/launches/vpq-trail-by-korrai-ai-agents-for-mining-risk",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "KorrAI 已把矿业风险代理部署到高后果签字场景，值得看现场证据、责任边界和工程师审批如何共同构成护城河。"
+    },
+    {
+      "rank": 16,
+      "product": "Elocuenti",
+      "productKey": "https://www.producthunt.com/products/elocuenti",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Elocuenti 把 WhatsApp 与 AI 助手变成销售渠道，适合观察 agentic commerce 如何处理商品理解、成交与人工接管。"
+    },
+    {
+      "rank": 17,
+      "product": "SupoClip",
+      "productKey": "https://www.producthunt.com/products/supoclip",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "SupoClip 把长视频切成短视频的流程开源，产品判断重点是选段和成片质量能否节省真实编辑时间。"
+    },
+    {
+      "rank": 18,
+      "product": "Stylebot 4 – restyle any website, by hand or with your coding agent",
+      "productKey": "https://stylebot.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Stylebot 4 让用户手动或交给编码代理重塑任意网站，值得看视觉指令与现有 CSS 编辑能力能否形成顺滑协作。"
+    },
+    {
+      "rank": 19,
+      "product": "Netlumi – Cloud and AI agent security with auto-remediation(Live demo)",
+      "productKey": "https://app.netlumi.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Netlumi 把云与 agent 安全检测连接到自动修复，关键是修复动作能否可解释、可回滚并经得住真实环境验证。"
+    },
+    {
+      "rank": 20,
+      "product": "Hotel Lobby AI – 9:16 vertical COLORS show rap videos with Wan 3.0",
+      "productKey": "https://hotellobbyvideoai.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Hotel Lobby AI 把 Wan 3.0 用于固定 9:16 说唱视频风格，值得看垂直模板能否带来稳定产出而非一次性演示。"
+    }
+  ]
+}

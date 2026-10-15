@@ -1,0 +1,415 @@
+{
+  "generatedAt": "2026-10-15T16:14:03.699Z",
+  "date": "2026-10-16",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "What the Gemini agent means for startups",
+      "link": "https://cloud.google.com/blog/topics/startups/what-the-gemini-agent-means-for-startups",
+      "publishedAt": "2026-10-15T16:00:00.000Z",
+      "author": "Darren Mowry VP, Global Startups & Investor Ecosystem, Google",
+      "summary": "Small teams, short runway, and constant pressure to ship faster — it’s the reality we see every day among the founders we work with at Google for Startups. When you are building a company from the ground up, every hour spent on operational overhead or infrastructure plumbing is an hour taken away from your core product. Last week at Gemini at Work 2026, we introduced the Gemini agent : a single, universal agent designed to work both as your personal assistant and as a dedicated member of your team. And this week, we made our new frontier model, Gemini 4 Argon , widely available — trained to maintain context across long, multi-step tasks. Here is a look at how the Gemini agent works, five practical takeaways for founders, and how startups are already using it to punch above their weight. What is the Gemini agent? Instead of prompting separate chatbots for writing, coding, and data analysis, the Gemini agent is a single agent that takes high-level objectives and returns finished work. Three principles define it: Unified: A single agent can now handle knowledge work, data analysis, creative asset generation, and writing and running code. For complex jobs, it dynamically spins up temporary, job-specific sub-agents and coordinates their work in parallel or in sequence. Omnipresent access: It works across the surfaces you use every day — on the web, command line, desktop, and mobile, as well as natively inside Gmail, Docs, Sheets, Slides, Drive, Chat, and Calendar. Persistent: It runs in the cloud with continuous memory across four dimensions (session, semantic, procedural, and episodic). It onboards itself like a new hire — learning your team, tools, and business context so you don't have to re-explain your startup with every prompt, and keeping multi-day tasks moving even after you close your laptop. For founders wearing five hats at once, Gemini works like a digital chief of staff that's already briefed on your calendar, projects and documents. Ask it to research market trends, build a financial model in Sheets and turn both into a pitch deck, without repeating what the project or goals are at each step. It also works ahead of you. When an investor emails asking for your latest product update as a deck, Gemini spots the request and offers to handle it; one click and it comes back with completed work, ready for sharing or review. Five takeaways for startups 1. Coworker agents and skills help you scale your output Beyond personal assistance, you can create persistent coworker agents that work with your entire team. Each agent comes with its own Workspace account, email address, Drive storage, and directory presence. You can define a specific role — such as a launch coordinator, QA triager, or financial analyst — and your teammates can add agents to a Chat space or @mention it in a Google Doc comment to delegate work. You can also equip agents with reusable skills — or let Gemini write skills for itself as it learns your processes. For example, with operational reporting skills connected to BigQuery and the Knowledge Catalog, anyone on your team can ask a plain-language question to build and save a live report. Once saved, those reports run on demand without incurring additional token costs. Gemini also offers pre-built specializations, starting with legal and financial services. What it means for startups: Coworker agents can immediately increase the capacity of your teams, and skills can standardize repeatable processes like investor and operational reporting without burning tokens on every run. 2. Open and third-party model choice Gemini is the agent, and the model underneath is your choice. As startup architectures mature, sending every task to a single frontier model quickly eats into gross margins. With the Gemini agent, you can dynamically route workloads across Gemini models, third-party models like Anthropic’s Claude, and lightweight open models like Gemma . What it means for startups: You get flexibility without lock-in. You can optimize your cost per task — using compact models for high-volume, deterministic jobs and frontier models for complex reasoning — and swap models as your product evolves without rebuilding your workflows. 3. Connected to your services and tools An agent is only as useful as the systems it can reach. In addition to Google Workspace, the Gemini agent connects directly to your engineering, data, and business stack, including partner solutions: Development and collaboration: Git, Slack, Jira and more Data and local files: BigQuery, Postgres, Snowflake, Databricks, and more alongside files on your desktop Custom tools via MCP: Any Model Context Protocol (MCP) server inside or outside your network so your engineers can build and share internal tools. What it means for startups: Instead of spending engineering cycles maintaining custom connectors, your team can plug the agent straight into your existing codebase, databases, and MCP tools so it can act on live data wherever it lives. 4. Built-in security and governance For B2B startups, the enterprise security audit is often where deals stall. Under the hood, every agent is assigned a cryptographic Agent Identity for clear audit trails, runs inside an isolated sandbox, and protected with built-in prompt injection defenses. External traffic is routed through Agent Gateway , allowing you to enforce governance policies. And managing coworker agents is as straightforward as managing users today, since they all have a Workspace account. What it means for startups: When an enterprise buyer’s CISO asks how your AI workflows handle data privacy, prompt injection, and access control, you have an enterprise-grade architecture ready — helping you clear procurement hurdles. 5. Protect your runway with real-time cost controls Autonomous agents that run sub-agents for hours or days can quickly run up a bill if a loop goes unchecked. You can now set hard, real-time spend caps directly in the Cloud Billing Console; if a cap is reached, the project's agent automatically pauses so a bug never turns into a billing surprise. Underneath, Gemini runs on Google’s specialized AI infrastructure, including our inference-optimized TPU 8i, which delivers 80% better performance-per-dollar than the prior generation. What it means for startups: You and your developers can experiment with long-running, parallel agentic loops with a built-in financial safety net that protects your cash reserves and builds confidence with your backers. Founders already building Startups and AI-native innovators are already putting Gemini to work. Immersive storytelling platform Whenere used Dreamlands , an agentic 3D worldbuilding platform built on Gemini platform, to bring Pride and Prejudice to Fortnite — with Gemini generating textures for each new object in about 7 seconds for under 10 cents; one artist created nearly 250 custom assets in a single day and completed a historically accurate estate in under a week. They join application-building platform Lovable and fellow startups and innovators including OpenEvidence , Recursion , and Replit and more . Build with Google for Startups The agentic era gives lean teams the leverage to punch far above their weight — whether you’re deploying coworker agents to cover internal operations or building agentic workflows directly into your product. While these new Gemini agent capabilities are not publicly available yet, startups can contact our sales team to learn more and discuss how to get ready. In the meantime, you can explore the Google for Startups program to access credits, hands-on technical guidance, mentorship, global founder community programs and more.",
+      "evidenceLink": "",
+      "score": 100.98325994047619,
+      "core": "Small teams, short runway, and constant pressure to ship faster — it’s the reality we see every day among the founders we work with at Google for Startups. When you are building a company from the ground up, every hour spent on operational overhead or infrastructure plumbing is an hour taken away from your core product. Last week at Gemini at Work 2026, we introduced the Gemini agent : a single, universal agent desi…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-15T16:14:03.699Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Findings from the $1M Vercel Sandbox challenge",
+      "link": "https://vercel.com/blog/findings-from-the-1-million-dollar-vercel-sandbox-challenge",
+      "publishedAt": "2026-10-14T07:00:00.000Z",
+      "author": "Andy Riancho",
+      "summary": "In August, we launched the $1M hacker challenge for Vercel Sandbox , inviting security researchers to try and escape Vercel Sandbox. We also coordinated with cybersecurity experts Trail of Bits to review the source code and security architecture. Here is a summary of the challenge: 1,285 reports over two weeks $242,000 in bounties paid out One Linux kernel zeroday vulnerability uncovered No reports showed anyone accessing customer data in Vercel Sandbox. The most severe finding was the defect in the upstream Linux kernel. The kernel zero day The program's most important report arrived on day three. Paulos Yibelo (pwn.ai), a HackerOne researcher working from a standard sandbox with no special access, found a defect in the Linux kernel's networking stack. Paulos discovered that specially crafted packets sent from within the microVM enabled three different attacks: Leak host memory over the network Crash the host machine Execute code on the host Leaking host memory In the first attack, memory from the host, the machine your sandbox shares with other tenants, shows up in packets the guest sends over the internet. This can happen continuously, for as long as the guest keeps sending. This attack was demonstrated against Vercel production sandboxes. Crashing the host and executing code on the host The researcher also found that by sending specific packets, they could compromise the host. First, by sending two packets, the researcher crashed the host machine, shutting down every sandbox running on it. Second, using the same flaw, they were able to run commands with full administrator privileges on the host, breaking out of the sandbox’s isolation boundary. The packet-related crash and code execution attacks were demonstrated on the researcher’s own KVM and Firecracker machines matching Vercel Sandbox configuration. Responsibly disclosing the kernel vulnerability Almost every major cloud provider isolates customer workloads on this same layer of the Linux kernel, so any defect is shared-infrastructure risk. Immediately after being notified, we collaborated with the researcher to understand and mitigate the vulnerability, working with AWS and other industry partners to prioritize a fix, and ensuring that Vercel customers and other developers using the kernel were safe. The researcher also contacted the kernel maintainers and worked with them to create candidate patches. Fixes are under private review and CVEs are pending, so we are not publishing additional details until the patches are public. We are disclosing the existence of the vulnerability because it was separately disclosed in public. Our approach to pressure-testing Vercel Sandbox The HackerOne challenge made bounties available to any researcher, but we also extended our program to include internal evaluations and an independent investigation. Before launching the public bounty, we performed live security assessments internally with full source access and support from the engineers who created and maintain Vercel Sandbox. We also engaged Trail of Bits, bringing on two engineers to evaluate our security architecture. Not every finding came from the outside. Marcos Hernanz, a Vercel intern, found a cross-tenant data leak in the Linux device-mapper storage layer. This vulnerability let any sandbox read recycled disk blocks from previously deleted sandboxes. The white-box deep dive Trail of Bits spent four engineer-weeks inside our source code, with full access to the repositories and two enterprise test teams. They delivered 20 findings, and each was tested, confirmed, and referenced to the exact code. They also performed an architectural review and concluded that our virtualization boundary is sound. Each sandbox runs on its own Firecracker microVM with a dedicated guest kernel, and the device model is deliberately tiny. No guest shares a running kernel with the host, or with another tenant. On top of that foundation, they gave us three structural recommendations, which we implemented: Find and eliminate all trust in the guest. Our control plane accepted values returned by software running inside the microVM, and every one of those values is tenant input. Anything that crosses the boundary should be derived server-side or signed with a key the guest cannot reach. One policy, one decider. Egress enforcement was split across subsystems that each parsed the same network policy independently, and they did not always agree. We now use one canonicalization routine per data type, one component per decision, and revalidate connections when policy changes. Assume the next zero day. We strengthened the protections around each sandbox to limit the damage if an attacker exploits the virtualization software. We keep host kernels up to date, have disabled nested virtualization, and use Firecracker’s jailer to run each microVM process with restricted permissions and isolate it from the rest of the host. Vercel Sandbox findings We received 1,285 reports in two weeks. This volume is only possible because researchers now hunt at AI speed. Here is a breakdown of reports by category: 877 duplicates 319 not applicable 57 valid 32 informative In our report triage we have validated: 1 Critical finding 5 High findings 9 Medium findings 42 Low findings 32 Informative findings We have paid out $242,000 in bug bounties. The medium, Low, and Informative findings are small policy-boundary gaps, like a firewall rule that behaved differently than documented and a field that trusted the guest more than it should. The most severe finding was the Linux kernel zero day defect, and no reports showed anyone reading a customer’s files, secrets, or application data. We were most impressed with the heterogeneity of the reports. It was clear that researchers used different setups and have different obsessions. Some clearly know Linux namespaces and steered their agents straight at the kernel boundary. Others went after the network policies, and many went after areas we didn’t think to put on the menu. That variety is what you're funding with a public challenge. Here's one of the more interesting findings it produced. Cross-tenant disk snapshot restore (with limits) Filed on day one of the challenge, this report is our favorite example of why we run a public bug bounty, even after internal assessments and a white-box engagement. When you snapshot a sandbox, the control plane has to record where the snapshot data landed: {storage_url, size, checksum} . The flaw the researcher found was subtle: that answer came from software running inside the guest, and services running on the host trusted it. That is a trust-boundary violation. The guest is where our customers (and hackers) run untrusted code, so the host can never take its word as authoritative. The researcher combined a known, documented container-escape primitive with this trust flaw. They intercepted the snapshot response inside their own sandbox and rewrote it, swapping the storage objects of two snapshots belonging to two separate accounts they owned. That meant restoring \"your\" snapshot materialized the other account's entire filesystem. The researcher demonstrated that each account could read and modify the other’s files, verified the results using hashes, and preserved the test resources so we could independently reproduce the findings. The limits of this attack matter. Aiming the swap at a specific victim required knowing that victim's internal snapshot storage key, a random 96-bit identifier the platform generates per snapshot and never exposes through the API. The only place that key appears is inside the victim's own sandbox. The researcher owned both accounts, which is what made the proof possible; there was no demonstrated path for a stranger to target another tenant. We still treated it as a priority fix, because a boundary that depends on a secret staying secret is not a boundary. Trail of Bits independently flagged the same root cause in their assessment, which told us the finding was real, important, and discoverable from two completely different angles. The fix shipped within a week, and the control plane now binds every snapshot object to the project that created it and rejects anything else. Snapshot creation moved out of the guest-reachable environment into a host-side service, and storage paths are project-scoped with strictly validated URLs. Thank you to the research community We would like to thank every researcher who filed a report, whether their finding was a zero day or a duplicate. Every technique discovered in the challenge informs how we protect the workloads running on Vercel Sandbox. Thank you also to Trail of Bits for your comprehensive internal investigation and guidance. Read the original challenge announcement and learn more about Vercel Sandbox in the documentation . Read more",
+      "evidenceLink": "",
+      "score": 100.62611708333333,
+      "core": "In August, we launched the $1M hacker challenge for Vercel Sandbox , inviting security researchers to try and escape Vercel Sandbox. We also coordinated with cybersecurity experts Trail of Bits to review the source code and security architecture. Here is a summary of the challenge: 1,285 reports over two weeks $242,000 in bounties paid out One Linux kernel zeroday vulnerability uncovered No reports showed anyone acc…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-15T16:14:03.699Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "Gemini 4 Argon on GitLab: Built for long-running agentic work",
+      "link": "https://about.gitlab.com/blog/gitlab-google-gemini-argon",
+      "publishedAt": "2026-10-14T00:00:00.000Z",
+      "author": "Brittany Lutz https://about.gitlab.com/blog/authors/brittany-lutz/",
+      "summary": "As AI models take on longer, multi-step work, the challenge is putting that power to use across the software lifecycle without adding risk or cost. Teams need to be able to move faster, within enterprise controls and guardrails. Google's Gemini 4 Argon, now available on GitLab Duo Agent Platform , was built for that kind of work. With Argon, your team can delegate long, multi-step actions and receive outputs for review. In GitLab's internal evaluation, Gemini 4 Argon completed 93.3% of GitLab’s software engineering benchmark tasks. Reliable execution for long-horizon tasks Work across the software lifecycle demands persistence and steady attention. Argon sustains its reasoning across the many steps of a task, reading files, running commands, and editing code through to completion. Your engineers can delegate to GitLab Duo agents powered by Argon with confidence and spend their time reviewing results instead of monitoring runs. Google trained Argon to respect system boundaries, tell you when it couldn't find something or finish a task, and pause for confirmation before an irreversible step. Teams can hand off complex tasks and stay in control of the important decisions. In internal evaluations, Argon resolved 73.3% of GitLab’s benchmark tasks , with each change passing the benchmark’s tests across multiple programming languages. Of the runs that hit a tool error or timeout, Argon still completed 93.8% of them, so a single failure mid-run won’t force your team to start over. Agent output lands in a merge request, where your team reviews the result with the full context of the change. Argon works through problems thoroughly, making it a strong model choice when finishing correctly matters more than finishing fast. Choose the Gemini model that fits your workload Gemini 4 Argon is Google's newest frontier model and the most performant Gemini model on GitLab Duo Agent Platform. It handles long-horizon agentic actions especially well, including tasks that begin loosely defined. It pairs with the Flash models, which offer a lower-cost option for high-volume work, so you can match each workload to the best Gemini model. Whichever Gemini model you choose, it runs inside the same context layer, policy checks, and audit trail that cover every agentic action across your software lifecycle. Try Argon on GitLab Duo Agent Platform Gemini 4 Argon is available now on GitLab Duo Agent Platform. Like other models, it runs on GitLab Credits . Argon is available at promotional pricing of 2.86 calls per credit , through November 30, 2026. Starting December 1, standard pricing applies at 1.33 calls per credit. If you already use GitLab Duo Agent Platform, you can try Argon today by choosing Gemini 4 Argon in model selection . GitLab Premium and Ultimate customers can turn on Duo Agent Platform and try Argon using the GitLab Credits included with your subscription . New to Duo Agent Platform? Start a free trial today.",
+      "evidenceLink": "",
+      "score": 97.12611708333333,
+      "core": "As AI models take on longer, multi-step work, the challenge is putting that power to use across the software lifecycle without adding risk or cost. Teams need to be able to move faster, within enterprise controls and guardrails. Google's Gemini 4 Argon, now available on GitLab Duo Agent Platform , was built for that kind of work. With Argon, your team can delegate long, multi-step actions and receive outputs for rev…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-15T16:14:03.699Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "How Visko streams real-time world models on Google Cloud TPUs",
+      "link": "https://cloud.google.com/blog/products/media-entertainment/how-visko-streams-real-time-world-models-on-google-cloud-tpus",
+      "publishedAt": "2026-10-15T16:00:00.000Z",
+      "author": "Will Yin CEO, Visko",
+      "summary": "Editor's note: Generative AI startups are moving rapidly beyond static clip generation to build interactive, real-time worlds. In this technical deep dive, we explore how AI startup Visko collaborated with Google Cloud TPU engineers to deploy Orbis — its continuously streaming Live World Model—on Cloud TPUs, going from initial kickoff to production handover in just 30 days. What makes a live video world model so challenging to serve in production? The bottleneck isn't average throughput — it's beating a relentless real-time clock. Unlike offline video generators where a user submits a prompt and waits in a queue, a live world model streams continuously. Every new chunk of video and synchronized audio must finish rendering before the viewer finishes watching the previous one, or the world freezes. Today, we're excited to share how Visko , an AI startup pioneering interactive world models, teamed up with Google Cloud to solve this exact challenge. Working side by side, Visko and Google Cloud engineers deployed Visko's end-to-end live inference pipeline — combining video generation, super-resolution upscaling, and synchronized audio—onto a single Cloud TPU slice . Together, the teams brought end-to-end generation down, rendering at 1.07x playback speed. Here is an inside look at how we engineered the pipeline to hit that milestone in a single month, the architectural optimizations that moved the needle, and practical lessons for other startups building ultra-low-latency generative AI on Google Cloud. Redefining interactive media with Live World Models While most generative video platforms focus on rendering fixed, pre-baked clips, Visko is building what it calls Live Models : video world models that generate continuously and respond on the fly. Visko's flagship model, Orbis , streams live video starting from a single text or image prompt. As the stream plays, viewers can enter new steering prompts in real time, dynamically evolving the scene without restarting or breaking continuity. For instance, in one test session, the livestream opens on a cat napping beside a crackling fireplace; when the viewer steers the scene to introduce a bowl of food, the bowl materializes seamlessly, and the cat stretches, stands up, and meows. Since launching its public demo on September 1, 2026, Orbis has unlocked new possibilities across interactive entertainment, live commerce, AI companions, immersive education, and robotics simulation. To scale these interactive sessions reliably, Visko partnered with Google Cloud TPU engineers in August 2026 to port the Orbis live pipeline to Google's Tensor Processing Unit (TPU). Within 30 days, the full multimodal pipeline was running in real time on TPUs. Visko’s ambition is to power a new generation of interactive worlds that people can step into and shape in real time. Streaming continuous video and audio under a strict clock is a fundamentally different system challenge than offline clip generation. Working side by side with Google Cloud's TPU engineers, we brought the full Orbis pipeline to TPUs in just 30 days — giving us the low-latency compute and memory bandwidth required to bring Live Models to creators and developers at scale. \"Visko is bringing an exciting new class of real-time, steerable workloads to the Cloud TPU ecosystem. By co-engineering their live multimodal pipeline on a singleTPU slice using JAX, torchax, and custom Pallas kernels, we proved how quickly a lean startup team can go from PyTorch prototype to render at 1.07x playback speed on Google Cloud's AI Hypercomputer.\" – Dave Elliott, Head of Developer Advocacy for AI, Google Cloud Live video is a hard-deadline problem When you serve an offline clip generator, latency is forgiving — the user waits once while the backend processes frames. A live world model has no waiting room. Every single chunk must be denoised, decoded from latents, upscaled to 1664x936 (at 18 fps), and paired with generated audio faster than realtime playback speed, for as long as the session runs. Two structural constraints make live world models far more demanding than standard batch inference: Batch size of one: Each live stream represents an individual viewer's interactive session. You cannot mask latency by grouping dozens of concurrent requests into a massive batch — the standard playbook for keeping AI accelerators saturated. Strict sequential dependency: Every chunk depends directly on the one before it. Because the video model maintains a rolling memory of recent video latents so that chunk N+1 smoothly continues the action from chunk N, you cannot pre-render chunks out of order or parallelize across future timestamps. For startup infrastructure engineers coming from LLM serving, it helps to think of live world modeling not as a tokens-per-second throughput benchmark, but as an unforgiving per-step latency SLO . Architecting the multimodal pipeline on a single TPU slice To keep infrastructure lean and cost-effective as Visko scales, the team designed the live pipeline to chain three distinct generative models on a single Cloud TPU slice running in BF16 precision. When a viewer submits an initial prompt or a live steering update, all three generative models — the core video diffusion model, the super-resolution upscaler, and the audio generator — share the same chips, taking turns on the hardware for each chunk. Figure 1: Visko's end-to-end Orbis live pipeline chains video diffusion, latent decoding, super-resolution upscaling, and pure-JAX audio generation sequentially on a single Cloud TPU slice, completing each chunk faster than the playback speed. To combine rapid startup iteration with bare-metal accelerator speed, the software stack is built on three open-source pillars: JAX : Google's high-performance Python array library for accelerators, compiled into optimized machine code by the XLA compiler. torchax : An interoperability layer that runs PyTorch models directly on Cloud TPUs via JAX, enabling startup teams to bring existing PyTorch components over without an upfront, ground-up rewrite. Pallas : The custom kernel programming language for TPUs in JAX — the TPU counterpart to writing custom Triton or CUDA kernels on GPUs. Real-time performance breakdown: Hitting the clock By profiling and optimizing each stage on a single slice in BF16, the engineering team achieved a total per-chunk latency of under the target while — maintaining roughly 7% headroom to absorb variance during live streaming: Figure 2: Chart of per-chunk latency budget on one TPU slice. Because video denoising accounts for nearly two-thirds of the total compute budget, that stage became the primary focus of our kernel and parallelism optimizations. Inside the stack: Three optimizations that unlocked real-time streaming 1. Ulysses context parallelism across all TPU chips A video chunk expands into a massive sequence of spatiotemporal tokens inside the video transformer. To distribute that workload across the TPU chips at batch size 1, the team implemented Ulysses context parallelism . Instead of splitting model weights, Ulysses splits the token sequence across chips. Immediately before the attention layer, a high-speed all-to-all interconnect exchange regroups the tensors so that each chip holds the entire video sequence, but only for one-quarter of the attention heads. After each chip computes attention over the full sequence for its assigned heads, a second all-to-all exchange restores the sequence-split layout for the feed-forward layers. Figure 3: Ulysses context parallelism across TPU chips at batch size 1. High-speed all-to-all Inter-Chip Interconnect (ICI) exchanges transition tensors between a sequence-split layout for feed-forward layers and a head-split layout for Pallas splash attention. 2. Custom Pallas splash attention from MaxDiffusion To accelerate the attention computation itself, the team integrated a custom Pallas splash attention kernel from MaxDiffusion , Google Cloud's open-source reference library for diffusion models on Cloud TPU. Splash attention brings FlashAttention-style tiling to TPU architecture: rather than materializing the full quadratic attention matrix in High Bandwidth Memory (HBM), it computes attention in compact tiles that remain inside ultra-fast on-chip VMEM. Startup teams can drop the exact kernel used in this port straight into their own pipelines via custom_splash_attention.py . 3. A 5.8x audio speedup by moving from torchax to pure JAX We first brought all three Orbis models onto Cloud TPU with *torchax*, which runs PyTorch code on TPU through JAX and XLA without a rewrite. For the video and upscaling models, `torchax` paired with Pallas attention kernels met our latency target directly, and both stay in `torchax` in the final pipeline. Only the audio model needed a rewrite. Moving the audio stage from `torchax` to *native JAX* made it *5.8x faster* and brought the full pipeline under the playback deadline. Startup Builder Tip: Port strategically. The takeaway isn't \"skip torchax\" — it's to use it as a fast bring-up bridge. torchax got our PyTorch models running on TPU in days rather than weeks, giving us the end-to-end telemetry needed to pinpoint true bottlenecks. Measure the full pipeline first, and invest engineering cycles rewriting only the components that dominate your latency budget. Field notes for AI builders: Cloud TPU lessons Takeaways from tuning live multimodal inference on Cloud TPU: - * Ulysses context parallelism for single stream video :* At batch size 1, splitting the token sequence across chips with `all-to-all` interconnect exchanges was faster than both tensor parallelism and ring attention. - * Native BF16 for continuous streams :* FP8 quantization cuts memory bandwidth pressure, but small quantization errors build up across chunks in a continuous stream. Native BF16 kept visual quality intact within the latency budget. - * Selective JAX ports :* `torchax` kept the video and upscaling models in PyTorch, so the team only rewrote the audio bottleneck in native JAX. - *XLA compilation caching:* The first boot spends a few minutes compiling XLA graphs. Caching compiled artifacts brings worker restarts under a minute. Building real-time generative models on Cloud TPU? Start here If your startup is pushing the boundaries of live video, world models, or ultra-low-latency multimodal inference, you can build with the same toolkit that powered Visko's port: Accelerate diffusion attention out of the box: Grab the open-source splash attention kernel used in this collaboration from MaxDiffusion , and explore the Pallas documentation to write custom TPU kernels. Migrate PyTorch fast, then optimize selectively: Bring your existing PyTorch models onto TPU quickly with torchax , pinpoint bottlenecks with the Cloud TPU Profiler , and port latency-critical stages to native JAX . Spin up TPUs on demand: Use TPU Flex-start VMs to provision TPU capacity for short development and benchmarking runs without a long-term reservation. Scale with Google for Startups: Early-stage AI startups looking for cloud credits, technical mentorship, and access to Google Cloud's AI Hypercomputer stack can apply to the Google for Startups Cloud Program . Special thanks to the Visko.ai team for the close technical partnership, and to the Google Cloud TPU engineers who lead the project including: Yixin Shi, James Huang, and Elisa Tsai.",
+      "evidenceLink": "",
+      "score": 94.98325994047619,
+      "core": "Editor's note: Generative AI startups are moving rapidly beyond static clip generation to build interactive, real-time worlds. In this technical deep dive, we explore how AI startup Visko collaborated with Google Cloud TPU engineers to deploy Orbis — its continuously streaming Live World Model—on Cloud TPUs, going from initial kickoff to production handover in just 30 days. What makes a live video world model so cha…",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-15T16:14:03.699Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Nemotron 3.5 Lightning now available on AI Gateway for free",
+      "link": "https://vercel.com/changelog/nemotron-3-5-lightning-now-available-on-ai-gateway-for-free",
+      "publishedAt": "2026-10-14T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "Nemotron 3.5 Lightning from NVIDIA is now available for free on AI Gateway as nvidia/nemotron-3.5-lightning-free , served by NVIDIA. Nemotron 3.5 Lightning is an open-weight reasoning and chat model for long-running agents, sub-agent work, chatbots, and RAG systems. The model has 30B parameters with 3B active per token, in a hybrid Mixture-of-Experts design that interleaves Mamba-2 and MoE layers with a few attention layers. It has a 1M token context window and supports tool calling and structured outputs. Note: The provider may retain prompts for model improvement. Call Nemotron 3.5 Lightning through the AI SDK , the Chat Completions , Responses , and Messages APIs, or a coding agent connected to AI Gateway. Use nvidia/nemotron-3.5-lightning-free as the model name: To use it in Claude Code, Codex, Cursor, and more, install the latest Vercel CLI and run setup: Then select nvidia/nemotron-3.5-lightning-free in the agent. See the coding agents guide for details. AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. You can view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 83.12611708333333,
+      "core": "Nemotron 3.5 Lightning from NVIDIA is now available for free on AI Gateway as nvidia/nemotron-3.5-lightning-free , served by NVIDIA. Nemotron 3.5 Lightning is an open-weight reasoning and chat model for long-running agents, sub-agent work, chatbots, and RAG systems. The model has 30B parameters with 3B active per token, in a hybrid Mixture-of-Experts design that interleaves Mamba-2 and MoE layers with a few attentio…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-15T16:14:03.699Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Containment and monitoring failures are to blame for AI hacking reports: experts",
+      "link": "https://www.csoonline.com/article/4234854/ai-agents-arent-going-rogue-frontier-labs-are-skipping-security-basics.html",
+      "publishedAt": "2026-10-14T17:45:23.000Z",
+      "author": "latexr https://news.ycombinator.com/user?id=latexr",
+      "summary": "Cyber experts say AI labs’ containment and monitoring failures — not agents with minds of their own — are to blame for recent alarming hacking reports. CISOs should vet their AI vendors and tighten security basics as safeguards.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50091788",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 933,
+        "comments": 585
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-15T16:14:03.699Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 77.19689247409967,
+      "core": "Cyber experts say AI labs’ containment and monitoring failures — not agents with minds of their own — are to blame for recent alarming hacking reports. CISOs should vet their AI vendors and tighten security basics as safeguards.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "docker_ai_engineering",
+      "source": "Docker Blog",
+      "title": "Harbor + Docker Sandboxes: Run Safe, Reproducible Agent Evals",
+      "link": "https://www.docker.com/blog/harbor-docker-sandboxes-run-safe-reproducible-agent-evals",
+      "publishedAt": "2026-10-14T21:45:27.000Z",
+      "author": "Srini Sekaran",
+      "summary": "Harbor can now run every eval task in Docker Sandboxes Docker Sandboxes are MicroVM environments to run agents like Claude Code, Codex, Cursor, and more safely With Sandboxes, define custom network policies for fair, reproducible evals Run your evals locally or in the cloud: starting for free on Docker Sandboxes on local surfaces and scaling...",
+      "evidenceLink": "",
+      "score": 62.6024464484127,
+      "core": "Harbor can now run every eval task in Docker Sandboxes Docker Sandboxes are MicroVM environments to run agents like Claude Code, Codex, Cursor, and more safely With Sandboxes, define custom network policies for fair, reproducible evals Run your evals locally or in the cloud: starting for free on Docker Sandboxes on local surfaces and scaling...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-15T16:14:03.699Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pragmatic_engineer",
+      "source": "The Pragmatic Engineer",
+      "title": "Uber’s AI infra, from the inside",
+      "link": "https://newsletter.pragmaticengineer.com/p/ubers-ai-infra-from-the-inside",
+      "publishedAt": "2026-10-14T17:06:56.000Z",
+      "author": "Gergely Orosz",
+      "summary": "Uber Distinguished Engineer Uday Kiran Medisetty shares how Uber builds internal developer tools, integrates AI agents into engineering workflows, and measures their impact on productivity.",
+      "evidenceLink": "",
+      "score": 62.398656765873014,
+      "core": "Uber Distinguished Engineer Uday Kiran Medisetty shares how Uber builds internal developer tools, integrates AI agents into engineering workflows, and measures their impact on productivity.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-15T16:14:03.699Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "The Most Common Questions About Agent Evals, Answered",
+      "link": "https://www.langchain.com/blog/common-questions-about-agent-evals",
+      "publishedAt": "2026-10-15T01:19:37.000Z",
+      "author": "",
+      "summary": "Where to start with agent evals, offline vs online evals, evaluator types, LLM judges, benchmarks with Harbor, multi-turn evals, and keeping costs down.",
+      "evidenceLink": "",
+      "score": 61.77962898809523,
+      "core": "Where to start with agent evals, offline vs online evals, evaluator types, LLM judges, benchmarks with Harbor, multi-turn evals, and keeping costs down.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-15T16:14:03.699Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "AI Laser Locking for Quantum Computers: How QuEra Automates It",
+      "link": "https://www.quera.com/blog-posts/holding-the-light-teaching-an-ai-to-lock-and-tune-our-quantum-computers-lasers",
+      "publishedAt": "2026-10-14T10:26:24.000Z",
+      "author": "EvgeniyZh https://news.ycombinator.com/user?id=EvgeniyZh",
+      "summary": "How QuEra used an AI agent to relock quantum computer lasers in seconds and tune them to 5x lower noise, all within safety bounds.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50085302",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 28,
+        "comments": 5
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-15T16:14:03.699Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 57.462346081531905,
+      "core": "How QuEra used an AI agent to relock quantum computer lasers in seconds and tune them to 5x lower noise, all within safety bounds.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cohere_blog",
+      "source": "Cohere Blog",
+      "title": "Scaling agent teams: reach the frontier at 30% of the cost",
+      "link": "https://cohere.com/blog/lessons-from-scaling-teams-of-frontier-coding-agents",
+      "publishedAt": "2026-10-14T16:48:00.000Z",
+      "author": "",
+      "summary": "Teams of coding agents are already building large-scale software, but how should they be organized to work most effectively?",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-15T16:14:03.699Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 56.01500597222222,
+      "core": "Teams of coding agents are already building large-scale software, but how should they be organized to work most effectively?",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "zapier_ai_automation",
+      "source": "Zapier Blog",
+      "title": "Human-in-the-loop in AI workflows: HITL meaning, benefits, and practical patterns",
+      "link": "https://zapier.com/blog/human-in-the-loop",
+      "publishedAt": "2026-10-14T05:00:00.000Z",
+      "author": "Juliet John",
+      "summary": "AI systems can route messages, update records, make decisions, and trigger entire workflows across multiple apps without you touching anything. But as AI shifts more and more from being an assistive tool to powering agentic systems, humans have a new kind of responsibility: making sure nothing goes wrong. Because even the smartest AI systems still struggle to understand nuance, edge cases, or the unwritten rules teams use to make decisions. When automated agents act without that context, small g",
+      "evidenceLink": "",
+      "score": 55.26103771825397,
+      "core": "AI systems can route messages, update records, make decisions, and trigger entire workflows across multiple apps without you touching anything. But as AI shifts more and more from being an assistive tool to powering agentic systems, humans have a new kind of responsibility: making sure nothing goes wrong. Because even the smartest AI systems still struggle to understand nuance, edge cases, or the unwritten rules tea…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-15T16:14:03.699Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "docker_ai_engineering",
+      "source": "Docker Blog",
+      "title": "AI Agent Security Risks: What Can Go Wrong When Agents Act on Their Own",
+      "link": "https://www.docker.com/blog/ai-agent-security-risks",
+      "publishedAt": "2026-10-14T22:08:33.000Z",
+      "author": "Jackie Frederick",
+      "summary": "Learn the top AI agent security risks, from prompt injection to excessive autonomy and credential exposure, and how to contain them.",
+      "evidenceLink": "",
+      "score": 50.44105755952381,
+      "core": "Learn the top AI agent security risks, from prompt injection to excessive autonomy and credential exposure, and how to contain them.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-15T16:14:03.699Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Context Engineering with Deep Agents: How To Remember Without Keeping Everything In Context",
+      "link": "https://www.langchain.com/blog/context-engineering-deep-agents-remember",
+      "publishedAt": "2026-10-14T17:39:26.000Z",
+      "author": "",
+      "summary": "Long-running agents degrade as context piles up. Learn how offloading, summarization, skills, subagents, and memory keep your agent's context window focused.",
+      "evidenceLink": "",
+      "score": 49.25956946428571,
+      "core": "Long-running agents degrade as context piles up. Learn how offloading, summarization, skills, subagents, and memory keep your agent's context window focused.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-15T16:14:03.699Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "Agentic autofix for code scanning alerts general availability",
+      "link": "https://github.blog/changelog/2026-10-15-agentic-autofix-for-code-scanning-alerts-general-availability",
+      "publishedAt": "2026-10-15T13:49:20.000Z",
+      "author": "Allison",
+      "summary": "Agentic autofix for code scanning alerts is now generally available. It remediates alerts by working across your codebase the way a developer would: it explores relevant files, proposes a fix,… The post Agentic autofix for code scanning alerts general availability appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 48.4943710515873,
+      "core": "Agentic autofix for code scanning alerts is now generally available. It remediates alerts by working across your codebase the way a developer would: it explores relevant files, proposes a fix,… The post Agentic autofix for code scanning alerts general availability appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-15T16:14:03.699Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "Crossing the Threshold: How OpenAI and Anthropic Approach Autonomy and Safety in Financial Agents",
+      "link": "https://www.latent.space/p/crossing-the-threshold",
+      "publishedAt": "2026-10-14T21:40:52.000Z",
+      "author": "Richard MacManus",
+      "summary": "At AI Engineer New York, frontier labs and financial firms explored how to give agents useful autonomy while keeping consequential decisions under control.",
+      "evidenceLink": "",
+      "score": 47.53587898809524,
+      "core": "At AI Engineer New York, frontier labs and financial firms explored how to give agents useful autonomy while keeping consequential decisions under control.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-15T16:14:03.699Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_agent_framework",
+      "source": "Microsoft Agent Framework",
+      "title": "Vector stores in Agent Framework for Python: familiar foundations, streamlined for agents",
+      "link": "https://devblogs.microsoft.com/agent-framework/vector-stores-in-python-agent-framework-familiar-foundations-streamlined-for-agents",
+      "publishedAt": "2026-10-15T12:10:05.000Z",
+      "author": "Eduard van Valkenburg",
+      "summary": "Vector stores have been part of the Python experience in Semantic Kernel for some time. With Microsoft Agent Framework, we have ported that work forward rather than starting over. This post focuses on Python. For the .NET equivalent, see Use vector stores in .NET AI apps. The foundation remains familiar: typed record definitions, stores and […] The post Vector stores in Agent Framework for Python: familiar foundations, streamlined for agents appeared first on Microsoft Agent Framework .",
+      "evidenceLink": "",
+      "score": 46.43732740079365,
+      "core": "Vector stores have been part of the Python experience in Semantic Kernel for some time. With Microsoft Agent Framework, we have ported that work forward rather than starting over. This post focuses on Python. For the .NET equivalent, see Use vector stores in .NET AI apps. The foundation remains familiar: typed record definitions, stores and […] The post Vector stores in Agent Framework for Python: familiar foundatio…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-15T16:14:03.699Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How ShipStation Global built an AI IT help desk on Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-shipstation-global-built-an-ai-it-help-desk-on-amazon-bedrock-agentcore",
+      "publishedAt": "2026-10-13T15:54:49.000Z",
+      "author": "Kenneth Salmon",
+      "summary": "ShipStation Global's engineering team built Deckhand, an AI IT help desk agent for Slack on Amazon Bedrock AgentCore. It answers routine IT questions from a curated knowledge base, reads error-message screenshots, and files Jira tickets. In its first three months it resolved 97.5% of channel queries with a 96% positive feedback rating.",
+      "evidenceLink": "",
+      "score": 40.42074009920635,
+      "core": "ShipStation Global's engineering team built Deckhand, an AI IT help desk agent for Slack on Amazon Bedrock AgentCore. It answers routine IT questions from a curated knowledge base, reads error-message screenshots, and files Jira tickets. In its first three months it resolved 97.5% of channel queries with a 96% positive feedback rating.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-15T16:14:03.699Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_ai_news",
+      "source": "AWS News Blog · AI",
+      "title": "AWS Weekly Roundup: Amazon Bedrock Managed Agents powered by OpenAI, Q3 service availability updates, Kiro workflows, and more (October 5, 2026)",
+      "link": "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-amazon-bedrock-managed-agents-powered-by-openai-q3-service-availability-updates-kiro-workflows-and-more-october-5-2026",
+      "publishedAt": "2026-10-05T15:41:19.000Z",
+      "author": "Channy Yun (윤석찬)",
+      "summary": "Last week, we announced a public preview of Amazon Bedrock Managed Agents powered by OpenAI, built on a customized version of OpenAI’s Agents API engineered to be AWS-native and integrated with AWS resources. You can now build agents optimized for OpenAI models that run entirely inside AWS with the identities, permissions, and governance controls you […]",
+      "evidenceLink": "",
+      "score": 37.977777777777774,
+      "core": "Last week, we announced a public preview of Amazon Bedrock Managed Agents powered by OpenAI, built on a customized version of OpenAI’s Agents API engineered to be AWS-native and integrated with AWS resources. You can now build agents optimized for OpenAI models that run entirely inside AWS with the identities, permissions, and governance controls you […]",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-15T16:14:03.699Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "AI agents have a mind of their own – and that’s a problem for businesses",
+      "link": "https://www.itpro.com/security/ai-agents-have-a-mind-of-their-own-and-thats-a-problem-for-businesses",
+      "publishedAt": "2026-10-14T10:53:10.000Z",
+      "author": "Emma Woollacott",
+      "summary": "New research shows that half of organizations are having to deal with agent behaviour that hasn't been authorized or approved.",
+      "evidenceLink": "",
+      "score": 35.603696448412705,
+      "core": "New research shows that half of organizations are having to deal with agent behaviour that hasn't been authorized or approved.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-15T16:14:03.699Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
