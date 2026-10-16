@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-15T16:14:03.699Z",
+  "generatedAt": "2026-10-16T15:58:00.000Z",
   "date": "2026-10-16",
   "window": {
-    "start": "2026-09-15T16:14:03.699Z",
-    "end": "2026-10-15T16:14:03.699Z",
+    "start": "2026-09-16T15:58:00.000Z",
+    "end": "2026-10-16T15:58:00.000Z",
     "lookbackDays": 30
   },
   "targetCount": 20,
@@ -17,10 +17,10 @@
   "paperCount": 0,
   "candidatePool": {
     "historicalLinkCount": 1455,
-    "blogFetchedCount": 343,
-    "blogAccessCheckedCount": 66,
-    "blogAccessVerifiedCount": 51,
-    "blogAccessRejectedCount": 15,
+    "blogFetchedCount": 350,
+    "blogAccessCheckedCount": 93,
+    "blogAccessVerifiedCount": 75,
+    "blogAccessRejectedCount": 18,
     "blogAccessRejected": [
       {
         "sourceId": "openai_news",
@@ -42,6 +42,12 @@
       },
       {
         "sourceId": "openai_news",
+        "title": "Bringing GPT-Rosalind to academic research labs",
+        "link": "https://openai.com/index/introducing-the-rosalind-academic-plan",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
         "title": "Teaching students to think and learn through questions",
         "link": "https://openai.com/index/teaching-students-to-think-and-learn-through-questions",
         "reason": "HTTP 403"
@@ -53,6 +59,12 @@
         "reason": "HTTP 403"
       },
       {
+        "sourceId": "deepmind",
+        "title": "Google DeepMind and Singapore Government collaborate to build fine-tuned AI model for scam detection",
+        "link": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi",
+        "reason": "The operation was aborted due to timeout; curl fallback: Command failed: curl -fsSL --connect-timeout 15 --max-time 15 -A Mozilla/5.0 (compatible; "
+      },
+      {
         "sourceId": "lennys_newsletter",
         "title": "The grief, loneliness, and burnout sweeping through the tech industry right now | Molly Graham",
         "link": "https://www.lennysnewsletter.com/p/the-grief-loneliness-and-burnout",
@@ -62,6 +74,12 @@
         "sourceId": "lennys_newsletter",
         "title": "🧠 Community Wisdom: AI doomerism, speeding up discovery in a big org, verifying engineering answers as a new PM, where analytics adds the most value, and more",
         "link": "https://www.lennysnewsletter.com/p/community-wisdom-ai-doomerism-speeding",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: OpenAI software engineer accused of spying",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-openai-software-engineer",
         "reason": "页面返回登录、付费墙或反爬拦截内容"
       },
       {
@@ -113,25 +131,24 @@
         "reason": "HTTP 403"
       }
     ],
-    "blogCanonicalRedirectHistoricalDedupCount": 8,
-    "paperFetchedCount": 31,
-    "paperTopConferenceVerifiedCount": 31,
-    "blogAfterHistoricalDedupCount": 43,
+    "blogCanonicalRedirectHistoricalDedupCount": 7,
+    "paperFetchedCount": 1,
+    "paperTopConferenceVerifiedCount": 1,
+    "blogAfterHistoricalDedupCount": 68,
     "paperAfterHistoricalDedupCount": 0,
-    "eligibleAfterHistoricalDedupCount": 43,
+    "eligibleAfterHistoricalDedupCount": 68,
     "maxPerBlogSource": 2,
     "selectedBlogSourceCounts": {
-      "aws_ai_news": 1,
-      "aws_machine_learning": 1,
       "cohere_blog": 1,
       "docker_ai_engineering": 2,
+      "fiddler_ai_evaluation": 2,
       "github_copilot_changelog": 1,
-      "gitlab_ai_engineering": 1,
+      "gitlab_ai_engineering": 2,
       "google_cloud_ai": 2,
       "hcker_news_ai_blogs": 2,
-      "itpro_ai": 1,
-      "langchain_engineering": 2,
+      "langchain_engineering": 1,
       "latent_space": 1,
+      "meta_engineering": 1,
       "microsoft_agent_framework": 1,
       "pragmatic_engineer": 1,
       "vercel_ai": 2,
@@ -172,14 +189,14 @@
     "openai_news": {
       "label": "OpenAI",
       "status": "ok",
-      "rawCount": 1294,
+      "rawCount": 1296,
       "keptCount": 20,
       "note": "30 天窗口"
     },
     "anthropic": {
       "label": "Anthropic Research & Engineering",
       "status": "ok",
-      "rawCount": 559,
+      "rawCount": 560,
       "keptCount": 11,
       "note": "30 天窗口"
     },
@@ -187,7 +204,7 @@
       "label": "Google DeepMind",
       "status": "ok",
       "rawCount": 100,
-      "keptCount": 12,
+      "keptCount": 11,
       "note": "30 天窗口"
     },
     "simon_willison": {
@@ -222,13 +239,13 @@
       "label": "Cloudflare",
       "status": "ok",
       "rawCount": 20,
-      "keptCount": 7,
+      "keptCount": 8,
       "note": "30 天窗口"
     },
     "vercel_ai": {
       "label": "Vercel",
       "status": "ok",
-      "rawCount": 1658,
+      "rawCount": 1675,
       "keptCount": 20,
       "note": "30 天窗口"
     },
@@ -236,7 +253,7 @@
       "label": "GitHub Blog",
       "status": "ok",
       "rawCount": 10,
-      "keptCount": 1,
+      "keptCount": 0,
       "note": "30 天窗口"
     },
     "aws_machine_learning": {
@@ -263,15 +280,15 @@
     "cohere_blog": {
       "label": "Cohere Blog",
       "status": "ok",
-      "rawCount": 835,
-      "keptCount": 2,
+      "rawCount": 844,
+      "keptCount": 4,
       "note": "30 天窗口"
     },
     "meta_engineering": {
       "label": "Meta Engineering",
       "status": "ok",
       "rawCount": 9,
-      "keptCount": 4,
+      "keptCount": 5,
       "note": "30 天窗口"
     },
     "microsoft_research": {
@@ -298,7 +315,7 @@
     "huggingface_blog": {
       "label": "Hugging Face Blog",
       "status": "ok",
-      "rawCount": 878,
+      "rawCount": 880,
       "keptCount": 0,
       "note": "30 天窗口"
     },
@@ -354,8 +371,8 @@
     "rerun_agent_engineering": {
       "label": "Rerun Engineering",
       "status": "ok",
-      "rawCount": 98,
-      "keptCount": 15,
+      "rawCount": 99,
+      "keptCount": 14,
       "note": "30 天窗口"
     },
     "techradar_pro_ai": {
@@ -369,21 +386,21 @@
       "label": "ITPro",
       "status": "ok",
       "rawCount": 50,
-      "keptCount": 4,
+      "keptCount": 3,
       "note": "30 天窗口"
     },
     "hcker_news_ai_blogs": {
       "label": "Hacker News · hcker.news",
       "status": "ok",
       "rawCount": 200,
-      "keptCount": 22,
+      "keptCount": 21,
       "note": "hcker.news 滚动 24 小时 AI 外链；HN 分数至少 10，排除 Show/Launch HN、代码仓库与论文链接"
     },
     "langchain_engineering": {
       "label": "LangChain Blog",
       "status": "ok",
       "rawCount": 99,
-      "keptCount": 15,
+      "keptCount": 14,
       "note": "30 天窗口"
     },
     "sierra_engineering": {
@@ -396,7 +413,7 @@
     "modal_engineering": {
       "label": "Modal Engineering",
       "status": "ok",
-      "rawCount": 143,
+      "rawCount": 144,
       "keptCount": 1,
       "note": "30 天窗口"
     },
@@ -418,7 +435,7 @@
       "label": "Latent Space",
       "status": "ok",
       "rawCount": 20,
-      "keptCount": 5,
+      "keptCount": 6,
       "note": "30 天窗口"
     },
     "interconnects": {
@@ -439,7 +456,7 @@
       "label": "The Pragmatic Engineer",
       "status": "ok",
       "rawCount": 20,
-      "keptCount": 12,
+      "keptCount": 13,
       "note": "30 天窗口；由 Gmail 订阅发现后改用公开 RSS"
     },
     "funeral_ai": {
@@ -460,7 +477,7 @@
       "label": "Databricks Blog",
       "status": "ok",
       "rawCount": 10,
-      "keptCount": 1,
+      "keptCount": 2,
       "note": "30 天窗口"
     },
     "nvidia_developer": {
@@ -502,7 +519,7 @@
       "label": "Spotify Engineering",
       "status": "ok",
       "rawCount": 5,
-      "keptCount": 1,
+      "keptCount": 2,
       "note": "30 天窗口"
     },
     "datadog_engineering": {
@@ -529,14 +546,14 @@
     "braintrust_ai_engineering": {
       "label": "Braintrust AI Engineering",
       "status": "ok",
-      "rawCount": 472,
+      "rawCount": 473,
       "keptCount": 11,
       "note": "30 天窗口"
     },
     "baseten_ai_engineering": {
       "label": "Baseten AI Engineering",
       "status": "ok",
-      "rawCount": 1212,
+      "rawCount": 1232,
       "keptCount": 1,
       "note": "30 天窗口"
     },
@@ -558,7 +575,7 @@
       "label": "GitLab Blog",
       "status": "ok",
       "rawCount": 20,
-      "keptCount": 12,
+      "keptCount": 13,
       "note": "30 天窗口"
     },
     "elastic_search_labs": {
@@ -598,10 +615,10 @@
     },
     "mongodb_ai_engineering": {
       "label": "MongoDB Developer",
-      "status": "ok",
+      "status": "unavailable",
       "rawCount": 0,
       "keptCount": 0,
-      "note": "30 天窗口"
+      "note": "Command failed: curl -fsSL --connect-timeout 25 --max-time 25 -A ai-product-radar/0.1 (+https://github.com/BENZEMA216/ai-product-radar) https://www.mongodb.com/developer/rss/\ncurl: (56) The requested URL returned error: 404\n"
     },
     "replicate_engineering": {
       "label": "Replicate Blog",
@@ -613,7 +630,7 @@
     "neon_ai_engineering": {
       "label": "Neon Blog",
       "status": "ok",
-      "rawCount": 503,
+      "rawCount": 504,
       "keptCount": 3,
       "note": "30 天窗口"
     },
@@ -669,7 +686,7 @@
     "anthropic_news_institute": {
       "label": "Anthropic News & Institute",
       "status": "ok",
-      "rawCount": 559,
+      "rawCount": 560,
       "keptCount": 2,
       "note": "30 天窗口"
     },
@@ -725,14 +742,14 @@
     "detent_agent_engineering": {
       "label": "DETENT Agent Engineering",
       "status": "ok",
-      "rawCount": 98,
+      "rawCount": 100,
       "keptCount": 3,
       "note": "30 天窗口"
     },
     "agentconn_engineering": {
       "label": "AgentConn Field Reports",
       "status": "ok",
-      "rawCount": 169,
+      "rawCount": 170,
       "keptCount": 7,
       "note": "30 天窗口"
     },
@@ -753,7 +770,7 @@
     "intercom_ai_engineering": {
       "label": "Intercom Blog",
       "status": "ok",
-      "rawCount": 20,
+      "rawCount": 19,
       "keptCount": 0,
       "note": "30 天窗口"
     },
@@ -775,20 +792,20 @@
       "label": "Fiddler AI Blog",
       "status": "ok",
       "rawCount": 100,
-      "keptCount": 9,
+      "keptCount": 13,
       "note": "30 天窗口"
     },
     "linear_ai_changelog": {
       "label": "Linear Changelog",
       "status": "ok",
-      "rawCount": 1028,
+      "rawCount": 1032,
       "keptCount": 0,
       "note": "30 天窗口"
     },
     "instacart_ai_updates": {
       "label": "Instacart AI Updates",
       "status": "ok",
-      "rawCount": 2316,
+      "rawCount": 2317,
       "keptCount": 0,
       "note": "30 天窗口"
     },
@@ -816,8 +833,8 @@
     "semantic_scholar_top_conferences": {
       "label": "顶会论文 · Semantic Scholar",
       "status": "ok",
-      "rawCount": 31,
-      "keptCount": 31,
+      "rawCount": 1,
+      "keptCount": 1,
       "rejectedCount": 0,
       "note": "仅保留 Semantic Scholar 明确标记为 conference 且命中顶会白名单的论文；无会议证据的 arXiv/HF 热榜不进入候选"
     }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T16:17:59.888Z",
+  "generatedAt": "2026-10-16T16:12:03.573Z",
   "report": "2026-10-16.md",
   "health": "quality/knowledge-source-health/2026-10-16.json",
   "candidates": "quality/knowledge-candidates/2026-10-16.json",
@@ -11,13 +11,13 @@
   "paperCount": 0,
   "blogAccessVerifiedCount": 20,
   "topConferencePaperCount": 0,
-  "sourceCount": 92,
+  "sourceCount": 91,
   "candidatePool": {
     "historicalLinkCount": 1455,
-    "blogFetchedCount": 343,
-    "blogAccessCheckedCount": 66,
-    "blogAccessVerifiedCount": 51,
-    "blogAccessRejectedCount": 15,
+    "blogFetchedCount": 350,
+    "blogAccessCheckedCount": 93,
+    "blogAccessVerifiedCount": 75,
+    "blogAccessRejectedCount": 18,
     "blogAccessRejected": [
       {
         "sourceId": "openai_news",
@@ -39,6 +39,12 @@
       },
       {
         "sourceId": "openai_news",
+        "title": "Bringing GPT-Rosalind to academic research labs",
+        "link": "https://openai.com/index/introducing-the-rosalind-academic-plan",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
         "title": "Teaching students to think and learn through questions",
         "link": "https://openai.com/index/teaching-students-to-think-and-learn-through-questions",
         "reason": "HTTP 403"
@@ -50,6 +56,12 @@
         "reason": "HTTP 403"
       },
       {
+        "sourceId": "deepmind",
+        "title": "Google DeepMind and Singapore Government collaborate to build fine-tuned AI model for scam detection",
+        "link": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi",
+        "reason": "The operation was aborted due to timeout; curl fallback: Command failed: curl -fsSL --connect-timeout 15 --max-time 15 -A Mozilla/5.0 (compatible; "
+      },
+      {
         "sourceId": "lennys_newsletter",
         "title": "The grief, loneliness, and burnout sweeping through the tech industry right now | Molly Graham",
         "link": "https://www.lennysnewsletter.com/p/the-grief-loneliness-and-burnout",
@@ -59,6 +71,12 @@
         "sourceId": "lennys_newsletter",
         "title": "🧠 Community Wisdom: AI doomerism, speeding up discovery in a big org, verifying engineering answers as a new PM, where analytics adds the most value, and more",
         "link": "https://www.lennysnewsletter.com/p/community-wisdom-ai-doomerism-speeding",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: OpenAI software engineer accused of spying",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-openai-software-engineer",
         "reason": "页面返回登录、付费墙或反爬拦截内容"
       },
       {
@@ -110,25 +128,24 @@
         "reason": "HTTP 403"
       }
     ],
-    "blogCanonicalRedirectHistoricalDedupCount": 8,
-    "paperFetchedCount": 31,
-    "paperTopConferenceVerifiedCount": 31,
-    "blogAfterHistoricalDedupCount": 43,
+    "blogCanonicalRedirectHistoricalDedupCount": 7,
+    "paperFetchedCount": 1,
+    "paperTopConferenceVerifiedCount": 1,
+    "blogAfterHistoricalDedupCount": 68,
     "paperAfterHistoricalDedupCount": 0,
-    "eligibleAfterHistoricalDedupCount": 43,
+    "eligibleAfterHistoricalDedupCount": 68,
     "maxPerBlogSource": 2,
     "selectedBlogSourceCounts": {
-      "aws_ai_news": 1,
-      "aws_machine_learning": 1,
       "cohere_blog": 1,
       "docker_ai_engineering": 2,
+      "fiddler_ai_evaluation": 2,
       "github_copilot_changelog": 1,
-      "gitlab_ai_engineering": 1,
+      "gitlab_ai_engineering": 2,
       "google_cloud_ai": 2,
       "hcker_news_ai_blogs": 2,
-      "itpro_ai": 1,
-      "langchain_engineering": 2,
+      "langchain_engineering": 1,
       "latent_space": 1,
+      "meta_engineering": 1,
       "microsoft_agent_framework": 1,
       "pragmatic_engineer": 1,
       "vercel_ai": 2,
