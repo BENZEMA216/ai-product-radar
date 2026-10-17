@@ -1,0 +1,292 @@
+{
+  "date": "2026-10-17",
+  "generatedAt": "2026-10-17T15:58:00.000Z",
+  "reportPath": "reports/2026-10-17-2358-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 53,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 39,
+      "keptCount": 17,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-16；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 39 条，AI 相关候选 17 条；实际 fallback：hunted_space。；历史去重移除 2 条已报道或已处理日榜 Product Hunt 信号，最终发布 15 条。"
+    },
+    "yc_launch": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "YC Launch 本窗口无候选或来源为空。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 16,
+      "keptCount": 9,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 11,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "fallback",
+      "rawCount": 8,
+      "keptCount": 8,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 21,
+      "keptCount": 21,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Harness by Autonomous",
+      "productKey": "https://www.producthunt.com/products/harness-by-autonomous",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Harness by Autonomous 把跨机器、跨编码 Agent 的执行集中到一个控制台，值得验证它能否真正减少切换、状态追踪和接管成本。"
+    },
+    {
+      "rank": 2,
+      "product": "Atelier",
+      "productKey": "https://www.producthunt.com/products/atelier-9",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Atelier 把编码 Agent 的工作场所做成“工作室”，可重点观察人如何分派任务、查看产物并处理多个 Agent 的协作冲突。"
+    },
+    {
+      "rank": 3,
+      "product": "Parallax",
+      "productKey": "https://www.producthunt.com/products/parallax-5",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Parallax 试图统一查看并管理同时运行的编码 Agent，产品关键不在数量，而在异常发现、上下文切换与结果合并是否足够顺手。"
+    },
+    {
+      "rank": 4,
+      "product": "Scalebrowser",
+      "productKey": "https://www.producthunt.com/products/scalebrowser",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Scalebrowser 为 Agent 提供接近真人浏览器的能力，值得看会话保持、页面兼容和失败恢复能否支撑稳定的网页任务。"
+    },
+    {
+      "rank": 5,
+      "product": "BOSS Console",
+      "productKey": "https://www.producthunt.com/products/boss-console",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "BOSS Console 面向常驻 Agent 提供轻量运行环境，值得看进程生命周期、权限、日志和人工接管是否被收敛成可管理体验。"
+    },
+    {
+      "rank": 6,
+      "product": "Llmspeed – feel how fast a local LLM runs before you buy the hardware",
+      "productKey": "https://llmspeed.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Llmspeed 把本地模型速度预估放到硬件购买之前，能否将抽象基准转成设备选型建议，是比单纯跑分更有用的产品判断点。"
+    },
+    {
+      "rank": 7,
+      "product": "Palomino",
+      "productKey": "https://www.producthunt.com/products/palomino",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Palomino 主打并行运行 Agent 的高速工作区，判断重点是它能否解决任务拆分、依赖协调和结果汇总，而不只是多开窗口。"
+    },
+    {
+      "rank": 8,
+      "product": "Tetriz Harness",
+      "productKey": "https://www.producthunt.com/products/tetriz-harness",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Tetriz Harness 把团队经验转成统一的 Agent 配置，切中了个人提示难以组织化复用的问题，治理、版本和分发机制最值得看。"
+    },
+    {
+      "rank": 9,
+      "product": "Dottr",
+      "productKey": "https://www.producthunt.com/products/dottr",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Dottr 把合同起草、风险提示到签署串成完整结果链，值得看法律审核与人工批准如何嵌入，避免 Agent 只停在草稿阶段。"
+    },
+    {
+      "rank": 10,
+      "product": "Neophyte",
+      "productKey": "https://www.producthunt.com/products/neophyte",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Neophyte 用 Agent 实际注册并完成产品 onboarding，提供了观察“机器用户体验”的窗口，也能反向检验 SaaS 是否对 Agent 友好。"
+    },
+    {
+      "rank": 11,
+      "product": "Fish Audio Drama 3",
+      "productKey": "https://www.producthunt.com/products/fish-speech",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Fish Audio Drama 3 强调“可导演”的 AI 配音，价值在于把语气、角色与重录反馈做成迭代流程，而非一次性生成音频。"
+    },
+    {
+      "rank": 12,
+      "product": "Toad",
+      "productKey": "https://www.producthunt.com/products/toad-4",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Toad 让 Agent 连接用户拥有的任意机器，产品成败取决于远程执行的授权、隔离、审计和首次配置是否足够可信。"
+    },
+    {
+      "rank": 13,
+      "product": "Taim",
+      "productKey": "https://www.producthunt.com/products/taim-4",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Taim 把随手捕获继续推进到归档、排程和 AI 同步，值得判断它能否形成从输入到行动的闭环，而不是另一个收件箱。"
+    },
+    {
+      "rank": 14,
+      "product": "Grablo Spot",
+      "productKey": "https://www.producthunt.com/products/grablo-spot",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Grablo Spot 用 AI 在录像中定位人员或车辆，场景明确；部署成本、检索准确率与监控隐私边界比“免费”标签更关键。"
+    },
+    {
+      "rank": 15,
+      "product": "Claude Code, deploy using thevibehosting.com == Your app on root Linux",
+      "productKey": "https://thevibehosting.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 Claude Code 产物直接部署到 root Linux，瞄准 Agent 开发的最后一公里；需要验证安全默认值、回滚和环境配置是否真的省心。"
+    },
+    {
+      "rank": 16,
+      "product": "Camera Controls and Motion for AI Video Prompts",
+      "productKey": "https://www.kapwing.com/ai/prompt-generator/camera",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把镜头与运动语言转成视频提示词，价值在于降低专业控制参数的表达门槛；需判断结果是否可重复，而非只提供灵感。"
+    },
+    {
+      "rank": 17,
+      "product": "Make house walkthrough videos only from photos – TensorPix",
+      "productKey": "https://tensorpix.ai/usecases/real-estate-video-maker",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "TensorPix 把房产照片变成看房漫游视频，任务与付费方都较清晰；重点看空间一致性、镜头控制和经纪人批量生产效率。"
+    },
+    {
+      "rank": 18,
+      "product": "Sys2txt – transcribe system audio to text in the CLI with a local LLM",
+      "productKey": "https://joe-heffer.github.io/sys2txt",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Sys2txt 用本地模型在命令行转写系统音频，适合隐私敏感的开发流程；需要重点看实时性、准确率和下游工具衔接。"
+    },
+    {
+      "rank": 19,
+      "product": "I benchmarked 6 MCP proxies in Claude Code, then built my own",
+      "productKey": "https://rabin-a.github.io/mcp-router",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "作者先比较六款 MCP proxy 再自建路由器，能帮助识别延迟与兼容性取舍；但自有产品参与评测，结论需防范选择性偏差。"
+    },
+    {
+      "rank": 20,
+      "product": "Agent Vault",
+      "productKey": "https://www.producthunt.com/products/agent-vault-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agent Vault 只给出“增强 Agent”的宽泛承诺，现有证据不足以判断具体能力；需看到权限、工具或记忆机制后再评估。"
+    }
+  ]
+}
