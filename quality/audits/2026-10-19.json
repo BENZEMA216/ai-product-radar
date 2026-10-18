@@ -1,0 +1,204 @@
+{
+  "date": "2026-10-19",
+  "generatedAt": "2026-10-18T16:04:54.426Z",
+  "reportPath": "reports/2026-10-19-0004-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 51,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 2,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 18,
+      "keptCount": 6,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-17；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 18 条，AI 相关候选 6 条；实际 fallback：hunted_space。；历史去重移除 2 条已报道或已处理日榜 Product Hunt 信号，最终发布 4 条。"
+    },
+    "yc_launch": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "YC Launch 本窗口无候选或来源为空。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 18,
+      "keptCount": 11,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "fallback",
+      "rawCount": 17,
+      "keptCount": 17,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 19,
+      "keptCount": 19,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Craft Agents",
+      "productKey": "https://www.producthunt.com/products/craft-agents",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Craft Agents 用“强 agent + 专门 UX”做定位，值得看它能否把复杂执行过程变成普通用户可理解、可控制的界面。"
+    },
+    {
+      "rank": 2,
+      "product": "NitroStack",
+      "productKey": "https://www.producthunt.com/products/nitrostack",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "NitroStack 把 MCP server 的构建、测试和部署收进同一工作台，产品价值在于减少协议工具从本地开发到上线之间的断点。"
+    },
+    {
+      "rank": 3,
+      "product": "AI Zombie Trend–Generating multi-shot narrative videos from two photos",
+      "productKey": "https://aizombietrend.online",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用两张照片生成多镜头叙事视频，值得验证的不是视觉噱头，而是镜头一致性和叙事连续性是否足以形成可复用创作流程。"
+    },
+    {
+      "rank": 4,
+      "product": "MCPX – MCP server directory scanning for tool poisoning, leaked keys",
+      "productKey": "https://www.mcpx.digital",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "MCPX 直接检查工具投毒与密钥泄露，切中了 MCP 扩张后的安全治理缺口；重点看目录扫描能否给出可执行修复，而不只是风险清单。"
+    },
+    {
+      "rank": 5,
+      "product": "TaskPocket, a to-do app with an MCP server instead of built-in AI",
+      "productKey": "https://taskpocket.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "TaskPocket 不把 AI 固化进待办应用，而是通过 MCP 把任务开放给外部 agent；这提供了“应用做数据层、agent 做智能层”的产品分工样本。"
+    },
+    {
+      "rank": 6,
+      "product": "Spomory – graph-based MCP memory with an RL-trained forgetting policy",
+      "productKey": "https://spomory.yliuai.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Spomory 把“遗忘”作为记忆系统的一等能力，并用图结构与策略训练来控制保留内容，值得观察它是否能降低长期 agent 的上下文噪音。"
+    },
+    {
+      "rank": 7,
+      "product": "PrimerKit, financial market work at agent speed",
+      "productKey": "https://primerkit.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "PrimerKit 瞄准金融市场工作这种高时效、高证据要求场景，判断重点是 agent 能否保留来源链和人工复核，而非仅缩短生成时间。"
+    },
+    {
+      "rank": 8,
+      "product": "Ultracite v8",
+      "productKey": "https://www.producthunt.com/products/ultracite",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Ultracite v8 把 lint 与 format 明确服务于 agentic development，值得看代码规范能否从人的静态约束升级为 agent 提交前的自动质量门禁。"
+    },
+    {
+      "rank": 9,
+      "product": "Wisp – a voice AI on your shoulder, with spatial audio in the browser",
+      "productKey": "https://wispplayer.com/?tab=ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Wisp 用浏览器内空间音频塑造常驻语音 AI，产品判断点是它能否在不抢占视觉注意力的情况下提供清晰的状态和轮次反馈。"
+    },
+    {
+      "rank": 10,
+      "product": "Sphinx – A hook that quizzes you on your AI's code before shipping",
+      "productKey": "https://sphinx-six-theta.vercel.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Sphinx 在发版前反向提问开发者，检验其是否理解 AI 生成代码；这种交互把代码审查从“看输出”转成“验证责任人掌握程度”。"
+    },
+    {
+      "rank": 11,
+      "product": "Chrome extension that types one prompt into many AI chat tabs",
+      "productKey": "https://chromewebstore.google.com/detail/use-multiple-chat-ai-at-o/pcpciffaliaooacnhiefjiegigjidehp",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这个扩展把同一提示词同步到多个 AI 标签页，价值在于降低横向比较成本；同时也要看结果汇总和上下文隔离是否足够可靠。"
+    },
+    {
+      "rank": 12,
+      "product": "Step 5 Preview",
+      "productKey": "https://www.producthunt.com/products/step-3-5-flash",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Step 5 Preview 以 600B 开放权重和长时 agent 训练为卖点，值得关注的是开放模型能否在持续任务上提供可部署的能力与成本选择。"
+    }
+  ]
+}

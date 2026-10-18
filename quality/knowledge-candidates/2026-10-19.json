@@ -1,0 +1,412 @@
+{
+  "generatedAt": "2026-10-18T16:11:31.785Z",
+  "date": "2026-10-19",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "Connect your agents to your software lifecycle with the GitLab MCP server",
+      "link": "https://about.gitlab.com/blog/mcp-server-ga",
+      "publishedAt": "2026-10-15T00:00:00.000Z",
+      "author": "Brittany Lutz https://about.gitlab.com/blog/authors/brittany-lutz/",
+      "summary": "Agents are working across your team's software development lifecycle, but most still operate as separate tools, leaving the context, handoffs, and permissions for your team to stitch together. When your agents use APIs for these disparate tools, they often guess at endpoints and use up their context window on extra calls. The GitLab MCP server, now generally available with GitLab 19.5 , connects your team’s external agents to your entire software lifecycle — from planning through production. The GitLab MCP server enables any MCP-compatible agent to run GitLab workflows from the client your team already works in, getting what it needs in fewer calls and with less context bloat. Agents can work across code, merge requests, work items, and pipelines, and hand work to agentic flows within GitLab Duo Agent Platform. Each action runs under your existing GitLab permissions. Built for how agents work APIs are built for developers writing code. An agent that uses one has to work out which endpoints to call and make several calls to assemble one answer. Model Context Protocol ( MCP ) is an open standard built for agents. An MCP server tells an agent what it can do and offers a curated set of tools designed around real workflows. Agents get the tools they need with more focused context, in fewer calls, and needing less data to carry through each task. The GitLab MCP server applies that approach to your workflows across your projects, supporting all your team members within the GitLab permissions you already set. Whether you're a developer handing a task to an agent or a team deciding how agents should work across your organization, your agents get tool coverage broad enough to complete the work, with access that follows each user’s GitLab permissions. Developers can even start GitLab Duo Agent Platform flows from the MCP-compatible coding agent they already use. Here is Claude Code using the GitLab MCP server to start the Fix Pipeline flow in Duo Agent Platform: More of your workflow, within reach of an agent In addition to the tools announced in 19.4 , the GitLab MCP server now includes more tools for working with code and pipelines, and for finding the right group or doc. Code: add_branch starts a feature branch, get_repository_file reads a file at any ref, and semantic_search finds code by meaning, answering \"where is this implemented?\" without knowing the file or symbol name. Pipelines: get_pipeline shows why a pipeline is red, with its jobs, downstream pipelines, and artifacts on request. list_pipelines surfaces patterns across recent runs, and get_artifact_file reads a single file from a job's artifacts, such as a log, report, or test fixture, without downloading the whole archive. Orientation: list_groups lets an agent browse your group hierarchy to find the right group instead of guessing at identifiers, and list_wiki_pages , an opt-in tool, surfaces runbooks and docs before it answers a how-to question. In 19.5, the MCP server tool catalog is also simpler to work with. Related tools are now consolidated, with fewer tools doing more. get_merge_request lets you ask your agent for a merge request’s commits, diffs, pipelines, conflicts, or notes. get_pipeline now includes get_pipeline_jobs , so you can ask for a pipeline’s jobs along with the pipeline itself. Your agents spend less time choosing the right tool and pull in only the details a task needs. Toolsets let you choose which groups of tools the server returns. Each agent works from a focused set of tools that fits your team’s workflow instead of everything the server offers. A smaller set makes it less likely that an agent picks the wrong tool and has to retry. Most groups are on by default, and code security and wikis are available as opt-in groups. Browse the full catalog in the tools reference . Start GitLab flows without leaving your client Calling tools is one way an agent works with GitLab. Now, an agent can also hand a job to GitLab Duo Agent Platform and follow that job to the result without leaving your client. It can find the flows a project offers with list_duo_agents_and_flows , start a new flow from a goal in plain language with start_duo_session , and check progress with get_duo_session and list_duo_sessions . The work runs in a CI job inside GitLab, under the same context layer, policy checks, and audit trail as any other Duo Agent Platform session. When a session needs a decision, it pauses for your input. With send_duo_session_input , you approve or reject the agent’s proposed action, or answer its question, and the session picks back up, keeping you in the loop. The duo_agent_platform toolset is included by default alongside the rest of the GitLab MCP server's tools. Connect your agents to GitLab today The agents supporting your software lifecycle will continue evolving. As your team adopts new agents, the GitLab MCP server connects each one to GitLab’s tools and flows, so they’re productive from day one. You can connect the agents your team already uses by following the MCP server documentation , which includes setup instructions for Claude Code, Claude Desktop, Cursor, GitHub Copilot, OpenAI Codex, Gemini, Kiro, Zed, and other MCP-compatible clients. The GitLab MCP server is available on the Free, Premium, and Ultimate tiers, on GitLab.com, GitLab Self-Managed, and GitLab Dedicated. On GitLab.com, per-user rate limits are set at 60 calls per minute on Free and 600 on Premium and Ultimate. If you’re new to Duo Agent Platform, start a free trial . Already on Premium or Ultimate? Turn on Duo Agent Platform and use the GitLab Credits included with your subscription .",
+      "evidenceLink": "",
+      "score": 86.70055982142857,
+      "core": "Agents are working across your team's software development lifecycle, but most still operate as separate tools, leaving the context, handoffs, and permissions for your team to stitch together. When your agents use APIs for these disparate tools, they often guess at endpoints and use up their context window on extra calls. The GitLab MCP server, now generally available with GitLab 19.5 , connects your team’s external…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-18T16:11:31.785Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Backends on Vercel: Python, containers, and Daemons",
+      "link": "https://vercel.com/blog/backends-on-vercel-python-containers-and-daemons",
+      "publishedAt": "2026-10-15T07:00:00.000Z",
+      "author": "Steren",
+      "summary": "Last year, we expanded zero-config support for Python and TypeScript backend frameworks. By this summer, developers could deploy their frontend and backend together with Vercel Services and coordinate background work with queues and durable workflows . Today at Vercel Ship in San Francisco , we are expanding the backend workloads you can run on Vercel. Python on Vercel is now generally available, container support in Vercel Functions enables custom runtimes and system libraries, and we are introducing Vercel Daemons in Public Beta for background workers that pull work and stay running between jobs. Python is now generally available You can build your backend in Python with the Vercel infrastructure and development experience you know from your frontend, including local development, previews, and production deployments. Frameworks such as FastAPI, Flask, and Django run on standard CPython with your PyPI dependencies, while Vercel handles framework detection, builds, and scaling. Already, 150,000 teams run Python backends on Vercel, including engineers at OpenAI, Polymarket, and Exa. SDKs for Python let you use Vercel products from your application, whether you’re storing files in Vercel Blob , sending background jobs to Vercel Queues , coordinating durable steps with Vercel Workflows , running untrusted code in Vercel Sandbox , or streaming model responses and handling tool calls with the AI SDK for Python . Delphi , which builds AI digital minds from books and talks, moved its Python backend from AWS ECS to Vercel. With ten engineers and no dedicated infrastructure role, the team ships to production more than 100 times a day and uses Queues to handle background jobs. Visit the Python knowledge base for framework details and examples. Applications in any language with containers The Vercel container runtime lets you deploy applications written in any language, packaged with the OS libraries and executables they need. Since container support entered Public Beta, 5,000 teams have shipped 150,000 container deployments on Vercel. Containers deploy as Vercel Functions on Fluid compute, scaling with traffic and using Active CPU pricing , which doesn’t charge for idle time spent waiting for API responses, database queries, or LLM inferencing. Vercel Services lets you develop and deploy your backend alongside your frontend, while Vercel CDN serves traffic on your domains, Vercel WAF protects it, logs help you investigate issues, and rollbacks restore earlier deployments. For example, take a video app that uses a container for background processing, preparing a playback copy and thumbnail for each uploaded clip. This Dockerfile packages the Python processor, its dependencies, and ffmpeg to run with Daemons: When you deploy through Git or the Vercel CLI, Vercel builds the image and stores it in your Vercel Container Registry . Read our containerized Functions deployment guide to get started. Background workers with Vercel Daemons Vercel Daemons lets you deploy containers as continuously running background workers on Fluid compute. You choose the number of instances in each region, and Vercel maintains that capacity by restarting processes when they exit or crash. Daemons launches with support for pull-based workloads, where your code requests work from another system and processes it as it becomes available. That could mean consuming queue messages or fetching pending jobs from a database. In our example, Daemons runs the video processor continuously as it pulls jobs from Vercel Queues . In vercel.toml , define the Next.js frontend, route requests to it, and add the processor using Dockerfile : Follow the Daemons deployment guide to add a background worker to your Vercel project. Run your backends on Vercel We’re continuing to invest in backend support so more of your existing application can run on Vercel, using the languages, dependencies, and execution patterns it needs. Resources Read our backends guides in the Knowledge Base Read the complete guide to Vercel Daemons Deploy an eve agent with Python in one click Read more",
+      "evidenceLink": "",
+      "score": 81.20055982142857,
+      "core": "Last year, we expanded zero-config support for Python and TypeScript backend frameworks. By this summer, developers could deploy their frontend and backend together with Vercel Services and coordinate background work with queues and durable workflows . Today at Vercel Ship in San Francisco , we are expanding the backend workloads you can run on Vercel. Python on Vercel is now generally available, container support i…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-18T16:11:31.785Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Muse Spark Open now available on AI Gateway",
+      "link": "https://vercel.com/changelog/muse-spark-open-now-available-on-ai-gateway",
+      "publishedAt": "2026-10-15T00:00:00.000Z",
+      "author": "Jerilyn Zheng",
+      "summary": "Muse Spark Open from Meta is now available on AI Gateway. The open-weight reasoning model is designed for coding and agentic workflows, including multi-file refactoring, debugging, and understanding large codebases. Muse Spark Open supports text and image input with a 1M-token context window, allowing agents to work with code and screenshots in the same request. It is available with ZDR and no training, without creating separate provider accounts. Use meta/muse-spark-open as the model name across all API formats and coding agents. The model is available across the AI SDK , the OpenAI-compatible Chat Completions and Responses APIs, the Anthropic-compatible Messages API , and coding agents connected to AI Gateway. To use it in Claude Code, Codex, Cursor, and more, install the latest Vercel CLI and run setup: Then select meta/muse-spark-open in the agent. See the coding agents guide for details. Try Muse Spark Open in the model playground . AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. You can view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 79.70055982142857,
+      "core": "Muse Spark Open from Meta is now available on AI Gateway. The open-weight reasoning model is designed for coding and agentic workflows, including multi-file refactoring, debugging, and understanding large codebases. Muse Spark Open supports text and image input with a 1M-token context window, allowing agents to work with code and screenshots in the same request. It is available with ZDR and no training, without crea…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-18T16:11:31.785Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "AI Can Write the Code. Who Verifies It?",
+      "link": "https://mihaisplace.com/blog/ai-can-write-the-code-who-verifies-it",
+      "publishedAt": "2026-10-17T18:31:30.000Z",
+      "author": "mmarvramm https://news.ycombinator.com/user?id=mmarvramm",
+      "summary": "AI coding agents write code faster than teams can review it. Here are the automated checks to run at each stage, from pre-commit to production, and the multi-agent review workflow I use.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50133713",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 27,
+        "comments": 64
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-18T16:11:31.785Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 66.34729573904443,
+      "core": "AI coding agents write code faster than teams can review it. Here are the automated checks to run at each stage, from pre-commit to production, and the multi-agent review workflow I use.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "detent_agent_engineering",
+      "source": "DETENT Agent Engineering",
+      "title": "Patch Management When an Agent Proposes the Fix: Who Approves It?",
+      "link": "https://detent-ai.com/en/blog/patch-management-quando-la-patch-la-propone-un-agente",
+      "publishedAt": "2026-10-18T00:00:00.000Z",
+      "author": "",
+      "summary": "Patch management is how fixes get applied to software in production. What changes, and what to record, when a coding agent proposes the patch. Written for teams under European customer expectations.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-18T16:11:31.785Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 55.94341696428572,
+      "core": "Patch management is how fixes get applied to software in production. What changes, and what to record, when a coding agent proposes the patch. Written for teams under European customer expectations.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Apple ML Research: Muse Spark Open with MLX on Mac Studio",
+      "link": "https://machinelearning.apple.com/research/mlx-distributed-inference",
+      "publishedAt": "2026-10-16T13:43:48.000Z",
+      "author": "antipaul https://news.ycombinator.com/user?id=antipaul",
+      "summary": "MLX on Mac with Apple silicon lets AI researchers and developers experiment locally with the latest models and methods in a private…",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50118320",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 364,
+        "comments": 205
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-18T16:11:31.785Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 51.56809191778258,
+      "core": "MLX on Mac with Apple silicon lets AI researchers and developers experiment locally with the latest models and methods in a private…",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentconn_engineering",
+      "source": "AgentConn Field Reports",
+      "title": "Claude Flows: Hand It a Goal, It Runs 1,000 Agents",
+      "link": "https://agentconn.com/blog/claude-flows-1000-agents-2026",
+      "publishedAt": "2026-10-17T00:00:00.000Z",
+      "author": "AgentConn Team",
+      "summary": "Inside dynamic workflows — the JS harness, three primitives, six patterns, and what 94% bug recall actually costs.",
+      "evidenceLink": "",
+      "score": 50.76246458333333,
+      "core": "Inside dynamic workflows — the JS harness, three primitives, six patterns, and what 94% bug recall actually costs.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-18T16:11:31.785Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "Best Open Source AI Agents in 2026: OpenClaw, Hermes, OpenHands and More",
+      "link": "https://rerun.build/blog/open-source-ai-agents",
+      "publishedAt": "2026-10-18T04:12:37.000Z",
+      "author": "",
+      "summary": "8 open source AI agents you can run today, from OpenClaw and Hermes Agent to OpenHands and goose, ranked by job and scored on license, setup, model freedom and safety.",
+      "evidenceLink": "",
+      "score": 50.07192886904762,
+      "core": "8 open source AI agents you can run today, from OpenClaw and Hermes Agent to OpenHands and goose, ranked by job and scored on license, setup, model freedom and safety.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-18T16:11:31.785Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cohere_blog",
+      "source": "Cohere Blog",
+      "title": "Deploying AI in the Utilities Sector | Cohere",
+      "link": "https://cohere.com/blog/ai-for-utilities-requires-capability-and-control",
+      "publishedAt": "2026-10-15T18:16:00.000Z",
+      "author": "",
+      "summary": "Learn what utility companies should consider before deploying AI, and see how North can help meet the sector&#x27;s security, data, and operational needs.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-18T16:11:31.785Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 35.86087728174603,
+      "core": "Learn what utility companies should consider before deploying AI, and see how North can help meet the sector&#x27;s security, data, and operational needs.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "databricks_engineering",
+      "source": "Databricks Blog",
+      "title": "How our AI Research team uses AI Runtime",
+      "link": "https://www.databricks.com/blog/how-our-ai-research-team-uses-ai-runtime",
+      "publishedAt": "2026-10-15T21:37:44.000Z",
+      "author": "",
+      "summary": "At Databricks, we continuously develop and evaluate new AI research techniques to...",
+      "evidenceLink": "",
+      "score": 35.712147123015875,
+      "core": "At Databricks, we continuously develop and evaluate new AI research techniques to...",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-18T16:11:31.785Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How ShipStation Global built an AI IT help desk on Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-shipstation-global-built-an-ai-it-help-desk-on-amazon-bedrock-agentcore",
+      "publishedAt": "2026-10-13T15:54:49.000Z",
+      "author": "Kenneth Salmon",
+      "summary": "ShipStation Global's engineering team built Deckhand, an AI IT help desk agent for Slack on Amazon Bedrock AgentCore. It answers routine IT questions from a curated knowledge base, reads error-message screenshots, and files Jira tickets. In its first three months it resolved 97.5% of channel queries with a 96% positive feedback rating.",
+      "evidenceLink": "",
+      "score": 35.28089712301587,
+      "core": "ShipStation Global's engineering team built Deckhand, an AI IT help desk agent for Slack on Amazon Bedrock AgentCore. It answers routine IT questions from a curated knowledge base, reads error-message screenshots, and files Jira tickets. In its first three months it resolved 97.5% of channel queries with a 96% positive feedback rating.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-18T16:11:31.785Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cohere_blog",
+      "source": "Cohere Blog",
+      "title": "Cohere to acquire AISLE for cyber-resilient sovereign AI",
+      "link": "https://cohere.com/blog/cohere-and-aisle-sign-letter-of-intent-to-advance-cyber-resilient-sovereign-ai",
+      "publishedAt": "2026-10-15T09:00:00.000Z",
+      "author": "",
+      "summary": "Cohere proposes acquiring AISLE to enhance sovereign AI security for enterprises and governments.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-18T16:11:31.785Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 34.88230585317461,
+      "core": "Cohere proposes acquiring AISLE to enhance sovereign AI security for enterprises and governments.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "How employment is changing at Anthropic",
+      "link": "https://www.anthropic.com/research/employment-at-anthropic",
+      "publishedAt": "2026-10-16T16:26:00.000Z",
+      "author": "",
+      "summary": "How has AI restructured work and employment at Anthropic? As a company at the frontier of AI adoption, Anthropic could be a leading indicator of how AI will shift work organization, hiring, and labor demand across the economy.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-18T16:11:31.785Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 32.84421061507936,
+      "core": "How has AI restructured work and employment at Anthropic? As a company at the frontier of AI adoption, Anthropic could be a leading indicator of how AI will shift work organization, hiring, and labor demand across the economy.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "AI agents have a mind of their own – and that’s a problem for businesses",
+      "link": "https://www.itpro.com/security/ai-agents-have-a-mind-of-their-own-and-thats-a-problem-for-businesses",
+      "publishedAt": "2026-10-14T10:53:10.000Z",
+      "author": "Emma Woollacott",
+      "summary": "New research shows that half of organizations are having to deal with agent behaviour that hasn't been authorized or approved.",
+      "evidenceLink": "",
+      "score": 30.463853472222223,
+      "core": "New research shows that half of organizations are having to deal with agent behaviour that hasn't been authorized or approved.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-18T16:11:31.785Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "[AINews] AI Engineer NYC: Gemini 4 Argon, Vals AI Benchmarks",
+      "link": "https://www.latent.space/p/ainews-ai-engineer-nyc-gemini-4-argon",
+      "publishedAt": "2026-10-14T05:40:28.000Z",
+      "author": "Latent.Space",
+      "summary": "Gemini 4 Argon went GA today, but we already gave it title story 2 weeks ago and most benchmarks, like CursorBench, simply independently confirm their claims.",
+      "evidenceLink": "",
+      "score": 30.269369345238093,
+      "core": "Gemini 4 Argon went GA today, but we already gave it title story 2 weeks ago and most benchmarks, like CursorBench, simply independently confirm their claims.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-18T16:11:31.785Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "databricks_engineering",
+      "source": "Databricks Blog",
+      "title": "How FactSet cut model training and deployment from days to hours with Databricks AI Runtime",
+      "link": "https://www.databricks.com/blog/how-factset-cut-model-training-and-deployment-days-hours-databricks-ai-runtime",
+      "publishedAt": "2026-10-14T22:55:41.000Z",
+      "author": "",
+      "summary": "FactSet’s Text-to-Formula (TTF) system has a deceptively difficult job: take a natural-language...",
+      "evidenceLink": "",
+      "score": 30.168436805555555,
+      "core": "FactSet’s Text-to-Formula (TTF) system has a deceptively difficult job: take a natural-language...",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-18T16:11:31.785Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "NVIDIA Run:ai Is Now Open Source as Part of NVIDIA DSX AI Factory Platform",
+      "link": "https://developer.nvidia.com/blog/nvidia-runai-is-now-open-source-as-part-of-nvidia-dsx-ai-factory-platform",
+      "publishedAt": "2026-10-13T14:19:40.000Z",
+      "author": "Tanya Lenz",
+      "summary": "NVIDIA is making the full NVIDIA Run:ai platform available as open source software, giving customers, developers, and ecosystem partners access to...",
+      "evidenceLink": "",
+      "score": 30.12317886904762,
+      "core": "NVIDIA is making the full NVIDIA Run:ai platform available as open source software, giving customers, developers, and ecosystem partners access to...",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-18T16:11:31.785Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "amazon_science_blog",
+      "source": "Amazon Science Blog",
+      "title": "Can we change an AI model’s architecture without retraining it from scratch?",
+      "link": "https://www.amazon.science/blog/can-we-change-an-ai-models-architecture-without-retraining-it-from-scratch",
+      "publishedAt": "2026-10-12T17:36:18.000Z",
+      "author": "",
+      "summary": "“Priming” reuses pretrained Transformer weights to build models with more efficient architectures at less than 1% of the original training cost and with throughputs up to twice as high.",
+      "evidenceLink": "",
+      "score": 27.842980456349206,
+      "core": "“Priming” reuses pretrained Transformer weights to build models with more efficient architectures at less than 1% of the original training cost and with throughputs up to twice as high.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-18T16:11:31.785Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "AI Scan for pull requests generally available",
+      "link": "https://github.blog/changelog/2026-10-15-ai-scan-for-pull-requests-generally-available",
+      "publishedAt": "2026-10-15T15:04:51.000Z",
+      "author": "Allison",
+      "summary": "Code scanning AI Scan for pull requests is now generally available. It complements CodeQL by finding vulnerabilities in pull request changes for languages and frameworks that CodeQL does not currently… The post AI Scan for pull requests generally available appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 27.399984424603176,
+      "core": "Code scanning AI Scan for pull requests is now generally available. It complements CodeQL by finding vulnerabilities in pull request changes for languages and frameworks that CodeQL does not currently… The post AI Scan for pull requests generally available appeared first on The GitHub Blog .",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-18T16:11:31.785Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Cloudflare and OpenAI: Making AI discovery better for everyone",
+      "link": "https://blog.cloudflare.com/cloudflare-openai-discovery-agentic-web",
+      "publishedAt": "2026-10-15T13:00:00.000Z",
+      "author": "Matthew Conroy",
+      "summary": "How Cloudflare and OpenAI are working together to help AI find useful content, keep up with changes, and make fewer wasted requests — making the experience better for users and website owners alike.",
+      "evidenceLink": "",
+      "score": 26.729131250000002,
+      "core": "How Cloudflare and OpenAI are working together to help AI find useful content, keep up with changes, and make fewer wasted requests — making the experience better for users and website owners alike.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-18T16:11:31.785Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
