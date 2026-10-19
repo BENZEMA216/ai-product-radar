@@ -1,0 +1,261 @@
+{
+  "date": "2026-10-20",
+  "generatedAt": "2026-10-19T16:06:51.256Z",
+  "reportPath": "reports/2026-10-20-0006-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 59,
+    "top20Sources": [
+      "HN Algolia",
+      "YC Launch",
+      "Product Hunt",
+      "AIHOT"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 15,
+      "keptCount": 8,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-18；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 15 条，AI 相关候选 8 条；历史去重后最终发布 8 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 1,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 16,
+      "keptCount": 8,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:node, Model:node；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 22,
+      "keptCount": 22,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "OpenFilm – Turn any coding agent into a video editor",
+      "productKey": "https://github.com/openfilm/openfilm",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "标题把任意 coding agent 直接接到视频编辑任务，值得验证 agent 能否进入素材、剪辑与导出这类复杂创作流程，而不只负责生成单段内容。"
+    },
+    {
+      "rank": 2,
+      "product": "Theo",
+      "productKey": "https://www.ycombinator.com/launches/w36-theo-the-site-builder-and-engine-that-gets-your-business-found",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把建站与“进入 AI agent 最终给出的少数推荐”绑定，值得观察商家能否用可操作的网站优化换取 AI 搜索分发，而不是只购买传统 SEO 流量。"
+    },
+    {
+      "rank": 3,
+      "product": "shim-cli",
+      "productKey": "https://www.producthunt.com/products/shim-cli",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 coding agent 发出的内容变得可见并允许掩码，产品价值在于把隐私控制前置到命令行代理层，降低团队采用 agent 时的审计顾虑。"
+    },
+    {
+      "rank": 4,
+      "product": "Popcraft",
+      "productKey": "https://www.producthunt.com/products/popcraft",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它让任意 AI agent 调用视频、图像和音频生成，关键看多媒体能力能否成为可编排工具层，而不是三个彼此割裂的生成入口。"
+    },
+    {
+      "rank": 5,
+      "product": "WhatsApp MCP running free on Cloudflare",
+      "productKey": "https://github.com/finereli/whatsapp-mcp",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 WhatsApp、MCP 与免费的 Cloudflare 运行方式组合在一起，值得看它是否能显著降低把消息渠道接入 agent 的部署和运维门槛。"
+    },
+    {
+      "rank": 6,
+      "product": "Krea 3",
+      "productKey": "https://www.producthunt.com/products/krea",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "2K 编辑在 8 秒内完成是直接影响创作迭代频率的指标；值得看速度与分辨率提升是否真的缩短从尝试到定稿的闭环。"
+    },
+    {
+      "rank": 7,
+      "product": "Buddylist – Coding agents in an MSN-style messenger",
+      "productKey": "https://buddylist.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用熟悉的联系人列表承载 coding agents，值得观察这种社交化界面能否让多 agent 的状态、切换与协作比终端命令更易理解。"
+    },
+    {
+      "rank": 8,
+      "product": "A free MCP server for facts LLMs get wrong (time zones, holidays, FX)",
+      "productKey": "https://apistack.online/mcp",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它专门把时区、节假日和汇率这类模型易错事实交给外部 MCP，体现了清晰的产品边界：让模型负责意图，让确定性数据服务负责答案。"
+    },
+    {
+      "rank": 9,
+      "product": "MyLens",
+      "productKey": "https://www.producthunt.com/products/mylens-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它主打规模化的一对一实时演示，值得验证个性化内容与实时讲解能否同时成立，以及这种体验是否比静态演示文稿更能推进转化。"
+    },
+    {
+      "rank": 10,
+      "product": "Stream Reducer – Podcast/Video AI Summarization at Scale",
+      "productKey": "https://reducer.xgoose.org",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把播客和视频摘要强调到规模化处理，产品判断点是批量摄取、摘要一致性与结果消费能否形成稳定流程，而非单次上传演示。"
+    },
+    {
+      "rank": 11,
+      "product": "Zalcro",
+      "productKey": "https://www.producthunt.com/products/zalcro",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 vibe coding 的切入点前移到动手开发之前，值得观察结构化规划能否减少 AI builder 的返工，而不是再提供一个代码生成入口。"
+    },
+    {
+      "rank": 12,
+      "product": "Bee Frontier and Bee Eclipse",
+      "productKey": "https://www.producthunt.com/products/bee-frontier-and-bee-eclipse",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 Amazon 的个人 AI 记忆延伸到手腕和手机，产品判断重点是跨设备记忆连续性是否足够有用，以及随身采集带来的隐私成本。"
+    },
+    {
+      "rank": 13,
+      "product": "Openbroca",
+      "productKey": "https://www.producthunt.com/products/openbroca",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用轻量 Mac 听写并强调保留用户表达风格，值得看语音输入能否成为长期桌面入口，而不是只比系统听写多一层润色。"
+    },
+    {
+      "rank": 14,
+      "product": "Tomo for ChatGPT",
+      "productKey": "https://www.producthunt.com/products/tomo-for-chatgpt",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“先提问、再像 Duolingo 一样练习”把一次性问答改成主动回忆与反馈循环，值得看这种游戏化练习是否能提升学习留存。"
+    },
+    {
+      "rank": 15,
+      "product": "Acyclic; Rapid agent swarms",
+      "productKey": "https://news.ycombinator.com/item?id=50153128",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "标题只说明快速 agent swarm，尚未交代任务边界、协作机制或交付结果；可作为编排方向的弱信号，但不足以证明产品深度。"
+    },
+    {
+      "rank": 16,
+      "product": "Verbs – pixel-art loops for each of Claude Code's 188 spinner verbs",
+      "productKey": "https://ollie.md/verbs",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它为 Claude Code 的状态词制作像素动画，能提示等待反馈的体验细节，但目前更像界面趣味扩展，缺少独立任务价值。"
+    },
+    {
+      "rank": 17,
+      "product": "MiniMax M3.1 Flash 上线：推理速度提升近 3 倍，使用成本降低 70%",
+      "productKey": "https://aihot.news/items/klksps3ye2efha5u3nytjc9x8",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 4,
+      "rankingIssue": null,
+      "reason": "聚合证据给出近 3 倍速度和 70% 成本下降，值得用于比较模型经济性；但这些数字仍需回到官方材料核验，不能单凭转述判断领先。"
+    }
+  ]
+}

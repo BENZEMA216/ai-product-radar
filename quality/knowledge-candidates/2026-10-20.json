@@ -1,0 +1,415 @@
+{
+  "generatedAt": "2026-10-19T16:10:11.265Z",
+  "date": "2026-10-20",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "Building AI security in the open",
+      "link": "https://about.gitlab.com/blog/gitlab-joins-open-secure-ai-alliance",
+      "publishedAt": "2026-10-19T00:00:00.000Z",
+      "author": "Chaim Mazal https://about.gitlab.com/blog/authors/chaim-mazal/",
+      "summary": "When code becomes abundant trust becomes scarce. That is the argument GitLab CEO Bill Staples made in his recent essay : AI is collapsing the cost of producing software, and everything around production, including context, verification, governance, and evidence, becomes proportionally more important. Both security and collaboration are key elements to producing trust. AI widens what has to be trusted to include the agents that now write software along with the software that gets written. That is why GitLab is joining the Open Secure AI Alliance , which brings together organizations to develop and share open technologies, techniques, and tools that help safeguard software and agents in the age of AI. We joined because we believe AI security is strongest when it can be inspected, tested, adapted, and improved by a broad community of defenders. This is an extension of work GitLab is already doing in the open. GitLab’s AI Gateway is a standalone service that provides access to AI features across GitLab.com, GitLab Dedicated, and self-managed instances. Its source code is public, and so are the agent workflow configurations running on AI Gateway, including configurations for code creation, code review, secrets false-positive detection, and security review. Developer Flow configuration Code Review Flow configuration Security Review Flow These examples reflect an important principle: An AI system is more than the model behind it. Trust depends on the surrounding harness, workflows, controls, context, and evaluation. Open tooling makes it easier for defenders to understand how those pieces work, test them against real risks, and improve them over time. We also believe enterprises need choice. Organizations should be able to use proprietary and secure open weight models, select the right model for the job, and make decisions about where and how AI systems operate. Model and cloud agnosticism helps preserve that flexibility, while an open ecosystem gives customers more options for building, governing, and securing AI. Transparency also has to cover the risks. Our documentation on security threats in agentic systems sets out the attack paths that apply to our own agents and the controls that apply in each environment. We treat our agents as privileged actors: Each one runs with an explicit identity, constrained tools and permissions, and actions that can be audited. We share how this works through our documentation for composite identity , sandboxed execution , per-flow tool restrictions , and agent tool governance . Through our participation in the Open Secure AI Alliance, GitLab has an opportunity to share practical work already underway across our AI and security teams and learn from the broader community. Our goal is not to position open weight and closed models as opposites. It is to help ensure that defenders have the transparency, control, and flexibility they need to build trustworthy AI systems. AI security should be built in the open. Learn more about the Open Secure AI Alliance .",
+      "evidenceLink": "",
+      "score": 107.84501458333332,
+      "core": "When code becomes abundant trust becomes scarce. That is the argument GitLab CEO Bill Staples made in his recent essay : AI is collapsing the cost of producing software, and everything around production, including context, verification, governance, and evidence, becomes proportionally more important. Both security and collaboration are key elements to producing trust. AI widens what has to be trusted to include the …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-19T16:10:11.265Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Google named a Leader in the 2026 IDC MarketScape for Agentic AI Platforms",
+      "link": "https://cloud.google.com/blog/products/ai-machine-learning/google-named-leader-in-2026-idc-marketscape-for-agentic-ai-platforms",
+      "publishedAt": "2026-10-19T07:00:00.000Z",
+      "author": "Jamie de Guerre Senior Director, Outbound Product Management",
+      "summary": "As organizations work to leverage AI to transform their businesses, it is clear that the raw model intelligence is not the key challenge. Consistently, we hear that the challenges lie in how the agents can be deployed across the company while meeting key requirements for quality, integration, security, and governance. Gemini provides that connected foundation across the enterprise , and it’s why we believe Google was named a Leader in the inaugural IDC MarketScape: Worldwide Agentic AI Platforms 2026 Vendor Assessment1. IDC MarketScape vendor analysis model is designed to provide an overview of the competitive fitness of technology and suppliers in a given market. The research methodology utilizes a rigorous scoring methodology based on both qualitative and quantitative criteria that results in a single graphical illustration of each supplier’s position within a given market. The Capabilities score measures supplier product, go-to-market and business execution in the short-term. The Strategy score measures alignment of supplier strategies with customer requirements in a 3-5 year timeframe. Supplier market share is represented by the size of the icons. Gemini meets work where it already happens A viable agentic platform has to meet work where it already happens – and run under production-grade controls. Gemini is engineered to deliver developer velocity without compromising governance, built around four core differentiators: 1. Surfaces that connect builders and business teams Gemini makes it so that every surface connects back to one universal foundation. Where teams already work: Employees collaborate with Gemini directly inside Google Workspace, Microsoft 365, or team chats – the agent carries the same persistent memory, skills, and enterprise permissions across desktop and mobile without needing to switch tools. Builder tools centered on choice: Gemini platform supports how developers want to work, spanning no-code and low-code builders in the studio to code-first workflows with the Agent Development Kit (ADK) and Antigravity. Workflows that compound across the organization: When a team solves a complex workflow, they can package it into a shared skill published to a central Agent Registry. Gemini calls on these skills directly to execute tasks, turning proven procedures into reusable assets across the entire company. 2. Radical openness across models, enterprise data, and tools Gemini adapts to the software you already run, not the other way around. Model choice: Through Model Garden in Gemini platform, teams have direct access to over 200 models – including all of the breakthroughs from Google DeepMind like Gemini 4 Argon , day one access to the latest Anthropic models, and third-party and open models. Grounding on your enterprise data: Gemini connects directly to live enterprise data across Google Cloud in BigQuery and Cloud Storage, as well as Salesforce, SAP, and others. Because Gemini inherits each employee's existing credentials, sensitive information stays governed at the source. Open standards: Built on open protocols like MCP and A2A, Gemini can easily plug into your existing toolchains and communicate across multi-vendor environments. 3. Smarter token economics Gemini optimizes cost, latency, and performance directly at the execution layer. Matching tasks to the right model: By default, Gemini uses Auto mode for users, letting the platform match each step of a task to the right model dynamically. It defaults to a fast workhorse model like Gemini Flash, and escalates to a high-capacity frontier reasoning model only when task complexity requires it. Reusable skills: Teams can package proven processes into shared skills. Your agents can execute against these established procedures, improving consistency and reducing repetitive token consumption across the company. Budget guardrails: Administrators can set spending limits by project, department, or individual agent in the billing console. When a budget threshold is reached, new requests pause while active tasks are allowed to complete, giving finance and engineering predictable cost controls without abruptly interrupting in-progress work. 4. Built-in governance and security Gemini incorporates enterprise governance natively, and at no additional cost. Dedicated agent identity: Every agent receives its own distinct, authenticated identity governed by least-privilege permissions. When an agent takes action, every event is recorded in an audit trail tied directly to that identity and the identity of which user was using the agent for the task. Isolated sandboxes: A sandboxed boundary keeps dynamic tasks strictly contained, protecting your underlying infrastructure, core network, and sensitive corporate data from being exposed or compromised. Policy enforcement: Rather than relying on a model to self-police, Agent Gateway automatically applies corporate security policies, blocks data leakage, and ensures agents only access what they are explicitly authorized to touch. Looking forward At its core, Gemini is all about giving your organization an open, reliable platform where builders have choice and teams work with complete confidence. We are honored by IDC MarketScape’s recognition of Google as a Leader, and we look forward to continuing this work alongside our customers. Download the IDC MarketScape: Worldwide Agentic AI Platforms 2026 Vendor Assessment excerpt to learn why Google is named a Leader.",
+      "evidenceLink": "",
+      "score": 100.34501458333332,
+      "core": "As organizations work to leverage AI to transform their businesses, it is clear that the raw model intelligence is not the key challenge. Consistently, we hear that the challenges lie in how the agents can be deployed across the company while meeting key requirements for quality, integration, security, and governance. Gemini provides that connected foundation across the enterprise , and it’s why we believe Google wa…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-19T16:10:11.265Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "MiniMax M3.1 Flash now available on AI Gateway for free",
+      "link": "https://vercel.com/changelog/minimax-m3-1-flash-now-available-on-ai-gateway-for-free",
+      "publishedAt": "2026-10-19T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "MiniMax M3.1 Flash from MiniMax is now available on AI Gateway for free until Oct 22. MiniMax M3.1 Flash is an open-weight multimodal model for coding and agentic work, with a 1M-token context window for long documents and multi-step agent sessions. Compared with earlier MiniMax models, M3.1 Flash improves on complex agentic tasks, coding, and cybersecurity. On the agent side, that covers multi-step business processes and computer use that carries a task from one application to the next. For coding, MiniMax reports its best results on application development, particularly frontend interactions, targeted bug fixes, and component tests. The free rate applies only when MiniMax serves the request. To make sure it does, sort the provider with order in the gateway provider options . After the offer ends, pinned requests bill at MiniMax's standard rate. Call it through the AI SDK , the Chat Completions , Responses , and Anthropic Messages APIs, or a coding agent connected to AI Gateway. Use minimax/minimax-m3.1-flash as the model name: To use it in Claude Code, Codex, Cursor, and more, install the latest Vercel CLI and run setup: Then select minimax/minimax-m3.1-flash in the agent. See the coding agents guide for details. Try MiniMax M3.1 Flash in the model playground . AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. You can view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 94.84501458333332,
+      "core": "MiniMax M3.1 Flash from MiniMax is now available on AI Gateway for free until Oct 22. MiniMax M3.1 Flash is an open-weight multimodal model for coding and agentic work, with a 1M-token context window for long documents and multi-step agent sessions. Compared with earlier MiniMax models, M3.1 Flash improves on complex agentic tasks, coding, and cybersecurity. On the agent side, that covers multi-step business process…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-19T16:10:11.265Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Who judges the judge? Three helpful ways to audit your LLM evaluators",
+      "link": "https://cloud.google.com/blog/topics/consulting/three-ways-to-audit-your-llm-evaluators",
+      "publishedAt": "2026-10-19T16:00:00.000Z",
+      "author": "Héctor González Álvarez Senior Technical Solutions Consultant, Google Cloud",
+      "summary": "Is your LLM-as-a-judge truly objective? There’s a common misconception in tech that humans are subjective, so we should rely on AI for objective evaluation. But the reality is that LLMs are also subjective. Just like human reviewers, they can carry biases: Verbosity bias : LLM judges usually favor longer, confident-sounding answers , even when the underlying facts are wrong. Position bias : Swapping the order of two options can cause an LLM judge to flip its verdict over 75% of the time . The halo effect : Because LLMs generate text piece by piece, clean grammar and formatting can trick an AI judge into giving top marks for accuracy while missing errors. Agreeableness bias : LLM judges are great at recognizing valid work. But with detecting errors, they may fail to catch incorrect, buggy, or unsafe outputs up to 75% of the time . Self-enhancement bias: Also known as egocentric bias, AI evaluators systematically overrate outputs that were generated by themselves or from their own family. Ultimately, LLM judges are not objective arbiters of truth. They are subjective models with their own distinct biases. Treating them as infallible tools that don't need their quality measured might leave your work compromised. In this post, we’ll explore what’s holding enterprises back from strong evals, and share an easy three-pillar method you can use to improve your quality. Three helpful ways to audit your LLM judges Pillar 1: Measure internal stability Before you can trust an AI judge’s score, you need to know that it isn't just guessing. Because LLMs are probabilistic, they can be inconsistent, giving different scores to the exact same text. You can test this internal stability by running multi-pass consistency checks on a single output and calculating the variance. If a judge's scores fluctuate wildly on identical inputs, its rubric is too ambiguous. Pillar 2: Validate human alignment When your evaluation datasets are mostly valid responses, a lenient AI judge can look great on paper. It might align closely with human reviewers overall, but miss a majority of invalid or even unsafe outputs. To prove your LLM judge is catching real errors, you need chance-corrected metrics. These mathematical models filter out agreements driven purely by leniency or random chance, showing how closely your evaluator actually aligns with the informed decisions of human experts. Pillar 3: Use multi-judge ensembles To avoid the halo effect mentioned earlier, teams should use decomposed prompting. Instead of asking one LLM judge to score an entire response, assign a specialized judge to evaluate a single criteria, like factual accuracy or tone. This isolates traits and forces independent scoring. Second, to track performance in real time without human intervention, the established best practice is ensembling. This means running at least two different models under the hood to evaluate the exact same output simultaneously. By finding the statistical consensus between these models, you can flag if their evaluations begin to diverge and avoid any scoring quality degradation. Get started Partner with Delta to design and implement statistically-audited evaluation pipelines for your enterprise agentic systems.",
+      "evidenceLink": "",
+      "score": 88.98787172619048,
+      "core": "Is your LLM-as-a-judge truly objective? There’s a common misconception in tech that humans are subjective, so we should rely on AI for objective evaluation. But the reality is that LLMs are also subjective. Just like human reviewers, they can carry biases: Verbosity bias : LLM judges usually favor longer, confident-sounding answers , even when the underlying facts are wrong. Position bias : Swapping the order of two…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-19T16:10:11.265Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "I built a programming language that LLMs can't use",
+      "link": "https://blog.picheta.me/post/killswitch-lang",
+      "publishedAt": "2026-10-17T22:26:47.000Z",
+      "author": "dom96 https://news.ycombinator.com/user?id=dom96",
+      "summary": "I built KillSwitch, an esoteric language designed to confound LLMs and coding agents, and benchmarked the major models against it.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50135762",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 255,
+        "comments": 188
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-19T16:10:11.265Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 84.33610230395337,
+      "core": "I built KillSwitch, an esoteric language designed to confound LLMs and coding agents, and benchmarked the major models against it.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Python on Vercel is now generally available",
+      "link": "https://vercel.com/blog/python-on-vercel-is-now-generally-available",
+      "publishedAt": "2026-10-15T07:00:00.000Z",
+      "author": "Yury Selivanov",
+      "summary": "Python on Vercel is now generally available. Build and run Python applications with the frameworks, libraries, and tools you already use. Vercel automatically detects supported frameworks and configures the build and deployment. Your applications run on Fluid compute, which manages concurrent requests and scales with traffic. Idiomatic Python SDKs let you work with storage, queues, durable workflows, and AI models directly from Python. For full-stack projects, the Python backend and frontend share a workflow for local development, preview deployments, and production releases. Our goals for Python on Vercel Ten months ago, we set out to make Vercel the best place to build and run Python applications . We wanted the experience to fit how Python developers already work, with three goals guiding our decisions: Idiomatic Python SDKs. Working with Vercel infrastructure should feel familiar to Python developers, with APIs that use type annotations, async / await , and context managers. A shared workflow for both the frontend and backend. Python applications often include a JavaScript frontend, so developers should be able to run both locally, review them in the same preview deployment, and release or roll them back together. Compatibility with the Python ecosystem. The runtime should use CPython, the standard Python interpreter, on Linux to preserve compatibility with the packages and tools Python developers already rely on. The first test of those goals is what happens when you deploy a Python application on Vercel: its framework, dependencies, and project structure should guide how it’s built and run. Deploying Python applications on Vercel We’ve worked to make Python feel native on Vercel. Vercel reads your project’s dependency files, including those managed by uv , and automatically detects frameworks such as FastAPI, Flask, Django, and FastHTML. Framework defined infrastructure configures builds and request routing, with framework-specific support for serving static assets through the CDN. For applications with a frontend, Vercel Services brings both parts into one project. Running vercel dev starts them together, and shared previews let you test backend changes with the frontend that uses them. For long-running workers that pull jobs from queues or databases, Vercel Daemons keeps your containers running with your Python code along with any of its packages, and system dependencies. Python SDKs for Vercel infrastructure A Python backend might need to store files, send messages, run durable workflows, or call AI models. We’ve built Python SDKs for these tasks, with APIs that follow the conventions of the language: These SDKs work alongside your framework and libraries, and the example below shows how they connect within a full-stack application. Start building with Python on Vercel Whether you’re starting a new project or deploying existing code, the framework guides cover setup and deployment on Vercel. For a guided full-stack project, the Python on Vercel course walks through building a FastAPI backend and Next.js frontend, then deploying them together with Services. To show how these pieces work together, I built a collaborative web application to create and browse Python notebooks. It lets people create their own notebooks, publish them for others to browse or fork, and work with an AI assistant to write and run Python code. The application pairs a Vite frontend with a FastAPI backend and uses PostgreSQL for notebook source and chat history. Services keeps the frontend and backend in one deployment, with the frontend served through the CDN. Here’s how the main parts connect: Editing and running code: When a signed-in user opens their notebook in the editor, FastAPI creates or reuses a Vercel Sandbox running Jupyter, keeping user code isolated from the application backend. The browser connects directly to Jupyter, while mounted Drives provide the Python dependencies and workspace files. Saving and publishing: The browser periodically sends the current notebook to FastAPI. FastAPI saves the source in PostgreSQL, renders changes as HTML, and uploads the result to Blob, so people can read published notebooks through the CDN without starting a Python kernel. Sharing updates: After publishing a change, FastAPI sends a message through Vercel Queues. Each backend instance with connected browsers receives the notification and sends updated notebook listings over WebSockets, so people see changes without reloading. Assisting with code: The agent uses AI SDK for Python and runs inside Vercel Workflows, which saves execution state and retries failed steps. Chat history stays in PostgreSQL, while notebook editing and execution tools work through the connected browser, which sends results back through FastAPI to resume the workflow. The source code on GitHub includes the complete application and its deployment configuration. You can use it to explore these integrations or as a starting point for your own Python application. Investing in the Python community Last December, the Gel Data team, led by me and Elvis Pranskevichus, joined Vercel to build Python support and continue our open-source work. At the same time, we announced our sponsorship of the Python Software Foundation and committed to funding one year of Serhiy Storchaka’s CPython maintenance through the foundation. Serhiy has authored over 600 commits to CPython’s main branch so far in 2026. We also sponsored PyCon US and EuroPython this year, where the team and I met Python developers and heard where they were getting stuck. Those conversations help us figure out what to fix next. We also published PEP 827 , which, if accepted, would add type manipulation features that could help frameworks such as FastAPI offer simpler APIs with less boilerplate and more precise type checking. What’s next for Python on Vercel We’re continuing to improve Python SDKs, runtime performance, and development workflows for both people and coding agents. If you run into a deployment issue or find something missing in the Python SDKs, share your feedback in Vercel Community so the team can use it to guide that work. Resources Point your agent at our Python guides in the Knowledge Base Deploy an eve agent in Python in one click Read more",
+      "evidenceLink": "",
+      "score": 76.48787172619048,
+      "core": "Python on Vercel is now generally available. Build and run Python applications with the frameworks, libraries, and tools you already use. Vercel automatically detects supported frameworks and configures the build and deployment. Your applications run on Fluid compute, which manages concurrent requests and scales with traffic. Idiomatic Python SDKs let you work with storage, queues, durable workflows, and AI models d…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-19T16:10:11.265Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "rerun_agent_engineering",
+      "source": "Rerun Engineering",
+      "title": "Why Do Multi-Agent LLM Systems Fail? 14 Failure Modes and How to Catch Them",
+      "link": "https://rerun.build/blog/why-multi-agent-llm-systems-fail",
+      "publishedAt": "2026-10-19T04:11:40.000Z",
+      "author": "",
+      "summary": "Multi-agent LLM systems fail from design flaws, misalignment between agents and weak verification. Here are all 14 MAST failure modes, how often each happens, and the production signal that catches it.",
+      "evidenceLink": "",
+      "score": 69.26128442460318,
+      "core": "Multi-agent LLM systems fail from design flaws, misalignment between agents and weak verification. Here are all 14 MAST failure modes, how often each happens, and the production signal that catches it.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-19T16:10:11.265Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Superlite: A Faster Alternatie to Superpowers",
+      "link": "https://contextfirst.blog/superlite-hand-an-agent-a-spec",
+      "publishedAt": "2026-10-19T02:01:16.000Z",
+      "author": "iheatuchriswogu https://news.ycombinator.com/user?id=iheatuchriswogu",
+      "summary": "Why I built superlite, an autonomous build workflow for Claude Code that doesn&#x27;t ask permission every four minutes: how it works, how to use it, and the benchmarks.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50147492",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 133,
+        "comments": 61
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-19T16:10:11.265Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 60.148575922407844,
+      "core": "Why I built superlite, an autonomous build workflow for Claude Code that doesn&#x27;t ask permission every four minutes: how it works, how to use it, and the benchmarks.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Arm AGI CPU crushes AMD in new agentic AI benchmark — but what does its 2x rack-level performance advantage mean for the future of x86 data centers?",
+      "link": "https://www.techradar.com/pro/arm-agi-cpu-crushes-amd-in-new-agentic-ai-benchmark-but-what-does-its-2x-rack-level-performance-advantage-mean-for-the-future-of-x86-data-centers",
+      "publishedAt": "2026-10-19T00:30:00.000Z",
+      "author": "Efosa Udinmwen",
+      "summary": "Arm’s AGI CPU delivers nearly twice AMD’s modelled rack-level performance across seven agentic AI workloads, although production validation remains outstanding.",
+      "evidenceLink": "",
+      "score": 57.7696177579365,
+      "core": "Arm’s AGI CPU delivers nearly twice AMD’s modelled rack-level performance across seven agentic AI workloads, although production validation remains outstanding.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-19T16:10:11.265Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "meta_engineering",
+      "source": "Meta Engineering",
+      "title": "The Thin Orchestrator: How We Made Our AI Agents More Reliable by Giving the Router Less to Do",
+      "link": "https://engineering.fb.com/2026/10/19/ml-applications/thin-orchestrator-ai-agent-architecture",
+      "publishedAt": "2026-10-19T15:30:37.000Z",
+      "author": "",
+      "summary": "Sometimes, giving an AI agent all of the knowledge it needs is the wrong approach. At Meta, we’ve seen notable improvements in efficiency and accuracy by keeping the orchestration layer of our data pipeline agents deliberately thin: It routes work and enforces reliability checks, while specialized agents do the domain reasoning. We’re sharing our own [...] Read More... The post The Thin Orchestrator: How We Made Our AI Agents More Reliable by Giving the Router Less to Do appeared first on Engineering at Meta .",
+      "evidenceLink": "",
+      "score": 55.814002678571434,
+      "core": "Sometimes, giving an AI agent all of the knowledge it needs is the wrong approach. At Meta, we’ve seen notable improvements in efficiency and accuracy by keeping the orchestration layer of our data pipeline agents deliberately thin: It routes work and enforces reliability checks, while specialized agents do the domain reasoning. We’re sharing our own [...] Read More... The post The Thin Orchestrator: How We Made Our…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-19T16:10:11.265Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "How Numan Built an Eval-First AI Health Coach with LangGraph and LangSmith",
+      "link": "https://www.langchain.com/blog/how-numan-built-an-eval-first-ai-health-coach-with-langgraph-and-langsmith",
+      "publishedAt": "2026-10-19T15:00:01.000Z",
+      "author": "",
+      "summary": "How Numan built Nu, an AI health coach, on LangGraph and LangSmith with per-category evals, simulated conversations, and safety gates on a regulatory line.",
+      "evidenceLink": "",
+      "score": 53.77757410714286,
+      "core": "How Numan built Nu, an AI health coach, on LangGraph and LangSmith with per-category evals, simulated conversations, and safety gates on a regulatory line.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-19T16:10:11.265Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "AI agent tool selection: The tool your agent almost called",
+      "link": "https://arize.com/blog/ai-agent-tool-selection-decision-tracing",
+      "publishedAt": "2026-10-19T15:16:58.000Z",
+      "author": "Nancy Chauhan",
+      "summary": "Decision spans in Arize Phoenix record a tool router’s choice, alternative probabilities, and confidence. Here’s how we evaluated those decisions and used the results to set a fallback threshold. The post AI agent tool selection: The tool your agent almost called appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 53.55886378968253,
+      "core": "Decision spans in Arize Phoenix record a tool router’s choice, alternative probabilities, and confidence. Here’s how we evaluated those decisions and used the results to set a fallback threshold. The post AI agent tool selection: The tool your agent almost called appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-19T16:10:11.265Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Push-based KV transfer to improve TTFT and TPOT for disaggregated inference in vLLM",
+      "link": "https://aws.amazon.com/blogs/machine-learning/push-based-kv-transfer-to-improve-ttft-and-tpot-for-disaggregated-inference-in-vllm",
+      "publishedAt": "2026-10-19T16:05:17.000Z",
+      "author": "Sunita Nadampalli",
+      "summary": "vLLM's prefill-decode disaggregation splits LLM inference across engine instances but must transfer the KV cache between them. This post introduces a push-based NIXL connector that moves transfer coordination off the critical path, delivering up to 3x better TTFT and 30% better TPOT in benchmarks on Amazon EC2 P5en instances with AWS EFA.",
+      "evidenceLink": "",
+      "score": 47.88305029761904,
+      "core": "vLLM's prefill-decode disaggregation splits LLM inference across engine instances but must transfer the KV cache between them. This post introduces a push-based NIXL connector that moves transfer coordination off the critical path, delivering up to 3x better TTFT and 30% better TPOT in benchmarks on Amazon EC2 P5en instances with AWS EFA.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-19T16:10:11.265Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "meta_engineering",
+      "source": "Meta Engineering",
+      "title": "GenRecs Tokenization: Transforming Ads Recommendation at Meta with Stable Model Vocabulary",
+      "link": "https://engineering.fb.com/2026/10/19/ml-applications/genrecs-tokenization-transforming-ads-recommendation-at-meta-with-stable-model-vocabulary",
+      "publishedAt": "2026-10-19T16:00:47.000Z",
+      "author": "",
+      "summary": "Generative Recommenders (GenRecs) represent a paradigm shift from scoring every ad to reasoning about ad content and user preferences together in order to predict the best outcome for advertisers. Leveraging the world knowledge built into LLMs makes ad matching more intelligent and precise, compounding gains for advertisers. GenRecs Tokenization is the foundational data representation that [...] Read More... The post GenRecs Tokenization: Transforming Ads Recommendation at Meta with Stable Model Vocabulary appeared first on Engineering at Meta .",
+      "evidenceLink": "",
+      "score": 47.049915376984124,
+      "core": "Generative Recommenders (GenRecs) represent a paradigm shift from scoring every ad to reasoning about ad content and user preferences together in order to predict the best outcome for advertisers. Leveraging the world knowledge built into LLMs makes ad matching more intelligent and precise, compounding gains for advertisers. GenRecs Tokenization is the foundational data representation that [...] Read More... The pos…",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-19T16:10:11.265Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "How Third Moment Research runs 10,000 agents for 36+ hours",
+      "link": "https://openai.com/index/third-moment-research",
+      "publishedAt": "2026-10-14T07:00:00.000Z",
+      "author": "",
+      "summary": "With GPT-6 Astra and GPT-6.1 Sol, Codex, and Daybreak for cybersecurity, this AI lab builds agents that focus for days and improve with use.",
+      "evidenceLink": "",
+      "score": 46.55136378968254,
+      "core": "With GPT-6 Astra and GPT-6.1 Sol, Codex, and Daybreak for cybersecurity, this AI lab builds agents that focus for days and improve with use.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-19T16:10:11.265Z",
+        "evidence": "public_reader_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "Alyx now available on Google Cloud Marketplace",
+      "link": "https://arize.com/blog/alyx-now-available-on-google-cloud-marketplace",
+      "publishedAt": "2026-10-19T14:00:50.000Z",
+      "author": "Juston Western",
+      "summary": "We’re excited to share that Alyx, the AI engineering agent built into Arize AX, is now available on Google Cloud Marketplace. Teams building and running AI agents on Google Cloud can now add Alyx to their Google Cloud Gemini Enterprise environment and ask how their agents are performing, in plain language, without leaving the tools they already use every day. The post Alyx now available on Google Cloud Marketplace appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 44.323784424603176,
+      "core": "We’re excited to share that Alyx, the AI engineering agent built into Arize AX, is now available on Google Cloud Marketplace. Teams building and running AI agents on Google Cloud can now add Alyx to their Google Cloud Gemini Enterprise environment and ask how their agents are performing, in plain language, without leaving the tools they already use every day. The post Alyx now available on Google Cloud Marketplace a…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-19T16:10:11.265Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "“Claude cuts my TikTok”: How this creator is scaling video with AI | Brooke Lacey",
+      "link": "https://www.lennysnewsletter.com/p/claude-cuts-my-tiktok-how-this-creator",
+      "publishedAt": "2026-10-19T12:04:52.000Z",
+      "author": "Claire Vo",
+      "summary": "Watch now (37 mins) | 🎙️ Brooke Lacey shows live how Claude Code turns a raw phone video into a captioned, jump-cut TikTok in about 15 seconds",
+      "evidenceLink": "",
+      "score": 42.502395535714285,
+      "core": "Watch now (37 mins) | 🎙️ Brooke Lacey shows live how Claude Code turns a raw phone video into a captioned, jump-cut TikTok in about 15 seconds",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-19T16:10:11.265Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_azure_ai",
+      "source": "Microsoft Azure Blog",
+      "title": "Deep dive into Azure Maia 300 architecture",
+      "link": "https://azure.microsoft.com/en-us/blog/deep-dive-into-azure-maia-300-architecture",
+      "publishedAt": "2026-10-12T13:00:00.000Z",
+      "author": "Rani Borkar and Saurabh Dighe",
+      "summary": "Maia 300 operates as a single platform to meet the demands of cloud-scale agentic inference. The post Deep dive into Azure Maia 300 architecture appeared first on Microsoft Azure Blog .",
+      "evidenceLink": "",
+      "score": 37.02777777777778,
+      "core": "Maia 300 operates as a single platform to meet the demands of cloud-scale agentic inference. The post Deep dive into Azure Maia 300 architecture appeared first on Microsoft Azure Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-19T16:10:11.265Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Working at the frontier shapes expectations for the future",
+      "link": "https://www.anthropic.com/research/expectations-for-the-future",
+      "publishedAt": "2026-10-16T16:21:00.000Z",
+      "author": "",
+      "summary": "We’re sharing two reports: the first covers how AI is changing employment inside Anthropic, and the second looks at the gap between how the public and Anthropic employees expect AI to affect work and the economy.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-19T16:10:11.265Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 28.04779236111111,
+      "core": "We’re sharing two reports: the first covers how AI is changing employment inside Anthropic, and the second looks at the gap between how the public and Anthropic employees expect AI to affect work and the economy.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pragmatic_engineer",
+      "source": "The Pragmatic Engineer",
+      "title": "Building resilient AI-powered software, and planning for when things go wrong",
+      "link": "https://newsletter.pragmaticengineer.com/p/building-resilient-systems",
+      "publishedAt": "2026-10-13T16:03:33.000Z",
+      "author": "Gergely Orosz",
+      "summary": "How to handle uncertainty with AI vendors and disaster recovery (DR) approaches to consider. An excerpt from the book Building Resilient Distributed Systems by Sam Newman",
+      "evidenceLink": "",
+      "score": 22.650828075396824,
+      "core": "How to handle uncertainty with AI vendors and disaster recovery (DR) approaches to consider. An excerpt from the book Building Resilient Distributed Systems by Sam Newman",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-19T16:10:11.265Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
