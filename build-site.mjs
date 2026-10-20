@@ -9,6 +9,7 @@ const REPORT_PATTERN = /^\d{4}-\d{2}-\d{2}-\d{4}-cst\.md$/;
 const KNOWLEDGE_REPORT_PATTERN = /^\d{4}-\d{2}-\d{2}\.md$/;
 const REVIEW_PATTERN = /^\d{4}-\d{2}-\d{2}\.json$/;
 const SOURCE_HEALTH_PATTERN = /^\d{4}-\d{2}-\d{2}\.json$/;
+const PICKS_PATTERN = /^\d{4}-\d{2}-\d{2}\.json$/;
 const FEEDBACK_REPO = "https://github.com/BENZEMA216/ai-product-radar";
 const PRIORITY_LIMIT = 20;
 const PAGE_SIZE = 40;
@@ -644,6 +645,34 @@ function renderFeedbackLinks(item) {
     .join("\n");
 }
 
+function renderPicksSection(picksEntry) {
+  if (!picksEntry || !Array.isArray(picksEntry.items) || !picksEntry.items.length) return "";
+  const cards = picksEntry.items
+    .map((pick, index) => {
+      const tip = pick.tip ? `<p class="pick-tip"><b>试用提示</b>${escapeHtml(pick.tip)}</p>` : "";
+      const phLink = pick.phLink
+        ? `<a class="btn" href="${escapeHtml(pick.phLink)}" target="_blank" rel="noreferrer noopener">PH 页 ↗</a>`
+        : "";
+      return `<article class="pick-card">
+        <div class="pick-rank">精选 ${String(index + 1).padStart(2, "0")}</div>
+        <h3><a href="${escapeHtml(pick.link)}" target="_blank" rel="noreferrer noopener">${escapeHtml(pick.product)}</a></h3>
+        <p class="pick-did"><b>做什么</b>${escapeHtml(pick.did)}</p>
+        <p class="pick-who"><b>适合谁</b>${escapeHtml(pick.who)}</p>
+        <p class="pick-why"><b>为什么值得试</b>${escapeHtml(pick.why)}</p>
+        ${tip}
+        <div class="pick-actions"><a class="btn btn-primary" href="${escapeHtml(pick.link)}" target="_blank" rel="noreferrer noopener">打开产品 ↗</a>${phLink}</div>
+      </article>`;
+    })
+    .join("\n");
+  return `<section class="picks" id="picks" aria-label="每日精选">
+      <div class="picks-head">
+        <div class="section-label">Daily Picks · 每日精选</div>
+        <p class="picks-note">${escapeHtml(picksEntry.date)} · 每晚更新的 3-5 个亲选产品；宽量榜单在下方。</p>
+      </div>
+      <div class="picks-grid">${cards}</div>
+    </section>`;
+}
+
 function renderItems(items, latestDate = "") {
   return items
     .map((item, index) => {
@@ -671,13 +700,17 @@ function renderItems(items, latestDate = "") {
             <p class="why"><b>为什么值得看</b>${escapeHtml(item.why)}</p>
           </div>${reviewBlocks ? `\n          ${reviewBlocks}` : ""}
         </div>`,
+        `        <div class="item-actions">
+          <a class="btn btn-primary" href="${escapeHtml(item.link)}" target="_blank" rel="noreferrer noopener">打开产品 ↗</a>
+          <a class="btn" href="${escapeHtml(item.evidenceUrl)}" target="_blank" rel="noreferrer noopener">查看证据</a>
+          <button type="button" class="btn" data-expand-card>展开全文</button>
+        </div>`,
         `        <details class="item-tools">
           <summary title="打开证据与反馈"><span>操作</span></summary>
           <div class="item-tools-panel">
             <a class="product-action" href="${escapeHtml(item.link)}" target="_blank" rel="noreferrer noopener">打开产品</a>
             <a class="evidence" href="${escapeHtml(item.evidenceUrl)}" target="_blank" rel="noreferrer noopener">查看证据</a>
             <button type="button" class="item-share" data-share-id="${escapeHtml(anchorId)}">复制链接</button>
-            <button type="button" class="item-expand" data-expand-card>展开摘要</button>
             <div class="feedback-actions" aria-label="产品反馈">${renderFeedbackLinks(item)}</div>
           </div>
         </details>`,
@@ -841,7 +874,7 @@ function latestSourceStatus(sourceHealth, hasItems) {
   };
 }
 
-export function renderSiteHtml(data, knowledgeReports = []) {
+export function renderSiteHtml(data, knowledgeReports = [], picks = []) {
   const items = [...data.items].sort(
     (a, b) =>
       `${b.reportDate} ${b.reportTime}`.localeCompare(`${a.reportDate} ${a.reportTime}`) ||
@@ -870,6 +903,7 @@ export function renderSiteHtml(data, knowledgeReports = []) {
   const latestKnowledgePapers = latestKnowledge.items.filter((item) => item.kind === "论文");
   const knowledgeJson = JSON.stringify({ reports: knowledgeReports, latestDate: latestKnowledge.date }).replace(/</g, "\\u003c");
   const latestStatus = latestSourceStatus(data.latestSourceHealth, Boolean(latest?.count));
+  const latestPicks = picks.at(-1) || null;
 
   return `<!doctype html>
 <html lang="zh-CN">
@@ -1471,7 +1505,7 @@ export function renderSiteHtml(data, knowledgeReports = []) {
       grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
       gap: 12px;
     }
-    .did, .why {
+    .did {
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
@@ -1480,14 +1514,18 @@ export function renderSiteHtml(data, knowledgeReports = []) {
       margin: 0;
       font-size: 14px;
     }
-    .item:has(.review-panel) .did,
-    .item:has(.review-panel) .why { -webkit-line-clamp: 4; }
-    .item.is-expanded .did, .item.is-expanded .why {
+    .why {
+      line-height: 1.45;
+      margin: 0;
+      font-size: 14px;
+    }
+    .item:has(.review-panel) .did { -webkit-line-clamp: 4; }
+    .item.is-expanded .did {
       display: block;
       overflow: visible;
     }
     .did { color: var(--text-primary); }
-    .why { color: var(--text-secondary); }
+    .why { color: var(--text-secondary); margin: 0; line-height: 1.45; }
     .did b, .why b {
       display: block;
       margin-bottom: 4px;
@@ -1953,7 +1991,7 @@ export function renderSiteHtml(data, knowledgeReports = []) {
         min-height: 44px;
       }
       .signal-copy { grid-template-columns: 1fr; }
-      .did, .why { -webkit-line-clamp: 4; }
+      .did { -webkit-line-clamp: 4; }
       .item-tools {
         width: 100%;
         justify-self: stretch;
@@ -1967,6 +2005,57 @@ export function renderSiteHtml(data, knowledgeReports = []) {
       }
       .item-tools-panel a, .item-tools-panel button { min-height: 44px; }
       .side-nav a, .side-nav button, .side-disclosure > summary, .archive-more > summary { min-height: 44px; }
+    }
+
+    .picks {
+      background: var(--bg-raised);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-card, 14px);
+      box-shadow: var(--shadow-raised);
+      padding: 18px;
+      display: grid;
+      gap: 14px;
+    }
+    .picks-head { display: grid; gap: 6px; }
+    .picks-note { margin: 0; color: var(--text-secondary); font-size: 13px; }
+    .picks-grid { display: grid; gap: 12px; }
+    .pick-card {
+      border: 1px solid var(--border-default);
+      border-radius: 12px;
+      padding: 14px;
+      display: grid;
+      gap: 8px;
+      background: var(--bg-surface);
+    }
+    .pick-rank { font-size: 12px; letter-spacing: 0.08em; color: var(--action-primary); font-weight: 700; }
+    .pick-card h3 { margin: 0; font-size: 18px; line-height: 1.35; }
+    .pick-card h3 a { color: var(--text-primary); text-decoration: none; }
+    .pick-card h3 a:hover { text-decoration: underline; }
+    .pick-card p { margin: 0; line-height: 1.5; font-size: 14px; }
+    .pick-card p b { display: block; font-size: 12px; color: var(--text-secondary); margin-bottom: 2px; }
+    .pick-tip { color: var(--feedback-warning); }
+    .pick-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 40px; padding: 0 14px; border-radius: 10px;
+      border: 1px solid var(--border-default); background: var(--bg-raised);
+      color: var(--text-primary); font-size: 14px; text-decoration: none; cursor: pointer;
+      font-family: inherit;
+    }
+    .btn:hover { background: var(--bg-hover); }
+    .btn-primary { background: var(--action-primary); border-color: var(--action-primary); color: var(--text-inverse); font-weight: 600; }
+    .btn-primary:hover { background: var(--action-hover); }
+    .item-actions { display: flex; gap: 8px; flex-wrap: wrap; grid-column: 1 / -1; }
+    .item.is-new { border-color: var(--action-primary); }
+    .new-badge {
+      margin-left: auto; font-size: 11px; font-weight: 700; color: var(--text-inverse);
+      background: var(--action-primary); border-radius: 999px; padding: 2px 8px;
+      align-self: center;
+    }
+    .new-since-banner {
+      margin: 0; padding: 10px 14px; border-radius: 10px;
+      background: var(--action-soft); color: var(--action-primary);
+      font-size: 13px; font-weight: 600;
     }
   </style>
 </head>
@@ -1990,6 +2079,7 @@ export function renderSiteHtml(data, knowledgeReports = []) {
           <p class="subtitle">按证据来源整理过去 24 小时的新产品和老产品更新。默认展示最新日报，也可以切换历史归档。</p>
         </section>
         <nav class="side-nav" aria-label="站点导航">
+          ${latestPicks?.items?.length ? `<a href="#picks">每日精选 <b>${latestPicks.items.length}</b></a>` : ""}
           <a href="#feed">今日优先 <b>${latestPriorityCount}</b></a>
           <a href="#knowledge">Blog 与论文 <b>${latestKnowledge.items.length}</b></a>
           <button type="button" data-nav-view="reviewed">我的点评 <b>${data.stats.totalReviews}</b></button>
@@ -2038,6 +2128,7 @@ export function renderSiteHtml(data, knowledgeReports = []) {
             <span>${escapeHtml(latestDay ? `今日信号 · ${latestSourceTotal} 个来源` : "暂无归档")}</span>
           </aside>
         </header>
+        ${renderPicksSection(latestPicks)}
         <section class="source-alert ${latestStatus.className}" aria-label="来源状态">
           <div class="source-alert-copy">
             <b>${escapeHtml(latestStatus.label)}</b>
@@ -2072,6 +2163,7 @@ export function renderSiteHtml(data, knowledgeReports = []) {
           </div>
         </section>
         <section class="empty" id="empty" role="status" aria-live="polite">没有符合当前条件的信号。</section>
+        <p class="new-since-banner" id="new-since-banner" hidden></p>
         <section class="list" id="items">${renderItems(initialItems, latestDay?.reportDate || "")}</section>
         <button type="button" class="load-more" id="load-more" hidden>加载更多</button>
         <section class="knowledge-hub" id="knowledge" aria-label="Blog 与论文">
@@ -2130,6 +2222,37 @@ export function renderSiteHtml(data, knowledgeReports = []) {
     const initialParams = new URLSearchParams(window.location.search);
     let currentView = "priority";
     let renderLimit = ${PAGE_SIZE};
+    const SEEN_KEY = "radar-seen-v1";
+    let seenBefore = new Set();
+    try { seenBefore = new Set(JSON.parse(localStorage.getItem(SEEN_KEY) || "[]")); } catch (error) {}
+    const allItemKeys = (Array.isArray(radarData.items) ? radarData.items : [])
+      .map((item) => "signal-" + (item.id || ""))
+      .filter((key) => key !== "signal-");
+    const isFirstVisit = seenBefore.size === 0;
+    const newItemKeys = new Set(allItemKeys.filter((key) => !seenBefore.has(key)));
+    function markNewItems() {
+      document.querySelectorAll("#items .item").forEach((card) => {
+        const isNew = newItemKeys.has(card.id);
+        card.classList.toggle("is-new", isNew);
+        const topline = card.querySelector(".item-topline");
+        if (isNew && topline && !topline.querySelector(".new-badge")) {
+          const badge = document.createElement("span");
+          badge.className = "new-badge";
+          badge.textContent = "新";
+          topline.appendChild(badge);
+        }
+      });
+    }
+    const newSinceBanner = document.getElementById("new-since-banner");
+    if (newSinceBanner) {
+      if (!isFirstVisit && newItemKeys.size) {
+        newSinceBanner.hidden = false;
+        newSinceBanner.textContent = "自你上次访问新增 " + newItemKeys.size + " 条信号，新条目标有「新」。";
+      } else {
+        newSinceBanner.hidden = true;
+      }
+    }
+    try { localStorage.setItem(SEEN_KEY, JSON.stringify(allItemKeys.slice(-3000))); } catch (error) {}
     function escapeClient(value) {
       return String(value || "")
         .replace(/&/g, "&amp;")
@@ -2237,7 +2360,8 @@ export function renderSiteHtml(data, knowledgeReports = []) {
             '<article class="item" id="' + escapeClient(anchorId) + '" data-source="' + escapeClient(item.source) + '" data-type="' + escapeClient(item.type) + '" data-category="' + escapeClient(item.category || "product") + '" data-quality="' + escapeClient(item.qualityLabel || "keep") + '" data-date="' + escapeClient(item.reportDate) + '" data-report="' + escapeClient(item.reportPath) + '" data-latest="' + String(Boolean(isLatest)) + '" data-reviewed="' + String(Boolean(item.reviews && item.reviews.length)) + '">',
             '<div class="item-topline"><span class="rank">信号 ' + String(index + 1).padStart(2, "0") + '</span><span>' + escapeClient(item.reportDate) + " " + escapeClient(item.reportTime) + '</span><span class="source-badge">' + escapeClient(item.source) + "</span><span>" + escapeClient(item.type) + "</span></div>",
             '<div class="item-main"><h2><a href="' + escapeClient(item.link) + '" target="_blank" rel="noreferrer noopener">' + escapeClient(item.product) + '</a></h2><div class="signal-copy"><p class="did"><b>做了什么</b>' + escapeClient(item.did) + '</p><p class="why"><b>为什么值得看</b>' + escapeClient(item.why) + "</p></div>" + (reviewBlocks ? "\\n" + reviewBlocks : "") + "</div>",
-            '<details class="item-tools"><summary title="打开证据与反馈"><span>操作</span></summary><div class="item-tools-panel"><a class="product-action" href="' + escapeClient(item.link) + '" target="_blank" rel="noreferrer noopener">打开产品</a><a class="evidence" href="' + escapeClient(item.evidenceUrl) + '" target="_blank" rel="noreferrer noopener">查看证据</a><button type="button" class="item-share" data-share-id="' + escapeClient(anchorId) + '">复制链接</button><button type="button" class="item-expand" data-expand-card>展开摘要</button><div class="feedback-actions" aria-label="产品反馈">' + renderFeedbackLinksClient(item) + "</div></div></details>",
+            '<div class="item-actions"><a class="btn btn-primary" href="' + escapeClient(item.link) + '" target="_blank" rel="noreferrer noopener">打开产品 ↗</a><a class="btn" href="' + escapeClient(item.evidenceUrl) + '" target="_blank" rel="noreferrer noopener">查看证据</a><button type="button" class="btn" data-expand-card>展开全文</button></div>',
+            '<details class="item-tools"><summary title="打开证据与反馈"><span>操作</span></summary><div class="item-tools-panel"><a class="product-action" href="' + escapeClient(item.link) + '" target="_blank" rel="noreferrer noopener">打开产品</a><a class="evidence" href="' + escapeClient(item.evidenceUrl) + '" target="_blank" rel="noreferrer noopener">查看证据</a><button type="button" class="item-share" data-share-id="' + escapeClient(anchorId) + '">复制链接</button><div class="feedback-actions" aria-label="产品反馈">' + renderFeedbackLinksClient(item) + "</div></div></details>",
             "</article>"
           ].join("\\n");
         })
@@ -2303,6 +2427,7 @@ export function renderSiteHtml(data, knowledgeReports = []) {
       const visibleItems =
         currentView === "priority" ? matches.slice(0, ${PRIORITY_LIMIT}) : matches.slice(0, renderLimit);
       itemList.innerHTML = renderClientItems(visibleItems, latestReportDate);
+      markNewItems();
       empty.style.display = visibleItems.length ? "none" : "block";
       resultCount.textContent =
         visibleItems.length < matches.length ? visibleItems.length + " / " + matches.length + " 条" : visibleItems.length + " 条";
@@ -2513,12 +2638,31 @@ function readSourceHealth(sourceHealthDir) {
   }
 }
 
+function readPicks(picksDir) {
+  try {
+    return readdirSync(picksDir)
+      .filter((name) => PICKS_PATTERN.test(name))
+      .sort()
+      .map((name) => {
+        const path = join(picksDir, name);
+        const parsed = JSON.parse(readFileSync(path, "utf8"));
+        const items = Array.isArray(parsed) ? parsed : parsed.items;
+        return { date: name.replace(/\.json$/, ""), items: Array.isArray(items) ? items : [] };
+      })
+      .filter((entry) => entry.items.length);
+  } catch (error) {
+    if (error.code === "ENOENT") return [];
+    throw error;
+  }
+}
+
 function parseArgs(argv) {
   const args = {
     reportDir: "reports",
     reviewDir: "reviews",
     sourceHealthDir: "quality/source-health",
     knowledgeReportDir: "knowledge-reports",
+    picksDir: "picks",
     out: "docs/index.html"
   };
   for (let i = 0; i < argv.length; i += 1) {
@@ -2527,6 +2671,7 @@ function parseArgs(argv) {
     if (arg === "--review-dir") args.reviewDir = argv[++i];
     if (arg === "--source-health-dir") args.sourceHealthDir = argv[++i];
     if (arg === "--knowledge-report-dir") args.knowledgeReportDir = argv[++i];
+    if (arg === "--picks-dir") args.picksDir = argv[++i];
     if (arg === "--out") args.out = argv[++i];
   }
   return args;
@@ -2536,11 +2681,12 @@ async function main() {
   const args = parseArgs(process.argv.slice(2));
   const data = buildSiteData(readReports(args.reportDir), readReviews(args.reviewDir), readSourceHealth(args.sourceHealthDir));
   const knowledgeReports = readKnowledgeReports(args.knowledgeReportDir);
-  const html = renderSiteHtml(data, knowledgeReports);
+  const picks = readPicks(args.picksDir);
+  const html = renderSiteHtml(data, knowledgeReports, picks);
   mkdirSync(dirname(args.out), { recursive: true });
   writeFileSync(args.out, html, "utf8");
   console.log(
-    `Built ${args.out} from ${data.reports.length} product reports, ${data.items.length} product items, ${knowledgeReports.length} knowledge reports, and ${data.reviews.length} reviews.`
+    `Built ${args.out} from ${data.reports.length} product reports, ${data.items.length} product items, ${knowledgeReports.length} knowledge reports, ${data.reviews.length} reviews, and ${picks.length} picks files.`
   );
 }
 
