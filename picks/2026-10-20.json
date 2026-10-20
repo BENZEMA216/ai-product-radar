@@ -1,0 +1,34 @@
+[
+  {
+    "product": "bonds",
+    "link": "https://bonds.chat/",
+    "phLink": "https://www.producthunt.com/products/bonds-2",
+    "did": "把 AI 朋友放进好友群聊，能在聊天里生成打卡挑战、小应用、相册和视频。",
+    "who": "对多人协作式 AI、群聊产品形态感兴趣的产品经理。",
+    "why": "重点不是又一个聊天机器人，而是「多人共用的 AI + 即时生成界面」怎样融入群聊，这个形态值得亲自体验。",
+    "tip": "PH 上是第二次发布，产品 9 月已上线，不是全新首发。"
+  },
+  {
+    "product": "ToDo.is",
+    "link": "https://todo.is/",
+    "phLink": "https://www.producthunt.com/products/todo-is",
+    "did": "把「待办」直接交给执行型 AI：研究资料、处理文件、操作网页，也能定时跑任务。",
+    "who": "关注执行型 agent 交互和审批流设计的人。",
+    "why": "值得看它怎么把一句话变成可执行任务，以及如何把执行过程和审批展示给用户。",
+    "tip": "官网首 24 小时 $1，之后按所选套餐自动按月续费，不是免费试用。"
+  },
+  {
+    "product": "Mintlify Autopilot",
+    "link": "https://www.mintlify.com/",
+    "did": "常驻的文档维护 agent，盯代码合并、Slack 消息等变化，自动起草文档更新 PR，人审核后才发布。",
+    "who": "做开发者工具或维护产品文档的团队。",
+    "why": "「agent 起草、人审批」的边界划分清晰，对设计自己产品里的 agent 审批流有直接参考价值。"
+  },
+  {
+    "product": "Exa 3.0 / Lite",
+    "link": "https://exa.ai/",
+    "did": "给 agent 用的搜索 API 更新，新增 Lite 搜索档位。",
+    "who": "在自家产品里接搜索能力的开发者。",
+    "why": "agent 基础设施的定价和档位拆分方式值得对标，Lite $4/千次。"
+  }
+]

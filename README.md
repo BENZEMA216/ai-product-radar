@@ -159,7 +159,32 @@ open http://127.0.0.1:8787/docs/index.html
 | `reports/` | Daily markdown reports. |
 | `quality/` | Source health, feedback snapshots, feedback policy, audits, and ranking diagnostics. |
 | `reviews/` | Product-attached user reviews. |
+| `picks/` | Daily curated picks (3-5 products with Chinese commentary) shown in the 每日精选 section. |
 | `docs/` | Public dashboard served by GitHub Pages. |
+
+## Daily Picks / 每日精选
+
+`picks/YYYY-MM-DD.json` drives the 每日精选 section at the top of the dashboard: 3-5 hand-picked products with Chinese commentary, separate from the ranked feed. The newest file is the one shown.
+
+```json
+[
+  {
+    "product": "bonds",
+    "link": "https://bonds.chat/",
+    "phLink": "https://www.producthunt.com/products/bonds-2",
+    "did": "做什么",
+    "who": "适合谁",
+    "why": "为什么值得试",
+    "tip": "试用提示（可选，如续费条件）"
+  }
+]
+```
+
+`phLink` and `tip` are optional. Run `npm run build-site` after editing.
+
+## Product Hunt Token / PH 数据源
+
+When the dashboard banner shows `Product Hunt：回退抓取`, the API path is off and PH coverage is lower quality. To restore first-class PH data: create a free API token at [producthunt.com API dashboard](https://www.producthunt.com/v2/oauth/applications), then add it as the `PRODUCT_HUNT_TOKEN` repository secret used by the daily runner.
 
 ## Links / 链接
 

@@ -598,7 +598,7 @@
       grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
       gap: 12px;
     }
-    .did, .why {
+    .did {
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
@@ -607,14 +607,18 @@
       margin: 0;
       font-size: 14px;
     }
-    .item:has(.review-panel) .did,
-    .item:has(.review-panel) .why { -webkit-line-clamp: 4; }
-    .item.is-expanded .did, .item.is-expanded .why {
+    .why {
+      line-height: 1.45;
+      margin: 0;
+      font-size: 14px;
+    }
+    .item:has(.review-panel) .did { -webkit-line-clamp: 4; }
+    .item.is-expanded .did {
       display: block;
       overflow: visible;
     }
     .did { color: var(--text-primary); }
-    .why { color: var(--text-secondary); }
+    .why { color: var(--text-secondary); margin: 0; line-height: 1.45; }
     .did b, .why b {
       display: block;
       margin-bottom: 4px;
@@ -1080,7 +1084,7 @@
         min-height: 44px;
       }
       .signal-copy { grid-template-columns: 1fr; }
-      .did, .why { -webkit-line-clamp: 4; }
+      .did { -webkit-line-clamp: 4; }
       .item-tools {
         width: 100%;
         justify-self: stretch;
@@ -1094,6 +1098,57 @@
       }
       .item-tools-panel a, .item-tools-panel button { min-height: 44px; }
       .side-nav a, .side-nav button, .side-disclosure > summary, .archive-more > summary { min-height: 44px; }
+    }
+
+    .picks {
+      background: var(--bg-raised);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-card, 14px);
+      box-shadow: var(--shadow-raised);
+      padding: 18px;
+      display: grid;
+      gap: 14px;
+    }
+    .picks-head { display: grid; gap: 6px; }
+    .picks-note { margin: 0; color: var(--text-secondary); font-size: 13px; }
+    .picks-grid { display: grid; gap: 12px; }
+    .pick-card {
+      border: 1px solid var(--border-default);
+      border-radius: 12px;
+      padding: 14px;
+      display: grid;
+      gap: 8px;
+      background: var(--bg-surface);
+    }
+    .pick-rank { font-size: 12px; letter-spacing: 0.08em; color: var(--action-primary); font-weight: 700; }
+    .pick-card h3 { margin: 0; font-size: 18px; line-height: 1.35; }
+    .pick-card h3 a { color: var(--text-primary); text-decoration: none; }
+    .pick-card h3 a:hover { text-decoration: underline; }
+    .pick-card p { margin: 0; line-height: 1.5; font-size: 14px; }
+    .pick-card p b { display: block; font-size: 12px; color: var(--text-secondary); margin-bottom: 2px; }
+    .pick-tip { color: var(--feedback-warning); }
+    .pick-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 40px; padding: 0 14px; border-radius: 10px;
+      border: 1px solid var(--border-default); background: var(--bg-raised);
+      color: var(--text-primary); font-size: 14px; text-decoration: none; cursor: pointer;
+      font-family: inherit;
+    }
+    .btn:hover { background: var(--bg-hover); }
+    .btn-primary { background: var(--action-primary); border-color: var(--action-primary); color: var(--text-inverse); font-weight: 600; }
+    .btn-primary:hover { background: var(--action-hover); }
+    .item-actions { display: flex; gap: 8px; flex-wrap: wrap; grid-column: 1 / -1; }
+    .item.is-new { border-color: var(--action-primary); }
+    .new-badge {
+      margin-left: auto; font-size: 11px; font-weight: 700; color: var(--text-inverse);
+      background: var(--action-primary); border-radius: 999px; padding: 2px 8px;
+      align-self: center;
+    }
+    .new-since-banner {
+      margin: 0; padding: 10px 14px; border-radius: 10px;
+      background: var(--action-soft); color: var(--action-primary);
+      font-size: 13px; font-weight: 600;
     }
   </style>
 </head>
@@ -1117,6 +1172,7 @@
           <p class="subtitle">按证据来源整理过去 24 小时的新产品和老产品更新。默认展示最新日报，也可以切换历史归档。</p>
         </section>
         <nav class="side-nav" aria-label="站点导航">
+          <a href="#picks">每日精选 <b>4</b></a>
           <a href="#feed">今日优先 <b>20</b></a>
           <a href="#knowledge">Blog 与论文 <b>20</b></a>
           <button type="button" data-nav-view="reviewed">我的点评 <b>33</b></button>
@@ -1726,6 +1782,48 @@
             <span>今日信号 · 5 个来源</span>
           </aside>
         </header>
+        <section class="picks" id="picks" aria-label="每日精选">
+      <div class="picks-head">
+        <div class="section-label">Daily Picks · 每日精选</div>
+        <p class="picks-note">2026-10-20 · 每晚更新的 3-5 个亲选产品；宽量榜单在下方。</p>
+      </div>
+      <div class="picks-grid"><article class="pick-card">
+        <div class="pick-rank">精选 01</div>
+        <h3><a href="https://bonds.chat/" target="_blank" rel="noreferrer noopener">bonds</a></h3>
+        <p class="pick-did"><b>做什么</b>把 AI 朋友放进好友群聊，能在聊天里生成打卡挑战、小应用、相册和视频。</p>
+        <p class="pick-who"><b>适合谁</b>对多人协作式 AI、群聊产品形态感兴趣的产品经理。</p>
+        <p class="pick-why"><b>为什么值得试</b>重点不是又一个聊天机器人，而是「多人共用的 AI + 即时生成界面」怎样融入群聊，这个形态值得亲自体验。</p>
+        <p class="pick-tip"><b>试用提示</b>PH 上是第二次发布，产品 9 月已上线，不是全新首发。</p>
+        <div class="pick-actions"><a class="btn btn-primary" href="https://bonds.chat/" target="_blank" rel="noreferrer noopener">打开产品 ↗</a><a class="btn" href="https://www.producthunt.com/products/bonds-2" target="_blank" rel="noreferrer noopener">PH 页 ↗</a></div>
+      </article>
+<article class="pick-card">
+        <div class="pick-rank">精选 02</div>
+        <h3><a href="https://todo.is/" target="_blank" rel="noreferrer noopener">ToDo.is</a></h3>
+        <p class="pick-did"><b>做什么</b>把「待办」直接交给执行型 AI：研究资料、处理文件、操作网页，也能定时跑任务。</p>
+        <p class="pick-who"><b>适合谁</b>关注执行型 agent 交互和审批流设计的人。</p>
+        <p class="pick-why"><b>为什么值得试</b>值得看它怎么把一句话变成可执行任务，以及如何把执行过程和审批展示给用户。</p>
+        <p class="pick-tip"><b>试用提示</b>官网首 24 小时 $1，之后按所选套餐自动按月续费，不是免费试用。</p>
+        <div class="pick-actions"><a class="btn btn-primary" href="https://todo.is/" target="_blank" rel="noreferrer noopener">打开产品 ↗</a><a class="btn" href="https://www.producthunt.com/products/todo-is" target="_blank" rel="noreferrer noopener">PH 页 ↗</a></div>
+      </article>
+<article class="pick-card">
+        <div class="pick-rank">精选 03</div>
+        <h3><a href="https://www.mintlify.com/" target="_blank" rel="noreferrer noopener">Mintlify Autopilot</a></h3>
+        <p class="pick-did"><b>做什么</b>常驻的文档维护 agent，盯代码合并、Slack 消息等变化，自动起草文档更新 PR，人审核后才发布。</p>
+        <p class="pick-who"><b>适合谁</b>做开发者工具或维护产品文档的团队。</p>
+        <p class="pick-why"><b>为什么值得试</b>「agent 起草、人审批」的边界划分清晰，对设计自己产品里的 agent 审批流有直接参考价值。</p>
+        
+        <div class="pick-actions"><a class="btn btn-primary" href="https://www.mintlify.com/" target="_blank" rel="noreferrer noopener">打开产品 ↗</a></div>
+      </article>
+<article class="pick-card">
+        <div class="pick-rank">精选 04</div>
+        <h3><a href="https://exa.ai/" target="_blank" rel="noreferrer noopener">Exa 3.0 / Lite</a></h3>
+        <p class="pick-did"><b>做什么</b>给 agent 用的搜索 API 更新，新增 Lite 搜索档位。</p>
+        <p class="pick-who"><b>适合谁</b>在自家产品里接搜索能力的开发者。</p>
+        <p class="pick-why"><b>为什么值得试</b>agent 基础设施的定价和档位拆分方式值得对标，Lite $4/千次。</p>
+        
+        <div class="pick-actions"><a class="btn btn-primary" href="https://exa.ai/" target="_blank" rel="noreferrer noopener">打开产品 ↗</a></div>
+      </article></div>
+    </section>
         <section class="source-alert status-warning" aria-label="来源状态">
           <div class="source-alert-copy">
             <b>已发布 · 2 个来源降级</b>
@@ -1760,6 +1858,7 @@
           </div>
         </section>
         <section class="empty" id="empty" role="status" aria-live="polite">没有符合当前条件的信号。</section>
+        <p class="new-since-banner" id="new-since-banner" hidden></p>
         <section class="list" id="items"><article class="item" id="signal-2026-10-21-0-make-ai-coding-agents-verify-its-own-work" data-source="HN Algolia" data-type="新产品" data-category="product" data-quality="keep" data-date="2026-10-21" data-report="reports/2026-10-21-0004-cst.md" data-latest="true" data-reviewed="false">
         <div class="item-topline">
           <span class="rank">信号 01</span>
@@ -1774,13 +1873,17 @@
             <p class="why"><b>为什么值得看</b>值得看它是否把“让 coding agent 自证结果”变成可执行的验收环节，而不只是再加一层提示词；这直接触及 agent 交付可信度。</p>
           </div>
         </div>
+        <div class="item-actions">
+          <a class="btn btn-primary" href="https://github.com/reticlehq/reticle" target="_blank" rel="noreferrer noopener">打开产品 ↗</a>
+          <a class="btn" href="https://news.ycombinator.com/item?id=50163896" target="_blank" rel="noreferrer noopener">查看证据</a>
+          <button type="button" class="btn" data-expand-card>展开全文</button>
+        </div>
         <details class="item-tools">
           <summary title="打开证据与反馈"><span>操作</span></summary>
           <div class="item-tools-panel">
             <a class="product-action" href="https://github.com/reticlehq/reticle" target="_blank" rel="noreferrer noopener">打开产品</a>
             <a class="evidence" href="https://news.ycombinator.com/item?id=50163896" target="_blank" rel="noreferrer noopener">查看证据</a>
             <button type="button" class="item-share" data-share-id="signal-2026-10-21-0-make-ai-coding-agents-verify-its-own-work">复制链接</button>
-            <button type="button" class="item-expand" data-expand-card>展开摘要</button>
             <div class="feedback-actions" aria-label="产品反馈"><a class="feedback-link feedback-keep" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%80%BC%E5%BE%97%E7%9C%8B%3A+Make+AI+coding+agents+verify+its+own+work&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+keep%0AactionLabel%3A+%E5%80%BC%E5%BE%97%E7%9C%8B%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fgithub.com%2Freticlehq%2Freticle%0AproductKey%3A+https%3A%2F%2Fgithub.com%2Freticlehq%2Freticle%0Asource%3A+HN+Algolia%0Aproduct%3A+Make+AI+coding+agents+verify+its+own+work%0Alink%3A+https%3A%2F%2Fgithub.com%2Freticlehq%2Freticle%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">值得看</a>
 <a class="feedback-link feedback-drop" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%3A+Make+AI+coding+agents+verify+its+own+work&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+drop%0AactionLabel%3A+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fgithub.com%2Freticlehq%2Freticle%0AproductKey%3A+https%3A%2F%2Fgithub.com%2Freticlehq%2Freticle%0Asource%3A+HN+Algolia%0Aproduct%3A+Make+AI+coding+agents+verify+its+own+work%0Alink%3A+https%3A%2F%2Fgithub.com%2Freticlehq%2Freticle%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">不该收录</a>
 <a class="feedback-link feedback-downrank" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%3A+Make+AI+coding+agents+verify+its+own+work&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+downrank%0AactionLabel%3A+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fgithub.com%2Freticlehq%2Freticle%0AproductKey%3A+https%3A%2F%2Fgithub.com%2Freticlehq%2Freticle%0Asource%3A+HN+Algolia%0Aproduct%3A+Make+AI+coding+agents+verify+its+own+work%0Alink%3A+https%3A%2F%2Fgithub.com%2Freticlehq%2Freticle%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">应该降权</a>
@@ -1802,13 +1905,17 @@
             <p class="why"><b>为什么值得看</b>它把多个 coding agent CLI 收进本地聊天界面，产品判断点是统一入口能否减少切换成本，并保留每个 agent 的可控性。</p>
           </div>
         </div>
+        <div class="item-actions">
+          <a class="btn btn-primary" href="https://thiagodefreitas.github.io/faztudo/" target="_blank" rel="noreferrer noopener">打开产品 ↗</a>
+          <a class="btn" href="https://news.ycombinator.com/item?id=50163900" target="_blank" rel="noreferrer noopener">查看证据</a>
+          <button type="button" class="btn" data-expand-card>展开全文</button>
+        </div>
         <details class="item-tools">
           <summary title="打开证据与反馈"><span>操作</span></summary>
           <div class="item-tools-panel">
             <a class="product-action" href="https://thiagodefreitas.github.io/faztudo/" target="_blank" rel="noreferrer noopener">打开产品</a>
             <a class="evidence" href="https://news.ycombinator.com/item?id=50163900" target="_blank" rel="noreferrer noopener">查看证据</a>
             <button type="button" class="item-share" data-share-id="signal-2026-10-21-1-faztudo-a-local-chat-for-coordinating-the-coding-agents-clis">复制链接</button>
-            <button type="button" class="item-expand" data-expand-card>展开摘要</button>
             <div class="feedback-actions" aria-label="产品反馈"><a class="feedback-link feedback-keep" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%80%BC%E5%BE%97%E7%9C%8B%3A+Faztudo%2C+a+local+chat+for+coordinating+the+coding+agents+CLIs&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+keep%0AactionLabel%3A+%E5%80%BC%E5%BE%97%E7%9C%8B%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fthiagodefreitas.github.io%2Ffaztudo%0AproductKey%3A+https%3A%2F%2Fthiagodefreitas.github.io%2Ffaztudo%0Asource%3A+HN+Algolia%0Aproduct%3A+Faztudo%2C+a+local+chat+for+coordinating+the+coding+agents+CLIs%0Alink%3A+https%3A%2F%2Fthiagodefreitas.github.io%2Ffaztudo%2F%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">值得看</a>
 <a class="feedback-link feedback-drop" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%3A+Faztudo%2C+a+local+chat+for+coordinating+the+coding+agents+CLIs&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+drop%0AactionLabel%3A+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fthiagodefreitas.github.io%2Ffaztudo%0AproductKey%3A+https%3A%2F%2Fthiagodefreitas.github.io%2Ffaztudo%0Asource%3A+HN+Algolia%0Aproduct%3A+Faztudo%2C+a+local+chat+for+coordinating+the+coding+agents+CLIs%0Alink%3A+https%3A%2F%2Fthiagodefreitas.github.io%2Ffaztudo%2F%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">不该收录</a>
 <a class="feedback-link feedback-downrank" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%3A+Faztudo%2C+a+local+chat+for+coordinating+the+coding+agents+CLIs&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+downrank%0AactionLabel%3A+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fthiagodefreitas.github.io%2Ffaztudo%0AproductKey%3A+https%3A%2F%2Fthiagodefreitas.github.io%2Ffaztudo%0Asource%3A+HN+Algolia%0Aproduct%3A+Faztudo%2C+a+local+chat+for+coordinating+the+coding+agents+CLIs%0Alink%3A+https%3A%2F%2Fthiagodefreitas.github.io%2Ffaztudo%2F%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">应该降权</a>
@@ -1830,13 +1937,17 @@
             <p class="why"><b>为什么值得看</b>用对讲机式语音远程呼叫 coding agent，是对离开屏幕后仍能推进开发的交互试验；关键在指令确认和误操作防护。</p>
           </div>
         </div>
+        <div class="item-actions">
+          <a class="btn btn-primary" href="https://www.producthunt.com/products/walkai-talkai" target="_blank" rel="noreferrer noopener">打开产品 ↗</a>
+          <a class="btn" href="https://www.producthunt.com/leaderboard/daily/2026/10/19/all" target="_blank" rel="noreferrer noopener">查看证据</a>
+          <button type="button" class="btn" data-expand-card>展开全文</button>
+        </div>
         <details class="item-tools">
           <summary title="打开证据与反馈"><span>操作</span></summary>
           <div class="item-tools-panel">
             <a class="product-action" href="https://www.producthunt.com/products/walkai-talkai" target="_blank" rel="noreferrer noopener">打开产品</a>
             <a class="evidence" href="https://www.producthunt.com/leaderboard/daily/2026/10/19/all" target="_blank" rel="noreferrer noopener">查看证据</a>
             <button type="button" class="item-share" data-share-id="signal-2026-10-21-2-walkai-talkai">复制链接</button>
-            <button type="button" class="item-expand" data-expand-card>展开摘要</button>
             <div class="feedback-actions" aria-label="产品反馈"><a class="feedback-link feedback-keep" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%80%BC%E5%BE%97%E7%9C%8B%3A+walkai-talkai&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+keep%0AactionLabel%3A+%E5%80%BC%E5%BE%97%E7%9C%8B%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CProduct+Hunt%7Chttps%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fwalkai-talkai%0AproductKey%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fwalkai-talkai%0Asource%3A+Product+Hunt%0Aproduct%3A+walkai-talkai%0Alink%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fwalkai-talkai%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">值得看</a>
 <a class="feedback-link feedback-drop" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%3A+walkai-talkai&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+drop%0AactionLabel%3A+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CProduct+Hunt%7Chttps%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fwalkai-talkai%0AproductKey%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fwalkai-talkai%0Asource%3A+Product+Hunt%0Aproduct%3A+walkai-talkai%0Alink%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fwalkai-talkai%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">不该收录</a>
 <a class="feedback-link feedback-downrank" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%3A+walkai-talkai&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+downrank%0AactionLabel%3A+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CProduct+Hunt%7Chttps%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fwalkai-talkai%0AproductKey%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fwalkai-talkai%0Asource%3A+Product+Hunt%0Aproduct%3A+walkai-talkai%0Alink%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fwalkai-talkai%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">应该降权</a>
@@ -1858,13 +1969,17 @@
             <p class="why"><b>为什么值得看</b>它用 2005 年即时通讯的熟悉心智包装 coding agent 协作，值得观察怀旧界面是否真的降低多 agent 会话管理负担。</p>
           </div>
         </div>
+        <div class="item-actions">
+          <a class="btn btn-primary" href="https://www.producthunt.com/products/buddylist-2" target="_blank" rel="noreferrer noopener">打开产品 ↗</a>
+          <a class="btn" href="https://www.producthunt.com/leaderboard/daily/2026/10/19/all" target="_blank" rel="noreferrer noopener">查看证据</a>
+          <button type="button" class="btn" data-expand-card>展开全文</button>
+        </div>
         <details class="item-tools">
           <summary title="打开证据与反馈"><span>操作</span></summary>
           <div class="item-tools-panel">
             <a class="product-action" href="https://www.producthunt.com/products/buddylist-2" target="_blank" rel="noreferrer noopener">打开产品</a>
             <a class="evidence" href="https://www.producthunt.com/leaderboard/daily/2026/10/19/all" target="_blank" rel="noreferrer noopener">查看证据</a>
             <button type="button" class="item-share" data-share-id="signal-2026-10-21-3-buddylist">复制链接</button>
-            <button type="button" class="item-expand" data-expand-card>展开摘要</button>
             <div class="feedback-actions" aria-label="产品反馈"><a class="feedback-link feedback-keep" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%80%BC%E5%BE%97%E7%9C%8B%3A+buddylist&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+keep%0AactionLabel%3A+%E5%80%BC%E5%BE%97%E7%9C%8B%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CProduct+Hunt%7Chttps%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbuddylist-2%0AproductKey%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbuddylist-2%0Asource%3A+Product+Hunt%0Aproduct%3A+buddylist%0Alink%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbuddylist-2%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">值得看</a>
 <a class="feedback-link feedback-drop" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%3A+buddylist&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+drop%0AactionLabel%3A+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CProduct+Hunt%7Chttps%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbuddylist-2%0AproductKey%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbuddylist-2%0Asource%3A+Product+Hunt%0Aproduct%3A+buddylist%0Alink%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbuddylist-2%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">不该收录</a>
 <a class="feedback-link feedback-downrank" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%3A+buddylist&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+downrank%0AactionLabel%3A+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CProduct+Hunt%7Chttps%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbuddylist-2%0AproductKey%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbuddylist-2%0Asource%3A+Product+Hunt%0Aproduct%3A+buddylist%0Alink%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbuddylist-2%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">应该降权</a>
@@ -1886,13 +2001,17 @@
             <p class="why"><b>为什么值得看</b>TUI 同时运行并查看并行 coding agents，瞄准的是开发者在多任务并发时的调度痛点；重点看状态汇总与冲突处理。</p>
           </div>
         </div>
+        <div class="item-actions">
+          <a class="btn btn-primary" href="https://craig-cli.com/" target="_blank" rel="noreferrer noopener">打开产品 ↗</a>
+          <a class="btn" href="https://news.ycombinator.com/item?id=50157942" target="_blank" rel="noreferrer noopener">查看证据</a>
+          <button type="button" class="btn" data-expand-card>展开全文</button>
+        </div>
         <details class="item-tools">
           <summary title="打开证据与反馈"><span>操作</span></summary>
           <div class="item-tools-panel">
             <a class="product-action" href="https://craig-cli.com/" target="_blank" rel="noreferrer noopener">打开产品</a>
             <a class="evidence" href="https://news.ycombinator.com/item?id=50157942" target="_blank" rel="noreferrer noopener">查看证据</a>
             <button type="button" class="item-share" data-share-id="signal-2026-10-21-4-craig-a-tui-for-running-parallel-coding-agents">复制链接</button>
-            <button type="button" class="item-expand" data-expand-card>展开摘要</button>
             <div class="feedback-actions" aria-label="产品反馈"><a class="feedback-link feedback-keep" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%80%BC%E5%BE%97%E7%9C%8B%3A+Craig+%E2%80%93+A+TUI+for+running+parallel+coding+agents&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+keep%0AactionLabel%3A+%E5%80%BC%E5%BE%97%E7%9C%8B%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fcraig-cli.com%0AproductKey%3A+https%3A%2F%2Fcraig-cli.com%0Asource%3A+HN+Algolia%0Aproduct%3A+Craig+%E2%80%93+A+TUI+for+running+parallel+coding+agents%0Alink%3A+https%3A%2F%2Fcraig-cli.com%2F%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">值得看</a>
 <a class="feedback-link feedback-drop" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%3A+Craig+%E2%80%93+A+TUI+for+running+parallel+coding+agents&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+drop%0AactionLabel%3A+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fcraig-cli.com%0AproductKey%3A+https%3A%2F%2Fcraig-cli.com%0Asource%3A+HN+Algolia%0Aproduct%3A+Craig+%E2%80%93+A+TUI+for+running+parallel+coding+agents%0Alink%3A+https%3A%2F%2Fcraig-cli.com%2F%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">不该收录</a>
 <a class="feedback-link feedback-downrank" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%3A+Craig+%E2%80%93+A+TUI+for+running+parallel+coding+agents&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+downrank%0AactionLabel%3A+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fcraig-cli.com%0AproductKey%3A+https%3A%2F%2Fcraig-cli.com%0Asource%3A+HN+Algolia%0Aproduct%3A+Craig+%E2%80%93+A+TUI+for+running+parallel+coding+agents%0Alink%3A+https%3A%2F%2Fcraig-cli.com%2F%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">应该降权</a>
@@ -1914,13 +2033,17 @@
             <p class="why"><b>为什么值得看</b>可视化 Agent Workflow Builder 把 agent 编排从代码配置推向界面操作；价值取决于流程调试和失败恢复是否足够清楚。</p>
           </div>
         </div>
+        <div class="item-actions">
+          <a class="btn btn-primary" href="https://github.com/SeeRay11/OpenFlow" target="_blank" rel="noreferrer noopener">打开产品 ↗</a>
+          <a class="btn" href="https://news.ycombinator.com/item?id=50159710" target="_blank" rel="noreferrer noopener">查看证据</a>
+          <button type="button" class="btn" data-expand-card>展开全文</button>
+        </div>
         <details class="item-tools">
           <summary title="打开证据与反馈"><span>操作</span></summary>
           <div class="item-tools-panel">
             <a class="product-action" href="https://github.com/SeeRay11/OpenFlow" target="_blank" rel="noreferrer noopener">打开产品</a>
             <a class="evidence" href="https://news.ycombinator.com/item?id=50159710" target="_blank" rel="noreferrer noopener">查看证据</a>
             <button type="button" class="item-share" data-share-id="signal-2026-10-21-5-openflow-ai-agent-workflow-builder">复制链接</button>
-            <button type="button" class="item-expand" data-expand-card>展开摘要</button>
             <div class="feedback-actions" aria-label="产品反馈"><a class="feedback-link feedback-keep" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%80%BC%E5%BE%97%E7%9C%8B%3A+OpenFlow+%E2%80%93+AI+Agent+Workflow+Builder&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+keep%0AactionLabel%3A+%E5%80%BC%E5%BE%97%E7%9C%8B%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fgithub.com%2Fseeray11%2Fopenflow%0AproductKey%3A+https%3A%2F%2Fgithub.com%2Fseeray11%2Fopenflow%0Asource%3A+HN+Algolia%0Aproduct%3A+OpenFlow+%E2%80%93+AI+Agent+Workflow+Builder%0Alink%3A+https%3A%2F%2Fgithub.com%2FSeeRay11%2FOpenFlow%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">值得看</a>
 <a class="feedback-link feedback-drop" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%3A+OpenFlow+%E2%80%93+AI+Agent+Workflow+Builder&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+drop%0AactionLabel%3A+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fgithub.com%2Fseeray11%2Fopenflow%0AproductKey%3A+https%3A%2F%2Fgithub.com%2Fseeray11%2Fopenflow%0Asource%3A+HN+Algolia%0Aproduct%3A+OpenFlow+%E2%80%93+AI+Agent+Workflow+Builder%0Alink%3A+https%3A%2F%2Fgithub.com%2FSeeRay11%2FOpenFlow%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">不该收录</a>
 <a class="feedback-link feedback-downrank" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%3A+OpenFlow+%E2%80%93+AI+Agent+Workflow+Builder&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+downrank%0AactionLabel%3A+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fgithub.com%2Fseeray11%2Fopenflow%0AproductKey%3A+https%3A%2F%2Fgithub.com%2Fseeray11%2Fopenflow%0Asource%3A+HN+Algolia%0Aproduct%3A+OpenFlow+%E2%80%93+AI+Agent+Workflow+Builder%0Alink%3A+https%3A%2F%2Fgithub.com%2FSeeRay11%2FOpenFlow%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">应该降权</a>
@@ -1942,13 +2065,17 @@
             <p class="why"><b>为什么值得看</b>让一台 Mac 上的 agent 操作环境被另一台设备使用，切中了本地执行与远程访问的结合；应重点核对窗口控制权限和隐私边界。</p>
           </div>
         </div>
+        <div class="item-actions">
+          <a class="btn btn-primary" href="https://www.producthunt.com/products/beam-win" target="_blank" rel="noreferrer noopener">打开产品 ↗</a>
+          <a class="btn" href="https://www.producthunt.com/leaderboard/daily/2026/10/19/all" target="_blank" rel="noreferrer noopener">查看证据</a>
+          <button type="button" class="btn" data-expand-card>展开全文</button>
+        </div>
         <details class="item-tools">
           <summary title="打开证据与反馈"><span>操作</span></summary>
           <div class="item-tools-panel">
             <a class="product-action" href="https://www.producthunt.com/products/beam-win" target="_blank" rel="noreferrer noopener">打开产品</a>
             <a class="evidence" href="https://www.producthunt.com/leaderboard/daily/2026/10/19/all" target="_blank" rel="noreferrer noopener">查看证据</a>
             <button type="button" class="item-share" data-share-id="signal-2026-10-21-6-beam-win">复制链接</button>
-            <button type="button" class="item-expand" data-expand-card>展开摘要</button>
             <div class="feedback-actions" aria-label="产品反馈"><a class="feedback-link feedback-keep" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%80%BC%E5%BE%97%E7%9C%8B%3A+Beam.win&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+keep%0AactionLabel%3A+%E5%80%BC%E5%BE%97%E7%9C%8B%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CProduct+Hunt%7Chttps%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbeam-win%0AproductKey%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbeam-win%0Asource%3A+Product+Hunt%0Aproduct%3A+Beam.win%0Alink%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbeam-win%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">值得看</a>
 <a class="feedback-link feedback-drop" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%3A+Beam.win&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+drop%0AactionLabel%3A+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CProduct+Hunt%7Chttps%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbeam-win%0AproductKey%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbeam-win%0Asource%3A+Product+Hunt%0Aproduct%3A+Beam.win%0Alink%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbeam-win%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">不该收录</a>
 <a class="feedback-link feedback-downrank" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%3A+Beam.win&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+downrank%0AactionLabel%3A+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CProduct+Hunt%7Chttps%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbeam-win%0AproductKey%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbeam-win%0Asource%3A+Product+Hunt%0Aproduct%3A+Beam.win%0Alink%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbeam-win%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">应该降权</a>
@@ -1970,13 +2097,17 @@
             <p class="why"><b>为什么值得看</b>Fini 把客服对话继续转成洞察、知识更新和 bug 报告，值得看它能否把“回答问题”延伸为可追踪的团队行动。</p>
           </div>
         </div>
+        <div class="item-actions">
+          <a class="btn btn-primary" href="https://www.ycombinator.com/launches/W5J-scout-by-fini-an-ai-teammate-for-your-support-team" target="_blank" rel="noreferrer noopener">打开产品 ↗</a>
+          <a class="btn" href="https://www.ycombinator.com/launches/W5J-scout-by-fini-an-ai-teammate-for-your-support-team" target="_blank" rel="noreferrer noopener">查看证据</a>
+          <button type="button" class="btn" data-expand-card>展开全文</button>
+        </div>
         <details class="item-tools">
           <summary title="打开证据与反馈"><span>操作</span></summary>
           <div class="item-tools-panel">
             <a class="product-action" href="https://www.ycombinator.com/launches/W5J-scout-by-fini-an-ai-teammate-for-your-support-team" target="_blank" rel="noreferrer noopener">打开产品</a>
             <a class="evidence" href="https://www.ycombinator.com/launches/W5J-scout-by-fini-an-ai-teammate-for-your-support-team" target="_blank" rel="noreferrer noopener">查看证据</a>
             <button type="button" class="item-share" data-share-id="signal-2026-10-21-7-fini">复制链接</button>
-            <button type="button" class="item-expand" data-expand-card>展开摘要</button>
             <div class="feedback-actions" aria-label="产品反馈"><a class="feedback-link feedback-keep" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%80%BC%E5%BE%97%E7%9C%8B%3A+Fini&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+keep%0AactionLabel%3A+%E5%80%BC%E5%BE%97%E7%9C%8B%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CYC+Launch%7Chttps%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fw5j-scout-by-fini-an-ai-teammate-for-your-support-team%0AproductKey%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fw5j-scout-by-fini-an-ai-teammate-for-your-support-team%0Asource%3A+YC+Launch%0Aproduct%3A+Fini%0Alink%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2FW5J-scout-by-fini-an-ai-teammate-for-your-support-team%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">值得看</a>
 <a class="feedback-link feedback-drop" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%3A+Fini&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+drop%0AactionLabel%3A+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CYC+Launch%7Chttps%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fw5j-scout-by-fini-an-ai-teammate-for-your-support-team%0AproductKey%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fw5j-scout-by-fini-an-ai-teammate-for-your-support-team%0Asource%3A+YC+Launch%0Aproduct%3A+Fini%0Alink%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2FW5J-scout-by-fini-an-ai-teammate-for-your-support-team%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">不该收录</a>
 <a class="feedback-link feedback-downrank" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%3A+Fini&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+downrank%0AactionLabel%3A+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CYC+Launch%7Chttps%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fw5j-scout-by-fini-an-ai-teammate-for-your-support-team%0AproductKey%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fw5j-scout-by-fini-an-ai-teammate-for-your-support-team%0Asource%3A+YC+Launch%0Aproduct%3A+Fini%0Alink%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2FW5J-scout-by-fini-an-ai-teammate-for-your-support-team%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">应该降权</a>
@@ -1998,13 +2129,17 @@
             <p class="why"><b>为什么值得看</b>它让 Claude 与 Claude Code 通过 MCP 执行 B2B 找客，产品价值在于把研究、筛选和触达串成结果导向流程，而非单次生成名单。</p>
           </div>
         </div>
+        <div class="item-actions">
+          <a class="btn btn-primary" href="https://github.com/explorium-ai/vibeprospecting-mcp" target="_blank" rel="noreferrer noopener">打开产品 ↗</a>
+          <a class="btn" href="https://news.ycombinator.com/item?id=50165257" target="_blank" rel="noreferrer noopener">查看证据</a>
+          <button type="button" class="btn" data-expand-card>展开全文</button>
+        </div>
         <details class="item-tools">
           <summary title="打开证据与反馈"><span>操作</span></summary>
           <div class="item-tools-panel">
             <a class="product-action" href="https://github.com/explorium-ai/vibeprospecting-mcp" target="_blank" rel="noreferrer noopener">打开产品</a>
             <a class="evidence" href="https://news.ycombinator.com/item?id=50165257" target="_blank" rel="noreferrer noopener">查看证据</a>
             <button type="button" class="item-share" data-share-id="signal-2026-10-21-8-vibe-prospecting-b2b-prospecting-from-claude-and-claude-code-via-mcp">复制链接</button>
-            <button type="button" class="item-expand" data-expand-card>展开摘要</button>
             <div class="feedback-actions" aria-label="产品反馈"><a class="feedback-link feedback-keep" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%80%BC%E5%BE%97%E7%9C%8B%3A+Vibe+Prospecting+%E2%80%93+B2B+Prospecting+from+Claude+and+Claude+Code+via+MCP&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+keep%0AactionLabel%3A+%E5%80%BC%E5%BE%97%E7%9C%8B%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fgithub.com%2Fexplorium-ai%2Fvibeprospecting-mcp%0AproductKey%3A+https%3A%2F%2Fgithub.com%2Fexplorium-ai%2Fvibeprospecting-mcp%0Asource%3A+HN+Algolia%0Aproduct%3A+Vibe+Prospecting+%E2%80%93+B2B+Prospecting+from+Claude+and+Claude+Code+via+MCP%0Alink%3A+https%3A%2F%2Fgithub.com%2Fexplorium-ai%2Fvibeprospecting-mcp%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">值得看</a>
 <a class="feedback-link feedback-drop" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%3A+Vibe+Prospecting+%E2%80%93+B2B+Prospecting+from+Claude+and+Claude+Code+via+MCP&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+drop%0AactionLabel%3A+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fgithub.com%2Fexplorium-ai%2Fvibeprospecting-mcp%0AproductKey%3A+https%3A%2F%2Fgithub.com%2Fexplorium-ai%2Fvibeprospecting-mcp%0Asource%3A+HN+Algolia%0Aproduct%3A+Vibe+Prospecting+%E2%80%93+B2B+Prospecting+from+Claude+and+Claude+Code+via+MCP%0Alink%3A+https%3A%2F%2Fgithub.com%2Fexplorium-ai%2Fvibeprospecting-mcp%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">不该收录</a>
 <a class="feedback-link feedback-downrank" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%3A+Vibe+Prospecting+%E2%80%93+B2B+Prospecting+from+Claude+and+Claude+Code+via+MCP&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+downrank%0AactionLabel%3A+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fgithub.com%2Fexplorium-ai%2Fvibeprospecting-mcp%0AproductKey%3A+https%3A%2F%2Fgithub.com%2Fexplorium-ai%2Fvibeprospecting-mcp%0Asource%3A+HN+Algolia%0Aproduct%3A+Vibe+Prospecting+%E2%80%93+B2B+Prospecting+from+Claude+and+Claude+Code+via+MCP%0Alink%3A+https%3A%2F%2Fgithub.com%2Fexplorium-ai%2Fvibeprospecting-mcp%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">应该降权</a>
@@ -2026,13 +2161,17 @@
             <p class="why"><b>为什么值得看</b>ObsessionDB 为 agent 提供实时数据仓库，值得看其数据新鲜度、查询接口和权限模型能否支撑连续自动化任务。</p>
           </div>
         </div>
+        <div class="item-actions">
+          <a class="btn btn-primary" href="https://www.ycombinator.com/launches/VpG-obsessiondb-a-real-time-data-warehouse-built-for-agents" target="_blank" rel="noreferrer noopener">打开产品 ↗</a>
+          <a class="btn" href="https://www.ycombinator.com/launches/VpG-obsessiondb-a-real-time-data-warehouse-built-for-agents" target="_blank" rel="noreferrer noopener">查看证据</a>
+          <button type="button" class="btn" data-expand-card>展开全文</button>
+        </div>
         <details class="item-tools">
           <summary title="打开证据与反馈"><span>操作</span></summary>
           <div class="item-tools-panel">
             <a class="product-action" href="https://www.ycombinator.com/launches/VpG-obsessiondb-a-real-time-data-warehouse-built-for-agents" target="_blank" rel="noreferrer noopener">打开产品</a>
             <a class="evidence" href="https://www.ycombinator.com/launches/VpG-obsessiondb-a-real-time-data-warehouse-built-for-agents" target="_blank" rel="noreferrer noopener">查看证据</a>
             <button type="button" class="item-share" data-share-id="signal-2026-10-21-9-obsessiondb">复制链接</button>
-            <button type="button" class="item-expand" data-expand-card>展开摘要</button>
             <div class="feedback-actions" aria-label="产品反馈"><a class="feedback-link feedback-keep" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%80%BC%E5%BE%97%E7%9C%8B%3A+ObsessionDB&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+keep%0AactionLabel%3A+%E5%80%BC%E5%BE%97%E7%9C%8B%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CYC+Launch%7Chttps%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fvpg-obsessiondb-a-real-time-data-warehouse-built-for-agents%0AproductKey%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fvpg-obsessiondb-a-real-time-data-warehouse-built-for-agents%0Asource%3A+YC+Launch%0Aproduct%3A+ObsessionDB%0Alink%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2FVpG-obsessiondb-a-real-time-data-warehouse-built-for-agents%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">值得看</a>
 <a class="feedback-link feedback-drop" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%3A+ObsessionDB&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+drop%0AactionLabel%3A+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CYC+Launch%7Chttps%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fvpg-obsessiondb-a-real-time-data-warehouse-built-for-agents%0AproductKey%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fvpg-obsessiondb-a-real-time-data-warehouse-built-for-agents%0Asource%3A+YC+Launch%0Aproduct%3A+ObsessionDB%0Alink%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2FVpG-obsessiondb-a-real-time-data-warehouse-built-for-agents%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">不该收录</a>
 <a class="feedback-link feedback-downrank" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%3A+ObsessionDB&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+downrank%0AactionLabel%3A+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CYC+Launch%7Chttps%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fvpg-obsessiondb-a-real-time-data-warehouse-built-for-agents%0AproductKey%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fvpg-obsessiondb-a-real-time-data-warehouse-built-for-agents%0Asource%3A+YC+Launch%0Aproduct%3A+ObsessionDB%0Alink%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2FVpG-obsessiondb-a-real-time-data-warehouse-built-for-agents%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">应该降权</a>
@@ -2054,13 +2193,17 @@
             <p class="why"><b>为什么值得看</b>Launch HN 的 Respan 用 Rust 和插件体系搭建 AI gateway，重点看插件隔离、路由与可观测性是否形成可替代现有网关的工程优势。</p>
           </div>
         </div>
+        <div class="item-actions">
+          <a class="btn btn-primary" href="https://news.ycombinator.com/item?id=50167583" target="_blank" rel="noreferrer noopener">打开产品 ↗</a>
+          <a class="btn" href="https://news.ycombinator.com/item?id=50167583" target="_blank" rel="noreferrer noopener">查看证据</a>
+          <button type="button" class="btn" data-expand-card>展开全文</button>
+        </div>
         <details class="item-tools">
           <summary title="打开证据与反馈"><span>操作</span></summary>
           <div class="item-tools-panel">
             <a class="product-action" href="https://news.ycombinator.com/item?id=50167583" target="_blank" rel="noreferrer noopener">打开产品</a>
             <a class="evidence" href="https://news.ycombinator.com/item?id=50167583" target="_blank" rel="noreferrer noopener">查看证据</a>
             <button type="button" class="item-share" data-share-id="signal-2026-10-21-10-respan-yc-w24-open-source-rust-ai-gateway-built-around-plugins">复制链接</button>
-            <button type="button" class="item-expand" data-expand-card>展开摘要</button>
             <div class="feedback-actions" aria-label="产品反馈"><a class="feedback-link feedback-keep" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%80%BC%E5%BE%97%E7%9C%8B%3A+Respan+%28YC+W24%29+%E2%80%93+Open-source+Rust+AI+gateway+built+around+plugins&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+keep%0AactionLabel%3A+%E5%80%BC%E5%BE%97%E7%9C%8B%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fnews.ycombinator.com%2Fitem%3Fid%3D50167583%0AproductKey%3A+https%3A%2F%2Fnews.ycombinator.com%2Fitem%3Fid%3D50167583%0Asource%3A+HN+Algolia%0Aproduct%3A+Respan+%28YC+W24%29+%E2%80%93+Open-source+Rust+AI+gateway+built+around+plugins%0Alink%3A+https%3A%2F%2Fnews.ycombinator.com%2Fitem%3Fid%3D50167583%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">值得看</a>
 <a class="feedback-link feedback-drop" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%3A+Respan+%28YC+W24%29+%E2%80%93+Open-source+Rust+AI+gateway+built+around+plugins&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+drop%0AactionLabel%3A+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fnews.ycombinator.com%2Fitem%3Fid%3D50167583%0AproductKey%3A+https%3A%2F%2Fnews.ycombinator.com%2Fitem%3Fid%3D50167583%0Asource%3A+HN+Algolia%0Aproduct%3A+Respan+%28YC+W24%29+%E2%80%93+Open-source+Rust+AI+gateway+built+around+plugins%0Alink%3A+https%3A%2F%2Fnews.ycombinator.com%2Fitem%3Fid%3D50167583%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">不该收录</a>
 <a class="feedback-link feedback-downrank" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%3A+Respan+%28YC+W24%29+%E2%80%93+Open-source+Rust+AI+gateway+built+around+plugins&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+downrank%0AactionLabel%3A+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fnews.ycombinator.com%2Fitem%3Fid%3D50167583%0AproductKey%3A+https%3A%2F%2Fnews.ycombinator.com%2Fitem%3Fid%3D50167583%0Asource%3A+HN+Algolia%0Aproduct%3A+Respan+%28YC+W24%29+%E2%80%93+Open-source+Rust+AI+gateway+built+around+plugins%0Alink%3A+https%3A%2F%2Fnews.ycombinator.com%2Fitem%3Fid%3D50167583%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">应该降权</a>
@@ -2082,13 +2225,17 @@
             <p class="why"><b>为什么值得看</b>把大纲工具做成 Claude connector，让结构化笔记直接进入模型工作流；关键是编辑体验与上下文同步能否同时成立。</p>
           </div>
         </div>
+        <div class="item-actions">
+          <a class="btn btn-primary" href="https://claude.ai/directory/bulletlist" target="_blank" rel="noreferrer noopener">打开产品 ↗</a>
+          <a class="btn" href="https://news.ycombinator.com/item?id=50154682" target="_blank" rel="noreferrer noopener">查看证据</a>
+          <button type="button" class="btn" data-expand-card>展开全文</button>
+        </div>
         <details class="item-tools">
           <summary title="打开证据与反馈"><span>操作</span></summary>
           <div class="item-tools-panel">
             <a class="product-action" href="https://claude.ai/directory/bulletlist" target="_blank" rel="noreferrer noopener">打开产品</a>
             <a class="evidence" href="https://news.ycombinator.com/item?id=50154682" target="_blank" rel="noreferrer noopener">查看证据</a>
             <button type="button" class="item-share" data-share-id="signal-2026-10-21-11-an-outliner-to-replace-workflowy-and-obsidian-as-a-claude-connector">复制链接</button>
-            <button type="button" class="item-expand" data-expand-card>展开摘要</button>
             <div class="feedback-actions" aria-label="产品反馈"><a class="feedback-link feedback-keep" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%80%BC%E5%BE%97%E7%9C%8B%3A+An+outliner+to+replace+Workflowy+and+Obsidian+%E2%80%93+as+a+Claude+connector&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+keep%0AactionLabel%3A+%E5%80%BC%E5%BE%97%E7%9C%8B%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fclaude.ai%2Fdirectory%2Fbulletlist%0AproductKey%3A+https%3A%2F%2Fclaude.ai%2Fdirectory%2Fbulletlist%0Asource%3A+HN+Algolia%0Aproduct%3A+An+outliner+to+replace+Workflowy+and+Obsidian+%E2%80%93+as+a+Claude+connector%0Alink%3A+https%3A%2F%2Fclaude.ai%2Fdirectory%2Fbulletlist%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">值得看</a>
 <a class="feedback-link feedback-drop" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%3A+An+outliner+to+replace+Workflowy+and+Obsidian+%E2%80%93+as+a+Claude+connector&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+drop%0AactionLabel%3A+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fclaude.ai%2Fdirectory%2Fbulletlist%0AproductKey%3A+https%3A%2F%2Fclaude.ai%2Fdirectory%2Fbulletlist%0Asource%3A+HN+Algolia%0Aproduct%3A+An+outliner+to+replace+Workflowy+and+Obsidian+%E2%80%93+as+a+Claude+connector%0Alink%3A+https%3A%2F%2Fclaude.ai%2Fdirectory%2Fbulletlist%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">不该收录</a>
 <a class="feedback-link feedback-downrank" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%3A+An+outliner+to+replace+Workflowy+and+Obsidian+%E2%80%93+as+a+Claude+connector&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+downrank%0AactionLabel%3A+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fclaude.ai%2Fdirectory%2Fbulletlist%0AproductKey%3A+https%3A%2F%2Fclaude.ai%2Fdirectory%2Fbulletlist%0Asource%3A+HN+Algolia%0Aproduct%3A+An+outliner+to+replace+Workflowy+and+Obsidian+%E2%80%93+as+a+Claude+connector%0Alink%3A+https%3A%2F%2Fclaude.ai%2Fdirectory%2Fbulletlist%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">应该降权</a>
@@ -2110,13 +2257,17 @@
             <p class="why"><b>为什么值得看</b>Kairos Health 用 AI 前台处理牙科电话与保险事务，业务边界具体；值得看高风险信息核验和转人工机制是否可运营。</p>
           </div>
         </div>
+        <div class="item-actions">
+          <a class="btn btn-primary" href="https://www.ycombinator.com/launches/W5m-kairos-health-ai-front-desk-for-dental-practices" target="_blank" rel="noreferrer noopener">打开产品 ↗</a>
+          <a class="btn" href="https://www.ycombinator.com/launches/W5m-kairos-health-ai-front-desk-for-dental-practices" target="_blank" rel="noreferrer noopener">查看证据</a>
+          <button type="button" class="btn" data-expand-card>展开全文</button>
+        </div>
         <details class="item-tools">
           <summary title="打开证据与反馈"><span>操作</span></summary>
           <div class="item-tools-panel">
             <a class="product-action" href="https://www.ycombinator.com/launches/W5m-kairos-health-ai-front-desk-for-dental-practices" target="_blank" rel="noreferrer noopener">打开产品</a>
             <a class="evidence" href="https://www.ycombinator.com/launches/W5m-kairos-health-ai-front-desk-for-dental-practices" target="_blank" rel="noreferrer noopener">查看证据</a>
             <button type="button" class="item-share" data-share-id="signal-2026-10-21-12-kairos-health">复制链接</button>
-            <button type="button" class="item-expand" data-expand-card>展开摘要</button>
             <div class="feedback-actions" aria-label="产品反馈"><a class="feedback-link feedback-keep" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%80%BC%E5%BE%97%E7%9C%8B%3A+Kairos+Health&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+keep%0AactionLabel%3A+%E5%80%BC%E5%BE%97%E7%9C%8B%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CYC+Launch%7Chttps%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fw5m-kairos-health-ai-front-desk-for-dental-practices%0AproductKey%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fw5m-kairos-health-ai-front-desk-for-dental-practices%0Asource%3A+YC+Launch%0Aproduct%3A+Kairos+Health%0Alink%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2FW5m-kairos-health-ai-front-desk-for-dental-practices%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">值得看</a>
 <a class="feedback-link feedback-drop" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%3A+Kairos+Health&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+drop%0AactionLabel%3A+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CYC+Launch%7Chttps%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fw5m-kairos-health-ai-front-desk-for-dental-practices%0AproductKey%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fw5m-kairos-health-ai-front-desk-for-dental-practices%0Asource%3A+YC+Launch%0Aproduct%3A+Kairos+Health%0Alink%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2FW5m-kairos-health-ai-front-desk-for-dental-practices%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">不该收录</a>
 <a class="feedback-link feedback-downrank" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%3A+Kairos+Health&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+downrank%0AactionLabel%3A+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CYC+Launch%7Chttps%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fw5m-kairos-health-ai-front-desk-for-dental-practices%0AproductKey%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fw5m-kairos-health-ai-front-desk-for-dental-practices%0Asource%3A+YC+Launch%0Aproduct%3A+Kairos+Health%0Alink%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2FW5m-kairos-health-ai-front-desk-for-dental-practices%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">应该降权</a>
@@ -2138,13 +2289,17 @@
             <p class="why"><b>为什么值得看</b>PatchWave 在 Dependabot 之后加入静态分析和自动合并，瞄准依赖升级的人工审查成本；价值取决于误合并风险控制。</p>
           </div>
         </div>
+        <div class="item-actions">
+          <a class="btn btn-primary" href="https://patchwave.ai/" target="_blank" rel="noreferrer noopener">打开产品 ↗</a>
+          <a class="btn" href="https://news.ycombinator.com/item?id=50166699" target="_blank" rel="noreferrer noopener">查看证据</a>
+          <button type="button" class="btn" data-expand-card>展开全文</button>
+        </div>
         <details class="item-tools">
           <summary title="打开证据与反馈"><span>操作</span></summary>
           <div class="item-tools-panel">
             <a class="product-action" href="https://patchwave.ai/" target="_blank" rel="noreferrer noopener">打开产品</a>
             <a class="evidence" href="https://news.ycombinator.com/item?id=50166699" target="_blank" rel="noreferrer noopener">查看证据</a>
             <button type="button" class="item-share" data-share-id="signal-2026-10-21-13-patchwave-add-static-analysis-and-automerge-to-dependabot">复制链接</button>
-            <button type="button" class="item-expand" data-expand-card>展开摘要</button>
             <div class="feedback-actions" aria-label="产品反馈"><a class="feedback-link feedback-keep" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%80%BC%E5%BE%97%E7%9C%8B%3A+PatchWave+-+Add+static+analysis+and+automerge+to+Dependabot&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+keep%0AactionLabel%3A+%E5%80%BC%E5%BE%97%E7%9C%8B%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fpatchwave.ai%0AproductKey%3A+https%3A%2F%2Fpatchwave.ai%0Asource%3A+HN+Algolia%0Aproduct%3A+PatchWave+-+Add+static+analysis+and+automerge+to+Dependabot%0Alink%3A+https%3A%2F%2Fpatchwave.ai%2F%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">值得看</a>
 <a class="feedback-link feedback-drop" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%3A+PatchWave+-+Add+static+analysis+and+automerge+to+Dependabot&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+drop%0AactionLabel%3A+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fpatchwave.ai%0AproductKey%3A+https%3A%2F%2Fpatchwave.ai%0Asource%3A+HN+Algolia%0Aproduct%3A+PatchWave+-+Add+static+analysis+and+automerge+to+Dependabot%0Alink%3A+https%3A%2F%2Fpatchwave.ai%2F%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">不该收录</a>
 <a class="feedback-link feedback-downrank" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%3A+PatchWave+-+Add+static+analysis+and+automerge+to+Dependabot&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+downrank%0AactionLabel%3A+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fpatchwave.ai%0AproductKey%3A+https%3A%2F%2Fpatchwave.ai%0Asource%3A+HN+Algolia%0Aproduct%3A+PatchWave+-+Add+static+analysis+and+automerge+to+Dependabot%0Alink%3A+https%3A%2F%2Fpatchwave.ai%2F%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">应该降权</a>
@@ -2166,13 +2321,17 @@
             <p class="why"><b>为什么值得看</b>LongTerMemory 把 RAG 用在学习资料与长期记忆，产品判断点是引用可追溯性和跨阶段复习效果，而非“什么都能学”的宽泛承诺。</p>
           </div>
         </div>
+        <div class="item-actions">
+          <a class="btn btn-primary" href="https://longtermemory.com" target="_blank" rel="noreferrer noopener">打开产品 ↗</a>
+          <a class="btn" href="https://news.ycombinator.com/item?id=50167678" target="_blank" rel="noreferrer noopener">查看证据</a>
+          <button type="button" class="btn" data-expand-card>展开全文</button>
+        </div>
         <details class="item-tools">
           <summary title="打开证据与反馈"><span>操作</span></summary>
           <div class="item-tools-panel">
             <a class="product-action" href="https://longtermemory.com" target="_blank" rel="noreferrer noopener">打开产品</a>
             <a class="evidence" href="https://news.ycombinator.com/item?id=50167678" target="_blank" rel="noreferrer noopener">查看证据</a>
             <button type="button" class="item-share" data-share-id="signal-2026-10-21-14-longtermemory-ai-rag-study-tool-helping-people-to-study-everything">复制链接</button>
-            <button type="button" class="item-expand" data-expand-card>展开摘要</button>
             <div class="feedback-actions" aria-label="产品反馈"><a class="feedback-link feedback-keep" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%80%BC%E5%BE%97%E7%9C%8B%3A+LongTerMemory%2C+AI-RAG+Study+tool+helping+people+to+study+everything&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+keep%0AactionLabel%3A+%E5%80%BC%E5%BE%97%E7%9C%8B%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Flongtermemory.com%0AproductKey%3A+https%3A%2F%2Flongtermemory.com%0Asource%3A+HN+Algolia%0Aproduct%3A+LongTerMemory%2C+AI-RAG+Study+tool+helping+people+to+study+everything%0Alink%3A+https%3A%2F%2Flongtermemory.com%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">值得看</a>
 <a class="feedback-link feedback-drop" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%3A+LongTerMemory%2C+AI-RAG+Study+tool+helping+people+to+study+everything&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+drop%0AactionLabel%3A+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Flongtermemory.com%0AproductKey%3A+https%3A%2F%2Flongtermemory.com%0Asource%3A+HN+Algolia%0Aproduct%3A+LongTerMemory%2C+AI-RAG+Study+tool+helping+people+to+study+everything%0Alink%3A+https%3A%2F%2Flongtermemory.com%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">不该收录</a>
 <a class="feedback-link feedback-downrank" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%3A+LongTerMemory%2C+AI-RAG+Study+tool+helping+people+to+study+everything&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+downrank%0AactionLabel%3A+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Flongtermemory.com%0AproductKey%3A+https%3A%2F%2Flongtermemory.com%0Asource%3A+HN+Algolia%0Aproduct%3A+LongTerMemory%2C+AI-RAG+Study+tool+helping+people+to+study+everything%0Alink%3A+https%3A%2F%2Flongtermemory.com%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">应该降权</a>
@@ -2194,13 +2353,17 @@
             <p class="why"><b>为什么值得看</b>两张照片生成舞蹈视频的输入门槛很低，适合检验消费级多模态产品的分享动机；也要看结果可控性而非一次性新奇。</p>
           </div>
         </div>
+        <div class="item-actions">
+          <a class="btn btn-primary" href="https://a2oliteai.com/" target="_blank" rel="noreferrer noopener">打开产品 ↗</a>
+          <a class="btn" href="https://news.ycombinator.com/item?id=50163258" target="_blank" rel="noreferrer noopener">查看证据</a>
+          <button type="button" class="btn" data-expand-card>展开全文</button>
+        </div>
         <details class="item-tools">
           <summary title="打开证据与反馈"><span>操作</span></summary>
           <div class="item-tools-panel">
             <a class="product-action" href="https://a2oliteai.com/" target="_blank" rel="noreferrer noopener">打开产品</a>
             <a class="evidence" href="https://news.ycombinator.com/item?id=50163258" target="_blank" rel="noreferrer noopener">查看证据</a>
             <button type="button" class="item-share" data-share-id="signal-2026-10-21-15-i-built-an-ai-tool-that-turns-two-photos-into-a-dance-video">复制链接</button>
-            <button type="button" class="item-expand" data-expand-card>展开摘要</button>
             <div class="feedback-actions" aria-label="产品反馈"><a class="feedback-link feedback-keep" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%80%BC%E5%BE%97%E7%9C%8B%3A+I+built+an+AI+tool+that+turns+two+photos+into+a+dance+video&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+keep%0AactionLabel%3A+%E5%80%BC%E5%BE%97%E7%9C%8B%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fa2oliteai.com%0AproductKey%3A+https%3A%2F%2Fa2oliteai.com%0Asource%3A+HN+Algolia%0Aproduct%3A+I+built+an+AI+tool+that+turns+two+photos+into+a+dance+video%0Alink%3A+https%3A%2F%2Fa2oliteai.com%2F%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">值得看</a>
 <a class="feedback-link feedback-drop" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%3A+I+built+an+AI+tool+that+turns+two+photos+into+a+dance+video&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+drop%0AactionLabel%3A+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fa2oliteai.com%0AproductKey%3A+https%3A%2F%2Fa2oliteai.com%0Asource%3A+HN+Algolia%0Aproduct%3A+I+built+an+AI+tool+that+turns+two+photos+into+a+dance+video%0Alink%3A+https%3A%2F%2Fa2oliteai.com%2F%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">不该收录</a>
 <a class="feedback-link feedback-downrank" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%3A+I+built+an+AI+tool+that+turns+two+photos+into+a+dance+video&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+downrank%0AactionLabel%3A+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fa2oliteai.com%0AproductKey%3A+https%3A%2F%2Fa2oliteai.com%0Asource%3A+HN+Algolia%0Aproduct%3A+I+built+an+AI+tool+that+turns+two+photos+into+a+dance+video%0Alink%3A+https%3A%2F%2Fa2oliteai.com%2F%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">应该降权</a>
@@ -2222,13 +2385,17 @@
             <p class="why"><b>为什么值得看</b>Seclai 聚焦生产环境中 LLM agent 的可观测性，直接解决“agent 做了什么”的追责问题；关键是行为轨迹能否定位失败原因。</p>
           </div>
         </div>
+        <div class="item-actions">
+          <a class="btn btn-primary" href="https://seclai.com/" target="_blank" rel="noreferrer noopener">打开产品 ↗</a>
+          <a class="btn" href="https://news.ycombinator.com/item?id=50167447" target="_blank" rel="noreferrer noopener">查看证据</a>
+          <button type="button" class="btn" data-expand-card>展开全文</button>
+        </div>
         <details class="item-tools">
           <summary title="打开证据与反馈"><span>操作</span></summary>
           <div class="item-tools-panel">
             <a class="product-action" href="https://seclai.com/" target="_blank" rel="noreferrer noopener">打开产品</a>
             <a class="evidence" href="https://news.ycombinator.com/item?id=50167447" target="_blank" rel="noreferrer noopener">查看证据</a>
             <button type="button" class="item-share" data-share-id="signal-2026-10-21-16-seclai-see-what-your-llm-agents-are-doing-in-production">复制链接</button>
-            <button type="button" class="item-expand" data-expand-card>展开摘要</button>
             <div class="feedback-actions" aria-label="产品反馈"><a class="feedback-link feedback-keep" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%80%BC%E5%BE%97%E7%9C%8B%3A+Seclai+%E2%80%93+See+what+your+LLM+agents+are+doing+in+production&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+keep%0AactionLabel%3A+%E5%80%BC%E5%BE%97%E7%9C%8B%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fseclai.com%0AproductKey%3A+https%3A%2F%2Fseclai.com%0Asource%3A+HN+Algolia%0Aproduct%3A+Seclai+%E2%80%93+See+what+your+LLM+agents+are+doing+in+production%0Alink%3A+https%3A%2F%2Fseclai.com%2F%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">值得看</a>
 <a class="feedback-link feedback-drop" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%3A+Seclai+%E2%80%93+See+what+your+LLM+agents+are+doing+in+production&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+drop%0AactionLabel%3A+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fseclai.com%0AproductKey%3A+https%3A%2F%2Fseclai.com%0Asource%3A+HN+Algolia%0Aproduct%3A+Seclai+%E2%80%93+See+what+your+LLM+agents+are+doing+in+production%0Alink%3A+https%3A%2F%2Fseclai.com%2F%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">不该收录</a>
 <a class="feedback-link feedback-downrank" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%3A+Seclai+%E2%80%93+See+what+your+LLM+agents+are+doing+in+production&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+downrank%0AactionLabel%3A+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CHN+Algolia%7Chttps%3A%2F%2Fseclai.com%0AproductKey%3A+https%3A%2F%2Fseclai.com%0Asource%3A+HN+Algolia%0Aproduct%3A+Seclai+%E2%80%93+See+what+your+LLM+agents+are+doing+in+production%0Alink%3A+https%3A%2F%2Fseclai.com%2F%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">应该降权</a>
@@ -2250,13 +2417,17 @@
             <p class="why"><b>为什么值得看</b>Veeza AI 把弱护照用户的旅游签证流程交给垂直 agent，场景痛点明确；应看材料校验、国家差异与人工兜底如何设计。</p>
           </div>
         </div>
+        <div class="item-actions">
+          <a class="btn btn-primary" href="https://www.ycombinator.com/launches/VrY-veeza-ai-f26-ai-tourist-visa-agent-for-people-with-weak-passports" target="_blank" rel="noreferrer noopener">打开产品 ↗</a>
+          <a class="btn" href="https://www.ycombinator.com/launches/VrY-veeza-ai-f26-ai-tourist-visa-agent-for-people-with-weak-passports" target="_blank" rel="noreferrer noopener">查看证据</a>
+          <button type="button" class="btn" data-expand-card>展开全文</button>
+        </div>
         <details class="item-tools">
           <summary title="打开证据与反馈"><span>操作</span></summary>
           <div class="item-tools-panel">
             <a class="product-action" href="https://www.ycombinator.com/launches/VrY-veeza-ai-f26-ai-tourist-visa-agent-for-people-with-weak-passports" target="_blank" rel="noreferrer noopener">打开产品</a>
             <a class="evidence" href="https://www.ycombinator.com/launches/VrY-veeza-ai-f26-ai-tourist-visa-agent-for-people-with-weak-passports" target="_blank" rel="noreferrer noopener">查看证据</a>
             <button type="button" class="item-share" data-share-id="signal-2026-10-21-17-veeza-ai">复制链接</button>
-            <button type="button" class="item-expand" data-expand-card>展开摘要</button>
             <div class="feedback-actions" aria-label="产品反馈"><a class="feedback-link feedback-keep" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%80%BC%E5%BE%97%E7%9C%8B%3A+Veeza+AI&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+keep%0AactionLabel%3A+%E5%80%BC%E5%BE%97%E7%9C%8B%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CYC+Launch%7Chttps%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fvry-veeza-ai-f26-ai-tourist-visa-agent-for-people-with-weak-passports%0AproductKey%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fvry-veeza-ai-f26-ai-tourist-visa-agent-for-people-with-weak-passports%0Asource%3A+YC+Launch%0Aproduct%3A+Veeza+AI%0Alink%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2FVrY-veeza-ai-f26-ai-tourist-visa-agent-for-people-with-weak-passports%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">值得看</a>
 <a class="feedback-link feedback-drop" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%3A+Veeza+AI&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+drop%0AactionLabel%3A+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CYC+Launch%7Chttps%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fvry-veeza-ai-f26-ai-tourist-visa-agent-for-people-with-weak-passports%0AproductKey%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fvry-veeza-ai-f26-ai-tourist-visa-agent-for-people-with-weak-passports%0Asource%3A+YC+Launch%0Aproduct%3A+Veeza+AI%0Alink%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2FVrY-veeza-ai-f26-ai-tourist-visa-agent-for-people-with-weak-passports%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">不该收录</a>
 <a class="feedback-link feedback-downrank" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%3A+Veeza+AI&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+downrank%0AactionLabel%3A+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CYC+Launch%7Chttps%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fvry-veeza-ai-f26-ai-tourist-visa-agent-for-people-with-weak-passports%0AproductKey%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2Fvry-veeza-ai-f26-ai-tourist-visa-agent-for-people-with-weak-passports%0Asource%3A+YC+Launch%0Aproduct%3A+Veeza+AI%0Alink%3A+https%3A%2F%2Fwww.ycombinator.com%2Flaunches%2FVrY-veeza-ai-f26-ai-tourist-visa-agent-for-people-with-weak-passports%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">应该降权</a>
@@ -2278,13 +2449,17 @@
             <p class="why"><b>为什么值得看</b>一个强调 501B 参数与效率的 agentic 开放模型，值得跟踪其部署成本是否与长任务能力匹配，而不只看参数规模。</p>
           </div>
         </div>
+        <div class="item-actions">
+          <a class="btn btn-primary" href="https://www.producthunt.com/products/beam-13" target="_blank" rel="noreferrer noopener">打开产品 ↗</a>
+          <a class="btn" href="https://www.producthunt.com/leaderboard/daily/2026/10/19/all" target="_blank" rel="noreferrer noopener">查看证据</a>
+          <button type="button" class="btn" data-expand-card>展开全文</button>
+        </div>
         <details class="item-tools">
           <summary title="打开证据与反馈"><span>操作</span></summary>
           <div class="item-tools-panel">
             <a class="product-action" href="https://www.producthunt.com/products/beam-13" target="_blank" rel="noreferrer noopener">打开产品</a>
             <a class="evidence" href="https://www.producthunt.com/leaderboard/daily/2026/10/19/all" target="_blank" rel="noreferrer noopener">查看证据</a>
             <button type="button" class="item-share" data-share-id="signal-2026-10-21-18-beam">复制链接</button>
-            <button type="button" class="item-expand" data-expand-card>展开摘要</button>
             <div class="feedback-actions" aria-label="产品反馈"><a class="feedback-link feedback-keep" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%80%BC%E5%BE%97%E7%9C%8B%3A+Beam&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+keep%0AactionLabel%3A+%E5%80%BC%E5%BE%97%E7%9C%8B%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CProduct+Hunt%7Chttps%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbeam-13%0AproductKey%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbeam-13%0Asource%3A+Product+Hunt%0Aproduct%3A+Beam%0Alink%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbeam-13%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">值得看</a>
 <a class="feedback-link feedback-drop" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%3A+Beam&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+drop%0AactionLabel%3A+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CProduct+Hunt%7Chttps%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbeam-13%0AproductKey%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbeam-13%0Asource%3A+Product+Hunt%0Aproduct%3A+Beam%0Alink%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbeam-13%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">不该收录</a>
 <a class="feedback-link feedback-downrank" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%3A+Beam&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+downrank%0AactionLabel%3A+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CProduct+Hunt%7Chttps%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbeam-13%0AproductKey%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbeam-13%0Asource%3A+Product+Hunt%0Aproduct%3A+Beam%0Alink%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Fbeam-13%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">应该降权</a>
@@ -2306,13 +2481,17 @@
             <p class="why"><b>为什么值得看</b>Tori 面向客户成功团队提供 AI 支持 agent，判断重点是它如何接管具体工单流程，以及“最聪明”的主张是否有可验证结果。</p>
           </div>
         </div>
+        <div class="item-actions">
+          <a class="btn btn-primary" href="https://www.producthunt.com/products/tori-3" target="_blank" rel="noreferrer noopener">打开产品 ↗</a>
+          <a class="btn" href="https://www.producthunt.com/leaderboard/daily/2026/10/19/all" target="_blank" rel="noreferrer noopener">查看证据</a>
+          <button type="button" class="btn" data-expand-card>展开全文</button>
+        </div>
         <details class="item-tools">
           <summary title="打开证据与反馈"><span>操作</span></summary>
           <div class="item-tools-panel">
             <a class="product-action" href="https://www.producthunt.com/products/tori-3" target="_blank" rel="noreferrer noopener">打开产品</a>
             <a class="evidence" href="https://www.producthunt.com/leaderboard/daily/2026/10/19/all" target="_blank" rel="noreferrer noopener">查看证据</a>
             <button type="button" class="item-share" data-share-id="signal-2026-10-21-19-tori">复制链接</button>
-            <button type="button" class="item-expand" data-expand-card>展开摘要</button>
             <div class="feedback-actions" aria-label="产品反馈"><a class="feedback-link feedback-keep" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%80%BC%E5%BE%97%E7%9C%8B%3A+Tori&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+keep%0AactionLabel%3A+%E5%80%BC%E5%BE%97%E7%9C%8B%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CProduct+Hunt%7Chttps%3A%2F%2Fwww.producthunt.com%2Fproducts%2Ftori-3%0AproductKey%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Ftori-3%0Asource%3A+Product+Hunt%0Aproduct%3A+Tori%0Alink%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Ftori-3%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">值得看</a>
 <a class="feedback-link feedback-drop" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%3A+Tori&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+drop%0AactionLabel%3A+%E4%B8%8D%E8%AF%A5%E6%94%B6%E5%BD%95%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CProduct+Hunt%7Chttps%3A%2F%2Fwww.producthunt.com%2Fproducts%2Ftori-3%0AproductKey%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Ftori-3%0Asource%3A+Product+Hunt%0Aproduct%3A+Tori%0Alink%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Ftori-3%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">不该收录</a>
 <a class="feedback-link feedback-downrank" href="https://github.com/BENZEMA216/ai-product-radar/issues/new?title=%5BRadar+Feedback%5D+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%3A+Tori&amp;body=%23%23+Radar+Feedback%0A%0Aaction%3A+downrank%0AactionLabel%3A+%E5%BA%94%E8%AF%A5%E9%99%8D%E6%9D%83%0AreportDate%3A+2026-10-21%0AsignalKey%3A+2026-10-21%7CProduct+Hunt%7Chttps%3A%2F%2Fwww.producthunt.com%2Fproducts%2Ftori-3%0AproductKey%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Ftori-3%0Asource%3A+Product+Hunt%0Aproduct%3A+Tori%0Alink%3A+https%3A%2F%2Fwww.producthunt.com%2Fproducts%2Ftori-3%0A%0A%23%23+%E4%BD%A0%E7%9A%84%E8%A1%A5%E5%85%85%0A%0A%E5%8E%9F%E5%9B%A0%EF%BC%9A&amp;labels=radar-feedback" target="_blank" rel="noreferrer noopener">应该降权</a>
@@ -2592,6 +2771,37 @@
     const initialParams = new URLSearchParams(window.location.search);
     let currentView = "priority";
     let renderLimit = 40;
+    const SEEN_KEY = "radar-seen-v1";
+    let seenBefore = new Set();
+    try { seenBefore = new Set(JSON.parse(localStorage.getItem(SEEN_KEY) || "[]")); } catch (error) {}
+    const allItemKeys = (Array.isArray(radarData.items) ? radarData.items : [])
+      .map((item) => "signal-" + (item.id || ""))
+      .filter((key) => key !== "signal-");
+    const isFirstVisit = seenBefore.size === 0;
+    const newItemKeys = new Set(allItemKeys.filter((key) => !seenBefore.has(key)));
+    function markNewItems() {
+      document.querySelectorAll("#items .item").forEach((card) => {
+        const isNew = newItemKeys.has(card.id);
+        card.classList.toggle("is-new", isNew);
+        const topline = card.querySelector(".item-topline");
+        if (isNew && topline && !topline.querySelector(".new-badge")) {
+          const badge = document.createElement("span");
+          badge.className = "new-badge";
+          badge.textContent = "新";
+          topline.appendChild(badge);
+        }
+      });
+    }
+    const newSinceBanner = document.getElementById("new-since-banner");
+    if (newSinceBanner) {
+      if (!isFirstVisit && newItemKeys.size) {
+        newSinceBanner.hidden = false;
+        newSinceBanner.textContent = "自你上次访问新增 " + newItemKeys.size + " 条信号，新条目标有「新」。";
+      } else {
+        newSinceBanner.hidden = true;
+      }
+    }
+    try { localStorage.setItem(SEEN_KEY, JSON.stringify(allItemKeys.slice(-3000))); } catch (error) {}
     function escapeClient(value) {
       return String(value || "")
         .replace(/&/g, "&amp;")
@@ -2699,7 +2909,8 @@
             '<article class="item" id="' + escapeClient(anchorId) + '" data-source="' + escapeClient(item.source) + '" data-type="' + escapeClient(item.type) + '" data-category="' + escapeClient(item.category || "product") + '" data-quality="' + escapeClient(item.qualityLabel || "keep") + '" data-date="' + escapeClient(item.reportDate) + '" data-report="' + escapeClient(item.reportPath) + '" data-latest="' + String(Boolean(isLatest)) + '" data-reviewed="' + String(Boolean(item.reviews && item.reviews.length)) + '">',
             '<div class="item-topline"><span class="rank">信号 ' + String(index + 1).padStart(2, "0") + '</span><span>' + escapeClient(item.reportDate) + " " + escapeClient(item.reportTime) + '</span><span class="source-badge">' + escapeClient(item.source) + "</span><span>" + escapeClient(item.type) + "</span></div>",
             '<div class="item-main"><h2><a href="' + escapeClient(item.link) + '" target="_blank" rel="noreferrer noopener">' + escapeClient(item.product) + '</a></h2><div class="signal-copy"><p class="did"><b>做了什么</b>' + escapeClient(item.did) + '</p><p class="why"><b>为什么值得看</b>' + escapeClient(item.why) + "</p></div>" + (reviewBlocks ? "\n" + reviewBlocks : "") + "</div>",
-            '<details class="item-tools"><summary title="打开证据与反馈"><span>操作</span></summary><div class="item-tools-panel"><a class="product-action" href="' + escapeClient(item.link) + '" target="_blank" rel="noreferrer noopener">打开产品</a><a class="evidence" href="' + escapeClient(item.evidenceUrl) + '" target="_blank" rel="noreferrer noopener">查看证据</a><button type="button" class="item-share" data-share-id="' + escapeClient(anchorId) + '">复制链接</button><button type="button" class="item-expand" data-expand-card>展开摘要</button><div class="feedback-actions" aria-label="产品反馈">' + renderFeedbackLinksClient(item) + "</div></div></details>",
+            '<div class="item-actions"><a class="btn btn-primary" href="' + escapeClient(item.link) + '" target="_blank" rel="noreferrer noopener">打开产品 ↗</a><a class="btn" href="' + escapeClient(item.evidenceUrl) + '" target="_blank" rel="noreferrer noopener">查看证据</a><button type="button" class="btn" data-expand-card>展开全文</button></div>',
+            '<details class="item-tools"><summary title="打开证据与反馈"><span>操作</span></summary><div class="item-tools-panel"><a class="product-action" href="' + escapeClient(item.link) + '" target="_blank" rel="noreferrer noopener">打开产品</a><a class="evidence" href="' + escapeClient(item.evidenceUrl) + '" target="_blank" rel="noreferrer noopener">查看证据</a><button type="button" class="item-share" data-share-id="' + escapeClient(anchorId) + '">复制链接</button><div class="feedback-actions" aria-label="产品反馈">' + renderFeedbackLinksClient(item) + "</div></div></details>",
             "</article>"
           ].join("\n");
         })
@@ -2765,6 +2976,7 @@
       const visibleItems =
         currentView === "priority" ? matches.slice(0, 20) : matches.slice(0, renderLimit);
       itemList.innerHTML = renderClientItems(visibleItems, latestReportDate);
+      markNewItems();
       empty.style.display = visibleItems.length ? "none" : "block";
       resultCount.textContent =
         visibleItems.length < matches.length ? visibleItems.length + " / " + matches.length + " 条" : visibleItems.length + " 条";
