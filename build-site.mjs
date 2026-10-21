@@ -2085,6 +2085,7 @@ export function renderSiteHtml(data, knowledgeReports = [], picks = []) {
           <button type="button" data-nav-view="reviewed">我的点评 <b>${data.stats.totalReviews}</b></button>
           <a href="#archive">日期归档 <b>${data.reportDays.length}</b></a>
           <a href="#source-health">来源健康 <b>${latestStatus.degraded.length}</b></a>
+          <a href="podcast-noah-shinn-instinct-zh.html">播客全文翻译</a>
         </nav>
         <section class="status-grid" aria-label="日报状态">
           <div class="metric"><strong>${latestDay?.count ?? 0}</strong><span>最新自然日条目</span></div>
