@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T16:10:06.055Z",
+  "generatedAt": "2026-10-21T16:08:18.921Z",
   "report": "2026-10-21.md",
   "health": "quality/knowledge-source-health/2026-10-21.json",
   "candidates": "quality/knowledge-candidates/2026-10-21.json",
@@ -11,14 +11,56 @@
   "paperCount": 0,
   "blogAccessVerifiedCount": 20,
   "topConferencePaperCount": 0,
-  "sourceCount": 90,
+  "sourceCount": 91,
   "candidatePool": {
     "historicalLinkCount": 1535,
-    "blogFetchedCount": 341,
-    "blogAccessCheckedCount": 72,
-    "blogAccessVerifiedCount": 60,
-    "blogAccessRejectedCount": 12,
+    "blogFetchedCount": 343,
+    "blogAccessCheckedCount": 99,
+    "blogAccessVerifiedCount": 79,
+    "blogAccessRejectedCount": 20,
     "blogAccessRejected": [
+      {
+        "sourceId": "openai_news",
+        "title": "Patch the Planet: global response coordination as agents uncover critical vulnerabilities",
+        "link": "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "Advancing coding in low‑resource programming languages",
+        "link": "https://openai.com/index/low-resource-programming-languages",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "Using thousands of AI agents to uncover new leads in biological data",
+        "link": "https://openai.com/index/scaling-ai-research-for-complex-biological-data",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "How we built ChatGPT’s novel ad stack for user trust and relevance",
+        "link": "https://openai.com/index/building-chatgpt-ad-stack",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "The EU’s next chapter in AI is agentic",
+        "link": "https://openai.com/index/the-eus-next-chapter-in-ai-is-agentic",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "How Block is building AI-powered security with OpenAI technology",
+        "link": "https://openai.com/index/block-ai-powered-security",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "interconnects",
+        "title": "Latest open artifacts (#25): DeepSeek V4.1 Flash 1017, American-made models, and new regulatory controls in the US & China",
+        "link": "https://www.interconnects.ai/p/latest-open-artifacts-25-deepseek",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
       {
         "sourceId": "lennys_newsletter",
         "title": "Inside the black box of AI: How AI models actually think | Emmanuel Ameisen (Anthropic)",
@@ -41,6 +83,12 @@
         "sourceId": "pragmatic_engineer",
         "title": "The Pulse: OpenAI software engineer accused of spying",
         "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-openai-software-engineer",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "What’s the ROI of software engineers’ spending on AI?",
+        "link": "https://newsletter.pragmaticengineer.com/p/whats-the-roi-of-software-engineers",
         "reason": "页面返回登录、付费墙或反爬拦截内容"
       },
       {
@@ -93,27 +141,26 @@
       }
     ],
     "blogCanonicalRedirectHistoricalDedupCount": 7,
-    "paperFetchedCount": 29,
-    "paperTopConferenceVerifiedCount": 29,
-    "blogAfterHistoricalDedupCount": 53,
+    "paperFetchedCount": 27,
+    "paperTopConferenceVerifiedCount": 27,
+    "blogAfterHistoricalDedupCount": 72,
     "paperAfterHistoricalDedupCount": 0,
-    "eligibleAfterHistoricalDedupCount": 53,
+    "eligibleAfterHistoricalDedupCount": 72,
     "maxPerBlogSource": 2,
     "selectedBlogSourceCounts": {
+      "amazon_science_blog": 1,
       "anthropic": 1,
-      "aws_machine_learning": 2,
-      "cloudflare_ai": 1,
+      "aws_machine_learning": 1,
       "databricks_engineering": 1,
-      "github_copilot_changelog": 1,
+      "fiddler_ai_evaluation": 1,
       "gitlab_ai_engineering": 2,
       "google_cloud_ai": 2,
       "hcker_news_ai_blogs": 2,
       "ibm_research_blog": 1,
       "itpro_ai": 1,
-      "lennys_newsletter": 1,
-      "openai_news": 1,
-      "red_hat_ai_engineering": 1,
-      "techradar_pro_ai": 1,
+      "nvidia_developer": 2,
+      "red_hat_ai_engineering": 2,
+      "simon_willison": 1,
       "vercel_ai": 2
     },
     "sourceCapRelaxed": false,

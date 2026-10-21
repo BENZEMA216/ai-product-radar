@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T16:07:45.061Z",
+  "generatedAt": "2026-10-21T15:58:29.000Z",
   "date": "2026-10-21",
   "items": [
     {
@@ -12,14 +12,34 @@
       "author": "Thomas Kurian CEO, Google Cloud",
       "summary": "Earlier this month at Gemini at Work, we introduced the Gemini agent: a single, universal agent for work. It answers your questions, handles your knowledge work, creates your images and media, and writes and runs code. You give it objectives, not instructions, and come back to finished work. It plans the work, uses skills and tools, connects to your systems, and has the security, administration, and governance your organization requires. Every industry runs on knowledge a general model does not have. Government work runs on statute, regulation, and agency guidance, across siloed legacy systems, under strict requirements for data sovereignty, compliance, and confidentiality. Too often that leaves civil servants on data entry and manual document review instead of the services citizens depend on. Today we're bringing the Gemini agent to public service with Gemini for government services in preview, part of our new suite of purpose-built industry solutions. It adds skills built around government work, connections to the systems agencies already run, and specialized partner agents, with governance running underneath it all. Bringing Gemini to government services Five components of Gemini for government services Developed alongside agency leaders, Gemini for government services provides an integrated, fully governed environment configured for rapid deployment across federal, state, and local agencies with five core components: Skills for government work: Skills are reusable instructions and context, written by domain experts, that teach Gemini to run a specific task. Each one applies the statute, regulation, and agency guidance that govern that task, so an agency's standard operating procedures carry into the work Gemini supports. Connectors to agency systems: Secure connectors link Gemini to the case management, ERP, HR, and collaboration systems agencies already run, along with authoritative federal data sources. Gemini queries each system in place, so no data is migrated, and access follows the identity and permission controls the agency already has. Partner agents: Skills and connectors come together in agents, including pre-built agents from public sector software providers that agencies can deploy right away. They handle tasks like FOIA discovery and batch redaction under the same central governance, with a person approving each consequential step. A governed control plane: Security and compliance teams get one place to set and enforce policy across every agent, including VPC Service Controls, CMEK, and Assured Workloads. Outputs are grounded in source documents, with citations, so reviewers can check where each answer came from. An open partner ecosystem: Every agency works under a different statute and runs a different mix of systems. System integrators and public sector ISVs help agencies customize Gemini, connect it to what they already have, and scale it without lock-in. Skills for government workflows Gemini for government services helps automate and accelerate complex government operations, including: Policy and regulatory research : Ask an operational or eligibility question and get an answer drawn from the CFR, the Federal Register, state administrative codes, and internal manuals, with page and paragraph citations. Where federal and state rules both apply, Gemini shows which one governs to empower agency decision makers. FOIA record discovery : Gemini searches SharePoint, Drive, and email archives for records responsive to a FOIA or state Sunshine Law request. It organizes them into a review set for the records officer and agency counsel, shortening discovery that often takes weeks. Redaction for public release : Gemini finds sensitive constituent data across a batch of documents, groups the findings so reviewers can clear them in passes, and proposes redactions labeled by statutory exemption. After a reviewer confirms, it produces the exemption log and audit-ready copies. Vendor bid evaluation : Gemini checks multi-volume bids against RFP requirements, FAR guidelines, minimum mandatory criteria, and evaluation rubrics, and returns scoring justifications with citations. Contracting officers get a documented basis for each award decision. Grant and program expense audits : Gemini checks invoices, receipts, purchase orders, and ledger entries against 2 CFR 200 Uniform Guidance and the terms of the award. It flags unallowable costs, missing documentation, and funding discrepancies with line-item citations, so problems surface while there's still time to fix them. Document validation at intake : Gemini classifies and validates pay stubs, W-2s, utility bills, and leases when they arrive, checks the numbers for consistency, and flags missing signatures. Defects are caught before the application enters the queue, not weeks into the case. Plain-language notices : Gemini turns policy memos and agency guidance into public notices, aligned to the Plain Writing Act of 2010, USDA-FNS standards, and Title VI language access guidance. Open ecosystem of connectors across the government technology stack Gemini for government services connects directly to core agency systems via secure connectors . Access is bound by existing role-based access controls, record-level permissions, and the trusted data controls inherited from each system — and nothing is migrated to make the connection work. Federal regulatory and public data: Federal Register: Tracks legislative actions, regulations, and executive orders as they post, so state and local teams see federal changes as they land. regulations.gov: Tracks federal rulemaking dockets, public comments, and statutory agency response deadlines, keeping policy analysts ahead of incoming mandates. eCFR (Electronic Code of Federal Regulations): Grounds answers in the governing regulation, with citations down to the paragraph. Agency systems of record: Oracle E-Business Suite: Gives agents permission-bound access to procurement, payables, and ledger transactions for expense auditing and award reconciliation. Oracle PeopleSoft: Connects HR and personnel records under existing role-based controls, so workforce questions are answered from the system of record. Salesforce: Enables conversational experiences across the Missionforce portfolio, including benefits, licensing and permitting, and contact center management. ServiceNow: Automates IT, CRM, security, employee experience, and workflow records, so agents can track incidents, requests, and approval chains inside existing routing rules. Productivity and collaboration: Google Workspace: Connects with Google Docs, Gmail, Drive, and Sheets to analyze case communications and agency correspondence and surface internal files while enforcing agency access controls. Microsoft 365 and SharePoint: Integrates with Word, Outlook, and SharePoint to triage inquiries and ground responses in mail and intranet repositories without breaking workflow context. Third-party agents and implementation partners Every agency operates differently. Through our open platform, agencies can deploy pre-built partner agents or work with system integrators to scale custom capabilities: SZNS Solutions FOIA and public records discovery agent: Turns a plain-language request, a piece of correspondence, or a formal citizen inquiry into a scoped search across enterprise archives — bounded by custodian and date range, so a records officer narrows the set before any data moves. It exports responsive material into secure agency repositories and tracks delivery status, giving each request an auditable trail from intake to release. SZNS Solutions document redaction agent: Works inside connected repositories — SharePoint and Drive among them — finding sensitive citizen data across a batch and grouping the findings so a reviewer clears them in passes rather than page by page. Each proposed redaction carries its statutory exemption, and once the reviewer confirms, the agent exports permanently redacted, audit-ready copies back to the system of record, with the processing never leaving the agency's cloud perimeter. Systems integrators &amp; tech partners: Strategic partnerships with Accenture Federal Services, Clutch, Dark Wolf, Daston, Deloitte, Egen, Game Plan Tech, Knexus, Onix, Resultant, SAIC, Slalom, and SZNS Solutions so agencies can customize, integrate, and scale these capabilities without vendor lock-in. Developed alongside federal, state, and local government agencies We are working closely with select federal and state agencies, including the State of Missouri and the U.S. Department of Health and Human Services to ensure these capabilities work in day-to-day agency operations. \"Our citizens expect the government to move at the speed of modern life, not the speed of paperwork. By automating routine work in our workflows, we're delivering faster, better services to Missourians.\" - Tim Marczewski, Director of AI and Innovation, State of Missouri Office of Administration. Built on an enterprise-grade foundation Gemini for government services runs on Google Cloud's secure foundation, and can be deployed using the Assured Workloads FedRAMP High Data Boundary, enforcing U.S. data residency and personnel controls. It works within the authorities, retention rules, and approval chains your agency already has. Agency records, constituent data, institutional documents, custom agents, and model outputs stay private to your organization, and are never used to train or fine-tune Google's foundation models without your permission. Because we operate the full stack, from infrastructure and models through the application layer, we can tune performance and cost together — routing high-volume document parsing and routine records sweeps to fast, low-cost models and reserving high-reasoning models for complex policy analysis, so expanding what your teams can take on does not mean expanding spend at the same rate. This is just the beginning The launch of Gemini for government services represents another defining step in delivering on our promise to bring the best of Gemini to every professional, for every workflow, natively tailored to the way they work. Gemini for government services is available in preview today, joining our purpose-built solutions for industries. We invite leaders at every level of government to explore how Gemini can transform their most critical workflows.",
       "evidenceLink": "",
-      "score": 107.56220117063492,
+      "score": 105.85894841269841,
       "core": "Earlier this month at Gemini at Work, we introduced the Gemini agent: a single, universal agent for work. It answers your questions, handles your knowledge work, creates your images and media, and writes and runs code. You give it objectives, not instructions, and come back to finished work. It plans the work, uses skills and tools, connects to your systems, and has the security, administration, and governance your …",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-10-20T16:07:45.061Z",
-        "evidence": "live_http"
+        "checkedAt": "2026-10-21T15:58:29.000Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Google Cloud expands model choice and flexibility, bringing OpenAI models to customers",
+      "link": "https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-brings-openai-models-to-customers",
+      "publishedAt": "2026-10-21T12:00:00.000Z",
+      "author": "Michael Gerstenhaber VP, Product Management, Gemini, Google Cloud",
+      "summary": "Google Cloud has always been defined by choice, enterprise-grade governance, and market-leading price-performance. Key to the foundation of openness and choice is giving customers flexibility to run agentic workloads across their choice of models and infrastructure to achieve the right balance of cost, capability, and performance. Today, we are expanding that foundation by launching OpenAI models in Google Cloud’s model garden. Google Cloud is now the only hyperscale cloud provider offering access to all three leading closed source LLMs, alongside more than 200 first-party, third-party, and open models on a unified enterprise AI platform. The right model for every workload Modern enterprise AI requires matching each workload to the right model rather than relying on a single model for every task. By adding OpenAI’s newest models to model garden, we are giving teams options across the full spectrum of enterprise workloads. For OpenAI models: GPT-6 Astra : Designed for demanding work across coding, computer use, professional tasks, and scientific research. GPT-6.1 Sol : Near-Astra intelligence at lower cost across agentic coding, computer use, and professional work. GPT-6 Luna : A fast, cost-efficient model for everyday work at scale. Using the platform, customers can dynamically select and swap the optimal model for any use case based on performance, latency, and cost efficiency without architectural lock-in or separate vendor contracts. Developers gain the freedom to build with hundreds of choices in model garden. Because OpenAI models are transacted directly through Google Cloud Marketplace, all usage appears on a single Google Cloud invoice, draws down existing cloud commitments, and counts toward Flexible Savings Plans (FSP) across model providers. Built-in data governance and enterprise security Scaling generative AI should never require compromising on compliance or security. Built from the ground up for enterprise governance, the Gemini platform is trusted by leading global organizations today. We ensure that running any third-party or OpenAI workload meets the most rigorous enterprise standards: Strict data perimeters : Customer prompts, context, and outputs remain entirely within your designated data perimeter and are never used to train foundation models, with Zero Data Retention (ZDR) options available coming soon. Isolated access boundaries : OpenAI models run on dedicated Google Cloud infrastructure with Confidential Compute coming soon. All queries are routed through hardened, isolated gateways, ensuring data transit remains strictly within Google Cloud's secure environment and third-party model providers have no unauthorized access to your cloud environment. Unified auditing and identity : Every agent and model interaction operates under an authenticated identity, giving IT administrators end-to-end visibility, VPC Service Controls protection, and unified audit logging across their entire enterprise footprint. Getting started OpenAI’s GPT-6 Astra, GPT-6.1 Sol, and GPT-6 Luna models are rolling out now in private preview to select enterprise customers in Google Cloud’s model garden, with more coming soon. Starting today, customers can build with these models through our APIs and connect their local Codex CLI and Desktop workflows directly to our Gemini platform for inference. Please use this form to express interest. Coming soon, OpenAI models will be available in Google Cloud’s Gemini for business and Google Antigravity, providing enterprise customers and developers with model choice flexibility and the best model for each task.",
+      "evidenceLink": "",
+      "score": 105.71609126984127,
+      "core": "Google Cloud has always been defined by choice, enterprise-grade governance, and market-leading price-performance. Key to the foundation of openness and choice is giving customers flexibility to run agentic workloads across their choice of models and infrastructure to achieve the right balance of cost, capability, and performance. Today, we are expanding that foundation by launching OpenAI models in Google Cloud’s m…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-21T15:58:29.000Z",
+        "evidence": "live_http_curl_fallback"
       }
     },
     {
@@ -32,14 +52,54 @@
       "author": "Chandler Gibbons https://about.gitlab.com/blog/authors/chandler-gibbons/",
       "summary": "AI agents are sending more and more code into review queues built for human-paced work. A coding assistant can speed up code writing, but it can’t show you whether review, security checks, and release approvals can keep pace with all that extra code. AI-native engineering — the practice of intentionally designing the engineering process so people and agents each do what they are best suited to — starts with identifying delivery bottlenecks, then deciding how much autonomy agents should have and how to maintain control as you scale. The AI-Native Engineering Playbook , launching this week, helps teams turn faster coding into faster delivery by redesigning how they ship software with agents. Every practice in the playbook is grounded in insights from engineering leaders at GitLab, our customers, and members of our Software Engineering Leadership Forum (SELF) community . We also partnered with IT Revolution to incorporate findings from a diverse group of practitioners looking at AI-native software development from a number of different angles, from code review to agent autonomy. Below are a few of the questions we sought to answer in the process of creating the playbook. Where does the bottleneck go when coding gets faster? Coding used to be the slowest, most expensive part of building software. Agents removed the bottleneck on coding, and the constraint moved to everything around the code: waiting for clarifications, environments, approvals, and other teams. GitLab’s AI Accountability Report , based on an April 2026 survey of 1,528 DevSecOps professionals, found that 79% of respondents agreed that individual developer productivity has improved with AI, but the overall software delivery process has not accelerated at the same pace. Large enterprises typically have software delivery lead times of well over 200 days, with active development taking only 10% to 20% of that time. The numbers explain why a faster coding step is often disappointing in the long run. For example, imagine a 281-day delivery cycle that involves about 32 days spent on coding. Make coding 50% faster, and you save about 16 days, a 6% improvement. But if you take coding all the way to zero, around 88% of the lead time stays untouched. [1] GitLab’s research similarly found that DevSecOps professionals reported spending only 16% of their time writing new code, and 85% agreed AI has shifted the bottleneck from writing code to reviewing and validating it. That means your first job is diagnosis. Take one small, real change and trace it from request to production , marking every wait and every handoff. The longest waits show where your next improvement is, and it's rarely in the code. Watch where an agent stalls on a small task, too. The stall usually points to a standard nobody documented, an environment that’s hard to start, or context that lived in a single person’s head. How much autonomy should agents have? Agent autonomy should depend on how well you can verify the agent output. Imagine a ladder with four stages, ranging from semi-manual (a person approving every step) to fully autonomous (a zero-touch workflow). In this framework, there are clear rules for advancing up the ladder: no rungs can be skipped, and each step up needs to be backed with evidence from the rung below. [2] Stage 1 : Humans are in the loop at every step Stage 2 : Humans are still in the loop, but the agent executes within set bounds Stage 3 : Humans are out of the loop for normal operation and handle only exceptions Stage 4 : A zero-touch workflow, where the agent manages itself end to end, calling in a human only when predefined thresholds are met [2] It’s also important for a named human to stay accountable for every AI-enabled workflow, and the line between a human reviewing and a human monitoring should be explicitly defined, since loose or arbitrary definitions tend to erode under time pressure. [3] That erosion is the trap. A person who is nominally in the loop but approves everything gives the appearance of control without the benefits, and habit and volume can easily turn review into mindless rubber-stamping. A checkpoint nobody actually exercises is worse than none, because it creates confidence where the system needs scrutiny. The way up is to earn each step on evidence . Set an explicit accuracy or success threshold before you widen a step, then move people from reviewing each step to monitoring the whole. An agent that stops more often to ask for help is a healthy sign, since the system is refusing to outrun its own evidence. [2] How do you review code at agent volume? Widening autonomy depends on catching mistakes, and that puts pressure on code review. Review at merge time was built for human-paced output. Agents raise the rate of change, and manual review of every change set has become unsustainable. GitLab’s research also highlighted this strain: 78% of respondents agreed existing code review processes were not designed for the scale of code AI tools enable, and 80% agreed their organization has adopted AI coding tools faster than it has developed policies to govern them. The answer is a layered verification system in which each layer does the part it does best. Humans are only removed from the loop when the risk level and evidence justify that design choice — it’s never a default. [4] Move objective checks, such as formatting, types, and dependency policy, as close to authoring as possible. Keep changes small so every later layer works faster. Define the expected behavior up front so there is something concrete to check. Use an independent reviewer. Match review depth to the risk of the change. Record every agentic review decision in a form someone can inspect later. The organizations that have been most successful here have already invested heavily in automated testing, static analysis, and small change sets, so the layers work best on a foundation you already have. [4] Dive into the playbook, or contribute your own insights Becoming AI-native is a practice that leaders will continue to refine with their teams as tools and understanding evolve. To get started, read the entire playbook , or begin with the part that matches where your team runs into the most friction: Redesigning the work so agents fit the flow of delivery instead of attaching to steps built for people alone Working with agents by deciding where human judgment and accountability stay and how engineers keep growing as the coding shifts Governing and scaling from one workflow to many with the context, verification, and measurement that let you move faster without losing control of quality or risk If you lead an engineering team and want to contribute your own insights to the playbook, join SELF, the community for engineering leaders navigating the AI era . Papers cited in this article Cochran, Timothy, and Bryan Finster, Tim Ottersburg, Scott Prugh, and Amy Willard. \"When Coding Is Free, Where Is the Bottleneck? A Guide for Leaders Building Agent-Ready Delivery Systems.\" Enterprise Technology Leadership Journal 3, no. 2 (Fall 2026). https://itrevolution.com/product/when-coding-is-free/ . Cockcroft, Adrian, and Jeremy Eder, Joseph Enochs, Jenn Spykerman, and Brian Wald. \"When Agents Decide: Continuous Decision Intelligence and the Substrate Beneath It.\" Enterprise Technology Leadership Journal 3, no. 2 (Fall 2026). https://itrevolution.com/product/when-agents-decide/ . Eslick, Ian, and Collin Fox, Amanda Graham, Suzette Johnson, Chuck Lafferty, Tom Kilcommons, Rosalind Radcliffe, Cat Swetel, Annie Vella, Sam Yeats, and Robin Yeman. \"The Sociotechnical Architecture of AI-Enabled Enterprises: Principles, Patterns, and Practices for Human-Governed AI.\" Enterprise Technology Leadership Journal 3, no. 2 (Fall 2026). https://itrevolution.com/product/sociotechnical-architecture-of-ai-enabled-enterprises/ . Davis, Zach, and Michelle Gill, Elisabeth Hendrickson, Angie Jones, Sha Ma, Randy Shoup, and James Wickett. \"Agentic AI and Code Reviews: Toward a Pattern Language for Code Reviews in the Age of Agentic AI.\" Enterprise Technology Leadership Journal 3, no. 2 (Fall 2026). https://itrevolution.com/product/agentic-ai-and-code-reviews/ .",
       "evidenceLink": "",
-      "score": 97.8479154563492,
+      "score": 96.1446626984127,
       "core": "AI agents are sending more and more code into review queues built for human-paced work. A coding assistant can speed up code writing, but it can’t show you whether review, security checks, and release approvals can keep pace with all that extra code. AI-native engineering — the practice of intentionally designing the engineering process so people and agents each do what they are best suited to — starts with identify…",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-10-20T16:07:45.061Z",
-        "evidence": "live_http"
+        "checkedAt": "2026-10-21T15:58:29.000Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "Uncover the business logic vulnerabilities SAST scanners miss",
+      "link": "https://about.gitlab.com/blog/gitlab-business-logic-security-analyzer",
+      "publishedAt": "2026-10-20T00:00:00.000Z",
+      "author": "Chris Widstrom https://about.gitlab.com/blog/authors/chris-widstrom/",
+      "summary": "Broken object-level authorization ranks first on the OWASP API Security Top 10 , and OWASP says that traditional static application security testing (SAST) tools struggle to find access control flaws. A missing authorization check is an absence of code, so a scanner that matches patterns has nothing to match. You can find the gap only if you already know what the endpoint is meant to enforce. We're building Business Logic Security Analyzer in GitLab Duo Agent Platform to catch business logic vulnerabilities that pattern-based scanners miss. It is now in early access for GitLab Ultimate customers on GitLab.com. Valid code, wrong intent Any application security team will recognize these three findings: An endpoint takes an order ID from the request and returns the order without checking who owns it. A role field on a user profile accepts whatever JSON the client sends. A user ID is a sequential integer. Each one is valid code that slips past most taint and pattern rules in a conventional SAST engine, because no untrusted data reaches a dangerous sink, and no known-bad signature appears. Chained together, they hand an attacker every customer's order and an administrator role. Across GitLab's customer base, codebase size has grown as much as 500% as agents write code. CVE disclosures through April ran 46% above the February forecast from the Forum of Incident Response and Security Teams . The same AI models that generate code also make existing weaknesses less expensive to discover and chain. Authorization logic is where that pressure lands: Developers and agents write a check in a line or two, but when one is missing, the gap often goes unnoticed. As Omer Azaria, vice president of Product Management at GitLab, put it at GitLab Transcend , \"We're caught in the middle: more code, faster attacks, same teams.\" Why whole-repository scanning starts here GitLab Duo Security Review looks for authorization flaws in merge requests, but many business logic flaws aren't visible in a diff. Whether an endpoint should check ownership depends on the data model, the roles the application defines, and how other endpoints treat the same records. Judging one handler means reading the application around it. That is why Business Logic Security Analyzer scans the whole repository, and why GitLab is the platform to do it on. The source code, the pipelines that build it, the security findings attached to it, and the policies that gate it all live in one system. An agent that scans here sees the full application and writes its findings where the security team already works. At Transcend, we introduced the GitLab Security Standard : five stages each agent must clear to earn more autonomy, built on the premise that code is now abundant and trust is scarce. Its Verify stage requires every change, whether written by a person or agent, to pass controls the author cannot touch. Business Logic Security Analyzer runs outside the author's hands, and its findings persist in the same report and dashboards that govern the rest of the codebase. How the analyzer works Business Logic Security Analyzer is a foundational flow on GitLab Duo Agent Platform that targets business logic flaws, starting with broken object-level authorization, missing or improper authorization, and mass assignment. A practitioner can run a whole-repository scan, and scan each merge request automatically after its pipeline passes. Detecting any of these flaws requires a model of what the application is meant to do. Pattern scanners have none, but an agent that reads the repository can build one. The analyzer starts by enumerating the application’s entry points and mapping who should be allowed to do what: which records belong to which user, and which actions are administrative. It then reads each handler in scope and checks whether the handler enforces that rule before touching the record. Findings land in the Vulnerability Report and the merge request security widget as first-class SAST results, to support triage, remediation, and auditing. In the demo application below, refund_order accepts an order_id from the request and sets refunded=1 without checking that the caller owns the order or is an administrator. Taint rules stay silent because the query is parameterized. The analyzer reports it as CWE-639, Critical, at app/orders.py:17 , and its explanation names the missing ownership check. The models behind the analyzer Business Logic Security Analyzer is the first GitLab capability supporting Anthropic's Claude Mythos 5.1, and is available in early access to customers in approved environments. The model sees only GitLab's prompts and the customer's repository, which holds the context the analyzer needs: the data model, roles, and rules each endpoint enforces. As Rajat Pandit, Head of Applied AI, Anthropic India, said at Transcend, \"When defenders have more context than attackers, advanced models change the math in their favor.\" Alongside Mythos, the analyzer supports Anthropic’s Claude Opus 5.5, Sonnet 5.5, Sonnet 5, and Sonnet 4.6, with more models planned for future releases. All of them run as GitLab-managed models through GitLab’s AI gateway, under the same data handling terms as the rest of GitLab Duo Agent Platform. Request early access Business Logic Security Analyzer is in early access for a small group of GitLab Ultimate customers on GitLab.com. Participants run the analyzer on their codebases to find true positives their security teams didn’t already know about. We will work with each team to learn where the analyzer is correct, wrong, or silent. Each scan consumes GitLab Credits, and cost scales with the size of the application's attack surface. To be considered, contact your account team, or, if you are not yet a GitLab customer, contact our sales team . Once your group is enabled, start a whole-repository scan from GitLab Duo Chat or through the API, and attach the Business Logic scan profile to a project to scan its merge requests. The Business Logic Security Analyzer documentation covers prerequisites and setup.",
+      "evidenceLink": "",
+      "score": 88.1446626984127,
+      "core": "Broken object-level authorization ranks first on the OWASP API Security Top 10 , and OWASP says that traditional static application security testing (SAST) tools struggle to find access control flaws. A missing authorization check is an absence of code, so a scanner that matches patterns has nothing to match. You can find the gap only if you already know what the endpoint is meant to enforce. We're building Business…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-21T15:58:29.000Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "simon_willison",
+      "source": "Simon Willison",
+      "title": "Battle Drones - a vibe coded RTS with audio-based multiplayer",
+      "link": "https://simonwillison.net/2026/Oct/20/battledrones",
+      "publishedAt": "2026-10-20T19:34:19.000Z",
+      "author": "",
+      "summary": "My latest vibe coded game experiment is a Command &amp; Conquer style RTS (Real Time Strategy) game called Battle Drones ( play it here ). Unlike my previous experiments , this one is actually fun to play . I'm somewhat embarrassed to admit that I got there by telling Claude to \"Make it a LOT more fun\". It also supports multiplayer between nearby devices using audio to synchronize game state! Here's what I've built so far, and some of the things I learned along the way. Battle Drones How I built this v1: the initial prototype v2: full sprites v3: varied terrain v4: the fun update v5: Battle Drones goes 3D v8: Archipelago v10: Goliath, and agent battles Agent battles v11: Random Maps v12: Multiplayer via sound Some thoughts Update: Online multiplayer support Battle Drones My initial goal was to build an RTS game I could play on my phone, in the style of Command &amp; Conquer . I have fond memories of the 1995 original (I liked Red Alert too) and wanted to recapture a little bit of the magic. After 12 major iterations (and 321 commits by coding agents, mainly Claude Code) I now have a browser-based game that works on mobile and desktop, has multiple play modes, several maps (including a random map generator) and even supports multiplayer for two devices within microphone range of each other. ( Update : also online multiplayer ; the audio multiplayer induced headaches!) Here's a video demo of Battle Drones running in a desktop browser: Features so far include: 9 buildings, 7 ground vehicles, 6 aerial vehicles, 3 infantry units - all 3D models, which you can browse here Fog of war Different weapons are needed to target aerial or ground vehicles Six maps , across five biomes - temperate, desert, arctic, volcanic, tropical A random map generator Skirmish mode - red vs. blue on a rotationally symmetrical map Last Stand mode - one player holds out against as many waves of enemies as possible Area effect weapons: Barrage, EMP, Drop Pod, Sky Hammer Crate drops with bonus resources In-game music that responds to events - it gets more intense as fighting breaks out Different in-game AI personalities (Balanced, Rush, Air Swarm, Boom, Skyforce, Ironclad) AI vs. AI mode, to watch those personalities play each other The Goliath - a giant stomping mech with laser eyes and arm cannons and the ability to establish a new base Mutators that add extra rules or twists A \"Daily Op\" challenge Ranks and achievements ( Medals ) Agent vs. Agent mode where two LLMs can play Battle Drones against each other A multiplayer mode based on two nearby phones communicating via audio messages, an extension of my earlier experiment with Chirp Pong How I built this Battle Drones is heavily vibe coded - I've reviewed almost none of the code, and it's built in a language (TypeScript) that I've hardly used myself. I've playtested it quite a bit though, and it's been through a large number of iterations since I started the project. Here's a rough history of the project so far, including key prompts and links to transcripts. v1: the initial prototype I started out with Claude Fable 5 back in July: We are going to build a mobile friendly RTS game - command and conquer style - called Battle Drones, in which two armies of drones (both flying and ground-based) battle for territory and resources Let's start with a MVP design, ask me some questions Here's a shared transcript . I'd given Claude Code for Web an environment variable with an OpenAI API key and told it to use the OpenAI Image Generation API for assets, which got me some basic sprites. You can try v1 here - it looked like this: It's recognizable as an RTS, has building mechanics and the ability to select and direct units, and a basic AI to play against. This first version was barely a proof of concept, and it wasn't any fun to play. Claude used the Phaser 2D game framework for these early versions. I didn't even realize this until several iterations later! v2: full sprites The second version ( try v2 here ) added sprites for all of the vehicles and the \"AI vs. AI\" mode, so I could watch the game playing without having to directly control it myself. Claude proved reasonably competent at prompting OpenAI's image models to generate sprites. You can browse the v2 sprites in the public/assets/sprites folder. v3: varied terrain It still wasn't much fun, and the graphics were boring. It was now October, and I had upgraded to Claude Opus 5.5. I told it: Massively improve this game. Make the graphics and gameplay better (keep it mobile friendly). Render new graphics using the latest OpenAI GPT image API (lookup details) with the API key in the environment variable. Add new unit types and balance the gameplay better. Also add new buildings and better, more varied terrain. This resulted in five new maps with generated background tiles in a variety of styles, visible here . Opus also regenerated the sprites, making them much more visually appealing. You can try v3 here - it looks like this: This is starting to feel like a real game! It still wasn't very fun to play though - I found myself getting bored pretty quickly. v4: the fun update So far my Battle Drones experiment was confirming my previous belief that coding agents can build a thing that looks like a game but can't actually make something that's genuinely compelling to play. I shared this theory with someone over dinner, and then thought to myself that I should give the models a proper chance to prove me wrong. I prompted Opus 5.5 on my phone: This game isn't fun enough yet. Make it a LOT more fun. This time I was running in Ultracode mode , where Claude Code (in this case Claude Code for Web) runs \"dynamic workflows\", described in their docs as: A dynamic workflow is a JavaScript script that orchestrates many subagents at once. This kicked off many hours of work. I started it in the evening and didn't get a playable result back until late into the next morning. But the results were spectacular. You can try v4 here - it looks like this: I had Claude write its own release notes - here are the highlights: Every skirmish and Daily Op now opens with a choice, gives the side that's losing a way back, and pulls the armies into the middle of the map. There are also two new ways to play. Openers : pick Blitz, Industry or Air Wing before the clock starts. Call-down powers : Barrage, EMP, Drop Pod and the Sky Hammer orbital strike. Objectives and salvage : Uplink relays, supply drops and wrecks worth scrap. Feel : combat juice, adaptive music, unit voices and an announcer. Command : battle alerts, game speed, saved squads and touch placement. New modes : Last Stand survival waves and an 8-mission Ops campaign. Progression : heroes, an after-action report with awards, a career, 7 mutators and a Daily Op. Fights run longer and swing more. In 1,200 AI-vs-AI test matches on Normal, games still undecided after 25 minutes fell from 14% to 0.9%. The share of wins by a side that had been 800+ scrap behind rose from 24% to 46%. Part of the reason Claude took so long was that it ran over a thousand simulated playtest sessions, and used the results to rebalance the existing units, add new ones, and introduce new features. v5: Battle Drones goes 3D After the success of Ultracode at \"Make it a LOT more fun\", I decided to be more ambitious: Port this game to three.js with 3D models for all of the buildings and vehicles and landscapes That was another overnight run. I woke up to this v5 version : The new 3D models were entirely constructed by Claude in TypeScript code. v6 ( play v6 here ) added some more visual polish. v7 ( play v7 ) added robot infantry (troopers, rocket squads, snipers) and a \"Condor\" troop carrying aircraft. v8: Archipelago I was beginning to feel guilty at how little actual design input I had into the game - it really had been a case of me saying \"make it more fun\" and \"add visual polish\" for the past few releases. I'd noticed that the AI didn't use the new infantry and troop carrying aircraft from v7 very often - there wasn't a great strategic reason to use them. It would be neat if we had a new map with a new game mechanic that actively encouraged players to load up Condors with infantry robots and send them out into the map. This resulted in my longest prompt yet: Design a new map. Goal is to make different strategic incentives that encourage use of Infantry and Condors and aerial vehicles. To do this the map will have limited harvester resources but several more uplinks - but uplinks will be on islands that are inaccessible by land vehicles or infantry. These uplinks can also not be claimed using air vehicles. The ONLY way to get them is to fly infantry there in a Condor. Armies always start with a Condor and a single squad. If an army has no Condor a new one will be provided for free, flying in from the edge closest to their HQ and landing there. That free condor will come with a single free squad on board. The two HQs should be entirely separated by water, but still accessible by vehicles thanks to two bridges across the map in different places I want to encourage a battle over uplinks. The map should be the times the size of other maps - still square First research and then critique this design. Only build after we have agreed on any modifications You get to design a new biome for this The result was the tropical Archipelago map, with seven island uplinks that players can only capture by flying out infantry in a Condor. It's definitely the most fun map to play, once you've got the hang of the basic game mechanics from the simpler maps. The v9 edition made that map a little more interesting - it now looks like this: v10: Goliath, and agent battles I decided to add giant robot mechs to the game - think Jaegers from Pacific Rim , or Titans from Warhammer 40,000. Here are some of the prompts I used to brainstorm with Claude: Help me brainstorm ideas for adding giant robots to this game - think dreadnoughts or titans from W20K - how could we do this in a way that enhanced gameplay, kept things balanced, added unique twist? Don't overthink this yet Let's keep brainstorming. I like the idea that it's a mobile base - that can accept harvested scrap and can have buildings built near it (even if it later moves on) and can produce infantry units too. An interaction with condor would be neat but I don't know what that could be. Idea: as it gets damage it loses the ability to fire some weapons - by default it has eye laser (like lancers) and arm canons (like titan) and two shoulder mounted mortars, plus machine guns similar to a squad of troops Damage knocks out mortars and then laser - it always has guns. You can't build next to a building that was only put there because of the mech, you need the mech there for off-base building and only within three squares of it [...] Lets do two condors can carry the mech The end result is really cool . Your browser does not support HTML video. Goliaths can be constructed using a Gantry - a building that can only be created after first building a Fab, Bay, Airpad, and Tech Lab. You can see the Goliath under construction, and it then walks out from the Gantry and can march around the map. Goliaths can \"anchor\", which digs them into the ground. In their anchored state they can act as a new HQ, constructing infantry units and additional buildings in a new area. Two Condor aircraft can hook onto a Goliath, at which point it can be flown around the map! The game now ends when you destroy the enemy's HQ building and any Goliaths they might have built. There are also a couple of mutators relating to Goliaths: Goliath Armada starts each side with four airborne Goliaths (each with a pair of Condors) and no other units. Robot Love adds a special rule: if enemy Goliaths get close to each other on the battlefield they fall in love and the game ends in a draw. (Thank Natalie for that one). Agent battles The other v10 feature is agent battles . In musing about how multiplayer could work I had an idea: what if different LLMs could fight it out in the game? Fun extra challenge: think about how we might make multiplayer available to coding agents. It would be neat if we could set up a battle between eg GPT-6 Sol and Claude Opus 5.5 where each model has access to a tool which gives them information about the game (presumably non-visual, but only the information they could see through fog of war etc) and lets them control their units etc [...] Consult ~/dev/llm/docs and include notes in that file about how LLM could be used here via a new tools plugin Opus 5.5 went to work on this, producing this AGENT-BATTLES.md proposal and then implementing and testing it. The feature also includes the ability to record and replay these battles - here's a replay of Claude Haiku 5.5 vs. GPT-6 Luna , and here's that same battle in a separate debug tool that shows the underlying prompt responses. The prompt that drives agent battles can be seen here . There are a few more replays like this linked in the README . I hope to turn this into a full league table at some point in the future. v11: Random Maps This version exists purely because I glanced at my Claude Usage page one day and saw that I'd only used 75% of my weekly allowance and it was resetting in 45 minutes. I decided to see if I could get an extra Battle Drones feature from my remaining tokens, and picked \"random map\" as the target: Design and implement a mechanism for generating a random map using any of the available biomes - it should be the size of the largest map and rivers and bridges and rocks and forest and scrap and crystals are all in play. Make them rotationally symmetric and use a seed to allow them to be selected or reused later. You have 45 minutes to build this! Be creative. Here's the transcript , and an image Claude generated to show me its work: v12: Multiplayer via sound I only just got this working, so I've not had much time to actively test it yet. The latest Battle Drones now supports multiplayer via two devices sat within microphone distance of each other! This feature started out as my Chirp Pong experiment from last week. I pointed Claude Code at that working proof of concept: Clone Simonw/tools from GitHub and look at recent branches for the example pong game that uses web microphone to implement multiplayer between two phones via audio signals Build a version of that for battledrones Opus built this Radio Probe tool to measure how much bandwidth we could get between two devices and, based on positive results from that, implemented a full audio modem system. I've tried it between laptops, iPhones and iPads so far and it seems to work really well! Why use sound for this? Because I love static HTML that costs nothing to run, and I don't want to spin up a server somewhere and then stay responsible for keeping it operating for as long as anyone might want to play the game. Some thoughts I know almost nothing about game development. This makes it a great opportunity to try out coding agents in a field where my existing software engineering experience has less impact on the results. Games are also super low stakes. The worst that can happen is one of my silly game experiments suffers a bug. This morning ( via Hacker News ) I found Steam Fans Are Begging for a No-AI Filter as Steam Next Fest Is Filled With Slop . I wouldn't personally dream of submitting Battle Drones to an event like this - it's still way too low effort to warrant consideration as a legitimate indie gaming project. ... but I can now see a path to vibe coded games like this being taken seriously. Battle Drones is fun, it looks good, it has innovative features (the multiplayer-over-audio thing is a first for an RTS as far as I can tell). I'd love to see what someone with better taste than me and a driving passion to produce something truly exceptional could build! A few other observations from this project: Static HTML and JavaScript is a fantastic medium for games development. WebGL works great, and Three.js (and Phaser before it) are excellent platforms to build on that the current models know inside out. This also lets them run as Progressive Web Apps - I didn't ask for it, but Battle Drones works offline. I was able to play it on a plane despite never having directly installed it - my phone had it cached. Giving Claude an OpenAI API key and telling it to generate images using OpenAI's models works really well. It can view the images it has generated and iterate on the prompts. Opus 5.5 is spectacular at 3D modeling using Three.js (and Blender, and no doubt other 3D applications as well). The same is true of GPT-6 Astra. They are absolutely capable of building models for 3D game projects. For features like replay and multiplayer it's useful to have a deterministic simulation engine. At one point Claude had to replace calls to Math.sin() and Math.cos() and friends with custom versions because different browsers (Chrome vs. Safari, for example) returned very slightly different numbers, desynchronizing the replay. Opus 5.5 can write music! There are no audio files in this project - the soundtrack is entirely generated through code, varies across different maps, and even gets more intense as the battle heats up. See Scrimshaw Jukebox for a previous experiment with Claude for music composition. I still can't get over how well the prompt \"Make it a LOT more fun\" worked. Tools are effectively free. I prompted up the Radio Probe , the Model browser , the Agent vs. Agent debug tool , and Claude Code built a bunch of tools for itself that I haven't even explored myself. Audio-based multiplayer between static HTML games works! I hope to see a whole lot more games use this same pattern - in digging around today I've not found much prior art beyond Siner by Alon Horesh and ggwave by Georgi Gerganov (also of llama.cpp fame). Claude Code \"Ultracode\" burns tokens like there's no tomorrow, but it can also solve complex problems (like adding audio-based multiplayer) from a single prompt. I'm still not quite over the guilt of building software in this way. I don't feel like I've earned the right to create something this good, in a field in which I have so little prior experience! At this point I've shown it to enough people in private that it felt wrong not to publish it for everyone else to see and learn from. Update: Online multiplayer support Earlier in this article I said: Games are also super low stakes. The worst that can happen is one of my silly game experiments suffers a bug. Then I tried playing the multiplayer version with Natalie... and the high pitched modem sounds gave her a nasty headache! That's a pretty bad bug. I added a warning and was then inspired to build proper network multiplayer. I tried getting WebRTC to work but couldn't get a connection going between two of my own devices even on my own WiFi network, so I had Claude build a simple, stateless WebSockets relay server instead: If I wanted to support multiplayer between two devices at a very low cost without storing any state on the server could I do that with a tiny asyncio web server running on the cheapest Fly instance? Build the server and the fly.toml for deploying it, use Fly application name battledrones-relay - put that in a folder in the repo, include deploy instructions in the README in that folder Here's the resulting server . Since this scales to zero and runs on a single Fly.io shared-cpu-1x instance it should cost me no more than $2.19/month - and that's if it stays hot and serving connections the whole time. Battle Drones now supports online multiplayer. Click \"Duel a friend online\", then either share the resulting room URL via your messaging app of choice or have them snap a picture of the displayed QR Code. I also added a feature where you can copy JSON of the match once it has ended and then feed that into the replay feature to rewatch your game. I didn't expect to introduce online multiplayer this soon, but the headache bug felt like it warranted an urgent alternative. You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
+      "evidenceLink": "",
+      "score": 87.54265873015873,
+      "core": "My latest vibe coded game experiment is a Command & Conquer style RTS (Real Time Strategy) game called Battle Drones ( play it here ). Unlike my previous experiments , this one is actually fun to play . I'm somewhat embarrassed to admit that I got there by telling Claude to \"Make it a LOT more fun\". It also supports multiplayer between nearby devices using audio to synchronize game state! Here's what I've built so f…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-21T15:58:29.000Z",
+        "evidence": "live_http_curl_fallback"
       }
     },
     {
@@ -52,13 +112,13 @@
       "author": "Jerilyn Zheng",
       "summary": "Mercury 3 from Inception is now available on AI Gateway with 50% off launch pricing. Inception reports strong results across a range of benchmarks, with generation speeds above 1,000 tokens per second. Mercury 3 uses diffusion to generate text through parallel refinement. It brings improved reasoning to latency-sensitive workloads such as browser agents, real-time search, interactive education, and customer support. A 1M-token context window gives those applications room for long documents and extended conversation histories. Set AI_GATEWAY_API_KEY in your environment. Use inception/mercury-3 as the model name: To use it in Claude Code, Codex, Cursor, and more, install the latest Vercel CLI and run setup: Then select inception/mercury-3 in the agent. See the coding agents guide for details. Try Mercury 3 in the model playground . AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. You can view all language models available on AI Gateway. Read more",
       "evidenceLink": "",
-      "score": 88.66140751984126,
+      "score": 86.95815476190475,
       "core": "Mercury 3 from Inception is now available on AI Gateway with 50% off launch pricing. Inception reports strong results across a range of benchmarks, with generation speeds above 1,000 tokens per second. Mercury 3 uses diffusion to generate text through parallel refinement. It brings improved reasoning to latency-sensitive workloads such as browser agents, real-time search, interactive education, and customer support.…",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-10-20T16:07:45.061Z",
+        "checkedAt": "2026-10-21T15:58:29.000Z",
         "evidence": "live_http"
       }
     },
@@ -74,76 +134,56 @@
       "evidenceLink": "https://news.ycombinator.com/item?id=50154540",
       "origin": "hcker_news",
       "hnMetrics": {
-        "points": 504,
-        "comments": 211
+        "points": 514,
+        "comments": 218
       },
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-10-20T16:07:45.061Z",
+        "checkedAt": "2026-10-21T15:58:29.000Z",
         "evidence": "hcker_news_feed_and_live_article"
       },
-      "score": 81.99222264022859,
+      "score": 80.35976564472747,
       "core": "Today, we officially roll out MiniMax M3.1 Flash. As a next-generation Flash model, M3.1 Flash delivers a generational leap in agentic tasks, coding, Computer Use and cybersecurity, while making online inference nearly three times faster and reducing usage costs by 70%.",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
     },
     {
       "kind": "blog",
-      "sourceId": "gitlab_ai_engineering",
-      "source": "GitLab Blog",
-      "title": "AI Governance: One view of agent activity",
-      "link": "https://about.gitlab.com/blog/ai-governance-dashboard",
-      "publishedAt": "2026-10-20T00:00:00.000Z",
-      "author": "Alisa Ho https://about.gitlab.com/blog/authors/alisa-ho/",
-      "summary": "AI coding agents are writing and changing code, from GitLab Duo Agent Platform agents to externally connected agents like Claude Code, Cursor, and Codex. You are accountable for what those agents do, yet most of their activity stays invisible: which agents ran, who used them, and what they touched. Teams often struggle with understanding whether a developer used a tool or model that is approved or not. The AI Governance Dashboard, now in beta, gives you one place to see agent activity across your top-level group. It brings GitLab Duo Agent Platform agents and the external agents your developers connect into one view, showing which agents ran, who used them, and which projects they touched. The dashboard also shows the tools and sessions associated with each agent. With that audit trail in place, you can answer the questions auditors and risk owners ask: who ran this agent, what did it do, and who is accountable for it. Every agent action gets recorded in one audit trail, detailing the model it used, the tools it called, and the project it ran in. You can now investigate a session or hand an auditor evidence without stitching together multiple sources of data. Watch a demo of the AI Governance Dashboard: Gain visibility into AI agent activity More AI agents are running across your organization than you can track by hand. GitLab Duo Agent Platform agents run inside GitLab, while externally connected agents like Claude Code, Cursor, and Codex run on developers' own machines. The result is the shadow AI problem: real work happening in your projects, from many tools, that no one accountable can see in one place or tie to a team member. The AI Governance Dashboard brings that activity into view and connects each agent to the developer behind it. To turn it on in your top-level group, go to AI > Governance . GitLab Duo Agent Platform agents and externally connected agents appear together, and you can toggle between the views to see all agents, just Duo Agent Platform Agents or just externally connected agents. Three tiles at the top give you a baseline: how many agents ran, how many sessions they started, and how many tool calls they made over the past seven or 30 days. Each tile shows the daily trend and the change from the previous period, so a spike, like a new tool your team started using last week, stands out. The cards below tell you where to act. You can check whether the agents your developers rely on match the ones you approved, see which projects carry the most agent activity and need closer review, and know who to talk to when usage shifts. Prove what every agent did Managing AI risk starts with knowing what every agent did and who prompted it. Traditional audit trails were built for human changes, so that record is often scattered across tools or missing. GitLab records every agent action as an audit event, so you can investigate an incident or answer an auditor from one place. Open any GitLab Duo Agent Platform session to see the prompt the developer sent, the tools the agent called, the MCP servers it used, the model that ran, and the project it changed. From there, you can download an immutable copy of the session as evidence, or stream the events to your security information and event management (SIEM) system. Set up your dashboard today It only takes a few steps to set up the AI Governance Dashboard: Check access. The dashboard needs the Owner role on the top-level group, or a custom role with the read_agent_artifacts ability. If the people who should watch agent activity don’t have Owner access, create that custom role first. Turn on AI audit event storage. Storage is off by default, and events are only recorded after you turn it on. In your top-level group, go to Settings > GitLab Duo , select Change configuration , and then Store AI audit events in the Data and privacy section. You need to have an Owner or Security Manager role to have access. Open the dashboard. In your top-level group, go to AI > Governance , and select the Dashboard tab to see your GitLab Duo Agent Platform activity. Connect your externally connected agents. Sign in with GitLab CLI (glab) 1.122.0 or later on macOS or Linux. To capture Claude Code sessions, run glab govern setup , which installs the Claude Code hooks. To also capture Cursor and Codex sessions, run glab govern setup --agents codex,cursor , which adds a background job that sends those sessions every 30 minutes. Run glab govern doctor to confirm the setup works. The AI Governance Dashboard is in beta for GitLab Premium and Ultimate customers. Turn it on for your top-level group to keep oversight of AI usage as fast as your teams adopt it. Not on GitLab yet? Try GitLab Ultimate for free and use the AI Governance Dashboard to get started.",
-      "evidenceLink": "",
-      "score": 76.8479154563492,
-      "core": "AI coding agents are writing and changing code, from GitLab Duo Agent Platform agents to externally connected agents like Claude Code, Cursor, and Codex. You are accountable for what those agents do, yet most of their activity stays invisible: which agents ran, who used them, and what they touched. Teams often struggle with understanding whether a developer used a tool or model that is approved or not. The AI Govern…",
-      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
-      "access": {
-        "verified": true,
-        "mode": "public",
-        "checkedAt": "2026-10-20T16:07:45.061Z",
-        "evidence": "live_http"
-      }
-    },
-    {
-      "kind": "blog",
-      "sourceId": "google_cloud_ai",
-      "source": "Google Cloud AI & Machine Learning",
-      "title": "Building full virtual vehicles on Google Cloud: From AAOS to the smallest MCU",
-      "link": "https://cloud.google.com/blog/topics/manufacturing/building-full-virtual-vehicles-on-google-cloud-from-aaos-to-the-smallest-mcu",
-      "publishedAt": "2026-10-19T16:00:00.000Z",
-      "author": "Florian Haubner Industry Architect Lead Automotive",
-      "summary": "Imagining traditional gearheads getting their hands on software-defined vehicles is an amusing thought experiment. With their socket wrenches and air compressors at the ready, they might be confused to encounter core functions more likely to run on 1s and 0s than oil and belts. But across the auto industry these days, more and more vehicles feature prominent systems built using cloud-native development, continuous integration/continuous delivery, fast digital iteration, and plenty of AI. But there’s still a big gap to be found in many automakers’ and Tier 1 suppliers’ cloud-based development processes. On the one hand, these companies are commonly using software to develop vehicles’ digital entertainment and information screens, or other onboard high-performance computers. On the other, the dozens of microchips and control modules that make a car a car these days — such as gateways, body controllers, zone control units, sensor and actuator nodes — are still frequently hardwired to physical chips when they’re constructed, making them very difficult to update, reprogram, or expand after the vehicle drives off the factory floor. Teams have to wait for benches, samples, and rigs, and integration can easily slip to the end of the development process, where defects are most expensive to fix. This inherent inefficiency has become a leading bottleneck. After all, manufacturers can’t really claim vehicles are software-defined if most of their electronics only function when connected to physical hardware and if developers are leaning heavily on actual hardware. With Horizon, our agentic innovation platform for developing software-defined vehicles, our vision is to help manufacturers avoid these inefficiencies by working with partners like RemotiveLabs . The cockpit already runs in the cloud The Android team has invested a significant amount of time and effort over the last few years on enabling seamless development of the many digital systems in vehicles’ cockpits. Android Automotive OS (AAOS) runs inside Google’s official virtual testing environment for Android, Cuttlefish , which itself runs comfortably on Arm-based Google Cloud instances . With this approach, developers can build, boot, and test virtual versions of their infotainment stacks on the same Arm architecture that ships in vehicles. And with the recent launch of Android 17 and AAOS SDV , this capability is also extended to further domains, whenever AAOS SDV is used. Deploying it with Cuttlefish, for example, proves the model: representative software, on representative architecture, in the cloud, on demand. The question that still needs to be answered is how to extend that model to the rest of the vehicle, especially when other operating systems are involved. The harness around the virtual vehicle That’s where RemotiveTopology comes into play. As the harness around the virtual vehicle, it’s the layer that connects AAOS in Cuttlefish to a full, simulated electrical and electronic (E/E) architecture: the rest of the vehicle’s onboard computers, its data networks, and the live signals that make the system function like a real vehicle rather than a collection of standalone apps. RemotiveTopology automatically utilizes manufacturers’ existing network design files to build a working, virtual version of their cars’ networks. This is vehicle-as-code: the E/E architecture expressed as an executable specification, versioned and provisioned like infrastructure-as-code. In this way, an entire vehicle can be spun up on demand. Cockpit software talks to the rest of the vehicle exactly as it would in a real vehicle. As a result, developers get full and continuous signal and cross-domain visibility, so they can see real-time system status. And because it is built on standard Linux tooling, the same topology runs on a laptop and in a contiguous integration pipeline on Google Cloud. Integrate across domains early, not late The payoff for using this approach is that all onboard systems can be developed and integrated with software before any of them are connected to a vehicle’s hardware. That’s beneficial because the most difficult (and latest) integration in a vehicle’s development is bringing all its systems together. For example, advanced driver assistance systems (ADAS) produce object lists, trajectories, and mode requests that the cockpit has to render and react to, while the infotainment system and information cluster have to reflect driving state while body and chassis nodes sit in the loop. With the full topology live on Google Cloud, the infotainment system and ADAS can operate simultaneously within a virtual vehicle, exchanging real signals over the simulated network. This means it’s possible to exercise handoffs like an ADAS event surfacing in the cluster or a driver-mode change rippling across domains from day one in continuous integration long before the benches and samples line up. In this way, developers can be confident they’ll discover multi-domain integration long before the end of the process so that they can test continuously from the start. The full vehicle frontier At the heart of this work is a shared desire to bring scalable software development to even the smallest and most common nodes in a vehicle, its microchips and control modules. That’s because these are the parts that have traditionally been wired to hardware, and as a result are the biggest blocker to fully software-defined vehicles. The ultimate goal is that the same software that runs in the cloud can run on vehicles’ actual control modules with no re-tooling or re-validation needed to move between them. That parity is natural with Arm-based Google Cloud infrastructure because the cloud and the car share an instruction set. Google's Axion makes it straightforward: C4A metal, a bare-metal Arm instance , is provided explicitly for automotive systems development and Android software development, giving direct hardware access without unnecessary software layers and delivering the consistent performance that vehicle systems require. Taken together, this holistic system allows teams, for the first time, to develop and integration-test an entire vehicle’s systems in the cloud and then apply it to the actual vehicle without having to rewrite it. Why now, and where to start The payoff is not abstract. Treating the vehicle as code and moving integration into the cloud compresses the slowest, most expensive phase of a program. Early customer engagements with RemotiveLabs have measured more than 10x faster integration cycles. And the development loop is now changing faster than the hardware loop: AI-assisted and agentic workflows can rapidly generate, test, and refine vehicle software, but only virtual systems provide the required scale. Every element that can’t be virtualized can slow the entire development process down. RemotiveTopology provides this architecture as vehicle-as-code and makes it accessible for developers, testers, and autonomous AI agents alike. Best of all, there is no new third-party tooling to adopt just to get started. Instead, RemotiveLabs publishes an open-source simplified vehicle on GitHub that anyone can run in minutes on standard Linux tooling and platform definitions already in place. Full existing toolchains plug in as a manufacturer or Tier1 supplier scales, and RemotiveTopology can be easily dropped into an Arm-based Google Cloud environment. For those building software-defined vehicles whose virtual development stops at the cockpit, it’s time to start with an open-source example, bring unique platform definitions, and run an entire vehicle in the cloud. RemotiveTopology is available in Horizon for easy usage in combination with other Horizon modules.",
-      "evidenceLink": "",
-      "score": 76.27648688492064,
-      "core": "Imagining traditional gearheads getting their hands on software-defined vehicles is an amusing thought experiment. With their socket wrenches and air compressors at the ready, they might be confused to encounter core functions more likely to run on 1s and 0s than oil and belts. But across the auto industry these days, more and more vehicles feature prominent systems built using cloud-native development, continuous i…",
-      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
-      "access": {
-        "verified": true,
-        "mode": "public",
-        "checkedAt": "2026-10-20T16:07:45.061Z",
-        "evidence": "live_http"
-      }
-    },
-    {
-      "kind": "blog",
       "sourceId": "vercel_ai",
       "source": "Vercel",
-      "title": "Nemotron 3.5 Lightning now available on AI Gateway for free",
-      "link": "https://vercel.com/changelog/nemotron-3-5-lightning-now-available-on-ai-gateway-for-free",
-      "publishedAt": "2026-10-14T00:00:00.000Z",
-      "author": "Zachary Chen",
-      "summary": "Nemotron 3.5 Lightning from NVIDIA is now available for free on AI Gateway as nvidia/nemotron-3.5-lightning-free , served by NVIDIA. Nemotron 3.5 Lightning is an open-weight reasoning and chat model for long-running agents, sub-agent work, chatbots, and RAG systems. The model has 30B parameters with 3B active per token, in a hybrid Mixture-of-Experts design that interleaves Mamba-2 and MoE layers with a few attention layers. It has a 1M token context window and supports tool calling and structured outputs. Note: The provider may retain prompts for model improvement. Call Nemotron 3.5 Lightning through the AI SDK , the Chat Completions , Responses , and Messages APIs, or a coding agent connected to AI Gateway. Use nvidia/nemotron-3.5-lightning-free as the model name: To use it in Claude Code, Codex, Cursor, and more, install the latest Vercel CLI and run setup: Then select nvidia/nemotron-3.5-lightning-free in the agent. See the coding agents guide for details. AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. You can view all language models available on AI Gateway. Read more",
+      "title": "Making every harness durable",
+      "link": "https://vercel.com/blog/making-every-harness-durable",
+      "publishedAt": "2026-10-19T13:00:00.000Z",
+      "author": "Pranay Prakash",
+      "summary": "Developers are familiar with running coding agents locally through harnesses like Pi, Claude Code, and others. They are reliable daily drivers for generating code, but keeping agents running around the clock requires your computer to be on and awake, which led to the laptop lid memes and Mac mini demand spike. Running harnesses in the cloud Harness workloads are moving to the cloud. Individual developers are deploying always-on coding agent workflows, projects like OpenWork and HanaAgent use open-source harnesses as the engines behind the apps, and engineers are building their own harness products. These harnesses are designed for long-lived processes that keep the session in memory, and agent tasks commonly run for minutes or hours. Locally, a harness has direct, continuous access to the workspace and session history on the same disk, so resuming interrupted work only requires a simple prompt. In the cloud, you can replicate that setup with a VM and persistent storage, but the VM doesn't automatically record which model and tool calls completed or resume interrupted turns after a crash. A failed turn or network error means lost work. Also, not every agent task executed through a harness needs a sandbox. Database queries and API calls can run securely in functions, and that also means required credentials never have to enter the sandbox. Making every harness durable We built eve and fx to run durably in the cloud out of the box, and today we are introducing durable-harness , which extends that durability to any harness, including Pi , OpenCode , Codex , and Claude Code . It uses the same machinery that powers Workflow SDK to survive crashes and function timeouts. With durable-harness , you can: Run any of these harnesses durably on Vercel Self-host a harness with your own Postgres instance Make your local harness workflow durable Build your own durable harness Sessions that survive a crash mid-turn Take the example of a coding agent adding a pricing page to an existing app. The agent reads the existing page, writes a new one, opens a pull request, and waits for CI to finish before reporting back. What happens if its function times out while CI is still running? Kill the function or drop the connection in the demo below to compare how the two agents recover and which work is repeated. Without durability, the agent stops work until it is manually restarted, and completed work is repeated unnecessarily. With durable-harness , a new function reads completed results from the log and resumes the turn. If the browser disconnects, the agent keeps running, and reconnecting catches up from the log. Logs and queues durable-harness is the newest package in our open source portfolio. It’s a set of adapters and utilities that let the harnesses you already use keep their sessions in a World , the Workflow SDK’s durable backend. It writes each step of a turn to a durable log. Before a model call or tool call runs, it records an intent, and when the call finishes, it records the outcome. The turn itself is backstopped with a queue message, so if its function dies, the queue hands the turn to a new function that reads the log and continues where it left off. After a crash, the log says what finished, what was running, and what never started: Completed calls never run again because their results are read from the log, so you’re never billed twice for a finished model call’s tokens. Models remember their previous calls rather than repeating them. Interrupted tools marked replay: 'safe' run again. Any other tool comes back to the model as possibly run, and the model decides whether to check. Harnesses that keep their own session files, like Claude Code's transcript, Codex's rollout, and OpenCode's event store, have every record mirrored into the log, so a new function or Sandbox rebuilds them from it. Pick your harness fx and eve are durable on their own. For the rest, durable-harness adds durability from the outside, without changing the harness. For the full setup guide for each harness, check the docs . Runs everywhere Durable agents need a log of each step, a way to resume a turn when its process dies, and a stream for whoever is watching. Workflow SDK ships all three behind one interface, a World . durable-harness writes to that interface, so you can move the same agent from one World to another without changing its code: On Vercel, it uses the Vercel World . In development, it uses files on your machine . On your own servers, it uses Postgres , MongoDB, Redis, or Turso. Two variables move every agent using durable-harness to Postgres. For more control, such as setting a namespace or recovering sessions when your server starts, create the World in code and pass it to your agent: Check the self-hosting docs for more details. See every session in Agent Runs Agent Runs on Vercel shows the trace for every session, including each model call and tool call. Turns that resumed after a crash appear in the same trace, so you can see exactly where a turn stopped and picked back up. Tools An agent has only the tools you give it, and they run in your function. Each tool says what should happen if a crash interrupts it. A 'safe' tool, such as a lookup, can run again. A 'never' tool, such as a refund, never runs twice: the model is told the call may have happened, so it can check before it tries again. Here’s how the coding agent from the demo above might define its tools: A tool that reads a file or checks CI status is marked as 'safe' so it can run again automatically. A tool that posts a PR comment is marked as 'never' so that comments aren't posted twice. The following example defines a tool for each policy using the example of an agent processing a refund: For each harness’s built-in tools, like its shell and file editing, read on. Files When a harness needs a shell and files, it’s not safe to run them directly on a shared serverless function host. Many sessions can share the same function, and its filesystem isn’t guaranteed to persist between invocations. To address this, durable-harness gives you a few options: virtual() keeps the files in the session’s log, with a bash-compatible shell that can’t reach your function’s files or the network. It suits short tasks and small workspaces without starting an entire sandbox. virtual({ durable: false }) keeps the files in memory for scratch work and clears them at the end of every turn. sandbox() gives the session its own Vercel Sandbox , with /workspace on a Drive that outlives every sandbox and every function. It suits real projects and long-running work. Compare the three side by side in the docs . Each harness’s built-in tools run on the workspace you choose. With Pi, CodingTools installs Pi’s own read , write , edit , and bash , and virtualEnv() or sandboxEnv() gives them a workspace: For OpenCode, pass the workspace as workspace , and for fx, pass it to fxTools() . Claude Code and Codex always run in a Vercel Sandbox, since they expect a real shell and filesystem, and aren’t safe for multi-tenant use. Their built-in tools work on the session’s Drive once you turn them on with builtins: true . Each harness guide lists its built-in tools. Documents Some state belongs with the session but isn’t part of the conversation, such as a to-do list, a plan, or a form the agent fills in. A document is typed JSON that lives in the session’s log, so it survives a crash and moves with the session. Tools can edit documents through io.docs , and each edit commits to the log alongside the tool’s result, so the document’s durable state stays consistent with the tool calls themselves: Your app can read and edit the same document without a database of its own, and the chat route can even stream every change to your UI: In fact, the virtual() workspace from earlier is built on documents: its file tree is a document in the session’s log, and each tool call’s changes commit with its result. Learn more about tools, files, and documents and how to keep your agent secure . Wrapping up Developers choose a harness for the choices it makes about prompts, tools, and context. How it survives a crash shouldn’t be one of them. With durable-harness , a turn that loses its function partway through continues from the log on a new one, without a manual retry and without repeating what already finished. Self-hosting and portability work out of the box by building on top of the Workflow SDK’s World interface. durable-harness is open source on GitHub . Read more",
       "evidenceLink": "",
-      "score": 74.56220117063492,
-      "core": "Nemotron 3.5 Lightning from NVIDIA is now available for free on AI Gateway as nvidia/nemotron-3.5-lightning-free , served by NVIDIA. Nemotron 3.5 Lightning is an open-weight reasoning and chat model for long-running agents, sub-agent work, chatbots, and RAG systems. The model has 30B parameters with 3B active per token, in a hybrid Mixture-of-Experts design that interleaves Mamba-2 and MoE layers with a few attentio…",
+      "score": 76.35894841269841,
+      "core": "Developers are familiar with running coding agents locally through harnesses like Pi, Claude Code, and others. They are reliable daily drivers for generating code, but keeping agents running around the clock requires your computer to be on and awake, which led to the laptop lid memes and Mac mini demand spike. Running harnesses in the cloud Harness workloads are moving to the cloud. Individual developers are deployi…",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-10-20T16:07:45.061Z",
+        "checkedAt": "2026-10-21T15:58:29.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "red_hat_ai_engineering",
+      "source": "Red Hat Developer · AI",
+      "title": "Scaling multi-agent systems with hierarchical orchestration",
+      "link": "https://developers.redhat.com/articles/2026/10/21/scaling-multi-agent-systems-hierarchical-orchestration",
+      "publishedAt": "2026-10-21T13:02:15.000Z",
+      "author": "Nir Rashti, Odai Odeh",
+      "summary": "Many multi-agent systems start with the same intuition: if 1 model can answer a question, then several specialized agents should answer it better. Split the problem by source or capability. Let one agent search documents, another inspect repositories, and another pull from chat history, then merge the outputs into a final response. On simple tasks, that design works well enough to be convincing. The post Scaling multi-agent systems with hierarchical orchestration appeared first on Red Hat Developer .",
+      "evidenceLink": "",
+      "score": 73.59575396825397,
+      "core": "Many multi-agent systems start with the same intuition: if 1 model can answer a question, then several specialized agents should answer it better. Split the problem by source or capability. Let one agent search documents, another inspect repositories, and another pull from chat history, then merge the outputs into a final response. On simple tasks, that design works well enough to be convincing. The post Scaling mul…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-21T15:58:29.000Z",
         "evidence": "live_http"
       }
     },
@@ -151,25 +191,64 @@
       "kind": "blog",
       "sourceId": "hcker_news_ai_blogs",
       "source": "Hacker News · hcker.news",
-      "title": "Agentic Monitoring",
-      "link": "https://benjamincongdon.me/blog/2026/10/19/Agentic-Monitoring",
-      "publishedAt": "2026-10-19T14:52:04.000Z",
-      "author": "bcongdon https://news.ycombinator.com/user?id=bcongdon",
-      "summary": "Agents are structurally well suited to monitoring production systems.",
-      "evidenceLink": "https://news.ycombinator.com/item?id=50153225",
+      "title": "Benchmarking Bot Detection Systems Against Modern AI Agents in 2026",
+      "link": "https://research.poh.org/bot-benchmarking-2026",
+      "publishedAt": "2026-10-20T17:10:31.000Z",
+      "author": "mdahardy https://news.ycombinator.com/user?id=mdahardy",
+      "summary": "We revisit our bot detection benchmark, testing Proof of Human, Google reCAPTCHA v3, hCaptcha, Cloudflare Turnstile, and Cloudflare Bot Management against scripted browsers, stealth browsers, and AI browsing agents.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50169506",
       "origin": "hcker_news",
       "hnMetrics": {
-        "points": 112,
-        "comments": 21
+        "points": 47,
+        "comments": 8
       },
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-10-20T16:07:45.061Z",
+        "checkedAt": "2026-10-21T15:58:29.000Z",
         "evidence": "hcker_news_feed_and_live_article"
       },
-      "score": 63.52918478144247,
-      "core": "Agents are structurally well suited to monitoring production systems.",
+      "score": 64.88060390416928,
+      "core": "We revisit our bot detection benchmark, testing Proof of Human, Google reCAPTCHA v3, hCaptcha, Cloudflare Turnstile, and Cloudflare Bot Management against scripted browsers, stealth browsers, and AI browsing agents.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "databricks_engineering",
+      "source": "Databricks Blog",
+      "title": "MemCurrent: Designing Persistent Memory for Production Agents",
+      "link": "https://www.databricks.com/blog/memcurrent-designing-persistent-memory-production-agents",
+      "publishedAt": "2026-10-20T18:15:47.000Z",
+      "author": "",
+      "summary": "AI tools have made it easy to vibe code agents. Building and maintaining an enterprise...",
+      "evidenceLink": "",
+      "score": 59.94361111111112,
+      "core": "AI tools have made it easy to vibe code agents. Building and maintaining an enterprise...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-21T15:58:29.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "ibm_research_blog",
+      "source": "IBM Research Blog",
+      "title": "llm-d 1.0 hardens open-source AI inference for production",
+      "link": "https://research.ibm.com/blog/llmd-1-0-is-ready-for-production-inference-serving",
+      "publishedAt": "2026-10-20T12:00:00.000Z",
+      "author": "",
+      "summary": "The distributed inference framework makes serving large models on your own infrastructure reliable and affordable for the agentic era.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-21T15:58:29.000Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 58.74625,
+      "core": "The distributed inference framework makes serving large models on your own infrastructure reliable and affordable for the agentic era.",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
     },
     {
@@ -182,13 +261,33 @@
       "author": "Zhili Cheng",
       "summary": "The third post in our semantic-layer series builds a customer 360 across Amazon Redshift and Amazon Aurora with Strategy Mosaic, exposes it to a Strands agent on Amazon Bedrock AgentCore through the Mosaic MCP server, and enforces per-user row and column security end-to-end.",
       "evidenceLink": "",
-      "score": 59.49075275793651,
+      "score": 57.7875,
       "core": "The third post in our semantic-layer series builds a customer 360 across Amazon Redshift and Amazon Aurora with Strategy Mosaic, exposes it to a Strands agent on Amazon Bedrock AgentCore through the Mosaic MCP server, and enforces per-user row and column security end-to-end.",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-10-20T16:07:45.061Z",
+        "checkedAt": "2026-10-21T15:58:29.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Developing an AI Factory Digital Twin with an Agent-Assisted Workflow",
+      "link": "https://developer.nvidia.com/blog/developing-an-ai-factory-digital-twin-with-an-agent-assisted-workflow",
+      "publishedAt": "2026-10-21T09:38:49.000Z",
+      "author": "Tanya Lenz",
+      "summary": "Building an AI factory digital twin requires developers to bring site plans, equipment assets, and engineering requirements into a consistent model that teams...",
+      "evidenceLink": "",
+      "score": 57.442460317460316,
+      "core": "Building an AI factory digital twin requires developers to bring site plans, equipment assets, and engineering requirements into a consistent model that teams...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-21T15:58:29.000Z",
         "evidence": "live_http"
       }
     },
@@ -202,73 +301,73 @@
       "author": "Pete Davis, Michael Dawson, Prudhvi Vuda, Sharon Gratch, Gurvinder Singh",
       "summary": "Red&nbsp;Hat&nbsp;AI quickstarts are ready-to-run industry-specific use cases for your Red&nbsp;Hat&nbsp;AI environment. Each quickstart is designed to be simple to deploy, explore, and extend. They give you and your team a fast, hands-on way to see how AI can power solutions on enterprise-ready, open source infrastructure. The post Speeding up ticket resolution with agentic AI appeared first on Red Hat Developer .",
       "evidenceLink": "",
-      "score": 59.101804345238094,
+      "score": 57.39855158730159,
       "core": "Red Hat AI quickstarts are ready-to-run industry-specific use cases for your Red Hat AI environment. Each quickstart is designed to be simple to deploy, explore, and extend. They give you and your team a fast, hands-on way to see how AI can power solutions on enterprise-ready, open source infrastructure. The post Speeding up ticket resolution with agentic AI appeared first on Red Hat Developer .",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-10-20T16:07:45.061Z",
+        "checkedAt": "2026-10-21T15:58:29.000Z",
         "evidence": "live_http"
       }
     },
     {
       "kind": "blog",
-      "sourceId": "aws_machine_learning",
-      "source": "AWS Machine Learning Blog",
-      "title": "Securing AI agent identity with X.509 PKI on AWS",
-      "link": "https://aws.amazon.com/blogs/machine-learning/securing-ai-agent-identity-with-x-509-pki-on-aws",
-      "publishedAt": "2026-10-20T16:03:48.000Z",
-      "author": "Deepakkumar Sharma",
-      "summary": "Learn how to secure multi-agent AI systems with cryptographic identity using Keyfactor EJBCA and AWS services. This reference architecture combines signed request envelopes, user-signed delegation assertions, RFC 8693 audience-scoped tokens, and real-time OCSP revocation to prove agent identity and prevent request forgery across agent-to-agent and MCP tool calls.",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Inside NVIDIA Sentry: Secure AI Agents at Runtime",
+      "link": "https://developer.nvidia.com/blog/inside-nvidia-sentry-secure-ai-agents-at-runtime",
+      "publishedAt": "2026-10-21T09:52:16.000Z",
+      "author": "Ofir Arkin",
+      "summary": "An AI agent can complete its assignment and still cross a security boundary. Recent incidents show that agents can circumvent security controls while using...",
       "evidenceLink": "",
-      "score": 55.023074186507934,
-      "core": "Learn how to secure multi-agent AI systems with cryptographic identity using Keyfactor EJBCA and AWS services. This reference architecture combines signed request envelopes, user-signed delegation assertions, RFC 8693 audience-scoped tokens, and real-time OCSP revocation to prove agent identity and prevent request forgery across agent-to-agent and MCP tool calls.",
+      "score": 55.44180555555556,
+      "core": "An AI agent can complete its assignment and still cross a security boundary. Recent incidents show that agents can circumvent security controls while using...",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-10-20T16:07:45.061Z",
+        "checkedAt": "2026-10-21T15:58:29.000Z",
         "evidence": "live_http"
       }
     },
     {
       "kind": "blog",
-      "sourceId": "openai_news",
-      "source": "OpenAI",
-      "title": "Advancing coding in low‑resource programming languages",
-      "link": "https://openai.com/index/low-resource-programming-languages",
-      "publishedAt": "2026-10-19T12:00:00.000Z",
+      "sourceId": "amazon_science_blog",
+      "source": "Amazon Science Blog",
+      "title": "Strengthening AI safety evaluation through independent third-party review",
+      "link": "https://www.amazon.science/blog/strengthening-ai-safety-evaluation-through-independent-third-party-review",
+      "publishedAt": "2026-10-20T17:57:55.000Z",
       "author": "",
-      "summary": "Learn how OpenAI is improving ChatGPT across low-resource programming languages, with new evaluations for software engineering, SQLite, and COBOL migration.",
+      "summary": "How Amazon partnered with AVERI to independently assess — and improve — our internal safety testing of Amazon models.",
       "evidenceLink": "",
-      "score": 50.85743926587302,
-      "core": "Learn how OpenAI is improving ChatGPT across low-resource programming languages, with new evaluations for software engineering, SQLite, and COBOL migration.",
+      "score": 53.07789682539683,
+      "core": "How Amazon partnered with AVERI to independently assess — and improve — our internal safety testing of Amazon models.",
       "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-10-20T16:07:45.061Z",
-        "evidence": "public_reader_fallback"
+        "checkedAt": "2026-10-21T15:58:29.000Z",
+        "evidence": "live_http"
       }
     },
     {
       "kind": "blog",
-      "sourceId": "techradar_pro_ai",
-      "source": "TechRadar Pro",
-      "title": "Microsoft admits 'frontier models can't be trusted', unveils new security tools to treat AI agents as insider threats",
-      "link": "https://www.techradar.com/pro/security/microsoft-admits-frontier-models-cant-be-trusted-unveils-new-security-tools-to-treat-ai-agents-as-insider-threats",
-      "publishedAt": "2026-10-20T11:44:39.000Z",
-      "author": "Sead Fadilpašić",
-      "summary": "Say hi to your new Guardian Agent, keeping you safe from Agentic Insiders.",
+      "sourceId": "fiddler_ai_evaluation",
+      "source": "Fiddler AI Blog",
+      "title": "Measuring LLM Quality, Safety and Performance: Which Metrics to Track",
+      "link": "https://www.fiddler.ai/blog/llm-performance-metrics",
+      "publishedAt": "2026-10-20T00:00:00.000Z",
+      "author": "",
+      "summary": "Learn which LLM metrics to track for quality, safety and performance, how each is scored, and how to carry them from testing into production.",
       "evidenceLink": "",
-      "score": 50.097895615079366,
-      "core": "Say hi to your new Guardian Agent, keeping you safe from Agentic Insiders.",
-      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "score": 47.927996031746034,
+      "core": "Learn which LLM metrics to track for quality, safety and performance, how each is scored, and how to carry them from testing into production.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-10-20T16:07:45.061Z",
+        "checkedAt": "2026-10-21T15:58:29.000Z",
         "evidence": "live_http"
       }
     },
@@ -282,13 +381,13 @@
       "author": "Daniel Todd",
       "summary": "A new joint architecture unifies multi-agent orchestration, model routing, and human review to help organizations push AI capabilities into production",
       "evidenceLink": "",
-      "score": 48.32890751984127,
+      "score": 46.62565476190476,
       "core": "A new joint architecture unifies multi-agent orchestration, model routing, and human review to help organizations push AI capabilities into production",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-10-20T16:07:45.061Z",
+        "checkedAt": "2026-10-21T15:58:29.000Z",
         "evidence": "live_http"
       }
     },
@@ -296,119 +395,20 @@
       "kind": "blog",
       "sourceId": "anthropic",
       "source": "Anthropic Research & Engineering",
-      "title": "How Claude designed protein binders against scorpion neurotoxins",
-      "link": "https://www.anthropic.com/research/claude-scorpion-toxin-binder-design",
-      "publishedAt": "2026-10-20T13:01:21.106Z",
+      "title": "Using Claude to reduce the attack surface of code",
+      "link": "https://www.anthropic.com/research/attack-surface-reduction",
+      "publishedAt": "2026-10-20T00:00:00.000Z",
       "author": "",
-      "summary": "We asked an internal research Claude model to design minibinders (small proteins that attach tightly to a target) against scorpion neurotoxins.",
+      "summary": "Automated attack surface analysis and reduction can meaningfully improve the security of deployed software in the near term. In this post, we preview data we’ve collected from applying attack surface reduction techniques to large open-source codebases using Claude.",
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-10-20T16:07:45.061Z",
+        "checkedAt": "2026-10-21T15:58:29.000Z",
         "evidence": "sitemap_live_http"
       },
-      "score": 43.57254057539682,
-      "core": "We asked an internal research Claude model to design minibinders (small proteins that attach tightly to a target) against scorpion neurotoxins.",
-      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。"
-    },
-    {
-      "kind": "blog",
-      "sourceId": "cloudflare_ai",
-      "source": "Cloudflare",
-      "title": "Cutting our inference bill by 68% by being obsessive about optimization",
-      "link": "https://blog.cloudflare.com/obsessive-inference-optimization",
-      "publishedAt": "2026-10-19T19:12:53.000Z",
-      "author": "Ryan Skidmore",
-      "summary": "When our AI code reviewer's cost per run doubled, we dug into the token usage to find out why. Learn how we used prompt caching and intelligent model routing to slash our inference bill by 68% while speeding up reviews.",
-      "evidenceLink": "",
-      "score": 41.72277656746032,
-      "core": "When our AI code reviewer's cost per run doubled, we dug into the token usage to find out why. Learn how we used prompt caching and intelligent model routing to slash our inference bill by 68% while speeding up reviews.",
-      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
-      "access": {
-        "verified": true,
-        "mode": "public",
-        "checkedAt": "2026-10-20T16:07:45.061Z",
-        "evidence": "live_http"
-      }
-    },
-    {
-      "kind": "blog",
-      "sourceId": "lennys_newsletter",
-      "source": "Lenny's Newsletter",
-      "title": "🎙️ How I AI: Meta Muse Wonder + How Brooke Lacey is scaling video with AI",
-      "link": "https://www.lennysnewsletter.com/p/how-i-ai-meta-muse-wonder-how-brooke",
-      "publishedAt": "2026-10-19T15:03:35.000Z",
-      "author": "Lenny Rachitsky",
-      "summary": "Your weekly listens from How I AI, part of the Lenny's Podcast Network",
-      "evidenceLink": "",
-      "score": 40.59821307539682,
-      "core": "Your weekly listens from How I AI, part of the Lenny's Podcast Network",
-      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
-      "access": {
-        "verified": true,
-        "mode": "public",
-        "checkedAt": "2026-10-20T16:07:45.061Z",
-        "evidence": "live_http"
-      }
-    },
-    {
-      "kind": "blog",
-      "sourceId": "github_copilot_changelog",
-      "source": "GitHub Copilot Changelog",
-      "title": "GitHub Copilot models deprecated on October 19, 2026",
-      "link": "https://github.blog/changelog/2026-10-19-github-copilot-models-deprecated-on-october-19-2026",
-      "publishedAt": "2026-10-19T21:27:10.000Z",
-      "author": "Allison",
-      "summary": "As of today, October 19, 2026, we have deprecated the following models across most GitHub Copilot experiences (including Copilot Chat, inline edits, ask and agent modes, and code completions). These… The post GitHub Copilot models deprecated on October 19, 2026 appeared first on The GitHub Blog .",
-      "evidenceLink": "",
-      "score": 39.31597101190476,
-      "core": "As of today, October 19, 2026, we have deprecated the following models across most GitHub Copilot experiences (including Copilot Chat, inline edits, ask and agent modes, and code completions). These… The post GitHub Copilot models deprecated on October 19, 2026 appeared first on The GitHub Blog .",
-      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
-      "access": {
-        "verified": true,
-        "mode": "public",
-        "checkedAt": "2026-10-20T16:07:45.061Z",
-        "evidence": "live_http"
-      }
-    },
-    {
-      "kind": "blog",
-      "sourceId": "ibm_research_blog",
-      "source": "IBM Research Blog",
-      "title": "New course teaches how AI models run on modern accelerators",
-      "link": "https://research.ibm.com/blog/coursera-dataflow-accelerator-architecture-specialization",
-      "publishedAt": "2026-10-19T12:00:00.000Z",
-      "author": "",
-      "summary": "’Dataflow Architectures for AI’ is a 6-course specialization from IBM Research that compares leading accelerator architectures through hands-on labs.",
-      "access": {
-        "verified": true,
-        "mode": "public",
-        "checkedAt": "2026-10-20T16:07:45.061Z",
-        "evidence": "sitemap_live_http"
-      },
-      "score": 33.81855037698413,
-      "core": "’Dataflow Architectures for AI’ is a 6-course specialization from IBM Research that compares leading accelerator architectures through hands-on labs.",
-      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
-    },
-    {
-      "kind": "blog",
-      "sourceId": "databricks_engineering",
-      "source": "Databricks Blog",
-      "title": "How HP Is Building an AI-Ready CDP with Databricks CustomerLake",
-      "link": "https://www.databricks.com/blog/hp-ai-ready-cdp-databricks-customerlake",
-      "publishedAt": "2026-10-20T00:01:41.000Z",
-      "author": "",
-      "summary": "At Data + AI Summit 2026,&nbsp;Luis Alonso, Global Head of Data Strategy &amp; Engineering...",
-      "evidenceLink": "",
-      "score": 29.366586091269838,
-      "core": "At Data + AI Summit 2026, Luis Alonso, Global Head of Data Strategy & Engineering...",
-      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
-      "access": {
-        "verified": true,
-        "mode": "public",
-        "checkedAt": "2026-10-20T16:07:45.061Z",
-        "evidence": "live_http"
-      }
+      "score": 43.616884920634924,
+      "core": "Automated attack surface analysis and reduction can meaningfully improve the security of deployed software in the near term. In this post, we preview data we’ve collected from applying attack surface reduction techniques to large open-source codebases using Claude.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
     }
   ]
 }

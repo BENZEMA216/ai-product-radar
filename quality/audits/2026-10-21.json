@@ -1,14 +1,14 @@
 {
   "date": "2026-10-21",
-  "generatedAt": "2026-10-20T16:04:31.546Z",
-  "reportPath": "reports/2026-10-21-0004-cst.md",
+  "generatedAt": "2026-10-21T15:58:29.000Z",
+  "reportPath": "reports/2026-10-21-2358-cst.md",
   "ok": true,
   "failures": [],
   "metrics": {
-    "rows": 71,
+    "rows": 77,
     "top20Sources": [
-      "HN Algolia",
       "Product Hunt",
+      "HN Algolia",
       "YC Launch"
     ],
     "top10ModelInfra": 0,
@@ -19,38 +19,38 @@
   "sourceHealth": {
     "producthunt": {
       "status": "fallback",
-      "rawCount": 16,
-      "keptCount": 6,
-      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-19；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 16 条，AI 相关候选 6 条；历史去重移除 1 条已报道或已处理日榜 Product Hunt 信号，最终发布 5 条。"
+      "rawCount": 33,
+      "keptCount": 18,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-20；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 33 条，AI 相关候选 18 条；实际 fallback：hunted_space。；历史去重移除 2 条已报道或已处理日榜 Product Hunt 信号，最终发布 16 条。"
     },
     "yc_launch": {
       "status": "ok",
-      "rawCount": 4,
-      "keptCount": 4,
+      "rawCount": 6,
+      "keptCount": 6,
       "note": "YC Launch 正常返回窗口内候选。"
     },
     "hackernews": {
       "status": "ok",
-      "rawCount": 35,
-      "keptCount": 22,
+      "rawCount": 29,
+      "keptCount": 17,
       "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
     },
     "github": {
       "status": "ok",
-      "rawCount": 14,
+      "rawCount": 12,
       "keptCount": 0,
       "note": "GitHub 默认只收固定 watchlist 的 Release。"
     },
     "huggingface": {
-      "status": "ok",
+      "status": "fallback",
       "rawCount": 20,
       "keptCount": 20,
-      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:node, Model:node；API 已读取，候选按时间窗口过滤"
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
     },
     "aihot": {
       "status": "ok",
-      "rawCount": 20,
-      "keptCount": 20,
+      "rawCount": 18,
+      "keptCount": 18,
       "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
     },
     "xhs_dealflow": {
@@ -71,223 +71,223 @@
   "top20Sample": [
     {
       "rank": 1,
-      "product": "Make AI coding agents verify its own work",
-      "productKey": "https://github.com/reticlehq/reticle",
-      "source": "HN Algolia",
+      "product": "Lugh Xtudio",
+      "productKey": "https://www.producthunt.com/products/lugh-xtudio",
+      "source": "Product Hunt",
       "category": "product",
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "值得看它是否把“让 coding agent 自证结果”变成可执行的验收环节，而不只是再加一层提示词；这直接触及 agent 交付可信度。"
+      "reason": "它把视频剪辑定义成创作者与 agent 协作，而不是一次性生成；值得看时间线控制、人工接管和成片交付能否形成顺畅闭环。"
     },
     {
       "rank": 2,
-      "product": "Faztudo, a local chat for coordinating the coding agents CLIs",
-      "productKey": "https://thiagodefreitas.github.io/faztudo",
-      "source": "HN Algolia",
+      "product": "Exa 3.0",
+      "productKey": "https://www.producthunt.com/products/exa-ai",
+      "source": "Product Hunt",
       "category": "product",
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "它把多个 coding agent CLI 收进本地聊天界面，产品判断点是统一入口能否减少切换成本，并保留每个 agent 的可控性。"
+      "reason": "它把更丰富、成本更低的搜索数据直接卖给 agent，产品判断点在检索质量、调用成本和下游任务成功率是否同时改善。"
     },
     {
       "rank": 3,
-      "product": "walkai-talkai",
-      "productKey": "https://www.producthunt.com/products/walkai-talkai",
-      "source": "Product Hunt",
+      "product": "Alter (YC S25) – Access control for multi-user agents",
+      "productKey": "https://alterauth.com",
+      "source": "HN Algolia",
       "category": "product",
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "用对讲机式语音远程呼叫 coding agent，是对离开屏幕后仍能推进开发的交互试验；关键在指令确认和误操作防护。"
+      "reason": "多用户 agent 真正落地会先撞上身份、权限和审计边界；Alter 值得看能否把这层治理做成开发者默认接入的基础设施。"
     },
     {
       "rank": 4,
-      "product": "buddylist",
-      "productKey": "https://www.producthunt.com/products/buddylist-2",
-      "source": "Product Hunt",
+      "product": "Skillsync – Coding agent memory but it's just search",
+      "productKey": "https://skillsync.com",
+      "source": "HN Algolia",
       "category": "product",
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "它用 2005 年即时通讯的熟悉心智包装 coding agent 协作，值得观察怀旧界面是否真的降低多 agent 会话管理负担。"
+      "reason": "它用搜索而非复杂记忆层解决 coding agent 的上下文复用，值得验证这种克制方案能否降低陈旧记忆和错误召回。"
     },
     {
       "rank": 5,
-      "product": "Craig – A TUI for running parallel coding agents",
-      "productKey": "https://craig-cli.com",
-      "source": "HN Algolia",
+      "product": "Armorer Labs",
+      "productKey": "https://www.ycombinator.com/launches/w5k-armorer-labs-continuous-security-verification-for-ai-agents-in-regulated-industries",
+      "source": "YC Launch",
       "category": "product",
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "TUI 同时运行并查看并行 coding agents，瞄准的是开发者在多任务并发时的调度痛点；重点看状态汇总与冲突处理。"
+      "reason": "面向受监管行业持续验证 agent 安全，商业价值来自把一次性测评变成持续合规证据；关键是覆盖哪些真实失效与审计要求。"
     },
     {
       "rank": 6,
-      "product": "OpenFlow – AI Agent Workflow Builder",
-      "productKey": "https://github.com/seeray11/openflow",
-      "source": "HN Algolia",
+      "product": "Adside.ai",
+      "productKey": "https://www.ycombinator.com/launches/vrt-adside-ai-ai-native-paid-ads-agency",
+      "source": "YC Launch",
       "category": "product",
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "可视化 Agent Workflow Builder 把 agent 编排从代码配置推向界面操作；价值取决于流程调试和失败恢复是否足够清楚。"
+      "reason": "它用 agent 重构付费投放代理商的执行成本结构；应关注自动化是否覆盖素材、投放与复盘全链路，而非只替代单个运营动作。"
     },
     {
       "rank": 7,
-      "product": "Beam.win",
-      "productKey": "https://www.producthunt.com/products/beam-win",
-      "source": "Product Hunt",
+      "product": "VT Code – A terminal-first coding agent with sandboxed tools",
+      "productKey": "https://github.com/vinhnx/vtcode",
+      "source": "HN Algolia",
       "category": "product",
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "让一台 Mac 上的 agent 操作环境被另一台设备使用，切中了本地执行与远程访问的结合；应重点核对窗口控制权限和隐私边界。"
+      "reason": "终端入口与沙箱工具组合直接回应 coding agent 的权限风险；值得看隔离是否足够强，同时不牺牲日常开发效率。"
     },
     {
       "rank": 8,
-      "product": "Fini",
-      "productKey": "https://www.ycombinator.com/launches/w5j-scout-by-fini-an-ai-teammate-for-your-support-team",
-      "source": "YC Launch",
+      "product": "Stalemap tells coding agents what changed in their dependencies",
+      "productKey": "https://stalemap.com",
+      "source": "HN Algolia",
       "category": "product",
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Fini 把客服对话继续转成洞察、知识更新和 bug 报告，值得看它能否把“回答问题”延伸为可追踪的团队行动。"
+      "reason": "它把依赖变更整理成 coding agent 可消费的上下文，切中模型知识过期问题；核心是变更解释能否可信地影响代码决策。"
     },
     {
       "rank": 9,
-      "product": "Vibe Prospecting – B2B Prospecting from Claude and Claude Code via MCP",
-      "productKey": "https://github.com/explorium-ai/vibeprospecting-mcp",
-      "source": "HN Algolia",
+      "product": "Composio Instant",
+      "productKey": "https://www.producthunt.com/products/composio",
+      "source": "Product Hunt",
       "category": "product",
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "它让 Claude 与 Claude Code 通过 MCP 执行 B2B 找客，产品价值在于把研究、筛选和触达串成结果导向流程，而非单次生成名单。"
+      "reason": "让 agent 自主为工具付费意味着从调用权限走向经济权限；需要重点观察预算上限、授权确认和异常消费追责如何设计。"
     },
     {
       "rank": 10,
-      "product": "ObsessionDB",
-      "productKey": "https://www.ycombinator.com/launches/vpg-obsessiondb-a-real-time-data-warehouse-built-for-agents",
-      "source": "YC Launch",
+      "product": "Praex",
+      "productKey": "https://www.producthunt.com/products/praex",
+      "source": "Product Hunt",
       "category": "product",
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "ObsessionDB 为 agent 提供实时数据仓库，值得看其数据新鲜度、查询接口和权限模型能否支撑连续自动化任务。"
+      "reason": "自有模型的 coding agent 试图用垂直训练换取成本与任务表现优势；值得比较它在真实仓库上的完成率，而不是只看模型归属。"
     },
     {
       "rank": 11,
-      "product": "Respan (YC W24) – Open-source Rust AI gateway built around plugins",
-      "productKey": "https://news.ycombinator.com/item?id=50167583",
-      "source": "HN Algolia",
+      "product": "Kling 4.0",
+      "productKey": "https://www.producthunt.com/products/kling-4-0-4",
+      "source": "Product Hunt",
       "category": "product",
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Launch HN 的 Respan 用 Rust 和插件体系搭建 AI gateway，重点看插件隔离、路由与可观测性是否形成可替代现有网关的工程优势。"
+      "reason": "它把高频创作者最在意的速度与价格放到视频生成卖点中心，适合观察质量、可控性和单位成片成本之间的实际取舍。"
     },
     {
       "rank": 12,
-      "product": "An outliner to replace Workflowy and Obsidian – as a Claude connector",
-      "productKey": "https://claude.ai/directory/bulletlist",
-      "source": "HN Algolia",
+      "product": "horizontal.",
+      "productKey": "https://www.ycombinator.com/launches/w8z-horizontal-ai-agents-that-run-factory-operations-end-to-end",
+      "source": "YC Launch",
       "category": "product",
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "把大纲工具做成 Claude connector，让结构化笔记直接进入模型工作流；关键是编辑体验与上下文同步能否同时成立。"
+      "reason": "工厂运营 agent 瞄准的是持续、跨系统的现场流程，而非单次问答；商业成败取决于异常接管、责任边界和可量化节省。"
     },
     {
       "rank": 13,
-      "product": "Kairos Health",
-      "productKey": "https://www.ycombinator.com/launches/w5m-kairos-health-ai-front-desk-for-dental-practices",
+      "product": "Probe",
+      "productKey": "https://www.ycombinator.com/launches/w7t-probe-the-agent-native-research-stack",
       "source": "YC Launch",
       "category": "product",
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Kairos Health 用 AI 前台处理牙科电话与保险事务，业务边界具体；值得看高风险信息核验和转人工机制是否可运营。"
+      "reason": "面向实验流程的 agent-native 技术栈把价值落在更快完成实验；应验证它能否串起设计、执行与结果复盘，而非只做研究助手。"
     },
     {
       "rank": 14,
-      "product": "PatchWave - Add static analysis and automerge to Dependabot",
-      "productKey": "https://patchwave.ai",
-      "source": "HN Algolia",
+      "product": "RunInfra",
+      "productKey": "https://www.producthunt.com/products/runinfra",
+      "source": "Product Hunt",
       "category": "product",
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "PatchWave 在 Dependabot 之后加入静态分析和自动合并，瞄准依赖升级的人工审查成本；价值取决于误合并风险控制。"
+      "reason": "它以 agent 为目标负载提供开放模型推理，值得看路由、延迟和成本控制能否支撑长任务，而不只是提供通用模型 API。"
     },
     {
       "rank": 15,
-      "product": "LongTerMemory, AI-RAG Study tool helping people to study everything",
-      "productKey": "https://longtermemory.com",
+      "product": "Rivinci – Turn any OpenAPI spec into a hosted MCP server",
+      "productKey": "https://rivinci.io/en",
       "source": "HN Algolia",
       "category": "product",
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "LongTerMemory 把 RAG 用在学习资料与长期记忆，产品判断点是引用可追溯性和跨阶段复习效果，而非“什么都能学”的宽泛承诺。"
+      "reason": "把 OpenAPI 直接托管成 MCP 能明显缩短工具接入路径；判断重点是鉴权、错误语义和接口变更能否被可靠转换。"
     },
     {
       "rank": 16,
-      "product": "I built an AI tool that turns two photos into a dance video",
-      "productKey": "https://a2oliteai.com",
-      "source": "HN Algolia",
+      "product": "Harness²",
+      "productKey": "https://www.producthunt.com/products/harness-104",
+      "source": "Product Hunt",
       "category": "product",
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "两张照片生成舞蹈视频的输入门槛很低，适合检验消费级多模态产品的分享动机；也要看结果可控性而非一次性新奇。"
+      "reason": "它把 agent 自我改进包装成持续闭环，关键不是口号，而是评估信号、回滚机制和人工审批是否足以防止错误放大。"
     },
     {
       "rank": 17,
-      "product": "Seclai – See what your LLM agents are doing in production",
-      "productKey": "https://seclai.com",
+      "product": "Mintlify Autopilot",
+      "productKey": "https://www.producthunt.com/products/mintlify",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "常驻 agent 自动维护文档直指代码与文档漂移；值得看它能否识别真正需要更新的内容，并让团队低成本审核差异。"
+    },
+    {
+      "rank": 18,
+      "product": "Requ syntax – text-to-swimlane diagrams, with lanes for AI agents",
+      "productKey": "https://requstory.com/dev",
       "source": "HN Algolia",
       "category": "product",
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Seclai 聚焦生产环境中 LLM agent 的可观测性，直接解决“agent 做了什么”的追责问题；关键是行为轨迹能否定位失败原因。"
+      "reason": "把 agent 纳入泳道图有助于团队明确人机交接与责任边界；价值取决于文本语法是否足够易改且能服务评审。"
     },
     {
-      "rank": 18,
-      "product": "Veeza AI",
-      "productKey": "https://www.ycombinator.com/launches/vry-veeza-ai-f26-ai-tourist-visa-agent-for-people-with-weak-passports",
+      "rank": 19,
+      "product": "Axel Travel",
+      "productKey": "https://www.ycombinator.com/launches/wao-axel-ai-travel-agent-that-saves-you-money-on-flights-and-hotels",
       "source": "YC Launch",
       "category": "product",
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Veeza AI 把弱护照用户的旅游签证流程交给垂直 agent，场景痛点明确；应看材料校验、国家差异与人工兜底如何设计。"
-    },
-    {
-      "rank": 19,
-      "product": "Beam",
-      "productKey": "https://www.producthunt.com/products/beam-13",
-      "source": "Product Hunt",
-      "category": "product",
-      "qualityLabel": "keep",
-      "pmScore": 5,
-      "rankingIssue": null,
-      "reason": "一个强调 501B 参数与效率的 agentic 开放模型，值得跟踪其部署成本是否与长任务能力匹配，而不只看参数规模。"
+      "reason": "它承诺把机酒比价节省直接转成可预订结果，判断重点是价格优势是否稳定，以及用户何时需要确认和接管。"
     },
     {
       "rank": 20,
-      "product": "Tori",
-      "productKey": "https://www.producthunt.com/products/tori-3",
+      "product": "ToDo.is",
+      "productKey": "https://www.producthunt.com/products/todo-is",
       "source": "Product Hunt",
       "category": "product",
       "qualityLabel": "keep",
       "pmScore": 5,
       "rankingIssue": null,
-      "reason": "Tori 面向客户成功团队提供 AI 支持 agent，判断重点是它如何接管具体工单流程，以及“最聪明”的主张是否有可验证结果。"
+      "reason": "它把待办事项从记录工具推进到 agent 代执行，产品关键在任务范围、授权节点和完成结果能否被用户快速核验。"
     }
   ]
 }

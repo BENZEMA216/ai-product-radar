@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-10-20T16:04:31.546Z",
+  "generatedAt": "2026-10-21T15:58:29.000Z",
   "window": {
-    "start": "2026-10-20 00:04:31 CST",
-    "end": "2026-10-21 00:04:31 CST"
+    "start": "2026-10-20 23:58:29 CST",
+    "end": "2026-10-21 23:58:29 CST"
   },
   "productHuntDateKeys": [
-    "2026-10-19"
+    "2026-10-20"
   ],
   "githubMetrics": {
     "status": "ok",
-    "requestedCount": 20,
-    "enrichedCount": 20,
+    "requestedCount": 17,
+    "enrichedCount": 17,
     "error": ""
   },
   "feedbackPolicy": {
@@ -19,9 +19,9 @@
     "sourceIssueCount": 45,
     "ruleCount": 15,
     "exactOnlyCount": 5,
-    "exactMatchCount": 14,
-    "policyMatchCount": 15,
-    "droppedCount": 27,
+    "exactMatchCount": 7,
+    "policyMatchCount": 20,
+    "droppedCount": 24,
     "rules": [
       {
         "id": "hn-github-stars-below-50-drop",
@@ -36,9 +36,9 @@
           40,
           41
         ],
-        "matchedCount": 13,
-        "selectedCount": 13,
-        "droppedCount": 13
+        "matchedCount": 12,
+        "selectedCount": 12,
+        "droppedCount": 12
       },
       {
         "id": "hn-github-stars-50-to-99-downrank",
@@ -100,9 +100,9 @@
           17,
           31
         ],
-        "matchedCount": 0,
-        "selectedCount": 0,
-        "droppedCount": 0
+        "matchedCount": 5,
+        "selectedCount": 5,
+        "droppedCount": 5
       },
       {
         "id": "editorial-or-promotional-content-drop",
@@ -204,8 +204,8 @@
         "issueNumbers": [
           14
         ],
-        "matchedCount": 1,
-        "selectedCount": 1,
+        "matchedCount": 2,
+        "selectedCount": 2,
         "droppedCount": 0
       }
     ]
@@ -213,41 +213,41 @@
   "sources": {
     "producthunt": {
       "status": "fallback",
-      "rawCount": 16,
-      "keptCount": 6,
-      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-19；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 16 条，AI 相关候选 6 条；历史去重移除 1 条已报道或已处理日榜 Product Hunt 信号，最终发布 5 条。",
-      "discoveredKeptCount": 6,
-      "reportKeptCount": 5,
-      "previouslyReportedCount": 1
+      "rawCount": 33,
+      "keptCount": 18,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-20；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 33 条，AI 相关候选 18 条；实际 fallback：hunted_space。；历史去重移除 2 条已报道或已处理日榜 Product Hunt 信号，最终发布 16 条。",
+      "discoveredKeptCount": 18,
+      "reportKeptCount": 16,
+      "previouslyReportedCount": 2
     },
     "yc_launch": {
       "status": "ok",
-      "rawCount": 4,
-      "keptCount": 4,
+      "rawCount": 6,
+      "keptCount": 6,
       "note": "YC Launch 正常返回窗口内候选。"
     },
     "hackernews": {
       "status": "ok",
-      "rawCount": 35,
-      "keptCount": 22,
+      "rawCount": 29,
+      "keptCount": 17,
       "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
     },
     "github": {
       "status": "ok",
-      "rawCount": 14,
+      "rawCount": 12,
       "keptCount": 0,
       "note": "GitHub 默认只收固定 watchlist 的 Release。"
     },
     "huggingface": {
-      "status": "ok",
+      "status": "fallback",
       "rawCount": 20,
       "keptCount": 20,
-      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:node, Model:node；API 已读取，候选按时间窗口过滤"
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
     },
     "aihot": {
       "status": "ok",
-      "rawCount": 20,
-      "keptCount": 20,
+      "rawCount": 18,
+      "keptCount": 18,
       "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
     },
     "xhs_dealflow": {
