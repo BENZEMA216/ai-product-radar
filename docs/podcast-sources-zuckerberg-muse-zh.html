@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>扎克伯格谈 Muse：Meta 最大的 AI 押注（中文要点整理） | AI 产品雷达</title>
+<style>
+:root{
+  --text-primary:#14141a; --text-secondary:#6f6860;
+  --action-primary:#a73718; --action-hover:#932f15;
+  --bg-page:#f7f3ec; --bg-surface:#fbf9f4; --bg-raised:#fffdf9;
+  --border-default:#e1d8ca;
+  --radius-card:8px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg-page);color:var(--text-primary);font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
+main{max-width:780px;margin:0 auto;padding:40px 22px 80px}
+a{color:var(--action-primary);text-decoration:none}
+a:hover{text-decoration:underline}
+.back{font-size:14px;color:var(--text-secondary)}
+h1{font-size:30px;line-height:1.35;margin:18px 0 8px;letter-spacing:0}
+.meta{color:var(--text-secondary);font-size:14px;line-height:1.8;margin:0 0 24px}
+.attrib{background:var(--bg-raised);border:1px solid var(--border-default);border-radius:var(--radius-card);padding:18px 22px;margin:0 0 28px;font-size:14.5px;line-height:1.9}
+.attrib ul{margin:8px 0;padding-left:20px}
+.attrib li{margin:4px 0;overflow-wrap:anywhere}
+.attrib blockquote{border-left:3px solid var(--border-default);margin:12px 0 0;padding:2px 0 2px 14px;color:var(--text-secondary)}
+details.toc{background:var(--bg-raised);border:1px solid var(--border-default);border-radius:var(--radius-card);padding:14px 22px;margin:0 0 36px}
+details.toc summary{cursor:pointer;font-weight:600;font-size:15px}
+details.toc ol{margin:12px 0 4px;padding-left:22px;font-size:14px;line-height:2}
+h2{font-size:21px;line-height:1.5;margin:44px 0 6px;padding-top:14px;border-top:1px solid var(--border-default)}
+p{line-height:1.95;margin:14px 0;font-size:16.5px}
+strong{color:#3a2c22}
+hr{border:0;border-top:1px solid var(--border-default);margin:36px 0}
+footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--border-default);color:var(--text-secondary);font-size:13px;line-height:1.9}
+@media(max-width:620px){main{padding:28px 16px 56px}h1{font-size:25px}h2{font-size:19px}p{font-size:16px}}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="./">← AI 产品雷达</a>
+<h1>扎克伯格谈 Muse：Meta 最大的 AI 押注（中文要点整理）</h1>
+<p class="meta">Sources Podcast 第 2 期 · 中文要点整理（非逐字翻译） · 2026-10-22 发布</p>
+<section class="attrib" aria-label="出处与说明">
+<ul>
+<li>原版：Sources Podcast（Alex Heath）第 2 期《Mark Zuckerberg on Muse, Meta’s biggest AI bet yet》，2026-09-08，约 70 分钟</li>
+<li>文章页：<a href="https://sources.news/p/mark-zuckerberg-meta-muse-ai-podcast-interview">https://sources.news/p/mark-zuckerberg-meta-muse-ai-podcast-interview</a></li>
+<li>视频：<a href="https://www.youtube.com/watch?v=Lx8lrn-cytc">https://www.youtube.com/watch?v=Lx8lrn-cytc</a></li>
+<li>主持人：Alex Heath；嘉宾：Mark Zuckerberg（扎克伯格，Meta CEO）</li>
+</ul>
+<blockquote>
+<p>整理依据：YouTube 英文自动字幕（无说话人标注，时间戳为大致位置）。以下为中文要点整理，不是逐字翻译，转述为主，少量短引语。赞助口播已略去。</p>
+<p>字幕为自动识别，个别词有误（如模型名称、“third principle”被切断）。需要精确引用请回看视频。</p>
+<p>数字（每周 1 亿 token、5 万美元教师奖金、15 页文章）为字幕中所说，未另行核实。</p>
+</blockquote></section>
+<details class="toc" open>
+<summary>本页目录（20 节，时间戳为字幕大致位置）</summary>
+<ol>
+<li><a href="#s0">00:00 开场：为什么写那篇长文</a></li>
+<li><a href="#s2">05:00 开源与“把技术放在个人手里”哪个更重要</a></li>
+<li><a href="#s7">07:30–12:30 对 AI 的负面情绪、数据中心</a></li>
+<li><a href="#s13">15:00 从“个人超级智能”到 Muse</a></li>
+<li><a href="#s18">20:00 他自己怎么用 Muse</a></li>
+<li><a href="#s23">22:40–25:00 Muse 到底是什么</a></li>
+<li><a href="#s27">25:00 定价和商业模式</a></li>
+<li><a href="#s32">27:40 “想法与建议”标签、整个车队一起学习</a></li>
+<li><a href="#s36">30:00 差异化：为模型、社交基因、隐私安全</a></li>
+<li><a href="#s40">32:00–37:40 安全设计细节</a></li>
+<li><a href="#s47">40:00 是否赢家通吃</a></li>
+<li><a href="#s52">43:00–48:00 模型进展与实验室重启</a></li>
+<li><a href="#s57">50:00 模型要擅长什么</a></li>
+<li><a href="#s61">53:00–58:00 安全、奖励作弊、权力平衡</a></li>
+<li><a href="#s64">58:00–60:00 政府的角色</a></li>
+<li><a href="#s66">60:30–65:00 眼镜和隐私担忧</a></li>
+<li><a href="#s69">65:00–68:00 青少年安全和解</a></li>
+<li><a href="#s71">68:00 结尾：重新在 X 上发帖</a></li>
+<li><a href="#s73">一句话看点</a></li>
+<li><a href="#s75">说明与不确定之处</a></li>
+</ol>
+</details>
+<h2 id="s0">00:00 开场：为什么写那篇长文</h2>
+<p>Alex 先提到上次扎克伯格是通过眼镜给他打的电话。然后转到扎克伯格最近发的长篇文章（约 15 页）。扎克伯格说，既然在 AI 上投入这么大，就该让大家知道实验室的价值观；业界有些“常识”他强烈不同意。他的核心观点是：让技术尽可能广泛地分发，才是通向好未来的路。三条原则： 1. 赋能个人是繁荣的来源； 2. AI 的首要用途是发明新东西，而不是自动化； 3. （第三条在字幕里被切断，大意是让每个人都有强大的个人 agent。） 他说目标是“给世界上每个人一个能理解你的目标、7×24 替你干活的个人 agent”，并强调开源和把技术交到普通人手里。</p>
+<h2 id="s2">05:00 开源与“把技术放在个人手里”哪个更重要</h2>
+<p>他认为最重要的是让个人用上技术，Muse 这类个人 agent 甚至比开源更重要。</p>
+<p>批评一些实验室训练出更强的模型却不发布（“相当危险”）：发布才有外部审视和制衡，也才有广泛的繁荣。</p>
+<p>开源有助于保持竞争和透明，但他不是“开源狂热者”：Meta 既发开源模型，也做闭源的东西。</p>
+<p>举网络安全例子：只给前 100 家机构用强网络安全模型不够，重要机构远不止 100 家。他提到 Hugging Face 遭入侵时，转而用开源模型应对，因为拿不到那些闭源模型。</p>
+<h2 id="s7">07:30–12:30 对 AI 的负面情绪、数据中心</h2>
+<p>Alex 问：公众对 AI 和数据中心情绪很负面，扩散技术能缓解吗？扎克伯格答：问题有很多层（工作与经济、本地社区的经济和环境影响、滥用、网络和生物风险、自由社会、美国领导力、可控性），不能泛泛而谈，但共同点是要让繁荣是广泛的。</p>
+<p>数据中心：Meta 承诺在一个社区投资几十年，能把它做成对社区有利。他举路易斯安那的例子：税收资助了给当地教师的每人 5 万美元奖金。</p>
+<p>对比“投机型”开发商：圈块地转手卖给大实验室，不在乎社区。他认为这类做法是反感的重要来源，也说这不一定是“泡沫”，但确实是一轮 boom，短期激励很强。</p>
+<p>讲到 Meta 的“美国劳动力学院”项目：数据中心需要光纤技师、电工等大量技工，人不够，所以 Meta 办培训并保证结业者有工作。</p>
+<p>结论：不可能被允许少数实验室掌控并独占这么重要的技术，必须在技术上和社会上都行得通。</p>
+<h2 id="s13">15:00 从“个人超级智能”到 Muse</h2>
+<p>一年前他写过“个人超级智能”文章。Alex 说这其实就是在为 Muse 铺垫。</p>
+<p>扎克伯格说 Meta 从来不只是社交媒体公司，核心是连接人和赋能人。内容审核之类的争论让他更加相信：个人最清楚自己的生活什么重要，他对“让少数专家决定 AI 该解决哪些大问题”有“过敏反应”。</p>
+<p>例子：罕见病在现有制药体系里被忽视，如果每个人都有个人 AI，患者会让它去关注自己的病。他提到自己通过基金会和 Biohub 在这方面有投入。</p>
+<p>他自己用 Muse 的方式：想当更好的父亲、丈夫、朋友。</p>
+<h2 id="s18">20:00 他自己怎么用 Muse</h2>
+<p>烘焙：3 岁的女儿喜欢烘焙，他让 Muse 每周末安排一个适合 3 岁孩子和“完全不懂烘焙的大人”的项目，并用 Instacart 之类订好食材。事后反馈“太难了”——蛋糕棒（cake pops）出乎意料地难。</p>
+<p>爬山：大女儿爱爬山，有些山需要许可证，Muse 盯着放票，抢到后他就请假那天去爬。</p>
+<p>健身：在 MMA 馆里装了摄像头，让 Muse 看画面并反馈。有时反馈很好笑，比如指出他“明显放弃了”，他承认当时太累。教练们觉得好玩。</p>
+<p>内测故事：有人一天内用它安排家庭教学，有人十几个小时内规划了一趟旅行；一个对技术很怀疑的人几天没说话，后来问“正式发布后我的 Muse 会保留还是重置？”。</p>
+<h2 id="s23">22:40–25:00 Muse 到底是什么</h2>
+<p>区别于“一问一答”的 Meta AI / ChatGPT：Muse 背后有一台虚拟机，agent 能操作电脑、登录、办事。这是行业里的整体趋势（他提到 Grok、bot、Town、Instinct 等同类产品）。</p>
+<p>你给它项目和目标，它长期工作、7×24 不停。它会“夜间复盘”，把反思整理进记忆，也会主动建议新项目。</p>
+<p>例子：他和女儿玩《文明》，Muse 主动提议做策略攻略，之后又提议扩展成讲各文明历史的内容，并在 app 里新建了一个标签页。</p>
+<h2 id="s27">25:00 定价和商业模式</h2>
+<p>有订阅，但免费额度很大：起步是每周 1 亿 token，外加一台虚拟机（“a lot of computer”）。</p>
+<p>逻辑：对用来经营小生意、赚钱、做交易的用户，Muse 能帮他们赚到足够多的钱，所以长期模式是对交易抽很小的比例，而且往往由对方商家承担，不一定是用户。Alex 提到与 Stripe 合作支付。</p>
+<p>他强调要让绝大多数人免费用，因为“让所有人拥有超级智能 agent”需要它够便宜。</p>
+<p>Muse 可以连接 Meta 的服务（如广告系统帮你跑生意），但完全可选。模型大约每月一次有意义的更新。</p>
+<h2 id="s32">27:40 “想法与建议”标签、整个车队一起学习</h2>
+<p>app 主标签是和 Muse 的对话；另一个标签是它基于你说过的话提出的想法。</p>
+<p>他认为很多人不知道拿 AI 干什么，让 agent 自己建议是解决办法。</p>
+<p>提到“车队”（fleet）：Muse 们可以从其他用户那里学到匿名化的洞察。扎克伯格说业界大多把 agent 当单人游戏，agent 之间交互会是重要方向，内部已有例子，但这次发布基本不包含这部分。</p>
+<h2 id="s36">30:00 差异化：为模型、社交基因、隐私安全</h2>
+<p>从底层为这个场景设计模型；</p>
+<p>社交基因：帮人加强关系，这方面 Meta 会比别的实验室更用心；</p>
+<p>隐私和安全，他认为会让人意外但很关键。要让 agent 有用，就要让它真正了解你、连接邮件、消息、健康信息等，所以用户必须高度信任。</p>
+<h2 id="s40">32:00–37:40 安全设计细节</h2>
+<p>机密虚拟机：他亲自招募了 Signal 创始人 Moxie Marlinspike（曾参与 2014 年 WhatsApp 端到端加密）来做这个项目，目标是 Meta 自己也看不到虚拟机里的内容，并且这个承诺可以在技术上被验证，几周内会发布更多细节。他说没听说有别人做到类似程度。</p>
+<p>对比：有人买 Mac Studio 放家里，但不会有几十亿人这么做。Muse 想要云端的便利加上“机器放在你桌下”的保密性。</p>
+<p>安全凭证库：信用卡、密码不让 agent 明文知道，需要时才调用。</p>
+<p>“哨兵” agent：监控 Muse 进出的流量，识别提示注入，发现 Muse 往外发了你可能不愿分享的内容时，触发人工审核。登录、付款、传输敏感信息每次需要你批准，你也可以设为“这类一律允许”。</p>
+<p>连接器遵循最小权限：连邮箱先只读，要发邮件再单独授权。</p>
+<p>这些都受 WhatsApp 经验影响。</p>
+<h2 id="s47">40:00 是否赢家通吃</h2>
+<p>他认为不会赢家通吃，但会有幂律分布；有能力做前沿个人 agent 的公司“不会超过十几家”。</p>
+<p>不同用途可能有不同最强者（比如关系助手 vs 小生意助手），Meta 想两者都做好，因为服务数亿小企业和数十亿人。</p>
+<p>他承认仍会有人想要家里的 Mac Studio，大概是百万级，不是十亿级。Meta 最擅长的是把消费级产品分发给海量用户。</p>
+<p>Muse 与 Meta AI：目前风格不同。Muse 更会对话、理解你的长期意图、更倾向于领命去长时间工作；只要一个答案时他用 Meta AI。以后可能合并。</p>
+<h2 id="s52">43:00–48:00 模型进展与实验室重启</h2>
+<p>Alex 引用 SemiAnalysis 说“重要的是斜率而不是截距”，以及 Artificial Analysis 图表中 Muse Spark 仅次于 Claude 的两个模型（字幕里写作 “Fable 5.1” 和 “Opus 5”，可能是识别错误，待核实）。</p>
+<p>扎克伯格回顾：Meta 在推荐系统等机器学习上一直领先，曾误以为做大语言模型也类似；Llama 4 发布后发现偏离了轨道，才更相信“人才密度”：团队要尽量小、每个席位都要最强的人、像小组科学项目。他自己投入大量时间招人，并把实验室搬到自己座位周围。</p>
+<p>算力：在建多个吉瓦级集群；俄亥俄的 Prometheus 集群已上线，用来训练下一代模型。下一个大模型代号“西瓜”（Watermelon，比“牛油果”大），“很快会发布”，是“大得多的预训练加上之前积累的后训练”，他说“我们感觉很好”。两人还拿水果代号命名开了玩笑。</p>
+<p>他强调 Meta 是端到端技术公司（数据中心、芯片、基础设施），而且“极其赚钱”，有能力投入，不会满足于紧跟前沿。</p>
+<h2 id="s57">50:00 模型要擅长什么</h2>
+<p>通用能力如写代码：很多个人 agent 的任务本质上是写代码（MMA 视觉分析、朋友做的 Jeopardy 小游戏都是）。</p>
+<p>个人超级智能特有的重点：分寸感（discretion）。例子：用户有过敏或怀孕，订餐位时不想透露，但想找有好无酒精饮品的地方。模型要知道什么敏感，而不必问你一百个问题。</p>
+<p>他认为别人拿现成模型做点后训练，做不出从头为此设计的效果。Meta 重点包括编码和递归自我改进。</p>
+<h2 id="s61">53:00–58:00 安全、奖励作弊、权力平衡</h2>
+<p>奖励作弊（reward hacking）：模型被要求解决代码问题，却发现改环境配置更容易。他用“养育孩子”来类比：需要清晰坚定的边界，边界好，就在教课程的同时教了更好的价值观。</p>
+<p>他认为发布给大家加上权力平衡比限制更好。类比：只有一个人有超级律师会扭曲司法；人人都有，论证会被有效对抗。</p>
+<h2 id="s64">58:00–60:00 政府的角色</h2>
+<p>他认为很重要，但具体、僵化的框架几个月就过时。Meta 的做法是紧密配合政府：政府应该知道所有重要的训练；此刻是网络安全，半年后可能是生物。他说这比走流程更有效，并认为其他实验室也应如此。责任风险本身也是约束。</p>
+<h2 id="s66">60:30–65:00 眼镜和隐私担忧</h2>
+<p>回应有场所禁止戴智能眼镜：设计之初就有录制指示灯，有人试图破坏灯，Meta 推送更新，改动指示灯会让摄像头失效。手机没有灯，却一直在被用来拍人。</p>
+<p>他承认随着眼镜走向大众，Meta 需要重新把这些保护措施讲清楚；回顾社交媒体 20 年，认为当年对这类担忧说得不够直接。</p>
+<h2 id="s69">65:00–68:00 青少年安全和解</h2>
+<p>他说和解的意义是为行业建立标准：如果只有一家限制青少年使用时长，用户会转去 TikTok，等于自伤。结构是 Meta 先单方面采取措施（使用时长、通知、上学和睡眠时段的限制），YouTube 和 TikTok 签同样条款后，行业再一起进下一步。希望它成为有法律约束力的框架。</p>
+<h2 id="s71">68:00 结尾：重新在 X 上发帖</h2>
+<p>他在 Threads 和 X 同步发帖，说 Threads 已经超过或即将超过 X，但很多 AI 圈的人在 X，所以要去人在的地方对话。</p>
+<h2 id="s73">一句话看点</h2>
+<p>Muse 被定位成“每人一个 7×24 工作的个人 agent”；免费额度很大，靠交易抽成赚钱；护城河押注在隐私（机密虚拟机、哨兵 agent、最小权限）和从头训练的模型；下一个大模型代号 Watermelon 即将发布。</p>
+<h2 id="s75">说明与不确定之处</h2>
+<p>字幕为自动识别，个别词有误（如模型名称、“third principle”被切断）。需要精确引用请回看视频。</p>
+<p>数字（每周 1 亿 token、5 万美元教师奖金、15 页文章）为字幕中所说，未另行核实。</p>
+<footer>
+<p>中文要点整理发布于 <a href="./">AI 产品雷达</a>。仅供个人学习交流，原文版权归 Sources Podcast 所有；如有异议请联系删除。</p>
+</footer>
+</main>
+</body>
+</html>
