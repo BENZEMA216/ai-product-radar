@@ -1,0 +1,415 @@
+{
+  "generatedAt": "2026-10-22T15:59:30.000Z",
+  "date": "2026-10-22",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Claude Opus 5.5 and Claude Sonnet 5.5 are now available in Google Antigravity",
+      "link": "https://cloud.google.com/blog/products/ai-machine-learning/claude-opus-55-and-claude-sonnet-55-available-in-antigravity",
+      "publishedAt": "2026-10-20T16:00:00.000Z",
+      "author": "Marialaura Garcia Product Marketing Manager Google Cloud",
+      "summary": "Whether you are iterating on a quick bug fix or planning a complex migration, different tasks call for different models. In keeping with Google Cloud's commitment to an open ecosystem and to give developers the right model for every job, Claude Opus 5.5 and Claude Sonnet 5.5 are now available in Google Antigravity for Google Cloud customers. Claude Opus 5.5 is built for complex work while Claude Sonnet 5.5 is a faster, lower-cost complement. Once enabled by an administrator, developers can select Claude Opus 5.5 and Sonnet 5.5 directly from the model picker. Administrators can also select Google’s Gemini models, including Gemini 3.8 Flash and Gemini 4 Argon. The models apply across Antigravity 2.0, Antigravity CLI and our recently released Antigravity IDE extensions for VS Code, JetBrains IntelliJ, and Visual Studio. This lets you choose the right model for the job, under a unified enterprise billing and security boundary. In this post, we’ll share two engineering patterns for building in Antigravity using these models. To view the entire list of models supported in Antigravity across subscriptions, see our documentation here . Multi-model engineering patterns in Antigravity Having multiple model families available inside the same agent harness unlocks practical multi-model workflows that improve code quality while controlling latency and cost. Pattern 1: Cross-model verification (\"LLM-as-a-Judge\") in loop and graph workflows When building agentic loops or multi-step graph workflows, using the same model to both write code and review its own output can reinforce model-specific blind spots. Pairing two distinct model families, one as the implementer and another as the validator (judge), provides independent verification before moving to the next stage of a workflow. In Antigravity, you can run this pattern either interactively or via automated subagents: Plan and implement with Model A: Start in planning mode using Claude Opus 5.5 or Gemini 4 Argon to design and implement a multi-file change. Validate with Model B: Before committing or advancing the loop, switch models, or invoke a one-shot /model check in the CLI, to have a different model family critique the implementation against your test suite and requirements. Pattern 2: Pairing reasoning models with Flash subagents Complex engineering tasks often combine a few high-reasoning decisions with dozens of high-volume, mechanical lookups (searching files, grepping logs, checking lint output, or classifying test failures). Running every lookup on a frontier model can increase both latency and spend. Antigravity's Subagent customization system ( .agents/agents/*.md ) lets you assign specific model tiers ( inherit , flash , or pro ) to specialized subagents. When your primary session is running a more powerful model. Subagents configured with model: inherit use your active session model for deep reasoning subtasks. Subagents configured with model: flash offload high-speed search, classification, and triage work to Gemini Flash models. For example, you can define a fast log-triage subagent in .agents/agents/test-triager.md : code_block )])]> And a cross-model code reviewer subagent in .agents/agents/gemini-judge.md : code_block )])]> With this setup, you can delegate rapid test-and-classify loops to test-triager and trigger cross-model-judge to validate the final diff, combining the strengths of each model in a single workflow. Getting started Claude Opus 5.5 and Claude Sonnet 5.5 are available now for Google Cloud customers using Antigravity: Administrators (Gemini for business): Third-party partner models do not draw from the pooled Gemini Enterprise Standard and Plus edition monthly token quota. Instead, usage is billed on a pay-as-you-go basis through your existing Google Cloud Billing account, so overages must be enabled. Visit “Gemini Enterprise” > “Settings” > “AI developer tools” in the Google Cloud Console to configure overage billing, spend limits and authorize partner models for your organization. See Configure AI developer tools settings for step-by-step instructions. Administrators (Gemini platform): You can also enable partner models if you are using Antigravity through the API in Gemini platform. Enable Claude models in Model Garden and complete the standard Anthropic terms. Developers: Update to the latest version of Antigravity 2.0, the Antigravity CLI, or the Antigravity IDE extensions, and open the model picker (or run /model ) to select the right model for your task. To learn more about enterprise governance and multi-agent configuration, visit the Google Antigravity Enterprise documentation . You can switch the active model between turns in the same conversation thread while preserving workspace state, open artifacts, and terminal context. Note: Lightweight first-party Gemini models continue to run in the background to handle high-frequency client-side coordination, such as context management and summaries. They consume first-party tokens and can incur charges.",
+      "evidenceLink": "",
+      "score": 97.57202380952381,
+      "core": "Whether you are iterating on a quick bug fix or planning a complex migration, different tasks call for different models. In keeping with Google Cloud's commitment to an open ecosystem and to give developers the right model for every job, Claude Opus 5.5 and Claude Sonnet 5.5 are now available in Google Antigravity for Google Cloud customers. Claude Opus 5.5 is built for complex work while Claude Sonnet 5.5 is a fast…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-22T15:59:30.000Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Nemotron 3.5 Lightning now available on AI Gateway for free",
+      "link": "https://vercel.com/changelog/nemotron-3-5-lightning-now-available-on-ai-gateway-for-free",
+      "publishedAt": "2026-10-14T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "Nemotron 3.5 Lightning from NVIDIA is now available for free on AI Gateway as nvidia/nemotron-3.5-lightning-free , served by NVIDIA. Nemotron 3.5 Lightning is an open-weight reasoning and chat model for long-running agents, sub-agent work, chatbots, and RAG systems. The model has 30B parameters with 3B active per token, in a hybrid Mixture-of-Experts design that interleaves Mamba-2 and MoE layers with a few attention layers. It has a 1M token context window and supports tool calling and structured outputs. Note: The provider may retain prompts for model improvement. Call Nemotron 3.5 Lightning through the AI SDK , the Chat Completions , Responses , and Messages APIs, or a coding agent connected to AI Gateway. Use nvidia/nemotron-3.5-lightning-free as the model name: To use it in Claude Code, Codex, Cursor, and more, install the latest Vercel CLI and run setup: Then select nvidia/nemotron-3.5-lightning-free in the agent. See the coding agents guide for details. AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. You can view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 74,
+      "core": "Nemotron 3.5 Lightning from NVIDIA is now available for free on AI Gateway as nvidia/nemotron-3.5-lightning-free , served by NVIDIA. Nemotron 3.5 Lightning is an open-weight reasoning and chat model for long-running agents, sub-agent work, chatbots, and RAG systems. The model has 30B parameters with 3B active per token, in a hybrid Mixture-of-Experts design that interleaves Mamba-2 and MoE layers with a few attentio…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-22T15:59:30.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "AI Governance: One view of agent activity",
+      "link": "https://about.gitlab.com/blog/ai-governance-dashboard",
+      "publishedAt": "2026-10-20T00:00:00.000Z",
+      "author": "Alisa Ho https://about.gitlab.com/blog/authors/alisa-ho/",
+      "summary": "AI coding agents are writing and changing code, from GitLab Duo Agent Platform agents to externally connected agents like Claude Code, Cursor, and Codex. You are accountable for what those agents do, yet most of their activity stays invisible: which agents ran, who used them, and what they touched. Teams often struggle with understanding whether a developer used a tool or model that is approved or not. The AI Governance Dashboard, now in beta, gives you one place to see agent activity across your top-level group. It brings GitLab Duo Agent Platform agents and the external agents your developers connect into one view, showing which agents ran, who used them, and which projects they touched. The dashboard also shows the tools and sessions associated with each agent. With that audit trail in place, you can answer the questions auditors and risk owners ask: who ran this agent, what did it do, and who is accountable for it. Every agent action gets recorded in one audit trail, detailing the model it used, the tools it called, and the project it ran in. You can now investigate a session or hand an auditor evidence without stitching together multiple sources of data. Watch a demo of the AI Governance Dashboard: Gain visibility into AI agent activity More AI agents are running across your organization than you can track by hand. GitLab Duo Agent Platform agents run inside GitLab, while externally connected agents like Claude Code, Cursor, and Codex run on developers' own machines. The result is the shadow AI problem: real work happening in your projects, from many tools, that no one accountable can see in one place or tie to a team member. The AI Governance Dashboard brings that activity into view and connects each agent to the developer behind it. To turn it on in your top-level group, go to AI > Governance . GitLab Duo Agent Platform agents and externally connected agents appear together, and you can toggle between the views to see all agents, just Duo Agent Platform Agents or just externally connected agents. Three tiles at the top give you a baseline: how many agents ran, how many sessions they started, and how many tool calls they made over the past seven or 30 days. Each tile shows the daily trend and the change from the previous period, so a spike, like a new tool your team started using last week, stands out. The cards below tell you where to act. You can check whether the agents your developers rely on match the ones you approved, see which projects carry the most agent activity and need closer review, and know who to talk to when usage shifts. Prove what every agent did Managing AI risk starts with knowing what every agent did and who prompted it. Traditional audit trails were built for human changes, so that record is often scattered across tools or missing. GitLab records every agent action as an audit event, so you can investigate an incident or answer an auditor from one place. Open any GitLab Duo Agent Platform session to see the prompt the developer sent, the tools the agent called, the MCP servers it used, the model that ran, and the project it changed. From there, you can download an immutable copy of the session as evidence, or stream the events to your security information and event management (SIEM) system. Set up your dashboard today It only takes a few steps to set up the AI Governance Dashboard: Check access. The dashboard needs the Owner role on the top-level group, or a custom role with the read_agent_artifacts ability. If the people who should watch agent activity don’t have Owner access, create that custom role first. Turn on AI audit event storage. Storage is off by default, and events are only recorded after you turn it on. In your top-level group, go to Settings > GitLab Duo , select Change configuration , and then Store AI audit events in the Data and privacy section. You need to have an Owner or Security Manager role to have access. Open the dashboard. In your top-level group, go to AI > Governance , and select the Dashboard tab to see your GitLab Duo Agent Platform activity. Connect your externally connected agents. Sign in with GitLab CLI (glab) 1.122.0 or later on macOS or Linux. To capture Claude Code sessions, run glab govern setup , which installs the Claude Code hooks. To also capture Cursor and Codex sessions, run glab govern setup --agents codex,cursor , which adds a background job that sends those sessions every 30 minutes. Run glab govern doctor to confirm the setup works. The AI Governance Dashboard is in beta for GitLab Premium and Ultimate customers. Turn it on for your top-level group to keep oversight of AI usage as fast as your teams adopt it. Not on GitLab yet? Try GitLab Ultimate for free and use the AI Governance Dashboard to get started.",
+      "evidenceLink": "",
+      "score": 73.42916666666667,
+      "core": "AI coding agents are writing and changing code, from GitLab Duo Agent Platform agents to externally connected agents like Claude Code, Cursor, and Codex. You are accountable for what those agents do, yet most of their activity stays invisible: which agents ran, who used them, and what they touched. Teams often struggle with understanding whether a developer used a tool or model that is approved or not. The AI Govern…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-22T15:59:30.000Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Building full virtual vehicles on Google Cloud: From AAOS to the smallest MCU",
+      "link": "https://cloud.google.com/blog/topics/manufacturing/building-full-virtual-vehicles-on-google-cloud-from-aaos-to-the-smallest-mcu",
+      "publishedAt": "2026-10-19T16:00:00.000Z",
+      "author": "Florian Haubner Industry Architect Lead Automotive",
+      "summary": "Imagining traditional gearheads getting their hands on software-defined vehicles is an amusing thought experiment. With their socket wrenches and air compressors at the ready, they might be confused to encounter core functions more likely to run on 1s and 0s than oil and belts. But across the auto industry these days, more and more vehicles feature prominent systems built using cloud-native development, continuous integration/continuous delivery, fast digital iteration, and plenty of AI. But there’s still a big gap to be found in many automakers’ and Tier 1 suppliers’ cloud-based development processes. On the one hand, these companies are commonly using software to develop vehicles’ digital entertainment and information screens, or other onboard high-performance computers. On the other, the dozens of microchips and control modules that make a car a car these days — such as gateways, body controllers, zone control units, sensor and actuator nodes — are still frequently hardwired to physical chips when they’re constructed, making them very difficult to update, reprogram, or expand after the vehicle drives off the factory floor. Teams have to wait for benches, samples, and rigs, and integration can easily slip to the end of the development process, where defects are most expensive to fix. This inherent inefficiency has become a leading bottleneck. After all, manufacturers can’t really claim vehicles are software-defined if most of their electronics only function when connected to physical hardware and if developers are leaning heavily on actual hardware. With Horizon, our agentic innovation platform for developing software-defined vehicles, our vision is to help manufacturers avoid these inefficiencies by working with partners like RemotiveLabs . The cockpit already runs in the cloud The Android team has invested a significant amount of time and effort over the last few years on enabling seamless development of the many digital systems in vehicles’ cockpits. Android Automotive OS (AAOS) runs inside Google’s official virtual testing environment for Android, Cuttlefish , which itself runs comfortably on Arm-based Google Cloud instances . With this approach, developers can build, boot, and test virtual versions of their infotainment stacks on the same Arm architecture that ships in vehicles. And with the recent launch of Android 17 and AAOS SDV , this capability is also extended to further domains, whenever AAOS SDV is used. Deploying it with Cuttlefish, for example, proves the model: representative software, on representative architecture, in the cloud, on demand. The question that still needs to be answered is how to extend that model to the rest of the vehicle, especially when other operating systems are involved. The harness around the virtual vehicle That’s where RemotiveTopology comes into play. As the harness around the virtual vehicle, it’s the layer that connects AAOS in Cuttlefish to a full, simulated electrical and electronic (E/E) architecture: the rest of the vehicle’s onboard computers, its data networks, and the live signals that make the system function like a real vehicle rather than a collection of standalone apps. RemotiveTopology automatically utilizes manufacturers’ existing network design files to build a working, virtual version of their cars’ networks. This is vehicle-as-code: the E/E architecture expressed as an executable specification, versioned and provisioned like infrastructure-as-code. In this way, an entire vehicle can be spun up on demand. Cockpit software talks to the rest of the vehicle exactly as it would in a real vehicle. As a result, developers get full and continuous signal and cross-domain visibility, so they can see real-time system status. And because it is built on standard Linux tooling, the same topology runs on a laptop and in a contiguous integration pipeline on Google Cloud. Integrate across domains early, not late The payoff for using this approach is that all onboard systems can be developed and integrated with software before any of them are connected to a vehicle’s hardware. That’s beneficial because the most difficult (and latest) integration in a vehicle’s development is bringing all its systems together. For example, advanced driver assistance systems (ADAS) produce object lists, trajectories, and mode requests that the cockpit has to render and react to, while the infotainment system and information cluster have to reflect driving state while body and chassis nodes sit in the loop. With the full topology live on Google Cloud, the infotainment system and ADAS can operate simultaneously within a virtual vehicle, exchanging real signals over the simulated network. This means it’s possible to exercise handoffs like an ADAS event surfacing in the cluster or a driver-mode change rippling across domains from day one in continuous integration long before the benches and samples line up. In this way, developers can be confident they’ll discover multi-domain integration long before the end of the process so that they can test continuously from the start. The full vehicle frontier At the heart of this work is a shared desire to bring scalable software development to even the smallest and most common nodes in a vehicle, its microchips and control modules. That’s because these are the parts that have traditionally been wired to hardware, and as a result are the biggest blocker to fully software-defined vehicles. The ultimate goal is that the same software that runs in the cloud can run on vehicles’ actual control modules with no re-tooling or re-validation needed to move between them. That parity is natural with Arm-based Google Cloud infrastructure because the cloud and the car share an instruction set. Google's Axion makes it straightforward: C4A metal, a bare-metal Arm instance , is provided explicitly for automotive systems development and Android software development, giving direct hardware access without unnecessary software layers and delivering the consistent performance that vehicle systems require. Taken together, this holistic system allows teams, for the first time, to develop and integration-test an entire vehicle’s systems in the cloud and then apply it to the actual vehicle without having to rewrite it. Why now, and where to start The payoff is not abstract. Treating the vehicle as code and moving integration into the cloud compresses the slowest, most expensive phase of a program. Early customer engagements with RemotiveLabs have measured more than 10x faster integration cycles. And the development loop is now changing faster than the hardware loop: AI-assisted and agentic workflows can rapidly generate, test, and refine vehicle software, but only virtual systems provide the required scale. Every element that can’t be virtualized can slow the entire development process down. RemotiveTopology provides this architecture as vehicle-as-code and makes it accessible for developers, testers, and autonomous AI agents alike. Best of all, there is no new third-party tooling to adopt just to get started. Instead, RemotiveLabs publishes an open-source simplified vehicle on GitHub that anyone can run in minutes on standard Linux tooling and platform definitions already in place. Full existing toolchains plug in as a manufacturer or Tier1 supplier scales, and RemotiveTopology can be easily dropped into an Arm-based Google Cloud environment. For those building software-defined vehicles whose virtual development stops at the cockpit, it’s time to start with an open-source example, bring unique platform definitions, and run an entire vehicle in the cloud. RemotiveTopology is available in Horizon for easy usage in combination with other Horizon modules.",
+      "evidenceLink": "",
+      "score": 72.85773809523809,
+      "core": "Imagining traditional gearheads getting their hands on software-defined vehicles is an amusing thought experiment. With their socket wrenches and air compressors at the ready, they might be confused to encounter core functions more likely to run on 1s and 0s than oil and belts. But across the auto industry these days, more and more vehicles feature prominent systems built using cloud-native development, continuous i…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-22T15:59:30.000Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "red_hat_ai_engineering",
+      "source": "Red Hat Developer · AI",
+      "title": "Local inference and benchmarking with Red Hat AI Inference",
+      "link": "https://developers.redhat.com/articles/2026/10/22/local-inference-and-benchmarking-red-hat-ai-inference",
+      "publishedAt": "2026-10-22T15:44:15.000Z",
+      "author": "Ryan Malone, Evgenii Dushkin",
+      "summary": "Evaluating local large language model (LLM) performance before scaling to enterprise production doesn't require complex infrastructure. With Red Hat Enterprise Linux (RHEL) and Red Hat AI Inference , you can launch, benchmark, and test an OpenAI-compatible server on your local hardware in minutes. The post Local inference and benchmarking with Red Hat AI Inference appeared first on Red Hat Developer .",
+      "evidenceLink": "",
+      "score": 71.22628968253969,
+      "core": "Evaluating local large language model (LLM) performance before scaling to enterprise production doesn't require complex infrastructure. With Red Hat Enterprise Linux (RHEL) and Red Hat AI Inference , you can launch, benchmark, and test an OpenAI-compatible server on your local hardware in minutes. The post Local inference and benchmarking with Red Hat AI Inference appeared first on Red Hat Developer .",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-22T15:59:30.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Using LLM for confidence scoring is a bad idea",
+      "link": "https://rumple.github.io/blog/2026/10/20/asking-llm-for-confidence.html",
+      "publishedAt": "2026-10-21T04:27:51.000Z",
+      "author": "jimauthors https://news.ycombinator.com/user?id=jimauthors",
+      "summary": "LLM-based agents can do a lot of tasks. Or, at least, they can appear to do them. For example, they write code, summarize papers, plan trips, and fill in forms. If you ask one for a probability or a confidence score, it will give you one of those too. I have seen many agent designers use LLMs to generate confidence scores in this way. The problem is that there is no good reason to trust that number. This post is about why we cannot rely on an LLM to generate a confidence score.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50176082",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 162,
+        "comments": 91
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-22T15:59:30.000Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 63.12861288306011,
+      "core": "LLM-based agents can do a lot of tasks. Or, at least, they can appear to do them. For example, they write code, summarize papers, plan trips, and fill in forms. If you ask one for a probability or a confidence score, it will give you one of those too. I have seen many agent designers use LLMs to generate confidence scores in this way. The problem is that there is no good reason to trust that number. This post is abo…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "n8n_ai_engineering",
+      "source": "n8n Blog",
+      "title": "Stateful vs. Stateless: Managing Context in AI Agent Builds",
+      "link": "https://blog.n8n.io/stateful-vs-stateless",
+      "publishedAt": "2026-10-22T15:44:39.000Z",
+      "author": "n8n team",
+      "summary": "Stateful versus stateless design changes how systems scale and remember context. Learn when to use memory nodes, state stores, or both.",
+      "evidenceLink": "",
+      "score": 62.732321428571424,
+      "core": "Stateful versus stateless design changes how systems scale and remember context. Learn when to use memory nodes, state stores, or both.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-22T15:59:30.000Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentconn_engineering",
+      "source": "AgentConn Field Reports",
+      "title": "Who Audits the Agent? Security Review Is a Category",
+      "link": "https://agentconn.com/blog/who-audits-the-agent-security-review-skills",
+      "publishedAt": "2026-10-21T00:00:00.000Z",
+      "author": "AgentConn Team",
+      "summary": "Cloudflare's security-audit-skill hit 37K stars. Security review for coding agents isn't a feature request — it's a shippable product category.",
+      "evidenceLink": "",
+      "score": 61.93789682539683,
+      "core": "Cloudflare's security-audit-skill hit 37K stars. Security review for coding agents isn't a feature request — it's a shippable product category.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-22T15:59:30.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Qwen3-Coder writes less secure code when told it's for a US persona",
+      "link": "https://www.hirundo.io/blog/qwen3-coder-vulnerabilities",
+      "publishedAt": "2026-10-21T12:22:39.000Z",
+      "author": "mattifrank https://news.ycombinator.com/user?id=mattifrank",
+      "summary": "Chinese coding models write less secure code for Beijing&#x27;s adversaries. On Qwen3-Coder, we traced the gap to the weights and closed it by removing the model&#x27;s CCP alignment.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50179706",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 241,
+        "comments": 117
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-22T15:59:30.000Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 61.10706703499059,
+      "core": "Chinese coding models write less secure code for Beijing&#x27;s adversaries. On Qwen3-Coder, we traced the gap to the weights and closed it by removing the model&#x27;s CCP alignment.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "red_hat_ai_engineering",
+      "source": "Red Hat Developer · AI",
+      "title": "Agentic partners integration: AI support agents for Microsoft Azure Red Hat OpenShift",
+      "link": "https://developers.redhat.com/articles/2026/10/22/agentic-partners-integration-ai-support-agents-for-microsoft-azure-red-hat-openshift",
+      "publishedAt": "2026-10-22T13:01:36.000Z",
+      "author": "Carlos Camacho Gonzalez, Sharon Dashet",
+      "summary": "Red&nbsp;Hat&nbsp;AI quickstarts are ready-to-run demo applications that demonstrate real-world AI use cases, designed for seamless deployment on the Red&nbsp;Hat&nbsp;AI platform. The post Agentic partners integration: AI support agents for Microsoft Azure Red Hat OpenShift appeared first on Red Hat Developer .",
+      "evidenceLink": "",
+      "score": 58.52710317460318,
+      "core": "Red Hat AI quickstarts are ready-to-run demo applications that demonstrate real-world AI use cases, designed for seamless deployment on the Red Hat AI platform. The post Agentic partners integration: AI support agents for Microsoft Azure Red Hat OpenShift appeared first on Red Hat Developer .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-22T15:59:30.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "sierra_engineering",
+      "source": "Sierra Blog",
+      "title": "𝜏-Entity: Can voice agents get the details right?",
+      "link": "https://sierra.ai/blog/tau-entity-can-voice-agents-get-the-details-right",
+      "publishedAt": "2026-10-22T14:02:33.000Z",
+      "author": "Soham Ray",
+      "summary": "Today we’re introducing 𝜏-Entity, a benchmark that measures whether an agent can capture a detail correctly, recognize when it might be wrong, and repair the mistake.",
+      "evidenceLink": "",
+      "score": 57.78855158730158,
+      "core": "Today we’re introducing 𝜏-Entity, a benchmark that measures whether an agent can capture a detail correctly, recognize when it might be wrong, and repair the mistake.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-22T15:59:30.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "5 production challenges in multi-agent systems and how Deep Insight solved them",
+      "link": "https://aws.amazon.com/blogs/machine-learning/5-production-challenges-in-multi-agent-systems-and-how-deep-insight-solved-them",
+      "publishedAt": "2026-10-21T23:36:47.000Z",
+      "author": "Yoonseo Kim",
+      "summary": "Many teams build a multi-agent AI prototype in days but hit a wall in production. This post defines five production challenges (orchestration, per-agent model selection, reliable operation, secure code execution, and monitoring) and shows how Deep Insight, an open source multi-agent system on AWS, solves each.",
+      "evidenceLink": "",
+      "score": 53.55787698412698,
+      "core": "Many teams build a multi-agent AI prototype in days but hit a wall in production. This post defines five production challenges (orchestration, per-agent model selection, reliable operation, secure code execution, and monitoring) and shows how Deep Insight, an open source multi-agent system on AWS, solves each.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-22T15:59:30.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Securing AI agent identity with X.509 PKI on AWS",
+      "link": "https://aws.amazon.com/blogs/machine-learning/securing-ai-agent-identity-with-x-509-pki-on-aws",
+      "publishedAt": "2026-10-20T16:03:48.000Z",
+      "author": "Deepakkumar Sharma",
+      "summary": "Learn how to secure multi-agent AI systems with cryptographic identity using Keyfactor EJBCA and AWS services. This reference architecture combines signed request envelopes, user-signed delegation assertions, RFC 8693 audience-scoped tokens, and real-time OCSP revocation to prove agent identity and prevent request forgery across agent-to-agent and MCP tool calls.",
+      "evidenceLink": "",
+      "score": 51.604325396825395,
+      "core": "Learn how to secure multi-agent AI systems with cryptographic identity using Keyfactor EJBCA and AWS services. This reference architecture combines signed request envelopes, user-signed delegation assertions, RFC 8693 audience-scoped tokens, and real-time OCSP revocation to prove agent identity and prevent request forgery across agent-to-agent and MCP tool calls.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-22T15:59:30.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "fiddler_ai_evaluation",
+      "source": "Fiddler AI Blog",
+      "title": "OpenTelemetry for AI Observability: What It Covers and Where It Stops",
+      "link": "https://www.fiddler.ai/blog/opentelemetry-ai-observability-guide",
+      "publishedAt": "2026-10-21T00:00:00.000Z",
+      "author": "",
+      "summary": "OpenTelemetry provides vendor-neutral AI tracing and GenAI semantic conventions, but stops at output evaluation and safety scoring. Learn where OTel fits and what else you need.",
+      "evidenceLink": "",
+      "score": 51.12678571428572,
+      "core": "OpenTelemetry provides vendor-neutral AI tracing and GenAI semantic conventions, but stops at output evaluation and safety scoring. Learn where OTel fits and what else you need.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-22T15:59:30.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "Claude Duet is beautiful. I still forgot to use it",
+      "link": "https://www.lennysnewsletter.com/p/claude-duet-is-beautiful-i-still",
+      "publishedAt": "2026-10-21T20:25:18.000Z",
+      "author": "Claire Vo",
+      "summary": "Watch now (16 mins) | 🎙️ I tested Claude Duet, Anthropic's beautifully designed new personal agent, on real work to see if it can beat my personal agent fatigue and make the cut",
+      "evidenceLink": "",
+      "score": 49.591031746031746,
+      "core": "Watch now (16 mins) | 🎙️ I tested Claude Duet, Anthropic's beautifully designed new personal agent, on real work to see if it can beat my personal agent fatigue and make the cut",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-22T15:59:30.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "shopify_engineering",
+      "source": "Shopify Engineering",
+      "title": "We gave AI agents a mobile dev environment",
+      "link": "https://shopify.engineering/remote-dev",
+      "publishedAt": "2026-10-22T12:56:38.000Z",
+      "author": "",
+      "summary": "We built Remote Dev so AI agents can build and test apps in parallel, without maxing out developers’ laptops.",
+      "evidenceLink": "",
+      "score": 46.38785714285714,
+      "core": "We built Remote Dev so AI agents can build and test apps in parallel, without maxing out developers’ laptops.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-22T15:59:30.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Design Proteins with RFD4-Proteina Using Reward-Guided Inference-Time Search",
+      "link": "https://developer.nvidia.com/blog/design-proteins-with-rfd4-proteina-using-reward-guided-inference-time-search",
+      "publishedAt": "2026-10-21T12:30:00.000Z",
+      "author": "Elizabeth Goodman",
+      "summary": "Protein design is a search problem. Choose amino acids for an eight-residue protein sequence and more than 25 billion combinations are possible. Choose amino...",
+      "evidenceLink": "",
+      "score": 45.92519841269841,
+      "core": "Protein design is a search problem. Choose amino acids for an eight-residue protein sequence and more than 25 billion combinations are possible. Choose amino...",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-22T15:59:30.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Dell says sort out your infrastructure or risk scuppering AI production projects",
+      "link": "https://www.itpro.com/infrastructure/dell-technologies-sort-out-your-infrastructure-or-risk-scuppering-ai-production-projects",
+      "publishedAt": "2026-10-22T10:54:55.000Z",
+      "author": "Emma Woollacott",
+      "summary": "A new Dell report warns that projects are being delayed by infrastructure, regulatory, and security concerns",
+      "evidenceLink": "",
+      "score": 45.2374007936508,
+      "core": "A new Dell report warns that projects are being delayed by infrastructure, regulatory, and security concerns",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-22T15:59:30.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "modal_engineering",
+      "source": "Modal Engineering",
+      "title": "Get started with LLM training on Modal",
+      "link": "https://modal.com/blog/get-started-with-llm-training-on-modal",
+      "publishedAt": "2026-10-21T12:00:00.000Z",
+      "author": "Joy Liu",
+      "summary": "Reinforcement learning for LLMs is hard, so we built Modal Dojo — a library that gives you the building blocks, tuned defaults, and observability to get started with production-grade LLM training.",
+      "evidenceLink": "",
+      "score": 42.089484126984125,
+      "core": "Reinforcement learning for LLMs is hard, so we built Modal Dojo — a library that gives you the building blocks, tuned defaults, and observability to get started with production-grade LLM training.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-22T15:59:30.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "How Claude designed protein binders against scorpion neurotoxins",
+      "link": "https://www.anthropic.com/research/claude-scorpion-toxin-binder-design",
+      "publishedAt": "2026-10-20T00:00:00.000Z",
+      "author": "",
+      "summary": "We asked an internal research Claude model to design minibinders (small proteins that attach tightly to a target) against scorpion neurotoxins.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-22T15:59:30.000Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 39.22361111111111,
+      "core": "We asked an internal research Claude model to design minibinders (small proteins that attach tightly to a target) against scorpion neurotoxins.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。"
+    }
+  ]
+}
