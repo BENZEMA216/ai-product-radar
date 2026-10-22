@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How I AI：Meta 是怎么设计 Muse 的（Alex Cornell，中文要点整理） | AI 产品雷达</title>
+<style>
+:root{
+  --text-primary:#14141a; --text-secondary:#6f6860;
+  --action-primary:#a73718; --action-hover:#932f15;
+  --bg-page:#f7f3ec; --bg-surface:#fbf9f4; --bg-raised:#fffdf9;
+  --border-default:#e1d8ca;
+  --radius-card:8px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg-page);color:var(--text-primary);font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
+main{max-width:780px;margin:0 auto;padding:40px 22px 80px}
+a{color:var(--action-primary);text-decoration:none}
+a:hover{text-decoration:underline}
+.back{font-size:14px;color:var(--text-secondary)}
+h1{font-size:30px;line-height:1.35;margin:18px 0 8px;letter-spacing:0}
+.meta{color:var(--text-secondary);font-size:14px;line-height:1.8;margin:0 0 24px}
+.attrib{background:var(--bg-raised);border:1px solid var(--border-default);border-radius:var(--radius-card);padding:18px 22px;margin:0 0 28px;font-size:14.5px;line-height:1.9}
+.attrib ul{margin:8px 0;padding-left:20px}
+.attrib li{margin:4px 0;overflow-wrap:anywhere}
+.attrib blockquote{border-left:3px solid var(--border-default);margin:12px 0 0;padding:2px 0 2px 14px;color:var(--text-secondary)}
+details.toc{background:var(--bg-raised);border:1px solid var(--border-default);border-radius:var(--radius-card);padding:14px 22px;margin:0 0 36px}
+details.toc summary{cursor:pointer;font-weight:600;font-size:15px}
+details.toc ol{margin:12px 0 4px;padding-left:22px;font-size:14px;line-height:2}
+h2{font-size:21px;line-height:1.5;margin:44px 0 6px;padding-top:14px;border-top:1px solid var(--border-default)}
+p{line-height:1.95;margin:14px 0;font-size:16.5px}
+strong{color:#3a2c22}
+hr{border:0;border-top:1px solid var(--border-default);margin:36px 0}
+footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--border-default);color:var(--text-secondary);font-size:13px;line-height:1.9}
+@media(max-width:620px){main{padding:28px 16px 56px}h1{font-size:25px}h2{font-size:19px}p{font-size:16px}}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="./">← AI 产品雷达</a>
+<h1>How I AI：Meta 是怎么设计 Muse 的（Alex Cornell，中文要点整理）</h1>
+<p class="meta">How I AI（Lenny’s Podcast Network） · 中文要点整理（非逐字翻译） · 2026-10-22 发布</p>
+<section class="attrib" aria-label="出处与说明">
+<ul>
+<li>原版：How I AI（Lenny’s Podcast Network），主持人 Claire Vo，嘉宾 Alex Cornell（Meta 设计总监，负责 Muse 设计），2026-10-12，约 38 分钟</li>
+<li>Lenny 页面（含要点）：<a href="https://www.lennysnewsletter.com/p/how-i-ai-how-meta-designed-muse-with">https://www.lennysnewsletter.com/p/how-i-ai-how-meta-designed-muse-with</a></li>
+<li>视频：<a href="https://www.youtube.com/watch?v=4TOLm1g-gCE">https://www.youtube.com/watch?v=4TOLm1g-gCE</a></li>
+<li>配套文章（三个工作流详解）：<a href="https://www.chatprd.ai/how-i-ai/alex-cornell-meta-muse-workflows">https://www.chatprd.ai/how-i-ai/alex-cornell-meta-muse-workflows</a></li>
+</ul>
+<blockquote>
+<p>来源说明（重要）：这一期我没能拿到 YouTube 字幕（多次下载被 YouTube 限流，返回 429）。所以这份整理不是基于节目字幕，而是基于官方公开的节目介绍、八条要点和配套文章。它不包含节目里没写进这些页面的内容，也不是逐句内容。想要更细，可以过一段时间我再试一次字幕。</p>
+<p>没有字幕，所以没有节目里的原话、顺序、时间点和具体数字。需要的话，我可以等限流解除后重新抓字幕，补充一份按时间顺序的整理。</p>
+</blockquote></section>
+<details class="toc" open>
+<summary>本页目录</summary>
+<ol>
+<li><a href="#s0">嘉宾和背景</a></li>
+<li><a href="#s2">八条要点（来自官方页面，转述）</a></li>
+<li><a href="#s4">节目里的三个工作流（来自配套文章）</a></li>
+<li><a href="#s9">节目介绍里列出的其他看点</a></li>
+<li><a href="#s11">局限</a></li>
+</ol>
+</details>
+<h2 id="s0">嘉宾和背景</h2>
+<p>Alex Cornell 是 Meta 的设计总监，主管 Muse 的设计。他做软件产品设计多年，也有过创业经历。节目介绍里说，他过去一年一直在 Threads 上公开分享 Muse 每个设计决定背后的理由。Claire 说，她试过几乎所有 agent，而 Muse 给了她“最快到达真正惊喜”的体验。Alex 提到，他妈妈以前从没真正用过他做的任何东西，Muse 是第一个。</p>
+<h2 id="s2">八条要点（来自官方页面，转述）</h2>
+<ol>
+<li>按“和人说话”来设计 agent，而不是按软件交互。他的指导问题是“如果这是在和另一个人说话，会怎么样”。这个原则导致去掉传统的消息气泡，并把 agent 放在屏幕顶部，而不是标准聊天窗口里。</li>
+<li>渐进式披露：Muse 用三个层级展示同一件事。普通用户看到一个表情，想了解更多的看任务列表，工程师可以看原始日志。每个人拿到自己需要的透明度，界面不会杂乱。</li>
+<li>可见的“思维链”常常是延迟的补救，不一定是功能。很多 AI 产品展示推理步骤是为了在慢模型等待时安抚用户。Muse 够快，可以安静地工作，直接交付结果。</li>
+<li>生成式界面：结构固定，内容变化。头像、信息流条目、想法卡片都是精心设计的固定载体；会变的是 agent 的状态表情、个性化建议和小动画，让体验有生命力，又不必每次重新生成界面。</li>
+<li>Instagram 收藏可能是被忽视的消费级 AI 数据源。他把多年的收藏交给 Muse 整理，并变成“SkyMall 目录”风格的购物推荐。</li>
+<li>设计非确定性系统，需要换一种和“手艺”的关系。以前他能精确控制界面外观，而 Muse 对每个人看起来都不同，没法保证像素级完美，要学会用“是否有用”来评判。他说这是他职业生涯里最解放的转变之一。</li>
+<li>单一持久的主聊天是个有分量的产品押注。不把每次交互拆成独立线程，而是把主对话当作和 agent 长期持续的关系。侧边聊天处理有范围的任务，主线程保持连续的上下文。他认为业界还没充分探索这一点。</li>
+<li>礼貌地提示可能是有效策略，不只是礼貌。遇到不满意的结果，他用冷静、具体的反馈而不是发火；也看到过用户语气更重时 agent 的回答会变化。他的结论是：清晰、尊重的指令可能得到更好的结果。</li>
+</ol>
+<h2 id="s4">节目里的三个工作流（来自配套文章）</h2>
+<p>Alex 的 Muse agent 叫 Marlowe，形象是一棵仙人掌。</p>
+<p>1. Instagram 收藏变成“SkyMall”购物目录 - 给 Marlowe 连上 Instagram，让它把所有收藏按文件夹和类别整理，作为基础。 - 再让它根据收藏发送礼物之类的购物建议。 - 最后让它用九十年代 SkyMall / Sharper Image 机上杂志的风格呈现，结果是每天刷新的“Jollybot SkyMall”。</p>
+<p>2. 用数据分析提升爱好：高尔夫和国际象棋 - 高尔夫：把高尔夫 app 的成绩和手表记录的逐杆数据交给 Muse，设一个定期任务，打完球自动生成“回合复盘”，有可视化仪表盘，比如前九洞差、后九洞好的对比图，也会指出怎样可以把 84 杆变成 79 杆。练习时也把挥杆分析设备的数据交给它做细分。 - 国际象棋：连上 Chess.com，让它做趋势加最近对局回顾的仪表盘。agent 自己形成了“爱挖苦的象棋教练”的个性，会给出类似“象 b5 崩盘”的评语。</p>
+<p>3. 把二十年前的博客变成个人播客 - 让 Marlowe 去找他二十年前的博客（博客曾在 Tumblr、Blogger 之间搬家，它借助 Wayback Machine 找回），合并成一个 PDF。 - 然后做成每天早上发给他的“随机朗读一篇”播客，用语音合成朗读。文章里提到他听到二十岁的自己感叹“为什么 90% 的人都穿同色裤子”。</p>
+<h2 id="s9">节目介绍里列出的其他看点</h2>
+<ul>
+<li>为什么 Alex 要把 Muse 做得像发消息，而不是 AI 应用；</li>
+<li>三层状态系统怎么兼顾不同技术水平的用户；</li>
+<li>已上线的消费级产品里，“生成式界面”到底是什么意思；</li>
+<li>他妈妈为什么会向自己的 Muse 道歉，以及这对 AI 设计意味着什么。</li>
+</ul>
+<h2 id="s11">局限</h2>
+<p>没有字幕，所以没有节目里的原话、顺序、时间点和具体数字。需要的话，我可以等限流解除后重新抓字幕，补充一份按时间顺序的整理。</p>
+<footer>
+<p>中文要点整理发布于 <a href="./">AI 产品雷达</a>。仅供个人学习交流，原文版权归 Lenny’s Podcast / How I AI 所有；如有异议请联系删除。</p>
+</footer>
+</main>
+</body>
+</html>
