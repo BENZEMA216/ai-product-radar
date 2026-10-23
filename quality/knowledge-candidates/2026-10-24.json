@@ -1,0 +1,414 @@
+{
+  "generatedAt": "2026-10-23T16:10:57.083Z",
+  "date": "2026-10-24",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Death to long-lived static credentials",
+      "link": "https://vercel.com/blog/death-to-long-lived-static-credentials",
+      "publishedAt": "2026-10-22T04:00:00.000Z",
+      "author": "Malte Ubl",
+      "summary": "Fifteen years ago, TLS was something you'd use to protect the most sensitive areas of your app. Then Google, Let's Encrypt, the EFF, and others led the push for HTTPS everywhere, making encryption the default for every request. Without it, anyone between the browser and server can read and tamper with the traffic. OAuth, OIDC, DBSC, and related standards already provide building blocks for secure authentication, but standards alone do not make secure methods the norm. HTTPS needed tooling that made encryption easy and a sustained push that made it expected. Machine-to-machine authentication still resembles HTTPS in 2010, with some vendors and enterprises leading the way while long-lived static credentials remain the default for many SaaS vendors and infrastructure providers. At Vercel, we want to make fast and secure the default across the web, including in our own services and the integrations in our Marketplace. We’ve built OIDC UI , a shadcn/ui registry that gives providers trust-policy forms and token verification code. We’re expanding OIDC support across Vercel and setting new authentication requirements for Marketplace providers. Long-lived static credentials are insecure Long-lived static credentials are secrets such as API keys and database passwords that applications keep reusing, often with no expiration. As agents take on more useful work, we give them access to our systems, tools, and data through credentials that can grant permissions far beyond the task at hand. Those credentials can leak into a code repository or chat, be stolen when a service or dependency is compromised, or be exposed when prompt injection leads an agent to reveal them. However it happens, an attacker can use the credential with the permissions it grants until it expires or is revoked. Recent credential-theft and supply-chain incidents across the industry show why encryption at rest isn’t enough when malicious code can read an application’s credentials in production. Rotating exposed credentials takes time and coordination across the systems that use them, and mistakes can disrupt production. At Vercel, we’ve previously spent thousands of engineering hours on multiple, very painful key rotations out of an abundance of caution, and we never want to have to do this again. Better solutions already exist With OIDC , your application can authenticate without storing a long-lived provider key. A trusted issuer provides a signed, short-lived token identifying the application, and the receiving service verifies that token before deciding what access to grant. A stolen token stops working when it expires, limiting how long that copy can be used even if the leak goes unnoticed. Your application can obtain fresh credentials programmatically, removing the need to distribute and manually rotate a persistent provider key across the systems that use it. We’ve been prioritizing OIDC across Vercel so applications can access Blob , AI Gateway , and Sandbox without storing long-lived keys for those services. Our OIDC federation has been generally available since 2024, letting applications running on Vercel exchange Vercel-issued identity tokens for temporary AWS, Google Cloud, and Azure credentials under configured project and environment trust policies . But for developers to stop managing long-lived keys, that support has to extend to all the services their applications depend on. The rest of the web hasn’t followed We surveyed more than 1,000 SaaS vendors and found that only 8.4% supported secure authentication methods. But getting vendors to support secure authentication is only part of the problem. Even when a service offers a secure method, developers often choose a static key because it can be simpler to use. We see three main barriers to broader adoption: Tooling and setup that make secure authentication more complicated than using a static key. Added latency from fetching or exchanging tokens on the request path. Weak incentives for vendors to offer and prioritize secure authentication. Our goal is to make secure authentication the default on Vercel, while also using our Marketplace to help push more vendors to support it. Our commitment to a more secure web We have a responsibility to make this change practical across the services we run, the tools developers use, and the integrations we build with partners. Make secure authentication easier to use Using a secure token has to be easier than pasting a key, or developers will keep pasting keys. On Vercel, code retrieves an OIDC token with a function call, and a custom audience specifies the service intended to receive it. With Vercel Connect , applications and agents use their deployment identity to request provider tokens at runtime, without having to store long-lived provider secrets in environment variables. Once the connector is configured and linked to the project and the user’s account is connected, code can request a token for that user with scopes the provider supports. We’re also extending OIDC support across the Vercel API and CLI to remove the need for long-lived Vercel tokens in deployment workflows. OIDC UI for API providers OIDC UI is a shadcn/ui component registry with a trust-policy configurator and a server-side token verifier. It includes provider forms for Vercel, GitHub, GitLab, Google, Bitbucket, AWS, Azure, and custom OIDC issuers. A provider can let customers configure trust for a particular Vercel project’s production environment, then verify incoming tokens against that policy without building the configuration interface and verification code from scratch. Reduce the performance cost of secure authentication A static key in an environment variable is already available when a function runs, so reading it requires no network request. Fetching a token or exchanging it for provider credentials can add network latency, so reducing those calls is part of making secure authentication practical. Vercel Functions receive a platform-issued token in the request header, which the SDK reads without fetching another. The platform reuses unexpired tokens, while Vercel Connect caches provider tokens in process and refreshes them near expiry . Custom-audience and provider exchanges require network calls. For example, an application can use the Azure SDK to access Cosmos DB with temporary credentials instead of a database key. With Azure configured to trust the Vercel project and its default token audience, the callback supplies a Vercel OIDC token to ClientAssertionCredential , which exchanges it for the Azure access token used by CosmosClient . Give providers an incentive to support secure authentication The Vercel Marketplace offers access to third-party databases, content management systems, observability tools, and more. Our goal is for all of these vendors to support short-lived, identity-based authentication, whether they accept OIDC tokens directly or exchange them for temporary credentials. We’re working to make integrations configure that authentication automatically when developers connect a service, so it does not require a separate setup step. HTTPS everywhere did not win on ergonomics alone. Chrome put a “Not secure” label on plain HTTP, and then it set deadlines. Now we are setting ours. By November 30, 2026, vendors who do not support OIDC auth from Vercel to their services and use long-lived secrets for authentication will have a similar “Not secure” message on their listing. By January 2027, vendors who do not offer secure auth will be delisted. We are holding the Vercel API and our own native integrations to the same bar. From static to dynamic Fifteen years ago, encrypting every request felt like overkill. Today, the padlock is so normal that we only notice when it's missing. Secure authentication between services should become just as routine, so developers can connect the systems they need without storing another long-lived secret. Going from static to dynamic has always been the Vercel mission. It started with pages, and now it’s credentials. Additional resources OIDC federation covers how deployments get short-lived identity tokens, with guides for AWS, GCP, Azure, and your own API. Custom OIDC token audiences scopes each token to the one service meant to receive it. Vercel Connect requests short-lived, scoped provider tokens at runtime, so code and agents never store credentials. Vercel Connect guides walk through building agents this way, from Slack bots to GitHub agents. Read more",
+      "evidenceLink": "",
+      "score": 88.41553406746031,
+      "core": "Fifteen years ago, TLS was something you'd use to protect the most sensitive areas of your app. Then Google, Let's Encrypt, the EFF, and others led the push for HTTPS everywhere, making encryption the default for every request. Without it, anyone between the browser and server can read and tamper with the traffic. OAuth, OIDC, DBSC, and related standards already provide building blocks for secure authentication, but…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-23T16:10:57.083Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "PHP2Shell: GitLab helps find and remediate critical PHP flaws",
+      "link": "https://about.gitlab.com/blog/gitlab-helps-remediate-critical-php-flaws",
+      "publishedAt": "2026-10-22T00:00:00.000Z",
+      "author": "Abisheik Magesh https://about.gitlab.com/blog/authors/abisheik-magesh/",
+      "summary": "GitLab is not affected by PHP2Shell (CVE-2026-109618 and CVE-2026-109619). The GitLab application is not written in PHP and does not run it to serve web requests, and our Security team has found no evidence of impact to GitLab-managed infrastructure. GitLab.com, GitLab Self-Managed, and GitLab Dedicated are not impacted. PHP is a widely used programming language that runs on web servers and powers popular platforms like WordPress, Drupal, and Magento, so a flaw in PHP itself can affect many websites and applications. On October 21, 2026, the PHP project fixed two critical remote code execution flaws in PHP, together known as PHP2Shell ( CVE-2026-109618 and CVE-2026-109619 ). PHP rates both 9.2 on CVSS v4.0. The flaws are in the PHP engine, not in any framework, library, or application code, so there is no application-level fix. Any web server that runs PHP is affected, including NGINX and Apache. The PHP project confirmed the vulnerability on Apache with mod_php, where an unauthenticated request can achieve remote code execution before any application code runs. Upgrade every server and container that runs PHP to serve web requests to PHP 8.5.12 , 8.4.27 , 8.3.36 , or 8.2.35 , or to your distribution’s patched package now. This guide is for security and platform teams with PHP projects on GitLab. It covers the fixed version for each PHP branch and distribution, how to use GitLab features to locate PHP projects across your groups, how to track remediation, and how to check for signs of compromise. Upgrade PHP to a fixed version now Upgrade the PHP runtime on every host and in every container image to a fixed version. Framework updates, Composer updates, input validation, and authentication don’t help, because PHP handles the request before application code runs. Branch Fixed in PHP 8.5.x 8.5.12 PHP 8.4.x 8.4.27 PHP 8.3.x 8.3.36 PHP 8.2.x 8.2.35 (end of life December 31, 2026) PHP 8.6 release candidates 8.6.0RC4. The official php:8.6-rc image was still on RC3 on October 21, and RC3 does not have the fix. PHP 8.1 and older No official release. PHP published minimal source backports for 7.4, 8.0, and 8.1, and some distributions ship patched packages. If your PHP comes from a distribution package, upgrade that package. Fixed package versions as of October 22: Distribution Fixed package Ubuntu 26.04 php8.5 8.5.4-0ubuntu1.5 Ubuntu 24.04 php8.3 8.3.6-0ubuntu0.24.04.13 Ubuntu 22.04 php8.1 8.1.2-1ubuntu2.28 Debian 13 php8.4 8.4.27-1~deb13u1 Debian 12 php8.2 8.2.35-1~deb12u1 Alpine 3.24 php83 8.3.36, php84 8.4.27, php85 8.5.12 RHEL 10 php 8.3.36-1.el10_2 (RHSA-2026:87070), php8.4 8.4.27-1.el10_2 (RHSA-2026:87071) RHEL 9 php 8.0.30-8.el9_8.1 (RHSA-2026:87151), php:8.2 8.2.35-1 (RHSA-2026:87072), php:8.3 8.3.36-1 (RHSA-2026:87079); php:8.4 had no fix yet on October 22 RHEL 8 php:7.4 7.4.33-8 (RHSA-2026:87080); check Red Hat’s CVE pages for php:8.2. Retired streams (7.2, 7.3, 8.0) get no fix Sources: Ubuntu , Debian , Alpine, and Red Hat security trackers, as of October 22, 2026. Ubuntu, and Red Hat for its 7.4 and 8.0 packages, keep the old upstream version number and backport the fix. Compare the package versions rather than php -v . Restart every process that runs PHP after upgrading. Rebuild your container images. If your image uses a floating tag of the official php image, such as php:8, php:8.3, php:8.3-apache or php:latest, rebuild it with docker build --pull and redeploy it. Images that pin a patch version, such as php:8.3.35-apache, need the tag changed to the fixed version first. Images built on derivatives such as wordpress or drupal get the fix only after their maintainers publish an updated image, so check the upstream image before you rebuild. Locate PHP projects across your GitLab groups Any project that runs PHP to serve web requests needs a fixed version, including the ones that are easy to forget, such as an internal dashboard, a marketing site, or a CI job image. Finding them takes two views: a static search of what your repositories declare and your images contain, and a runtime inventory of what actually runs. GitLab covers the static view with two features. Use both, in this order. 1. Container scanning Container scanning reports vulnerabilities in operating system packages, so it finds PHP installed with apt, apk, or dnf, and it reports the two CVEs once they reach the scanner’s vulnerability database. To turn it on for a project, add the template to .gitlab-ci.yml: include: - template: Security/Container-Scanning.gitlab-ci.yml You can also use a group-level scan execution policy to turn container scanning on for every project in a group at once. When a policy is enabled, the next time a pipeline is run, it will be run with container scanning. Container scanning results for the default branch can be reviewed in the Vulnerability Report after the scanner completes. Additionally, you can set up Merge Request Approval policies with container scanning. With merge request approvals in play, if a code change contains PHP2Shell, the policy will block a merge without approval from the selected parties. Container scanning detects only PHP installed as a package. PHP compiled from source, including the official php images, has no package record, so a project can pass container scanning and still run a vulnerable PHP. Code search covers that gap. 2. Code search Exact code search can find the two types of files that indicate a PHP project. Run these at the top-level group with regular expression mode enabled (the .* toggle at the right of the search box): Container base images: This query searches for every file GitLab detects as a Dockerfile. The pattern matches any image whose name or tag contains php, so it also finds derivatives such as wordpress, frankenphp, or bitnami/php-fpm. Expect a few false positives that you can rule out by reading the result: lang:Dockerfile ^FROM.*php Composer projects : This query finds projects that use PHP even when they have no Dockerfile, or when the Dockerfile takes its image from a build argument such as FROM $BASE_IMAGE : file:composer\\.json$ Exact code search covers the default branch only. On GitLab.com it is on by default for paid plans. On GitLab Self-Managed instances an administrator must install Zoekt first. GitLab Dedicated doesn’t support exact code search. For each result, confirm the version. You can check the FROM php: line, or run php -v in the running container, and compare it with the table above. The group dependency list shows Composer packages and framework versions but not the PHP runtime version. 3. Compare with your runtime inventory Container scanning and code search show what your projects declare and build, not what runs. PHP can run outside your GitLab projects, for example on web servers with mod_php or PHP-FPM enabled only in their configuration, on hosts configured by hand, or in containers that still run in clusters without an active pipeline. Compare the static results with an inventory of your running workloads from your configuration management (Ansible, Puppet, Chef, etc.), cloud, or VM inventory tools. For Kubernetes, operational container scanning scans the images that run in your clusters, with the same package-only detection as container scanning. Treat every PHP runtime that appears in only one of the two views as a gap to investigate. Remediate at scale with GitLab Duo Agent Platform Start with asking GitLab Duo Agentic Chat to: collect every container scanning finding for CVE-2026-109618 and CVE-2026-109619 across the group from the vulnerability report (requires an Ultimate subscription) run the code search queries above across the group, review each hit and read the PHP version from the Dockerfile or the Composer files open a merge request per affected project that bumps the base image tag or the package to the fixed version, and assign it to the right maintainer track the whole effort in an epic with one issue per project, and is closed when the fixed version is deployed and confirmed From each issue, the Developer Flow can open a merge request that updates the base image tag or package to a fixed version. Turn on automatic reviews with the Code Review Flow to get a first review that follows your custom review instructions . Review and merge each merge request, then close the issue once the fixed version is deployed. Searches find candidates, but a security or platform engineer still has to review each match, resolve CI includes, and tell what the code declares apart from what actually runs. An example agent skill from the GitLab Developer Advocacy team handles this work. It runs on GitLab Duo Agent Platform and with agents that use GitLab MCP server or the glab CLI, such as Claude Code , Codex , and Cursor . The skill checks container images, CI jobs, OS packages, configuration management variables, Composer pins, and environments. It returns a cited findings table with deployment evidence, and open gaps. The skill is read-only: It makes no changes, and remediation merge requests remain a separate, reviewed step. It cannot confirm what is running on hosts it cannot access, so verify those directly. Adapt the skill to your own environment before you use it. Check for compromise Reports of exploitation differ. Security researchers reported an exploit attempt on October 17, 2026, before public disclosure, and further reports of exploitation followed the release. The PHP project identified no functional exploits at the time of release. If an internet-facing server ran a vulnerable PHP version, review its logs from October 17, 2026, onward for: Multipart requests followed by memory-limit errors or repeated HTTP 500 responses Unusually large or malformed PHPSESSID response cookies Unexplained PHP worker restarts, or shell processes started by PHP workers Unexpected files on the PHP web server, outbound connections from PHP workers, or unexpected cron entries A successful exploit can return HTTP 200 and leave the worker running, so an absence of errors doesn’t rule out compromise. If you find signs of exploitation, isolate the server and start an incident investigation. Where possible, capture memory, disk, and logs before patching and restarting. Restarting PHP workers may erase evidence. CVE-2026-109619 can also expose process memory, even when an attacker doesn’t achieve code execution. Rotate any credentials, tokens, or keys the PHP process could read. Note: Scanners may flag the Gemnasium dependency scanning image (gemnasium:6), deprecated since GitLab 17.9, for its bundled PHP. It is used only as a command-line tool and never handles HTTP requests, so it is not exploitable, and a fixed version has already shipped under the same tag. Timeline Date What happened August 1 Calif discovers the first flaw during an AI-assisted PHP audit and reports it to PHP on August 11; Wiz Research independently finds and reports the flaws on August 24. October 17 Amazon’s honeypots record the first known exploit attempt, while the flaws are still under embargo. October 20 PHP announces that a security release fixing two critical vulnerabilities will ship on October 21. October 20 Vulnerability details leak before coordinated disclosure. ( Huntress ) October 21, 14:00 UTC PHP releases 8.5.12, 8.4.27, 8.3.36 and 8.2.35 and publishes the advisories.",
+      "evidenceLink": "",
+      "score": 83.12981978174604,
+      "core": "GitLab is not affected by PHP2Shell (CVE-2026-109618 and CVE-2026-109619). The GitLab application is not written in PHP and does not run it to serve web requests, and our Security team has found no evidence of impact to GitLab-managed infrastructure. GitLab.com, GitLab Self-Managed, and GitLab Dedicated are not impacted. PHP is a widely used programming language that runs on web servers and powers popular platforms …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-23T16:10:57.083Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Expanding Claude availability and deployment choice on Google Cloud",
+      "link": "https://cloud.google.com/blog/products/ai-machine-learning/expanding-claude-availability-on-google-cloud",
+      "publishedAt": "2026-10-22T21:00:00.000Z",
+      "author": "Michael Gerstenhaber VP, Product Management, Gemini, Google Cloud",
+      "summary": "Every organization has unique requirements for building and scaling generative AI. At Google Cloud, we are committed to giving developers model choice and architectural flexibility to run workloads however they need. Today, we’re announcing the general availability of an Anthropic-managed deployment option for Claude Models on Google Cloud. This gives teams more choice in how they run their models, helping them consolidate AI workloads on Google Cloud alongside our existingGoogle-managed deployment option. Both options deliver the same frontier models on day zero, the same pricing, and the same Google Cloud billing. The difference comes down to who acts as your data processor and whether you need access to the new Claude platform features when they launch: [NEW] Claude Models on Google Cloud (Anthropic managed) Delivers day-zero access to Claude models and Claude Platform features such as Claude Managed Agents (beta), skills, and code execution. Anthropic operates the stack as the data processor on Google Cloud infrastructure under Anthropic’s terms of service, while organizations authenticate with Google Cloud IAM, maintain Cloud Audit Logging, and consolidate spend under their existing Google Cloud billing and eligible commitments. Learn more: Claude Models on Google Cloud (Anthropic-managed) . Claude Models on Google Cloud (Google managed) Continues to deliver day-zero access to the latest Claude models with strict governance, compliance, and sovereignty requirements. Google Cloud operates as the data processor under existing customer agreements, providing VPC Service Controls, Customer-Managed Encryption Keys (CMEK), and data residency in the U.S., EU, and APAC. New Claude Platform features roll out over time as they are integrated into the Google-managed infrastructure. Teams also benefit from native integrations with Google Cloud services like BigQuery and Model Armor, along with standard billing and eligible commitment drawdown. Learn more: Claude Models on Google Cloud (Google managed) Comparing deployment options Feature Anthropic-managed Google-managed Model availability Available on Day 0 Available on Day 0 First-party tools and betas Available on Day 0 Available once integrated into the Google-managed infrastructure Data processor and terms Anthropic (under Anthropic’s Commercial Terms) Google Cloud (under existing Google Cloud customer agreements) Pricing &amp; commitments Standard pricing (draws down eligible Google Cloud commitments) No matter how you choose to deploy, you can access Anthropic's latest frontier models on Google Cloud, including Claude Fable 5.1 , Sonnet 5.5 , Haiku 5.5 , and Opus 5.5 , with new platform features available immediately on the Anthropic-managed option and rolling out on the Google-managed option once integrated. This gives developers the full spectrum of reasoning, coding, and multi-modal capabilities with Google Cloud IAM and Marketplace billing. Get started .",
+      "evidenceLink": "",
+      "score": 78.62981978174602,
+      "core": "Every organization has unique requirements for building and scaling generative AI. At Google Cloud, we are committed to giving developers model choice and architectural flexibility to run workloads however they need. Today, we’re announcing the general availability of an Anthropic-managed deployment option for Claude Models on Google Cloud. This gives teams more choice in how they run their models, helping them cons…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-23T16:10:57.083Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "figma_ai_design",
+      "source": "Figma Blog",
+      "title": "How to put your design system to work with the Figma agent",
+      "link": "https://www.figma.com/blog/how-to-put-your-design-system-to-work-with-the-figma-agent",
+      "publishedAt": "2026-10-23T02:27:00.000Z",
+      "author": "",
+      "summary": "Your design system can help the Figma agent understand the principles and guidelines that define your product. Here’s how to make that context useful to the agent.",
+      "evidenceLink": "",
+      "score": 65.9246610515873,
+      "core": "Your design system can help the Figma agent understand the principles and guidelines that define your product. Here’s how to make that context useful to the agent.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-23T16:10:57.083Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "n8n_ai_engineering",
+      "source": "n8n Blog",
+      "title": "AI Agent Memory: How LLM Agents Manage State in Production",
+      "link": "https://blog.n8n.io/ai-agent-memory-how-llm-agents-manage-state-in-production",
+      "publishedAt": "2026-10-23T12:20:34.000Z",
+      "author": "n8n team",
+      "summary": "Learn how AI agent memory works, explore short-term and long-term memory architectures, and discover how to combine n8n and Cognee to build AI workflows that retain context, share knowledge, and learn across sessions.",
+      "evidenceLink": "",
+      "score": 62.93128803571428,
+      "core": "Learn how AI agent memory works, explore short-term and long-term memory architectures, and discover how to combine n8n and Cognee to build AI workflows that retain context, share knowledge, and learn across sessions.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-23T16:10:57.083Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "The Rise and Fall of Jev",
+      "link": "https://blog.alexewerlof.com/p/rise-and-fall-of-jev-eval-hype-vs-llm",
+      "publishedAt": "2026-10-23T09:21:00.000Z",
+      "author": "flail https://news.ycombinator.com/user?id=flail",
+      "summary": "A technical evaluation of Jev and its 30-day hype cycle. Analyze Jev vs traditional LLMs, schema-validation loops, and the limits of System 1 AI architecture.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50206361",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 81,
+        "comments": 57
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-23T16:10:57.083Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 60.485665665711124,
+      "core": "A technical evaluation of Jev and its 30-day hype cycle. Analyze Jev vs traditional LLMs, schema-validation loops, and the limits of System 1 AI architecture.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "Industry comparisons in the Copilot impact dashboard",
+      "link": "https://github.blog/changelog/2026-10-22-industry-comparisons-in-the-copilot-impact-dashboard",
+      "publishedAt": "2026-10-22T16:28:24.000Z",
+      "author": "Allison",
+      "summary": "The Copilot impact dashboard now includes an “Industry comparison” section. Enterprises, and organizations that aren’t owned by an enterprise, can compare their Copilot agentic adoption and leverage with aggregated benchmarks… The post Industry comparisons in the Copilot impact dashboard appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 60.106486448412696,
+      "core": "The Copilot impact dashboard now includes an “Industry comparison” section. Enterprises, and organizations that aren’t owned by an enterprise, can compare their Copilot agentic adoption and leverage with aggregated benchmarks… The post Industry comparisons in the Copilot impact dashboard appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-23T16:10:57.083Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic_news_institute",
+      "source": "Anthropic News & Institute",
+      "title": "Donating Agent Skills to the Agentic AI Foundation",
+      "link": "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation",
+      "publishedAt": "2026-10-22T00:00:00.000Z",
+      "author": "",
+      "summary": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-23T16:10:57.083Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 58.82981978174604,
+      "core": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Agentic Monitoring",
+      "link": "https://benjamincongdon.me/blog/2026/10/19/Agentic-Monitoring",
+      "publishedAt": "2026-10-19T14:52:04.000Z",
+      "author": "bcongdon https://news.ycombinator.com/user?id=bcongdon",
+      "summary": "Agents are structurally well suited to monitoring production systems.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50153225",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 122,
+        "comments": 24
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-23T16:10:57.083Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 58.67768567374741,
+      "core": "Agents are structurally well suited to monitoring production systems.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "n8n_ai_engineering",
+      "source": "n8n Blog",
+      "title": "Hallucination Detection Methods for AI Agent Workflows",
+      "link": "https://blog.n8n.io/hallucination-detection-methods-for-ai-agent-workflows",
+      "publishedAt": "2026-10-22T17:21:13.000Z",
+      "author": "Emilio Patiño Monsalve",
+      "summary": "AI agent hallucinations are hard to catch because they usually look like normal answers. An agent can invent a fact, misread retrieved context, or contradict itself without signaling that anything went wrong. Once that output triggers another workflow step, the mistake can quickly become a production problem. Effective hallucination detection",
+      "evidenceLink": "",
+      "score": 58.2804745436508,
+      "core": "AI agent hallucinations are hard to catch because they usually look like normal answers. An agent can invent a fact, misread retrieved context, or contradict itself without signaling that anything went wrong. Once that output triggers another workflow step, the mistake can quickly become a production problem. Effective hallucination detection",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-23T16:10:57.083Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "amazon_science_blog",
+      "source": "Amazon Science Blog",
+      "title": "The science behind TorchNeuron, Amazon’s new PyTorch backend for AWS Trainium chips",
+      "link": "https://www.amazon.science/blog/the-science-behind-torchneuron-amazons-new-pytorch-backend-for-aws-trainium-chips",
+      "publishedAt": "2026-10-22T19:36:42.000Z",
+      "author": "",
+      "summary": "Runtime optimizations and a thorough evaluation process driven by agentic AI help ensure that models written in PyTorch will execute efficiently and reliably on Trainium systems.",
+      "evidenceLink": "",
+      "score": 56.519542003968255,
+      "core": "Runtime optimizations and a thorough evaluation process driven by agentic AI help ensure that models written in PyTorch will execute efficiently and reliably on Trainium systems.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-23T16:10:57.083Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How Rescale built an AI triage agent with Strands Agents and AI-DLC",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-rescale-built-an-ai-triage-agent-with-strands-agents-and-ai-dlc",
+      "publishedAt": "2026-10-22T16:25:57.000Z",
+      "author": "Isha Doshi",
+      "summary": "Rescale used the AI-Driven Development Lifecycle (AI-DLC) framework on AWS, with Strands Agents and Amazon Bedrock, to build an intelligent test-triage agent in weeks. Learn how AI-DLC structures AI-assisted development and how Rescale is scaling the practice across its engineering organization.",
+      "evidenceLink": "",
+      "score": 55.94801422619048,
+      "core": "Rescale used the AI-Driven Development Lifecycle (AI-DLC) framework on AWS, with Strands Agents and Amazon Bedrock, to build an intelligent test-triage agent in weeks. Learn how AI-DLC structures AI-assisted development and how Rescale is scaling the practice across its engineering organization.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-23T16:10:57.083Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "An alignment assessment of the UK AISI cybertesting incident",
+      "link": "https://www.anthropic.com/research/alignment-assessment-ukaisi",
+      "publishedAt": "2026-10-23T00:00:00.000Z",
+      "author": "",
+      "summary": "In a UK AISI evaluation, Mythos 5 took unsanctioned actions that impacted real people and organizations. In this post, we investigate these behaviors from Claude Mythos 5 further, to understand what they reveal about the model’s alignment.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-23T16:10:57.083Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 55.17188327380952,
+      "core": "In a UK AISI evaluation, Mythos 5 took unsanctioned actions that impacted real people and organizations. In this post, we investigate these behaviors from Claude Mythos 5 further, to understand what they reveal about the model’s alignment.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "88% of UK firms have had an 'agentic security incident' in the last year",
+      "link": "https://www.itpro.com/security/88-percent-of-uk-firms-have-had-an-agentic-security-incident-in-the-last-year-servicenow-warns-more-will-come",
+      "publishedAt": "2026-10-23T10:57:45.000Z",
+      "author": "Ross Kelly",
+      "summary": "Concerns are growing over the scale of adoption and an inability to match “machine-speed” capabilities",
+      "evidenceLink": "",
+      "score": 53.19380787698413,
+      "core": "Concerns are growing over the scale of adoption and an inability to match “machine-speed” capabilities",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-23T16:10:57.083Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Amazon Polly delivers a major upgrade to its Generative engine",
+      "link": "https://aws.amazon.com/blogs/machine-learning/amazon-polly-delivers-a-major-upgrade-to-its-generative-engine",
+      "publishedAt": "2026-10-22T18:06:35.000Z",
+      "author": "Suyin Wang",
+      "summary": "The Amazon Polly Generative engine gets a major upgrade: more expressive, more accurate speech with low latency, plus 14 new voices across 9 locales and general availability of Hindi and Finnish. This drop-in upgrade requires no code changes and is now generally available in production.",
+      "evidenceLink": "",
+      "score": 48.01781581349206,
+      "core": "The Amazon Polly Generative engine gets a major upgrade: more expressive, more accurate speech with low latency, plus 14 new voices across 9 locales and general availability of Hindi and Finnish. This drop-in upgrade requires no code changes and is now generally available in production.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-23T16:10:57.083Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "How Anthropic’s Dynamic Workflows Coordinate Claude Agents (Updated with video!)",
+      "link": "https://latent.space/p/claude-dynamic-workflows",
+      "publishedAt": "2026-10-12T18:18:17.000Z",
+      "author": "Richard MacManus",
+      "summary": "At AI Engineer New York, Anthropic drew on lessons from Unix and Linux to explain how agents can tackle bigger projects without overwhelming developers.",
+      "evidenceLink": "",
+      "score": 47.84444444444444,
+      "core": "At AI Engineer New York, Anthropic drew on lessons from Unix and Linux to explain how agents can tackle bigger projects without overwhelming developers.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-23T16:10:57.083Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "fiddler_ai_evaluation",
+      "source": "Fiddler AI Blog",
+      "title": "What Is AI Agent Observability: Traces, Spans, and Signals for Production Agents",
+      "link": "https://www.fiddler.ai/blog/ai-agent-observability-traces-spans-signals",
+      "publishedAt": "2026-10-20T07:00:00.000Z",
+      "author": "",
+      "summary": "Learn what agent observability captures across application, session, agent, trace, and span levels, how it differs from APM and LLM monitoring, and how to standardize it.",
+      "evidenceLink": "",
+      "score": 44.14569279761905,
+      "core": "Learn what agent observability captures across application, session, agent, trace, and span levels, how it differs from APM and LLM monitoring, and how to standardize it.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-23T16:10:57.083Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_research",
+      "source": "Microsoft Research",
+      "title": "Flint-interactive: A language for creating interactive data visualizations",
+      "link": "https://www.microsoft.com/en-us/research/blog/flint-interactive-a-language-for-creating-interactive-data-visualizations",
+      "publishedAt": "2026-10-22T16:00:00.000Z",
+      "author": "Chenglong Wang, Yuwei Xiao, Alper Sarikaya, Michel Galley, Chris Quirk, Jianfeng Gao",
+      "summary": "Flint-interactive gives AI agents a language for creating interactive visualizations. Click a chart, filter data, highlight related content, and explore beyond the view the author originally chose. The post Flint-interactive: A language for creating interactive data visualizations appeared first on Microsoft Research .",
+      "evidenceLink": "",
+      "score": 43.050454702380954,
+      "core": "Flint-interactive gives AI agents a language for creating interactive visualizations. Click a chart, filter data, highlight related content, and explore beyond the view the author originally chose. The post Flint-interactive: A language for creating interactive data visualizations appeared first on Microsoft Research .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-23T16:10:57.083Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "databricks_engineering",
+      "source": "Databricks Blog",
+      "title": "The new economics of AI cost management",
+      "link": "https://www.databricks.com/blog/ai-cost-management",
+      "publishedAt": "2026-10-22T19:14:24.000Z",
+      "author": "",
+      "summary": "For the past two years, the story around enterprise AI adoption has mostly been about...",
+      "evidenceLink": "",
+      "score": 41.992994384920635,
+      "core": "For the past two years, the story around enterprise AI adoption has mostly been about...",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-23T16:10:57.083Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentailor",
+      "source": "Agentailor",
+      "title": "Own Your Agent's Traces: Vendor-Neutral Observability with OpenTelemetry",
+      "link": "https://blog.agentailor.com/posts/own-your-agent-traces-opentelemetry",
+      "publishedAt": "2026-10-22T00:00:00.000Z",
+      "author": "undefined (Ali Ibrahim)",
+      "summary": "An agent trace holds every prompt, tool argument and tool result, which makes it the most sensitive thing your agent produces. A guide to tracing an agent with OpenTelemetry's GenAI conventions, keeping content out by default, and running the backend yourself, built around a real finance agent.",
+      "evidenceLink": "",
+      "score": 39.76870867063492,
+      "core": "An agent trace holds every prompt, tool argument and tool result, which makes it the most sensitive thing your agent produces. A guide to tracing an agent with OpenTelemetry's GenAI conventions, keeping content out by default, and running the backend yourself, built around a real finance agent.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-23T16:10:57.083Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

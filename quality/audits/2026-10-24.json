@@ -1,0 +1,293 @@
+{
+  "date": "2026-10-24",
+  "generatedAt": "2026-10-23T16:05:24.704Z",
+  "reportPath": "reports/2026-10-24-0005-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 70,
+    "top20Sources": [
+      "YC Launch",
+      "Product Hunt",
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 28,
+      "keptCount": 16,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-22；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 28 条，AI 相关候选 16 条；实际 fallback：hunted_space。；历史去重移除 2 条已报道或已处理日榜 Product Hunt 信号，最终发布 14 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 7,
+      "keptCount": 7,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 22,
+      "keptCount": 11,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 18,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "fallback",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 19,
+      "keptCount": 19,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Agent Relay",
+      "productKey": "https://www.ycombinator.com/launches/wi4-agent-relay-let-your-teams-coding-agents-message-each-other",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把团队里分散在 Claude Code、Codex、Cursor 等入口的编码 agent 接入同一实时消息层，值得看多 agent 协作能否从个人工具走向团队工作流。"
+    },
+    {
+      "rank": 2,
+      "product": "CutBay",
+      "productKey": "https://www.producthunt.com/products/cutbay",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "CutBay 用对话把任意素材转成视频，产品判断点在于它是否真正压缩剪辑决策，而不只是给生成按钮套一层聊天入口。"
+    },
+    {
+      "rank": 3,
+      "product": "Lark",
+      "productKey": "https://www.ycombinator.com/launches/w5s-lark-ai-agents-for-distributors",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Lark 不要求经销商替换 ERP，而是在采购、库存和销售之间加一层执行 agent；这是典型的低迁移成本垂直切入，值得跟踪交付边界。"
+    },
+    {
+      "rank": 4,
+      "product": "Resend Inboxes",
+      "productKey": "https://www.producthunt.com/products/resend",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Resend 把共享收件箱同时设计成人和 agent 的工作入口，关键价值是邮件能否成为可编排、可交接的任务队列，而不只是通信渠道。"
+    },
+    {
+      "rank": 5,
+      "product": "Dadan",
+      "productKey": "https://www.producthunt.com/products/dadan",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它试图把录屏、会议与操作指南收进同一视频工作区，值得看 AI 能否复用一次录制生成多种团队知识资产，减少重复制作。"
+    },
+    {
+      "rank": 6,
+      "product": "Halv – open-source agent coding software that reduces your usage",
+      "productKey": "https://halv.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Halv 直接把“减少编码 agent 用量”当作开源产品承诺，值得验证它靠上下文压缩、任务路由还是模型替换降耗，以及节省是否牺牲完成质量。"
+    },
+    {
+      "rank": 7,
+      "product": "Loom Record for agents",
+      "productKey": "https://www.producthunt.com/products/loom",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Loom 把“录一遍再交给 AI”做成任务交接入口，产品价值取决于 agent 能否从视频理解意图并继续执行，而不止生成摘要。"
+    },
+    {
+      "rank": 8,
+      "product": "Cesara",
+      "productKey": "https://www.ycombinator.com/launches/wbc-cesara-ai-agents-that-make-sure-every-healthcare-transaction-is-paid-per-contract",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Cesara 把医疗合同核对连接到漏付追回，交付的是可衡量的回款结果；值得看 agent 如何处理合同规则、异常解释与追偿闭环。"
+    },
+    {
+      "rank": 9,
+      "product": "Secure your AI agents on Mac",
+      "productKey": "https://installplango.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "本地 agent 获得文件、终端和桌面权限后，Mac 端防护会成为采用门槛；这条信号值得看它是否提供可理解的权限与行为控制，而非笼统安全口号。"
+    },
+    {
+      "rank": 10,
+      "product": "Causo",
+      "productKey": "https://www.producthunt.com/products/causo",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Causo 用 AI 研究与 MCP 突破固定数据库筛选，值得判断它能否给出可追溯的潜客依据，并把发现结果直接接入销售动作。"
+    },
+    {
+      "rank": 11,
+      "product": "Fastagent – Deploy a chat agent API to your own Cloud Run",
+      "productKey": "https://evabench.dev/fastagent",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Fastagent 把聊天 agent 封装成可部署到自有 Cloud Run 的 API，切中托管便利与基础设施控制之间的空档，关键看部署、密钥和扩缩容是否真正被收敛。"
+    },
+    {
+      "rank": 12,
+      "product": "Kalender Sync",
+      "productKey": "https://www.producthunt.com/products/kalender-sync",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把多个日历同步后开放给 ChatGPT、Claude 等助手，值得看日程数据能否从只读上下文变成安全的规划与执行接口。"
+    },
+    {
+      "rank": 13,
+      "product": "Playad",
+      "productKey": "https://www.producthunt.com/products/playad",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“雇用 AI 营销团队”是结果导向定位，但当前证据很薄；值得观察它是否把策略、素材与投放反馈串成协作流程，而非多个角色提示词。"
+    },
+    {
+      "rank": 14,
+      "product": "PlugVet, hygiene grades for AI agent plugins with the evidence shown",
+      "productKey": "https://plugvet.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "PlugVet 给 agent 插件做有证据支撑的卫生评级，切中插件生态的信任问题；关键看评分是否可复核，以及能否进入安装前决策。"
+    },
+    {
+      "rank": 15,
+      "product": "Kucedr (was Friday) – a desktop AI agent that runs on your machine",
+      "productKey": "https://www.kucedr.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Kucedr 把桌面 agent 放到用户自己的机器上，值得跟踪本地执行带来的隐私与延迟优势，能否抵消安装、权限和跨应用稳定性的成本。"
+    },
+    {
+      "rank": 16,
+      "product": "Odin Robotics",
+      "productKey": "https://www.ycombinator.com/launches/wjg-odin-robotics-robot-arms-that-do-repetitive-manual-work-in-existing-factories",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Odin 强调机械臂适配现有工厂而非改造产线，产品价值在部署摩擦；值得看它如何把环境适应能力变成更短的上线周期。"
+    },
+    {
+      "rank": 17,
+      "product": "Kavela – AI Automations that do not fail silently",
+      "productKey": "https://kavela.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Kavela 把“自动化静默失败”明确设为产品问题，值得看它如何暴露异常、请求人工介入并恢复任务，这些才是 agent 进入业务流程的信任基础。"
+    },
+    {
+      "rank": 18,
+      "product": "Ignition Benefits",
+      "productKey": "https://www.ycombinator.com/launches/tzc-ignition-the-ai-native-benefits-broker-for-modern-companies",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它瞄准 20 至 200 人美国雇主，把福利经纪做成数据驱动的 AI-native 服务；值得看高监管流程中自动化与人工责任如何划分。"
+    },
+    {
+      "rank": 19,
+      "product": "Agentic CleanSlop",
+      "productKey": "https://www.producthunt.com/products/cleanslop",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它让 agent 在认证后扫描并修复应用，真正的产品门槛是授权范围、修改证据和回滚机制，而不是“自动修复”本身。"
+    },
+    {
+      "rank": 20,
+      "product": "Fastlane 2.0",
+      "productKey": "https://www.producthunt.com/products/fastlane-3",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Fastlane 2.0 把广告创建、上线与扩量放进一个 AI 流程，判断重点是投放反馈能否反哺素材决策，而非单纯批量生成广告。"
+    }
+  ]
+}
