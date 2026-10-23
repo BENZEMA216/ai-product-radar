@@ -1,92 +1,101 @@
 [
- {
-  "product": "Monish",
-  "link": "https://apps.apple.com/es/app/monish-ai-agent-notifications/id6822071271",
-  "phLink": "https://www.producthunt.com/products/monish",
-  "did": "把你的AI agent搬上iPhone锁屏：实时看到各个agent正在做什么，任务有进展或需要你决策时直接在锁屏通知你。",
-  "who": "同时跑多个agent、不想一直守在电脑前盯进度的产品经理和开发者。",
-  "why": "个人agent的管理界面会成为一个新品类，锁屏是最自然的入口。它回答了一个实际问题：agent在后台干活时，人怎么用最轻的方式保持掌控。",
-  "tip": "PH 10/23当日发布，App Store页面10/22上线。App Store+发布页已核实。功能未实测。"
- },
- {
-  "product": "Eleven Realtime",
-  "link": "https://elevenlabs.io/realtime",
-  "phLink": "https://www.producthunt.com/leaderboard/daily/2026/10/23",
-  "did": "ElevenLabs给开发者的实时语音agent模型（speech-to-speech），首个音频输出延迟570ms，用来搭建自然对话的语音agent。",
-  "who": "做语音agent、客服语音、语音交互原型的团队。",
-  "why": "和10/21的实时翻译（10/22已收录）是两条产品线：这个是搭语音agent的底层模型。570ms首音频是语音对话自然度的关键指标，适合做基准对比。",
-  "tip": "官方10/20发布，PH 10/23在榜，非当日首发。官网+发布页已核实。"
- },
- {
-  "product": "Simulithic",
-  "link": "https://simulithic.com",
-  "phLink": "https://www.ycombinator.com/launches/W3D-simulithic-ai-users-that-test-your-app-on-every-device-and-browser",
-  "did": "派AI agent像真实用户一样走查你的App：自动发现用户流程，在iOS、Android、各浏览器和网络环境下持续验证，出问题先在Slack报警。不用写测试脚本。",
-  "who": "用agent快速写代码、但验证环节跟不上的团队；关注AI测试方向的产品经理。",
-  "why": "它押注的判断很犀利：agent让写代码变快之后，验证成了新瓶颈。这是YC本周发布的项目里和产品开发流程关系最直接的一个。",
-  "tip": "Launch YC 10/21发布（YC F2026批次）。发布页+官网已核实，目前需预约演示。"
- },
- {
-  "product": "Mark (Saanora)",
-  "link": "https://saanora.com",
-  "phLink": "https://news.ycombinator.com/item?id=50208419",
-  "did": "一个AI聊天产品，回答时不只给文字，还会直接生成图表、小测验和3D模型来解释。",
-  "who": "关注AI产品交互形态、教育类AI的产品经理。",
-  "why": "多数AI聊天还在卷文字回答质量，它赌的是回答的媒介形态：该给图给图、该给模型给模型。这是交互层差异化值得观察的样本。",
-  "tip": "10/23 Show HN展示（10/15曾展示早期版本，非当日首发）。官网可打开+发布页已核实。功能未实测。"
- },
- {
-  "product": "MOVO AI",
-  "link": "https://www.producthunt.com/leaderboard/daily/2026/10/23",
-  "phLink": "https://www.producthunt.com/leaderboard/daily/2026/10/23",
-  "did": "手机上的长视频agent：号称全球首个在移动端做长视频生成的AI agent。",
-  "who": "做短视频、内容创作工具的产品经理；移动端AI应用从业者。",
-  "why": "AI视频工具大多停在几十秒的片段，长视频+移动端agent是更难的组合，值得看它怎么解决一致性和交互。",
-  "tip": "PH 10/23当日第2名。仅发布页描述已核实。功能未实测。"
- },
- {
-  "product": "Context Engine",
-  "link": "https://www.producthunt.com/leaderboard/daily/2026/10/23",
-  "phLink": "https://www.producthunt.com/leaderboard/daily/2026/10/23",
-  "did": "一份共享记忆，同时服务你的AI agent和团队里的真人：人知道的事，agent也知道，不用重复交代背景。",
-  "who": "团队里人和agent混合作业、反复给agent补背景信息的产品和运营团队。",
-  "why": "agent落地的一个隐形痛点是上下文断裂：人脑里的背景agent不知道。把记忆层做成人和agent共享的基础设施，是个值得关注的架构方向。",
-  "tip": "PH 10/23当日发布。仅发布页描述已核实。"
- },
- {
-  "product": "Agent Hunt",
-  "link": "https://www.producthunt.com/leaderboard/daily/2026/10/23",
-  "phLink": "https://www.producthunt.com/leaderboard/daily/2026/10/23",
-  "did": "实时榜单：统计AI agent们实际最常用哪些工具，而不是人觉得哪些工具好。",
-  "who": "做开发者工具、agent生态，或想判断该优先适配哪些工具的产品经理。",
-  "why": "视角有趣：当agent成为工具的用户，被agent选中和被人选中是两回事。这个榜单是观察agent实际行为偏好的窗口。",
-  "tip": "PH 10/23当日发布。仅发布页描述已核实。"
- },
- {
-  "product": "Peras",
-  "link": "https://www.producthunt.com/leaderboard/daily/2026/10/23",
-  "phLink": "https://www.producthunt.com/leaderboard/daily/2026/10/23",
-  "did": "给Claude Code和Codex这类编程agent装的刹车：在它们把一周的额度烧完之前先暂停，让你确认。",
-  "who": "用编程agent跑长任务、担心额度失控的开发者和技术型产品经理。",
-  "why": "agent自主性和成本控制之间的矛盾是真实痛点，暂停-确认机制是现阶段务实的折中方案。",
-  "tip": "PH 10/23当日发布。仅发布页描述已核实。"
- },
- {
-  "product": "Aucert",
-  "link": "https://www.ycombinator.com/launches/WGP-aucert-ai-agents-that-verify-mobile-apps-autonomously",
-  "phLink": "https://www.ycombinator.com/launches/WGP-aucert-ai-agents-that-verify-mobile-apps-autonomously",
-  "did": "YC新项目：AI agent自主验证移动App，和Simulithic同属AI测试方向，专注移动端。",
-  "who": "做移动App、关注自动化QA的团队。",
-  "why": "同一周两家YC公司押注AI自动测试，说明这个方向正在变热，值得一起跟踪对比。",
-  "tip": "Launch YC 10/22发布。发布页已核实，官网细节有限。"
- },
- {
-  "product": "Product Hunt Visual Launch Editor",
-  "link": "https://www.producthunt.com/leaderboard/daily/2026/10/23",
-  "phLink": "https://www.producthunt.com/leaderboard/daily/2026/10/23",
-  "did": "Product Hunt自家的可视化发布页编辑器，帮开发者做产品发布页面。",
-  "who": "准备做产品发布的创业者和产品经理。",
-  "why": "PH把发布流程本身产品化，当天冲上日榜第一；如果你以后要自己发产品，这个工具直接用得上。",
-  "tip": "PH 10/23当日第1名，为PH官方自家工具。仅发布页描述已核实。"
- }
+  {
+    "product": "Monish",
+    "link": "https://monish.cc",
+    "phLink": "https://www.producthunt.com/products/monish",
+    "did": "iPhone 免费 App：往 Claude Code / Codex / Cursor / n8n / cron 粘贴一行，即可把 agent 进度打到锁屏与灵动岛，完成时推送，部署/发送前可 Approve 或 Deny。",
+    "who": "长时间跑本地/远程 agent、希望手机上审批与盯进度的开发者。",
+    "why": "把 agent 协作从「刷终端」拉到锁屏，场景很具体。",
+    "tip": "PH 10/23当日发布，App Store页面10/22上线。官网+App Store+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "ElevenLabs Realtime",
+    "link": "https://elevenlabs.io/realtime",
+    "phLink": "https://www.producthunt.com/products/realtime-max-mini",
+    "did": "推出 Realtime 语音 agent 模型族（v1 Mini / Max）：ASR、轮次、LLM 与音色端到端调优，首包音频约 570–620ms，90+ 语言，可走 ElevenAgents 或 OpenAI 兼容 Realtime API。",
+    "who": "做客服/陪练/语音助手的产品与语音基础设施团队。",
+    "why": "和本站已收录的 ElevenLabs Realtime Translation 不同：这是 conversational STS/voice agent，不是同传翻译。",
+    "tip": "官方10/20发布，PH 10/23在榜，非当日首发。官网+发布页已核实。"
+  },
+  {
+    "product": "Simulithic",
+    "link": "https://simulithic.com",
+    "phLink": "https://www.ycombinator.com/launches/W3D-simulithic-ai-users-that-test-your-app-on-every-device-and-browser",
+    "did": "派AI agent像真实用户一样走查你的App：自动发现用户流程，在iOS、Android、各浏览器和网络环境下持续验证，出问题先在Slack报警。不用写测试脚本。",
+    "who": "用agent快速写代码、但验证环节跟不上的团队；关注AI测试方向的产品经理。",
+    "why": "它押注的判断很犀利：agent让写代码变快之后，验证成了新瓶颈。这是YC本周发布的项目里和产品开发流程关系最直接的一个。",
+    "tip": "Launch YC 10/21发布（YC F2026批次）。发布页+官网已核实，目前需预约演示。"
+  },
+  {
+    "product": "Mark (Saanora)",
+    "link": "https://saanora.com",
+    "phLink": "https://news.ycombinator.com/item?id=50208419",
+    "did": "一个AI聊天产品，回答时不只给文字，还会直接生成图表、小测验和3D模型来解释。",
+    "who": "关注AI产品交互形态、教育类AI的产品经理。",
+    "why": "多数AI聊天还在卷文字回答质量，它赌的是回答的媒介形态：该给图给图、该给模型给模型。这是交互层差异化值得观察的样本。",
+    "tip": "10/23 Show HN展示（10/15曾展示早期版本，非当日首发）。官网可打开+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "MOVO AI",
+    "link": "https://movoai.pro/",
+    "phLink": "https://www.producthunt.com/products/movo-ai",
+    "did": "上线对话式长视频 AI agent：从想法到成片规划、分镜、生成与修订，强调角色/场景一致性，支持 Web 与手机，锁屏后仍可继续跑任务。",
+    "who": "适合做短片、广告片、系列叙事的创作者与营销团队。",
+    "why": "PH 当日 AI 类前列；把「长视频工作流」收成单一 agent，而不是只吐短 clip。",
+    "tip": "PH 10/23当日第2名。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Context Engine",
+    "link": "https://contextengine.com/",
+    "phLink": "https://www.producthunt.com/products/context-engine-2",
+    "did": "为 Claude / ChatGPT / Cursor / Claude Code 与人类团队提供共享记忆（MCP/连接器写入，网页可读可问可传文件），按 engine 隔离项目/客户。",
+    "who": "多工具并行、需要跨会话/跨人共享决策与上下文的个人与小团队。",
+    "why": "直接打「每个会话从零开始」的痛点，且人机读同一套记忆。",
+    "tip": "PH 10/23当日发布。官网+发布页已核实。"
+  },
+  {
+    "product": "Agent Hunt（Monid）",
+    "link": "https://monid.ai/rankings",
+    "phLink": "https://www.producthunt.com/products/monid",
+    "did": "把 2700+ API 接给 AI agent（号称无订阅、0% markup），并用真实调用量做 Agent Hunt 实时工具排行榜。",
+    "who": "做 agent 产品、runtime 工具发现与计费的开发者。",
+    "why": "用「agent 真在调什么」而不是投票热闹程度来排名工具，对选型有参考价值。",
+    "tip": "PH 10/23当日发布。官网+发布页已核实。"
+  },
+  {
+    "product": "Ovren Live Preview",
+    "link": "https://www.ovren.ai",
+    "phLink": "https://www.producthunt.com/products/ovren",
+    "did": "在真实代码库里执行 scoped 前后端改动：先 sizing/计划，再写代码，前端变更带 live preview，最终以 PR + 执行报告交付，需人工合并。",
+    "who": "产品/运营/增长想推进 backlog 小改、工程团队只做 review 的公司。",
+    "why": "定位不是「从零造 app」，而是消化现有产品里永远排不上的小任务，控制感比黑盒生成强。",
+    "tip": "Live Preview功能10/23发布；Ovren产品本体今年4月已在PH发布。官网+发布页已核实。"
+  },
+  {
+    "product": "Peras",
+    "link": "https://www.producthunt.com/leaderboard/daily/2026/10/23",
+    "phLink": "https://www.producthunt.com/leaderboard/daily/2026/10/23",
+    "did": "给Claude Code和Codex这类编程agent装的刹车：在它们把一周的额度烧完之前先暂停，让你确认。",
+    "who": "用编程agent跑长任务、担心额度失控的开发者和技术型产品经理。",
+    "why": "agent自主性和成本控制之间的矛盾是真实痛点，暂停-确认机制是现阶段务实的折中方案。",
+    "tip": "PH 10/23当日发布。仅发布页描述已核实。"
+  },
+  {
+    "product": "Aucert",
+    "link": "https://www.ycombinator.com/launches/WGP-aucert-ai-agents-that-verify-mobile-apps-autonomously",
+    "phLink": "https://www.ycombinator.com/launches/WGP-aucert-ai-agents-that-verify-mobile-apps-autonomously",
+    "did": "YC新项目：AI agent自主验证移动App，和Simulithic同属AI测试方向，专注移动端。",
+    "who": "做移动App、关注自动化QA的团队。",
+    "why": "同一周两家YC公司押注AI自动测试，说明这个方向正在变热，值得一起跟踪对比。",
+    "tip": "Launch YC 10/22发布。发布页已核实，官网细节有限。"
+  },
+  {
+    "product": "Product Hunt Visual Launch Editor",
+    "link": "https://www.producthunt.com/leaderboard/daily/2026/10/23",
+    "phLink": "https://www.producthunt.com/leaderboard/daily/2026/10/23",
+    "did": "Product Hunt自家的可视化发布页编辑器，帮开发者做产品发布页面。",
+    "who": "准备做产品发布的创业者和产品经理。",
+    "why": "PH把发布流程本身产品化，当天冲上日榜第一；如果你以后要自己发产品，这个工具直接用得上。",
+    "tip": "PH 10/23当日第1名，为PH官方自家工具。仅发布页描述已核实。"
+  }
 ]
