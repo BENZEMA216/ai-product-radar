@@ -1,0 +1,293 @@
+{
+  "date": "2026-10-25",
+  "generatedAt": "2026-10-24T16:00:59.001Z",
+  "reportPath": "reports/2026-10-25-0000-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 61,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 24,
+      "keptCount": 17,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-23；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 24 条，AI 相关候选 17 条；实际 fallback：hunted_space。；历史去重移除 3 条已报道或已处理日榜 Product Hunt 信号，最终发布 14 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 1,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 18,
+      "keptCount": 11,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "fallback",
+      "rawCount": 17,
+      "keptCount": 17,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 18,
+      "keptCount": 18,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-09-02T16:20:56.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "MOVO AI",
+      "productKey": "https://www.producthunt.com/products/movo-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "MOVO AI 把长视频生成压进移动端 agent 入口，值得验证长任务在手机上的编排、续跑和成片质量能否形成真正闭环。"
+    },
+    {
+      "rank": 2,
+      "product": "Inyon",
+      "productKey": "https://www.producthunt.com/products/inyon",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Inyon 让用户用手机回应编码 agent，切中离开电脑后的阻塞处理；关键是通知、审批与恢复上下文能否足够低摩擦。"
+    },
+    {
+      "rank": 3,
+      "product": "FLUX 3 Max",
+      "productKey": "https://www.producthunt.com/products/fal-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "FLUX 3 Max 主打约 12 秒生成 10 秒视频，产品意义在于把等待成本降到可迭代区间，值得观察速度与画面一致性的取舍。"
+    },
+    {
+      "rank": 4,
+      "product": "ElevenLabs Realtime",
+      "productKey": "https://www.producthunt.com/products/realtime-max-mini",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ElevenLabs Realtime 把首段音频延迟压到 570ms，直接影响语音 agent 的打断感和对话节奏，适合检验实时交互是否接近可用。"
+    },
+    {
+      "rank": 5,
+      "product": "Context Engine",
+      "productKey": "https://www.producthunt.com/products/context-engine-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Context Engine 试图让人和多个 agent 共用一份记忆，核心看权限边界、冲突更新与可追溯性，而不只是再做一个向量库。"
+    },
+    {
+      "rank": 6,
+      "product": "Termi Protocol",
+      "productKey": "https://www.producthunt.com/products/termi-protocol",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Termi Protocol 用 3D 界面呈现 agent 编码和交接，值得看可视化是否真能改善监督与接管，而非只增加展示层。"
+    },
+    {
+      "rank": 7,
+      "product": "Latch – Make any website usable by AI agents in one line (WebMCP)",
+      "productKey": "https://latch.tools",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Latch 以一行 WebMCP 让网站可被 agent 操作，若接入成本和权限控制都成立，会直接降低网页工具化的工程门槛。"
+    },
+    {
+      "rank": 8,
+      "product": "MCP server that answers Steam launch questions with real counts",
+      "productKey": "https://news.ycombinator.com/item?id=50220217",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这个 MCP 用真实计数回答 Steam 上线问题，把分散市场数据变成 agent 可调用接口；价值取决于数据口径和更新可靠性。"
+    },
+    {
+      "rank": 9,
+      "product": "Multipeer, a multiplayer infinite canvas for people and their agents",
+      "productKey": "https://multipeer.sh",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Multipeer 把多人无限画布扩展到人与 agent 协作，值得观察并发编辑、任务归属和 agent 行为可见性如何设计。"
+    },
+    {
+      "rank": 10,
+      "product": "Peras",
+      "productKey": "https://www.producthunt.com/products/peras",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Peras 允许用户暂停 Claude Code 与 Codex，瞄准失控执行和费用外溢；关键看它能否提供及时、可恢复的人工制动。"
+    },
+    {
+      "rank": 11,
+      "product": "Conference / expo / trade show finder plus MCP",
+      "productKey": "https://www.conferencefindr.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "会展查找器加入 MCP 后，agent 可直接查询垂直活动数据；产品深度取决于覆盖范围、去重质量与结果新鲜度。"
+    },
+    {
+      "rank": 12,
+      "product": "Instant Search",
+      "productKey": "https://www.producthunt.com/products/instant-search-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Instant Search 强调本地文件的快速精准检索，值得看隐私、本地索引成本与结果可引用性是否优于云端助手。"
+    },
+    {
+      "rank": 13,
+      "product": "Monish",
+      "productKey": "https://www.producthunt.com/products/monish",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Monish 把 agent 状态放到 iPhone 锁屏，试图缩短长任务的查看和介入路径；关键是通知密度与可操作性。"
+    },
+    {
+      "rank": 14,
+      "product": "AI agent swarms test if new CVEs are exploitable in your env",
+      "productKey": "https://app.enclave.ai/threat-feed",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "该产品用 agent 群验证新 CVE 在自身环境是否可利用，把通用漏洞情报推进到环境级判断；误报、证据链和人工复核是采购关键。"
+    },
+    {
+      "rank": 15,
+      "product": "Let your AI agent put things on a screen",
+      "productKey": "https://console.usetd.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这个界面让 agent 把内容直接放到屏幕上，为人机协作提供可见输出面；值得看展示、编辑与权限是否形成完整交互协议。"
+    },
+    {
+      "rank": 16,
+      "product": "DotMD",
+      "productKey": "https://www.producthunt.com/products/dotmd-3",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "DotMD 把 agent 生成的 Markdown 规格当作 PR 审阅，抓住了需求变更可追踪的问题；价值看差异、评论和批准能否闭环。"
+    },
+    {
+      "rank": 17,
+      "product": "Plango",
+      "productKey": "https://www.producthunt.com/products/plango",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Plango 用 AI 对抗 AI，安全定位明确但描述过于抽象；需要看到具体威胁面、检测证据和处置流程才可判断产品深度。"
+    },
+    {
+      "rank": 18,
+      "product": "Spacesheep",
+      "productKey": "https://www.ycombinator.com/launches/wk8-spacesheep-documents-of-the-future",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Spacesheep 把文档变成人理解并操作 AI 的新界面，值得看它是否把上下文、生成结果与人工编辑统一在同一工作面。"
+    },
+    {
+      "rank": 19,
+      "product": "Dots Phone",
+      "productKey": "https://www.producthunt.com/products/dots-phone",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Dots Phone 为 OpenAI Dots 增加电话调用能力，把 agent 从文本扩到同步语音渠道；重点是通话控制、合规与失败兜底。"
+    },
+    {
+      "rank": 20,
+      "product": "Gerty",
+      "productKey": "https://www.producthunt.com/products/gerty",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Gerty 提供在 Mac 上自动部署的私有 ChatGPT 替代品，切中本地数据控制；关键看安装体验、模型能力与硬件成本。"
+    }
+  ]
+}

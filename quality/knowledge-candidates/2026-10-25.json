@@ -1,0 +1,415 @@
+{
+  "generatedAt": "2026-10-24T16:05:58.341Z",
+  "date": "2026-10-25",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "How Vercel Agent accesses production safely",
+      "link": "https://vercel.com/blog/how-vercel-agent-accesses-production-safely",
+      "publishedAt": "2026-10-23T20:29:00.000Z",
+      "author": "Tom Dale",
+      "summary": "An agent working on production systems needs permission to act. A request like “fix this deployment” doesn’t tell you upfront which actions it will take or what access it will need. Grant agents broad access and a mistake can affect unrelated resources. Ask for approval at every step and the user has to approve individual actions before they know how the agent intends to solve the problem. Repeated prompts can turn that review into a habit of clicking approve. Vercel Agent starts by investigating the problem, then proposes a plan showing what it would do and what access it would need. Approving that plan grants the additional permissions to carry it out, so the user can review the proposed fix before authorizing any changes. The plan determines the permissions For a broken production deployment, Vercel Agent might inspect recent deployments and build logs , then compare the failed deployment with the last known-good one. Read-only access lets that investigation run automatically. If it leads to a proposed redeploy, Vercel Agent requests the additional access in a plan the user can review and approve in one decision. Access is defined by scopes, the named capabilities recognized by the Vercel authorization system. Any plan requesting access beyond the read-only baseline waits for approval as a whole, including any read-only tasks it contains. In this example, the investigation runs under a separate read-only plan before Vercel Agent proposes the redeploy: Plan Work Requested scope Investigate the failure Inspect recent deployments and build logs, then compare the failed deployment with the last successful one read:deployment Redeploy the last known-good build Create a deployment read-write:deployment A short read-only lookup can run without a plan. For longer investigations, Vercel Agent creates a read-only plan so the user can follow its tasks and progress while it runs automatically. The plan connects what the user wants done to what Vercel Agent is allowed to do: Intent : The outcome the user asks for. Work : The tasks Vercel Agent proposes to achieve it. Access : The scopes those tasks require. Enforcement : The credentials and API checks that enforce access limits. Each stored plan records its tasks and progress, with requested scopes attached to each task. The task descriptions explain why access is needed, and the scopes are combined across the plan. The read-only baseline currently includes every registered scope beginning with read: . Plans need approval when they request access beyond that baseline or include supported external actions, such as opening a GitHub pull request. Read-only operations can still expose sensitive information, so automatic approval does not mean the work is harmless. Vercel Agent can only use permissions the user already has Vercel Agent runs as a Vercel App, which the user authorizes to act on their behalf within a team. That authorization is limited by the user’s existing permissions , so approving a plan cannot grant access the user does not have. The Vercel OAuth service exchanges that authorization for shorter-lived tokens with specific scopes. These scopes define which capabilities the token permits, such as reading deployments or changing project settings. Vercel APIs check the token on each request to enforce those limits. A user may authorize Vercel Agent for a team with dozens of projects. A redeploy plan requests deployment write access. Editing environment variables, changing domains, and managing team membership each require their own permissions. Deployment write access is broader than a single redeploy. Naming deployment X in a plan does not, by itself, restrict the token to that deployment. The runtime, the software that coordinates Vercel Agent’s execution, checks that the plan is active before selecting its approved credential. Vercel APIs check each request against that credential’s permissions. Approval determines which permissions Vercel Agent can use When a user approves a plan that needs additional Vercel access, its requested scopes are checked again and a token is prepared containing the read-only baseline plus the approved permissions. The runtime, the software that coordinates Vercel Agent’s execution, checks that the plan is active before selecting its approved credential. That credential remains subject to its scopes, team, the user’s permissions, and expiry. The credential used depends on the work: Work Credential Read-only investigation A baseline token with read-only scopes Approved Vercel changes A token with baseline scopes plus the approved additional scopes External actions Credentials and permissions specific to that provider The model’s instructions tell it when to propose a plan and request approval. If it attempts an operation outside the token’s permissions, Vercel APIs reject the request, even if the model considers the action necessary to complete the task. A single plan can include Vercel changes and a GitHub pull request. The user reviews both in one plan, while each provider uses separate permissions and credentials. GitHub pull-request access is tied to an owner and repository, so approval to open a pull request in acme/storefront applies to that repository even if the user also has access to acme/payments . Opening a pull request there requires its own approval. Plans and tokens use the same permission definitions A proposed plan can request a permission that has been renamed or removed. We initially maintained a separate permission list for Vercel Agent, which could fall out of sync with the OAuth service that issues its tokens. We moved to the same scope definitions so those mismatches could be caught during planning. At session setup, Vercel Agent loads those definitions from the Vercel scope registry into an in-memory catalog. Fetching the registry requires authorization for the team, while the scope definitions themselves are shared across teams. The catalog supplies the definitions used at three stages: Plan validation : Requested scopes are normalized, and unknown or malformed names are rejected before the plan is stored or presented for approval. Approval : The requested scopes determine whether the plan fits within the read-only baseline or needs additional access. Token preparation : Valid scopes define the credentials for approved work. For example, a task to update firewall rules might request an outdated scope. The system rejects the proposed plan and returns valid scopes so Vercel Agent can correct it before requesting approval. This catches the mismatch during planning and requires an explicit correction instead of a fallback to broader access. Fetching the registry adds latency and a service dependency, so Vercel Agent caches the catalog and uses that copy to check stored plans when they are loaded. Those checks reflect the cached definitions until the catalog is refreshed with changes from the registry. Resuming work requires an active, approved plan Vercel Agent may receive approval after the original chat request has ended, or lose its connection before carrying out an approved redeploy. The stored plan includes its state, who approved it, and when, alongside its tasks and requested permissions. That record connects the proposed work to the access the user authorized and allows the approval to be checked when work resumes. Before resuming, the runtime reloads the plan and checks that it is active before selecting a credential with its approved permissions. A stopped plan fails that check, even if its token has time remaining before expiry. If approval and a request to stop arrive together, the plan can move from waiting for approval to active only if the stop has not already changed its status. The runtime then checks again that the plan is active before using the approved credential. If the investigation reveals that the current plan needs replacing, Vercel Agent can propose another. A replacement requesting elevated access needs its own approval, giving the user a chance to review the revised work and permissions together. Where permissions need more precision As Vercel Agent reached more of the platform, we had to correct access rules for actions that involve multiple resources or have different consequences. Attaching a domain can require both domain and project permissions, while staging a firewall rule and publishing it need different levels of access. Scopes need to capture these distinctions while keeping each plan’s access request manageable. Matching those scopes to a proposed fix requires care throughout planning: Choosing scopes : Vercel Agent chooses scopes with incomplete information, so it can request too little access and leave a task blocked, or too much and grant more authority than the work needs. Task-level guidance helps it choose, while validation catches invalid scope names. Even a valid scope can grant broader access than necessary. Describing the work : “Redeploy the last successful build” gives the user a concrete action to assess, while scope names alone leave them to work out the consequences. The plan needs to explain the intended change and make clear which limits the token actually enforces. Understanding denials : A denied operation could indicate a missing scope, an incorrect resource, or an operation that should remain blocked. Vercel Agent needs to distinguish those cases before requesting additional permissions. Even with the right permissions, a redeploy requires judgment about whether the selected commit is safe to ship. That depends on the application, the failure, and the proposed fix. The user needs enough information to assess the choice, and Vercel Agent still has to execute it correctly. Read-only investigation also needs controls for the information it retrieves, including sensitive project configuration and operational details. We chose a read-only baseline so Vercel Agent can investigate before asking for approval, and that choice needs continued review as scopes and the information they expose change. Other systems may need a narrower baseline. Separate controls must govern how retrieved information is handled and where it can go. Vercel Agent can make a wrong decision or encounter malicious instructions in content it reads, such as build logs. Scoped credentials limit which operations it can perform in either case, but permitted operations can still cause harm. Plans therefore work alongside sandbox isolation, network policy, secret handling, rate limits, audit logs, and service authorization. Our work on security boundaries in agentic architectures explains the separation between an agent, its credentials, and the code it executes. From investigation to approved action Authority stays attached to the work that required it. The runtime selects the approved credential for an active plan, and its scopes define the operations Vercel Agent can perform. With the investigation already done, the user can assess a proposed fix and its requested access together. Try Vercel Agent to investigate an issue in your project. Review what it finds and, if it proposes a change, assess the plan and requested access before approving it. Read more",
+      "evidenceLink": "",
+      "score": 89.59884244047619,
+      "core": "An agent working on production systems needs permission to act. A request like “fix this deployment” doesn’t tell you upfront which actions it will take or what access it will need. Grant agents broad access and a mistake can affect unrelated resources. Ask for approval at every step and the user has to approve individual actions before they know how the agent intends to solve the problem. Repeated prompts can turn …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-24T16:05:58.341Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Kimi K3.1 Pro and Kimi K3.1 Pro Highspeed are available now in AI Gateway",
+      "link": "https://vercel.com/changelog/kimi-k3-1-pro-and-kimi-k3-1-pro-highspeed-are-available-now-in-ai-gateway",
+      "publishedAt": "2026-10-23T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "Kimi K3.1 Pro from Moonshot AI is now available on AI Gateway , along with Kimi K3.1 Pro Highspeed , a faster version for interactive use. K3.1 Pro is the first model in Moonshot's K3.1 series. It builds on Kimi K3 with improvements in coding, 3D modeling, financial analysis, and agentic tasks, and keeps the 1M-token context window and image input. For coding, K3.1 Pro handles work ranging from small fixes in an existing codebase to building a full project, including long agent runs with many steps. It builds front-end pages and interactive scenes with stronger typography and animation than earlier Kimi models. In finance, it can carry a task from start to finish, such as building a linked financial model with adjustable assumptions and scenarios, or writing research grounded in source documents. K3.1 Pro makes fewer factual errors than earlier Kimi models on difficult prompts. Moonshot AI plans to release the model weights by November 4: support for more providers will follow. Call either model through the AI SDK , the Chat Completions , Responses , and Anthropic Messages APIs, or a coding agent connected to AI Gateway. For Highspeed, use moonshotai/kimi-k3.1-pro-highspeed in place of the model name below. Use moonshotai/kimi-k3.1-pro as the model name: To use it in Claude Code, Codex, Cursor, and more, install the latest Vercel CLI and run setup: Then select moonshotai/kimi-k3.1-pro or moonshotai/kimi-k3.1-pro-highspeed in the agent. See the coding agents guide for details. Try Kimi K3.1 Pro in the model playground . AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. You can view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 83.13574720238095,
+      "core": "Kimi K3.1 Pro from Moonshot AI is now available on AI Gateway , along with Kimi K3.1 Pro Highspeed , a faster version for interactive use. K3.1 Pro is the first model in Moonshot's K3.1 series. It builds on Kimi K3 with improvements in coding, 3D modeling, financial analysis, and agentic tasks, and keeps the 1M-token context window and image input. For coding, K3.1 Pro handles work ranging from small fixes in an exi…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-24T16:05:58.341Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Kimi K3.1 Pro and K3.1 Pro Highspeed",
+      "link": "https://www.kimi.ai/blog/kimi-k3-1-pro",
+      "publishedAt": "2026-10-23T16:59:08.000Z",
+      "author": "Jowsey https://news.ycombinator.com/user?id=Jowsey",
+      "summary": "Introducing Kimi K3.1 Pro, our most capable 3T-class open-weight model with 1M-token context and major advances in coding, 3D modeling, and financial research.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50212065",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 1013,
+        "comments": 613
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-24T16:05:58.341Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 63.80867124625059,
+      "core": "Introducing Kimi K3.1 Pro, our most capable 3T-class open-weight model with 1M-token context and major advances in coding, 3D modeling, and financial research.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How Bayer Crop Science built an agentic decision engine on Amazon Bedrock AgentCore with AWS Unified Operations",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-bayer-crop-science-built-an-agentic-decision-engine-on-amazon-bedrock-agentcore-with-aws-unified-operations",
+      "publishedAt": "2026-10-23T16:21:36.000Z",
+      "author": "Subbu Dandamudi",
+      "summary": "Bayer Crop Science built the Agentic Decision Engine (ADE), a multi-agent platform on Amazon Bedrock AgentCore that lets breeders, analysts, and researchers ask natural language questions about their analytics platform. This post covers the ADE architecture, five design decisions, and how the team prepared it for production with AWS Unified Operations.",
+      "evidenceLink": "",
+      "score": 61.27098529761905,
+      "core": "Bayer Crop Science built the Agentic Decision Engine (ADE), a multi-agent platform on Amazon Bedrock AgentCore that lets breeders, analysts, and researchers ask natural language questions about their analytics platform. This post covers the ADE architecture, five design decisions, and how the team prepared it for production with AWS Unified Operations.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-24T16:05:58.341Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Context Engineering (Agent Memory) for AI Agents Starts with Retrieval",
+      "link": "https://www.langchain.com/blog/context-engineering-starts-with-retrieval",
+      "publishedAt": "2026-10-23T21:32:37.000Z",
+      "author": "",
+      "summary": "Agents waste time and context on clumsy searches, oversized results and stale data. Learn the retrieval techniques LangChain's Deep Agents harness uses to get the right context in.",
+      "evidenceLink": "",
+      "score": 59.67457656746032,
+      "core": "Agents waste time and context on clumsy searches, oversized results and stale data. Learn the retrieval techniques LangChain's Deep Agents harness uses to get the right context in.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-24T16:05:58.341Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Multi-Turn Reinforcement Learning on Amazon SageMaker AI: A hands-on guide",
+      "link": "https://aws.amazon.com/blogs/machine-learning/multi-turn-reinforcement-learning-on-amazon-sagemaker-ai-a-hands-on-guide",
+      "publishedAt": "2026-10-23T17:48:54.000Z",
+      "author": "Daniel Quang",
+      "summary": "Multi-Turn Reinforcement Learning (MTRL) on Amazon SageMaker AI trains models on the outcome of a whole multi-step task rather than labeled steps. This hands-on guide walks the full pipeline using Wordle: deploying the agent and reward on Amazon Bedrock AgentCore, preparing the dataset, training, and evaluating at serving settings.",
+      "evidenceLink": "",
+      "score": 58.25824720238095,
+      "core": "Multi-Turn Reinforcement Learning (MTRL) on Amazon SageMaker AI trains models on the outcome of a whole multi-step task rather than labeled steps. This hands-on guide walks the full pipeline using Wordle: deploying the agent and reward on Amazon Bedrock AgentCore, preparing the dataset, training, and evaluating at serving settings.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-24T16:05:58.341Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "LLMs are making formal software verification feasible at a much larger scale",
+      "link": "https://www.anthropic.com/research/formal-verification",
+      "publishedAt": "2026-10-22T22:54:43.000Z",
+      "author": "johnbender https://news.ycombinator.com/user?id=johnbender",
+      "summary": "Claude formally proved security properties in the compiled code of 123 open-source libraries. Along the way, it found bugs that had eluded detection for years.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50202217",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 454,
+        "comments": 297
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-24T16:05:58.341Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 54.179851793184106,
+      "core": "Claude formally proved security properties in the compiled code of 123 open-source libraries. Along the way, it found bugs that had eluded detection for years.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "databricks_engineering",
+      "source": "Databricks Blog",
+      "title": "Built for Agents: The Case for Spark Declarative Pipelines",
+      "link": "https://www.databricks.com/blog/built-agents-case-spark-declarative-pipelines",
+      "publishedAt": "2026-10-23T19:00:00.000Z",
+      "author": "",
+      "summary": "AI agents now write a growing share of production data pipelines (over 70% of SDP...",
+      "evidenceLink": "",
+      "score": 47.95955672619048,
+      "core": "AI agents now write a growing share of production data pipelines (over 70% of SDP...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-24T16:05:58.341Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "Custom skills, agents, and MCP servers in usage metrics API",
+      "link": "https://github.blog/changelog/2026-10-22-custom-skills-agents-and-mcp-servers-in-usage-metrics-api",
+      "publishedAt": "2026-10-22T22:19:17.000Z",
+      "author": "Allison",
+      "summary": "Copilot usage metrics now show the names of the skills, custom agents, Model Context Protocol (MCP) servers, slash commands, and plugins that your organization creates, instead of grouping them under… The post Custom skills, agents, and MCP servers in usage metrics API appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 45.7102908531746,
+      "core": "Copilot usage metrics now show the names of the skills, custom agents, Model Context Protocol (MCP) servers, slash commands, and plugins that your organization creates, instead of grouping them under… The post Custom skills, agents, and MCP servers in usage metrics API appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-24T16:05:58.341Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cohere_blog",
+      "source": "Cohere Blog",
+      "title": "Importance of cultural context in AI understanding | Cohere",
+      "link": "https://cohere.com/blog/can-ai-understand-culture",
+      "publishedAt": "2026-10-22T11:00:00.000Z",
+      "author": "",
+      "summary": "Learn why AI struggles with cultural context and what this means for building more inclusive AI systems. #AICulturalUnderstanding #AIResearch",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-24T16:05:58.341Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 43.990509107142856,
+      "core": "Learn why AI struggles with cultural context and what this means for building more inclusive AI systems. #AICulturalUnderstanding #AIResearch",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "VZMORE AX9 Max AI mini PC review",
+      "link": "https://www.techradar.com/pro/vzmore-ax9-max-ai-mini-pc-review",
+      "publishedAt": "2026-10-24T11:10:00.000Z",
+      "author": "Alastair Jennings",
+      "summary": "Designed for pro-level users who want a powerful mini PC for creative work, heavy-duty coding, and AI, this compact machine is stylish, but it's not cheap.",
+      "evidenceLink": "",
+      "score": 40.50876307539683,
+      "core": "Designed for pro-level users who want a powerful mini PC for creative work, heavy-duty coding, and AI, this compact machine is stylish, but it's not cheap.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-24T16:05:58.341Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "AI is speeding up coding, but devs are squandering time savings",
+      "link": "https://www.itpro.com/software/development/speeding-up-coding-alone-wont-translate-into-business-outcomes-developers-are-shipping-software-at-record-pace-with-ai-but-time-savings-are-being-squandered",
+      "publishedAt": "2026-10-23T07:39:11.000Z",
+      "author": "Nicole Kobie",
+      "summary": "An Atlassian survey suggests AI helps coding, but workflow friction needs to be addressed too",
+      "evidenceLink": "",
+      "score": 38.19906069444444,
+      "core": "An Atlassian survey suggests AI helps coding, but workflow friction needs to be addressed too",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-24T16:05:58.341Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "How NVIDIA OpenShell Reference Architecture Secures and Governs AI Agent Workloads at Scale",
+      "link": "https://developer.nvidia.com/blog/how-nvidia-openshell-reference-architecture-secures-and-governs-ai-agent-workloads-at-scale",
+      "publishedAt": "2026-10-21T09:50:14.000Z",
+      "author": "Elizabeth Goodman",
+      "summary": "Autonomous agents can work for hours on complex tasks, accessing files, tools, the internet, and spawning other agents to collaborate with. Executing complex...",
+      "evidenceLink": "",
+      "score": 37.29872339285714,
+      "core": "Autonomous agents can work for hours on complex tasks, accessing files, tools, the internet, and spawning other agents to collaborate with. Executing complex...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-24T16:05:58.341Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "Crossing the Threshold: How OpenAI and Anthropic Approach Autonomy and Safety in Financial Agents",
+      "link": "https://latent.space/p/crossing-the-threshold",
+      "publishedAt": "2026-10-14T21:40:52.000Z",
+      "author": "Richard MacManus",
+      "summary": "At AI Engineer New York, frontier labs and financial firms explored how to give agents useful autonomy while keeping consequential decisions under control.",
+      "evidenceLink": "",
+      "score": 36.861111111111114,
+      "core": "At AI Engineer New York, frontier labs and financial firms explored how to give agents useful autonomy while keeping consequential decisions under control.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-24T16:05:58.341Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "qdrant_retrieval_engineering",
+      "source": "Qdrant Retrieval Engineering",
+      "title": "Universal I/O in Qdrant",
+      "link": "https://qdrant.tech/articles/universal-io",
+      "publishedAt": "2026-10-12T00:00:00.000Z",
+      "author": "info@qdrant.tech (Andrey Vasnetsov)",
+      "summary": "Most software is built on an unspoken assumption: data lives on disk, and is read from and written to it. The assumption usually holds, until a new way (or need) of storing data appears. For Qdrant, that happened with serverless mode , where the data sits in object storage instead of on a disk next to the process. This blog tells the story of Universal I/O, the interface we built so that the same code could work in both worlds, and of the design choices that keep the local path cheap. This read is particularly relevant if you are a systems programmer, and some knowledge of Rust will help you follow the code, but the lessons should carry over to many other kinds of software.",
+      "evidenceLink": "",
+      "score": 36.78888888888889,
+      "core": "Most software is built on an unspoken assumption: data lives on disk, and is read from and written to it. The assumption usually holds, until a new way (or need) of storing data appears. For Qdrant, that happened with serverless mode , where the data sits in object storage instead of on a disk next to the process. This blog tells the story of Universal I/O, the interface we built so that the same code could work in …",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-24T16:05:58.341Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "[AINews] Agents disprove Polysemanticity; greatly improve Interpretability & Alignment",
+      "link": "https://latent.space/p/ainews-agents-disprove-polysemanticity",
+      "publishedAt": "2026-10-16T04:16:45.000Z",
+      "author": "Latent Space",
+      "summary": "Nick Cammarata out of nowhere with some major claims!",
+      "evidenceLink": "",
+      "score": 36.294444444444444,
+      "core": "Nick Cammarata out of nowhere with some major claims!",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-24T16:05:58.341Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "How Commerce.com and Cloudflare are getting storefronts ready for AI agents",
+      "link": "https://blog.cloudflare.com/webmcp-commerce",
+      "publishedAt": "2026-10-21T13:00:00.000Z",
+      "author": "Jenny Lea",
+      "summary": "Almost 100,000 Commerce.com domains now give AI agents real shopping tools through WebMCP on Cloudflare. Here's how we turned it on across every store at once, while keeping each merchant in control.",
+      "evidenceLink": "",
+      "score": 35.74130275793651,
+      "core": "Almost 100,000 Commerce.com domains now give AI agents real shopping tools through WebMCP on Cloudflare. Here's how we turned it on across every store at once, while keeping each merchant in control.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-24T16:05:58.341Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "fiddler_ai_evaluation",
+      "source": "Fiddler AI Blog",
+      "title": "A Practical Guide to Monitoring and Controlling Agentic Applications",
+      "link": "https://www.fiddler.ai/blog/monitoring-controlling-agentic-applications",
+      "publishedAt": "2026-10-20T00:00:00.000Z",
+      "author": "",
+      "summary": "Understand AI agent risks and ensure reliable operations. Learn how to monitor AI agents with key metrics, real-time guardrails, and a control plane approach.",
+      "evidenceLink": "",
+      "score": 34.87066783730159,
+      "core": "Understand AI agent risks and ensure reliable operations. Learn how to monitor AI agents with key metrics, real-time guardrails, and a control plane approach.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-24T16:05:58.341Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "🎙️ How I AI: Meta Muse Wonder + How Brooke Lacey is scaling video with AI",
+      "link": "https://www.lennysnewsletter.com/p/how-i-ai-meta-muse-wonder-how-brooke",
+      "publishedAt": "2026-10-19T15:03:35.000Z",
+      "author": "Lenny Rachitsky",
+      "summary": "Your weekly listens from How I AI, part of the Lenny's Podcast Network",
+      "evidenceLink": "",
+      "score": 33.743187678571424,
+      "core": "Your weekly listens from How I AI, part of the Lenny's Podcast Network",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-24T16:05:58.341Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "mistral_ai_engineering",
+      "source": "Mistral AI",
+      "title": "Mistral Advances AI for Engineering with NVIDIA",
+      "link": "https://mistral.ai/news/mistral-nvidia-ai-for-industrial-engineering",
+      "publishedAt": "2026-10-21T12:00:20.000Z",
+      "author": "",
+      "summary": "Mistral is collaborating with NVIDIA to develop a new generation of AI-native engineering workflows powered by NVIDIA accelerated computing.",
+      "evidenceLink": "",
+      "score": 32.342493234126984,
+      "core": "Mistral is collaborating with NVIDIA to develop a new generation of AI-native engineering workflows powered by NVIDIA accelerated computing.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-24T16:05:58.341Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    }
+  ]
+}
