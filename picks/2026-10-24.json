@@ -1,0 +1,101 @@
+[
+  {
+    "product": "zCAD AI",
+    "link": "https://zcad.ai/products/ai",
+    "phLink": "https://www.producthunt.com/products/zcad-ai",
+    "did": "上线AI原生参数化3D CAD：用一句话描述零件或装配体，生成基于真实CAD几何、可编辑、带尺寸驱动的模型（不是静态网格），浏览器里可继续改尺寸，导出STEP对接任意CAD工具。",
+    "who": "做硬件、3D打印、结构设计的工程师和maker，以及想快速出可加工模型的产品经理。",
+    "why": "PH当日第1名。把\"AI生成3D\"从好看的mesh推进到可制造的工程模型，是消费级AI里少见往硬工业方向走的一步。",
+    "tip": "PH 10/24当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "myPip",
+    "link": "https://mypip.dev/",
+    "phLink": "https://www.producthunt.com/products/mypip-2",
+    "did": "上线浏览器内AI游戏创作：描述玩法即可生成可玩游戏，支持多人、内置应用内购买和广告变现，可直接发布，无需写代码。",
+    "who": "想试水游戏创意但没有工程资源的创作者，以及做互动营销原型的团队。",
+    "why": "PH当日第2名。把vibe coding、分发和变现三段打通，比单纯\"AI生成游戏demo\"更接近一门生意。",
+    "tip": "PH 10/24当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "1Password for Agents",
+    "link": "https://1password.com/blog/1password-for-ai-agents",
+    "phLink": "https://www.producthunt.com/products/1password",
+    "did": "推出面向AI agent的登录信任层：agent可以代你登录网站，但全程看不到明文密码，凭据由1Password托管注入，带授权与审计。",
+    "who": "让agent操作自己账号（订票、填表、后台）又怕交出密码的个人和团队。",
+    "why": "官方10/22发布、PH 10/24在榜。agent经济的硬瓶颈是凭据托管，密码管理器切入这个位置顺理成章，和本产品自己的工作流直接相关。",
+    "tip": "官方博客10/22发布，PH 10/24在榜，非当日首发。官网+发布页已核实。"
+  },
+  {
+    "product": "AgentValley",
+    "link": "https://agentvalley.app",
+    "phLink": "https://www.producthunt.com/products/agentvalley",
+    "did": "上线Mac刘海屏里的Claude Code监控台：每个会话一张卡、每个子agent一行，配像素小人，谁在跑、用哪个模型、谁在等你审批一目了然。免费开源。",
+    "who": "同时跑多个Claude Code会话、需要全局进度视图的开发者。",
+    "why": "PH当日第4名。和昨天推的Monish（iPhone锁屏）是同一诉求的Mac端答案：agent一多，\"盯进度\"本身成了产品。",
+    "tip": "PH 10/24当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "LinkIntel",
+    "link": "https://www.getlinkintel.com",
+    "phLink": "https://www.producthunt.com/products/linkintel",
+    "did": "上线X帖子表现分析MCP：连接X后每天记录你帖子的实际表现，并跟踪X开源推荐算法的每日权重变化（关联到具体GitHub commit），一个URL接进Claude/ChatGPT，让下一稿基于真实数据。",
+    "who": "用AI写X内容、想让数据闭环回到写作环节的人。",
+    "why": "PH当日第5名。多数AI写作工具只管产出不管反馈，这条把\"发完以后怎么样\"接回了agent，正好补上Dongzhe关心的X生态一环。",
+    "tip": "PH 10/24当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "sideOS",
+    "link": "https://sideos.ai",
+    "phLink": "https://www.producthunt.com/products/sideos-ai",
+    "did": "上线常驻Mac刘海的本地AI助手：按住Ctrl+Option说话即可让它读屏、开App、点击、输入；支持全离线本地模型，也可接自己的Claude/OpenAI/Gemini/Grok key；含听写、会议记录（区分说话人）、定时任务和MCP扩展。",
+    "who": "想要语音驱动、数据不出本机的Mac重度用户。",
+    "why": "PH+Show HN同日双发。把听写、电脑操作、定时任务塞进一个可离线跑的notch应用，是personal agent里完成度较高的一档。",
+    "tip": "PH与Show HN均10/24当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Canva Craft",
+    "link": "https://www.canva.com/newsroom/news/canva-craft/",
+    "phLink": "https://www.producthunt.com/products/canva",
+    "did": "发布Canva首个自研图像生成模型Craft：2K分辨率、任意宽高比、面向设计场景训练、生成结果可继续编辑，已在Canva产品内上线并对开发者开放API。",
+    "who": "用Canva做图的设计/营销人员，以及想接设计向图像API的开发者。",
+    "why": "官方10/22发布、PH 10/24在榜。大平台自研基础模型替代第三方供应商，值得留意它对Canva生态和API定价的后续影响。",
+    "tip": "官方新闻稿10/22发布，PH 10/24在榜，非当日首发。官网+发布页已核实。属模型发布但已产品化可用。"
+  },
+  {
+    "product": "Mantid",
+    "link": "https://mantid.dev",
+    "phLink": "https://news.ycombinator.com/item?id=50220773",
+    "did": "上线Mac应用，让不懂机器学习的人也能训练自己的模型：图形界面里准备数据、训练和评估，即\"vibe training\"。",
+    "who": "想定制小模型但不想碰训练代码的产品/运营/设计师。",
+    "why": "Show HN 10/24当日发布。训练平民化这两年多是脚本级工具，做成Mac原生应用的不多，和昨天的Mark一样在压AI的使用门槛。",
+    "tip": "Show HN 10/24当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Multipeer",
+    "link": "https://multipeer.sh",
+    "phLink": "https://news.ycombinator.com/item?id=50219429",
+    "did": "上线多人无限画布：人和各自的AI agent在同一个画布上协作。",
+    "who": "远程协作且各自带agent工作流的小团队。",
+    "why": "Show HN 10/24当日发布。把\"多人协作\"扩展成\"多人+多agent协作\"，方向新，但官网信息很薄，先看形态。",
+    "tip": "Show HN 10/24当日发布。仅发布页描述已核实，官网内容有限。"
+  },
+  {
+    "product": "Latch",
+    "link": "https://latch.tools/",
+    "phLink": "https://news.ycombinator.com/item?id=50218601",
+    "did": "上线一行代码的WebMCP接入：在页面加一行script，就把站内搜索、购物车、联系表单暴露成AI agent可调用的工具，无需服务端、无需重写；分析功能可选且只收元数据。",
+    "who": "希望自己的网站能被AI浏览器/agent顺畅操作的站长和产品团队。",
+    "why": "Show HN 10/24当日发布。agent上网的最大摩擦是网站不为它们设计，这种\"一行代码适配\"如果普及会改变站长侧的分工。",
+    "tip": "Show HN 10/24当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Latent",
+    "link": "https://runlatent.ai",
+    "phLink": "https://www.ycombinator.com/launches/WBw-latent-stop-hallucinations-before-they-reach-your-customers",
+    "did": "YC公司，上线AI幻觉拦截层：在模型回答时读取内部信号给每个响应打分，拦下即将出错的答案；号称适配任意模型、成本比LLM judge低500倍以上。",
+    "who": "在医疗、金融、法务等高风险场景上线AI、需要逐条（而非抽样）质检输出的团队。",
+    "why": "Launch YC 10/21发布。从\"用另一个LLM复查\"换成\"读模型内部信号\"，路线有差异化；YC本周继续在agent可靠性方向下注。",
+    "tip": "Launch YC 10/21发布，非当日首发。仅发布页描述已核实，成本与效果为厂商说法。"
+  }
+]
