@@ -1,0 +1,83 @@
+[
+  {
+    "product": "Framer AI Agents",
+    "link": "https://www.framer.com/updates/framer-3",
+    "phLink": "https://www.producthunt.com/leaderboard/daily/2026/10/25",
+    "did": "Framer今日上线画布内AI agent：可以直接在设计画布上设计、写文案、分析和整理站点，并支持接入你自己的Claude Code或Codex；同批还有安全试错的Branching和创作者社区。",
+    "who": "用Framer做网站的设计师、营销团队，以及想把代码agent接进可视化建站流程的人。",
+    "why": "PH当日主推、919票全场最高。可视化建站工具正式向coding agent开放，两条原来平行的建站路线开始合流。",
+    "tip": "PH 10/25当日发布（Framer 3系列更新，官方6月起陆续公布，今日为AI Agents正式推出）。官网+发布页已核实。"
+  },
+  {
+    "product": "Moli（Lexmount）",
+    "link": "https://browser.lexmount.com",
+    "phLink": "https://www.producthunt.com/products/lexmount-browser",
+    "did": "上线面向agent的云端无头浏览器API：主打速度，供AI agent和各类agent框架抓取网页、执行浏览器操作；开源仓库lexmount/moli。",
+    "who": "做agent产品、需要稳定网页操作层（登录态、抓取、点击）的开发者。",
+    "why": "PH当日第1名。agent上网的基础设施还在快速迭代，这个赛道本周连续有新品（对照今天Show HN的Zephium浏览器）。",
+    "tip": "PH 10/25当日第1名；GitHub仓库10/22创建。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "AgentGrid.io",
+    "link": "https://agentgrid.io/",
+    "phLink": "https://www.producthunt.com/leaderboard/daily/2026/10/25",
+    "did": "上线人与agent共享的工作区：共享网盘按agent、按文件夹设置读写/发布权限，团队和自己的多个agent在同一空间里协作。",
+    "who": "已经在用多个agent、需要给它们划定数据边界和协作空间的小团队。",
+    "why": "PH当日第3名。和昨天Multipeer（多人+多agent画布）同方向：agent协作的\"权限与空间\"层开始产品化。",
+    "tip": "PH 10/25当日在榜第3；产品介绍博客8/13已发，本次为PH首发。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Llama Windows",
+    "link": "https://llama.app",
+    "phLink": "https://www.producthunt.com/leaderboard/daily/2026/10/25",
+    "did": "上线Windows托盘里的本地AI服务器：基于llama.cpp，一个本地模型服务供所有Windows应用调用，OpenAI兼容接口（改base URL即可迁移，无API key无账单）；同系Mac应用仅1MB。",
+    "who": "想让桌面软件统一走本地模型、不想付API费用的Windows/Mac用户。",
+    "why": "PH当日在榜。和昨天sideOS（Mac本地助手）呼应：本地模型正在从极客玩具变成系统级服务。",
+    "tip": "官方10/13发布（Hugging Face博客），PH 10/25在榜，非当日首发。官网+发布页已核实。"
+  },
+  {
+    "product": "Specsight",
+    "link": "https://specsight.app/",
+    "phLink": "https://www.producthunt.com/products/specsight",
+    "did": "上线面向AI快速迭代团队的产品可观测性：直连GitHub/GitLab仓库，从源码持续追踪产品有哪些功能、如何表现、每次发布改了什么，用产品语言（而非代码语言）呈现，自动产出周报和发布说明草稿。",
+    "who": "销售/客服/产品需要跟上AI高速发版、又读不动代码的团队。",
+    "why": "PH当日在榜，创始人今日亲自发帖。切的是真实痛点：AI让发版变快，非工程角色的\"产品认知\"被甩下。PH社区50%折扣码至10/31。",
+    "tip": "PH 10/25当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Clara（Saanora）",
+    "link": "https://api.saanora.com/docs",
+    "phLink": "https://news.ycombinator.com/item?id=50230196",
+    "did": "上线决策模型API：每个回答都附带一个概率，让调用方能按置信度路由或拦截。",
+    "who": "需要给模型输出加置信度门槛的开发者。",
+    "why": "Show HN当日发布。出自Saanora——10/23推过他家图表问答助手Mark，同一团队一周内第二个产品，方向从应用层下沉到模型API。",
+    "tip": "Show HN 10/25当日发布。仅发布页描述已核实，官网为API文档页。"
+  },
+  {
+    "product": "Echoboard",
+    "link": "https://jevontane.com/echoboard/",
+    "phLink": "https://news.ycombinator.com/item?id=50229997",
+    "did": "上线一个实验性看板：AI agent在里面做科学研究，人类只旁观。",
+    "who": "对多agent自治、AI-for-science感兴趣、想直观观察agent协作行为的人。",
+    "why": "Show HN当日发布。形态新鲜——把agent群放进一个可围观的\"鱼缸\"，适合当作观察多agent行为的窗口。",
+    "tip": "Show HN 10/25当日发布。仅发布页描述已核实，官网内容有限。"
+  },
+  {
+    "product": "Zephium",
+    "link": "https://github.com/zephium-browser/Zephium",
+    "phLink": "https://news.ycombinator.com/item?id=50227943",
+    "did": "开源浏览器与工作环境：人和agent共用，主打轻量快速，agent可作为一等用户在同一浏览器里工作。",
+    "who": "想要可自托管、agent友好的浏览器环境的开发者。",
+    "why": "Show HN当日发布。与今日PH第1的Moli撞题：agent专用浏览器一天两发，说明这个赛道需求真实在涨。",
+    "tip": "Show HN 10/25当日发布。仅发布页与仓库描述已核实。"
+  },
+  {
+    "product": "New Awesomic",
+    "link": "https://www.awesomic.com/blog/agents-humans-awesomic-supernova",
+    "phLink": "https://www.ycombinator.com/launches/WJf-new-awesomic-prompt-with-ai-perfect-with-experts-all-in-one-app",
+    "did": "YC公司改版上线：同一App里先用AI生成设计方案，再由人工专家精修，设计订阅服务变成\"AI起草+人收尾\"的混合工作流。",
+    "who": "需要持续产出营销/产品视觉、又担心纯AI出图质量不稳的团队。",
+    "why": "Launch YC 10/22发布。设计服务老牌YC公司主动把AI接进自己的交付流，是\"AI先、人后\"商业模式落地的样本。",
+    "tip": "Launch YC 10/22发布，官方博客10/21，非当日首发。官网+发布页已核实。"
+  }
+]
