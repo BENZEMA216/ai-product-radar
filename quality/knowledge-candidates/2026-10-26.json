@@ -1,0 +1,415 @@
+{
+  "generatedAt": "2026-10-25T16:06:27.357Z",
+  "date": "2026-10-26",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Reflection AI's Beam now available on AI Gateway for free",
+      "link": "https://vercel.com/changelog/reflection-ai-beam-now-available-on-ai-gateway-for-free",
+      "publishedAt": "2026-10-16T00:00:00.000Z",
+      "author": "Jerilyn Zheng",
+      "summary": "Beam from Reflection AI , previously available in stealth as stealth/cat-jam , is now available on AI Gateway . Beam is free to use for a limited time during the launch period when serviced by Reflection AI. Beam is an low latency US open-weight reasoning model for coding and agentic tasks, with weights released under Apache 2.0 . Beam supports tool calling and structured outputs , with a 1M-token context window for code, documents, and conversation history. Reasoning effort is adjustable. Beam is designed for speed, activating only 23B of its 501B parameters per token and avoiding tokens a task doesn't need, so it tends to reach answers sooner than larger open models. There are 2 ways to access Beam for free: Using the standard model name ( reflection/beam with provider reflection ). When the free period ends, the model slug will automatically transfer over to pricing with no downtime. Using the -free suffix to the standard name ( reflection/beam-free ). The model will stop serving when the free offer ends. To use it in Claude Code, Codex, Cursor, and more, install the latest Vercel CLI and run setup: Then select reflection/beam or reflection/beam-free in the agent. See the coding agents guide for details. Try Beam in the model playground . AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. Read more",
+      "evidenceLink": "",
+      "score": 70,
+      "core": "Beam from Reflection AI , previously available in stealth as stealth/cat-jam , is now available on AI Gateway . Beam is free to use for a limited time during the launch period when serviced by Reflection AI. Beam is an low latency US open-weight reasoning model for coding and agentic tasks, with weights released under Apache 2.0 . Beam supports tool calling and structured outputs , with a 1M-token context window for…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-25T16:06:27.357Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Argus – a free, open-source agentic security operations platform – MIT",
+      "link": "https://thomasunise.com/argus",
+      "publishedAt": "2026-10-24T21:54:16.000Z",
+      "author": "humxn https://news.ycombinator.com/user?id=humxn",
+      "summary": "Argus is a free, open-source security platform that catches AI-speed attacks and shuts them down in seconds: evidence graph, detections, autonomous response with rollback, an AI gateway, shadow-AI discovery and an attack simulator.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50225748",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 27,
+        "comments": 9
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-25T16:06:27.357Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 59.218898152742845,
+      "core": "Argus is a free, open-source security platform that catches AI-speed attacks and shuts them down in seconds: evidence graph, detections, autonomous response with rollback, an AI gateway, shadow-AI discovery and an attack simulator.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Progressive disclosure in agents to make them 2.3x faster",
+      "link": "https://www.skyvern.com/blog/deleting-rag-from-our-web-agent-made-it-2-3x-faster",
+      "publishedAt": "2026-10-24T16:30:58.000Z",
+      "author": "suchintan https://news.ycombinator.com/user?id=suchintan",
+      "summary": "We rewrote Skyvern from scratch using Pi as inspiration, making it 2.3x faster and score 90.5% on Odysseys benchmark.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50222826",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 19,
+        "comments": 2
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-25T16:06:27.357Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 57.42428619807669,
+      "core": "We rewrote Skyvern from scratch using Pi as inspiration, making it 2.3x faster and score 90.5% on Odysseys benchmark.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Deploy AI in a HIPAA-eligible environment with Amazon Quick",
+      "link": "https://aws.amazon.com/blogs/machine-learning/deploy-ai-in-a-hipaa-eligible-environment-with-amazon-quick",
+      "publishedAt": "2026-10-22T17:48:22.000Z",
+      "author": "Meena Menon",
+      "summary": "Amazon Quick is a HIPAA-eligible service, but eligibility is not the same as compliance. This post explains who HIPAA applies to, how PHI flows through Amazon Quick, what the platform provides for regulated environments, and a step-by-step guide to deploying compliant AI agents in a healthcare environment.",
+      "evidenceLink": "",
+      "score": 38.68402069444445,
+      "core": "Amazon Quick is a HIPAA-eligible service, but eligibility is not the same as compliance. This post explains who HIPAA applies to, how PHI flows through Amazon Quick, what the platform provides for regulated environments, and a step-by-step guide to deploying compliant AI agents in a healthcare environment.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-25T16:06:27.357Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Adaptive agentic intelligence framework using Strands Agents",
+      "link": "https://aws.amazon.com/blogs/machine-learning/adaptive-agentic-intelligence-framework-using-strands-agents",
+      "publishedAt": "2026-10-21T21:23:26.000Z",
+      "author": "Nitin Eusebius",
+      "summary": "The Adaptive Agentic Intelligence Framework (AAIF), built with Strands Agents, handles routine tasks locally with small language models and routes complex requests to cloud models through Amazon Bedrock. This post walks through building AAIF with local SLMs through Ollama and Amazon Bedrock, using an Internet of Things monitoring scenario.",
+      "evidenceLink": "",
+      "score": 37.41465561507937,
+      "core": "The Adaptive Agentic Intelligence Framework (AAIF), built with Strands Agents, handles routine tasks locally with small language models and routes complex requests to cloud models through Amazon Bedrock. This post walks through building AAIF with local SLMs through Ollama and Amazon Bedrock, using an Internet of Things monitoring scenario.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-25T16:06:27.357Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Cutting our inference bill by 68% by being obsessive about optimization",
+      "link": "https://blog.cloudflare.com/obsessive-inference-optimization",
+      "publishedAt": "2026-10-19T19:12:53.000Z",
+      "author": "Ryan Skidmore",
+      "summary": "When our AI code reviewer's cost per run doubled, we dug into the token usage to find out why. Learn how we used prompt caching and intelligent model routing to slash our inference bill by 68% while speeding up reviews.",
+      "evidenceLink": "",
+      "score": 33.15288974206349,
+      "core": "When our AI code reviewer's cost per run doubled, we dug into the token usage to find out why. Learn how we used prompt caching and intelligent model routing to slash our inference bill by 68% while speeding up reviews.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-25T16:06:27.357Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Achieve Productive AI Capacity Faster and More Predictably with NVIDIA DSX POD",
+      "link": "https://developer.nvidia.com/blog/achieve-productive-ai-capacity-faster-and-more-predictably-with-nvidia-dsx-pod",
+      "publishedAt": "2026-10-21T09:35:32.000Z",
+      "author": "Tanya Lenz",
+      "summary": "AI factories turn energy into intelligence. But before an AI workload can produce its first token, operators must bring an interconnected system of compute,...",
+      "evidenceLink": "",
+      "score": 30.56080640873016,
+      "core": "AI factories turn energy into intelligence. But before an AI workload can produce its first token, operators must bring an interconnected system of compute,...",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-25T16:06:27.357Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Why AI security is rapidly becoming one of the biggest commercial opportunities for the channel",
+      "link": "https://www.itpro.com/technology/artificial-intelligence/why-ai-security-is-rapidly-becoming-one-of-the-biggest-commercial-opportunities-for-the-channel",
+      "publishedAt": "2026-10-22T07:00:00.000Z",
+      "author": "Kyriakos Siamplettos",
+      "summary": "AI security presents an opportunity for the channel to tap into recurring revenue",
+      "evidenceLink": "",
+      "score": 28.656600059523807,
+      "core": "AI security presents an opportunity for the channel to tap into recurring revenue",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-25T16:06:27.357Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "Enterprises are being stung by unexpected AI bills, and it’s disrupting IT budgets",
+      "link": "https://www.itpro.com/technology/artificial-intelligence/enterprises-are-being-stung-by-unexpected-ai-bills-and-its-disrupting-it-budgets",
+      "publishedAt": "2026-10-23T09:04:29.000Z",
+      "author": "Nicole Kobie",
+      "summary": "A survey by Cisco found that observability costs are skyrocketing amid the shift to AI, despite half unable to measure LLM response quality",
+      "evidenceLink": "",
+      "score": 27.84130244047619,
+      "core": "A survey by Cisco found that observability costs are skyrocketing amid the shift to AI, despite half unable to measure LLM response quality",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-25T16:06:27.357Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pragmatic_engineer",
+      "source": "The Pragmatic Engineer",
+      "title": "The revised rules of engineering management with Will Larson",
+      "link": "https://newsletter.pragmaticengineer.com/p/the-revised-rules-of-engineering",
+      "publishedAt": "2026-10-21T16:58:21.000Z",
+      "author": "Gergely Orosz",
+      "summary": "Will Larson, CTO of Imprint, explores how AI and shifting industry expectations are changing engineering management, career ladders, and the path from engineer to CTO.",
+      "evidenceLink": "",
+      "score": 26.1324135515873,
+      "core": "Will Larson, CTO of Imprint, explores how AI and shifting industry expectations are changing engineering management, career ladders, and the path from engineer to CTO.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-25T16:06:27.357Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "Turn notifications into code with GitHub Copilot in Teams",
+      "link": "https://github.blog/changelog/2026-10-23-turn-notifications-into-code-with-github-copilot-in-teams",
+      "publishedAt": "2026-10-23T21:29:58.000Z",
+      "author": "Allison",
+      "summary": "The new GitHub app in Teams brings notifications and Copilot together, helping teams turn issues into fixes and ship code faster without leaving the conversation. Get notified in channels, group… The post Turn notifications into code with GitHub Copilot in Teams appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 25.612115932539684,
+      "core": "The new GitHub app in Teams brings notifications and Copilot together, helping teams turn issues into fixes and ship code faster without leaving the conversation. Get notified in channels, group… The post Turn notifications into code with GitHub Copilot in Teams appeared first on The GitHub Blog .",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-25T16:06:27.357Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "databricks_engineering",
+      "source": "Databricks Blog",
+      "title": "The Fraud Analyst AI Coworker: Detecting Telecom Fraud in Real-Time on One Platform",
+      "link": "https://www.databricks.com/blog/fraud-analyst-ai-coworker-detecting-telecom-fraud-real-time-one-platform",
+      "publishedAt": "2026-10-22T18:30:00.000Z",
+      "author": "",
+      "summary": "BackgroundAccording to the Communications Fraud Control Association's 2025 survey...",
+      "evidenceLink": "",
+      "score": 25.494695297619046,
+      "core": "BackgroundAccording to the Communications Fraud Control Association's 2025 survey...",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-25T16:06:27.357Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "ibm_research_blog",
+      "source": "IBM Research Blog",
+      "title": "New course teaches how AI models run on modern accelerators",
+      "link": "https://research.ibm.com/blog/coursera-dataflow-accelerator-architecture-specialization",
+      "publishedAt": "2026-10-19T12:00:00.000Z",
+      "author": "",
+      "summary": "’Dataflow Architectures for AI’ is a 6-course specialization from IBM Research that compares leading accelerator architectures through hands-on labs.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-25T16:06:27.357Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 25.248663551587303,
+      "core": "’Dataflow Architectures for AI’ is a 6-course specialization from IBM Research that compares leading accelerator architectures through hands-on labs.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "GitHub Copilot in Visual Studio — September update",
+      "link": "https://github.blog/changelog/2026-10-22-github-copilot-in-visual-studio-september-update-2",
+      "publishedAt": "2026-10-23T00:17:51.000Z",
+      "author": "Allison",
+      "summary": "September 2026 brought deeper visibility into your work: explore pull requests without leaving chat, bring the AI model your team trusts, and fix vulnerable packages the moment Visual Studio flags… The post GitHub Copilot in Visual Studio — September update appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 24.0699135515873,
+      "core": "September 2026 brought deeper visibility into your work: explore pull requests without leaving chat, bring the AI model your team trusts, and fix vulnerable packages the moment Visual Studio flags… The post GitHub Copilot in Visual Studio — September update appeared first on The GitHub Blog .",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-25T16:06:27.357Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "interconnects",
+      "source": "Interconnects",
+      "title": "Podcast: Kimi K3.1 Pro, the new cyber reality, and Muse musings",
+      "link": "https://www.interconnects.ai/p/podcast-kimi-k31-pro-the-new-cyber",
+      "publishedAt": "2026-10-25T11:49:00.000Z",
+      "author": "Nathan Lambert",
+      "summary": "#20",
+      "evidenceLink": "",
+      "score": 23.710171488095238,
+      "core": "#20",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-25T16:06:27.357Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "deepmind",
+      "source": "Google DeepMind",
+      "title": "Beyond tree cover: mapping the world’s forest types",
+      "link": "https://deepmind.google/blog/beyond-tree-cover-mapping-the-worlds-forest-types",
+      "publishedAt": "2026-10-22T14:30:24.000Z",
+      "author": "",
+      "summary": "A global map categorizing every 10-meter patch of land on Earth into distinct forest types.",
+      "evidenceLink": "",
+      "score": 21.24834609126984,
+      "core": "A global map categorizing every 10-meter patch of land on Earth into distinct forest types.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-25T16:06:27.357Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "meta_engineering",
+      "source": "Meta Engineering",
+      "title": "OCP Summit 2026: Powering AI with Open Innovations in Scale-Up, Scale-Out, and Scale-Across Networks",
+      "link": "https://engineering.fb.com/2026/10/12/open-source/ocp-summit-2026-powering-ai-with-open-innovations-in-scale-up-scale-out-and-scale-across-networks",
+      "publishedAt": "2026-10-12T21:19:18.000Z",
+      "author": "",
+      "summary": "At the 2026 Open Compute Project Global Summit, Meta is sharing the next generation of open networking infrastructure, including: Our first liquid-cooled network rack (IcePack), and 102.4T switch platform (IceCube). Flattened Planar Fabric (FPF), a multiplane backend scale-out fabric that fundamentally changes how GPUs connect to the network MetaRoCE, our open-source AI transport protocol. Launching [...] Read More... The post OCP Summit 2026: Powering AI with Open Innovations in Scale-Up, Scale-Out, and Scale-Across Networks appeared first on Engineering at Meta .",
+      "evidenceLink": "",
+      "score": 20.17222222222222,
+      "core": "At the 2026 Open Compute Project Global Summit, Meta is sharing the next generation of open networking infrastructure, including: Our first liquid-cooled network rack (IcePack), and 102.4T switch platform (IceCube). Flattened Planar Fabric (FPF), a multiplane backend scale-out fabric that fundamentally changes how GPUs connect to the network MetaRoCE, our open-source AI transport protocol. Launching [...] Read More.…",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-25T16:06:27.357Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Introducing Clairic, a new System One class of extraction models",
+      "link": "https://blog.cloudflare.com/clairic-extraction-model",
+      "publishedAt": "2026-10-19T17:48:26.000Z",
+      "author": "Alex Reneau",
+      "summary": "Clairic is a new model from Cloudflare that is a System One extraction modeI, capable of extracting, computing, estimating, and forecasting data from unstructured inputs.",
+      "evidenceLink": "",
+      "score": 18.780131805555556,
+      "core": "Clairic is a new model from Cloudflare that is a System One extraction modeI, capable of extracting, computing, estimating, and forecasting data from unstructured inputs.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-25T16:06:27.357Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "deepmind",
+      "source": "Google DeepMind",
+      "title": "Google DeepMind and Singapore Government collaborate to build fine-tuned AI model for scam detection",
+      "link": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi",
+      "publishedAt": "2026-10-14T02:00:14.000Z",
+      "author": "",
+      "summary": "Learn how Google DeepMind and GovTech Singapore uses lightweight on-device Gemma models to intercept conversational scams in private chats with zero cloud data egress.",
+      "evidenceLink": "",
+      "score": 14.927777777777777,
+      "core": "Learn how Google DeepMind and GovTech Singapore uses lightweight on-device Gemma models to intercept conversational scams in private chats with zero cloud data egress.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-25T16:06:27.357Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "interconnects",
+      "source": "Interconnects",
+      "title": "Meta shakes up the frontiers, open and closed",
+      "link": "https://www.interconnects.ai/p/meta-shakes-up-the-frontiers-open",
+      "publishedAt": "2026-10-17T14:06:54.000Z",
+      "author": "Nathan Lambert",
+      "summary": "US open weights are back!",
+      "evidenceLink": "",
+      "score": 12.13888888888889,
+      "core": "US open weights are back!",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-25T16:06:27.357Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

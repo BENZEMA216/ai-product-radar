@@ -1,0 +1,205 @@
+{
+  "generatedAt": "2026-10-25T16:16:36.455Z",
+  "report": "2026-10-26.md",
+  "health": "quality/knowledge-source-health/2026-10-26.json",
+  "candidates": "quality/knowledge-candidates/2026-10-26.json",
+  "site": "docs/index.html",
+  "ok": true,
+  "date": "2026-10-26",
+  "rows": 20,
+  "blogCount": 20,
+  "paperCount": 0,
+  "blogAccessVerifiedCount": 20,
+  "topConferencePaperCount": 0,
+  "sourceCount": 90,
+  "candidatePool": {
+    "historicalLinkCount": 1615,
+    "blogFetchedCount": 332,
+    "blogAccessCheckedCount": 76,
+    "blogAccessVerifiedCount": 50,
+    "blogAccessRejectedCount": 26,
+    "blogAccessRejected": [
+      {
+        "sourceId": "openai_news",
+        "title": "Patch the Planet: global response coordination as agents uncover critical vulnerabilities",
+        "link": "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "OpenAI and Poland’s NASK partner to advance AI safety and security",
+        "link": "https://openai.com/index/openai-nask-ai-safety-security-partnership",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "Securing our frontier model training environment",
+        "link": "https://openai.com/index/securing-our-frontier-model-training-environment",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "Advancing coding in low‑resource programming languages",
+        "link": "https://openai.com/index/low-resource-programming-languages",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)",
+        "link": "https://openai.com/index/scaling-storage-one-billion-users-part-two",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "Democratic governance of frontier AI, part II: Empowering cyber defenders",
+        "link": "https://openai.com/index/empowering-cyber-defenders",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "The EU’s next chapter in AI is agentic",
+        "link": "https://openai.com/index/the-eus-next-chapter-in-ai-is-agentic",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "Using thousands of AI agents to uncover new leads in biological data",
+        "link": "https://openai.com/index/scaling-ai-research-for-complex-biological-data",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "How we built ChatGPT’s novel ad stack for user trust and relevance",
+        "link": "https://openai.com/index/building-chatgpt-ad-stack",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "Uber brings ChatGPT Work to all employees with OpenAI",
+        "link": "https://openai.com/index/uber-chatgpt-work-rollout",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "How AT&T is rethinking in-house legal work with OpenAI",
+        "link": "https://openai.com/index/att-legal",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "Broad access through consistent standards",
+        "link": "https://openai.com/index/broad-access-through-consistent-standards",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "How Block is building AI-powered security with OpenAI technology",
+        "link": "https://openai.com/index/block-ai-powered-security",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "interconnects",
+        "title": "Latest open artifacts (#25): DeepSeek V4.1 Flash 1017, American-made models, and new regulatory controls in the US & China",
+        "link": "https://www.interconnects.ai/p/latest-open-artifacts-25-deepseek",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "Inside the black box of AI: How AI models actually think | Emmanuel Ameisen (Anthropic)",
+        "link": "https://www.lennysnewsletter.com/p/a-mind-expanding-conversation-on",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "🧠 Community Wisdom: PRDs for agents, tracking competitor messaging, whether software moats still exist, exercising startup options when you leave, and more",
+        "link": "https://www.lennysnewsletter.com/p/community-wisdom-prds-for-agents",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: Time to rethink software security because of AI?",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-do-we-need-to-rethink-software",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: OpenAI software engineer accused of spying",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-openai-software-engineer",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "What’s the ROI of software engineers’ spending on AI?",
+        "link": "https://newsletter.pragmaticengineer.com/p/whats-the-roi-of-software-engineers",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "Why has Shopify dropped React Native?",
+        "link": "https://newsletter.pragmaticengineer.com/p/shopify-native-mobile",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: Firebase’s global outage & poor response",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-firebases-global-outage",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "netflix_technology",
+        "title": "Netflix Conductor: The Next Chapter",
+        "link": "https://netflixtechblog.com/netflix-conductor-the-next-chapter-41ad21067649",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "netflix_technology",
+        "title": "Beyond API Compatibility: Building a Tool to Measure the Blast Radius of Library Changes",
+        "link": "https://netflixtechblog.com/beyond-api-compatibility-building-a-tool-to-measure-the-blast-radius-of-library-changes-9474f2fd4f90",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "netflix_technology",
+        "title": "Running Apache Spark experiments in my sleep (and on a plane)",
+        "link": "https://netflixtechblog.com/running-apache-spark-experiments-in-my-sleep-and-on-a-plane-588816b6b5f8",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "netflix_technology",
+        "title": "Ontology-Driven Observability: Building an End-to-End Knowledge Graph at Netflix Scale",
+        "link": "https://netflixtechblog.com/ontology-driven-observability-building-an-end-to-end-knowledge-graph-at-netflix-scale-421392cf5adf",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "netflix_technology",
+        "title": "Integrating Netflix’s Foundation Model into Personalization applications",
+        "link": "https://netflixtechblog.com/integrating-netflixs-foundation-model-into-personalization-applications-cf176b5860eb",
+        "reason": "HTTP 403"
+      }
+    ],
+    "blogCanonicalRedirectHistoricalDedupCount": 4,
+    "paperFetchedCount": 0,
+    "paperTopConferenceVerifiedCount": 0,
+    "blogAfterHistoricalDedupCount": 46,
+    "paperAfterHistoricalDedupCount": 0,
+    "eligibleAfterHistoricalDedupCount": 46,
+    "maxPerBlogSource": 2,
+    "selectedBlogSourceCounts": {
+      "aws_machine_learning": 2,
+      "cloudflare_ai": 2,
+      "databricks_engineering": 1,
+      "deepmind": 2,
+      "github_copilot_changelog": 2,
+      "hcker_news_ai_blogs": 2,
+      "ibm_research_blog": 1,
+      "interconnects": 2,
+      "itpro_ai": 2,
+      "meta_engineering": 1,
+      "nvidia_developer": 1,
+      "pragmatic_engineer": 1,
+      "vercel_ai": 1
+    },
+    "sourceCapRelaxed": false,
+    "shortfallReason": "顶会元数据核验后论文仅 0 篇，空缺优先用已验证可访问的 Blog 补位，不用普通 arXiv 论文凑数；未用旧文或低质量内容补位。"
+  },
+  "failures": []
+}

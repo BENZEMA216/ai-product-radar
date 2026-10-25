@@ -1,0 +1,214 @@
+{
+  "date": "2026-10-26",
+  "generatedAt": "2026-10-25T16:09:35.041Z",
+  "reportPath": "reports/2026-10-26-0009-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 45,
+    "top20Sources": [
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 14,
+      "keptCount": 7,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-24；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 14 条，AI 相关候选 7 条；实际 fallback：hunted_space。；历史去重移除 7 条已报道或已处理日榜 Product Hunt 信号，最终发布 0 条。"
+    },
+    "yc_launch": {
+      "status": "empty",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "YC Launch 本窗口无候选或来源为空。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 19,
+      "keptCount": 13,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "fallback",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 13,
+      "keptCount": 13,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-10-25T15:59:38.591Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "An OSS browser and work environment for humans and agents",
+      "productKey": "https://github.com/zephium-browser/zephium",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Zephium 把浏览器定义成人与 Agent 共用的工作环境，值得看它是否真正解决任务接管、页面状态与权限边界，而不只是换一层浏览器外壳。"
+    },
+    {
+      "rank": 2,
+      "product": "Open-Source Cybersecurity Platform Uses AI Agents to Protect Businesses",
+      "productKey": "https://medium.com/@thomasunise/this-open-source-cybersecurity-platform-uses-ai-agents-to-detect-threats-and-protect-businesses-762e65392b42",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这条信号把 AI Agent 用于企业威胁检测，但现有证据只是 HN 指向的 Medium 介绍；重点应核验开源仓库、检测闭环和误报处理，暂不把宣传语当成成熟度。"
+    },
+    {
+      "rank": 3,
+      "product": "QualityLayer, put the engineer back in the loop of your coding agent",
+      "productKey": "https://qualitylayer.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "QualityLayer 把工程师重新放回 coding agent 的交付回路，切中自动生成之后的质量责任问题；关键是它如何呈现差异、触发复核并阻止不合格变更。"
+    },
+    {
+      "rank": 4,
+      "product": "Echoboard where AI agents do science and humans only watch",
+      "productKey": "https://jevontane.com/echoboard",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Echoboard 试图让多个 AI Agent 自主开展科学工作、由人旁观，概念上触及自治研究闭环；但目前只有发布标题，需先验证实验可复现性和人类审批点。"
+    },
+    {
+      "rank": 5,
+      "product": "AI Trend Video – Put your photo into viral AI video templates",
+      "productKey": "https://aitrendvideo.net",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把用户照片套入热门 AI 视频模板，分发钩子清楚但同质化很强；更值得观察模板更新速度、生成一致性和一次尝鲜之后的复用率。"
+    },
+    {
+      "rank": 6,
+      "product": "Marketplace for ChatGPT Plugins, Apps, & MCPs",
+      "productKey": "https://chatgptplugins.directory",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这个目录把 ChatGPT 插件、Apps 与 MCP 放在同一发现入口，反映 Agent 工具分发正在碎片化；价值取决于收录质量、兼容性验证和开发者冷启动，而不是目录数量。"
+    },
+    {
+      "rank": 7,
+      "product": "Close the UI building AI agent loop with Protoshot",
+      "productKey": "https://npmjs.com/protoshot",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Protoshot 关注 AI 生成 UI 后的视觉验证闭环，试图让 Agent 不只写界面还检查结果；值得核验 npm 工具如何接入截图、差异判断与修复反馈。"
+    },
+    {
+      "rank": 8,
+      "product": "AI Heat Map Sourced from over 140 News Feeds",
+      "productKey": "https://ai.jagular.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 140 多个新闻源压成 AI 热力图，有助于快速发现议题升温；但产品价值取决于信源权重、去重与趋势解释，不能只靠来源数量。"
+    },
+    {
+      "rank": 9,
+      "product": "Perch, a calm Mac app for juggling Claude Code sessions",
+      "productKey": "https://perchfocus.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Perch 用安静的 Mac 界面管理多个 Claude Code 会话，瞄准并行编码时的上下文切换；值得看它能否准确暴露等待、风险和需要人工接管的节点。"
+    },
+    {
+      "rank": 10,
+      "product": "Call4me – a ChatGPT plugin that lets it make phone calls on your behalf",
+      "productKey": "https://chatgpt.com/plugins/plugin_asdk_app_6abdec89d46c81919cda058ca9f62cb8?search=call4me",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Call4me 让 ChatGPT 代用户打电话，把聊天能力推进到现实世界执行；关键产品边界是拨号前确认、通话身份披露、失败回退与费用透明。"
+    },
+    {
+      "rank": 11,
+      "product": "Four-Leaf job matches that find you automatically",
+      "productKey": "https://four-leaf.ai/jobs",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Four-Leaf 把职位匹配改成持续自动发现，试图减少求职者反复搜索；真正价值在匹配解释、反馈学习和误推控制，而不只是自动发送结果。"
+    },
+    {
+      "rank": 12,
+      "product": "ADRs for AI – Deliberation records for human–AI work, versioned in Git",
+      "productKey": "https://adrs.systems",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ADRs for AI 把人机协作中的讨论与取舍做成可版本化记录，补足 Agent 产出背后的决策溯源；适合观察它如何嵌入 Git 工作流并避免记录负担。"
+    },
+    {
+      "rank": 13,
+      "product": "Claude Code(and others) embedded in your app",
+      "productKey": "https://github.com/gtanczyk/genaicode",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "genaicode 让应用内嵌 Claude Code 等编码 Agent，切中了产品把 Agent 能力作为组件集成的需求；重点看接口抽象、沙箱权限和宿主应用可控性。"
+    }
+  ]
+}
