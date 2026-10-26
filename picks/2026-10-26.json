@@ -1,0 +1,92 @@
+[
+  {
+    "product": "SurgePix",
+    "link": "https://surgepix.ai",
+    "phLink": "https://www.producthunt.com/products/surgepix",
+    "did": "上线可逐层编辑的AI视觉工具：生成后可改任意图层、换文字、局部重绘、按品牌kit保持统一；开源agent skills让Claude Code和Cursor直接替你生成和改图。",
+    "who": "要批量出品牌一致视觉的营销/设计团队，以及想把出图接进agent流水线的开发者。",
+    "why": "PH当日第1名。多数AI出图止步于一次性生成，\"可编辑图层+agent可调\"两头都占了。",
+    "tip": "PH 10/26当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Strawberry 1.0",
+    "link": "https://strawberrybrowser.com",
+    "phLink": "https://www.producthunt.com/products/strawberry",
+    "did": "瑞典团队的AI浏览器今日出beta发1.0正式版：内置AI companion学习你的偏好和工作流，可7x24替你执行重复性网页工作，定位非技术团队。",
+    "who": "想让agent代操作网页但不想碰技术配置的团队和个人。",
+    "why": "PH当日第2名。欧洲版AI浏览器正式登场，与Comet/Arc系产品正面对位；多家媒体同日报道其出beta。",
+    "tip": "1.0正式版10/25-26发布（此前为beta）。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "N8N Chat UI",
+    "link": "https://n8nchatui.com",
+    "phLink": "https://www.producthunt.com/products/n8n-chat-ui-2",
+    "did": "上线n8n聊天组件的无代码构建器：可视化设计品牌一致的聊天界面（实时预览），接任意n8n工作流并嵌入任意网站，支持流式输出、语音、文件上传和JS API。",
+    "who": "用n8n搭AI工作流、需要给客户端一个像样聊天入口的开发者、代理商和SaaS团队。",
+    "why": "PH当日第3名、65条评论全场最热。补的是n8n默认聊天界面太简陋这个真实缺口。",
+    "tip": "PH 10/26当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "2G",
+    "link": "https://scrapbrainaudio.com/2G",
+    "phLink": "https://www.producthunt.com/products/2g",
+    "did": "上线复古掌机造型的神经合成采样器：描述一种声音它就生成，可用电脑键盘弹奏或导入自己的音频编辑；Win/Mac免费（插件或独立App），送20个生成点数，Studio版$10/月200点。",
+    "who": "音乐制作人、声音设计师，以及喜欢复古硬件美学的玩家。",
+    "why": "PH当日第5名。把神经音频合成包进2000年代掌机壳，好玩且真能用；本周音频方向里最有性格的一个。",
+    "tip": "PH 10/26当日发布。官网+发布页已核实，免费额度与价格为官网当前信息。功能未实测。"
+  },
+  {
+    "product": "WhoIsCooking",
+    "link": "https://whoiscooking.site",
+    "phLink": "https://www.producthunt.com/products/whoiscooking",
+    "did": "上线Mac菜单栏小工具：显示芯片温度，并指出是哪个AI agent（Claude Code、Codex、Cursor）在烤你的Apple Silicon；一键把重活挪到能效核降温。$5买断。",
+    "who": "Mac上同时跑多个coding agent、机器发烫降频的开发者。",
+    "why": "PH当日在榜。agent监控/管理连续第四天出新品（Monish、AgentValley、Rostr之后），这次管到了硬件温度。",
+    "tip": "PH 10/26当日发布。官网+发布页已核实，$5买断为官网当前信息。功能未实测。"
+  },
+  {
+    "product": "Kiwi",
+    "link": "https://heykiwi.co",
+    "phLink": "https://www.producthunt.com/products/kiwi-7",
+    "did": "上线主动型个人助理：跟踪你的行程、账单、计划和相关的人，在对的时刻主动在iMessage/WhatsApp里发消息；你点头后它直接在对应App或网站上把事情办掉。试点期免费。",
+    "who": "想要一个\"先开口\"的助理、习惯在iMessage/WhatsApp里处理事情的人。",
+    "why": "PH当日在榜。从\"你问它答\"转向\"它先开口\"，且交付就在短信里——和Dongzhe自己的使用形态高度重合。",
+    "tip": "PH 10/26当日首发；产品10月中已在试点（官方博客10/12），本次为正式发布日。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "tabsh",
+    "link": "https://tabsh.cc",
+    "phLink": "https://www.producthunt.com/products/tabsh",
+    "did": "开源（MIT）：把coding agent会话搬进浏览器标签页——一个小Rust守护进程把所有项目的Claude Code、Codex、Cursor CLI、OpenCode会话聚到一块看板，状态实时更新，真终端与聊天面板都有。macOS/Linux免费。",
+    "who": "多项目并行跑agent、不想在N个终端窗口间切换的开发者。",
+    "why": "PH当日在榜。和多数ADE把浏览器塞进IDE相反，它把IDE搬进浏览器，管理多agent会话的另一种答案。",
+    "tip": "PH 10/26当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "CloudKnife",
+    "link": "https://cloudknife.com",
+    "phLink": "https://www.producthunt.com/products/cloudknife",
+    "did": "上线Azure云成本优化agent：AI摸清每个资源的用途与约束，确定性内核按硬规则校验每条建议（如SAP虚机只给SAP认证选项），你审批、它执行。",
+    "who": "Azure账单失控、又不敢让工具乱动的工程团队。",
+    "why": "PH当日在榜。云成本工具多止步于\"告诉你哪里浪费\"，这条把执行闭环也做了，且用确定性校验兜底agent建议。",
+    "tip": "PH 10/26当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "UnCode",
+    "link": "https://github.com/XLongLink/uncode",
+    "phLink": "https://news.ycombinator.com/item?id=50242862",
+    "did": "开源：Linux本地语音听写，离线运行。",
+    "who": "Linux桌面用户里想要不联网语音输入的人——这块一直是Linux生态的缺口。",
+    "why": "Show HN当日发布。Mac有sideOS、Whisper系一堆选择，Linux本地听写工具稀缺，这条补位。",
+    "tip": "Show HN 10/26当日发布。仅发布页与仓库描述已核实。"
+  },
+  {
+    "product": "Rostr",
+    "link": "https://getrostr.sh/",
+    "phLink": "https://news.ycombinator.com/item?id=50242226",
+    "did": "上线agent名册小工具：给你的agent起名字，记住谁在干什么，避免多agent并行时搞混。",
+    "who": "同时维护多个长期agent任务、需要一眼分清各自职责的开发者。",
+    "why": "Show HN当日发布。agent\"户口管理\"——和今天PH的WhoIsCooking同一趋势：agent多了以后，管agent本身成了产品类别。",
+    "tip": "Show HN 10/26当日发布。仅发布页描述已核实。"
+  }
+]
