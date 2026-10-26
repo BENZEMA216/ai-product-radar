@@ -1,0 +1,415 @@
+{
+  "generatedAt": "2026-10-26T16:07:02.428Z",
+  "date": "2026-10-27",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Scale agents securely with IAM Helper Agent Skills and MCP Tools",
+      "link": "https://cloud.google.com/blog/products/identity-security/scale-agents-securely-with-iam-helper-agent-skills-and-mcp-tools",
+      "publishedAt": "2026-10-26T16:00:00.000Z",
+      "author": "Siddharth Deekshit Product Manager",
+      "summary": "As organizations adopt autonomous agents to build applications, securing identities and access has become more challenging. Developers relying on agents to provision cloud resources, write Terraform, and deploy microservices at machine-speed only find their CI/CD pipelines blo cked even faster as security friction scales. To help you get ahead of agentic-era Identity and Access Management, today we’re introducing IAM Helper. This suite of intelligent, agent-facing building blocks can automate complex, end-to-end IAM workflows. As an agent-native orchestration and interface layer for Google Cloud IAM, it augments Google Cloud’s core IAM engines — including Policy Intelligence and Privileged Access Manager (PAM) — making IAM skills callable directly by autonomous code assistants, deployment pipelines, and custom agents. Using this functionality reduces the administrative overhead of maintaining least-privilege security and agent governance, while maximizing utility, and accelerating deployment. IAM Helper Agent Skills: Fast, secure deployment with automated governance Manual troubleshooting of permission blockers creates friction for engineering and administrators, while shortcuts can lead to broad agent over-permissioning that puts least privilege at risk. IAM Helper empowers agents to handle access management dynamically. It shifts the burden of policy evaluation away from human administrators and LLMs, offloading complex orchestration directly to the Google Cloud backend, to maximize token efficiency and prevent costly operational bottlenecks. Rather than operating as isolated utilities, IAM Helper Agent Skills guide agents through the cloud access lifecycle. These end-to-end workflows, helper scripts, and guardrails packaged using the open Agent Skills standard can orchestrate multiple underlying functions and APIs to resolve complex IAM tasks. They work across common agents (Gemini CLI, Gemini Cloud Assist, ADK, Claude Code, and Cursor). Built-in guardrails and real-world impact Every IAM Helper agent skill separates read-only discovery from policy changes: Diagnostics and simulations run automatically, while any change to access policies pauses for human-in-the-loop (HITL) confirmation based on customizable risk tiers. To see the value of IAM Helper in practice, consider how it transforms two everyday scenarios: Scaled user-assisted remediation : Suppose a developer's coding agent hits a 403 error while deploying a new application. Rather than filing a support ticket and idling, the agent uses iam-helper-for-troubleshooting to identify the missing Pub/Sub permission in seconds, then uses iam-helper-for-privileged-access-management to request a one-hour JIT grant, eliminating hours of debugging friction. Autonomous pipeline self-healing : An infrastructure agent encounters a permission block during a routine deployment pipeline. Rather than failing the build, the pipeline uses IAM Helper Agent skills to generate a revised, least-privilege policy, verifies against 90 days of logs via iam-helper-for-policy-simulator that active services won't break, and routes the change to an admin for quick approval. IAM Helper Agent Skills are designed for maximum token and cost efficiency, allowing agents to execute multi-step administrative operations autonomously. Authoring compliant, least-privilege policies : As DevOps engineers translate access requirements into JSON, YAML, or Terraform HCL, iam-helper-for-policy-management generates and validates IAM v1 allow bindings and IAM v2 deny rules. It automatically catches and blocks risky configs before they are applied, including public access (allUsers) and broad basic roles (roles/owner, roles/editor). Unblocking 403 errors in seconds : When an on-call engineer or deployment agent hits a cryptic 403 PERMISSION_DENIED error, iam-helper-for-troubleshooting identifies the exact missing permission or blocking rule in seconds. It adapts to the user’s role: Developers can check if they can unblock themselves locally or generate a structured ticket for their administrator (Requester flow), while security administrators can trace inherited allow and v2 deny rules across organization, folder, and project hierarchies to resolve the issue (Resolver flow). Simulating blast radius before rolling out changes : Before a platform engineer updates a policy or applies IAM Recommender role reductions, they need confidence that active workloads won't break. iam-helper-for-policy-simulator walks the agent through a structured plan, simulate, analyze, and apply flow, testing proposed changes against 90 days of historical access logs to confirm existing traffic won't be disrupted before any update takes effect. Elevating access just-in-time instead of granting standing privileges : When responders or maintenance agents need temporary production access, iam-helper-for-privileged-access-management manages the lifecycle of on-demand credentials through Privileged Access Manager (PAM). It supports requester, administrator, and approver workflows so elevated access is audited, time-bound, and automatically revoked once the task is done. While IAM Helper Agent Skills supply the high-level workflow logic, they are all based on a common set of foundational MCP Tools. Powered by Google Cloud IAM MCP tools Google Cloud IAM Helper MCP tools provide the backend connection through atomic, read-only functions exposed via Google-managed MCP servers across core IAM endpoints (Policy Troubleshooter, Policy Analyzer, Policy Simulator, and IAM v1/v2 APIs). Rather than requiring teams to write custom API wrappers, MCP tools give agents a standard way to query the cloud backend and get exact answers without parsing verbose policy documents in the prompt, maximizing token efficiency. Agents can dynamically discover and invoke these tools to execute basic operations like checking permissions or listing roles when custom logic is required. Because operations like hierarchy traversal, group expansion, and policy evaluation happen on dedicated IAM endpoints (spanning IAM v1 allow roles, IAM v2 deny, Policy Troubleshooter, and Policy Analyzer), skills run quickly and accurately with minimal token usage. Teams can also use these atomic MCP tools directly when writing their own custom Agent Skills, making it straightforward to combine Google Cloud's IAM capabilities with internal ticketing systems, custom compliance checks, and existing deployment pipelines. Getting started Accelerate your agentic workflows, reduce operational overhead, and bring intelligent, scalable security to your deployment pipelines. Start building with IAM Helper Agent skills today by exploring our Google Cloud Agent Skills Catalog and dive deeper with the official IAM documentation .",
+      "evidenceLink": "",
+      "score": 102.9916184920635,
+      "core": "As organizations adopt autonomous agents to build applications, securing identities and access has become more challenging. Developers relying on agents to provision cloud resources, write Terraform, and deploy microservices at machine-speed only find their CI/CD pipelines blo cked even faster as security friction scales. To help you get ahead of agentic-era Identity and Access Management, today we’re introducing IA…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-26T16:07:02.428Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Sebastian Raschka's from-scratch video course on building reasoning models",
+      "link": "https://magazine.sebastianraschka.com/p/building-reasoning-models",
+      "publishedAt": "2026-10-26T15:11:59.000Z",
+      "author": "sgiannopoulos https://news.ycombinator.com/user?id=sgiannopoulos",
+      "summary": "Over 11 hours of coding videos on evaluation, inference-time scaling, reinforcement learning, and distillation, with Python and PyTorch.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50245138",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 53,
+        "comments": 3
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-26T16:07:02.428Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 80.55610013097711,
+      "core": "Over 11 hours of coding videos on evaluation, inference-time scaling, reinforcement learning, and distillation, with Python and PyTorch.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "The State of Context Engineering",
+      "link": "https://www.dbreunig.com/2026/10/24/the-state-of-context-engineering.html",
+      "publishedAt": "2026-10-25T20:32:31.000Z",
+      "author": "pchristensen https://news.ycombinator.com/user?id=pchristensen",
+      "summary": "As models improve, they bring surprising challenges for those building apps and harnesses. How context engineering has changed this year, and where it’s headed.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50235780",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 242,
+        "comments": 59
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-26T16:07:02.428Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 63.97498013860012,
+      "core": "As models improve, they bring surprising challenges for those building apps and harnesses. How context engineering has changed this year, and where it’s headed.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "fiddler_ai_evaluation",
+      "source": "Fiddler AI Blog",
+      "title": "LLM-as-a-Judge: How It Works, Where It Fails, and What It Costs in Production",
+      "link": "https://www.fiddler.ai/blog/llm-as-a-judge-production-costs-biases",
+      "publishedAt": "2026-10-26T07:00:00.000Z",
+      "author": "",
+      "summary": "Learn how LLM-as-a-judge evaluation works, its known biases, calibration against human labels, and production costs to decide when smaller evaluators fit better.",
+      "evidenceLink": "",
+      "score": 57.243205793650795,
+      "core": "Learn how LLM-as-a-judge evaluation works, its known biases, calibration against human labels, and production costs to decide when smaller evaluators fit better.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-26T16:07:02.428Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "docker_ai_engineering",
+      "source": "Docker Blog",
+      "title": "From baseline to Secure Software Factory: securing the systems that build your software",
+      "link": "https://www.docker.com/blog/from-baseline-to-secure-software-factory-securing-the-systems-that-build-your-software",
+      "publishedAt": "2026-10-21T16:00:00.000Z",
+      "author": "Dan Berezin Stelzer",
+      "summary": "In July, Docker, Snyk and Keycard published Agent Baseline, an open, vendor-neutral reference architecture that defines security outcomes for running AI agents in the enterprise. It grew out of conversations with industry leaders who want to adopt agents more broadly but need answers to three questions: What is operating, with what capabilities? Is it staying...",
+      "evidenceLink": "",
+      "score": 52.44241214285714,
+      "core": "In July, Docker, Snyk and Keycard published Agent Baseline, an open, vendor-neutral reference architecture that defines security outcomes for running AI agents in the enterprise. It grew out of conversations with industry leaders who want to adopt agents more broadly but need answers to three questions: What is operating, with what capabilities? Is it staying...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-26T16:07:02.428Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "modal_engineering",
+      "source": "Modal Engineering",
+      "title": "How Legora runs 2,000 parallel agent evals on Modal Sandboxes",
+      "link": "https://modal.com/blog/how-legora-runs-thousand-scale-parallel-agent-evals-on-modal-sandboxes",
+      "publishedAt": "2026-10-19T00:00:00.000Z",
+      "author": "",
+      "summary": "To test a legal agent that works for hours across thousands of documents, Legora boots its entire application, pinned to a specific commit, inside a separate Modal Sandbox for every eval run.",
+      "evidenceLink": "",
+      "score": 45.06111111111111,
+      "core": "To test a legal agent that works for hours across thousands of documents, Legora boots its entire application, pinned to a specific commit, inside a separate Modal Sandbox for every eval run.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-26T16:07:02.428Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "fiddler_ai_evaluation",
+      "source": "Fiddler AI Blog",
+      "title": "OWASP Top 10 for LLM Applications, Explained: Each Risk and the Control That Reduces It",
+      "link": "https://www.fiddler.ai/blog/owasp-top-10-llm-applications-risks-controls",
+      "publishedAt": "2026-10-26T07:00:00.000Z",
+      "author": "",
+      "summary": "Learn each OWASP Top 10 LLM risk, how it appears in production, and the runtime or design control that reduces it.",
+      "evidenceLink": "",
+      "score": 44.98209468253968,
+      "core": "Learn each OWASP Top 10 LLM risk, how it appears in production, and the runtime or design control that reduces it.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-26T16:07:02.428Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "A web page talked our agent into leaking a stranger’s data. Here’s how we caught it.",
+      "link": "https://arize.com/blog/indirect-prompt-injection-ai-agents",
+      "publishedAt": "2026-10-26T14:00:54.000Z",
+      "author": "Nancy Chauhan",
+      "summary": "A web page told our support agent to look up a different customer, and the agent complied on 28 of 100 runs. Here's how we found the leak in an Arize Phoenix trace, blocked it with a scope guardrail, and set up an Arize AX monitor on the injection rate. The post A web page talked our agent into leaking a stranger’s data. Here’s how we caught it. appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 43.938721666666666,
+      "core": "A web page told our support agent to look up a different customer, and the agent complied on 28 of 100 runs. Here's how we found the leak in an Arize Phoenix trace, blocked it with a scope guardrail, and set up an Arize AX monitor on the injection rate. The post A web page talked our agent into leaking a stranger’s data. Here’s how we caught it. appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-26T16:07:02.428Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "Why Reddit built its own AI prototyping tool | Blair Metcalf",
+      "link": "https://www.lennysnewsletter.com/p/why-reddit-built-its-own-ai-prototyping",
+      "publishedAt": "2026-10-26T12:04:20.000Z",
+      "author": "Claire Vo",
+      "summary": "Watch now (30 mins) | 🎙️ Reddit’s principal UX engineer shows how a custom Figma MCP and Cursor pipeline takes any designer from blank slate to shareable, production-shaped prototype in minutes—no Git required",
+      "evidenceLink": "",
+      "score": 42.8777296031746,
+      "core": "Watch now (30 mins) | 🎙️ Reddit’s principal UX engineer shows how a custom Figma MCP and Cursor pipeline takes any designer from blank slate to shareable, production-shaped prototype in minutes—no Git required",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-26T16:07:02.428Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "The UK government wants to invest £100 million in a ‘world first’ AI Biosecurity Lab — OpenAI and Anthropic to supply £200 million in credits to help safeguard national security",
+      "link": "https://www.techradar.com/pro/security/the-uk-government-wants-to-invest-gbp100-million-in-a-world-first-ai-biosecurity-lab-openai-and-anthropic-to-supply-gbp200-million-in-credits-to-help-safeguard-national-security",
+      "publishedAt": "2026-10-26T12:30:00.000Z",
+      "author": "Benedict Collins",
+      "summary": "AI is a tool for good, and for bad, as UK government looks to protect against new AI-enabled cyber and biological threats",
+      "evidenceLink": "",
+      "score": 38.41384071428572,
+      "core": "AI is a tool for good, and for bad, as UK government looks to protect against new AI-enabled cyber and biological threats",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-26T16:07:02.428Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "Best LLM evaluation tools for enterprise teams in 2026 - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/best-llm-evaluation-tools-enterprise-teams-2026",
+      "publishedAt": "2026-10-23T16:00:00.000Z",
+      "author": "",
+      "summary": "Compare Braintrust, Langfuse, Galileo, DeepEval, and Ragas on evaluation capability plus the enterprise controls that matter: deployment, SSO, RBAC, audit logs, residency, and compliance.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-26T16:07:02.428Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 35.88765023809524,
+      "core": "Compare Braintrust, Langfuse, Galileo, DeepEval, and Ragas on evaluation capability plus the enterprise controls that matter: deployment, SSO, RBAC, audit logs, residency, and compliance.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "IT and security leaders of the AI era must go back to basics and beware the hype",
+      "link": "https://www.techradar.com/pro/it-and-security-leaders-of-the-ai-era-must-go-back-to-basics-and-beware-the-hype",
+      "publishedAt": "2026-10-26T11:31:00.000Z",
+      "author": "Henrique Bernardes Teixeira",
+      "summary": "AI is transforming security, but organizations must not lose sight of identity, access and least privilege.",
+      "evidenceLink": "",
+      "score": 34.26582484126984,
+      "core": "AI is transforming security, but organizations must not lose sight of identity, access and least privilege.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-26T16:07:02.428Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Orchestrating SageMaker AI endpoint auto scaling with AWS CDK",
+      "link": "https://aws.amazon.com/blogs/machine-learning/orchestrating-sagemaker-ai-endpoint-auto-scaling-with-aws-cdk",
+      "publishedAt": "2026-10-23T16:30:10.000Z",
+      "author": "Lauren Eterno",
+      "summary": "Updating a SageMaker AI endpoint that has Application Auto Scaling registered makes AWS CloudFormation and AWS CDK deployments fail. This post shows how to build a reusable AWS CDK construct with CloudFormation custom resources that deregisters and re-registers auto scaling automatically, so you can update the endpoint and its scaling in a single deployment.",
+      "evidenceLink": "",
+      "score": 32.88467404761904,
+      "core": "Updating a SageMaker AI endpoint that has Application Auto Scaling registered makes AWS CloudFormation and AWS CDK deployments fail. This post shows how to build a reusable AWS CDK construct with CloudFormation custom resources that deregisters and re-registers auto scaling automatically, so you can update the endpoint and its scaling in a single deployment.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-26T16:07:02.428Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "Why AI Compute Comes in Rectangles — Erik Bernhardsson, Modal CEO",
+      "link": "https://latent.space/p/modal-d",
+      "publishedAt": "2026-10-22T17:40:57.000Z",
+      "author": "Latent.Space",
+      "summary": "Elastic GPUs, sandbox growth, and the economics of the agent cloud",
+      "evidenceLink": "",
+      "score": 32.621320873015875,
+      "core": "Elastic GPUs, sandbox growth, and the economics of the agent cloud",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-26T16:07:02.428Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "meta_engineering",
+      "source": "Meta Engineering",
+      "title": "Meta Networking at the 2026 OCP Global Summit: Open Innovation for Scale-Up, Scale-Out, and Scale-Across AI Networks",
+      "link": "https://engineering.fb.com/2026/10/26/open-source/ocp-summit-2026-meta-networking-talks",
+      "publishedAt": "2026-10-26T16:00:07.000Z",
+      "author": "",
+      "summary": "At the 2026 Open Compute Project (OCP) Global Summit, Meta shared the networking innovations that are directly supporting our latest AI models, including Muse Wonder and Muse Spark, and our gigawatt-scale Prometheus cluster. Highlights IcePack & IceCube: Meta’s first liquid-cooled network rack with 102.4T switch blades (128×800G, Broadcom Tomahawk 6C and NVIDIA Spectrum-6 variants), running [...] Read More... The post Meta Networking at the 2026 OCP Global Summit: Open Innovation for Scale-Up, Scale-Out, and Scale-Across AI Networks appeared first on Engineering at Meta .",
+      "evidenceLink": "",
+      "score": 32.20286849206349,
+      "core": "At the 2026 Open Compute Project (OCP) Global Summit, Meta shared the networking innovations that are directly supporting our latest AI models, including Muse Wonder and Muse Spark, and our gigawatt-scale Prometheus cluster. Highlights IcePack & IceCube: Meta’s first liquid-cooled network rack with 102.4T switch blades (128×800G, Broadcom Tomahawk 6C and NVIDIA Spectrum-6 variants), running [...] Read More... The po…",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-26T16:07:02.428Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Stop guessing auto scaling targets for TTS on Amazon SageMaker AI",
+      "link": "https://aws.amazon.com/blogs/machine-learning/stop-guessing-auto-scaling-targets-for-tts-on-amazon-sagemaker-ai",
+      "publishedAt": "2026-10-22T16:30:06.000Z",
+      "author": "Joseph Cottingham",
+      "summary": "Teams deploying custom text-to-speech models on Amazon SageMaker AI often guess at autoscaling thresholds, and a wrong guess either wastes GPU spend or breaches a latency SLO. This post deploys Kokoro-82M as a custom container and derives a measured autoscaling policy from two live-endpoint measurements, Q_max and T_total, instead of guesswork.",
+      "evidenceLink": "",
+      "score": 31.09253119047619,
+      "core": "Teams deploying custom text-to-speech models on Amazon SageMaker AI often guess at autoscaling thresholds, and a wrong guess either wastes GPU spend or breaches a latency SLO. This post deploys Kokoro-82M as a custom container and derives a measured autoscaling policy from two live-endpoint measurements, Q_max and T_total, instead of guesswork.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-26T16:07:02.428Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "🎙️ How I AI: Claude Duet honest review + Why Reddit built its own AI prototyping tool",
+      "link": "https://www.lennysnewsletter.com/p/how-i-ai-claude-duet-honest-review",
+      "publishedAt": "2026-10-26T15:00:53.000Z",
+      "author": "",
+      "summary": "Your weekly listens from How I AI, part of the Lenny’s Podcast Network",
+      "evidenceLink": "",
+      "score": 27.310130396825397,
+      "core": "Your weekly listens from How I AI, part of the Lenny’s Podcast Network",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-26T16:07:02.428Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "Global default for Copilot features generally available",
+      "link": "https://github.blog/changelog/2026-10-22-global-default-for-copilot-features-generally-available",
+      "publishedAt": "2026-10-22T20:44:28.000Z",
+      "author": "Allison",
+      "summary": "In September, we announced a global default policy for generally available GitHub Copilot features and supported client capabilities on Copilot Business and Copilot Enterprise plans. Starting today, we’re gradually rolling… The post Global default for Copilot features generally available appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 22.273126428571427,
+      "core": "In September, we announced a global default policy for generally available GitHub Copilot features and supported client capabilities on Copilot Business and Copilot Enterprise plans. Starting today, we’re gradually rolling… The post Global default for Copilot features generally available appeared first on The GitHub Blog .",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-26T16:07:02.428Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "itpro_ai",
+      "source": "ITPro",
+      "title": "SAP AI NOW: Follow the keynote live from the NEC",
+      "link": "https://www.itpro.com/software/live/sap-ai-now-follow-the-keynote-live-from-the-nec",
+      "publishedAt": "2026-10-22T07:25:00.000Z",
+      "author": "Jane McCallion",
+      "summary": "Find out more about the latest insight and research live from the Birmingham NEC",
+      "evidenceLink": "",
+      "score": 17.96582484126984,
+      "core": "Find out more about the latest insight and research live from the Birmingham NEC",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-26T16:07:02.428Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "deepmind",
+      "source": "Google DeepMind",
+      "title": "Accelerating the search for antimicrobial peptides with Google Antigravity",
+      "link": "https://deepmind.google/blog/accelerating-antimicrobial-discovery",
+      "publishedAt": "2026-10-15T16:08:03.000Z",
+      "author": "",
+      "summary": "Accelerating the search for novel antimicrobial peptides using Google Antigravity for Science.",
+      "evidenceLink": "",
+      "score": 14.522222222222222,
+      "core": "Accelerating the search for novel antimicrobial peptides using Google Antigravity for Science.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-26T16:07:02.428Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

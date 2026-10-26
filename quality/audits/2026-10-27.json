@@ -1,0 +1,293 @@
+{
+  "date": "2026-10-27",
+  "generatedAt": "2026-10-26T16:02:13.307Z",
+  "reportPath": "reports/2026-10-27-0002-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 69,
+    "top20Sources": [
+      "YC Launch",
+      "Product Hunt",
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 12,
+      "keptCount": 5,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-25；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 12 条，AI 相关候选 5 条；实际 fallback：hunted_space。；历史去重后最终发布 5 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 2,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 28,
+      "keptCount": 28,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 4,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "fallback",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 14,
+      "keptCount": 14,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-10-26T16:02:02.000Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Pomerado",
+      "productKey": "https://www.ycombinator.com/launches/wsd-pomerado-the-faster-cheaper-and-more-reliable-alternative-to-browser-use",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把“让 agent 操作任意网站”落到无需 API 的开源连接层，值得比较浏览器自动化的成本、稳定性与接入门槛。"
+    },
+    {
+      "rank": 2,
+      "product": "Moli by Lexmount",
+      "productKey": "https://www.producthunt.com/products/lexmount-browser",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用面向 agent 与 harness 的无头浏览器争夺执行基础设施入口，判断重点是速度优势能否转化为可靠的任务完成率。"
+    },
+    {
+      "rank": 3,
+      "product": "A 3D mesh playground for coding agents (three.js + manifold-3d)",
+      "productKey": "https://sketchagent.dev/s/yfyu6lht",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 coding agent 延伸到可交互的 3D 网格制作，适合观察自然语言编程能否进入专业几何工作流。"
+    },
+    {
+      "rank": 4,
+      "product": "AgentGrid.io",
+      "productKey": "https://www.producthunt.com/products/agentgrid-io",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它试图用共享工作区承载人和 agent 的协作，关键在任务交接、状态可见性与责任边界是否清晰。"
+    },
+    {
+      "rank": 5,
+      "product": "Papermark Data Rooms",
+      "productKey": "https://www.producthunt.com/products/papermark-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把安全数据室设计成 agent 可直接运行的环境，值得看权限控制能否与快速启用同时成立。"
+    },
+    {
+      "rank": 6,
+      "product": "Radian, an agent puts development workflow on autopilot",
+      "productKey": "https://getrad.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它直接承诺把开发流程交给 agent 自动推进，产品价值取决于可审阅的阶段控制，而不只是代码生成速度。"
+    },
+    {
+      "rank": 7,
+      "product": "Give one context across all your agents via MCP",
+      "productKey": "https://make0.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用 MCP 解决多 agent 上下文割裂，值得看共享记忆如何处理来源、更新与权限隔离。"
+    },
+    {
+      "rank": 8,
+      "product": "Amni-CAD – free browser CAD with FEA that Claude can drive over MCP",
+      "productKey": "https://amni-scient.com/amni-cad",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把浏览器 CAD、有限元分析与 Claude 的 MCP 控制放在同一闭环，展示了 agent 进入专业工程软件的具体接口。"
+    },
+    {
+      "rank": 9,
+      "product": "QualityLayer, put the engineer back in the loop of your coding agent",
+      "productKey": "https://qualitylayer.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它强调让工程师重新介入 coding agent，值得观察质量门禁如何嵌入自动执行而不拖慢交付。"
+    },
+    {
+      "rank": 10,
+      "product": "Mob programming with AI agents, built on OpenSpec and OpenCode",
+      "productKey": "https://griyd.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把多人结对编程改造成基于 OpenSpec 与 OpenCode 的多 agent 协作，关键是共同计划和冲突处理是否可追踪。"
+    },
+    {
+      "rank": 11,
+      "product": "Optio – A self-hosted orchestration platform for AI agents",
+      "productKey": "https://optio.host",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它以自托管方式提供 agent 编排，适合评估团队对数据控制的需求能否支撑额外部署与运维成本。"
+    },
+    {
+      "rank": 12,
+      "product": "Drint – packaging dielines and 3D box mockups as an MCP server",
+      "productKey": "https://drint.io/help/mcp",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把包装刀模和 3D 盒型这类专业产出封装成 MCP 服务，是 agent 工具从通用能力走向垂直交付的清晰样本。"
+    },
+    {
+      "rank": 13,
+      "product": "I built Search/Recsys that learns from feedback",
+      "productKey": "https://dna.hashgrid.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它让搜索与推荐直接从反馈中学习，值得看反馈闭环是否能持续改善排序，而非只做一次性检索。"
+    },
+    {
+      "rank": 14,
+      "product": "Yourcast 2.0",
+      "productKey": "https://www.producthunt.com/products/yourcast",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 AI 摘要和可跳转时间戳放进 Telegram，价值在于降低长音频消费成本并保留回到原内容的路径。"
+    },
+    {
+      "rank": 15,
+      "product": "Continue Your Google AI Mode Chats in Gemini/Claude",
+      "productKey": "https://chromewebstore.google.com/detail/relay-continue-google-sea/fjjfadgooapnegipjocinojjhaajghag",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它解决 Google AI Mode 对话难以迁移的问题，值得观察跨助手续聊是否能保住上下文与引用。"
+    },
+    {
+      "rank": 16,
+      "product": "Juiced Claude Code",
+      "productKey": "https://juiced.codes",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "目前证据只确认它是面向 Claude Code 的新发布，仍需看具体增强点是否形成可重复的开发工作流。"
+    },
+    {
+      "rank": 17,
+      "product": "Graph-MIND – Local memory for AI coding agents, no LLM calls to save",
+      "productKey": "https://github.com/goyohan0611-png/graph-mind",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用无需额外 LLM 调用的本地记忆降低 coding agent 成本，值得看检索准确性与长期上下文污染如何控制。"
+    },
+    {
+      "rank": 18,
+      "product": "MuscleMemory – procedural memory for coding agents, proven by tests",
+      "productKey": "https://github.com/thewariend/musclememory",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把通过测试验证的操作过程沉淀为 agent 程序性记忆，关键是复用是否能跨任务且避免固化错误。"
+    },
+    {
+      "rank": 19,
+      "product": "Load-lock, a machine-wide semaphore for parallel AI coding agents",
+      "productKey": "https://github.com/aron98/load-lock",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用机器级信号量解决并行 coding agent 的资源冲突，是小而具体的基础设施问题，价值取决于集成成本。"
+    },
+    {
+      "rank": 20,
+      "product": "pw-repl - A Playwright-powered REPL for you and your agents to share",
+      "productKey": "https://github.com/arcanemachine/pw-repl",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它让人和 agent 共用 Playwright REPL，值得看共享执行上下文能否改善浏览器调试与接管。"
+    }
+  ]
+}
