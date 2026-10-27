@@ -1,0 +1,74 @@
+[
+  {
+    "product": "Overmind",
+    "link": "https://overmindlab.ai",
+    "phLink": "https://www.producthunt.com/products/overmind-2",
+    "did": "上线开源持续学习训练平台：把生产环境的agent traces变成你自己拥有的专项模型，训练、跑分、部署一条流，模型产权归你。",
+    "who": "想把线上agent越用越聪明、又不想把数据交给大模型厂的AI团队。",
+    "why": "PH当日第2名。\"traces变模型资产\"是agent公司下一步的护城河玩法，开源+自有权重这条路不多见。",
+    "tip": "PH 10/27首发；公司10月初亮相，开源仓库10/25上线。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Spacesheep（YC F26）",
+    "link": "https://spacesheep.dev",
+    "phLink": "https://www.producthunt.com/products/spacesheep",
+    "did": "YC F26新品：把任何agent的产出变成一个可分享的\"空间\"——交互文档、实时仪表盘、mockup或小应用，可指定人/团队/公开协作，支持MCP接入和手机摄像头直播推流。",
+    "who": "agent产出需要给非技术同事看、评、改的团队。",
+    "why": "PH当日第4名。agent干活之后的\"交付层\"还是个空档，这条把agent输出直接变成可协作的页面。",
+    "tip": "PH 10/27当日发布（YC F26批次）。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Notra",
+    "link": "https://www.usenotra.com",
+    "phLink": "https://www.producthunt.com/products/notra-3",
+    "did": "上线GEO（生成式引擎优化）工具：模拟买家真实提问去问ChatGPT、Claude、Gemini，显示你的品牌是否出现、谁替代了你、以及怎么改。",
+    "who": "关心\"AI搜索时代SEO\"的市场和增长团队。",
+    "why": "PH当日在榜。SEO正在迁移到AI答案里，这类\"AI版站长工具\"开始成品类。",
+    "tip": "PH 10/27当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "NuPlay",
+    "link": "https://www.nuplay.ai/",
+    "phLink": "https://www.producthunt.com/products/nuplay",
+    "did": "上线企业级agent平台：面向零售、客服、消费品等行业部署语音/聊天/邮件agent，接现有系统，五层架构（NuPro/NuStack/NuContext/NuPulse/NuLoop）让agent每次运行后自我改进。",
+    "who": "要在生产环境跑客服/运营agent、并要求持续优化的企业团队。",
+    "why": "PH当日在榜。和Overmind同主题（agent自我改进）的企业级版本，方向在本日榜单上出现了两次。",
+    "tip": "PH 10/27当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "llmrun",
+    "link": "https://llmrun.dev",
+    "phLink": "https://news.ycombinator.com/item?id=50258345",
+    "did": "上线开源模型硬件匹配查询：告诉你哪些开源LLM能在你的GPU/Mac上跑、按显存和用途浏览、给出综合质量分排名。",
+    "who": "想在本地跑开源模型、挑模型前先查硬件够不够的人。",
+    "why": "Show HN当日发布。本地模型选择困难症的实用解，和上周Llama Windows（本地模型服务）是配套工具。",
+    "tip": "Show HN 10/27当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Cordane",
+    "link": "https://github.com/cordane/cordane",
+    "phLink": "https://news.ycombinator.com/item?id=50258440",
+    "did": "开源：在自己拥有的机器上远程跑coding agent——worker主动外连hub，无需开放入站端口和VPN；持久终端（真PTY）在浏览器一个标签页里访问，合上笔记本会话仍在。",
+    "who": "想用家里/办公室机器跑agent、随时随地接着看的开发者。",
+    "why": "Show HN当日发布。和昨天tabsh（浏览器看板）互补：一个管视图，一个管\"会话跑在哪\"。",
+    "tip": "Show HN 10/27当日发布。仅发布页与仓库描述已核实。"
+  },
+  {
+    "product": "SkillTotal",
+    "link": "https://github.com/pezhik/skilltotal",
+    "phLink": "https://news.ycombinator.com/item?id=50258466",
+    "did": "开源：在Claude Code安装第三方skill/包之前先扫描，给安全检查结果。",
+    "who": "会给Claude Code装社区skill、又担心供应链安全的开发者。",
+    "why": "Show HN当日发布。agent skill生态刚起来，装前扫描是个真实且会随生态变大的需求。",
+    "tip": "Show HN 10/27当日发布。仅发布页与仓库描述已核实。"
+  },
+  {
+    "product": "Friday",
+    "link": "https://github.com/splashxmoon/friday",
+    "phLink": "https://news.ycombinator.com/item?id=50258230",
+    "did": "开源harness：让多个coding agent作为一个团队协作。",
+    "who": "想试验多agent分工写代码的开发者。",
+    "why": "Show HN当日发布。多agent协作框架本周第三个（对照Multipeer、Echoboard），方向热度在积累。",
+    "tip": "Show HN 10/27当日发布。仅发布页与仓库描述已核实。"
+  }
+]
