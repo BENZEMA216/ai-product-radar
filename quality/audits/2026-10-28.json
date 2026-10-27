@@ -1,0 +1,293 @@
+{
+  "date": "2026-10-28",
+  "generatedAt": "2026-10-27T16:06:01.386Z",
+  "reportPath": "reports/2026-10-28-0006-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 77,
+    "top20Sources": [
+      "Product Hunt",
+      "YC Launch",
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 24,
+      "keptCount": 13,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-26；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 24 条，AI 相关候选 13 条；实际 fallback：hunted_space。；历史去重后最终发布 13 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 6,
+      "keptCount": 6,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 32,
+      "keptCount": 18,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 29,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "fallback",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-10-27T16:05:37.511Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "ManyAgents",
+      "productKey": "https://www.producthunt.com/products/manyagents",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把多名编码 Agent 收进同一个 Mac 窗口，值得验证它能否降低并行任务切换、状态追踪和结果汇总的成本。"
+    },
+    {
+      "rank": 2,
+      "product": "Rystic",
+      "productKey": "https://www.ycombinator.com/launches/wz9-rystic-test-your-ai-agents-with-local-copies-of-slack-stripe-and-google-drive",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用 Slack、Stripe、Google Drive 的本地副本给 Agent 做上线前演练，直接切中外部系统误操作难以回滚的测试缺口。"
+    },
+    {
+      "rank": 3,
+      "product": "AVP",
+      "productKey": "https://www.producthunt.com/products/avp",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 Git 的版本管理思路改造给编码 Agent 使用，观察重点是它能否记录机器生成改动的来源、分支与回退路径。"
+    },
+    {
+      "rank": 4,
+      "product": "Better Design – alternative to Claude Design, for any coding agents",
+      "productKey": "https://better-design.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它试图让任意编码 Agent 获得设计辅助能力，值得看设计约束能否独立于单一模型和 IDE 被复用。"
+    },
+    {
+      "rank": 5,
+      "product": "MiniMax M3.1 Flash",
+      "productKey": "https://www.producthunt.com/products/minimax-4",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“更快且更便宜”的明确主张面向长任务 Agent，真正值得比较的是吞吐和成本优势能否在连续工具调用中成立。"
+    },
+    {
+      "rank": 6,
+      "product": "AI Bridge",
+      "productKey": "https://www.producthunt.com/products/ai-bridge",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 Mac 上分散的编码 Agent 统一归位，说明多 Agent 管理正从模型选择转向进程、项目和上下文的日常运维。"
+    },
+    {
+      "rank": 7,
+      "product": "tabsh",
+      "productKey": "https://www.producthunt.com/products/tabsh",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "直接在浏览器标签页提供 Agent IDE，值得观察零安装入口能否兼顾代码环境、凭据隔离和长任务持续运行。"
+    },
+    {
+      "rank": 8,
+      "product": "Trama, Meta Vibe Coding Agent 0.1.1 Released",
+      "productKey": "https://nicchia-code.github.io/trama",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "0.1.1 版本把“元级 vibe coding Agent”作为产品定位，但现有证据仍偏标题，后续要看它如何组织和校验下游 Agent。"
+    },
+    {
+      "rank": 9,
+      "product": "Strawberry 1.0",
+      "productKey": "https://www.producthunt.com/products/strawberry",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "团队浏览器宣称每周节省百小时，关键不是口号，而是它能否把重复网页操作变成可审计、可协作的稳定流程。"
+    },
+    {
+      "rank": 10,
+      "product": "Martini",
+      "productKey": "https://www.ycombinator.com/launches/wz7-martini-bar-ai-video-production-infrastructure",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "给 Claude 一套真实视频制作工作区，比单点生成更接近生产基础设施；重点看素材、时间线和渲染环节是否连成闭环。"
+    },
+    {
+      "rank": 11,
+      "product": "SlopIt – A blog your coding agent runs",
+      "productKey": "https://slopit.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让编码 Agent 自主运营博客，把内容生产扩展到发布维护；值得看人类编辑权和错误内容回收机制如何设计。"
+    },
+    {
+      "rank": 12,
+      "product": "Give our AI coding runner a real task and watch it until merge",
+      "productKey": "https://mcptask.online/live?language=en",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用真实任务一路展示到 merge，把编码 Agent 的价值证明从 demo 推到可观察交付，适合核查测试、评审和合并边界。"
+    },
+    {
+      "rank": 13,
+      "product": "SurgePix",
+      "productKey": "https://www.producthunt.com/products/surgepix",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "可逐层编辑且能被 Agent 调用，使 AI 视觉工具不只输出扁平成品；值得看可编辑结构是否真的便于后续工作流接管。"
+    },
+    {
+      "rank": 14,
+      "product": "Sectr – Serverless backend platform for easy deployment of AI agents",
+      "productKey": "https://sectr.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 Agent 部署做成 serverless 后端，切的是从本地原型到线上服务的最后一公里，重点看状态、回滚和资源隔离。"
+    },
+    {
+      "rank": 15,
+      "product": "I built a tool to audit Shopify stores for AI agent and Google Shopping",
+      "productKey": "https://catalogaudit.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 Shopify 商品目录同时按购物搜索和 Agent 可读性审计，反映商家开始为机器入口重做商品数据质量。"
+    },
+    {
+      "rank": 16,
+      "product": "EveryGen AI – AI images, short videos and copy rewrites in one tab",
+      "productKey": "https://everygenai.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把图片、短视频和文案改写塞进同一标签页，适合观察多模态营销工具能否减少跨工具搬运而不是只做功能集合。"
+    },
+    {
+      "rank": 17,
+      "product": "VibeiDE",
+      "productKey": "https://www.producthunt.com/products/vibeide",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "并行排队 Agent 任务再逐项评审，抓住了吞吐量提升后的新瓶颈：人如何快速比较、验收和合并多份结果。"
+    },
+    {
+      "rank": 18,
+      "product": "N8N Chat UI",
+      "productKey": "https://www.producthunt.com/products/n8n-chat-ui-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "为 n8n 提供无代码、可品牌化的聊天组件，把工作流能力补到用户入口，值得看部署和身份传递是否足够轻。"
+    },
+    {
+      "rank": 19,
+      "product": "AnyAlpha",
+      "productKey": "https://www.ycombinator.com/launches/woo-anyalpha-the-agentic-trading-platform",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把交易想法直接变成全天运行的 Agent，商业叙事清楚，但应重点核查风控、回测与人工停手机制。"
+    },
+    {
+      "rank": 20,
+      "product": "EveryApp",
+      "productKey": "https://www.ycombinator.com/launches/wka-everyapp-make-every-app-open-source",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让企业工具由 Agent 构建且归企业所有，挑战传统 SaaS 采购；值得看维护责任、数据迁移和长期可控性。"
+    }
+  ]
+}

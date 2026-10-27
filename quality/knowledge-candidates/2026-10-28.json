@@ -1,0 +1,414 @@
+{
+  "generatedAt": "2026-10-27T16:11:09.307Z",
+  "date": "2026-10-28",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Gemini Robotics Embodied Reasoning 2 is now available on Google Cloud",
+      "link": "https://cloud.google.com/blog/products/ai-machine-learning/gemini-robotics-embodied-reasoning-2-is-now-available-on-google-cloud",
+      "publishedAt": "2026-10-27T13:00:00.000Z",
+      "author": "Carolina Parada VP and Head of Deepmind Robotics",
+      "summary": "Earlier this year, we introduced Gemini Robotics 2 — our next-generation intelligence layer enabling robots to think, act, and adapt in the physical world. At the core of this breakthrough is Gemini Robotics Embodied Reasoning 2 (ER 2) , a specialized Gemini model that serves as a robot’s high-level brain. Working across any robot embodiment — from stationary arms to full humanoids — Gemini Robotics ER 2 combines advanced spatial and temporal video understanding with long-horizon planning and built-in safety guardrails. This enables robots to converse naturally with humans, orchestrate low-level action models and hardware APIs, execute multi-minute tasks involving hundreds of decisions, and collaborate across multi-robot teams. Today, we are bringing this same frontier embodied reasoning model to enterprise production environments: Gemini Robotics ER 2 is now available in public preview on the Gemini platform. For the first time, organizations can pair Google DeepMind’s latest embodied reasoning model for robotics with the enterprise-grade security, multi-agent orchestration, and end-to-end lifecycle management of Google Cloud — making it easier to simulate, evaluate, and deploy safe, adaptive physical AI at scale. Powering physical agents for enterprise robotics Gemini Robotics ER 2 transforms a robot into a physical agent. The model combines deep spatio-temporal reasoning and long-horizon planning, enabling robots to orchestrate steps to complete a task, self-correct, and generalize to novel situations. To build an agentic setup, developers can declare low-level control interfaces — like Vision-Language-Action (VLA) models or navigation APIs — as tools, and stream multimodal video, audio, or text directly into the model . Here is what the model delivers for businesses building and operating robotics: 1. Physical task verification, understanding, and self-correction In physical operations, a robot needs to know whether a step actually succeeded before moving on to the next one. Gemini Robotics ER 2 adapts to new and unfamiliar situations on the fly by reasoning over continuous video feeds. The model: Classifies task progress into binary status, discrete categories, or continuous scores to improve real-time situational awareness and enable real-time adjustment or iteration on failed steps, without restarting an entire workflow. Pinpoints the exact video frame where a critical event occurs (such as when to stop pouring a liquid) with 91.3% accuracy and a 0.96-second mean absolute frame distance, running at 4x the execution speed and a fraction of the compute cost of many larger model categories. It advances our core spatial reasoning capability, including visual question answering and instrument reading. For example, it can read and interpret values across 10+ instrument categories including circular dials, sight glasses, digital displays, linear scales, rulers, and liquid thermometers directly from visual input. 2. One intelligence layer across any embodiments Gemini Robotics ER 2 orchestrates robots of many shapes and sizes, scaling its intelligence from stationary arms and wheeled rovers to quadrupeds and complex forms. It also unlocks multi-robot collaboration, allowing different types of robots to share a semantic understanding of their workspace, divide labor, and hand off tasks to complete workflows a single machine could not do alone. 3. Agentic tool orchestration and natural language interaction Gemini Robotics ER 2 thinks about what comes next while simultaneously orchestrating actions. Developers can declare low-level control interfaces — such as VLA models, navigation APIs, or custom functions — as tools across simulation, real-world robot control, or human tele-operation. Gemini Robotics ER 2 can orchestrate navigation and manipulator movement APIs from natural language commands, allowing the robot to explain its approach while performing an action, and letting operators redirect it without using technical language. 4. Build safe, adaptive physical agents in Google Cloud Developers and enterprise teams use the Gemini platform to simulate, orchestrate, and manage physical agents, which are then deployed to run directly on physical robots at the edge using Google Cloud's scalable infrastructure: Simulate fast: Test robot behaviors before touching hardware by running simulations in familiar environments like MuJoCo-Warp and NVIDIA Isaac Sim. Then generate synthetic scenarios with multimodal models and auto-label workcell imagery on the Gemini platform. Train smart : Use Gemini Robotics ER 2's spatial pointing, moment finding, and progress classification to curate and label demonstration videos in Cloud Storage and BigQuery. Then train custom Vision-Language-Action (VLA) models through the Gemini platform, GKE, or Cluster Director. Operate easily: Deploy Gemini Robotics ER 2 workflows on the Gemini platform with enterprise IAM, security controls, and built-in function calling. Offload latency-sensitive local workloads like SLAM and path planning to factory floors with Google Distributed Cloud, and stream fleet telemetry into BigQuery. Explore the full architecture in Google Cloud Physical AI solutions . How customers are building with Gemini Robotics ER 2 in Gemini platform “We’ve seen exponential growth in customers using AIVI-Learning every month, and Gemini Robotics ER 2 brings them even more value. Video changes what an inspection can be. Spot isn’t just checking whether something looks right in a moment in time, the ability to apply AI models to video opens a whole new world of possibilities.” Marco da Silva, VP and General Manager of Spot at Boston Dynamics “DeepReach AI is the real-world skills engine for physical AI. Our hardware and AI platform capture how skilled people work all over the world, and turn it into data flywheel for model training. Gemini Robotics ER 2 gives us accurate task understanding of every recording, to help us find data that matters most — faster and at a far greater scale.” Chris Liu, Co-founder and CTO at DeepReach “Advanced reasoning models have the potential to help robots interpret complex environments, plan actions and adapt to changing conditions, opening new possibilities for physical AI. Google’s Gemini Robotics ER 2 model represents an important step in this direction, and we’re excited to be working with Google on exploring how these emerging capabilities can shape the next generation of robotics compute platforms.” Barrie Mullins, Senior Director of Arm Total Design for Physical AI, at Arm “We aim to accelerate materials R&amp;D workflows so our scientists can test more ideas, faster. Most lab automation today relies on rigid scripts for single, isolated tasks. By using Gemini Robotics ER 2, we are giving our robots the visual and physical flexibility to work with our existing infrastructure - whether that’s reading a touchscreen on a legacy microwave reactor that has no API, balancing and loading a centrifuge, or moving samples safely through a busy lab. This is the next level that we aspire to reach. This brings us much closer to self-driving labs that can run full experimental campaigns from synthesis to separation, freeing our researchers to focus on thinking up new ideas for discovering new materials.” Prof. Loh Xian Jun, Executive Director at ASTAR Institute of Materials Research and Engineering (ASTAR IMRE) and Executive Director of MARVEL-AI” Get started with Gemini Robotics ER 2 in Gemini platform Developers and enterprise teams can start building with Gemini Robotics ER 2 today in preview via Model Garden in Gemini platform. Build in Gemini platform: Visit the Gemini Robotics ER 2 documentation and pricing . Explore the Developer Guides: Check out sample code and bidirectional streaming guides in the Gemini API Robotics documentation . Read the Research: Dive into the benchmarks and safety technical report in the Google DeepMind Gemini Robotics ER 2 announcement . Explore Physical AI on Google Cloud: Visit cloud.google.com/solutions/physical-ai and cloud.google.com/ai to learn how Google Cloud infrastructure supports simulation, training, and deployment.",
+      "evidenceLink": "",
+      "score": 115.77243438492064,
+      "core": "Earlier this year, we introduced Gemini Robotics 2 — our next-generation intelligence layer enabling robots to think, act, and adapt in the physical world. At the core of this breakthrough is Gemini Robotics Embodied Reasoning 2 (ER 2) , a specialized Gemini model that serves as a robot’s high-level brain. Working across any robot embodiment — from stationary arms to full humanoids — Gemini Robotics ER 2 combines ad…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-27T16:11:09.307Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "Pillow CVE-2026-112900: How to find and fix it with GitLab",
+      "link": "https://about.gitlab.com/blog/pillow-cve-find-and-fix-with-gitlab",
+      "publishedAt": "2026-10-26T00:00:00.000Z",
+      "author": "Abisheik Magesh https://about.gitlab.com/blog/authors/abisheik-magesh/",
+      "summary": "GitLab is not affected by CVE-2026-112900 or the other vulnerabilities fixed in Pillow 13.0.0. GitLab products do not include the Pillow library, and our Security team has found no evidence of impact to GitLab-managed infrastructure. GitLab.com, GitLab Self-Managed, and GitLab Dedicated are not impacted. Pillow is one of the most widely used image libraries in the Python ecosystem. It often sits several layers down in a dependency tree, pulled in by a web framework, a thumbnailing service or an ML toolkit that nobody chose it for directly. On October 16, 2026, the Pillow project released version 13.0.0 , and one of its security fixes is CVE-2026-112900 : an argument injection in the way Pillow calls Ghostscript to render EPS images. The CVE record, published on October 19, rates it 9.2 (Critical) on CVSS 4.0. It affects every Pillow release from 2.6.0 up to, but not including, 13.0.0. No exploitation in the wild has been reported so far, but CISA's assessment marks it as automatable with total technical impact. Upgrade Pillow to 13.0.0 on every project and image that handles untrusted images, and remove Ghostscript from images that do not need EPS support. This guide is for security and platform teams with Python projects on GitLab . It covers the fixed version for each distribution, how the flaw works, the other High and Critical issues fixed in the same release, how to locate affected projects with dependency scanning , container scanning , GitLab Orbit , and code search , and how to remediate at scale with GitLab Duo Agent Platform . CVE-2026-112900 at a glance CVE-2026-112900 is an OS command and argument injection flaw in Pillow's EPS plugin, rated Critical (CVSS 4.0 score of 9.2) by the CVE Numbering Authority (CNA). The CVE record was published on October 19, 2026. Field Detail CVE CVE-2026-112900 GitHub advisory GHSA-w889-685w-c8fh Title Pillow: Argument Injection in Ghostscript call, potentially leading into RCE Weakness CWE-88 (argument injection), CWE-78 (OS command injection) CVSS 4.0 9.2 Critical (AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H) Affected versions Pillow >= 2.6.0 and Fixed in Pillow 13.0.0 Exploitation status None known at the time of writing ( CISA SSVC assessment dated October 20, 2026) Upgrade Pillow to a fixed version now Upgrade Pillow to 13.0.0 or later. The CVE record lists 13.0.0 as the only fixed version, so every older branch needs to move to it. Framework updates and input validation on image contents do not help here, because the flaw is in how the filename reaches Ghostscript. Your Python version What to do 3.11 to 3.15 Upgrade with pip install --upgrade \"pillow>=13.0.0\" , or raise the pin in your lockfile or requirements file. If your Pillow comes from a distribution package, check the distribution's tracker first. Distribution packages keep their own version numbers, so compare against the tracker instead of pip show . Status as of October 26, 2026: Distribution Pillow package version Status Debian 12 (bookworm) 9.4.0-1.1+deb12u1 Vulnerable, no fix yet Debian 13 (trixie) 11.1.0-5+deb13u4 Vulnerable, no fix yet Debian forky (testing) 12.3.0-1 Vulnerable, no fix yet Debian sid (unstable) 13.0.0-1 Fixed SUSE Linux Enterprise (Server 15 SP4 to SP7 and 16.0 to 16.2, among others) and openSUSE Leap 16.0 and 16.1 python-Pillow Affected, no fix listed Amazon Linux 2023 and 2027 Preview python-pillow Pending fix Sources: Debian , SUSE and Amazon Linux security trackers, as of October 26, 2026. Amazon Linux 2 is listed as not affected. Ubuntu lists all releases as needing evaluation, and Red Hat, Arch Linux and Oracle Linux had no record for this CVE. Alpine's tracker could not be checked. Until your distribution ships a fix, install Pillow 13.0.0 from PyPI in a virtual environment or container, or apply the workarounds below. Rebuild your container images. If your Dockerfile installs Pillow without pinning a patch version, rebuild it with docker build --pull --no-cache and redeploy it so the install step resolves the fixed release. Images that pin a version, such as pillow==12.3.0 , need the pin changed first. Images built on top of other base images only get the fix once their maintainers update them, so check the upstream image before you rebuild. Pillow 13.0.0 also changes a few behaviors, such as how duplicate TIFF tags are handled and how I-mode images are saved as PNG, so run your image-processing tests before you ship the upgrade. How the vulnerability works EPS files are PostScript programs, so Pillow shells out to Ghostscript ( gs ) to render them, passing the input filename right after -f with no sanitizing. When the image object has a .name that exists on disk, Pillow used that name as-is. Ghostscript's argument parser gives two kinds of strings special meaning: A leading - is read as an option rather than a filename, which gives an attacker argument injection (CWE-88). A leading @ tells Ghostscript to read more command-line arguments from the named text file. If the attacker also controls that file's contents, they control additional Ghostscript arguments, which is the path toward command execution (CWE-78). The advisory notes that this works even with -dSAFER , the sandbox flag Pillow passes by default. That flag restricts what a PostScript program can do, but it does not stop an attacker from injecting arguments into the command line itself. How to check if you are affected You are exposed only if all of these are true: Pillow is below 13.0.0. Ghostscript is installed. Your code opens an EPS file by a filename an attacker can influence, such as an upload saved under its original name. The image is loaded or rendered, not just opened. Full command execution also needs the attacker to control a text file referenced with a leading @ . Services that generate their own filenames or use in-memory streams are far less likely to be reachable. If you cannot upgrade yet: save uploads under generated names, restrict formats with Image.open(f, formats=[\"PNG\", \"JPEG\"]) , or remove Ghostscript from images that do not need it. It's not just one bug: Every High and Critical issue in 13.0.0 The 13.0.0 release notes list 17 High and Critical advisories (3 Critical, 14 High). Fifteen of them map to a CVE. The two that do not, GHSA-xcvg-w56q-r89m and GHSA-78g4-xqwv-q3g8, are worth watching, because tools that match only on CVE IDs would miss them. Severity CVE GHSA Issue Critical CVE-2026-96639 GHSA-v9pv-5gc8-w2m6 Stale native image storage reused after mode transitions Critical CVE-2026-112398 GHSA-5x8w-8jj5-q52h Heap buffer overflow in FlashPix (FPX) JPEG decoding Critical CVE-2026-112403 GHSA-8g5g-8vmr-9782 JPEG decoder heap buffer overflow from scanlines wider than tile extents High CVE-2026-96644 GHSA-9v9v-9qvf-h2hj WMF/EMF heap out-of-bounds read from dimension truncation High CVE-2026-96637 GHSA-g842-9rc4-69pw SPIDER decompression bomb bypass via seek() High CVE-2026-96643 GHSA-g4qv-2jxx-769h Unbounded Exif header replacement loop High CVE-2026-96778 GHSA-g7cr-3p24-7wf7 JPEG comment write after ICC profile fills encoder buffer High CVE-2026-112395 GHSA-462x-pgg6-55fp TIFF tile and YCbCr decoding out-of-bounds read from undersized libtiff buffers High CVE-2026-112404 GHSA-c6hw-5grf-ff96 TIFF tile and YCbCr decoding out-of-bounds read from undersized libtiff buffers High CVE-2026-112895 GHSA-p4wg-p73j-c528 PDF parsing stack exhaustion from long trailer chains and deep or cyclic page trees High CVE-2026-96640 GHSA-mrfp-p49p-3hf2 PDF append resource exhaustion from repeated page tree references High CVE-2026-112896 GHSA-pchr-8j38-3x4p TIFF encoder accepted an incorrectly sized Colormap for non-8-bit images High CVE-2026-112393 GHSA-332p-7hrc-92wf TIFF encoder heap buffer overflow when saving to a file object High No CVE found yet GHSA-xcvg-w56q-r89m TIFF encoder heap buffer overflow when tags override the image size High CVE-2026-112902 GHSA-xvh5-g6gv-559v TIFF encoder memory disclosure and crash from mismatched tag values High CVE-2026-112897 GHSA-q45j-58j2-45rg TIFF decoding returned uninitialized memory for short JPEG strips High No CVE (GitHub: \"No known CVE\") GHSA-78g4-xqwv-q3g8 Bundled OpenJPEG heap buffer overflow when reading tile-part data Locate Pillow across your GitLab groups Find every project that installs Pillow, then fix first the ones that also have Ghostscript and accept uploads. Dependency scanning reports the Pillow version in your lockfiles, including transitive dependencies. Turn it on per project, or for a whole group with a scan execution policy . Merge request approval policies can block merges that add a vulnerable version, and continuous vulnerability scanning re-checks existing projects when an advisory is published, for advisories up to 14 days old. Container scanning finds Ghostscript installed as an OS package. Images with Pillow but no Ghostscript cannot render EPS files, so they are lower priority. It misses Ghostscript compiled from source. Turn container scanning on the same way. GitLab Orbit : Because Pillow tends to arrive as someone else's dependency, asking \"who uses it?\" is hard from any single project. GitLab Orbit turns your projects, pipelines, security findings and code into a graph that an agent can query. Enable it on the top-level group, then ask for the Python projects that handle images and for the projects with open findings on CVE-2026-112900 or the other Pillow advisories. This will give you a shortlist before you open a single repository. Orbit covers only the default branch and is in beta for Premium and Ultimate on GitLab.com and GitLab Self-Managed. It doesn't parse Dockerfiles yet, so confirm Ghostscript with the code search in the next step. Code search finds what scanners miss. Run these in exact code search at the top-level group with regular expression mode on: file:requirements.*\\.txt$ (?i)^\\s*pillow lang:Dockerfile (?i)ghostscript (?i)EpsImagePlugin|\\.eps\\b Finally, compare the results with what actually runs. Anything running that your projects do not declare is a gap. For Kubernetes, operational container scanning covers the images in your clusters. Remediate at scale with GitLab Duo Agent Platform Once you have the list of affected projects, the remaining work is repetitive: raise a version, open a merge request, get it reviewed. Hand the repetitive part to agents and keep people on the decisions. Start in Agentic Chat and ask it to list the Dependency Scanning findings for these Pillow CVEs from the Vulnerability Report (Ultimate), then create an epic with one issue per affected project. Assigning an issue to the Developer Flow produces a merge request that raises Pillow to 13.0.0 or later, or edits the version pinned in the Dockerfile. A flow trigger on the Assign event starts the flow as soon as the issue is assigned. The Code Review Flow can then give each merge request a first review against your review instructions . The agents stop at the merge request. A person still has to review and merge each one, run the image-processing tests because 13.0.0 changes how duplicate TIFF tags and I-mode PNG saves behave, and confirm the fixed version is deployed before closing the issue. Timeline Date What happened October 16 Pillow releases 13.0.0 with fixes for 38 security entries. The release notes list the EPS Ghostscript issue as GHSA-w889-685w-c8fh with no CVE yet. October 19 GitHub, as CNA, reserves and publishes CVE-2026-112900 with a CVSS 4.0 score of 9.2 (Critical). CVE-2026-112393 and CVE-2026-112403, the TIFF writer and JPEG decoder heap overflows, are published the same day. October 20 CISA's coordinator adds an SSVC assessment for CVE-2026-112900: exploitation none, automatable yes, technical impact total. October 23 Debian lists only its unstable release (13.0.0-1) as fixed. Ubuntu lists all releases as needing evaluation. Sources Pillow 13.0.0 release notes CVE-2026-112900 record and GHSA-w889-685w-c8fh Fix commit a2c3631 Debian security tracker and Ubuntu security tracker , as of October 23, 2026 GitLab: Dependency scanning using SBOM GitLab: Continuous dependency scanning GitLab: Container scanning and exact code search",
+      "evidenceLink": "",
+      "score": 100.12957724206349,
+      "core": "GitLab is not affected by CVE-2026-112900 or the other vulnerabilities fixed in Pillow 13.0.0. GitLab products do not include the Pillow library, and our Security team has found no evidence of impact to GitLab-managed infrastructure. GitLab.com, GitLab Self-Managed, and GitLab Dedicated are not impacted. Pillow is one of the most widely used image libraries in the Python ecosystem. It often sits several layers down …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-27T16:11:09.307Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "Extend GitLab Duo Agent Platform into your business systems",
+      "link": "https://about.gitlab.com/blog/extend-gitlab-duo-agent-platform-into-your-business-systems",
+      "publishedAt": "2026-10-27T00:00:00.000Z",
+      "author": "Harshit Bhandari https://about.gitlab.com/blog/authors/harshit-bhandari/",
+      "summary": "Developers mostly use GitLab Duo Agent Platform where they already work: the IDE, merge requests, and issues. But DevSecOps teams also support the business systems the rest of the company runs on, and those systems break too. In Salesforce, for example, when a validation fails, a callout times out, or a null slips through a trigger, the error gets logged, but the log doesn’t explain the cause. An engineer still has to read the stack trace, find the class in the repository, check what changed recently, and decide whether this is a one-off or a regression. Meanwhile, the business user who hit the error has to wait. When your Salesforce metadata lives in GitLab and ships through GitLab CI/CD, the code that explains the error is already there. In this tutorial, Salesforce calls a custom GitLab Duo Agent Platform flow through the Flows API the moment an error happens. The flow investigates the code, and your team gets a GitLab issue that already contains the root-cause analysis. Along the way, three parts of the GitLab platform work together: GitLab Duo Agent Platform investigates the error, a GitLab issue tracks the work, and GitLab CI/CD runs the flow and ships the fix. Salesforce is the example we’ll walk through in this tutorial, but the same approach works for any system that can make an HTTP request. What you'll build Salesforce makes one call to GitLab. A custom flow in GitLab Duo Agent Platform does the rest. Errors reach GitLab Duo Agent Platform automatically from your Apex error handling, or on demand from a button. Either way, the same Apex job calls the Flows API, and the flow opens an issue with its analysis. Prerequisites GitLab Premium or Ultimate, on GitLab.com or GitLab 19.5 and later. The Flows API used in this tutorial is generally available from 19.5. GitLab Duo Agent Platform turned on, with custom flows allowed for your top-level group. Your Salesforce metadata (Apex classes, triggers, Flows) stored in a GitLab project. This is the project the flow will read. A Maintainer or Owner role in that project. In Salesforce, permission to create a Named Credential, a custom metadata type, and Apex classes. Your Salesforce deployments must be running through a GitLab CI/CD pipeline, so the fix can ship from the same issue. Step 1: Write the triage flow Start in GitLab, because Salesforce will need the flow's ID later. A custom flow is one YAML file in the flow registry v1 syntax . This one has a single agent. When Salesforce starts the flow, it sends the error details as the flow's goal. The agent reads them as context:goal , investigates the repository, and opens one issue. in \" - Label: salesforce-error - Description: the original error, then sections for Likely cause, Affected component, Suspect change, Suggested next step, and Confidence (high, medium or low, with one line of reasoning). Rules: - Cite file paths, line numbers and commit SHAs for every claim. - If you cannot find the code or a suspect commit, say so. Do not guess. - Do not change code. A person decides what happens next. user: | Project ID: {{project_id}} Error report: {{error_report}} placeholder: history routers: - from: \"sf_error_triage\" to: \"end\" flow: entry_point: \"sf_error_triage\" \" language=\"yaml\" meta=\"\" style=\"\"> version : \"v1\" environment : ambient components : - name : \"sf_error_triage\" type : AgentComponent prompt_id : \"sf_error_triage_prompt\" inputs : - from : \"context:project_id\" as : \"project_id\" - from : \"context:goal\" as : \"error_report\" toolset : - \"find_files\" # locate the class or Flow in the repository - \"grep\" - \"read_file\" - \"list_commits\" # find recent changes to that file - \"create_issue\" # the only write: open the triage issue prompts : - prompt_id : \"sf_error_triage_prompt\" prompt_template : system : | You triage Salesforce runtime errors for a team that keeps its Salesforce metadata (Apex classes, triggers, Flows) in this project. You receive an error report with a class name, exception type, message and stack trace. 1. Find the source file for the class or Flow named in the report. 2. Read the code around the lines in the stack trace. 3. List recent commits that touched that file and identify any change that plausibly introduced the error. 4. Create one issue: - Title: \"[Salesforce error] in \" - Label: salesforce-error - Description: the original error, then sections for Likely cause, Affected component, Suspect change, Suggested next step, and Confidence (high, medium or low, with one line of reasoning). Rules: - Cite file paths, line numbers and commit SHAs for every claim. - If you cannot find the code or a suspect commit, say so. Do not guess. - Do not change code. A person decides what happens next. user : | Project ID: {{project_id}} Error report: {{error_report}} placeholder : history routers : - from : \"sf_error_triage\" to : \"end\" flow : entry_point : \"sf_error_triage\" The toolset is deliberately narrow: four tools read and one creates an issue. The flow can't push code or change existing issues, which makes it easy to review and easy to trust. Two lines in the prompt do the most work. Requiring a citation for every claim lets an engineer check the reasoning in a minute. Allowing \"not found\" stops the agent from inventing a cause. To create the flow, go to your project, select AI > Flows > New flow , choose Flow , paste the YAML, and select Create flow . You can also build and test it in VS Code with the GitLab flow builder. Step 2: Enable the flow and get its consumer ID A flow must be enabled in a project before anything can run it. In your project, select AI > Flows , open the Managed tab, and select your flow. Select Enable and choose the project that holds your Salesforce code. GitLab creates a service account for the flow, named ai- - . The flow runs with a composite identity , so it can never access more than the user who starts it. When Salesforce starts the flow through the API, GitLab runs it as this service account. You don't need a mention or assign trigger. Salesforce will start this flow through the API. To start a custom flow through the API, Salesforce passes the flow's ai_catalog_item_consumer_id . Look it up with a short GraphQL query from the docs, and use the number at the end of the returned gid://gitlab/AiCatalogItemConsumer/ . Note it, along with the project ID. Finally, create a project access token with the api scope and at least the Developer role. Salesforce will use it to call GitLab. With a lower role, the API refuses to run catalog flows. Step 3: Call the flow from Salesforce Store the token in a Named Credential. Create a Named Credential called GitLab_API with the URL https://gitlab.com , backed by an External Credential that sends your project access token in the PRIVATE-TOKEN header. The token never appears in code. Call the Flows API from a Queueable. Salesforce doesn't allow callouts in the middle of saving a record, so the call runs as a background job. The job turns the exception into the flow's goal and starts the flow: { 'project_id' => cfg.Project_Id__c, 'ai_catalog_item_consumer_id' => cfg.Consumer_Id__c.intValue(), 'goal' => goal, 'start_workflow' => true, 'allow_agent_to_request_user' => false, 'agent_privileges' => new List { 1, 2, 3 }, 'pre_approved_agent_privileges' => new List { 1, 2, 3 } })); HttpResponse res = new Http().send(req); // 201 Created: the response includes web_url, a link to the agent session. } } \" language=\"apex\" meta=\"\" style=\"\"> public with sharing class DuoTriageJob implements Queueable, Database.AllowsCallouts { private final String goal; public DuoTriageJob(Exception e, String className) { goal = 'Class: ' + className + '\\nException: ' + e.getTypeName() + '\\nMessage: ' + e.getMessage() + '\\nStack trace:\\n' + e.getStackTraceString(); } public void execute(QueueableContext ctx) { Duo_Triage_Setting__mdt cfg = Duo_Triage_Setting__mdt.getInstance('Default'); HttpRequest req = new HttpRequest(); req.setEndpoint('callout:GitLab_API/api/v4/ai/duo_workflows/workflows'); req.setMethod('POST'); req.setHeader('Content-Type', 'application/json'); req.setBody(JSON.serialize(new Map { 'project_id' => cfg.Project_Id__c, 'ai_catalog_item_consumer_id' => cfg.Consumer_Id__c.intValue(), 'goal' => goal, 'start_workflow' => true, 'allow_agent_to_request_user' => false, 'agent_privileges' => new List { 1, 2, 3 }, 'pre_approved_agent_privileges' => new List { 1, 2, 3 } })); HttpResponse res = new Http().send(req); // 201 Created: the response includes web_url, a link to the agent session. } } The project ID and consumer ID from Step 2 live in a custom metadata type, Duo_Triage_Setting__mdt , so you can change them without a deployment. Three settings in the request body do the most work: allow_agent_to_request_user: false means the flow runs to completion without pausing for questions. Nobody is watching a Salesforce error at 2 a.m. agent_privileges limits the agent to reading files (1), reading GitLab (2), and writing to GitLab (3), which it needs to create the issue. It can't run commands or use Git. List all privileges to check the IDs on your instance. pre_approved_agent_privileges repeats the same list, so the flow never stops to wait for tool approval. This example leaves out response checks, retries, and tests. Add them before you go to production. Step 4: Start the flow automatically or on demand Automatically. Queue the job wherever your code catches and handles an exception: try { OpportunityDiscountService.applyTierDiscount(opportunities); } catch (Exception e) { System.enqueueJob(new DuoTriageJob(e, 'OpportunityDiscountService')); // ...your existing error handling } If the whole transaction is rolled back, Salesforce discards the queued job too, so place the call where your code handles the error and carries on. On demand. Some teams would rather choose which errors are worth investigating. Wrap the job in an invocable Apex action, label it Ask GitLab Duo to investigate , and add it to a screen flow that runs as a quick action on the record where you keep errors, such as a log record or a support case. One click in Salesforce, and the issue appears in GitLab a few minutes later. Step 5: What your team sees A user saves an Opportunity, an Apex trigger throws, and a few minutes later a new issue appears in the GitLab project. Here is an illustrative example of what the flow writes: ## [Salesforce error] System.NullPointerException in OpportunityDiscountService Label: salesforce-error ### Original error Attempt to de-reference a null object Class.OpportunityDiscountService.applyTierDiscount: line 48, column 1 Trigger.OpportunityTrigger: line 12, column 1 ### Likely cause applyTierDiscount() reads opp.Account.Tier__c without a null check (line 48). Opportunities saved without an Account reach this line with opp.Account == null. ### Affected component force-app/main/default/classes/OpportunityDiscountService.cls, called from OpportunityTrigger (before update). ### Suspect change Commit 3f9c2ab, \"Apply tier discount on stage change\", added the Tier__c lookup. Before that commit, the method returned early when AccountId was blank. ### Suggested next step Restore the early return for a blank AccountId, or guard the lookup. Add a test that updates an Opportunity with no Account. ### Confidence High. The stack trace line matches the new code in 3f9c2ab. Nothing in Salesforce or the codebase changed. The flow did the first round of investigation and left the decision to an engineer: fix it now, schedule it, or close it as expected behavior. The Flows API response includes a web_url for the agent session. Open it to see each step the flow took, which is the fastest way to tune the prompt. Guardrails for production Before you run this in production, check these points. They decide whether the pattern holds up under real traffic. Send the shape of the error, not the data. Strip record IDs, emails, and free text that may hold customer data from the message before it leaves Salesforce. Review what the goal contains with your security team before you turn this on. Grant the fewest privileges. Reading files, reading GitLab, and creating an issue are enough. Expand the flow, for example to open merge requests, only after it has earned trust with accurate analysis. Scope the token. Use a project access token for one project, not a personal token, and rotate it on a schedule. Keep a person in charge. The flow investigates; an engineer decides. Citations in every issue let the engineer verify the reasoning instead of redoing it. One platform, from error to fix Follow that error from start to finish: GitLab Duo investigates it. The flow reads the stack trace, finds the code, and points to the change that most likely caused the error. A GitLab issue tracks it. The analysis becomes work the team can label, prioritize, assign, and plan into a milestone, like any other issue. GitLab CI/CD runs it and ships the fix. The flow itself runs on GitLab CI/CD, and so does your Salesforce deployment pipeline. An engineer opens a merge request from the issue, the pipeline validates and deploys the change to Salesforce, and the issue closes when the merge request merges. Because every step happens in GitLab, the trail stays connected. The issue links to the merge request, the merge request to its pipeline, and the pipeline to the deployment. Anyone can see what broke, why, who fixed it, and when the fix reached production. Beyond Salesforce errors Strip away the Salesforce details and the pattern is simple: a business system makes one HTTP call, and a custom GitLab Duo flow that knows your code does the investigation. Any system that can send a request can start a flow. Here are a few ideas for where the same pattern could help: A failed sync in an ERP integration, traced to the mapping code that last changed. A support case tagged \"possible bug,\" checked against recent releases before it reaches an engineer. A failed scheduled data job, matched to the last change in its pipeline definition. For DevSecOps teams, this means errors from the business systems they support arrive as issues with a likely cause attached, not as raw logs to trace manually. Business teams don't need to learn GitLab, and engineers don't need to watch another dashboard. Each system keeps doing its job, and GitLab Duo Agent Platform gives engineering a head start every time something breaks. Try it yourself Pick one business system your team supports and one error it logs today. Give a custom flow the code, call it from that system, and see what the first analysis tells you. Start a free trial of GitLab Duo Agent Platform , or if you're already on GitLab Premium or Ultimate, turn on Duo Agent Platform and build your first custom flow. Further reading Flows API Custom flows Custom flow YAML schema Composite identity GitLab Duo Agent Platform: complete getting started guide",
+      "evidenceLink": "",
+      "score": 91.8438629563492,
+      "core": "Developers mostly use GitLab Duo Agent Platform where they already work: the IDE, merge requests, and issues. But DevSecOps teams also support the business systems the rest of the company runs on, and those systems break too. In Salesforce, for example, when a validation fails, a callout times out, or a null slips through a trigger, the error gets logged, but the log doesn’t explain the cause. An engineer still has …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-27T16:11:09.307Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Easy to integrate, compliant by design: Bringing the Swiss Franc to Google Cloud Universal Ledger",
+      "link": "https://cloud.google.com/blog/topics/financial-services/easy-to-integrate-compliant-by-design-bringing-the-swiss-franc-to-google-cloud-universal-ledger",
+      "publishedAt": "2026-10-26T20:00:00.000Z",
+      "author": "Nathaniel Zollinger CTO, Crypto Finance Group",
+      "summary": "Every day, countless financial transactions are interrupted by slow, expensive, and inflexible conventional payment systems. As a result, public commercial stablecoins like Tether, USDC, and PayPal USD have become increasingly popular by making it easy to move money efficiently with instant, 24/7 blockchain settlement. Yet major regulated banks have largely kept such transactions at arm’s length; for these financial institutions, reserve-backed public stablecoins present numerous risks, including strict capital and liquidity requirements and unmanageable regulatory and operational uncertainty. Indeed, banks don't want to adopt existing stablecoins. Instead, they need the speed and efficiency of tokenized currency built on the trusted economic foundations they’ve nurtured over years or even decades in business. That’s why many are now turning to Google Cloud Universal Ledger (GCUL). Rather than channeling public stablecoins, GCUL provides the secure infrastructure banks need to issue and settle tokenized deposits. That brings real-time, 24/7 programmable payments into commercial bank money while satisfying regulators and without disrupting core banking operations. For many banks, this is a compelling vision, but adopting new payment technology and integrating it with core banking systems can seem to bank CTOs like a daunting undertaking. That’s particularly true as they face mounting demands for the engineering resources that keep their businesses running while also striving to stay compliant with new regulations. But with a blockchain purpose-built for financial services like GCUL, this is anything but a herculean task. Looking to expand its offerings for an increasingly global clientele, Switzerland’s Crypto Finance Group wanted to show it could deploy payment innovations like this in just weeks. That was its inspiration for launching a digital payments infrastructure pilot that enabled instant account-to-account transfers between customers of two Swiss banks on the GCUL network. The pilot, which was designed to operate within one of the world's most demanding financial security frameworks, provided a blueprint for how any commercial bank can build on Google Cloud technology to fundamentally modernize its payment operations. Pain points in today's payments landscape In recent years, there’s been a marked proliferation of tokenized payment methods. But stablecoins have transformed this previously niche technology, by effectively resolving some of traditional finance’s most enduring pain points, such as weekend transfer blackouts, direct transfers without correspondent banks, and fast settlement rails. Stablecoins also limit the frustrations caused by opaque cross-border transactions, where fragmented compliance checks can leave legitimate payments in extended and unexplained limbo and without a path to clear or timely resolution. Still, commercial banks have been reluctant to offer popular reserve-backed stablecoins from permissionless blockchains to their customers despite their retail popularity. That’s because they come with numerous challenges to smooth and secure operations: an uncertain regulatory status, compliance issues around anonymous accounts, gas fees , and the scalability limitations of layer 1 blockchain technology. But perhaps banks’ biggest concerns about stablecoins is that they create a problematic economic disconnect — giving customers access to reserve-backed stablecoins reduces reserves and, as a recent McKinsey study found, banks’ ability to lend. As a result, many banks are trying to figure out how to offer their customers the benefits of stablecoins — high speed, low cost, 24/7 availability, and programmability — without introducing problems often associated with existing reserve-backed stablecoins, such as regulatory issues, poor throughput performance, negative influence on bank reserves, and potentially no yield participation. Solution proposal Realizing this vision means modernized payments architectures must seamlessly and instantly enable individuals and institutions to transfer bank-held assets to accounts at any target bank. Orchestrating this shared ecosystem requires central entities to establish the governing rulebook, enforce issuance limits, and manage network-wide settlement parameters. During its pilot, Crypto Finance assumed this role, which within GCUL is known as the “currency operator.” In this position, Crypto Finance can configure the network for either instant or deferred settlement. This choice is analogous to traditional banking: instant settlement acts like real-time gross settlement, where transactions settle individually and immediately and require high liquid reserves. In contrast, deferred settlement operates like netting, where payments are accumulated and offset and only periodically settle the net difference. For the pilot, Crypto Finance chose to adopt deferred settlement, in which GCUL manifests capital efficiency. In this way, clients enjoy instant transfers while banks conserve liquidity through periodic settlement. Concept validation To demonstrate instant, bi-directional account-to-account transfers on GCUL, Crypto Finance orchestrated a pilot with two digital token issuers, a Swiss digital asset bank, and a Swiss B2B transaction bank. Crypto Finance established the rulebook for interactions between the participant banks, such as interbank settlement, integration with traditional SIC payment rails, and AML/compliance protocols. Although some backend steps still needed manual intervention, Crypto Finance’s pilot proved that fully automated, cross-institution integration is feasible and established a generalized architecture that can scale to virtually any asset class. Robustness and performance A temporary pilot is one thing; moving into live client transactions carrying legal liability brings a whole new set of operational challenges. Live payment rails are considered critical infrastructure that demands security and availability. GCUL addresses these needs through redundancy between geographically distributed nodes operating on an enterprise-grade consensus model, ensuring reliability. Deploying client workloads on Google Cloud provides that enterprise-grade foundation and allows financial institutions to pair the highly resilient GCUL network with secure-by-design infrastructure, encryption at rest and in transit, and robust access controls that satisfy many of banks’ common regulatory, privacy, and data sovereignty mandates. While some banks may consider integrating their systems with fully public and permissionless blockchains, this approach introduces severe regulatory hurdles, anonymity risks, unpredictable gas fees, and low throughput. These are all roadblocks that in the past would have significantly delayed the pilot or rendered it a non-starter. Ease of integration The pilot's implementation, with systems integration completed in under three months, was compartmentalized across dedicated Google Cloud projects per participant. The currency operator, Crypto Finance, connected specialized components to a dedicated GCUL API. The first was a role admin service that controls account managers and token managers on the network. Next, it implemented a settlement registry to record when periodic off-ledger settlement between participant banks has occurred once a predefined threshold is reached. Finally, a cloud key management service (KMS) stored the currency operator keys to sign transactions. At the same time, participant banks connected their core banking systems to their own GCUL API instances. But these participant banks don’t need a large Google Cloud footprint. Instead, they can connect to GCUL nodes via Remote Procedure Call from their existing on-premise deployments and manage private key material through solutions other than KMS. Regardless of the setup, transactions are seamlessly routed to the shared global GCUL nodes. Whether GCUL is exposed to a bank’s client or used merely as a bank backend is entirely at the integrating institution’s discretion. The banks participating in the pilot chose the latter, utilizing the ledger to upgrade their backend infrastructure. With GCUL under the hood, they improved intra-day transaction performance and provided customers with the user experience they were already accustomed to. Regulatory compliance and governance by design To join the Swiss Franc currency network on GCUL, participants must have regulatory licenses that let them perform third-party transfers and issue commercial bank money. Crucially, features like token and account management are not rigid network-wide limitations. Instead, they rely entirely on the currency operator and its specific rulebook. This standardizes fees, limits, settlement times, and technical configurations. Managing counterparty risk is central to this governance. Rather than relying on unscalable bilateral agreements or complex clearinghouse default waterfalls, GCUL mitigates risk through these currency operator-enforced issuance limits. It’s important to distinguish GCUL’s broader feature set from the concrete pilot setup. In the pilot, both participating banks operated with conservative initial limits based on their credit ratings in order to safely prove the architecture. But beyond the pilot, the network frees up capital by periodically netting outstanding obligations, which frees banks from having to fund and settle every transaction. Looking ahead, risk management can be further innovated. One clever future enhancement would be to allow participants to dynamically increase their issuance limits by committing digital assets as collateral in segregated accounts, using solutions like Crypto Finance’s AnchorNote pledging solution. These assets could then be used to instantly settle outstanding street-side obligations, virtually eliminating counterparty risk without tying up traditional liquidity reserves. The future While Crypto Finance’s pilot was designed to focus on domestic commercial bank money transfers in Switzerland, GCUL's programmable architecture and high-performance smart contract language, GCULpy, are paving the way for deeper innovation. As institutions like Crypto Finance scale their use of GCUL, the network can expand to support real-time cross-currency settlement, automated foreign exchange, and dynamic collateral management involving tokenized digital assets. And looking further ahead, this infrastructure has laid the groundwork for next-generation financial services that range from point-of-sale payments to autonomous, AI-driven agentic payments. The pilot proved that deploying high-performance, blockchain-based payment rails doesn’t mean compromising on strict regulatory compliance or core banking stability. By combining the high-throughput of GCUL with a secure, API-driven integration architecture, commercial banks can offer stablecoin-like speed to their customers while seamlessly preserving their capital efficiency. Ultimately, this compliant-by-design approach targets the operational bottlenecks of traditional finance while mitigating the inherent risks and complexities of public blockchains. To learn how your institution can build on this blueprint to fundamentally upgrade your operational payments infrastructure, contact Google Cloud Sales to explore the Google Cloud Universal Ledger. The team would also like to thank Phil Dettwiler, Andras Miklos, Ignazio Pollina, and Ozan Kizildogan at Crypto Finance and Googlers Chris Esch, Ishan Singh, Olena Clayton, and Stathis Onasoglou for their contributions.",
+      "evidenceLink": "",
+      "score": 83.55814867063492,
+      "core": "Every day, countless financial transactions are interrupted by slow, expensive, and inflexible conventional payment systems. As a result, public commercial stablecoins like Tether, USDC, and PayPal USD have become increasingly popular by making it easy to move money efficiently with instant, 24/7 blockchain settlement. Yet major regulated banks have largely kept such transactions at arm’s length; for these financial…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-27T16:11:09.307Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "GPT-6.1 Terra now available on AI Gateway",
+      "link": "https://vercel.com/changelog/gpt-6-1-terra-now-available-on-ai-gateway",
+      "publishedAt": "2026-10-26T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "GPT-6.1 Terra from OpenAI is now available on AI Gateway . GPT-6.1 Terra is a fast model for visual reasoning, computer use, and writing, and it improves on the previous Terra model in visual reasoning, factual accuracy, and coding. It suits high-volume work in documents and desktop apps, such as filling out forms, interpreting technical drawings, or entering invoice details into accounting software. OpenAI still recommends its larger GPT-6 models for the most complex coding tasks. The model accepts text and images and returns text, with a context window of more than 1M tokens. It supports configurable reasoning effort , structured outputs , tool calling, and implicit and explicit prompt caching . For latency-sensitive work, fast mode is available as openai/gpt-6.1-terra-fast . GPT-6.1 Terra works with the AI SDK , the OpenAI-compatible Chat Completions API , the Responses API , and coding agents connected to AI Gateway. Use openai/gpt-6.1-terra as the model name: To use it in Codex, Cursor, and more, install the latest Vercel CLI and run setup: Then select openai/gpt-6.1-terra in the agent. See the coding agents guide for details. Try GPT-6.1 Terra in the model playground . AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. You can view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 80.12957724206349,
+      "core": "GPT-6.1 Terra from OpenAI is now available on AI Gateway . GPT-6.1 Terra is a fast model for visual reasoning, computer use, and writing, and it improves on the previous Terra model in visual reasoning, factual accuracy, and coding. It suits high-volume work in documents and desktop apps, such as filling out forms, interpreting technical drawings, or entering invoice details into accounting software. OpenAI still re…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-27T16:11:09.307Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "GPT-6.1 Terra in GitHub Copilot",
+      "link": "https://github.blog/changelog/2026-10-26-gpt-6-1-terra-in-github-copilot",
+      "publishedAt": "2026-10-26T19:15:53.000Z",
+      "author": "Allison",
+      "summary": "GPT-6.1 Terra, OpenAI’s newest model, is now generally available in GitHub Copilot. It is designed for everyday agentic coding and terminal work at a lower cost than GPT-6.1 Sol. In… The post GPT-6.1 Terra in GitHub Copilot appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 63.94451771825397,
+      "core": "GPT-6.1 Terra, OpenAI’s newest model, is now generally available in GitHub Copilot. It is designed for everyday agentic coding and terminal work at a lower cost than GPT-6.1 Sol. In… The post GPT-6.1 Terra in GitHub Copilot appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-27T16:11:09.307Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Microsoft Decision-1: 9B Qwen Model Launch Explained",
+      "link": "https://shattered.io/microsoft-decision-1-qwen3-5-9b-model-2026",
+      "publishedAt": "2026-10-26T03:12:05.000Z",
+      "author": "gmays https://news.ycombinator.com/user?id=gmays",
+      "summary": "Microsoft launched Decision-1, a 9B Qwen3.5-based model for AI decision scoring. See pricing, benchmarks, and how it compares to rivals.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50238620",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 71,
+        "comments": 31
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-27T16:11:09.307Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 60.41076587133583,
+      "core": "Microsoft launched Decision-1, a 9B Qwen3.5-based model for AI decision scoring. See pricing, benchmarks, and how it compares to rivals.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Build agentic retrieval on a Managed Amazon Bedrock Knowledge Base with CDK",
+      "link": "https://aws.amazon.com/blogs/machine-learning/build-agentic-retrieval-on-a-managed-amazon-bedrock-knowledge-base-with-cdk",
+      "publishedAt": "2026-10-26T17:15:14.000Z",
+      "author": "Prabhakar Chandrasekaran",
+      "summary": "Build enterprise agentic retrieval on a Managed Amazon Bedrock Knowledge Base with the AWS CDK: an agent that routes across two knowledge bases, retrieves through the AgentCore Gateway, and returns grounded, cited answers, with seven layers of observability and both on-demand and continuous evaluation, all deployed as a single CDK application.",
+      "evidenceLink": "",
+      "score": 60.27866454365079,
+      "core": "Build enterprise agentic retrieval on a Managed Amazon Bedrock Knowledge Base with the AWS CDK: an agent that routes across two knowledge bases, retrieves through the AgentCore Gateway, and returns grounded, cited answers, with seven layers of observability and both on-demand and continuous evaluation, all deployed as a single CDK application.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-27T16:11:09.307Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "Best agent skills for LLM evaluation - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/best-agent-skills-llm-evaluation",
+      "publishedAt": "2026-10-23T16:00:00.000Z",
+      "author": "",
+      "summary": "Eight Braintrust agent skills that steer coding agents like Claude Code and Cursor through planning, dataset building, scorer writing, validation, analysis, and release gates.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-27T16:11:09.307Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 58.10179946428571,
+      "core": "Eight Braintrust agent skills that steer coding agents like Claude Code and Cursor through planning, dataset building, scorer writing, validation, analysis, and release gates.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Concerning behavior from a popular open-weight AI model",
+      "link": "https://cohere.com/blog/concerning-behaviour-popular-open-weight-ai-model",
+      "publishedAt": "2026-10-26T16:35:44.000Z",
+      "author": "matthieu_bl https://news.ycombinator.com/user?id=matthieu_bl",
+      "summary": "Discover how untrusted open-weight AI models can potentially leak data, even when self-hosted. Learn the security risks and how to protect your enterprise.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50246658",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 314,
+        "comments": 123
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-27T16:11:09.307Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 53.854481317843906,
+      "core": "Discover how untrusted open-weight AI models can potentially leak data, even when self-hosted. Learn the security risks and how to protect your enterprise.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "3 Ways to Boost MoE Inference on NVIDIA DGX Spark",
+      "link": "https://developer.nvidia.com/blog/3-ways-to-boost-moe-inference-on-nvidia-dgx-spark",
+      "publishedAt": "2026-10-27T15:00:00.000Z",
+      "author": "Yang Liu",
+      "summary": "Generating tokens faster starts with identifying what limits inference performance. In the batch-size-1 evaluation of Ling-3.0-flash from Inclusion AI on NVIDIA...",
+      "evidenceLink": "",
+      "score": 46.82084708333334,
+      "core": "Generating tokens faster starts with identifying what limits inference performance. In the batch-size-1 evaluation of Ling-3.0-flash from Inclusion AI on NVIDIA...",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-27T16:11:09.307Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "AI agents need limits on financial access",
+      "link": "https://www.techradar.com/ai-platforms-assistants/ai-agents-are-going-rogue-inside-bank-accounts-and-this-is-exactly-what-ive-been-worried-about",
+      "publishedAt": "2026-10-27T01:00:00.000Z",
+      "author": "Eric Hal Schwartz",
+      "summary": "AI agents are gaining access to bank accounts, raising serious concerns about security and whether the technology industry's obsession with automation is putting people's money at unnecessary risk.",
+      "evidenceLink": "",
+      "score": 46.009735972222224,
+      "core": "AI agents are gaining access to bank accounts, raising serious concerns about security and whether the technology industry's obsession with automation is putting people's money at unnecessary risk.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-27T16:11:09.307Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "meta_engineering",
+      "source": "Meta Engineering",
+      "title": "Python Typing Survey 2026: AI Tools and the Shifting Checker Landscape",
+      "link": "https://engineering.fb.com/2026/10/27/developer-tools/python-typing-survey-2026-ai-tools-checker-landscape",
+      "publishedAt": "2026-10-27T15:59:24.000Z",
+      "author": "",
+      "summary": "The 2026 Python Typing Survey received 1,794 responses. Type hint use changed little across three years, but checker selection changed sharply. Among respondents who reported which checkers they use, half selected more than one, and missing library type information was the most common difficulty. For the third consecutive year, we asked Python developers how they [...] Read More... The post Python Typing Survey 2026: AI Tools and the Shifting Checker Landscape appeared first on Engineering at Meta .",
+      "evidenceLink": "",
+      "score": 43.78600581349206,
+      "core": "The 2026 Python Typing Survey received 1,794 responses. Type hint use changed little across three years, but checker selection changed sharply. Among respondents who reported which checkers they use, half selected more than one, and missing library type information was the most common difficulty. For the third consecutive year, we asked Python developers how they [...] Read More... The post Python Typing Survey 2026…",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-27T16:11:09.307Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "red_hat_ai_engineering",
+      "source": "Red Hat Developer · AI",
+      "title": "Apache Camel tool calling: LLM integrations with bounded loops",
+      "link": "https://developers.redhat.com/articles/2026/10/27/apache-camel-tool-calling-llm-integrations-bounded-loops",
+      "publishedAt": "2026-10-27T13:01:25.000Z",
+      "author": "Ivo Bek",
+      "summary": "Language models are incredible at synthesizing information, but tool calling is what transforms them into systems that actually get things done. It bridges the gap between generating text and executing tasks. By giving the model bounded hands, tool calling allows it to safely interact with real environments—translating an engineer's offhand triage question into a precise operational query. The post Apache Camel tool calling: LLM integrations with bounded loops appeared first on Red Hat Developer .",
+      "evidenceLink": "",
+      "score": 40.56300978174603,
+      "core": "Language models are incredible at synthesizing information, but tool calling is what transforms them into systems that actually get things done. It bridges the gap between generating text and executing tasks. By giving the model bounded hands, tool calling allows it to safely interact with real environments—translating an engineer's offhand triage question into a precise operational query. The post Apache Camel tool…",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-27T16:11:09.307Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentconn_engineering",
+      "source": "AgentConn Field Reports",
+      "title": "Your Agent Left the Laptop. Now What?",
+      "link": "https://agentconn.com/blog/agent-cloud-sandboxes-subagent-architecture",
+      "publishedAt": "2026-10-26T00:00:00.000Z",
+      "author": "AgentConn Team",
+      "summary": "Managed cloud sandboxes and subagent architecture are the new defaults. The harness layer is standardizing faster than models.",
+      "evidenceLink": "",
+      "score": 37.82957724206349,
+      "core": "Managed cloud sandboxes and subagent architecture are the new defaults. The harness layer is standardizing faster than models.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-27T16:11:09.307Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "fiddler_ai_evaluation",
+      "source": "Fiddler AI Blog",
+      "title": "LLM Security Risks: Where Each Threat Enters the Request Path and How to Reduce It",
+      "link": "https://www.fiddler.ai/blog/llm-security-risks-threats-controls",
+      "publishedAt": "2026-10-26T07:00:00.000Z",
+      "author": "",
+      "summary": "Identify where LLM security risks enter the request path and which runtime controls reduce them before launch. Map risks to OWASP Top 10 for LLM Applications 2026.",
+      "evidenceLink": "",
+      "score": 37.53513279761905,
+      "core": "Identify where LLM security risks enter the request path and which runtime controls reduce them before launch. Map risks to OWASP Top 10 for LLM Applications 2026.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-27T16:11:09.307Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Cross-request KV cache exposure in the GLM-5.3 Workers AI model, and our remediation with SGLang",
+      "link": "https://blog.cloudflare.com/kv-cache-exposure-remediation",
+      "publishedAt": "2026-10-26T22:01:23.000Z",
+      "author": "Kevin Flansburg",
+      "summary": "A configuration mismatch in GLM 5.3 on Workers AI triggered an SGLang bug that exposed KV cache pages across requests. Here is how we addressed the issue.",
+      "evidenceLink": "",
+      "score": 27.558208194444443,
+      "core": "A configuration mismatch in GLM 5.3 on Workers AI triggered an SGLang bug that exposed KV cache pages across requests. Here is how we addressed the issue.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-27T16:11:09.307Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "deepmind",
+      "source": "Google DeepMind",
+      "title": "Genie 4: A new generation of world simulation",
+      "link": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation",
+      "publishedAt": "2026-10-27T16:01:38.000Z",
+      "author": "",
+      "summary": "Genie 4: our new world model unlocking unprecedented realism in real-time simulation.",
+      "evidenceLink": "",
+      "score": 26.460886765873013,
+      "core": "Genie 4: our new world model unlocking unprecedented realism in real-time simulation.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-27T16:11:09.307Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "[AINews] AI Engineer NYC: Gemini 4 Argon, Vals AI Benchmarks",
+      "link": "https://latent.space/p/ainews-ai-engineer-nyc-gemini-4-argon",
+      "publishedAt": "2026-10-14T05:40:28.000Z",
+      "author": "Latent.Space",
+      "summary": "Gemini 4 Argon went GA today, but we already gave it title story 2 weeks ago and most benchmarks, like CursorBench, simply independently confirm their claims.",
+      "evidenceLink": "",
+      "score": 25.877777777777776,
+      "core": "Gemini 4 Argon went GA today, but we already gave it title story 2 weeks ago and most benchmarks, like CursorBench, simply independently confirm their claims.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-27T16:11:09.307Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "instacart_ai_updates",
+      "source": "Instacart AI Updates",
+      "title": "Instacart&#x27;s Responsible AI Principles",
+      "link": "https://company.instacart.com/updates/responsible-ai",
+      "publishedAt": "2026-10-22T17:48:45.351Z",
+      "author": "",
+      "summary": "This document explains Instacart&#x27;s Responsible AI Principles and provides clear information about how we build, deploy and oversee AI across our platform.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-27T16:11:09.307Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 21.42809611111111,
+      "core": "This document explains Instacart&#x27;s Responsible AI Principles and provides clear information about how we build, deploy and oversee AI across our platform.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    }
+  ]
+}
