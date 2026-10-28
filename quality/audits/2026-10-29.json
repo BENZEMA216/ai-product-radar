@@ -1,0 +1,293 @@
+{
+  "date": "2026-10-29",
+  "generatedAt": "2026-10-28T16:05:10.768Z",
+  "reportPath": "reports/2026-10-29-0005-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 74,
+    "top20Sources": [
+      "HN Algolia",
+      "Product Hunt",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 20,
+      "keptCount": 11,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-27；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 20 条，AI 相关候选 11 条；实际 fallback：hunted_space。；历史去重移除 1 条已报道或已处理日榜 Product Hunt 信号，最终发布 10 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 3,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 29,
+      "keptCount": 20,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "fallback",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 21,
+      "keptCount": 21,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-10-27T16:05:37.511Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "WOML – A markup language for building workflows and AI agents",
+      "productKey": "https://github.com/dali-benothmen/woml",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "WOML 把 agent 编排写成标记语言，值得看声明式语法能否让工作流更易审阅、复用和迁移，而不只是另一套配置格式。"
+    },
+    {
+      "rank": 2,
+      "product": "Arketum – MCP server that makes coding agents stop for human approval",
+      "productKey": "https://www.npmjs.com/package/@rlabs-cl/arketum",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Arketum 把“执行前必须停下来等人批准”做成 MCP 能力，直接切中高风险 coding agent 的授权边界与可审计性。"
+    },
+    {
+      "rank": 3,
+      "product": "FreeApply Free Job Application MCP, runs locally with your existing LLM",
+      "productKey": "https://www.mybotsai.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "FreeApply 将求职申请接到用户已有的本地 LLM，重点是能否在保护简历隐私的同时，把重复填表真正自动化。"
+    },
+    {
+      "rank": 4,
+      "product": "PulseDev",
+      "productKey": "https://www.producthunt.com/products/pulsedev",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "PulseDev 用点击 localhost 上的具体 UI 缺陷来给 agent 定位上下文，缩短了从视觉发现问题到代码修复的交接链路。"
+    },
+    {
+      "rank": 5,
+      "product": "BugTape – production bugs your coding agent can read and fix over MCP",
+      "productKey": "https://bugtape.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "BugTape 让 coding agent 通过 MCP 读取生产故障，把线上证据带回修复现场；关键是遥测是否准确且权限可控。"
+    },
+    {
+      "rank": 6,
+      "product": "Hemlock",
+      "productKey": "https://www.ycombinator.com/launches/wvm-hemlock-the-missing-force-signal-in-robotic-training-data",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Hemlock 为机器人训练补入肌肉信号推导的力与接触数据，并给出特定任务增益，显示高质量传感数据可能比继续堆视频更有杠杆。"
+    },
+    {
+      "rank": 7,
+      "product": "Coding agent spots your AI practices and the ones you're missing",
+      "productKey": "https://app.userrank.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Userrank 用 coding agent 识别团队已有和缺失的 AI 工程实践，值得看它能否把泛化最佳实践变成仓库级改进清单。"
+    },
+    {
+      "rank": 8,
+      "product": "Chopstick – Mac notch widgets built by your coding agent",
+      "productKey": "https://chopstick.sh",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Chopstick 让 coding agent 生成 Mac 刘海组件，入口有趣但场景较窄；更应验证生成组件稳定性，而不是只看桌面 novelty。"
+    },
+    {
+      "rank": 9,
+      "product": "Let your coding agent recreate viral tiktoks for your app",
+      "productKey": "https://slidepilot.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "SlidePilot 把热门短视频复刻包装成应用增长工作流，需验证素材拆解、品牌适配和版权边界能否形成可靠闭环。"
+    },
+    {
+      "rank": 10,
+      "product": "The New Way to Make AI UGC Ads in 2026",
+      "productKey": "https://www.aivideosugc.com/ai-video-generation",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这条页面强调 AI UGC 广告的新制作方式，但证据更像方法说明；看到从脚本到成片、投放素材的完整交付才算产品信号。"
+    },
+    {
+      "rank": 11,
+      "product": "How to Make AI UGC Ads in 2026 Using an AI Video Generator",
+      "productKey": "https://www.aivideosugc.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "同一站点把 AI 视频生成用于 UGC 广告，场景明确但与上一条高度重合；可看它是否支持模板复用与批量迭代。"
+    },
+    {
+      "rank": 12,
+      "product": "ToolmakerAgent,AI SDLC platform where humans and agents can collaborate",
+      "productKey": "https://toolmaker.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ToolmakerAgent 把人和 agent 放进同一 SDLC 协作面，关键不在平台口号，而在需求、代码、评审和责任归属能否贯通。"
+    },
+    {
+      "rank": 13,
+      "product": "Paddock",
+      "productKey": "https://www.producthunt.com/products/paddock-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Paddock 提供 agent 可用的计算机与沙箱，解决执行环境供给；值得看隔离、启动速度和成本控制能否支撑大规模任务。"
+    },
+    {
+      "rank": 14,
+      "product": "Watch AI agents build Pullboard, live",
+      "productKey": "https://pullboard.dev/live",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Pullboard 公开直播 agent 构建产品的全过程，把过程透明度做成展示面；对评估真实自主性和失败恢复尤其有用。"
+    },
+    {
+      "rank": 15,
+      "product": "Agent-B.V., adversarial tests and on-chain reports for AI agents",
+      "productKey": "https://agent-bv.pages.dev/app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agent-B.V. 将对抗测试与链上报告结合，试图为 agent 行为建立可验证凭证；关键是测试覆盖是否比存证本身更可信。"
+    },
+    {
+      "rank": 16,
+      "product": "Dola AI – AI images, video, creative and office tools",
+      "productKey": "https://dola-ai.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Dola AI 同时覆盖图像、视频、创意和办公，广度很大；应看这些能力是否共享同一工作流，而不是工具集合式堆叠。"
+    },
+    {
+      "rank": 17,
+      "product": "Nuvio 5.0",
+      "productKey": "https://www.producthunt.com/products/nuvio",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Nuvio 让 agent 接管财务行政，业务结果比泛助手更清晰；重点看自动化范围、审批节点和错误责任如何定义。"
+    },
+    {
+      "rank": 18,
+      "product": "Spacesheep",
+      "productKey": "https://www.producthunt.com/products/spacesheep",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Spacesheep 把 AI 生成文档设计成团队消费的信息载体，值得看生成、协作与阅读反馈能否形成持续更新闭环。"
+    },
+    {
+      "rank": 19,
+      "product": "Notra",
+      "productKey": "https://www.producthunt.com/products/notra-3",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Notra 明确服务 AI Search 排名，切中新兴 GEO 预算；价值取决于能否把可见性诊断转成可验证的内容与分发动作。"
+    },
+    {
+      "rank": 20,
+      "product": "SavorApp_AI",
+      "productKey": "https://www.producthunt.com/products/savor-3",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "SavorApp_AI 只说明捕捉重要信息并推动意图，AI 能力与交付边界仍不清楚，暂时是待验证的弱信号。"
+    }
+  ]
+}
