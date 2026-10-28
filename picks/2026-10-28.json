@@ -1,0 +1,83 @@
+[
+  {
+    "product": "Dedica",
+    "link": "https://getdedica.com",
+    "phLink": "https://www.producthunt.com/products/dedica",
+    "did": "上线agent可用性检测：模拟AI agent实际浏览、比较、注册你的网站，跑125项免费检查，每个失败点给出可直接交给coding agent的修复方案。",
+    "who": "想知道自己的产品页面对agent友不友好的网站和增长团队。",
+    "why": "PH当日并列第1、57条评论最热。和上周Latch（一行代码适配agent）是一个硬币的两面：先检测，再修。agent可用性正在成为新的\"移动端适配\"。",
+    "tip": "PH 10/28当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "bytemail",
+    "link": "https://bytemailapp.com",
+    "phLink": "https://www.producthunt.com/products/bytemail",
+    "did": "上线原生Mac邮件客户端（Swift）：Gmail/iCloud/Outlook/IMAP统一收件箱，新邮件和验证码从刘海屏长出，屏蔽追踪像素、标记仿冒发件人，内置MCP服务器让Claude/Codex/Cursor跨账户找邮件、起草回复（发送前需你确认）。7天试用。",
+    "who": "Mac重度邮件用户，尤其想把邮箱接进自己AI工作流的人。",
+    "why": "PH当日并列第1。原生邮件App+本地MCP的组合，把\"让AI读我邮件\"做成了不经过第三方服务器的形态。",
+    "tip": "PH 10/28当日发布。官网+发布页已核实，试用期为官网当前信息。功能未实测。"
+  },
+  {
+    "product": "BotGauge",
+    "link": "https://www.botgauge.com/",
+    "phLink": "https://www.producthunt.com/products/botgauge-2",
+    "did": "上线agent红队测试与评估平台：对agent跑自适应攻击和行为评测，抓安全与行为失败，全链路trace回放，把失败转成回归测试并在生产环境持续监控。",
+    "who": "把agent放上生产环境、需要在用户之前发现问题的工程团队。",
+    "why": "PH当日第3名。agent可靠性工具本周第三发（Latent拦截幻觉、Armorer合规验证之后），这次是攻击视角。",
+    "tip": "PH 10/28当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Hob",
+    "link": "https://hob.chat",
+    "phLink": "https://www.producthunt.com/products/hob-3",
+    "did": "开源免费的桌面AI应用（Mac/Win/Linux）：自动挑选你电脑跑得动的最优开源模型并配置好，可读写指定文件夹、表格转图表、填PDF、看照片、联网搜索，全离线可用。",
+    "who": "想要ChatGPT/Claude式体验但数据和文件不出本机的人。",
+    "why": "PH当日在榜（本周10/26先在Show HN发布）。本地AI三件套这周齐了：Llama Windows管服务、llmrun管选型、Hob管开箱即用。",
+    "tip": "Show HN 10/26、PH 10/28，均为本周首发。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Trigger.dev Webhooks",
+    "link": "https://trigger.dev",
+    "phLink": "https://www.producthunt.com/products/trigger-dev",
+    "did": "开源TypeScript agent平台Trigger.dev今日发布新能力：agent可直接挂接Slack、Supabase等50+服务的webhook，配合既有的重试、队列、可观测和弹性伸缩做持久化agent。",
+    "who": "用TypeScript构建生产级agent、需要事件驱动接入SaaS生态的开发者。",
+    "why": "PH当日在榜。成熟平台补上了agent最缺的\"事件入口\"一环，属于实质新功能而非换皮。",
+    "tip": "PH 10/28发布新功能；Trigger.dev平台本身为既有产品，本次为Webhooks能力上线。官网+发布页已核实。"
+  },
+  {
+    "product": "Tulu",
+    "link": "https://www.onetulu.com",
+    "phLink": "https://www.producthunt.com/products/tulu",
+    "did": "上线面向中小企业的自主营销运营：自动归集线上线下花费与收入归因，不用碰UTM和表格，有真问题时直接发WhatsApp提醒。",
+    "who": "预算有限、被归因表格折磨的小团队市场负责人。",
+    "why": "PH当日在榜。营销分析的\"自动驾驶\"化，且把通知放进WhatsApp而不是又一个仪表盘，形态讨喜。",
+    "tip": "PH 10/28当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "weir",
+    "link": "https://github.com/IdoGol24/weir",
+    "phLink": "https://news.ycombinator.com/item?id=50273069",
+    "did": "开源：让你在用agent和构建agent时都不暴露真实凭据——agent拿到的是受控的访问通道而非密码本身。",
+    "who": "让agent碰自己账号、又不想交出密钥的开发者（和上周1Password for Agents同一问题）。",
+    "why": "Show HN当日发布。agent凭据安全一周内的第二个开源答案，这个需求的紧迫性在快速上升。",
+    "tip": "Show HN 10/28当日发布。仅发布页与仓库描述已核实。"
+  },
+  {
+    "product": "Veqen",
+    "link": "https://veqen-app.com/",
+    "phLink": "https://news.ycombinator.com/item?id=50272465",
+    "did": "上线AI API key泄露检测：不按密钥本身、而按异常花费模式识别泄露，号称一小时内发现。",
+    "who": "项目里埋着各家AI API key、担心泄露烧钱的开发者和小团队。",
+    "why": "Show HN当日发布。key泄露是老问题，但\"按花费异动检测\"是个聪明的新角度，尤其在agent自动调用时代。",
+    "tip": "Show HN 10/28当日发布。仅发布页描述已核实。"
+  },
+  {
+    "product": "ReplySlip",
+    "link": "https://github.com/klahrich/replyslip",
+    "phLink": "https://news.ycombinator.com/item?id=50272510",
+    "did": "开源：给AI agent用的异步任务收件箱——把待办、待批事项排队成收件箱形态，agent按序处理、人可随时插话。",
+    "who": "跑多个长任务agent、需要统一入口审批和派活的开发者。",
+    "why": "Show HN当日发布。agent管理热度的延续：这周从\"盯进度\"进化到\"派活收件箱\"。",
+    "tip": "Show HN 10/28当日发布。仅发布页与仓库描述已核实。"
+  }
+]
