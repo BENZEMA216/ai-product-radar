@@ -1,0 +1,369 @@
+{
+  "generatedAt": "2026-10-29T16:02:00.000Z",
+  "date": "2026-10-30",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Introducing Virtual Models on AI Gateway",
+      "link": "https://vercel.com/blog/ai-gateway-virtual-models",
+      "publishedAt": "2026-10-28T07:25:00.000Z",
+      "author": "Rohan Taneja",
+      "summary": "Today, we are introducing Virtual Models on AI Gateway . Virtual Models are an abstraction of the model string and configurations your apps and developers use. With a single virtual model ID, you can change and update models, configure fallbacks and priority, and enforce Zero Data Retention centrally. The virtual model configuration applies wherever the ID is used. Assign a virtual model ID to an agent task, and pass it as the model string wherever that task is called. You can then change the model and settings behind the virtual model ID in AI Gateway, and your apps and agents will pick up the new configuration automatically, without code changes or redeploys. New models use the same virtual model ID In the last 90 days, 125 new models from more than 10 labs became available on AI Gateway. That adds up to about 10 a week. AI Gateway already makes switching a one-line change. You call any of those models by ID, and AI Gateway routes each request to a healthy provider and can fall back to others when one fails. That one line still lives in your code, so switching usually means a redeploy. Virtual Models move model selection and configuration to AI Gateway. You create an ID for a task, like vmc/coding-agent , and then configure the model and the settings it should use: You can then use that virtual model ID as the model string wherever the task runs: For coding agents like Claude Code , Codex , and others, connect them with vercel ai-gateway setup , then select your virtual model in each harness's model picker or configuration. When a different model is available, including one from another provider, edit the virtual model . Every app and agent that calls vmc/coding-agent picks it up within a few minutes, with no code change or deployment needed: Give each task its own model An agent task like support ticket triage can run hundreds of times an hour and needs to be cheap. Other tasks, like legal contract review, may only run a few times a day, but require a high level of reasoning. You can now give each task a purpose-built virtual model and easily evolve that model and configuration over time: Settings such as fallbacks, Zero Data Retention, and tags stay with the virtual model when you switch models. Provider options apply per provider, so an Anthropic-specific setting stops applying when you point the virtual model at an OpenAI model. Review your provider options whenever you switch providers. Before you switch a virtual model that serves production traffic, point a second one, like vmc/coding-agent-candidate , at the new model and run your evals against it. If quality drops after the switch, point the original back at the previous model. Govern which models your team uses and how Anyone on your team can call a virtual model, and team roles control who can make changes to it. Platform and security teams can centrally govern and test models and settings, while still easily giving teams access to new models as they are released. Settings on a virtual model win over the same settings in a request, so callers can't override the provider order, fallbacks, or service tier you chose. For example, you can configure the fallback models for vmc/storefront-assistant centrally, and every app using that virtual model ID will use the same failover configuration, even if a request specifies different fallbacks. If a virtual model requires Zero Data Retention or providers that don't train on request data, those configurations are enforced even if a request explicitly sets zeroDataRetention or disallowPromptTraining to false. Tags on a virtual model replace any tags sent with the request, so spend lands on the task no matter how each app tags its calls. The Virtual Models page shows requests, spend, and success rate for each task. Get started Create a virtual model from your team dashboard or with the Vercel CLI . About AI Gateway AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and doesn't charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. Virtual Models work with every model type on AI Gateway, including image, video, speech, embedding, and realtime models, and with the AI SDK and the OpenAI- and Anthropic-compatible APIs. See the Virtual Models documentation for every setting. Read more",
+      "evidenceLink": "",
+      "score": 107.67023809523809,
+      "core": "Vercel 在 AI Gateway 中引入“虚拟模型 ID”：应用只引用任务级 ID，团队可在网关集中切换底层模型、设置优先级与回退，并强制零数据保留，无需改代码或重新部署。",
+      "why": "这把模型选择从代码依赖变成可治理的运行配置，适合评估多模型 agent 如何做灰度、回滚、成本归因与数据策略统一。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-29T16:02:00.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "What happens when vulnerabilities are discovered faster than you can fix them?",
+      "link": "https://about.gitlab.com/blog/security-at-machine-speed",
+      "publishedAt": "2026-10-28T00:00:00.000Z",
+      "author": "Bill Staples https://about.gitlab.com/blog/authors/bill-staples/",
+      "summary": "We're entering a new era of application security. Frontier AI models are uncovering complex flaws that traditional tools overlooked, and attackers are using the same models to exploit them faster. Remediation isn't keeping pace: Verizon's 2026 Data Breach Investigations Report (DBIR) measures the median time to fully remediate a known-exploited vulnerability at 43 days, up from 32 in 2025. Security teams are already stretched across growing application portfolios, third-party dependencies, and a steady stream of new disclosures. And while agents that find vulnerabilities and write fixes are becoming more accessible, integrating them into how enterprises actually build and ship software remains difficult. A generated patch still needs to be tested. Security policies need to be enforced. Changes need to be reviewed and approved. And eventually, the fix needs to reach production safely. This is where I believe the next major shift in application security will happen. We need to put autonomous agents to work inside the software factory. That's why we've brought Anthropic's Claude Mythos 5.1 into GitLab, and why we're connecting discovery, remediation, and prevention in one trusted workflow. When critical vulnerabilities emerge, the clock starts ticking Critical vulnerabilities like PHP2Shell send security teams scrambling to understand exposure. For a large organization, that means assessing impact across hundreds or thousands of repositories, applications, and dependencies. Identifying exposure is only the first step. Teams then need to assess exploitability, prioritize affected applications, coordinate fixes, run tests, and get changes into production. Every handoff takes time, and speed is vital: 31% of breaches now start with vulnerability exploitation, the top initial access vector for the first time in the DBIR's 19 years. As more critical vulnerabilities emerge, the traditional model of manually investigating findings, assigning tickets, and waiting for developers to write fixes becomes harder to sustain. The time between vulnerability discovery and verified remediation needs to shrink dramatically. That requires security workflows capable of operating at machine speed, while preserving the controls organizations depend on to ship reliable software. Bring agentic remediation into the software factory AI agents can do impressive work in vulnerability discovery and remediation. The challenge is making that work reliable and repeatable across an enterprise. An agent can generate a patch in seconds. Whether it understood the application, whether it validated the change against the real build, and whether it followed your security policies are separate questions. They get harder to answer, and more expensive to get wrong, as you deploy agents across thousands of projects. At GitLab, we're bringing agentic security workflows into the environment where teams develop, test, and ship software. Everything an agent does rests on how well it understands your system, and that understanding extends beyond the repository. GitLab Orbit , a live context graph of your software lifecycle, connects findings to the changes that introduced them, the pipelines that shipped them, and the teams who own the fix. It's also how you answer the questions that follow a disclosure like PHP2Shell: Are we exposed? Is it reachable? How far does it spread, and how do we fix it without breaking production? GitLab Duo Agent Platform investigates findings in the context of your software and how it's built, filtering out likely false positives and prioritizing by exploitability and reachability. For the findings that matter, Duo writes a fix and puts it through your pipeline to check for regressions and rerun security scans. In a single merge request, developers review the change, Duo's explanation, and the pipeline results. Security teams move from understanding exposure to initiating remediation in one pass, and developers shift from chasing findings to reviewing fixes. Because these workflows run inside the software factory, agents operate within the same processes and controls that organizations already use to deliver software. That's how we turn agentic security from an isolated capability into something an enterprise can trust and operate across thousands of projects, at machine speed. Put frontier AI to work on the most critical vulnerabilities Some of the most dangerous application vulnerabilities require a deep understanding of how software is intended to work: missing authorization checks, broken ownership logic, and business logic flaws that expose customer data or let users take actions they shouldn't. Traditional scanners struggle with these issues because finding them requires reasoning about the application's behavior and the relationships between components. Our new Business Logic Security Analyzer , the first GitLab capability to support Anthropic's Claude Mythos 5.1, examines how your application enforces its rules: it reads the whole repository and incoming merge requests, infers what each endpoint should enforce, and flags the gaps that pattern-based scanners often miss. But the real opportunity comes from connecting those discoveries to the workflows teams already use. When a critical flaw is found, teams need to understand its impact, initiate remediation, validate the proposed fix, and ship it safely. Integrating frontier AI into the software factory creates a path to run that entire process at machine speed. The intelligence of the model is only as valuable as your ability to act on it. Prevent risky code from reaching production Finding vulnerabilities earlier is valuable, and keeping vulnerable code and unsafe packages out of production altogether is even better. These protections become even more important as agents gain autonomy. Security controls need to be embedded throughout the software factory and enforced independently of the people and agents making changes, with every change clearing the same gates before it moves forward. GitLab Ultimate brings static analysis, dependency and container scanning, secret detection, policy enforcement, and approval gates directly into the software delivery process. Those policies are set centrally and apply consistently across projects and pipelines, so the author of a change, human or agent, cannot change or waive the controls evaluating its work. The same scrutiny needs to extend to third-party software. Modern applications rely heavily on open source dependencies, and a vulnerable or malicious package can introduce serious risk before developers write a single line of code. GitLab's Dependency Firewall blocks policy-violating packages before they enter your build. GitLab Secrets Manager lets each job access only the credentials it requests and is authorized to use, so a compromised dependency can reach only the secrets of the job it runs in. Agents need the freedom to work quickly, within boundaries they can't cross. GitLab Duo Agent Platform gives each agent a composite identity that limits it to the permissions it shares with the requesting user, a sandbox that's destroyed when the task ends, and a record of every action. These boundaries are part of the GitLab Security Standard , under which agents earn more autonomy only as the controls at each stage are proven to hold. The controls that make a change trustworthy need to hold at every step, even when the work happens at machine speed. The next chapter of security will be defined by trusted execution Frontier models will keep improving, security agents will get more capable, and vulnerabilities that were once difficult to discover will become easier to find. That progress will put enormous pressure on how organizations respond. A security team can deploy the most advanced models available, but its ability to reduce risk will still depend on how quickly and safely it can turn findings into production-ready fixes. This is why the software factory matters. It's where agents get the context needed to understand applications, where changes are validated against real builds and tests, where security policies are enforced, and where human oversight applies without slowing every step of the process. At GitLab, we're bringing these capabilities together so you can automate remediation, uncover complex flaws, and prevent unsafe changes from shipping, all inside the workflows you already use. The next security advantage will come from how quickly organizations can turn a critical discovery into a verified, trusted fix. We invite you to run your next security sprint on us. Qualifying teams can request access to GitLab Ultimate, GitLab Duo Agent Platform, GitLab Orbit, and GitLab Secrets Manager, with free credits. Request access to the security sprint offer .",
+      "evidenceLink": "",
+      "score": 100.14047619047619,
+      "core": "文章指出前沿模型正加速复杂漏洞发现与利用，而修复速度没有同步提升；其引用数据称已知在利用漏洞的完整修复中位时间从 2025 年的 32 天升至 2026 年的 43 天。",
+      "why": "值得读的是它把 AI 安全问题落到“发现速度快于修复能力”的运营缺口，便于反推自动分诊、补丁验证和人工批准该怎样串联。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-29T16:02:00.000Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "GitLab Orbit is GA: Higher agent accuracy, lower token cost",
+      "link": "https://about.gitlab.com/blog/gitlab-orbit-ga",
+      "publishedAt": "2026-10-29T00:00:00.000Z",
+      "author": "Corinne Dent https://about.gitlab.com/blog/authors/corinne-dent/",
+      "summary": "An agent’s true cost isn’t only the tokens it burns. It’s the review that calls your code “safe to merge” after seeing the diff, but without any context on the pipeline. We call that artificial confidence, not artificial intelligence. Agents guess because code is all they can see; they can’t see the merge request that last changed it, the pipeline that ran it, the vulnerability it carries, or the people who wrote and reviewed it. Guessing is expensive. If you’ve tried running agents in a large monorepo, one with tens of thousands of files, you know how it goes: the agent iterates, pinging the backend again and again for the information it needs to complete the task. Every round trip costs more time and more tokens. Eventually the agent gives up. The model isn’t the constraint. Context is. That’s the constraint that GitLab Orbit removes. Now generally available, Orbit is the context graph for your software lifecycle: a live, queryable view of all your code, merge requests, work items, pipelines, vulnerabilities, and ownership, with every relationship continuously updated as you ship. Every agent and engineer can work from one connected view of the lifecycle. In GitLab testing, agents connected to Orbit needed up to 45x fewer retries and used 4.5x fewer tokens on the same tasks with the same model. Grounded agents get answers right the first time An agent like Claude Code, connected to GitLab Orbit through MCP, stops crawling files and instead asks the graph. The first response comes back with real callers, recent changes, and owners, so your follow-up prompts can refine the answer rather than correct it. The difference is measurable. Compare the Market, one of the UK’s largest price comparison platforms, tested four context approaches for an internal AI code reviewer across 79 real merge requests. The GitLab Orbit-grounded reviewer matched about 70% of expected inline comments; RAG managed about 58%, worse than no added context at all. “GitLab Orbit gave us an AI code reviewer that actually understands our codebase, not just the diff in front of it. We tested it against RAG and a few other approaches across real merge requests, and the gap was clear. Better comment placement, better summaries of what actually changed.” — Ryan Harvey, Head of AI Engineering, Compare the Market Fewer retries means fewer tokens A recent analysis from a leading research and advisory firm found that the cost of an undisciplined agent session is dominated by retransmitting context that didn’t change between turns. That token cost comes from how the agent is set up, not from the model itself. GitLab Orbit changes that engineering. The agent gets one bounded answer from the graph instead of reloading everything that might matter. In GitLab testing, agents connected to Orbit used up to 4.5x fewer tokens on the same tasks with the same model: each turn carries less context, and fewer turns go to work that never ships. Because the graph is shared, that cost doesn’t repeat per agent. Duo agents, Claude Code, Codex, and your own tools all query the same graph, so the context you build for the first agent is already there for the second. Questions you couldn’t answer before Since GitLab Orbit entered beta in June, we’ve worked with design partners running it against real codebases, real incidents, and real merge requests. Their first win was almost always a question they couldn’t get answered before. Here are a few questions design partners asked Orbit that they couldn’t answer before, and what came back: Which production services are exposed to this vulnerability ? A single query returns the services that include the component, the merge requests that introduced it, the environments it reached, and the teams that own each one. One design partner answered a security-coverage question across 34 million entities in seven minutes; through the API, the same question would have taken half a day. When a vulnerability lands, security has a complete remediation plan within the hour, not a partial list by the end of the day. What breaks if I change this? Before a push, a developer or their agent can ask which services, jobs, and environments a change touches, across every project in the group, not just the one open in the editor. Review agents bring the same answer to the merge request, so a “safe to merge” comment reflects the whole system instead of the diff. Across 79 real merge requests, Compare the Market’s reviewer flagged more real issues in the right places than their RAG-based version. Problems get caught in review, before they become outages. Why does this CI job keep failing, and where else? GitLab Orbit shows how often a job fails across every project that runs it, which projects have drifted from the shared CI configuration, and who owns them. What used to be a Slack thread asking three teams “has anyone seen this?” becomes one answer. A financial services company used this to trace a build-system outage to a CI job failing 50% of the time, a pattern nothing else had correlated. What depends on the thing we’re about to migrate? Every dependent service, job, environment, and owner comes back in one result. One design partner finished a multi-repository upgrade by asking the question directly: which projects are still on the old version? The last stragglers could be surfaced in one query with no spreadsheet or repo-by-repo audit to contend with. Not every context graph can answer them Context graphs are becoming a category, and most of them stop at code. GitLab connects the code change to the pipeline, the deployment, the vulnerability, and the owner, with your permissions intact. This means your team and agents can: Start with a graph that already exists. GitLab Orbit draws on the data you already have in GitLab, which means there is no connector to configure, no ETL pipeline to maintain, and no second system of record to keep in sync. Enable it for a group and the graph is ready. A graph assembled from the outside takes months of integration work before it answers its first question. Orbit is also built to extend to non-GitLab data sources. Index the whole lifecycle. GitLab is the system of record for the entire software development lifecycle, and GitLab Orbit connects it into one graph. Code indexes stop at the code. Work graphs stop at the ticket. Keep your permissions without rebuilding them. GitLab Orbit mirrors nested groups, roles, and security-domain access. A graph that lives outside GitLab has to rebuild all of that and keep it in sync. Give every agent and every engineer the same graph. Duo agents, Claude Code, Codex, custom tools, and the Data Explorer all query the same graph the same way. You invest in context once and every agent you add after that is cheaper than the last. Bring the agents you already use GitLab Orbit doesn’t ask you to change how your team works. The agents and tools you already run connect to one graph: Agents on GitLab Duo Agent Platform query GitLab Orbit natively, with nothing to configure. Claude Code, Codex, Cursor, OpenCode, Gemini CLI, Antigravity, and any other MCP-compatible agent connect through MCP or the GitLab CLI: glab auth login glab orbit setup Custom agents and internal tooling connect through REST. Engineers query the same graph through the Data Explorer. Every path asks the same graph the same way, and the graph keeps up. GitLab Orbit indexes every push, merge, and deploy as it happens, so agents reason from the lifecycle in its most current state; at GitLab’s scale, that’s more than 1.5 million projects and 8TB of graph data in under 2 hours. Indexing runs as its own service beside GitLab, so however hard your agents use Orbit, GitLab itself never slows down. Pricing: One shared query pool for your whole organization GitLab Orbit is sold as query packs that form one shared pool sized for your organization. Everyone in your GitLab org draws from it, humans and agents alike, so usage flows between occasional users, power users, and the agents working on their behalf. Nobody requests access or gets assigned a seat. A query is one request to the Orbit graph, whether it comes from an agent (such as Duo Agent Platform, Claude Code, or Cursor), an experience built into GitLab, or the API. Each query pack is $30 in GitLab Credits per user per month and adds 1,000 queries to your organization’s shared pool; usage beyond the pool is billed at 33 queries per GitLab Credit, about $0.03 per query. Promotional pricing is available this quarter for early customers. Contact your GitLab account team to learn more and size the right number of query packs for your organization. Get started with GitLab Orbit GitLab Orbit is now generally available for Premium and Ultimate customers, starting with GitLab.com today and reaching Self-Managed and GitLab Dedicated over the coming weeks. Customers can try it free for 30 days through their GitLab account team. If you’re brand new to GitLab, talk to our sales team about getting started with a GitLab paid plan, and we can help you add an Orbit trial as part of it. Check out our documentation to help you get started. Thank you to our design partners and beta participants, whose candid feedback from real codebases helped to shape today’s GA release. This blog post contains \"forward‑looking statements\" within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934. Although we believe that the expectations reflected in these statements are reasonable, they are subject to known and unknown risks, uncertainties, assumptions and other factors that may cause actual results or outcomes to differ materially. Further information on these risks and other factors is included under the caption \"Risk Factors\" in our filings with the SEC. We do not undertake any obligation to update or revise these statements after the date of this blog post, except as required by law.",
+      "evidenceLink": "",
+      "score": 97.8547619047619,
+      "core": "GitLab Orbit 让编码 agent 同时读取合并请求、流水线、漏洞与代码作者等项目上下文，目标是减少只看 diff 后给出“可合并”结论的虚假信心，并降低无效 token 消耗。",
+      "why": "它提供了一个具体判断：agent 准确率不只靠更强模型，还取决于能否取得正确的工程上下文并在审查前建立证据链。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-29T16:02:00.000Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Particle-1 is now available on AI Gateway",
+      "link": "https://vercel.com/changelog/particle-1-is-now-available-on-ai-gateway",
+      "publishedAt": "2026-10-28T00:00:00.000Z",
+      "author": "Zachary Chen",
+      "summary": "Particle-1 from Particle AI is now available on AI Gateway . It is post-trained on DeepSeek V4.1 Flash, with a focus on completing software engineering tasks using fewer tokens. Particle describes the gains as shorter reasoning, fewer rounds of trial and repair, and more focused exploration. Use it for debugging, planning code changes, and breaking down multi-step engineering problems. Particle-1 has a 1M-token context window for working with code and extended task histories. Set AI_GATEWAY_API_KEY in your environment. Use particle/particle-1 as the model name: To use it in Claude Code, Codex, Cursor, and more, install the latest version of Vercel CLI and run setup: Then select particle/particle-1 in the agent. See the coding agents guide for details. Try Particle-1 in the model playground . AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. You can view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 78.45158730158731,
+      "core": "Vercel AI Gateway 上线 Particle-1；该模型基于 DeepSeek V4.1 Flash 后训练，面向调试、变更规划和多步工程任务，强调更短推理、更少试错以及 100 万 token 上下文。",
+      "why": "这条适合用来比较“更少 token 完成软件任务”的模型定位是否能转化为可测的 agent 成本、速度和修复轮次优势。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-29T16:02:00.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Building an Agentic AI Platform on Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/building-an-agentic-ai-platform-on-amazon-bedrock-agentcore",
+      "publishedAt": "2026-10-28T18:28:26.000Z",
+      "author": "Omar Elkharbotly",
+      "summary": "Stand up a governed, multi-account Agentic AI Platform on Amazon Bedrock AgentCore. This post walks through the architecture and an open-source reference blueprint: the operating model, control plane, per-Workstream cells, separate inference and tool gateways, and a CI/CD evaluation pipeline that gates each agent before production.",
+      "evidenceLink": "",
+      "score": 73.31003968253967,
+      "core": "AWS 给出在 Bedrock AgentCore 上建设多账户 agent 平台的参考架构，包括运营模型、控制平面、按工作流隔离的单元、独立推理与工具网关，以及在进入生产前执行评测的 CI/CD 门禁。",
+      "why": "它的价值是把 agent 平台治理拆成可执行组件，尤其适合检查租户隔离、工具权限和评测门禁应由谁负责。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-29T16:02:00.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Gemini 4 Carbon is the new #1 on the Artificial Analysis Intelligence Index v5",
+      "link": "https://artificialanalysis.ai/articles/gemini-4-carbon-new-number-1",
+      "publishedAt": "2026-10-29T12:41:56.000Z",
+      "author": "theHocineSaad https://news.ycombinator.com/user?id=theHocineSaad",
+      "summary": "Google’s Gemini 4 Carbon is the new #1 on the Artificial Analysis Intelligence Index v5, and second only to Claude Opus 5.5 on the Artificial Analysis Coding Agent Index",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50288019",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 258,
+        "comments": 197
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-29T16:02:00.000Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 66.36054348664362,
+      "core": "Artificial Analysis 称 Gemini 4 Carbon 在其 Intelligence Index v5 排名第一，并在 Coding Agent Index 中仅次于 Claude Opus 5.5。",
+      "why": "这是一条模型评测信号，适合用来更新候选模型池；阅读时应同时核对榜单方法、任务覆盖和排名能否迁移到自己的 agent 工作负载。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "GitHub Agentic Workflows generally available",
+      "link": "https://github.blog/changelog/2026-10-28-github-agentic-workflows-generally-available",
+      "publishedAt": "2026-10-28T15:30:15.000Z",
+      "author": "Allison",
+      "summary": "GitHub Agentic Workflows, an open source project from GitHub Next, is now generally available. With agentic workflows, you can automate reasoning-based tasks like issue triage, CI failure analysis, documentation updates,… The post GitHub Agentic Workflows generally available appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 57.97569444444444,
+      "core": "GitHub 宣布开源的 Agentic Workflows 正式可用，可将 Issue 分诊、CI 失败分析和文档更新等需要推理的任务纳入 GitHub 工作流。",
+      "why": "值得看它如何把 agent 从聊天入口变成仓库内可审计的自动化，并通过事件触发、权限和代码评审约束执行范围。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-29T16:02:00.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "sentry_ai_engineering",
+      "source": "Sentry Engineering",
+      "title": "Five things you can do with Sentry’s Agent Tracing",
+      "link": "https://blog.sentry.io/agent-tracing-use-cases",
+      "publishedAt": "2026-10-28T09:00:00.000Z",
+      "author": "",
+      "summary": "Five Sentry Agent Tracing recipes: turn agent conversations into evals, automate triage, track LLM costs, alert on spend, and send OTel spans to Sentry.",
+      "evidenceLink": "",
+      "score": 56.62777777777777,
+      "core": "Sentry 给出五类 Agent Tracing 用法：把真实对话转成评测、自动分诊、追踪 LLM 成本、设置费用告警，以及通过 OpenTelemetry 上报 agent 链路。",
+      "why": "它把 agent 可观测性从“看日志”推进到评测和成本运营，适合直接借鉴生产监控指标与告警设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-29T16:02:00.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pragmatic_engineer",
+      "source": "The Pragmatic Engineer",
+      "title": "Software engineering at Google & CS education with Titus Winters",
+      "link": "https://newsletter.pragmaticengineer.com/p/software-engineering-at-google-and",
+      "publishedAt": "2026-10-29T13:37:13.000Z",
+      "author": "Gergely Orosz",
+      "summary": "Titus Winters shares lessons from engineering at Google’s scale and explores how AI is reshaping developer productivity and computer science education.",
+      "evidenceLink": "",
+      "score": 51.66652777777777,
+      "core": "Titus Winters 结合 Google 规模化工程经验，讨论 AI 对开发者生产力和计算机科学教育的影响。",
+      "why": "这篇适合从组织与人才视角理解 AI 编程工具，而不是只比较生成质量；重点看工程规范和教学目标需要怎样调整。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-29T16:02:00.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "zapier_ai_automation",
+      "source": "Zapier Blog",
+      "title": "The 9 best Notion alternatives in 2026",
+      "link": "https://zapier.com/blog/best-notion-alternatives",
+      "publishedAt": "2026-10-28T04:00:00.000Z",
+      "author": "Miguel Rebelo",
+      "summary": "Notion is a special app. Starting from an empty screen, you add notes and documents in a freeform way. Then, when the original page is too crowded, you create your first database and the possibilities explode: you can create a custom productivity system and change it as you evolve. But productivity is evolving. Knowledge management platforms need to support human teams while making room for AI agents, with automation and guardrails in place to make sure you do more work, not spend more time revi",
+      "evidenceLink": "",
+      "score": 47.203968253968256,
+      "core": "Zapier 比较 2026 年的 Notion 替代方案，并指出知识管理工具正从服务人类团队转向同时容纳 AI agent 与自动化。",
+      "why": "它可用于梳理下一代工作区的基础要求，例如结构化知识、自动化接口和人机共同编辑，但要把选型结论与厂商营销区分开。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-29T16:02:00.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "Security extension for the GitHub Copilot app",
+      "link": "https://github.blog/changelog/2026-10-28-security-extension-for-the-github-copilot-app",
+      "publishedAt": "2026-10-28T15:45:00.000Z",
+      "author": "Allison",
+      "summary": "You can now work through your repository’s GitHub code scanning alerts without leaving the GitHub Copilot app. The new GitHub security extension, now in public preview, lets you find the… The post Security extension for the GitHub Copilot app appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 39.80992063492064,
+      "core": "GitHub Copilot 应用新增安全扩展预览，开发者可在应用内查找并处理仓库的代码扫描告警。",
+      "why": "值得读的是安全修复被嵌入现有开发入口后，agent 能否减少上下文切换，同时保留告警证据、修改审查和人工确认。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-29T16:02:00.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "How Anthropic ships Claude with Claude: Separating the Brain from the Hands",
+      "link": "https://latent.space/p/opus55",
+      "publishedAt": "2026-10-27T18:53:10.000Z",
+      "author": "swyx .ai",
+      "summary": "Katelyn Lesse and Angela Jiang on Opus 5.5, the Claude Platform, and the engineering behind AI agents.",
+      "evidenceLink": "",
+      "score": 36.341865079365085,
+      "core": "Latent Space 采访 Anthropic 团队，讨论 Opus 5.5、Claude Platform 以及构建 AI agent 时如何区分负责推理的“脑”和负责执行的“手”。",
+      "why": "“脑与手分离”是清晰的 agent 架构边界，可用于判断模型、工具执行层、权限控制和失败恢复是否被错误耦合。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-29T16:02:00.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Navigating the 'new normal': AI-powered exploits and discovery",
+      "link": "https://www.techradar.com/pro/navigating-the-new-normal-ai-powered-exploits-and-discovery",
+      "publishedAt": "2026-10-29T10:11:14.000Z",
+      "author": "Chris Wallis",
+      "summary": "AI is challenging the rules of vulnerability management, making speed of discovery a critical security challenge.",
+      "evidenceLink": "",
+      "score": 34.21019841269842,
+      "core": "文章讨论 AI 加速漏洞发现与利用后，传统漏洞管理在发现速度和修复节奏上的压力。",
+      "why": "它适合补充安全运营视角：AI 产品上线后，风险控制不能只依赖发布前扫描，还需要持续发现、优先级判断和修复闭环。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-29T16:02:00.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Unlocking Tensor Core Performance for Machine Learning Interatomic Potentials",
+      "link": "https://developer.nvidia.com/blog/unlocking-tensor-core-performance-for-machine-learning-interatomic-potentials",
+      "publishedAt": "2026-10-29T15:00:00.000Z",
+      "author": "Anoushka Bhutani",
+      "summary": "Atomistic simulations help researchers understand how molecules and materials behave, from chemical reactions and phase transitions to mechanical failure. These...",
+      "evidenceLink": "",
+      "score": 30.831746031746032,
+      "core": "NVIDIA 介绍如何为机器学习原子间势优化 Tensor Core 性能，以加速分子和材料的原子级模拟。",
+      "why": "这篇虽偏科研计算，但能展示模型算子、数值精度与硬件利用率如何共同决定科学 AI 的实际吞吐和成本。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-29T16:02:00.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic_news_institute",
+      "source": "Anthropic News & Institute",
+      "title": "AI for Science expands to foundations and institutions",
+      "link": "https://www.anthropic.com/news/ai-for-science-expands-foundations-research-institutions",
+      "publishedAt": "2026-10-28T00:00:00.000Z",
+      "author": "",
+      "summary": "We’re highlighting 20 scientific foundations, institutions, and research groups from around the world that we’ve partnered with in an expansion of our AI for Science program.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-29T16:02:00.000Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 30.107142857142858,
+      "core": "Anthropic 宣布扩大 AI for Science 计划，新增与全球 20 个科学基金会、机构和研究团队的合作。",
+      "why": "它反映大模型厂商正通过机构合作进入科研工作流；值得关注合作是否产出可验证工具与方法，而不只停留在项目名单。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "zapier_ai_automation",
+      "source": "Zapier Blog",
+      "title": "What is Perplexity AI?",
+      "link": "https://zapier.com/blog/perplexity-ai",
+      "publishedAt": "2026-10-28T04:00:00.000Z",
+      "author": "Sara J. Nguyen",
+      "summary": "There comes a time in every professional's life when they have to choose a favorite AI assistant. I didn't expect to pick a search engine. Someone recommended Perplexity to me as a research tool. Since I'm a content writer, I spend a lot of time checking facts and tracking down references. AI-powered search with sources I could easily inspect sounded promising, and as I used it more, I kept discovering other features that helped me get work done. Based on my experience with Perplexity, here's wh",
+      "evidenceLink": "",
+      "score": 28.203968253968256,
+      "core": "Zapier 从内容工作者视角介绍 Perplexity，将其定位为可检查来源的 AI 搜索与研究工具，并梳理持续使用中发现的功能。",
+      "why": "这篇有助于理解引用可见性为何成为研究助手的采用入口，也可观察用户如何从单次搜索逐步扩展到完整研究工作流。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-29T16:02:00.000Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Early progress on accelerating drug development with Claude",
+      "link": "https://www.anthropic.com/research/early-progress-drug-development",
+      "publishedAt": "2026-10-27T00:00:00.000Z",
+      "author": "",
+      "summary": "Over the past several months, we’ve partnered with six organizations to accelerate curing disease. We’ve also started drug discovery efforts of our own, including programs for rare childhood forms of muscular dystrophy. In this post, we provide an update on our progress.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-29T16:02:00.000Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 24.931746031746034,
+      "core": "Anthropic 披露与六家组织合作使用 Claude 加速药物研发，并启动面向罕见儿童肌营养不良症的自有研究项目，文章将其定位为早期进展更新。",
+      "why": "它提供了高风险科学场景的早期案例，阅读重点应放在任务边界、验证方式和合作证据，而不是把“早期进展”外推成临床成效。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "deepmind",
+      "source": "Google DeepMind",
+      "title": "Gemini 4 Carbon: Our next frontier model",
+      "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon",
+      "publishedAt": "2026-10-28T17:00:58.000Z",
+      "author": "",
+      "summary": "",
+      "evidenceLink": "",
+      "score": 24.3559126984127,
+      "core": "Google 官方页面发布 Gemini 4 Carbon，但当前采集摘要不足，尚不能从候选证据中确认具体能力、指标或开放范围。",
+      "why": "这篇值得进入待精读清单，因为它可能改变主流模型选择；正式判断应以官方正文中的能力、价格、上下文和可用性为准。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-29T16:02:00.000Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

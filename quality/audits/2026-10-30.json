@@ -1,0 +1,293 @@
+{
+  "date": "2026-10-30",
+  "generatedAt": "2026-10-29T16:02:00.000Z",
+  "reportPath": "reports/2026-10-30-0002-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 73,
+    "top20Sources": [
+      "Product Hunt",
+      "YC Launch",
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 31,
+      "keptCount": 17,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-28；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 31 条，AI 相关候选 17 条；实际 fallback：hunted_space。；历史去重移除 1 条已报道或已处理日榜 Product Hunt 信号，最终发布 16 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 9,
+      "keptCount": 9,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 22,
+      "keptCount": 13,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 6,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "fallback",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 15,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-10-27T16:05:37.511Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "App Store Screenshots",
+      "productKey": "https://www.producthunt.com/products/app-store-screenshots",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把编码 agent 的输出从代码扩展到商店截图，值得看视觉资产生成能否纳入开发发布流水线，并保留人工审稿。"
+    },
+    {
+      "rank": 2,
+      "product": "Trigger.dev: Webhooks for your AI agents",
+      "productKey": "https://www.producthunt.com/products/trigger-dev",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用 Webhook 把 agent 接入 Slack、Supabase 等既有系统，观察重点是触发、状态回传和失败恢复能否形成稳定闭环。"
+    },
+    {
+      "rank": 3,
+      "product": "Artil",
+      "productKey": "https://www.ycombinator.com/launches/wcm-artil-connect-let-your-agents-message-teammates-and-other-agents",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它让同一 agent 经由 HTTP、邮件、Telegram 和 Slack 被人或其他 agent 调用，价值在于跨入口身份、路由与交接如何统一。"
+    },
+    {
+      "rank": 4,
+      "product": "Ploid",
+      "productKey": "https://www.ycombinator.com/launches/wak-ploid-people-data-infrastructure-for-ai-agents-and-software",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把人员搜索、补全与身份解析做成 agent 可调用的数据层；应重点核验 20 亿人数据主张背后的时效、授权与合规边界。"
+    },
+    {
+      "rank": 5,
+      "product": "The AI workspace for teammates share agents on company",
+      "productKey": "https://github.com/ahmadrosid/nakama",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把共享 agent 放进团队工作区，值得看权限、上下文复用和责任交接能否支撑多人长期协作。"
+    },
+    {
+      "rank": 6,
+      "product": "Mudroom",
+      "productKey": "https://www.producthunt.com/products/mudroom-3",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它让编码 agent 在隔离 VM 中执行，再以 PR 方式审阅变更，把运行安全和代码评审连接成一条可控交付链。"
+    },
+    {
+      "rank": 7,
+      "product": "Yardlet",
+      "productKey": "https://www.producthunt.com/products/yardlet-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它面向 Mac 聚合用户已有的编码 agent，产品判断点是能否减少工具切换，同时保持项目上下文与执行状态清晰。"
+    },
+    {
+      "rank": 8,
+      "product": "Verdun",
+      "productKey": "https://www.ycombinator.com/launches/waw-verdun-ai-video-monitoring-with-human-operators",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用 AI 视频监控配合真人操作员，值得看自动识别与人工升级之间如何分工，以及服务承诺如何落地。"
+    },
+    {
+      "rank": 9,
+      "product": "Crewd NPM-style package manager for AI coding agents and skills",
+      "productKey": "https://news.ycombinator.com/item?id=50288521",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 coding agent 与 skill 做成类似 NPM 的分发单元，直接关系到能力发现、版本管理和技能生态的商业化入口。"
+    },
+    {
+      "rank": 10,
+      "product": "AgentGPA, a report card for how you work with coding agents",
+      "productKey": "https://agentgpa.dev/leak-index",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它为人机协作方式提供“成绩单”，价值不在单次评分，而在能否把提示、验收与泄漏风险转成可改进的工作习惯。"
+    },
+    {
+      "rank": 11,
+      "product": "BotGauge",
+      "productKey": "https://www.producthunt.com/products/botgauge-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“agent 信任层”定位直接但证据仍薄，后续应看它具体提供哪些授权、审计或验证控制。"
+    },
+    {
+      "rank": 12,
+      "product": "Dedica",
+      "productKey": "https://www.producthunt.com/products/dedica",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它检查网站是否可被 agent 使用，把无障碍之外的新兼容性问题变成开发者测试项，可能催生一类 agent-ready 质量工具。"
+    },
+    {
+      "rank": 13,
+      "product": "Simantic (YC F26) – Firmware Simulation for AI Agents",
+      "productKey": "https://news.ycombinator.com/item?id=50291116",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把固件仿真作为 AI agent 的测试环境，有助于在接触真实硬件前验证动作与故障路径，是软硬件 agent 的关键安全层。"
+    },
+    {
+      "rank": 14,
+      "product": "GrayPass",
+      "productKey": "https://www.ycombinator.com/launches/wb9-graypass-the-most-dangerous-actions-happen-after-login",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它专门拦截登录后的人员、机器人与 agent 高风险操作，值得看身份验证能否延伸到持续授权与交易级风控。"
+    },
+    {
+      "rank": 15,
+      "product": "Lantern AI",
+      "productKey": "https://www.ycombinator.com/launches/wzb-lantern-agentic-recruiting-platform-for-the-future",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它让多个招聘 agent 覆盖寻源、筛选和协调，并声称从每次面试与决策学习，重点是偏好沉淀和人工问责是否可解释。"
+    },
+    {
+      "rank": 16,
+      "product": "Pidgeon – Email inboxes for AI agents",
+      "productKey": "https://pidgeon.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它为 AI agent 提供独立邮件收件箱，值得看这种通信原语如何处理身份、垃圾信息和跨 agent 的异步协作。"
+    },
+    {
+      "rank": 17,
+      "product": "Wavefunction – a minimal, open-source desktop coding agent for Mac",
+      "productKey": "https://www.wavefunction.si",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它选择开源、极简的 Mac 桌面编码 agent 路线，观察重点是本地控制面能否兼顾低门槛、透明执行和安全边界。"
+    },
+    {
+      "rank": 18,
+      "product": "Potential conversation partners in Bluesky using agentic search",
+      "productKey": "https://sketch.wsng.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用 agentic search 在 Bluesky 发现潜在对话对象，场景有趣但产品深度尚不明确，应先看匹配质量与用户控制。"
+    },
+    {
+      "rank": 19,
+      "product": "Backend for Agents and Builders who don't need one yet – Statebase",
+      "productKey": "https://statebase.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它为暂时不想自建后端的 agent 开发者提供基础设施，关键在于状态、身份和持久化是否足够通用且不造成锁定。"
+    },
+    {
+      "rank": 20,
+      "product": "Promptuaria – GitHub for specs",
+      "productKey": "https://promptuaria.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把规格说明当作可版本化协作资产，值得看 spec 是否能成为人与 agent 共同开发时的责任边界和变更依据。"
+    }
+  ]
+}
