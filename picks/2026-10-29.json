@@ -1,0 +1,83 @@
+[
+  {
+    "product": "Empacer",
+    "link": "https://empacer.com",
+    "phLink": "https://www.producthunt.com/products/empacer",
+    "did": "上线面向小企业主的语音优先助理：设置时只问三个问题记住你的业务，之后说话下单——回客户、发社媒、开发票，直接出计划和成品，未经你批准不发送。",
+    "who": "没时间在每个AI对话里重新介绍自己生意的小企业主。",
+    "why": "PH当日第1名（256票）。语音优先+业务记忆+发送前审批，把个人助理做到了非技术人群手里。",
+    "tip": "PH 10/29当日发布。官网+发布页已核实（官网同时强调\"学AI+用AI一体的工作区\"定位）。功能未实测。"
+  },
+  {
+    "product": "Floot in ChatGPT",
+    "link": "https://floot.com",
+    "phLink": "https://www.producthunt.com/products/floot",
+    "did": "上线Floot Connector：在Claude/ChatGPT对话里描述应用，直接拿回带数据库、登录和线上URL的全栈应用；不收AI credits（用你已有订阅），且新增一键发布iOS/Android到应用商店。",
+    "who": "想在熟悉的聊天框里把想法变成真应用、并直接上架的人。",
+    "why": "PH当日第4名。vibe coding工具第一次把\"发布到App Store/Google Play\"也收进同一段对话。",
+    "tip": "PH 10/29当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Gologin Cloud Browser",
+    "link": "https://gologin.com/",
+    "phLink": "https://www.producthunt.com/products/gologin",
+    "did": "反检测浏览器老牌Gologin推出云浏览器产品：云端真实Chromium供AI agent和爬虫使用，持久会话、真实设备指纹、内置住宅/移动代理。免费起步。",
+    "who": "需要agent在风控严格的站点上稳定工作（多账号、自动化）的运营和开发者。",
+    "why": "PH当日第5名。7年反检测经验的公司下场做agent浏览器，和Moli/Lexmount正面竞争，这个赛道继续升温。",
+    "tip": "PH 10/29发布；Gologin为既有公司，本次为Cloud Browser新产品线。官网+发布页已核实。"
+  },
+  {
+    "product": "Radar",
+    "link": "https://radarhq.io",
+    "phLink": "https://www.producthunt.com/products/radar-7",
+    "did": "开源Kubernetes UI+MCP服务器：拓扑、资源、事件、Helm、GitOps、实时流量与安全检查一屏展示，并把同样的视野交给AI agent——任何问题点一下Investigate，agent直接找根因。单二进制本地跑或集群内RBAC/OIDC。",
+    "who": "跑K8s、想让agent参与排障而不是再雇一个AI SRE的团队。",
+    "why": "PH当日在榜。\"不给agent配SRE，给agent配眼睛\"——把可观测性直接变成agent的输入，思路干净。",
+    "tip": "PH 10/29当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Pidgeon",
+    "link": "https://pidgeon.ai",
+    "phLink": "https://news.ycombinator.com/item?id=50288172",
+    "did": "上线agent专用邮箱服务：给你的AI agent开收件箱，收发邮件由agent自主完成。",
+    "who": "需要agent独立收发邮件（注册验证、客户沟通、订阅处理）的开发者。",
+    "why": "Show HN当日发布（7票为当日AI类最高）。和昨天bytemail（人用的带MCP邮箱）正好对偶：一个给人，一个给agent。",
+    "tip": "Show HN 10/29当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Kolo",
+    "link": "https://github.com/komovaar/kolo",
+    "phLink": "https://news.ycombinator.com/item?id=50288774",
+    "did": "开源：像分享Google Docs一样分享agent会话——链接发出去，别人就能看、能协作。",
+    "who": "需要把agent工作过程给同事/客户过目或接手的团队。",
+    "why": "Show HN当日发布。agent会话的\"可分享性\"是协作落地的最后一步，和Spacesheep（分享产出）互补：这个分享过程。",
+    "tip": "Show HN 10/29当日发布。仅发布页与仓库描述已核实。"
+  },
+  {
+    "product": "Macvoice",
+    "link": "https://github.com/johnrobinsn/macvoice",
+    "phLink": "https://news.ycombinator.com/item?id=50287842",
+    "did": "开源：Mac本地语音agent，仅1.4GB、不依赖PyTorch，完全离线运行。",
+    "who": "想要Siri式语音交互但要求数据不出本机的Mac用户。",
+    "why": "Show HN当日发布。本地语音这周第三发（UnCode、sideOS之后），1.4GB的体积控制是亮点。",
+    "tip": "Show HN 10/29当日发布。仅发布页与仓库描述已核实。"
+  },
+  {
+    "product": "Nori",
+    "link": "https://meetnori.app/",
+    "phLink": "https://news.ycombinator.com/item?id=50287819",
+    "did": "上线Git客户端（Mac/Win/Linux）：专为\"审阅并落地agent写的代码\"设计，把agent的改动当提案来批。",
+    "who": "大量代码已由agent产出、需要高效review和合并的开发者。",
+    "why": "Show HN当日发布。Git工具为\"agent是主要作者\"重新设计，是agent编程工作流成熟化的信号。",
+    "tip": "Show HN 10/29当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Vibecheck",
+    "link": "https://github.com/ribato22/vibecheck",
+    "phLink": "https://news.ycombinator.com/item?id=50288337",
+    "did": "开源：给AI生成应用做上线前安全审计——vibe coding产物的体检工具。",
+    "who": "用AI快速搭了应用、上线前想确认没埋雷的开发者和小团队。",
+    "why": "Show HN当日发布。agent安全周延续：从凭据、红队、key泄意识到\"AI写的代码本身\"。",
+    "tip": "Show HN 10/29当日发布。仅发布页描述已核实（仓库页抓取超时未复核）。"
+  }
+]
