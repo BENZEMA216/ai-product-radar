@@ -1,0 +1,92 @@
+[
+  {
+    "product": "Vaani Developer Platform",
+    "link": "https://www.vaani.dev/",
+    "phLink": "https://www.producthunt.com/products/vaani-developer-platfrom",
+    "did": "上线无代码语音agent搭建台：设计通话流程、处理异议和边界情况、接上工具和知识库，直接绑真实电话号码上线；每通电话结束产出干净的结构化数据。",
+    "who": "要给业务加电话语音agent、又不想写代码的团队。",
+    "why": "PH当日第1名（199票）。官网首页挂出\"今日PH上线\"，语音agent从demo走向\"接线员\"级可用。",
+    "tip": "PH 10/30当日发布，官网确认\"今日上线\"。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "SpeakON Agent",
+    "link": "https://www.speakon.app/pages/ai-agent",
+    "phLink": "https://www.producthunt.com/products/speakon",
+    "did": "上线语音驱动的iPhone个人agent：按住说话，agent把一句话拆成多个动作——写邮件、约会议、发Slack、设提醒——逐条备好等你批准；锁屏和离线也能先录后同步，支持12种语言翻译直达当前应用。",
+    "who": "想在通勤和碎片时间用语音清空待办的人。",
+    "why": "PH当日第3名。语音输入+多应用执行+发送前审批，是\"语音优先助理\"思路在个人端的完整落地。",
+    "tip": "PH 10/30当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Canva Brush",
+    "link": "https://www.canva.com/newsroom/news/canva-brush/",
+    "phLink": "https://www.producthunt.com/products/canva",
+    "did": "发布自研视觉语言模型Brush：用自然语言直接编辑和精修设计稿（改元素、调布局、换风格），官方称编辑更快、成本更低，已进入产品。",
+    "who": "日常在Canva里做图、想用说话代替手动微调的设计和运营同学。",
+    "why": "Canva继10/22首个自研图像模型Craft之后，一周内第二个自研模型——从\"生成\"补到\"编辑\"这一环。",
+    "tip": "官方newsroom 10/29发布，PH 10/30上榜；既有产品的新自研模型，非全新产品。官网+发布页已核实。"
+  },
+  {
+    "product": "MCP Server by XWiki",
+    "link": "https://www.xwiki.com/en",
+    "phLink": "https://www.producthunt.com/products/xwiki",
+    "did": "老牌开源wiki（20年历史）上线官方MCP服务器：让AI安全读取你团队沉淀的wiki知识，同时保留权限控制。",
+    "who": "知识都在wiki里、想让Claude/ChatGPT安全调用团队文档的组织。",
+    "why": "PH当日第4名。存量知识库接MCP是这周的主线之一，老牌开源阵营下场说明这已成标配动作。",
+    "tip": "PH 10/30发布；XWiki为既有开源产品，本次为新增MCP服务器能力。仅发布页描述已核实。"
+  },
+  {
+    "product": "Chopstick",
+    "link": "https://chopstick.sh",
+    "phLink": "https://www.producthunt.com/products/chopstick",
+    "did": "上线Mac工具：观察你在Mac上重复的操作，用你已有的编程agent自动写出对应的notch小组件；活动日志全部留在本地。",
+    "who": "Mac重度用户，想要个性化效率组件又懒得自己写的人。",
+    "why": "PH当日第6名。\"让agent观察你、然后自己长工具\"是个人agent很有想象力的一步，且隐私本地化。",
+    "tip": "PH 10/30当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "fastbrowse",
+    "link": "https://fastbrowse.ai",
+    "phLink": "https://www.producthunt.com/products/fastbrowse",
+    "did": "开源浏览器agent：读取页面上每个按钮、链接和字段，用轻量\"系统一\"模型直接选下一步，拿不准再回落大模型；快、便宜，且每个答案都带引用出处。",
+    "who": "要大规模跑网页自动化、又在意成本和可验证性的开发者。",
+    "why": "PH当日上榜。browser agent已经卷到\"快+便宜+可引用\"这个新维度，开源可自托管。",
+    "tip": "PH 10/30当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Simantic",
+    "link": "https://simantic.com/",
+    "phLink": "https://news.ycombinator.com/item?id=50291116",
+    "did": "YC F26新品：面向AI agent的固件仿真平台——真实固件跑在模拟硬件上，让agent能自己测试嵌入式代码。",
+    "who": "做嵌入式/固件、想让agent参与开发和测试的硬件团队。",
+    "why": "Launch HN当日发布。agent测试疆域从软件扩到固件，是agent能力边界的新扩展。",
+    "tip": "Launch HN 10/30当日发布（YC F26）。官网+YC页面+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Overtone",
+    "link": "https://github.com/lonthq/overtone",
+    "phLink": "https://news.ycombinator.com/item?id=50293115",
+    "did": "开源：为任意屏幕比例转录、校对并裁切字幕——AI转录加人工修正的字幕工作流工具。",
+    "who": "做竖屏/多平台视频、被字幕适配折磨的内容创作者。",
+    "why": "Show HN当日发布（41票，当日AI类靠前）。转录之后的\"校对+裁切\"环节正是现有工具链的缺口。",
+    "tip": "Show HN 10/30当日发布。仅发布页描述已核实（仓库页抓取超时）。"
+  },
+  {
+    "product": "ROAL",
+    "link": "https://tryroal.com",
+    "phLink": "https://news.ycombinator.com/item?id=50289318",
+    "did": "上线餐厅AI电话接线员：输入餐厅网址，自动抓取菜单和信息自建出能接电话、答问题、下单的语音agent。",
+    "who": "被电话订座订餐打断出餐节奏的餐厅老板。",
+    "why": "Show HN当日发布。\"从官网自举出一个agent\"的零配置思路，比手填菜单的同类省心一档。",
+    "tip": "Show HN 10/30当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Howler",
+    "link": "https://github.com/hiarieszhou/howler",
+    "phLink": "https://news.ycombinator.com/item?id=50290018",
+    "did": "开源Mac菜单栏AI：问完即焚——对话读完就销毁，不留聊天历史。",
+    "who": "只用AI问零散小问题、不想被记录对话的隐私敏感用户。",
+    "why": "Show HN当日发布。在人人比记忆的时代反向做\"阅后即焚\"，隐私定位独特。",
+    "tip": "Show HN 10/30当日发布。仅发布页描述已核实（仓库页抓取超时）。"
+  }
+]
