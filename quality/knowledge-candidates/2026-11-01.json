@@ -1,0 +1,444 @@
+{
+  "generatedAt": "2026-10-31T16:11:07.213Z",
+  "date": "2026-11-01",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Proton goes all in on using AI",
+      "link": "https://convo.casa/@b/117525936178835007",
+      "publishedAt": "2026-10-29T21:49:28.000Z",
+      "author": "ColinWright https://news.ycombinator.com/user?id=ColinWright",
+      "summary": "https://www.404media.co/manifestos-fear-and-loser-thinking-inside-protons-ai-reckoning/ re: @protonprivacy@mastodon.social > In the last few months, Yen set up an email address for employees to contact if they come across anything blocking adoption of AI at Proton, so leadership can “ruthlessly smash everything that stands in the way of AI velocity;” Proton installed software on workers’ computers that track how much AI code the company is generating; and Yen said this is the last year that Proton will hire engineers at all, and instead only hire people to build things with AI. #Proton #protonmail #protonPrivacy #ai #aiSlop #vibecoding #infosec #cybersecurity #security #privacy",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50296602",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 119,
+        "comments": 115
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-31T16:11:07.213Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 72.3101552840888,
+      "core": "https://www.404media.co/manifestos-fear-and-loser-thinking-inside-protons-ai-reckoning/ re: @protonprivacy@mastodon.social > In the last few months, Yen set up an email address for employees to contact if they come across anything blocking adoption of AI at Proton, so leadership can “ruthlessly smash everything that stands in the way of AI velocity;” Proton installed software on workers’ computers that track how muc…",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Leak Exposes 41,000 Homeland Security Workers–Including Undercover ICE Agents",
+      "link": "https://www.wired.com/story/massive-leak-exposes-41000-homeland-security-workers-including-undercover-ice-agents",
+      "publishedAt": "2026-10-28T21:03:24.000Z",
+      "author": "Aboutplants https://news.ycombinator.com/user?id=Aboutplants",
+      "summary": "The leaked records include the locations of ICE and CBP facilities, workers’ cell phone numbers, and the members of groups tied to wiretap programs, Palantir software, and xAI’s Grok chatbot.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50280864",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 458,
+        "comments": 297
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-31T16:11:07.213Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 64.52370204710866,
+      "core": "The leaked records include the locations of ICE and CBP facilities, workers’ cell phone numbers, and the members of groups tied to wiretap programs, Palantir software, and xAI’s Grok chatbot.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Proton's CEO Cancels AI 'Re-Interviews'",
+      "link": "https://www.404media.co/protons-ceo-cancels-ai-re-interviews",
+      "publishedAt": "2026-10-30T17:24:45.000Z",
+      "author": "cdrnsf https://news.ycombinator.com/user?id=cdrnsf",
+      "summary": "The move came after 404 Media published an investigation into how Proton CEO Andy Yen was aggressively pushing AI across Proton despite security concerns and the culture of fear he has created.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50307183",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 287,
+        "comments": 239
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-31T16:11:07.213Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 54.50297593412412,
+      "core": "The move came after 404 Media published an investigation into how Proton CEO Andy Yen was aggressively pushing AI across Proton despite security concerns and the culture of fear he has created.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Hermes and REA and GLM 5.3 = Reverse engineering TikTok app for less than $20",
+      "link": "https://www.scraping.club/p/tiktok-scraping-metadata",
+      "publishedAt": "2026-10-29T20:35:18.000Z",
+      "author": "PigiVinci83 https://news.ycombinator.com/user?id=PigiVinci83",
+      "summary": "How Hermes Agent and GLM 5.3 reverse-engineered the TikTok app to scrape video metadata.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50295503",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 19,
+        "comments": 15
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-31T16:11:07.213Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 52.2882071460127,
+      "core": "How Hermes Agent and GLM 5.3 reverse-engineered the TikTok app to scrape video metadata.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Expanding our partnership with GSA to bring Claude to all levels of government",
+      "link": "https://www.anthropic.com/news/expanding-partnership-gsa",
+      "publishedAt": "2026-10-27T22:23:37.000Z",
+      "author": "matthieu_bl https://news.ycombinator.com/user?id=matthieu_bl",
+      "summary": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50266701",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 51,
+        "comments": 37
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-31T16:11:07.213Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 52.025889209026666,
+      "core": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Artificial Analysis Intelligence Index v5",
+      "link": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5",
+      "publishedAt": "2026-10-28T03:06:22.000Z",
+      "author": "hn-aarvin https://news.ycombinator.com/user?id=hn-aarvin",
+      "summary": "Index v5 features 2 new benchmarks and 3 upgrades. For the first time, the majority of the Index is built on private datasets",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50268868",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 96,
+        "comments": 83
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-31T16:11:07.213Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 51.39977412837562,
+      "core": "Index v5 features 2 new benchmarks and 3 upgrades. For the first time, the majority of the Index is built on private datasets",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Artificial Analysis Intelligence Index v5.0",
+      "link": "https://artificialanalysis.ai/methodology/intelligence-benchmarking",
+      "publishedAt": "2026-10-28T05:29:11.000Z",
+      "author": "scooby7430 https://news.ycombinator.com/user?id=scooby7430",
+      "summary": "Detailed intelligence benchmarking methodology for LLM quality evaluations.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50269651",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 39,
+        "comments": 5
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-31T16:11:07.213Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 51.076201405819795,
+      "core": "Detailed intelligence benchmarking methodology for LLM quality evaluations.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Anthropic's Claude AI blocks video game cloning and reverse-engineering",
+      "link": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropics-ai-model-is-now-blocking-attempts-at-video-game-recreation-and-cloning-users-also-claim-non-malicious-generic-reverse-engineering-tasks-are-blocked",
+      "publishedAt": "2026-10-31T13:25:00.000Z",
+      "author": "gloxkiqcza https://news.ycombinator.com/user?id=gloxkiqcza",
+      "summary": "Many game developers are reporting Claude",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50315987",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 23,
+        "comments": 5
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-31T16:11:07.213Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 50.48737432440468,
+      "core": "Many game developers are reporting Claude",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "'It’s 100 percent a national security threat': Accenture contractor connected an AI agent to the Pentagon’s secure network, and then sent data to a high-risk website",
+      "link": "https://www.techradar.com/pro/its-100-percent-a-national-security-threat-accenture-contractor-connected-an-ai-agent-to-the-pentagons-secure-network-and-then-sent-data-to-a-high-risk-website",
+      "publishedAt": "2026-10-30T17:30:00.000Z",
+      "author": "Benedict Collins",
+      "summary": "The AI agent sent login details and a map of a secure internal network to a third party website.",
+      "evidenceLink": "",
+      "score": 44.91295212301587,
+      "core": "The AI agent sent login details and a map of a secure internal network to a third party website.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-31T16:11:07.213Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "zapier_ai_automation",
+      "source": "Zapier Blog",
+      "title": "What is Grok Bot?",
+      "link": "https://zapier.com/blog/grok-bot",
+      "publishedAt": "2026-10-30T04:00:00.000Z",
+      "author": "Miguel Rebelo",
+      "summary": "Working with AI is getting weird. Two years ago, I used to do most tasks by myself and then jump into a chatbot task to solve a problem four or five times per hour. These days, I end up staring at my screen while my agents do my research, tear down my drafts, or fix up formatting&#x2014;mostly to make sure they're not going off-task. Is that what we're supposed to be, now? Glorified babysitters to thinking machines? Grok Bot is SpaceX Super Intelligence's solution to this problem. Instead of a chatbot",
+      "evidenceLink": "",
+      "score": 40.22644418650793,
+      "core": "Working with AI is getting weird. Two years ago, I used to do most tasks by myself and then jump into a chatbot task to solve a problem four or five times per hour. These days, I end up staring at my screen while my agents do my research, tear down my drafts, or fix up formatting&#x2014;mostly to make sure they're not going off-task. Is that what we're supposed to be, now? Glorified babysitters to thinking machines?…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-31T16:11:07.213Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentconn_engineering",
+      "source": "AgentConn Field Reports",
+      "title": "80% Use Agents Daily, 49% Ship Them to Prod",
+      "link": "https://agentconn.com/blog/agent-harness-moat-temporal-survey-2026",
+      "publishedAt": "2026-10-30T00:00:00.000Z",
+      "author": "AgentConn Team",
+      "summary": "Temporal's survey exposes an 80-49 gap. GitHub trending confirms: 12 of 15 repos are agent infrastructure. The harness decides who ships.",
+      "evidenceLink": "",
+      "score": 37.89072990079365,
+      "core": "Temporal's survey exposes an 80-49 gap. GitHub trending confirms: 12 of 15 repos are agent infrastructure. The harness decides who ships.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-31T16:11:07.213Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Magnetic tape storage is seeing a second lease of life thanks to AI — and now its largest manufacturer is planning a huge ramp-up in production",
+      "link": "https://www.techradar.com/pro/magnetic-tape-storage-is-seeing-a-second-lease-of-life-thanks-to-ai-and-now-its-largest-manufacturer-is-planning-a-huge-ramp-up-in-production",
+      "publishedAt": "2026-10-30T22:10:00.000Z",
+      "author": "Efosa Udinmwen",
+      "summary": "Fujifilm plans 5x tape production growth by 2028 as AI adoption drives data growth and organisations seek affordable offline storage.",
+      "evidenceLink": "",
+      "score": 31.45184101190476,
+      "core": "Fujifilm plans 5x tape production growth by 2028 as AI adoption drives data growth and organisations seek affordable offline storage.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-31T16:11:07.213Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "Generate and edit images directly in Copilot",
+      "link": "https://github.blog/changelog/2026-10-28-generate-and-edit-images-directly-in-copilot",
+      "publishedAt": "2026-10-28T15:30:55.000Z",
+      "author": "Allison",
+      "summary": "You can now generate and edit images using natural language in GitHub Copilot. When you ask for an image, your selected reasoning model calls a dedicated image-generation tool powered by… The post Generate and edit images directly in Copilot appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 31.348170376984125,
+      "core": "You can now generate and edit images using natural language in GitHub Copilot. When you ask for an image, your selected reasoning model calls a dedicated image-generation tool powered by… The post Generate and edit images directly in Copilot appeared first on The GitHub Blog .",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-31T16:11:07.213Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "A human subject has been injected with an AI-designed virus aiming to kill antibiotic-resistant bacteria, so let's see how that turns out",
+      "link": "https://www.techradar.com/pro/a-human-subject-has-been-injected-with-an-ai-designed-virus-aiming-to-kill-antibiotic-resistant-bacteria-so-lets-see-how-that-turns-out",
+      "publishedAt": "2026-10-30T23:05:00.000Z",
+      "author": "Rahim Amir",
+      "summary": "An AI lab designed a virus, put it in a sick person, and then declined to say what happened.",
+      "evidenceLink": "",
+      "score": 31.289539424603177,
+      "core": "An AI lab designed a virus, put it in a sick person, and then declined to say what happened.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-31T16:11:07.213Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "GitHub Enterprise now includes access to GitHub Copilot",
+      "link": "https://github.blog/changelog/2026-10-28-github-enterprise-now-includes-access-to-github-copilot",
+      "publishedAt": "2026-10-28T15:50:00.000Z",
+      "author": "Allison",
+      "summary": "Enterprises working with a GitHub or Microsoft account team can now get Copilot included with GitHub Enterprise for every licensed user. Previously, you had to manage two things: how many… The post GitHub Enterprise now includes access to GitHub Copilot appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 30.437555297619046,
+      "core": "Enterprises working with a GitHub or Microsoft account team can now get Copilot included with GitHub Enterprise for every licensed user. Previously, you had to manage two things: how many… The post GitHub Enterprise now includes access to GitHub Copilot appeared first on The GitHub Blog .",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-31T16:11:07.213Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cohere_blog",
+      "source": "Cohere Blog",
+      "title": "Cohere Advances C$4 Billion AI Commitment in Canada, Creating 1,500+ Jobs",
+      "link": "https://cohere.com/blog/cohere-canada-commitment",
+      "publishedAt": "2026-10-30T14:00:00.000Z",
+      "author": "",
+      "summary": "Cohere advances its C$4 billion commitment to strengthen Canada’s AI leadership, expand its national workforce and invest in AI research and infrastructure through 2031.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-31T16:11:07.213Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 30.06850767857143,
+      "core": "Cohere advances its C$4 billion commitment to strengthen Canada’s AI leadership, expand its national workforce and invest in AI research and infrastructure through 2031.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "databricks_engineering",
+      "source": "Databricks Blog",
+      "title": "Wealth Management Client Onboarding Needs More Than AI",
+      "link": "https://www.databricks.com/blog/wealth-management-client-onboarding-needs-more-ai",
+      "publishedAt": "2026-10-30T19:40:00.000Z",
+      "author": "",
+      "summary": "Wealth Management client onboarding can stall even when every system has done its job. The document is collected...",
+      "evidenceLink": "",
+      "score": 29.173269583333333,
+      "core": "Wealth Management client onboarding can stall even when every system has done its job. The document is collected...",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-31T16:11:07.213Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "detent_agent_engineering",
+      "source": "DETENT Agent Engineering",
+      "title": "AI Acceptable Use Policy for an Engineering Team: A Short One You Can Copy",
+      "link": "https://detent-ai.com/en/blog/ai-acceptable-use-policy-for-engineering",
+      "publishedAt": "2026-10-31T00:00:00.000Z",
+      "author": "",
+      "summary": "Generic AI acceptable use policies list tools and data. A policy for a team that ships code defines what to declare, verify and record. Includes a copyable draft.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-31T16:11:07.213Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 28.743904503968253,
+      "core": "Generic AI acceptable use policies list tools and data. A policy for a team that ships code defines what to declare, verify and record. Includes a copyable draft.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "US police forces could soon get a major tech upgrade thanks to DT Research's new rugged laptops, which pack in Nvidia graphics and AI processing",
+      "link": "https://www.techradar.com/pro/us-police-forces-could-soon-get-a-major-tech-upgrade-thanks-to-dt-researchs-new-rugged-laptops-which-pack-in-nvidia-graphics-and-ai-processing",
+      "publishedAt": "2026-10-30T20:45:00.000Z",
+      "author": "Rahim Amir",
+      "summary": "But its entry-level GPU is two generations old, and its AI pitch centers on its internals.",
+      "evidenceLink": "",
+      "score": 24.111761646825396,
+      "core": "But its entry-level GPU is two generations old, and its AI pitch centers on its internals.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-31T16:11:07.213Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "interconnects",
+      "source": "Interconnects",
+      "title": "Was I wrong about open models & cyber risks?",
+      "link": "https://www.interconnects.ai/p/was-i-wrong-about-open-models-and",
+      "publishedAt": "2026-10-30T17:36:56.000Z",
+      "author": "Nathan Lambert",
+      "summary": "Last week coined the term “Black October“ after an onslaught of critical vulnerability disclosures, including PHP2Shell and GitLab, signified the moment when the cyber risks of AI models started to materialize.",
+      "evidenceLink": "",
+      "score": 23.554539424603174,
+      "core": "Last week coined the term “Black October“ after an onslaught of critical vulnerability disclosures, including PHP2Shell and GitLab, signified the moment when the cyber risks of AI models started to materialize.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-10-31T16:11:07.213Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

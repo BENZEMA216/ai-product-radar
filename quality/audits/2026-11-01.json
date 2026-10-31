@@ -1,0 +1,293 @@
+{
+  "date": "2026-11-01",
+  "generatedAt": "2026-10-31T16:06:36.298Z",
+  "reportPath": "reports/2026-11-01-0006-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 57,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 20,
+      "keptCount": 10,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-30；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 20 条，AI 相关候选 10 条；实际 fallback：hunted_space。；历史去重后最终发布 10 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 3,
+      "keptCount": 3,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 17,
+      "keptCount": 10,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 11,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "fallback",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 14,
+      "keptCount": 14,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-10-27T16:05:37.511Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Vaani Developer Platform",
+      "productKey": "https://www.producthunt.com/products/vaani-developer-platfrom",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把语音 AI 的评测、调试与接入统一成开发平台；值得验证的是 harness 能否缩短从原型到稳定语音交互的调参周期。"
+    },
+    {
+      "rank": 2,
+      "product": "CodeConnect: Coding Agents on Your iPhone",
+      "productKey": "https://codeconnect.sh",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把编码 agent 搬到手机，真正的产品问题不是“能否写代码”，而是移动端能否安全查看上下文、批准操作并接续桌面任务。"
+    },
+    {
+      "rank": 3,
+      "product": "SkillWire, a searchable catalog for coding-agent skills",
+      "productKey": "https://skillwire.net",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "可检索的 coding-agent skill 目录补的是能力发现层；应重点看技能质量、兼容性与安装信任机制，而不只是收录数量。"
+    },
+    {
+      "rank": 4,
+      "product": "I built a safety gate for autonomous coding agents",
+      "productKey": "https://inbin-gate.vercel.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "自治编码 agent 在执行前加入安全闸门，切中高风险工具调用的审批边界；价值取决于规则是否可解释且不会拖慢正常开发。"
+    },
+    {
+      "rank": 5,
+      "product": "Faylee",
+      "productKey": "https://www.producthunt.com/products/faylee",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把一个链接里的 bug 报告直接交给编码 agent 修复，压缩了复现与交接步骤；值得看它能否保留环境证据并产出可审查补丁。"
+    },
+    {
+      "rank": 6,
+      "product": "Hickory & Company",
+      "productKey": "https://www.ycombinator.com/launches/wgv-hickory-ai-native-compliance-operating-system-for-banks-and-fintechs",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用 agent-first 工作流替换银行反欺诈与 AML 遗留系统，是高合规垂直切口；应观察自动化结果怎样留痕、复核并满足审计。"
+    },
+    {
+      "rank": 7,
+      "product": "fastbrowse",
+      "productKey": "https://www.producthunt.com/products/fastbrowse",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "开源浏览器 agent 以速度为主张，关键不在点击快，而在复杂页面上的选择准确率、失败恢复和可控成本。"
+    },
+    {
+      "rank": 8,
+      "product": "MCP Server by XWiki",
+      "productKey": "https://www.producthunt.com/products/xwiki",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 AI 在保留权限控制的前提下读取企业 wiki，产品价值落在知识访问边界与引用可追溯，而不只是增加一个 MCP 接口。"
+    },
+    {
+      "rank": 9,
+      "product": "Canva Brush",
+      "productKey": "https://www.producthunt.com/products/canva",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "视觉语言模型直接编辑设计，把生成从“重做整张图”推进到可控修改；值得验证局部指令能否稳定保持版式与品牌一致性。"
+    },
+    {
+      "rank": 10,
+      "product": "SpeakON Agent",
+      "productKey": "https://www.producthunt.com/products/speakon",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它试图把自然语音直接转换成 agent 可完成的真实任务；重点是口语意图澄清、执行确认和错误撤回是否形成闭环。"
+    },
+    {
+      "rank": 11,
+      "product": "ilse",
+      "productKey": "https://www.producthunt.com/products/ilse",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "指向界面即可让 agent 修改代码，降低了视觉问题到代码定位的交接成本；应看元素映射、变更范围和回滚是否可靠。"
+    },
+    {
+      "rank": 12,
+      "product": "CourtlyGo – open database of tennis, pickleball, padel courts and MCP",
+      "productKey": "https://courtlygo.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "开放球场数据库再提供 MCP，展示了垂直数据如何成为 agent 工具；但需先验证覆盖、更新频率与数据许可。"
+    },
+    {
+      "rank": 13,
+      "product": "Governor, a firewall for AI agent spend and tool calls",
+      "productKey": "https://bsvkey-governor-demo.fly.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "同时约束 agent 花费和工具调用，把预算控制与权限治理合并在执行层；值得看策略粒度及阻断后的诊断体验。"
+    },
+    {
+      "rank": 14,
+      "product": "Knocket AI",
+      "productKey": "https://www.producthunt.com/products/knocket-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "通过网站或链接与访客对话，卖点接近轻量客服入口；判断重点是能否连接业务上下文并把聊天转成可跟进线索。"
+    },
+    {
+      "rank": 15,
+      "product": "Reconero",
+      "productKey": "https://www.ycombinator.com/launches/wdx-reconero-ai-that-does-police-paperwork-so-officers-can-keep-their-communities-safe",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "自动处理警务文书直指一线行政负担，但属于高风险场景；产品是否成立取决于事实引用、人工复核与责任边界。"
+    },
+    {
+      "rank": 16,
+      "product": "sitesolide",
+      "productKey": "https://www.producthunt.com/products/sitesolide",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 vibe-coded 应用部署到自有服务器，回应了托管锁定与数据控制；值得看它是否把证书、更新和故障恢复也做成低门槛流程。"
+    },
+    {
+      "rank": 17,
+      "product": "Free OCR Cost Calculator – Estimate multi-provider LLM token costs",
+      "productKey": "https://ocrbench.app/blog/llm-ocr-cost-calculator",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "多供应商 OCR 与 LLM token 成本计算器把选型成本显性化；更适合作为采购比较工具，价值取决于计价规则是否持续更新。"
+    },
+    {
+      "rank": 18,
+      "product": "SparkBots AI (Powered by Jev)",
+      "productKey": "https://www.producthunt.com/products/sparkbots-ai-analyze-pages-and-pdfs",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "网页与 PDF 信息抽取是成熟需求，区别度要看引用定位、长文档一致性和批量处理，而不是“能总结”本身。"
+    },
+    {
+      "rank": 19,
+      "product": "Cardinal Square",
+      "productKey": "https://www.ycombinator.com/launches/wft-cardinal-square-ai-native-schools",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "以 AI-native school 提供个性化教育，产品难点在教学目标、教师控制和学习效果证据；YC 发布只证明方向，尚不能替代效果验证。"
+    },
+    {
+      "rank": 20,
+      "product": "Free Unlimited Virtual Monitors+Watch Claude Work on Them+Community",
+      "productKey": "https://multispace.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用虚拟显示器观看 Claude 操作，把 agent 执行过程变成可观察界面；应看它能否帮助干预和复盘，而非只提供观看效果。"
+    }
+  ]
+}
