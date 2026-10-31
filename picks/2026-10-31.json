@@ -1,0 +1,68 @@
+[
+  {
+    "product": "GitHub Copilot Fusion",
+    "link": "https://github.blog/changelog/2026-10-28-route-and-orchestrate-models-with-github-copilot-fusion/",
+    "did": "上线Copilot Fusion：GitHub的编程agent现在会按任务自动挑选并组合多个模型——路由和编排交给它，你只管描述需求。",
+    "who": "在Copilot里写代码、不想自己研究该用哪个模型的开发者。",
+    "why": "PH当日上榜+官方changelog 10/28发布。模型选择从用户负担变成平台默认能力，是编程agent产品化的标志性一步。",
+    "tip": "GitHub官方changelog 10/28发布，PH 10/30-31上榜；既有产品的重要新功能。官网+发布页已核实。"
+  },
+  {
+    "product": "Backenly",
+    "link": "https://backenly.com/",
+    "did": "开源\"自治后端\"：给AI编程agent一个能自己建库、写接口、管权限的后端，agent写应用时不再卡在搭建后端这一步。",
+    "who": "用agent全栈开发、后端部分是瓶颈的个人开发者和小团队。",
+    "why": "PH当日上榜（开源）。agent写前端已经流畅，后端自治化补上了全栈vibe coding最后一块。",
+    "tip": "PH 10/31当日发布。官网+GitHub仓库+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "telemetry.dev",
+    "link": "https://telemetry.dev",
+    "did": "上线面向AI agent的LLM可观测平台：定位慢步骤、检查失败调用，把agent的每次模型调用变成可排查的遥测数据。",
+    "who": "agent上了生产、需要排查延迟和失败的工程团队。",
+    "why": "PH当日第4名。agent可观测这周持续升温（K8s的Radar之后轮到LLM调用层）。",
+    "tip": "PH 10/31当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "BaseTab AI",
+    "link": "https://basetab.ai/",
+    "did": "上线AI新标签页：把浏览器新标签变成可定制的AI工作区。",
+    "who": "想让每次开新标签都顺手用上AI的重度浏览器用户。",
+    "why": "PH当日上榜，Chrome商店已上架。新标签页是最高频的入口之一，AI化改造直接可用。",
+    "tip": "PH 10/31当日发布。官网+Chrome商店页+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Godwit",
+    "link": "https://dalili.tools/en/tools/godwit",
+    "did": "开源AI原生邮件客户端：AI深度参与读信、整理和回复的开源邮箱。",
+    "who": "想要AI邮箱但要求开源可自托管的人。",
+    "why": "PH当日上榜。bytemail（10/28，闭源Mac版）之后开源阵营立刻跟上，AI邮件客户端赛道成形。",
+    "tip": "PH 10/31当日发布。官方信息有限（仅第三方目录与发布页描述已核实，未找到官方仓库）。"
+  },
+  {
+    "product": "WinnerAdSpy",
+    "link": "https://www.producthunt.com/products/winneradspy",
+    "did": "上线广告情报工具：拆解竞品广告投放，把洞察直接转成你的应用推广 campaign。",
+    "who": "做应用增长、需要盯着竞品广告策略调优投放的运营。",
+    "why": "PH当日第5名。广告情报+AI生成campaign的闭环，对独立开发者尤其实用。",
+    "tip": "PH 10/31当日发布。仅发布页描述已核实。"
+  },
+  {
+    "product": "Sketch Stadium",
+    "link": "https://sketch.wakeshift.ai",
+    "phLink": "https://news.ycombinator.com/item?id=50305218",
+    "did": "上线：看你的AI agent玩你画我猜——agent实时猜画/作画对战。",
+    "who": "想直观感受agent多模态理解力、或单纯想图一乐的人。",
+    "why": "Show HN当日发布（35票）。万圣节周末的轻松之作，也是观察agent视觉推理的有趣窗口。",
+    "tip": "Show HN 10/31当日发布。官网+发布页已核实。"
+  },
+  {
+    "product": "Agent-arcade",
+    "link": "https://github.com/Kuldeep-045/agent-arcade",
+    "phLink": "https://news.ycombinator.com/item?id=50313989",
+    "did": "开源终端小游戏合集：Claude Code/Codex干活时玩两把，agent一完成任务游戏自动暂停。",
+    "who": "等agent跑任务时刷手机刷到愧疚的终端开发者。",
+    "why": "Show HN当日发布。把\"等待agent\"变成产品场景，这个细节的走红本身就说明agent工作流已日常化。",
+    "tip": "Show HN 10/31当日发布。仅发布页与仓库描述已核实。"
+  }
+]
