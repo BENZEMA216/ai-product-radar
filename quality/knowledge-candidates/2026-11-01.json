@@ -31,31 +31,6 @@
       "kind": "blog",
       "sourceId": "hcker_news_ai_blogs",
       "source": "Hacker News · hcker.news",
-      "title": "Leak Exposes 41,000 Homeland Security Workers–Including Undercover ICE Agents",
-      "link": "https://www.wired.com/story/massive-leak-exposes-41000-homeland-security-workers-including-undercover-ice-agents",
-      "publishedAt": "2026-10-28T21:03:24.000Z",
-      "author": "Aboutplants https://news.ycombinator.com/user?id=Aboutplants",
-      "summary": "The leaked records include the locations of ICE and CBP facilities, workers’ cell phone numbers, and the members of groups tied to wiretap programs, Palantir software, and xAI’s Grok chatbot.",
-      "evidenceLink": "https://news.ycombinator.com/item?id=50280864",
-      "origin": "hcker_news",
-      "hnMetrics": {
-        "points": 458,
-        "comments": 297
-      },
-      "access": {
-        "verified": true,
-        "mode": "public",
-        "checkedAt": "2026-10-31T16:11:07.213Z",
-        "evidence": "hcker_news_feed_and_live_article"
-      },
-      "score": 64.52370204710866,
-      "core": "The leaked records include the locations of ICE and CBP facilities, workers’ cell phone numbers, and the members of groups tied to wiretap programs, Palantir software, and xAI’s Grok chatbot.",
-      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
-    },
-    {
-      "kind": "blog",
-      "sourceId": "hcker_news_ai_blogs",
-      "source": "Hacker News · hcker.news",
       "title": "Proton's CEO Cancels AI 'Re-Interviews'",
       "link": "https://www.404media.co/protons-ceo-cancels-ai-re-interviews",
       "publishedAt": "2026-10-30T17:24:45.000Z",
@@ -399,26 +374,6 @@
       "score": 28.743904503968253,
       "core": "Generic AI acceptable use policies list tools and data. A policy for a team that ships code defines what to declare, verify and record. Includes a copyable draft.",
       "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
-    },
-    {
-      "kind": "blog",
-      "sourceId": "techradar_pro_ai",
-      "source": "TechRadar Pro",
-      "title": "US police forces could soon get a major tech upgrade thanks to DT Research's new rugged laptops, which pack in Nvidia graphics and AI processing",
-      "link": "https://www.techradar.com/pro/us-police-forces-could-soon-get-a-major-tech-upgrade-thanks-to-dt-researchs-new-rugged-laptops-which-pack-in-nvidia-graphics-and-ai-processing",
-      "publishedAt": "2026-10-30T20:45:00.000Z",
-      "author": "Rahim Amir",
-      "summary": "But its entry-level GPU is two generations old, and its AI pitch centers on its internals.",
-      "evidenceLink": "",
-      "score": 24.111761646825396,
-      "core": "But its entry-level GPU is two generations old, and its AI pitch centers on its internals.",
-      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
-      "access": {
-        "verified": true,
-        "mode": "public",
-        "checkedAt": "2026-10-31T16:11:07.213Z",
-        "evidence": "live_http"
-      }
     },
     {
       "kind": "blog",

@@ -12,8 +12,8 @@
   "minimumTotalCount": 18,
   "maximumPaperCount": 4,
   "desiredPaperCount": 4,
-  "selectedCount": 20,
-  "blogCount": 20,
+  "selectedCount": 18,
+  "blogCount": 18,
   "paperCount": 0,
   "candidatePool": {
     "historicalLinkCount": 1731,
@@ -905,5 +905,15 @@
       "rejectedCount": 0,
       "note": "仅保留 Semantic Scholar 明确标记为 conference 且命中顶会白名单的论文；无会议证据的 arXiv/HF 热榜不进入候选"
     }
-  }
+  },
+  "manualExclusions": [
+    {
+      "link": "https://www.wired.com/story/massive-leak-exposes-41000-homeland-security-workers-including-undercover-ice-agents",
+      "reason": "仅侧面提及 AI 的一般泄露新闻，缺少可迁移的 AI 产品或工程内容。"
+    },
+    {
+      "link": "https://www.techradar.com/pro/us-police-forces-could-soon-get-a-major-tech-upgrade-thanks-to-dt-researchs-new-rugged-laptops-which-pack-in-nvidia-graphics-and-ai-processing",
+      "reason": "主要是泛化 AI 硬件营销，缺少足够机制或实践增量。"
+    }
+  ]
 }
