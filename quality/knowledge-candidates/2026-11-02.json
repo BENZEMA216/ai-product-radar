@@ -1,0 +1,466 @@
+{
+  "generatedAt": "2026-11-01T16:44:46.014Z",
+  "date": "2026-11-02",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Leak Exposes 41,000 Homeland Security Workers–Including Undercover ICE Agents",
+      "link": "https://www.wired.com/story/massive-leak-exposes-41000-homeland-security-workers-including-undercover-ice-agents",
+      "publishedAt": "2026-10-28T21:03:24.000Z",
+      "author": "Aboutplants https://news.ycombinator.com/user?id=Aboutplants",
+      "summary": "The leaked records include the locations of ICE and CBP facilities, workers’ cell phone numbers, and the members of groups tied to wiretap programs, Palantir software, and xAI’s Grok chatbot.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50280864",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 463,
+        "comments": 303
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-01T16:44:46.014Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 62.81020187157921,
+      "core": "The leaked records include the locations of ICE and CBP facilities, workers’ cell phone numbers, and the members of groups tied to wiretap programs, Palantir software, and xAI’s Grok chatbot.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Brazilian Court Sanctions Lawyers for Prompt Injection in Court Filing",
+      "link": "https://jetstream.security/insights/brazilian-court-sanctions-prompt-injection-filing",
+      "publishedAt": "2026-11-01T02:19:53.000Z",
+      "author": "doodlesdev https://news.ycombinator.com/user?id=doodlesdev",
+      "summary": "A Brazilian court fined two lawyers for embedding a hidden prompt-injection command in a filing meant to manipulate the court's AI document review system.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50322173",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 231,
+        "comments": 122
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-01T16:44:46.014Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 53.833182409238056,
+      "core": "A Brazilian court fined two lawyers for embedding a hidden prompt-injection command in a filing meant to manipulate the court's AI document review system.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Scaling smart: How LLM developers are solving multi-agent orchestration bottlenecks",
+      "link": "https://www.techradar.com/pro/scaling-smart-how-llm-developers-are-solving-multi-agent-orchestration-bottlenecks",
+      "publishedAt": "2026-11-01T10:00:00.000Z",
+      "author": "Stefan Ionescu",
+      "summary": "We explore the challenges developers face with multi-agent orchestration and the strategies they use to overcome them.",
+      "evidenceLink": "",
+      "score": 51.1736901984127,
+      "core": "We explore the challenges developers face with multi-agent orchestration and the strategies they use to overcome them.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-01T16:44:46.014Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "The AI cost of JavaScript frameworks",
+      "link": "https://nolanlawson.com/2026/10/28/the-ai-cost-of-javascript-frameworks",
+      "publishedAt": "2026-11-01T06:06:19.000Z",
+      "author": "luu https://news.ycombinator.com/user?id=luu",
+      "summary": "One of my pet peeves with the web development community is that so many of the decisions we make are vibes-based. Frameworks are “blazing fast,” tools will…",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50323088",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 194,
+        "comments": 136
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-01T16:44:46.014Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 50.83022105620476,
+      "core": "One of my pet peeves with the web development community is that so many of the decisions we make are vibes-based. Frameworks are “blazing fast,” tools will…",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Ex-Meta Researcher Torrented Pirated Books, Deleted It 'Due to Litigation'",
+      "link": "https://torrentfreak.com/ex-meta-researcher-torrented-pirated-books-dataset-deleted-it-due-to-all-this-litigation",
+      "publishedAt": "2026-10-31T14:57:33.000Z",
+      "author": "WesleyGrant782 https://news.ycombinator.com/user?id=WesleyGrant782",
+      "summary": "A former Meta researcher has testified that he downloaded an AI training dataset which includes the pirated Books3 collection, via BitTorrent.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50316760",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 97,
+        "comments": 73
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-01T16:44:46.014Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 47.641557825860936,
+      "core": "A former Meta researcher has testified that he downloaded an AI training dataset which includes the pirated Books3 collection, via BitTorrent.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "A Defense Contractor Gave Their AI Agent Access to a Secure Pentagon System",
+      "link": "https://www.wired.com/story/a-defense-contractor-gave-their-personal-ai-agent-access-to-a-secure-pentagon-system",
+      "publishedAt": "2026-10-29T18:47:56.000Z",
+      "author": "cdrnsf https://news.ycombinator.com/user?id=cdrnsf",
+      "summary": "Sources tell WIRED that an Accenture employee’s personal Claude agent ran on a DOD network for two months before it was identified and the vulnerability could be patched.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50293979",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 21,
+        "comments": 6
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-01T16:44:46.014Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 45.35052349207605,
+      "core": "Sources tell WIRED that an Accenture employee’s personal Claude agent ran on a DOD network for two months before it was identified and the vulnerability could be patched.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Particle-1",
+      "link": "https://particle.ai/blog/introducing-particle-1",
+      "publishedAt": "2026-10-28T17:45:39.000Z",
+      "author": "meetpateltech https://news.ycombinator.com/user?id=meetpateltech",
+      "summary": "Introducing Particle-1, our first model trained to solve software engineering tasks with fewer tokens and lower cost.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50277764",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 18,
+        "comments": 7
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-01T16:44:46.014Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 45.06528500255756,
+      "core": "Introducing Particle-1, our first model trained to solve software engineering tasks with fewer tokens and lower cost.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Anthropic files S-1 with the SEC for proposed initial public offering",
+      "link": "https://www.anthropic.com/news/s1-sec",
+      "publishedAt": "2026-10-26T13:06:35.000Z",
+      "author": "meetpateltech https://news.ycombinator.com/user?id=meetpateltech",
+      "summary": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50242957",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 25,
+        "comments": 1
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-01T16:44:46.014Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 43.831470104197926,
+      "core": "Anthropic is an AI safety and research company that&#x27;s working to build reliable, interpretable, and steerable AI systems.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Scaling Hierarchical Networks",
+      "link": "https://www.cartesia.ai/blog/from-tokens-to-bytes-part-1",
+      "publishedAt": "2026-10-28T18:07:41.000Z",
+      "author": "guybedo https://news.ycombinator.com/user?id=guybedo",
+      "summary": "A newer generation of H-Nets learns directly from raw bytes, and matches an open-source 3B Transformer with 10x less compute and data.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50278253",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 92,
+        "comments": 14
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-01T16:44:46.014Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 41.18060888786516,
+      "core": "A newer generation of H-Nets learns directly from raw bytes, and matches an open-source 3B Transformer with 10x less compute and data.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Grace Blackwell needs a new scheduler: 27% more usable GPUs from the same racks",
+      "link": "https://skypilot.ai/blog/grace-blackwell-needs-a-new-scheduler",
+      "publishedAt": "2026-10-29T15:45:05.000Z",
+      "author": "wondersky https://news.ycombinator.com/user?id=wondersky",
+      "summary": "NVL72 puts all 72 GPUs in a rack on one NVLink fabric, but only rack-local jobs get the speedup. How SkyPilot keeps multi-node training and inference on NVLink with topology-aware placement, in-place recovery from GPU failures, and automatic defragmentation.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50290912",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 146,
+        "comments": 22
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-01T16:44:46.014Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 40.77946667117289,
+      "core": "NVL72 puts all 72 GPUs in a rack on one NVLink fabric, but only rack-local jobs get the speedup. How SkyPilot keeps multi-node training and inference on NVLink with topology-aware placement, in-place recovery from GPU failures, and automatic defragmentation.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "AI text watermarking and quality loss",
+      "link": "https://blog.keyvan.net/p/ai-text-watermarking-and-quality",
+      "publishedAt": "2026-10-31T21:50:13.000Z",
+      "author": "danielfoster https://news.ycombinator.com/user?id=danielfoster",
+      "summary": "After the EU AI Act’s transparency guidelines went into effect, and following the announcement that most major AI labs will soon be watermarking their text output to comply, there has been some debate about how much of an impact this is going to have, if any, on the quality of the text produced by AI models.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50320599",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 62,
+        "comments": 12
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-01T16:44:46.014Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 40.59060107886571,
+      "core": "After the EU AI Act’s transparency guidelines went into effect, and following the announcement that most major AI labs will soon be watermarking their text output to comply, there has been some debate about how much of an impact this is going to have, if any, on the quality of the text produced by AI models.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Amazon Is Gutting Its AI Division After Sustained Failure",
+      "link": "https://futurism.com/artificial-intelligence/amazon-ai-division-failure-nova",
+      "publishedAt": "2026-10-27T16:25:30.000Z",
+      "author": "dpflan https://news.ycombinator.com/user?id=dpflan",
+      "summary": "Amazon is gutting its AI labs and funneling its resources into a new project headed by a noted AI robotics guru.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50261589",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 386,
+        "comments": 293
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-01T16:44:46.014Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 39.90310635099824,
+      "core": "Amazon is gutting its AI labs and funneling its resources into a new project headed by a noted AI robotics guru.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "GPT-6.1 Terra (Max) Scores 48 on Artificial Analysis",
+      "link": "https://artificialanalysis.ai/models/gpt-6-1-terra",
+      "publishedAt": "2026-10-26T18:54:00.000Z",
+      "author": "theanonymousone https://news.ycombinator.com/user?id=theanonymousone",
+      "summary": "Analysis of OpenAI&#x27;s GPT-6.1 Terra (Max) and comparison to other AI models across key metrics including quality, price, performance (tokens per second & time to first token), context window & more.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50249076",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 24,
+        "comments": 2
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-01T16:44:46.014Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 35.93429941787888,
+      "core": "Analysis of OpenAI&#x27;s GPT-6.1 Terra (Max) and comparison to other AI models across key metrics including quality, price, performance (tokens per second & time to first token), context window & more.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "The Mythical Man-Month in the Age of AI",
+      "link": "https://j11g.com/the-mythical-man-month-in-the-age-of-ai",
+      "publishedAt": "2026-10-27T06:25:37.000Z",
+      "author": "ilreb https://news.ycombinator.com/user?id=ilreb",
+      "summary": "An update to Brooks's Law in the age of AI.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50255298",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 496,
+        "comments": 363
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-01T16:44:46.014Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 34.53436141731398,
+      "core": "An update to Brooks's Law in the age of AI.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "AI models cost more when you don't use English",
+      "link": "https://restofworld.org/2026/ai-tokenizer-tax-non-english-languages-cost-inequity",
+      "publishedAt": "2026-10-26T21:03:22.000Z",
+      "author": "postalex https://news.ycombinator.com/user?id=postalex",
+      "summary": "A new study reveals that AI models require up to 17 times more tokens for less dominant languages, inflating costs, increasing latency, and penalizing startups in places like Bengaluru.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50250910",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 25,
+        "comments": 1
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-01T16:44:46.014Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 33.72684708832491,
+      "core": "A new study reveals that AI models require up to 17 times more tokens for less dominant languages, inflating costs, increasing latency, and penalizing startups in places like Bengaluru.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "How AI may drive union-resistant tech workers to the bargaining table",
+      "link": "https://www.theguardian.com/technology/2026/jul/21/ai-tech-workers-unionize",
+      "publishedAt": "2026-11-01T00:49:23.000Z",
+      "author": "civilchaos https://news.ycombinator.com/user?id=civilchaos",
+      "summary": "Tech workers are increasingly unionizing, trading Silicon Valley&#x2019;s myth of exceptionalism for collective bargaining to contest the corporate deployment of artificial intelligence",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50321734",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 27,
+        "comments": 4
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-01T16:44:46.014Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 33.52414655427202,
+      "core": "Tech workers are increasingly unionizing, trading Silicon Valley&#x2019;s myth of exceptionalism for collective bargaining to contest the corporate deployment of artificial intelligence",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Anthropic's Disproof of the ETH",
+      "link": "https://hexagonmath.org/2610.00577v1",
+      "publishedAt": "2026-10-27T05:58:59.000Z",
+      "author": "bananaflag https://news.ycombinator.com/user?id=bananaflag",
+      "summary": "We refute the Exponential Time Hypothesis (ETH) by presenting a deterministic algorithm for 3-SAT on n variables that runs in $2^{o(n)}$ time. Our algorithm in fact solves the harder problem #3-SAT, providing a count of the number of satisfying assignments. The result was discovered by an internal research Claude model and has been formalized in Lean 4.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50255159",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 26,
+        "comments": 6
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-01T16:44:46.014Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 30.479018591299642,
+      "core": "We refute the Exponential Time Hypothesis (ETH) by presenting a deterministic algorithm for 3-SAT on n variables that runs in $2^{o(n)}$ time. Our algorithm in fact solves the harder problem #3-SAT, providing a count of the number of satisfying assignments. The result was discovered by an internal research Claude model and has been formalized in Lean 4.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "'The reality is that not every task requires the most advanced or expensive model available': Snowflake explains why finding the right AI model can make all the difference in helping your business succeed",
+      "link": "https://www.techradar.com/pro/the-reality-is-that-not-every-task-requires-the-most-advanced-or-expensive-model-available-snowflake-explains-why-finding-the-right-ai-model-can-make-all-the-difference-in-helping-your-business-succeed",
+      "publishedAt": "2026-11-01T10:00:00.000Z",
+      "author": "Mike Moore",
+      "summary": "Snowflake lays out how your business can solve the AI economics problem.",
+      "evidenceLink": "",
+      "score": 24.91813464285714,
+      "core": "Snowflake lays out how your business can solve the AI economics problem.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-01T16:44:46.014Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "'They're not done': Oracle co-founder Larry Ellison says AI can finally help us 'finish' building apps, dismissing SaaSpocalypse fears",
+      "link": "https://www.techradar.com/pro/theyre-not-done-oracle-co-founder-larry-ellison-says-ai-can-finally-help-us-finish-building-apps-dismissing-saaspocalypse-fears",
+      "publishedAt": "2026-10-31T19:05:00.000Z",
+      "author": "Craig Hale",
+      "summary": "Oracle's co-founder knows that AI will fundamentally change how we interact with apps, but he predicts huge opportunities ahead.",
+      "evidenceLink": "",
+      "score": 24.163769563492064,
+      "core": "Oracle's co-founder knows that AI will fundamentally change how we interact with apps, but he predicts huge opportunities ahead.",
+      "why": "它包含超出发布信息本身的机制、证据或实践经验，适合提炼成可复用的 AI 产品与技术判断。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-01T16:44:46.014Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

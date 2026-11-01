@@ -1,0 +1,294 @@
+{
+  "date": "2026-11-02",
+  "generatedAt": "2026-11-01T16:38:17.989Z",
+  "reportPath": "reports/2026-11-02-0038-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 51,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "AIHOT",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 22,
+      "keptCount": 11,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-10-31；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 22 条，AI 相关候选 11 条；实际 fallback：hunted_space。；历史去重后最终发布 11 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 2,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 14,
+      "keptCount": 9,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "fallback",
+      "rawCount": 16,
+      "keptCount": 16,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 13,
+      "keptCount": 13,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-10-27T16:05:37.511Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Backenly",
+      "productKey": "https://www.producthunt.com/products/backenly-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把后端搭建直接对接 AI 编码 Agent，值得看 Agent 能否从生成代码进一步承担部署所需的服务配置与维护。"
+    },
+    {
+      "rank": 2,
+      "product": "GitHub Copilot Fusion",
+      "productKey": "https://www.producthunt.com/products/github-copilot-fusion",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用“自动挑选并组合模型”处理编码任务，值得观察多模型路由会不会成为代码 Agent 的默认产品能力。"
+    },
+    {
+      "rank": 3,
+      "product": "telemetry.dev",
+      "productKey": "https://www.producthunt.com/products/telemetry-dev",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它专注 Agent 的 LLM 可观测性，价值在于把调用链、异常与质量诊断做成团队可持续运营的控制面。"
+    },
+    {
+      "rank": 4,
+      "product": "Winch – App Store optimization run by your own coding agent",
+      "productKey": "https://getwinch.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它让编码 Agent 直接参与 App Store 优化，值得看 ASO 是否能从一次性文案工作变成可持续迭代的开发流程。"
+    },
+    {
+      "rank": 5,
+      "product": "Coding Wrapped",
+      "productKey": "https://www.producthunt.com/products/coding-wrapped",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 Claude Code 与 Codex 的实际编码记录做成年度回顾，适合观察“vibe coding 行为数据”能否形成留存和复盘入口。"
+    },
+    {
+      "rank": 6,
+      "product": "Specsight",
+      "productKey": "https://www.producthunt.com/products/specsight",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把高速 AI 开发团队的产品可观测性单独产品化，关键是能否让需求、实现和线上反馈之间的偏差及时可见。"
+    },
+    {
+      "rank": 7,
+      "product": "Publishub. An AI copilot for video creators and editors.",
+      "productKey": "https://www.getpublishub.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 Copilot 放进视频创作者与编辑者的生产流程，值得看辅助是否能覆盖素材整理、编辑决策到发布的完整链路。"
+    },
+    {
+      "rank": 8,
+      "product": "Geop – Open-source Nurbs CAD with MCP (MicroDuck example)",
+      "productKey": "https://app.geop-cad.dev/?example=duck",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 NURBS CAD 暴露给 MCP，并给出可运行示例，说明 Agent 工具接口正从软件操作扩展到精密几何设计。"
+    },
+    {
+      "rank": 9,
+      "product": "What [67] MCP servers do at startup, with the internet cut off",
+      "productKey": "https://mcp.brydge-ai.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用断网环境检查 67 个 MCP Server 的启动行为，直接触及工具供应链的隐私、外联与可信执行问题。"
+    },
+    {
+      "rank": 10,
+      "product": "SpaceO",
+      "productKey": "https://www.producthunt.com/products/spaceo",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它给 AI Agent 提供独立的 Mac 屏幕，值得观察视觉工作区隔离能否降低 Agent 操作桌面时的干扰与风险。"
+    },
+    {
+      "rank": 11,
+      "product": "Pluto Door",
+      "productKey": "https://www.producthunt.com/products/pluto-door",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 SSH、服务器桌面与 AI Agent 合在一个客户端里，关键看远程运维能否从命令辅助走向可审计的任务执行。"
+    },
+    {
+      "rank": 12,
+      "product": "VestLens, a MCP App for Wealthsimple Portfolios in Claude/ChatGPT",
+      "productKey": "https://vestlens.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它通过 MCP 把 Wealthsimple 投资组合接入 Claude 与 ChatGPT，值得关注金融数据权限和对话式分析边界如何设计。"
+    },
+    {
+      "rank": 13,
+      "product": "Stageshow 技能发布：帮助 Agent 生成假 UI 静图、动画与 bento 网格",
+      "productKey": "https://aihot.news/items/hou4m47fbprpiuljibj97see4",
+      "source": "AIHOT",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 UI 静图、动画和 bento 网格生成封装成可安装技能，值得看设计表现力能否变成 Agent 可复用的交付能力。"
+    },
+    {
+      "rank": 14,
+      "product": "Godwit",
+      "productKey": "https://www.producthunt.com/products/godwit",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把开源邮件客户端定位为 AI-native，值得观察邮件检索、撰写和线程处理能否形成透明且可扩展的工作流。"
+    },
+    {
+      "rank": 15,
+      "product": "Fleety",
+      "productKey": "https://www.ycombinator.com/launches/whc-fleety-the-ai-dispatcher-for-plumbing-and-hvac-companies",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它面向管道与 HVAC 企业自动派单并持续重排日程，展示了垂直 Agent 以直接交付运营结果切入的路径。"
+    },
+    {
+      "rank": 16,
+      "product": "Agnos",
+      "productKey": "https://www.producthunt.com/products/agnos",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它在文档进入 AI 流程前做清洗并显示被删除内容，价值在于把上下文压缩变成可检查、可解释的数据准备步骤。"
+    },
+    {
+      "rank": 17,
+      "product": "BaseTab AI",
+      "productKey": "https://www.producthunt.com/products/basetab-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它占据浏览器新标签页作为 AI 工作区入口，值得看高频启动面能否形成任务聚合与持续使用习惯。"
+    },
+    {
+      "rank": 18,
+      "product": "See whether ChatGPT recommends your business (and who it names instead)",
+      "productKey": "https://citeon.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 ChatGPT 是否推荐某品牌及竞品对照做成检测工具，反映企业增长正在增加一层生成式搜索可见性运营。"
+    },
+    {
+      "rank": 19,
+      "product": "ernd",
+      "productKey": "https://www.ycombinator.com/launches/whe-ernd-the-credit-card-for-the-ai-stack",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把推理、GPU 获取与返现包装成 AI 技术栈信用卡，值得看金融激励能否成为算力采购的新分发入口。"
+    },
+    {
+      "rank": 20,
+      "product": "AC Bridge",
+      "productKey": "https://www.producthunt.com/products/ac-bridge",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它用智能灯提示 Claude Code 或 Codex 正在等待用户，虽是轻量配件，但揭示了长任务 Agent 的注意力召回问题。"
+    }
+  ]
+}
