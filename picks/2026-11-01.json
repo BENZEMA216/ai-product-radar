@@ -1,0 +1,92 @@
+[
+  {
+    "product": "Screen Studio 4.0",
+    "link": "https://screen.studio",
+    "phLink": "https://www.producthunt.com/products/screen-studio",
+    "did": "Mac录屏工具大版本更新：新增玻璃放大镜、摄像头抠图、按文稿剪辑（删文字即删片段）等，录屏一分钟变宣传片。",
+    "who": "要做产品演示、教程或发布视频的开发者和创作者。",
+    "why": "PH当日第1名（204票）。\"按文稿剪辑\"把视频剪辑变成了改文档，是AI剪辑最易用的一种形态。",
+    "tip": "PH 11/1发布；既有产品的4.0大版本（含多项新功能）。官网+发布页已核实。"
+  },
+  {
+    "product": "ClawsGO Science",
+    "link": "https://clawsgo.ai",
+    "phLink": "https://www.producthunt.com/products/clawsgo-science",
+    "did": "上线科研AI agent：自带云实验室和500+工具，Claude与GPT agent集群可连续跑数天，从假设到数据分析到论文。",
+    "who": "做数据密集型研究、想让agent跑长任务的研究者和分析师。",
+    "why": "PH当日第2名。长周期agent第一次以\"科学家\"形态产品化，500+工具的工具箱是差异点。",
+    "tip": "PH 11/1当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Riverside Agents",
+    "link": "https://riverside.com/agents",
+    "phLink": "https://www.producthunt.com/products/riverside-fm",
+    "did": "视频平台Riverside上线agent团队：制作、剪辑、切条、发布各环节各有一个AI agent，串成完整视频生产线。",
+    "who": "做播客和视频内容、想把后期全流程交出去的团队。",
+    "why": "PH当日第3名。成熟内容平台把AI从单点功能升级成\"一支agent团队\"，代表了现有产品的agent化方向。",
+    "tip": "PH 11/1发布；既有产品的新agent功能组。官网+发布页已核实。"
+  },
+  {
+    "product": "Precise Edit by Ideogram",
+    "link": "https://ideogram.ai",
+    "phLink": "https://www.producthunt.com/products/ideogram",
+    "did": "发布角色一致性编辑模型：只需一张参考图就能保持角色一致地精准改图，已向所有用户免费开放（网页+iOS）。",
+    "who": "做角色IP、连环视觉内容、需要形象稳定的创作者和运营。",
+    "why": "PH当日第4名。角色一致是AI绘图最难的痛点之一，单图参考+全员免费的门槛很低。",
+    "tip": "PH 11/1发布；Ideogram的新模型功能（既有产品）。发布页已核实，官方称全员免费。"
+  },
+  {
+    "product": "Embage",
+    "link": "https://embage.com",
+    "phLink": "https://www.producthunt.com/products/embage",
+    "did": "上线多渠道客服agent搭建平台：网站、Telegram等渠道部署聊天+语音agent，子agent编排工作流，自动评估每段对话、给线索打分、从对话提取结构化数据。",
+    "who": "要给客户上AI客服、还想要效果评估闭环的团队。",
+    "why": "PH当日第5名。客服agent赛道从\"能对话\"卷到\"自动评估+线索打分\"，闭环更完整。",
+    "tip": "PH 11/1当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "agentmash",
+    "link": "https://agentmash.dev/",
+    "phLink": "https://www.producthunt.com/products/agentmash",
+    "did": "开源\"多人联机\"编程agent层：共享上下文告诉每个agent队友的agent在改哪些文件，agent之间直接沟通避免互相覆盖；像Slack一样@队友或他们的agent，支持Claude Code/Codex/自托管模型。",
+    "who": "多人同时用agent改同一个仓库、饱受冲突之苦的团队。",
+    "why": "PH当日第6名。单人agent时代走向多agent协作，冲突协调是第一个要解决的现实问题。",
+    "tip": "PH 11/1当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Click",
+    "link": "https://useclick.ai",
+    "phLink": "https://www.producthunt.com/products/click-6",
+    "did": "上线托管agent API：一个API调用发任务，Click替你跑agent并流式返回结果，模型随便选。",
+    "who": "想在产品里嵌agent能力、不想自己管agent基础设施的开发者。",
+    "why": "PH当日第7名。agent-as-API继续商品化，\"模型无关\"是卖点。",
+    "tip": "PH 11/1当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Modelpeers",
+    "link": "https://modelpeers.com/",
+    "phLink": "https://www.producthunt.com/products/modelpeers",
+    "did": "上线\"AI模型的领英\"：关注Claude Code、GPT、Gemini等200+模型和agent，新版本、价格调整、限额变化、宕机、退役都会进你的feed。",
+    "who": "需要跟踪所用模型价格、限额和版本变化的PM和开发者。",
+    "why": "PH当日第8名。模型变动跟踪第一次做成feed产品，对要盯多家供应商的人很省事。",
+    "tip": "PH 11/1当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "magpie",
+    "link": "https://getmagpie.me",
+    "phLink": "https://www.producthunt.com/products/magpie-14",
+    "did": "上线收藏可视化图书馆：Instagram/X/TikTok/Pinterest/YouTube等各平台收藏聚合一处，AI自动打标、按含义和颜色搜索，原帖删除后内容仍保留。",
+    "who": "在各平台收藏灵感却再也找不到的设计师和内容创作者。",
+    "why": "PH当日第9名。\"收藏夹黑洞\"是真实痛点，AI打标+防丢失的组合务实。",
+    "tip": "PH 11/1当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Outcrop",
+    "link": "https://outcrop.rocks",
+    "phLink": "https://news.ycombinator.com/item?id=50290533",
+    "did": "上线AR地质应用：把相机对准山川地貌，叠加地质图告诉你脚下岩石的来历。",
+    "who": "徒步和旅行时好奇脚下土地的人，以及地质学生。",
+    "why": "Show HN当日发布（40票）。AI视觉+AR在消费端少见的\"硬核科普\"用法，周末徒步正好试。",
+    "tip": "Show HN 11/1当日发布。官网+发布页已核实。"
+  }
+]
