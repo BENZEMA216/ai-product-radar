@@ -1,0 +1,101 @@
+[
+  {
+    "product": "beacon.sh",
+    "link": "https://beacon.sh",
+    "phLink": "https://www.producthunt.com/products/asymptotelabs",
+    "did": "开源编程agent的自我改进记忆层：把Claude Code、Cursor、Codex等20+agent框架的每次会话变成可复用知识，让每个agent开局都比上一个聪明；同时提供agent活动的运营可视化。免费起步。",
+    "who": "团队里跑着多个编程agent、希望经验不随会话蒸发的开发者。",
+    "why": "PH当日第1名（155票）。agent记忆从\"单次会话上下文\"升级为\"跨agent复利的知识层\"。",
+    "tip": "PH 11/2当日发布。官网+GitHub仓库+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "UnleashX",
+    "link": "https://unleashx.ai",
+    "phLink": "https://www.producthunt.com/products/unleashx",
+    "did": "上线\"AI员工\"平台：像招人一样选角色、接CRM和工具、定规则，然后把整段工作交出去端到端执行，人只在必要时介入。",
+    "who": "想把重复业务流程（销售跟进、运营执行）整段外包给AI的小团队。",
+    "why": "PH当日第2名。从\"用AI工具\"到\"雇AI员工\"的叙事正在产品化落地。",
+    "tip": "PH 11/2当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Xmind 2027",
+    "link": "https://xmind.com",
+    "phLink": "https://www.producthunt.com/products/xmind",
+    "did": "老牌思维导图大版本更新：脑图变成AI思考伙伴——头脑风暴、大纲整理、演示一处完成。",
+    "who": "用脑图梳理思路、想让AI参与发散和整理的知识工作者。",
+    "why": "PH当日并列第2（125票）。经典工具全面AI化的又一例，脑图天然适合当agent的思考画布。",
+    "tip": "PH 11/2发布；既有产品的年度大版本（AI化升级）。官网+发布页已核实。"
+  },
+  {
+    "product": "Cedric AI for Meetings",
+    "link": "https://meet-cedric.com",
+    "phLink": "https://www.producthunt.com/products/cedric",
+    "did": "上线会议agent：能替你演示幻灯片、替你参会；同时兼任创业团队的运营/竞品/营销/客户跟进杂务，连接3000+工具，在Slack/Discord/Telegram里工作。",
+    "who": "会议缠身、想把\"出席\"也委托出去的创始人和PM。",
+    "why": "PH当日并列第2。\"替你开会\"比\"帮你记会\"又进一步——agent开始有人格化的职场存在感。",
+    "tip": "PH 11/2当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Clayzo",
+    "link": "https://clayzo.com",
+    "phLink": "https://www.producthunt.com/products/clayzo",
+    "did": "上线：让你的编程agent（Claude Code/Codex/Cursor）直接创作网页动画和动效——agent写代码并逐帧自查，你导出视频或直接在网站播放。免费。",
+    "who": "想要动效但不会做动效的前端和独立开发者。",
+    "why": "PH当日第5名。把agent的产出从\"页面\"扩展到\"动画\"，且免费。",
+    "tip": "PH 11/2当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Display 1.0",
+    "link": "https://display.dev",
+    "phLink": "https://www.producthunt.com/products/display-dev",
+    "did": "上线agent协作工作区：文档、原型、应用与团队同屏共创，agent产出的文件直接归档成团队知识库；兼容任何agent、统一定价。",
+    "who": "agent产出散落各处、想沉淀为团队资产的团队。",
+    "why": "PH当日第6名。agent产物的\"归档+协作\"层，和上周Kolo（会话分享）、Spacesheep（产出空间）同一条线。",
+    "tip": "PH 11/2当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Hera",
+    "link": "https://hera.video",
+    "phLink": "https://www.producthunt.com/products/hera-6",
+    "did": "上线AI创意画布：一块画布上同时指挥多个AI agent生成图像、设计和动画，图层可编辑，用于广告、发布视频和社媒内容。",
+    "who": "做营销视觉、想要AI出图但保留分层控制的设计师。",
+    "why": "PH当日并列第6。多agent并行+可编辑图层，比一次性出图的工具更接近真实工作流。",
+    "tip": "PH 11/2当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Agent Inbox",
+    "link": "https://agentinbox.md",
+    "phLink": "https://www.producthunt.com/products/agent-inbox",
+    "did": "上线：给每个AI agent配邮箱地址、Slack和Telegram账号，一个API统一管理；从你已在用的渠道给agent发消息，它在线程里回复，兼容Claude/Grok/OpenAI等框架。",
+    "who": "想让agent常驻现有通讯工具、不想为每个渠道写胶水代码的开发者。",
+    "why": "PH当日第8名。上周Pidgeon给了agent邮箱，这次把Slack和Telegram一起打包——agent通讯基础设施继续成形。",
+    "tip": "PH 11/2当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Greta.sh 自增长网站",
+    "link": "https://www.greta.sh/",
+    "phLink": "https://www.producthunt.com/products/gretabyquestera",
+    "did": "上线\"自增长网站\"：描述想法即建好网站，之后它自己追踪客户搜索词、自动发布能在Google和被ChatGPT/Perplexity引用的文章页面、修SEO问题，每周自己长。",
+    "who": "没时间做内容SEO、又想要自然流量的独立开发者和创业者。",
+    "why": "PH当日并列第8。vibe coding之后的下一站：网站交付后不躺平，自己运营自己。",
+    "tip": "PH 11/2当日发布（Greta.sh平台的新能力）。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Hyperresearch",
+    "link": "https://hyperresearch.ai",
+    "phLink": "https://www.producthunt.com/products/hyperresearch",
+    "did": "上线证据型研究agent：每个引用论断都对照原文核验，来源存入可搜索知识库；新增Answers MCP和API——你的agent调用ask得到带逐字引用的短答案，查不到就明说\"未找到\"而不是编。",
+    "who": "受够研究agent一本正经编引用、需要可审计答案的人和agent开发者。",
+    "why": "PH当日第10名。\"引用逐字核验+查不到就承认\"直击研究agent最大的信任缺口。",
+    "tip": "PH 11/2当日发布。官网+发布页已核实；官方自称DRACO基准第一，未独立验证。功能未实测。"
+  },
+  {
+    "product": "Better Together",
+    "link": "https://better-together.fun",
+    "phLink": "https://news.ycombinator.com/item?id=50331415",
+    "did": "上线：你的AI agent和其他人的agent组队，合力对付骚扰电话和垃圾短信。",
+    "who": "被推销电话轰炸、想以魔法打败魔法的人。",
+    "why": "Show HN当日发布。agent之间为了共同目标协作的消费级雏形，荒诞但方向真实。",
+    "tip": "Show HN 11/2当日发布。官网+发布页已核实。"
+  }
+]
