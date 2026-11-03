@@ -1,0 +1,293 @@
+{
+  "date": "2026-11-04",
+  "generatedAt": "2026-11-03T16:44:26.583Z",
+  "reportPath": "reports/2026-11-04-0044-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 56,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 18,
+      "keptCount": 14,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-11-02；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 18 条，AI 相关候选 14 条；实际 fallback：hunted_space。；历史去重后最终发布 14 条 Product Hunt 信号。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 7,
+      "keptCount": 7,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 24,
+      "keptCount": 18,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 9,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：未记录；Space: Command failed: curl -fsSL --connect-timeout 10 --max-time 20 https://huggingface.co/api/spaces?sort=lastModified&direction=-1&limit=60 curl: (28) Failed to connect to huggingface.co port 443 after 10003 ms: Timeout was reached; Model: Command failed: curl -fsSL --connect-timeout 10 --max-time 20 https://huggingface.co/api/models?sort=lastModified&direction=-1&limit=60 curl: (28) Failed to connect to huggingface.co port 443 after 10010 ms: Timeout was reached"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 17,
+      "keptCount": 17,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-10-27T16:05:37.511Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "beacon.sh",
+      "productKey": "https://www.producthunt.com/products/asymptotelabs",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "自我改进式记忆直接切入 coding agent 的上下文积累难题；值得验证它如何控制错误记忆、过期信息和持续迭代之间的边界。"
+    },
+    {
+      "rank": 2,
+      "product": "Momentic (YC W24) – Agents that catch bugs by using your app",
+      "productKey": "https://momentic.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 agent 像用户一样操作应用来发现缺陷，比单纯生成测试脚本更接近端到端质量闭环；重点看可复现性和误报控制。"
+    },
+    {
+      "rank": 3,
+      "product": "Clean",
+      "productKey": "https://www.ycombinator.com/launches/whx-clean-real-time-company-data-for-sales-teams-and-their-agents",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把实时公司变化直接转成销售团队与 agent 的下一步动作，产品判断点在于“数据更新”能否稳定落到可执行的账户策略。"
+    },
+    {
+      "rank": 4,
+      "product": "SFXMint – CC0 game SFX with a keyless API and MCP for coding agents",
+      "productKey": "https://sfxmint.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "CC0 音效、免密 API 与 MCP 的组合把素材获取嵌进 coding agent；值得看低接入门槛能否真正缩短游戏制作链路。"
+    },
+    {
+      "rank": 5,
+      "product": "The Letter Company",
+      "productKey": "https://www.ycombinator.com/launches/wbj-letterpress-1-the-world-s-first-coding-agent-harness-and-ide-for-growth-engineering",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Letterpress-1 把 coding agent、运行框架和 IDE 垂直到增长工程，关键在于是否形成从实验到上线与效果回收的一体化流程。"
+    },
+    {
+      "rank": 6,
+      "product": "Mago, an open source AI video studio, runs locally with Comfy",
+      "productKey": "https://github.com/magostudio/magostudio",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "本地运行、开源和 Comfy 工作流让视频生成具备可控性与可扩展性；应关注它能否支撑反复编辑，而非只产出一次性样片。"
+    },
+    {
+      "rank": 7,
+      "product": "Clayzo",
+      "productKey": "https://www.producthunt.com/products/clayzo",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它让 coding agent 直接参与动画与动效制作，值得看代码式创作能否保留设计师需要的时间轴控制和可迭代性。"
+    },
+    {
+      "rank": 8,
+      "product": "Agent Inbox",
+      "productKey": "https://www.producthunt.com/products/agent-inbox",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "给 agent 分配邮件、Slack 与 Telegram 身份，实质是在补多渠道收件与触达基础设施；权限、归属和人工接管是核心。"
+    },
+    {
+      "rank": 9,
+      "product": "React and NextJS Interactions with MCP for AI Coding – Hyperiux Vault",
+      "productKey": "https://vault.hyperiux.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 React/Next.js 交互资产通过 MCP 提供给 coding agent，价值在于减少“生成得出但做不细”的前端交互落差。"
+    },
+    {
+      "rank": 10,
+      "product": "Routant",
+      "productKey": "https://www.ycombinator.com/launches/whp-routant-let-ai-agents-into-your-apps-on-your-rules",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把 agent 接入应用时的授权范围做成产品，值得看能否把选择性访问、审计与撤权落实到具体数据和操作。"
+    },
+    {
+      "rank": 11,
+      "product": "Cedric AI for Meetings",
+      "productKey": "https://www.producthunt.com/products/cedric",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 agent 代为演示并参会，把会议助手从记录推进到代表用户行动；风险点是临场问答、授权边界和责任归属。"
+    },
+    {
+      "rank": 12,
+      "product": "Rigorix, Execution governance for AI agents, open-source engine",
+      "productKey": "https://rigorix.eu",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "开源执行治理引擎瞄准 agent 上线后的约束与追踪，产品价值取决于规则能否覆盖真实工具调用而不拖垮执行效率。"
+    },
+    {
+      "rank": 13,
+      "product": "ArchDocs – Shared context and verification for engineers and AI agents",
+      "productKey": "https://archdocs.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把工程师与 agent 的共享上下文和验证放在同一层，重点是文档能否随代码变化保持可信，而不是再造静态知识库。"
+    },
+    {
+      "rank": 14,
+      "product": "Friday Work",
+      "productKey": "https://www.producthunt.com/products/friday-work",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把“模型额度耗尽”转化为任务连续性问题，值得验证跨会话或跨模型接力时能否保住上下文与结果一致性。"
+    },
+    {
+      "rank": 15,
+      "product": "Hyperresearch",
+      "productKey": "https://www.producthunt.com/products/hyperresearch",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“持久、可验证”的 agentic search 直指研究任务的两项短板：过程易丢和结论难追溯；应看验证证据是否真正可审计。"
+    },
+    {
+      "rank": 16,
+      "product": "Try an AI agent wallet in the browser – buy a stamp from a bot",
+      "productKey": "https://proof.zketernity.app/stamps/try.html",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "浏览器内 agent 钱包用“向机器人买邮票”展示可支付闭环，关键不是 demo 本身，而是授权额度、签名和交易追责。"
+    },
+    {
+      "rank": 17,
+      "product": "Linkly AI Clipper",
+      "productKey": "https://www.producthunt.com/products/linkly-ai-clipper",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "它把网页清洗成 agent 友好的 Markdown，切中资料进入模型前的预处理环节；差异化取决于结构保真与后续引用能力。"
+    },
+    {
+      "rank": 18,
+      "product": "Display 1.0",
+      "productKey": "https://www.producthunt.com/products/display-dev",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让不同 agent 在同一工作区产出文档与应用，产品判断点是共享状态和交付物能否减少工具切换，而非只做统一入口。"
+    },
+    {
+      "rank": 19,
+      "product": "Sutrix",
+      "productKey": "https://www.ycombinator.com/launches/wbf-sutrix-ai-that-turns-patient-data-into-study-ready-datasets",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把患者数据转成研究可用数据集是明确的高成本垂直任务；除了其 80% 节省宣称，更应看数据合规和人工校验机制。"
+    },
+    {
+      "rank": 20,
+      "product": "Toolang – What if agent loops were functions?",
+      "productKey": "https://toolang.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 agent loop 抽象成函数，试图降低编排的理解与复用成本；值得看它是否让状态、重试和工具调用变得更可组合。"
+    }
+  ]
+}

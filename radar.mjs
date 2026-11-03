@@ -2571,8 +2571,18 @@ function isResourceListSignal(text) {
     /\b(?:awesome|curated)\s+(?:ai\s+)?(?:list|resources?)\b/i.test(text) ||
     /\bai\s+(?:resources?|directory|catalog|collection)\b/i.test(text) ||
     /\b(?:directory|catalog|collection)\s+of\s+(?:[\d,]+\s+)?ai\b/i.test(text) ||
+    /\b(?:directory|catalog|collection)\s+of\s+(?:[\d,]+\s+)?(?:dev(?:eloper)?\s+)?tools\b/i.test(text) ||
     /\b(?:gallery|directory|catalog)\s+(?:for|of)\s+(?:vibecoded\s+)?tools\b/i.test(text) ||
     /\b(?:searchable,?\s+)?(?:timestamped\s+)?index of [\d,]+ ai (?:engineer )?talks\b/i.test(text)
+  );
+}
+
+function isLowDepthProductHuntUtility(item, text) {
+  if (cleanKey(item.source).toLowerCase() !== "producthunt") return false;
+  return (
+    /\bcoding agent,? in the notch\b/i.test(text) ||
+    /\bclaude\s*\+\s*chatgpt limits on your\b/i.test(text) ||
+    /\bfollow ai models and agents like you follow people\b/i.test(text)
   );
 }
 
@@ -2654,6 +2664,7 @@ export function qualityLabelForItem(item) {
   if (item.category === "model_infra") return "weak_keep";
   if (isLowSignalGitHubPackageRelease(item)) return "weak_keep";
   if (isLowSignalProductHuntConsumerNovelty(text)) return "deprioritize";
+  if (isLowDepthProductHuntUtility(item, text)) return "deprioritize";
   if (isShowHnNonProductObservation(item, text)) return "drop";
   if (isResourceListSignal(text)) return "deprioritize";
   if (isHnFundraisingSignal(item, text)) return "deprioritize";

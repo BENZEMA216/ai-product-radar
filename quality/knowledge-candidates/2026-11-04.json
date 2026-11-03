@@ -1,0 +1,414 @@
+{
+  "generatedAt": "2026-11-03T16:15:36.985Z",
+  "date": "2026-11-04",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "LongCat 2.5 now available on AI Gateway",
+      "link": "https://vercel.com/changelog/longcat-2-5-now-available-on-ai-gateway",
+      "publishedAt": "2026-11-02T00:00:00.000Z",
+      "author": "Jerilyn Zheng",
+      "summary": "LongCat 2.5 from Meituan is now available on AI Gateway. This model combines native visual understanding with coding and multi-step tool use for agents working across complex codebases and full-project builds. Meituan highlights improvements in visual programming, creative design, and 3D tasks, alongside longer agent workflows that carry engineering work from planning through execution. The model supports text and image inputs with a 1M-token context window for code, documents, and extended task histories. Use meituan/longcat-2.5 as the model name: To use it in Claude Code, Codex, Cursor, and more, install the latest Vercel CLI and run setup: Then select meituan/longcat-2.5 in the agent. See the coding agents guide for details. Try LongCat 2.5 in the model playground . AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. You can view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 86.30759950396826,
+      "core": "LongCat 2.5 from Meituan is now available on AI Gateway. This model combines native visual understanding with coding and multi-step tool use for agents working across complex codebases and full-project builds. Meituan highlights improvements in visual programming, creative design, and 3D tasks, alongside longer agent workflows that carry engineering work from planning through execution. The model supports text and i…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-03T16:15:36.985Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "simon_willison",
+      "source": "Simon Willison",
+      "title": "The U.S. Census Bureau and “Super Intelligence”",
+      "link": "https://simonwillison.net/2026/Nov/2/census-bureau-super-intelligence",
+      "publishedAt": "2026-11-02T13:31:26.000Z",
+      "author": "",
+      "summary": "I was reminded today of AI Adoption Rate Trending Down for Large Companies , a chart produced by Apollo Global Management in September 2025, which appeared to show a slowdown in U.S. corporate AI adoption based on numbers collected by the U.S. Census Bureau. At the time I used that chart to demonstrate GPT-5 data analysis , and then to experiment with Claude's new Code Interpreter . I decided to try running those numbers again to see what had changed over the past year, and in doing so learned that the Bureau has fallen foul of Executive Order 14434 , aka the asinine Super Intelligence one. First, the updated chart Every two weeks the U.S. Census Bureau runs a survey called the Business Trends and Outlook Survey (aka BTOS). Each time it goes to 200,000 businesses out of 1.2 million total - the surveyed group (a \"panel\") cycles such that an individual business only completes the survey every twelve weeks. The latest data is published on alternating Thursdays at 10am. I used the most recent numbers (published October 22, 2026) to create a new version ( GPT-6 Astra Extra High transcript ) of the AI adoption chart, updated to reflect both the last twelve months and a change that was made to the survey question sent out by the Bureau: Here's a link to the larger image . For comparison, here's that AI adoption chart from last year (my GPT-5 version): In September 2025 the largest (250+ employees) companies answered \"yes\" around 12% of the time to the question about whether they used AI in \"producing goods or services\". Under the new \"any business function\" wording, by February 2026, those same large companies answered \"yes\" around 30% of the time, and by October 2026 that had increased to around 40%. The data in the above chart comes from the \"Employment size class\" XLSX file, available from here . Here's a copy of the file I used. You can view the survey document that is sent out to businesses - here's my snapshot copy of that 346KB PDF. The changing language of the questions As the chart demonstrates, the question asked by the Bureau changed in a material way on November 17th, 2025. Prior to that date, the question they asked was this (emphasis mine): In the last two weeks, did this business use Artificial Intelligence (AI) in producing goods or services ? (Examples of AI: machine learning, natural language processing, virtual agents, voice recognition, etc.) On December 3rd, 2025, the Bureau announced a significant change to that question. Here's the replacement: In the last two weeks, did this business use Artificial Intelligence (AI) in any of its business functions ? (Examples of AI: machine learning, natural language processing, virtual agents, voice recognition, etc.) No more \"producing goods or services\" - now it's \"in any of its business functions\"! This means that the answers to the question before and after November 17th are not directly comparable. From October 19, 2026, they ask about Super Intelligence When I went looking for the updated question language in the latest XLSX file, I couldn't find it. I found this instead: In the last two weeks, did this business use Super Intelligence or SI (formerly referred to as Artificial Intelligence or AI) in any of its business functions? (Examples of SI use include: SI-powered data analysis; generative SI for marketing, product design, or coding; virtual SI agents for customer service; SI-powered forecasting or pricing; SI-driven computer vision for quality control, etc.) The BTOS about page explains what happened: Beginning with the October 19, 2026 collection, instrument wording was updated due to Executive Order 14434 . The current numbers reflect the old Artificial Intelligence survey wording - the first survey results reflecting the Super Intelligence wording are due for publication on Thursday. Is this going to affect the survey? The obvious open question here is whether this wording change is going to affect the survey results. The businesses answering this survey will have last seen that question twelve weeks ago, when it was still called AI. Hopefully the new language isn't going to confuse them, especially since the survey helpfully spells out \"formerly referred to as Artificial Intelligence or AI\". I can't help but laugh at the absurdity of \"SI-powered data analysis; generative SI for marketing, product design, or coding; virtual SI agents for customer service\" though. You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
+      "evidenceLink": "",
+      "score": 77.09025823412699,
+      "core": "I was reminded today of AI Adoption Rate Trending Down for Large Companies , a chart produced by Apollo Global Management in September 2025, which appeared to show a slowdown in U.S. corporate AI adoption based on numbers collected by the U.S. Census Bureau. At the time I used that chart to demonstrate GPT-5 data analysis , and then to experiment with Claude's new Code Interpreter . I decided to try running those nu…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-03T16:15:36.985Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "red_hat_ai_engineering",
+      "source": "Red Hat Developer · AI",
+      "title": "Benchmarking tiered KV cache offloading on H100 GPUs in OpenShift AI 3.5",
+      "link": "https://developers.redhat.com/articles/2026/11/02/benchmarking-tiered-kv-cache-offloading-h100-gpus-openshift-ai-3-5",
+      "publishedAt": "2026-11-02T14:17:22.000Z",
+      "author": "Ramesh Doddaiah, Alberto Perdomo, Nathan Scott, Ashish Kamra, Michey Mehta, Yuchen Fama, Naina Singh",
+      "summary": "Long-context workloads are quickly becoming the norm for enterprise AI. Agentic applications carry an ever-growing history of tool calls and intermediate results, retrieval-augmented generation prepends thousands of tokens of retrieved context, and multi-turn assistants resend the whole conversation with every turn. In all of these cases, the model sees large parts of the same prompt again and again. The post Benchmarking tiered KV cache offloading on H100 GPUs in OpenShift AI 3.5 appeared first on Red Hat Developer .",
+      "evidenceLink": "",
+      "score": 69.05049632936507,
+      "core": "Long-context workloads are quickly becoming the norm for enterprise AI. Agentic applications carry an ever-growing history of tool calls and intermediate results, retrieval-augmented generation prepends thousands of tokens of retrieved context, and multi-turn assistants resend the whole conversation with every turn. In all of these cases, the model sees large parts of the same prompt again and again. The post Benchm…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-03T16:15:36.985Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "GPT-Rosalind-6 System Card Addendum",
+      "link": "https://deploymentsafety.openai.com/gpt-rosalind-6",
+      "publishedAt": "2026-11-02T14:44:02.000Z",
+      "author": "gmays https://news.ycombinator.com/user?id=gmays",
+      "summary": "Explore OpenAI safety evaluations and system cards for deployed AI systems.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50337503",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 71,
+        "comments": 55
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-03T16:15:36.985Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 67.37639200839097,
+      "core": "Explore OpenAI safety evaluations and system cards for deployed AI systems.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "fiddler_ai_evaluation",
+      "source": "Fiddler AI Blog",
+      "title": "Fiddler to Join CrowdStrike: Building the Future of Agentic Security and Safety",
+      "link": "https://www.fiddler.ai/blog/fiddler-joins-crowdstrike",
+      "publishedAt": "2026-11-03T00:00:00.000Z",
+      "author": "",
+      "summary": "Fiddler AI is joining CrowdStrike to connect agent behavior with security context, bringing agentic AI security and safety to every enterprise.",
+      "evidenceLink": "",
+      "score": 62.63299632936508,
+      "core": "Fiddler AI is joining CrowdStrike to connect agent behavior with security context, bringing agentic AI security and safety to every enterprise.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-03T16:15:36.985Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Agentic engineering intelligence with Amazon Nova Multimodal Embeddings and Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/agentic-engineering-intelligence-with-amazon-nova-multimodal-embeddings-and-amazon-bedrock-agentcore",
+      "publishedAt": "2026-11-02T17:01:16.000Z",
+      "author": "Aishwarya Gavili",
+      "summary": "Learn how to build a multi-agent engineering assistant that compresses aerospace component substitution evaluation from days to minutes, using Amazon Nova Multimodal Embeddings, Amazon Bedrock AgentCore, and the Strands Agents SDK to assemble substitution evidence while keeping the engineer as the decision-maker.",
+      "evidenceLink": "",
+      "score": 61.084504265873015,
+      "core": "Learn how to build a multi-agent engineering assistant that compresses aerospace component substitution evaluation from days to minutes, using Amazon Nova Multimodal Embeddings, Amazon Bedrock AgentCore, and the Strands Agents SDK to assemble substitution evidence while keeping the engineer as the decision-maker.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-03T16:15:36.985Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Leak Exposes 41,000 Homeland Security Workers–Including Undercover ICE Agents",
+      "link": "https://www.wired.com/story/massive-leak-exposes-41000-homeland-security-workers-including-undercover-ice-agents",
+      "publishedAt": "2026-10-28T21:03:24.000Z",
+      "author": "Aboutplants https://news.ycombinator.com/user?id=Aboutplants",
+      "summary": "The leaked records include the locations of ICE and CBP facilities, workers’ cell phone numbers, and the members of groups tied to wiretap programs, Palantir software, and xAI’s Grok chatbot.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50280864",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 472,
+        "comments": 303
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-03T16:15:36.985Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 59.458049200271645,
+      "core": "The leaked records include the locations of ICE and CBP facilities, workers’ cell phone numbers, and the members of groups tied to wiretap programs, Palantir software, and xAI’s Grok chatbot.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentconn_engineering",
+      "source": "AgentConn Field Reports",
+      "title": "Agent Swarms Still Can't Coordinate",
+      "link": "https://agentconn.com/blog/agent-swarms-coordination-benchmarks",
+      "publishedAt": "2026-11-01T00:00:00.000Z",
+      "author": "AgentConn Team",
+      "summary": "Two Minecraft benchmarks prove the bottleneck is coordination tax, not model IQ. What builders should know before scaling to multi-agent.",
+      "evidenceLink": "",
+      "score": 56.171091567460316,
+      "core": "Two Minecraft benchmarks prove the bottleneck is coordination tax, not model IQ. What builders should know before scaling to multi-agent.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-03T16:15:36.985Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "elastic_search_labs",
+      "source": "Elastic Search Labs",
+      "title": "How our agent skills research, build, and test a complete Elastic integration",
+      "link": "https://www.elastic.co/search-labs/blog/agent-skills-elastic-integration",
+      "publishedAt": "2026-11-02T00:00:00.000Z",
+      "author": "Chris Berkhout",
+      "summary": "We pointed our agent skills at the NIST NVD API and got two data streams and a validated CEL program, with pipeline and system tests passing. The research showed 78% of a day’s CVE records are republications of older ones, which changed the design.",
+      "evidenceLink": "",
+      "score": 55.502043948412705,
+      "core": "We pointed our agent skills at the NIST NVD API and got two data streams and a validated CEL program, with pipeline and system tests passing. The research showed 78% of a day’s CVE records are republications of older ones, which changed the design.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-03T16:15:36.985Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Build efficient agents with knowledge distillation on Amazon SageMaker AI",
+      "link": "https://aws.amazon.com/blogs/machine-learning/build-efficient-agents-with-knowledge-distillation-on-amazon-sagemaker-ai",
+      "publishedAt": "2026-11-02T17:01:31.000Z",
+      "author": "Giuseppe Zappia",
+      "summary": "Agentic assistants built on frontier models run a multi-step tool loop, and paying frontier prices on every step is hard to sustain at production scale. This post shows how to use sequence-level knowledge distillation (SeqKD) to transfer a frontier teacher's agentic behavior into a small, lower-cost student on Amazon SageMaker AI.",
+      "evidenceLink": "",
+      "score": 55.18480188492063,
+      "core": "Agentic assistants built on frontier models run a multi-step tool loop, and paying frontier prices on every step is hard to sustain at production scale. This post shows how to use sequence-level knowledge distillation (SeqKD) to transfer a frontier teacher's agentic behavior into a small, lower-cost student on Amazon SageMaker AI.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-03T16:15:36.985Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "GitHub Copilot is now available in JetBrains Air",
+      "link": "https://github.blog/changelog/2026-11-03-github-copilot-is-now-available-in-jetbrains-air",
+      "publishedAt": "2026-11-03T15:11:46.000Z",
+      "author": "Allison",
+      "summary": "You can now delegate coding tasks, guide execution, and review results with GitHub Copilot in JetBrains Air. The integration uses the Agent Client Protocol (ACP) and supports tasks in your… The post GitHub Copilot is now available in JetBrains Air appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 52.49621061507936,
+      "core": "You can now delegate coding tasks, guide execution, and review results with GitHub Copilot in JetBrains Air. The integration uses the Agent Client Protocol (ACP) and supports tasks in your… The post GitHub Copilot is now available in JetBrains Air appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-03T16:15:36.985Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "sierra_engineering",
+      "source": "Sierra Blog",
+      "title": "Redesigning Agent Studio around Ghostwriter",
+      "link": "https://sierra.ai/blog/redesigning-agent-studio-around-ghostwriter",
+      "publishedAt": "2026-11-02T19:37:48.000Z",
+      "author": "Sachi Shah",
+      "summary": "We’ve redesigned Agent Studio around Ghostwriter, so you can go from asking why resolution rates dropped to examining the conversations, updating a journey, and testing the fix — all in one conversation.",
+      "evidenceLink": "",
+      "score": 48.654186805555554,
+      "core": "We’ve redesigned Agent Studio around Ghostwriter, so you can go from asking why resolution rates dropped to examining the conversations, updating a journey, and testing the fix — all in one conversation.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-03T16:15:36.985Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Managed Deep Agents: the fastest way to ship a production deep agent",
+      "link": "https://www.langchain.com/blog/introducing-managed-deep-agents",
+      "publishedAt": "2026-11-02T22:28:13.000Z",
+      "author": "",
+      "summary": "Run deep agents in production with durable execution, sandboxes, tool access, and LangSmith observability, without building the runtime yourself. Now in private beta",
+      "evidenceLink": "",
+      "score": 48.645952678571426,
+      "core": "Run deep agents in production with durable execution, sandboxes, tool access, and LangSmith observability, without building the runtime yourself. Now in private beta",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-03T16:15:36.985Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentconn_engineering",
+      "source": "AgentConn Field Reports",
+      "title": "The Agent Had a Valid Key. It Deleted Production Anyway.",
+      "link": "https://agentconn.com/blog/agent-wiped-prod-db-control-layer",
+      "publishedAt": "2026-11-02T00:00:00.000Z",
+      "author": "AgentConn Team",
+      "summary": "Agents hold real credentials now. The fix isn't a better prompt — it's a control layer between the agent and every key it touches.",
+      "evidenceLink": "",
+      "score": 44.84648839285715,
+      "core": "Agents hold real credentials now. The fix isn't a better prompt — it's a control layer between the agent and every key it touches.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-03T16:15:36.985Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "5 best no-code LLM evaluation tools for product teams in 2026 - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/best-no-code-llm-evaluation-tools-2026",
+      "publishedAt": "2026-11-01T16:00:00.000Z",
+      "author": "",
+      "summary": "Compare no-code LLM evaluation tools for product managers: Braintrust, LangSmith, Comet Opik, PromptLayer, and Maxim AI, by what a PM can run alone and what limits affect collaboration.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-03T16:15:36.985Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 44.58061537698413,
+      "core": "Compare no-code LLM evaluation tools for product managers: Braintrust, LangSmith, Comet Opik, PromptLayer, and Maxim AI, by what a PM can run alone and what limits affect collaboration.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Proton apologizes to community after internal memo shows force behind proposed AI use in building its privacy products",
+      "link": "https://www.techradar.com/vpn/vpn-services/proton-apologizes-to-community-after-internal-memo-shows-force-behind-proposed-ai-use-in-building-its-privacy-products",
+      "publishedAt": "2026-11-02T22:33:47.000Z",
+      "author": "Dan Sung",
+      "summary": "Proton releases statement on X making security promises to users, as well as providing full details on internal AI engineering manifesto.",
+      "evidenceLink": "",
+      "score": 44.497024107142856,
+      "core": "Proton releases statement on X making security promises to users, as well as providing full details on internal AI engineering manifesto.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-03T16:15:36.985Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Support New AI Frameworks Faster Using NVIDIA Workload Map",
+      "link": "https://developer.nvidia.com/blog/support-new-ai-frameworks-faster-using-nvidia-workload-map",
+      "publishedAt": "2026-11-02T16:00:00.000Z",
+      "author": "Alon Lavian",
+      "summary": "NVIDIA DSX AI Factory Platform brings together technologies to help the ecosystem design, build, and operate more efficient AI factories, including open source,...",
+      "evidenceLink": "",
+      "score": 44.17267886904762,
+      "core": "NVIDIA DSX AI Factory Platform brings together technologies to help the ecosystem design, build, and operate more efficient AI factories, including open source,...",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-03T16:15:36.985Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pydantic_ai_engineering",
+      "source": "Pydantic AI Engineering",
+      "title": "Best Python AI Agent Frameworks in 2026 | Pydantic AI",
+      "link": "https://pydantic.dev/articles/best-python-ai-agent-frameworks",
+      "publishedAt": "2026-11-02T09:00:00.000Z",
+      "author": "",
+      "summary": "Compare Python AI agent frameworks: Pydantic AI, LangGraph, OpenAI Agents SDK, Google ADK, Microsoft, Strands Agents, CrewAI, Claude Agent SDK and Agno.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-03T16:15:36.985Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 42.611567757936506,
+      "core": "Compare Python AI agent frameworks: Pydantic AI, LangGraph, OpenAI Agents SDK, Google ADK, Microsoft, Strands Agents, CrewAI, Claude Agent SDK and Agno.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "lennys_newsletter",
+      "source": "Lenny's Newsletter",
+      "title": "How Figma’s PMs actually use AI every day | Ezra Mechaber (PM, Figma)",
+      "link": "https://www.lennysnewsletter.com/p/how-figmas-pms-actually-use-ai-every",
+      "publishedAt": "2026-11-02T13:04:11.000Z",
+      "author": "Claire Vo",
+      "summary": "Listen now | 🎙️ Figma growth PM Ezra Mechaber demos PM OS, a 31-skill repo used by 60+ PMs, and AutoXP, an agent that runs growth experiments with one human checkpoint",
+      "evidenceLink": "",
+      "score": 37.991151091269835,
+      "core": "Listen now | 🎙️ Figma growth PM Ezra Mechaber demos PM OS, a 31-skill repo used by 60+ PMs, and AutoXP, an agent that runs growth experiments with one human checkpoint",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-03T16:15:36.985Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "Building AI for Lawyers - Jacob Lauritzen, CTO of Legora",
+      "link": "https://latent.space/p/building-ai-for-lawyers-jacob-lauritzen-cto-of-legora",
+      "publishedAt": "2026-11-02T23:01:02.000Z",
+      "author": "Basil Chatha",
+      "summary": "Evals without traces, million-cell tabular reviews, and cracks in the billable hour as a business model",
+      "evidenceLink": "",
+      "score": 36.340575694444446,
+      "core": "Evals without traces, million-cell tabular reviews, and cracks in the billable hour as a business model",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-03T16:15:36.985Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}

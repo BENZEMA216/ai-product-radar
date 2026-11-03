@@ -33,6 +33,11 @@ const HARD_NEGATIVE_PATTERNS = [
   /\blayered gradient wave backgrounds using three\.js and shaders\b/i,
   /\bseason your claude code chats with sitcom replies\b/i
 ];
+const LOW_DEPTH_UTILITY_PATTERNS = [
+  /\bcoding agent,? in the notch\b/i,
+  /\bclaude\s*\+\s*chatgpt limits on your\b/i,
+  /\bfollow ai models and agents like you follow people\b/i
+];
 const KNOWN_TEMPLATE_WHY = [
   "agent 化包装体现产品从工具到可执行工作流的迁移。",
   "可作为 AI 产品定位、交互或分发方式的竞品/灵感样本。",
@@ -163,12 +168,26 @@ function auditResourceLists(rows) {
       /\b(?:a\s+)?list\s+of\s+ai\b/.test(text) ||
       /\b(?:index|database) of (?:coding )?agent incidents?\b/.test(text) ||
       /\b(?:awesome|curated)\s+(?:ai\s+)?(?:list|resources?)\b/.test(text) ||
-      /\b(?:directory|catalog|collection)\s+of\s+(?:[\d,]+\s+)?ai\b/.test(text)
+      /\b(?:directory|catalog|collection)\s+of\s+(?:[\d,]+\s+)?ai\b/.test(text) ||
+      /\b(?:directory|catalog|collection)\s+of\s+(?:[\d,]+\s+)?(?:dev(?:eloper)?\s+)?tools\b/.test(text)
     );
   });
   if (!bad.length) return [];
   return [
     failure("resource_list_top20", "Top 20 中出现资源列表/目录类信号，不是明确产品发布或产品更新。", {
+      products: bad.map((item) => item.product)
+    })
+  ];
+}
+
+function auditLowDepthUtilities(rows) {
+  const bad = rows.slice(0, 20).filter((row) => {
+    const text = `${row.product} ${row.did}`;
+    return LOW_DEPTH_UTILITY_PATTERNS.some((pattern) => pattern.test(text));
+  });
+  if (!bad.length) return [];
+  return [
+    failure("low_depth_utility_top20", "Top 20 中出现只有新奇入口、额度展示或关注列表的低产品深度工具。", {
       products: bad.map((item) => item.product)
     })
   ];
@@ -671,6 +690,7 @@ export function auditReportQuality({
   failures.push(...auditQualityFileAlignment({ reportDate, sourceHealthPath, feedbackPath, feedbackSnapshot }));
   failures.push(...auditHardNegatives(rows));
   failures.push(...auditResourceLists(rows));
+  failures.push(...auditLowDepthUtilities(rows));
   failures.push(...auditAihotNewsOrResearch(rows));
   failures.push(...auditRepeatedWhy(rows));
   failures.push(...auditSourceDiversity(rows, sourceHealth));

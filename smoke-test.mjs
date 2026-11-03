@@ -1831,6 +1831,26 @@ function testCurrentWeakProductSignalsStayWeak() {
     }),
     "weak_keep"
   );
+  for (const [product, did] of [
+    ["Termy", "Your coding agent, in the notch"],
+    ["Usage for Claude + ChatGPT 4.0", "Claude + ChatGPT limits on your Mac, iPhone, iPad and Watch"],
+    ["Modelpeers", "Follow AI models and agents like you follow people"]
+  ]) {
+    assert.equal(
+      qualityLabelForItem({
+        product,
+        link: "https://www.producthunt.com/products/example",
+        type: "新产品",
+        did,
+        why: "Product Hunt 产品。",
+        evidence: "Product Hunt fallback",
+        source: "producthunt",
+        category: "product"
+      }),
+      "deprioritize",
+      `${product} should not enter the Priority Top 20 on a low-depth utility tagline`
+    );
+  }
 }
 
 function testProductHuntRejectsLowSignalConsumerNovelty() {
@@ -2162,6 +2182,20 @@ function testPriorityScoreDownranksResourceLists() {
   assert.ok(
     priorityScore(productLaunch) > priorityScore(talksIndex),
     "AI talk indexes should not outrank clear AI product launches"
+  );
+  const devToolDirectory = {
+    ...resourceList,
+    product: "DevShelf Free, zero-paywall directory of 565 dev tools and MCP server",
+    did: "HN 发布帖出现：Show HN: DevShelf Free, zero-paywall directory of 565 dev tools and MCP server"
+  };
+  assert.equal(
+    qualityLabelForItem(devToolDirectory),
+    "deprioritize",
+    "developer-tool directories with an MCP wrapper should remain resource lists"
+  );
+  assert.ok(
+    priorityScore(productLaunch) > priorityScore(devToolDirectory),
+    "developer-tool directories should not outrank clear AI product launches"
   );
 }
 
@@ -3324,11 +3358,11 @@ function testQualityAuditFlagsDuplicateRepoTop20() {
 function testQualityAuditFlagsResourceListsTop20() {
   const rows = [
     {
-      product: "A List of AI Neolabs",
-      link: "https://example.com/ai-neolabs",
+      product: "DevShelf Free, zero-paywall directory of 565 dev tools and MCP server",
+      link: "https://ritualdev.in/devshelf/",
       source: "HN Algolia",
-      why: "这是一个 AI 资源列表，不是可体验产品发布。",
-      did: "HN 发布帖出现：Show HN: A List of AI Neolabs",
+      why: "这是一个开发者工具目录，不是可体验产品发布。",
+      did: "HN 发布帖出现：Show HN: DevShelf Free, zero-paywall directory of 565 dev tools and MCP server",
       category: "product",
       qualityLabel: "keep"
     },
@@ -3345,6 +3379,32 @@ function testQualityAuditFlagsResourceListsTop20() {
   const audit = auditReportQuality({ rows });
   assert.equal(audit.ok, false);
   assert.ok(audit.failures.some((failure) => failure.code === "resource_list_top20"));
+}
+
+function testQualityAuditFlagsLowDepthUtilitiesTop20() {
+  const rows = [
+    {
+      product: "Termy",
+      link: "https://www.producthunt.com/products/termy",
+      source: "Product Hunt",
+      why: "常驻入口实验。",
+      did: "Your coding agent, in the notch",
+      category: "product",
+      qualityLabel: "keep"
+    },
+    ...Array.from({ length: 19 }, (_, index) => ({
+      product: `Useful Agent Product ${index}`,
+      link: `https://example.com/useful-agent-${index}`,
+      source: index % 2 ? "HN Algolia" : "Product Hunt",
+      why: "它有明确的 agent 工作流场景，适合产品经理观察执行入口和采用门槛。",
+      did: "发布 AI agent workflow 产品。",
+      category: "product",
+      qualityLabel: "keep"
+    }))
+  ];
+  const audit = auditReportQuality({ rows });
+  assert.equal(audit.ok, false);
+  assert.ok(audit.failures.some((failure) => failure.code === "low_depth_utility_top20"));
 }
 
 function testQualityAuditFlagsGenericHfSpaceFloodTop20() {
@@ -5308,6 +5368,7 @@ const tests = [
   ["Quality audit flags duplicate repo Top 20", testQualityAuditFlagsDuplicateRepoTop20],
   ["Quality audit allows two sources when remaining sources are only weak", testQualityAuditAllowsTwoSourcesWhenRemainingSourcesAreOnlyWeak],
   ["Quality audit flags resource lists Top 20", testQualityAuditFlagsResourceListsTop20],
+  ["Quality audit flags low-depth utilities Top 20", testQualityAuditFlagsLowDepthUtilitiesTop20],
   ["Quality audit flags generic HF Space flood Top 20", testQualityAuditFlagsGenericHfSpaceFloodTop20],
   ["Quality audit flags AIHOT research Top 20", testQualityAuditFlagsAihotResearchTop20],
   ["Quality audit flags AIHOT infra observations Top 20", testQualityAuditFlagsAihotInfraObservationTop20],
