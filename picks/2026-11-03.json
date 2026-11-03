@@ -1,0 +1,83 @@
+[
+  {
+    "product": "Subvocal",
+    "link": "https://subvocal.company/",
+    "phLink": "https://news.ycombinator.com/item?id=50340088",
+    "did": "上线无声语音接口：不用发出声音就能和电脑对话——默读级别的输入，AI识别你的\"喉头细语\"。",
+    "who": "在开放办公室、通勤和深夜想安静使唤AI的人。",
+    "why": "Show HN当日746票（当日最高，远超其他）。语音输入的下一代形态：从\"小声说\"到\"不用说\"。",
+    "tip": "Show HN 11/3当日发布。官网链接来自发布页，仅发布页描述已核实。功能未实测。"
+  },
+  {
+    "product": "AgentKit by Scalekit",
+    "link": "https://www.scalekit.com/",
+    "phLink": "https://www.producthunt.com/products/scalekit",
+    "did": "上线生产级MCP网关：agent经一个网关调用600+应用里的3万+工具（Salesforce到GitHub），每次调用都以授权用户身份、在其授权范围内执行；可给每个agent配最小工具集（Virtual MCP Servers）、接内部API、邮件触发agent；全程留审计日志。免费档每月1万次工具调用。",
+    "who": "要把agent从demo推到生产、卡在鉴权和审计上的开发者。",
+    "why": "PH当日第1名（157票）。agent调工具的\"权限+审计\"层正是上线前最后一道关。",
+    "tip": "PH 11/3当日发布（Scalekit既有产品线的新品）。官网+发布页已核实；免费额度来自发布页。功能未实测。"
+  },
+  {
+    "product": "Teamily AI",
+    "link": "https://teamily.ai/",
+    "phLink": "https://www.producthunt.com/products/teamily-ai-human-ai-social-network",
+    "did": "上线人机协作信使：人和常驻agent同处一个上下文感知空间，多用户多agent协同；agent带持久记忆、主动智能，连接文档、会议、电话、工作流和业务系统。免费起步。",
+    "who": "想让agent成为团队正式成员而不只是个人助手的团队。",
+    "why": "PH当日第2名（144票）。从\"每人一个agent\"到\"团队里有agent\"，协作形态再走一步。",
+    "tip": "PH 11/3当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Testifly",
+    "link": "https://testifly.dev",
+    "phLink": "https://www.producthunt.com/products/testifly-launch",
+    "did": "上线自治AI QA：给个URL和登录，几分钟内自动生成端到端Web测试，理解真实用户流程并随UI变化自适应，少脚本少维护，接入CI。",
+    "who": "被脆弱E2E脚本折磨、迭代又快的开发团队。",
+    "why": "PH当日第3名。\"零提示词零维护\"的QA正是agent替代重复工程劳动的标准场景。",
+    "tip": "PH 11/3当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Videco",
+    "link": "https://videco.io",
+    "phLink": "https://www.producthunt.com/products/videco",
+    "did": "上线视频内容工厂：托管webinar/演示录像，AI自动切成短片、博客和社媒内容，一处完成分发。",
+    "who": "有长视频资产、想一鱼多吃的市场团队。",
+    "why": "PH当日第4名。录一次播全网的\"内容复用\"继续自动化。",
+    "tip": "PH 11/3当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Synter Canvas",
+    "link": "https://synterai.com",
+    "phLink": "https://www.producthunt.com/products/synter-canvas",
+    "did": "上线广告投放agent：跨30+广告平台建 campaign、投放、优化，每次改动有安全闸和护栏；按已核实写入计费（$0.25/次），不抽广告费。",
+    "who": "同时在多个平台投广告、想把手忙脚乱交给agent的增长团队。",
+    "why": "PH当日第5名。\"按写入计费、不抽成\"的定价避开了广告agent的利益冲突，值得同行参考。",
+    "tip": "PH 11/3当日发布。官网+发布页已核实；价格来自发布页。功能未实测。"
+  },
+  {
+    "product": "MachineMail",
+    "link": "https://machinemail.dev",
+    "phLink": "https://www.producthunt.com/products/machinemail",
+    "did": "上线agent专用真实邮箱：MCP/API接入、可用自有域名，每封入站邮件附信任报告（识别伪造和注入）；免费档每月3000封，付费$9/月起。",
+    "who": "让agent收发邮件、又担心钓鱼和注入攻击的开发者。",
+    "why": "PH当日第8名。一周内第三个agent邮箱产品（Pidgeon、Agent Inbox之后），这个主打\"入站信任报告\"，安全角度是差异点。",
+    "tip": "PH 11/3当日发布。官网+发布页已核实；价格来自发布页。功能未实测。"
+  },
+  {
+    "product": "Hookdeck Inspect",
+    "link": "https://hookdeck.com",
+    "phLink": "https://www.producthunt.com/products/hookdeck",
+    "did": "事件基础设施Hookdeck推出免费webhook测试工具：给人和agent调试用，webhook收发、观测、重放一处完成。",
+    "who": "接webhook接到头秃、想让agent自己排查事件流的开发者。",
+    "why": "PH当日第6名。webhook调试明确把agent列为用户，基础设施工具开始为人和agent双设计。",
+    "tip": "PH 11/3发布；既有产品的新免费工具。官网+发布页已核实。"
+  },
+  {
+    "product": "People Search by Context.dev",
+    "link": "https://context.dev",
+    "phLink": "https://www.producthunt.com/products/context-dev",
+    "did": "网页数据API平台Context.dev新增People Search API：按角色、公司、地点查人，和既有的网页抓取/品牌数据/站点爬取同一套SDK（TS/Python/Ruby）。",
+    "who": "做销售线索、招聘或调研类agent、需要结构化\"找人\"能力的开发者。",
+    "why": "PH当日第10名。给agent的\"查人\"API补上了结构化网页数据的最后一块拼图。",
+    "tip": "PH 11/3发布；既有平台的新API能力。官网+发布页已核实。功能未实测。"
+  }
+]
