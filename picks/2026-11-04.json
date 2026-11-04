@@ -1,0 +1,91 @@
+[
+  {
+    "product": "Wanaka Studio",
+    "link": "https://wanaka.app/",
+    "phLink": "https://www.producthunt.com/products/wanaka-studio",
+    "did": "上线首个AI原生3D游戏引擎：AI agent直接建出可玩的3D游戏，可视化编辑器同步改、自动绑骨、内置多人、一键发布浏览器链接，全程不用写代码。",
+    "who": "想做可玩原型、又不想先学Unity的独立开发者和游戏创意人。",
+    "why": "PH当日第1名（176票）。vibe coding从网页/应用正式跨进3D游戏。",
+    "tip": "PH 11/4当日发布。官网+发布页已核实；官方称比\"Claude Opus 5.5+Unity\"省约80% token，未独立验证。功能未实测。"
+  },
+  {
+    "product": "Floot Payments",
+    "link": "https://floot.com",
+    "phLink": "https://www.producthunt.com/products/floot",
+    "did": "Floot（10/29入选过）新增收款能力：在ChatGPT/Claude里搭的应用可直接接订阅、一次性付款、优惠券和退款，走Stripe、免配webhook。",
+    "who": "用对话做出应用、下一步就要收费的独立开发者。",
+    "why": "PH当日第2名。vibe coding补上最后一环：从\"能做出来\"到\"能卖出去\"。",
+    "tip": "PH 11/4发布；既有产品的重要新功能（10/29曾报道其应用构建能力）。官网+发布页已核实。"
+  },
+  {
+    "product": "Orphex MCP",
+    "link": "https://mcp.orphex.co/",
+    "phLink": "https://www.producthunt.com/products/orphex-mcp-let-s-do-agentic-marketing",
+    "did": "上线营销栈统一MCP网关：把Google Ads/Meta/Shopify等65+平台接进Claude/ChatGPT/Cursor，AI可跨渠道分析、调预算、停亏损素材，每次改动留痕且有安全护栏。",
+    "who": "同时管多个广告平台、想让AI动手又要有审批闸的增长团队。",
+    "why": "PH当日第3名。营销agent从\"只能读报表\"到\"可控地写\"，MCP成为营销栈的标准接口。",
+    "tip": "PH 11/4当日发布。官网+发布页已核实；发布页称起步免费、首月7折。功能未实测。"
+  },
+  {
+    "product": "Prelulu",
+    "link": "https://prelulu.ai",
+    "phLink": "https://www.producthunt.com/products/prelulu",
+    "did": "上线AI角色扮演平台：和AI角色文字或视频实时roleplay，实时数字人技术首次做到消费级规模，也可自建角色。",
+    "who": "喜欢沉浸式剧情、互动故事的玩家和内容创作者。",
+    "why": "PH当日第4名。实时avatar从演示走向大众产品，AI陪伴赛道的新形态。",
+    "tip": "PH 11/4当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "kosa8",
+    "link": "https://kosa8.com",
+    "phLink": "https://www.producthunt.com/products/kosa8",
+    "did": "上线企业级agent沙箱：每个agent一个独立microVM（独立内核），密钥留在宿主机、沙箱只放占位符，网络默认全关只放行白名单，出错约1秒整机回滚；Docker兼容、MCP原生、审计链签名。",
+    "who": "在金融/医疗/政务等强合规环境跑agent的安全和平台团队。",
+    "why": "PH当日第5名。agent安全从容器级升到\"可秒级回滚的真虚拟机\"，气隙部署是卖点。",
+    "tip": "PH 11/4当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Render Sandboxes",
+    "link": "https://render.com",
+    "phLink": "https://www.producthunt.com/products/render",
+    "did": "云平台Render新增Sandboxes：给每个agent一台按需的隔离计算机，配合Git部署、私有网络和预览环境跑长任务。",
+    "who": "在Render上部署产品、想让agent安全跑起来的团队。",
+    "why": "PH当日并列第6。主流云平台正式把\"agent的运行环境\"做成一等公民。",
+    "tip": "PH 11/4发布；既有平台的重要新功能。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "OpenMail",
+    "link": "https://openmail.sh",
+    "phLink": "https://www.producthunt.com/products/openmail",
+    "did": "上线agent专属邮箱API：每个agent一个独立收件箱和发送信誉，可用自有域名，收信经webhook/WebSocket直达代码，附件转文本，带托管MCP服务器；EU托管，3个邮箱免费。",
+    "who": "让agent注册服务、收验证码、回客户邮件、又不想共用发送池被连坐的开发者。",
+    "why": "PH当日第8名。本周第四个agent邮箱（Pidgeon、Agent Inbox、MachineMail之后），主打每agent独立信誉——赛道卷出细分了。",
+    "tip": "PH 11/4当日发布。官网+发布页已核实；免费额度来自发布页。功能未实测。"
+  },
+  {
+    "product": "fileForensics by fileAI",
+    "link": "https://www.file.ai/",
+    "phLink": "https://www.producthunt.com/products/fileai-ai-ocr",
+    "did": "上线文件可信度核验：在AI提取文件内容之前，先检查篡改痕迹和AI合成内容，返回带证据的发现；API/MCP接入agent流水线。",
+    "who": "让agent处理合同、票据、报销单，担心脏文件混进自动化流程的团队。",
+    "why": "PH当日第9名。OCR之后的新一层：先问文件本身可不可信，再谈内容提取。",
+    "tip": "PH 11/4当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Uncracked City",
+    "link": "https://uncracked.city",
+    "phLink": "https://news.ycombinator.com/item?id=50358352",
+    "did": "上线侦探游戏：在真实城市里查案，审讯会说谎的LLM嫌疑人——每句口供都要你自己判断真假。",
+    "who": "喜欢剧本杀和推理、想测测自己识谎能力的玩家。",
+    "why": "Show HN当日发布（85票）。\"嫌疑人会撒谎\"把LLM的不确定性直接变成游戏机制，设计聪明。",
+    "tip": "Show HN 11/4当日发布。官网+发布页已核实。"
+  },
+  {
+    "product": "Blanktick",
+    "link": "https://blanktick.org/",
+    "did": "开源免费的Windows\"AI体检\"：扫描电脑上可被劫持的agent、暴露的本地模型服务、明文存放的AI key等风险，离线运行。",
+    "who": "Windows上跑了一堆AI工具和本地模型、从没查过暴露面的用户。",
+    "why": "本周agent安全第四发（Vibecheck、kosa8、fileForensics同线）：开始有人给个人电脑做AI时代的杀毒了。",
+    "tip": "Grok Bot邮件线索，官网已独立核实（开源、离线、免费）。功能未实测。"
+  }
+]
