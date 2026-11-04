@@ -1,0 +1,293 @@
+{
+  "date": "2026-11-05",
+  "generatedAt": "2026-11-04T16:21:36.273Z",
+  "reportPath": "reports/2026-11-05-0021-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 64,
+    "top20Sources": [
+      "Product Hunt",
+      "YC Launch",
+      "HN Algolia"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 38,
+      "keptCount": 22,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-11-03；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 38 条，AI 相关候选 22 条；实际 fallback：hunted_space。；历史去重移除 1 条已报道或已处理日榜 Product Hunt 信号，最终发布 21 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 9,
+      "keptCount": 9,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 28,
+      "keptCount": 16,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 15,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：未记录；Space: Command failed: curl -fsSL --connect-timeout 10 --max-time 20 https://huggingface.co/api/spaces?sort=lastModified&direction=-1&limit=60 curl: (28) Failed to connect to huggingface.co port 443 after 10004 ms: Timeout was reached; Model: Command failed: curl -fsSL --connect-timeout 10 --max-time 20 https://huggingface.co/api/models?sort=lastModified&direction=-1&limit=60 curl: (28) Failed to connect to huggingface.co port 443 after 10004 ms: Timeout was reached"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 18,
+      "keptCount": 18,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-10-27T16:05:37.511Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "AgentKit by Scalekit",
+      "productKey": "https://www.producthunt.com/products/scalekit",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把代表 agent 执行动作的 MCP gateway 做到生产环境，关键观察点是它能否同时解决授权、审计和工具接入，而不只是再加一层协议代理。"
+    },
+    {
+      "rank": 2,
+      "product": "Videco",
+      "productKey": "https://www.producthunt.com/products/videco",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把一条视频继续拆成整套内容 campaign，价值在于降低多渠道复用成本；需要继续验证自动改编是否保留品牌语气和平台差异。"
+    },
+    {
+      "rank": 3,
+      "product": "Sona8",
+      "productKey": "https://www.ycombinator.com/launches/wt1-sona8-understand-improve-and-automate-workflows",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "先从访谈、屏幕和手机画面还原真实流程，再把流程图作为 agent 上下文，这条路径比直接自动化更适合发现隐性步骤和交接断点。"
+    },
+    {
+      "rank": 4,
+      "product": "asklog",
+      "productKey": "https://www.producthunt.com/products/asklog",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 coding agent 遇到判断题时把问题发到手机，提供了明确的人机审批入口；值得看等待、超时和多任务排队是否会成为新瓶颈。"
+    },
+    {
+      "rank": 5,
+      "product": "Droneship – sandbox for your coding agents",
+      "productKey": "https://droneship.run",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "为 coding agent 提供独立 sandbox，直接对应执行代码时的隔离需求；产品成败取决于环境启动速度、权限边界和故障回收。"
+    },
+    {
+      "rank": 6,
+      "product": "Wavefunction",
+      "productKey": "https://www.producthunt.com/products/wavefunction",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Mac 上的极简开源 coding agent 提供了更轻的本地入口，值得比较它在可审计性和可扩展性上是否足以换掉成熟 IDE agent。"
+    },
+    {
+      "rank": 7,
+      "product": "Teamily AI",
+      "productKey": "https://www.producthunt.com/products/teamily-ai-human-ai-social-network",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把个人 agent、agent 团队和真人放进同一 messenger，值得观察任务交接、身份区分和通知负担能否被设计清楚。"
+    },
+    {
+      "rank": 8,
+      "product": "Animus AI Blocker:Block AI slop images/videos on your social media feed",
+      "productKey": "https://chromewebstore.google.com/detail/animus-ai-blocker/ofpjilegndibkndcacajdgmkjicjgbck",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "这是针对 AI 生成低质图片和视频的浏览器过滤器，反映用户开始需要管理 AI 内容供给；但用途较窄，不能仅凭反感 AI slop 高估产品深度。"
+    },
+    {
+      "rank": 9,
+      "product": "nana",
+      "productKey": "https://www.producthunt.com/products/nana-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Windows 端把多个 coding agent 收进一个终端，切中了生态入口分散的问题；真正差异要看会话隔离、上下文切换和工具兼容。"
+    },
+    {
+      "rank": 10,
+      "product": "Infino AI",
+      "productKey": "https://www.producthunt.com/products/infino-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 agent 在同一份 Parquet 数据上同时做搜索、向量检索和 SQL，减少多套索引同步；值得验证统一副本能否覆盖实时性和权限需求。"
+    },
+    {
+      "rank": 11,
+      "product": "Phone Harness",
+      "productKey": "https://www.ycombinator.com/launches/wdr-phone-harness-let-your-agent-tap-scroll-and-type-on-your-iphone-or-android",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 agent 直接操作实体或云端 iPhone、Android，把移动端测试和业务执行纳入自动化；风险重点是设备授权、误操作回滚和隐私数据隔离。"
+    },
+    {
+      "rank": 12,
+      "product": "Simantic",
+      "productKey": "https://www.ycombinator.com/launches/why-simantic-firmware-simulation-for-ai-agents",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用仿真加速 firmware 验证，给硬件 agent 提供可反复试错的环境；这是缩短软硬件反馈周期的明确垂直切口。"
+    },
+    {
+      "rank": 13,
+      "product": "Navier AI",
+      "productKey": "https://www.ycombinator.com/launches/wss-prism-by-navier-ai-agents-for-hardware-engineering",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 CAD、仿真和工程报告串成硬件工程 agent，覆盖的不只是生成文本；应重点看计算结果校验与工程师审批如何嵌入流程。"
+    },
+    {
+      "rank": 14,
+      "product": "NEXUPIRA",
+      "productKey": "https://www.producthunt.com/products/nexupira",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "“交付完成结果”比通用对话助手更接近业务采购语言，值得看它如何定义完成标准、汇报过程和失败责任。"
+    },
+    {
+      "rank": 15,
+      "product": "Synter Canvas",
+      "productKey": "https://www.producthunt.com/products/synter-canvas",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "跨 30 多个广告平台执行投放，真正难点是预算权限、归因口径与异常止损；若这些控制成立，才是可用的增长 agent。"
+    },
+    {
+      "rank": 16,
+      "product": "Testifly",
+      "productKey": "https://www.producthunt.com/products/testifly-launch",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "以零提示、零维护承诺自主 QA，直接挑战传统测试编排；需要核验它如何生成覆盖、复现失败并避免把误报留给人工收尾。"
+    },
+    {
+      "rank": 17,
+      "product": "Mallard: Git for the age of AI agents",
+      "productKey": "https://mallard-ai.com/home",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 agent 产生的变更和过程纳入类似 Git 的版本管理，切中多人多 agent 协作的追责问题；关键是能否回放上下文而不只存最终 diff。"
+    },
+    {
+      "rank": 18,
+      "product": "RapAvatar – Turn any photo into a lip-synced rap video with AI",
+      "productKey": "https://rapavatar.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "照片转对口型说唱视频属于明确但偏一次性的娱乐工作流，首日传播容易，长期价值要看复用频率和编辑控制是否足够。"
+    },
+    {
+      "rank": 19,
+      "product": "QAmcp – an open-source tester and monitor for MCP servers",
+      "productKey": "https://qamcp.dev/?from=hackernews",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "MCP server 的测试与监控开始产品化，说明协议生态进入运维阶段；值得看它能否定位工具调用、schema 变化和线上可用性问题。"
+    },
+    {
+      "rank": 20,
+      "product": "Scrawl",
+      "productKey": "https://www.producthunt.com/products/scrawl-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用视觉框直接告诉 agent 哪里有问题，比文字描述更适合 UI 调试；产品价值取决于标注能否准确映射到可执行修改。"
+    }
+  ]
+}

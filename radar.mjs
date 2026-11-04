@@ -2632,7 +2632,11 @@ function isLowSignalGitHubPackageRelease(item) {
   const releaseTag = did.match(/^发布\s+([^。]{1,140})。$/)?.[1] || "";
   const hasOnlyChannelTag = /^(stable|beta|alpha|latest|nightly|canary)$/i.test(releaseTag);
   const isBuildSourceBundle = /\bcygwin build inputs and matching source\b/i.test(releaseText);
-  return onlyVersionAnnouncement && (isScopedPackageVersion || hasVersionInTitle || hasOnlyChannelTag || isBuildSourceBundle);
+  const isSourceArchiveBundle = /\b(?:source|sources)\s+(?:archive|bundle)\b/i.test(releaseText);
+  return (
+    onlyVersionAnnouncement &&
+    (isScopedPackageVersion || hasVersionInTitle || hasOnlyChannelTag || isBuildSourceBundle || isSourceArchiveBundle)
+  );
 }
 
 function isStrongAggregatorProductSignal(item) {

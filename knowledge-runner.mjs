@@ -879,6 +879,19 @@ function publicKnowledgeLink(value) {
     const host = url.hostname.toLowerCase();
     if (!["http:", "https:"].includes(url.protocol)) return "";
     if (
+      host === "localhost" ||
+      host.endsWith(".localhost") ||
+      host.endsWith(".local") ||
+      host === "0.0.0.0" ||
+      host === "::1" ||
+      /^127(?:\.\d{1,3}){3}$/.test(host) ||
+      /^10(?:\.\d{1,3}){3}$/.test(host) ||
+      /^192\.168(?:\.\d{1,3}){2}$/.test(host) ||
+      /^172\.(?:1[6-9]|2\d|3[01])(?:\.\d{1,3}){2}$/.test(host)
+    ) {
+      return "";
+    }
+    if (
       host === "mail.google.com" ||
       host === "substack.com" ||
       host === "open.substack.com" ||

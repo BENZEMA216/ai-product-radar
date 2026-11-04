@@ -2259,6 +2259,24 @@ function testPriorityScoreDownranksLowSignalPatchRelease() {
   );
 }
 
+function testSourceArchiveReleaseIsLowSignal() {
+  const sourceArchiveRelease = {
+    product: "openai/codex libcap 2.75 source archive",
+    link: "https://github.com/openai/codex/releases/tag/libcap-v2.75",
+    type: "老产品更新",
+    did: "发布 libcap 2.75 source archive。",
+    why: "仅有归档名称，没有功能或稳定性变更摘要。",
+    evidence: "[GitHub Release](https://github.com/openai/codex/releases/tag/libcap-v2.75)",
+    source: "github",
+    category: "product"
+  };
+  assert.equal(
+    qualityLabelForItem(sourceArchiveRelease),
+    "weak_keep",
+    "source-only archives without a changelog should remain weak signals"
+  );
+}
+
 function testPrioritySortKeepsStrongLabelsBeforeWeakSignals() {
   const sorted = sortCandidatesForPriority([
     {
@@ -4512,6 +4530,20 @@ async function testHckerNewsKnowledgeFixture() {
     assert.deepEqual(items[0].hnMetrics, { points: 241, comments: 200 });
     assert.equal(items[0].access.mode, "public");
     assert.match(items[0].core, /software engineering/);
+
+    globalThis.fetch = async () =>
+      new Response(
+        '<html><head><link rel="canonical" href="https://localhost/private-system-card"><meta name="description" content="An analysis of generative AI evaluation, engineering tradeoffs, and benchmark design."></head><body><main>Public-looking content must not make a loopback canonical URL publishable.</main></body></html>',
+        { status: 200, headers: { "content-type": "text/html" } }
+      );
+    const loopbackCanonical = await normalizeHckerNewsItems(
+      parsed,
+      { weight: 13, minimumPoints: 80, probeItems: 20, maxItems: 8 },
+      new Date("2026-08-04T00:00:00Z"),
+      new Date("2026-08-05T12:00:00Z"),
+      new Date("2026-08-05T12:00:00Z")
+    );
+    assert.equal(loopbackCanonical.length, 0, "loopback canonical URLs must not be published as public knowledge links");
   } finally {
     globalThis.fetch = originalFetch;
   }
@@ -5337,6 +5369,7 @@ const tests = [
   ["Priority score downranks resource lists", testPriorityScoreDownranksResourceLists],
   ["Priority score uses Product Hunt engagement", testPriorityScoreUsesProductHuntEngagement],
   ["Priority score downranks low-signal patch releases", testPriorityScoreDownranksLowSignalPatchRelease],
+  ["Source archive releases stay weak", testSourceArchiveReleaseIsLowSignal],
   ["Priority sort keeps strong labels before weak signals", testPrioritySortKeepsStrongLabelsBeforeWeakSignals],
   ["Priority rank limits structured duplicate groups Top 20", testPriorityRankLimitsStructuredDuplicateGroupsTop20],
   ["Quality memory drops negative goldens", testQualityMemoryDropsNegativeGoldens],
