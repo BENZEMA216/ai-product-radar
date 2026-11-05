@@ -1,0 +1,99 @@
+[
+  {
+    "product": "Glasshand",
+    "link": "https://glasshand.com",
+    "phLink": "https://www.producthunt.com/products/glasshand",
+    "did": "给AI agent租真实的iPhone和Mac：机房真机（非模拟器），agent可以点按、装App、发社媒、在真机上测iOS应用，按月租、用完擦除重置。",
+    "who": "要让agent操作苹果生态、做移动社媒自动化、或在真机上测App的团队。",
+    "why": "PH当日第1（榜单热度）。agent电脑从云桌面跨到「真机」，补上了iOS/社媒自动化这块缺口。",
+    "tip": "PH 11/5当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Living Brain",
+    "link": "https://chatandbuild.com",
+    "phLink": "https://www.producthunt.com/products/living-brain",
+    "did": "上线跨模型记忆层：把笔记、文档、对话整理成可检查、可更新的持久记忆，经API/SDK/MCP在ChatGPT、Claude、Gemini、Cursor、Codex之间复用。",
+    "who": "同时用好几款AI、厌倦每次重讲项目背景的人，以及做agent的开发者。",
+    "why": "PH当日第2（榜单热度）。记忆从单个产品的聊天记录变成「跟着你走的可互通大脑」，和11/2的beacon.sh同线但面向全模型。",
+    "tip": "PH 11/5当日发布（ChatAndBuild产品）。官网+发布页已核实；官方自称记忆基准准确率数字，未独立验证。功能未实测。"
+  },
+  {
+    "product": "Rerun",
+    "link": "https://rerun.build",
+    "phLink": "https://www.producthunt.com/products/rerun-2",
+    "did": "把你已有的ChatGPT/Claude订阅变成一队AI同事：各有工具、电脑和共享工作区，按日程或触发跑，敏感操作先请示；本次发布宣布AGPL开源、可自托管。",
+    "who": "已有模型订阅、想把追发票、筛线索、清邮箱交给常驻agent的小团队。",
+    "why": "PH当日第3（榜单热度）。「用你已付的模型」+开源自托管，把第二张AI账单的门槛打到最低。",
+    "tip": "PH 11/5发布（既有产品的新一波，实质新增：开源+自托管）。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Pushary for Teams",
+    "link": "https://www.producthunt.com/products/pushary",
+    "phLink": "https://www.producthunt.com/products/pushary",
+    "did": "团队版agent审批：agent停下来请示时，问题推到当事人的Mac刘海或手机——Lee的agent问Lee、Sam的agent问Sam，可按规则改问负责人；谁批了什么留痕可查。支持Claude Code、Codex、Cursor等。",
+    "who": "多人团队同时跑多个agent、需要分清「谁批准了什么」的技术团队。",
+    "why": "PH当日第4（榜单热度）。agent审批从单人确认升级成带责任人路由和审计的团队流程。",
+    "tip": "PH 11/5发布；既有产品（7月首发）的重要新功能。仅发布页描述已核实。功能未实测。"
+  },
+  {
+    "product": "Clocknext",
+    "link": "https://www.clocknext.com",
+    "phLink": "https://www.producthunt.com/products/clocknext",
+    "did": "上线面向AI产品的计费基建：实时计量用量，用credits、outcomes、wallets组合定价，并对照供应商成本看每个客户/agent/模型的毛利。",
+    "who": "卖agent或按用量收费、被波动模型成本困扰的AI创业团队。",
+    "why": "PH当日第5（榜单热度）。agent产品最难的一环——把不确定成本变成可卖定价——开始有专用基建，和昨天Floot Payments正好接上。",
+    "tip": "PH 11/5当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Bridge",
+    "link": "https://www.meetonbridge.com",
+    "phLink": "https://www.producthunt.com/products/meetonbridge",
+    "did": "上线面向agent时代的视频会议：让人和AI同席开会，AI可以参会、记录并接续行动。",
+    "who": "想把AI从会后总结拉进会中协作的远程团队。",
+    "why": "PH当日第6（榜单热度）。会议工具开始按「人机混席」重新设计，而不是给人用的工具加个AI插件。",
+    "tip": "PH 11/5当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Maritime",
+    "link": "https://maritime.sh",
+    "phLink": "https://www.producthunt.com/products/maritime",
+    "did": "给agent的一站云电脑：持久Agent Box、一次性沙箱/集群、Linux/Windows桌面、安卓机，空闲休眠、按秒计费，API/CLI/MCP统一入口。YC公司。",
+    "who": "要给不同任务配不同机器（跑代码、点GUI、测安卓）的agent平台团队。",
+    "why": "PH当日第7（榜单热度）。把「agent需要的各种电脑」收成一张账单，是本周agent运行环境热（kosa8、Render Sandboxes、Glasshand）的又一落子。",
+    "tip": "PH 11/5当日发布。官网+发布页已核实；官方称有7天试用。功能未实测。"
+  },
+  {
+    "product": "Polylane for Google Cloud",
+    "link": "https://www.producthunt.com/products/polylane",
+    "phLink": "https://www.producthunt.com/products/polylane",
+    "did": "GCP版AI值班工程师：自动排查应用问题、说明出了什么错、影响范围，并备好修复方案等人审。",
+    "who": "在Google Cloud上跑服务、想少翻日志看板的工程团队。",
+    "why": "PH当日第8（榜单热度）。AI on-call从泛平台落到具体云，和10/28的CloudKnife（Azure成本）一样走「单云深耕」路线。",
+    "tip": "PH 11/5发布；既有产品（第6次发布）的新GCP版本。仅发布页描述已核实。功能未实测。"
+  },
+  {
+    "product": "Rainbrand",
+    "link": "https://www.producthunt.com/products/rainbrand",
+    "phLink": "https://www.producthunt.com/products/rainbrand",
+    "did": "上线agent的品牌层：从官网、品牌手册和文件里建共享品牌上下文，让Claude/ChatGPT/Codex/Cursor做营销、网站、幻灯、邮件、视频时都守品牌规范，也可经API接进自己的产品。YC公司。",
+    "who": "让多个agent产出对外内容、又怕品牌口径失控的市场团队。",
+    "why": "PH当日上榜（榜单热度）。「给agent的企业上下文」从记忆（Living Brain）扩到品牌资产，agent治理又多一层。",
+    "tip": "PH 11/5当日发布。仅发布页描述已核实。功能未实测。"
+  },
+  {
+    "product": "Okapi",
+    "link": "https://www.okapi.bot",
+    "did": "盯着你的agent和应用依赖的API，一有breaking change就在你的仓库开好修复PR——API界的Dependabot。",
+    "who": "重度依赖第三方API（尤其模型推理API）、怕被悄悄改接口搞挂的开发者。",
+    "why": "PH当日上榜。模型API变动频繁，「依赖变动自动修」从npm包扩展到API层。",
+    "tip": "官网已核实（含文档）；PH发布页信息有限。功能未实测。"
+  },
+  {
+    "product": "Aether",
+    "link": "https://runaether.dev",
+    "did": "云端编程agent运行时：Claude Code/Codex/OpenCode在隔离云机上跑，可实时观看、SSH接管、手机跟进；模型走你已有订阅，只收机器费。",
+    "who": "本地机器扛不住长任务、又想看清agent每一步的工程师。",
+    "why": "和Rerun同一叙事：不碰模型订阅、只卖算力和可观测性，「第二张AI账单」反潮流。",
+    "tip": "Grok Bot邮件线索，官网+文档已独立核实（约近期上线）。功能未实测。"
+  }
+]
