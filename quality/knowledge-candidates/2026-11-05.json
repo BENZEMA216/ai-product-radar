@@ -1,7 +1,27 @@
 {
-  "generatedAt": "2026-11-04T16:46:43.975Z",
+  "generatedAt": "2026-11-05T15:59:00.000Z",
   "date": "2026-11-05",
   "items": [
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Introducing Physical-Engineering’s Last Exam for agents",
+      "link": "https://cloud.google.com/blog/products/ai-machine-learning/introducing-physical-engineerings-last-exam-for-agents",
+      "publishedAt": "2026-11-03T08:00:00.000Z",
+      "author": "Google AI & Infrastructure",
+      "summary": "Authors: Burak Gokturk, VP Research &amp; Development; Rujun Han, Research Scientist; George Lee, Product Manager. Today, the Google AI &amp; Infrastructure team is announcing Physical-Engineering's Last Exam (PLE) , a new benchmark and open competition, developed in collaboration with Mercor, and built to test a frontier model’s ability to complete tasks in mechanical, electrical, civil and structural engineering. To help the research community measure and improve how agents handle physical engineering work, we are releasing 29 public tasks, their grading tools, and an open competition leaderboard at ple-bench.com . Frontier labs and the broader research community use model examinations to test AI’s progress in completing tasks in a specific discipline. Humanity's Last Exam measures a model’s general knowledge. Agents' Last Exam measures a model’s ability to complete digital professional work. Physical-Engineering's Last Exam (PLE) measures a model’s ability to complete work that helps build the physical world. Physical engineers design skyscrapers, power grids, and computer chips we rely on, yet we could find no existing benchmark that tests whether frontier models can do that work end to end. Why textbook benchmarks fall short for physical engineering Frontier language models now score above 90% on many academic benchmarks. However, those benchmarks mostly test textbook-style questions, single tool calls, or small, self-contained design problems. For AI developers and researchers building agents for physical engineering, existing benchmarks do not show whether an agent can produce safe, code-compliant, and cost-effective designs under a licensed engineer's review and control. As the demand for infrastructure development outpaces financing , there is a growing opportunity for agents to support engineers working to close this gap. Inside PLE: Real-world tasks built with practicing engineers PLE closes this evaluation gap with 85 long-horizon tasks across four core disciplines: mechanical (30 tasks), electrical (27 tasks), civil (18 tasks), and structural (10 tasks) engineering. Instead of answering a single prompt, an agent works inside a containerized project folder — built on Mercor’s Archipelago environment — that mirrors what a practicing engineer receives on the job. Each task holds an average of 61 files (5,170 total files across the benchmark), including PDFs, spreadsheets, emails, 2D CAD drawings, 3D BIM models, and document revisions. The agent must reason through these files, find the governing building codes and physical limits, run calculations, and generate production-ready deliverables that a licensed reviewer would review and approve. In collaboration with experts from Mercor and licensed practicing engineers from industry, we built PLE using two methods: Expert-authored tasks (44 tasks): Practicing engineers created the project folders, prompts, and grading rubrics based on real professional engineering tasks. Co-authored tasks (41 tasks): Practicing engineers designed the initial task and an agent pipeline assembled the task's environment and grader from licensable engineering standards. Engineers then validated and increased the difficulty of every task assembled by the agent. All frontier models score below 50% We tested 14 frontier models on PLE using seven publicly available agent harnesses (Antigravity, Claude Code, Codex, Hermes, OpenCode, OpenHands, and Pi). Because PLE evaluates both code compliance and cost efficiency, agents only earn points if their design passes every hard safety check first. Our baseline results show a wide gap between current models and real-world engineering requirements: High headroom: All frontier models score below 50% on our private test set, with the highest-performing model on its native harness reaching a mean score of 48.3%. Hard safety gates: While the top-scoring agent configuration satisfied 91% of individual constraints on co-authored tasks, only 41.3% of its deliverables passed every hard safety and feasibility check required. Model vs. harness impact: Choice of model drives performance far more than the harness (up to a 50-point spread across models, versus a median 3-point spread across harnesses for the same model), though harnesses significantly affect run cost. Test your agent and join the open competition Evaluating AI agents on realistic project files, strict safety rules, and material costs is a practical step toward building helpful tools for physical engineers. Here is how you can get started with PLE today: Check out the full technical breakdown in our PLE paper on arXiv . Download the 29 public tasks, grading scripts, and evaluation container from our GitHub repository . Bring your own agent setup and submit it for evaluation on our private test set at ple-bench.com —with 13 Google-sponsored models running free on our servers and prize details coming soon.",
+      "evidenceLink": "",
+      "score": 99.00119047619047,
+      "core": "Authors: Burak Gokturk, VP Research & Development; Rujun Han, Research Scientist; George Lee, Product Manager. Today, the Google AI & Infrastructure team is announcing Physical-Engineering's Last Exam (PLE) , a new benchmark and open competition, developed in collaboration with Mercor, and built to test a frontier model’s ability to complete tasks in mechanical, electrical, civil and structural engineering. To help …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-05T15:59:00.000Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
     {
       "kind": "blog",
       "sourceId": "vercel_ai",
@@ -12,13 +32,13 @@
       "author": "Susan Aziz",
       "summary": "Mercor on Vercel Batch jobs cut from 12 hours to 2 hours 18M requests and 63B tokens routed through AI Gateway in 10 days Expert access provisioned in seconds via Vercel Passport Over 2,000 projects created by hundreds of internal builders Mercor connects hundreds of thousands of domain experts with frontier AI labs, helping those labs generate the human data they need to train and evaluate leading models. It also runs large batches of automated grading jobs to evaluate models for labs and enterprises. Demand arrives in bursts that can push model traffic to peak capacity for days, even as individual evaluation or labeling jobs carry 24-hour deadlines. With so little time to deliver, requests waiting on a provider’s rate limits can put a client’s deadline at risk. Mercor’s business teams also need applications tailored to each engagement, giving experts a way to see their tasks and progress without waiting for changes to the core platform. For Aaron Brown, Mercor’s Head of Security, enabling more people to build means making it easier to give them the access they need and keep track of how they use it. Mercor uses Vercel AI Gateway to manage model access and Vercel Passport to handle secure access to their applications. When model capacity becomes a customer deadline Mercor’s mix of direct integrations and third-party gateways could not provide enough token-per-minute capacity for its open-model workloads when demand surged. As requests hit provider limits and entered retry queues, time-sensitive batch jobs stretched beyond 12 hours, consuming more than half of a client’s 24-hour deadline. AI Gateway provided more inference capacity and failover routing between providers when requests hit rate limits, helping batch work continue instead of waiting in retry queues. Mercor reports that those jobs now finish in 2 to 3 hours, leaving more time to complete the rest of the client’s work. In its first 10 days on Gateway, the team routed 18 million requests and 63 billion tokens, without hitting rate limits. Mercor continues to use multiple gateways and vendors, valuing Vercel for its combination of model access, controls, and hands-on support when the team needs more capacity. Engineers also get one API for leading foundation model providers and a growing catalog of open models, so they can try a new model without building another provider integration. Giving engineers room to experiment within limits As model use grew, Mercor needed to understand where token spend was going, but its previous setup offered little visibility into usage by team and project. A single loop error in a script could exhaust the available budget. Hundreds of Mercor engineers now use open models through AI Gateway with per-user keys that carry expiration dates, token limits, and spend limits. Security can give experimentation a budget and an end date, then use the usage records to see which user, project, and workload is driving consumption. Engineers can try different models through the same gateway under those controls, without managing another set of provider credentials each time. Managing access as business teams build A few hundred people across Mercor’s business teams now build applications on Vercel, where the company’s project count has grown from fewer than a dozen to roughly 2,000. Many of those projects are temporary environments for a specific client engagement. One production use case gives experts detailed views of their project tasks and progress. Rather than ask engineering to add every engagement’s interface to the core platform, business teams build the interfaces themselves and share them with the experts doing the work. To share those applications, teams need to control who can sign in without taking on a separate authentication setup for every project. Passport provides that common authentication layer, handling sign-in to Vercel deployments through an existing identity provider. Mercor’s identity team built a product called Audiences, integrating Vercel Passport as a first class primitive, to automate access provisioning. Once a team selects the experts who need access, Audiences creates the IdP group, Vercel connection, and Passport configuration. With that workflow, Mercor reports provisioning access in seconds for audiences ranging from dozens of experts to tens of thousands. Offboarding works the same way in reverse. Because access is derived from the IdP group, removing the group at the end of an engagement removes access to the project, so no stale access is left behind. Limiting what each agent can do Alongside those applications, Mercor uses agents to answer questions from experts in its marketplace, automate HR workflows, and help employees navigate internal systems. Mercor’s approach is to give each agent narrow permissions suited to its job, rather than everything available to the person who invoked it. For agents that use open models through AI Gateway, Mercor can also scope model access, set expiration dates, and cap spending. That governs their model use while Mercor separately determines which systems and actions each agent can access. What’s next Mercor expects more open models to power its internal agents and systems, and more teams outside engineering to build tools for experts. As that work grows, the company wants teams to spend less time setting up model integrations and application authentication so they can respond to client workloads with tight deadlines. The aim is to make the secure path the fastest path, with shared model access and repeatable authentication workflows helping experts get the tools they need and labs get their work back on time. Mercor wants to support that growth without security work increasing at the same rate. About Mercor: Mercor is an AI data company that organizes human intelligence for AI training and evaluation. Its network of more than 5M experts, from doctors to lawyers to engineers, powers benchmarks, enterprise evals, RL environments, post-training and agent deployments. Read more",
       "evidenceLink": "",
-      "score": 90.37293700396825,
+      "score": 88.71547619047618,
       "core": "Mercor on Vercel Batch jobs cut from 12 hours to 2 hours 18M requests and 63B tokens routed through AI Gateway in 10 days Expert access provisioned in seconds via Vercel Passport Over 2,000 projects created by hundreds of internal builders Mercor connects hundreds of thousands of domain experts with frontier AI labs, helping those labs generate the human data they need to train and evaluate leading models. It also r…",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-11-04T16:46:43.975Z",
+        "checkedAt": "2026-11-05T15:59:00.000Z",
         "evidence": "live_http"
       }
     },
@@ -32,14 +52,34 @@
       "author": "Nate McGrady",
       "summary": "Vercel Security Review is now in public beta for Pro and Enterprise teams. Once enabled, every push to a connected GitHub repository is automatically reviewed for vulnerabilities, and findings are reported in the Vulnerabilities dashboard . What triggers a review Security Review runs automatically when code is pushed to a connected GitHub repository. Because reviews start from push events rather than pull requests, direct and force pushes to your production branch are reviewed as well. Every project affected by a single push is reviewed together. What a finding includes Each finding records the project, environment, branch, and commit, with a summary, a suggested fix, and an AI-generated severity rating. Security Review adds its own GitHub check to each commit it reviews. When there's a pull request, it also posts findings as review comments that link back to each finding. On public repositories, finding details stay in the dashboard. Fixes and resolution Clicking Fix with Vercel Agent on a vulnerability report hands the finding to Vercel Agent, which proposes a fix and opens a pull request for you to review. Nothing merges until you approve it. To fix findings with your coding agent instead, use vercel security vulnerabilities in the Vercel CLI, or copy any finding as Markdown or JSON. Security policies Teams can write security policies in plain language, for all projects or specific ones, to give Security Review more context about how they build. Set a team policy in Agent settings and a project policy in the project's Security settings. Limitations Security Review analyzes source code. It isn't a security audit, and it doesn't perform runtime or penetration testing. It helps you find vulnerabilities but doesn't guarantee your application is free of them. Pricing Security Review is billed at the Vercel Agent rate : provider inference at the underlying token rate with no markup, plus the Vercel Token Rate of $0.25 per million tokens (input, cached, output). Reviews run on each push to GitHub, so cost scales with how often you push and how much code changes. Security reviews are free until November 10, 2026, and fixes made with Vercel Agent are billed at the Vercel Agent rate. Enable Security Review in your team’s Agent settings , or read the documentation and the announcement to learn more. The CLI command needs Vercel CLI 65.10.0 or later. Read more",
       "evidenceLink": "",
-      "score": 89.5157941468254,
+      "score": 87.85833333333333,
       "core": "Vercel Security Review is now in public beta for Pro and Enterprise teams. Once enabled, every push to a connected GitHub repository is automatically reviewed for vulnerabilities, and findings are reported in the Vulnerabilities dashboard . What triggers a review Security Review runs automatically when code is pushed to a connected GitHub repository. Because reviews start from push events rather than pull requests, …",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-11-04T16:46:43.975Z",
+        "checkedAt": "2026-11-05T15:59:00.000Z",
         "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "How Nammu21 automates syndicated loans on Google Cloud Universal Ledger",
+      "link": "https://cloud.google.com/blog/topics/financial-services/how-nammu21-automates-syndicated-loans-on-google-cloud-universal-ledger",
+      "publishedAt": "2026-11-03T18:00:00.000Z",
+      "author": "Chang Yang Jiao Head of Blockchain, Nammu21",
+      "summary": "The syndicated loan and private credit markets, both critical components of corporate finance, have long been constrained by manual processes, leading to multi-week settlements, valuation opacity, and trade friction. To solve these long-standing challenges, fintech innovator Nammu21 partnered with Google Cloud on a new proof-of-concept. Using its AI-powered platform to structure legal agreements and instantiate them as smart contracts on the Google Cloud Universal Ledger (GCUL) , Nammu21 automates the entire loan lifecycle, paving the way for improved settlement times and greater market efficiency. Digitizing the loan market While loan markets provide billions in capital to businesses worldwide, their underlying infrastructure has not kept pace with the speed of digital finance. This landscape requires continuous coordination across facility agents, borrowers, and diverse lender syndicates, while also managing highly customized credit agreements with dynamic tranches and complex covenants. In particular, relying on fragmented, manual interpretation of legal text often results in significant operational drag and data silos. According to the Loan Market Association , secondary market settlement times for par/near par loans in Q4 2024 still averaged 42 days, with a median of 27 days. These notoriously slow timelines tie up capital, increase counterparty risk, and create a heavy reconciliation burden for participants. Nammu21 transforms bespoke credit documents into programmable assets at scale by rendering each facility's governing terms as a Digital Credit Instrument (DCI). The DCI maps every term — including conditions, consents, eligibility criteria, and operational mechanics that determine what is permitted under a facility — directly back to its originating legal provision. These elements are then expressed as executable behaviours against a loan's live state. To instantiate these instruments, the proof-of-concept utilizes the secure, high-performance execution environment of GCUL, an institutional-grade, permissioned distributed ledger that helps automate complex financial workflows to deliver near-instant transaction finality and predictable costs without the volatility or security concerns of public blockchains. A purpose-built stack for digital credit Combined with Nammu21’s data intelligence, GCUL provides the foundational infrastructure for converting legal document logic into live, programmable contracts. Designed to handle the privacy, scale, and multi-party coordination required by institutional finance, GCUL provides a permissioned, high-performance distributed ledger that delivers deterministic, instant transaction finality for high-value financial settlements. Programmable contracts on GCUL are written in gculpy , GCUL's domain-optimized programming language. As a strict, statically-typed subset of Python, gculpy is designed to be safe, readable, and auditable, making it ideal for processing complex financial logic. For regulated financial institutions, gculpy offers distinct operational advantages over other ledger programming models. The language simplifies development by removing the need for complex memory management or workarounds to meet highly restrictive call stack limits, allowing engineers to focus on the financial logic itself. GCUL also provides robust, built-in permissioning, requiring explicit user authorization before a contract can store data on their behalf. This solves the \"unsolicited asset\" problem — common on public networks — where unwanted tokens can be sent to an organization's wallet, creating compliance and accounting issues. With GCUL, institutions can maintain full control over which assets they interact with to support their high-value, highly regulated use cases. Nammu21 serves a dual role in this architecture. First, the platform renders the DCI programmatically from the original legal agreement without manual document reading to establish the terms. Next, it derives gculpy contracts that define the structure of the obligation and govern the loan on GCUL, using the DCI to supply the terms that determine what the loan documents permit, require and block. Technical architecture: The loan lifecycle on GCUL Nammu21’s loan implementation on GCUL demonstrates the value of creating a single, immutable source of truth. The proof-of-concept modeled a $1.945 billion Term Loan B — one segment of a broader multi-facility transaction — where the agent bank, borrower, transferor, and transferee all worked off a permissioned view of the same on-ledger rendering. The lifecycle begins when an agent bank selects a specific credit agreement transformed by Nammu21. The platform instantly provides the structured terms from the document, which are used to instantiate a unique gculpy contract on GCUL, establishing a verifiable, on-ledger digital twin of that specific loan facility. Next, the agent bank initiates the onboarding of the borrower and lenders. This multilateral action requires that each participant review the request and then provide explicit consent by approving the onboarding invitation from their own interface. Once all parties are onboarded, the agent bank records an immutable hash of the loan's key terms on-ledger, attesting that the on-ledger data matches the canonical off-ledger records. Subsequent lifecycle events, such as secondary market transfers or repayments, are also managed as multi-step, automated workflows governed by a consent-driven model. For example, a transfer of a loan position requires new lender, borrower, and agent bank consent before it can be executed atomically on the ledger. All payment flows, from interest payments to loan close-outs, settle directly on GCUL using tokenized commercial bank money, eliminating the need for external payment rails. Transacting with familiar, regulated money on a programmable ledger provides an architecture purpose-built for institutional finance, grounded in three core pillars: 1. Compliance via gated execution: Nammu21’s gculpy contracts instantiated with governing terms, validate every action against the terms transformed from the agreement before execution, mitigating potential covenant breaches or invalid transfers upfront while eliminating the risk of silent failures. 2. Role-based privacy: GCUL enforces strict, role-based access, ensuring that trading strategies, positions, and sensitive loan data remain confidential and are visible only to the necessary counterparties in a transaction. 3. Settlement finality: Every on-ledger action completes near-instantly and anchors on canonical data derived from the original credit agreement, replacing provisional, reconciliation-heavy models with real-time, trusted verification. The business impact of moving on-ledger This proof-of-concept illustrates a structural shift in how credit markets can operate. When each facility's governing terms are rendered as a DCI and executed on GCUL, the operational mechanics of lending markets change fundamentally, rather than incrementally. Values can be reconciled bilaterally, but governance logic cannot – and the market’s current friction stems directly from each party's independent interpretation of the rules. Resolving this issue on-ledger is what enables settlement times to compress, back-office overhead to shrink, and counterparty risk to be mitigated by design rather than by manual checking. This same architecture can be applied wherever credit terms are bespoke and manually interpreted. By freeing up capital that would otherwise be trapped in lengthy settlement cycles, new liquidity is unlocked and a more dynamic and efficient secondary loan market can emerge. The team would also like to thank Someera Khokhar, Jordan Shelley, and Saskia A. Aalders at Nammu21 and Googlers Ishan Singh, Kathryn Stavish, Tom Chudy, and Stathis Onasoglou for their contributions.",
+      "evidenceLink": "",
+      "score": 85.71547619047618,
+      "core": "The syndicated loan and private credit markets, both critical components of corporate finance, have long been constrained by manual processes, leading to multi-week settlements, valuation opacity, and trade friction. To solve these long-standing challenges, fintech innovator Nammu21 partnered with Google Cloud on a new proof-of-concept. Using its AI-powered platform to structure legal agreements and instantiate them…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-05T15:59:00.000Z",
+        "evidence": "live_http_curl_fallback"
       }
     },
     {
@@ -52,15 +92,64 @@
       "author": "",
       "summary": "Yesterday's hot paper was Sparks of Weight-Space Programming: LLMs can natively read &amp; write neural network weights by Rikiya Takehi, Jayden Teoh, Alex Zhang, and Omar Khattab. The paper (OK, the authors classify is as a \"blog post\", but it's paper-shaped) found that frontier models, in particular GPT-6 Astra, can both interpret and modify the raw weights of a machine learning model - literally a text description of the model containing a bunch of floating point numbers. I've been playing with one of the examples from the paper and I'm delighted to share that Qwen 3.8 27B running on my laptop can do this as well! Weight-Space Programming Here's the highlight from their abstract, describing impressive capabilities for GPT-6 Astra and coining the term Weight-Space Programming for when LLMs analyze and modify model weights: Just by looking at the raw weights, GPT-6 Astra can tell what a network was trained to do . And without any environment feedback, it has no trouble writing, from scratch, small game-playing networks that outplay networks trained with PPO for 100 million steps. Likewise, asked to make Qwen3.5-0.8B better at math without gradients, Astra identifies an issue in its weights causing reasoning loops that Qwen’s own model card warns about, and fixes this by natively editing 0.016% of the weights . With the same sampling settings, this weight correction raises MATH-500 from 7.9% to 48.1% and generalizes out of the box to instruction following, raising IFEval by 3x. All of this is possible without allowing Astra to write training loops. It uses its reasoning to figure out what each part of a neural network computes, or should compute, and changes the weights accordingly. We call this Weight-Space Programming . The paper combines two topics that I think deserve to be treated separately. The first is what models can do with raw weights without running tools or executing code. The second explores how well models, once armed with code, can run operations to update and improve other models. spaCy author Matthew Honnibal called the paper misleading for conflating the two, and Sean Goedecke deconstructed the Qwen3.5-0.8B update example as taking the same steps that a human ML researcher would use. I'm going to focus on the no-tools question, which I think is the more interesting of the two. The paper presents the first question as Can LLMs understand model behaviors from weights? They trained four neural networks to play simplified 10x10 grid versions of four classic computer games - Breakout, Pong, Pac-Man, and Freeway (I had to look that one up , it's an Atari 2600 game from 1981). Then they fed those weights (as floating point numbers) to an LLM along with the following question: The weights below belong to one policy network that was trained with reinforcement learning to play a game on this grid. Which game was it trained on? Work from the weights. You have no tools: no code execution, no calculator, nothing to run. This is a single response. The GitHub repository that accompanies the paper is RikiyaT/lm_understand-logs . The exp1_which_game folder contains the prompts they used, with weights for the four games: breakout/prompt.txt freeway/prompt.txt pacman/prompt.txt pong/prompt.txt I checked and, aside from the weights, each prompt is identical to the others. Trying it out with Qwen 3.8 27B and other models The prompts on GitHub are self-contained. My LLM tool has a -f/--fragment option which can be passed the URL to a text file to use as a prompt, which means I can run any of the above like this: llm -f https://raw.githubusercontent.com/RikiyaT/lm_understand-logs/refs/heads/main/exp1_which_game/runs/breakout/prompt.txt \\ -m openrouter/moonshotai/kimi-k3.1-pro This example requires the llm-openrouter plugin installed, and runs the Breakout prompt against Kimi K3.1 Pro via OpenRouter. Here's what I got back from Kimi K3.1 Pro , which successfully guessed Breakout after 9m 41s and 19,493 reasoning tokens. But how about Qwen 3.8 27B ? That's still my favorite model to run on my own laptop - it's just 17GB (I use this version ) and somehow feels close to the leading proprietary models of 2025. I fired up LM Studio , ensured Qwen 3.8 27B was loaded with a long context window (the default 8192 context failed with errors), installed the llm-lmstudio plugin and ran this command: LMSTUDIO_TIMEOUT=900 \\ llm -f https://raw.githubusercontent.com/RikiyaT/lm_understand-logs/refs/heads/main/exp1_which_game/runs/pacman/prompt.txt \\ -m lmstudio/qwen/qwen3.8-27b (I had to bump the timeout up using an environment variable, see this issue .) After 46m 12s and 43,506 reasoning tokens, Qwen on my laptop returned a response that ended like this (here's the reasoning trace ): Game: A simplified Pac-Man-style gridworld: an agent moves through a fixed 8x8 maze with central and corner wall blocks, moving objects/ghosts, and reward targets/pellets. Description: The agent navigates a fixed maze-like 8x8 board, using current agent/moving-object/previous-frame cues to move through corridors, collect reward-target cells, and avoid moving objects or hazards. Confidence: 72% This is impressive. I tried it on two of the other games as well. It identified Pong ( reasoning ) in 1h 4m 54s: Pong — specifically a Pong-like paddle/ball game where the agent controls a vertical paddle on the right side and must move up/down to intercept or return a moving ball/reward object. Description: The agent moves a right-side paddle vertically to hit or catch a moving ball-like reward target moving across the 8×8 field, while a left-side moving object/opponent and wall borders define the play; reward is obtained by successfully intercepting/returning/scoring the ball, and missing or failing to hit it is penalized. Confidence: 75% And Breakout ( reasoning ) in 52m 25s: Game: Breakout, or an Arkanoid-like paddle/ball/brick game. Description: The agent is a paddle on the bottom row and moves left/right to keep a ball in play; the ball moves around the upper grid, and bricks/reward targets in the top rows give reward when hit, while missing the ball/hitting the bottom wall ends the episode or gives penalty. Confidence: 88% Qwen failed at the Freeway prompt, which didn't surprise me considering that game is more obscure than the other three. Here's that transcript - Qwen thought it was \"A simplified Pac-Man-like grid game: agent moves 4-directionally\". The reasoning traces are fun to skim, and almost incomprehensible. Here's a sample: What about agent channel0? We see some large channel0 rows near row8 col7/8 and maybe bottom? Let's list channel0 large: line436 input435 (row8 col7 ch0) -2.107,1.169,0.513...; line441 input440 (row8 col8 ch0) -0.376,0.010,1.564,3.855...; line445 input444 (row8 col8 ch4) 0.142,0.491...; line382? input381 ch0? Wait line382 input381: 381//5=76 (row7 col6), ch1? 381%5=1? 76 * 5=380, ch1. So not. Channel0 large maybe at row8 col7/8 only. Also top row? line44 input43 ch3, line49 ch3. Channel0 large maybe not many. Agent position could be near bottom-right? If the agent is typically at bottom-right? That said though, I expect a sufficiently experienced human being armed with a notepad and a pencil could get there with enough effort. It's a cool paper, but some of the wider commentary I've seen around it does not feel justified. I'm not ready to declare that the age of source code is over and our future involves incomprehensible machines editing their own model weights in incomprehensible ways. You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
       "evidenceLink": "",
-      "score": 84.26555605158731,
+      "score": 82.60809523809525,
       "core": "Yesterday's hot paper was Sparks of Weight-Space Programming: LLMs can natively read & write neural network weights by Rikiya Takehi, Jayden Teoh, Alex Zhang, and Omar Khattab. The paper (OK, the authors classify is as a \"blog post\", but it's paper-shaped) found that frontier models, in particular GPT-6 Astra, can both interpret and modify the raw weights of a machine learning model - literally a text description of…",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-11-04T16:46:43.975Z",
-        "evidence": "live_http"
+        "checkedAt": "2026-11-05T15:59:00.000Z",
+        "evidence": "live_http_curl_fallback"
       }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "KDD",
+      "title": "Multi-Turn Reinforcement Learning for Large Language Models: From Theory to Practice with Amazon SageMaker AI",
+      "link": "https://doi.org/10.1145/3770855.3816472",
+      "evidenceLink": "https://www.semanticscholar.org/paper/cb0946beaae29ae582b0661bd2a553a25b34e143",
+      "publishedAt": "2026-08-08T00:00:00.000Z",
+      "submittedAt": "2026-08-08T00:00:00.000Z",
+      "author": "Zhe Wang, Sapana Chaudhary, Jiayu Li, Bernie Wang, Xuan Zhu",
+      "summary": "Production large language model (LLM) based systems such as coding agents, web navigators, and tool-calling assistants operate over multiple turns of interaction with users, tools, and environments. Pretrained LLMs, depending on their size, can either underperform in these settings due to misalignment with the system's interaction mechanics, or, when capable, incur prohibitive latency. Fine-tuning right-sized models addresses both accuracy and latency, but training such multi-turn agents requires Reinforcement Learning (RL), where the model acts as a policy optimizing long-horizon outcomes across sequential interactions. This poses challenges absent from single-turn settings: credit assignment over long trajectories, reward design for sparse and delayed feedback, state and context management as observation histories grow, environment scaling for parallel rollout collection, and training stability under prompt/environment distribution shift. This hands-on problem-solving tutorial provides both a rigorous algorithmic and practical introduction to multi-turn RL finetuning for LLMs. Using Amazon SageMaker AI, participants progress through four labs: (1) environment and reward function design, (2) multi-turn trajectory collection and Group Relative Policy Optimization (GRPO)-based training, (3) reward densification and credit assignment strategies, and (4) evaluation, failure diagnosis and deployment. We cover state-of-the-art multi-turn RL finetuning algorithms, turn-level vs. trajectory-level reward design, and production grade monitoring for reward hacking detection. The tutorial targets machine learning (ML) engineers, data scientists, and researchers who build agentic LLM systems. No prior RL experience is required. All materials will be publicly available on GitHub.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "KDD",
+        "venueLabel": "KDD",
+        "venueName": "Knowledge Discovery and Data Mining",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 76,
+      "core": "Production large language model (LLM) based systems such as coding agents, web navigators, and tool-calling assistants operate over multiple turns of interaction with users, tools, and environments. Pretrained LLMs, depending on their size, can either underperform in these settings due to misalignment with the system's interaction mechanics, or, when capable, incur prohibitive latency. Fine-tuning right-sized models…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Ripple-65B Preview: U.S. Open-Weight SOTA on Agentic Coding",
+      "link": "https://www.ricursive.com/ripple",
+      "publishedAt": "2026-11-04T18:53:29.000Z",
+      "author": "Philpax https://news.ycombinator.com/user?id=Philpax",
+      "summary": "We develop frontier AI methods to reinvent chip development, collapsing traditional design timelines, closing the loop between AI and the hardware that fuels it, and enabling a Cambrian explosion of custom silicon.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50369925",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 324,
+        "comments": 116
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-05T15:59:00.000Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 72.37810995695813,
+      "core": "We develop frontier AI methods to reinvent chip development, collapsing traditional design timelines, closing the loop between AI and the hardware that fuels it, and enabling a Cambrian explosion of custom silicon.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
     },
     {
       "kind": "blog",
@@ -72,15 +161,39 @@
       "author": "Patrick Moorhead",
       "summary": "Turn production evidence into prioritized issues and custom evaluations that help you improve prompts, tools, models, memory, skills, and harness code. When you...",
       "evidenceLink": "",
-      "score": 71.84992113095238,
+      "score": 70.19246031746032,
       "core": "Turn production evidence into prioritized issues and custom evaluations that help you improve prompts, tools, models, memory, skills, and harness code. When you...",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-11-04T16:46:43.975Z",
+        "checkedAt": "2026-11-05T15:59:00.000Z",
         "evidence": "live_http"
       }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "KDD",
+      "title": "Agents in the Wild: Where Research Meets Deployment",
+      "link": "https://arxiv.org/abs/2607.19336",
+      "evidenceLink": "https://www.semanticscholar.org/paper/f134f0764fbdb9903933a7e367a64aa3e343e2cb",
+      "publishedAt": "2026-07-21T00:00:00.000Z",
+      "submittedAt": "2026-07-21T00:00:00.000Z",
+      "author": "Grace Hui Yang, P. N. Venkit, Hooman Sedghamiz, Enrico Santus, Victor C. Dibia",
+      "summary": "Agentic systems — large language model (LLM)-based architectures capable of reasoning, planning, acting, and coordinating with tools and other agents — are rapidly transitioning from research prototypes to production-scale deployments across domains such as software engineering, scientific discovery, and finance. While academic work has emphasized benchmarks and algorithmic innovation, deployment raises new challenges around robustness, safety, and reliability. This tutorial brings together researchers and practitioners to explore advances in reasoning and planning, multi-agent coordination, and evaluation, highlighting open challenges arising from deployment experience. Through applied case studies in pharmaceutical discovery and financial systems, we analyze common design patterns that make agentic systems successful, and discuss practical mitigation strategies for failure modes, such as verification pipelines, fallback mechanisms, and human-in-the-loop supervision. Attendees will gain a comprehensive view of the field along with concrete design patterns, evaluation checklists, and templates for safe and reliable deployment across industries.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "KDD",
+        "venueLabel": "KDD",
+        "venueName": "Knowledge Discovery and Data Mining",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 70,
+      "core": "Agentic systems — large language model (LLM)-based architectures capable of reasoning, planning, acting, and coordinating with tools and other agents — are rapidly transitioning from research prototypes to production-scale deployments across domains such as software engineering, scientific discovery, and finance. While academic work has emphasized benchmarks and algorithmic innovation, deployment raises new challeng…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
     },
     {
       "kind": "blog",
@@ -92,15 +205,40 @@
       "author": "Yoonseo Kim",
       "summary": "In production AI agents, context management is the real bottleneck. This post presents a four-layer context engineering framework (architecture, prompts, file-based tools, and verification agents), implemented in working code from Deep Insight, an open source multi-agent data analysis solution on the Strands Agents SDK and Amazon Bedrock AgentCore.",
       "evidenceLink": "",
-      "score": 70.9253179563492,
+      "score": 69.26785714285714,
       "core": "In production AI agents, context management is the real bottleneck. This post presents a four-layer context engineering framework (architecture, prompts, file-based tools, and verification agents), implemented in working code from Deep Insight, an open source multi-agent data analysis solution on the Strands Agents SDK and Amazon Bedrock AgentCore.",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-11-04T16:46:43.975Z",
+        "checkedAt": "2026-11-05T15:59:00.000Z",
         "evidence": "live_http"
       }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Fujifilm to boost tape production 5x as AI fuels archiving demand",
+      "link": "https://arstechnica.com/gadgets/2026/10/fujifilm-to-boost-tape-production-5x-as-ai-fuels-archiving-demand",
+      "publishedAt": "2026-11-02T14:02:42.000Z",
+      "author": "bookofjoe https://news.ycombinator.com/user?id=bookofjoe",
+      "summary": "Low costs and offline security mean magnetic tape still has a job.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50336918",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 530,
+        "comments": 230
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-05T15:59:00.000Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 68.43805370804878,
+      "core": "Low costs and offline security mean magnetic tape still has a job.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
     },
     {
       "kind": "blog",
@@ -112,14 +250,82 @@
       "author": "Bhagyashree Chandak",
       "summary": "This post explores how Indegene built a production-grade, LLM-powered Data Quality Agent in its NEXT Unified Data Platform on AWS. The agent generates context-aware data quality rules, validates them, and produces ready-to-run SQL and Python under human-in-the-loop governance, helping life sciences organizations scale enterprise data quality.",
       "evidenceLink": "",
-      "score": 68.88636954365079,
+      "score": 67.22890873015872,
       "core": "This post explores how Indegene built a production-grade, LLM-powered Data Quality Agent in its NEXT Unified Data Platform on AWS. The agent generates context-aware data quality rules, validates them, and produces ready-to-run SQL and Python under human-in-the-loop governance, helping life sciences organizations scale enterprise data quality.",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-11-04T16:46:43.975Z",
+        "checkedAt": "2026-11-05T15:59:00.000Z",
         "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "KDD",
+      "title": "KDD AI reasoning day",
+      "link": "https://dl.acm.org/doi/pdf/10.1145/3711896.3737674",
+      "evidenceLink": "https://www.semanticscholar.org/paper/83aa8d6714aba32cb3f1f0b94932911b259c1411",
+      "publishedAt": "2026-08-08T00:00:00.000Z",
+      "submittedAt": "2026-08-08T00:00:00.000Z",
+      "author": "Jun Huan, James Caverlee, Lei Li, Vijay Lingam",
+      "summary": "Large language models and foundation models are increasingly embedded in reasoning systems that plan, invoke tools, use memory, gather evidence, and iteratively refine their outputs. The second KDD Day on AI Reasoning brings together researchers and practitioners from academia and industry to examine how these systems can be made more capable, reliable, interpretable, and efficient. The program spans scientific discovery, human-centered interaction, software engineering, time-series analysis, deep research, computer use, and inference infrastructure. Across these domains, the day highlights shared challenges: grounding decisions in evidence, designing effective feedback and verification mechanisms, evaluating open-ended behavior, managing test-time computation, and preserving meaningful human control. Through keynote and invited presentations, the event provides a forum for connecting advances in models, agents, data, systems, and applications, and for identifying research directions toward trustworthy next-generation reasoning systems.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "KDD",
+        "venueLabel": "KDD",
+        "venueName": "Knowledge Discovery and Data Mining",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 67,
+      "core": "Large language models and foundation models are increasingly embedded in reasoning systems that plan, invoke tools, use memory, gather evidence, and iteratively refine their outputs. The second KDD Day on AI Reasoning brings together researchers and practitioners from academia and industry to examine how these systems can be made more capable, reliable, interpretable, and efficient. The program spans scientific disc…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ECCV",
+      "title": "Eliciting Self-Verification in Multimodal Reasoning Agents with Reinforcement Learning",
+      "link": "https://arxiv.org/abs/2609.08025",
+      "evidenceLink": "https://www.semanticscholar.org/paper/58c858fd375705d7938ff4b25e3ec85f3ccdb54a",
+      "publishedAt": "2026-09-07T00:00:00.000Z",
+      "submittedAt": "2026-09-07T00:00:00.000Z",
+      "author": "Vishwas Sathish, Viresh Ranjan, Xin-Liang Zhu, Arnab Dhua, Douglas Gray",
+      "summary": "Reasoning agents increasingly rely on external tools such as web search to answer complex queries. Reinforcement learning (RL) finetuning algorithms such as GRPO have improved long-form reasoning in text-only language models, particularly for coding and mathematics. Reliable tool use in multimodal agents, however, remains challenging because models must interpret text and images while integrating noisy retrieved evidence, often under sparse outcome-level supervision without explicit verification signals. We present Self-Verification via Reinforcement Learning (SVRL), an RL-only finetuning framework that trains multimodal agents to verify and filter retrieved evidence within their own reasoning traces, reducing reliance on external verifiers at inference time. SVRL also introduces a search-aware penalty that discourages unnecessary tool calls and a query-diversity reward that encourages diverse, well-formed search queries, providing fine-grained feedback on when and what to search. Finetuning Qwen-2.5-VL-7B with SVRL on only 5{,}000 visual question answering examples yields consistent gains in multi-hop VQA generalization and tool efficiency across benchmarks. Overall, SVRL narrows the gap between compact agents and much larger proprietary models while requiring substantially lower training and inference cost.",
+      "citationCount": 1,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ECCV",
+        "venueLabel": "ECCV",
+        "venueName": "European Conference on Computer Vision",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 66.20411998265593,
+      "core": "Reasoning agents increasingly rely on external tools such as web search to answer complex queries. Reinforcement learning (RL) finetuning algorithms such as GRPO have improved long-form reasoning in text-only language models, particularly for coding and mathematics. Reliable tool use in multimodal agents, however, remains challenging because models must interpret text and images while integrating noisy retrieved evi…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "10 questions to ask any software vendor about sovereignty",
+      "link": "https://about.gitlab.com/blog/10-questions-to-ask-any-software-vendor-about-sovereignty",
+      "publishedAt": "2026-11-02T00:00:00.000Z",
+      "author": "Bryan Ross https://about.gitlab.com/blog/authors/bryan-ross/",
+      "summary": "Sovereignty is moving from buzzword to buying criterion. The European Commission’s proposed Cloud and AI Development Act (CADA) would set assurance levels for the cloud and AI services public authorities buy, defining where data should live and who can access it. Parts of it could reach private entities too. GitLab submitted its own comment on CADA because we share the goal of strengthening Europe’s digital sovereignty and security. We believe this important work should prioritize customer control, portability, interoperability, provider diversity, and risk-based safeguards. You can also view GitLab's submission on the European Commission's Have Your Say portal . But regulation is only one lever. Many vendor conversations still don’t address sovereignty with enough depth. If this is a priority for your organization, here are ten questions I’d put to any software vendor, GitLab included. Use them as a simple assessment to confirm if a vendor takes sovereignty seriously: 10 questions to ask your vendors 1. Which layers of the stack do you operate yourself? This question gets at ownership and accountability. A cloud provider and a software vendor control different risks, and a good vendor can help its customers appropriately distinguish between the controls it operates from those it inherits from the infrastructure beneath it. 2. Can I choose where and how the software runs? Look for a vendor that offers flexibility around how you handle your data and architecture. Sovereignty needs to vary by workload, and the architecture should be able to meet your requirements. For example, self-managed deployments let you run software on your own infrastructure, whether on-premises, in a private cloud, or in a hybrid setup, so your data stays within boundaries you define. 3. Can I choose the AI models I use, and change them later? Frontier models change fast, and your vendor should not lock you to one. Look for platforms that are model agnostic and draw on a diverse set of models and hosts. That gives your business the flexibility to use the best model for each use case as new ones are released. Open-weight models can often run in your own environment while offering strong price-performance. 4. Does my data train anyone’s model? Data is valuable for training AI models, so ask for an official written policy around model training and request it includes sub-processors too. Consider it a great sign if the vendor can confidently point to resources that affirm they do not train generative AI models on your data and restrict AI model sub-processors from using both model inputs and outputs for training. 5. What data leaves my region, and why? Personal data of identifiable users remains subject to regional regulations, like GDPR, regardless of its origin. However, some data and operational signals need to cross boundaries to keep service secure and available. The right vendor offers local hosting and can otherwise explain what types of data cross borders and justify why. 6. Who can reach my data, and from where? Ask which roles can reach your infrastructure and customer data, from which regions, and under what safeguards. A vendor that offers deployment options with customer-managed encryption keys and private network connectivity adds further control over that access. 7. How do you handle data and risk classifications? Ask how the vendor classifies different data and what governance mechanisms and incident response activities are in place to handle policy violations and security incidents. A clear classification approach also feeds data protection impact assessments. 8. Which independent audits cover the service I am buying? Attestations such as SOC 2 Type II and ISO/IEC 27001 let a vendor prove its own layer separately from the infrastructure provider’s assessment. Check that the report scope covers the application you will actually use. 9. Can you match controls to the sensitivity of each workload? Regulated industries require finer-grain policy controls. Ask whether the vendor lets you set the level of assurance workload by workload. This approach helps your team tune controls to the sensitivity of its function and data so you have speed with control. 10. What does leaving your ecosystem look like? Portability and interoperability are sovereignty features. Ask how the platform connects to the other tools and models you use and how you would export your projects and history. The format of data exports is important; exports often yield datasets that are complex, poorly structured, or intentionally obfuscated, making them difficult to process without technical restructuring. A vendor confident in its product welcomes easy exports and open integrations. Sovereignty helps organizations embrace flexibility No vendor will give perfect answers on all ten of these questions, and requirements will continue to evolve, but the architecture you choose should be poised to absorb changes resiliently. Teams get the most from AI when they can decide what their organization controls and how. That’s why GitLab believes customers should be able to choose which models they use and where they run. Take these ten questions into your next vendor conversation and see which vendors take sovereignty as seriously as you do. If you’d like to see how GitLab measures up (we do!), review how we handle customer data and infrastructure in our AI Transparency Center .",
+      "evidenceLink": "",
+      "score": 64.71547619047618,
+      "core": "Sovereignty is moving from buzzword to buying criterion. The European Commission’s proposed Cloud and AI Development Act (CADA) would set assurance levels for the cloud and AI services public authorities buy, defining where data should live and who can access it. Parts of it could reach private entities too. GitLab submitted its own comment on CADA because we share the goal of strengthening Europe’s digital sovereig…",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-05T15:59:00.000Z",
+        "evidence": "live_http_curl_fallback"
       }
     },
     {
@@ -132,85 +338,55 @@
       "author": "Eduard van Valkenburg, Wes Steyn",
       "summary": "We have added installable Microsoft Agent Framework builder skills for .NET and Python. They give coding agents Microsoft-maintained guidance for building and modifying Agent Framework applications, from choosing the right pattern to wiring tools, sessions, workflows, and hosting. These are development-time skills for your coding assistant, not runtime skills loaded by the application you ship. […] The post Give your coding agent a head start with Microsoft Agent Framework skills for .NET and Python appeared first on Microsoft Agent Framework .",
       "evidenceLink": "",
-      "score": 61.9711314484127,
+      "score": 60.31367063492064,
       "core": "We have added installable Microsoft Agent Framework builder skills for .NET and Python. They give coding agents Microsoft-maintained guidance for building and modifying Agent Framework applications, from choosing the right pattern to wiring tools, sessions, workflows, and hosting. These are development-time skills for your coding assistant, not runtime skills loaded by the application you ship. […] The post Give you…",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-11-04T16:46:43.975Z",
+        "checkedAt": "2026-11-05T15:59:00.000Z",
         "evidence": "live_http"
       }
     },
     {
       "kind": "blog",
-      "sourceId": "hcker_news_ai_blogs",
-      "source": "Hacker News · hcker.news",
-      "title": "AI is forcing us to pay off 40 years of technical debt",
-      "link": "https://spectrum.ieee.org/ai-in-cybersecurity-php2shell-vulnerability",
-      "publishedAt": "2026-11-04T11:52:17.000Z",
-      "author": "pseudolus https://news.ycombinator.com/user?id=pseudolus",
-      "summary": "AI in cybersecurity accelerates both attackers and defenders, revealing painful technical debt in fragile legacy systems.",
-      "evidenceLink": "https://news.ycombinator.com/item?id=50364336",
-      "origin": "hcker_news",
-      "hnMetrics": {
-        "points": 577,
-        "comments": 379
-      },
-      "access": {
-        "verified": true,
-        "mode": "public",
-        "checkedAt": "2026-11-04T16:46:43.975Z",
-        "evidence": "hcker_news_feed_and_live_article"
-      },
-      "score": 61.29089338930452,
-      "core": "AI in cybersecurity accelerates both attackers and defenders, revealing painful technical debt in fragile legacy systems.",
-      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
-    },
-    {
-      "kind": "blog",
-      "sourceId": "latent_space",
-      "source": "Latent Space",
-      "title": "[AINews] LLMs can read & write neural network weights: \"Weight Space Programming\" cuts Autoresearch out of the RSI loop",
-      "link": "https://latent.space/p/ainews-llms-can-read-write-neural-network-weights-weight-space-programming-cuts-autoresearch-out-of",
-      "publishedAt": "2026-11-03T05:35:00.000Z",
-      "author": "swyx .ai",
-      "summary": "Editing Qwen’s weights to reduce reasoning loops, DeepSeek’s super-agent prototype, and the GDPx benchmark.",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "How NVIDIA Factory Operations Blueprint Coordinates AI Agents to Investigate Production Issues",
+      "link": "https://developer.nvidia.com/blog/how-nvidia-factory-operations-blueprint-coordinates-ai-agents-to-investigate-production-issues",
+      "publishedAt": "2026-11-04T17:00:00.000Z",
+      "author": "Samuel Ochoa",
+      "summary": "A Siemens report estimates that unplanned downtime costs an average large plant in the surveyed sectors $253 million per year. Whether investigating a failed...",
       "evidenceLink": "",
-      "score": 59.08047668650793,
-      "core": "Editing Qwen’s weights to reduce reasoning loops, DeepSeek’s super-agent prototype, and the GDPx benchmark.",
+      "score": 58.24722222222222,
+      "core": "A Siemens report estimates that unplanned downtime costs an average large plant in the surveyed sectors $253 million per year. Whether investigating a failed...",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-11-04T16:46:43.975Z",
+        "checkedAt": "2026-11-05T15:59:00.000Z",
         "evidence": "live_http"
       }
     },
     {
       "kind": "blog",
-      "sourceId": "hcker_news_ai_blogs",
-      "source": "Hacker News · hcker.news",
-      "title": "We're training a Figma-fluent editing model",
-      "link": "https://www.figma.com/blog/training-a-figma-fluent-editing-model",
-      "publishedAt": "2026-11-01T04:05:23.000Z",
-      "author": "gmays https://news.ycombinator.com/user?id=gmays",
-      "summary": "Here, we’re sharing the research behind how we’re translating that to design editing workflows.",
-      "evidenceLink": "https://news.ycombinator.com/item?id=50322603",
-      "origin": "hcker_news",
-      "hnMetrics": {
-        "points": 141,
-        "comments": 59
-      },
+      "sourceId": "fiddler_ai_evaluation",
+      "source": "Fiddler AI Blog",
+      "title": "Why Do Enterprises Need an AI Agent Inventory?",
+      "link": "https://www.fiddler.ai/blog/why-enterprises-need-ai-agent-inventory",
+      "publishedAt": "2026-11-04T00:00:00.000Z",
+      "author": "",
+      "summary": "An AI agent inventory records each agent's owner, credentials, data access, and lifecycle, supporting security, compliance evidence, and cost control.",
+      "evidenceLink": "",
+      "score": 54.977380952380955,
+      "core": "An AI agent inventory records each agent's owner, credentials, data access, and lifecycle, supporting security, compliance evidence, and cost control.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-11-04T16:46:43.975Z",
-        "evidence": "hcker_news_feed_and_live_article"
-      },
-      "score": 58.796296306015904,
-      "core": "Here, we’re sharing the research behind how we’re translating that to design editing workflows.",
-      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。"
+        "checkedAt": "2026-11-05T15:59:00.000Z",
+        "evidence": "live_http"
+      }
     },
     {
       "kind": "blog",
@@ -218,197 +394,37 @@
       "source": "LangChain Blog",
       "title": "How We Optimized Browser Use for Deep Agents",
       "link": "https://www.langchain.com/blog/how-we-optimized-browser-use-for-deep-agents",
-      "publishedAt": "2026-11-03T22:30:50.000Z",
+      "publishedAt": "2026-11-04T13:24:48.000Z",
       "author": "",
       "summary": "We compared seven browser toolsets for Deep Agents, picked Stagehand from Browserbase, and tuned it with LangSmith traces and evals. Here's what we learned.",
       "evidenceLink": "",
-      "score": 55.56202430555555,
+      "score": 54.968809523809526,
       "core": "We compared seven browser toolsets for Deep Agents, picked Stagehand from Browserbase, and tuned it with LangSmith traces and evals. Here's what we learned.",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-11-04T16:46:43.975Z",
+        "checkedAt": "2026-11-05T15:59:00.000Z",
         "evidence": "live_http"
       }
     },
     {
       "kind": "blog",
-      "sourceId": "together_ai_engineering",
-      "source": "Together AI",
-      "title": "Polymorphic Inference: self-tuning inference for open models",
-      "link": "https://www.together.ai/blog/polymorphic-inference",
+      "sourceId": "redis_ai_engineering",
+      "source": "Redis Blog",
+      "title": "Agents Are Software: Introducing the Next Chapter of Redis Iris",
+      "link": "https://redis.io/blog/agents-are-software-introducing-the-next-chapter-of-redis-iris",
       "publishedAt": "2026-11-04T00:00:00.000Z",
-      "author": "",
-      "summary": "Models, traffic and chips are constantly changing. Polymorphic Inference adapts to each, and Together Compiler uses AI agents to keep production inference tuned.",
+      "author": "Rowan Trollope",
+      "summary": "The next chapter of Redis Iris is here AI models and infrastructure are now good enough for the enterprise, yet few teams are seeing repeatable, production-level success with agents. This is because agents lack the right context, at the right time, r...",
       "evidenceLink": "",
-      "score": 54.69595287698413,
-      "core": "Models, traffic and chips are constantly changing. Polymorphic Inference adapts to each, and Together Compiler uses AI agents to keep production inference tuned.",
+      "score": 54.54960317460318,
+      "core": "The next chapter of Redis Iris is here AI models and infrastructure are now good enough for the enterprise, yet few teams are seeing repeatable, production-level success with agents. This is because agents lack the right context, at the right time, r...",
       "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
       "access": {
         "verified": true,
         "mode": "public",
-        "checkedAt": "2026-11-04T16:46:43.975Z",
-        "evidence": "live_http"
-      }
-    },
-    {
-      "kind": "blog",
-      "sourceId": "meta_engineering",
-      "source": "Meta Engineering",
-      "title": "F3 Lightning: How Meta Accelerates Ads ML Features to Production at Scale",
-      "link": "https://engineering.fb.com/2026/11/03/ml-applications/f3-lightning-how-meta-accelerates-ads-ml-features-to-production",
-      "publishedAt": "2026-11-03T17:00:35.000Z",
-      "author": "",
-      "summary": "Facebook Feature Framework (F3) is Meta’s framework for authoring, compiling, and serving the machine learning features underlying ads ranking models, where a single request can require more than 20,000 features. We first presented F3 at AI @ Scale 2020. F3 reduced execution computational costs by compiling all features into a single merged graph, but that [...] Read More... The post F3 Lightning: How Meta Accelerates Ads ML Features to Production at Scale appeared first on Engineering at Meta .",
-      "evidenceLink": "",
-      "score": 51.079980654761904,
-      "core": "Facebook Feature Framework (F3) is Meta’s framework for authoring, compiling, and serving the machine learning features underlying ads ranking models, where a single request can require more than 20,000 features. We first presented F3 at AI @ Scale 2020. F3 reduced execution computational costs by compiling all features into a single merged graph, but that [...] Read More... The post F3 Lightning: How Meta Accelerat…",
-      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
-      "access": {
-        "verified": true,
-        "mode": "public",
-        "checkedAt": "2026-11-04T16:46:43.975Z",
-        "evidence": "live_http"
-      }
-    },
-    {
-      "kind": "blog",
-      "sourceId": "langchain_engineering",
-      "source": "LangChain Blog",
-      "title": "Why human insight is a strategic advantage for building better agents",
-      "link": "https://www.langchain.com/blog/human-insight-strategic-advantage-agents",
-      "publishedAt": "2026-11-04T16:40:04.000Z",
-      "author": "",
-      "summary": "Explore 3 principles for effective human-in-the-loop workflows and how human-review is a strategic imperative for production-ready agents.",
-      "evidenceLink": "",
-      "score": 49.758730654761905,
-      "core": "Explore 3 principles for effective human-in-the-loop workflows and how human-review is a strategic imperative for production-ready agents.",
-      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
-      "access": {
-        "verified": true,
-        "mode": "public",
-        "checkedAt": "2026-11-04T16:46:43.975Z",
-        "evidence": "live_http"
-      }
-    },
-    {
-      "kind": "blog",
-      "sourceId": "mozilla_ai",
-      "source": "Mozilla.ai",
-      "title": "Otari by Mozilla AI: your operating system for AI governance",
-      "link": "https://blog.mozilla.ai/otari-by-mozilla-ai-your-operating-system-for-ai-governance",
-      "publishedAt": "2026-11-04T09:23:32.000Z",
-      "author": "Hasan Gözlügöl",
-      "summary": "As AI takes on more work, organisations need clear limits on models, tools and spend. Otari, Mozilla AI’s open-source gateway, brings model choice, agent governance and cost control together, so teams can adopt AI with confidence. Your models. Your tokens. Your control.",
-      "evidenceLink": "",
-      "score": 48.9723814484127,
-      "core": "As AI takes on more work, organisations need clear limits on models, tools and spend. Otari, Mozilla AI’s open-source gateway, brings model choice, agent governance and cost control together, so teams can adopt AI with confidence. Your models. Your tokens. Your control.",
-      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
-      "access": {
-        "verified": true,
-        "mode": "public",
-        "checkedAt": "2026-11-04T16:46:43.975Z",
-        "evidence": "live_http"
-      }
-    },
-    {
-      "kind": "blog",
-      "sourceId": "sentry_ai_engineering",
-      "source": "Sentry Engineering",
-      "title": "Finding performance wins in our own traces with a coding agent",
-      "link": "https://blog.sentry.io/performance-wins-traces-coding-agent",
-      "publishedAt": "2026-11-03T09:00:00.000Z",
-      "author": "",
-      "summary": "How we used a coding agent and the Sentry MCP to find backend performance wins in Sentry's own traces and remove hundreds of millions of queries a week.",
-      "evidenceLink": "",
-      "score": 48.57452430555555,
-      "core": "How we used a coding agent and the Sentry MCP to find backend performance wins in Sentry's own traces and remove hundreds of millions of queries a week.",
-      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
-      "access": {
-        "verified": true,
-        "mode": "public",
-        "checkedAt": "2026-11-04T16:46:43.975Z",
-        "evidence": "live_http"
-      }
-    },
-    {
-      "kind": "blog",
-      "sourceId": "techradar_pro_ai",
-      "source": "TechRadar Pro",
-      "title": "Why coding agents aren’t delivering the promised gains for engineering – yet",
-      "link": "https://www.techradar.com/pro/why-coding-agents-arent-delivering-the-promised-gains-for-engineering-yet",
-      "publishedAt": "2026-11-04T15:16:07.000Z",
-      "author": "Dr. Greg Law",
-      "summary": "AI writes code in minutes, but engineers are struggling to understand and fix it. The knock-on effects are starting to show..",
-      "evidenceLink": "",
-      "score": 45.58656795634921,
-      "core": "AI writes code in minutes, but engineers are struggling to understand and fix it. The knock-on effects are starting to show..",
-      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
-      "access": {
-        "verified": true,
-        "mode": "public",
-        "checkedAt": "2026-11-04T16:46:43.975Z",
-        "evidence": "live_http"
-      }
-    },
-    {
-      "kind": "blog",
-      "sourceId": "deepmind",
-      "source": "Google DeepMind",
-      "title": "Agentic cheminformatics with Google Antigravity",
-      "link": "https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity",
-      "publishedAt": "2026-11-03T17:01:49.000Z",
-      "author": "",
-      "summary": "Learn how Google Antigravity and our Cheminformatics Skills accelerate drug discovery workflows, search compounds, and propose novel rigidified macrocycles.",
-      "evidenceLink": "",
-      "score": 44.17033779761905,
-      "core": "Learn how Google Antigravity and our Cheminformatics Skills accelerate drug discovery workflows, search compounds, and propose novel rigidified macrocycles.",
-      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
-      "access": {
-        "verified": true,
-        "mode": "public",
-        "checkedAt": "2026-11-04T16:46:43.975Z",
-        "evidence": "live_http"
-      }
-    },
-    {
-      "kind": "blog",
-      "sourceId": "cloudflare_ai",
-      "source": "Cloudflare",
-      "title": "See the agents, set the terms: new visibility and control for personal agents",
-      "link": "https://blog.cloudflare.com/personal-agents-visibility-control",
-      "publishedAt": "2026-11-04T14:00:00.000Z",
-      "author": "Marina Elmore",
-      "summary": "Personal AI agents have changed how users interact with the web, blurring the lines between automated and human traffic. Learn how Cloudflare gives site owners visibility and control to manage personal agent access.",
-      "evidenceLink": "",
-      "score": 43.99595287698413,
-      "core": "Personal AI agents have changed how users interact with the web, blurring the lines between automated and human traffic. Learn how Cloudflare gives site owners visibility and control to manage personal agent access.",
-      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
-      "access": {
-        "verified": true,
-        "mode": "public",
-        "checkedAt": "2026-11-04T16:46:43.975Z",
-        "evidence": "live_http"
-      }
-    },
-    {
-      "kind": "blog",
-      "sourceId": "zapier_ai_automation",
-      "source": "Zapier Blog",
-      "title": "What is Claude Duet?",
-      "link": "https://zapier.com/blog/claude-duet",
-      "publishedAt": "2026-11-04T04:00:00.000Z",
-      "author": "Wade Burrell",
-      "summary": "Claude Duet is Anthropic's answer to Meta's Muse and OpenAI's dots. It's an always-on AI agent, which means that instead of waiting for you to type a prompt, it sends you a morning brief, checks your connected apps to see where it can be helpful, and works on tasks in the background. Terrifying? A bit. But before it sends, pays, signs, or deletes anything, it asks you first. It's still in research preview, but I got early access and spent some time with it on my phone. Here's what Claude Duet is",
-      "evidenceLink": "",
-      "score": 41.86500049603175,
-      "core": "Claude Duet is Anthropic's answer to Meta's Muse and OpenAI's dots. It's an always-on AI agent, which means that instead of waiting for you to type a prompt, it sends you a morning brief, checks your connected apps to see where it can be helpful, and works on tasks in the background. Terrifying? A bit. But before it sends, pays, signs, or deletes anything, it asks you first. It's still in research preview, but I got…",
-      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
-      "access": {
-        "verified": true,
-        "mode": "public",
-        "checkedAt": "2026-11-04T16:46:43.975Z",
+        "checkedAt": "2026-11-05T15:59:00.000Z",
         "evidence": "live_http"
       }
     }

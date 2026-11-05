@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-11-04T16:21:36.273Z",
+  "generatedAt": "2026-11-05T15:59:08.015Z",
   "window": {
-    "start": "2026-11-04 00:21:36 CST",
-    "end": "2026-11-05 00:21:36 CST"
+    "start": "2026-11-04 23:59:08 CST",
+    "end": "2026-11-05 23:59:08 CST"
   },
   "productHuntDateKeys": [
-    "2026-11-03"
+    "2026-11-04"
   ],
   "githubMetrics": {
     "status": "ok",
-    "requestedCount": 19,
-    "enrichedCount": 19,
+    "requestedCount": 10,
+    "enrichedCount": 10,
     "error": ""
   },
   "feedbackPolicy": {
@@ -19,9 +19,9 @@
     "sourceIssueCount": 45,
     "ruleCount": 15,
     "exactOnlyCount": 5,
-    "exactMatchCount": 4,
-    "policyMatchCount": 27,
-    "droppedCount": 27,
+    "exactMatchCount": 5,
+    "policyMatchCount": 20,
+    "droppedCount": 21,
     "rules": [
       {
         "id": "hn-github-stars-below-50-drop",
@@ -36,9 +36,9 @@
           40,
           41
         ],
-        "matchedCount": 12,
-        "selectedCount": 12,
-        "droppedCount": 12
+        "matchedCount": 6,
+        "selectedCount": 6,
+        "droppedCount": 6
       },
       {
         "id": "hn-github-stars-50-to-99-downrank",
@@ -50,8 +50,8 @@
           21,
           35
         ],
-        "matchedCount": 0,
-        "selectedCount": 0,
+        "matchedCount": 1,
+        "selectedCount": 1,
         "droppedCount": 0
       },
       {
@@ -100,9 +100,9 @@
           17,
           31
         ],
-        "matchedCount": 11,
-        "selectedCount": 11,
-        "droppedCount": 11
+        "matchedCount": 10,
+        "selectedCount": 10,
+        "droppedCount": 10
       },
       {
         "id": "editorial-or-promotional-content-drop",
@@ -204,8 +204,8 @@
         "issueNumbers": [
           14
         ],
-        "matchedCount": 5,
-        "selectedCount": 4,
+        "matchedCount": 3,
+        "selectedCount": 3,
         "droppedCount": 0
       }
     ]
@@ -213,23 +213,23 @@
   "sources": {
     "producthunt": {
       "status": "fallback",
-      "rawCount": 38,
-      "keptCount": 22,
-      "note": "Product Hunt 按 Pacific 完成日抓取 2026-11-03；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 38 条，AI 相关候选 22 条；实际 fallback：hunted_space。；历史去重移除 1 条已报道或已处理日榜 Product Hunt 信号，最终发布 21 条。",
-      "discoveredKeptCount": 22,
-      "reportKeptCount": 21,
-      "previouslyReportedCount": 1
+      "rawCount": 34,
+      "keptCount": 17,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-11-04；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 34 条，AI 相关候选 17 条；实际 fallback：hunted_space。；历史去重移除 2 条已报道或已处理日榜 Product Hunt 信号，最终发布 15 条。",
+      "discoveredKeptCount": 17,
+      "reportKeptCount": 15,
+      "previouslyReportedCount": 2
     },
     "yc_launch": {
       "status": "ok",
-      "rawCount": 9,
-      "keptCount": 9,
+      "rawCount": 4,
+      "keptCount": 4,
       "note": "YC Launch 正常返回窗口内候选。"
     },
     "hackernews": {
       "status": "ok",
-      "rawCount": 28,
-      "keptCount": 16,
+      "rawCount": 19,
+      "keptCount": 13,
       "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
     },
     "github": {
@@ -239,15 +239,15 @@
       "note": "GitHub 默认只收固定 watchlist 的 Release。"
     },
     "huggingface": {
-      "status": "unavailable",
-      "rawCount": 0,
-      "keptCount": 0,
-      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：未记录；Space: Command failed: curl -fsSL --connect-timeout 10 --max-time 20 https://huggingface.co/api/spaces?sort=lastModified&direction=-1&limit=60 curl: (28) Failed to connect to huggingface.co port 443 after 10004 ms: Timeout was reached; Model: Command failed: curl -fsSL --connect-timeout 10 --max-time 20 https://huggingface.co/api/models?sort=lastModified&direction=-1&limit=60 curl: (28) Failed to connect to huggingface.co port 443 after 10004 ms: Timeout was reached"
+      "status": "fallback",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
     },
     "aihot": {
       "status": "ok",
-      "rawCount": 18,
-      "keptCount": 18,
+      "rawCount": 19,
+      "keptCount": 19,
       "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
     },
     "xhs_dealflow": {

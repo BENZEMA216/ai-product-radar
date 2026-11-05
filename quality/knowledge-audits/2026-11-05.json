@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T17:02:14.819Z",
+  "generatedAt": "2026-11-05T16:18:55.799Z",
   "report": "2026-11-05.md",
   "health": "quality/knowledge-source-health/2026-11-05.json",
   "candidates": "quality/knowledge-candidates/2026-11-05.json",
@@ -7,17 +7,17 @@
   "ok": true,
   "date": "2026-11-05",
   "rows": 20,
-  "blogCount": 20,
-  "paperCount": 0,
-  "blogAccessVerifiedCount": 20,
-  "topConferencePaperCount": 0,
-  "sourceCount": 82,
+  "blogCount": 16,
+  "paperCount": 4,
+  "blogAccessVerifiedCount": 16,
+  "topConferencePaperCount": 4,
+  "sourceCount": 90,
   "candidatePool": {
     "historicalLinkCount": 1787,
-    "blogFetchedCount": 285,
-    "blogAccessCheckedCount": 82,
-    "blogAccessVerifiedCount": 45,
-    "blogAccessRejectedCount": 37,
+    "blogFetchedCount": 325,
+    "blogAccessCheckedCount": 104,
+    "blogAccessVerifiedCount": 69,
+    "blogAccessRejectedCount": 35,
     "blogAccessRejected": [
       {
         "sourceId": "openai_news",
@@ -39,12 +39,6 @@
       },
       {
         "sourceId": "openai_news",
-        "title": "Scaling Git at OpenAI",
-        "link": "https://openai.com/index/scaling-git-at-openai",
-        "reason": "HTTP 403"
-      },
-      {
-        "sourceId": "openai_news",
         "title": "Patch the Planet: global response coordination as agents uncover critical vulnerabilities",
         "link": "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities",
         "reason": "HTTP 403"
@@ -57,14 +51,14 @@
       },
       {
         "sourceId": "openai_news",
-        "title": "Legora is building the agentic operating system for legal work",
-        "link": "https://openai.com/index/legora",
+        "title": "Scaling Git at OpenAI",
+        "link": "https://openai.com/index/scaling-git-at-openai",
         "reason": "HTTP 403"
       },
       {
         "sourceId": "openai_news",
-        "title": "LifeVal",
-        "link": "https://openai.com/index/lifeval",
+        "title": "Legora is building the agentic operating system for legal work",
+        "link": "https://openai.com/index/legora",
         "reason": "HTTP 403"
       },
       {
@@ -75,32 +69,20 @@
       },
       {
         "sourceId": "openai_news",
-        "title": "Rewarding defenders with bigger bug bounties",
-        "link": "https://openai.com/index/rewarding-defenders-with-bigger-bug-bounties",
-        "reason": "HTTP 403"
-      },
-      {
-        "sourceId": "openai_news",
-        "title": "Preparing our next security sprint to harden OpenAI",
-        "link": "https://openai.com/index/preparing-our-next-security-sprint-to-harden-openai",
-        "reason": "HTTP 403"
-      },
-      {
-        "sourceId": "openai_news",
         "title": "OpenAI and Poland’s NASK partner to advance AI safety and security",
         "link": "https://openai.com/index/openai-nask-ai-safety-security-partnership",
         "reason": "HTTP 403"
       },
       {
         "sourceId": "openai_news",
-        "title": "Accelerating engineering for the physical world",
-        "link": "https://openai.com/index/accelerating-engineering-for-the-physical-world",
+        "title": "LifeVal",
+        "link": "https://openai.com/index/lifeval",
         "reason": "HTTP 403"
       },
       {
         "sourceId": "openai_news",
-        "title": "Daybreak Red is now available in AWS GovCloud (US-East)",
-        "link": "https://openai.com/index/daybreak-red-aws-govcloud",
+        "title": "Rewarding defenders with bigger bug bounties",
+        "link": "https://openai.com/index/rewarding-defenders-with-bigger-bug-bounties",
         "reason": "HTTP 403"
       },
       {
@@ -117,8 +99,14 @@
       },
       {
         "sourceId": "openai_news",
-        "title": "Community safety report and new protections for teens",
-        "link": "https://openai.com/index/community-safety-report-and-new-protections-for-teens",
+        "title": "Preparing our next security sprint to harden OpenAI",
+        "link": "https://openai.com/index/preparing-our-next-security-sprint-to-harden-openai",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "openai_news",
+        "title": "Accelerating engineering for the physical world",
+        "link": "https://openai.com/index/accelerating-engineering-for-the-physical-world",
         "reason": "HTTP 403"
       },
       {
@@ -129,31 +117,37 @@
       },
       {
         "sourceId": "openai_news",
-        "title": "How Cisco defends at machine speed with OpenAI",
-        "link": "https://openai.com/index/cisco-cyber",
+        "title": "Daybreak Red is now available in AWS GovCloud (US-East)",
+        "link": "https://openai.com/index/daybreak-red-aws-govcloud",
         "reason": "HTTP 403"
       },
       {
-        "sourceId": "deepmind",
-        "title": "Gemini 4 Argon for Robotics",
-        "link": "https://deepmind.google/blog/gemini-4-argon-for-robotics",
-        "reason": "fetch failed; curl fallback: Command failed: curl -fsSL --connect-timeout 15 --max-time 15 -A Mozilla/5.0 (compatible; "
+        "sourceId": "openai_news",
+        "title": "Community safety report and new protections for teens",
+        "link": "https://openai.com/index/community-safety-report-and-new-protections-for-teens",
+        "reason": "HTTP 403"
       },
       {
-        "sourceId": "deepmind",
-        "title": "EmbeddingGemma 2: an open, lightweight multimodal embedding model",
-        "link": "https://deepmind.google/blog/embeddinggemma-2-an-open-lightweight-multimodal-embedding-model",
-        "reason": "fetch failed; curl fallback: Command failed: curl -fsSL --connect-timeout 15 --max-time 15 -A Mozilla/5.0 (compatible; "
+        "sourceId": "openai_news",
+        "title": "Democratic governance of frontier AI, part II: Empowering cyber defenders",
+        "link": "https://openai.com/index/empowering-cyber-defenders",
+        "reason": "HTTP 403"
       },
       {
-        "sourceId": "deepmind",
-        "title": "Gemini 4 Carbon: Our next frontier model",
-        "link": "https://deepmind.google/blog/gemini-4-carbon-our-next-frontier-model",
-        "reason": "fetch failed; curl fallback: Command failed: curl -fsSL --connect-timeout 15 --max-time 15 -A Mozilla/5.0 (compatible; "
+        "sourceId": "itpro_ai",
+        "title": "Tokenmaxxing crackdowns and AI cybersecurity risks",
+        "link": "https://www.itpro.com/security/tokenmaxxing-crackdowns-and-ai-cybersecurity-risks",
+        "reason": "The operation was aborted due to timeout; curl fallback: Command failed: curl -fsSL --connect-timeout 15 --max-time 15 -A Mozilla/5.0 (compatible; "
+      },
+      {
+        "sourceId": "latent_space",
+        "title": "[AINews] LLMs can read & write neural network weights: \"Weight Space Programming\" cuts Autoresearch out of the RSI loop",
+        "link": "https://latent.space/p/ainews-llms-can-read-write-neural-network-weights-weight-space-programming-cuts-autoresearch-out-of",
+        "reason": "The operation was aborted due to timeout; curl fallback: Command failed: curl -fsSL --connect-timeout 15 --max-time 15 -A Mozilla/5.0 (compatible; "
       },
       {
         "sourceId": "interconnects",
-        "title": "How well can we measure open model inference share?",
+        "title": "How big is the open model economy today?",
         "link": "https://www.interconnects.ai/p/how-well-can-we-measure-open-model",
         "reason": "页面返回登录、付费墙或反爬拦截内容"
       },
@@ -234,41 +228,30 @@
         "title": "Integrating Netflix’s Foundation Model into Personalization applications",
         "link": "https://netflixtechblog.com/integrating-netflixs-foundation-model-into-personalization-applications-cf176b5860eb",
         "reason": "HTTP 403"
-      },
-      {
-        "sourceId": "docker_ai_engineering",
-        "title": "The Ecosystem is the Answer: Docker, the Blueprint Alliance, and the Importance of Collaboration in the Agentic Era",
-        "link": "https://www.docker.com/blog/docker-blueprint-alliance-agent-baseline",
-        "reason": "fetch failed; curl fallback: Command failed: curl -fsSL --connect-timeout 15 --max-time 15 -A Mozilla/5.0 (compatible; "
       }
     ],
-    "blogCanonicalRedirectHistoricalDedupCount": 3,
-    "paperFetchedCount": 0,
-    "paperTopConferenceVerifiedCount": 0,
-    "blogAfterHistoricalDedupCount": 42,
-    "paperAfterHistoricalDedupCount": 0,
-    "eligibleAfterHistoricalDedupCount": 42,
+    "blogCanonicalRedirectHistoricalDedupCount": 6,
+    "paperFetchedCount": 80,
+    "paperTopConferenceVerifiedCount": 80,
+    "blogAfterHistoricalDedupCount": 63,
+    "paperAfterHistoricalDedupCount": 59,
+    "eligibleAfterHistoricalDedupCount": 122,
     "maxPerBlogSource": 2,
     "selectedBlogSourceCounts": {
       "aws_machine_learning": 2,
-      "cloudflare_ai": 1,
-      "deepmind": 1,
+      "fiddler_ai_evaluation": 1,
+      "gitlab_ai_engineering": 1,
+      "google_cloud_ai": 2,
       "hcker_news_ai_blogs": 2,
-      "langchain_engineering": 2,
-      "latent_space": 1,
-      "meta_engineering": 1,
+      "langchain_engineering": 1,
       "microsoft_agent_framework": 1,
-      "mozilla_ai": 1,
-      "nvidia_developer": 1,
-      "sentry_ai_engineering": 1,
+      "nvidia_developer": 2,
+      "redis_ai_engineering": 1,
       "simon_willison": 1,
-      "techradar_pro_ai": 1,
-      "together_ai_engineering": 1,
-      "vercel_ai": 2,
-      "zapier_ai_automation": 1
+      "vercel_ai": 2
     },
     "sourceCapRelaxed": false,
-    "shortfallReason": "顶会元数据核验后论文仅 0 篇，空缺优先用已验证可访问的 Blog 补位，不用普通 arXiv 论文凑数；未用旧文或低质量内容补位。"
+    "shortfallReason": ""
   },
   "failures": []
 }
