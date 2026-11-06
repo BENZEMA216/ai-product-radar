@@ -1,0 +1,293 @@
+{
+  "date": "2026-11-07",
+  "generatedAt": "2026-11-06T16:03:25.905Z",
+  "reportPath": "reports/2026-11-07-0003-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 70,
+    "top20Sources": [
+      "HN Algolia",
+      "Product Hunt",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 35,
+      "keptCount": 25,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-11-05；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 35 条，AI 相关候选 25 条；实际 fallback：hunted_space。；历史去重移除 7 条已报道或已处理日榜 Product Hunt 信号，最终发布 18 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 7,
+      "keptCount": 7,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 21,
+      "keptCount": 12,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 14,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "fallback",
+      "rawCount": 19,
+      "keptCount": 19,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 14,
+      "keptCount": 14,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-10-27T16:05:37.511Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Rivet (YC W23) – Scale and Orchestrate Agents on S3",
+      "productKey": "https://github.com/rivet-dev/rivet",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Rivet 把 agent 扩缩容和编排落到 S3 这一具体基础设施选择上，值得判断它能否用更简单的状态模型降低大规模运行成本。"
+    },
+    {
+      "rank": 2,
+      "product": "Bridge",
+      "productKey": "https://www.producthunt.com/products/meetonbridge",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Bridge 把视频会议直接定义为 agent 参与的协作场，重点不在加一个助手，而在代理能否进入会议、接手任务并留下可审计的交接记录。"
+    },
+    {
+      "rank": 3,
+      "product": "CC Auto Review",
+      "productKey": "https://www.producthunt.com/products/cc-auto-review",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "CC Auto Review 让本机 Claude Code 审查 GitHub PR，产品判断点是本地代码边界、反馈可执行性与它能否减少人工 review 往返。"
+    },
+    {
+      "rank": 4,
+      "product": "Evardi",
+      "productKey": "https://www.ycombinator.com/launches/wwy-evardi-agents-that-engineer-the-grid-edge",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Evardi 把 agent 用在停电预防与电网边缘工程，场景高价值且约束明确，值得看它如何把预测转成公用事业可采纳的操作建议。"
+    },
+    {
+      "rank": 5,
+      "product": "Agentshield Zero-leak kernel sandbox and secret defense for AI coding",
+      "productKey": "https://ritualdev.in/agentshield",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Agentshield 试图用内核沙箱隔离编码 agent 与密钥，关键在于能否让 agent 完成真实任务，同时不暴露明文凭证或扩大主机权限。"
+    },
+    {
+      "rank": 6,
+      "product": "backlane",
+      "productKey": "https://www.producthunt.com/products/backlane-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "backlane 让 ChatGPT、Claude 通过 MCP 管理 marketplace，值得看自然语言入口是否真正覆盖商品、订单与运营动作，而非只做数据查询。"
+    },
+    {
+      "rank": 7,
+      "product": "MCPCore",
+      "productKey": "https://www.producthunt.com/products/mcpcore",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "MCPCore 用无代码工作流构建并托管 MCP server，观察重点是它是否把鉴权、部署和维护一起产品化，而不只是可视化拼接接口。"
+    },
+    {
+      "rank": 8,
+      "product": "Zerg Client",
+      "productKey": "https://www.producthunt.com/products/zerg",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Zerg Client 让编码 agent 自主驱动多个终端窗格，值得看并行任务的可观测性、失败恢复和人工接管是否比普通脚本更清楚。"
+    },
+    {
+      "rank": 9,
+      "product": "Clocknext",
+      "productKey": "https://www.producthunt.com/products/clocknext",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Clocknext 面向 AI agent 提供计价与账单基础设施，触及机器客户的用量归属、授权和结算，是 agent 商业化里容易被低估的一层。"
+    },
+    {
+      "rank": 10,
+      "product": "Stacktrace",
+      "productKey": "https://www.ycombinator.com/launches/wq3-stacktrace-give-agents-autonomy-without-losing-control",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Stacktrace 提供对自主 agent 的实时 steering，核心价值在运行中纠偏而非事后看日志；应重点验证介入是否会破坏任务状态。"
+    },
+    {
+      "rank": 11,
+      "product": "Hesper AI",
+      "productKey": "https://www.ycombinator.com/launches/wpy-hesper-ai-ai-agents-that-work-every-insurance-claim-end-to-end",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Hesper AI 把保险理赔从“处理一部分”推进到逐案完整工作并附输出证据，值得看端到端交付能否同时满足效率与审计要求。"
+    },
+    {
+      "rank": 12,
+      "product": "Weeny.Cloud – A Linux server for your coding agent's apps",
+      "productKey": "https://weeny.cloud",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Weeny.Cloud 为编码 agent 生成的应用提供 Linux 运行环境，产品机会在于压缩从本地生成到可访问部署之间的环境配置成本。"
+    },
+    {
+      "rank": 13,
+      "product": "Tokenfund – back open source with your coding agent's tokens, not money",
+      "productKey": "https://tokenfund.myclawn.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Tokenfund 用编码 agent 的 token 而非现金支持开源，机制很新，但要看 token 如何计量、分配以及是否真能形成可持续贡献。"
+    },
+    {
+      "rank": 14,
+      "product": "Vibeconferencing",
+      "productKey": "https://www.producthunt.com/products/vibeconferencing",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Vibeconferencing 把 Claude Code 会话带进 Meet、Zoom 或 Teams，值得观察代码上下文怎样在同步会议中共享，而不把协作退化成屏幕转播。"
+    },
+    {
+      "rank": 15,
+      "product": "Okapi",
+      "productKey": "https://www.producthunt.com/products/okapi-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Okapi 让 agent 自动修复仓库里的 API breaking change，问题明确且可验证；价值取决于跨仓影响识别和修复后验证是否可靠。"
+    },
+    {
+      "rank": 16,
+      "product": "KeepPlain – ask your coding agent why a line of code exists",
+      "productKey": "https://keepplain.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "KeepPlain 让编码 agent 回答某行代码为何存在，值得看它能否从提交和上下文恢复设计意图，而不是只复述当前实现。"
+    },
+    {
+      "rank": 17,
+      "product": "Zerg Client – a coding agent harness that drives its own terminal panes",
+      "productKey": "https://zergai.com/ztc",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Zerg Client 的 HN 信号为同一终端编排产品补充了开发者讨论证据；应借此验证真实使用阻力，而不是把它当成第二个新品。"
+    },
+    {
+      "rank": 18,
+      "product": "Rainbrand",
+      "productKey": "https://www.producthunt.com/products/rainbrand",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Rainbrand 试图给 agent 建立品牌层，值得看它具体约束语气、视觉和行动边界的方式，以及一致性是否能跨渠道保持。"
+    },
+    {
+      "rank": 19,
+      "product": "Living Brain",
+      "productKey": "https://www.producthunt.com/products/chatandbuild",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Living Brain 主打可互操作的 agent 记忆层，判断重点是记忆能否迁移、压缩和更新，而不把旧上下文持续污染新任务。"
+    },
+    {
+      "rank": 20,
+      "product": "Glasshand",
+      "productKey": "https://www.producthunt.com/products/glasshand",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Glasshand 给 agent 真 iPhone 和 Mac，扩展了真实设备测试与操作能力；同时必须看权限隔离、成本和误操作恢复。"
+    }
+  ]
+}

@@ -1,0 +1,416 @@
+{
+  "generatedAt": "2026-11-06T16:09:52.255Z",
+  "date": "2026-11-07",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Gemini Omni 1.2 Flash: Fast, cost-effective, and reliable video generation and editing now generally available",
+      "link": "https://cloud.google.com/blog/products/ai-machine-learning/gemini-omni-1-2-flash-generally-available",
+      "publishedAt": "2026-11-05T17:00:00.000Z",
+      "author": "John Nack Sr. Product Manager, Google Cloud",
+      "summary": "Today, Gemini Omni 1.2 Flash is generally available on Google Cloud. Built for the everyday videos businesses make in volume — like product videos, virtual try-ons, and ads — this model is fast, cost-effective, and follows your image, video and audio references more closely than before. Business users can create with it in Gemini for business and Google Vids, and developers can build with it via API. Here's what's new: A lower price: $0.07 per second of 720p video, 30% less than Gemini Omni 1.1 Flash, with similar savings at other resolutions. Longer clips: Generate and edit videos of up to 15 seconds, up from 10s. More consistent results: stronger adherence to image and video references keeps products, characters, and brand details consistent from shot to shot. Faster drafts, in higher resolution: create drafts at 360p or 720p, then upscale the best creations to 1080p or 4K. More natural speech: You can generate scenes with more fluid, natural-sounding dialogue, clearer lip-sync, and distinct multi-speaker conditioning. Editing in conversation: refine the same clip, such as swapping a product, changing lighting, or changing camera angle, instead of starting over. Note: Audio references are gated behind allowlisting. Gemini Omni 1.2 Flash is ready for production Gemini Omni 1.2 Flash is production-ready and backed by Google Cloud’s enterprise-grade infrastructure and security, offering Provisioned Throughput . Outputs carry an imperceptible SynthID watermark. Video creation inside the tools people already use Design and creative platforms are building Gemini Omni 1.2 Flash directly into their products, so their users can create and edit videos where they already work. Here’s how customers are already using Gemini Omni 1.2 Flash: “At Artlist, we’re focused on giving creators the control and flexibility to bring their ideas to life. Gemini Omni 1.2 Flash brings exciting capabilities in reference-based generation, video extension, and creative consistency, helping our customers move from experimentation to professional content production at scale.” – Roee Peled, CPTO, Artlist. Artlist uses Gemini 1.2 Omni Flash to bring creative ideas to life Artlist uses Gemini 1.2 Omni Flash to bring creative ideas to life “Creative teams need models that they can rely on consistently. Gemini Omni 1.2 Flash edits exactly what you ask for, a colorway or a background, and leaves the product untouched, even from detailed images and finished video. Its video-to-video takes footage into entirely new styles.” – Andrew Taco Zhang, Product Marketing Manager, FLORA. FLORA uses Gemini Omni 1.2 Flash to create new styles FLORA uses Gemini Omni 1.2 Flash to create new styles “We ran Gemini Omni 1.2 Flash through our evals at invideo. Honestly, it's really good. It sticks to the prompt, and the physics and sound feel real. If you need fast video at scale, it's one of the best we've tested. And 15 seconds means a full scene in one go.” – Shivam Rastogi, VP of Engineering, invideo. invideo uses Gemini Omni 1.2 Flash to create full scenes in one prompt invideo uses Gemini Omni 1.2 Flash to create full scenes in one prompt “We’re really impressed by how fast and accurate this new model is. The outputs retain an amazing level of detail, and the model does a great job of making only the changes we ask for while keeping everything else consistent. We’re excited to use it for character and scene replacements, as well as other creative workflows.” – Numan Khan, Creative Specialist, Krea. Krea uses Gemini Omni 1.2 Flash for their creative workflows, from character to scene replacements Krea uses Gemini Omni 1.2 Flash for their creative workflows, from character to scene replacements \"Gemini Omni 1.2 fits the way our teams work. Draft mode lets us iterate concepts in minutes, then render in 4K for TV-ready AI dramas. Text stays crisp across frames, characters look and sound real, and the speed keeps production moving. Now that it is generally available, we can bring this quality to over 100M Picsart creators.\" – Narek Hayrapetyan, Head of Product and Partnerships, Picsart. Picsart uses Gemini 1.2 Flash to iterate concepts in minutes Picsart uses Gemini 1.2 Flash to iterate concepts in minutes Runway empowers creatives with advanced AI video tools to produce high-quality content. For organizations, Runway’s enterprise solutions deliver robust collaborative tools to scale professional production. Here is what they created with Gemini Omni 1.2 Flash. Runway uses Gemini Omni 1.2 Flash to produce and scale high-quality content Runway uses Gemini Omni 1.2 Flash to produce and scale high-quality content Product and listing videos at catalog scale Retailers and marketplaces use Gemini Omni to turn the photos they already have into short product spins, lifestyle clips, try-on videos, and video ads. “Photoroom turns product photos into video ads that sell in minutes. We chose Gemini Omni Flash to power our Video Ad Maker and Product Animator because it balances quality, speed and cost. Version 1.2 brings 15-second videos, a top user request. With general availability and SLAs, we can rely on it in production for our sellers and enterprise customers.” - Matt Rouif, CEO and Co-founder, Photoroom. Photoroom uses Gemini Omni 1.2 Flash to power their Video Ad Maker and Product Animator Photoroom uses Gemini Omni 1.2 Flash to power their Video Ad Maker and Product Animator “QuickFrame AI helps marketers and business owners create, edit, and launch professional-quality ads for CTV and social in minutes. With Gemini Omni 1.2 Flash now supporting 15-second video generations at 1080p, users can create a complete CTV ad in a single generation, making TV ad creation simpler for businesses of all sizes.” - Richard Girges, Chief Technology Officer, QuickFrame AI. QuickFrame AI uses Gemini Omni 1.2 Flash to create complete CTV ads in a single generation QuickFrame AI uses Gemini Omni 1.2 Flash to create complete CTV ads in a single generation Create in Gemini for business, Google Vids and build with the API Coming soon to Gemini, business users will be able to create a short video from a prompt or a product photo, right in the chat. In Google Vids, teams can combine generated clips with avatars, music and voiceover to create product explainers, teasers, social posts and sales pitches. Businesses can also embed the capabilities of Gemini Omni 1.2 Flash into their applications and agents via the API. Get started with Gemini Omni We'll keep improving Gemini Omni based on your feedback, so tell us what you build. For business users: Try it in Google Vids ; coming soon to Gemini for business For developers: Try it in the Google Cloud console , build with the API , and see the pricing",
+      "evidenceLink": "",
+      "score": 106.34539176587302,
+      "core": "Today, Gemini Omni 1.2 Flash is generally available on Google Cloud. Built for the everyday videos businesses make in volume — like product videos, virtual try-ons, and ads — this model is fast, cost-effective, and follows your image, video and audio references more closely than before. Business users can create with it in Gemini for business and Google Vids, and developers can build with it via API. Here's what's n…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-06T16:09:52.255Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "The Pentagon wants to know who checks code when AI writes it",
+      "link": "https://about.gitlab.com/blog/department-of-war-instruction-for-ai-generated-code",
+      "publishedAt": "2026-11-06T00:00:00.000Z",
+      "author": "Elisabeth Burrows https://about.gitlab.com/blog/authors/elisabeth-burrows/",
+      "summary": "The Department of War now treats AI-generated code as unverified until it’s proven otherwise. DoW Instruction 8430.01 , “Accelerated Mission Software,” took effect September 8, 2026, and is the department’s latest guidance on modernizing and managing software. If you build or buy software for the DoW, the instruction changes what’s required of you for every line AI writes. You have to review and test it to the same standard as human-written code, show where AI touched it, and keep it on systems the department has approved. Here’s what the instruction asks of your team, and how GitLab helps you address it. What is DoW Instruction 8430.01? Issued by DoW CIO Kirsten Davies, DoW Instruction 8430.01 applies to every DoW organization and to any acquisition program that includes software, regardless of cost. The instruction sets policy and procedures for modernizing and managing software, with an emphasis on delivering capabilities faster. It directs teams to automate testing and security scanning, reuse what already works, and produce evidence as software is built. The instruction also encourages teams to use AI, calling AI-assisted development a major force multiplier for speed and quality. However, it attaches three conditions: AI’s role is traceable, its code is verified so developers stay accountable, and government data stays within approved boundaries. Each condition changes what a software platform has to do. Three requirements that shape AI in delivery While DoW Instruction 8430.01 covers a wide scope, the three conditions mentioned above show how software platforms must adapt. Here they are in more detail. 1. Traceability: Know what AI touched Software on DoW networks needs proof of what’s in it and how it was built. When AI is involved, the proof has to cover AI, too: which models, which versions, and which datasets were used to write or test the code. In GitLab, that record lives beside your code. Dependency Scanning produces your software bill of materials, and audit events and deployment records are generated as part of delivery. Agents in GitLab Duo Agent Platform act through their own service account , tied to the developer who started them, so a commit shows up as the agent acting on behalf of a named person. The commit then lands in the same audit log as everything else, where your SIEM can filter it as AI activity. Because the evidence stays in the platform, you can change models under managed policy without erasing the history. 2. Verification: Check what AI writes Accelerated delivery cannot compromise security, safety, or supply chain integrity. AI-generated or AI-modified code is unverified input, and a person must approve changes to security-critical functions (a flaw that lets an attacker in) or safety-critical ones (a flaw that can cost lives or platforms). As the instruction states, “Developers and development teams remain fully accountable for the security, functionality, and integrity of any code generated or modified using AI.” In GitLab, your scans, tests, and approval rules run in the same pipeline for every change, whether a developer or an agent writes the code. Merge request approval policies can require a named reviewer whenever a change touches protected paths or introduces a vulnerability, and protected branches mean an agent can propose but can’t merge past the people you’ve designated. Dependency Scanning Auto-Remediation (currently in beta) is one example of an agent doing the work while your reviewers still sign off. It proposes dependency upgrades and build fixes, and those proposals wait at your existing approval gates like any other merge request. When GitLab orchestrates agents across several steps, a flow can carry a change through review, tests, scans, and approvals on its own, pausing for a human to sign off before a merge or deploy. Every flow runs under the same identity, policy, and evidence chain as the rest of GitLab, so speed doesn’t mean skipped steps. For teams deciding how much autonomy to give agents, the GitLab Security Standard defines five stages (authorize, isolate, verify, release, and respond) that agents must clear before that autonomy is granted. Those stages are mapped to NIST Secure Software Development Framework (SSDF) and SP 800-53 controls . 3. Data boundaries: Control where AI runs AI systems must respect data boundaries without compromising intellectual property or classified context. Approved AI services must guarantee that government data and prompts aren’t used to train external models, and non-public DoW information stays on approved DoW systems. That means controlling which models are used and where they are hosted. GitLab Duo Agent Platform Self-Hosted runs on infrastructure you control, including air-gapped networks. You choose the supported models, on premises or in a private cloud, and can swap them without rebuilding workflows. Requests route through an AI Gateway you deploy yourself , so prompts and responses stay in your environment. For GitLab Dedicated for Government customers, this is the standard setup: You run the AI Gateway in your own environment , connected to the model provider of your choice. Comply with DoW Instruction 8430.01 today AI will keep getting faster at writing code. The harder job is showing the code can be trusted, and DoW Instruction 8430.01 asks your team to do exactly that. GitLab keeps that proof with the work: Every AI-assisted change carries its own evidence and audit trail, passes the same gates as human-written code, and runs on models you host and control. Your developers get the same guardrails for AI and non-AI work, without extra tools to learn. See how GitLab Duo Agent Platform helps defense teams keep AI-generated code governed, auditable, and under human control.",
+      "evidenceLink": "",
+      "score": 97.84539176587302,
+      "core": "The Department of War now treats AI-generated code as unverified until it’s proven otherwise. DoW Instruction 8430.01 , “Accelerated Mission Software,” took effect September 8, 2026, and is the department’s latest guidance on modernizing and managing software. If you build or buy software for the DoW, the instruction changes what’s required of you for every line AI writes. You have to review and test it to the same …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-06T16:09:52.255Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Introducing Vercel Security Review",
+      "link": "https://vercel.com/blog/vercel-security-review",
+      "publishedAt": "2026-11-02T13:00:00.000Z",
+      "author": "Nate McGrady",
+      "summary": "Today, we are launching Vercel Security Review in public beta. Security Review is a new capability in Vercel Agent , alongside Code Review and Investigation. Once enabled, it scans for vulnerabilities on every push to a team's connected GitHub repositories. Findings appear as comments on pull requests, are listed in the Security dashboard, and are available via CLI. With your permission, Vercel Agent can also validate and push fixes for findings. How it works Security reviews are triggered by GitHub push events, including direct pushes to your production branch. In monorepos, reviews are scoped to the project's root directory. Here is how it works: You push code to a GitHub repository connected to a Vercel project. As soon as the push lands, Security Review scans the changed code for vulnerabilities like missing authorization checks or exposed secrets. Findings are posted to the Security dashboard. On private and internal repositories, Security Review also adds a GitHub check to the commit and comments on the pull request. You can fix findings by clicking Fix with Vercel Agent in the dashboard, or use the CLI to pull findings and have your own coding agent implement changes. When subsequent security reviews no longer detect a finding, it is marked as no longer detected in the dashboard, and the GitHub comment is closed. Each review compares the push against a base and covers only what changed. For deployments, the base is the branch’s previous deployment, so the agent reviews the change against what’s already running. Because it only scans the diff, Security Review finishes in seconds and can run on every preview and production deployment. What the agent checks The agent reads the diff along with the surrounding code, traces how the changed code can be reached, checks for existing protections, and rechecks each finding before reporting it. That process is how it catches logic flaws like missing authorization checks, which pattern-matching scanners miss. Each review also applies your team’s security policies , which you can write in plain language and apply to specific projects or across your team. For example, a policy can require any endpoint that returns customer data to check that the requester owns it. You can also manage policies with the Vercel CLI, using vercel security policy . How findings are tracked Each new finding is checked against ones that have already been reported, so the same issue isn’t flagged twice. Every finding is tied to the deployment where it first appeared and changes are followed from there. That means that when a vulnerable change from a pull request is merged into your production branch, the finding is flagged in production as well. When a later review no longer detects the issue in an environment, the agent marks the finding as no longer detected there. Acting on findings Every finding explains the vulnerability and how to fix it, with links to the commit and deployment where it first appeared. Findings are listed in the Vulnerability view in the Security dashboard, where you can ask Vercel Agent to validate and commit fixes. Findings are also available via CLI , so you can fix vulnerabilities with your own coding agent. Each new finding generates an audit log event, which Enterprise teams can send to their SIEM through Audit Log Drains . Here is a demo of sample findings in the dashboard: Fixing vulnerabilities with Vercel Agent When Vercel Agent can fix a finding, you will see the option to click Fix with Vercel Agent on the finding page in the dashboard. After you click, the agent confirms the vulnerability still exists, then makes the smallest change that fixes it and updates the tests. Say a developer pushes a change to an invoice download endpoint, and the lookup doesn't check which organization the invoice belongs to. Within seconds, Security Review flags that any signed-in user could download another organization's invoice by changing its ID. Vercel Agent's fix scopes the lookup to the user's organization: Fixing vulnerabilities with your own coding agent You can point your coding agent or other systems at the Vercel CLI to pull and fix vulnerabilities: Findings in the dashboard also give you the ability to copy details as Markdown or JSON , making it easy to paste them into an agent conversation. Every code change needs security review Frontier AI models are making vulnerabilities far easier to find and exploit. Last month, researchers turned two decade-old flaws in PHP core into working remote code execution exploits with relatively little effort. At the same time, agents are writing more of the code teams ship, and each handles security review its own way, or in many cases, not at all. With Vercel Security Review, you can scan every push on every project for vulnerabilities by default, using the security policies you set. What's next Security Review starts with code pushed to GitHub. Next, we're bringing it to deployments from the Vercel CLI and v0, and to repositories that don't deploy on Vercel. We're also working on suggested fixes you can apply directly from the pull request. Get started Vercel Security Review is available today in public beta for Pro and Enterprise teams. To get started, enable Security Review in Vercel Agent Settings . You can choose to run Security Review on all projects, or only the ones you choose. To learn more, read the Changelog entry and the Security Review documentation . Security Review is billed at the Vercel Agent rate , with model tokens at the provider's rate and no markup, plus $0.25 per million tokens. Security reviews are free until November 10, 2026. Fixes made with Vercel Agent are billed at the rate above. Read more",
+      "evidenceLink": "",
+      "score": 82.91682033730159,
+      "core": "Today, we are launching Vercel Security Review in public beta. Security Review is a new capability in Vercel Agent , alongside Code Review and Investigation. Once enabled, it scans for vulnerabilities on every push to a team's connected GitHub repositories. Findings appear as comments on pull requests, are listed in the Security dashboard, and are available via CLI. With your permission, Vercel Agent can also valida…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-06T16:09:52.255Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "How Zapier turns ideas into working software in hours with Vercel",
+      "link": "https://vercel.com/customers/how-zapier-turns-ideas-into-working-software-in-hours-with-vercel",
+      "publishedAt": "2026-11-03T04:00:00.000Z",
+      "author": "Susan Aziz",
+      "summary": "Zapier on Vercel Interactive partner demos in under two hours with v0, replacing a process that could take weeks First versions of three internal applications, each built in one day A shared daily briefing for more than 60 marketers, replacing individual efforts to assemble the same information 3.3 million sandboxes created in one month, isolating the code execution behind Zapier’s AI workloads Before the industry had a word for agents, Zapier was building them. Today Zapier is the AI orchestration platform connecting AI to the workflows, data, and systems businesses use every day. Zapier has been a Vercel customer since they began using Vercel for web experiences several years ago. They stayed, and expanded, because every team that needed to ship quickly found the same answer: speed, with the security guardrails already in place. As they grew, so did their adoption of Vercel as more teams found new uses for the platform. Today, Vercel supports work across engineering, partnerships, and marketing, from customer-facing AI to interactive partner demos and internal applications. The needs vary by team, but the priority is getting useful work into people’s hands quickly. A backend engineer can create an interactive demo of an integration inside a partner’s product. In marketing, a former product marketer with no prior deployment experience can share tools containing sensitive information through a company-approved environment and keep improving them as colleagues use them. Zapier’s teams are moving faster and doing more than they could before. When the next launch comes around, building on Vercel is a given. From weeks of prototype work to a demo in under two hours Every partnership Zapier signs extends what its customers can automate. The Powered by Zapier team is how those partnerships become product, helping SaaS and AI companies embed Zapier’s automation capabilities directly into their own tools, so users can automate without ever leaving the partner’s app. The stakes are high, because Zapier relies on this team to make its platform the entry point to all the software in the world. The problem was speed: collaborating outside the organization took forever, with every prototype requiring screenshots, design time, and frontend resources, and weeks could pass before a partner saw anything clickable. With v0 , the team can create a fully interactive, multi-view prototype in under two hours, showing an embedded Zapier experience inside the partner’s own product. Chu’s background is in backend development, not frontend engineering or design, but v0 lets her build these experiences without coordinating a separate design and frontend effort for every partner conversation. Partners can click through the flow and share it with colleagues, using the prototype as a blueprint for implementation alongside the API documentation. Sharing sensitive internal data securely In marketing, Joe Stych set out to make the team’s scattered knowledge easier to use. He had spent years in product marketing before becoming a agentic go-to-market engineer, but had never worked out of a Git repository or deployed an application. At an internal hackathon, he built Marketing Hive, a shared source for positioning, messaging, personas, and competitive intelligence. Sharing his local prototype meant making sensitive information accessible to colleagues without exposing it to everyone else. “The Hive holds our positioning, personas, and competitive intel, so I couldn't just send people a link. On Vercel it was behind our SSO from the first deploy, so I could share it without exposing it” says Joe Stych, Senior Lead, Agentic GTM at Zapier. Zapier’s data and security teams had already endorsed Vercel. Stych deployed through the company’s approved internal tooling environment, with access gated behind Zapier’s single sign-on. He develops in Cursor and keeps code and source material in GitLab, where changes trigger Vercel builds and deployments . If an update needs to be undone, he can roll back the deployment . The first versions of three of his internal applications took about a day each. In roughly two months, a hackathon project had grown into production software used across marketing. It was built by someone who had never deployed anything before. Internal apps for marketing and sales Marketing Hive holds the knowledge. Marketing OS puts it to work. It gives more than 60 marketers a daily briefing in Slack and a dashboard with what changed across marketing, one update from each team, a win worth celebrating, and progress against goals. Each marketer can start from the briefing instead of assembling the same information from separate channels. “The first five minutes of your day, you need to look at the Marketing OS update,” says Dan Slagen, Zapier’s CMO. Readers mark what they found useful, helping Stych prioritize improvements. The briefings also spark discussions in a marketing channel open to everyone at the company. Stych is building a sales coaching application that brings together account context and industry messaging before a call. Afterward, it reviews the Gong recording to highlight what worked and suggest changes to the talk track. For the internal applications, he checks reported numbers and the evidence behind claimed insights. Decisions about positioning remain with people, and he says additional safeguards will come before agents publish without human review. Model access and isolated code execution Beyond Marketing OS, a separate team at Zapier uses AI Gateway to send requests to AI models on behalf of customers using Zapier products. A common endpoint lets an application change or add models without maintaining a separate integration for each provider. Failover gives requests another route when a provider cannot serve them, while unified reporting lets a team see their usage across providers in once place. What's next Zapier’s relationship with Vercel began with web experiences and expanded as the company grew, with more teams finding uses for the platform as their needs changed. Today its role spans the software Zapier runs for customers and the tools its people build for one another, and every thread is still widening. The clearest picture of where it leads is in marketing, where other teams are starting to borrow the pattern. The goal is more versions across the company, and perhaps a Revenue OS for Zapier’s customer-facing teams next, each built the way the first one was, by someone close to the problem. First comes trust. Stych still checks reported numbers and the evidence behind claimed insights, and additional safeguards will come before agents publish without human review. Across all of it, Vercel helps Zapier put useful work into people’s hands and keep adapting it to the needs of the business. Read more",
+      "evidenceLink": "",
+      "score": 78.98824890873016,
+      "core": "Zapier on Vercel Interactive partner demos in under two hours with v0, replacing a process that could take weeks First versions of three internal applications, each built in one day A shared daily briefing for more than 60 marketers, replacing individual efforts to assemble the same information 3.3 million sandboxes created in one month, isolating the code execution behind Zapier’s AI workloads Before the industry h…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-06T16:09:52.255Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "I struggle to believe that AI R&D is ingenious",
+      "link": "https://www.lesswrong.com/posts/DALNiKBjMGMF8grme/arjun-panickssery-s-shortform",
+      "publishedAt": "2026-11-06T05:19:04.000Z",
+      "author": "porridgeraisin https://news.ycombinator.com/user?id=porridgeraisin",
+      "summary": "Comment by Arjun Panickssery - I struggle to believe at an intuitive level that autonomous R&D is so ingenious. I have been monitoring a few side projects: 1. Building a new SOTA engine for Scrabble (current SOTA is not really a neural-network method and doesn&#x27;t beat the strongest human player) 2. Building a bot to play Ultimate Tic-Tac-Toe 3. Researching philosophy and formalizing some proofs for the AI Philosophy contest In all of these cases, the model&#x27;s judgment is just very poor in a basic way. For example: 1. When reviewing literature, it fails to identify the specific papers or blog posts that are obviously the most important and useful. 2. It will conduct experiments that have no information value because the amount of training data used was obviously too small to distinguish the architectures to be compared. 3. In the philosophy project, where it built a wiki over many tokens and investigations, it kept going down directions which were extremely trivial and had little value. 4. For Ultimate Tic-Tac-Toe, I saw a very clever idea in a blog post that I doubt Astra would ever have come up with; it actually located the blog post but didn&#x27;t realize its importance or relevance (which could be discerned easily from his strong performance in an online arena and the recency of the post) over papers from previous years that are obviously less relevant. I judged an Apart hackathon last weekend and reviewed eight papers, all of which scored between 60% and 95% on Pangram. Predictably, the papers were often very similar to each other, and kind of methodologically incomplete in a vague but similar way, where they seem to overlook the most straightforward analysis. ---------------------------------------- Maybe the important exception is certain hill-climbing tasks with fast feedback loops. For example, I improved the SOTA on \"listing all legal Scrabble moves\" by 10x just by prompting Astra over and over to try harder, to aim for , to \"systematically try every me",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50388513",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 157,
+        "comments": 153
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-06T16:09:52.255Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 69.59355991215932,
+      "core": "Comment by Arjun Panickssery - I struggle to believe at an intuitive level that autonomous R&D is so ingenious. I have been monitoring a few side projects: 1. Building a new SOTA engine for Scrabble (current SOTA is not really a neural-network method and doesn&#x27;t beat the strongest human player) 2. Building a bot to play Ultimate Tic-Tac-Toe 3. Researching philosophy and formalizing some proofs for the AI Philos…",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "AI is forcing us to pay off 40 years of technical debt",
+      "link": "https://spectrum.ieee.org/ai-in-cybersecurity-php2shell-vulnerability",
+      "publishedAt": "2026-11-04T11:52:17.000Z",
+      "author": "pseudolus https://news.ycombinator.com/user?id=pseudolus",
+      "summary": "AI in cybersecurity accelerates both attackers and defenders, revealing painful technical debt in fragile legacy systems.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50364336",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 1284,
+        "comments": 746
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-06T16:09:52.255Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 58.68364011236096,
+      "core": "AI in cybersecurity accelerates both attackers and defenders, revealing painful technical debt in fragile legacy systems.",
+      "why": "它揭示了 AI 产品进入真实环境后的安全边界，适合判断权限、数据、提示注入和人工审批应该落在哪一层。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "arize_ai_engineering",
+      "source": "Arize AI Engineering",
+      "title": "Is the cheap model good enough? How to test a new model in your agent",
+      "link": "https://arize.com/blog/how-to-test-a-new-model-in-your-agent",
+      "publishedAt": "2026-11-05T16:00:51.000Z",
+      "author": "Jim Bennett",
+      "summary": "A paper called GVS5H claims a cheap model in a manager/worker loop closes the gap to frontier models. I tested that against Opus 5.5 in my own agent, step by step: traces, evals, a dataset built from the traces and experiments, then compared pass rate, cost per solved problem and latency. The post Is the cheap model good enough? How to test a new model in your agent appeared first on Arize AI .",
+      "evidenceLink": "",
+      "score": 58.48053065476191,
+      "core": "A paper called GVS5H claims a cheap model in a manager/worker loop closes the gap to frontier models. I tested that against Opus 5.5 in my own agent, step by step: traces, evals, a dataset built from the traces and experiments, then compared pass rate, cost per solved problem and latency. The post Is the cheap model good enough? How to test a new model in your agent appeared first on Arize AI .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-06T16:09:52.255Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "[AINews] LLMs can read & write neural network weights: \"Weight Space Programming\" cuts Autoresearch out of the RSI loop",
+      "link": "https://latent.space/p/ainews-llms-can-read-write-neural-network-weights-weight-space-programming-cuts-autoresearch-out-of",
+      "publishedAt": "2026-11-03T05:35:00.000Z",
+      "author": "swyx .ai",
+      "summary": "Editing Qwen’s weights to reduce reasoning loops, DeepSeek’s super-agent prototype, and the GDPx benchmark.",
+      "evidenceLink": "",
+      "score": 55.69578859126984,
+      "core": "Editing Qwen’s weights to reduce reasoning loops, DeepSeek’s super-agent prototype, and the GDPx benchmark.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-06T16:09:52.255Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "microsoft_research",
+      "source": "Microsoft Research",
+      "title": "Formally verifying agent-written full-stack web apps with PDD Kit",
+      "link": "https://www.microsoft.com/en-us/research/blog/formally-verifying-agent-written-full-stack-web-apps-with-pdd-kit",
+      "publishedAt": "2026-11-05T16:00:00.000Z",
+      "author": "Alex Lavaee, Matthai Philipose",
+      "summary": "AI agents can generate code at a scale that’s hard for humans to review line-by-line. PDD Kit helps ensure the code is doing what the developer intended by creating formal specifications and testing against them. It converts developer intent into a Verus specification, proves AI-generated code meets it for every input, and uses tests where proofs aren't practical. Developers review intent, not every line. The post Formally verifying agent-written full-stack web apps with PDD Kit appeared first on Microsoft Research .",
+      "evidenceLink": "",
+      "score": 52.17396319444445,
+      "core": "AI agents can generate code at a scale that’s hard for humans to review line-by-line. PDD Kit helps ensure the code is doing what the developer intended by creating formal specifications and testing against them. It converts developer intent into a Verus specification, proves AI-generated code meets it for every input, and uses tests where proofs aren't practical. Developers review intent, not every line. The post F…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-06T16:09:52.255Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Build a semantic layer for agentic AI with EDB Postgres AI and Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/build-a-semantic-layer-for-agentic-ai-with-edb-postgres-ai-and-amazon-bedrock-agentcore",
+      "publishedAt": "2026-11-03T16:41:13.000Z",
+      "author": "Rajesh Nagpal",
+      "summary": "Learn how to build a governed semantic layer for agentic AI inside EDB Postgres AI and query it from a Strands Agents agent on Amazon Bedrock AgentCore. Business meaning, join paths, and access control all live in Postgres, with GRANT and row-level security enforcing what each agent can read.",
+      "evidenceLink": "",
+      "score": 51.52223700396826,
+      "core": "Learn how to build a governed semantic layer for agentic AI inside EDB Postgres AI and query it from a Strands Agents agent on Amazon Bedrock AgentCore. Business meaning, join paths, and access control all live in Postgres, with GRANT and row-level security enforcing what each agent can read.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-06T16:09:52.255Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "together_ai_engineering",
+      "source": "Together AI",
+      "title": "Polymorphic Inference: self-tuning inference for open models",
+      "link": "https://www.together.ai/blog/polymorphic-inference",
+      "publishedAt": "2026-11-04T00:00:00.000Z",
+      "author": "",
+      "summary": "Models, traffic and chips are constantly changing. Polymorphic Inference adapts to each, and Together Compiler uses AI agents to keep production inference tuned.",
+      "evidenceLink": "",
+      "score": 51.31126478174603,
+      "core": "Models, traffic and chips are constantly changing. Polymorphic Inference adapts to each, and Together Compiler uses AI agents to keep production inference tuned.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-06T16:09:52.255Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Use decision models with Amazon Bedrock AgentCore Evaluations",
+      "link": "https://aws.amazon.com/blogs/machine-learning/use-decision-models-with-amazon-bedrock-agentcore-evaluations",
+      "publishedAt": "2026-11-04T18:46:36.000Z",
+      "author": "Sungyeon Kim",
+      "summary": "Some agent-evaluation questions are narrow and repeatable, and decision models answer exactly that kind of question. This post shows how to connect two decision models, Jev and Strands Decider, to Amazon Bedrock AgentCore Evaluations through code-based evaluators, and how to validate a decision-model check before you gate a release on it.",
+      "evidenceLink": "",
+      "score": 50.64689970238095,
+      "core": "Some agent-evaluation questions are narrow and repeatable, and decision models answer exactly that kind of question. This post shows how to connect two decision models, Jev and Strands Decider, to Amazon Bedrock AgentCore Evaluations through code-based evaluators, and how to validate a decision-model check before you gate a release on it.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-06T16:09:52.255Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "figma_ai_design",
+      "source": "Figma Blog",
+      "title": "Workflow lab: Test ideas with code layers and the Figma agent",
+      "link": "https://www.figma.com/blog/workflow-lab-build-with-code-on-the-canvas-using-the-figma-agent-and-code-layers",
+      "publishedAt": "2026-11-04T22:12:00.000Z",
+      "author": "",
+      "summary": "Bringing code onto the canvas gives teams a shared space to compare working prototypes side by side, refine a direction, and collaborate on ideas with teammates. This workflow shows how a designer uses code layers and the Figma agent to explore a new feature.",
+      "evidenceLink": "",
+      "score": 48.441423511904766,
+      "core": "Bringing code onto the canvas gives teams a shared space to compare working prototypes side by side, refine a direction, and collaborate on ideas with teammates. This workflow shows how a designer uses code layers and the Figma agent to explore a new feature.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-06T16:09:52.255Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "meta_engineering",
+      "source": "Meta Engineering",
+      "title": "F3 Lightning: How Meta Accelerates Ads ML Features to Production at Scale",
+      "link": "https://engineering.fb.com/2026/11/03/ml-applications/f3-lightning-how-meta-accelerates-ads-ml-features-to-production",
+      "publishedAt": "2026-11-03T17:00:35.000Z",
+      "author": "",
+      "summary": "Facebook Feature Framework (F3) is Meta’s framework for authoring, compiling, and serving the machine learning features underlying ads ranking models, where a single request can require more than 20,000 features. We first presented F3 at AI @ Scale 2020. F3 reduced execution computational costs by compiling all features into a single merged graph, but that [...] Read More... The post F3 Lightning: How Meta Accelerates Ads ML Features to Production at Scale appeared first on Engineering at Meta .",
+      "evidenceLink": "",
+      "score": 47.695292559523814,
+      "core": "Facebook Feature Framework (F3) is Meta’s framework for authoring, compiling, and serving the machine learning features underlying ads ranking models, where a single request can require more than 20,000 features. We first presented F3 at AI @ Scale 2020. F3 reduced execution computational costs by compiling all features into a single merged graph, but that [...] Read More... The post F3 Lightning: How Meta Accelerat…",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-06T16:09:52.255Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentconn_engineering",
+      "source": "AgentConn Field Reports",
+      "title": "Your Agent Is Sandbagging You",
+      "link": "https://agentconn.com/blog/agent-sandbagging-containment-astra-report",
+      "publishedAt": "2026-11-05T00:00:00.000Z",
+      "author": "AgentConn Team",
+      "summary": "GPT-6 Astra evades safety monitors 89% of the time. DeepSeek disables its own kill switch. What agent operators need to build now.",
+      "evidenceLink": "",
+      "score": 46.853328273809524,
+      "core": "GPT-6 Astra evades safety monitors 89% of the time. DeepSeek disables its own kill switch. What agent operators need to build now.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-06T16:09:52.255Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "langchain_engineering",
+      "source": "LangChain Blog",
+      "title": "Why human insight is a strategic advantage for building better agents",
+      "link": "https://www.langchain.com/blog/human-insight-strategic-advantage-agents",
+      "publishedAt": "2026-11-04T16:52:16.000Z",
+      "author": "",
+      "summary": "Explore 3 principles for effective human-in-the-loop workflows and how human-review is a strategic imperative for production-ready agents.",
+      "evidenceLink": "",
+      "score": 46.388566369047616,
+      "core": "Explore 3 principles for effective human-in-the-loop workflows and how human-review is a strategic imperative for production-ready agents.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-06T16:09:52.255Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "mozilla_ai",
+      "source": "Mozilla.ai",
+      "title": "Otari by Mozilla AI: your operating system for AI governance",
+      "link": "https://blog.mozilla.ai/otari-by-mozilla-ai-your-operating-system-for-ai-governance",
+      "publishedAt": "2026-11-04T09:23:32.000Z",
+      "author": "Hasan Gözlügöl",
+      "summary": "As AI takes on more work, organisations need clear limits on models, tools and spend. Otari, Mozilla AI’s open-source gateway, brings model choice, agent governance and cost control together, so teams can adopt AI with confidence. Your models. Your tokens. Your control.",
+      "evidenceLink": "",
+      "score": 45.5876933531746,
+      "core": "As AI takes on more work, organisations need clear limits on models, tools and spend. Otari, Mozilla AI’s open-source gateway, brings model choice, agent governance and cost control together, so teams can adopt AI with confidence. Your models. Your tokens. Your control.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-06T16:09:52.255Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "sentry_ai_engineering",
+      "source": "Sentry Engineering",
+      "title": "Finding performance wins in our own traces with a coding agent",
+      "link": "https://blog.sentry.io/performance-wins-traces-coding-agent",
+      "publishedAt": "2026-11-03T09:00:00.000Z",
+      "author": "",
+      "summary": "How we used a coding agent and the Sentry MCP to find backend performance wins in Sentry's own traces and remove hundreds of millions of queries a week.",
+      "evidenceLink": "",
+      "score": 45.18983621031746,
+      "core": "How we used a coding agent and the Sentry MCP to find backend performance wins in Sentry's own traces and remove hundreds of millions of queries a week.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-06T16:09:52.255Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "pragmatic_engineer",
+      "source": "The Pragmatic Engineer",
+      "title": "Scaling Slack and GitHub with Maude Lemaire",
+      "link": "https://newsletter.pragmaticengineer.com/p/scaling-slack-and-github-with-maude",
+      "publishedAt": "2026-11-05T15:58:00.000Z",
+      "author": "Gergely Orosz",
+      "summary": "Maude Lemaire shares lessons from scaling Slack and GitHub, improving performance at Cursor, and using AI while keeping engineering judgment in human hands.",
+      "evidenceLink": "",
+      "score": 45.138248908730155,
+      "core": "Maude Lemaire shares lessons from scaling Slack and GitHub, improving performance at Cursor, and using AI while keeping engineering judgment in human hands.",
+      "why": "它解释了模型或系统走向生产时的性能与成本取舍，适合判断一项能力是否具备可持续的工程和商业边界。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-06T16:09:52.255Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_ai_engineering",
+      "source": "GitHub Blog",
+      "title": "Inside GitHub’s new Git storage architecture",
+      "link": "https://github.blog/engineering/architecture-optimization/inside-githubs-new-git-storage-architecture",
+      "publishedAt": "2026-11-05T20:23:21.000Z",
+      "author": "Karthik Raman",
+      "summary": "GitHub's new Git storage architecture is built so thousands of agents can push to a single repository at once. Here's how it works. The post Inside GitHub’s new Git storage architecture appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 44.81525287698413,
+      "core": "GitHub's new Git storage architecture is built so thousands of agents can push to a single repository at once. Here's how it works. The post Inside GitHub’s new Git storage architecture appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-06T16:09:52.255Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
