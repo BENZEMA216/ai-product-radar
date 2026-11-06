@@ -1,0 +1,89 @@
+[
+  {
+    "product": "Tobira Site Agent",
+    "link": "https://tobira.ai",
+    "phLink": "https://www.producthunt.com/products/tobira-ai",
+    "did": "把你的网站变成会做生意的AI agent：公司agent获得agent网络里的公开地址，能帮你找客户、创始人、投资人并代你谈判；网站agent则回答真人及其AI助手、约会议、接订单。支持ChatGPT/Claude/Grok/Codex等。",
+    "who": "想让自家网站和产品能被别人的AI助手直接发现和交易的小公司与独立创始人。",
+    "why": "PH当日第1（榜单热度）。agent对agent的商务网络开始成形——SEO之后是「A2A可见度」。",
+    "tip": "PH 11/6当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Turnstone",
+    "link": "https://myturnstone.ai/",
+    "phLink": "https://www.producthunt.com/products/turnstone",
+    "did": "跑在你自己AI上的个人agent：接入你已有的订阅、API key或自托管模型，一个用量到顶自动切下一个；Mac+iPhone，完全免费。",
+    "who": "已经有好几个AI订阅、想要一个常驻agent又不想再加一张账单的人。",
+    "why": "PH当日第2（榜单热度）。「第二张AI账单」反潮流继续：继Rerun、Aether之后又一家只整合你已有模型。",
+    "tip": "PH 11/6当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Wonder Dev View",
+    "link": "https://wonder.design/dev",
+    "phLink": "https://www.producthunt.com/products/wonder-dev-view",
+    "did": "上线AI agent工作台：并行跑多个Claude Code和Codex、管理多个订阅、在一个画布里review它们的产出，把点子直接变成可运行软件。",
+    "who": "同时开多个coding agent干活、需要统一看板和设计视角的工程师。",
+    "why": "PH当日第7（榜单热度）。coding agent的「多开+管理」层又添一员，和tabsh、Zerg同赛道。",
+    "tip": "PH 11/6当日发布（Wonder新产品线）。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "TraceX",
+    "link": "https://tracexpro.com",
+    "phLink": "https://www.producthunt.com/products/tracex",
+    "did": "生产问题AI工程师：读客户的邮件/Slack/Jira工单，只读地排查数据库、代码和日志，给出带证据的根因、修复PR和给客户草拟的回复；私有beta免费。",
+    "who": "被工单淹没、想让AI先做排查和起草的SaaS工程与支持团队。",
+    "why": "PH当日第6（榜单热度）。从「值班查问题」（Polylane）延伸到「直接回客户」，覆盖工单全链路。",
+    "tip": "PH 11/6当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "chalk",
+    "link": "https://www.trychalk.tech",
+    "phLink": "https://www.producthunt.com/products/chalk",
+    "did": "Mac上的演示型AI老师：按住⌘⌥问屏幕上任何东西，它开口回答、圈出真实按钮、一步一步带你操作；也能把想学的主题画成板、排成课、拆成分阶段项目，还能对照幻灯整理讲义。",
+    "who": "想学新软件/新技能、看教程视频看到烦的人。",
+    "why": "PH当日第10（榜单热度）。「教」从讲内容变成在你真实屏幕上直接指给你看，computer-use的消费级用法。",
+    "tip": "PH 11/6当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "DALI AI by SupplyzPro",
+    "link": "https://supplyzpro.com",
+    "phLink": "https://www.producthunt.com/products/supplyzpro-the-conversational-erp",
+    "did": "对话式ERP：不用开任何后台，用WhatsApp、语音或拍照就能管库存、记支出、开发票；面向中小企业，bootstrapped团队出品。",
+    "who": "被传统ERP吓退、员工只习惯用聊天软件的中小企业主。",
+    "why": "PH当日第9（榜单热度）。「不用打开的ERP」把agent交互做到极端——后台彻底消失。",
+    "tip": "PH 11/6当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "Mantis",
+    "link": "https://github.com/perzianhq/mantis",
+    "phLink": "https://news.ycombinator.com/item?id=50388956",
+    "did": "开源agent浏览器：官方称让AI agent浏览比Playwright MCP快约36%，面向agent场景重写浏览链路。",
+    "who": "给agent接浏览器、被Playwright MCP速度和token开销折磨的开发者。",
+    "why": "Show HN当日发布。agent基础设施从「接得上」卷到「跑得快」，继fastbrowse之后又一家。",
+    "tip": "Show HN 11/6当日发布；速度数据为官方说法，未独立验证。仓库已打开核实。"
+  },
+  {
+    "product": "CC Auto Review",
+    "link": "https://karamage.github.io/cc-auto-review/",
+    "did": "免费开源macOS应用：用你本地的Claude Code自动审查GitHub PR，走你自己的订阅，不看PR也能有review。",
+    "who": "团队PR堆积、想用本地Claude Code先过一遍的Mac开发者。",
+    "why": "把「AI code review」从SaaS订阅拉回本地+自有订阅，和本周「用你自己的模型」潮流一致。",
+    "tip": "Grok Bot邮件线索，官网已独立核实（开源、免费）。功能未实测。"
+  },
+  {
+    "product": "FounderMail",
+    "link": "https://foundermail.app",
+    "did": "人和agent共用的自有域邮箱：架在Cloudflare上，创始人和自己的agent在同一域名下收发，agent的邮件身份独立可控。",
+    "who": "想让agent以公司域名收发邮件、又不想把邮箱交给第三方托管池的创始人。",
+    "why": "本周第5个agent邮箱产品（Pidgeon、Agent Inbox、MachineMail、OpenMail之后），这次打「人与agent同域」。",
+    "tip": "Grok Bot邮件线索，官网已独立核实。功能未实测。"
+  },
+  {
+    "product": "Vibeconferencing",
+    "link": "https://vibeconferencing.com",
+    "did": "把Claude Code拉进Google Meet/Zoom/Teams当参会者：它实时听会、能发言、会后直接动手干活。",
+    "who": "开会定完事就想让AI当场开始执行、不想再整理纪要的工程师和小团队。",
+    "why": "和昨天Bridge同线的「人机混席会议」，但更激进——AI直接从参会进入执行。",
+    "tip": "Grok Bot邮件线索，官网已独立核实。功能未实测。"
+  }
+]
