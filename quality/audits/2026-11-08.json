@@ -1,0 +1,293 @@
+{
+  "date": "2026-11-08",
+  "generatedAt": "2026-11-07T16:00:22.751Z",
+  "reportPath": "reports/2026-11-08-0000-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 76,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 55,
+      "keptCount": 27,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-11-06；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 55 条，AI 相关候选 27 条；实际 fallback：hunted_space。；历史去重移除 1 条已报道或已处理日榜 Product Hunt 信号，最终发布 26 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 2,
+      "keptCount": 2,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 20,
+      "keptCount": 12,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 21,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "fallback",
+      "rawCount": 20,
+      "keptCount": 20,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 16,
+      "keptCount": 16,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-10-27T16:05:37.511Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "OpenVisio",
+      "productKey": "https://www.producthunt.com/products/openvisio",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把团队与多个编码 agent 放进同一工作区，值得看它能否减少任务交接和上下文分散，而不只是再做一个 IDE 外壳。"
+    },
+    {
+      "rank": 2,
+      "product": "crystl",
+      "productKey": "https://www.producthunt.com/products/crystl-multitasking-terminal",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把多任务终端直接面向 macOS 编码 agent，判断重点是并行任务的可见性与切换成本能否优于普通终端标签页。"
+    },
+    {
+      "rank": 3,
+      "product": "AgentTM",
+      "productKey": "https://www.producthunt.com/products/agenttm",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "时间回溯式调试切中 agent 行为难复现的问题，值得看它记录的是可定位的状态变化，还是只提供会话重放。"
+    },
+    {
+      "rank": 4,
+      "product": "Rankfender v3.0",
+      "productKey": "https://www.producthunt.com/products/rankfender",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 SEO 与 GEO 合成一套面向人和 agent 的运营系统，值得观察传统搜索优化如何迁移到 AI 答案分发。"
+    },
+    {
+      "rank": 5,
+      "product": "Tobira Site Agent",
+      "productKey": "https://www.producthunt.com/products/tobira-ai",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让网站以 agent 形态向其他 agent 销售，产品假设很直接：未来转化入口可能从人类页面转向机器可执行的交互。"
+    },
+    {
+      "rank": 6,
+      "product": "LiveShortly",
+      "productKey": "https://www.producthunt.com/products/liveshortly",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把观看、干预、分享和审批编码 agent 合在实时界面里，适合验证人类监督是否能在不中断执行的情况下发生。"
+    },
+    {
+      "rank": 7,
+      "product": "Alysis Code",
+      "productKey": "https://www.producthunt.com/products/alysis-code",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "开源编码 agent 的信息目前只到产品定位，值得看后续是否给出可运行工作流、工具权限和与成熟方案的明确差异。"
+    },
+    {
+      "rank": 8,
+      "product": "Wonder Dev View",
+      "productKey": "https://www.producthunt.com/products/wonder-dev-view",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "同时运行 Claude Code 与 Codex 等多个 agent，价值取决于它能否把并行执行结果汇总成可比较、可接管的开发视图。"
+    },
+    {
+      "rank": 9,
+      "product": "I made a guardrail against AI outreach slop (API/MCP)",
+      "productKey": "https://maildignity.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "以 API/MCP 给 AI 外联加质量护栏，切中批量自动化损害品牌的问题；重点看规则能否在发送前解释并拦截低质内容。"
+    },
+    {
+      "rank": 10,
+      "product": "Trepo",
+      "productKey": "https://www.ycombinator.com/launches/whs-trepo-the-agentic-grocery-shopper-that-knows-what-you-have-and-need",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "从杂货采购切入“知道家里已有和还缺什么”的 agent，场景同时具备高频、库存记忆与交易闭环，适合观察代理购物能否建立信任。"
+    },
+    {
+      "rank": 11,
+      "product": "OrgSync",
+      "productKey": "https://www.producthunt.com/products/orgsync-2",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "为 Claude、ChatGPT 与 Codex 团队提供统一公司知识，关键不是再做知识库，而是不同 agent 是否能共享同一组织事实与权限边界。"
+    },
+    {
+      "rank": 12,
+      "product": "AJX – Find out where AI agents get stuck using your product",
+      "productKey": "https://ajx.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "专门观测 AI agent 在产品中的卡点，把传统人类漏斗扩展到机器用户；值得看它如何定义一次失败并回放原因。"
+    },
+    {
+      "rank": 13,
+      "product": "Koltrix",
+      "productKey": "https://www.producthunt.com/products/koltrix",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把整套邮件栈交给可控 agent，产品价值取决于用户能否精细设定权限、审核发送与追溯每次自动动作。"
+    },
+    {
+      "rank": 14,
+      "product": "Pressure",
+      "productKey": "https://www.producthunt.com/products/pressure",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用两个 agent 辩论来提供第二意见，值得验证多 agent 分歧是否真正暴露假设，而不是增加重复文本和调用成本。"
+    },
+    {
+      "rank": 15,
+      "product": "Thunderduck Inc.",
+      "productKey": "https://www.producthunt.com/products/thunderduck-inc",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "面向 agent 数据团队的模块化数仓，值得看数据接入、权限与可复现查询能否让 agent 直接承担分析交付。"
+    },
+    {
+      "rank": 16,
+      "product": "I asked HN about AI agentic setups, here are 750 of the comments mapped",
+      "productKey": "https://news.ycombinator.com/item?id=50399637",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 750 条 agent 配置讨论整理成地图，作为用户研究材料有价值；是否算产品仍取决于能否持续检索、比较并更新这些实践。"
+    },
+    {
+      "rank": 17,
+      "product": "Service for the parallel execution of AI agent tasks on remote devices",
+      "productKey": "https://rungrid.space",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "把 agent 任务并行分发到远程设备，核心看调度、隔离和失败恢复是否足以支撑真实长任务，而非一次性远程执行。"
+    },
+    {
+      "rank": 18,
+      "product": "Cinnamon – a household AI agent with shared context and memories",
+      "productKey": "https://getcinnamon.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "家庭共享上下文与记忆把多用户权限带进个人 agent；值得看成员之间哪些信息共享、哪些必须隔离，以及记忆如何纠错。"
+    },
+    {
+      "rank": 19,
+      "product": "Twombly – A collaborative canvas for your agent's design explorations",
+      "productKey": "https://twombly.app",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "让 agent 的设计探索进入协作画布，价值在于团队能否比较方案、留下决策依据并继续编辑，而不只是浏览生成截图。"
+    },
+    {
+      "rank": 20,
+      "product": "Turnstone",
+      "productKey": "https://www.producthunt.com/products/turnstone",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "用用户自选 AI 运行免费 Grok Bot 替代品，值得看模型可替换性是否真能降低平台依赖，以及部署与使用门槛有多高。"
+    }
+  ]
+}

@@ -1,0 +1,414 @@
+{
+  "generatedAt": "2026-11-07T16:06:52.177Z",
+  "date": "2026-11-08",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "The Blueprint: Orchestrating 5,000+ AI assets for a World Cup TV spot",
+      "link": "https://cloud.google.com/blog/products/media-entertainment/how-mito-orchestrated-5000-plus-ai-assets-for-a-world-cup-tv-spot",
+      "publishedAt": "2026-11-06T17:00:00.000Z",
+      "author": "Iñaki Berenguer CEO, Mito",
+      "summary": "Welcome back to The Blueprint, a regular feature where we highlight how Google Cloud customers are tackling unique and common challenges across industries using the latest AI and cloud technologies. We hope to inspire others looking to innovate in their work. AI is rapidly transforming video production at virtually every step of the process, from ideation and storyboarding to filming, editing, and release. At Mito , we’re striving to democratize AI-powered video creation, enabling everyone from solo artists to large enterprises to get the most out of the best creative technologies available. The Challenge When we founded Mito, our goal was to eliminate the complex technical friction that stops creators from telling long-form, narrative stories with generative AI. However, transitioning from a single five-second clip to a cohesive campaign — such as a 120-second national TV spot for Movistar Plus+, a part of Telefónica, to broadcast across Spain during the World Cup this summer. This effort revealed massive infrastructure and workflow bottlenecks: Asset &amp; workflow overhead: Managing local media libraries across individual workstations was unscalable. For Movistar alone, our production required generating a massive \"iceberg\" of over 5000 assets (1000 of those videos) generated in around 65 iteration rounds. Zero real-time collaboration: Traditional feedback loops required manual downloads, Google Drive uploads, and fragmented communication across chat apps and email. Rendering latency: Standard AI video rendering takes four to five minutes per short clip. Running these processes synchronously froze our user interface and stalled creative velocity. Model disparity &amp; consistency: Every generative model requires distinct prompting logic. Maintaining character persistence, specific lighting, and camera angles across dozens of shots — while preserving the likeness of real public figures like chef Ferran Adrià or journalist Juanma Castaño — was nearly impossible without central orchestration. Capacity constraints: Operating on public pay-as-you-go model APIs left us vulnerable to rate limits and regional throughput throttling during peak traffic. The Solution To deliver an infinite, real-time creative canvas for filmmakers, we designed a serverless, asynchronous architecture built on Google Cloud. We run our API, AI Director, and background workers as Java services on Cloud Run, which scales with request volume. In order to address message routing challenges, we decoupled job execution using Google Cloud Pub/Sub as our central event bus. Long-running video generations are offloaded to background Cloud Run workers, allowing creators to keep working uninterrupted on the UI canvas. To minimize latency, media assets are stored in Google Cloud Storage and delivered via Cloud CDN. Expiring key signatures keep pre-release client assets strictly private. Keeping our storage alongside the models we call through Vertex AI reduces network transfer delays. An isolated database architecture helps with the heavy business intelligence and analytics workloads while mitigating potential negative impacts on production performance through Cloud SQL and PostgreSQL. We rely heavily on foundational models like Omni, Veo and Nano Banana, which we access through Vertex AI alongside our custom system prompts. Finally, our structured canvas frontend enforces a \"Rule of 6\" (limiting prompt variables across World, Camera, Light, Texture, Actions, and Character) and prioritizes still-frame generation before video rendering to maximize cost efficiency. The Architecture The Outcome By pairing our creative orchestration platform with Google Cloud’s infrastructure, we successfully delivered a landmark national broadcast campaign that the production team describes as 95% AI-generated: Prime-time scale: The 120-second Movistar campaign for the Spanish National Team aired across every major television channel in Spain, with 1,441 assets live on a single shared Canvas near launch. AI Director copilot: Our conversational agent translates natural language instructions into precise model parameters while maintaining context, lighting, and visual style across every scene. Seamless collaboration: Distributed teams and brand clients can work on the same canvas in real time. Because new generations are saved as separate assets instead of overwriting earlier ones, stakeholders can duplicate projects to explore parallel creative ideas. Continuous dogfooding: Through our internal studio, Mito Films, we put our tools to the test on high-stakes client projects — whether that's global television spots or keynotes for top robotics startups — ensuring direct feedback flows back into engineering. Future-proof foundation: Our architecture is primed for rendering times to collapse from minutes to seconds, positioning Mito to handle upcoming world models, deeper memory states, and personalized content delivery. The Details Building an enterprise-grade platform for AI storytelling required solving several backend and creative challenges. This includes our creation of a virtual queuing system that mitigates third-party API rate limiting during usage spikes for smooth request concurrency, with bounded retries and a clear outcome for every job. Because creative output cannot be fully validated with standard unit tests, we built an automated evaluation harness powered by Gemini. Acting as an independent judge, it evaluates AI Director outputs against original user intents across an automated test suite, which we run alongside standard tests for high-impact Director changes. We knew early on that we would need multi-model intelligence routing. As such, we built the AI Director to dynamically coordinate tasks across multiple specialized models — including Sonnet, Gemini, and ElevenLabs for audio — treating the spatial canvas like a live code repository to infer adjacent contextual cues. We also needed to embrace an “imperfect aesthetic” to arrive at a more authentic outcome. In our Movistar spot, the story follows Tommy, a 17-year-old student making an AI video project. At the climax, the AI misunderstands a prompt, making coach Luis de la Fuente say \"In the same milkshake\" while holding a drink. Tommy edits the prompt live to \"In the same heartbeat,\" and the video recalibrates instantly. By incorporating surreal visual elements — like stadium stands built into Galician cliffs or a neighborhood bar covered in pitch grass — we showcased how generative AI can elevate human storytelling rather than obscure it.",
+      "evidenceLink": "",
+      "score": 97.34896474206349,
+      "core": "Welcome back to The Blueprint, a regular feature where we highlight how Google Cloud customers are tackling unique and common challenges across industries using the latest AI and cloud technologies. We hope to inspire others looking to innovate in their work. AI is rapidly transforming video production at virtually every step of the process, from ideation and storyboarding to filming, editing, and release. At Mito ,…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-07T16:06:52.177Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Bringing conversational analytics to Gemini with Agentic Data Cloud connectors",
+      "link": "https://cloud.google.com/blog/products/data-analytics/query-enterprise-data-in-gemini-with-data-cloud-connectors",
+      "publishedAt": "2026-11-05T23:00:00.000Z",
+      "author": "Leigha Reid Senior Product Manager, Data Cloud",
+      "summary": "Data Cloud connectors in Gemini for business, now in preview , give business users and analysts a direct way to query live enterprise data in natural language. Across most organizations, data questions multiply faster than analysts can answer them: Projects stall in ticket queues, leaders fall back on guesswork, and unmanaged spreadsheets spread across teams. Early generative AI tools promised conversational access to data, but they often struggled to generate accurate SQL across complex schemas or to respect governance rules. Data Cloud connectors let you query governed data directly from your workspace while enforcing row- and column-level security and respecting end-user credentials. A new way to query enterprise data Gemini brings conversational analytics directly into your day-to-day workflow through two paths: Conversational Analytics agents , which let you create data agents that include context and instructions to effectively answer questions for specific use cases, and Data Cloud connectors , allowing you to query live data directly with Gemini. End users can pull data directly from BigQuery (preview), operational databases like Spanner , AlloyDB , and Cloud SQL (preview), and governed data from Looker (preview). From there, you can move your findings directly into everyday tools, such as turning query results into a Google Doc, an email draft in Gmail, or a deck in Google Slides. Ask natural-language questions across enterprise data using Data Cloud connectors. How Data Cloud connectors work Data Cloud connectors work with Knowledge Catalog to locate relevant data, interpret your question, and execute permission-scoped queries under your identity. Knowledge Catalog interprets the user prompt and identifies the right data source for the query. When you ask a question in Gemini, the system coordinates discovery, semantic interpretation, and query execution, using the following capabilities: Natural-language question: You ask an exploratory question in plain language (for example, \"How many sales did we have this month for all cold weather products?\"). End users aren’t expected to know the table or project to use. Semantic discovery: Gemini searches Knowledge Catalog to locate candidate data across your estate, considering key attributes like usage patterns. Context mapping: The system uses technical metadata, business glossaries, and semantic models to map everyday terms into exact database structures, such as resolving \"cold weather products\" to specific categories like sweaters, coats, and jackets in an ecommerce catalog. Permission-aware execution: Gemini generates a SQL query and runs it through the connector under your user credentials, respecting your existing row- and column-level database permissions. Step-by-step flow of a user prompt from Gemini to query execution. To accurately navigate an enterprise data estate, language models need business context alongside raw database access. Knowledge Catalog provides a curated context bundle , including technical metadata, business logic, table relationships, and verified queries, that improves query accuracy while reducing latency and token consumption. Navigating the context graph visually in Knowledge Catalog. Enterprise analytics has long been fragmented by physical borders: data locked in proprietary silos, open lakehouse tables in cloud object storage, and datasets distributed across multicloud environments. Beyond native BigQuery storage, the BigQuery connector brings conversational analytics to a borderless lakehouse , unifying these environments into a single conversational interface to query open table formats (including Apache Iceberg, Delta Lake, and Parquet) and cross-cloud datasets in AWS or Azure using BigQuery. The connector inherits fine-grained access policies from BigQuery and Knowledge Catalog, so row- and column-level access controls apply whether you query native tables or open lakehouse files. Gemini accesses data across BigQuery and AWS S3 (through the AWS Glue federated catalog) to answer questions in plain language. Choosing between connectors and data agents In addition to using direct Data Cloud connectors to query data in plain language, you can also use Conversational Analytics agents to enable these experiences. While Data Cloud connectors allow you to provide exploratory and ad hoc analysis for users, conversational analytics agents are scoped agents that are built and certified directly by data teams within your organization. These can be built across Data Cloud products such as BigQuery, Looker, and operational databases including Spanner, AlloyDB, and Cloud SQL. These pre-configured agents allow users to run highly governed, multi-step strategic analyses that are scoped to particular subsets of data, supporting compliance requirements and predictable results for reporting. These data agents can also be published in Gemini for consumption or made available via API for building your own conversational apps in the enterprise. These approaches are complementary. Gemini direct connectivity also surfaces relevant published agents created by central data teams, so users can decide whether to proceed with ad hoc analysis using the connectors or use the scoped agent. You can choose the right approach for each workload. Built-in access controls and governance Data Cloud connector queries execute under the end user’s identity. An employee without access to executive salary data or protected healthcare records cannot query that data through natural-language prompts. The agent only discovers metadata in Knowledge Catalog to which you have access, and only executes queries that your account has permission to run. How to create Data Cloud connectors Administrators can configure Data Cloud connectors in the Gemini admin console. From there, admins set up default read-only connections to datasets in BigQuery, operational databases, or Looker, with Knowledge Catalog enabled automatically. Once configured, end users can enable the connector in Gemini to start querying data and building reports in plain language. Create a connected data store in Gemini and authorize it on first use. Setup documentation is available for the BigQuery , Spanner , Cloud SQL , and AlloyDB for PostgreSQL connectors, with Looker also in preview. Unlike data ingestion mode, which copies data into a Gemini data store, Data Cloud connectors use federated query mode to query your data in place without copying or indexing it — using Knowledge Catalog automatically to search accessible metadata and look up business context. Why use Data Cloud connectors over custom MCP Compared to connecting to public or self-managed Model Context Protocol (MCP) servers, first-party Data Cloud connectors provide two main advantages: Built-in skills for higher response quality: Data Cloud connectors include pre-configured agent skills tailored to each data engine, such as advanced SQL and AI function generation for BigQuery and operational databases, to improve query accuracy and response quality. Guided setup and managed authentication: First-party connectors provide a guided setup experience with managed authentication for Google Cloud databases and BigQuery, removing the need to deploy MCP middleware or manage your own OAuth client configuration for Google Cloud services. In addition, connector-specific settings, such as specifying a default Google Cloud billing project for BigQuery query execution, help administrators enforce governance and manage query costs. Get started today Data Cloud connectors help teams find answers from enterprise data sources without waiting on backlog queues. To get started, review the Data Cloud connectors documentation or explore Conversational Analytics agents .",
+      "evidenceLink": "",
+      "score": 90.06325045634921,
+      "core": "Data Cloud connectors in Gemini for business, now in preview , give business users and analysts a direct way to query live enterprise data in natural language. Across most organizations, data questions multiply faster than analysts can answer them: Projects stall in ticket queues, leaders fall back on guesswork, and unmanaged spreadsheets spread across teams. Early generative AI tools promised conversational access …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-07T16:06:52.177Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Ampersand from Humans& now available on AI Gateway",
+      "link": "https://vercel.com/changelog/humans-and-ampersand-now-available-on-ai-gateway",
+      "publishedAt": "2026-11-06T00:00:00.000Z",
+      "author": "Gregor Martynus",
+      "summary": "Ampersand from Humans& is now available on AI Gateway for free through November 13, 2026. Ampersand is a language model built to take part in group conversations, such as a team chat, and to decide on each turn whether to speak or stay quiet. It is designed to understand individual and shared goals, help people work through disagreements, and recognize when a contribution would be useful. That can mean asking a clarifying question, sharing relevant context, or waiting while people respond to one another. Your application exposes these actions as caller-defined function tools . send_message delivers a contribution, while pass leaves the conversation quiet until the next human message. Your application executes both tools and records their results. Leave tool choice at its default, since Ampersand accepts auto and none but rejects required and named tool choices. Call it through the AI SDK , the OpenAI-compatible Chat Completions API , or a coding agent. Use humansand/ampersand-v0.1 as the model name: The first human message invites a contribution; the second asks Ampersand to wait. In a chat application, call the handler when a new human message arrives. Handling pass records the waiting action without posting a message or starting another model turn. For a deployed chat application, persist the response, history, and delivery receipts in durable storage. Retry uncertain delivery with the saved action and the same receipt, process messages sequentially per conversation, and check conversation access before posting. To use it in Claude Code, Codex, Cursor, and more, install the latest Vercel CLI and run setup: Then select humansand/ampersand-v0.1 in the agent. See the coding agents guide for details. Try Ampersand in the model playground . AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. You can view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 79.13467902777778,
+      "core": "Ampersand from Humans& is now available on AI Gateway for free through November 13, 2026. Ampersand is a language model built to take part in group conversations, such as a team chat, and to decide on each turn whether to speak or stay quiet. It is designed to understand individual and shared goals, help people work through disagreements, and recognize when a contribution would be useful. That can mean asking a clar…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-07T16:06:52.177Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "vercel_ai",
+      "source": "Vercel",
+      "title": "Kimi K3.1 Pro now has more ZDR providers on AI Gateway",
+      "link": "https://vercel.com/changelog/kimi-k3-1-pro-now-has-more-zdr-providers-on-ai-gateway",
+      "publishedAt": "2026-11-04T17:00:00.000Z",
+      "author": "Jerilyn Zheng",
+      "summary": "Kimi K3.1 Pro and its higher-speed version, Kimi K3.1 Pro Highspeed , are now available on AI Gateway from more Zero Data Retention (ZDR) providers. Until today, Moonshot AI was the only provider serving either model. K3.1 Pro improves on earlier Kimi models in coding, 3D modeling, and financial analysis, and can carry long agent runs from a small fix to a full project. Both models have a 1M-token context window and accept image input, and Highspeed suits interactive work like coding agents, where response time matters. Call either model through the AI SDK , the Chat Completions , Responses , and Anthropic Messages APIs, or a coding agent connected to AI Gateway. For Highspeed, use moonshotai/kimi-k3.1-pro-highspeed in place of the model name below. Use moonshotai/kimi-k3.1-pro as the model name: Setting zeroDataRetention in the gateway provider options requires ZDR for that request. To require it for every request your team sends, including requests from coding agents, turn on ZDR in the AI Gateway dashboard settings . With either one on, AI Gateway routes only to providers with a ZDR agreement. If none is available for the model, the request fails instead of going to a provider without one. To use it in Claude Code, Codex, Cursor, and more, install the latest Vercel CLI and run setup: Then select moonshotai/kimi-k3.1-pro or moonshotai/kimi-k3.1-pro-highspeed in the agent. See the coding agents guide for details. Try Kimi K3.1 Pro in the model playground . AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. You can view all language models available on AI Gateway. Read more",
+      "evidenceLink": "",
+      "score": 76.92039331349207,
+      "core": "Kimi K3.1 Pro and its higher-speed version, Kimi K3.1 Pro Highspeed , are now available on AI Gateway from more Zero Data Retention (ZDR) providers. Until today, Moonshot AI was the only provider serving either model. K3.1 Pro improves on earlier Kimi models in coding, 3D modeling, and financial analysis, and can carry long agent runs from a small fix to a full project. Both models have a 1M-token context window and…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-07T16:06:52.177Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_ai_engineering",
+      "source": "GitHub Blog",
+      "title": "Beyond code generation: A developer’s guide to agentic engineering",
+      "link": "https://github.blog/ai-and-ml/github-copilot/beyond-code-generation-a-developers-guide-to-agentic-engineering",
+      "publishedAt": "2026-11-06T22:15:59.000Z",
+      "author": "Nick Liffen",
+      "summary": "Writing code got faster. The work around it didn't. See how you can plan, write code, review changes, and investigate production issues with GitHub Copilot, and what work still needs your judgment. The post Beyond code generation: A developer’s guide to agentic engineering appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 64.4418020436508,
+      "core": "Writing code got faster. The work around it didn't. See how you can plan, write code, review changes, and investigate production issues with GitHub Copilot, and what work still needs your judgment. The post Beyond code generation: A developer’s guide to agentic engineering appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-07T16:06:52.177Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "Taxbit Assist: A grounded, role-aware AI agent on Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/taxbit-assist-a-grounded-role-aware-ai-agent-on-amazon-bedrock-agentcore",
+      "publishedAt": "2026-11-06T16:49:42.000Z",
+      "author": "Karan Nayak",
+      "summary": "Taxbit built Taxbit Assist, a cited, permission-aware AI assistant embedded in its enterprise dashboard, on Amazon Bedrock AgentCore. This post shows how they grounded answers in a curated knowledge base, enforced role-aware and region-compliant safety, and continuously measured answer quality on live production traffic.",
+      "evidenceLink": "",
+      "score": 62.12559172619048,
+      "core": "Taxbit built Taxbit Assist, a cited, permission-aware AI assistant embedded in its enterprise dashboard, on Amazon Bedrock AgentCore. This post shows how they grounded answers in a curated knowledge base, enforced role-aware and region-compliant safety, and continuously measured answer quality on live production traffic.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-07T16:06:52.177Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Stop running everything through LLMs: How I fixed my research agent",
+      "link": "https://www.tinyfish.ai/blog/inside-tinyresearch",
+      "publishedAt": "2026-11-06T08:04:58.000Z",
+      "author": "manavm12 https://news.ycombinator.com/user?id=manavm12",
+      "summary": "How TinyResearch plans, searches, reads and checks its own work before writing a report, how deep the loop goes, and how it does on three public research benchmarks.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50389479",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 22,
+        "comments": 1
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-07T16:06:52.177Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 61.03938613570164,
+      "core": "How TinyResearch plans, searches, reads and checks its own work before writing a report, how deep the loop goes, and how it does on three public research benchmarks.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Building a Multi-Agent System from Scratch: Architecture Patterns",
+      "link": "https://kadhar.dev/blog/multi-agent-systems-from-scratch",
+      "publishedAt": "2026-11-05T15:51:57.000Z",
+      "author": "kadharmfn https://news.ycombinator.com/user?id=kadharmfn",
+      "summary": "When splitting work across several AI agents helps, the three patterns people use (pipeline, orchestrator, blackboard), and what actually breaks, with lessons from two systems I built and an interactive playground.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50380658",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 103,
+        "comments": 44
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-07T16:06:52.177Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 60.13414773594935,
+      "core": "When splitting work across several AI agents helps, the three patterns people use (pipeline, orchestrator, blackboard), and what actually breaks, with lessons from two systems I built and an interactive playground.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Speed Up Image Generation with FLUX 3 Image Klein on NVIDIA Blackwell GPUs",
+      "link": "https://developer.nvidia.com/blog/speed-up-image-generation-with-flux-3-image-klein-on-nvidia-blackwell-gpus",
+      "publishedAt": "2026-11-06T22:20:20.000Z",
+      "author": "Olivia Stoner",
+      "summary": "When deploying diffusion models in design tools, image editors, and visual production workflows, developers must account for inference latency. Generating an...",
+      "evidenceLink": "",
+      "score": 54.619202837301586,
+      "core": "When deploying diffusion models in design tools, image editors, and visual production workflows, developers must account for inference latency. Generating an...",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-07T16:06:52.177Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "Project EVE: Claude plays MMORPGs",
+      "link": "https://www.anthropic.com/research/project-eve-claude-plays-mmorpgs",
+      "publishedAt": "2026-11-06T00:00:00.000Z",
+      "author": "",
+      "summary": "We put Claude in two EVE games to study how AI agents handle markets and teamwork, where they break down, and what safeguards they might need.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-07T16:06:52.177Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 49.92356791666667,
+      "core": "We put Claude in two EVE games to study how AI agents handle markets and teamwork, where they break down, and what safeguards they might need.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "GitHub Copilot weekly releases — November 2",
+      "link": "https://github.blog/changelog/2026-11-06-github-copilot-weekly-releases-november-2",
+      "publishedAt": "2026-11-06T21:00:26.000Z",
+      "author": "Allison",
+      "summary": "This week, Copilot comes to JetBrains Air and Xcode’s coding assistant, with updates to help you manage pull requests, settings, and agent sessions. GitHub Copilot app Set up Agent Merge… The post GitHub Copilot weekly releases — November 2 appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 47.16852823412698,
+      "core": "This week, Copilot comes to JetBrains Air and Xcode’s coding assistant, with updates to help you manage pull requests, settings, and agent sessions. GitHub Copilot app Set up Agent Merge… The post GitHub Copilot weekly releases — November 2 appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-07T16:06:52.177Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "github_copilot_changelog",
+      "source": "GitHub Copilot Changelog",
+      "title": "Copilot impact dashboard adds chat and VS Code agent usage",
+      "link": "https://github.blog/changelog/2026-11-06-copilot-impact-dashboard-adds-chat-and-vs-code-agent-usage",
+      "publishedAt": "2026-11-06T22:17:28.000Z",
+      "author": "Allison",
+      "summary": "The Agent adoption chart in the Copilot impact dashboard now includes Copilot Chat and the VS Code Agents window, so you can see engagement across nine Copilot experiences. The adoption… The post Copilot impact dashboard adds chat and VS Code agent usage appeared first on The GitHub Blog .",
+      "evidenceLink": "",
+      "score": 46.33801236111111,
+      "core": "The Agent adoption chart in the Copilot impact dashboard now includes Copilot Chat and the VS Code Agents window, so you can see engagement across nine Copilot experiences. The adoption… The post Copilot impact dashboard adds chat and VS Code agent usage appeared first on The GitHub Blog .",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-07T16:06:52.177Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "anthropic",
+      "source": "Anthropic Research & Engineering",
+      "title": "The components of agent memory",
+      "link": "https://www.anthropic.com/research/components-of-agent-memory",
+      "publishedAt": "2026-11-06T00:00:00.000Z",
+      "author": "",
+      "summary": "For Claude to learn from experience, it has to decide what’s worth remembering before it knows what’s next. Here’s how “dreaming” helps it organize memory and correct mistakes.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-07T16:06:52.177Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 46.11245680555555,
+      "core": "For Claude to learn from experience, it has to decide what’s worth remembering before it knows what’s next. Here’s how “dreaming” helps it organize memory and correct mistakes.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "aws_machine_learning",
+      "source": "AWS Machine Learning Blog",
+      "title": "How U Mobile built agentic telco operations with Amazon Bedrock AgentCore",
+      "link": "https://aws.amazon.com/blogs/machine-learning/how-u-mobile-built-agentic-telco-operations-with-amazon-bedrock-agentcore",
+      "publishedAt": "2026-11-04T16:23:33.000Z",
+      "author": "Jin Tiong Lim",
+      "summary": "U Mobile, Malaysia's newest 5G network provider, built AiDaH, an agentic AI operations platform on Amazon Bedrock AgentCore that moves beyond AI assistance to autonomous action across telco operations. Nine months after production launch, AiDaH handles over 150 operational scenarios across six divisions, cutting trouble tickets by up to 84.5%.",
+      "evidenceLink": "",
+      "score": 45.79366712301587,
+      "core": "U Mobile, Malaysia's newest 5G network provider, built AiDaH, an agentic AI operations platform on Amazon Bedrock AgentCore that moves beyond AI assistance to autonomous action across telco operations. Nine months after production launch, AiDaH handles over 150 operational scenarios across six divisions, cutting trouble tickets by up to 84.5%.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-07T16:06:52.177Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "nvidia_developer",
+      "source": "NVIDIA Technical Blog",
+      "title": "Five Ways NVIDIA Co-Design Maximizes the Value of Every Byte in the AI Factory",
+      "link": "https://developer.nvidia.com/blog/five-ways-nvidia-co-design-maximizes-the-value-of-every-byte-in-the-ai-factory",
+      "publishedAt": "2026-11-05T16:00:00.000Z",
+      "author": "Shara Tibken",
+      "summary": "In an AI factory, high bandwidth memory (HBM)is the fastest, most expensive, and most contested memory tier. Every byte spent on a redundant weight copy, an...",
+      "evidenceLink": "",
+      "score": 42.44658378968254,
+      "core": "In an AI factory, high bandwidth memory (HBM)is the fastest, most expensive, and most contested memory tier. Every byte spent on a redundant weight copy, an...",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-07T16:06:52.177Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "huggingface_blog",
+      "source": "Hugging Face Blog",
+      "title": "ToyBlocks: A controlled world for robot learning and evaluation",
+      "link": "https://huggingface.co/blog/allenai/toyblocks",
+      "publishedAt": "2026-11-06T14:00:48.000Z",
+      "author": "",
+      "summary": "",
+      "evidenceLink": "",
+      "score": 42.13563140873016,
+      "core": "原文摘要不足，需要精读正文后补充核心结论。",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-07T16:06:52.177Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "Agents aren’t humans (but they kinda are)",
+      "link": "https://blog.cloudflare.com/trusted-agent-delegation",
+      "publishedAt": "2026-11-05T17:03:04.000Z",
+      "author": "Bryan Becker",
+      "summary": "AI agents act for millions, but servers see intermediaries that strip user visibility. This post defines the problem space and introduces a collaborative approach to safely identifying, allowing, and managing this automated traffic.",
+      "evidenceLink": "",
+      "score": 40.92721871031746,
+      "core": "AI agents act for millions, but servers see intermediaries that strip user visibility. This post defines the problem space and introduces a collaborative approach to safely identifying, allowing, and managing this automated traffic.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-07T16:06:52.177Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "dropbox_engineering",
+      "source": "Dropbox Tech",
+      "title": "How two engineer side projects became the agent taking action inside Dropbox",
+      "link": "https://dropbox.tech/machine-learning/how-two-engineer-side-projects-became-the-agent-taking-action-inside-dropbox",
+      "publishedAt": "2026-11-05T14:00:00.000Z",
+      "author": "Daniel Reiter Horn,Rich Chan",
+      "summary": "Two side projects explored a new way to get work done with files already in Dropbox. Here’s how engineers brought them together and turned those experiments into a new customer experience.",
+      "evidenceLink": "",
+      "score": 39.46483775793651,
+      "core": "Two side projects explored a new way to get work done with files already in Dropbox. Here’s how engineers brought them together and turned those experiments into a new customer experience.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-07T16:06:52.177Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "shopify_engineering",
+      "source": "Shopify Engineering",
+      "title": "Reflex: an architecture for building mobile apps with agents",
+      "link": "https://shopify.engineering/reflex",
+      "publishedAt": "2026-11-05T15:41:40.000Z",
+      "author": "",
+      "summary": "Our architecture lets agents test mobile app behavior without an emulator and use one test suite to keep iOS and Android in sync.",
+      "evidenceLink": "",
+      "score": 39.25809172619048,
+      "core": "Our architecture lets agents test mobile app behavior without an emulator and use one test suite to keep iOS and Android in sync.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-07T16:06:52.177Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "deepmind",
+      "source": "Google DeepMind",
+      "title": "Agentic cheminformatics with Google Antigravity",
+      "link": "https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity",
+      "publishedAt": "2026-11-03T17:01:49.000Z",
+      "author": "",
+      "summary": "Learn how Google Antigravity and our Cheminformatics Skills accelerate drug discovery workflows, search compounds, and propose novel rigidified macrocycles.",
+      "evidenceLink": "",
+      "score": 39.07493696428572,
+      "core": "Learn how Google Antigravity and our Cheminformatics Skills accelerate drug discovery workflows, search compounds, and propose novel rigidified macrocycles.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-07T16:06:52.177Z",
+        "evidence": "live_http"
+      }
+    }
+  ]
+}
