@@ -1,0 +1,72 @@
+[
+  {
+    "product": "Exa Monitors v2",
+    "link": "https://exa.ai/blog/monitors-v2",
+    "phLink": "https://www.producthunt.com/products/exa-ai",
+    "did": "上线定时网页监控：定好要盯的主题，有新结果才回调你的agent的webhook；配合Websets语义搜索出名单并富化字段，官方定价$2/千次运行。",
+    "who": "要持续盯线索、候选人、竞品动态，想让agent被「新变化」主动叫醒的团队。",
+    "why": "PH当日第1（榜单热度）。搜索从一次查询变成常驻监视，agent有了「等事件发生」的入口。",
+    "tip": "PH 11/7发布；既有产品Exa的Monitors v2新功能（Exa 3.0曾于10/20报道）。官网博客+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "LiveReview",
+    "link": "https://hexmos.com/livereview/",
+    "phLink": "https://www.producthunt.com/products/livereview",
+    "did": "上线风险感知code review：给每个PR打风险分，官方称最低风险的30-50%可安全自动approve，高风险的直送该看的工程师；LLM+事故数据训练的ML+代码图分析，免费且可自托管。",
+    "who": "被review拖慢、senior精力被低风险PR耗尽的业务关键系统团队。",
+    "why": "PH当日第3（榜单热度）。AI review从「都给你标出来」进化到「替你批准一部分」，官方称灵感来自Meta内部系统。",
+    "tip": "PH 11/7当日发布。官网+发布页已核实；官方引用Meta内部事故下降数据，未独立验证。功能未实测。"
+  },
+  {
+    "product": "Quest",
+    "link": "https://www.new.quest/",
+    "phLink": "https://www.producthunt.com/products/quest-d8e9c4e8-cc0d-4b07-baee-e3dbf712c279",
+    "did": "上线个人AI顾问：先理解你的性格、价值观、抱负和动机，再帮你复盘、过难决定、做和你一致的选择——定位是顾问而非效率助手。",
+    "who": "想要长期自我梳理和决策陪跑、而不是又一个待办机器人的人。",
+    "why": "PH当日第4（榜单热度）。个人agent里少见的「反效率」定位，和一众任务型助手错位竞争。",
+    "tip": "PH 11/7当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "seam",
+    "link": "https://getseam.app",
+    "phLink": "https://www.producthunt.com/products/seam-2",
+    "did": "把Mac刘海变成灵动岛：任意App里语音听写（本地跑）、控音乐、Claude Code跑完会提醒、专注计时；$19.9买断两台Mac，48小时免费试用免绑卡。",
+    "who": "常用听写、等coding agent跑任务时想要个不打扰的完成提醒的Mac用户。",
+    "why": "PH当日上榜（榜单热度）。刘海交互+本地语音+agent完成通知，把几个Mac小众需求缝在一起。",
+    "tip": "PH 11/7当日发布。官网+发布页已核实；价格与试用来自发布页。功能未实测。"
+  },
+  {
+    "product": "Topped",
+    "link": "https://topped.ai",
+    "did": "从爆款短视频借「形」：选对标视频，AI按同样结构生成你的版本，审批后自动发TikTok/IG/YouTube；支持MCP让agent直接调用。",
+    "who": "做App/产品的创始人，想跟上短视频节奏又不会剪片。",
+    "why": "Grok Bot邮件线索。「借结构不抄内容」+人工审批闸+agent可调用，增长自动化又进一步。",
+    "tip": "官网已独立核实；发布日期官方信息有限。功能未实测。"
+  },
+  {
+    "product": "Pinpoint",
+    "link": "https://gowtham012.github.io/PinPoint/",
+    "did": "开源本地小工具：在界面上点选任何元素，自动把选择器、组件名和源文件喂给你的coding agent，省得它满仓库猜。",
+    "who": "用Claude Code/Cursor改UI、每次都要手动复制元素路径的前端和全栈开发者。",
+    "why": "Grok Bot邮件线索。给coding agent补上「指哪打哪」的视觉定位，小而实。",
+    "tip": "官网（GitHub Pages，开源本地）已独立核实；发布日期官方信息有限。功能未实测。"
+  },
+  {
+    "product": "CloneGuard",
+    "link": "https://github.com/tharun208/cloneguard",
+    "phLink": "https://news.ycombinator.com/item?id=50397435",
+    "did": "开源扫描器：在运行一个repo之前，先扫出偷凭证的伎俩和可疑代码，防止恶意开源项目偷你的key。",
+    "who": "经常clone陌生repo就跑、以及让agent自动拉代码的开发者。",
+    "why": "Show HN当日发布。agent时代的供应链安全继续细化：这次扫的是「repo本身」。",
+    "tip": "Show HN 11/6发布（今日仍在榜）。仓库已打开核实。功能未实测。"
+  },
+  {
+    "product": "Agentic Identity Broker",
+    "link": "https://github.com/zalando-incubator/agentic-identity-broker",
+    "phLink": "https://news.ycombinator.com/item?id=50393235",
+    "did": "Zalando孵化的开源项目：给AI agent做OAuth委托，让agent在明确授权范围内代表你调第三方服务，权限可撤、边界清晰。",
+    "who": "要给agent接Google/GitHub等第三方账号、又不想直接把用户token塞给agent的工程师。",
+    "why": "Show HN当日发布。agent身份层又一子：继agent邮箱之后，OAuth委托也开源化了。",
+    "tip": "Show HN 11/6发布（今日仍在榜）。仓库已打开核实。功能未实测。"
+  }
+]
