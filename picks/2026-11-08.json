@@ -1,0 +1,72 @@
+[
+  {
+    "product": "Sage2 by Levanto Labs",
+    "link": "https://levanto.ai",
+    "phLink": "https://www.producthunt.com/products/sagecraft",
+    "did": "上线决策模型API：把自然语言提问变成带置信度的结构化判断，运行时可调用；附带一个开源演示——让Sage靠截图和按键玩《魔兽世界》，可检查数千条决策记录并离线回放。",
+    "who": "想在产品里嵌入「让模型做判断」而不是「让模型聊天」的开发者。",
+    "why": "PH当日第1（榜单热度）。决策API+可审计的决策轨迹，WoW演示把agent推理过程做成了可回放素材。",
+    "tip": "PH 11/8当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "AXL",
+    "link": "https://AXL.tech",
+    "phLink": "https://www.producthunt.com/products/axl-2",
+    "did": "AI原生销售营销一体平台：落地页、测验、网络研讨会、邮件、CRM、AI外呼全包，官方称AI模型基于100万笔成交训练、用300+信号给线索打分，并经MCP把1200+销售营销动作开放给ChatGPT/Claude/Cursor。",
+    "who": "不想拼装一堆SaaS、想让AI直接操作整个获客成交流程的销售和增长团队。",
+    "why": "PH当日第3（榜单热度）。GTM全家桶+MCP动作开放，和Orphex同线但更重成交闭环。",
+    "tip": "PH 11/8发布（AXL新一轮发布）。官网+发布页已核实；官方训练数据规模说法未独立验证。功能未实测。"
+  },
+  {
+    "product": "NoMac",
+    "link": "https://nomac.app",
+    "phLink": "https://www.producthunt.com/products/nomac",
+    "did": "给agent的云端Mac：Claude Code/Codex/Cursor或任何MCP客户端约30秒开一台带Xcode的Mac+iOS模拟器，编译测试、提交TestFlight和App Store，完事自动关机；按分钟计费、无订阅，浏览器里也能用桌面。",
+    "who": "要做iOS/Mac构建上架、手边没有Mac或不想让本机被agent占用的开发者。",
+    "why": "PH当日第5（榜单热度）。agent运行环境赛道补上苹果构建这一块，按分钟计费对偶发构建很友好。",
+    "tip": "PH 11/8当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "outages.live",
+    "link": "https://outages.live",
+    "phLink": "https://www.producthunt.com/products/polylane",
+    "did": "免费实时故障聚合：汇总约260家云、AI和开发者服务的官方状态页，让agent在改代码之前先确认是不是供应商挂了。",
+    "who": "agent半夜报错时，分不清是自己代码还是上游故障的开发者和小团队。",
+    "why": "PH当日上榜（榜单热度）。「先查状态页再动手」成了agent的标配前置检查，简单但非常对。",
+    "tip": "PH 11/8发布；Polylane（11/5入选）的新免费工具。官网已核实。功能未实测。"
+  },
+  {
+    "product": "Agent Clan",
+    "link": "https://agentclan.app",
+    "phLink": "https://www.producthunt.com/products/agent-clan",
+    "did": "把你的Claude Code和Codex变成屏幕上的3D小队：握拳呼出、捏合选中、语音派活，agent请示时右滑批准左滑拒绝，圈选屏幕内容直接交给它；手势和语音本地运行，Mac/Windows免费。",
+    "who": "同时管多个coding agent、想要更直观调度界面的开发者。",
+    "why": "PH当日上榜（榜单热度）。agent管理界面卷到「体感操作」了——噱头之下是真实的多agent调度需求。",
+    "tip": "PH 11/8当日发布。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "DocsAlot for customer support",
+    "link": "https://docsalot.dev",
+    "phLink": "https://www.producthunt.com/products/docsalot-2",
+    "did": "文档平台新增客服机器人：把帮助中心、知识库和开发文档收成人和agent共用的事实源，Slack/Discord里直接回答客户问题；带托管MCP、llms.txt和skill.md。",
+    "who": "文档散落多处、客户问题重复、想让AI答得准又怕读到过时内容的团队。",
+    "why": "PH当日上榜（榜单热度）。「文档同时服务人和agent」从基础设施落到了具体客服场景。",
+    "tip": "PH 11/8发布；DocsAlot既有产品的新功能。官网+发布页已核实。功能未实测。"
+  },
+  {
+    "product": "OpenCode Browse",
+    "link": "https://opencode.ai/product/browse",
+    "did": "让agent操作你已登录的真实浏览器：遇到登录页或验证码时暂停交还给你处理，再继续干活。",
+    "who": "想让agent帮办需要登录态的网页操作、又不愿交出密码的人。",
+    "why": "Grok Bot邮件线索，官网已独立核实。「登录/验证码交还人」是个务实的信任边界设计。",
+    "tip": "Grok Bot邮件线索。官网已核实；发布日期官方信息有限。功能未实测。"
+  },
+  {
+    "product": "Reges Town",
+    "link": "https://regestown.com",
+    "did": "浏览器里的活城市：一座由AI市民运转的3D小城，可以实时观察它们的生活。",
+    "who": "喜欢AI社会模拟、想找个轻松demo看看多agent行为的人。",
+    "why": "Show HN当日发布。小而有趣的agent社会实验，适合周末玩。",
+    "tip": "Show HN 11/8当日发布。官网已核实。功能未实测。"
+  }
+]
