@@ -1,0 +1,146 @@
+{
+  "generatedAt": "2026-11-09T16:21:18.128Z",
+  "report": "2026-11-10.md",
+  "health": "quality/knowledge-source-health/2026-11-10.json",
+  "candidates": "quality/knowledge-candidates/2026-11-10.json",
+  "site": "docs/index.html",
+  "ok": true,
+  "date": "2026-11-10",
+  "rows": 20,
+  "blogCount": 16,
+  "paperCount": 4,
+  "blogAccessVerifiedCount": 16,
+  "topConferencePaperCount": 4,
+  "sourceCount": 91,
+  "candidatePool": {
+    "historicalLinkCount": 1847,
+    "blogFetchedCount": 322,
+    "blogAccessCheckedCount": 95,
+    "blogAccessVerifiedCount": 79,
+    "blogAccessRejectedCount": 16,
+    "blogAccessRejected": [
+      {
+        "sourceId": "interconnects",
+        "title": "How big is the open model economy today?",
+        "link": "https://www.interconnects.ai/p/how-well-can-we-measure-open-model",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "interconnects",
+        "title": "Latest open artifacts (#25): DeepSeek V4.1 Flash 1017, American-made models, and new regulatory controls in the US & China",
+        "link": "https://www.interconnects.ai/p/latest-open-artifacts-25-deepseek",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "Why PMs are suddenly valuable again | Tulsee Doshi (Head of Product, Gemini)",
+        "link": "https://www.lennysnewsletter.com/p/what-it-actually-takes-to-build-frontier",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "Inside the black box of AI: How AI models actually think | Emmanuel Ameisen (Anthropic)",
+        "link": "https://www.lennysnewsletter.com/p/a-mind-expanding-conversation-on",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "🧠 Community Wisdom: PRDs for agents, tracking competitor messaging, whether software moats still exist, exercising startup options when you leave, and more",
+        "link": "https://www.lennysnewsletter.com/p/community-wisdom-prds-for-agents",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "lennys_newsletter",
+        "title": "How a 19-year-old intern built the growth engine behind this $2B AI company | Hector Serrano",
+        "link": "https://www.lennysnewsletter.com/p/how-a-19-year-old-intern-built-the",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: Time to rethink software security because of AI?",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-do-we-need-to-rethink-software",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: OpenAI software engineer accused of spying",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-openai-software-engineer",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pulse: Anthropic kills the coding interview",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pulse-anthropic-kills-the-coding",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "The Pragmatic Summit 2027",
+        "link": "https://newsletter.pragmaticengineer.com/p/the-pragmatic-summit-2027",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "What’s the ROI of software engineers’ spending on AI?",
+        "link": "https://newsletter.pragmaticengineer.com/p/whats-the-roi-of-software-engineers",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "pragmatic_engineer",
+        "title": "AI SRE: what is it, how could it change on-call – and does it work?",
+        "link": "https://newsletter.pragmaticengineer.com/p/ai-sre",
+        "reason": "页面返回登录、付费墙或反爬拦截内容"
+      },
+      {
+        "sourceId": "netflix_technology",
+        "title": "Making Failure Diagnosis Reliable with Pensive AI",
+        "link": "https://netflixtechblog.com/making-failure-diagnosis-reliable-with-pensive-ai-6b0811a1c015",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "netflix_technology",
+        "title": "Ontology-Driven Observability: Building an End-to-End Knowledge Graph at Netflix Scale",
+        "link": "https://netflixtechblog.com/ontology-driven-observability-building-an-end-to-end-knowledge-graph-at-netflix-scale-421392cf5adf",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "netflix_technology",
+        "title": "Beyond API Compatibility: Building a Tool to Measure the Blast Radius of Library Changes",
+        "link": "https://netflixtechblog.com/beyond-api-compatibility-building-a-tool-to-measure-the-blast-radius-of-library-changes-9474f2fd4f90",
+        "reason": "HTTP 403"
+      },
+      {
+        "sourceId": "netflix_technology",
+        "title": "Integrating Netflix’s Foundation Model into Personalization applications",
+        "link": "https://netflixtechblog.com/integrating-netflixs-foundation-model-into-personalization-applications-cf176b5860eb",
+        "reason": "HTTP 403"
+      }
+    ],
+    "blogCanonicalRedirectHistoricalDedupCount": 6,
+    "paperFetchedCount": 10,
+    "paperTopConferenceVerifiedCount": 10,
+    "blogAfterHistoricalDedupCount": 73,
+    "paperAfterHistoricalDedupCount": 9,
+    "eligibleAfterHistoricalDedupCount": 82,
+    "maxPerBlogSource": 2,
+    "selectedBlogSourceCounts": {
+      "agentconn_engineering": 1,
+      "braintrust_ai_engineering": 1,
+      "cloudflare_ai": 1,
+      "docker_ai_engineering": 1,
+      "figma_ai_design": 1,
+      "gitlab_ai_engineering": 1,
+      "google_cloud_ai": 1,
+      "hcker_news_ai_blogs": 2,
+      "latent_space": 1,
+      "openai_news": 2,
+      "redis_ai_engineering": 1,
+      "simon_willison": 1,
+      "techradar_pro_ai": 1,
+      "zapier_ai_automation": 1
+    },
+    "sourceCapRelaxed": false,
+    "shortfallReason": ""
+  },
+  "failures": []
+}

@@ -1,0 +1,431 @@
+{
+  "generatedAt": "2026-11-09T16:15:55.478Z",
+  "date": "2026-11-10",
+  "items": [
+    {
+      "kind": "blog",
+      "sourceId": "gitlab_ai_engineering",
+      "source": "GitLab Blog",
+      "title": "How to design a decision-grade pilot for agentic AI",
+      "link": "https://about.gitlab.com/blog/how-to-develop-a-decision-grade-ai-pilot",
+      "publishedAt": "2026-11-09T00:00:00.000Z",
+      "author": "Nina Sesti https://about.gitlab.com/blog/authors/nina-sesti/",
+      "summary": "Agentic AI changes the nature of a technology evaluation. When an AI system only generates an answer, a person reviews the output and decides whether to use it. An agent goes further: It gathers context, selects tools, makes decisions, and executes a sequence of actions across the software development lifecycle. The central question for a pilot is therefore not whether the agent can produce an impressive result. It is: What evidence would be sufficient to authorize this agent to perform this workflow for this team? A feature checklist or a collection of successful demos cannot answer that. Leaders need evidence about end-to-end task completion, reliability, control enforcement, level of human effort, operational risk, and economics. This article presents a framework for producing that evidence and turning an agentic AI pilot into a defensible decision. Start with the decision, not the technology A pilot should begin with the decision it is meant to support. \"Evaluate agentic AI\" is too broad. A usable decision names the workflow, the users, the proposed level of autonomy, the output the agent must produce, the acceptance criteria and metrics that define success, the quantified outcome the team expects, and the conditions under which it will proceed. For example: Decide whether an AI agent can diagnose selected CI/CD pipeline failures and prepare a merge request with a proposed fix that passes the pipeline’s tests and is accepted by the developer, within defined repository permissions, while reducing total resolution effort by at least 25% against the current baseline. This is more useful than \"test an AI pipeline agent\" because it fixes the output, the acceptance criteria, the control boundary, and the quantified outcome before anything runs. Define what happens on success, too: a limited rollout with one team, expansion to more teams, and/or a higher level of autonomy. Without an agreed next decision, a pilot drifts into an open-ended experiment. Define the proposed level of autonomy Agentic AI is not simply \"autonomous\" or \"not autonomous.\" The same agent can operate at different levels of authority. A useful model for a pilot has four levels: Recommend : The agent analyzes the situation and recommends an action. Prepare : The agent creates an artifact, such as a merge request, issue, or remediation plan, but does not apply it. Execute with approval : The agent acts only after an authorized person approves. Execute within boundaries : The agent acts on its own inside a predefined scope and escalates exceptions. Test the level the team could realistically authorize. Evaluating only in recommendation mode says little about whether the agent can safely execute changes. Granting broad autonomy in an early evaluation adds risk without evidence. Autonomy should be earned . A team can start with recommendations, move to prepared changes, and consider bounded execution only after the agent has shown sufficient reliability and control compliance. Evaluate the workflow, not the response Traditional model evaluation focuses on response quality. Agentic evaluation must focus on completing an end-to-end task. Take an agent that helps resolve a failed pipeline. A plausible explanation is not the outcome. The workflow may require the agent to: Identify the relevant job and logs, and separate the root cause from secondary symptoms. Inspect the right configuration and code, and propose a valid correction without unrelated changes. Create a reviewable artifact and trigger the correct validation steps. Escalate when confidence or authorization is insufficient. Define success at the workflow level: Did the agent reach the intended outcome correctly, within its authority, and with an acceptable amount of human effort? This keeps a convincing explanation from earning a pass when the agent does not reliably complete useful work. Build an evaluation set from representative work A decision-grade pilot needs an evaluation set that reflects the work the agent will actually meet, not scenarios chosen because they show the technology well. For each workflow, include: Realistic tasks : common, well-understood tasks and complex but valid ones Difficult inputs : ambiguous requests with missing or conflicting context, and unsafe or adversarial inputs where appropriate Cases the agent must not complete on its own : expected failures, requests outside its authorization boundary, and high-impact actions that require human approval Use sanitized examples from real workflows whenever possible. Generic exercises remove the dependencies, coding standards, policies, and ownership boundaries that make enterprise work difficult. Add explicit acceptance criteria: a known correct diagnosis, tests that must pass, an expected security policy result, or a rubric completed by a subject matter expert. Without them, reviewers score how persuasive an output looks, which makes results hard to compare and easy to overestimate. Measure a distribution, not the best run Agentic systems behave differently when input, context, or execution state changes, so a single successful run says very little about reliability. AI output is variable and context-dependent, which is why evaluation has to look for patterns across representative scenarios rather than individual results. For agents there is one addition: Variability can affect actions, not only answers. Run important scenarios several times, vary the relevant conditions, and measure: Task outcomes : end-to-end success rate, reviewer acceptance rate, and failure rate by scenario type Human involvement : intervention and escalation rate, and rework introduced by the agent Controls and resilience : policy or authorization violations, plus latency and recovery from tool, context, or workflow failures The goal is not to prove the agent always behaves identically. It is to understand the distribution of outcomes and decide whether it is acceptable for the proposed use. Where predictability is non-negotiable, as in release management, keep the agent out of the execution path. Let it prepare the artifact, such as a deployment script, and let the pipeline run that script, so the execution is deterministic and the agent’s variability is limited to what a reviewer can inspect beforehand. The same pattern works in operations: An agent can assess whether a rollback is needed, while the rollback itself runs as a tested script. In both cases the pilot measures the quality of what the agent prepares or recommends, which are the Prepare and Recommend levels. Two cautions apply. First, aggregates hide risk: A 90% success rate is not strong if the other 10% includes unauthorized changes. Segment results by risk tier and failure type. Second, pilot samples are small, so report counts and uncertainty, not only percentages. Twenty successes in twenty runs does not demonstrate 99% reliability: At 95% confidence, the true failure rate could still be close to 14%. Eighteen out of twenty is consistent with a true success rate anywhere from roughly 70% to 97%. If a threshold matters, size the number of runs to it, or state plainly that the pilot cannot yet support the claim. Set thresholds by risk, and treat controls as hard gates Not every task needs the same reliability. A wrong explanation that a developer can ignore has a different impact from a wrong production change. Define risk tiers and apply different thresholds to each: Risk tier Example action Evaluation approach Low Explain a pipeline error Measure usefulness and correctness; a human validates the response Medium Prepare a merge request Require passing tests, scoped changes, and reviewer approval High Merge or deploy a change Require strict authorization, mandatory controls, reversibility, and a substantially higher reliability threshold Some requirements are not thresholds at all. They are hard gates, and an agent cannot offset a failed gate with time saved elsewhere. Completing the task and respecting the control environment are inseparable: An agent that resolves a vulnerability by bypassing an approval rule has not completed the workflow. Typical must-pass gates include: Identity and authorization : Every action is attributable to the agent and the initiating user, the agent works with least-privilege access, cannot reach tools outside its scope, and retrieves only the permitted context. Policy and approval : Existing security and compliance policies still apply, and required human checkpoints cannot be bypassed. Auditability and control : Reviewers can reconstruct what the agent did and why, high-impact changes can be undone, the team can stop or disable the agent, and failures, policy violations, and abnormal activity are visible. GitLab's guidance on governing agentic AI treats role-based permissions, tool approval guardrails, and human review checkpoints as distinct control points for agent actions. A pilot should verify them with negative tests, not just confirm they exist on paper. Attempt actions outside the permitted scope, remove required context, trigger an approval boundary, and confirm that the agent stops, refuses, or escalates as designed. Measure total effort and cost per successful task Time saved by the agent is only one side of the equation. An agent can finish a task in minutes and leave a lengthy review. It can cut implementation time while raising the effort needed to understand the change. It can automate routine work and still produce occasional failures that need a senior specialist to diagnose. Measure the whole workflow: preparing requests and context, reviewing output, correcting or reworking changes, handling escalations and failures, and the manual steps avoided. The useful metric is not minutes generated by the agent but total human effort per successfully completed task. Also record where human judgment remains essential. The aim is an effective operating model between people and agents, not necessarily removing people. Apply the same logic to cost. A low-cost execution that frequently fails can cost more than a higher-cost one that completes the workflow correctly. Count model and platform consumption, tool and infrastructure usage, human review, rework and failed attempts, and monitoring and support overhead. Then compare with the current baseline: Cost per successfully completed task Total human effort and median time to completion per task, including the share of tasks that need specialist intervention Rework or defect rate, and throughput under the same control requirements The pilot does not need a perfect financial model. It needs to show whether the value stays credible once the costs a demonstration leaves out are included. Use a decision-grade scorecard A scorecard connects each piece of evidence to the decision the pilot must support. Hard gates are marked \"Must pass\"; everything else is judged against a target. Dimension Decision question Example evidence Threshold type Business outcome Does the workflow improve the agreed outcome? Baseline comparison, time and throughput metrics Target Task success Does the agent complete the end-to-end task correctly? Acceptance criteria, tests, expert review Target Reliability Are outcomes consistent across representative scenarios? Repeated runs, success and failure rates segmented by risk, with counts Risk-based target Human effort Does the agent reduce total effort after review and rework? Time study, intervention and escalation rate Target Economics Is the cost per successful task credible at expected scale? Consumption, operations, and support estimates Target Authorization Does the agent stay within its assigned permissions? Access and negative test results Must pass Governance Are actions attributable, reviewable, and auditable? Approval records, audit trail, change history Must pass Safety and recovery Can failures be detected, contained, and reversed? Failure injection, rollback, and disablement tests Must pass Adoption Can the intended users understand and operate the workflow? User observation, feedback, training needs Target Define thresholds before running the evaluation. Thresholds set after seeing results let teams adjust the definition of success to match what they observed. Record the evidence behind each result: a score without evidence is hard to defend and gives little guidance for rollout. Worked example: A pipeline failure agent The numbers below are illustrative, not benchmarks. They show how thresholds, segmentation, and gates combine into a decision. A team wants an agent to diagnose failed pipelines and prepare a merge request with a fix, for developer approval (the Prepare level). They sanitize 30 real failures across three types and run each scenario three times, for 90 runs. Before running anything, they set the following thresholds: Reviewer-accepted merge requests: at least 85% for configuration errors, 70% for flaky tests, and 85% for permission-related failures, where a wrong fix is costlier Total human effort per resolved failure, including review and rework: at least 25% below the baseline median of 40 minutes Hard gates: zero out-of-scope changes, zero bypassed approvals, and every merge request attributable to the agent and the initiating user Failure type Runs Accepted Rate Threshold Result Configuration errors 30 27 90% 85% Pass Flaky tests 30 22 73% 70% Pass Permission-related 30 15 50% 85% Fail The median human effort was 29 minutes against 40, a 28% reduction. The gates held: no violations in 90 runs, and all 10 negative tests ended in a refusal or escalation. Zero violations in 90 runs supports a true violation rate below roughly 3% at 95% confidence, which is evidence but not proof. The resulting decision is narrower than \"the agent works.\" Authorize Prepare-level rollout for configuration errors and flaky tests. Keep permission-related failures at Recommend, fix the context the agent lacks, and repeat that tier. Do not authorize execution. Governed agents across the software lifecycle The gates above are platform-neutral, but GitLab Duo Agent Platform applies them across the whole software lifecycle instead of to a single tool. For a pilot, that means you can evaluate agents at several stages against one set of controls. Duo Agent Platform offers agents and flows at each stage: Plan : Planner Agent plans, prioritizes, and tracks work, and Data Analyst Agent draws insight from development metrics. Code : Developer Flow turns issues into merge requests, and Software Development Flow builds a multi-step plan before it acts. Review : Code Review Flow automates review tasks and enforces coding standards, and GitLab Duo can also resolve review discussions and merge conflicts. Build and deploy : Fix CI/CD Pipeline Flow diagnoses and fixes failing pipelines, and Convert to GitLab CI/CD Flow migrates legacy pipelines. Secure : SAST Vulnerability Resolution Flow generates fixes, the false positive detection flows filter static application security testing and secret detection findings, and Security Analyst Agent triages and analyzes vulnerabilities. These capabilities sit at different points on the autonomy model. Developer Flow prepares a merge request for review, which is the Prepare level. Resolving merge conflicts or review discussions pushes commits, which is closer to execution, so a pilot should hold it to a stricter threshold. The same guardrails apply across all of these stages: Identity : Composite identity is the default for agent sessions. A flow acts through a service account combined with the user who triggered it, and permissions are the more restrictive of the two. Agentic Chat in the UI and IDE is the exception. Approval : Agent tool governance (beta) sets each tool to Always Allow, Always Ask, or Always Deny at group or project level, and project rules can only be equal to or stricter than group rules. By default, write and delete tools ask for approval. Background flows have no user to ask, so their tools can only be allowed or denied, and a tool with no background rule is allowed. Set those rules explicitly, and confirm that enforcement for background flows, which is controlled by a feature flag, is on in your environment. Audit : AI audit events (beta) give a per-session record, with actions attributed to the service account and the human who started the session recorded alongside. Storage is off by default and must be enabled. The AI Governance Dashboard (beta) adds group-level monitoring of agent sessions and developer exposure. Data boundaries : Duo Agent Platform can run with self-hosted models on GitLab Self-Managed, for organizations that must control where model requests are processed. Several of these controls are in beta, so treat them as part of what the pilot evaluates: confirm their status, enable them explicitly, and test them with the negative tests described earlier. Turn the pilot into an authorization decision A pilot should end with a decision about authority, scope, and operating conditions. Possible outcomes include: Authorize a limited rollout to selected teams, at the evaluated autonomy level or for lower-risk tasks only. Reduce the agent from execution to preparation or recommendation mode, or iterate on controls, context, or workflow design and repeat selected tests. Stop, because value, reliability, risk, or economics are not acceptable. Write the decision down. The record should state: Scope : the workflows and task types covered and excluded, the authorized level of autonomy, and the systems, tools, and data the agent may access Evidence and controls : the thresholds demonstrated, with run counts, the known limitations, and the controls and approval points that must stay active Ownership : the workflow owner and escalation path, and the metrics monitored after rollout and the conditions that trigger suspension or reassessment This ties pilot evidence to the authority actually delegated. It also stops a successful evaluation of one narrow workflow from being read as approval for broader autonomous use. Start your own decision-grade pilot today Evaluating agentic AI is an exercise in deciding how much authority a team is prepared to delegate, and under which conditions. The result of a decision-grade pilot should not be \"the agent works.\" It should be a documented decision that states where the agent may act, what evidence supports that authority, which controls must stay in place, and how the team will know when to intervene. That is the standard for moving agentic AI from experimentation into responsible enterprise use. Related resources How to govern agentic AI, MCPs, and AI code assistants GitLab and Claude Code: Fast, compliant AI GitLab Duo Agent Platform documentation",
+      "evidenceLink": "",
+      "score": 107.83818496031746,
+      "core": "Agentic AI changes the nature of a technology evaluation. When an AI system only generates an answer, a person reviews the output and decides whether to use it. An agent goes further: It gathers context, selects tools, makes decisions, and executes a sequence of actions across the software development lifecycle. The central question for a pilot is therefore not whether the agent can produce an impressive result. It …",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-09T16:15:55.478Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Ginux: A New Kernel Runs Linux Userspace, Made via Human-Directed AI Engineering",
+      "link": "https://zenodo.org/records/23682548",
+      "publishedAt": "2026-11-09T11:30:27.000Z",
+      "author": "ForHackernews https://news.ycombinator.com/user?id=ForHackernews",
+      "summary": "This report presents Human-Directed Agentic Engineering (HDAE), a method for building complex software by combining human-defined architecture, constraints, milestones, acceptance criteria, and stopping points with an autonomous implementation, execution, diagnosis, and revision loop. The experiment examines what this development model can accomplish and the domain expertise and executable validation required to keep it aligned Ginux serves as the experimental case study. Over eleven days, one persistent coding-agent task produced an independent Rust-first x86-64 kernel that boots through UEFI, implements its own core operating-system mechanisms and Linux compatibility layer, executes selected unmodified Alpine Linux programs, and boots a Rocky Linux 10 userspace with systemd through multi-user.target. Ginux demonstrates the rapid integration of established systems mechanisms, but it remains a research prototype. Its compatibility and hardware coverage are narrow, it has not received an independent security audit, and it makes no claim to production readiness or equivalence with Linux.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50424147",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 30,
+        "comments": 56
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-09T16:15:55.478Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 93.75092964877032,
+      "core": "This report presents Human-Directed Agentic Engineering (HDAE), a method for building complex software by combining human-defined architecture, constraints, milestones, acceptance criteria, and stopping points with an autonomous implementation, execution, diagnosis, and revision loop. The experiment examines what this development model can accomplish and the domain expertise and executable validation required to kee…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "KDD",
+      "title": "KDD AI reasoning day",
+      "link": "https://doi.org/10.1145/3770855.3818639",
+      "evidenceLink": "https://www.semanticscholar.org/paper/83aa8d6714aba32cb3f1f0b94932911b259c1411",
+      "publishedAt": "2026-08-08T00:00:00.000Z",
+      "submittedAt": "2026-08-08T00:00:00.000Z",
+      "author": "Jun Huan, James Caverlee, Lei Li, Vijay Lingam",
+      "summary": "Large language models and foundation models are increasingly embedded in reasoning systems that plan, invoke tools, use memory, gather evidence, and iteratively refine their outputs. The second KDD Day on AI Reasoning brings together researchers and practitioners from academia and industry to examine how these systems can be made more capable, reliable, interpretable, and efficient. The program spans scientific discovery, human-centered interaction, software engineering, time-series analysis, deep research, computer use, and inference infrastructure. Across these domains, the day highlights shared challenges: grounding decisions in evidence, designing effective feedback and verification mechanisms, evaluating open-ended behavior, managing test-time computation, and preserving meaningful human control. Through keynote and invited presentations, the event provides a forum for connecting advances in models, agents, data, systems, and applications, and for identifying research directions toward trustworthy next-generation reasoning systems.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "KDD",
+        "venueLabel": "KDD",
+        "venueName": "Knowledge Discovery and Data Mining",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 67,
+      "core": "Large language models and foundation models are increasingly embedded in reasoning systems that plan, invoke tools, use memory, gather evidence, and iteratively refine their outputs. The second KDD Day on AI Reasoning brings together researchers and practitioners from academia and industry to examine how these systems can be made more capable, reliable, interpretable, and efficient. The program spans scientific disc…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "simon_willison",
+      "source": "Simon Willison",
+      "title": "Hide your slop PR descriptions behind",
+      "link": "https://simonwillison.net/2026/Nov/9/details-summary",
+      "publishedAt": "2026-11-09T04:25:05.000Z",
+      "author": "",
+      "summary": "Most of the changes I make to my projects these days come in the form of PRs opened for me by Claude Code or Codex. The PR is my unit of work - I use them to bundle commits together, iterating on them until a feature is complete, document decisions and then merge the finished result. Today's coding agents are great at writing PR descriptions. They're too good at describing the work The problem is that they are too good. An agent-written PR description is accurate and comprehensive. It describes the problem, the detailed solution, and the steps taken to verify it. That's a lot of information to absorb. It's not necessarily slop, but it reads like slop! It's very easy to spot an AI-written PR, and as with other forms of AI writing my instant reaction is best summarized as \"I'm not reading all of that\". It doesn't matter how accurate or useful the information is, I'm instantly put off by the thought that it will take me longer to read than it took the driving author to write... even when that driving author is me! I want human editorial judgement. I want someone to have thought just long enough about the PR to give me a human-approved introduction that helps me understand, at a high level, what the PR is for and whether it deserves more of my attention. I think I've found a low-effort way to do this that feels right. Hide most of it in a details/summary The HTML elements render as a collapsed heading (the summary) that can be expanded to view the larger piece of text. The code looks like this: details > summary > Claude Opus 5.5 summary > h2 > The hook h2 > Plugins implement code > register_agent_reference_types(datasette) code > ... details > When rendered, it looks like this : Crucially, is supported in GitHub Markdown . You can drop those tags directly into an issue comment or PR description and GitHub will hide the details and display just the summary plus an expansion arrow. I've started using this for my AI-generated pull requests. The opening paragraph of my PRs will be carefully selected to act as a high-level explanation of what's going on - the shortest text a human can read that will help get them up to speed. I'll sometimes throw in a screenshot as well, since images are often the best way to quickly illustrate a new feature. The full agent-written essay then follows in a . I use the model name and often the effort level as that summary, to make it abundantly clear what is going on - \"Claude Opus 5.5 Medium\" for example. My PRs don't feel nearly as sloppy now! The information is all still there, but a reader can glance at it and get the top, human-curated information without their eyes glazing over at multiple paragraphs of agent-written details. I don't always write the introduction myself - sometimes the agent has given me what I need already, hidden away in the avalanche of other text. My promise to the reader is that the short opener will represent my human judgement as to what is definitely worth their time. Here are some recent examples where I've used this pattern, including the opener I used: datasette PR #3052: Redesign row page as a vertical list of fields - \"The row page showed its single row as a one-row table. For wide tables, like a 46-column GitHub repos table, that scrolled far off to the right and left most of the page blank.\" (then a screenshot) datasette PR #3043: Pagination bar showing which rows are on the current page - \"Table pages that span more than one page now make it obvious where you are, and offer navigation at the top of the page as well as the bottom.\" (plus screenshot) datasette PR #3042: Load edit-tools.js on demand via a small loader - \" edit-tools.js (~220KB) was loaded on every table, row and database page, even for users who couldn't edit anything. Now only load it for users who can edit when they first interact with an edit feature (including mouse over an edit link).\" datasette-agent PR #51: register_agent_reference_types plugin hook - \"Lets plugins add their own kinds of item to the # tagging in the chat composer using a new register_agent_reference_types(datasette) plugin hook.\" - pictured above. llm PR #1838: Add llm openai endpoint add/list/remove/path commands - \"Adds commands for managing the records in extra-openai-models.yaml , so OpenAI-compatible endpoints can be saved from the command line instead of by hand-editing YAML.\" - then copied --help output. The mnemonic I used to have trouble remembering the order of the tags - is it or ? Here are two tricks that helped me. First, and most obviously, the is clearly the bit where you summarize the details. That's the tag for your line of text that can be clicked to expand - the element must then wrap everything else. An even better trick is to always refer to these two tags as \"details-summary\". \"details-summary\" is two syllables followed by three syllables. That rolls off the tongue more smoothly than the three-two punch of \"summary-details\". Say \"details-summary\" out loud just a few times and you'll never forget the order of the tags again. (I still wish GitHub would add a button to their Markdown editor for this - partly to save me painstakingly typing it on my mobile keyboard, and partly to help spread the word to more GitHub users that this feature exists.) You are only seeing the long-form articles from my blog. Subscribe to /atom/everything/ to get all of my posts, or take a look at my other subscription options .",
+      "evidenceLink": "",
+      "score": 65.15376035714286,
+      "core": "Most of the changes I make to my projects these days come in the form of PRs opened for me by Claude Code or Codex. The PR is my unit of work - I use them to bundle commits together, iterating on them until a feature is complete, document decisions and then merge the finished result. Today's coding agents are great at writing PR descriptions. They're too good at describing the work The problem is that they are too g…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-09T16:15:55.478Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "google_cloud_ai",
+      "source": "Google Cloud AI & Machine Learning",
+      "title": "Now generally available: GKE dynamic slicing for higher resilience, and efficiency for TPUs",
+      "link": "https://cloud.google.com/blog/products/containers-kubernetes/gke-dynamic-slicing-on-tpus",
+      "publishedAt": "2026-11-09T13:00:00.000Z",
+      "author": "Kavitha Gowda Product Manager, Google Cloud",
+      "summary": "Running large-scale AI workloads on TPU and Google Kubernetes Engine (GKE) requires infrastructure that adapts as fast as your models change. Dynamic Slicing is generally available on GKE, which decouples logical TPU slice formation from physical nodepool provisioning. Compared to creating a static nodepool for each TPU slice, dynamic slicing reduces AI workload startup times by up to 5x and workload recovery by 4.5x — maximizing TPU goodput, efficiency, and workload resilience at scale. Beyond one workload, one nodepool Previously, managing TPU capacity at GKE standard required separate, fixed TPU slice topology nodepools, increasing startup times and complexity while preventing multi-host nodepools from hosting multiple AI workloads. Changing workload needs meant manually deleting and recreating nodepools. Additionally, this tight coupling created large failure domains where a single hardware fault crashed an entire slice, slowing recovery while reprovisioning. To overcome these challenges, we built GKE dynamic slicing, which decouples physical hardware provisioning from logical slice formation, dynamically stitching together TPU cubes using TPU optical circuit switching (OCS) technology to form various larger slice topologies (super-slicing), or partitioning TPU cubes into smaller slices for multiple workloads to run inside a nodepool (sub-slicing). By enabling workloads to assemble custom TPU slice topologies on demand without having to delete and recreate static nodepools, dynamic slicing reduces job startup latency, limits the blast radius of hardware failures, accelerates recovery of workloads, and improves fleet utilization and efficiency. Dynamic slicing delivers several key improvements for platform teams: Zero-downtime topology agility: Completely eliminates the rigid \"delete-and-create\" nodepool cycle, allowing to dynamically stitch together TPU cubes (16 VMs nodepools) to form large TPU slices, or carve out smaller-slices on the fly as an AI workload is submitted. Up to 5x faster job startup: Slashes job startup times by up to five times by instantly assembling logical slice topologies from pre-provisioned TPU nodepools instead of waiting for a slow, new nodepool deployment. Improved fleet utilization: Improves resource efficiency and eliminates idle capacity by enabling multi-tenant packing of smaller workloads within nodepools. Additionally, it lets you provision partially healthy nodepools. This way, you can utilize healthy hosts that would otherwise be unavailable. Up to 4.5x faster recovery and fault tolerance: Accelerates recovery by isolating large slice failures to a TPU cube (a 16-VM 4x4x4 slice topology) and swapping unhealthy cubes in one to two minutes. Enhanced visibility and control: Offers comprehensive insight into potential TPU partitions (slices) within each cube, covering real-time health and usage metrics to facilitate proactive, optimized workload scheduling. Dynamic slicing architecture GKE dynamic slicing is offered in two forms: super-slicing, to create larger scale TPU slices that exceed the size of a single TPU cube; and sub-slicing, which provisions smaller, independent slices from a single cube. Dynamic super-slicing GKE dynamic super-slicing utilizes TPU optical circuit switching (OCS) technology to dynamically connect TPU cubes (consisting of 16 VMs configured in a 4x4x4 slice topology) at the time of workload scheduling. By altering the OCS network configuration dynamically, larger slice topologies are created and tailored to the workload slice needs outlined in the Kubernetes workload manifest, significantly enhancing operational efficiency. Super-slicing fundamentally relies on a baseline conversion of all available TPU capacity into uniform nodepools composed of 16-VM (4x4x4) TPU cubes. When a TPU slice topology is specified in Kubernetes workload YAML file, the GKE scheduler (or your custom scheduler) identifies the request and instantiates slice creation. This process uses the TPU optical circuit switch to stitch multiple 4x4x4 cubes together, dynamically instantiating the targeted slice topology and scheduling the workload directly onto the newly established super-slice. How a 4x4x16 super slice (comprising 64 Ironwood VMs and 256 total chips) is formed using four Ironwood cubes (also provisioned as GKE nodepools). At runtime, the slice is created dynamically by stitching together the TPU network across all TPU chips in these four cubes. Dynamic sub-slicing Dynamic sub-slicing partitions a single, pre-provisioned TPU cube (16 VM nodepool) into smaller, independent sub-slices on demand. You can manage a single pool of uniform TPU cubes and partition them on demand. With this approach, multiple distinct jobs with completely different slice topology requirements can run concurrently and fully isolated inside the same physical TPU cube, boosting overall resource utilization and allowing you to salvage and run workloads on healthy partitions, even if a portion of the cube is unhealthy. When a workload is scheduled, sub-slicing dynamically parses its specific slice topology requirements from the incoming Kubernetes manifest. It then locates healthy partitions within the cubes, activates the high-speed Inter-Chip Interconnect (ICI) network to form sub-slices, and deploys the workload onto the newly created slice. Upon workload completion, the scheduler automatically deconstructs (\"deforms\") the slice and returns the partitions to the shared pool, making them immediately available for future workloads without having to recreate the GKE nodepool. How GKE sub-slicing dynamically partitions a 16-host TPU cube into smaller, independent slices (e.g., 2x2x4 with 16 chips down to 2x2x2) for optimal utilization of TPU resources. Customer use cases You can leverage dynamic slicing to form massive TPU slice topologies to meet large scale training, ranging from large 8,000-chip single slices to multi-slices of multiple thousands of chips, down to single-host four-chip configurations. This supports a wide variety of heterogeneous AI workloads within the same environment. Designed for the demands of largest-scale workloads, dynamic slicing delivers resiliency and operational efficiency for AI workloads running across thousands of accelerators. Sub-slicing offers the versatility to efficiently scale inference workloads ranging from small to large-scale deployments. Dynamic slicing scheduler for GKE GKE provides deployable schedulers optimized for dynamic slicing, or you can use your own custom scheduler to manage workload placement. This flexibility allows for intelligent workload scheduling based on proactive health status monitoring. See more in our documentation . Getting started Pre-provision nodepools To get started, you must perform a one-time activity of pre-provisioning TPU capacity into nodepools of 16 VMs each (maps to a TPU cube or sub-block). This baseline conversion allows for dynamic stitching of these units into custom slice topologies on demand. Dynamic slicing introduces a new type of nodepools called an incremental provisioning nodepool. An incremental provisioning nodepool is a fault-tolerant model that supersedes the traditional \"all-or-nothing\" approach for creating TPU slices. GKE provisions the nodepool using all available healthy hosts even if some hosts in a 4x4x4 (16 VM) slice are faulty. The system continuously reconciles state, automatically adding pending nodes once faulty hosts recover. This setup is a prerequisite for dynamic sub-slicing, as it allows the high-speed ICI network mesh to be dynamically configured. By using incremental provisioning, you can create nodepools for your entire capacity at once, reducing operational toil and maximizing TPU utilization by enabling sub-slicing on healthy nodes. Workload scheduling on dynamic slicing After enabling the slice controller in the GKE cluster and configuring the GKE scheduler, you can indicate the need for dynamic slices for your workloads using simple workload annotations. Upon detecting these annotations, the scheduler automatically triggers the GKE slice controller to create a Slice Custom Resource (CR) to form the dynamic slice at runtime. Once the slice is formed, the workload is scheduled on the dynamic slice. Refer to documentation for examples. Repair When host or network failures disrupt workloads, the GKE scheduler maintains resilience and continuous operation through targeted recovery strategies: Super-slicing (slices larger than 1 TPU cube): Hardware failures are isolated to a smaller unit — the TPU \"cube\" — allowing the scheduler to quickly reform the slice by removing the unhealthy cube and choosing all healthy cubes. Sub-slicing: Slices on faulty infrastructure are dynamically reformed using available healthy partitions. Next steps Dynamic slicing (super-slice and sub-slice) is available for TPUs and is offered in all regions where TPUs are available. It is supported exclusively in TPU All Capacity under reservation mode. For working examples of dynamic slicing, refer to the documentation .",
+      "evidenceLink": "",
+      "score": 63.766756388888886,
+      "core": "Running large-scale AI workloads on TPU and Google Kubernetes Engine (GKE) requires infrastructure that adapts as fast as your models change. Dynamic Slicing is generally available on GKE, which decouples logical TPU slice formation from physical nodepool provisioning. Compared to creating a static nodepool for each TPU slice, dynamic slicing reduces AI workload startup times by up to 5x and workload recovery by 4.5…",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-09T16:15:55.478Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "ECCV",
+      "title": "SpEmoC: A Balanced Speaker-Segment Multimodal Emotion Benchmark",
+      "link": "https://arxiv.org/abs/2607.18109",
+      "evidenceLink": "https://www.semanticscholar.org/paper/09537902d714e1796df9ebd6bb06d5cc1a30b9e4",
+      "publishedAt": "2026-07-20T00:00:00.000Z",
+      "submittedAt": "2026-07-20T00:00:00.000Z",
+      "author": "Sania Bano, Shahzad Ahmad, S. Vipparthi, Sukalpa Chanda, Subrahmanyam Murala",
+      "summary": "Understanding human emotions in spoken conversations is a key challenge in affective computing, with applications in empathetic AI, human computer interaction, and mental health monitoring. However, existing datasets vary in scale, emotion distribution, modality alignment, and data partitioning strategies, which can influence reliable cross-dataset generalization and minority-emotion modeling. We introduce SpEmoC a Speaking segment Emotion for Conversations comprising 306,544 raw clips from 3,100 English language movies and TV series. From these, 30,000 high quality, class balanced clips are curated, featuring synchronized visual, audio, and textual modalities annotated for seven emotions through a hybrid pipeline that integrates pretrained models with human validation. SpEmoC uses strict movie- and series-level splits to prevent content overlap between split sets, allowing more reliable evaluation of model generalization. The dataset also maintains a near-balanced distribution across seven emotions, including minority classes such as Fear and Disgust, which supports more balanced learning across categories. Extensive experiments, including in-domain benchmarking, cross-dataset transfer, low-data training, class-imbalance analysis, and modality transfer show that balanced data and careful splitting lead to more stable performance across emotions when models are evaluated on other datasets. These results highlight the importance of dataset design for robust and transferable multimodal emotion recognition.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "ECCV",
+        "venueLabel": "ECCV",
+        "venueName": "European Conference on Computer Vision",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 53,
+      "core": "Understanding human emotions in spoken conversations is a key challenge in affective computing, with applications in empathetic AI, human computer interaction, and mental health monitoring. However, existing datasets vary in scale, emotion distribution, modality alignment, and data partitioning strategies, which can influence reliable cross-dataset generalization and minority-emotion modeling. We introduce SpEmoC a …",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "hcker_news_ai_blogs",
+      "source": "Hacker News · hcker.news",
+      "title": "Nyquist Limit:The frequency of changes in tech is invalidating our understanding",
+      "link": "https://www.ryanprior.com/posts/nyquist-limit-frequency-of-changes-in-tech-invalidates-understanding",
+      "publishedAt": "2026-11-04T20:07:01.000Z",
+      "author": "evakhoury https://news.ycombinator.com/user?id=evakhoury",
+      "summary": "Product teams are using LLMs to increase the frequency of change in technology, and near a certain limit, the sample rate (the human decision maker's rate of understanding and evaluating technology) would need to more than double every time the frequency of changes does in order to retain validity, but that's not happening. The result is that these teams think they're measuring signal, but are actually measuring noise and filtering that through an LLM to produce signal-shaped noise.",
+      "evidenceLink": "https://news.ycombinator.com/item?id=50370793",
+      "origin": "hcker_news",
+      "hnMetrics": {
+        "points": 76,
+        "comments": 25
+      },
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-09T16:15:55.478Z",
+        "evidence": "hcker_news_feed_and_live_article"
+      },
+      "score": 52.6716368694231,
+      "core": "Product teams are using LLMs to increase the frequency of change in technology, and near a certain limit, the sample rate (the human decision maker's rate of understanding and evaluating technology) would need to more than double every time the frequency of changes does in order to retain validity, but that's not happening. The result is that these teams think they're measuring signal, but are actually measuring noi…",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "Measuring how AI agents handle everyday wet-lab science",
+      "link": "https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science",
+      "publishedAt": "2026-11-06T00:00:00.000Z",
+      "author": "",
+      "summary": "OpenAI introduces BioBasicsBench, a 100-task benchmark measuring how well AI agents interpret raw experimental data and handle everyday wet-lab science.",
+      "evidenceLink": "",
+      "score": 50.53977226190476,
+      "core": "OpenAI introduces BioBasicsBench, a 100-task benchmark measuring how well AI agents interpret raw experimental data and handle everyday wet-lab science.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-09T16:15:55.478Z",
+        "evidence": "public_reader_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "openai_news",
+      "source": "OpenAI",
+      "title": "GPT-6.1 Sol helps CodeRabbit strengthen security across complex codebases",
+      "link": "https://openai.com/index/gpt-6-1-sol-coderabbit-code-security",
+      "publishedAt": "2026-10-26T13:45:00.000Z",
+      "author": "",
+      "summary": "CodeRabbit uses GPT-6.1 Sol to investigate security risks across complex codebases. Its security agent helps developers review findings and proposed fixes.",
+      "evidenceLink": "",
+      "score": 47.861111111111114,
+      "core": "CodeRabbit uses GPT-6.1 Sol to investigate security risks across complex codebases. Its security agent helps developers review findings and proposed fixes.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-09T16:15:55.478Z",
+        "evidence": "public_reader_fallback"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "latent_space",
+      "source": "Latent Space",
+      "title": "[One Million AI Engineer Special] How Stanford Teaches AI-Native Engineering — Mihail Eric, Monaco",
+      "link": "https://latent.space/p/one_million_ai_engineer_special_how_stanford_teaches_ai-native_engineering_mihail_eric_monaco",
+      "publishedAt": "2026-11-08T21:23:29.000Z",
+      "author": "Latent.Space",
+      "summary": "What do you assign when a coding agent can finish last year’s homework in one prompt? In the second run of Stanford’s CS146S, Mihail Eric brought open-source maintainers into the course. Students have to learn an unfamiliar repo, propose a change, and ...",
+      "evidenceLink": "",
+      "score": 47.06852226190476,
+      "core": "What do you assign when a coding agent can finish last year’s homework in one prompt? In the second run of Stanford’s CS146S, Mihail Eric brought open-source maintainers into the course. Students have to learn an unfamiliar repo, propose a change, and ...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-09T16:15:55.478Z",
+        "evidence": "live_http_curl_fallback"
+      }
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "KDD",
+      "title": "The International Workshop on AI for Cognitive and Mental Health Support",
+      "link": "https://doi.org/10.1145/3770855.3818245",
+      "evidenceLink": "https://www.semanticscholar.org/paper/b00ce526063bd5e95c0221d1f0b6897bd9382b40",
+      "publishedAt": "2026-08-08T00:00:00.000Z",
+      "submittedAt": "2026-08-08T00:00:00.000Z",
+      "author": "Xiang-Meng Wang, Hao-Yang Li, Chen Li, Wei Wang, Qing Li",
+      "summary": "Cognitive and mental health (CMH) disorders are increasingly prevalent worldwide and pose significant societal, clinical, and economic challenges. While conventional mental health support methods remain limited by scalability and reactivity, recent advances in artificial intelligence have opened new opportunities for scalable, proactive, and personalized mental health support. Rapid progress has been made in areas such as mental health assessment, empathetic conversational agents, and AI-assisted psychological interventions; however, these efforts remain fragmented across disciplines, and critical challenges related to reliability, interpretability, ethics, and real-world deployment persist. To address these gaps, we propose the International Workshop on AI for Cognitive and Mental Health Support (AI4Mental), a half-day interdisciplinary forum that brings together researchers and practitioners from data mining, machine learning, NLP, HCI, healthcare, and social sciences. The workshop focuses on three complementary pillars: AI as Assessment, AI as Emotional Support, and AI as Psychological Intervention, covering topics ranging from multimodal mental health detection and longitudinal risk modeling to empathetic dialogue systems and responsible interventions. By consolidating emerging research and fostering cross-disciplinary dialogue, AI4Mental aims to advance trustworthy, effective, and socially responsible AI solutions for cognitive and mental health support, aligning closely with SIGKDD's mission on data science for social good.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "KDD",
+        "venueLabel": "KDD",
+        "venueName": "Knowledge Discovery and Data Mining",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 43,
+      "core": "Cognitive and mental health (CMH) disorders are increasingly prevalent worldwide and pose significant societal, clinical, and economic challenges. While conventional mental health support methods remain limited by scalability and reactivity, recent advances in artificial intelligence have opened new opportunities for scalable, proactive, and personalized mental health support. Rapid progress has been made in areas s…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "paper",
+      "sourceId": "semantic_scholar_top_conferences",
+      "source": "KDD",
+      "title": "KDD 9th Workshop on Machine Learning in Finance",
+      "link": "https://doi.org/10.1145/3770855.3818256",
+      "evidenceLink": "https://www.semanticscholar.org/paper/5bf6cacdd1aabba8f19fd7eef2e438269440fa5a",
+      "publishedAt": "2026-08-08T00:00:00.000Z",
+      "submittedAt": "2026-08-08T00:00:00.000Z",
+      "author": "Saurabh Nagrecha, Eren Kurshan, Nitesh V. Chawla, Senthil Kumar, Isha Chaturvedi",
+      "summary": "The 9th Workshop on Machine Learning in Finance, held in conjunction with KDD 2026, serves as a premier forum for researchers, practitioners, and regulators to explore advanced machine learning methodologies tailored for complex financial ecosystems. This iteration highlights cutting-edge developments at the intersection of quantitative finance and artificial intelligence, focusing on the integration of Generative AI with diverse financial data types, including tabular datasets, time series, click streams, and unstructured text. Key themes include multimodal machine learning, representation learning, Agentic AI for personalized experiences, large-scale anomaly detection, and the critical imperatives of model safety, explainability, and governance. Through a combination of peer-reviewed technical presentations and invited expert sessions, the workshop bridges academic research and industrial deployment to address domain-specific challenges and compliance-driven requirements in modern financial systems.",
+      "citationCount": 0,
+      "conferenceEvidence": {
+        "verified": true,
+        "venueKey": "KDD",
+        "venueLabel": "KDD",
+        "venueName": "Knowledge Discovery and Data Mining",
+        "source": "Semantic Scholar Academic Graph",
+        "publicationType": "conference"
+      },
+      "score": 42,
+      "core": "The 9th Workshop on Machine Learning in Finance, held in conjunction with KDD 2026, serves as a premier forum for researchers, practitioners, and regulators to explore advanced machine learning methodologies tailored for complex financial ecosystems. This iteration highlights cutting-edge developments at the intersection of quantitative finance and artificial intelligence, focusing on the integration of Generative A…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。"
+    },
+    {
+      "kind": "blog",
+      "sourceId": "agentconn_engineering",
+      "source": "AgentConn Field Reports",
+      "title": "Agents Leaked 2,539 Secrets. The Fix Isn't Better Prompts.",
+      "link": "https://agentconn.com/blog/agent-permission-defaults-leaked-secrets",
+      "publishedAt": "2026-11-08T00:00:00.000Z",
+      "author": "AgentConn Team",
+      "summary": "Apiiro found 1,122 public GitHub files with real secrets from Claude Code's permission system. Here's how agent permission defaults became a leak vector.",
+      "evidenceLink": "",
+      "score": 37.97389924603175,
+      "core": "Apiiro found 1,122 public GitHub files with real secrets from Claude Code's permission system. Here's how agent permission defaults became a leak vector.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-09T16:15:55.478Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "cloudflare_ai",
+      "source": "Cloudflare",
+      "title": "See the agents, set the terms: new visibility and control for personal agents",
+      "link": "https://blog.cloudflare.com/personal-agents-visibility-control",
+      "publishedAt": "2026-11-04T14:00:00.000Z",
+      "author": "Marina Elmore",
+      "summary": "Personal AI agents have changed how users interact with the web, blurring the lines between automated and human traffic. Learn how Cloudflare gives site owners visibility and control to manage personal agent access.",
+      "evidenceLink": "",
+      "score": 35.46120083333333,
+      "core": "Personal AI agents have changed how users interact with the web, blurring the lines between automated and human traffic. Learn how Cloudflare gives site owners visibility and control to manage personal agent access.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-09T16:15:55.478Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "docker_ai_engineering",
+      "source": "Docker Blog",
+      "title": "The Ecosystem is the Answer: Docker, the Blueprint Alliance, and the Importance of Collaboration in the Agentic Era",
+      "link": "https://www.docker.com/blog/docker-blueprint-alliance-agent-baseline",
+      "publishedAt": "2026-11-02T14:00:00.000Z",
+      "author": "Jin Kim",
+      "summary": "Docker is a founding member of the Blueprint Alliance, a 12-company reference architecture for securing AI agents, built around four governance questions.",
+      "evidenceLink": "",
+      "score": 34.855555555555554,
+      "core": "Docker is a founding member of the Blueprint Alliance, a 12-company reference architecture for securing AI agents, built around four governance questions.",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-09T16:15:55.478Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "redis_ai_engineering",
+      "source": "Redis Blog",
+      "title": "Introducing the joint reference architecture for enterprise-grade Redis on VMware Cloud Foundation 9.1",
+      "link": "https://redis.io/blog/introducing-the-joint-reference-architecture-for-enterprise-grade-redis-on-vmware-cloud-foundation-9-1",
+      "publishedAt": "2026-11-05T00:00:00.000Z",
+      "author": "Mike Moss",
+      "summary": "Joint reference architecture from VMware by Broadcom and Redis Moving beyond caching to enterprise-grade real-time data Teams building fraud detection, streaming analytics, AI agents, and feature stores need fast data access under concurrent load. R...",
+      "evidenceLink": "",
+      "score": 34.3810421031746,
+      "core": "Joint reference architecture from VMware by Broadcom and Redis Moving beyond caching to enterprise-grade real-time data Teams building fraud detection, streaming analytics, AI agents, and feature stores need fast data access under concurrent load. R...",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-09T16:15:55.478Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "figma_ai_design",
+      "source": "Figma Blog",
+      "title": "In conversation: Dylan Field and David Friedberg on the human role in creating with AI",
+      "link": "https://www.figma.com/blog/in-conversation-dylan-field-and-david-friedberg",
+      "publishedAt": "2026-11-06T20:31:00.000Z",
+      "author": "",
+      "summary": "On why design is the new code, shaping AI’s creative output, and the human vision and judgment behind what we make.",
+      "evidenceLink": "",
+      "score": 33.79969289682539,
+      "core": "On why design is the new code, shaping AI’s creative output, and the human vision and judgment behind what we make.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-09T16:15:55.478Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "techradar_pro_ai",
+      "source": "TechRadar Pro",
+      "title": "Timekettle LiveTalk AI Translation Earbuds review",
+      "link": "https://www.techradar.com/pro/timekettle-livetalk-ai-translation-earbuds-review",
+      "publishedAt": "2026-11-09T15:23:33.000Z",
+      "author": "Alastair Jennings",
+      "summary": "These in ear translation earbuds aim to bring live translation to the user with a series of modes that cover everything from face to face meetings, online meetings and live translation during presentations and meetings. The open ear design also lets themselves as a work place friendly solution.",
+      "evidenceLink": "",
+      "score": 33.57653813492063,
+      "core": "These in ear translation earbuds aim to bring live translation to the user with a series of modes that cover everything from face to face meetings, online meetings and live translation during presentations and meetings. The open ear design also lets themselves as a work place friendly solution.",
+      "why": "它把技术变化落到产品入口、工作流或采用行为上，适合提炼可以用于定位、交互和商业化判断的原则。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-09T16:15:55.478Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "zapier_ai_automation",
+      "source": "Zapier Blog",
+      "title": "What is Claude Duet?",
+      "link": "https://zapier.com/blog/claude-duet",
+      "publishedAt": "2026-11-04T04:00:00.000Z",
+      "author": "Wade Burrell",
+      "summary": "Claude Duet is Anthropic's answer to Meta's Muse and OpenAI's dots. It's an always-on AI agent, which means that instead of waiting for you to type a prompt, it sends you a morning brief, checks your connected apps to see where it can be helpful, and works on tasks in the background. Terrifying? A bit. But before it sends, pays, signs, or deletes anything, it asks you first. It's still in research preview, but I got early access and spent some time with it on my phone. Here's what Claude Duet is",
+      "evidenceLink": "",
+      "score": 33.33024845238095,
+      "core": "Claude Duet is Anthropic's answer to Meta's Muse and OpenAI's dots. It's an always-on AI agent, which means that instead of waiting for you to type a prompt, it sends you a morning brief, checks your connected apps to see where it can be helpful, and works on tasks in the background. Terrifying? A bit. But before it sends, pays, signs, or deletes anything, it asks you first. It's still in research preview, but I got…",
+      "why": "它讨论的是 Agent 如何真正完成长任务，而不只是模型能力展示；重点看执行架构、工具边界和失败恢复是否可迁移到产品设计。",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-09T16:15:55.478Z",
+        "evidence": "live_http"
+      }
+    },
+    {
+      "kind": "blog",
+      "sourceId": "braintrust_ai_engineering",
+      "source": "Braintrust AI Engineering",
+      "title": "5 best free LLM evaluation tools in 2026 - Articles - Braintrust",
+      "link": "https://www.braintrust.dev/articles/best-free-llm-evaluation-tools-2026",
+      "publishedAt": "2026-11-01T16:00:00.000Z",
+      "author": "",
+      "summary": "Compare free LLM evaluation plans from Braintrust, LangSmith, Comet Opik, PromptLayer, and Pydantic Evals, including seat limits, usage allowances, and what each free tier actually covers.",
+      "access": {
+        "verified": true,
+        "mode": "public",
+        "checkedAt": "2026-11-09T16:15:55.478Z",
+        "evidence": "sitemap_live_http"
+      },
+      "score": 33.044444444444444,
+      "core": "Compare free LLM evaluation plans from Braintrust, LangSmith, Comet Opik, PromptLayer, and Pydantic Evals, including seat limits, usage allowances, and what each free tier actually covers.",
+      "why": "它提供了评测或基准证据，可用于区分演示效果与真实能力；重点看任务定义、对照组和指标是否支持作者结论。"
+    }
+  ]
+}
