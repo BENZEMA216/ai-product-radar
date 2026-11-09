@@ -1,0 +1,66 @@
+[
+  {
+    "product": "Databox CLI",
+    "link": "https://www.databox.com",
+    "did": "把业务数据收成统一指标层,在终端里让 AI Analyst 和 agent 直接做分析、例行报告与动作建议",
+    "who": "数据/运营团队与做数据类 agent 的开发者",
+    "why": "PH 今日榜首;指标层+终端入口让 agent 的分析有了可治理的数据底座",
+    "tip": "11/9 PH 榜首,官网+发布页已核实;榜单热度高不代表分析准确率已验证"
+  },
+  {
+    "product": "Arcjet",
+    "link": "https://arcjet.com",
+    "did": "面向 coding agent 的运行时安全:提示注入检测、工具调用授权、PII 脱敏,策略可挂在 hook 上",
+    "who": "自建或部署 coding agent 的团队",
+    "why": "agent 安全问题正从话题变成产品线;hook 式接入对已有 agent 侵入小",
+    "tip": "11/9 PH 榜单第 3,官网+发布页已核实;防护效果为官方说法"
+  },
+  {
+    "product": "Product Hunt MCP",
+    "link": "https://www.producthunt.com/mcp/install",
+    "did": "官方 MCP:在 Claude/ChatGPT 等里搜新品、比评价、从 README 起草上架稿,浏览器登录即可",
+    "who": "PM、独立开发者、做产品研究的人",
+    "why": "PH 把自家数据接入 LLM;做竞品调研和上架准备的链路被官方缩短了",
+    "tip": "11/9 PH 榜单第 4,官网+发布页已核实;为官方发布"
+  },
+  {
+    "product": "ProtoMap",
+    "link": "https://protomap.ai",
+    "did": "gRPC/Protobuf 上下文引擎:扫代码建服务图,经 MCP 提供给 coding agent,官方称可大幅降 token 与耗时",
+    "who": "维护微服务/单体仓库的工程师与 agent 使用者",
+    "why": "给 agent 喂确定性上下文是降幻觉的正路;codebase 越大官方宣称的收益越大",
+    "tip": "11/9 PH 榜单第 5,官网+发布页已核实;token 降幅为官方基准数据"
+  },
+  {
+    "product": "MCP1 by Appwrite",
+    "link": "https://mcp1.com",
+    "did": "一个 URL 托管全部 MCP server:人类认证一次,管理员定权限,每次调用留审计日志",
+    "who": "给团队铺开 agent 工具的管理员",
+    "why": "MCP 从个人玩具走向团队基础设施的标志:权限与审计成为卖点",
+    "tip": "11/9 PH 榜单第 7,官网+发布页已核实;Appwrite 出品"
+  },
+  {
+    "product": "Egoist AI Passport",
+    "link": "https://ego.ist",
+    "did": "个人上下文护照:偏好与身份集中保管,按应用授权分享给 AI 工具并可随时撤回",
+    "who": "重度使用多款 AI 工具的个人用户",
+    "why": "记忆/偏好的跨应用携带是新刚需;'可撤回授权'切中了数据让渡的焦虑",
+    "tip": "11/9 PH 榜单第 10,官网+发布页已核实;隐私承诺未经第三方审计"
+  },
+  {
+    "product": "Reduck",
+    "link": "https://reduck.ai",
+    "did": "agent 把站点学成可复用的确定性脚本,在你自己的 Chrome 登录态里跑,省 token 且不易触发限流",
+    "who": "做线索搜集、报表抓取等重复浏览器操作的人",
+    "why": "'学一次存成脚本'比每次让 agent 现学现点更稳更快;登录态复用避开了很多自动化障碍",
+    "tip": "邮件线索,官方信息有限,官网功能已核实;加速倍数为官方说法"
+  },
+  {
+    "product": "Hearthscale",
+    "link": "https://hearthscale.com",
+    "did": "面向普通人的本地 AI 平台(Win/Linux):文本/语音/图像/视频/音乐模型,应用商店+Server 端到端加密分发",
+    "who": "想要本地隐私 AI 但不想折腾配置的非开发者",
+    "why": "把'本地模型'包装成应用商店+家庭服务器的体验,是本地 AI 走向大众的差异化尝试",
+    "tip": "邮件线索,官方信息有限,官网功能已核实;macOS 尚未支持"
+  }
+]
