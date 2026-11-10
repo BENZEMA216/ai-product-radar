@@ -1,0 +1,74 @@
+[
+  {
+    "product": "Maxma",
+    "link": "https://maxma.ai",
+    "did": "端到端做付费广告的 AI 队友:分析、做素材、跨渠道投放与优化,改动默认先请你批准",
+    "who": "没有专职投放团队的中小企业与增长负责人",
+    "why": "把代理运营的活做成 Slack 里 24/7 的队友且保留人审,是广告 AI 落地最实用的形态",
+    "tip": "11/10 PH 榜首,官网+发布页已核实;效果为官方说法"
+  },
+  {
+    "product": "Alsona",
+    "link": "https://alsona.com",
+    "did": "追踪 30+ 购买信号(招聘、融资、换技术栈等)锁定正在买的客户,agent 自动做 LinkedIn/邮件触达并约通话",
+    "who": "B2B 销售与增长团队",
+    "why": "信号驱动的触达比广撒网更接近真实购买窗口;对做 GTM 自动化的 PM 有参考价值",
+    "tip": "11/10 PH 第 2,官网+发布页已核实;信号覆盖与转化为官方说法"
+  },
+  {
+    "product": "Latch.ai",
+    "link": "https://www.latch.ai",
+    "did": "给会计的桌面自动化:录屏+口述演示一遍关账流程,生成可复用的 sidekick,不写提示词,异常会停下问你",
+    "who": "被重复点击操作淹没的会计/财务运营",
+    "why": "'演示一遍就能自动化'比写 prompt 更贴近非技术用户;步骤留痕可审也符合财务要求",
+    "tip": "11/10 PH 第 3,官网+发布页已核实"
+  },
+  {
+    "product": "Wren by Seldon",
+    "link": "https://www.seldon.com/products/wren",
+    "did": "行为 QA agent:像真实用户一样走产品路径(中途改地址、重试失败支付),挖出你没写到的用例,附回放与复现步骤",
+    "who": "维护端到端测试的产品与工程团队",
+    "why": "把探索性测试交给 agent 补上'没想到的用例',比脚本回归覆盖面更宽;前 10 次免费",
+    "tip": "11/10 PH 第 5,官网+发布页已核实"
+  },
+  {
+    "product": "Lottie AI",
+    "link": "https://lottiefiles.com/launch-week/",
+    "did": "用文字提示生成可编辑的矢量 Lottie 动画,生成后可在 LottieFiles 编辑器里继续改",
+    "who": "需要动效的设计师与前端",
+    "why": "文本到可编辑矢量动画,比生成视频更贴合产品开发;LottieFiles 启动周(11/10-13)首日发布",
+    "tip": "11/10 LottieFiles 启动周首日新功能(既有平台),官网+发布页已核实"
+  },
+  {
+    "product": "TK by Medium",
+    "link": "https://tk.xyz",
+    "did": "Medium 的私密 agentic 笔记本:写作时用 @TK 召唤助手,可通过 MCP 把笔记接给其他 agent",
+    "who": "写作者与重度笔记用户",
+    "why": "写作工具接入 MCP 让笔记成为 agent 可读的上下文,是'私人知识库 agent 化'的标志性产品",
+    "tip": "11/9 官方发布(TechCrunch/The Verge 报道),11/10 PH 第 7,官网+发布页已核实;免费含在 Medium 账户"
+  },
+  {
+    "product": "Co-Review",
+    "link": "https://github.com/sdsvn/co-review",
+    "did": "开源仓库级 review:对整个 repo 按行/文件/目录提问,写代码的 agent 从代码里作答;也审 diff、PR 与设计",
+    "who": "用 agent 写代码后想重新读懂自己仓库的开发者",
+    "why": "agent 写的代码'能用但不像自己的'是普遍痛点;免费开源无遥测",
+    "tip": "11/10 PH 第 8,官网+发布页已核实"
+  },
+  {
+    "product": "ChromePing",
+    "link": "https://chromeping.com",
+    "did": "浏览器里直接拨任意真实电话号码,通话实时双向翻译带字幕,对方接普通电话即可;也可让 agent 代打并出书面报告",
+    "who": "跨境生活/工作的人:打给移民局、银行、房东、诊所",
+    "why": "把实时翻译电话做成纯浏览器、对方零安装,落地门槛低;agent 代打+报告是差异化",
+    "tip": "11/10 PH 第 9,官网+发布页已核实;按量付费,资费以官网为准"
+  },
+  {
+    "product": "Spacefast",
+    "link": "https://spacefast.com",
+    "did": "给你正在用的 AI 一个上线处:agent 在其上构建并直接发布可预览的网站或应用,每个作品有独立可分享链接",
+    "who": "用 agent 做原型、想即刻分享的人",
+    "why": "'构建'与'上线'分离正成为 agent 产出的标准链路;免账号即可开始",
+    "tip": "邮件线索,官网+发布页已核实;归属 Automattic 一说来自邮件、官网未见,未采信"
+  }
+]
