@@ -1,0 +1,58 @@
+[
+  {
+    "product": "ScroogeFrog AI",
+    "link": "https://scroogefrog.ai",
+    "did": "审计网站流量和 Google Ads,识别欺诈点击与无效花费,给出该停该改的明确建议;大客户可用自有流量训定制模型",
+    "who": "投放预算不小的广告主与代理公司",
+    "why": "广告反欺诈交给 AI 做审计+建议,比人工看报表更快锁定浪费;与昨日 Maxma 互为攻防两端",
+    "tip": "11/11 PH 榜首,官网+发布页已核实;检出率为官方说法"
+  },
+  {
+    "product": "Nod by n8n",
+    "link": "https://nod.n8n.io",
+    "did": "n8n Labs 的开源个人 agent:带自己的运行环境,在你电脑上用你的浏览器把杂事做完",
+    "who": "想要可自托管个人 agent 的自动化玩家",
+    "why": "工作流大厂下场做个人 agent,开源+本地运行降低了信任门槛;n8n 生态的连接器是现成优势",
+    "tip": "11/11 PH 第 2,官网+发布页已核实;为 n8n 新产品线"
+  },
+  {
+    "product": "CALL-E",
+    "link": "https://www.heycall-e.com",
+    "did": "让 ChatGPT/Claude 先出电话计划、你确认后拨打真实号码,能过语音菜单和等待,带回摘要与完整通话记录",
+    "who": "需要订位、询价、改约却不想自己打电话的人",
+    "why": "'先给计划再拨号'的人审设计比全自动外呼更让人放心;与昨日 ChromePing 一起说明 agent 打电话赛道在成形",
+    "tip": "11/11 PH 第 3,官网+发布页已核实;新用户 100 免费额度(官网所示)"
+  },
+  {
+    "product": "Scribe v3 by ElevenLabs",
+    "link": "https://try.elevenlabs.io/v97l1k3mkplm",
+    "did": "ElevenLabs 新一代语音转文字:官方称错误率降 27%,覆盖 90+ 语言",
+    "who": "做转写、字幕、语音分析的开发者和内容团队",
+    "why": "头部语音厂商的 STT 大版本更新,90+ 语言对中文及多语场景直接可用",
+    "tip": "11/11 PH 第 4,仅发布页描述已核实;错误率降幅为官方基准数据,属模型升级而非全新产品"
+  },
+  {
+    "product": "Shot.video",
+    "link": "https://shot.video",
+    "did": "笔记本+多部手机扫码即多机位,一次开录全同步,AI 按你的视线切镜头、加变焦和 B-roll 出初剪",
+    "who": "一个人做访谈、演示、播客类视频的人",
+    "why": "零设备成本把单机位升级成多机位+AI 初剪,显著拉低视频制作门槛",
+    "tip": "11/11 PH 第 6,官网+发布页已核实;免费起步、无需信用卡(官网所示)"
+  },
+  {
+    "product": "Relay",
+    "link": "https://relayto.ai",
+    "did": "发文档时把'为什么这么写'的上下文一并给到对方及其 AI;需要拍板的关键决定(折扣、日期)回流给你",
+    "who": "经常外发方案、报价、设计稿的销售与顾问",
+    "why": "看准了'对方让 AI 读你的文档'这一新现实,把 context 变成可携带资产;不用注册即可试样例",
+    "tip": "11/11 PH 第 7,官网+发布页已核实"
+  },
+  {
+    "product": "Skillbox",
+    "link": "https://skillbox.so",
+    "did": "把散落的 AI skill 收进一个库,同步到 Claude Code、Cursor、Codex;跟 GitHub 源、审 diff,并扫描提示注入",
+    "who": "在多个 coding agent 间复用 skill 的开发者",
+    "why": "skill 正在变成需要治理的资产:版本管理+注入扫描切中了真实风险",
+    "tip": "11/11 PH 第 10,官网+发布页已核实"
+  }
+]
