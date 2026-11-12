@@ -1,0 +1,74 @@
+[
+  {
+    "product": "YouArt Desktop App",
+    "link": "https://youart.ai",
+    "did": "装在本机的创意 agent:直接操作 After Effects/CapCut/Blender,把模型、工具、提示词编成可复用的创意工作流",
+    "who": "设计师与视频创作者",
+    "why": "创意 agent 从聊天框走进专业软件内部操作,是创作工具 agent 化的关键一步",
+    "tip": "11/12 PH 榜首,官网+发布页已核实"
+  },
+  {
+    "product": "Plurai Simulation",
+    "link": "https://www.plurai.ai/simulation",
+    "did": "为 AI agent 建隔离的数字孪生世界,在沙箱里跑任务、找失败、给修复并形成回归,让 agent 每轮都变好",
+    "who": "把 agent 投入真实业务的企业团队",
+    "why": "'自我改进层'直击 agent 上线后原地踏步的痛点;把智能留在企业自己手里也是卖点",
+    "tip": "11/12 PH 第 2,官网+发布页已核实;改进效果为官方说法"
+  },
+  {
+    "product": "Omnigraph",
+    "link": "https://omnigraph.dev",
+    "did": "开源(MIT)图数据库,为多 agent 共享上下文设计:Git 式分支、审阅与合并,写操作先验证再进入共享知识",
+    "who": "搭建多 agent 系统的工程师",
+    "why": "多 agent 共享记忆开始有数据库级方案,'先审再合'防止脏上下文扩散",
+    "tip": "11/12 PH 第 3,官网+发布页已核实"
+  },
+  {
+    "product": "⌘+L",
+    "link": "https://letter.dev/commandl",
+    "did": "在自己网站上像改 Figma 一样改文案和布局,后台由 Claude Code/Codex 自动打成 PR",
+    "who": "想直接改线上页面又懂审 PR 的产品和运营",
+    "why": "把'指哪改哪'和工程流程(PR 审阅)接起来,非工程师改网站的安全姿势",
+    "tip": "11/12 PH 第 4,官网+发布页已核实"
+  },
+  {
+    "product": "Adobe AI Assistant",
+    "link": "https://www.adobe.com/ai/overview/ai-assistant",
+    "did": "Adobe 把对话式 AI 带进 Creative Cloud,跨 Photoshop/Premiere/Illustrator 等执行多步创作任务",
+    "who": "Adobe 全家桶用户",
+    "why": "创作软件巨头全面 agent 化,值得对照 YouArt 看两条路线:内嵌助手 vs 外部 agent 操作",
+    "tip": "11/12 PH 第 5,官网+发布页已核实;为 Adobe 新助手产品"
+  },
+  {
+    "product": "Harness Memory",
+    "link": "https://harnessrouter.ai/harness-memory",
+    "did": "跨 Claude Code/Codex/Hermes 等 harness 的长期记忆层,换工具不丢上下文;开源社区版可用",
+    "who": "在多个 coding agent 之间切换的开发者",
+    "why": "agent 记忆的跨工具携带正在成为基础设施层,与 Skillbox(昨日)互补",
+    "tip": "11/12 PH 第 6,官网+发布页已核实"
+  },
+  {
+    "product": "Toki Matter",
+    "link": "https://toki.com",
+    "did": "个人 agent 以「Matter」为单位跟进签证、约饭、合同等事务,连接你的应用自动发现并推进,需要决策时交回给你",
+    "who": "琐事缠身的专业人士",
+    "why": "以'事项'而非'任务'建模,更贴近真实生活里长周期、多步骤的杂事",
+    "tip": "11/12 PH 第 7,官网+发布页已核实"
+  },
+  {
+    "product": "Gemini Decisions API",
+    "link": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/",
+    "did": "Google 新 API:一次请求对多模态输入回答最多 1000 个是否/单选/量表问题,带校准置信度",
+    "who": "需要在应用里做大规模判断/分类的开发者",
+    "why": "把'问模型 1000 个选择题'做成计价清晰的 API,是模型能力产品化的新形态",
+    "tip": "11/11 Google 官方博客发布,11/12 PH 第 10,官网+发布页已核实"
+  },
+  {
+    "product": "Yogurt",
+    "link": "https://github.com/frigadehq/yogurt",
+    "did": "开源( MIT )私密的 AI 会议纪要,Granola 的免费替代品,数据自己掌控",
+    "who": "在意隐私、不想订阅 Granola 的开会重度用户",
+    "why": "会议纪要是个人 agent 最成熟的场景之一,开源私密版把门槛打到零",
+    "tip": "11/12 Show HN(263 分),仓库+发布页已核实"
+  }
+]
