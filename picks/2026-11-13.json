@@ -1,0 +1,88 @@
+[
+  {
+    "product": "World Labs Atlas",
+    "link": "https://worldlabs.ai/atlas",
+    "did": "World Labs 向所有人开放下一代世界模型：从一张图或草图生成、重建可探索的 3D 世界，配套 Viewfinder、Chisel、Splats to Mesh、Relight，并开放开发者 API（含 Blender 集成）",
+    "who": "做影视/游戏/建筑预演，或需要空间仿真的机器人研究团队",
+    "why": "李飞飞团队把世界模型做成可导出、可接入现有工作流的产品，是过去 24 小时讨论度最高的空间智能发布",
+    "tip": "11/12 官方对公众开放（此前为合作伙伴预览）；官网产品页已打开核实"
+  },
+  {
+    "product": "Gemini 4 Hydrogen",
+    "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/",
+    "phLink": "https://www.producthunt.com/products/gemini-6",
+    "did": "Google 推出面向日常编码与 agent 工作流的 Gemini 4 高效执行模型：100 万 token 上下文、四级思考深度，并在 Antigravity 里用 Orchestrator 与 Carbon/Argon 自动协同",
+    "who": "需要又快又强的编码/agent 执行模型的开发者，以及 Gemini 应用和 Search 的普通用户",
+    "why": "Gemini 4 系列首次面向全量用户铺开；定位是多模型工作流里的高速执行引擎，而不只是又一个旗舰",
+    "tip": "11/12 Google 官方博客发布，11/13 PH 上榜；官网博客已打开核实。基准与速度数据为官方说法"
+  },
+  {
+    "product": "Inkling 2 Small",
+    "link": "https://thinkingmachines.ai/news/inkling-2-small/",
+    "did": "Thinking Machines（Mira Murati 团队）按 Apache 2.0 开放 Inkling 2 Small 权重：594B 总参、17B 激活的多模态 MoE，可在 Hugging Face 下载，并已接入 vLLM/SGLang 等及多家 API",
+    "who": "想在自有集群上运行、微调开源前沿模型的研究与工程团队",
+    "why": "从闭源上线到开源权重落地，是开源权重阵营一次重量级交付",
+    "tip": "模型 11/5 首发（此前精选未收录），11/12 开放权重；官网公告与 Hugging Face 仓库已打开核实"
+  },
+  {
+    "product": "Claude Meetings",
+    "link": "https://claude.com/resources/articles/claude-meetings",
+    "phLink": "https://www.producthunt.com/products/claude",
+    "did": "Anthropic 让 Claude 作为可见参会者加入 Google Meet：会上回答问题、起草文档/白板/待办，会后材料进入 claude.ai；目前为 Team/Enterprise 的 Beta",
+    "who": "已用 Claude 团队版、想在开会当场把讨论变成可改文稿的知识工作者",
+    "why": "大厂把助手从会后纪要推进到会中协作，是办公 agent 的关键一步；今日登上 PH",
+    "tip": "11/10 官方宣布，11/13 PH 上榜；此前每日精选未收录。官网文章已打开核实。目前仅支持 Google Meet，部分合规配置不可用"
+  },
+  {
+    "product": "Taan",
+    "link": "https://taan.ai/",
+    "did": "YC 公司的可控音乐基础模型：看视频、脚本或参考音频，按镜头和情绪写出可商用原声，并能只改某一件乐器或某一段而不重生成；提供 Web、API 与 MCP",
+    "who": "做预告片、广告、短剧配乐，或要给视频 agent 接配乐能力的团队",
+    "why": "音乐生成的痛点从「好听」变成「卡点」；官方对比基准强调时值可控，定位很清楚",
+    "tip": "约 11/12 公开 v1-preview；官网已打开核实。时值对比数据为官方基准，预览版目前偏管弦/电影配乐"
+  },
+  {
+    "product": "Maple Work",
+    "link": "https://maple.ai/work",
+    "did": "隐私优先的桌面 agent（Mac/Windows/Linux，MIT 开源）：指向一个文件夹并交代任务，它在本地规划并完成；模型在安全飞地里跑，Maple 看不到对话。需付费方案",
+    "who": "要处理税务、合同、健康记录等敏感文件夹，又不想把文件交给闭源云端 agent 的人",
+    "why": "把「能干活的 agent」和「数据不出安全边界」绑在一起，是对常见云端 coding agent 路线的明确替代",
+    "tip": "11/12 官方对所有付费用户开放；产品页已打开核实。含在 Pro/Max/Team，Free 方案不可用"
+  },
+  {
+    "product": "three.dev",
+    "link": "https://three.dev",
+    "phLink": "https://www.producthunt.com/products/three-dev",
+    "did": "给生产环境 AI agent 打分：从真实流量里找出失败模式并按严重程度排序，再把上下文交给 Claude Code/Cursor/Codex 去修，并能对比修复前后",
+    "who": "已经把客服/助手类 agent 开到线上、却只能等用户来报错的团队",
+    "why": "和昨日 Plurai Simulation（上线前沙箱）互补：一个模拟，一个盯真实流量，agent 质量开始有「观测-修复-回归」闭环",
+    "tip": "约 11/12–13 在 PH 与 X 讨论；官网与发布页已打开核实。案例数据来自官网演示与客户引言"
+  },
+  {
+    "product": "Replicate by Letter",
+    "link": "https://letter.dev/replicate",
+    "phLink": "https://www.producthunt.com/products/replicate-10",
+    "did": "免费把 Webflow/Framer/Squarespace/Wix 站点 1:1 转成 Next.js 或 Astro 仓库并提交到你的 GitHub，方便用 Claude Code/Codex/Cursor 继续改",
+    "who": "想离开网站搭建器、把站点交给 coding agent 维护的团队",
+    "why": "同一团队昨日刚发了 ⌘+L；这次直接打通「从搭建器迁到 agent 可改的代码仓库」。注意：与老牌模型托管平台 Replicate.com 同名，不是同一产品",
+    "tip": "11/13 PH 上榜；官网已打开核实。免费迁移为官网说法，未实测迁移质量"
+  },
+  {
+    "product": "Aven App Agent",
+    "link": "https://www.avenappagent.com/",
+    "phLink": "https://www.producthunt.com/products/aven-app-agent?launch=aven-app-agent",
+    "did": "把应用做成可被 AI 引导的产品：用户问「怎么做某件事」，Aven 按团队登记的页面和步骤高亮控件并走流程，导航仍由宿主应用控制",
+    "who": "产品里经常被问「这个功能在哪」的 SaaS 和应用团队",
+    "why": "把 onboarding 从静态引导变成任务级 AI 走查，且强调开发者声明上下文、应用自己掌控跳转，比纯聊天助手更可预期",
+    "tip": "11/13 PH 发布；官网与发布页已打开核实。功能未实测"
+  },
+  {
+    "product": "Trainn MCP",
+    "link": "https://trainn.co/",
+    "phLink": "https://www.producthunt.com/products/trainn",
+    "did": "在既有 AI 产品视频平台上新开 MCP：可在 Claude/ChatGPT 等对话里直接生成或更新产品演示视频、帮助文档和自学课程，内容先留草稿待你审阅再发布",
+    "who": "已用或考虑用 AI 做客户教育视频的 CS、文档和产品团队",
+    "why": "把「录屏—出片—上学院」接进日常 AI 对话，降低培训内容更新的摩擦",
+    "tip": "11/13 PH 第 4（MCP 新入口）；官网已打开核实。Trainn 本身为既有平台，本次看点是 MCP。功能未实测"
+  }
+]
