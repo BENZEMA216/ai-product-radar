@@ -124,7 +124,7 @@ const GITHUB_RELEASE_REPOS = [
   "n8n-io/n8n"
 ];
 
-const AIHOT_FEED_URL = "https://aihot.virxact.com/feed/all.xml";
+const AIHOT_FEED_URL = "https://aihot.news/feed/all.xml";
 const PRODUCT_HUNT_GRAPHQL_URL = "https://api.producthunt.com/v2/api/graphql";
 const ORANGEBOT_PRODUCT_HUNT_URL = "https://orangebot.ai/sources/product-hunt";
 const PRODUCT_HUNT_FALLBACK_MIN_RAW_COUNT = 10;
@@ -851,7 +851,7 @@ async function fetchAihot(start, end, endDateKey) {
     // Fall back to the daily page below.
   }
   try {
-    const dailyUrl = `https://aihot.virxact.com/daily/${endDateKey}`;
+    const dailyUrl = `https://aihot.news/daily/${endDateKey}`;
     const markdown = await fetchText(readerUrl(dailyUrl), { attempts: 3, timeoutMs: 25000 });
     all.push(...parseAihotDailyMarkdown(markdown, endDateKey, start, end));
   } catch {
