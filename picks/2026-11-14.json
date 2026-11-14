@@ -1,0 +1,70 @@
+[
+  {
+    "product": "HiringNow",
+    "link": "https://hiringnow.ai/",
+    "phLink": "https://www.producthunt.com/products/hiringnow",
+    "did": "个人 AI 求职 agent：直接扫描雇主招聘页和 ATS（官方称覆盖 24.7 万+ 站点、约每 5 分钟一轮），按你的档案匹配岗位、改简历和求职信，并在雇主自己的申请表上代填；默认需你批准后才发出，每封申请会留回执。另有简历生成和模拟面试。",
+    "who": "不想等岗位上到 LinkedIn 等招聘板才投、又希望每封申请都经自己过目的求职者",
+    "why": "今日 Product Hunt 新榜上暂居前列。把「在源头抢先发现」和「人审后再投」绑在一起，比无差别海投更可预期",
+    "tip": "11/14 登上 Product Hunt（搜集时暂列当日第 1）；官网已打开核实。站点覆盖、扫描频率和免费档 10 次自动投递为官网说法，功能未实测"
+  },
+  {
+    "product": "Dex Semantics",
+    "link": "https://trydex.ai",
+    "phLink": "https://www.producthunt.com/products/dex-by-exmergo",
+    "did": "开源（Apache 2.0）的 agent 原生分析引擎：把它接到数据仓库后，按 Explore → Transform → Maintain 让编码 agent 摸清数据、建模型和指标，并在漂移进入生产前提出修复。可装进 Claude Code、Codex、Cursor、Gemini CLI 等，对数据源只读，改动以仓库 diff/PR 形式审阅。",
+    "who": "已经把数仓交给 coding agent 维护、担心指标静默算错的数据与工程团队",
+    "why": "今日 Product Hunt 暂列前列。把语义层和分析维护做成 agent 可执行的闭环，比让模型直接写 SQL 更可审查",
+    "tip": "11/14 登上 Product Hunt（搜集时暂列当日第 2）；官网已打开核实。「减少 25% 错误」、ADE-bench 等对比为官方基准，功能未实测"
+  },
+  {
+    "product": "Businesses in ChatGPT",
+    "link": "https://openai.com/index/introducing-businesses-chatgpt",
+    "phLink": "https://www.producthunt.com/products/openai",
+    "did": "OpenAI 推出 Business Hub（Beta）：企业可认领并核实自己在 ChatGPT 里的资料、更新信息与商品 Feed，并查看汇总后的提及/点击等互动洞察。符合条件的美国电商和在线服务商还可配置 Business Agent，在独立、带标识的对话里回答用户关于自家产品的问题。",
+    "who": "希望被 ChatGPT 里的用户正确发现、并想自己维护品牌信息的企业，尤其是美国电商和在线服务商",
+    "why": "ChatGPT 正在补「商家主页 + 商家 agent」这一层，接近把对话产品做成可被企业认领的分发入口",
+    "tip": "11/10 OpenAI 官方博客宣布，11/14 登上 Product Hunt；官方公告已读取核实。Business Agent 目前仅对符合条件的美国商户开放，洞察为聚合且有阈值。功能未实测"
+  },
+  {
+    "product": "Gemini Robotics 2.5",
+    "link": "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/",
+    "did": "Google DeepMind 新一代视觉-语言-动作（VLA）模型：同一套模型可驱动不同类型机器人，强调更广的技能覆盖、更高的成功率和安全性，并发布面向机器人越狱的安全基准。正在向机器人合作伙伴推送，而非面向普通消费者。",
+    "who": "机器人研究与产业落地团队，以及关注具身智能进展的人",
+    "why": "大厂把具身模型推进到产线试点，是今天值得单独记下的物理 AI 更新；官方还提到与 Apptronik、奔驰的零件配料试点",
+    "tip": "11/10 DeepMind 官方博客发布，11/14 登上 Product Hunt；官方博客与产品页已打开核实。成功率/速度提升及奔驰试点 96% 成功率为官方说法。目前向合作伙伴推出，并非通用公开产品"
+  },
+  {
+    "product": "Recordist",
+    "link": "https://recordist.app/",
+    "did": "装在本机的会议记录工具（Mac/Windows/Linux）：不向会议里加入机器人，默认每次先询问再录音，转写和纪要留在你自己的设备上；可选把转写交给你自己的 AI 助手（如 Claude）。支持 Zoom、Teams、Meet、Webex 和 Slack huddle。",
+    "who": "不想让会议机器人入会、又希望通话记录留在本地的人",
+    "why": "同类「无 bot 入会」工具不少，它把跨平台和「记录默认不出本机」当作主卖点，和订阅制云端纪要是另一条路",
+    "tip": "11/14 官方称是 Product Hunt 发布日，X 上可见创始团队发帖；官网已打开核实。定价与试用规则以官网为准，功能未实测"
+  },
+  {
+    "product": "Antelog",
+    "link": "https://antelog.dev/",
+    "did": "装在开发者电脑上的 AI 编码 agent 安全层：在命令真正执行前检查，拦截泄密、破坏性操作（如删库、terraform destroy、读取 .env）。支持 Claude Code、Codex、Cursor、GitHub Copilot、Gemini CLI 等；agent 无法自行关闭它。个人免费起步。",
+    "who": "已经让 coding agent 接触真实仓库、密钥或云资源，担心一次误操作造成损失的开发者和团队",
+    "why": "今日 Product Hunt 讨论相对活跃。把「先拦再跑」做成座椅安全带，正好对准最近多次公开的 agent 删库/泄密事件",
+    "tip": "11/14 登上 Product Hunt；官网已打开核实。对历史事故「若有 Antelog 可拦住」的表述为官网说明，并非第三方复现。各工具覆盖范围和缺口见其文档，功能未实测"
+  },
+  {
+    "product": "Tabletop by Google Labs",
+    "link": "https://tabletop.google/",
+    "did": "Google Labs 的协作实验：用 AI 生成可一起用的互动工具（行程、投票、分账、赛程表等），在共享空间里实时一起改、一起做决定。",
+    "who": "需要快速搭一个小组活动页、又不想为此单独做应用的人（目前主要面向美国、需排队）",
+    "why": "把「做一个小工具」变成群聊里可共享的现场体验，是模型能力产品化的另一种形态，不同于单人聊天助手",
+    "tip": "11/11 Google 官方介绍，11/14 登上 Product Hunt；产品站 tabletop.google 已打开核实（官网博客页当时返回 500）。目前为美国 waitlist、需 18 岁以上。功能未实测"
+  },
+  {
+    "product": "Alchemist by Olbrain",
+    "link": "https://olbrain.com/",
+    "phLink": "https://www.producthunt.com/products/alchemist-by-olbrain?launch=alchemist-by-olbrain",
+    "did": "在 ChatGPT、Codex、Claude Code 或 Claude.ai 里描述你要的 agent 系统，Alchemist 协助搭建、用真实输入测试并在上线前征求确认，再发布到 Olbrain 的托管 Agent OS（支持网站聊天、WhatsApp、Teams、电话和定时任务等）。搭建与运行分开计费。",
+    "who": "想用现有 AI 编程/对话工具搭建可托管 agent、又希望上线前有人审的团队",
+    "why": "把「用你已经在用的助手来建 agent」和「有治理的托管运行时」拆开，降低从原型到上线的跳跃",
+    "tip": "11/14 在 X 与 Product Hunt 可见发布讨论；官网与文档已打开核实。功能未实测"
+  }
+]
