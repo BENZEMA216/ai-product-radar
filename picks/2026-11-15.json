@@ -1,0 +1,63 @@
+[
+  {
+    "product": "Talyn",
+    "link": "https://www.talyn.dev/",
+    "phLink": "https://www.producthunt.com/products/talyn",
+    "did": "把 Claude Code 和 Codex 放到并行的云端沙箱里跑：直接用你已经在付的 Claude 或 ChatGPT 订阅，不必再买一份 token。每个任务有独立的 microVM 和分支，凭证由沙箱外的代理附加，机器里不放密钥。可以关掉电脑，回来看 diff 或已经变绿的 PR；也会修失败的检查、冲突和评审意见。免费档每月 10 个 box-hour。目前只支持 GitHub。",
+    "who": "已经在用 Claude Code 或 Codex、希望关掉电脑后 agent 还能继续改代码并跟到合入的开发者",
+    "why": "今日 Product Hunt 暂列前列。把「用已有订阅、不重复付 token」和「密钥不进沙箱」做成产品差异，正好打中 coding agent 云端化的两个痛点",
+    "tip": "11/15 登上 Product Hunt（搜集时暂列当日第 4）；官网已打开核实。目前为个人维护的 beta，仅支持 GitHub。功能未实测"
+  },
+  {
+    "product": "Tofu-1 by Bland",
+    "link": "https://www.bland.ai/speech-to-speech",
+    "did": "Bland 的全双工语音到语音模型：直接听音频本身，边说边听、边说边推理，针对车里、病房、信号差、多人同时讲话等难通话场景。面向银行、医疗、保险和政府等高风险通话的企业研究预览，目前需申请。",
+    "who": "要在嘈杂、高风险电话场景里部署语音 agent 的企业团队",
+    "why": "语音赛道正从「先转写再生成」转向端到端语音模型；Bland 把「分辨电视里的说话声」和「边想边说」写成产品主张，是今天值得记下的一次模型发布",
+    "tip": "约 11/14–15 官方产品页开放研究预览申请；官网已打开核实。尚无公开的模型规模、延迟、定价或独立基准。功能未实测"
+  },
+  {
+    "product": "Kokonut UI",
+    "link": "https://kokonutui.com/",
+    "phLink": "https://www.producthunt.com/products/kokonutui",
+    "did": "面向 AI 应用的开源（MIT）React 组件库（shadcn/ui registry）：工具调用、审批卡、模型选择器、上下文计量等聊天部件，可通过 MCP 让 Claude Code、Cursor、VS Code 或 Codex 按名称安装，源码落入你的仓库。本次更新新增大批 AI 相关组件。",
+    "who": "用 coding agent 搭 AI 产品界面、不想每次从零写聊天控件的前端和全栈开发者",
+    "why": "11/14 Product Hunt 暂列前十。把组件库改造成「agent 可发现、可安装」的 registry，是 UI 库适配 coding agent 工作流的一个清晰样本",
+    "tip": "11/14 登上 Product Hunt（搜集时列当日第 7）；官网已打开核实。免费开源组件与付费 Pro 目录需分开看。功能未实测"
+  },
+  {
+    "product": "CodeMesh",
+    "link": "https://codemesh.cloud/",
+    "phLink": "https://www.producthunt.com/products/codemesh-2",
+    "did": "给代码库建持续更新的结构图，再通过 MCP 只把相关代码片段交给 Claude Code、Cursor、Devin 等 agent，减少为了找上下文而整文件阅读。官方在公开仓库上测称可少用约 95.1% 检索 token、API 费用约降 93.1%。",
+    "who": "编码 agent 用量大、账单里大量花费在反复读仓库的团队",
+    "why": "11/14 Product Hunt 开发者工具里可见发布。把「少让模型读无关代码」做成可接入现有工具的一层，比再换一个 coding agent 更可落地",
+    "tip": "11/14 登上 Product Hunt；官网已打开核实。95.1%/93.1% 为官方在 openclaw 仓库 98 题上的自测，不是普适保证。功能未实测"
+  },
+  {
+    "product": "Nutaan Commerce",
+    "link": "https://nutaan.com/nutaan-commerce",
+    "phLink": "https://www.producthunt.com/products/nutaan-commerce",
+    "did": "面向 Shopify / WooCommerce 的 AI 店铺工作台：用实时目录做导购和尺码建议、找回弃购、确认货到付款订单、处理退换货，并在 WhatsApp、邮件和站内聊天里共用一个收件箱。结账和支付仍留在商家自己的店铺。Growth 约 $500/30 天起。",
+    "who": "已经在 Shopify 或 WooCommerce 开店、希望把导购、弃购和客服收进一个控制台的商家，尤其是有货到付款场景的店铺",
+    "why": "今天 Product Hunt 上的电商 AI 新品里，它把「不替换你的结账」和货到付款确认写得很清楚，比再做一个独立店铺更可插入现有生意",
+    "tip": "11/15 登上 Product Hunt；官网已打开核实。定价与效果估算为官网说法，功能未实测"
+  },
+  {
+    "product": "TrueView AI",
+    "link": "https://trueview-ai.com/",
+    "phLink": "https://www.producthunt.com/products/trueview-ai",
+    "did": "Shopify 应用：在商品还没有客户评价时，汇总评测站、论坛和社区里已有的公开讨论，生成带「这是 AI 摘要、基于多少来源」标注的卡片。商家先审草稿再发布；证据不足就什么都不发；摘要不可手改。免费档最多 5 个商品。",
+    "who": "新品或评价很少、又不想用假评价充数的 Shopify 商家",
+    "why": "把「如实标明是 AI」做成产品约束（不可手改、不够材料就停发），在评价合规变严的背景下比普通评价生成器更值得看",
+    "tip": "11/15 登上 Product Hunt；官网已打开核实。披露设计为官网自称可配合美/欧/英相关规则，并非法律意见。功能未实测"
+  },
+  {
+    "product": "Bedrock",
+    "link": "https://bedrockxai.com/",
+    "did": "本机（macOS / Windows）的提示词工程工作站：回答几个范围问题后，把粗想法写成可交给 AI 编程工具的完整提示，并在不同模型上对比测试。自带 API key（BYOK），密钥只存在本机、直连你选择的模型服务商。",
+    "who": "把系统提示和规格当生产资产来写、希望在本地对比多个模型的开发者和架构师",
+    "why": "今天 Product Hunt 可见发布。把「先把需求问清楚再交给 coding agent」做成桌面工具，补的是生成代码之前那一层",
+    "tip": "11/15 登上 Product Hunt；官网已打开核实。Product Hunt 文案还提到导出 CLAUDE.md 等格式，官网首页未完整展示，导出能力以实际产品为准。功能未实测"
+  }
+]
