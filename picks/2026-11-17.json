@@ -1,0 +1,87 @@
+[
+  {
+    "product": "Noeri",
+    "link": "https://noeri.ai/",
+    "did": "斯坦福教授 Yejin Choi 与 Carlos Guestrin 创办的 AI lab 走出隐身：面向企业和科学发现，帮公司用自有数据和业务流程构建可被公司持有的专用 AI，并在真实工作中持续改进工具、工作流乃至底层模型。目前以合作和联系咨询为主（create@noeri.ai），同步在 Palo Alto 与 Zurich 招人。",
+    "who": "希望模型与改进过程留在自己这边、而不是只调用通用大模型的企业与科研团队",
+    "why": "今天最重要的公司级发布之一：由两位一线研究者带队，押注「多种、可自改进、由使用者持有的智能」，而不是再做一个通用聊天助手",
+    "tip": "11/16 宣布走出隐身并完成 1.1 亿美元融资（Menlo Ventures 领投，Madrona、Kindred、Wing、NEA 以及 Cisco、NVIDIA、Snowflake 等参与）；官网与 BusinessWire 公告已打开核实。尚无公开自助产品或定价，功能未实测"
+  },
+  {
+    "product": "OpenBot",
+    "link": "https://open.bot/",
+    "phLink": "https://www.producthunt.com/products/copilotkit",
+    "did": "CopilotKit 推出的可自托管 AI 同事工作区：可接入已有 agent（如 Claude Agent SDK、LangChain、AG-UI），自选模型、工具和基础设施，并内置权限、审批、审计和支出控制。个人使用可在 Mac / Windows 本机免费运行；企业版可部署到自有 Kubernetes（AWS / Azure / GCP），目前为 early access。应用模板为 MIT 开源，底层 CopilotKit Intelligence 需单独授权。",
+    "who": "希望在自有基础设施上跑 agent、又要把治理做成默认而不是事后补丁的团队，以及想自托管、避免绑定单一助手产品的个人",
+    "why": "昨日 Product Hunt 日榜前列（约 236 票），是昨天精选漏掉的高票新品。把「自托管 + 自带治理 + 可换模型/agent」做成可下载的工作区，正好对准托管助手难以过安全评审的痛点",
+    "tip": "11/16 登上 Product Hunt（日榜约第 4）；官网与 GitHub（CopilotKit/OpenBot）已打开核实。企业版为 early access；开源范围与 Intelligence 授权需分开看。功能未实测"
+  },
+  {
+    "product": "NestDaddy",
+    "link": "https://nestdaddy.com/",
+    "phLink": "https://www.producthunt.com/posts/nestdaddy",
+    "did": "自建索引的搜索与新闻引擎，向 AI agent 提供实时网页搜索、新闻和全文阅读：可通过 MCP（https://mcp.nestdaddy.com/mcp）接到 Cursor、Claude Code 等，也提供 REST API。官方强调结果来自自有爬虫和索引，而不是转售其他搜索引擎。免费档每月 1,000 credits、无需绑卡；付费从约 $19/月起。",
+    "who": "需要 agent 查今天的网页和新闻、又不想为每次搜索按次计费的开发者",
+    "why": "今日 Product Hunt 发布。把「给 agent 用的实时搜索」做成自有索引加固定月费，和常见的转售搜索 API 是另一条路",
+    "tip": "11/17 登上 Product Hunt；官网、MCP 说明与开发者博文已打开核实。索引覆盖与结果质量需自行评估，功能未实测。官方称上线周可用代码 PH50 获三个月五折（截至 11/24）"
+  },
+  {
+    "product": "Pulsar",
+    "link": "https://github.com/yocontra/pulsar",
+    "did": "本机 MCP 服务，让跑在不同编程工具里的 coding agent 互相发现和发消息，支持 Claude Code、Codex、OpenCode、Cursor、Gemini CLI 等。会维护一份活动 agent 列表（工具、项目、分支、worktree、PR 等），可单发、组发、广播，也支持线程回复和等待对方状态变化。首个版本仅限同一台机器；消息被标记为同伴输入而非用户指令，不能用来提权。",
+    "who": "同一台电脑上同时开着多种 coding agent、希望它们能互相通气而不是各干各的开发者",
+    "why": "今日 Show HN 可见讨论。跨工具发现和群发是现有「只在某一个套件里传话」方案不容易覆盖的一层",
+    "tip": "11/17 登上 Show HN；GitHub 仓库已打开核实。项目刚公开，星标尚少，功能未实测。安全模型把本机、以当前用户运行的进程视为可信"
+  },
+  {
+    "product": "August AI 电话预约",
+    "link": "https://www.meetaugust.ai/",
+    "did": "健康助手 August 新上线的代打电话能力：你用文字说明需求（如找网络内医生、约最早门诊、跟进保险或账单），它会在诊所上班时间代为拨打、排队等候，并带回可预约的时间供你选择后再确认。官方称会在对方询问时表明自己是 AI，并复用已核实过的诊所信息，以减少重复问询。临床部分仍由持牌医生把关。",
+    "who": "美国用户中，不想在工作时间反复给诊所和保险公司打电话的人",
+    "why": "多数预约仍靠电话完成，而这正是人们最容易拖延的一步。把「代拨 + 人来做最终选择」做成现有健康助手的新能力，比再给一份过时的医生目录更具体",
+    "tip": "11/16 BusinessWire 宣布、官网博客已打开核实；产品主页 https://www.meetaugust.ai/ 已打开。这是既有产品的新能力，并非全新 App。早期用户与等待时长等为官方说法，功能未实测；可用范围以官网/等待名单为准"
+  },
+  {
+    "product": "Dreamteam",
+    "link": "https://www.dreamteam.ai/",
+    "did": "面向精简 B2B 销售团队的 AI 原生 CRM：自动从邮件、日历、会议和笔记里更新客户上下文，并配四个专职 AI 同事——Rachel 做客户调研、Sally 跟进销售流程、Raj 盯管道风险、Alex 用自然语言配置 CRM。也可通过 MCP 在 Claude 或 ChatGPT 里使用。由前 Freshworks 高管创办。",
+    "who": "不想把大量时间花在回填 CRM 字段、又希望有人盯成交风险的精简 B2B 销售团队",
+    "why": "11/16 宣布获得 5,300 万美元融资，并有可访问的产品站。卖点是「CRM 自己填、同事型 agent 去做调研和跟进」，直接挑战要靠人录入的传统 CRM",
+    "tip": "11/16 官网博客与融资新闻已发布；官网已打开核实。融资与客户证言为官方/报道说法，功能与定价未在首页完整展示，未实测"
+  },
+  {
+    "product": "StateWeave",
+    "link": "https://stateweave.net/",
+    "phLink": "https://www.producthunt.com/products/stateweave",
+    "did": "给 AI agent 提供 Slack、Salesforce、Zendesk 等应用的有状态克隆（相同 API、MCP 和界面），在隔离沙箱里跑任务并用真实 API 结果打分。可用一句描述生成公司数据，也可注入故障（如 Slack 宕机）再复现。通过 sw setup 接到 Claude Code、Codex 或 Cursor；若缺少某个应用，官方称可按需克隆。",
+    "who": "要让 agent 操作真实业务应用、又希望在上线前用可重复、可打分的环境做回归的团队",
+    "why": "11/16 Product Hunt 约 97 票，是昨天精选漏掉的独特工具。测的是「应用里到底改了什么」，而不只是看模型说了什么",
+    "tip": "11/16 登上 Product Hunt；官网已打开核实。克隆覆盖范围、仿真保真度和定价以实际产品为准，功能未实测"
+  },
+  {
+    "product": "Puffin",
+    "link": "https://www.justpuffin.tech/",
+    "phLink": "https://www.producthunt.com/products/puffin-2",
+    "did": "给 AI agent 配备独立身份和收件箱：每个 agent 有自己的邮箱（可用 justpuffin.tech 或自有域名），并可出现在 Discord、Telegram 和 Google Calendar 里。默认每封真正外发的消息都要人先批准；也可用内置 Claude 回复，或通过 SDK / MCP 接你自己的 agent。套餐约 $25/月起，可取消。",
+    "who": "希望 agent 能在邮件和聊天里触达客户、但默认仍要人工点头才发出的小团队",
+    "why": "11/16 Product Hunt 可见发布。把「agent 的身份、收件箱和审批」做成一层基础设施，比让模型直接连个人邮箱更可管理",
+    "tip": "11/16 登上 Product Hunt；官网已打开核实。Slack、WhatsApp 和电话等为即将推出。无免费可用套餐（可先浏览示例），功能未实测"
+  },
+  {
+    "product": "Woolly",
+    "link": "https://usewoolly.com/",
+    "did": "开源（MIT）、默认本机运行的 agent 记忆引擎：记忆以可读的 Markdown 存在你的电脑上，无账号、无云端、无遥测。可通过 MCP 接到 Claude Code、Cursor、Codex 等，也提供与 mem0 相近的 API 以及 Python / JS SDK。会话结束会记下决定和理由；也可用 woolly init 把项目记忆提交进仓库供团队共享。",
+    "who": "同时使用多种 coding agent、不想每次重新解释技术栈、又希望记忆留在本地的开发者和小团队",
+    "why": "今日 Show HN，且 v0.14 系列在 11/17 加上了 mem0 兼容的记忆 API。解决的是「每个工具各记各的、或完全不记」",
+    "tip": "11/17 Show HN 与官网更新日志可见；官网和 GitHub（rjcuff/Woolly）已打开核实。语义检索等能力依赖本机模型（如 Ollama），功能未实测"
+  },
+  {
+    "product": "Agent Barn",
+    "link": "https://agentbarn.dev/",
+    "phLink": "https://www.producthunt.com/products/agent-barn",
+    "did": "开源、可自托管的 AI agent 控制平面：用 Helm 部署到自有 Kubernetes，在 Slack、Teams 或 Telegram 里运行 OpenClaw 与 Hermes agent，并用模板、技能和加密凭证接到 Jira、GitHub、Confluence、Gmail 等。控制台可查看对话、工具调用、日志和模型费用。",
+    "who": "希望在自有集群上管理一批 agent、并在现有团队聊天工具里使用它们的企业 IT 与运营团队",
+    "why": "今日 Product Hunt 上架。把「运行时 + 权限/成本可观察」收成一层控制平面，适合已经决定要自托管、而不只是单机试用的团队",
+    "tip": "11/17 登上 Product Hunt（搜集时票数仍很少，投票日尚未结束）；官网已打开核实。部署与运维成本需自行评估，功能未实测"
+  }
+]
