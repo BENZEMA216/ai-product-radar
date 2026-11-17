@@ -1,0 +1,82 @@
+[
+  {
+    "product": "Qwen4-Max",
+    "link": "https://www.alibabacloud.com/blog/alibaba-unveils-qwen4-max-new-ai-teammate-for-work-creativity-and-discovery_603783",
+    "did": "阿里巴巴正式推出通义千问旗舰模型 Qwen4-Max：2.4 万亿总参数的稀疏 MoE，每 token 激活约 710 亿参数，原生视觉、100 万 token 上下文，面向编码、agent 和工作流。目前通过 QwenCloud 的 Token Plan / API 以及 QwenWork、QwenStudio 等产品使用；权重暂不开放，官方称稍后会开源更小的 Qwen4 系列模型。",
+    "who": "需要强编码和长程 agent 能力、并在意推理成本的开发者与企业团队",
+    "why": "今天最重要的模型级更新：预览结束转为正式上线。官方称新架构在同等 2.4T 规模下比 Qwen3.8-Max 少激活约 25% 参数，并在自有 Work360 基准上减少约 35% token、单任务成本约降 60%",
+    "tip": "11/11 开启预览，11/16 正式发布；阿里云官方博客与 Model Studio 更新说明已打开核实。Code Arena 第 6、Work360 降本等为官方基准与自称，功能未实测。官网只明确写出 Implicit Cache Hit 输入价为 $0.075/百万 token，完整价目以 QwenCloud 为准"
+  },
+  {
+    "product": "Rakazo",
+    "link": "https://rakazo.com/",
+    "phLink": "https://www.producthunt.com/products/rakazo",
+    "did": "开源（Apache 2.0）的自托管 AI 团队：给每个 bot 一份可读的工作说明和审批规则，让它们在你自己的机器上处理收件箱、销售跟进、费用核对或改代码。可接 Slack、Teams、iMessage、WhatsApp、Telegram，以及 Gmail、GitHub、Notion 和 MCP；自带模型或订阅（含 Claude / ChatGPT / Ollama 等）。自托管免费，也有带云端电脑时长的托管档。",
+    "who": "想要类似托管 agent 助手、但又希望模型密钥、会话和审计日志留在自己防火墙后的个人和团队",
+    "why": "11/15 Product Hunt 日榜第 1，是昨天精选漏掉的头号新品。把「可审批的多 bot 分工」做成可自托管产品，正好对准不想把日常工作全交给云端助手的人",
+    "tip": "11/15 登上 Product Hunt（日榜第 1）；官网已打开核实。托管档为 beta，审批规则和实际可靠性需自行评估，功能未实测"
+  },
+  {
+    "product": "Frevana Multiplayer",
+    "link": "https://frevana.com/",
+    "phLink": "https://www.producthunt.com/products/frevana-2",
+    "did": "Frevana 是面向获客、内容和广告投放的无代码 Agent App 平台，可在 Slack、Lark、Telegram 里使用。这次上线的 Multiplayer 让你用链接邀请同事，共享 agent 和 skill，在别人的工作流上继续搭，而不是每人各做一套。",
+    "who": "已经在用或考虑用 AI agent 做增长、广告和电商运营的小团队",
+    "why": "11/15 Product Hunt 日榜第 2。agent 应用从「一个人调一个 bot」变成可共享的团队工作流，是这类增长工具下一步很自然的产品形态",
+    "tip": "11/15 登上 Product Hunt（日榜第 2）；官网已打开核实。平台本身并非今天才上线，本次看点是 Multiplayer。客户效果与「500+ 品牌」等为官网说法，功能未实测"
+  },
+  {
+    "product": "Tulvo",
+    "link": "https://tulvo.io/",
+    "phLink": "https://www.producthunt.com/products/tulvo",
+    "did": "面向小企业的自适应工作区：用一句话描述业务，AI 会搭好数据模型、看板、文档和报表，并把表单、任务、网站做在同一套数据上。新开 MCP（beta），可把 ChatGPT、Claude、Grok、Cursor 等接进来直接建文档或站点。免费档可先用，Pro 约 $12/人/月（年付）。",
+    "who": "工具散落在文档、表格、任务和建站之间、希望用自然语言先搭起一套系统的小团队",
+    "why": "11/15 Product Hunt 日榜第 3。卖点不是又一个 Notion 替代，而是「先描述再生成结构化系统」，并让外部 coding / 对话 agent 通过 MCP 写进同一份数据",
+    "tip": "11/15 登上 Product Hunt（日榜第 3）；官网已打开核实。30 天试用与黑五折扣为官网/上市页说法，MCP 仍为 beta，功能未实测"
+  },
+  {
+    "product": "Zoom Slides",
+    "link": "https://www.zoom.com/en/products/ai-slides/",
+    "phLink": "https://www.producthunt.com/products/zoom",
+    "did": "Zoom 的 AI 幻灯片工具：把会议转写、文档或提示词生成可编辑、可套品牌模板的演示文稿，能在会里直接演示（参会者可自己翻页，不必看别人的屏幕共享），并导出为保留格式的 PowerPoint。属于 Zoom AI Productivity Suite 的一部分。",
+    "who": "会开完还要出方案或汇报材料的 Zoom 用户，尤其是销售和客户沟通场景",
+    "why": "今日 Product Hunt 暂列第 1。会议工具自己把「会里讨论 → 可演示的幻灯片」接起来，比再把转写拷到另一个做 PPT 的 AI 更顺",
+    "tip": "今日登上 Product Hunt（搜集时暂列第 1）；官网产品页已打开核实。该能力此前已随 2026 年 6 月 AI Productivity Suite 公布，这次是 Product Hunt 首发。功能未实测，权限和额度因套餐而异"
+  },
+  {
+    "product": "readywhen",
+    "link": "https://readywhen.ai/",
+    "phLink": "https://www.producthunt.com/products/readywhen",
+    "did": "面向亲力亲为的小老板的私人助理：可打电话、发语音、发消息、发邮件或在 Slack 里交代，它会整理「不能拖的事」并起草跟进。每一封回复、催款或改期都要等你点头才发出；数据在欧盟爱尔兰托管，官方称不用于训练模型。",
+    "who": "生意还压在自己身上、需要有人盯承诺和催办、但不想让 AI 擅自外发的小企业主",
+    "why": "今日 Product Hunt 暂列前列。把「先起草、你批准再发出」写成默认，比很多会自动发信的个人 agent 更可预期",
+    "tip": "11/16 登上 Product Hunt（搜集时暂列当日第 2）；官网已打开核实。ISO 27001、GDPR 和 SOC 2 Type II 进行中为官网自称，功能未实测"
+  },
+  {
+    "product": "Boost.space AgentOS",
+    "link": "https://boost.space/",
+    "phLink": "https://www.producthunt.com/products/boost-space",
+    "did": "给业务角色配备专用 AI agent 的操作系统：先用商品目录 agent Bob 做 GEO 优化、动态定价、补全上架和找渠道，再把上下文、技能和连接复用到下一个角色 agent。官方称可接 1,400+ 模型和 1,500+ 已有工具。入门是一次性 $2,500（含首月 AgentOS），之后按月使用托管与数据服务。",
+    "who": "目录和渠道复杂、希望先在一个业务角色上证明回报、再扩展到更多 agent 的电商与运营团队",
+    "why": "今日 Product Hunt 可见发布。强调「为岗位训练、而不是再开一个通用聊天窗口」，并把共享的 AgentOS 当成后续 agent 不必从零开始的基础",
+    "tip": "11/16 登上 Product Hunt（搜集时暂列当日第 3）；官网已打开核实。4 周证明 ROI、$2,500 和连接数等为官网说法，功能未实测"
+  },
+  {
+    "product": "OpenFrame",
+    "link": "https://www.flamingo.run/openframe",
+    "phLink": "https://www.producthunt.com/products/openframe-3",
+    "did": "Flamingo 面向小型 IT 团队和 MSP 的端点管理平台：内置两个 agent——Fae 在员工设备上处理 IT 请求，Mingo 负责补丁、脚本和策略，并按你设定的规则先征求批准再执行。官方定价约 $1/设备/月，含不限数量技术员和 AI token；变更会记审计日志并带回滚方案。",
+    "who": "工具散落在 RMM、工单和远程控制之间、希望 agent 能直接改设备但每步可审批的小型 IT 团队和 MSP",
+    "why": "今日 Product Hunt 暂列前列。把「agent 真的去执行」和「手机上先批准、并准备好回滚」绑在一起，比只在工单里给建议更接近可上线的 IT agent",
+    "tip": "11/16 登上 Product Hunt（搜集时暂列当日第 4）；官网已打开核实。14 天试用、无需信用卡为官网说法。该平台近期已有公开定价信息，此次为 Product Hunt 发布。功能未实测"
+  },
+  {
+    "product": "ChatGPT Wallet",
+    "link": "https://openai.com/index/introducing-chatgpt-wallet/",
+    "phLink": "https://www.producthunt.com/products/chatgpt",
+    "did": "OpenAI 为 ChatGPT 的 dot agent 推出的支付钱包：用户预先绑卡，每次购买先核对商品、金额和所用卡，再用 Face ID 或指纹批准。批准后由发卡网络签发一次性支付 token，商户和 agent 都拿不到真实卡号；官方称可保留原卡的奖励和符合条件的争议保护。目前仅向美国、18 岁以上、持合资格美国卡的 ChatGPT Pro 用户开放。",
+    "who": "已经在用 ChatGPT Pro 的 dot 做购物或预订、希望 agent 能代付但每次仍由自己确认的美国用户，以及要接待这类付款的商家",
+    "why": "Agent 购物真正卡在「怎么安全付款」。钱包把「人审 + 支付 token、不把卡号给模型」做成默认，是 agent 商务从演示走向可用支付的关键一步",
+    "tip": "11/13 OpenAI 官方博客宣布，11/16 登上 Product Hunt；此前每日精选未收录。官方公告已打开核实。目前仅限美国 Pro 用户与合资格信用卡（不含借记卡），部分网站或风控仍可能拦截。功能未实测"
+  }
+]
