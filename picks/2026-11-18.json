@@ -1,0 +1,73 @@
+[
+  {
+    "product": "GPT-6.2 Astra and Sol",
+    "link": "https://openai.com/index/introducing-gpt-6-2-astra-sol",
+    "phLink": "https://www.producthunt.com/products/openai",
+    "did": "OpenAI 发布 GPT-6.2 两款模型：Astra 面向高难度专业项目、科学与复杂 agent 任务（官方称 API 输入/输出约 $8/$40 每百万 tokens，较 GPT-6 Astra 降价 20%，缓存输入 $0.40）；Sol 面向日常工作与 agent 流程，更便宜高效。两者已在 ChatGPT Work、Codex 以及 API（gpt-6.2-astra、gpt-6.2-sol）上线。",
+    "who": "已在 ChatGPT Work、Codex 或 API 使用 GPT-6 系列、关心专业输出质量与成本的团队",
+    "why": "过去约 24 小时最重要的模型发布之一，今日 Product Hunt 仍在讨论。Astra 强调专业文档、代码和科学任务，Sol 强调日常默认模型的性价比。",
+    "tip": "11/17 官方发布；OpenAI 公告页、开发者 changelog 与 ChatGPT Learn 文档已打开核实。评测数字与价格以官方公告为准，功能未实测。"
+  },
+  {
+    "product": "S.Space",
+    "link": "https://s.space",
+    "phLink": "https://www.producthunt.com/products/s-space",
+    "did": "AutoGen 团队推出的多人共享工作区：把团队里已有的各类 agent（如 Claude Code、Codex、Grok 等，不限厂商）放进同一间房间，让它们互相交接、共享记忆，并把完成的结果交给你审批。按人计费而非按 agent，官方称约 $19/月起，新账号有 30 天高级试用，可免费开始。",
+    "who": "团队里每人已有自己的 agent、却还在靠复制粘贴互相同步上下文的协作团队",
+    "why": "今日 Product Hunt 日榜第一（搜集时约 159 票、45 条评论）。由 AutoGen 创建者带队，做的是「让已有 agent 一起工作」，而不是再做一个新助手。",
+    "tip": "11/18 登上 Product Hunt 并位列日榜第一；官网欢迎页 https://s.space/welcome 与产品说明已打开核实。根域名首页曾显示 Getting ready，可能需前端加载。功能未实测。"
+  },
+  {
+    "product": "Devin Bots",
+    "link": "https://devin.ai/bots",
+    "did": "Cognition 推出的持久工程同事：一个 Bot 拥有自己的记忆和工具，能带领多台 Devin 并行推进长期目标（如维护开源仓库、对齐 Android/iOS、管理发布）。它会拆解任务、评估结果并决定下一步，只在需要判断时找你；也可在 Slack 等处沟通。建立在现有 Devin 的代码库理解和云端电脑之上。",
+    "who": "已经在用 Devin、希望 agent 不只完成单次任务、还能持续拥有一个工程目标的团队",
+    "why": "11/17 官方发布，今日仍在被广泛讨论。从「完成任务」转向「拥有结果」，是 coding agent 产品形态的一次明显升级。",
+    "tip": "11/17 Cognition 官方博客（https://devin.ai/blog/introducing-devin-bots）与产品页已打开核实。这是既有 Devin 产品的新能力，可用性与定价以账号/套餐为准，功能未实测。"
+  },
+  {
+    "product": "Toone",
+    "link": "https://trytoone.com",
+    "phLink": "https://www.producthunt.com/products/toone",
+    "did": "macOS 上的 agent 工作流工作区：用自然语言描述重复任务，生成可运行的 routine；每个节点可以是指定模型（ChatGPT 或 Claude）的 agent 对话，或无需模型的固定步骤。可并行执行、用约定标准检查输出、单步暂停后修改并原地继续，也可接已有账号和工具。",
+    "who": "希望在自己的 Mac 上把周期性工作做成可重复、可盯梢、可随时改的 agent 流程的人",
+    "why": "今日 Product Hunt 日榜前列（搜集时约第 2–3，约 134 票）。把「用自然语言编排 agent 流程」做成桌面工作区，接近「Grok Bot 遇上 n8n」。",
+    "tip": "11/18 登上 Product Hunt（这是 Toone 的第三次发布，并非全新产品）；官网已打开核实。功能未实测。页面可见 lifetime 折扣宣传，以官网为准。"
+  },
+  {
+    "product": "Dippr",
+    "link": "https://dippr.ai/",
+    "phLink": "https://www.producthunt.com/products/dippr",
+    "did": "面向 agent 的企业数据平台：一次接入 Snowflake、Salesforce、Zendesk、Postgres、Stripe 等来源，为 agent 提供跨源数据、统一指标定义和读写规则，并托管它们构建的内部工具、客户门户和工作流。可用一条 prompt（读取 dippr.ai/agents.md）完成安装对接。",
+    "who": "希望 coding agent 能安全使用公司数据来构建内部工具和数据应用的数据与工程团队",
+    "why": "今日 Product Hunt 日榜约第 4（搜集时约 120 票）。切入点是「给 agent 一个有权限和定义的数据层」，而不只是再做一个 BI 聊天框。",
+    "tip": "11/18 登上 Product Hunt；官网已打开核实。权限模型与连接器覆盖需自行评估，功能未实测。"
+  },
+  {
+    "product": "Waldo by Wherobots",
+    "link": "https://wherobots.com/products/waldo/",
+    "phLink": "https://www.producthunt.com/products/waldo-by-wherobots",
+    "did": "Wherobots 推出的地理空间数据 agent：用自然语言提问后，会检索公私有栅格/矢量数据、编写并调试空间 SQL 与分析代码，输出表格和地图，并可把结果安排成在现有数据平台（如 Databricks、Snowflake、AWS Glue 等 Iceberg 兼容平台）上运行的生产管道。由 Apache Sedona 团队打造。",
+    "who": "需要把卫星影像、地理数据和第一方数据做成可重复分析与生产管道的数据与 GIS 团队",
+    "why": "今日 Product Hunt 日榜约第 5（搜集时约 111 票）。把空间数据和生产管道接到 agent，而不是只生成一段 SQL。",
+    "tip": "11/18 登上 Product Hunt；产品页已打开核实。功能未实测。"
+  },
+  {
+    "product": "dusk bot",
+    "link": "https://dusk.bot",
+    "phLink": "https://www.producthunt.com/products/dusk-bot",
+    "did": "免费开源的本机 AI 同事套件：用你已有的 ChatGPT、Claude、Grok、Gemini、Cursor 等账号，给每个 bot 分配一项工作、一份可编辑记忆和一台可操作的电脑。可定时运行，风险步骤先询问；也可用本地模型。个人使用免费，可选 dusk cloud 让 bot 在电脑合上后继续工作。",
+    "who": "想在本机拥有一组各司其职的 AI 助手、又不愿再买一套托管订阅的个人用户",
+    "why": "今日 Product Hunt 日榜约第 6（搜集时约 99 票）。明确对标托管式助手：免费、开源、用你已有的模型订阅。",
+    "tip": "11/18 登上 Product Hunt；官网已打开核实。开源仓库在产品页可见，功能未实测。"
+  },
+  {
+    "product": "Bluedot Phone Calls",
+    "link": "https://www.bluedothq.com",
+    "phLink": "https://www.producthunt.com/products/bluedot-2",
+    "did": "既有会议记笔记工具 Bluedot 新上线的电话能力：可从网页或移动应用拨出电话并保留你自己的来电显示，自动得到转写、摘要和待办。它原本就不往会议里派机器人，而是从本机采集音视频；官方称数据不用于训练模型，并具备 GDPR 与 SOC 2 Type II 合规说明。",
+    "who": "已经在用或考虑用无机器人入会的会议记录工具、也希望电话沟通被同样整理的团队",
+    "why": "今日 Product Hunt 日榜前列（搜集时与 Toone 同约 134 票）。把「电话」补进已有的会议记录产品，比再做一个纯会议机器人更具体。",
+    "tip": "11/18 登上 Product Hunt（这是 Bluedot 的第五次发布，电话是既有产品的新能力，产品本身 2023 年已上线）；官网已打开核实。功能未实测。"
+  }
+]
