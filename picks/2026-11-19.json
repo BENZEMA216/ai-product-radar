@@ -1,0 +1,88 @@
+[
+  {
+    "product": "Gemini 4 Neon",
+    "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/",
+    "phLink": "https://www.producthunt.com/leaderboard/daily/2026/11/19",
+    "did": "Google DeepMind 发布 Gemini 4 Neon，面向复杂软件工程、知识工作与科学流程，强调更快完成端到端任务。官方定价为每百万 tokens 输入 $3（缓存输入 $0.15）、输出 $15，上下文窗口 100 万 tokens。今日起在 Gemini API（Google AI Studio）、Gemini for business、Google Antigravity（付费 Pro / Ultra）以及 Gemini 应用（Pro / Ultra 可在模型列表中选择）滚动上线。官方称在 Artificial Analysis Coding Agent Index 上排名第 1（58.6），Terminal-Bench 4.1 为 65.2%。",
+    "who": "需要在大仓库上跑编程助手、并关心速度与单次任务成本的开发者和企业团队",
+    "why": "过去约 24 小时最重要的模型发布之一，今日 Product Hunt 日榜亦有上榜讨论。它补在 Carbon（最难的长程任务）和 Hydrogen（日常快速执行）之间，强调相近能力下更低的单任务成本。",
+    "tip": "11/18 官方博客发布，今日开始滚动上线；已打开 Google 官方公告页核实。评测数字与价格以公告为准，模型未实测。"
+  },
+  {
+    "product": "Tabstack by Mozilla",
+    "link": "https://tabstack.ai/",
+    "phLink": "https://www.producthunt.com/products/tabstack",
+    "did": "Mozilla 推出的托管式网页访问 API，让模型或 agent 不必自建浏览器栈，即可做实时检索（带引用）、抽取正文或符合指定 schema 的 JSON，以及多步网页自动化。浏览器和网页交互由 Tabstack 在模型外运行；官方强调默认隐私、数据不用于训练。可先用 10,000 免费额度，无需信用卡。",
+    "who": "要给 agent 接上实时网页能力、又不想自建爬虫或浏览器基础设施的开发者",
+    "why": "今日 Product Hunt 前列（搜集时约第 5），有 Mozilla 背书，并且明确「不拿调用数据训练」，比一般浏览 API 更值得关注。",
+    "tip": "11/19 Product Hunt 发布；已打开官网 tabstack.ai 核实。这是该产品的第 7 次 Product Hunt 发布，本次主打 Research / Extract / Automate 一体 API。功能未实测。"
+  },
+  {
+    "product": "TestSprite 4.0",
+    "link": "https://www.testsprite.com/",
+    "phLink": "https://www.producthunt.com/products/testsprite",
+    "did": "面向前后端的测试 agent：探索正在运行的应用，编写并执行端到端 UI 和 API 测试，区分真实缺陷与噪声，并在代码变更后复查。可通过网页、CLI（Claude Code / Codex / Cursor）或 PR 触发。官方介绍称可把测试成本最多降低约 90%；定价页有免费档（每月 150 credits）及付费档。",
+    "who": "用编程助手快速改代码、需要回归测试跟上的开发团队",
+    "why": "今日 Product Hunt 日榜第一（搜集时约 150 票以上）。这是既有产品的 4.0 大版本，把测试规划、生成、执行和调试串成一条工作流，此前精选未收录。",
+    "tip": "11/19 Product Hunt 搜集时列当日第 1；已打开官网 www.testsprite.com 核实。成本降幅来自官方/产品页表述，功能未实测。"
+  },
+  {
+    "product": "Teaflask",
+    "link": "https://teaflask.com/",
+    "phLink": "https://www.producthunt.com/products/teaflask",
+    "did": "给已有 SaaS 嵌入可执行任务的 AI 助手，无需改后端。它可以从代码仓库生成产品文档和可调用动作，用户在产品里用自然语言完成填表、导航和 API 调用；产品 API 在用户浏览器会话中发出，沿用原有鉴权。每个动作可设为允许、询问或拒绝。有 Free 与 Enterprise，也可自带模型密钥。",
+    "who": "想让现有 SaaS 尽快具备 agent 能力、又不想重做后端的产品团队",
+    "why": "今日 Product Hunt 上榜（搜集时约第 6），是 YC 项目，强调「前端嵌入 + 在用户会话里调用原有 API」，和再做一个外挂聊天机器人不同。",
+    "tip": "11/19 Product Hunt 发布；已打开官网 teaflask.com 与说明页核实。功能未实测。"
+  },
+  {
+    "product": "Manufact",
+    "link": "https://manufact.com/",
+    "phLink": "https://www.producthunt.com/products/manufact",
+    "did": "YC 团队做的 MCP 云平台：从 GitHub 或 CLI 部署 MCP 插件，在提交到 ChatGPT、Claude、Cursor、Grok、Muse 等市场前做合规检查并生成上架材料，同时提供用量分析，以及在多种客户端和模型上的评测。同一团队还维护开源 mcp-use SDK，但平台不强制使用该框架。有免费档。",
+    "who": "要把 MCP 插件发布到多个助手市场、并需要上架检查和回归评测的开发者",
+    "why": "今日 Product Hunt 上榜（搜集时约第 8），对准「一个 MCP 要进多个市场」的重复劳动，把部署、检查、评测和监控放在同一处。",
+    "tip": "11/19 Product Hunt 发布；已打开官网 manufact.com 核实。功能未实测。"
+  },
+  {
+    "product": "Adside",
+    "link": "https://www.adside.ai/",
+    "phLink": "https://www.producthunt.com/products/adside",
+    "did": "一组专门管理效果广告的 AI agent，覆盖竞品调研、静态/视频广告制作、投放管理、素材轮换、定向与出价优化，以及 A/B 测试，支持 Google、Meta、LinkedIn、Reddit 和 X。也可在 Claude 或 ChatGPT 里通过集成/MCP 使用。官网定价为每个品牌每月 $990，年付预付为 $490/月；托管服务为广告花费的 10%，每月最低 $2,500，创意上线前需你批准。",
+    "who": "需要持续管理多平台付费广告、但没有完整广告团队的品牌或增长负责人",
+    "why": "今日 Product Hunt 上榜（搜集时约第 10），卖的是完整的广告运营 agent 团队，而不只是文案或素材生成。",
+    "tip": "11/19 Product Hunt 发布；已打开官网 adside.ai 与定价页核实。价格以官网为准，投放效果未实测。"
+  },
+  {
+    "product": "Gateweave",
+    "link": "https://gateweave.com/",
+    "did": "开源工具组合：把 issue 指派给 AI agent，由沙箱中的 agent 交回 pull request。Track 是问题跟踪，Agents 负责在仓库沙箱里跑 agent；两者都开源，可部署到自己的 Cloudflare 账户。官网展示的一次真实运行中，agent 在指派后约 26 秒于 issue 回复，3 分 45 秒打开 PR，费用约 11 美分。也提供受邀的托管 Cloud。",
+    "who": "想把「分派 issue → 得到 PR」跑在自己基础设施上的小团队",
+    "why": "今日在 Product Hunt 和 X 上被讨论，开源且可自托管，路径比再买一个云端 coding agent 更清楚。",
+    "tip": "11/19 见于 Product Hunt 与 X 讨论；已打开官网 gateweave.com 核实。演示耗时和费用来自官网记录，未自行复现。"
+  },
+  {
+    "product": "Stitch Loop",
+    "link": "https://stitch.google.com/loop",
+    "did": "Google Labs 推出的长驻产品 agent：连接代码仓库和线上指标（官方称有 180 多种集成，也可接自定义 MCP 或本地 CLI），持续寻找改进点，在隔离沙箱里写代码并提交 GitHub PR，需你批准后才会合并。预置网络安全、延迟和可访问性循环，也可自建如提升结账转化等目标。可与 Antigravity 等编程助手以及 Slack 配合。目前全球排队，符合条件的 Google AI Ultra 用户优先。",
+    "who": "功能已经上线、需要持续做安全修补和指标优化的精简产品团队",
+    "why": "和普通「写完 PR 就结束」的编程助手不同，它把上线后的持续优化做成常驻循环。11/18 官方宣布，今日仍在传播。",
+    "tip": "11/18 Google Labs 官方博客发布；已打开公告页、产品页 stitch.google.com/loop 和等待名单页核实。目前是实验产品，需排队，功能未实测。"
+  },
+  {
+    "product": "ChatGPT for Accounting",
+    "link": "https://openai.com/business/solutions/accounting/",
+    "did": "OpenAI 推出面向会计工作的 ChatGPT 方案：通过插件连接 QuickBooks、Xero、NetSuite、BILL、FreshBooks 等账套，协助起草发票分录、对账和月报；对没有插件的应用可用 computer use。官方强调工作区管理员控制可连接的应用，分录和报表需人工审阅后才确认。还可把模板和复核步骤存成可复用 skill。",
+    "who": "使用常见会计软件、希望减少手工录入和对账时间的财务或会计团队",
+    "why": "过去约 24 小时 OpenAI 的新行业方案，把助手直接接到现有账套，而不是只做通用问答。",
+    "tip": "约 11/18 前后上线；已打开 OpenAI 官方方案页核实。具体地区与套餐可用性以官网为准，未实际连接账套测试。"
+  },
+  {
+    "product": "Mermaid Flow",
+    "link": "https://mermaid.ai/products/flow/",
+    "did": "Mermaid.js 团队的可视化 agent 工作流构建器：把可重复步骤画成图，按固定顺序执行，步骤内由模型思考但不能改流程本身；可通过 MCP 连接工具，支持运行、定时和运行记录。免费档为每用户每月 15 次工作流运行，另有付费档。",
+    "who": "希望把重复的 agent 任务固化成可检查、可调度流程的个人或小团队",
+    "why": "11/18 发布，昨日精选未收录，今日 X 上仍有讨论。把流程图本身变成可运行的 agent 编排，定位清楚。",
+    "tip": "11/18 官方博客发布；已打开 mermaid.ai/products/flow 核实。功能未实测。"
+  }
+]
