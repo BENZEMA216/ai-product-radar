@@ -3158,9 +3158,31 @@ export function sortCandidatesForPriority(candidates) {
   );
 }
 
+function ensurePrioritySourceDiversity(items, { topN = 20, minSources = 3 } = {}) {
+  const ranked = [...items];
+  if (ranked.length < topN) return ranked;
+  const sourceKey = (item) => sourceLabel(item.source);
+  const topSources = new Set(ranked.slice(0, topN).map(sourceKey).filter(Boolean));
+  while (topSources.size < minSources) {
+    const promoteIndex = ranked.findIndex(
+      (item, index) =>
+        index >= topN &&
+        item.qualityLabel === "keep" &&
+        item.category === "product" &&
+        !topSources.has(sourceKey(item))
+    );
+    if (promoteIndex < 0) break;
+    const [promoted] = ranked.splice(promoteIndex, 1);
+    ranked.splice(topN - 1, 0, promoted);
+    topSources.add(sourceKey(promoted));
+  }
+  return ranked;
+}
+
 export function rankCandidatesForPriority(candidates) {
   const representativeFirst = sortCandidatesForPriority(candidates);
-  return sortCandidatesForPriority(applyDuplicatePenalties(representativeFirst));
+  const duplicateAware = sortCandidatesForPriority(applyDuplicatePenalties(representativeFirst));
+  return ensurePrioritySourceDiversity(duplicateAware);
 }
 
 function sourceHealthEntry({ status = "ok", rawCount = 0, keptCount = 0, note = "" }) {

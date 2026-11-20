@@ -2327,6 +2327,29 @@ function testPriorityRankLimitsStructuredDuplicateGroupsTop20() {
   assert.ok(top20DuplicateCount <= 2, "Top 20 should keep at most two representatives from the same structured repo");
 }
 
+function testPriorityRankPromotesThirdStrongSourceIntoTop20() {
+  const crowded = Array.from({ length: 24 }, (_, index) => ({
+    product: `Crowded product ${index}`,
+    link: `https://example.com/crowded-${index}`,
+    source: index % 2 ? "producthunt" : "hackernews",
+    category: "product",
+    qualityLabel: "keep",
+    priorityScore: 100 - index
+  }));
+  const ycLaunch = {
+    product: "Strong YC launch",
+    link: "https://www.ycombinator.com/launches/strong-yc-launch",
+    source: "yc_launch",
+    category: "product",
+    qualityLabel: "keep",
+    priorityScore: 60
+  };
+  const ranked = rankCandidatesForPriority([...crowded, ycLaunch]);
+  const topSources = new Set(ranked.slice(0, 20).map((item) => item.source));
+  assert.equal(topSources.size, 3, "Top 20 should include the strongest eligible third source");
+  assert.ok(ranked.slice(0, 20).some((item) => item.product === ycLaunch.product));
+}
+
 function testQualityMemoryDropsNegativeGoldens() {
   const candidates = [
     {
@@ -5372,6 +5395,7 @@ const tests = [
   ["Source archive releases stay weak", testSourceArchiveReleaseIsLowSignal],
   ["Priority sort keeps strong labels before weak signals", testPrioritySortKeepsStrongLabelsBeforeWeakSignals],
   ["Priority rank limits structured duplicate groups Top 20", testPriorityRankLimitsStructuredDuplicateGroupsTop20],
+  ["Priority rank promotes third strong source into Top 20", testPriorityRankPromotesThirdStrongSourceIntoTop20],
   ["Quality memory drops negative goldens", testQualityMemoryDropsNegativeGoldens],
   ["Quality memory drops user feedback", testQualityMemoryDropsUserFeedback],
   ["Quality memory drops sibling GitHub release feedback", testQualityMemoryDropsSiblingGitHubReleaseFeedback],

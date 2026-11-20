@@ -1,0 +1,293 @@
+{
+  "date": "2026-11-21",
+  "generatedAt": "2026-11-20T16:21:23.818Z",
+  "reportPath": "reports/2026-11-21-0021-cst.md",
+  "ok": true,
+  "failures": [],
+  "metrics": {
+    "rows": 71,
+    "top20Sources": [
+      "Product Hunt",
+      "HN Algolia",
+      "YC Launch"
+    ],
+    "top10ModelInfra": 0,
+    "genericHfSpaceTop20": 0,
+    "precisionAt10": 1,
+    "badTop10Count": 0
+  },
+  "sourceHealth": {
+    "producthunt": {
+      "status": "fallback",
+      "rawCount": 33,
+      "keptCount": 22,
+      "note": "Product Hunt 按 Pacific 完成日抓取 2026-11-19；PH official API unavailable：官方 API token 未配置，当前使用 Jina/OrangeBot/Hunted.Space fallback；原始覆盖 33 条，AI 相关候选 22 条；实际 fallback：hunted_space。；历史去重移除 3 条已报道或已处理日榜 Product Hunt 信号，最终发布 19 条。"
+    },
+    "yc_launch": {
+      "status": "ok",
+      "rawCount": 1,
+      "keptCount": 1,
+      "note": "YC Launch 正常返回窗口内候选。"
+    },
+    "hackernews": {
+      "status": "ok",
+      "rawCount": 21,
+      "keptCount": 14,
+      "note": "HN 保留 Launch HN 和严格过滤后的 Show HN；普通 story 不进入默认产品视图。"
+    },
+    "github": {
+      "status": "ok",
+      "rawCount": 6,
+      "keptCount": 0,
+      "note": "GitHub 默认只收固定 watchlist 的 Release。"
+    },
+    "huggingface": {
+      "status": "fallback",
+      "rawCount": 19,
+      "keptCount": 19,
+      "note": "Hugging Face Models 归入 Models & Infra，Spaces 可进入产品信号。传输：Space:curl, Model:curl；API 已读取，候选按时间窗口过滤"
+    },
+    "aihot": {
+      "status": "ok",
+      "rawCount": 18,
+      "keptCount": 18,
+      "note": "AIHOT 作为聚合发现源；如指向官方/社媒原帖，应优先看 evidence。"
+    },
+    "xhs_dealflow": {
+      "status": "unavailable",
+      "rawCount": 0,
+      "keptCount": 0,
+      "note": "XHS 默认尝试，但 Dealflow bridge、扩展或登录态可能不可用；按 best-effort 0 条处理。"
+    }
+  },
+  "feedback": {
+    "status": "ok",
+    "count": 45,
+    "error": "",
+    "policyGeneratedAt": "2026-10-27T16:05:37.511Z",
+    "policyIssueCount": 45,
+    "policyRuleCount": 15
+  },
+  "top20Sample": [
+    {
+      "rank": 1,
+      "product": "Adside",
+      "productKey": "https://www.producthunt.com/products/adside",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Adside 把付费投放拆给一组专职 agent，值得看的是它能否用角色分工降低广告运营的协调成本，而不只是生成素材。"
+    },
+    {
+      "rank": 2,
+      "product": "Sandscale – Firecracker microVMs for AI coding agents",
+      "productKey": "https://sandscale.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Sandscale 用 Firecracker microVM 隔离 coding agent，直接回应并行执行时的安全与环境复现问题，适合作为 agent 基础设施的早期样本。"
+    },
+    {
+      "rank": 3,
+      "product": "Isu-bench – coding agents tune an unseen web service with 11 load tests",
+      "productKey": "https://isu-bench.trasta.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Isu-bench 让 coding agent 在不可见服务上经受 11 组负载测试，价值在于把代码能力评估推进到真实性能调优，而非只看单元题得分。"
+    },
+    {
+      "rank": 4,
+      "product": "Mergepond – a Mac Git client for worktrees and coding agents",
+      "productKey": "https://mergepond.dev",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Mergepond 围绕 worktree 设计 Mac Git 客户端，说明多 agent 并行开发正在反向重塑分支、审阅和冲突处理入口。"
+    },
+    {
+      "rank": 5,
+      "product": "Netlify Server",
+      "productKey": "https://www.producthunt.com/products/netlify",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Netlify Server 同时支持 WebSocket、多人应用和长时 agent，值得观察无服务器平台如何补齐持久连接与长任务这两个缺口。"
+    },
+    {
+      "rank": 6,
+      "product": "Rezora IO",
+      "productKey": "https://www.producthunt.com/products/rezora-io-ai-calling-assistant",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Rezora IO 用“十分钟上线”包装 AI 语音 agent，关键是它是否真能把部署、号码与运行流程压缩成类似 Shopify 的开店体验。"
+    },
+    {
+      "rank": 7,
+      "product": "Zeus – Claude Code for AI voice agents",
+      "productKey": "https://thunderphone.com/blog/introducing-zeus",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Zeus 把“Claude Code 式交互”迁到语音 agent 开发，值得看自然语言调试能否降低通话流程、工具调用和异常定位的门槛。"
+    },
+    {
+      "rank": 8,
+      "product": "Noteshell",
+      "productKey": "https://www.producthunt.com/products/noteshell",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Noteshell 将能搭建并运行工作区的 AI 定义为队友，产品判断点在权限边界、任务交接和结果可追责是否足够清楚。"
+    },
+    {
+      "rank": 9,
+      "product": "ScreenClip – screenshot a bug, your coding agent opens the PR",
+      "productKey": "https://screenclipai.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ScreenClip 把截图报错直接接到 coding agent 开 PR，展示了从非技术反馈到可审阅代码变更的短闭环。"
+    },
+    {
+      "rank": 10,
+      "product": "TestSprite 4.0",
+      "productKey": "https://www.producthunt.com/products/testsprite",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "TestSprite 4.0 用 agent 持续检查“修一处坏一处”的回归风险，值得看它能否把测试从发布前步骤变成修改后的自动守门。"
+    },
+    {
+      "rank": 11,
+      "product": "Prove what your AI agent did – sign actions, verify in the browser",
+      "productKey": "https://agentproofchain.com/try",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AgentProofChain 给 agent 动作签名并允许浏览器核验，切中自动执行进入生产后最难补的审计与责任证明层。"
+    },
+    {
+      "rank": 12,
+      "product": "AgentMall – Let your AI agent buy groceries",
+      "productKey": "https://getagentmall.com",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "AgentMall 让 agent 购买日常杂货，是检验消费代理能否处理选品、授权和支付边界的具体场景，而非泛化助手演示。"
+    },
+    {
+      "rank": 13,
+      "product": "Prediction market competition where only agents can trade",
+      "productKey": "https://www.vaticin.ai",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Vaticin 把预测市场限定为 agent 交易场，更多是评估策略型 agent 行为的实验环境；产品价值取决于是否沉淀可复用的评测与风控机制。"
+    },
+    {
+      "rank": 14,
+      "product": "Fieldwork Code",
+      "productKey": "https://www.producthunt.com/products/fieldwork-code",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Fieldwork Code 把本地或云端 coding agent 延伸到手机入口，值得观察远程开发是否能在移动端保留上下文、控制权与审阅能力。"
+    },
+    {
+      "rank": 15,
+      "product": "Manufact",
+      "productKey": "https://www.producthunt.com/products/manufact",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Manufact 同时面向多个插件市场发布和测试 MCP，抓住了工具作者在兼容性验证与分发上的重复劳动。"
+    },
+    {
+      "rank": 16,
+      "product": "CodeDesign v3",
+      "productKey": "https://www.producthunt.com/products/codedesign",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "CodeDesign v3 让 ChatGPT 或 Claude 直接运行网站与业务应用，重点是对话入口能否安全承接真实业务操作，而非只生成页面。"
+    },
+    {
+      "rank": 17,
+      "product": "Source",
+      "productKey": "https://www.producthunt.com/products/source-public-beta",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Source 把归因数据做成 agent 可用的数据层，值得看它能否让获客 agent 的判断回到可追溯证据，而不是黑盒优化。"
+    },
+    {
+      "rank": 18,
+      "product": "Resin Technologies",
+      "productKey": "https://www.ycombinator.com/launches/xkb-resin-technologies-ai-enabled-electronics-firm",
+      "source": "YC Launch",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Resin Technologies 用 AI 把电子规格直接推进到可工作的电路板，体现了垂直 agent 从建议工具走向实物交付的商业路径。"
+    },
+    {
+      "rank": 19,
+      "product": "Formbook – MCP server for horse racing data",
+      "productKey": "https://mcp.formbook.io",
+      "source": "HN Algolia",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "Formbook 将赛马数据封装成 MCP，提供了垂直数据服务转成 agent 工具的具体样本；采用价值取决于数据质量和调用稳定性。"
+    },
+    {
+      "rank": 20,
+      "product": "ToolJet",
+      "productKey": "https://www.producthunt.com/products/tooljet",
+      "source": "Product Hunt",
+      "category": "product",
+      "qualityLabel": "keep",
+      "pmScore": 5,
+      "rankingIssue": null,
+      "reason": "ToolJet 把 vibe-coded 业务应用与安全审查放在同一卖点里，反映企业低代码产品正在把合规作为生成式开发的交付门槛。"
+    }
+  ]
+}
